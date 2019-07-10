@@ -112,7 +112,7 @@ i2c_davinci
 
 #### Kernel startup output
 
-captured from [here](3)
+captured from [here][3]
 
 ```
 Linux version 2.6.37+ (bob@ubuntu) (gcc version 4.3.3 (GCC) ) #819 PREEMPT Tue Jul 26 12:03:50 CDT 2016
@@ -452,7 +452,7 @@ $ tar xzf upgrade.bin
 
 This is U-Boot script image. This script seems to be started first and pass control to `recovery.scr` or flash update by itself.
 
-this file is compiled with `mkimage` tool. See example [here](https://www.denx.de/wiki/view/DULG/UBootScripts)
+this file is compiled with `mkimage` tool. See example [here][17]
 
 
 ```
@@ -636,7 +636,7 @@ root:5sphjGCDWAh4Y:0:0:root:/home/root:/bin/sh
 * Wifi dongle is RTL8192CU
 
 /etc/version
-* [Arago 2011.06](http://arago-project.org/wiki/index.php/Setting_Up_Build_Environment)
+* [Arago 2011.06][18]
 
 ```
 $ cat /etc/fstab
@@ -1005,3 +1005,5 @@ storm_top.bin
 [14]: http://processors.wiki.ti.com/index.php/Booting_Linux_kernel_using_U-Boot#NOR_Flash
 [15]: http://processors.wiki.ti.com/index.php/Building_03.22_PSP_release_Components_for_OMAP-L138#Building_uImage
 [16]: https://forums.presonus.com/viewtopic.php?f=222&p=176954&sid=b66b0e05156810e02d0fdb6405a78598
+[17]: https://www.denx.de/wiki/view/DULG/UBootScripts
+[18]: http://arago-project.org/wiki/index.php/Setting_Up_Build_Environment
