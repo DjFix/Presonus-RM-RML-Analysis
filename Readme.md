@@ -112,7 +112,7 @@ i2c_davinci
 
 #### Kernel startup output
 
-captured from [here][3]
+captured from [here][16]
 
 ```
 Linux version 2.6.37+ (bob@ubuntu) (gcc version 4.3.3 (GCC) ) #819 PREEMPT Tue Jul 26 12:03:50 CDT 2016
