@@ -36,13 +36,409 @@ analyze this headers later and see if we can run cross-upgrade in the family. Cr
 full-featured RM/RML32 machine, because the hardware in this machines seems to be identical. I state it after in-depth analysis of hardware of
 my own RML16AI.
 
+## Tools needed
+
+```
+$ apt install u-boot-tools mtd-utils binwalk gcc-5-arm-linux-gnueabihf g++-5-arm-linux-gnueabihf
+```
+
 ### `uImage`
 
-This is the linux kernel used to boot the mixer during upgrade process. This is also seems to be the kernel that is flashed as upgrade
+This is U-Boot linux Kernel image. It is directly used to boot the mixer during factory reset process. This is also seems to be the kernel that is flashed as upgrade
+
+```
+$ dumpimage -l uImage
+Image Name:   Linux-2.6.37+
+Created:      Fri Mar  2 00:22:24 2018
+Image Type:   ARM Linux Kernel Image (uncompressed)
+Data Size:    3437312 Bytes = 3356.75 kB = 3.28 MB
+Load Address: c0008000
+Entry Point:  c0008000
+```
+
+Dumping kernel to `vmlinux` file
+
+```
+$ dumpimage -i uImage image-bin
+ ```
+
+keywords `presonus` `audio` `davinci` `pcm` `omap`
+```
+$ strings image-bin | less 
+
+<4>omapl138_presonus_init: emac registration failed: %d
+ttyS
+115200
+<4>omapl138_presonus_init: edma registration failed: %d
+<4>omapl138_presonus_init: watchdog registration failed: %d
+<4>omapl138_presonus_init: lcdc registration failed: %d
+<4>omapl138_presonus_init: cpuidle registration failed: %d
+<4>omapl138_presonus_init: suspend registration failed: %d```
+
+Presonus OMAP-L138 Platform
+...
+davinci-pcm-audio
+davinci-mcbsp
+spi_davinci
+cpuidle-davinci
+omap_rtc
+davinci_mmc
+da8xx_lcdc
+davinci-mcasp
+davinci_mdio
+davinci_emac
+i2c_davinci
+...
+davinci_emac_probe
+TI DaVinci EMAC Linux v6.1
+davinci_emac.debug_level
+...
+<4>%s: Unable to map DDR2 controller
+arch/arm/mach-davinci/devices-da8xx.c
+serial8250
+davinci-pcm-audio
+davinci-mcbsp
+spi_davinci
+cpuidle-davinci
+omap_rtc
+davinci_mmc
+da8xx_lcdc
+davinci-mcasp
+davinci_mdio
+davinci_emac
+i2c_davinci
+...
+```
+
+#### Kernel startup output
+
+captured from [here](3)
+
+```
+Linux version 2.6.37+ (bob@ubuntu) (gcc version 4.3.3 (GCC) ) #819 PREEMPT Tue Jul 26 12:03:50 CDT 2016
+CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00053177
+CPU: VIVT data cache, VIVT instruction cache
+Machine: Presonus OMAP-L138 Platform
+Memory policy: ECC disabled, Data cache writeback
+DaVinci da850/omap-l138/am18x variant 0x1
+On node 0 totalpages: 24576
+free_area_init_node: node 0, pgdat c034e6c0, node_mem_map c0360000
+  DMA zone: 192 pages used for memmap
+  DMA zone: 0 pages reserved
+  DMA zone: 24384 pages, LIFO batch:3
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 24384
+Kernel command line: mem=96M console=ttyS2,115200n8 noinitrd ubi.mtd=2 rootfstype=ubifs root=ubi0:rootfs rootflags=sync lpj=1134592 quiet
+PID hash table entries: 512 (order: -1, 2048 bytes)
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+Memory: 96MB = 96MB total
+Memory: 93940k/93940k available, 4364k reserved, 0K highmem
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+    DMA     : 0xff000000 - 0xffe00000   (  14 MB)
+    vmalloc : 0xc6800000 - 0xfea00000   ( 898 MB)
+    lowmem  : 0xc0000000 - 0xc6000000   (  96 MB)
+    modules : 0xbf000000 - 0xc0000000   (  16 MB)
+      .init : 0xc0008000 - 0xc0025000   ( 116 kB)
+      .text : 0xc0025000 - 0xc032e000   (3108 kB)
+      .data : 0xc032e000 - 0xc034f300   ( 133 kB)
+SLUB: Genslabs=13, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+Preemptable hierarchical RCU implementation.
+   RCU-based detection of stalled CPUs is disabled.
+   Verbose stalled-CPUs detection is disabled.
+NR_IRQS:245
+Console: colour dummy device 80x30
+Calibrating delay loop (skipped) preset value.. 226.91 BogoMIPS (lpj=1134592)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+DaVinci: 144 gpio irqs
+regulator: core version 0.5
+regulator: dummy: 
+NET: Registered protocol family 16
+bio: create slab <bio-0> at 0
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+Switching to clocksource timer0_1
+musb-hdrc: version 6.0, host, debug=0
+musb-hdrc musb-hdrc: dma type: dma-cppi41
+Waiting for USB PHY clock good...
+musb-hdrc: ConfigData=0x06 (UTMI-8, dyn FIFOs, SoftConn)
+musb-hdrc: MHDRC RTL version 1.800 
+musb-hdrc: setup fifo_mode 2
+musb-hdrc: 9/9 max ep, 4032/4096 memory
+musb-hdrc musb-hdrc: MUSB HDRC host driver
+musb-hdrc musb-hdrc: new USB bus registered, assigned bus number 1
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+musb-hdrc musb-hdrc: USB Host mode controller at fee00000 using DMA, IRQ 58
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 4096 (order: 3, 32768 bytes)
+TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 4096 bind 4096)
+TCP reno registered
+UDP hash table entries: 256 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+EMAC: RMII PHY configured, MII PHY will not be functional
+JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+msgmni has been set to 183
+io scheduler noop registered (default)
+Serial: 8250/16550 driver, 3 ports, IRQ sharing disabled
+serial8250.0: ttyS0 at MMIO 0x1c42000 (irq = 25) is a AR7
+serial8250.0: ttyS1 at MMIO 0x1d0c000 (irq = 53) is a AR7
+serial8250.0: ttyS2 at MMIO 0x1d0d000 (irq = 61) is a AR7
+console [ttyS2] enabled
+physmap platform flash device: 02000000 at 60000000
+physmap-flash.0: Found 1 x16 devices at 0x0 in 16-bit bank. Manufacturer ID 0x0000c2 Chip ID 0x00227e
+Amd/Fujitsu Extended Query Table at 0x0040
+  Amd/Fujitsu Extended Query version 1.3.
+number of CFI chips: 1
+cmdlinepart partition parsing not available
+RedBoot partition parsing not available
+Using physmap partition information
+Creating 4 MTD partitions on "physmap-flash.0":
+0x000000000000-0x0000000a0000 : "UBL/U-Boot"
+0x0000000a0000-0x000000500000 : "kernel"
+0x000000500000-0x000001c00000 : "rootfs"
+0x000001c00000-0x000002000000 : "settings"
+UBI: attaching mtd2 to ubi0
+UBI: physical eraseblock size:   131072 bytes (128 KiB)
+UBI: logical eraseblock size:    130944 bytes
+UBI: smallest flash I/O unit:    1
+UBI: VID header offset:          64 (aligned 64)
+UBI: data offset:                128
+UBI: max. sequence number:       0
+UBI: volume 0 ("rootfs") re-sized from 122 to 180 LEBs
+UBI: attached mtd2 to ubi0
+UBI: MTD device name:            "rootfs"
+UBI: MTD device size:            23 MiB
+UBI: number of good PEBs:        184
+UBI: number of bad PEBs:         0
+UBI: number of corrupted PEBs:   0
+UBI: max. allowed volumes:       128
+UBI: wear-leveling threshold:    4096
+UBI: number of internal volumes: 1
+UBI: number of user volumes:     1
+UBI: available PEBs:             0
+UBI: total number of reserved PEBs: 184
+UBI: number of PEBs reserved for bad PEB handling: 0
+UBI: max/mean erase counter: 1/0
+UBI: image sequence number:  860712550
+spi_davinci spi_davinci.1: DMA: supported
+spi_davinci spi_davinci.1: DMA: RX channel: 18, TX channel: 19, event queue: 0
+UBI: background thread "ubi_bgt0d" started, PID 360
+spi_davinci spi_davinci.1: Controller at 0xfef0e000
+spi_davinci spi_davinci.0: DMA: supported
+spi_davinci spi_davinci.0: DMA: RX channel: 14, TX channel: 15, event queue: 0
+spi_davinci spi_davinci.0: Controller at 0xfec41000
+davinci_mdio davinci_mdio.0: davinci mdio revision 1.5
+davinci_mdio davinci_mdio.0: no live phy, scanning all
+davinci_mdio: probe of davinci_mdio.0 failed with error -5
+watchdog watchdog: heartbeat 60 sec
+cpuidle: using governor ladder
+cpuidle: using governor menu
+TCP cubic registered
+NET: Registered protocol family 17
+Registering the dns_resolver key type
+davinci_emac_probe: using random MAC addr: ba:6d:5f:09:0e:4b
+UBIFS: parse sync
+UBIFS: mounted UBI device 0, volume 0, name "rootfs"
+UBIFS: file system size:   22260480 bytes (21738 KiB, 21 MiB, 170 LEBs)
+UBIFS: journal size:       3404544 bytes (3324 KiB, 3 MiB, 26 LEBs)
+UBIFS: media format:       w4/r0 (latest is w4/r0)
+UBIFS: default compressor: lzo
+UBIFS: reserved for root:  0 bytes (0 KiB)
+VFS: Mounted root (ubifs filesystem) on device 0:11.
+udevd (460): /proc/460/oom_adj is deprecated, please use /proc/460/oom_score_adj instead.
+Running do_deferred_initcalls()
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+ohci ohci.0: DA8xx OHCI
+ohci ohci.0: new USB bus registered, assigned bus number 2
+Waiting for USB PHY clock good...
+ohci ohci.0: irq 59, io mem 0x01e25000
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 1 port detected
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+Freeing init memory: 116K
+net eth0: no phy, defaulting to 100/full
+net eth0: DaVinci EMAC: ioctl not supported
+hrtimer: interrupt took 125959 ns
+net eth0: DaVinci EMAC: ioctl not supported
+usb 1-1: new high speed USB device using musb-hdrc and address 2
+rtw driver version=v3.4.4_4749.20121105 
+Build at: Jul 26 2016 12:04:26
+register rtw_netdev_ops to netdev_ops
+CHIP TYPE: RTL8188C_8192C
+
+usb_endpoint_descriptor(0):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=81
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_in = 1
+
+usb_endpoint_descriptor(1):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=2
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_out = 2
+
+usb_endpoint_descriptor(2):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=3
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_out = 3
+
+usb_endpoint_descriptor(3):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=84
+wMaxPacketSize=40
+bInterval=1
+RT_usb_endpoint_is_int_in = 4, Interval = 1
+nr_endpoint=4, in_num=2, out_num=2
+
+USB_SPEED_HIGH
+Chip Version ID: VERSION_NORMAL_TSMC_CHIP_88C.
+RF_Type is 3!!
+EEPROM type is E-FUSE
+====> ReadAdapterInfo8192C
+Boot from EFUSE, Autoload OK !
+EEPROMVID = 0x0bda
+EEPROMPID = 0x8176
+EEPROMCustomerID : 0x00
+EEPROMSubCustomerID: 0x00
+RT_CustomerID: 0x00
+_ReadMACAddress MAC Address from EFUSE = 5c:f3:70:21:61:06
+EEPROMRegulatory = 0x0
+_ReadBoardType(0)
+BT Coexistance = disable
+RT_ChannelPlan: 0x00
+_ReadPSSetting...bHWPwrPindetect(0)-bHWPowerdown(0) ,bSupportRemoteWakeup(0)
+### PS params=>  power_mgnt(0),usbss_enable(0) ###
+### AntDivCfg(0)
+readAdapterInfo_8192CU(): REPLACEMENT = 1
+<==== ReadAdapterInfo8192C in 700 ms
+rtw_macaddr_cfg MAC Address  = 5c:f3:70:21:61:06
+MAC Address from pnetdev->dev_addr= 5c:f3:70:21:61:06
+bDriverStopped:1, bSurpriseRemoved:0, bup:0, hw_init_completed:0
+usbcore: registered new interface driver rtl8192cu
+net eth0: DaVinci EMAC: ioctl not supported
+usb 1-1: USB disconnect, address 2
++rtw_dev_remove
+rtw_sta_flush
+<=== rtw_dev_unload
++r871xu_dev_remove, hw_init_completed=0
+free_recv_skb_queue not empty, 8
+=====> rtl8192c_free_hal_data =====
+<===== rtl8192c_free_hal_data =====
+-r871xu_dev_remove, done
+usb 1-1: new high speed USB device using musb-hdrc and address 3
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+usb 1-1: USB disconnect, address 3
+usb 1-1: new high speed USB device using musb-hdrc and address 4
+register rtw_netdev_ops to netdev_ops
+CHIP TYPE: RTL8188C_8192C
+
+usb_endpoint_descriptor(0):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=81
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_in = 1
+
+usb_endpoint_descriptor(1):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=2
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_out = 2
+
+usb_endpoint_descriptor(2):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=3
+wMaxPacketSize=200
+bInterval=0
+RT_usb_endpoint_is_bulk_out = 3
+
+usb_endpoint_descriptor(3):
+bLength=7
+bDescriptorType=5
+bEndpointAddress=84
+wMaxPacketSize=40
+bInterval=1
+RT_usb_endpoint_is_int_in = 4, Interval = 1
+nr_endpoint=4, in_num=2, out_num=2
+
+USB_SPEED_HIGH
+Chip Version ID: VERSION_NORMAL_TSMC_CHIP_88C.
+RF_Type is 3!!
+EEPROM type is E-FUSE
+====> ReadAdapterInfo8192C
+Boot from EFUSE, Autoload OK !
+EEPROMVID = 0x0bda
+EEPROMPID = 0x8176
+EEPROMCustomerID : 0x00
+EEPROMSubCustomerID: 0x00
+RT_CustomerID: 0x00
+_ReadMACAddress MAC Address from EFUSE = 5c:f3:70:21:61:06
+EEPROMRegulatory = 0x0
+_ReadBoardType(0)
+BT Coexistance = disable
+RT_ChannelPlan: 0x00
+_ReadPSSetting...bHWPwrPindetect(0)-bHWPowerdown(0) ,bSupportRemoteWakeup(0)
+### PS params=>  power_mgnt(0),usbss_enable(0) ###
+### AntDivCfg(0)
+readAdapterInfo_8192CU(): REPLACEMENT = 1
+<==== ReadAdapterInfo8192C in 710 ms
+rtw_macaddr_cfg MAC Address  = 5c:f3:70:21:61:06
+MAC Address from pnetdev->dev_addr= 5c:f3:70:21:61:06
+bDriverStopped:1, bSurpriseRemoved:0, bup:0, hw_init_completed:0
+net eth0: DaVinci EMAC: ioctl not supported
+net eth0: DaVinci EMAC: ioctl not supported
+usb 1-1: USB disconnect, address 4
++rtw_dev_remove
+rtw_sta_flush
+<=== rtw_dev_unload
++r871xu_dev_remove, hw_init_completed=0
+free_recv_skb_queue not empty, 8
+=====> rtl8192c_free_hal_data =====
+<===== rtl8192c_free_hal_data =====
+-r871xu_dev_remove, done
+usb 1-1: new high speed USB device using musb-hdrc and address 5
+usb 1-1: USB disconnect, address 5
+usb 1-1: new high speed USB device using musb-hdrc and address 6
+```
 
 ### `rootfs.img`
 
-This is the rootfs UBIFS image. We'll examine it's contents later
+This is raw rootfs UBIFS image. We'll examine it's contents later
 
 ### `upgrade.bin`
 
@@ -58,10 +454,6 @@ This is U-Boot script image. This script seems to be started first and pass cont
 
 this file is compiled with `mkimage` tool. See example [here](https://www.denx.de/wiki/view/DULG/UBootScripts)
 
-install u-boot-tools
-```
-$ apt install u-boot-tools
-```
 
 ```
 $ dumpimage -l initvars.scr
@@ -102,10 +494,6 @@ setenv cpsystem 'run cpkernel;run cprootfs;usb stop'
 ### Contents of `recovery.scr`
 
 This is U-Boot script image. This is the main update script, that flashes new update into internal NAND flash
-
-```
-apt install u-boot-tools
-```
 
 Raw script
 ```
@@ -611,5 +999,9 @@ storm_top.bin
 [8]: http://dmilvdv.narod.ru/Translate/ELSDD/elsdd_mtdutils_package.html
 [9]: http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#nand
 [10]: https://training.ti.com/restoring-and-updating-u-boot-nand-omap-l138
-[11]: http://processors.wiki.ti.com/index.php/Boot_Images_for_OMAP-L138#
-
+[11]: http://processors.wiki.ti.com/index.php/Boot_Images_for_OMAP-L138
+[12]: https://reverseengineering.stackexchange.com/questions/60/is-reverse-engineering-and-using-parts-of-a-closed-source-application-legal?newreg=21b9c4f8a77a486ca38fdc2df38e1264
+[13]: http://processors.wiki.ti.com/index.php/Linux_Core_U-Boot_User%27s_Guide#Using_NAND
+[14]: http://processors.wiki.ti.com/index.php/Booting_Linux_kernel_using_U-Boot#NOR_Flash
+[15]: http://processors.wiki.ti.com/index.php/Building_03.22_PSP_release_Components_for_OMAP-L138#Building_uImage
+[16]: https://forums.presonus.com/viewtopic.php?f=222&p=176954&sid=b66b0e05156810e02d0fdb6405a78598
