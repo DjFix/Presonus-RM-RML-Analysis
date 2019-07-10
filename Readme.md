@@ -34,13 +34,46 @@ This is the rootfs UBIFS image. We'll examine it's contents later
 tar.gz with unstripped ELF mixer binary and MD5 sum file. Can be extracted with
 
 ```
-tar xzf upgrade.bin
+$ tar xzf upgrade.bin
 ```
 
 ### Contents of `initvars.scr`
 
-This script seems to be started first and pass control to `recovery.scr` or flash update by itself.
+This is U-Boot script image. This script seems to be started first and pass control to `recovery.scr` or flash update by itself.
 
+this file is compiled with `mkimage` tool. See example [here](https://www.denx.de/wiki/view/DULG/UBootScripts)
+
+install u-boot-tools
+```
+$ apt install u-boot-tools
+```
+
+```
+$ dumpimage -l initvars.scr
+Image Name:   Default Environment
+Created:      Tue Jul 26 20:08:26 2016
+Image Type:   ARM Linux Script (uncompressed)
+Data Size:    672 Bytes = 0.66 kB = 0.00 MB
+Load Address: 00000000
+Entry Point:  00000000
+Contents:
+   Image 0: 664 Bytes = 0.65 kB = 0.00 MB
+```
+
+this images is generated with
+```
+$ mkimage -T script -C none -n 'Default Environment' -A arm -d testscript.raw testscript.scr
+Image Name:   Default Environment
+Created:      Wed Jul 10 11:25:35 2019
+Image Type:   ARM Linux Script (uncompressed)
+Data Size:    672 Bytes = 0.66 kB = 0.00 MB
+Load Address: 00000000
+Entry Point:  00000000
+Contents:
+   Image 0: 664 Bytes = 0.65 kB = 0.00 MB
+```
+
+where `testscript.raw` is raw script
 ```
 setenv bootargs_norfs 'mem=32M console=ttyS2,115200n8 root=/dev/mtdblock2 rootfs type=jffs2 ip=off quiet'
 setenv bootcmd_norfs 'setenv bootargs ${bootargs_norfs};bootm 0x600A0000'
@@ -53,8 +86,13 @@ setenv cpsystem 'run cpkernel;run cprootfs;usb stop'
 
 ### Contents of `recovery.scr`
 
-This is the main update script, that flashes new update into internal NAND flash
+This is U-Boot script image. This is the main update script, that flashes new update into internal NAND flash
 
+```
+apt install u-boot-tools
+```
+
+Raw script
 ```
 echo "Beginning Recovery Process..."
 
