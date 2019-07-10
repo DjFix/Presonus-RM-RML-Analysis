@@ -1,9 +1,24 @@
-# Digging Presonus RML16AI
+# Digging Presonus RML16AI + CS18AI
 
 Presonus has deprecated ther RM/RML series mixer. That mostly means that support for this great piece of hardware is dropped too. 
 Last firmware update has been released on Sep, 13th 2018 under the version of v13731. It brings some improvements and features, but still has some issues.
 
 I've reported that issues to presonus in Dec 2018-Jan 2019, but no fixes was released up to date. Well, I've decided to take a look into it by myself.
+
+## Disclaimer
+
+This repository is for educational purposses only. I'm not responsible if any damage is done to your mixer 
+
+## List of terms
+
+* `Gambit` - Presonus RM16AI
+* `Gambit_l` - Presonus RML16AI
+* `Rogue` - StudioLive 16.4.2AI
+* `Beast`- StudioLive 24.4.2AI
+* `Wolverine` - StudioLive RM32 AI
+* `Wolverine_l` - StudioLive RM32 AI
+* `XMEN` - AVB extension card
+* `console` - CS18AI
 
 ## Update Bundle structure
 
@@ -583,4 +598,18 @@ storm_top.bin
 
 `/lib/modules/2.6.37+/kernel/fs/nfs`
 * theoretically we can boot from NFS
+
+## Links and references
+
+[1]: http://wiki.emacinc.com/wiki/Mounting_JFFS2_Images_on_a_Linux_PC
+[2]: http://www.linux-mtd.infradead.org/faq/ubifs.html
+[3]: http://www.linux-mtd.infradead.org/doc/ubi.html#L_min_io_unit
+[4]: https://pjankows.blogspot.com/2012/01/how-to-mount-ubi-image.html
+[5]: http://www.linux-mtd.infradead.org/faq/nand.html
+[6]: https://unix.stackexchange.com/questions/428238/how-can-i-change-a-single-file-from-an-ubi-image
+[7]: https://elinux.org/UBIFS
+[8]: http://dmilvdv.narod.ru/Translate/ELSDD/elsdd_mtdutils_package.html
+[9]: http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#nand
+[10]: https://training.ti.com/restoring-and-updating-u-boot-nand-omap-l138
+[11]: http://processors.wiki.ti.com/index.php/Boot_Images_for_OMAP-L138#
 
