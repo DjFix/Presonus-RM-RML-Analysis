@@ -601,8 +601,7 @@ usb stop
 Mount ubifs using MTDRAM moudle
 
 ```bash
-developer@ldc:~$ cd firmware/RM16AI_Rack_13731
-developer@ldc:~$ sudo ./ubifs_mount.sh
+developer@ldc:~$ sudo ./scripts/ubifs_mount.sh firmware/RM16AI_Rack_13731/rootfs.img
 ```
 
 will mount selected firmware to /media/cdrom folder. MTD/UBI/UBIFS parameters are the following 
@@ -622,6 +621,34 @@ will mount selected firmware to /media/cdrom folder. MTD/UBI/UBIFS parameters ar
 [69824.967553] ubi0: available PEBs: 0, total reserved PEBs: 200, PEBs reserved for bad PEB handling: 0
 [69824.967605] ubi0: background thread "ubi_bgt0d" started, PID 10957
 ```
+
+UBI version:                    1
+Count of UBI devices:           1
+UBI control device major/minor: 10:55
+Present UBI devices:            ubi0
+
+ubi0
+Volumes count:                           1
+Logical eraseblock size:                 130944 bytes, 127.9 KiB
+Total amount of logical eraseblocks:     200 (26188800 bytes, 25.0 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  0
+Current maximum erase counter value:     2
+Minimum input/output unit size:          1 byte
+Character device major/minor:            244:0
+Present volumes:                         0
+
+Volume ID:   0 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        194 LEBs (25403136 bytes, 24.2 MiB)
+State:       OK
+Name:        rootfs
+Character device major/minor: 244:1
+
+
 
 Image analysis showed that there's ssh server dropbear, it is started in default runlevel, so we can gain SSH access to the mixer.
 
@@ -987,6 +1014,34 @@ storm_top.bin
 `/lib/modules/2.6.37+/kernel/fs/nfs`
 * theoretically we can boot from NFS
 
+## Reflashing RML16AI to RML32AI
+
+This procedure can be easily done via [StudioLive RM series Firmware Recovery - Factory Reset][19]
+
+## Gaining SSH Access to target
+
+`dropbear` is configured to connect with 
+
+```
+ssh -oCiphers=aes128-cbc -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.1.11
+```
+
+but we do not have root password. Let's crack it.
+
+Typically, Linux hashes passwords and stores them in `/etc/shadow`. But this system has huge security flaws: 
+* Passwords are stored in `/etc/passwd` with old [DES encryption algorythm][20]
+* We can flash any image on the target via [Factory Reset][19]. So it is easily to set default known hash by replacing `/etc/default/passwd`, rather than cracking original password.
+
+But replacing an image is not necessarry, because we can use [JohnTheRipper][21] to crack existing password and get complete acces to the system
+
+```
+sudo apt install john
+sudo john <mounted-image-path>/etc/passwd -show
+root:demands:0:0:root:/home/root:/bin/sh
+```
+
+so, `root` password is `demands`
+
 ## Links and references
 
 [1]: http://wiki.emacinc.com/wiki/Mounting_JFFS2_Images_on_a_Linux_PC
@@ -1007,3 +1062,6 @@ storm_top.bin
 [16]: https://forums.presonus.com/viewtopic.php?f=222&p=176954&sid=b66b0e05156810e02d0fdb6405a78598
 [17]: https://www.denx.de/wiki/view/DULG/UBootScripts
 [18]: http://arago-project.org/wiki/index.php/Setting_Up_Build_Environment
+[19]: https://support.presonus.com/hc/en-us/articles/210047563-StudioLive-RM-series-Firmware-Recovery-Factory-Reset
+[20]: https://www.win.tue.nl/~aeb/linux/hh/hh-4.html
+[21]: https://linuxconfig.org/password-cracking-with-john-the-ripper-on-linux
