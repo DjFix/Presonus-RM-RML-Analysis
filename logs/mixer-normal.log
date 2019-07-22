@@ -1,0 +1,201 @@
+root@presonus:~# ./mixer
+Main: running ./mixer with 1 arguments
+Main: starting wolverine_l
+Writing /home/root/fw-upgrade.sh  Success? 1
+Running chmod 755 /home/root/fw-upgrade.sh
+Writing /home/root/presonus/rm32/scene/01.Zero Out (Board Reset).scene  Success? 1
+NOAA: router open
+NOAA: TCard open
+NOAA: start
+Warning no Receiver found for packetF0 UNKNOWN CHAR+	00 00 00 03 00 00 F7
+Warning no Receiver found for packetread:2	F0 UNKNOWN CHAR+	00 01 00 03 00 00 F7
+Warning no Receiver found for packetread:6	F0 UNKNOWN CHAR+	00 02 00 00 00 00 F7
+Warning no Receiver found for packetread:8	F0 UNKNOWN CHAR+	00 03 00 00 00 00 F7
+Warning no Receiver found for packetread:10	F0 UNKNOWN CHAR*	00 00 00 03 00 00 00 00 F7
+Warning no Receiver found for packetread:12	F0 UNKNOWN CHAR*	00 01 00 00 00 00 00 00 F7
+Warning no Receiver found for packetread:16	F0 UNKNOWN CHAR*	00 02 00 00 00 00 00 00 F7
+ FPR: resetBoard section:2  isbootloader:0
+ FPR: TCard reset.  Bootloader:0
+Detected IO Card: NIMH
+read serialnumbner:0x  F55DAA expected number:0x  F55DAA
+read productID:0x17 expected:0x17
+NOAA: sendSampleRate rate:1 linkID:0
+Warning no Receiver found for packetread:2943	F0 UNKNOWN CHAR!	01 F7
+ack timeout
+Rack main out timing workaround applied.  Delay = 0
+NOAA: RMUTE_START_COMMAND - DACs are MUTED!
+NOAA: LINK_MODE_COMMAND type:0 id=0 delay=30 count=1
+======== IO Card Status =========
+ Card Type:1 (NIMH)
+      ARMv:1.5.5.0
+     FPGAv:2.0.0.2495
+   SHELBYv:0.0.4-0
+ validFPGA:1
+   mounted:1
+  ARM comp:1
+ FPGA comp:1
+ clock run:1
+  serial #:16080298
+    1394 #:16080298
+DeviceID #:0x17
+==============================
+Warning no Receiver found for packetread:3518	F0 UNKNOWN CHAR"	01 F7
+ack timeout
+ FPR: init
+ FPR: init
+ FPR: open
+ FPR: resetBoard section:0  isbootloader:0
+ FPR: resetCS 103 108 0
+ FPR: CS to normal mode
+ FPR: resetBoard section:1  isbootloader:0
+ FPR: resetCS 102 110 0
+ FPR: CS to normal mode
+UART: close port -1
+UART: close port -1
+UART: open_port /dev/ttyS1, 8
+ FPR: PANEL version 751 0x2EF
+ App: local ip address: 192.168.1.15
+ FPR: start
+UART: HI-Speed activated
+ FPR: start finished
+  MC: setting up Mixer Components
+
+ Connected clients: 0
+WARNING: prevent value change for "link" : requested: 1.00  bound: 0.00
+WARNING: prevent value change for "link" : requested: 1.00  bound: 0.00
+WARNING: prevent value change for "link" : requested: 1.00  bound: 0.00
+FXComponent::updateFxParams type: 0
+FXComponent::updateFxParams type: 0
+FXComponent::updateFxParams type: 0
+FXComponent::updateFxParams type: 0
+MixerComponent::doSelect...
+startDSP
+pma_init
+DSP psc0Regs->MDSTAT = 0x00000a00
+killDSP
+DSP REVID 0x4e840102
+DSP PSC0->MDSTAT = 0x00000a00
+DSP Code loaded
+DSP PSC0->MDSTAT = 0x00001f03
+DSP booting done
+bootDSP
+initSharedMemory
+ Msg: MAX_PROPERTY_SIZE:768
+ Msg: SharedRegion size:16120
+ Msg: TargetProp size:792
+RackPanelComponent::attachMeterLEDs ()
+NOAA: initRoutes start
+NOAA: initRoutes done
+MixerComponent::doSelect...
+  MC: setting sample rate in controller
+routing user route: slot=44  value=-1
+  MC: sent kSetupProperty to mixer
+NOAA: sendSampleRate rate:1 linkID:0
+Warning no Receiver found for packetread:7505	F0 UNKNOWN CHAR!	01 F7
+ack timeout
+Rack main out timing workaround applied.  Delay = 0
+NOAA: RMUTE_START_COMMAND - DACs are MUTED!
+NOAA: RMUTE_START_COMMAND - DACs are MUTED!
+NOAA: LINK_MODE_COMMAND type:0 id=0 delay=30 count=1
+ FPR: ** DAC Unmute
+Generated alternate AVB MAC 8460298 from 16080298
+ack timeout
+AVB: Creating AvbComponent.
+FXComponent::load start
+FXComponent::updateFxParams type: 5
+FXComponent::load complete
+  loaded values: 1.59  55.48  -33.88
+FXComponent::load start
+FXComponent::load complete
+  loaded values: 0.69  0.00  0.00
+FXComponent::load start
+FXComponent::updateFxParams type: 2
+FXComponent::load complete
+  loaded values: 645.00  0.98  1.02
+FXComponent::load start
+FXComponent::load complete
+  loaded values: 645.00  1.00  0.25
+MixerComponentBase::validateChannelNaming ()
+  StormMuteGroupComponent::startup: collecting existing mutes
+UCNET:Enabled UDP multicast on official port 47809 (0 sockets)
+UCNET:Local UDP port bound to 53000 (0 sockets)
+GUID CALC: 2975295744597418
+UCNET:Started listening on TCP port 53000 (0 sockets)
+STARTUP msg time:53496 dsp time:351104
+UCNET:Server "StudioLive RML32 AI/1" registration reply received.
+updating icon drums/drumset
+found category: Drum - creating new category: ~Drums
+resetting group ch1 due to change icon on channel 17
+updating icon drums/drumset
+found category: Drum - creating new category: ~Drums
+updating icon vocals/leadvocals
+found category: Vocal - creating new category: ~Vocals
+updating icon vocals/leadvocals
+found category: Vocal - creating new category: ~Vocals
+updating icon keyboards/keys
+found category: Keys - creating new category: ~Keyboards
+resetting group ch4 due to change icon on channel 25
+updating icon keyboards/keys
+found category: Keys - creating new category: ~Keyboards
+updating icon guitars/electric
+found category: Guit - creating new category: ~Guitars
+resetting group ch3 due to change icon on channel 27
+updating icon guitars/electric
+found category: Guit - creating new category: ~Guitars
+  MC: saving poweroff state
+NetworkSelectComponent: about to configure network adaptors mode: 0...
+UCNET: un-suspending network adaptors
+UCNET:IP address change detected from "eth0=0.0.0.0" to "eth0=192.168.1.15"
+
+UCNET:TCP listen socket(s) rebuild, reason is repair!
+UCNET:Stopped listening
+UCNET:Started listening on TCP port 53000 (1 sockets)
+UCNET:UDP multicast socket(s) rebuild, reason is repair!
+UCNET:Enabled UDP multicast on official port 47809 (1 sockets)
+UCNET:UDP unicast socket(s) rebuild, reason is repair!
+UCNET:Local UDP port bound to 53000 (1 sockets)
+UCNET:Adding server via UDP discovery 192.168.1.16 : tcp 53000 udp 53000 (alive event)
+UCNET:Server "StudioLive CS18 AI" (id = "00:00:00:00:00:00") resolved at host "192.168.1.16", tcp 53000 udp 53000
+UCNET:Adding server via UDP discovery 192.168.1.36 : tcp 53000 udp 53000 (alive event)
+UCNET:Server "StudioLive CS18 AI" (id = "00:00:00:00:00:00") resolved at host "192.168.1.36", tcp 53000 udp 53000
+UCNET:Server "StudioLive CS18 AI" changed.
+UCNET:Server "StudioLive CS18 AI" changed.
+UCNET:UDP mapping for 192.168.1.16 set to 53000
+UCNET:Client 105 attached to server 101
+Permissions set to client StudioLive RML32 AI ()
+MixerComponentBase::sendDevicePermissions sending to :
+
+ Connected clients: 1
+AvbComponent::addCSInputListener avb listener index = 0  clock to listener ? 0
+PDReq: Got asCapable - port: 6 dly: 24 rval: 1
+DSP CYCLE:275427 MAX:303000 MSG:24290 FRAME:32
+  MC: saving poweroff state
+DSP CYCLE:275325 MAX:303000 MSG:24305 FRAME:32
+DSP CYCLE:273579 MAX:303000 MSG:24255 FRAME:32
+DSP CYCLE:273331 MAX:303000 MSG:22403 FRAME:32
+...
+^C
+signalHandler 2
+...
+*********** Shutting down mixer ***********
+ FPR: ** DAC Mute
+UCNET:Stopped listening
+UCNET:Sending events to network before shutdown
+ App: shutting down DSP
+stopDSP
+shutdownDSP
+pma_relVirAddr
+DSP psc0Regs->MDSTAT = 0x00000a00
+killDSP
+pma_close
+  MC: MixerComponentBase shutting down...
+UART: close port 8
+ FPR: resetBoard section:0  isbootloader:0
+ FPR: resetCS 103 108 0
+ FPR: CS to normal mode
+ FPR: resetBoard section:1  isbootloader:0
+ FPR: resetCS 102 110 0
+ FPR: CS to normal mode
+ FPR: resetBoard section:2  isbootloader:0
+ FPR: TCard reset.  Bootloader:0
+
