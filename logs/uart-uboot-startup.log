@@ -1,0 +1,191 @@
+
+PSC0 registers:
+0x00000000	0x00001E03
+0x00000001	0x00001E03
+0x00000002	0x00001E03
+0x00000003	0x00001E03
+0x00000004	0x00001E03
+0x00000005	0x00001E03
+0x00000006	0x00001E03
+0x00000007	0x00001E03
+0x00000008	0x00001E03
+0x00000009	0x00001E03
+0x0000000A	0x00001E03
+0x0000000B	0x00001E03
+0x0000000C	0x00001E03
+0x0000000D	0x00001E03
+0x0000000E	0x00001F03
+0x0000000F	0x00000A00
+PSC1 registers:
+0x00000000	0x00001E03
+0x00000001	0x00000A00
+0x00000002	0x00001E03
+0x00000003	0x00001E03
+0x00000004	0x00000A00
+0x00000005	0x00000A00
+0x00000006	0x00001E03
+0x00000007	0x00001E03
+0x00000008	0x00000A00
+0x00000009	0x00000A00
+0x0000000A	0x00001E03
+0x0000000B	0x00000A00
+0x0000000C	0x00001E03
+0x0000000D	0x00001E03
+0x0000000E	0x00000A00
+0x0000000F	0x00000A00
+0x00000010	0x00000A00
+0x00000011	0x00000A00
+0x00000012	0x00000A00
+0x00000013	0x00000A00
+0x00000014	0x00000A00
+0x00000015	0x00001E03
+0x00000016	0x00000A00
+0x00000017	0x00000A00
+0x00000018	0x00001E03
+0x00000019	0x00001E03
+0x0000001A	0x00001E03
+0x0000001B	0x00001E03
+0x0000001C	0x00001E03
+0x0000001D	0x00001E03
+0x0000001E	0x00001E03
+0x0000001F	0x00001E03
+PINMUX registers:
+0x00000000	0x88111111
+0x00000001	0x11111111
+0x00000002	0x11111111
+0x00000003	0x11221101
+0x00000004	0x22228888
+0x00000005	0x01110110
+0x00000006	0x88808000
+0x00000007	0x80110011
+0x00000008	0x11111111
+0x00000009	0x11111111
+0x0000000A	0x11111110
+0x0000000B	0x11111111
+0x0000000C	0x11111111
+0x0000000D	0x00808888
+0x0000000E	0x88888888
+0x0000000F	0x00000080
+0x00000010	0x00000000
+0x00000011	0x00000000
+0x00000012	0x88822200
+0x00000013	0x18822288
+BOOTCFG register:	0x00000002Chip initialization passed!
+
+(C)2012 Presonus Audio Electronics, Inc. All rights reserved
+
+Booting with TI UBL
+Device OPP (456MHz, 1.3V)
+Storm: reset/mute, light onboard LED...
+Booting Catalog Boot Loader
+BootMode = NOR 
+Starting NOR Copy...
+CFI Query...passed.
+NOR Initialization:
+	Command Set: AMD
+	Manufacturer: MACRONIX
+	Size: 0x00000020 MB
+NOR Open Info Value = 	0xC0000000
+   DONE
+Jumping to entry point at 0xC1080000.
+
+
+U-Boot 2010.12-svn6978 (May 13 2016 - 18:32:23)
+
+DRAM:  128 MiB
+FLASH: 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+ARM Clock : 456000000 Hz
+DDR Clock : 150000000 Hz
+(C)2012 Presonus Audio Electronics, Inc. All rights reserved.
+
+Net:   No ETH PHY detected!!!
+Error: Ethernet init failed!
+Board Net Initialization Failed
+DaVinci-EMAC
+Hit any key to stop autoboot:  1  0 
+## Booting kernel from Legacy Image at 600a0000 ...
+   Image Name:   Linux-2.6.37+
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    3437312 Bytes = 3.3 MiB
+   Load Address: c0008000
+   Entry Point:  c0008000
+   Verifying Checksum ... OK
+   Loading Kernel Image ... OK
+OK
+
+Starting kernel ...
+
+INIT: version 2.86 booting
+sysfs done
+9600
+alignment done
+hostname done
+Error opening /dev/fb0: No such device or address
+mountall done
+populate_volatile done
+devpts done
+INIT: Entering runlevel: 5
+cat: can't open '/var/run/udhcpc.eth0.pid': No such file or directory
+cat: can't open '/var/run/udhcpc.wlan0.pid': No such file or directory
+ifconfig: SIOCGIFFLAGS: No such device
+Starting udev
+Populated dev cache
+executed udevd -d
+executed first udevadm control
+udev init complete!
+starting mixer...
+mixer started
+0
+eth0      no wireless extensions.
+
+udhcpc (v1.13.2) started
+Sending discover...
+Failed to connect to wpa_supplicant - wpa_ctrl_open: No such file or directory
+Failed to connect to wpa_supplicant - wpa_ctrl_open: No such file or directory
+Failed to connect to wpa_supplicant - wpa_ctrl_open: No such file or directory
+Sending discover...
+Sending discover...
+No lease, forking to background
+Error for wireless request "Set Mode" (8B06) :
+    SET failed on device wlan0 ; Operation not permitted.
+Error for wireless request "Set ESSID" (8B1A) :
+    SET failed on device wlan0 ; Operation not permitted.
+ifdown: interface wlan0 not configured
+ioctl[SIOCSIWAP]: Operation not permitted
+udhcpc (v1.13.2) started
+Sending discover...
+ping: sendto: Network is unreachable
+Sending discover...
+ifdown: interface lo not configured
+ifdown: interface eth0 not configured
+ifdown: interface wlan0 not configured
+Sending select for 192.168.10.124...
+Lease of 192.168.10.124 obtained, lease time 86400
+adding dns 192.168.10.1
+Starting syslogd/klogd: done
+Starting Dropbear SSH server: dropbear.
+
+
+  ,c'  XMMMX' OMMMK  dMMMOc,  
+ oWN;  OMMMO  ;NMMK  dMMMMMWo 
+dMMK ...NMMO   KMMd  ;NMMMMMMd
+MMWd.x,.NMM:'' KMM' . KMMMMMMM
+MMK ;M:.XMM.lo OMM',d KWO;,,;O
+MM: dMN.:MM.lM'.Mx.dd Kk ;WNo.
+Xl.xWMN.:Md'KM'.Ml.WX','.KMMMW
+,cXMMMN,.0,'MM'.Ml.WM:  ,MMMMM
+MMMMMMMK l''MMK.. dMM:  ,MMMMM
+oMMMMMMK   xMMW.  OMM:  ,MMMMo
+.dWMMMMN;  KMMW. .0MMX. ,MMWd.
+  ,:xMMMd  KMMW. lMMMN. ,Wl,  
+
+ PreSonus  Linux  Environment
+  presonus                   ttyS2
+
+presonus login: ifup: interface wlan0 already configured
+lllllz
