@@ -1,0 +1,30 @@
+Linux ports
+
+
+root@presonus:~# stty -F /dev/ttyS0
+speed 9600 baud;
+intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = <undef>;
+eol2 = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R; werase = ^W;
+lnext = ^V; flush = ^O; min = 1; time = 0;
+-brkint -imaxbel
+
+
+This port is used for mixer control
+root@presonus:~# stty -F /dev/ttyS1
+speed 230400 baud;
+intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = <undef>;
+eol2 = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R; werase = ^W;
+lnext = ^V; flush = ^O; min = 0; time = 0;
+-brkint -icrnl -imaxbel
+-opost
+-isig -icanon -iexten -echo
+
+
+This port is used for linux console
+root@presonus:~# stty -F /dev/ttyS2
+speed 115200 baud;
+intr = ^C; quit = ^\; erase = ^H; kill = ^U; eof = ^D; eol = <undef>;
+eol2 = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R; werase = ^W;
+lnext = ^V; flush = ^O; min = 1; time = 0;
+-brkint ixoff -imaxbel
+-iexten -echoctl
