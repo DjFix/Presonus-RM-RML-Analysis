@@ -1026,21 +1026,25 @@ This procedure can be easily done via [StudioLive RM series Firmware Recovery - 
 ssh -oCiphers=aes128-cbc -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.1.11
 ```
 
-but we do not have root password. Let's crack it.
+but we do not have root password.
 
 Typically, Linux hashes passwords and stores them in `/etc/shadow`. But this system has huge security flaws: 
 * Passwords are stored in `/etc/passwd` with old [DES encryption algorythm][20]
-* We can flash any image on the target via [Factory Reset][19]. So it is easily to set default known hash by replacing `/etc/default/passwd`, rather than cracking original password.
+* We can flash any image on the target via [Factory Reset][19]. So it is easily to set default known hash by replacing `/etc/default/passwd`, rather than knowing original password.
 
-But replacing an image is not necessarry, because we can use [JohnTheRipper][21] to crack existing password and get complete acces to the system
+Let's analyze the strenght of password with [JohnTheRipper][21].
 
 ```
 sudo apt install john
 sudo john <mounted-image-path>/etc/passwd -show
+```
+
+this will run default dictionary over the hash and literally in a second will give us a result.
+```
 root:demands:0:0:root:/home/root:/bin/sh
 ```
 
-so, `root` password is `demands`
+So, `root` password to the system is really weak.
 
 ## Links and references
 
