@@ -1,0 +1,212 @@
+PSC0 registers:
+0x00000000      0x00001E03
+0x00000001      0x00001E03
+0x00000002      0x00001E03
+0x00000003      0x00001E03
+0x00000004      0x00001E03
+0x00000005      0x00001E03
+0x00000006      0x00001E03
+0x00000007      0x00001E03
+0x00000008      0x00001E03
+0x00000009      0x00001E03
+0x0000000A      0x00001E03
+0x0000000B      0x00001E03
+0x0000000C      0x00001E03
+0x0000000D      0x00001E03
+0x0000000E      0x00001F03
+0x0000000F      0x00000A00
+PSC1 registers:
+0x00000000      0x00001E03
+0x00000001      0x00000A00
+0x00000002      0x00001E03
+0x00000003      0x00001E03
+0x00000004      0x00000A00
+0x00000005      0x00000A00
+0x00000006      0x00001E03
+0x00000007      0x00001E03
+0x00000008      0x00000A00
+0x00000009      0x00000A00
+0x0000000A      0x00001E03
+0x0000000B      0x00000A00
+0x0000000C      0x00001E03
+0x0000000D      0x00001E03
+0x0000000E      0x00000A00
+0x0000000F      0x00000A00
+0x00000010      0x00000A00
+0x00000011      0x00000A00
+0x00000012      0x00000A00
+0x00000013      0x00000A00
+0x00000014      0x00000A00
+0x00000015      0x00001E03
+0x00000016      0x00000A00
+0x00000017      0x00000A00
+0x00000018      0x00001E03
+0x00000019      0x00001E03
+0x0000001A      0x00001E03
+0x0000001B      0x00001E03
+0x0000001C      0x00001E03
+0x0000001D      0x00001E03
+0x0000001E      0x00001E03
+0x0000001F      0x00001E03
+PINMUX registers:
+0x00000000      0x00000000
+0x00000001      0x00008880
+0x00000002      0x00044440
+0x00000003      0x11221101
+0x00000004      0x22221188
+0x00000005      0x11110111
+0x00000006      0x01001000
+0x00000007      0x80110011
+0x00000008      0x11111111
+0x00000009      0x11111111
+0x0000000A      0x11111111
+0x0000000B      0x11111111
+0x0000000C      0x11111111
+0x0000000D      0x00800881
+0x0000000E      0x88888880
+0x0000000F      0x00000080
+0x00000010      0x22222200
+0x00000011      0x22222222
+0x00000012      0x22888822
+0x00000013      0x12888822
+BOOTCFG register:       0x00000002Chip initialization passed!
+
+(C)2012 Presonus Audio Electronics, Inc. All rights reserved
+
+Booting with TI UBL
+Device OPP (300MHz, 1.2V)
+Booting Catalog Boot Loader
+BootMode = NOR
+Starting NOR Copy...
+CFI Query...passed.
+NOR Initialization:
+        Command Set: AMD
+        Manufacturer: MACRONIX
+        Size: 0x00000020 MB
+NOR Open Info Value =   0xC0000000
+   DONE
+Jumping to entry point at 0xC1080000.
+
+
+U-Boot 2010.12-svn6978 (Aug 21 2015 - 16:02:06)
+
+DRAM:  128 MiB
+FLASH: 32 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+ARM Clock : 300000000 Hz
+DDR Clock : 150000000 Hz
+Late board initialization
+(C)2015 Presonus Audio Electronics, Inc. All rights reserved.
+
+Net:   No ETH PHY detected!!!
+Error: Ethernet init failed!
+Board Net Initialization Failed
+DaVinci-EMAC
+Hit any key to stop autoboot:  1 ... 0
+U-Boot > bdinfo
+arch_number = 0x000010B6
+boot_params = 0xC0000100
+DRAM bank   = 0x00000000
+-> start    = 0xC0000000
+-> size     = 0x08000000
+ethaddr     = (not set)
+ip_addr     = 0.0.0.0
+baudrate    = 115200 bps
+TLB addr    = 0xC7FF0000
+relocaddr   = 0xC7F79000
+reloc off   = 0x06EF9000
+irq_sp      = 0xC7E48F70
+sp start    = 0xC7E48F68
+FB base     = 0x00000000
+U-Boot > mii device
+MII devices:
+U-Boot > printenv
+baudrate=115200
+bootargs_norfs=mem=96M console=ttyS2,115200n8 root=/dev/mtdblock2 rootfstype=jffs2 ip=off quiet lpj=1134592
+bootargs_ubifs=mem=96M console=ttyS2,115200n8 noinitrd ubi.mtd=2 rootfstype=ubifs root=ubi0:rootfs rootflags=sync lpj=1134592 quiet
+bootargs_upgrade=mem=96M console=ttyS2,115200n8 noinitrd ubi.mtd=2 rootfstype=ubifs root=ubi0:rootfs rootflags=sync lpj=1134592 quiet upgrade
+bootcmd=if test $recover = 1;then run bootcmd_recovery;else run bootcmd_ubifs;fi
+bootcmd_norfs=setenv bootargs ${bootargs_norfs};bootm 0x600A0000
+bootcmd_recovery=usb start;if fatload usb 0:1 0xc0000000 recovery.scr;then source 0xc0000000;else run bootcmd_upgrade;fi
+bootcmd_ubifs=setenv bootargs ${bootargs_ubifs};bootm 0x600A0000
+bootcmd_upgrade=setenv bootargs ${bootargs_upgrade};bootm 0x600A0000
+bootdelay=1
+bootfile="uImage"
+ethact=DaVinci-EMAC
+recover=0
+stderr=serial
+stdin=serial
+stdout=serial
+ver=U-Boot 2010.12-svn6978 (Aug 21 2015 - 16:02:06)
+
+Environment size: 987/131068 bytes
+U-Boot > showvar
+HUSH_VERSION=0.01
+U-Boot > flinfo
+
+Bank # 1: CFI conformant FLASH (16 x 16)  Size: 32 MB in 256 Sectors
+  AMD Standard command set, Manufacturer ID: 0xC2, Device ID: 0x227E
+  Erase timeout: 4096 ms, write timeout: 1 ms
+  Buffer write timeout: 3 ms, buffer size: 64 bytes
+
+  Sector Start Addresses:
+  60000000        60020000        60040000        60060000        60080000   RO
+  600A0000        600C0000        600E0000        60100000        60120000
+  60140000        60160000        60180000        601A0000        601C0000
+  601E0000        60200000        60220000        60240000        60260000
+  60280000        602A0000        602C0000        602E0000        60300000
+  60320000        60340000        60360000        60380000        603A0000
+  603C0000        603E0000        60400000        60420000        60440000
+  60460000        60480000        604A0000        604C0000        604E0000
+  60500000        60520000        60540000        60560000        60580000
+  605A0000        605C0000        605E0000        60600000        60620000
+  60640000        60660000        60680000        606A0000        606C0000
+  606E0000        60700000        60720000        60740000        60760000
+  60780000        607A0000        607C0000        607E0000        60800000
+  60820000        60840000        60860000        60880000        608A0000
+  608C0000        608E0000        60900000        60920000        60940000
+  60960000        60980000        609A0000        609C0000        609E0000
+  60A00000        60A20000        60A40000        60A60000        60A80000
+  60AA0000        60AC0000        60AE0000        60B00000        60B20000
+  60B40000        60B60000        60B80000        60BA0000        60BC0000
+  60BE0000        60C00000        60C20000        60C40000        60C60000
+  60C80000        60CA0000        60CC0000        60CE0000        60D00000
+  60D20000        60D40000        60D60000        60D80000        60DA0000
+  60DC0000        60DE0000        60E00000        60E20000        60E40000
+  60E60000        60E80000        60EA0000        60EC0000        60EE0000
+  60F00000        60F20000        60F40000        60F60000        60F80000
+  60FA0000        60FC0000        60FE0000        61000000        61020000
+  61040000        61060000        61080000        610A0000        610C0000
+  610E0000        61100000        61120000        61140000        61160000
+  61180000        611A0000        611C0000        611E0000        61200000
+  61220000        61240000        61260000        61280000        612A0000
+  612C0000        612E0000        61300000        61320000        61340000
+  61360000        61380000        613A0000        613C0000        613E0000
+  61400000        61420000        61440000        61460000        61480000
+  614A0000        614C0000        614E0000        61500000        61520000
+  61540000        61560000        61580000        615A0000        615C0000
+  615E0000        61600000        61620000        61640000        61660000
+  61680000        616A0000        616C0000        616E0000        61700000
+  61720000        61740000        61760000        61780000        617A0000
+  617C0000        617E0000        61800000        61820000        61840000
+  61860000        61880000        618A0000        618C0000        618E0000
+  61900000        61920000        61940000        61960000        61980000
+  619A0000        619C0000        619E0000        61A00000        61A20000
+  61A40000        61A60000        61A80000        61AA0000        61AC0000
+  61AE0000        61B00000        61B20000        61B40000        61B60000
+  61B80000        61BA0000        61BC0000        61BE0000        61C00000
+  61C20000        61C40000        61C60000        61C80000        61CA0000
+  61CC0000        61CE0000        61D00000        61D20000        61D40000
+  61D60000        61D80000        61DA0000        61DC0000        61DE0000
+  61E00000        61E20000        61E40000        61E60000        61E80000
+  61EA0000        61EC0000        61EE0000        61F00000        61F20000
+  61F40000        61F60000        61F80000        61FA0000        61FC0000
+  61FE0000
+U-Boot > coninfo
+List of available devices:
+serial   80000003 SIO stdin stdout stderr
+U-Boot >

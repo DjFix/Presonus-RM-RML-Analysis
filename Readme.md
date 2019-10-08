@@ -1046,6 +1046,20 @@ root:demands:0:0:root:/home/root:/bin/sh
 
 So, `root` password to the system is really weak.
 
+## Dumping NOR image from u-boot
+
+* capture output from the following comand
+```
+md.b 60000000 2000000
+```
+
+* remove extra lines from dump file
+
+* convert hex dump to binary with
+```
+xxd -r -seek -0x60000000 flash.dump flash.bin
+```
+
 ## Links and references
 
 [1]: http://wiki.emacinc.com/wiki/Mounting_JFFS2_Images_on_a_Linux_PC
