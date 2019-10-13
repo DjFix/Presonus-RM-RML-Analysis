@@ -1056,8 +1056,18 @@ md.b 60000000 2000000
 * remove extra lines from dump file
 
 * convert hex dump to binary with
+
 ```
-xxd -r -seek -0x60000000 flash.dump flash.bin
+xxd -r -seek -0x60000000 flash.dump cs18-flash.bin
+```
+
+* Extracting partitions
+
+```
+dd if=cs18-flash.bin of=./cs18-u-boot-ais.bin bs=1 count=655360
+dd if=cs18-flash.bin of=./cs18-uImage.bin bs=1 seek=655360 count=4587520
+dd if=cs18-flash.bin of=./cs18-rootfs.bin bs=1 seek=5242880 count=24117248
+dd if=cs18-flash.bin of=./cs18-sfs.bin bs=1 seek=29360128
 ```
 
 ## Links and references
