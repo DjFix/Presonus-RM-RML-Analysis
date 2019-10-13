@@ -151,21 +151,21 @@
                                 #size-cells = <1>;
 
                                 partition@0 {
-                                        label = "u-boot env";
-                                        reg = <0 0x020000>;
-                                };
-                                partition@20000 {
                                         // The LCDK defaults to booting from this partition
-                                        label = "u-boot";
-                                        reg = <0x020000 0x0a0000>;
+                                        label = "u-boot AIS";
+                                        reg = <0x0 0xA0000>;
                                 };
-                                partition@a0000 {
+                                partition@A0000 {
                                         label = "uImage";
-                                        reg = <0x0a0000 0x500000>;
+                                        reg = <0xA0000 0x460000>;
                                 };
                                 partition@500000 {
                                         label = "rootfs";
-                                        reg = <0x500000 0>;
+                                        reg = <0x500000 0x1700000>;
+                                };
+				partition@1C00000 {
+                                        label = "sfs";
+                                        reg = <0x1C00000 0>;
                                 };
                 };
 	};
