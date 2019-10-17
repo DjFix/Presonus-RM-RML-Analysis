@@ -271,19 +271,6 @@
 					0xc 0x88888888 0xffffffff
 				>;
 			};
-			rmii_pins: pinmux_rmii_pins {
-				pinctrl-single,bits = <
-					/* RMII_MHZ_50_CLK, RMII_CRS_DV from PLL0_SYSCLK7. But reference manual says it doesn't
-					 * meet the RMII reference clock specification of 50 MHz +/-50 ppm.
-					 */
-					0x3c 0x00000080 0x000000f0
-					/*
-					 * RMII_RXER, RMII_RXD_0, RMII_RXD_1
-					 * RMII_TXEN, RMII_TXD_0, RMII_TXD_1
-					 */
-					0x38 0x88888800 0xffffff00
-				>;
-			};
 			lcd_pins: pinmux_lcd_pins {
 				pinctrl-single,bits = <
 					/*
