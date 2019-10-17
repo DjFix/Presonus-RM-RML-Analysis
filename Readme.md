@@ -16,7 +16,7 @@ This repository is for educational purposses only. I'm not responsible if any da
 * `Rogue` - StudioLive 16.4.2AI
 * `Beast`- StudioLive 24.4.2AI
 * `Wolverine` - StudioLive RM32 AI
-* `Wolverine_l` - StudioLive RM32 AI
+* `Wolverine_l` - StudioLive RML32 AI
 * `XMEN` - AVB extension card
 * `console` - CS18AI
 
@@ -1058,16 +1058,26 @@ md.b 60000000 2000000
 * convert hex dump to binary with
 
 ```
-xxd -r -seek -0x60000000 flash.dump cs18-flash.bin
+xxd -r -seek -0x60000000 flash.dump flash.bin
 ```
 
 * Extracting partitions
 
 ```
-dd if=cs18-flash.bin of=./cs18-u-boot-ais.bin bs=1 count=655360
-dd if=cs18-flash.bin of=./cs18-uImage.bin bs=1 seek=655360 count=4587520
-dd if=cs18-flash.bin of=./cs18-rootfs.bin bs=1 seek=5242880 count=24117248
-dd if=cs18-flash.bin of=./cs18-sfs.bin bs=1 seek=29360128
+dd if=flash.bin of=./u-boot-ais.bin bs=1 count=655360
+dd if=flash.bin of=./uImage.bin bs=1 skip=655360 count=4587520
+dd if=flash.bin of=./rootfs.bin bs=1 skip=5242880 count=24117248
+dd if=flash.bin of=./sfs.bin bs=1 skip=29360128
+```
+
+## Flash manipulations
+
+Reflash sfs
+
+```
+erase 0x61C00000 0x61FFFFFF
+loady 0xC2000000
+cp.b  0xC2000000 0x61C00000 $filesize
 ```
 
 ## Links and references
