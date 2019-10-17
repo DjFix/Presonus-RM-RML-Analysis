@@ -1,2 +1,1 @@
-setenv bootargs mem=96M console=ttyS2,115200n8 noinitrd ubi.mtd=2 rootfstype=ubifs root=ubi0:rootfs rootflags=sync lpj=1134592 printk.synchronous=1 loglevel=15
-fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
+setenv bootargs debug earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
