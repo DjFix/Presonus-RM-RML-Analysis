@@ -66,6 +66,59 @@
 		device_type = "memory";
 		reg = <0xc0000000 0x6000000>;
 	};
+
+	panel {
+		compatible = "ti,tilcdc,panel";
+		pinctrl-names = "default";
+		pinctrl-0 = <&lcd_pins>;
+		/*
+		 * The vpif and the LCD are mutually exclusive.
+		 * To enable VPIF, change the status below to 'disabled' then
+		 * then change the status of the vpif below to 'okay'
+		 */
+		status = "okay";
+		enable-gpios = <&gpio 140 GPIO_ACTIVE_HIGH>; /* lcd_panel_pwr */
+
+		panel-info {
+			ac-bias		= <255>;
+			ac-bias-intrpt	= <0>;
+			dma-burst-sz	= <16>;
+			bpp		= <16>;
+			fdd		= <0x80>;
+			sync-edge	= <0>;
+			sync-ctrl	= <1>;
+			raster-order	= <0>;
+			fifo-th		= <0>;
+		};
+
+		display-timings {
+			native-mode = <&timing0>;
+			timing0: 480x272 {
+				clock-frequency = <9000000>;
+				hactive = <480>;
+				vactive = <272>;
+				hfront-porch = <3>;
+				hback-porch = <2>;
+				hsync-len = <42>;
+				vback-porch = <3>;
+				vfront-porch = <4>;
+				vsync-len = <11>;
+				hsync-active = <0>;
+				vsync-active = <0>;
+				de-active = <1>;
+				pixelclk-active = <1>;
+			};
+		};
+	};
+	
+	/* backlight_lcd: backlight-regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "lcd_backlight_pwr";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpio = <&gpio 47 GPIO_ACTIVE_HIGH>; // lcd_backlight_pwr
+		enable-active-high;
+	}; */
 };
 
 &ref_clk {
@@ -206,7 +259,6 @@
 	ti,davinci-rmii-en;
 	/* or use this for unpatched kernel */
 	/* ti,davinci-rmii-en = /bits/ 8 <0x1>; */
-	ti,davinci-no-bd-ram;
 	status = "okay";
 	/*
 	add support for nvmem MAC addr https://lkml.org/lkml/2019/4/26/1086 
@@ -220,13 +272,6 @@
 
 &lcdc {
 	status = "okay";
-};
-
-&mdio {
-	status = "okay";
-	pinctrl-names = "default";
-	pinctrl-0 = <&mdio_pins>;
-	bus_freq = <2200000>;
 };
 
 &serial2 {
@@ -268,9 +313,5 @@
 };
 
 &usb1 {
-	status = "disabled";
-};
-
-&memctrl {
-    status = "okay";
+	status = "okay";
 };
