@@ -1,7 +1,13 @@
 #!/bin/bash
 set -e
 
-TARGET_DIR=/media/cdrom
+if ! [ -x "$(command -v flash_erase)" ]; then
+  echo Command 'flash_erase' not found, but can be installed with:
+  echo sudo apt install mtd-utils
+  exit 1
+fi
+
+TARGET_DIR=${2:-/media/cdrom}
 SOURCE_IMG=$1
 
 umount $TARGET_DIR 2>/dev/null || true
