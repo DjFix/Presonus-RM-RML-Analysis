@@ -1014,6 +1014,14 @@ storm_top.bin
 `/lib/modules/2.6.37+/kernel/fs/nfs`
 * theoretically we can boot from NFS
 
+## Components firmware
+
+For `CS18AI`
+
+* Dice3 firmware binary is placed in `dice3_surface_code` symbol. Head search pattern: `\x54\x43\x41\x54\x03\x31\x64\x03` Tail search pattern: `\x4D\x0E\x9C\x4F\x00\x00\x00\x00`
+* Surface (LPC) firmware binary is placed in `panel_surface_code` symbol. Head search pattern: `\x00\x20\x00\x10\x27\x01\x00\x00` Tail search pattern: unknown
+
+
 ## Reflashing RML16AI to RML32AI
 
 This procedure can be easily done via [StudioLive RM series Firmware Recovery - Factory Reset][19]
