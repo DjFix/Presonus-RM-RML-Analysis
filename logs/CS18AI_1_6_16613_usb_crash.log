@@ -1,0 +1,117 @@
+FAT: bogus number of reserved sectors
+Unable to handle kernel paging request at virtual address b4ee5a58
+pgd = c5030000
+[b4ee5a58] *pgd=00000000
+Internal error: Oops: 80000005 [#1] PREEMPT
+last sysfs file: /sys/devices/platform/musb-da8xx/musb-hdrc/usb1/1-1/1-1:1.0/host1/target1:0:0/1:0:0:0/block/sda/removable
+CPU: 0    Not tainted  (2.6.37+ #929)
+PC is at 0xb4ee5a58
+LR is at enqueue_task+0x38/0x44
+pc : [<b4ee5a58>]    lr : [<c00326d4>]    psr: 00000093
+sp : c50f3c70  ip : 000003f8  fp : c50f3c8c
+r10: 0000035f  r9 : 00000000  r8 : 034682b3
+r7 : 00000000  r6 : 00000001  r5 : c58ed9e0  r4 : c0341718
+r3 : c028e080  r2 : 00000001  r1 : c58ed9e0  r0 : c0341718
+Flags: nzcv  IRQs off  FIQs on  Mode SVC_32  ISA ARM  Segment user
+Control: 0005317f  Table: c5030000  DAC: 00000015
+Process surface (pid: 890, stack limit = 0xc50f2270)
+Stack: (0xc50f3c70 to 0xc50f4000)
+3c60:                                     0000035f c0341718 c58ed9e0 c0341718
+3c80: c50f3ca4 c50f3c90 c003271c c00326ac c50f3cc4 00000001 c50f3ccc c50f3ca8
+3ca0: c003560c c00326f0 00000000 a0000093 c5131f20 c0343380 c0056f78 c50f2000
+3cc0: c50f3cdc c50f3cd0 c00356e8 c00355b8 c50f3cec c50f3ce0 c0056fa0 c00356e0
+3ce0: c50f3d0c c50f3cf0 c005746c c0056f88 00000015 ffffffff 7fffffff c0343380
+3d00: c50f3d64 c50f3d10 c005783c c0057408 03938700 0000035f 7fffffff ffffffff
+3d20: 0000035f 034682b3 034682b3 0000035f 034682b3 0000035f 0000035f c033c314
+3d40: 00000000 00000000 00000015 c0361280 c50f2000 42078b98 c50f3d74 c50f3d68
+3d60: c002e398 c00576f4 c50f3d94 c50f3d78 c006c054 c002e38c c03440e0 c50f2000
+3d80: c033c314 00000015 c50f3dbc c50f3d98 c006e5b0 c006c038 c50f3dbc 00000015
+3da0: 00000000 00200000 00000001 00000000 c50f3dd4 c50f3dc0 c002507c c006e464
+3dc0: ffffffff febfd000 c50f3f5c c50f3dd8 c0025c6c c0025010 0000000b c50f2000
+3de0: c58ed140 00000000 00000020 0000000b 42078d18 00000000 00000000 0000000b
+3e00: 42078b98 c50f3f5c c50f3e20 c50f3e20 c00b29b4 c00b29b8 80000013 ffffffff
+3e20: 00000400 00000000 00000000 00000000 00000000 00000000 c00b3a98 c009f19c
+3e40: c5459d00 c5459d00 c50f3e6c c50f3e58 c00b3b38 c00b3a54 c5459d00 c5401480
+3e60: c50f3e84 c50f3e70 c00b3b98 c00b3ab4 c5459d00 c50f2000 c50f3ea4 c50f3e88
+3e80: c00b44e8 c014fd70 c50f3ea4 c545cc60 00000004 00000004 00000004 42078af4
+3ea0: 00000004 00000000 c50eccc0 c0210094 c50f3edc c54b92c0 0000000e c545cb00
+3ec0: 0000011d 00000000 c50f2000 00000000 c50f3f94 c50f3ee0 c020cfe4 c00a33d4
+3ee0: 004b2577 00000000 c50f3f24 c50f3ef8 0000035f 034615fa 00000001 c50f3f30
+3f00: 000f4240 c50f3f70 00000000 00000000 c50f3f5c c50f3f28 c00b1a68 c003d6d0
+3f20: c00b1a4c c005cdc0 000f4240 c50f3f38 0000035f 0355583a c50f3f70 00000000
+3f40: 42078d18 00000000 00000000 42078b98 c50f3fa4 c50f3f60 c00b2f70 c00b297c
+3f60: c50f3f70 c50f3f70 00000000 000003e8 0000035f 0355583a 00000001 42078d18
+3f80: 00000002 00000001 0000008e c00261e4 c50f2000 00000000 00000000 c50f3fa8
+3fa0: c0026060 c00b2ea0 42078d18 00000002 0000000b 00000000 00000000 42078b98
+3fc0: 42078d18 00000002 00000001 0000008e 00000000 42078c98 00756688 42078d4c
+3fe0: 00000000 42078b80 402d3dbc 402c0520 60000010 0000000b 00000000 00000000
+Backtrace:
+[<c003269c>] (enqueue_task+0x0/0x44) from [<c003271c>] (activate_task+0x3c/0x4c)
+ r6:c0341718 r5:c58ed9e0 r4:c0341718
+[<c00326e0>] (activate_task+0x0/0x4c) from [<c003560c>] (try_to_wake_up+0x64/0xf8)
+ r4:00000001
+[<c00355a8>] (try_to_wake_up+0x0/0xf8) from [<c00356e8>] (wake_up_process+0x18/0x1c)
+ r7:c50f2000 r6:c0056f78 r5:c0343380 r4:c5131f20
+[<c00356d0>] (wake_up_process+0x0/0x1c) from [<c0056fa0>] (hrtimer_wakeup+0x28/0x30)
+[<c0056f78>] (hrtimer_wakeup+0x0/0x30) from [<c005746c>] (__run_hrtimer+0x74/0x180)
+[<c00573f8>] (__run_hrtimer+0x0/0x180) from [<c005783c>] (hrtimer_interrupt+0x158/0x354)
+ r6:c0343380 r5:7fffffff r4:ffffffff
+[<c00576e4>] (hrtimer_interrupt+0x0/0x354) from [<c002e398>] (timer_interrupt+0x1c/0x28)
+[<c002e37c>] (timer_interrupt+0x0/0x28) from [<c006c054>] (handle_IRQ_event+0x2c/0xfc)
+[<c006c028>] (handle_IRQ_event+0x0/0xfc) from [<c006e5b0>] (handle_edge_irq+0x15c/0x1cc)
+ r7:00000015 r6:c033c314 r5:c50f2000 r4:c03440e0
+[<c006e454>] (handle_edge_irq+0x0/0x1cc) from [<c002507c>] (asm_do_IRQ+0x7c/0xa0)
+ r8:00000000 r7:00000001 r6:00200000 r5:00000000 r4:00000015
+[<c0025000>] (asm_do_IRQ+0x0/0xa0) from [<c0025c6c>] (__irq_svc+0x4c/0x9c)
+Exception stack(0xc50f3dd8 to 0xc50f3e20)
+3dc0:                                                       0000000b c50f2000
+3de0: c58ed140 00000000 00000020 0000000b 42078d18 00000000 00000000 0000000b
+3e00: 42078b98 c50f3f5c c50f3e20 c50f3e20 c00b29b4 c00b29b8 80000013 ffffffff
+ r5:febfd000 r4:ffffffff
+[<c00b296c>] (core_sys_select+0x0/0x2ec) from [<c00b2f70>] (sys_select+0xe0/0x100)
+[<c00b2e90>] (sys_select+0x0/0x100) from [<c0026060>] (ret_fast_syscall+0x0/0x2c)
+Code: bad PC value
+---[ end trace 74ffcda5af6b8e2f ]---
+Kernel panic - not syncing: Fatal exception in interrupt
+Backtrace:
+[<c00296fc>] (dump_backtrace+0x0/0x10c) from [<c0280418>] (dump_stack+0x18/0x1c)
+ r7:b4ee5a48 r6:b4ee5a50 r5:c50f3a1b r4:c0359d40
+[<c0280400>] (dump_stack+0x0/0x1c) from [<c0280484>] (panic+0x68/0x19c)
+[<c028041c>] (panic+0x0/0x19c) from [<c0029ab4>] (die+0x2ac/0x304)
+ r3:00010000 r2:00010003 r1:00000000 r0:c02f4a9c
+[<c0029808>] (die+0x0/0x304) from [<c002af10>] (__do_kernel_fault+0x70/0x90)
+[<c002aea0>] (__do_kernel_fault+0x0/0x90) from [<c002b114>] (do_page_fault+0x1e4/0x1fc)
+ r8:80000005 r7:c505fc00 r6:b4ee5a58 r5:c58ed140 r4:c033bdfc
+[<c002af30>] (do_page_fault+0x0/0x1fc) from [<c002b1dc>] (do_translation_fault+0x24/0xac)
+[<c002b1b8>] (do_translation_fault+0x0/0xac) from [<c0025248>] (do_PrefetchAbort+0x3c/0x9c)
+ r7:c50f3c28 r6:00000005 r5:c50f3c5c r4:c033bdfc
+[<c002520c>] (do_PrefetchAbort+0x0/0x9c) from [<c0025d90>] (__pabt_svc+0x50/0x80)
+Exception stack(0xc50f3c28 to 0xc50f3c70)
+3c20:                   c0341718 c58ed9e0 00000001 c028e080 c0341718 c58ed9e0
+3c40: 00000001 00000000 034682b3 00000000 0000035f c50f3c8c 000003f8 c50f3c70
+3c60: c00326d4 b4ee5a58 00000093 ffffffff
+ r8:034682b3 r7:00000000 r6:00000001 r5:c50f3c5c r4:ffffffff
+[<c003269c>] (enqueue_task+0x0/0x44) from [<c003271c>] (activate_task+0x3c/0x4c)
+ r6:c0341718 r5:c58ed9e0 r4:c0341718
+[<c00326e0>] (activate_task+0x0/0x4c) from [<c003560c>] (try_to_wake_up+0x64/0xf8)
+ r4:00000001
+[<c00355a8>] (try_to_wake_up+0x0/0xf8) from [<c00356e8>] (wake_up_process+0x18/0x1c)
+ r7:c50f2000 r6:c0056f78 r5:c0343380 r4:c5131f20
+[<c00356d0>] (wake_up_process+0x0/0x1c) from [<c0056fa0>] (hrtimer_wakeup+0x28/0x30)
+[<c0056f78>] (hrtimer_wakeup+0x0/0x30) from [<c005746c>] (__run_hrtimer+0x74/0x180)
+[<c00573f8>] (__run_hrtimer+0x0/0x180) from [<c005783c>] (hrtimer_interrupt+0x158/0x354)
+ r6:c0343380 r5:7fffffff r4:ffffffff
+[<c00576e4>] (hrtimer_interrupt+0x0/0x354) from [<c002e398>] (timer_interrupt+0x1c/0x28)
+[<c002e37c>] (timer_interrupt+0x0/0x28) from [<c006c054>] (handle_IRQ_event+0x2c/0xfc)
+[<c006c028>] (handle_IRQ_event+0x0/0xfc) from [<c006e5b0>] (handle_edge_irq+0x15c/0x1cc)
+ r7:00000015 r6:c033c314 r5:c50f2000 r4:c03440e0
+[<c006e454>] (handle_edge_irq+0x0/0x1cc) from [<c002507c>] (asm_do_IRQ+0x7c/0xa0)
+ r8:00000000 r7:00000001 r6:00200000 r5:00000000 r4:00000015
+[<c0025000>] (asm_do_IRQ+0x0/0xa0) from [<c0025c6c>] (__irq_svc+0x4c/0x9c)
+Exception stack(0xc50f3dd8 to 0xc50f3e20)
+3dc0:                                                       0000000b c50f2000
+3de0: c58ed140 00000000 00000020 0000000b 42078d18 00000000 00000000 0000000b
+3e00: 42078b98 c50f3f5c c50f3e20 c50f3e20 c00b29b4 c00b29b8 80000013 ffffffff
+ r5:febfd000 r4:ffffffff
+[<c00b296c>] (core_sys_select+0x0/0x2ec) from [<c00b2f70>] (sys_select+0xe0/0x100)
+[<c00b2e90>] (sys_select+0x0/0x100) from [<c0026060>] (ret_fast_syscall+0x0/0x2c)
