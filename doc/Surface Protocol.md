@@ -56,6 +56,16 @@ cat /dev/ttyS1 &
 * `B000g` - Start bouncing LED meters pattern, sent by u-boot stage
 * `B001g` - Stop bouncing LED meters pattern, sent by Kernel stage in `S05pslash` script
 
+## LEDs
+
+Leds are RGB and single color. 
+
+RGB leds are:
+* All select buttons, except `cntr/mono` and `Left/Right`
+* All Faders section buttons, except `Mix Masters`
+* `Groups` button
+* `Marker` button
+
 ## Button events
 
 Button event is coded in format 
