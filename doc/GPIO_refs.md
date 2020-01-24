@@ -4,7 +4,7 @@
 ## GPIO Base
 
 
-System registers `gpiochip368`. Offset of the pin should be added to `368`
+System registers `gpiochip0`. Offset of the pin should be added to `0`
 
 ## Main LCD Brightness only???
 
@@ -14,7 +14,11 @@ System registers `gpiochip368`. Offset of the pin should be added to `368`
 to test:
 
 ```bash
-PIN=$((368+127))
+GPIO_BASE=0
+```
+
+```bash
+PIN=$(($GPIO_BASE+127))
 echo $PIN > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio$PIN/direction
 echo 1 > /sys/class/gpio/gpio$PIN/value
@@ -35,7 +39,7 @@ echo in > /sys/class/gpio/gpio$PIN/direction
 to test:
 
 ```bash
-PIN=$((368+97))
+PIN=$(($GPIO_BASE+97))
 echo $PIN > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio$PIN/direction
 echo 1 > /sys/class/gpio/gpio$PIN/value
@@ -79,7 +83,7 @@ void method.Presonus::Surface::SurfaceRootComponent.paramChangedLcdBrightness_Co
 
 The following code resets FP to normal or boot mode. If you don't configure boot pin, you will get into `BOOT` mode
 ```bash
-PIN=$((368+102))
+PIN=$(($GPIO_BASE+102))
 echo $PIN > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio$PIN/direction
 echo 0 > /sys/class/gpio/gpio$PIN/value
@@ -96,7 +100,7 @@ sleep 1
 Calling will output toggling 1/0
 
 ```bash
-PIN=$((368+110))
+PIN=$(($GPIO_BASE+110))
 echo $PIN > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio$PIN/direction
 while true; do cat /sys/class/gpio/gpio$PIN/value; done
@@ -105,7 +109,7 @@ while true; do cat /sys/class/gpio/gpio$PIN/value; done
 
 Set boot
 ```bash
-PIN=$((368+110))
+PIN=$(($GPIO_BASE+110))
 echo $PIN > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio$PIN/direction
 echo 0 > /sys/class/gpio/gpio$PIN/value
@@ -114,7 +118,7 @@ echo 0 > /sys/class/gpio/gpio$PIN/value
 
 Set Normal
 ```bash
-PIN=$((368+110))
+PIN=$(($GPIO_BASE+110))
 echo $PIN > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio$PIN/direction
 
@@ -207,6 +211,8 @@ void method.Presonus::Surface::PanelRegistrar.resetAudio_bool(int32_t arg1, int3
 
 ## Scribble Strips
 
+There seems to be Common scribble strip display reset pin, yet its number is unknown
+
 ```cpp
 void method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int
                (int32_t fd, int32_t arg_4h)
@@ -255,8 +261,162 @@ void method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__un
 
 
 ```cpp
+
+int32_t sym.Presonus::Surface::LCDPort::LCDPort(int32_t arg1)
+{
+    *(undefined4 *)arg1 = *(undefined4 *)0xb26d0;
+    sym.Core::IO::Buffer::Buffer_void___unsigned_int__bool(0);
+    sym.Presonus::ScribbleStripMgr::ScribbleStripMgr(arg1 + 0x14);
+    return arg1;
+}
+
+int32_t sym.Presonus::ScribbleStripMgr::ScribbleStripMgr(int32_t arg1)
+{
+    method.Presonus::ScribbleStripMgr.initDisplayModules(arg1);
+    return arg1;
+}
+
+void method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int
+               (int32_t fd, int32_t arg_4h)
+{
+    int32_t in_r3;
+    int32_t *piVar1;
+    int32_t var_6ch;
+    int32_t var_68h;
+    int32_t var_64h;
+    int32_t var_60h;
+    int32_t var_5ch;
+    int32_t var_58h;
+    int32_t var_54h;
+    int32_t var_50h;
+    int32_t var_4ch;
+    int32_t var_48h;
+    int32_t var_40h;
+    undefined var_2eh [2];
+    int32_t var_2ch;
+    
+    var_2eh[0] = 0x30;
+    var_54h = 1;
+    var_58h = 0;
+    var_64h = (int32_t)var_2eh;
+    sym.imp.ioctl(fd, *(undefined4 *)0xb2880, &var_64h);
+    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_40h);
+    method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&var_40h);
+    var_58h = 0;
+    var_54h = 1;
+    var_64h = (int32_t)var_2eh;
+    sym.imp.ioctl(fd, *(undefined4 *)0xb2880, &var_64h);
+    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&var_40h);
+    piVar1 = &var_58h;
+    if (0 < arg_4h) {
+        var_58h = 0;
+        var_54h = arg_4h;
+        var_64h = in_r3;
+        sym.imp.ioctl(fd, *(undefined4 *)0xb2880, &var_64h);
+        piVar1 = &var_54h;
+    }
+    sub.fclose_c5f88(&var_40h, *(undefined *)piVar1);
+    return;
+}
+
+
+undefined4
+method.Presonus::ScribbleStripMgr.writeToScribbleStrip_int__Core::BitmapData_const(int32_t arg2, int32_t arg1)
+{
+    uint8_t *puVar1;
+    undefined4 uVar2;
+    undefined4 *puVar3;
+    int32_t in_r2;
+    uint32_t uVar4;
+    uint32_t uVar5;
+    uint32_t uVar6;
+    undefined *puVar7;
+    int32_t fd;
+    uint32_t uVar8;
+    bool bVar9;
+    int32_t in_stack_ffffffb8;
+    int32_t in_stack_ffffffbc;
+    undefined auStack60 [2];
+    int32_t var_36h;
+    
+    if (arg2 < 0) {
+        method.Core.DebugPrintf_char_const___...(in_stack_ffffffbc, in_stack_ffffffb8); // "ScribbleStripMgr::writeToScribbleStrip display number %d out of range\n"
+        uVar2 = 1;
+    } else {
+        fd = 0;
+        do {
+            uVar6 = 0;
+            puVar7 = (undefined *)(arg1 + fd * 8);
+            do {
+                uVar8 = 0;
+                puVar1 = (uint8_t *)
+                         (*(int32_t *)(in_r2 + 0xc) + *(int32_t *)(in_r2 + 0x10) * fd + ((int32_t)uVar6 >> 3));
+                uVar4 = 0;
+                do {
+                    uVar5 = (uint32_t)*puVar1;
+                    puVar1 = puVar1 + *(int32_t *)(in_r2 + 0x10);
+                    bVar9 = (0x80 >> (uVar6 & 7) & uVar5) != 0;
+                    if (bVar9) {
+                        uVar5 = uVar8 | 0x80 >> (uVar4 & 0xff);
+                    }
+                    uVar4 = uVar4 + 1;
+                    if (bVar9) {
+                        uVar8 = uVar5 & 0xff;
+                    }
+                } while (uVar4 != 8);
+                uVar6 = uVar6 + 1;
+                *puVar7 = (char)uVar8;
+                puVar7 = puVar7 + 1;
+            } while (uVar6 != 0x40);
+            fd = fd + 8;
+        } while (fd != 0x60);
+        fd = sym.imp.open(*(undefined4 *)(*(int32_t *)0xb2a00 + (arg2 >> 2 & 3U) * 4), 1);
+        if (fd == -1) {
+            puVar3 = (undefined4 *)sym.imp.__errno_location();
+            sym.imp.strerror(*puVar3);
+            method.Core.DebugPrintf_char_const___...(stack0xffffffc8, _auStack60); // "writeToScribbleStrip failed to open device %s [%s]\n"
+            uVar2 = 0;
+        } else {
+            method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int(fd, 2);
+            method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int(fd, 2);
+            method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int(fd, 0x300);
+            sym.imp.close(fd);
+            uVar2 = 1;
+        }
+    }
+    return uVar2;
+}
+
 void method.Presonus::ScribbleStripMgr.initDisplayModules(int32_t arg1)
 {
+
+	/*
+
+	fp = 0xb26d0 + 14
+
+	mov ip, sp
+0x000b2a10      push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
+0x000b2a14      sub sp, sp, 0xc20
+0x000b2a18      sub fp, ip, 4
+0x000b2a1c      sub sp, sp, 0xc
+0x000b2a20      mov r1, 0x1d
+0x000b2a24      mov r6, r0         ; arg1
+0x000b2a28      sub r0, fp, 0x48
+
+	; var void *s @ fp-0xc30
+; var int32_t var_48h @ fp-0x48
+; var int32_t var_36h @ fp-0x36
+; var int32_t var_35h @ fp-0x35
+; var int32_t var_34h @ fp-0x34
+; var int32_t var_33h @ fp-0x33
+; var int32_t var_32h @ fp-0x32
+; var int32_t var_31h @ fp-0x31
+; var int32_t var_30h @ fp-0x30
+; var int32_t var_2fh @ fp-0x2f
+; var int32_t var_c2ch @ sp+0x0
+; arg int32_t arg1 @ r0
+
+*/
     int32_t fd;
     undefined4 *puVar1;
     int32_t iVar2;
@@ -267,6 +427,7 @@ void method.Presonus::ScribbleStripMgr.initDisplayModules(int32_t arg1)
     int32_t var_48h;
     int32_t var_36h;
     
+    //looks like modules reset
     sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_48h);
     method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&var_48h);
     method.Core::Threads.sleep_unsigned_int(100);
@@ -274,12 +435,21 @@ void method.Presonus::ScribbleStripMgr.initDisplayModules(int32_t arg1)
     method.Core::Threads.sleep_unsigned_int(500);
     puVar3 = auStack3140;
     iVar2 = 0;
+
+
+/* loop through
+/dev/spidev1.0
+/dev/spidev1.1
+/dev/spidev1.6
+/dev/spidev1.7
+*/
+
     do {
         fd = sym.imp.open(*(undefined4 *)(*(int32_t *)0xb2f2c + iVar2), 1);
         if (fd == -1) {
             puVar1 = (undefined4 *)sym.imp.__errno_location();
             sym.imp.strerror(*puVar1);
-            method.Core.DebugPrintf_char_const___...(*(int32_t *)(puVar3 + 0x10), *(int32_t *)(puVar3 + 0xc));
+            method.Core.DebugPrintf_char_const___...(*(int32_t *)(puVar3 + 0x10), *(int32_t *)(puVar3 + 0xc)); // "initDisplayModules failed to open device %s [%s]\n"
             puVar3 = puVar3 + 0x10;
         } else {
             *(undefined4 *)(puVar3 + 4) = 0;
