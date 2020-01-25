@@ -213,6 +213,8 @@ void method.Presonus::Surface::PanelRegistrar.resetAudio_bool(int32_t arg1, int3
 
 There seems to be Common scribble strip display reset pin, yet its number is unknown
 
+* 1D (29) - Scribble Strip reset, Active low
+
 ```cpp
 void method.Presonus::ScribbleStripMgr.txCommandDataArray_int__unsigned_char__unsigned_char___int
                (int32_t fd, int32_t arg_4h)
@@ -566,18 +568,27 @@ void method.Presonus::ScribbleStripMgr.initDisplayModules(int32_t arg1)
 }
 ```
 
-## Dice III programmer
+## Dice III
+
+Dice III firmware lives in `M25P16` SPI flash storage. This flash lives (on the same SPI as `PCM4104`?)
+
+SPI Flash is multiplexed between CPU and DICE with `U12` buffer
+
+### Dice Reset
+
+* 0x64 (100) - Reset, Active Low
+* 0x1C (28) - SPI_multiplexer, 1 - normal DICE operation, 0 - programming with SOC
 
 ```cpp
 void method.Presonus::DICE::Dice3Subsystem.resetDice3(void)
 {
-    int32_t var_24h;
+    int32_t pin_reset_0x64h;
     
-    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_24h);
-    method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&var_24h);
+    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&pin_reset_0x64h);
+    method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&pin_reset_0x64h);
     method.Core::Threads.sleep_unsigned_int(1);
-    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&var_24h);
-    sub.fclose_c5f88((int32_t)&var_24h);
+    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&pin_reset_0x64h);
+    sub.fclose_c5f88((int32_t)&pin_reset_0x64h);
     return;
 }
 ```
@@ -588,8 +599,8 @@ undefined4 method.Presonus::DICE::Dice3Programmer.open_char_const(int32_t arg1, 
     int32_t iVar1;
     undefined4 uVar2;
     int32_t *piVar3;
-    int32_t var_40h;
-    int32_t var_30h;
+    int32_t pin_multiplexer_0x1Ch;
+    int32_t pin_reset_0x64h;
     int32_t var_20h;
     int32_t var_1ch;
     undefined4 uStack4;
@@ -605,11 +616,11 @@ undefined4 method.Presonus::DICE::Dice3Programmer.open_char_const(int32_t arg1, 
             var_20h = var_20h & 0xfffffffc;
             iVar1 = sym.imp.ioctl(*(undefined4 *)arg1, *(undefined4 *)0xceb70, &var_20h);
             if (-1 < iVar1) {
-                sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_30h);
-                method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&var_30h);
+                sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&pin_reset_0x64h);
+                method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&pin_reset_0x64h);
                 method.Core::Threads.sleep_unsigned_int(1);
-                sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_40h);
-                method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&var_40h);
+                sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&pin_multiplexer_0x1Ch);
+                method.Presonus::Panel::OutputPin.set_int(0, (int32_t)&pin_multiplexer_0x1Ch);
                 method.Core::Threads.sleep_unsigned_int(1);
                 iVar1 = method.Presonus::DICE::Dice3Programmer.readJedecId(arg1);
                 if (iVar1 == *(int32_t *)0xceb74) {
@@ -622,8 +633,8 @@ undefined4 method.Presonus::DICE::Dice3Programmer.open_char_const(int32_t arg1, 
                     }
                     uVar2 = 0;
                 }
-                sub.fclose_c5f88(&var_40h, *(undefined *)piVar3);
-                sub.fclose_c5f88(&var_30h, *(undefined *)(piVar3 + 1));
+                sub.fclose_c5f88(&pin_multiplexer_0x1Ch, *(undefined *)piVar3);
+                sub.fclose_c5f88(&pin_reset_0x64h, *(undefined *)(piVar3 + 1));
                 return uVar2;
             }
         }
@@ -636,26 +647,26 @@ undefined4 method.Presonus::DICE::Dice3Programmer.open_char_const(int32_t arg1, 
 void method.Presonus::DICE::Dice3Programmer.close(int32_t arg1)
 {
     undefined *puVar1;
-    int32_t var_3ch;
-    int32_t var_2ch;
+    int32_t pin_reset_0x64h;
+    int32_t pin_multiplexer_0x1Ch;
     undefined auStack40 [4];
     undefined auStack36 [8];
     undefined4 uStack4;
     
     uStack4 = 0xce998;
-    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_2ch);
-    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&var_2ch);
+    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&pin_multiplexer_0x1Ch);
+    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&pin_multiplexer_0x1Ch);
     method.Core::Threads.sleep_unsigned_int(1);
-    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&var_3ch);
-    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&var_3ch);
+    sym.Presonus::Panel::OutputPin::OutputPin_int((int32_t)&pin_reset_0x64h);
+    method.Presonus::Panel::OutputPin.set_int(1, (int32_t)&pin_reset_0x64h);
     method.Core::Threads.sleep_unsigned_int(1);
     puVar1 = auStack40;
     if (*(int32_t *)arg1 != -1) {
         sym.imp.close();
         puVar1 = auStack36;
     }
-    sub.fclose_c5f88(&var_3ch, *puVar1);
-    sub.fclose_c5f88(&var_2ch, puVar1[4]);
+    sub.fclose_c5f88(&pin_reset_0x64h, *puVar1);
+    sub.fclose_c5f88(&pin_multiplexer_0x1Ch, puVar1[4]);
     return;
 }
 ```
