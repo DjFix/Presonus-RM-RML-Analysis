@@ -66,6 +66,15 @@ RGB leds are:
 * `Groups` button
 * `Marker` button
 
+## Panel heartbeat?
+
+OMAP sends this messages with about 0.5 sec period
+
+```
+write(3, "3000g", 5)                    = 5
+write(3, "3001g", 5)                    = 5
+```
+
 ## Button events
 
 Button event is coded in format 
@@ -258,4 +267,3 @@ Button event is coded in format
 * `A1A` - Output
 * `A1B` - GR
 * `A1C` - Mixes
-

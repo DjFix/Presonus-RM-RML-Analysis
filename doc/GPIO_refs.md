@@ -95,7 +95,7 @@ sleep 1
 
 ## Panel Hearbeat( as input! ) and boot mode (Output)
 
-* 0x6e (offs: `110`) - Boot/Heartbeat, 1 == boot, 0 == normal
+* 0x6e (offs: `110`) - Boot/Heartbeat, 0 == boot, 1 (in) == normal
 
 Calling will output toggling 1/0
 
@@ -158,6 +158,8 @@ void method.Presonus::Surface::PanelRegistrar.resetPanel_int(int32_t arg2)
 ```
 
 ## Audio Reset
+
+Audio `PCM4104` is connected to `/dev/spidev0.3` 
 
 ```cpp
 void method.Presonus::Surface::PanelRegistrar.resetAudio_bool(int32_t arg1, int32_t arg2)
