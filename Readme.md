@@ -110,6 +110,12 @@ i2c_davinci
 ...
 ```
 
+## TTYs on CS18AI
+
+ttyS0 - SysEx to DICE
+ttyS1 - FP interface
+ttyS2 - Debug interface (uBoot + linux console)
+
 #### Kernel startup output
 
 captured from [here][16]
