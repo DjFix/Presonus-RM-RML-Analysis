@@ -1088,6 +1088,11 @@ loady 0xC2000000
 cp.b  0xC2000000 0x61C00000 $filesize
 ```
 
+### Strace digging
+
+* `strace ./surface 2>&1 | grep -v clock_gettime | grep -v 'read(3, "",' | grep -v 'write(3, "3000g", 5)'`
+* `strace ./surface 2>&1 | grep -v clock_gettime | grep -v 'read(3, "",' | grep -v 'write(3, "3000g", 5)' | grep -v 'write(3, "3001g", 5)'`
+
 ## Links and references
 
 [1]: http://wiki.emacinc.com/wiki/Mounting_JFFS2_Images_on_a_Linux_PC
