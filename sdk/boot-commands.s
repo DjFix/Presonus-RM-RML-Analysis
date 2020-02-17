@@ -5,20 +5,27 @@ MV88E6352_SWITCH
 
 usb start;fatload usb 0:1 0xC0000000 linux-5.img;source 0xC0000000
 
-usb start;fatload usb 0:1 0xC0000000 recovery.scr;source 0xC0000000
+usb start;fatload usb 0:1 0xC0000000 recovery.scr;source 0xC0000000	
 
-setenv bootargs noinitrd root=/dev/nfs nfsroot=192.168.11.10:root ip=192.168.11.20:192.168.11.10:192.168.11.1:255.255.255.0:presonus::off;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000	
+## Local boot experiments
+	setenv bootargs debug earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
+	setenv bootargs earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
+	setenv bootargs earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw init=/bin/sh;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
 
-setenv bootargs debug earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
 
-setenv bootargs earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
+## NFS boot experiments
+	setenv bootargs console=ttyS2,115200n8 root=/dev/nfs rdinit=/nonsense rootfstype=nfs nfsroot=212.116.109.58:/,vers=4,tcp rootwait rw ip=dhcp;usb start;fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai;bootm 0xC2000000
 
-setenv bootargs earlyprintk noinitrd ubi.mtd=rootfs rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw init=/bin/sh;usb start;fatload usb 0:1 0xC2000000 uImage.da850-presonus;bootm 0xC2000000
+## loopfs experiments
+	# works fine with initramfs
+	setenv bootargs console=ttyS2,115200n8 root=sda1 loop=rootfs.squashfs; usb start; fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai; bootm 0xC2000000
 
-setenv bootargs earlyprintk console=ttyS2,115200n8 rdinit=/dev/null root=/dev/nfs rootfstype=nfs nfsroot=lab.fbits.tech:/,v4,tcp rw ip=dhcp;usb start;fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai;bootm 0xC2000000
+run bootcmd_recovery
 
-setenv bootargs earlyprintk console=ttyS2,115200n8 rdinit=/dev/null root=/dev/nfs rootfstype=nfs nfsroot=lab.fbits.tech:/,v4,tcp rw ip=192.168.2.16::192.168.2.1:255.255.255.0:cs18::off:192.168.2.1;usb start;fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai;bootm 0xC2000000
+mkdir --parents {bin,dev,etc,lib,lib64,mnt/root,proc,root,sbin,sys}
+cp --archive /dev/{null,console,tty,sda1} dev/
 
-setenv bootargs console=ttyS2,115200n8 rdinit=/dev/null root=/dev/nfs rootfstype=nfs nfsroot=212.116.109.58:/,vers=4,tcp rootwait rw ip=dhcp;usb start;fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai;bootm 0xC2000000
 
-setenv bootargs earlyprintk console=ttyS2,115200n8 rdinit=/dev/null root=/dev/nfs rootfstype=nfs nfsroot=lab.fbits.tech:/,vers=4,tcp rootwait rw ip=dhcp;usb start;fatload usb 0:1 0xC2000000 uImage.presonus-cs18ai;bootm 0xC2000000
+mkdir -p /loop && mount /mnt/root/rootfs.squashfs /loop
+
+exec switch_root -c /dev/console /loop /sbin/init
