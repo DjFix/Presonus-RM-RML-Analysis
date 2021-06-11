@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 trap ctrl_c INT
 
 function ctrl_c() {
@@ -13,7 +15,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 WORKDIR=$DIR/..
 
-FIRMWARES=$(find $WORKDIR/firmware/ -type d)
+FIRMWARES=$(find $WORKDIR/firmware/ -type d | tail -n +2)
 
 for item in $FIRMWARES
 do
