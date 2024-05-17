@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/copyToBufferDescriptors/IOReturn/()" target="doc">copyToBufferDescriptors</a></tt></dt>
+<dd>copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createFragmentedDescriptors/IOReturn/()" target="doc">createFragmentedDescriptors</a></tt></dt>
+<dd>creates IOVirtual ranges for fragmented Mbuf packets.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createUnFragmentedDescriptors/IOReturn/()" target="doc">createUnFragmentedDescriptors</a></tt></dt>
+<dd>creates IOVirtual ranges for fragmented Mbuf packets.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getBufferFromDescriptor/void*/()" target="doc">getBufferFromDescriptor</a></tt></dt>
+<dd>returns the head pointer position of fBuffer. 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getCursorBuf/void*/()" target="doc">getCursorBuf</a></tt></dt>
+<dd>returns the pointer from the current position of fBuffer.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getMaxBufLen/UInt32/()" target="doc">getMaxBufLen</a></tt></dt>
+<dd>Usefull when MTU changes to a greater value and we need to
+accomodate more data in the buffer without a 1394 fragmentation
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initAll/bool/(IOFireWireIP*,UInt32,FWAddress,FWDeviceCallback,void*,bool)" target="doc">initAll</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initDescriptor/IOReturn/(UInt32)" target="doc">initDescriptor</a></tt></dt>
+<dd>copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initPacketHeader/void*/(IOFWIPMBufCommand*,bool,FragmentType,UInt32,UInt32)" target="doc">initPacketHeader</a></tt></dt>
+<dd>returns a descriptor header based on fragmentation and copying
+of payload.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/reinit/IOReturn/(IOFireWireNub*,UInt32,FWAddress,FWDeviceCallback,void*,bool,bool)" target="doc">reinit</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/resetDescriptor/void/(IOReturn)" target="doc">resetDescriptor</a></tt></dt>
+<dd>resets the IOMemoryDescriptor & reinitializes the cursorbuf.
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/copyToBufferDescriptors/IOReturn/();  name=IOFWIPAsyncWriteCommand::copyToBufferDescriptors -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/copyToBufferDescriptors/IOReturn/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="copyToBufferDescriptors">copyToBufferDescriptors</a></h2>
+</td></tr></table>copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/copyToBufferDescriptors //apple_ref/cpp/clm/copyToBufferDescriptors //apple_ref/cpp/intfcm/copyToBufferDescriptors //apple_ref/cpp/func/copyToBufferDescriptors //apple_ref/cpp/ftmplt/copyToBufferDescriptors //apple_ref/cpp/defn/copyToBufferDescriptors //apple_ref/cpp/macro/copyToBufferDescriptors" --><font class="function">copyToBufferDescriptors</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>none.</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>0 if copied successfully else non-negative value
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createFragmentedDescriptors/IOReturn/();  name=IOFWIPAsyncWriteCommand::createFragmentedDescriptors -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createFragmentedDescriptors/IOReturn/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="createFragmentedDescriptors">createFragmentedDescriptors</a></h2>
+</td></tr></table>creates IOVirtual ranges for fragmented Mbuf packets.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/createFragmentedDescriptors //apple_ref/cpp/clm/createFragmentedDescriptors //apple_ref/cpp/intfcm/createFragmentedDescriptors //apple_ref/cpp/func/createFragmentedDescriptors //apple_ref/cpp/ftmplt/createFragmentedDescriptors //apple_ref/cpp/defn/createFragmentedDescriptors //apple_ref/cpp/macro/createFragmentedDescriptors" --><font class="function">createFragmentedDescriptors</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>length</em></tt></dt><dd>- length to copy.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>0 if copied successfully else non-negative value
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createUnFragmentedDescriptors/IOReturn/();  name=IOFWIPAsyncWriteCommand::createUnFragmentedDescriptors -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/createUnFragmentedDescriptors/IOReturn/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="createUnFragmentedDescriptors">createUnFragmentedDescriptors</a></h2>
+</td></tr></table>creates IOVirtual ranges for fragmented Mbuf packets.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/createUnFragmentedDescriptors //apple_ref/cpp/clm/createUnFragmentedDescriptors //apple_ref/cpp/intfcm/createUnFragmentedDescriptors //apple_ref/cpp/func/createUnFragmentedDescriptors //apple_ref/cpp/ftmplt/createUnFragmentedDescriptors //apple_ref/cpp/defn/createUnFragmentedDescriptors //apple_ref/cpp/macro/createUnFragmentedDescriptors" --><font class="function">createUnFragmentedDescriptors</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>none.</em></tt></dt><dd></dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess if successfull, else kIOReturnError.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getBufferFromDescriptor/void*/();  name=IOFWIPAsyncWriteCommand::getBufferFromDescriptor -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getBufferFromDescriptor/void*/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getBufferFromDescriptor">getBufferFromDescriptor</a></h2>
+</td></tr></table>returns the head pointer position of fBuffer. 
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getBufferFromDescriptor //apple_ref/cpp/clm/getBufferFromDescriptor //apple_ref/cpp/intfcm/getBufferFromDescriptor //apple_ref/cpp/func/getBufferFromDescriptor //apple_ref/cpp/ftmplt/getBufferFromDescriptor //apple_ref/cpp/defn/getBufferFromDescriptor //apple_ref/cpp/macro/getBufferFromDescriptor" --><font class="function">getBufferFromDescriptor</font><!-- /a -->();</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>void* - pre-allocated buffer pointer
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getCursorBuf/void*/();  name=IOFWIPAsyncWriteCommand::getCursorBuf -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getCursorBuf/void*/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getCursorBuf">getCursorBuf</a></h2>
+</td></tr></table>returns the pointer from the current position of fBuffer.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getCursorBuf //apple_ref/cpp/clm/getCursorBuf //apple_ref/cpp/intfcm/getCursorBuf //apple_ref/cpp/func/getCursorBuf //apple_ref/cpp/ftmplt/getCursorBuf //apple_ref/cpp/defn/getCursorBuf //apple_ref/cpp/macro/getCursorBuf" --><font class="function">getCursorBuf</font><!-- /a -->();</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>void* - pre-allocated buffer pointer
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getMaxBufLen/UInt32/();  name=IOFWIPAsyncWriteCommand::getMaxBufLen -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/getMaxBufLen/UInt32/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getMaxBufLen">getMaxBufLen</a></h2>
+</td></tr></table>Usefull when MTU changes to a greater value and we need to
+accomodate more data in the buffer without a 1394 fragmentation
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMaxBufLen //apple_ref/cpp/clm/getMaxBufLen //apple_ref/cpp/intfcm/getMaxBufLen //apple_ref/cpp/func/getMaxBufLen //apple_ref/cpp/ftmplt/getMaxBufLen //apple_ref/cpp/defn/getMaxBufLen //apple_ref/cpp/macro/getMaxBufLen" --><font class="function">getMaxBufLen</font><!-- /a -->();</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>UInt32 - size of the pre-allocated buffer
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initAll/bool/(IOFireWireIP*,UInt32,FWAddress,FWDeviceCallback,void*,bool);  name=IOFWIPAsyncWriteCommand::initAll -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initAll/bool/(IOFireWireIP*,UInt32,FWAddress,FWDeviceCallback,void*,bool)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="initAll">initAll</a></h2>
+</td></tr></table><blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initAll //apple_ref/cpp/clm/initAll //apple_ref/cpp/intfcm/initAll //apple_ref/cpp/func/initAll //apple_ref/cpp/ftmplt/initAll //apple_ref/cpp/defn/initAll //apple_ref/cpp/macro/initAll" --><font class="function">initAll</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireIP //apple_ref/cpp/cl/IOFireWireIP //apple_ref/cpp/tdef/IOFireWireIP //apple_ref/cpp/tag/IOFireWireIP //apple_ref/cpp/econst/IOFireWireIP //apple_ref/cpp/struct/IOFireWireIP //apple_ref/cpp/clconst/IOFireWireIP" --><font class="type">IOFireWireIP</font><!-- /a --> *<font class="param">networkObject</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress" --><font class="type">FWAddress</font><!-- /a --> <font class="param">devAddress</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWDeviceCallback //apple_ref/cpp/cl/FWDeviceCallback //apple_ref/cpp/tdef/FWDeviceCallback //apple_ref/cpp/tag/FWDeviceCallback //apple_ref/cpp/econst/FWDeviceCallback //apple_ref/cpp/struct/FWDeviceCallback //apple_ref/cpp/clconst/FWDeviceCallback" --><font class="type">FWDeviceCallback</font><!-- /a --> <font class="param">completion</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">failOnReset</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Initializes the Asynchronous write command object</p>
+<dl><dt><i>function result</i></dt><dd>true if successfull.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initDescriptor/IOReturn/(UInt32);  name=IOFWIPAsyncWriteCommand::initDescriptor -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initDescriptor/IOReturn/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="initDescriptor">initDescriptor</a></h2>
+</td></tr></table>copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initDescriptor //apple_ref/cpp/clm/initDescriptor //apple_ref/cpp/intfcm/initDescriptor //apple_ref/cpp/func/initDescriptor //apple_ref/cpp/ftmplt/initDescriptor //apple_ref/cpp/defn/initDescriptor //apple_ref/cpp/macro/initDescriptor" --><font class="function">initDescriptor</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">length</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>unfragmented</em></tt></dt><dd>- indicates whether the packet is fragmented or unfragmented.</dd>
+<dt><tt><em>length</em></tt></dt><dd>- length to copy.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess, if successfull.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initPacketHeader/void*/(IOFWIPMBufCommand*,bool,FragmentType,UInt32,UInt32);  name=IOFWIPAsyncWriteCommand::initPacketHeader -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/initPacketHeader/void*/(IOFWIPMBufCommand*,bool,FragmentType,UInt32,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="initPacketHeader">initPacketHeader</a></h2>
+</td></tr></table>returns a descriptor header based on fragmentation and copying
+of payload.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/initPacketHeader //apple_ref/cpp/clm/initPacketHeader //apple_ref/cpp/intfcm/initPacketHeader //apple_ref/cpp/func/initPacketHeader //apple_ref/cpp/ftmplt/initPacketHeader //apple_ref/cpp/defn/initPacketHeader //apple_ref/cpp/macro/initPacketHeader" --><font class="function">initPacketHeader</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWIPMBufCommand //apple_ref/cpp/cl/IOFWIPMBufCommand //apple_ref/cpp/tdef/IOFWIPMBufCommand //apple_ref/cpp/tag/IOFWIPMBufCommand //apple_ref/cpp/econst/IOFWIPMBufCommand //apple_ref/cpp/struct/IOFWIPMBufCommand //apple_ref/cpp/clconst/IOFWIPMBufCommand" --><font class="type">IOFWIPMBufCommand</font><!-- /a --> *<font class="param">mBufCommand</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">doCopy</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FragmentType //apple_ref/cpp/cl/FragmentType //apple_ref/cpp/tdef/FragmentType //apple_ref/cpp/tag/FragmentType //apple_ref/cpp/econst/FragmentType //apple_ref/cpp/struct/FragmentType //apple_ref/cpp/clconst/FragmentType" --><font class="type">FragmentType</font><!-- /a --> <font class="param">unfragmented</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">headerSize</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">offset</font>);</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>void.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/reinit/IOReturn/(IOFireWireNub*,UInt32,FWAddress,FWDeviceCallback,void*,bool,bool);  name=IOFWIPAsyncWriteCommand::reinit -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/reinit/IOReturn/(IOFireWireNub*,UInt32,FWAddress,FWDeviceCallback,void*,bool,bool)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="reinit">reinit</a></h2>
+</td></tr></table><blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/reinit //apple_ref/cpp/clm/reinit //apple_ref/cpp/intfcm/reinit //apple_ref/cpp/func/reinit //apple_ref/cpp/ftmplt/reinit //apple_ref/cpp/defn/reinit //apple_ref/cpp/macro/reinit" --><font class="function">reinit</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireNub //apple_ref/cpp/cl/IOFireWireNub //apple_ref/cpp/tdef/IOFireWireNub //apple_ref/cpp/tag/IOFireWireNub //apple_ref/cpp/econst/IOFireWireNub //apple_ref/cpp/struct/IOFireWireNub //apple_ref/cpp/clconst/IOFireWireNub" --><font class="type">IOFireWireNub</font><!-- /a --> *<font class="param">device</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress" --><font class="type">FWAddress</font><!-- /a --> <font class="param">devAddress</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWDeviceCallback //apple_ref/cpp/cl/FWDeviceCallback //apple_ref/cpp/tdef/FWDeviceCallback //apple_ref/cpp/tag/FWDeviceCallback //apple_ref/cpp/econst/FWDeviceCallback //apple_ref/cpp/struct/FWDeviceCallback //apple_ref/cpp/clconst/FWDeviceCallback" --><font class="type">FWDeviceCallback</font><!-- /a --> <font class="param">completion</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">failOnReset</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">deferNotify</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>reinit will re-initialize all the variables for this command object, good
+when we have to reconfigure our outgoing command objects.</p>
+<dl><dt><i>function result</i></dt><dd>true if successfull.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/resetDescriptor/void/(IOReturn);  name=IOFWIPAsyncWriteCommand::resetDescriptor -->
+<a name="//apple_ref/cpp/instm/IOFWIPAsyncWriteCommand/resetDescriptor/void/(IOReturn)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="resetDescriptor">resetDescriptor</a></h2>
+</td></tr></table>resets the IOMemoryDescriptor & reinitializes the cursorbuf.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/resetDescriptor //apple_ref/cpp/clm/resetDescriptor //apple_ref/cpp/intfcm/resetDescriptor //apple_ref/cpp/func/resetDescriptor //apple_ref/cpp/ftmplt/resetDescriptor //apple_ref/cpp/defn/resetDescriptor //apple_ref/cpp/macro/resetDescriptor" --><font class="function">resetDescriptor</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="param">status</font>);</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>void.
+ </dd></dl>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Enumerations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><hr>
+<!-- headerDoc=tag;  uid=//apple_ref/c/tag/NodeFlags;  name=NodeFlags --><a name="//apple_ref/c/tag/NodeFlags"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="NodeFlags">NodeFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Flags that specify characteristics of the FireWire device node.<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">enum</span> { 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWDisablePhysicalAccess" logicalPath="//apple_ref/c/cl/kIOFWDisablePhysicalAccess //apple_ref/c/tdef/kIOFWDisablePhysicalAccess //apple_ref/c/tag/kIOFWDisablePhysicalAccess //apple_ref/c/econst/kIOFWDisablePhysicalAccess" target="_top"><span class="type">kIOFWDisablePhysicalAccess</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">0</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWDisableAllPhysicalAccess" logicalPath="//apple_ref/c/cl/kIOFWDisableAllPhysicalAccess //apple_ref/c/tdef/kIOFWDisableAllPhysicalAccess //apple_ref/c/tag/kIOFWDisableAllPhysicalAccess //apple_ref/c/econst/kIOFWDisableAllPhysicalAccess" target="_top"><span class="type">kIOFWDisableAllPhysicalAccess</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">1</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWEnableRetryOnAckD" logicalPath="//apple_ref/c/cl/kIOFWEnableRetryOnAckD //apple_ref/c/tdef/kIOFWEnableRetryOnAckD //apple_ref/c/tag/kIOFWEnableRetryOnAckD //apple_ref/c/econst/kIOFWEnableRetryOnAckD" target="_top"><span class="type">kIOFWEnableRetryOnAckD</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">2</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWLimitAsyncPacketSize" logicalPath="//apple_ref/c/cl/kIOFWLimitAsyncPacketSize //apple_ref/c/tdef/kIOFWLimitAsyncPacketSize //apple_ref/c/tag/kIOFWLimitAsyncPacketSize //apple_ref/c/econst/kIOFWLimitAsyncPacketSize" target="_top"><span class="type">kIOFWLimitAsyncPacketSize</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">3</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWDisablePhyOnSleep" logicalPath="//apple_ref/c/cl/kIOFWDisablePhyOnSleep //apple_ref/c/tdef/kIOFWDisablePhyOnSleep //apple_ref/c/tag/kIOFWDisablePhyOnSleep //apple_ref/c/econst/kIOFWDisablePhyOnSleep" target="_top"><span class="type">kIOFWDisablePhyOnSleep</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">4</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWMustBeRoot" logicalPath="//apple_ref/c/cl/kIOFWMustBeRoot //apple_ref/c/tdef/kIOFWMustBeRoot //apple_ref/c/tag/kIOFWMustBeRoot //apple_ref/c/econst/kIOFWMustBeRoot" target="_top"><span class="type">kIOFWMustBeRoot</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">5</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWMustNotBeRoot" logicalPath="//apple_ref/c/cl/kIOFWMustNotBeRoot //apple_ref/c/tdef/kIOFWMustNotBeRoot //apple_ref/c/tag/kIOFWMustNotBeRoot //apple_ref/c/econst/kIOFWMustNotBeRoot" target="_top"><span class="type">kIOFWMustNotBeRoot</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">6</span>), 
+    <a href="../../../documentation/IOFireWireFamilyCommon/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWMustHaveGap63" logicalPath="//apple_ref/c/cl/kIOFWMustHaveGap63 //apple_ref/c/tdef/kIOFWMustHaveGap63 //apple_ref/c/tag/kIOFWMustHaveGap63 //apple_ref/c/econst/kIOFWMustHaveGap63" target="_top"><span class="type">kIOFWMustHaveGap63</span></a> = (
+        <span class="number">1</span> &lt;&lt; <span class="number">7</span>) 
+};  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Constants</font></h5>
+<blockquote>
+<dl>
+<dt><a name="//apple_ref/c/econst/kIOFWDisablePhysicalAccess"><code>kIOFWDisablePhysicalAccess </code></a></dt>
+<dd>Disable physical memory access
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWDisableAllPhysicalAccess"><code>kIOFWDisableAllPhysicalAccess </code></a></dt>
+<dd>Disable all physical memory access
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWEnableRetryOnAckD"><code>kIOFWEnableRetryOnAckD </code></a></dt>
+<dd>Enable retry on Ack D
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWLimitAsyncPacketSize"><code>kIOFWLimitAsyncPacketSize </code></a></dt>
+<dd>Limit async packet size
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWDisablePhyOnSleep"><code>kIOFWDisablePhyOnSleep </code></a></dt>
+<dd>Disable Phy, when machine is in Sleep mode
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWMustBeRoot"><code>kIOFWMustBeRoot </code></a></dt>
+<dd>Attempt to make this device root, There is no guarentee Mac OS will succeed in making the device 
+root.
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWMustNotBeRoot"><code>kIOFWMustNotBeRoot </code></a></dt>
+<dd>Attempt to prevent this device from being root, There is no guarentee Mac OS will succeed in preventing the device 
+from being root.
+<br><br>
+</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWMustHaveGap63"><code>kIOFWMustHaveGap63 </code></a></dt>
+<dd>Attempt to ensure the gap count is 63, when this device is on the bus. Gap 63 reduces bus performance significantly,
+so this flag should be used only when absolutely necessary. There is no guarentee Mac OS will succeed in forcing
+the gap count to 63.</dd>
+</dl>
+</blockquote>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

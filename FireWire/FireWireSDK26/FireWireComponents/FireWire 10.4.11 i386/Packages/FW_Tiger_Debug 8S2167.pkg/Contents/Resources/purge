@@ -1,0 +1,397 @@
+#!/bin/sh
+
+######################################################################
+# purge installed components
+######################################################################
+
+# deleteInstalledHeaders
+#
+#
+	
+deleteInstalledHeaders()
+{	
+	local project filename filelist
+	
+	#
+	# remove all currently installed headers
+	#
+
+	cat "$config_dir/$project_groups_dir/$projectset/$project_list" | while read project
+	do
+		qecho "Purge installed headers for \"$project\" begin."
+				
+		filelist="$config_dir/$project_defs_dir/$project/$purge_list_headers" 
+		if [ -e "$filelist" ]
+		then 
+			cat "$filelist" | while read filename
+			do
+				qecho "Delete \"$filename\"."
+				/bin/echo "rm -rf \"$filename\"" >> "$logfile"
+				`rm -rf $filename`	
+			done
+		fi
+
+		qecho "Purge installed headers for \"$project\" done."
+	done
+	
+	return 0
+}
+
+# deleteInstalledBinaries
+#
+#
+	
+deleteInstalledBinaries()
+{	
+	local project filename filelist
+	
+	#
+	# remove all currently installed binaries
+	#
+
+	cat "$config_dir/$project_groups_dir/$projectset/$project_list" | while read project
+	do
+		qecho "Purge installed binaries for \"$project\"."
+		
+		filelist="$config_dir/$project_defs_dir/$project/$purge_list_binaries" 
+		if [ -e "$filelist" ]
+		then 
+			cat "$filelist" | while read filename
+			do
+				qecho "Delete \"$filename\"."
+				/bin/echo "rm -rf \"$filename\"" >> "$logfile"
+				`rm -rf $filename`		
+			done
+		fi
+	done
+		
+	# delete the kext caches
+	deleteKextCaches
+
+	return 0
+}
+
+# deleteKextCaches
+#
+#
+	
+deleteKextCaches()
+{		
+	#
+	# remove the kext caches
+	#
+
+	# touch is the recommended way to invalidate kext caches
+	
+	touch /System/Library/Extensions/
+	
+	# Deleteing these caches manually is highly discouraged.
+	# The recommended proceedure is to touch the Extensions
+	# folder, however, if the clock is wrong on your machine
+	# the touch can be ineffectual, so we still delete the
+	# caches manually in this case.  Bad us.
+	
+	if [ $year -lt 2002 ]
+	then
+		rm -f /System/Library/Extensions.mkext
+		rm -f /System/Library/Extensions.kextcache
+	fi
+	
+	return 0
+}
+
+#######################################################################
+# utilities
+#######################################################################
+
+# absolutePath
+#
+# gets an absolute path from a basedir and a path (relative or absolute)
+
+absolutePath()
+{
+	local abspath_basedir abspath_inputpath abspath_outputpath abspath_tmppath
+	
+	abspath_basedir="$1"
+	abspath_inputpath="$2"
+	
+	abspath_tmppath="$abspath_inputpath"
+	while :
+	do
+		abspath_tmppath=$(dirname "$abspath_tmppath")
+		if [ "$abspath_tmppath" == "." ]
+		then
+			abspath_outputpath="$abspath_basedir"/"$abspath_inputpath"
+			break
+		fi
+		
+		if [ "$abspath_tmppath" == "/" ]
+		then
+			abspath_outputpath="$abspath_inputpath"
+			break
+		fi
+		
+	done
+
+	/bin/echo "$abspath_outputpath"
+	
+	return 0
+}
+
+
+# booleanAsk
+#
+#
+
+booleanAsk ()
+{
+	local reply
+
+	if [ "$noprompt" == "" ]
+	then
+
+		while :
+		do
+			/bin/echo -n "$1"
+			read reply
+	
+			case "$reply" in
+				y | Y | yes | YES )
+					return 0
+					;;
+				n | N | no | NO )
+					return 1
+					;;
+			esac
+			
+			/bin/echo "what?"
+			
+		done
+
+	else
+		return 0
+	fi
+}
+
+# qecho
+#
+#
+
+qecho()
+{
+	if [ "$quiet" == "" ]
+	then
+		if [ $# -lt 2 ]
+		then
+			/bin/echo "$1"
+		else
+			/bin/echo "$1" "$2"
+		fi
+	fi
+}
+
+########################################################################
+# help
+########################################################################
+
+# echo_usage
+#
+#
+
+echo_usage()
+{
+	/bin/echo
+	/bin/echo "Usage : $ourname [-q | -quiet] [-f | -noprompt] [-l logfile]"
+	/bin/echo "		[-c configdir] [-g groupname] [-noheaders] [-nobinaries]" 
+	/bin/echo
+	/bin/echo "Remove installed files."
+	/bin/echo
+	/bin/echo "-q | -quiet	: only /bin/echo when interaction is needed"
+	/bin/echo "-f | -noprompt	: don't ask before deletion"
+	/bin/echo "-l logfile	: optional logfile"
+	/bin/echo "-c configdir 	: set configuration directory, defaults to config directory in this script's directory"
+	/bin/echo "-g groupname 	: name of project group to use, defaults to \"Default\""
+	/bin/echo "-noheaders	: don't delete any headers"
+	/bin/echo "-nobinaries	: don't delete any binaries"
+	/bin/echo
+	
+	exit 1
+}
+
+######################################################################
+# main
+######################################################################
+
+basedir=$(pwd)
+ourname=$(basename "$0")
+ourdir=`absolutePath "$basedir" "$(dirname "$0")"` 
+
+# override the default sudo prompt to be more informative:
+sudoprompt="--- Enter account password for %u: "
+
+year=`date | awk '{ print $6 }'`
+	
+# default exit status; reset to 0 before normal exit
+exitstatus=1
+
+# exit handler; returns exitstatus
+trap 'exit $exitstatus' 0
+
+# configuration constants
+project_groups_dir="groups"
+project_defs_dir="projects"
+purge_list_headers="headers.purgelist"
+purge_list_binaries="binaries.purgelist"
+project_list="projects.list"
+
+# argument defaults
+quiet=""
+noprompt=""
+logfile="/dev/null"
+projectset="Default"
+config_dir="$ourdir/config"
+noheaders=""
+nobinaries=""
+
+while [ $# -gt 0 ]
+do
+	
+    case "$1" in
+	
+		"" )
+			;;
+			
+	   	-f | -noprompt ) 
+	   		noprompt="-noprompt"
+	   		;;
+
+	  	-q | -quiet ) 
+			quiet="-quiet"
+			;;
+
+		-l )
+			if [ "$logfile" == "/dev/null" ]
+			then
+				logfile=`absolutePath "$basedir" "$2"`
+				shift
+				touch "$logfile"
+    		else
+    			echo_usage
+    		fi
+			;;
+		
+		-c )
+			if [ "$config_dir" == "$ourdir/config" ]
+			then
+				config_dir=`absolutePath "$basedir" "$2"`
+				shift
+
+				if ! [ -d "$config_dir" ]
+				then
+					echo_usage
+				fi 
+    		
+    		else
+    			echo_usage
+    		fi
+			;;
+			
+		-g )
+			if [ "$projectset" == "Default" ]
+			then
+				projectset="$2"
+				shift    		
+    		else
+    			echo_usage
+    		fi
+			;;
+	   
+	   	-noheaders ) 
+	   		noheaders="-noheaders"
+	   		;;
+	   
+	   	-nobinaries ) 
+	   		nobinaries="-nobinaries" 
+	   		;;
+	   							
+	   --h | -h | h | --help | -help | help | --usage | -usage | usage ) 
+			echo_usage
+			;;
+    
+    	* ) 
+			echo_usage
+			;;
+			
+    esac
+    
+    shift
+done
+
+if ! [ -d "$config_dir/$project_groups_dir/$projectset" ]
+then
+	echo_usage
+fi 
+
+# run script as root if we're not yet root
+
+if [ $(whoami) != "root" ]
+then
+	if sudo -p "$sudoprompt" "$0" "$quiet" "$noprompt" -c "$config_dir" -g "$projectset" -l "$logfile" "$noheaders" "$nobinaries" 
+	then
+		exitstatus=0
+		exit 0
+	else
+		exit 1
+	fi
+fi
+
+# do the work
+
+qecho
+qecho "NOTE:	This script will only delete installed files from locations"
+qecho "	which have been explicitly specified in the configuration files."
+qecho
+
+if [ "$noheaders" == "" ] && [ "$noprompt" == "" ]
+then
+	if ! booleanAsk "--- Delete all currently installed headers (y/n) ? "
+	then
+		noheaders="-noheaders"	
+	fi
+fi
+
+if [ "$noheaders" == "" ]
+then
+	qecho "Delete installed headers begin."
+	deleteInstalledHeaders
+	qecho "Delete installed headers done."
+else
+	qecho "Delete installed headers skipped."
+fi
+
+if [ "$nobinaries" == "" ] && [ "$noprompt" == "" ]
+then
+	if ! booleanAsk "--- Delete all currently installed binaries (y/n) ? "
+	then
+		nobinaries="-nobinaries"
+	fi
+fi
+
+if [ "$nobinaries" == "" ]
+then
+	qecho "Delete installed binaries begin."
+	deleteInstalledBinaries
+	qecho "Delete installed binaries done."
+	
+	if [ $year -lt 2002 ]
+	then
+		qecho
+		qecho "	*** Your clock is wrong. ***"
+		qecho
+	fi
+		
+else	
+	qecho "Delete installed binaries skipped."
+fi
+
+exitstatus=0

@@ -1,0 +1,685 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1>
+<br><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/addCallbackDispatcherToRunLoop" target="doc">addCallbackDispatcherToRunLoop</a></tt></dt>
+<dd>Adds a dispatcher for kernel callbacks to the specified runloop.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCAsynchronousCommandCancel" target="doc">AVCAsynchronousCommandCancel</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCAsynchronousCommandReinit" target="doc">AVCAsynchronousCommandReinit</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCAsynchronousCommandReinitWithCommandBytes" target="doc">AVCAsynchronousCommandReinitWithCommandBytes</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCAsynchronousCommandRelease" target="doc">AVCAsynchronousCommandRelease</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCAsynchronousCommandSubmit" target="doc">AVCAsynchronousCommandSubmit</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCCommand" target="doc">AVCCommand</a></tt></dt>
+<dd>Sends an AVC command to the device and returns the response.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AVCCommandInGeneration" target="doc">AVCCommandInGeneration</a></tt></dt>
+<dd>Sends an AVC command to the device and returns the response.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/breakLocalP2PInputConnection" target="doc">breakLocalP2PInputConnection</a></tt></dt>
+<dd>Decrements the point-to-point connection count of a unit input plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/breakLocalP2POutputConnection" target="doc">breakLocalP2POutputConnection</a></tt></dt>
+<dd>Decrements the point-to-point connection count of a unit output plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/breakP2PInputConnection" target="doc">breakP2PInputConnection</a></tt></dt>
+<dd>Decrements the point-to-point connection count of a unit input plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/breakP2POutputConnection" target="doc">breakP2POutputConnection</a></tt></dt>
+<dd>Decrements the point-to-point connection count of a unit output plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/close" target="doc">close</a></tt></dt>
+<dd>Closes an exclusive access to the device.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/createAVCAsynchronousCommand" target="doc">createAVCAsynchronousCommand</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getAncestorInterface" target="doc">getAncestorInterface</a></tt></dt>
+<dd>Creates a plug-in object for an ancestor (in the I/O Registry) of the AVC unit and returns an interface to it.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getBusProtocolInterface" target="doc">getBusProtocolInterface</a></tt></dt>
+<dd>Creates a plug-in object for a protocol driver for the FireWire bus the AVC unit
+is connected to and returns an interface to it.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getProtocolInterface" target="doc">getProtocolInterface</a></tt></dt>
+<dd>Creates a plug-in object for a protocol driver for the FireWire bus the AVC unit
+is connected to and returns an interface to it.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getSessionRef" target="doc">getSessionRef</a></tt></dt>
+<dd>Opens a connection to a device that is not already open.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/makeLocalP2POutputConnection" target="doc">makeLocalP2POutputConnection</a></tt></dt>
+<dd>Increments the point-to-point connection count of a unit output plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/makeP2PInputConnection" target="doc">makeP2PInputConnection</a></tt></dt>
+<dd>Increments the point-to-point connection count of a unit input plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/makeP2POutputConnection" target="doc">makeP2POutputConnection</a></tt></dt>
+<dd>Increments the point-to-point connection count of a unit output plug.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/open" target="doc">open</a></tt></dt>
+<dd>Exclusively opens a connection to the in-kernel device.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/openWithSessionRef" target="doc">openWithSessionRef(void *)</a></tt></dt>
+<dd>Opens a connection to a device that is not already open.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/openWithSessionRef" target="doc">openWithSessionRef(void *, IOFireWireSessionRef)</a></tt></dt>
+<dd>Opens a connection to a device that is not already open.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/removeCallbackDispatcherFromRunLoop" target="doc">removeCallbackDispatcherFromRunLoop</a></tt></dt>
+<dd>Removes a dispatcher for kernel callbacks to the specified run loop.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/setMessageCallback" target="doc">setMessageCallback</a></tt></dt>
+<dd>Sets callback for user space message routine.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/updateAVCCommandTimeout" target="doc">updateAVCCommandTimeout</a></tt></dt>
+<dd>Updates an AVCCommand's timeout back to 10 seconds.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/addCallbackDispatcherToRunLoop;  name=addCallbackDispatcherToRunLoop --><a name="//apple_ref/c/func/addCallbackDispatcherToRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="addCallbackDispatcherToRunLoop">addCallbackDispatcherToRunLoop</a></h2>
+</td></tr></table>
+<p>Adds a dispatcher for kernel callbacks to the specified runloop.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibProtocolInterface/index.html?Functions/Functions.html#//apple_ref/c/func/addCallbackDispatcherToRunLoop" logicalPath="//apple_ref/c/instm/addCallbackDispatcherToRunLoop //apple_ref/c/clm/addCallbackDispatcherToRunLoop //apple_ref/c/intfcm/addCallbackDispatcherToRunLoop //apple_ref/c/func/addCallbackDispatcherToRunLoop" target="_top"><font class="function">addCallbackDispatcherToRunLoop</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFRunLoopRef //apple_ref/c/cl/CFRunLoopRef //apple_ref/c/tdef/CFRunLoopRef //apple_ref/c/tag/CFRunLoopRef //apple_ref/c/econst/CFRunLoopRef //apple_ref/c/struct/CFRunLoopRef //apple_ref/c/clconst/CFRunLoopRef" --><font class="type">CFRunLoopRef</font><!-- /a --> <font class="param">cfRunLoopRef</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>The user space portions of the AVC API communicate with the in-kernel services by 
+messaging the kernel. Similarly, the kernel messages the user space services in response. 
+These responses need to be picked up by a piece of code. This call adds that code to the specified
+run loop. Most drivers will call this method on the run loop that was created when your task was 
+created. To avoid deadlock you must avoid sleeping (or spin waiting) the run loop to wait for 
+AVC response. If you do this the dispatcher will never get to run and you will wait forever.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>cfRunLoopRef</em></tt></dt>
+<dd>Reference to a run loop.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns kIOReturnSuccess on success.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCAsynchronousCommandCancel;  name=AVCAsynchronousCommandCancel --><a name="//apple_ref/c/func/AVCAsynchronousCommandCancel"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCAsynchronousCommandCancel">AVCAsynchronousCommandCancel</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCAsynchronousCommandCancel" logicalPath="//apple_ref/c/instm/AVCAsynchronousCommandCancel //apple_ref/c/clm/AVCAsynchronousCommandCancel //apple_ref/c/intfcm/AVCAsynchronousCommandCancel //apple_ref/c/func/AVCAsynchronousCommandCancel" target="_top"><font class="function">AVCAsynchronousCommandCancel</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="param">pCommandObject</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCAsynchronousCommandReinit;  name=AVCAsynchronousCommandReinit --><a name="//apple_ref/c/func/AVCAsynchronousCommandReinit"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCAsynchronousCommandReinit">AVCAsynchronousCommandReinit</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCAsynchronousCommandReinit" logicalPath="//apple_ref/c/instm/AVCAsynchronousCommandReinit //apple_ref/c/clm/AVCAsynchronousCommandReinit //apple_ref/c/intfcm/AVCAsynchronousCommandReinit //apple_ref/c/func/AVCAsynchronousCommandReinit" target="_top"><font class="function">AVCAsynchronousCommandReinit</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="param">pCommandObject</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCAsynchronousCommandReinitWithCommandBytes;  name=AVCAsynchronousCommandReinitWithCommandBytes --><a name="//apple_ref/c/func/AVCAsynchronousCommandReinitWithCommandBytes"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCAsynchronousCommandReinitWithCommandBytes">AVCAsynchronousCommandReinitWithCommandBytes</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCAsynchronousCommandReinitWithCommandBytes" logicalPath="//apple_ref/c/instm/AVCAsynchronousCommandReinitWithCommandBytes //apple_ref/c/clm/AVCAsynchronousCommandReinitWithCommandBytes //apple_ref/c/intfcm/AVCAsynchronousCommandReinitWithCommandBytes //apple_ref/c/func/AVCAsynchronousCommandReinitWithCommandBytes" target="_top"><font class="function">AVCAsynchronousCommandReinitWithCommandBytes</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="param">pCommandObject</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCAsynchronousCommandRelease;  name=AVCAsynchronousCommandRelease --><a name="//apple_ref/c/func/AVCAsynchronousCommandRelease"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCAsynchronousCommandRelease">AVCAsynchronousCommandRelease</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCAsynchronousCommandRelease" logicalPath="//apple_ref/c/instm/AVCAsynchronousCommandRelease //apple_ref/c/clm/AVCAsynchronousCommandRelease //apple_ref/c/intfcm/AVCAsynchronousCommandRelease //apple_ref/c/func/AVCAsynchronousCommandRelease" target="_top"><font class="function">AVCAsynchronousCommandRelease</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="param">pCommandObject</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCAsynchronousCommandSubmit;  name=AVCAsynchronousCommandSubmit --><a name="//apple_ref/c/func/AVCAsynchronousCommandSubmit"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCAsynchronousCommandSubmit">AVCAsynchronousCommandSubmit</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCAsynchronousCommandSubmit" logicalPath="//apple_ref/c/instm/AVCAsynchronousCommandSubmit //apple_ref/c/clm/AVCAsynchronousCommandSubmit //apple_ref/c/intfcm/AVCAsynchronousCommandSubmit //apple_ref/c/func/AVCAsynchronousCommandSubmit" target="_top"><font class="function">AVCAsynchronousCommandSubmit</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="param">pCommandObject</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCCommand;  name=AVCCommand --><a name="//apple_ref/c/func/AVCCommand"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCCommand">AVCCommand</a></h2>
+</td></tr></table>
+<p>Sends an AVC command to the device and returns the response.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCCommand" logicalPath="//apple_ref/c/instm/AVCCommand //apple_ref/c/clm/AVCCommand //apple_ref/c/intfcm/AVCCommand //apple_ref/c/func/AVCCommand" target="_top"><font class="function">AVCCommand</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">response</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">responseLen</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function will block until the device returns a response or the kernel driver times out. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>command</em></tt></dt>
+<dd>Pointer to command to send.</dd>
+<dt><tt><em>cmdLen</em></tt></dt>
+<dd>Length (in bytes) of command.</dd>
+<dt><tt><em>response</em></tt></dt>
+<dd>Pointer to place to store the response sent by the device.</dd>
+<dt><tt><em>responseLen</em></tt></dt>
+<dd>Pointer to place to store the length of the response.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AVCCommandInGeneration;  name=AVCCommandInGeneration --><a name="//apple_ref/c/func/AVCCommandInGeneration"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="AVCCommandInGeneration">AVCCommandInGeneration</a></h2>
+</td></tr></table>
+<p>Sends an AVC command to the device and returns the response.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/AVCCommandInGeneration" logicalPath="//apple_ref/c/instm/AVCCommandInGeneration //apple_ref/c/clm/AVCCommandInGeneration //apple_ref/c/intfcm/AVCCommandInGeneration //apple_ref/c/func/AVCCommandInGeneration" target="_top"><font class="function">AVCCommandInGeneration</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">busGeneration</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">response</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">responseLen</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sends an AVC command to the device and returns the response. The command must complete in the specified bus generation. This function is only available if the interface version is &gt; 1 (MacOSX 10.2.0 or later?). This function will block until the device returns a response or the kernel driver times out. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>busGeneration</em></tt></dt>
+<dd>FireWire bus generation that the command is valid in.</dd>
+<dt><tt><em>command</em></tt></dt>
+<dd>Pointer to command to send.</dd>
+<dt><tt><em>cmdLen</em></tt></dt>
+<dd>Length (in bytes) of command.</dd>
+<dt><tt><em>response</em></tt></dt>
+<dd>Pointer to place to store the response sent by the device.</dd>
+<dt><tt><em>responseLen</em></tt></dt>
+<dd>Pointer to place to store the length of the response.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/breakLocalP2PInputConnection;  name=breakLocalP2PInputConnection --><a name="//apple_ref/c/func/breakLocalP2PInputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="breakLocalP2PInputConnection">breakLocalP2PInputConnection</a></h2>
+</td></tr></table>
+<p>Decrements the point-to-point connection count of a unit input plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2PInputConnection" logicalPath="//apple_ref/c/func/breakP2PInputConnection" target="_top">breakP2PInputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2PInputConnection" logicalPath="//apple_ref/c/instm/breakP2PInputConnection //apple_ref/c/clm/breakP2PInputConnection //apple_ref/c/intfcm/breakP2PInputConnection //apple_ref/c/func/breakP2PInputConnection" target="_top"><font class="function">breakP2PInputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">inputPlug</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/breakLocalP2POutputConnection;  name=breakLocalP2POutputConnection --><a name="//apple_ref/c/func/breakLocalP2POutputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="breakLocalP2POutputConnection">breakLocalP2POutputConnection</a></h2>
+</td></tr></table>
+<p>Decrements the point-to-point connection count of a unit output plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2POutputConnection" logicalPath="//apple_ref/c/func/breakP2POutputConnection" target="_top">breakP2POutputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2POutputConnection" logicalPath="//apple_ref/c/instm/breakP2POutputConnection //apple_ref/c/clm/breakP2POutputConnection //apple_ref/c/intfcm/breakP2POutputConnection //apple_ref/c/func/breakP2POutputConnection" target="_top"><font class="function">breakP2POutputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">outputPlug</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/breakP2PInputConnection;  name=breakP2PInputConnection --><a name="//apple_ref/c/func/breakP2PInputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="breakP2PInputConnection">breakP2PInputConnection</a></h2>
+</td></tr></table>
+<p>Decrements the point-to-point connection count of a unit input plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakLocalP2PInputConnection" logicalPath="//apple_ref/c/func/breakLocalP2PInputConnection" target="_top">breakLocalP2PInputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2PInputConnection" logicalPath="//apple_ref/c/instm/breakP2PInputConnection //apple_ref/c/clm/breakP2PInputConnection //apple_ref/c/intfcm/breakP2PInputConnection //apple_ref/c/func/breakP2PInputConnection" target="_top"><font class="function">breakP2PInputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">inputPlug</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/breakP2POutputConnection;  name=breakP2POutputConnection --><a name="//apple_ref/c/func/breakP2POutputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="breakP2POutputConnection">breakP2POutputConnection</a></h2>
+</td></tr></table>
+<p>Decrements the point-to-point connection count of a unit output plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakLocalP2POutputConnection" logicalPath="//apple_ref/c/func/breakLocalP2POutputConnection" target="_top">breakLocalP2POutputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/breakP2POutputConnection" logicalPath="//apple_ref/c/instm/breakP2POutputConnection //apple_ref/c/clm/breakP2POutputConnection //apple_ref/c/intfcm/breakP2POutputConnection //apple_ref/c/func/breakP2POutputConnection" target="_top"><font class="function">breakP2POutputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">outputPlug</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/close;  name=close --><a name="//apple_ref/c/func/close"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="close">close</a></h2>
+</td></tr></table>
+<p>Closes an exclusive access to the device.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/close" logicalPath="//apple_ref/c/instm/close //apple_ref/c/clm/close //apple_ref/c/intfcm/close //apple_ref/c/func/close" target="_top"><font class="function">close</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Closes an exclusive access to the device. When a device is closed it may be 
+unloaded by the kernel. If it is unloaded and then later reappears it will be represented 
+by a different object. You won't be able to use this user client on the new object. The 
+new object will have to be looked up in the I/O Registry and a new user client will have to 
+be opened on it. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/createAVCAsynchronousCommand;  name=createAVCAsynchronousCommand --><a name="//apple_ref/c/func/createAVCAsynchronousCommand"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="createAVCAsynchronousCommand">createAVCAsynchronousCommand</a></h2>
+</td></tr></table>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/createAVCAsynchronousCommand" logicalPath="//apple_ref/c/instm/createAVCAsynchronousCommand //apple_ref/c/clm/createAVCAsynchronousCommand //apple_ref/c/intfcm/createAVCAsynchronousCommand //apple_ref/c/func/createAVCAsynchronousCommand" target="_top"><font class="function">createAVCAsynchronousCommand</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommandCallback //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommandCallback" --><font class="type">IOFireWireAVCLibAsynchronousCommandCallback</font><!-- /a --> <font class="param">completionCallback</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">pRefCon</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/cl/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tdef/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/tag/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/econst/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/struct/IOFireWireAVCLibAsynchronousCommand //apple_ref/c/clconst/IOFireWireAVCLibAsynchronousCommand" --><font class="type">IOFireWireAVCLibAsynchronousCommand</font><!-- /a --> *<font class="type">*</font><font class="param">ppCommandObject</font>); </pre></blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getAncestorInterface;  name=getAncestorInterface --><a name="//apple_ref/c/func/getAncestorInterface"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getAncestorInterface">getAncestorInterface</a></h2>
+</td></tr></table>
+<p>Creates a plug-in object for an ancestor (in the I/O Registry) of the AVC unit and returns an interface to it.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> <font class="type">*</font> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getAncestorInterface" logicalPath="//apple_ref/c/instm/getAncestorInterface //apple_ref/c/clm/getAncestorInterface //apple_ref/c/intfcm/getAncestorInterface //apple_ref/c/func/getAncestorInterface" target="_top"><font class="function">getAncestorInterface</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char" --><font class="type">char</font><!-- /a --> *<font class="param">object_class</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">pluginType</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">iid</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 1 (MacOSX 10.2.0 or later?).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>class</em></tt></dt>
+<dd>Class name of ancestor of the device to get an interface for.</dd>
+<dt><tt><em>pluginType</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of plug-in service to be returned for the ancestor.</dd>
+<dt><tt><em>iid</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of interface to be returned for the created plug-in object.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns a COM-style interface pointer. Returns 0 upon failure.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getBusProtocolInterface;  name=getBusProtocolInterface --><a name="//apple_ref/c/func/getBusProtocolInterface"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getBusProtocolInterface">getBusProtocolInterface</a></h2>
+</td></tr></table>
+<p>Creates a plug-in object for a protocol driver for the FireWire bus the AVC unit
+is connected to and returns an interface to it.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getProtocolInterface" logicalPath="//apple_ref/c/func/getProtocolInterface" target="_top">getProtocolInterface</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> <font class="type">*</font> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getProtocolInterface" logicalPath="//apple_ref/c/instm/getProtocolInterface //apple_ref/c/clm/getProtocolInterface //apple_ref/c/intfcm/getProtocolInterface //apple_ref/c/func/getProtocolInterface" target="_top"><font class="function">getProtocolInterface</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">pluginType</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">iid</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 1 (MacOSX 10.2.0 or later?).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>pluginType</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of plug-in service to be returned for the created protocol object.</dd>
+<dt><tt><em>iid</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of interface to be returned for the created protocol device object.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns a COM-style interface pointer. Returns 0 upon failure.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getProtocolInterface;  name=getProtocolInterface --><a name="//apple_ref/c/func/getProtocolInterface"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getProtocolInterface">getProtocolInterface</a></h2>
+</td></tr></table>
+<p>Creates a plug-in object for a protocol driver for the FireWire bus the AVC unit
+is connected to and returns an interface to it.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getBusProtocolInterface" logicalPath="//apple_ref/c/func/getBusProtocolInterface" target="_top">getBusProtocolInterface</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> <font class="type">*</font> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getProtocolInterface" logicalPath="//apple_ref/c/instm/getProtocolInterface //apple_ref/c/clm/getProtocolInterface //apple_ref/c/intfcm/getProtocolInterface //apple_ref/c/func/getProtocolInterface" target="_top"><font class="function">getProtocolInterface</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">pluginType</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID" --><font class="type">REFIID</font><!-- /a --> <font class="param">iid</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 1 (MacOSX 10.2.0 or later?).
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>pluginType</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of plug-in service to be returned for the created protocol object.</dd>
+<dt><tt><em>iid</em></tt></dt>
+<dd>An ID number, of type CFUUIDBytes (see CFUUID.h), identifying the type of interface to be returned for the created protocol device object.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getSessionRef;  name=getSessionRef --><a name="//apple_ref/c/func/getSessionRef"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getSessionRef">getSessionRef</a></h2>
+</td></tr></table>
+<p>Opens a connection to a device that is not already open.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/openWithSessionRef" logicalPath="//apple_ref/c/func/openWithSessionRef" target="_top">openWithSessionRef</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/tdef/IOFireWireSessionRef //apple_ref/c/tag/IOFireWireSessionRef //apple_ref/c/econst/IOFireWireSessionRef //apple_ref/c/struct/IOFireWireSessionRef //apple_ref/c/clconst/IOFireWireSessionRef" --><font class="type">IOFireWireSessionRef</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getSessionRef" logicalPath="//apple_ref/c/instm/getSessionRef //apple_ref/c/clm/getSessionRef //apple_ref/c/intfcm/getSessionRef //apple_ref/c/func/getSessionRef" target="_top"><font class="function">getSessionRef</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sometimes it is desirable to open multiple user clients on a device. In the case 
+of FireWire sometimes we wish to have both the FireWire User Client and the AVC User Client 
+open at the same time. The technique to arbitrate this is as follows:<br>First open normally 
+the device furthest from the root in the IORegistry.<br>Second, get its sessionRef with the 
+with a call to this method.<br>Third, open the device further up the chain by calling 
+openWithSessionRef and passing the sessionRef returned from this call.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/makeLocalP2POutputConnection;  name=makeLocalP2POutputConnection --><a name="//apple_ref/c/func/makeLocalP2POutputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="makeLocalP2POutputConnection">makeLocalP2POutputConnection</a></h2>
+</td></tr></table>
+<p>Increments the point-to-point connection count of a unit output plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/makeP2POutputConnection" logicalPath="//apple_ref/c/func/makeP2POutputConnection" target="_top">makeP2POutputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/makeP2POutputConnection" logicalPath="//apple_ref/c/instm/makeP2POutputConnection //apple_ref/c/clm/makeP2POutputConnection //apple_ref/c/intfcm/makeP2POutputConnection //apple_ref/c/func/makeP2POutputConnection" target="_top"><font class="function">makeP2POutputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">outputPlug</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">chan</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWSpeed //apple_ref/c/cl/IOFWSpeed //apple_ref/c/tdef/IOFWSpeed //apple_ref/c/tag/IOFWSpeed //apple_ref/c/econst/IOFWSpeed //apple_ref/c/struct/IOFWSpeed //apple_ref/c/clconst/IOFWSpeed" --><font class="type">IOFWSpeed</font><!-- /a --> <font class="param">speed</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/makeP2PInputConnection;  name=makeP2PInputConnection --><a name="//apple_ref/c/func/makeP2PInputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="makeP2PInputConnection">makeP2PInputConnection</a></h2>
+</td></tr></table>
+<p>Increments the point-to-point connection count of a unit input plug.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/makeP2PInputConnection" logicalPath="//apple_ref/c/instm/makeP2PInputConnection //apple_ref/c/clm/makeP2PInputConnection //apple_ref/c/intfcm/makeP2PInputConnection //apple_ref/c/func/makeP2PInputConnection" target="_top"><font class="function">makeP2PInputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">inputPlug</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">chan</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/makeP2POutputConnection;  name=makeP2POutputConnection --><a name="//apple_ref/c/func/makeP2POutputConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="makeP2POutputConnection">makeP2POutputConnection</a></h2>
+</td></tr></table>
+<p>Increments the point-to-point connection count of a unit output plug.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/makeLocalP2POutputConnection" logicalPath="//apple_ref/c/func/makeLocalP2POutputConnection" target="_top">makeLocalP2POutputConnection</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/makeP2POutputConnection" logicalPath="//apple_ref/c/instm/makeP2POutputConnection //apple_ref/c/clm/makeP2POutputConnection //apple_ref/c/intfcm/makeP2POutputConnection //apple_ref/c/func/makeP2POutputConnection" target="_top"><font class="function">makeP2POutputConnection</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">outputPlug</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">chan</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWSpeed //apple_ref/c/cl/IOFWSpeed //apple_ref/c/tdef/IOFWSpeed //apple_ref/c/tag/IOFWSpeed //apple_ref/c/econst/IOFWSpeed //apple_ref/c/struct/IOFWSpeed //apple_ref/c/clconst/IOFWSpeed" --><font class="type">IOFWSpeed</font><!-- /a --> <font class="param">speed</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This function is only available if the interface version is &gt; 3.
+ </p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/open;  name=open --><a name="//apple_ref/c/func/open"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="open">open</a></h2>
+</td></tr></table>
+<p>Exclusively opens a connection to the in-kernel device.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/open" logicalPath="//apple_ref/c/instm/open //apple_ref/c/clm/open //apple_ref/c/intfcm/open //apple_ref/c/func/open" target="_top"><font class="function">open</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Exclusively opens a connection to the in-kernel device. As long as the in-kernel 
+device object is open, no other drivers will be able to open a connection to the device. When 
+open, the device on the bus may disappear, but the in-kernel object representing it will stay
+instantiated and can begin communicating with the device again if it ever reappears. 
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns kIOReturnSuccess on success.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/openWithSessionRef;  name=openWithSessionRef --><a name="//apple_ref/c/func/openWithSessionRef"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="openWithSessionRef(void%32*)">openWithSessionRef(void *)</a></h2>
+</td></tr></table>
+<p>Opens a connection to a device that is not already open.
+<br><b>See Also:</b><br></p>
+<blockquote><dl>
+<dt>
+<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getSessionRef" logicalPath="//apple_ref/c/func/getSessionRef" target="_top">getSessionRef</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/tdef/IOFireWireSessionRef //apple_ref/c/tag/IOFireWireSessionRef //apple_ref/c/econst/IOFireWireSessionRef //apple_ref/c/struct/IOFireWireSessionRef //apple_ref/c/clconst/IOFireWireSessionRef" --><font class="type">IOFireWireSessionRef</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/getSessionRef" logicalPath="//apple_ref/c/instm/getSessionRef //apple_ref/c/clm/getSessionRef //apple_ref/c/intfcm/getSessionRef //apple_ref/c/func/getSessionRef" target="_top"><font class="function">getSessionRef</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sometimes it is desirable to open multiple user clients on a device. In the case 
+of FireWire sometimes we wish to have both the FireWire User Client and the AVC User Client 
+open at the same time. The technique to arbitrate this is as follows:<br>First open normally 
+the device furthest from the root in the IORegistry.<br>Second, get its sessionRef with the 
+with a call to this method.<br>Third, open the device further up the chain by calling 
+openWithSessionRef and passing the sessionRef returned from this call.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns a sessionRef on success.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/openWithSessionRef;  name=openWithSessionRef --><a name="//apple_ref/c/func/openWithSessionRef"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="openWithSessionRef(void%32*,%32IOFireWireSessionRef)">openWithSessionRef(void *, IOFireWireSessionRef)</a></h2>
+</td></tr></table>
+<p>Opens a connection to a device that is not already open.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/openWithSessionRef" logicalPath="//apple_ref/c/instm/openWithSessionRef //apple_ref/c/clm/openWithSessionRef //apple_ref/c/intfcm/openWithSessionRef //apple_ref/c/func/openWithSessionRef" target="_top"><font class="function">openWithSessionRef</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/tdef/IOFireWireSessionRef //apple_ref/c/tag/IOFireWireSessionRef //apple_ref/c/econst/IOFireWireSessionRef //apple_ref/c/struct/IOFireWireSessionRef //apple_ref/c/clconst/IOFireWireSessionRef" --><font class="type">IOFireWireSessionRef</font><!-- /a --> <font class="param">sessionRef</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Sometimes it is desirable to open multiple user clients on a device. In the case 
+of FireWire sometimes we wish to have both the FireWire User Client and the AVC User Client 
+open at the same time. The technique to arbitrate this is as follows:<br>First open normally 
+the device furthest from the root in the I/O Registry.<br>Second, get its sessionRef with the 
+getSessionRef call.<br>Third, open the device further up the chain by calling this method and 
+passing the sessionRef returned from the call in step 2.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>sessionRef</em></tt></dt>
+<dd>SessionRef returned from getSessionRef call.</dd>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns kIOReturnSuccess on success.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/removeCallbackDispatcherFromRunLoop;  name=removeCallbackDispatcherFromRunLoop --><a name="//apple_ref/c/func/removeCallbackDispatcherFromRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="removeCallbackDispatcherFromRunLoop">removeCallbackDispatcherFromRunLoop</a></h2>
+</td></tr></table>
+<p>Removes a dispatcher for kernel callbacks to the specified run loop.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibProtocolInterface/index.html?Functions/Functions.html#//apple_ref/c/func/removeCallbackDispatcherFromRunLoop" logicalPath="//apple_ref/c/instm/removeCallbackDispatcherFromRunLoop //apple_ref/c/clm/removeCallbackDispatcherFromRunLoop //apple_ref/c/intfcm/removeCallbackDispatcherFromRunLoop //apple_ref/c/func/removeCallbackDispatcherFromRunLoop" target="_top"><font class="function">removeCallbackDispatcherFromRunLoop</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Undoes the work of addCallbackDispatcherToRunLoop.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/setMessageCallback;  name=setMessageCallback --><a name="//apple_ref/c/func/setMessageCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="setMessageCallback">setMessageCallback</a></h2>
+</td></tr></table>
+<p>Sets callback for user space message routine.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibProtocolInterface/index.html?Functions/Functions.html#//apple_ref/c/func/setMessageCallback" logicalPath="//apple_ref/c/instm/setMessageCallback //apple_ref/c/clm/setMessageCallback //apple_ref/c/intfcm/setMessageCallback //apple_ref/c/func/setMessageCallback" target="_top"><font class="function">setMessageCallback</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCMessageCallback //apple_ref/c/cl/IOFWAVCMessageCallback //apple_ref/c/tdef/IOFWAVCMessageCallback //apple_ref/c/tag/IOFWAVCMessageCallback //apple_ref/c/econst/IOFWAVCMessageCallback //apple_ref/c/struct/IOFWAVCMessageCallback //apple_ref/c/clconst/IOFWAVCMessageCallback" --><font class="type">IOFWAVCMessageCallback</font><!-- /a --> <font class="param">callback</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>In FireWire and AVC, bus status messages are delivered via IOKit's message routine. 
+This routine is emulated in user space for AVC and FireWire messages via this callback. You should
+register here for bus reset and reconnect messages.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt>
+<dd>Pointer to IOFireWireAVCLibUnitInterface.</dd>
+<dt><tt><em>refCon</em></tt></dt>
+<dd>RefCon to be returned as first argument of completion routine.</dd>
+<dt><tt><em>callback</em></tt></dt>
+<dd>Address of completion routine.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/updateAVCCommandTimeout;  name=updateAVCCommandTimeout --><a name="//apple_ref/c/func/updateAVCCommandTimeout"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="updateAVCCommandTimeout">updateAVCCommandTimeout</a></h2>
+</td></tr></table>
+<p>Updates an AVCCommand's timeout back to 10 seconds.
+<br></p>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<a href="../../../../../documentation/IOFireWireAVCLib/Classes/IOFireWireAVCLibUnitInterface/index.html?Functions/Functions.html#//apple_ref/c/func/updateAVCCommandTimeout" logicalPath="//apple_ref/c/instm/updateAVCCommandTimeout //apple_ref/c/clm/updateAVCCommandTimeout //apple_ref/c/intfcm/updateAVCCommandTimeout //apple_ref/c/func/updateAVCCommandTimeout" target="_top"><font class="function">updateAVCCommandTimeout</font></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">self</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>AVCCommands will time out after 10 seconds unless this function is called (from another thread) to update the command's timeout back to 10 seconds.
+This function is only available if the interface version is &gt; 2.
+ </p>
+<hr>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Enumerations</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Enumerations</font></h1><br>
+<hr><!-- headerDoc=tag;  uid=//apple_ref/c/tag/Enumeration%32of%32wake-On-LAN%32filters.;  name=Enumerationofwake-On-LANfilters. -->
+<a name="//apple_ref/c/tag/Enumeration%32of%32wake-On-LAN%32filters."></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="Enumeration%32of%32wake-On-LAN%32filters.">Enumeration of wake-On-LAN filters.</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">enum</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOFWWakeOnMagicPacket //apple_ref/c/cl/kIOFWWakeOnMagicPacket //apple_ref/c/tdef/kIOFWWakeOnMagicPacket //apple_ref/c/tag/kIOFWWakeOnMagicPacket //apple_ref/c/econst/kIOFWWakeOnMagicPacket //apple_ref/c/struct/kIOFWWakeOnMagicPacket //apple_ref/c/clconst/kIOFWWakeOnMagicPacket" --><font class="type">kIOFWWakeOnMagicPacket</font><!-- /a --> = <font class="number">0x00000001</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOFWWakeOnPacketAddressMatch //apple_ref/c/cl/kIOFWWakeOnPacketAddressMatch //apple_ref/c/tdef/kIOFWWakeOnPacketAddressMatch //apple_ref/c/tag/kIOFWWakeOnPacketAddressMatch //apple_ref/c/econst/kIOFWWakeOnPacketAddressMatch //apple_ref/c/struct/kIOFWWakeOnPacketAddressMatch //apple_ref/c/clconst/kIOFWWakeOnPacketAddressMatch" --><font class="type">kIOFWWakeOnPacketAddressMatch</font><!-- /a --> = <font class="number">0x00000002</font> 
+}; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Constants</font></h5>
+<blockquote>
+<dl>
+<dt><a name="//apple_ref/c/econst/kIOFWWakeOnMagicPacket"><code>kIOFWWakeOnMagicPacket</code></a></dt><dd>Reception of a Magic Packet.</dd>
+<dt><a name="//apple_ref/c/econst/kIOFWWakeOnPacketAddressMatch"><code>kIOFWWakeOnPacketAddressMatch</code></a></dt><dd>Reception of a packet
+which passes through any of the address filtering mechanisms based
+on its destination FireWire address. This may include unicast,
+broadcast, or multicast addresses depending on the current state
+    and setting of the corresponding packet filters.</dd>
+</dl>
+</blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>An enumeration of all filters in the wake-on-LAN filter
+group. Each filter listed will respond to a network event that
+will trigger a system wake-up.
+</p>
+</dl>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

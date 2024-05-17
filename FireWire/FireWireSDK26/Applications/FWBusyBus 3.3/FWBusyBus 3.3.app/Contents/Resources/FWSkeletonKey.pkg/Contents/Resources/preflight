@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if ( kextstat | grep --silent "com.apple.iokit.FWSkeletonKey" ); then
+	kextunload -b com.apple.iokit.FWSkeletonKey ;
+fi ;
+
+if ( kextstat | grep --silent "com.apple.FWSkeletonKey" ); then
+	kextunload -b com.apple.FWSkeletonKey ;
+fi ;
+
+if [ -e /System/Library/PrivateFrameworks/FWSkeletonKey.framework ]; then
+	rm -r /System/Library/PrivateFrameworks/FWSkeletonKey.framework ;
+fi ;
+
+if [ -e /System/Library/Frameworks/FWSkeletonKey.framework ]; then
+	rm -r /System/Library/Frameworks/FWSkeletonKey.framework ;
+fi ;

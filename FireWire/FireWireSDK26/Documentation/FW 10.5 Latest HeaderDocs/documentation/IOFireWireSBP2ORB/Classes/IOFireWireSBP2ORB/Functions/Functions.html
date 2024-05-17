@@ -1,0 +1,761 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/allocatePageTable/virtualIOReturn/(UInt32)" target="doc">allocatePageTable </a></tt></dt>
+<dd>Allocates memory for the page table.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/deallocatePageTable/virtualvoid/()" target="doc">deallocatePageTable </a></tt></dt>
+<dd>Frees up memory allocated for the page table.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandBufferDescriptor/virtualIOMemoryDescriptor*/()" target="doc">getCommandBufferDescriptor </a></tt></dt>
+<dd>Returns the memory descriptor representing the command buffer.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandFlags/virtualUInt32/()" target="doc">getCommandFlags </a></tt></dt>
+<dd>Sets configuration flags for the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandGeneration/virtualUInt32/()" target="doc">getCommandGeneration </a></tt></dt>
+<dd>Gets the command generation.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandTimeout/virtualUInt32/()" target="doc">getCommandTimeout </a></tt></dt>
+<dd>Gets the timeout of the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getLogin/virtualIOFireWireSBP2Login*/()" target="doc">getLogin </a></tt></dt>
+<dd>Gets the login associated with this ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getMaxPayloadSize/virtualUInt32/()" target="doc">getMaxPayloadSize </a></tt></dt>
+<dd>Gets max payload size for the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getORBAddress/virtualvoid/(FWAddress*)" target="doc">getORBAddress </a></tt></dt>
+<dd>Returns the FireWire address of this ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon/virtualvoid*/()" target="doc">getRefCon </a></tt></dt>
+<dd>Returns the refCon set with setRefCon.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon64/virtualUInt64/()" target="doc">getRefCon64 </a></tt></dt>
+<dd>Returns the 64 bit refCon set with setRefCon64.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/release/virtualvoid/()" target="doc">release </a></tt></dt>
+<dd>Primary implementation of the release mechanism.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/releaseCommandBuffers/virtualIOReturn/()" target="doc">releaseCommandBuffers </a></tt></dt>
+<dd>Releases SBP2's reference to the command buffers.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setBufferConstraints/IOReturn/(UInt64,UInt32,UInt32)" target="doc">setBufferConstraints </a></tt></dt>
+<dd>Configures page table generation parameters
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(IOMemoryDescriptor*)" target="doc">setCommandBlock (IOMemoryDescriptor *)</a></tt></dt>
+<dd>Sets the command block portion of the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(void*,UInt32)" target="doc">setCommandBlock (void *, UInt32)</a></tt></dt>
+<dd>Sets the command block portion of the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffers/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32)" target="doc">setCommandBuffers </a></tt></dt>
+<dd>Creates a page table from a list of ranges.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32)" target="doc">setCommandBuffersAsRanges (IOMemoryDescriptor *, UInt32, UInt32)</a></tt></dt>
+<dd>Creates a page table from a list of ranges.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOVirtualRange*,UInt32,IODirection,task_t,UInt32,UInt32)" target="doc">setCommandBuffersAsRanges (IOVirtualRange *, UInt32, IODirection, task_t, UInt32, UInt32)</a></tt></dt>
+<dd>Creates a page table from a list of ranges.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges64/IOReturn/(IOAddressRange*,uint64_t,IODirection,task_t,uint64_t,uint64_t)" target="doc">setCommandBuffersAsRanges64 </a></tt></dt>
+<dd>Creates a page table from a list of 64 bit ranges.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandFlags/virtualvoid/(UInt32)" target="doc">setCommandFlags </a></tt></dt>
+<dd>Sets configuration flags for the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandGeneration/virtualvoid/(UInt32)" target="doc">setCommandGeneration </a></tt></dt>
+<dd>Sets the command generation.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandTimeout/virtualvoid/(UInt32)" target="doc">setCommandTimeout </a></tt></dt>
+<dd>Sets the timeout of the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setMaxPayloadSize/virtualvoid/(UInt32)" target="doc">setMaxPayloadSize </a></tt></dt>
+<dd>Sets max payload size for the ORB.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon/virtualvoid/(void*)" target="doc">setRefCon </a></tt></dt>
+<dd>Sets the ORB refCon.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon64/virtualvoid/(UInt64)" target="doc">setRefCon64 </a></tt></dt>
+<dd>Sets the ORB refCon as a 64 bit value.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/allocatePageTable/virtualIOReturn/(UInt32);  name=IOFireWireSBP2ORB::allocatePageTable --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/allocatePageTable/virtualIOReturn/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="allocatePageTable">allocatePageTable </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocates memory for the page table.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/allocatePageTable //apple_ref/cpp/clm/allocatePageTable //apple_ref/cpp/intfcm/allocatePageTable //apple_ref/cpp/intfm/allocatePageTable //apple_ref/cpp/func/allocatePageTable //apple_ref/cpp/ftmplt/allocatePageTable //apple_ref/cpp/defn/allocatePageTable //apple_ref/cpp/macro/allocatePageTable" --><span class="function">allocatePageTable</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">entryCount</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>entryCount </code></dt>
+<dd>number of entries of page table to be allocated.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Page table allocation is handle automatically by the ORB, except if the 
+kFWSBP2CommandFixedSize flags is set. In this case we will fail to write a page table if we 
+need more page table space than we have already. This method is exposed so these drivers 
+can preallocate as much page table as they need. This is useful if your driver is part of 
+the paging path and cannot allow allocations to occur.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/deallocatePageTable/virtualvoid/();  name=IOFireWireSBP2ORB::deallocatePageTable --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/deallocatePageTable/virtualvoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="deallocatePageTable">deallocatePageTable </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Frees up memory allocated for the page table.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>protected</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/deallocatePageTable //apple_ref/cpp/clm/deallocatePageTable //apple_ref/cpp/intfcm/deallocatePageTable //apple_ref/cpp/intfm/deallocatePageTable //apple_ref/cpp/func/deallocatePageTable //apple_ref/cpp/ftmplt/deallocatePageTable //apple_ref/cpp/defn/deallocatePageTable //apple_ref/cpp/macro/deallocatePageTable" --><span class="function">deallocatePageTable</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Frees all memory associated with the page table. Undoes what allocatePageTable does. 
+Calling allocatePageTable again will automatically deallocate the existing page table before 
+allocating a new one, so this method is not used in most cases.
+ <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandBufferDescriptor/virtualIOMemoryDescriptor*/();  name=IOFireWireSBP2ORB::getCommandBufferDescriptor --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandBufferDescriptor/virtualIOMemoryDescriptor*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getCommandBufferDescriptor">getCommandBufferDescriptor </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the memory descriptor representing the command buffer.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> <span class="type">*</span> <!-- a logicalPath="//apple_ref/cpp/instm/getCommandBufferDescriptor //apple_ref/cpp/clm/getCommandBufferDescriptor //apple_ref/cpp/intfcm/getCommandBufferDescriptor //apple_ref/cpp/intfm/getCommandBufferDescriptor //apple_ref/cpp/func/getCommandBufferDescriptor //apple_ref/cpp/ftmplt/getCommandBufferDescriptor //apple_ref/cpp/defn/getCommandBufferDescriptor //apple_ref/cpp/macro/getCommandBufferDescriptor" --><span class="function">getCommandBufferDescriptor</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns memory descriptor representing mapped data buffers. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the IOMemoryDescriptor for the data mapped by setCommandBuffer variants. 
+Works for setCommandBuffersAsRanges too.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandFlags/virtualUInt32/();  name=IOFireWireSBP2ORB::getCommandFlags --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandFlags/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getCommandFlags">getCommandFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets configuration flags for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getCommandFlags //apple_ref/cpp/clm/getCommandFlags //apple_ref/cpp/intfcm/getCommandFlags //apple_ref/cpp/intfm/getCommandFlags //apple_ref/cpp/func/getCommandFlags //apple_ref/cpp/ftmplt/getCommandFlags //apple_ref/cpp/defn/getCommandFlags //apple_ref/cpp/macro/getCommandFlags" --><span class="function">getCommandFlags</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Return The current ORB flags.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the current configuration flags set on this ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandGeneration/virtualUInt32/();  name=IOFireWireSBP2ORB::getCommandGeneration --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandGeneration/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getCommandGeneration">getCommandGeneration </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the command generation.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getCommandGeneration //apple_ref/cpp/clm/getCommandGeneration //apple_ref/cpp/intfcm/getCommandGeneration //apple_ref/cpp/intfm/getCommandGeneration //apple_ref/cpp/func/getCommandGeneration //apple_ref/cpp/ftmplt/getCommandGeneration //apple_ref/cpp/defn/getCommandGeneration //apple_ref/cpp/macro/getCommandGeneration" --><span class="function">getCommandGeneration</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the bus generation for command execution.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This gets the bus generation this ORB should be appended in.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandTimeout/virtualUInt32/();  name=IOFireWireSBP2ORB::getCommandTimeout --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getCommandTimeout/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getCommandTimeout">getCommandTimeout </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the timeout of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getCommandTimeout //apple_ref/cpp/clm/getCommandTimeout //apple_ref/cpp/intfcm/getCommandTimeout //apple_ref/cpp/intfm/getCommandTimeout //apple_ref/cpp/func/getCommandTimeout //apple_ref/cpp/ftmplt/getCommandTimeout //apple_ref/cpp/defn/getCommandTimeout //apple_ref/cpp/macro/getCommandTimeout" --><span class="function">getCommandTimeout</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the timeout for the orb in milliseconds.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This method gets the timeout for this ORB in milliseconds.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getLogin/virtualIOFireWireSBP2Login*/();  name=IOFireWireSBP2ORB::getLogin --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getLogin/virtualIOFireWireSBP2Login*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getLogin">getLogin </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the login associated with this ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <a href="../../../../../documentation/IOFireWireSBP2Login/Classes/IOFireWireSBP2Login_/index.html#//apple_ref/cpp/cl/IOFireWireSBP2Login" logicalPath="//apple_ref/cpp/cl/IOFireWireSBP2Login" target="_top"><span class="type">IOFireWireSBP2Login</span></a> <span class="type">*</span> <!-- a logicalPath="//apple_ref/cpp/instm/getLogin //apple_ref/cpp/clm/getLogin //apple_ref/cpp/intfcm/getLogin //apple_ref/cpp/intfm/getLogin //apple_ref/cpp/func/getLogin //apple_ref/cpp/ftmplt/getLogin //apple_ref/cpp/defn/getLogin //apple_ref/cpp/macro/getLogin" --><span class="function">getLogin</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a pointer to an IOFireWireSBP2Login. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the IOFireWireSBP2Login object associated with this ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getMaxPayloadSize/virtualUInt32/();  name=IOFireWireSBP2ORB::getMaxPayloadSize --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getMaxPayloadSize/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMaxPayloadSize">getMaxPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets max payload size for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMaxPayloadSize //apple_ref/cpp/clm/getMaxPayloadSize //apple_ref/cpp/intfcm/getMaxPayloadSize //apple_ref/cpp/intfm/getMaxPayloadSize //apple_ref/cpp/func/getMaxPayloadSize //apple_ref/cpp/ftmplt/getMaxPayloadSize //apple_ref/cpp/defn/getMaxPayloadSize //apple_ref/cpp/macro/getMaxPayloadSize" --><span class="function">getMaxPayloadSize</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the maximum payload size in bytes.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This gets the maximum payload size for this ORB only.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getORBAddress/virtualvoid/(FWAddress*);  name=IOFireWireSBP2ORB::getORBAddress --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getORBAddress/virtualvoid/(FWAddress*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getORBAddress">getORBAddress </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the FireWire address of this ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getORBAddress //apple_ref/cpp/clm/getORBAddress //apple_ref/cpp/intfcm/getORBAddress //apple_ref/cpp/intfm/getORBAddress //apple_ref/cpp/func/getORBAddress //apple_ref/cpp/ftmplt/getORBAddress //apple_ref/cpp/defn/getORBAddress //apple_ref/cpp/macro/getORBAddress" --><span class="function">getORBAddress</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> *<span class="param">address</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the FireWire address of this ORB.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the FireWire bus address of this ORB. This is not the same as the Macintosh 
+address for the IOFireWireSBP2ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon/virtualvoid*/();  name=IOFireWireSBP2ORB::getRefCon --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon/virtualvoid*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon">getRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the refCon set with setRefCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/cpp/instm/getRefCon //apple_ref/cpp/clm/getRefCon //apple_ref/cpp/intfcm/getRefCon //apple_ref/cpp/intfm/getRefCon //apple_ref/cpp/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the ORB with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon64/virtualUInt64/();  name=IOFireWireSBP2ORB::getRefCon64 --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/getRefCon64/virtualUInt64/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon64">getRefCon64 </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the 64 bit refCon set with setRefCon64.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64 //apple_ref/cpp/intf/UInt64" --><span class="type">UInt64</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getRefCon64 //apple_ref/cpp/clm/getRefCon64 //apple_ref/cpp/intfcm/getRefCon64 //apple_ref/cpp/intfm/getRefCon64 //apple_ref/cpp/func/getRefCon64 //apple_ref/cpp/ftmplt/getRefCon64 //apple_ref/cpp/defn/getRefCon64 //apple_ref/cpp/macro/getRefCon64" --><span class="function">getRefCon64</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the ORB with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/release/virtualvoid/();  name=IOFireWireSBP2ORB::release --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/release/virtualvoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="release">release </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Primary implementation of the release mechanism.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/release //apple_ref/cpp/clm/release //apple_ref/cpp/intfcm/release //apple_ref/cpp/intfm/release //apple_ref/cpp/func/release //apple_ref/cpp/ftmplt/release //apple_ref/cpp/defn/release //apple_ref/cpp/macro/release" --><span class="function">release</span><!-- /a -->() <span class="keyword">const</span>; </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>when </code></dt>
+<dd>When retainCount == when then call free().</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->See OSObject.h for more information. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/releaseCommandBuffers/virtualIOReturn/();  name=IOFireWireSBP2ORB::releaseCommandBuffers --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/releaseCommandBuffers/virtualIOReturn/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="releaseCommandBuffers">releaseCommandBuffers </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Releases SBP2's reference to the command buffers.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/releaseCommandBuffers" logicalPath="//apple_ref/cpp/instm/releaseCommandBuffers //apple_ref/cpp/clm/releaseCommandBuffers //apple_ref/cpp/intfcm/releaseCommandBuffers //apple_ref/cpp/intfm/releaseCommandBuffers //apple_ref/cpp/func/releaseCommandBuffers" target="_top"><span class="function">releaseCommandBuffers</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was cleared successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When you create a page table with one of the variants of setCommandBuffers. 
+SBP2 holds on to a reference to the buffers until this method is called. This means that 
+if a command completed and you manipulated the memory descriptor or released the buffers 
+without calling this method you could leave FW in an inconsistent state. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setBufferConstraints/IOReturn/(UInt64,UInt32,UInt32);  name=IOFireWireSBP2ORB::setBufferConstraints --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setBufferConstraints/IOReturn/(UInt64,UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setBufferConstraints">setBufferConstraints </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Configures page table generation parameters
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setBufferConstraints //apple_ref/cpp/clm/setBufferConstraints //apple_ref/cpp/intfcm/setBufferConstraints //apple_ref/cpp/intfm/setBufferConstraints //apple_ref/cpp/func/setBufferConstraints //apple_ref/cpp/ftmplt/setBufferConstraints //apple_ref/cpp/defn/setBufferConstraints //apple_ref/cpp/macro/setBufferConstraints" --><span class="function">setBufferConstraints</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64 //apple_ref/cpp/intf/UInt64" --><span class="type">UInt64</span><!-- /a --> <span class="param">maxSegmentSize</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">alignment</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/options //apple_ref/cpp/tdef/options //apple_ref/cpp/tag/options //apple_ref/cpp/econst/options //apple_ref/cpp/struct/options //apple_ref/cpp/clconst/options //apple_ref/cpp/intf/options" --><span class="type">options</span><!-- /a --> = <span class="number">0</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->May return an error if there is a problem allocating the underlying resources or if buffers are currently attached.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the maximums size of any page table segment and the required alignemnt. Double buffering
+may be used to satisfy these constraints. The only supported option is kFWSBP2ConstraintForceDoubleBuffer which
+forces a page aligned double buffering of the entire descriptor.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(IOMemoryDescriptor*);  name=IOFireWireSBP2ORB::setCommandBlock --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(IOMemoryDescriptor*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBlock(IOMemoryDescriptor*)">setCommandBlock (IOMemoryDescriptor *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command block portion of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandBlock" logicalPath="//apple_ref/cpp/instm/setCommandBlock //apple_ref/cpp/clm/setCommandBlock //apple_ref/cpp/intfcm/setCommandBlock //apple_ref/cpp/intfm/setCommandBlock //apple_ref/cpp/func/setCommandBlock" target="_top"><span class="function">setCommandBlock</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">memory</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>memory </code></dt>
+<dd>IOMemoryDescriptor representing the command block buffer.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the command block was updated successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Copys the data provided in the buffer to the command block portion of the ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(void*,UInt32);  name=IOFireWireSBP2ORB::setCommandBlock --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBlock/virtualIOReturn/(void*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBlock(void*,UInt32)">setCommandBlock (void *, UInt32)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command block portion of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandBlock" logicalPath="//apple_ref/cpp/instm/setCommandBlock //apple_ref/cpp/clm/setCommandBlock //apple_ref/cpp/intfcm/setCommandBlock //apple_ref/cpp/intfm/setCommandBlock //apple_ref/cpp/func/setCommandBlock" target="_top"><span class="function">setCommandBlock</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buffer</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>buffer </code></dt>
+<dd>Pointer to buffer to copy command block from.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to copy.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the command block was updated successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Copys the data provided in the buffer to the command block portion of the ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffers/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32);  name=IOFireWireSBP2ORB::setCommandBuffers --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffers/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBuffers">setCommandBuffers </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table from a list of ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setCommandBuffers //apple_ref/cpp/clm/setCommandBuffers //apple_ref/cpp/intfcm/setCommandBuffers //apple_ref/cpp/intfm/setCommandBuffers //apple_ref/cpp/func/setCommandBuffers //apple_ref/cpp/ftmplt/setCommandBuffers //apple_ref/cpp/defn/setCommandBuffers //apple_ref/cpp/macro/setCommandBuffers" --><span class="function">setCommandBuffers</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">memoryDescriptor</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/offset //apple_ref/cpp/tdef/offset //apple_ref/cpp/tag/offset //apple_ref/cpp/econst/offset //apple_ref/cpp/struct/offset //apple_ref/cpp/clconst/offset //apple_ref/cpp/intf/offset" --><span class="type">offset</span><!-- /a --> = <span class="number">0</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/length //apple_ref/cpp/tdef/length //apple_ref/cpp/tag/length //apple_ref/cpp/econst/length //apple_ref/cpp/struct/length //apple_ref/cpp/clconst/length //apple_ref/cpp/intf/length" --><span class="type">length</span><!-- /a --> = <span class="number">0</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>memoryDescriptor </code></dt>
+<dd>IOMemoryDescriptor describe ranges to be written to a page table.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a page table with the given parameters. Any addresses mapped by this method 
+must remain valid until setCommandBuffers is called again or releaseCommandBuffers is called. 
+The SBP2 services do not release references to the command buffers just because the command 
+has completed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:instm;  uid=//apple_ref/doc/title:instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32);  name=IOFireWireSBP2ORB::setCommandBuffersAsRanges --><a name="//apple_ref/doc/title:instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOMemoryDescriptor*,UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBuffersAsRanges(IOMemoryDescriptor*,UInt32,UInt32)">setCommandBuffersAsRanges (IOMemoryDescriptor *, UInt32, UInt32)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table from a list of ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setCommandBuffers //apple_ref/cpp/clm/setCommandBuffers //apple_ref/cpp/intfcm/setCommandBuffers //apple_ref/cpp/intfm/setCommandBuffers //apple_ref/cpp/func/setCommandBuffers //apple_ref/cpp/ftmplt/setCommandBuffers //apple_ref/cpp/defn/setCommandBuffers //apple_ref/cpp/macro/setCommandBuffers" --><span class="function">setCommandBuffers</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">memoryDescriptor</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/offset //apple_ref/cpp/tdef/offset //apple_ref/cpp/tag/offset //apple_ref/cpp/econst/offset //apple_ref/cpp/struct/offset //apple_ref/cpp/clconst/offset //apple_ref/cpp/intf/offset" --><span class="type">offset</span><!-- /a --> = <span class="number">0</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/length //apple_ref/cpp/tdef/length //apple_ref/cpp/tag/length //apple_ref/cpp/econst/length //apple_ref/cpp/struct/length //apple_ref/cpp/clconst/length //apple_ref/cpp/intf/length" --><span class="type">length</span><!-- /a --> = <span class="number">0</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>memoryDescriptor </code></dt>
+<dd>IOMemoryDescriptor describe ranges to be written to a page table.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a page table with the given parameters. Any addresses mapped by this method 
+must remain valid until setCommandBuffers is called again or releaseCommandBuffers is called. 
+The SBP2 services do not release references to the command buffers just because the command 
+has completed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOVirtualRange*,UInt32,IODirection,task_t,UInt32,UInt32);  name=IOFireWireSBP2ORB::setCommandBuffersAsRanges --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges/virtualIOReturn/(IOVirtualRange*,UInt32,IODirection,task_t,UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBuffersAsRanges(IOVirtualRange*,UInt32,IODirection,task_t,UInt32,UInt32)">setCommandBuffersAsRanges (IOVirtualRange *, UInt32, IODirection, task_t, UInt32, UInt32)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table from a list of ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandBuffersAsRanges" logicalPath="//apple_ref/cpp/instm/setCommandBuffersAsRanges //apple_ref/cpp/clm/setCommandBuffersAsRanges //apple_ref/cpp/intfcm/setCommandBuffersAsRanges //apple_ref/cpp/intfm/setCommandBuffersAsRanges //apple_ref/cpp/func/setCommandBuffersAsRanges" target="_top"><span class="function">setCommandBuffersAsRanges</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">ranges</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">withCount</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IODirection //apple_ref/cpp/tdef/IODirection //apple_ref/cpp/tag/IODirection //apple_ref/cpp/econst/IODirection //apple_ref/cpp/struct/IODirection //apple_ref/cpp/clconst/IODirection //apple_ref/cpp/intf/IODirection" --><span class="type">IODirection</span><!-- /a --> <span class="param">withDirection</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/task_t //apple_ref/cpp/tdef/task_t //apple_ref/cpp/tag/task_t //apple_ref/cpp/econst/task_t //apple_ref/cpp/struct/task_t //apple_ref/cpp/clconst/task_t //apple_ref/cpp/intf/task_t" --><span class="type">task_t</span><!-- /a --> <span class="param">withTask</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/offset //apple_ref/cpp/tdef/offset //apple_ref/cpp/tag/offset //apple_ref/cpp/econst/offset //apple_ref/cpp/struct/offset //apple_ref/cpp/clconst/offset //apple_ref/cpp/intf/offset" --><span class="type">offset</span><!-- /a --> = <span class="number">0</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/length //apple_ref/cpp/tdef/length //apple_ref/cpp/tag/length //apple_ref/cpp/econst/length //apple_ref/cpp/struct/length //apple_ref/cpp/clconst/length //apple_ref/cpp/intf/length" --><span class="type">length</span><!-- /a --> = <span class="number">0</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>ranges </code></dt>
+<dd>An array of ranges representing the data to be transfered.</dd>
+<dt><code>withCount </code></dt>
+<dd>The number of ranges in the ranges array.</dd>
+<dt><code>withDirection </code></dt>
+<dd>An IODirection indicating the direction of data transfer.</dd>
+<dt><code>withTask </code></dt>
+<dd>The task that these adressses reside in.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a page table with the given parameters. Any addresses mapped by this method 
+must remain valid until setCommandBuffers is called again or releaseCommandBuffers is called. 
+The SBP2 services do not release references to the command buffers just because the command 
+has completed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges64/IOReturn/(IOAddressRange*,uint64_t,IODirection,task_t,uint64_t,uint64_t);  name=IOFireWireSBP2ORB::setCommandBuffersAsRanges64 --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandBuffersAsRanges64/IOReturn/(IOAddressRange*,uint64_t,IODirection,task_t,uint64_t,uint64_t)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBuffersAsRanges64">setCommandBuffersAsRanges64 </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table from a list of 64 bit ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setCommandBuffersAsRanges64 //apple_ref/cpp/clm/setCommandBuffersAsRanges64 //apple_ref/cpp/intfcm/setCommandBuffersAsRanges64 //apple_ref/cpp/intfm/setCommandBuffersAsRanges64 //apple_ref/cpp/func/setCommandBuffersAsRanges64 //apple_ref/cpp/ftmplt/setCommandBuffersAsRanges64 //apple_ref/cpp/defn/setCommandBuffersAsRanges64 //apple_ref/cpp/macro/setCommandBuffersAsRanges64" --><span class="function">setCommandBuffersAsRanges64</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOAddressRange //apple_ref/cpp/tdef/IOAddressRange //apple_ref/cpp/tag/IOAddressRange //apple_ref/cpp/econst/IOAddressRange //apple_ref/cpp/struct/IOAddressRange //apple_ref/cpp/clconst/IOAddressRange //apple_ref/cpp/intf/IOAddressRange" --><span class="type">IOAddressRange</span><!-- /a --> *<span class="param">ranges</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/uint64_t //apple_ref/cpp/tdef/uint64_t //apple_ref/cpp/tag/uint64_t //apple_ref/cpp/econst/uint64_t //apple_ref/cpp/struct/uint64_t //apple_ref/cpp/clconst/uint64_t //apple_ref/cpp/intf/uint64_t" --><span class="type">uint64_t</span><!-- /a --> <span class="param">withCount</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IODirection //apple_ref/cpp/tdef/IODirection //apple_ref/cpp/tag/IODirection //apple_ref/cpp/econst/IODirection //apple_ref/cpp/struct/IODirection //apple_ref/cpp/clconst/IODirection //apple_ref/cpp/intf/IODirection" --><span class="type">IODirection</span><!-- /a --> <span class="param">withDirection</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/task_t //apple_ref/cpp/tdef/task_t //apple_ref/cpp/tag/task_t //apple_ref/cpp/econst/task_t //apple_ref/cpp/struct/task_t //apple_ref/cpp/clconst/task_t //apple_ref/cpp/intf/task_t" --><span class="type">task_t</span><!-- /a --> <span class="param">withTask</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/uint64_t //apple_ref/cpp/tdef/uint64_t //apple_ref/cpp/tag/uint64_t //apple_ref/cpp/econst/uint64_t //apple_ref/cpp/struct/uint64_t //apple_ref/cpp/clconst/uint64_t //apple_ref/cpp/intf/uint64_t" --><span class="type">uint64_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/offset //apple_ref/cpp/tdef/offset //apple_ref/cpp/tag/offset //apple_ref/cpp/econst/offset //apple_ref/cpp/struct/offset //apple_ref/cpp/clconst/offset //apple_ref/cpp/intf/offset" --><span class="type">offset</span><!-- /a --> = <span class="number">0</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/uint64_t //apple_ref/cpp/tdef/uint64_t //apple_ref/cpp/tag/uint64_t //apple_ref/cpp/econst/uint64_t //apple_ref/cpp/struct/uint64_t //apple_ref/cpp/clconst/uint64_t //apple_ref/cpp/intf/uint64_t" --><span class="type">uint64_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/length //apple_ref/cpp/tdef/length //apple_ref/cpp/tag/length //apple_ref/cpp/econst/length //apple_ref/cpp/struct/length //apple_ref/cpp/clconst/length //apple_ref/cpp/intf/length" --><span class="type">length</span><!-- /a --> = <span class="number">0</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>ranges </code></dt>
+<dd>An array of ranges representing the data to be transfered.</dd>
+<dt><code>withCount </code></dt>
+<dd>The number of ranges in the ranges array.</dd>
+<dt><code>withDirection </code></dt>
+<dd>An IODirection indicating the direction of data transfer.</dd>
+<dt><code>withTask </code></dt>
+<dd>The task that these adressses reside in.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a page table with the given parameters. Any addresses mapped by this method 
+must remain valid until setCommandBuffers is called again or releaseCommandBuffers is called. 
+The SBP2 services do not release references to the command buffers just because the command 
+has completed. This is a 64 bit compatible version of setCommandBuffersAsRanges.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandFlags/virtualvoid/(UInt32);  name=IOFireWireSBP2ORB::setCommandFlags --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandFlags/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandFlags">setCommandFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets configuration flags for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandFlags" logicalPath="//apple_ref/cpp/instm/setCommandFlags //apple_ref/cpp/clm/setCommandFlags //apple_ref/cpp/intfcm/setCommandFlags //apple_ref/cpp/intfm/setCommandFlags //apple_ref/cpp/func/setCommandFlags" target="_top"><span class="function">setCommandFlags</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>flags </code></dt>
+<dd>The flags to be set.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the configuration flags for the ORB. These can be any of the following:
+</p>
+<p>kFWSBP2CommandCompleteNotify - Set the notify bit as specified in SBP2 standard. Set to receive completion/timeout notification on this ORB. You almost always want to set this.</p>
+<p>kFWSBP2CommandTransferDataFromTarget - Transfer direction as specified in SBP2 standard. Set if data is to be written by the device into the host's memory.</p>
+<p>kFWSBP2CommandImmediate - Immediate Append. ORB address will be written to fetch agent and not chained. It is only legal to have one immediate ORB in progress at a time.</p>
+<p>kFWSBP2CommandNormalORB - ORB format 0 - Format specified by SBP2 standard. Set this for most ORBs.</p>
+<p>kFWSBP2CommandReservedORB - ORB format 1 - Format reserved by SBP2 standard for future standardization.</p>
+<p>kFWSBP2CommandVendorORB - ORB format 2 - Format specified by SBP2 standard for vendor dependent ORBs.</p>
+<p>kFWSBP2CommandDummyORB - ORB format 3 - Format specified by SBP2 standard for dummy ORBs.</p>
+<p>kFWSBP2CommandCheckGeneration - If set upon submitORB, the ORB will only be appended if generation set with setCommandGeneration() matches the current generation. Pretty much all SBP2 drivers need sophisticated logic to track login state, so this is generally not used. </p>
+<p>kFWSBP2CommandFixedSize - Do not allocate more memory for page table if needed. If there is not enough space in the currently allocated page table, the setCommandBuffers call will fail. This is important to set if your device is the backing store, as we don't want to cause memory allocations on the paging path. </p>
+<p>kFWSBP2CommandVirtualORBs - Normally ORBs are backed by physical address spaces. Setting this flag makes this ORB backed by a pseudo address space. This can make ORBs easier to see in a bus trace. Virtual ORBs will have an address in the form of ffcX.XXXX.0000.0000. Pseudo address space backed ORBs are slower, so you won't want to set for deployment builds.</p>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandGeneration/virtualvoid/(UInt32);  name=IOFireWireSBP2ORB::setCommandGeneration --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandGeneration/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandGeneration">setCommandGeneration </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command generation.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandGeneration" logicalPath="//apple_ref/cpp/instm/setCommandGeneration //apple_ref/cpp/clm/setCommandGeneration //apple_ref/cpp/intfcm/setCommandGeneration //apple_ref/cpp/intfm/setCommandGeneration //apple_ref/cpp/func/setCommandGeneration" target="_top"><span class="function">setCommandGeneration</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">gen</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>gen </code></dt>
+<dd>The bus generation for command execution.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the bus generation this ORB should be appended in. It is only meaningful 
+when combined with the kFWSBP2CommandCheckGeneration flags above.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandTimeout/virtualvoid/(UInt32);  name=IOFireWireSBP2ORB::setCommandTimeout --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setCommandTimeout/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandTimeout">setCommandTimeout </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the timeout of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandTimeout" logicalPath="//apple_ref/cpp/instm/setCommandTimeout //apple_ref/cpp/clm/setCommandTimeout //apple_ref/cpp/intfcm/setCommandTimeout //apple_ref/cpp/intfm/setCommandTimeout //apple_ref/cpp/func/setCommandTimeout" target="_top"><span class="function">setCommandTimeout</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">timeout</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>timeout </code></dt>
+<dd>The timeout duration in milliseconds.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the timeout for the ORB in milliseconds. Note that ORBs without timeouts 
+can be "lost." You will obviously not recieve timeout notification for timeouts of zero. But 
+perhaps less obviously you will not recieve orb reset notification, which is really a sort of
+accelerated timeout notification for bus reset situations. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setMaxPayloadSize/virtualvoid/(UInt32);  name=IOFireWireSBP2ORB::setMaxPayloadSize --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setMaxPayloadSize/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMaxPayloadSize">setMaxPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets max payload size for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMaxPayloadSize" logicalPath="//apple_ref/cpp/instm/setMaxPayloadSize //apple_ref/cpp/clm/setMaxPayloadSize //apple_ref/cpp/intfcm/setMaxPayloadSize //apple_ref/cpp/intfm/setMaxPayloadSize //apple_ref/cpp/func/setMaxPayloadSize" target="_top"><span class="function">setMaxPayloadSize</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">maxPayloadSize</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>maxPayloadSize </code></dt>
+<dd>The maximum payload size in bytes.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the maximum payload size for this ORB only. This size is clipped by 
+the global max payload size set in the login object.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon/virtualvoid/(void*);  name=IOFireWireSBP2ORB::setRefCon --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon/virtualvoid/(void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon">setRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the ORB refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/cpp/instm/setRefCon //apple_ref/cpp/clm/setRefCon //apple_ref/cpp/intfcm/setRefCon //apple_ref/cpp/intfm/setRefCon //apple_ref/cpp/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the ORB that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon64/virtualvoid/(UInt64);  name=IOFireWireSBP2ORB::setRefCon64 --><a name="//apple_ref/cpp/instm/IOFireWireSBP2ORB/setRefCon64/virtualvoid/(UInt64)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon64">setRefCon64 </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the ORB refCon as a 64 bit value.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setRefCon64 //apple_ref/cpp/clm/setRefCon64 //apple_ref/cpp/intfcm/setRefCon64 //apple_ref/cpp/intfm/setRefCon64 //apple_ref/cpp/func/setRefCon64 //apple_ref/cpp/ftmplt/setRefCon64 //apple_ref/cpp/defn/setRefCon64 //apple_ref/cpp/macro/setRefCon64" --><span class="function">setRefCon64</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64 //apple_ref/cpp/intf/UInt64" --><span class="type">UInt64</span><!-- /a --> <span class="param">refCon</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the ORB that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/activate/virtualIOReturn/()" target="doc">activate</a></tt></dt>
+<dd>Address space is ready for handling requests.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/addTrustedNode/inlinevoid/(IOFireWireDevice*)" target="doc">addTrustedNode</a></tt></dt>
+<dd>Add a trusted node.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/contains/virtualUInt32/(FWAddress)" target="doc">contains</a></tt></dt>
+<dd>returns number of bytes starting at addr in this space
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/deactivate/virtualvoid/()" target="doc">deactivate</a></tt></dt>
+<dd>Address space request handler is disabled.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/doLock/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constUInt32*,UInt32%38,UInt32*,UInt32,IOFWRequestRefCon)" target="doc">doLock</a></tt></dt>
+<dd>A method for processing a lock request.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/doRead/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,IOMemoryDescriptor**,IOByteCount*,IOFWRequestRefCon)" target="doc">doRead</a></tt></dt>
+<dd>An abstract method for processing an address space read request
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/doWrite/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon)" target="doc">doWrite</a></tt></dt>
+<dd>An abstract method for processing an address space write request
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/intersects/inlinebool/(IOFWAddressSpace*)" target="doc">intersects</a></tt></dt>
+<dd>Checks this address space intersects with the given address range. Currently only supports IOFWPsuedoAddressSpaces.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/isExclusive/inlinebool/()" target="doc">isExclusive</a></tt></dt>
+<dd>Checks if an address space wants exclusive control of its address range
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/isTrustedNode/inlinebool/(UInt16)" target="doc">isTrustedNode</a></tt></dt>
+<dd>returns true if the node is added as a trusted node
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/removeAllTrustedNodes/inlinevoid/()" target="doc">removeAllTrustedNodes</a></tt></dt>
+<dd>Remove all trusted nodes.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/removeTrustedNode/inlinevoid/(IOFireWireDevice*)" target="doc">removeTrustedNode</a></tt></dt>
+<dd>Remove a trusted node.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWAddressSpace/setExclusive/inlinevoid/(bool)" target="doc">setExclusive</a></tt></dt>
+<dd>Sets if this address space requires exclusive control of its address range. Exclusivity should be set before an address space is activated.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/activate/virtualIOReturn/();  name=IOFWAddressSpace::activate --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/activate/virtualIOReturn/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="activate">activate</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Address space is ready for handling requests.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/activate //apple_ref/cpp/clm/activate //apple_ref/cpp/intfcm/activate //apple_ref/cpp/intfm/activate //apple_ref/cpp/func/activate //apple_ref/cpp/ftmplt/activate //apple_ref/cpp/defn/activate //apple_ref/cpp/macro/activate" --><span class="function">activate</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->IOReturn
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/addTrustedNode/inlinevoid/(IOFireWireDevice*);  name=IOFWAddressSpace::addTrustedNode --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/addTrustedNode/inlinevoid/(IOFireWireDevice*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="addTrustedNode">addTrustedNode</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Add a trusted node.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/addTrustedNode //apple_ref/cpp/clm/addTrustedNode //apple_ref/cpp/intfcm/addTrustedNode //apple_ref/cpp/intfm/addTrustedNode //apple_ref/cpp/func/addTrustedNode //apple_ref/cpp/ftmplt/addTrustedNode //apple_ref/cpp/defn/addTrustedNode //apple_ref/cpp/macro/addTrustedNode" --><span class="function">addTrustedNode</span><!-- /a -->(
+    <a href="../../../../../documentation/IOFireWireDevice/Classes/IOFireWireDevice_/index.html#//apple_ref/cpp/cl/IOFireWireDevice" logicalPath="//apple_ref/cpp/cl/IOFireWireDevice" target="_top"><span class="type">IOFireWireDevice</span></a> *<span class="param">device</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>device </code></dt>
+<dd>object pointing to a FireWire node on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/contains/virtualUInt32/(FWAddress);  name=IOFWAddressSpace::contains --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/contains/virtualUInt32/(FWAddress)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="contains">contains</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->returns number of bytes starting at addr in this space
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/contains //apple_ref/cpp/clm/contains //apple_ref/cpp/intfcm/contains //apple_ref/cpp/intfm/contains //apple_ref/cpp/func/contains //apple_ref/cpp/ftmplt/contains //apple_ref/cpp/defn/contains //apple_ref/cpp/macro/contains" --><span class="function">contains</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->0 if it doesn't contain the address
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/deactivate/virtualvoid/();  name=IOFWAddressSpace::deactivate --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/deactivate/virtualvoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="deactivate">deactivate</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Address space request handler is disabled.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/deactivate //apple_ref/cpp/clm/deactivate //apple_ref/cpp/intfcm/deactivate //apple_ref/cpp/intfm/deactivate //apple_ref/cpp/func/deactivate //apple_ref/cpp/ftmplt/deactivate //apple_ref/cpp/defn/deactivate //apple_ref/cpp/macro/deactivate" --><span class="function">deactivate</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/doLock/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constUInt32*,UInt32%38,UInt32*,UInt32,IOFWRequestRefCon);  name=IOFWAddressSpace::doLock --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/doLock/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constUInt32*,UInt32%38,UInt32*,UInt32,IOFWRequestRefCon)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="doLock">doLock</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->A method for processing a lock request.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/doLock //apple_ref/cpp/clm/doLock //apple_ref/cpp/intfcm/doLock //apple_ref/cpp/intfm/doLock //apple_ref/cpp/func/doLock //apple_ref/cpp/ftmplt/doLock //apple_ref/cpp/defn/doLock //apple_ref/cpp/macro/doLock" --><span class="function">doLock</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">inlen</span>, 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">newVal</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> &amp;<span class="param">outLen</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">oldVal</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">extType</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">refcon</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>FireWire Lock request for nodeID.</dd>
+<dt><code>speed </code></dt>
+<dd>at this 'speed'.</dd>
+<dt><code>addr </code></dt>
+<dd>with FireWire address 'addr'.</dd>
+<dt><code>inlen </code></dt>
+<dd>'inlen' bytes to use.</dd>
+<dt><code>newVal </code></dt>
+<dd>new value to write at 'addr' location .</dd>
+<dt><code>outLen </code></dt>
+<dd>'outLen' bytes for result.</dd>
+<dt><code>oldVal </code></dt>
+<dd>old value read from 'addr' location.</dd>
+<dt><code>extType </code></dt>
+<dd>Type like kFWExtendedTCodeCompareSwap.</dd>
+<dt><code>refcon </code></dt>
+<dd>Can be queried for extra info about the request.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UIn32 returns kFWResponseComplete on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/doRead/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,IOMemoryDescriptor**,IOByteCount*,IOFWRequestRefCon);  name=IOFWAddressSpace::doRead --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/doRead/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,IOMemoryDescriptor**,IOByteCount*,IOFWRequestRefCon)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="doRead">doRead</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->An abstract method for processing an address space read request
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/doRead" logicalPath="//apple_ref/cpp/instm/doRead //apple_ref/cpp/clm/doRead //apple_ref/cpp/intfcm/doRead //apple_ref/cpp/intfm/doRead //apple_ref/cpp/func/doRead" target="_top"><span class="function">doRead</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="type">*</span><span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOByteCount //apple_ref/cpp/tdef/IOByteCount //apple_ref/cpp/tag/IOByteCount //apple_ref/cpp/econst/IOByteCount //apple_ref/cpp/struct/IOByteCount //apple_ref/cpp/clconst/IOByteCount //apple_ref/cpp/intf/IOByteCount" --><span class="type">IOByteCount</span><!-- /a --> *<span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">refcon</span>) = <span class="number">0</span>; </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>FireWire Read from nodeID.</dd>
+<dt><code>speed </code></dt>
+<dd>at this 'speed'.</dd>
+<dt><code>addr </code></dt>
+<dd>with FireWire address 'addr'.</dd>
+<dt><code>len </code></dt>
+<dd>read 'len' bytes from nodeID.</dd>
+<dt><code>buf </code></dt>
+<dd>points to a memory descriptor containing the packet data.</dd>
+<dt><code>offset </code></dt>
+<dd>start from this 'offset' in 'buf'.</dd>
+<dt><code>refcon </code></dt>
+<dd>Can be queried for extra info about the request.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UIn32 returns kFWResponseComplete on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/doWrite/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon);  name=IOFWAddressSpace::doWrite --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/doWrite/virtualUInt32/(UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="doWrite">doWrite</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->An abstract method for processing an address space write request
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/doWrite" logicalPath="//apple_ref/cpp/instm/doWrite //apple_ref/cpp/clm/doWrite //apple_ref/cpp/intfcm/doWrite //apple_ref/cpp/intfm/doWrite //apple_ref/cpp/func/doWrite" target="_top"><span class="function">doWrite</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>, 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">refcon</span>) = <span class="number">0</span>; </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>FireWire Write to nodeID.</dd>
+<dt><code>speed </code></dt>
+<dd>at this 'speed'.</dd>
+<dt><code>addr </code></dt>
+<dd>with FireWire address 'addr'.</dd>
+<dt><code>len </code></dt>
+<dd>write 'len' bytes to nodeID.</dd>
+<dt><code>buf </code></dt>
+<dd>obtain bytes from location given by 'buf'.</dd>
+<dt><code>refcon </code></dt>
+<dd>Can be queried for extra info about the request.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UIn32 returns kFWResponseComplete on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/intersects/inlinebool/(IOFWAddressSpace*);  name=IOFWAddressSpace::intersects --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/intersects/inlinebool/(IOFWAddressSpace*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="intersects">intersects</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Checks this address space intersects with the given address range. Currently only supports IOFWPsuedoAddressSpaces.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/intersects //apple_ref/cpp/clm/intersects //apple_ref/cpp/intfcm/intersects //apple_ref/cpp/intfm/intersects //apple_ref/cpp/func/intersects //apple_ref/cpp/ftmplt/intersects //apple_ref/cpp/defn/intersects //apple_ref/cpp/macro/intersects" --><span class="function">intersects</span><!-- /a -->(
+    <a href="../../../../../documentation/IOFWAddressSpace/Classes/IOFWAddressSpace/index.html#//apple_ref/cpp/cl/IOFWAddressSpace" logicalPath="//apple_ref/cpp/cl/IOFWAddressSpace" target="_top"><span class="type">IOFWAddressSpace</span></a> *<span class="param">space</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>space </code></dt>
+<dd>An address space to compare against</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->True if the address spaces intersect false otherwise
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/isExclusive/inlinebool/();  name=IOFWAddressSpace::isExclusive --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/isExclusive/inlinebool/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="isExclusive">isExclusive</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Checks if an address space wants exclusive control of its address range
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/isExclusive //apple_ref/cpp/clm/isExclusive //apple_ref/cpp/intfcm/isExclusive //apple_ref/cpp/intfm/isExclusive //apple_ref/cpp/func/isExclusive //apple_ref/cpp/ftmplt/isExclusive //apple_ref/cpp/defn/isExclusive //apple_ref/cpp/macro/isExclusive" --><span class="function">isExclusive</span><!-- /a -->(
+    <span class="param">void</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->True if the address space is marked exclusive false otherwise
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/isTrustedNode/inlinebool/(UInt16);  name=IOFWAddressSpace::isTrustedNode --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/isTrustedNode/inlinebool/(UInt16)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="isTrustedNode">isTrustedNode</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->returns true if the node is added as a trusted node
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/isTrustedNode //apple_ref/cpp/clm/isTrustedNode //apple_ref/cpp/intfcm/isTrustedNode //apple_ref/cpp/intfm/isTrustedNode //apple_ref/cpp/func/isTrustedNode //apple_ref/cpp/ftmplt/isTrustedNode //apple_ref/cpp/defn/isTrustedNode //apple_ref/cpp/macro/isTrustedNode" --><span class="function">isTrustedNode</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>is the nodeID to verify whether its trusted.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->false if nodeID is not trusted
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/removeAllTrustedNodes/inlinevoid/();  name=IOFWAddressSpace::removeAllTrustedNodes --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/removeAllTrustedNodes/inlinevoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="removeAllTrustedNodes">removeAllTrustedNodes</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Remove all trusted nodes.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/removeAllTrustedNodes //apple_ref/cpp/clm/removeAllTrustedNodes //apple_ref/cpp/intfcm/removeAllTrustedNodes //apple_ref/cpp/intfm/removeAllTrustedNodes //apple_ref/cpp/func/removeAllTrustedNodes //apple_ref/cpp/ftmplt/removeAllTrustedNodes //apple_ref/cpp/defn/removeAllTrustedNodes //apple_ref/cpp/macro/removeAllTrustedNodes" --><span class="function">removeAllTrustedNodes</span><!-- /a -->(
+    <span class="param">void</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/removeTrustedNode/inlinevoid/(IOFireWireDevice*);  name=IOFWAddressSpace::removeTrustedNode --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/removeTrustedNode/inlinevoid/(IOFireWireDevice*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="removeTrustedNode">removeTrustedNode</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Remove a trusted node.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/removeTrustedNode //apple_ref/cpp/clm/removeTrustedNode //apple_ref/cpp/intfcm/removeTrustedNode //apple_ref/cpp/intfm/removeTrustedNode //apple_ref/cpp/func/removeTrustedNode //apple_ref/cpp/ftmplt/removeTrustedNode //apple_ref/cpp/defn/removeTrustedNode //apple_ref/cpp/macro/removeTrustedNode" --><span class="function">removeTrustedNode</span><!-- /a -->(
+    <a href="../../../../../documentation/IOFireWireDevice/Classes/IOFireWireDevice_/index.html#//apple_ref/cpp/cl/IOFireWireDevice" logicalPath="//apple_ref/cpp/cl/IOFireWireDevice" target="_top"><span class="type">IOFireWireDevice</span></a> *<span class="param">device</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>device </code></dt>
+<dd>object pointing to a FireWire node on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWAddressSpace/setExclusive/inlinevoid/(bool);  name=IOFWAddressSpace::setExclusive --><a name="//apple_ref/cpp/instm/IOFWAddressSpace/setExclusive/inlinevoid/(bool)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setExclusive">setExclusive</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets if this address space requires exclusive control of its address range. Exclusivity should be set before an address space is activated.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setExclusive //apple_ref/cpp/clm/setExclusive //apple_ref/cpp/intfcm/setExclusive //apple_ref/cpp/intfm/setExclusive //apple_ref/cpp/func/setExclusive //apple_ref/cpp/ftmplt/setExclusive //apple_ref/cpp/defn/setExclusive //apple_ref/cpp/macro/setExclusive" --><span class="function">setExclusive</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <span class="param">exclusive</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>exclusive </code></dt>
+<dd>True if address space should be exclusive, false otherwise</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none
+ 
+<!-- end return value --></p>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

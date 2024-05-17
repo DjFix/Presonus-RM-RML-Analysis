@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/checkMemoryInRange" target="doc">checkMemoryInRange</a></tt></dt>
+<dd>Validates the IOMemoryDescriptor, which is used to initialize the PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/complete" target="doc">complete</a></tt></dt>
+<dd>complete the IODMACommand used by this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/doRead" target="doc">doRead</a></tt></dt>
+<dd>A method for processing an address space read request
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/doWrite" target="doc">doWrite</a></tt></dt>
+<dd>A method for processing an address space write request
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getDMACommand" target="doc">getDMACommand</a></tt></dt>
+<dd>Get the DMACommand from this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getLength" target="doc">getLength</a></tt></dt>
+<dd>Get the length of the memory backed by PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getMemoryDescriptor" target="doc">getMemoryDescriptor</a></tt></dt>
+<dd>Gets the memory descriptor, which is associated to this 
+PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/getSegments" target="doc">getSegments</a></tt></dt>
+<dd>Returns the scatter gather list of memory segments from the IODMACommand
+used in this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/init" target="doc">init</a></tt></dt>
+<dd>Initialize physical address space.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initWithDesc" target="doc">initWithDesc</a></tt></dt>
+<dd>Initialize physical address space with IOMemoryDescriptor.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/initWithDMACommand" target="doc">initWithDMACommand</a></tt></dt>
+<dd>Initialize physical address space with IODMACommand.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/isPrepared" target="doc">isPrepared</a></tt></dt>
+<dd>Inspects whether the IODMACommand was prepared in this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/prepare" target="doc">prepare</a></tt></dt>
+<dd>Prepare the IODMACommand used by this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/setDMACommand" target="doc">setDMACommand</a></tt></dt>
+<dd>Set the DMACommand for this PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/setMemoryDescriptor" target="doc">setMemoryDescriptor</a></tt></dt>
+<dd>Sets the memory descriptor, which will be associated to this 
+PhysicalAddressSpace.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/synchronize" target="doc">synchronize</a></tt></dt>
+<dd>synchronize the IODMACommand used by this PhysicalAddressSpace.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/checkMemoryInRange;  name=checkMemoryInRange --><a name="//apple_ref/c/func/checkMemoryInRange"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="checkMemoryInRange">checkMemoryInRange</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Validates the IOMemoryDescriptor, which is used to initialize the PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/checkMemoryInRange" logicalPath="//apple_ref/cpp/instm/checkMemoryInRange //apple_ref/cpp/clm/checkMemoryInRange //apple_ref/cpp/intfcm/checkMemoryInRange //apple_ref/cpp/intfm/checkMemoryInRange //apple_ref/cpp/func/checkMemoryInRange" target="_top"><span class="function">checkMemoryInRange</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">memory</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>memory </code></dt>
+<dd>Points to a valid IOMemoryDescriptor.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns kIOReturnSuccess on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/complete;  name=complete --><a name="//apple_ref/c/func/complete"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="complete">complete</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->complete the IODMACommand used by this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/complete" logicalPath="//apple_ref/cpp/instm/complete //apple_ref/cpp/clm/complete //apple_ref/cpp/intfcm/complete //apple_ref/cpp/intfm/complete //apple_ref/cpp/func/complete" target="_top"><span class="function">complete</span></a>(
+    <span class="param">void</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns kIOReturnSuccess on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/doRead;  name=doRead --><a name="//apple_ref/c/func/doRead"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="doRead">doRead</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->A method for processing an address space read request
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/virtual //apple_ref/cpp/tdef/virtual //apple_ref/cpp/tag/virtual //apple_ref/cpp/econst/virtual //apple_ref/cpp/struct/virtual //apple_ref/cpp/clconst/virtual //apple_ref/cpp/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/doRead" logicalPath="//apple_ref/cpp/instm/doRead //apple_ref/cpp/clm/doRead //apple_ref/cpp/intfcm/doRead //apple_ref/cpp/intfm/doRead //apple_ref/cpp/func/doRead" target="_top"><span class="function">doRead</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="type">*</span><span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOByteCount //apple_ref/cpp/tdef/IOByteCount //apple_ref/cpp/tag/IOByteCount //apple_ref/cpp/econst/IOByteCount //apple_ref/cpp/struct/IOByteCount //apple_ref/cpp/clconst/IOByteCount //apple_ref/cpp/intf/IOByteCount" --><span class="type">IOByteCount</span><!-- /a --> *<span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">refcon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>FireWire Read from nodeID.</dd>
+<dt><code>speed </code></dt>
+<dd>at this 'speed'.</dd>
+<dt><code>addr </code></dt>
+<dd>with FireWire address 'addr'.</dd>
+<dt><code>len </code></dt>
+<dd>read 'len' bytes from nodeID.</dd>
+<dt><code>buf </code></dt>
+<dd>points to a memory descriptor containing the packet data.</dd>
+<dt><code>offset </code></dt>
+<dd>start from this 'offset' in 'buf'.</dd>
+<dt><code>refcon </code></dt>
+<dd>Can be queried for extra info about the request.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UIn32	returns kFWResponseComplete on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/doWrite;  name=doWrite --><a name="//apple_ref/c/func/doWrite"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="doWrite">doWrite</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->A method for processing an address space write request
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/virtual //apple_ref/cpp/tdef/virtual //apple_ref/cpp/tag/virtual //apple_ref/cpp/econst/virtual //apple_ref/cpp/struct/virtual //apple_ref/cpp/clconst/virtual //apple_ref/cpp/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/doWrite" logicalPath="//apple_ref/cpp/instm/doWrite //apple_ref/cpp/clm/doWrite //apple_ref/cpp/intfcm/doWrite //apple_ref/cpp/intfm/doWrite //apple_ref/cpp/func/doWrite" target="_top"><span class="function">doWrite</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>, 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">refcon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>nodeID </code></dt>
+<dd>FireWire Write to nodeID.</dd>
+<dt><code>speed </code></dt>
+<dd>at this 'speed'.</dd>
+<dt><code>addr </code></dt>
+<dd>with FireWire address 'addr'.</dd>
+<dt><code>len </code></dt>
+<dd>write 'len' bytes to nodeID.</dd>
+<dt><code>buf </code></dt>
+<dd>obtain bytes from location given by 'buf'.</dd>
+<dt><code>reqrefcon </code></dt>
+<dd>Can be queried for extra info about the request.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UIn32	returns kFWResponseComplete on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getDMACommand;  name=getDMACommand --><a name="//apple_ref/c/func/getDMACommand"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getDMACommand">getDMACommand</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the DMACommand from this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/IODMACommand //apple_ref/cpp/tdef/IODMACommand //apple_ref/cpp/tag/IODMACommand //apple_ref/cpp/econst/IODMACommand //apple_ref/cpp/struct/IODMACommand //apple_ref/cpp/clconst/IODMACommand //apple_ref/cpp/intf/IODMACommand" --><span class="type">IODMACommand</span><!-- /a --> <span class="type">*</span> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/getDMACommand" logicalPath="//apple_ref/cpp/instm/getDMACommand //apple_ref/cpp/clm/getDMACommand //apple_ref/cpp/intfcm/getDMACommand //apple_ref/cpp/intfm/getDMACommand //apple_ref/cpp/func/getDMACommand" target="_top"><span class="function">getDMACommand</span></a>(
+    <span class="param">void</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->return previously assigned IODMACommand, null if not initialized 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getLength;  name=getLength --><a name="//apple_ref/c/func/getLength"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getLength">getLength</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the length of the memory backed by PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64 //apple_ref/cpp/intf/UInt64" --><span class="type">UInt64</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/getLength" logicalPath="//apple_ref/cpp/instm/getLength //apple_ref/cpp/clm/getLength //apple_ref/cpp/intfcm/getLength //apple_ref/cpp/intfm/getLength //apple_ref/cpp/func/getLength" target="_top"><span class="function">getLength</span></a>(
+    <span class="param">void</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns the length 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getMemoryDescriptor;  name=getMemoryDescriptor --><a name="//apple_ref/c/func/getMemoryDescriptor"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMemoryDescriptor">getMemoryDescriptor</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the memory descriptor, which is associated to this 
+PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> <span class="type">*</span> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/getMemoryDescriptor" logicalPath="//apple_ref/cpp/instm/getMemoryDescriptor //apple_ref/cpp/clm/getMemoryDescriptor //apple_ref/cpp/intfcm/getMemoryDescriptor //apple_ref/cpp/intfm/getMemoryDescriptor //apple_ref/cpp/func/getMemoryDescriptor" target="_top"><span class="function">getMemoryDescriptor</span></a>(
+    <span class="param">void</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns the IOMemoryDescriptor 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/getSegments;  name=getSegments --><a name="//apple_ref/c/func/getSegments"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getSegments">getSegments</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the scatter gather list of memory segments from the IODMACommand
+used in this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/getSegments" logicalPath="//apple_ref/cpp/instm/getSegments //apple_ref/cpp/clm/getSegments //apple_ref/cpp/intfcm/getSegments //apple_ref/cpp/intfm/getSegments //apple_ref/cpp/func/getSegments" target="_top"><span class="function">getSegments</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64 //apple_ref/cpp/intf/UInt64" --><span class="type">UInt64</span><!-- /a --> *<span class="param">offset</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWSegment //apple_ref/cpp/tdef/FWSegment //apple_ref/cpp/tag/FWSegment //apple_ref/cpp/econst/FWSegment //apple_ref/cpp/struct/FWSegment //apple_ref/cpp/clconst/FWSegment //apple_ref/cpp/intf/FWSegment" --><span class="type">FWSegment</span><!-- /a --> *<span class="param">fw_segments</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">num_segments</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>offset </code></dt>
+<dd>input/output parameter, defines the starting and ending offset in the memory 
+descriptor, relative to any offset passed to the prepare() method.
+FWSegment 	Points to an array of memory segments.
+num_segments Size of the FWSegment array.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns kIOReturnSuccess on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/init;  name=init --><a name="//apple_ref/c/func/init"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="init">init</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Initialize physical address space.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/virtual //apple_ref/cpp/tdef/virtual //apple_ref/cpp/tag/virtual //apple_ref/cpp/econst/virtual //apple_ref/cpp/struct/virtual //apple_ref/cpp/clconst/virtual //apple_ref/cpp/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/init" logicalPath="//apple_ref/cpp/instm/init //apple_ref/cpp/clm/init //apple_ref/cpp/intfcm/init //apple_ref/cpp/intfm/init //apple_ref/cpp/func/init" target="_top"><span class="function">init</span></a>(
+    <a href="../../../documentation/IOFireWireBus/Classes/IOFireWireBus/index.html#//apple_ref/cpp/cl/IOFireWireBus" logicalPath="//apple_ref/cpp/cl/IOFireWireBus" target="_top"><span class="type">IOFireWireBus</span></a> *<span class="param">bus</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>bus </code></dt>
+<dd>Points to IOFireWireBus object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns true if success, else false 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/initWithDesc;  name=initWithDesc --><a name="//apple_ref/c/func/initWithDesc"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="initWithDesc">initWithDesc</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Initialize physical address space with IOMemoryDescriptor.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/virtual //apple_ref/cpp/tdef/virtual //apple_ref/cpp/tag/virtual //apple_ref/cpp/econst/virtual //apple_ref/cpp/struct/virtual //apple_ref/cpp/clconst/virtual //apple_ref/cpp/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/initWithDesc" logicalPath="//apple_ref/cpp/instm/initWithDesc //apple_ref/cpp/clm/initWithDesc //apple_ref/cpp/intfcm/initWithDesc //apple_ref/cpp/intfm/initWithDesc //apple_ref/cpp/func/initWithDesc" target="_top"><span class="function">initWithDesc</span></a>(
+    <a href="../../../documentation/IOFireWireBus/Classes/IOFireWireBus/index.html#//apple_ref/cpp/cl/IOFireWireBus" logicalPath="//apple_ref/cpp/cl/IOFireWireBus" target="_top"><span class="type">IOFireWireBus</span></a> *<span class="param">bus</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">mem</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>bus </code></dt>
+<dd>Points to IOFireWireBus object.</dd>
+<dt><code>mem </code></dt>
+<dd>Points to IOMemoryDescriptor.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns true if success, else false 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/initWithDMACommand;  name=initWithDMACommand --><a name="//apple_ref/c/func/initWithDMACommand"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="initWithDMACommand">initWithDMACommand</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Initialize physical address space with IODMACommand.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/virtual //apple_ref/cpp/tdef/virtual //apple_ref/cpp/tag/virtual //apple_ref/cpp/econst/virtual //apple_ref/cpp/struct/virtual //apple_ref/cpp/clconst/virtual //apple_ref/cpp/intf/virtual" --><span class="type">virtual</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/initWithDMACommand" logicalPath="//apple_ref/cpp/instm/initWithDMACommand //apple_ref/cpp/clm/initWithDMACommand //apple_ref/cpp/intfcm/initWithDMACommand //apple_ref/cpp/intfm/initWithDMACommand //apple_ref/cpp/func/initWithDMACommand" target="_top"><span class="function">initWithDMACommand</span></a>(
+    <a href="../../../documentation/IOFireWireBus/Classes/IOFireWireBus/index.html#//apple_ref/cpp/cl/IOFireWireBus" logicalPath="//apple_ref/cpp/cl/IOFireWireBus" target="_top"><span class="type">IOFireWireBus</span></a> *<span class="param">control</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IODMACommand //apple_ref/cpp/tdef/IODMACommand //apple_ref/cpp/tag/IODMACommand //apple_ref/cpp/econst/IODMACommand //apple_ref/cpp/struct/IODMACommand //apple_ref/cpp/clconst/IODMACommand //apple_ref/cpp/intf/IODMACommand" --><span class="type">IODMACommand</span><!-- /a --> *<span class="param">command</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>bus </code></dt>
+<dd>Points to IOFireWireBus object.</dd>
+<dt><code>command </code></dt>
+<dd>Points to IODMACommand.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns true if success, else false 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/isPrepared;  name=isPrepared --><a name="//apple_ref/c/func/isPrepared"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="isPrepared">isPrepared</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Inspects whether the IODMACommand was prepared in this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/isPrepared" logicalPath="//apple_ref/cpp/instm/isPrepared //apple_ref/cpp/clm/isPrepared //apple_ref/cpp/intfcm/isPrepared //apple_ref/cpp/intfm/isPrepared //apple_ref/cpp/func/isPrepared" target="_top"><span class="function">isPrepared</span></a>(
+    <span class="param">void</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns true if prepared, else false 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/prepare;  name=prepare --><a name="//apple_ref/c/func/prepare"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="prepare">prepare</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Prepare the IODMACommand used by this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/prepare" logicalPath="//apple_ref/cpp/instm/prepare //apple_ref/cpp/clm/prepare //apple_ref/cpp/intfcm/prepare //apple_ref/cpp/intfm/prepare //apple_ref/cpp/func/prepare" target="_top"><span class="function">prepare</span></a>(
+    <span class="param">void</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns kIOReturnSuccess on success 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/setDMACommand;  name=setDMACommand --><a name="//apple_ref/c/func/setDMACommand"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setDMACommand">setDMACommand</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the DMACommand for this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/setDMACommand" logicalPath="//apple_ref/cpp/instm/setDMACommand //apple_ref/cpp/clm/setDMACommand //apple_ref/cpp/intfcm/setDMACommand //apple_ref/cpp/intfm/setDMACommand //apple_ref/cpp/func/setDMACommand" target="_top"><span class="function">setDMACommand</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IODMACommand //apple_ref/cpp/tdef/IODMACommand //apple_ref/cpp/tag/IODMACommand //apple_ref/cpp/econst/IODMACommand //apple_ref/cpp/struct/IODMACommand //apple_ref/cpp/clconst/IODMACommand //apple_ref/cpp/intf/IODMACommand" --><span class="type">IODMACommand</span><!-- /a --> *<span class="param">dma_command</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dma_command </code></dt>
+<dd>Points to IODMACommand object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/setMemoryDescriptor;  name=setMemoryDescriptor --><a name="//apple_ref/c/func/setMemoryDescriptor"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMemoryDescriptor">setMemoryDescriptor</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the memory descriptor, which will be associated to this 
+PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/setMemoryDescriptor" logicalPath="//apple_ref/cpp/instm/setMemoryDescriptor //apple_ref/cpp/clm/setMemoryDescriptor //apple_ref/cpp/intfcm/setMemoryDescriptor //apple_ref/cpp/intfm/setMemoryDescriptor //apple_ref/cpp/func/setMemoryDescriptor" target="_top"><span class="function">setMemoryDescriptor</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">descriptor</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns the IOMemoryDescriptor 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/synchronize;  name=synchronize --><a name="//apple_ref/c/func/synchronize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="synchronize">synchronize</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->synchronize the IODMACommand used by this PhysicalAddressSpace.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/synchronize" logicalPath="//apple_ref/cpp/instm/synchronize //apple_ref/cpp/clm/synchronize //apple_ref/cpp/intfcm/synchronize //apple_ref/cpp/intfm/synchronize //apple_ref/cpp/func/synchronize" target="_top"><span class="function">synchronize</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/tdef/IOOptionBits //apple_ref/cpp/tag/IOOptionBits //apple_ref/cpp/econst/IOOptionBits //apple_ref/cpp/struct/IOOptionBits //apple_ref/cpp/clconst/IOOptionBits //apple_ref/cpp/intf/IOOptionBits" --><span class="type">IOOptionBits</span><!-- /a --> <span class="param">options</span> ) ;</pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns kIOReturnSuccess on success 
+<!-- end return value --></p>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

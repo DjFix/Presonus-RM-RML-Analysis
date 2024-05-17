@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -e /System/Library/Extensions/FWSkeletonKey.kext ]; then
+#	chown -R root:wheel /System/Library/Extensions/FWSkeletonKey.kext ;
+#	touch /System/Library/Extensions/FWSkeletonKey.kext ;
+	kextload -c /System/Library/Extensions/FWSkeletonKey.kext ;
+fi ;

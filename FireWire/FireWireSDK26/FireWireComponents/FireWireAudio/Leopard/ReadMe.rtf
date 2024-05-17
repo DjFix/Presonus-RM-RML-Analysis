@@ -1,0 +1,164 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red193\green0\blue0;}
+\margl1440\margr1440\vieww18620\viewh18840\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+
+\f0\b\fs36 \cf0 \
+About AppleFWAudio
+\b0\fs24 \
+
+\fs20 \cf2 Copyright \'a9 2001-2008 by Apple Inc.  All Rights Reserved.
+\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul \ulc0 Introduction
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri-3600\ql\qnatural\pardirnatural
+\cf0 This is the GM release of the AppleFWAudio software that contains a new streaming engine for all devices and version 7.0 of the FWAUserLib framework. It is a universal binary and works on Leopard. This release is intended for hardware device developers to test with the next version of the driver and API and make sure their devices are compatible going forward.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+\cf0 \
+
+\b\fs28 \ul Components
+\b0\fs24 \ulnone \
+There are 3 components to the AppleFWAudio project:\
+1. 
+\i AppleFWAudio.kext - 
+\i0 Main driver version 2.4.0fc8\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri-3600\ql\qnatural\pardirnatural
+\cf0 2. 
+\i FWAUserLib.framework - 
+\i0 user-client and library for creating and managing FireWire audio devices. New version 7.0 API's\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+\cf0 3. 
+\i AppleMIDIFWDriver.plugin 
+\i0 - midi plugin for FireWire audio devices\
+\
+
+\b\fs28 \ul Compatibility
+\b0\fs24 \ulnone \
+AppleFWAudio driver package is compatible with both PPC and Intel platforms\
+\
+\
+
+\b\fs28 \ul Usage
+\b0\fs24 \ulnone \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri-3600\ql\qnatural\pardirnatural
+\cf0 Install the "AppleFWAudio" package and reboot. Plug in your hardware device and check the functionality of your control panel application and audio streaming. There are many improvements in this release and most of the reported problems have been addressed. Some of improvements are:\
+\
+1. Improved latency and CPU performance using the new streaming engine (currently only enabled for a few select devices)\
+2. Panics and system hangs when devices using the new Extended Stream Format command have been fixed.\
+3. Block Read and Block Write AVC commands sent through the FWAUserLib are working correctly and at full bandwidth.\
+4. New and improved FWAUserLib APIs. The new API's allow for more control over AVC audio devices and with creation of virtual devices.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+\cf0 	\
+	Here is a list of the new APIs in this release. These API's are still subject to change until the final release so do not ship an application built against this version of the framework. \
+	Documentation on the new APIs will be release when the API is considered final. \
+\
+	OSStatus 
+\b FWASetPluginPath
+\b0 (FWARef inRef,FWAEngineRef engine,UInt32 vendorID, UInt32 modelID, const char* pluginPath);\
+	\
+	OSStatus 
+\b FWACreateFWAudioPlug
+\b0 (FWARef inRef, FWAAudioStreamRef owningStream,UInt32 channelID,char* plugName, UInt8* plugIdent, FWAAudioPlugRef* streamRef);\
+	OSStatus 
+\b FWADisposeFWAudioPlug
+\b0 (FWARef inRef, FWAAudioPlugRef plugRef );\
+	\
+	OSStatus 
+\b FWAGetFWAudioMIDIPlugChannel
+\b0 (FWARef inRef, FWAMIDIPlugRef streamRef,UInt32* channelID);\
+	OSStatus 
+\b FWASetFWAudioMIDIPlugChannel
+\b0 (FWARef inRef, FWAMIDIPlugRef streamRef,UInt32 channelID);\
+\
+	OSStatus 
+\b FWAGetFWAudioPlugChannel
+\b0 (FWARef inRef, FWAAudioPlugRef streamRef,UInt32* channelID);\
+	OSStatus 
+\b FWASetFWAudioPlugChannel
+\b0 (FWARef inRef, FWAAudioPlugRef streamRef,UInt32 channelID);\
+\
+	OSStatus 
+\b FWAGetIndexedFWAudioPlug
+\b0 (FWARef inRef,FWADeviceRef device, UInt32 index,UInt32 dir, FWAAudioPlugRef* plugRef);\
+	OSStatus 
+\b FWAGetIndexedFWAudioMIDIPlug
+\b0 (FWARef inRef, FWAMIDIDeviceNubRef device,UInt32 index,UInt32 dir,FWAMIDIPlugRef* plugRef);\
+	\
+	OSStatus 
+\b FWAAttachFWAudioStream
+\b0 (FWARef inRef, FWAAudioStreamRef streamRef,FWAIsochStreamRef isochChannel);\
+	OSStatus 
+\b FWAAttachFWAudioMIDIStream
+\b0 (FWARef inRef, FWAMIDIStreamRef streamRef,FWAIsochStreamRef isochChannel);\
+\
+	OSStatus 
+\b FWASetFWAudioPlugProperty
+\b0 (FWARef inRef, FWAAudioPlugRef plugRef,const char *keyname,const  char* keyvalue);\
+	OSStatus 
+\b FWASetFWAudioMIDIPlugProperty
+\b0 (FWARef inRef,FWAMIDIPlugRef plugRef,const char *keyname,const  char* keyvalue);\
+\
+	OSStatus 
+\b FWAOpenLocalWithInterface
+\b0 (UInt64 guid,UInt32 options, FWARef* outRef);\
+	OSStatus 
+\b FWAOpenWithService
+\b0 (io_service_t ,UInt32 options, FWARef* outRef);\
+\
+	OSStatus 
+\b FWAGetSessionRef
+\b0 (FWARef inRef,IOFireWireSessionRef * sessionRef);\
+\
+	OSStatus 
+\b FWAReserveIsochSequences
+\b0 (FWARef inRef,FWAIsochStreamRef isochStream,FWAudioType type,UInt32 count);\
+	\
+	OSStatus 
+\b FWACreateFWAudioMIDIDeviceNub
+\b0 (FWARef inRef,FWADeviceRef owningDevice, const char * deviceName, UInt32 vendorID,const char* guid,const char* iconFilePath, UInt32 modelID, const char * editorPath, FWAMIDIDeviceNubRef* device);\
+	OSStatus 
+\b FWADisposeFWAudioMIDIDeviceNub
+\b0 (FWARef inRef,FWAMIDIDeviceNubRef device);\
+\
+	OSStatus 
+\b FWAMIDIDeviceNubAttachMIDIPlug
+\b0 (FWARef inRef, FWAMIDIDeviceNubRef midiDeviceNub,FWAMIDIPlugRef midiPlug);\
+	OSStatus 
+\b FWAMIDIDeviceNubDetachMIDIPlug
+\b0 (FWARef inRef, FWAMIDIPlugRef midiPlug);	\
+5. Mac Sync support has been re-enabled for most devices. \
+\
+\
+
+\b\fs28 \ul Known Issues\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri-3600\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone Most of the problems that have been reported by FireWire audio hardware developers have been resolved in this release. If one of the issues you have reported is not fixed in this release, contact DTS with your issue number and they can check the status of the issue if it has not already been updated.\
+\
+For the new streaming engine:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li900\fi-180\ri-3600\ql\qnatural\pardirnatural
+\cf0 \'95 Latency varies between +/- 8 samples. We are working with the FireWire audio silicon vendors to resolve this issue.\
+\'95 On rare occasions on Intel machines a large round trip latency will be observed. This occurs most often on machines with S800 port. \
+\'95 On Intel machines with S800 ports sometimes the audio device will not have any audio when the machine is rebooted. To work around this issue, switch to a different sample rate and then back again and the audio will be restored.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri-3600\ql\qnatural\pardirnatural
+\cf0 \
+For all devices:\
+\
+There may be times when a FireWire audio device will not show up after a reboot. This version of the driver is more stringent about the responses and values returned from the device. If there are any serious errors or extended timeouts from the device during enumeration, the driver will stop querying the device and fail the device enumeration. If this happens a message will be printed out in the system.log file. If your device fails to enumerate often, you may need to modify your devices firmware to the latest version from your silicon vendor or modify some of your existing commands to respond in a timely fashion with the correct values.\
+\
+For some devices:\
+\
+The are a small number of devices that do not work well with the new streaming engine. We have included an exception list in the info.plist of the AppleFWAudio kext to revert the devices in the exception list to the old streaming engine. This is a temporary work around until we resolve the issues with the silicon vendors on what is preventing there devices from working correctly with the new streaming engine. If you find your device is not working with this version of the driver, you can add your device's vendorID and modelID to the info.Plist of the AppleFWAudio.kext and restart your computer. Make sure you 'Touch' the directory so that the kexts will be re-scaned and re-added to the kext cache during the next boot.\
+ \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ri-3600\ql\qnatural\pardirnatural
+\cf0 \
+}

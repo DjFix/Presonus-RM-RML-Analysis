@@ -1,0 +1,49 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                printDocument = id; 
+                saveTo = id; 
+                timerIntervalExpired = id; 
+                toggleLogging = id; 
+            }; 
+            CLASS = DeviceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fFireLogController = id; 
+                fProgressIndicator = id; 
+                fSelectorController = id; 
+                fStatusView = id; 
+                fStatusViewBox = id; 
+                fTextView = id; 
+                fToggleButton = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = DeviceWindow; LANGUAGE = ObjC; SUPERCLASS = NSWindow; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                cancelRead = id; 
+                doRead = id; 
+                loginToDevice = id; 
+                logoutOfDevice = id; 
+                performRead = id; 
+            }; 
+            CLASS = LUNController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fCancelButton = id; 
+                fLoginButton = id; 
+                fLogoutButton = id; 
+                fReadButton = id; 
+                fTextView = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = LoggingTextView; LANGUAGE = ObjC; SUPERCLASS = NSTextView; }
+    ); 
+    IBVersion = 1; 
+}

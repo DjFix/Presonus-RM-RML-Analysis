@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Functions</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1><br>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/AllocatePort/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed,UInt32)" target="doc">AllocatePort</a></tt></dt>
+<dd>The method is called when the port should configure its
+associated hardware to prepare to send or receive isochronous data
+on the channel number and at the speed specified.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetRefCon/void/(IOFireWireLibIsochPortRef)" target="doc">GetRefCon</a></tt></dt>
+<dd>Get reference value associated with this port.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetSupported/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed*,UInt64*)" target="doc">GetSupported</a></tt></dt>
+<dd>The method is called to determine which FireWire isochronous
+channels and speed this port supports.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/ReleasePort/IOReturn/(IOFireWireLibIsochPortRef)" target="doc">ReleasePort</a></tt></dt>
+<dd>The method is called to release the hardware after the
+channel has been stopped.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/SetRefCon/void/(IOFireWireLibIsochPortRef,void*)" target="doc">SetRefCon</a></tt></dt>
+<dd>Set reference value associated with this port.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Start/IOReturn/(IOFireWireLibIsochPortRef)" target="doc">Start</a></tt></dt>
+<dd>The method is called when the port is to begin talking or listening.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Stop/IOReturn/(IOFireWireLibIsochPortRef)" target="doc">Stop</a></tt></dt>
+<dd>The method is called when the port is to stop talking or listening.
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/AllocatePort/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed,UInt32);  name=IOFireWireIsochPortInterface::AllocatePort -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/AllocatePort/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="AllocatePort">AllocatePort</a></h2>
+</td></tr></table>The method is called when the port should configure its
+associated hardware to prepare to send or receive isochronous data
+on the channel number and at the speed specified.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/AllocatePort //apple_ref/cpp/clm/AllocatePort //apple_ref/cpp/intfcm/AllocatePort //apple_ref/cpp/func/AllocatePort //apple_ref/cpp/ftmplt/AllocatePort //apple_ref/cpp/defn/AllocatePort //apple_ref/cpp/macro/AllocatePort" --><font class="function">AllocatePort</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed" --><font class="type">IOFWSpeed</font><!-- /a --> <font class="param">speed</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">chan</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called by the channel object to which a port
+has been added. Subclasses of IOFireWireIsochPortInterface override
+this method to support specific hardware. Do not call this method
+directly.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+<dt><tt><em>speed</em></tt></dt><dd>Channel speed</dd>
+<dt><tt><em>chan</em></tt></dt><dd>Channel number (0-63)</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Return kIOReturnSuccess on success, other return any other
+ IOReturn error code.</dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetRefCon/void/(IOFireWireLibIsochPortRef);  name=IOFireWireIsochPortInterface::GetRefCon -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetRefCon/void/(IOFireWireLibIsochPortRef)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetRefCon">GetRefCon</a></h2>
+</td></tr></table>Get reference value associated with this port.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --><font class="type">*</font> (*<!-- a logicalPath="//apple_ref/cpp/instm/GetRefCon //apple_ref/cpp/clm/GetRefCon //apple_ref/cpp/intfcm/GetRefCon //apple_ref/cpp/func/GetRefCon //apple_ref/cpp/ftmplt/GetRefCon //apple_ref/cpp/defn/GetRefCon //apple_ref/cpp/macro/GetRefCon" --><font class="function">GetRefCon</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font>) </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Set the reference value with SetRefCon()
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The port refcon value.</dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetSupported/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed*,UInt64*);  name=IOFireWireIsochPortInterface::GetSupported -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/GetSupported/IOReturn/(IOFireWireLibIsochPortRef,IOFWSpeed*,UInt64*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="GetSupported">GetSupported</a></h2>
+</td></tr></table>The method is called to determine which FireWire isochronous
+channels and speed this port supports.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/GetSupported //apple_ref/cpp/clm/GetSupported //apple_ref/cpp/intfcm/GetSupported //apple_ref/cpp/func/GetSupported //apple_ref/cpp/ftmplt/GetSupported //apple_ref/cpp/defn/GetSupported //apple_ref/cpp/macro/GetSupported" --><font class="function">GetSupported</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed" --><font class="type">IOFWSpeed</font><!-- /a -->*<font class="param">maxSpeed</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt64 //apple_ref/cpp/cl/UInt64 //apple_ref/cpp/tdef/UInt64 //apple_ref/cpp/tag/UInt64 //apple_ref/cpp/econst/UInt64 //apple_ref/cpp/struct/UInt64 //apple_ref/cpp/clconst/UInt64" --><font class="type">UInt64</font><!-- /a -->*<font class="param">chanSupported</font> ) </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called by the channel object to which a port
+has been added. Subclasses of IOFireWireIsochPortInterface override
+this method to support specific hardware. Do not call this method
+directly.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+<dt><tt><em>maxSpeed</em></tt></dt><dd>A pointer to an IOFWSpeed which should be filled with
+the maximum speed this port can talk or listen.</dd>
+<dt><tt><em>chanSupported</em></tt></dt><dd>A pointer to a UInt64 which should be filled with
+a bitmask representing the FireWire bus isochonous channels on
+which the port can talk or listen. Set '1' for supported, '0' for
+unsupported.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Return kIOReturnSuccess on success, other return any other
+ IOReturn error code.</dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/ReleasePort/IOReturn/(IOFireWireLibIsochPortRef);  name=IOFireWireIsochPortInterface::ReleasePort -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/ReleasePort/IOReturn/(IOFireWireLibIsochPortRef)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ReleasePort">ReleasePort</a></h2>
+</td></tr></table>The method is called to release the hardware after the
+channel has been stopped.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/ReleasePort //apple_ref/cpp/clm/ReleasePort //apple_ref/cpp/intfcm/ReleasePort //apple_ref/cpp/func/ReleasePort //apple_ref/cpp/ftmplt/ReleasePort //apple_ref/cpp/defn/ReleasePort //apple_ref/cpp/macro/ReleasePort" --><font class="function">ReleasePort</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called by the channel object to which a port
+has been added. Subclasses of IOFireWireIsochPortInterface override
+this method to support specific hardware. Do not call this method
+directly.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Return kIOReturnSuccess on success, other return any other IOReturn error code.</dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/SetRefCon/void/(IOFireWireLibIsochPortRef,void*);  name=IOFireWireIsochPortInterface::SetRefCon -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/SetRefCon/void/(IOFireWireLibIsochPortRef,void*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="SetRefCon">SetRefCon</a></h2>
+</td></tr></table>Set reference value associated with this port.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/SetRefCon //apple_ref/cpp/clm/SetRefCon //apple_ref/cpp/intfcm/SetRefCon //apple_ref/cpp/func/SetRefCon //apple_ref/cpp/ftmplt/SetRefCon //apple_ref/cpp/defn/SetRefCon //apple_ref/cpp/macro/SetRefCon" --><font class="function">SetRefCon</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a -->*<font class="param">inRefCon</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Retrieve the reference value with GetRefCon()
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+<dt><tt><em>inRefCon</em></tt></dt><dd>The new reference value.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Start/IOReturn/(IOFireWireLibIsochPortRef);  name=IOFireWireIsochPortInterface::Start -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Start/IOReturn/(IOFireWireLibIsochPortRef)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Start">Start</a></h2>
+</td></tr></table>The method is called when the port is to begin talking or listening.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/Start //apple_ref/cpp/clm/Start //apple_ref/cpp/intfcm/Start //apple_ref/cpp/func/Start //apple_ref/cpp/ftmplt/Start //apple_ref/cpp/defn/Start //apple_ref/cpp/macro/Start" --><font class="function">Start</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called by the channel object to which a port
+has been added. Subclasses of IOFireWireIsochPortInterface override
+this method to support specific hardware. Do not call this method
+directly.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Return kIOReturnSuccess on success, other return any other IOReturn error code.</dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Stop/IOReturn/(IOFireWireLibIsochPortRef);  name=IOFireWireIsochPortInterface::Stop -->
+<a name="//apple_ref/cpp/instm/IOFireWireIsochPortInterface/Stop/IOReturn/(IOFireWireLibIsochPortRef)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="Stop">Stop</a></h2>
+</td></tr></table>The method is called when the port is to stop talking or listening.
+<BR>
+<blockquote><pre><tt></tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/cpp/instm/Stop //apple_ref/cpp/clm/Stop //apple_ref/cpp/intfcm/Stop //apple_ref/cpp/func/Stop //apple_ref/cpp/ftmplt/Stop //apple_ref/cpp/defn/Stop //apple_ref/cpp/macro/Stop" --><font class="function">Stop</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef" --><font class="type">IOFireWireLibIsochPortRef</font><!-- /a --> <font class="param">self</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called by the channel object to which a port
+has been added. Subclasses of IOFireWireIsochPortInterface override
+this method to support specific hardware. Do not call this method
+directly.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>self</em></tt></dt><dd>The isoch port interface to use.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Return kIOReturnSuccess on success, other return any
+ other IOReturn error code.</dd></dl>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

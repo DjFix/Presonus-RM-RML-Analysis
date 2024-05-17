@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWPseudoAddressSpaceAux/setARxReqIntCompleteHandler/virtualvoid/(void*,IOFWARxReqIntCompleteHandler)" target="doc">setARxReqIntCompleteHandler</a></tt></dt>
+<dd>Installs a callback to receive notification, when FWIM has completed
+ARxReqInt processing and no incoming packets are left in the queue.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWPseudoAddressSpaceAux/setARxReqIntCompleteHandler/virtualvoid/(void*,IOFWARxReqIntCompleteHandler);  name=IOFWPseudoAddressSpaceAux::setARxReqIntCompleteHandler --><a name="//apple_ref/cpp/instm/IOFWPseudoAddressSpaceAux/setARxReqIntCompleteHandler/virtualvoid/(void*,IOFWARxReqIntCompleteHandler)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setARxReqIntCompleteHandler">setARxReqIntCompleteHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Installs a callback to receive notification, when FWIM has completed
+ARxReqInt processing and no incoming packets are left in the queue.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setARxReqIntCompleteHandler //apple_ref/cpp/clm/setARxReqIntCompleteHandler //apple_ref/cpp/intfcm/setARxReqIntCompleteHandler //apple_ref/cpp/intfm/setARxReqIntCompleteHandler //apple_ref/cpp/func/setARxReqIntCompleteHandler //apple_ref/cpp/ftmplt/setARxReqIntCompleteHandler //apple_ref/cpp/defn/setARxReqIntCompleteHandler //apple_ref/cpp/macro/setARxReqIntCompleteHandler" --><span class="function">setARxReqIntCompleteHandler</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWARxReqIntCompleteHandler //apple_ref/cpp/tdef/IOFWARxReqIntCompleteHandler //apple_ref/cpp/tag/IOFWARxReqIntCompleteHandler //apple_ref/cpp/econst/IOFWARxReqIntCompleteHandler //apple_ref/cpp/struct/IOFWARxReqIntCompleteHandler //apple_ref/cpp/clconst/IOFWARxReqIntCompleteHandler //apple_ref/cpp/intf/IOFWARxReqIntCompleteHandler" --><span class="type">IOFWARxReqIntCompleteHandler</span><!-- /a --> <span class="param">handler</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refcon </code></dt>
+<dd>Client's callback object.</dd>
+<dt><code>handler </code></dt>
+<dd>Client callback to be invoked, at the end of interrupt processing.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none. 
+<!-- end return value --></p>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

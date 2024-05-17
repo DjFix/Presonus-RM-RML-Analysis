@@ -1,0 +1,362 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\vieww14380\viewh15340\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+
+\f0\b\fs36 \cf0 IsocHammer 0.0.8                             \
+1394 Isochronous \
+Bus Stress Tool\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\fs24 \cf0 \
+\
+
+\fs28 Introduction
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0 \cf0 IsocHammer is designed to transmit multiple isochronous streams, allowing control of each discretely from a graphical user interface. It automatically configures for the total available isochronous transmit contexts. The AVCVideoServices framework provides these capabilities via the universal transmitter API. This tool is compatible with Mac OSX 10.4 or later.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Uses
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0 \cf0 Isoc Hammer's best use is as a 1394 bus stress tool to help tease out problems that may be lurking. It is very useful as a stress tester of FireWire oriented applications. It is also handy in stress testing, including functional verification of changes to the isochronous transmitter API in IOFireWireFamily and AVCServices framework.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Features
+\fs24 :\
+o 
+\b0 Fluid control during active streaming, via sliders, over each respective hardware context parameters; speed, length, and channel. \
+\
+
+\b o 
+\b0 Easy live switching between contexts.\
+
+\b \
+o 
+\b0 A "Keep Active" mode, which continually restarts erred streams.\
+\
+
+\b o
+\b0  Each context transmits payloads with a respective incrementing pattern and signature field. Incrementing data indicates transmit progress via relative buffer position. A randomly chosen signature value identifies each stream uniquely.\
+\
+
+\b o 
+\b0 Provides an IRM bandwidth monitor indicating the bytes available before saturation. It automatically scales to the currently selected speed. When adjusting the Length slider this feedback aids in predicting bus saturation.\
+
+\b \
+o 
+\b0 Has callback monitoring. In order to keep stream buffers progressing regular callback function occurs. IsocHammer indicates "Callbacks per second" on a level indicator bar that scales to peak readings.\
+
+\b \
+o 
+\b0 Provides link device hardware selection when there are more than one available.\
+
+\b \
+o 
+\b0 Keeps a running text log within the application window. Further logs are available via the Mac OX Console app.\
+\
+
+\b\fs28 Instructions
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li420\fi-420\ri-2160\ql\qnatural
+\cf0 1)
+\b0  Acquire two or more Macs running Mac OSX 10.4 or better. (
+\i Note 1)
+\i0   \
+\
+
+\b 2)
+\b0  Connect the two via FireWire.\
+\
+
+\b 3)
+\b0  Configure one to run FireBug (or other 1394 bus analyzer or tool (
+\i Note 1)
+\i0   ). \
+\
+
+\b 4)
+\b0  Launch IsocHammer on one Mac and analyzer tool on the other.\
+\
+
+\b 5)
+\b0  Select a context and press 
+\b Start
+\b0 . This starts transmission of an isochronous stream at the specified length, channel, and speed.\
+\
+
+\b 6)
+\b0  Observe the 1394 bus analyzer show a steady stream of isochronous packets.\
+\
+
+\b 7)
+\b0  Observe that the 
+\b BW Avail 
+\b0 value reduces as you start more contexts transmitting. This value is the bytes remaining until the bus bandwidth saturates. \
+\
+
+\b 8)
+\b0  Start more contexts transmitting on the bus. Repeat from step 5.\
+\
+
+\b 9)
+\b0  Freely shove sliders around. When shoving the Length slider, carefully observe the maximum bandwidth limit indicated by the 
+\b BW Avail 
+\b0 field.  (
+\i Note 2)
+\i0 \
+\
+
+\b 10)
+\b0  Observe the sliders and indicators states correspond with switching contexts.\
+\
+
+\b 11)
+\b0  Press 
+\b StopAll
+\b0  when you need to stop all transmissions. \
+\
+
+\b 12)
+\b0  Or just hit 
+\b Stop
+\b0  to quiet each context individually.\
+
+\b \
+
+\i Note 1:
+\i0\b0  Complimentary applications are FWIRMViewer and IsocViewer. You might want to add a machine for this.  IsocViewer must not be run alongside IsocHammer on the same Mac. FWIRMViewer, however, will run locally alongside IsocHammer. In this case no additional machine is required. These tools can be used to verify bus activity, however cannot be considered bus analyzers.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi280\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li420\fi-420\ri-2160\ql\qnatural
+
+\i\b \cf0 Note 2:
+\i0\b0  Two extreme parameter cases are expected to keep a context from streaming: attempted duplicate channel allocation, and excessive total packet lengths (Bandwidth saturation).\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 \
+Window Contents
+\fs26 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\fs28 \cf0 \
+Interface Picker pop up menu
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0 \cf0 When more than one OHCI link is discovered you may choose among them. In the application window upper left area is a drop down menu list of all installed FireWire devices. Controls become functional when an interface is chosen.
+\b\fs28 \
+\
+Sliders
+\fs24 :\
+
+\b0 All three sliders control stream parameters dynamically.  There is no need to stop then start a stream with new parameters. Adjustments take effect one second after slider manipulation stops. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+\cf0  
+\b Speed
+\b0  - Choose the isochronous stream bus speed. Adjustments to bus speed changes the Length slider scales to reflect maximum packet size.\
+\
+
+\b  Length -
+\b0  Choose the stream packet length up to maximum packet size. For precise length settings an edit field is provided. Keep an eye on the 
+\b BW Avail
+\b0 , which indicates how many bytes are available before bus  saturation.\
+\
+ 
+\b Channel -
+\b0  Change the stream channel. For precise channel settings an edit field is provided. Channel selections are reflected in the Select Context control buttons.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Control Buttons
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+\cf0 \
+
+\b0  
+\b Manual -
+\b0  All streams are adjusted manually. Slider adjustments take effect approximately one second after the slider motion stops.\
+\
+ 
+\b KeepActive -
+\b0  Similar in operation to 
+\b Manual
+\b0  except that contexts will be restarted after any failure. This mode should help tease out intermittent bugs.\
+\
+ 
+\b Context Select -
+\b0  The available contexts are listed as a row of buttons near the application window bottom. Selecting a context causes all controls to reflect the respective parameters. Each button is labeled with channel value and adjusts according to the channel slider. A green dot is present next to the channel value while the context is streaming. \
+\
+ 
+\b Start(Stop) -
+\b0  Starts or stops the currently selected context.\
+\
+ 
+\b Stop All -
+\b0  As a convenience this button stops all running contexts.\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Status Indications
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+
+\b0 \cf0 \
+ 
+\b Callbacks/S -
+\b0  Universal Transmitter callbacks per second are reported. The accompanying level indicator bar shows this value. When max indication is excessed the indicator scales dynamically to new peak readings.\
+\
+ 
+\b BW Avail -
+\b0  Shows the bandwidth available as indicated by Isochronous Resource Manager. The value is automatically scaled in response to a changed bus speed setting, expressed in bytes available. This provides significant information when choosing packet lengths.\
+\
+ 
+\b Log Info -
+\b0  The bottom most area in the application window shows the activity log. The application window can be expanded to view this more easily.\
+\
+ 
+\b ClearLog -
+\b0  Just above the log text dump area, this button erases all text in the log info window.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 Known Bugs - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1160\fi-1160\ri-2160\ql\qnatural
+\cf0 	
+\b o
+\b0  Sliders are limited to only a reasonable degree. Some settings however, which can be considered extreme for a given Mac OS, are not limited. (i.e. running near maximum packet sizes at s800 may be problematic) Panics and application crashes may occur when extreme conditions are selected.
+\b \
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 Revision History - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1020\fi-1020\ri-2160\ql\qnatural
+\cf0 0.0.8 - 12/6/2007\
+	o
+\b0  Changed to a more standardized Local Link naming method.\
+
+\b 	o
+\b0  Added FWOHCIPicker v1.0 framework to choose between multiple FireWire interfaces.\
+
+\b 	o
+\b0  Removed automatic tester mode as they were never implemented.
+\b \
+\
+0.0.7 - 7/20/2007\
+	o
+\b0  Updated to AVCServices.frameworks version 41.
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1020\fi-1020\ri-2160\ql\qnatural
+\cf0 0.0.6 - 6/29/2007\
+	o
+\b0  Removed spinning activity indicator. It is no longer supported in Leopard.
+\b \
+	o
+\b0  Added "Callbacks per second" level indicator.
+\b \
+	o
+\b0  Improved 
+\b IRM Bytes
+\b0  by adding a level indicator and calling it 
+\b BW Avail
+\b0 .
+\b \
+	o
+\b0  Added incrementing payload content with signature for each context. Incrementing data indicates transmit progress relative buffer position. The signature field is to identify each stream buffer uniquely in case there is a mixup.\
+
+\b 	o
+\b0  Modified callback monitoring algorithm to show callback resumption s as well as stalls.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1020\fi-1020\ri-2160\ql\qnatural
+\cf0 0.0.5 - 6/21/2007\
+	o
+\b0  Bug Fix edit fields for length and  channel were not editable due to slider updating.\
+
+\b 	o
+\b0  Added clear log button.\
+
+\b 	o
+\b0  Cleaned up the red dot activity indicator behavior. Red dots also turned green.\
+
+\b 	o
+\b0  Cleaned up KeepActive behavior.\
+
+\b \
+0.0.4 - 6/5/2007\
+	o
+\b0  Added Context selector button labels to follow current channel number.\
+
+\b 	o
+\b0  Added red dot in context selector button to indicate a stream is running.\
+
+\b 	o
+\b0  Added IOKit error code strings describing error codes in english.\
+
+\b 	o
+\b0  Fixed context object memory allocation leak.\
+
+\b 	o
+\b0  Began including this readme file.\
+
+\b \
+0.0.3 - 6/1/2007\
+	o
+\b0  Added KeepActive mode similar to Manual mode only if a context stops due to failure it is restarted.\
+
+\b 	o
+\b0  Added AVCVideoServices-40 frameworks services.\
+
+\b \
+0.0.2 - 5/31/2007 (
+\b0 informal release
+\b )\
+	o
+\b0  FireWire bus IRM bandwidth monitor. Reads in bytes and scale to the speed slider selection.\
+  
+\b 	o
+\b0  Auto-scales speed slider to maximum available speed for the local node capability.\
+  
+\b 	o
+\b0  Bug Fix. If the one context fails all other keep running. In version 0.1 all contexts are stopped if only one stops. \
+
+\b \
+0.0.1 - 5/21/2007\
+	o
+\b0  Original Release.  \
+
+\b 	o
+\b0  Monitors and reports non-active Transmit call backs.\
+
+\b \
+}

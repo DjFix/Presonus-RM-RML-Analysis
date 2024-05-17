@@ -1,0 +1,469 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2Login </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/class/IOFireWireSBP2Login" title="IOFireWireSBP2Login "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireSBP2Login">IOFireWireSBP2Login </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> Supplies the login maintenance and Normal Command ORB execution portions of the API.
+<!-- end abstract --></p>
+<p><b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/OSObject //apple_ref/cpp/tdef/OSObject //apple_ref/cpp/tag/OSObject //apple_ref/cpp/econst/OSObject //apple_ref/cpp/struct/OSObject //apple_ref/cpp/data/OSObject //apple_ref/cpp/clconst/OSObject //apple_ref/cpp/intf/OSObject //apple_ref/cpp/instm/OSObject //apple_ref/cpp/clm/OSObject //apple_ref/cpp/intfcm/OSObject //apple_ref/cpp/intfm/OSObject //apple_ref/cpp/func/OSObject //apple_ref/cpp/ftmplt/OSObject //apple_ref/cpp/defn/OSObject //apple_ref/cpp/macro/OSObject //apple_ref/doc/com/intfm/OSObject" -->OSObject<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">IOFireWireSBP2Login</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Supplies APIs for login maintenance and command execution.  Drivers can use this 
+object to create IOFireWireSBP2ORB objects and execute them.  Solicited and unsolicited status 
+callback routines can be registered and the SBP2 services will notify the driver when the 
+appropriate status arrives.
+This class also handles login maintenance.  Supplies APIs for logging in and logging out and 
+attempts to reconnect to the LUN after bus resets.  The base FireWire services deliver bus 
+reset notification via the IOKit message routine.  The SBP2 services build on this behavior 
+and deliver reconnectFailed and reconnectComplete through the message routine as well.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/enableUnsolicitedStatus/virtualIOReturn/()" target="_top">enableUnsolicitedStatus </a></tt></dt>
+<dd>Enables unsolicited status.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginFlags/virtualUInt32/()" target="_top">getLoginFlags </a></tt></dt>
+<dd>Returns the currently set login flags.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginID/virtualUInt32/()" target="_top">getLoginID </a></tt></dt>
+<dd>Returns the current login ID.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxCommandBlockSize/virtualUInt32/()" target="_top">getMaxCommandBlockSize </a></tt></dt>
+<dd>Returns the maximum command block size.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxPayloadSize/virtualUInt32/()" target="_top">getMaxPayloadSize </a></tt></dt>
+<dd>Returns the currently set maximum payload size.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getReconnectTime/virtualUInt32/()" target="_top">getReconnectTime </a></tt></dt>
+<dd>Returns the currently set reconnect time.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getRefCon/virtualvoid*/()" target="_top">getRefCon </a></tt></dt>
+<dd>Returns the refCon set with setRefCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/release/virtualvoid/()" target="_top">release </a></tt></dt>
+<dd>Primary implementation of the release mechanism.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setBusyTimeoutRegisterValue/virtualvoid/(UInt32)" target="_top">setBusyTimeoutRegisterValue </a></tt></dt>
+<dd>Sets the value to be written to the BUSY_TIMEOUT register.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginFlags/virtualvoid/(UInt32)" target="_top">setLoginFlags </a></tt></dt>
+<dd>Sets login configuration flags.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginRetryCountAndDelayTime/virtualvoid/(UInt32,UInt32)" target="_top">setLoginRetryCountAndDelayTime </a></tt></dt>
+<dd>Sets login retry behavior.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setMaxPayloadSize/virtualvoid/(UInt32)" target="_top">setMaxPayloadSize </a></tt></dt>
+<dd>Sets the maximum data transfer length for a normal command ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(IOMemoryDescriptor*)" target="_top">setPassword (IOMemoryDescriptor *)</a></tt></dt>
+<dd>Sets the login password.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(void*,UInt32)" target="_top">setPassword (void *, UInt32)</a></tt></dt>
+<dd>Sets the login password.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setReconnectTime/virtualvoid/(UInt32)" target="_top">setReconnectTime </a></tt></dt>
+<dd>Sets the desired reconnect duration.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setRefCon/virtualvoid/(void*)" target="_top">setRefCon </a></tt></dt>
+<dd>Sets the login refCon.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/enableUnsolicitedStatus/virtualIOReturn/();  name=IOFireWireSBP2Login::enableUnsolicitedStatus --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/enableUnsolicitedStatus/virtualIOReturn/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="enableUnsolicitedStatus">enableUnsolicitedStatus </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Enables unsolicited status.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/enableUnsolicitedStatus" logicalPath="//apple_ref/cpp/instm/enableUnsolicitedStatus //apple_ref/cpp/clm/enableUnsolicitedStatus //apple_ref/cpp/intfcm/enableUnsolicitedStatus //apple_ref/cpp/intfm/enableUnsolicitedStatus //apple_ref/cpp/func/enableUnsolicitedStatus" target="_top"><span class="function">enableUnsolicitedStatus</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if the status enable write started successfully.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->After unsolicited is sent the device will not send any additional unsolicited status 
+until a specific register is written. This serves as a sort of flow-control for unsolicited status. 
+After unsolicited status is recieved and processed drivers will want to reenable the delivery 
+of unsolicted status by a call to this method.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginFlags/virtualUInt32/();  name=IOFireWireSBP2Login::getLoginFlags --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginFlags/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getLoginFlags">getLoginFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the currently set login flags.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getLoginFlags //apple_ref/cpp/clm/getLoginFlags //apple_ref/cpp/intfcm/getLoginFlags //apple_ref/cpp/intfm/getLoginFlags //apple_ref/cpp/func/getLoginFlags //apple_ref/cpp/ftmplt/getLoginFlags //apple_ref/cpp/defn/getLoginFlags //apple_ref/cpp/macro/getLoginFlags" --><span class="function">getLoginFlags</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the currently set login flags.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the current state of the login flags. Currently there is only one
+flag defined for this API. kFWSBP2ExclusiveLogin indicates that the exclusive login bit
+should be set in the login ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginID/virtualUInt32/();  name=IOFireWireSBP2Login::getLoginID --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getLoginID/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getLoginID">getLoginID </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current login ID.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getLoginID" logicalPath="//apple_ref/cpp/instm/getLoginID //apple_ref/cpp/clm/getLoginID //apple_ref/cpp/intfcm/getLoginID //apple_ref/cpp/intfm/getLoginID //apple_ref/cpp/func/getLoginID" target="_top"><span class="function">getLoginID</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the current login ID.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When we successfully login to a device. The device gives us a unique login id. 
+This is used internally for reconnecting to the device after bus resets and for certain other 
+management ORBs. Most drivers are probably not interested in this value.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxCommandBlockSize/virtualUInt32/();  name=IOFireWireSBP2Login::getMaxCommandBlockSize --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxCommandBlockSize/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMaxCommandBlockSize">getMaxCommandBlockSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the maximum command block size.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getMaxCommandBlockSize" logicalPath="//apple_ref/cpp/instm/getMaxCommandBlockSize //apple_ref/cpp/clm/getMaxCommandBlockSize //apple_ref/cpp/intfcm/getMaxCommandBlockSize //apple_ref/cpp/intfm/getMaxCommandBlockSize //apple_ref/cpp/func/getMaxCommandBlockSize" target="_top"><span class="function">getMaxCommandBlockSize</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the maximum command block size.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The device publishes an upper limit on the size of command block that it can 
+accept. That value can be accessed via this method.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxPayloadSize/virtualUInt32/();  name=IOFireWireSBP2Login::getMaxPayloadSize --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getMaxPayloadSize/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMaxPayloadSize">getMaxPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the currently set maximum payload size.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMaxPayloadSize //apple_ref/cpp/clm/getMaxPayloadSize //apple_ref/cpp/intfcm/getMaxPayloadSize //apple_ref/cpp/intfm/getMaxPayloadSize //apple_ref/cpp/func/getMaxPayloadSize //apple_ref/cpp/ftmplt/getMaxPayloadSize //apple_ref/cpp/defn/getMaxPayloadSize //apple_ref/cpp/macro/getMaxPayloadSize" --><span class="function">getMaxPayloadSize</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the currently set maximum payload size.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the currently global maximum payload size in bytes.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getReconnectTime/virtualUInt32/();  name=IOFireWireSBP2Login::getReconnectTime --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getReconnectTime/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getReconnectTime">getReconnectTime </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the currently set reconnect time.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getReconnectTime //apple_ref/cpp/clm/getReconnectTime //apple_ref/cpp/intfcm/getReconnectTime //apple_ref/cpp/intfm/getReconnectTime //apple_ref/cpp/func/getReconnectTime //apple_ref/cpp/ftmplt/getReconnectTime //apple_ref/cpp/defn/getReconnectTime //apple_ref/cpp/macro/getReconnectTime" --><span class="function">getReconnectTime</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the currently set reconnect time.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the currently desired initiator reconnect time encoded as 2^time seconds.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getRefCon/virtualvoid*/();  name=IOFireWireSBP2Login::getRefCon --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/getRefCon/virtualvoid*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon">getRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the refCon set with setRefCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/cpp/instm/getRefCon //apple_ref/cpp/clm/getRefCon //apple_ref/cpp/intfcm/getRefCon //apple_ref/cpp/intfm/getRefCon //apple_ref/cpp/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the login with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/release/virtualvoid/();  name=IOFireWireSBP2Login::release --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/release/virtualvoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="release">release </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Primary implementation of the release mechanism.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/release //apple_ref/cpp/clm/release //apple_ref/cpp/intfcm/release //apple_ref/cpp/intfm/release //apple_ref/cpp/func/release //apple_ref/cpp/ftmplt/release //apple_ref/cpp/defn/release //apple_ref/cpp/macro/release" --><span class="function">release</span><!-- /a -->() <span class="keyword">const</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->See OSObject.h for more information. When retainCount == when then call free(). 
+ <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setBusyTimeoutRegisterValue/virtualvoid/(UInt32);  name=IOFireWireSBP2Login::setBusyTimeoutRegisterValue --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setBusyTimeoutRegisterValue/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setBusyTimeoutRegisterValue">setBusyTimeoutRegisterValue </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the value to be written to the BUSY_TIMEOUT register.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setBusyTimeoutRegisterValue" logicalPath="//apple_ref/cpp/instm/setBusyTimeoutRegisterValue //apple_ref/cpp/clm/setBusyTimeoutRegisterValue //apple_ref/cpp/intfcm/setBusyTimeoutRegisterValue //apple_ref/cpp/intfm/setBusyTimeoutRegisterValue //apple_ref/cpp/func/setBusyTimeoutRegisterValue" target="_top"><span class="function">setBusyTimeoutRegisterValue</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">timeout</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>timeout </code></dt>
+<dd>desired value of the BUSY_TIMEOUT register.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->1394-1995 defines a register known as the BUSY_TIMEOUT register. This register 
+controls the busy retry behavior of your device. The initial value for this register is 
+0x00000000. Which means busied transactions will not be retried. Since most devices want 
+their transactions retired on busy acks, the SBP2 service automatically updates the 
+BUSY_TIMEOUT register with the value specified here whenever necessary. Most drivers should 
+set this value to 0x0000000f.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginFlags/virtualvoid/(UInt32);  name=IOFireWireSBP2Login::setLoginFlags --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginFlags/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setLoginFlags">setLoginFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets login configuration flags.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setLoginFlags" logicalPath="//apple_ref/cpp/instm/setLoginFlags //apple_ref/cpp/clm/setLoginFlags //apple_ref/cpp/intfcm/setLoginFlags //apple_ref/cpp/intfm/setLoginFlags //apple_ref/cpp/func/setLoginFlags" target="_top"><span class="function">setLoginFlags</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">loginFlags</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>loginFlags </code></dt>
+<dd>the login configuration flags.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Configures the login behavior according to the provided flags. Currently two 
+flags are defined for this API. kFWSBP2ExclusiveLogin sets the exclusive login bit in the 
+login ORB. kFWSBP2DontSynchronizeMgmtAgent allows simultaneous logins or reconnects to LUNs
+with a common management agent (ie LUNs in the same unit directory).
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginRetryCountAndDelayTime/virtualvoid/(UInt32,UInt32);  name=IOFireWireSBP2Login::setLoginRetryCountAndDelayTime --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setLoginRetryCountAndDelayTime/virtualvoid/(UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setLoginRetryCountAndDelayTime">setLoginRetryCountAndDelayTime </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets login retry behavior.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setLoginRetryCountAndDelayTime //apple_ref/cpp/clm/setLoginRetryCountAndDelayTime //apple_ref/cpp/intfcm/setLoginRetryCountAndDelayTime //apple_ref/cpp/intfm/setLoginRetryCountAndDelayTime //apple_ref/cpp/func/setLoginRetryCountAndDelayTime //apple_ref/cpp/ftmplt/setLoginRetryCountAndDelayTime //apple_ref/cpp/defn/setLoginRetryCountAndDelayTime //apple_ref/cpp/macro/setLoginRetryCountAndDelayTime" --><span class="function">setLoginRetryCountAndDelayTime</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">retryCount</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">uSecs</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>retryCount </code></dt>
+<dd>number of times to retry logins</dd>
+<dt><code>uSecs </code></dt>
+<dd>delay time in microseconds between login retries</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets login retry behavior.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setMaxPayloadSize/virtualvoid/(UInt32);  name=IOFireWireSBP2Login::setMaxPayloadSize --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setMaxPayloadSize/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMaxPayloadSize">setMaxPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the maximum data transfer length for a normal command ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMaxPayloadSize" logicalPath="//apple_ref/cpp/instm/setMaxPayloadSize //apple_ref/cpp/clm/setMaxPayloadSize //apple_ref/cpp/intfcm/setMaxPayloadSize //apple_ref/cpp/intfm/setMaxPayloadSize //apple_ref/cpp/func/setMaxPayloadSize" target="_top"><span class="function">setMaxPayloadSize</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">maxPayloadSize</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>reconnectTime </code></dt>
+<dd>The desired maximum payload size in bytes.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the maximum data transfer length for a normal command ORB. This value is 
+the maximum for all ORBs sent to this LUN. This can be trimmed further on an ORB by ORB basis, 
+by a similar call in the IOFireWireSBP2ORB itself.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(IOMemoryDescriptor*);  name=IOFireWireSBP2Login::setPassword --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(IOMemoryDescriptor*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setPassword(IOMemoryDescriptor*)">setPassword (IOMemoryDescriptor *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login password.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setPassword" logicalPath="//apple_ref/cpp/instm/setPassword //apple_ref/cpp/clm/setPassword //apple_ref/cpp/intfcm/setPassword //apple_ref/cpp/intfm/setPassword //apple_ref/cpp/func/setPassword" target="_top"><span class="function">setPassword</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">memory</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>memory </code></dt>
+<dd>an IOMemoryDescriptor referencing the password.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the login password using an IOMemoryDescriptor. An alternate version exists 
+that accepts a buffer and a length. If the password length is 8 or less the password is copied 
+directly into the login orb. If the length is greater than 8 the buffer is referenced by address 
+in the login ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(void*,UInt32);  name=IOFireWireSBP2Login::setPassword --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setPassword/virtualIOReturn/(void*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setPassword(void*,UInt32)">setPassword (void *, UInt32)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login password.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setPassword" logicalPath="//apple_ref/cpp/instm/setPassword //apple_ref/cpp/clm/setPassword //apple_ref/cpp/intfcm/setPassword //apple_ref/cpp/intfm/setPassword //apple_ref/cpp/func/setPassword" target="_top"><span class="function">setPassword</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>buf </code></dt>
+<dd>a pointer to the password buffer.</dd>
+<dt><code>len </code></dt>
+<dd>the length in bytes of the password buffer.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the login password using a buffer and a length. An alternate version exists 
+that accepts an IOMemoryDescriptor. If the password length is 8 or less the password is copied 
+directly into the login orb. If the length is greater than 8 the buffer is referenced by address 
+in the login ORB. In this case the buffer is not copied and should remain allocated for the 
+duration of the login attempt.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setReconnectTime/virtualvoid/(UInt32);  name=IOFireWireSBP2Login::setReconnectTime --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setReconnectTime/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setReconnectTime">setReconnectTime </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the desired reconnect duration.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setReconnectTime" logicalPath="//apple_ref/cpp/instm/setReconnectTime //apple_ref/cpp/clm/setReconnectTime //apple_ref/cpp/intfcm/setReconnectTime //apple_ref/cpp/intfm/setReconnectTime //apple_ref/cpp/func/setReconnectTime" target="_top"><span class="function">setReconnectTime</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">reconnectTime</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>reconnectTime </code></dt>
+<dd>The desired reconnect timeout encoded as 2^reconnectTime seconds.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The target and initiator arbitrate the duration of the reconnect timeout. Here 
+the initiator specifies its desired timeout time in 2^reconnectTime seconds. After a 
+successful login the device returns the actual timeout value it wishes to use. This value 
+may be less than the reconnect timeout that the intiator specified if this is all that the 
+device can support.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setRefCon/virtualvoid/(void*);  name=IOFireWireSBP2Login::setRefCon --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireSBP2Login/setRefCon/virtualvoid/(void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon">setRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/cpp/instm/setRefCon //apple_ref/cpp/clm/setRefCon //apple_ref/cpp/intfcm/setRefCon //apple_ref/cpp/intfm/setRefCon //apple_ref/cpp/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the login that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

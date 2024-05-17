@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>IOFWWriteQuadCommand</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFWWriteQuadCommand</font></h1><br>
+<a name="//apple_ref/doc/class/IOFWWriteQuadCommand" title="IOFWWriteQuadCommand"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncCommand //apple_ref/cpp/cl/IOFWAsyncCommand //apple_ref/cpp/tdef/IOFWAsyncCommand //apple_ref/cpp/tag/IOFWAsyncCommand //apple_ref/cpp/econst/IOFWAsyncCommand //apple_ref/cpp/struct/IOFWAsyncCommand //apple_ref/cpp/data/IOFWAsyncCommand //apple_ref/cpp/clconst/IOFWAsyncCommand //apple_ref/cpp/instm/IOFWAsyncCommand //apple_ref/cpp/clm/IOFWAsyncCommand //apple_ref/cpp/intfcm/IOFWAsyncCommand //apple_ref/cpp/func/IOFWAsyncCommand //apple_ref/cpp/ftmplt/IOFWAsyncCommand //apple_ref/cpp/defn/IOFWAsyncCommand //apple_ref/cpp/macro/IOFWAsyncCommand" -->IOFWAsyncCommand<!-- /a --><br>
+<h2>Discussion</h2>
+ An easier to use version of IOFWWriteCommand for use when the data to be transferred
+is small and an integer number of quads.
+Note that block read requests will be used for transfers greater than one quad unless setMaxPacket(4)
+is called.
+kMaxWriteQuads is the largest legal number of quads that this object can be asked to transfer
+(the data is copied into an internal buffer in init() and reinit()).
+<hr><br><h2>Member Functions</h2>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

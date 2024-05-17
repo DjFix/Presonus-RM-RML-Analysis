@@ -1,0 +1,207 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red193\green0\blue0;\red194\green0\blue0;\red0\green0\blue194;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww13320\viewh14780\viewkind0
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\ql\qnatural\pardirnatural
+
+\b\fs36 \cf0 FireWireKDP vs. FireWireGDB
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b0\fs20 \cf2 Copyright \'a9 2005 by Apple Computer, Inc.  All Rights Reserved.
+\fs24 \cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+\cf0 The purpose of this document is to compare two similar technologies so that you, a kernel developer, can choose the tool that best meets your needs.\
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\ql\qnatural
+\cf0 From Technical Note TN2118: "The Mac OS X kernel should never panic because, when it does, it seriously inconveniences the user. Thus, a kernel panic is always the result of a bug, either in Apple's code or in the code of some third party kernel extension. Such bugs need to be investigated and resolved." The following tools will help you debug your code.\
+\
+This document assumes you have knowledge of or have used the two-machine kernel debugging technique over Ethernet. For more information on this type of debugging see: "{\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptDebugger/hello_debugger.html#//apple_ref/doc/uid/20002367-100014-CHDCDIGH"}}{\fldrslt Kernel Extension Concepts: Hello Debugger: Debugging a Device Driver With GDB}}." \
+\
+\
+
+\b FireWireKDP
+\b0 \
+\
+
+\i \cf3 FireWireKDP enables remote debugging of a 
+\b trapped
+\b0  Darwin/Mac OS X kernel using the "gdb" command-line tool.
+\i0 \cf0  This technique is very similar to the 
+\i two-machine kernel debugger
+\i0  over Ethernet, which you may have used before. FireWireKDP enables the same debugging tools and techniques via FireWire rather than Ethernet. FireWireKDP consists of a kext that redirects KDP's UDP/Ethernet traffic on the remote, target Mac and a user-space proxy binary that redirects gdb's incoming and outgoing traffic on the debugger Mac.\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+\cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\i \cf0 Additionally, FireWireKDP can enable the transmissions of {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUG"}}{\fldrslt Kernel Core Dumps}} to a remote Mac over FireWire. This allows a developer to perform static debugging of a trapped, remote kernel
+\i0 . Using this technique, the developer may investigate a bug at a later time on his or her own Mac using a kernel core dump file just as he/she would if connected directly to a panicked Mac over FireWire or Ethernet. Kernel Core Dumps are available on Mac OS X 10.3 and later. See the FWPanicCapture tool (available in the FireWireSDK) for more information on capturing kernel core dumps.\
+\
+\
+
+\b FireWireGDB
+\b0 \
+\
+
+\i \cf3 FireWireGDB enables remote debugging of a 
+\b non-trapped
+\b0  Darwin/Mac OS X kernel using the "gdb" command-line tool.
+\i0 \cf0  It offers virtually the same ability to inspect memory as FireWireKDP and Ethernet. FireWireGDB consists of a kext that loads on the remote, target Mac and a gdb plugin that loads inside gdb on the debugger Mac.\
+\
+\
+
+\b Comparing
+\b0 \
+\
+Both FireWireKDP and FireWireGDB can enable remote debugging of the kernel. They will allow you to make gdb calls such as "bt" and "showallstacks." Both will allow you to inspect regions of memory. Either technology will allow the debugging of a trapped, remote kernel. Similarly, both enable the FireWire hardware so that it stays alive after a kernel panic and a bus reset (so that you may hot-plug a debugger Mac). Both should be compatible with sleep-wake cycling when IOFireWireFamily.kext is disabled. Neither will work with more than 3 nodes (devices and/or machines) on the FireWire bus.\
+\
+Both technologies 
+\i require
+\i0  the installation and loading (or similar) of their enabling kext on the target machine before it is trapped, hung, or froze. FireWireGDB may work with a hung or froze Mac without an enabling kext, but this functionality is unsupported and untested. Furthermore, FireWireGDB may work with a trapped kernel without an enabling kext if the debugging machine was physically connected (with a FireWire cable) while the target was alive (i.e. no bus resets are caused after panic, trap, NMI, or similar). This functionality is unsupported as well.\
+\
+\
+
+\b Contrasting\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b0 \cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\i \cf0 In general:
+\i0 \
+FireWireKDP provides a remote-control capability for GDB, allowing gdb to control the target machine to perform single-stepping and other debug tasks. In contrast, FireWireGDB is a passive window, allowing a remote gdb to inspect memory in the target, but not to exercise any control.  Though FireWireGDB is more limited overall, it may provide visibility in situations where FireWireKDP fails to work, such as a hard hang.\
+\
+
+\i More specifically:
+\i0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\fs28 \cf0 \'bb
+\fs24  FireWireKDP consists of a kext that registers as the KDP (a protocol used by gdb) packet handler and redirects all packets over FireWire. These packets are routed to GDB by the proxy program on the other end (debugger machine).\
+\
+
+\fs28 \'ab
+\fs24  Contrastingly, the FireWireGDB kext simply enables the FireWire hardware so the gdb plugin may read memory via FireWire's physical DMA. The gdb plugin then takes care of the virtual to physical memory translation by inspecting the target's virtual memory map table.\
+\
+
+\fs28 \'bb
+\fs24  FireWireKDP does not touch the FireWire hardware until gdb invokes KDP after a trap or similar. Therefore, FireWireKDP does not interfere with normal FireWire services until the machine drops into the debugger, when these services are commonly irrelevant. This is an important distinction for testers who wish to install a solution for general purpose debugging; FireWireKDP should not interfere with any testing that occurs before the Mac drops to the debugger.\
+\
+
+\fs28 \'ab
+\fs24  On the other hand, FireWireGDB cannot currently co-exist with the normal FireWire stack. It out-matches the stock FireWire kexts thereby by blocking their loading.\
+\
+
+\fs28 \'bb
+\fs24  Since FireWireKDP is a direct conduit for the KDP protocol, it enables all features of gdb's "target remote-kdp," including the ability to step through code.\
+\
+
+\fs28 \'ab
+\fs24  FireWireGDB enables most features of gdb's "target remote-kdp," but not all, through its own "target remote-fw." The most visible feature missing is the ability to step through code.\
+\
+\'bb As a shunt for KDP, FireWireKDP will not work unless the target Mac is running a KDP handler. The kernel's KDP handler is used exclusively during its drop to its debugger. Therefore, the kernel will only be sending KDP protocol packets when it panics, it's "NMI'd," trapped, or similar.\
+\
+\'ab As a doorman, enabling access to memory through FireWire, FireWireGDB will work regardless of the target kernel's state. This means the FireWireGDB plugin can debug and access memory in a kernel that has not dropped into its debugger. This is useful for debugging a Mac that has hard froze or hung in such a way that it is difficult to get it into the debugger (again, by panic, trap, NMI, or similar).\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ri720\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b \cf0 Are they compatible with FireWireKPrintf?\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b0 \cf0 \
+Both FireWireKDP and FireWireGDB are compatible with FireWireKPrintf. \
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b \cf0 Recommended Tool
+\b0 \
+\
+We recommend the use of FireWire
+\i KDP
+\i0  (over FireWireGDB) in all cases where it is possible to use. FireWireGDB should only be used when FireWireKDP will not work.\
+\
+
+\b Why?
+\b0 \
+\
+FireWireKDP is a robust solution that builds upon existing technologies. Therefore, it is much more extensible. When new features and commands are added to KDP, gdb, and the kernel, FireWireKDP should be able to take advantage of them because the KDP layer, on which FireWireKDP sits, has abstracted their implementation.\
+\
+FireWireGDB is a very fragile project. The plugin needs to be rewritten for each new version of the kernel. It is possible that the plugin you need for the OS you wish to debug is not yet available.\
+\
+While FireWireKDP requires a trapped kernel, it is not a significant drawback because it is often best to debug a static, trapped kernel. This avoids live value changing and the possibility of misinterpretation while debugging. You should always try to trap the kernel before debugging.\
+\
+That being said, there are instances where FireWireGDB is a preferable choice; for instance, when a Mac has hung and cannot be NMI'd or trapped in software.\
+\
+\
+
+\b Why should I use FireWire debugging instead of Ethernet?\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b0 \cf0 \
+There's absolutely 
+\i\b nothing
+\i0  
+\i wrong
+\i0\b0  with remote kernel debugging over Ethernet; it's a fantastic technology and one you should use if it fits your needs. However, debugging over FireWire does provide the following advantages over remote Ethernet kernel debugging:\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ri720\ql\qnatural\pardirnatural
+\ls2\ilvl0\cf0 	\'95 Available much sooner in the kernel's startup. Useful for early debugging before Ethernet is fully initialized.\
+	\'95 Available until right when the cpu is powered down at sleep and almost as soon as the cpu is powered when waking.  \
+	\'95 No IP network configuration is required. Network connectivity is difficult in some situations.\
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+\cf0 \
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b \cf0 Where can I get these tools?
+\b0 \
+\
+Both FireWireKDP and FireWireGDB are available in the FireWireSDK. Traditionally, the SDK can be downloaded at: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/sdk/"}}{\fldrslt \cf4 http://developer.apple.com/sdk/#FireWireX}}. Many more tools are available in the FireWireSDK, including general use tools like FireWireKPrintf, FireLog, FWMemView, and FWPanicView.\
+\
+\
+
+\b How do I use them?\
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b0 \cf0 All tools come with a "ReadMe" which describes its use and installation in detail.\
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b \cf0 I'm confused, help me!\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ri720\qj\pardirnatural
+
+\b0 \cf0 \
+These are sophisticated technologies and they can be challenging to understand. Below you will find a few definitions and a collection of links to help you understand how kernel debugging and FireWire works.\
+\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ri720\qj\pardirnatural
+
+\i \cf0 NMI
+\i0  - Non-Maskable Interrupt; most often caused by pressing the power button or Cmd+Option+Control+Shift+Esc. NMI cannot be used for debugging unless you have taken steps to enable it.\
+
+\i Trap
+\i0  - A call to a kernel service that causes the kernel's debugger to "freeze" almost all activity.\
+
+\i gdb 
+\i0 - Gnu DeBugger; the debugger that is standard on Mac OS X.\
+
+\i Kernel's Debugger
+\i0  - A collection of code, within the kernel, that runs when the kernel is trapped, NMI'd, or panics.\
+\
+Two Machine Kernel Debugging: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/DebuggingDrivers/chapter_8_section_4.html"}}{\fldrslt http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/DebuggingDrivers/chapter_8_section_4.html}}\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ri720\ql\qnatural\pardirnatural
+\cf0 Kernel Core Dumps: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUG"}}{\fldrslt http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUG}}.\
+\pard\tx0\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ri720\qj\pardirnatural
+\cf0 Transition page for driver debugging: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptDebugger/hello_debugger.html"}}{\fldrslt http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptDebugger/hello_debugger.html}}.\
+FireWire on Mac OS X: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WorkingWFireWireDI/index.html"}}{\fldrslt http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WorkingWFireWireDI/index.html}}\
+\
+}

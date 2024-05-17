@@ -1,0 +1,300 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\vieww14700\viewh15340\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\b\fs28 \cf0 Copyright \'a9 2000-2008 Apple.  All Rights Reserved.\
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc\pardirnatural
+
+\fs24 \cf0 {{\NeXTGraphic Pasted Graphic.tiff \width2860 \height3140
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\qc\pardirnatural
+
+\fs28 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 \
+\
+
+\b Welcome to FireWire SDK 26 for Mac OS X!\
+
+\b0 \
+\
+
+\b Introduction to the SDK\
+
+\b0 \
+Welcome to FireWire SDK 26!  Please read the following notes before working with this SDK.\
+\
+You can install this SDK on any version of Mac OS X, but many included examples and applications will only work on recent versions of Mac OS X (10.4.10 or later).\
+\
+For future FireWire SDKs, visit: <http://developer.apple.com/sdk>\
+\
+\
+
+\b Problems? Questions?\
+
+\b0 \
+To report problems with this SDK or ask questions about the FireWire stack or API, please send email to the public mailing list <firewire@lists.apple.com>.  If you are reporting a problem, please include steps needed to reproduce the problem, a comparison to prior versions of Mac OS X if applicable, and details of your hardware configuration.\
+\
+If you are reporting a bug, please consider joining Apple Developer Connection and then reporting your bug here: <https://bugreport.apple.com>\
+\
+If you are not already on Apple's FireWire mailing list, please join!  This mailing list for our FireWire developers is a great place to discuss this SDK, FireWire system services, and FireWire on the Macintosh in general.  You can get a lot of helpful information from this list, and list members often help each other with answers to questions.\
+\
+<http://lists.apple.com/mailman/listinfo/firewire>\
+\
+<http://lists.apple.com/mailman/listinfo/firewire-reference-platform>\
+\
+If your question requires you to discuss information you would rather keep private, you may send your questions or problem reports to <firewire@apple.com> instead, but please use the public mailing list when possible.\
+\
+\
+
+\b What's new in this SDK?\
+
+\b0 \
+Mac OS X version 10.5 (Leopard) has numerous FireWire changes, described in a separate section below.\
+\
+This SDK contains installer packages and source code for FireWire for Mac OS X version 10.4.11 (Tiger), Mac OS X version 10.5 (Leopard), and the latest Mac OS X 10.5 source available to date. The 10.4.11 components are provided in two forms: One for PowerPC-based Macs, and one for Intel-based Macs.  The Leopard components are Universal, with the same sources for both PowerPC and Intel.\
+\
+Each of the installer packages listed above is provided in two flavors:  One flavor is the normal shipping versions of the software.  The other flavor is identical, except it has been built with additional debug logging enabled.\
+\
+All source code in this SDK will build Universal with Xcode version 2.4 or higher.\
+\
+In the Tools folder are new versions of FireWireKPrintf and FireWireKDP.  However, in Leopard FireWireKPrintf is now built-in; please see the readme for more details.\
+\
+AVCVideoServices has been updated to include 64-bit support for Mac OS X 10.5, and sample code for a Universal Transmitter for sending isoch in multiple formats and other purposes. See Examples/AVCVideoServices_Readme.rtfd for further details.\
+\
+FWBusyBus has minor changes which are described in its Readme file.\
+\
+FWAsyncTestClient is a new sample project which demonstrates using asynch command object APIs from user space while also taking advantage of Leopard's new VersaPHY packet APIs.\
+\
+FWAsyncTestServer is a new sample project which shows how to take advantage of physical and pseudo address spaces from user space, along with demonstrating use of new VersaPHY APIs in Leopard.\
+\
+
+\b New services in Mac OS X 10.5 (Leopard)\
+
+\b0 \
+Many FireWire services have been added or improved in Mac OS X version 10.5 (Leopard).  All of the following are available in build 9A581, which is the shipping version of Mac OS X 10.5.0.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i \cf0 IOFireWireFamily (including AppleFWOHCI):\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+New "vector" services are available for performing multiple FireWire operations in a single call for improved performance.\
+\
+A new service is available for receiving packets on isochronous channel 31.  In Tiger, IOFireWireIP will allocate a receive DCL on this channel, preventing any other software from using channel 31.  In Leopard and beyond, other software can use channel 31 at the same time.\
+\
+APIs for allocating isochronous resources have been made more flexible, for handling situations such as two drivers sharing one allocation.\
+\
+Changes were made regarding services that can time out, but for which the timeout period can be extended or restarted due to a bus reset.  If bus resets continually prevent such a timeout, these services will eventually time out anyway.  This change applies to basic FireWire commands such as Read and Write, and also to SBP-2 services.\
+\
+Basic command services were enhanced to provide complete access to FireWire-level details such as packet acknowledge values, retry codes, timeouts, and packet speeds.\
+\
+Services were added to send and receive PHY packets as defined in the 1394 Trade Association "VersaPHY" specification (see <http://www.1394ta.org>).  This specification is still in development, so the services are very basic send/receive packet operations, with the intent that a library of sample code can be provided later for more structured VersaPHY services on top of these basic operations.\
+\
+It is now possible to allocate a FireWire address in Initial Units space exclusively, which guarantees that no overlapping allocation already exists or will be permitted in the future.  This feature permits a software implementation of SBP2 to allocate a management agent with confidence that multiple instances of the service will not end up sharing the same address.\
+\
+For nodes that use 16-bit character strings in their config ROM (such as certain scanners and printers), IOFireWireFamily now produces 8-bit character strings for matching and display in System Profiler.\
+\
+Mac OS X now attempts to cope with errant devices that claim to be capable of providing 1394 Isochronous Resources Manager services, but which don't correctly respond to such IRM requests.  Mac OS X will try to make another node (probably itself) be IRM in this case.\
+\
+AppleLynx.kext has been removed from Leopard; No Macintosh systems that had built-in TI PCI-Lynx hardware are supported by Leopard.  FireBug can still be used on Leopard.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i \cf0 IOFireWireSBP2:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+The SBP-2 layer now serializes login and reconnect requests sent to any particular Management Agent, to make life easier for SBP-2 devices and their firmware.  A new flag is available for drivers that wish to opt-out of this service.  Note that if a single node has multiple Management Agents (i.e. multiple SBP-2 Unit Directories in the Config ROM) there is no serialization between these multiple agents.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i \cf0 IOFireWireAVC:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+AV/C responses received by Mac OS X are now strongly validated against the AV/C request that provoked them, to avoid mismatches of requests and responses when multiple AV/C operations are in progress.  This validation may break devices that send faulty response packets, and the addition of an "opt out" flag for this validation is under consideration for use with such devices.\
+\
+IOFireWireAVC no longer loads all services unconditionally.  It will now load when services are needed for an AV/C device or driver.  A corresponding change was made in AppleFWAudio.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i \cf0 IOFireWireIP:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+Basic IP services are unchanged, though the System Preferences / Network panel has changed extensively in Leopard.  IOFireWireIP now uses the new channel 31 service mentioned above.
+\i \
+
+\i0 \
+A new API will return the system uptime simultaneously with the local 1394 cycle time.\
+\
+A new property will cause the strict AV/C request/response matching to be relaxed to Tiger behavior.\
+\
+\
+
+\b Restrictions\
+
+\b0 \
+This SDK is for developer use only.  It may not be redistributed by any means in whole or in part;  Customers should not be directed to install the SDK.\
+\
+\
+
+\b Installing the SDK\
+
+\b0 \
+To install this SDK, you must already have installed the Mac OS X Developer Tools.\
+\
+You can use this SDK on Mac OS X 10.4.11 and later without installing any additional pieces.  But, if your system has previously been updated with Software Update, your header files may be out of date with respect to the FireWire services that are present, because the Software Update service generally does not update header files.  Installing one of the FireWire packages in this SDK will also install matching header files.\
+\
+\
+
+\b What's in the SDK?\
+
+\b0 \
+When you install the SDK, a FireWireSDKnn folder will be created in /Developer.  Inside that folder you can find the following:\
+\
+\'95  "Applications" \'96  Useful applications for FireWire developers, plus pre-built versions of some of the example projects. \
+\
+\'95  "FireWireComponents" - Installers for both deployment, and debug builds of the FireWire stack, for both Mac OS-X 10.4.11, and 10.5. The debug components will print diagnostic information to the system log (/var/log/system.log) that may be useful when writing drivers. Also, source code for various parts of the FireWire stack is included. Please note: The sources for AppleLynx and AppleFWOHCI are not included and are not available. Also, experimental AppleFWAudio software drivers are included with NuDCL streaming capability for both Tiger and Leopard..\
+\
+\'95  "Documentation" \'96  Basic documentation for components in this SDK. (PDFs, diagrams, and HeaderDoc-generated HTML)\
+\
+\'95  "Examples" -  Additional sample code that is not provided in the Developer Tools, such as AVCVideoServices, plus a link to /Developer/Examples/IOKit/firewire for quick access to the remainder of the FireWire examples.\
+\
+\'95  "Tools" - Packages that employ FireWire to assist in debugging a wide range of applications that are not exclusively FireWire.\
+\
+\'95  "Links" - Links to useful web pages.\
+\
+This SDK includes source code for most of the Mac OS X FireWire software stack.\
+\
+The FireWire software stack includes the following main components:\
+\
+\'95  General FireWire family services\
+\'95  SBP-2 services (both in-kernel and user space)\
+\'95  AV/C services (both in-kernel and user space)\
+\'95  A DV device driver\
+\'95  A network driver for IP services over FireWire\
+\
+\
+
+\b About SBP-2\
+
+\b0 \
+There are SBP-2 services in the kernel and in user space. The SBP-2 user client provides access to the SBP-2 services from user space. \
+\
+This SDK includes SBP-2 sample code. You can write an application to drive SBP-2 devices, such as printers, scanners, and still cameras with this sample code.  Full source code for the SBP-2 stack is included, as noted above. If your device uses a SCSI command set over SBP-2, you should investigate the SCSITask User Client (located in IOSCSIArchitectureModelFamily.kext) instead of the SBP-2 user client, because it provides a much higher level interface for working with SCSI architecture model (SAM) devices from user space.\
+\
+\
+
+\b About the DV driver\
+
+\b0 \
+The DV driver is a user-space QuickTime component. This SDK includes the DV driver source code and sample code for test applications that transmit and receive DV. Also included is a QuickTime video digitizer component (vdig) that enables full use of the Sequence Grabber, a sample application to test it, and a simple application to output DV. DV API documentation is included.  However, if you plan to use DV, you should consider using AVCVideoServices instead of the DV driver itself.\
+\
+\
+
+\b About AVCVideoServices Library\
+
+\b0 \
+AVCVideoServices is a super-set of the deprecated FireWireMPEG project that was part of older FireWireSDKs. Besides the ability to transmit/receive MPEG2-TS over FireWire, AVCVideoServices also supports transmission and reception of all DV modes (DV25, DVCPro50, and DVCProHD, for both NTSC and PAL formats), as well as new AV/C device discovery and control functionality. The SDK also includes five example applications (with source code) which use AVCVideoServices.framework embedded as a private framework in the application bundles. For more information on AVCVideoServices, and the examples that use it, after installing the FireWire SDK, please refer to the AVCVideoServices_ReadMe.rtfd file in the directory /Developer/FireWireSDKnn/Examples/AVCVideoServices.  \
+\
+\
+
+\b About the sample code (example projects)\
+
+\b0 \
+Many of the FireWire example projects are now included as a standard part of Apple's general Developer Tools, and can be found in the folder /Developer/Examples/IOKit/FireWire/. This SDK contains an additional package, DevToolsFireWireExamples.pkg, which will install these projects for you, to ensure you have the latest samples.\
+\
+Each project includes a more detailed readme file or documentation.\
+\
+The example projects are located in /Developer/FireWireSDKnn/Examples and /Developer/Examples/IOKit/FireWire/. Applications are located in /Developer/FireWireSDKnn/Applications/. Listed below are the application/examples provided:\
+\
+FWLib \'96 Set of source files containing objects that developers can use to apply Mac OS X FireWire technologies quickly. Examples that use this library include:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 (FWLib) FWNotifier - Example of using the IORegistry notification capabilities.\
+\
+(FWLib) FWOffice - Source for building Mr. Registry, an IORegistry exploration application.\
+\
+(FWLib) FWPtp - A simple peer-to-peer communications application. It demonstrates how one might communicate in a peer-to-peer fashion between two or more Macintosh computers\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+\cf0 \
+BusResetHandler - An example of how to register for bus reset notifications.\
+\
+FWUtil \'96 General purpose command-line test tool for performing FireWire packet operations.\
+\
+IOFireWireLibBasics \'96 Simple configuration ROM reader sample code.\
+\
+IOFireWireLibIsochTest \'96 Simple isochronous transmit program.\
+\
+IOFireWireLibPacketQueueTest \'96 Simple packet receiver sample code.\
+\
+IOFireWireLibVersionTest \'96 Demonstrates how to obtain the version number of the installed FireWire user client.\
+\
+SBP2SampleProject and SBP2Sample-SingleThread - User-space SBP-2 device driver and application sample code.\
+\
+AVCVideoServices - Source code for the AVCVideoServices framework. For more information, refer to  the file AVCVideoServices_ReadMe.rtfd in the directory /Developer/FireWireSDKnn/Examples. Examples that use AVCVideoServices include: \
+\
+AVCBrowser2 - A tool for discovering AV/C devices, sending AV/C commands, and making point-to-point CMP connections.\
+\
+AVCVideoCap - Application for capturing an MPEG stream from a FireWire device. See AVCVideoServices_Readme.rtfd for details.\
+\
+DVHSCap - Application for capturing an MPEG stream, such as from a D-VHS deck.  See AVCVideoServices_Readme.rtfd for details.\
+\
+VirtualDV - Makes a Mac act as a DV camcorder as seen by other nodes over FireWire.  See AVCVideoServices_Readme.rtfd for details.\
+\
+VirtualDVHS2 - Makes a Mac act as a D-VHS deck as seen by other nodes over FireWire.  See AVCVideoServices_Readme.rtfd for details.\
+\
+BusResetHandler - BusResetHandler demonstrates the simple application of FireWire bus reset call back handlers. \
+\
+FWAsyncTestClient - FWAsyncTestClient shows how to take advantage of the asynchronous command object APIs from user space. It demonstrates the usage of asynchronous read, write, and lock transactions. New in Leopard are user space APIs for transmitting VersaPHY packets from user space. These APIs are demonstrated here.\
+\
+FWAsyncTestServer - FWAsyncTestServer shows how to take advantage of physical and pseudo address spaces from user space. New to Leopard are user space APIs for receiving VersaPHY packets. These are demonstrated here.\
+\
+\
+
+\b About Tools
+\b0 \
+\
+Many FireWire-specific tool binaries are included in the SDK:\
+\
+FireBug - Application for observing FireWire bus traffic. Note: Requires special hardware; please review the FireBug readme file.\
+\
+FireCracker - Application for browsing and parsing 1394 configuration ROMs over FireWire or from text files. \
+\
+FireStarter - Application which provides simple FireWire bus topology information and configuration controls.\
+\
+FWBusyBus - Application for generating traffic on the FireWire bus.\
+\
+FWIRMViewer \'96 Monitors the Isochronous Resource Manager and reports bandwidth and channel allocation activity.  Also allows making allocation requests.\
+\
+PHYTool - Application for reading and adjusting PHY registers.  Can browse remote PHY registers too.\
+\
+ResetStorm - FireWire bus reset stress testing application.\
+\
+\
+
+\b About Debugging\
+
+\b0 \
+This SDK includes debugging tools that run over FireWire, but which can be used to debug many kinds of software, whether that software uses FireWire or not.  Using FireWire as a debug port has several advantages: High speed, low host impact, and the ability to view logs even after a panic.\
+\
+FireLog is a fast plain text logging service with a remote viewer, suitable for use with kernel or application development.\
+\
+FireWire kprintf redirects traditional kernel debug output to FireWire.  In Leopard this service is built in; see the associated Readme file for more details.\
+\
+FireWireKDP and FireWireGDB provide more powerful interactive remote debugging, over FireWire.\
+\
+FWMemView can view and modify memory and (sometimes) PCI registers in a second Macintosh over FireWire.\
+\
+\
+FireWire, the FireWire logo, Mac, and Mac OS are trademarks of Apple.\
+Copyright \'a9 2000-2008 Apple.  All Rights Reserved.\
+\
+[end] - January 16, 2008\
+}

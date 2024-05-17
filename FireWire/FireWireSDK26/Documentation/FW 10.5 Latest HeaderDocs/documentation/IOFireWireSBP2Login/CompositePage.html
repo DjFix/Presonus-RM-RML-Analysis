@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/header/IOFireWireSBP2Login.h" title="IOFireWireSBP2Login"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireSBP2Login">IOFireWireSBP2Login</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<dl>
+<b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/IOCommandGate.h" -->&lt;IOKit/IOCommandGate.h&gt;<!-- /a -->,
+<a href="../../documentation/IOFireWireUnit/index.html#//apple_ref/doc/header/IOFireWireUnit.h" logicalPath="//apple_ref/doc/header/IOFireWireUnit.h" target="_top">&lt;IOKit/firewire/IOFireWireUnit.h&gt;</a>,
+<a href="../../documentation/IOFireWireSBP2ORB/index.html#//apple_ref/doc/header/IOFireWireSBP2ORB.h" logicalPath="//apple_ref/doc/header/IOFireWireSBP2ORB.h" target="_top">&lt;IOKit/sbp2/IOFireWireSBP2ORB.h&gt;</a>,
+<a href="../../documentation/IOFireWireSBP2Target/CompositePage.html#//apple_ref/doc/header/IOFireWireSBP2Target.h" logicalPath="//apple_ref/doc/header/IOFireWireSBP2Target.h">&lt;IOKit/sbp2/IOFireWireSBP2Target.h&gt;</a><br>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Contains the class definition for IOFireWireSBP2Login.<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Classes</h2>
+<a name="HeaderDoc_classes"></a><dl>
+<dt><tt><a href="Classes/IOFireWireSBP2Login_/index.html#//apple_ref/cpp/cl/IOFireWireSBP2Login" target="_top">IOFireWireSBP2Login </a></tt></dt>
+<dd> Supplies the login maintenance and Normal Command ORB execution portions of the API.
+</dd>
+</dl>
+<hr>
+<br><h2>Typedefs</h2>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2FetchAgentWriteCallback;  name=FWSBP2FetchAgentWriteCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2FetchAgentWriteCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2FetchAgentWriteCallback">FWSBP2FetchAgentWriteCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2FetchAgentWriteCallback //apple_ref/c/clm/FWSBP2FetchAgentWriteCallback //apple_ref/c/intfcm/FWSBP2FetchAgentWriteCallback //apple_ref/c/intfm/FWSBP2FetchAgentWriteCallback //apple_ref/c/func/FWSBP2FetchAgentWriteCallback //apple_ref/c/ftmplt/FWSBP2FetchAgentWriteCallback //apple_ref/c/defn/FWSBP2FetchAgentWriteCallback //apple_ref/c/macro/FWSBP2FetchAgentWriteCallback" --><span class="function">FWSBP2FetchAgentWriteCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2ORB //apple_ref/c/tdef/IOFireWireSBP2ORB //apple_ref/c/tag/IOFireWireSBP2ORB //apple_ref/c/econst/IOFireWireSBP2ORB //apple_ref/c/struct/IOFireWireSBP2ORB //apple_ref/c/clconst/IOFireWireSBP2ORB //apple_ref/c/intf/IOFireWireSBP2ORB" --><span class="type">IOFireWireSBP2ORB</span><!-- /a --> *<span class="param">orb</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+<dt><code>orb </code></dt>
+<dd>Indicates current last orb in chain.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCallback;  name=FWSBP2LoginCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginCallback">FWSBP2LoginCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2LoginCallback //apple_ref/c/clm/FWSBP2LoginCallback //apple_ref/c/intfcm/FWSBP2LoginCallback //apple_ref/c/intfm/FWSBP2LoginCallback //apple_ref/c/func/FWSBP2LoginCallback //apple_ref/c/ftmplt/FWSBP2LoginCallback //apple_ref/c/defn/FWSBP2LoginCallback //apple_ref/c/macro/FWSBP2LoginCallback" --><span class="function">FWSBP2LoginCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginCompleteParamsPtr" logicalPath="//apple_ref/c/cl/FWSBP2LoginCompleteParamsPtr //apple_ref/c/tdef/FWSBP2LoginCompleteParamsPtr" target="_top"><span class="type">FWSBP2LoginCompleteParamsPtr</span></a> <span class="param">params</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>Structure containing additional information about the status of the login.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=title:tdef;  uid=//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LoginCompleteParams;  name=FWSBP2LoginCompleteParams --><a name="//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LoginCompleteParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginCompleteParams">FWSBP2LoginCompleteParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginCompleteParamsPtr" logicalPath="//apple_ref/c/tdef/FWSBP2LoginCompleteParamsPtr" target="_top">FWSBP2LoginCompleteParamsPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span>  
+    <a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginResponsePtr" logicalPath="//apple_ref/c/cl/FWSBP2LoginResponsePtr //apple_ref/c/tdef/FWSBP2LoginResponsePtr" target="_top"><span class="type">FWSBP2LoginResponsePtr</span></a> <span class="var">loginResponse</span>; <span class="comment">// pointer to loginResponse buffer</span> 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span>  
+} <span class="var">FWSBP2LoginCompleteParams</span>, <span class="type">*</span><span class="var">FWSBP2LoginCompleteParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>loginResponse </code></dt>
+<dd>Pointer to login response struct.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCompleteParamsPtr;  name=FWSBP2LoginCompleteParamsPtr --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCompleteParamsPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginCompleteParamsPtr">FWSBP2LoginCompleteParamsPtr </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/doc/title:tdef/FWSBP2LoginCompleteParams" logicalPath="//apple_ref/doc/title:tdef/FWSBP2LoginCompleteParams" target="_top">FWSBP2LoginCompleteParams</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span>  
+    <a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginResponsePtr" logicalPath="//apple_ref/c/cl/FWSBP2LoginResponsePtr //apple_ref/c/tdef/FWSBP2LoginResponsePtr" target="_top"><span class="type">FWSBP2LoginResponsePtr</span></a> <span class="var">loginResponse</span>; <span class="comment">// pointer to loginResponse buffer</span> 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span>  
+} <span class="var">FWSBP2LoginCompleteParams</span>, <span class="type">*</span><span class="var">FWSBP2LoginCompleteParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>loginResponse </code></dt>
+<dd>Pointer to login response struct.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=title:tdef;  uid=//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LoginResponse;  name=FWSBP2LoginResponse --><a name="//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LoginResponse"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginResponse">FWSBP2LoginResponse</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginResponsePtr" logicalPath="//apple_ref/c/tdef/FWSBP2LoginResponsePtr" target="_top">FWSBP2LoginResponsePtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">loginID</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressHi</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressLo</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reserved</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reconnectHold</span>; 
+} <span class="var">FWSBP2LoginResponse</span>, <span class="type">*</span><span class="var">FWSBP2LoginResponsePtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>length </code></dt>
+<dd>Length of login response.</dd>
+<dt><code>loginID </code></dt>
+<dd>Unique id representing this login.</dd>
+<dt><code>commandBlockAgentAddressHi </code></dt>
+<dd>High 32 bits of command block agent address.</dd>
+<dt><code>commandBlockAgentAddressLo </code></dt>
+<dd>Low 32 bits of command block agent address.</dd>
+<dt><code>reserved </code></dt>
+<dd>Reserved.</dd>
+<dt><code>reconnectHold </code></dt>
+<dd>Reconnect timeout encoded as 2^reconnectHold seconds.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginResponsePtr;  name=FWSBP2LoginResponsePtr --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginResponsePtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginResponsePtr">FWSBP2LoginResponsePtr </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/doc/title:tdef/FWSBP2LoginResponse" logicalPath="//apple_ref/doc/title:tdef/FWSBP2LoginResponse" target="_top">FWSBP2LoginResponse</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">loginID</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressHi</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressLo</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reserved</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reconnectHold</span>; 
+} <span class="var">FWSBP2LoginResponse</span>, <span class="type">*</span><span class="var">FWSBP2LoginResponsePtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>length </code></dt>
+<dd>Length of login response.</dd>
+<dt><code>loginID </code></dt>
+<dd>Unique id representing this login.</dd>
+<dt><code>commandBlockAgentAddressHi </code></dt>
+<dd>High 32 bits of command block agent address.</dd>
+<dt><code>commandBlockAgentAddressLo </code></dt>
+<dd>Low 32 bits of command block agent address.</dd>
+<dt><code>reserved </code></dt>
+<dd>Reserved.</dd>
+<dt><code>reconnectHold </code></dt>
+<dd>Reconnect timeout encoded as 2^reconnectHold seconds.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCallback;  name=FWSBP2LogoutCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LogoutCallback">FWSBP2LogoutCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2LogoutCallback //apple_ref/c/clm/FWSBP2LogoutCallback //apple_ref/c/intfcm/FWSBP2LogoutCallback //apple_ref/c/intfm/FWSBP2LogoutCallback //apple_ref/c/func/FWSBP2LogoutCallback //apple_ref/c/ftmplt/FWSBP2LogoutCallback //apple_ref/c/defn/FWSBP2LogoutCallback //apple_ref/c/macro/FWSBP2LogoutCallback" --><span class="function">FWSBP2LogoutCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LogoutCompleteParamsPtr" logicalPath="//apple_ref/c/cl/FWSBP2LogoutCompleteParamsPtr //apple_ref/c/tdef/FWSBP2LogoutCompleteParamsPtr" target="_top"><span class="type">FWSBP2LogoutCompleteParamsPtr</span></a> <span class="param">params</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>Structure containing additional information about the status of the logout.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=title:tdef;  uid=//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LogoutCompleteParams;  name=FWSBP2LogoutCompleteParams --><a name="//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LogoutCompleteParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LogoutCompleteParams">FWSBP2LogoutCompleteParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LogoutCompleteParamsPtr" logicalPath="//apple_ref/c/tdef/FWSBP2LogoutCompleteParamsPtr" target="_top">FWSBP2LogoutCompleteParamsPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span>  
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span>  
+} <span class="var">FWSBP2LogoutCompleteParams</span>, <span class="type">*</span><span class="var">FWSBP2LogoutCompleteParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=title:tdef;  uid=//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LogoutCompleteParams_DONTLINK_0x3fc5338;  name=FWSBP2LogoutCompleteParams --><a name="//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2LogoutCompleteParams_DONTLINK_0x3fc5338"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LogoutCompleteParams">FWSBP2LogoutCompleteParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2ReconnectParamsPtr" logicalPath="//apple_ref/c/tdef/FWSBP2ReconnectParamsPtr" target="_top">FWSBP2ReconnectParamsPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of reconnect attempt</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">reconnectStatusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">reconnectStatusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span> 
+} <span class="var">FWSBP2ReconnectParams</span>, <span class="type">*</span><span class="var">FWSBP2ReconnectParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>reconnectStatusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>reconnectStatusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCompleteParamsPtr;  name=FWSBP2LogoutCompleteParamsPtr --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCompleteParamsPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LogoutCompleteParamsPtr">FWSBP2LogoutCompleteParamsPtr </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/doc/title:tdef/FWSBP2LogoutCompleteParams" logicalPath="//apple_ref/doc/title:tdef/FWSBP2LogoutCompleteParams" target="_top">FWSBP2LogoutCompleteParams</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span>  
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span>  
+} <span class="var">FWSBP2LogoutCompleteParams</span>, <span class="type">*</span><span class="var">FWSBP2LogoutCompleteParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyCallback;  name=FWSBP2NotifyCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2NotifyCallback">FWSBP2NotifyCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2NotifyCallback //apple_ref/c/clm/FWSBP2NotifyCallback //apple_ref/c/intfcm/FWSBP2NotifyCallback //apple_ref/c/intfm/FWSBP2NotifyCallback //apple_ref/c/func/FWSBP2NotifyCallback //apple_ref/c/ftmplt/FWSBP2NotifyCallback //apple_ref/c/defn/FWSBP2NotifyCallback //apple_ref/c/macro/FWSBP2NotifyCallback" --><span class="function">FWSBP2NotifyCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2NotifyParamsPtr" logicalPath="//apple_ref/c/cl/FWSBP2NotifyParamsPtr //apple_ref/c/tdef/FWSBP2NotifyParamsPtr" target="_top"><span class="type">FWSBP2NotifyParamsPtr</span></a> <span class="param">params</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>FWSBP2NotifyParams containing notification information.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=title:tdef;  uid=//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2NotifyParams;  name=FWSBP2NotifyParams --><a name="//apple_ref/doc/compositePage/doc/title:tdef/FWSBP2NotifyParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2NotifyParams">FWSBP2NotifyParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2NotifyParamsPtr" logicalPath="//apple_ref/c/tdef/FWSBP2NotifyParamsPtr" target="_top">FWSBP2NotifyParamsPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">commandObject</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">notificationEvent</span>; 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">message</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; 
+} <span class="var">FWSBP2NotifyParams</span>, <span class="type">*</span><span class="var">FWSBP2NotifyParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>notificationEvent </code></dt>
+<dd>Type of event we are being notified of.</dd>
+<dt><code>message </code></dt>
+<dd>buffer containing message.</dd>
+<dt><code>length </code></dt>
+<dd>length of message field.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyParamsPtr;  name=FWSBP2NotifyParamsPtr --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyParamsPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2NotifyParamsPtr">FWSBP2NotifyParamsPtr </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/doc/title:tdef/FWSBP2NotifyParams" logicalPath="//apple_ref/doc/title:tdef/FWSBP2NotifyParams" target="_top">FWSBP2NotifyParams</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">commandObject</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">notificationEvent</span>; 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">message</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; 
+} <span class="var">FWSBP2NotifyParams</span>, <span class="type">*</span><span class="var">FWSBP2NotifyParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>notificationEvent </code></dt>
+<dd>Type of event we are being notified of.</dd>
+<dt><code>message </code></dt>
+<dd>buffer containing message.</dd>
+<dt><code>length </code></dt>
+<dd>length of message field.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2ReconnectParamsPtr;  name=FWSBP2ReconnectParamsPtr --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2ReconnectParamsPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2ReconnectParamsPtr">FWSBP2ReconnectParamsPtr </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFireWireSBP2Login/index.html?DataTypes/DataTypes.html#//apple_ref/doc/title:tdef/FWSBP2LogoutCompleteParams_DONTLINK_0x3fc5338" logicalPath="//apple_ref/doc/title:tdef/FWSBP2LogoutCompleteParams_DONTLINK_0x3fc5338" target="_top">FWSBP2LogoutCompleteParams</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2Login //apple_ref/c/tdef/IOFireWireSBP2Login //apple_ref/c/tag/IOFireWireSBP2Login //apple_ref/c/econst/IOFireWireSBP2Login //apple_ref/c/struct/IOFireWireSBP2Login //apple_ref/c/clconst/IOFireWireSBP2Login //apple_ref/c/intf/IOFireWireSBP2Login" --><span class="type">IOFireWireSBP2Login</span><!-- /a --> *<span class="var">login</span>; <span class="comment">// login object this param is sent from</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of reconnect attempt</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">reconnectStatusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">reconnectStatusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span> 
+} <span class="var">FWSBP2ReconnectParams</span>, <span class="type">*</span><span class="var">FWSBP2ReconnectParamsPtr</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>login </code></dt>
+<dd>Pointer to IOFireWireSBP2Login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>reconnectStatusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>reconnectStatusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusBlock_DONTLINK_0x3fca330;  name=FWSBP2StatusBlock --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusBlock_DONTLINK_0x3fca330"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2StatusBlock">FWSBP2StatusBlock</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8 //apple_ref/c/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="var">details</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8 //apple_ref/c/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="var">sbpStatus</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">orbOffsetHi</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">orbOffsetLo</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/status //apple_ref/c/tdef/status //apple_ref/c/tag/status //apple_ref/c/econst/status //apple_ref/c/struct/status //apple_ref/c/clconst/status //apple_ref/c/intf/status" --><span class="type">status</span><!-- /a -->[<span class="number">6</span>]; 
+} <span class="var">FWSBP2StatusBlock</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>details </code></dt>
+<dd>Src, Resp, D, Len fields of status block format</dd>
+<dt><code>sbpStatus </code></dt>
+<dd>SBP2 specific status</dd>
+<dt><code>orbOffsetHi </code></dt>
+<dd>High 32 bits of address of orb status is for.</dd>
+<dt><code>orbOffsetLo </code></dt>
+<dd>Low 32 bits of address of orb status is for.</dd>
+<dt><code>status </code></dt>
+<dd>[6] Up to 48 bytes of additional data. Length is determined by len field.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusCallback;  name=FWSBP2StatusCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2StatusCallback">FWSBP2StatusCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2StatusCallback //apple_ref/c/clm/FWSBP2StatusCallback //apple_ref/c/intfcm/FWSBP2StatusCallback //apple_ref/c/intfm/FWSBP2StatusCallback //apple_ref/c/func/FWSBP2StatusCallback //apple_ref/c/ftmplt/FWSBP2StatusCallback //apple_ref/c/defn/FWSBP2StatusCallback //apple_ref/c/macro/FWSBP2StatusCallback" --><span class="function">FWSBP2StatusCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+</dl>
+</blockquote>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

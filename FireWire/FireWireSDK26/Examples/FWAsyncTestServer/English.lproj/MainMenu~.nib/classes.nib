@@ -1,0 +1,68 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                clearLog = id; 
+                printDocument = id; 
+                saveTo = id; 
+                timerIntervalExpired = id; 
+                toggleLogging = id; 
+            }; 
+            CLASS = DeviceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fFireLogController = id; 
+                fSelectorController = id; 
+                fTextView = id; 
+                fToggleButton = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {clearLog = id; insertMark = id; saveTo = id; showHelp = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = LUNController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {fWindow = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = Preferences; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {selectItem = id; toggleAbsoluteTimeState = id; }; 
+            CLASS = SelectorController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {fBrowser = id; fWindow = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {
+                findNext = id; 
+                findNextAndOrderFindPanelOut = id; 
+                findPrevious = id; 
+                jumpToSelection = id; 
+                orderFrontFindPanel = id; 
+                replace = id; 
+                replaceAll = id; 
+                replaceAndFind = id; 
+                takeFindStringFromSelection = id; 
+            }; 
+            CLASS = TextFinder; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                findNextButton = id; 
+                findTextField = id; 
+                ignoreCaseButton = id; 
+                replaceAllScopeMatrix = id; 
+                replaceTextField = id; 
+                statusField = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

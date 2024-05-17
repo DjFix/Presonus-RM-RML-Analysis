@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2ManagementORB</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/header/IOFireWireSBP2ManagementORB.h" title="IOFireWireSBP2ManagementORB"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireSBP2ManagementORB">IOFireWireSBP2ManagementORB</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<dl>
+<b>Includes:</b> <a href="../../documentation/IOFWCommand/index.html#//apple_ref/doc/header/IOFWCommand.h" logicalPath="//apple_ref/doc/header/IOFWCommand.h" target="_top">&lt;IOKit/firewire/IOFWCommand.h&gt;</a>,
+<a href="../../documentation/IOFireWireUnit/index.html#//apple_ref/doc/header/IOFireWireUnit.h" logicalPath="//apple_ref/doc/header/IOFireWireUnit.h" target="_top">&lt;IOKit/firewire/IOFireWireUnit.h&gt;</a>,
+<!-- a logicalPath="//apple_ref/doc/header/IOUserClient.h" -->&lt;IOKit/IOUserClient.h&gt;<!-- /a --><br>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Contains the class definition for IOFireWireSBP2ManagementORB.<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Classes</h2>
+<a name="HeaderDoc_classes"></a><dl>
+<dt><tt><a href="Classes/IOFireWireSBP2ManagementORB/index.html#//apple_ref/cpp/cl/IOFireWireSBP2ManagementORB" target="_top">IOFireWireSBP2ManagementORB</a></tt></dt>
+<dd> Supplies non login related management ORBs.  Management ORBs can be executed independent 
+of a login, if necessary.  Management ORBs are created using the IOFireWireSBP2LUN interface.
+</dd>
+</dl>
+<hr>
+<br><h2>Typedefs</h2>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2ManagementCallback;  name=FWSBP2ManagementCallback --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2ManagementCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2ManagementCallback">FWSBP2ManagementCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/FWSBP2ManagementCallback //apple_ref/c/clm/FWSBP2ManagementCallback //apple_ref/c/intfcm/FWSBP2ManagementCallback //apple_ref/c/intfm/FWSBP2ManagementCallback //apple_ref/c/func/FWSBP2ManagementCallback //apple_ref/c/ftmplt/FWSBP2ManagementCallback //apple_ref/c/defn/FWSBP2ManagementCallback //apple_ref/c/macro/FWSBP2ManagementCallback" --><span class="function">FWSBP2ManagementCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2ManagementORB //apple_ref/c/tdef/IOFireWireSBP2ManagementORB //apple_ref/c/tag/IOFireWireSBP2ManagementORB //apple_ref/c/econst/IOFireWireSBP2ManagementORB //apple_ref/c/struct/IOFireWireSBP2ManagementORB //apple_ref/c/clconst/IOFireWireSBP2ManagementORB //apple_ref/c/intf/IOFireWireSBP2ManagementORB" --><span class="type">IOFireWireSBP2ManagementORB</span><!-- /a --> *<span class="param">orb</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+<dt><code>orb </code></dt>
+<dd>Indicates current orb status is for.</dd>
+</dl>
+</blockquote>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

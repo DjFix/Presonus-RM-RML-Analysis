@@ -1,0 +1,1717 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:func/AddDCLRange" target="doc">AddDCLRange </a></tt></dt>
+<dd>Add a memory range to the scatter gather list of a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AddListener" target="doc">AddListener </a></tt></dt>
+<dd>Modify the transfer size of a transfer packet DCL (send or receive)
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateChannel" target="doc">AllocateChannel </a></tt></dt>
+<dd>Prepare all hardware to begin sending or receiving isochronous data.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateReceivePacket" target="doc">AllocateReceivePacket </a></tt></dt>
+<dd>Allocate a ReceivePacket NuDCL and append it to the program
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateReceivePacket_v" target="doc">AllocateReceivePacket_v </a></tt></dt>
+<dd>Allocate a ReceivePacket NuDCL and append it to the program
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateSendPacket" target="doc">AllocateSendPacket </a></tt></dt>
+<dd>Allocate a SendPacket NuDCL and append it to the program.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateSendPacket_v" target="doc">AllocateSendPacket_v </a></tt></dt>
+<dd>Allocate a SendPacket NuDCL and append it to the program.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AllocateSkipCycle" target="doc">AllocateSkipCycle </a></tt></dt>
+<dd>Allocate a SkipCycle NuDCL and append it to the program.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/AppendDCLRanges" target="doc">AppendDCLRanges </a></tt></dt>
+<dd>Add a memory range to the scatter gather list of a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ClientCommandIsComplete_DONTLINK_0xc0f59cc" target="doc">ClientCommandIsComplete </a></tt></dt>
+<dd>Notify the async stream object that a packet notification handler has completed.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/CountDCLRanges" target="doc">CountDCLRanges </a></tt></dt>
+<dd>Returns number of buffers for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/FindDCLNextDCL" target="doc">FindDCLNextDCL </a></tt></dt>
+<dd>Get the next pointer for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLBranch" target="doc">GetDCLBranch</a></tt></dt>
+<dd>Get the branch pointer for a NuDCL
+@discussion: Applies: Any NuDCLRef.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLCallback" target="doc">GetDCLCallback </a></tt></dt>
+<dd>Get callback for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:func/GetDCLNextDCL" target="doc">GetDCLNextDCL </a></tt></dt>
+<dd>Get the next pointer for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLRanges" target="doc">GetDCLRanges </a></tt></dt>
+<dd>Get the scatter-gather list for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLs" target="doc">GetDCLs</a></tt></dt>
+<dd>Returns the pool's DCL program as a CFArray of NuDCLRef's. 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLSize" target="doc">GetDCLSize </a></tt></dt>
+<dd>Returns number of bytes to be transferred by a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLSpan" target="doc">GetDCLSpan </a></tt></dt>
+<dd>Returns a virtual range spanning lowest referenced buffer address to highest
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLStatusPtr" target="doc">GetDCLStatusPtr </a></tt></dt>
+<dd>Get the status pointer for a NuDCL.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetDCLTimeStampPtr" target="doc">GetDCLTimeStampPtr (NuDCLRef)</a></tt></dt>
+<dd>Get the time stamp pointer for a NuDCL.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:func/GetDCLTimeStampPtr" target="doc">GetDCLTimeStampPtr (NuDCLRef)</a></tt></dt>
+<dd>Get the status pointer for a NuDCL.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetFlags_DONTLINK_0x5d254b8" target="doc">GetFlags</a></tt></dt>
+<dd>get the flags of listener.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetOverrunCounter" target="doc">GetOverrunCounter</a></tt></dt>
+<dd>get overrun counter from the DCL program.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetProgram" target="doc">GetProgram </a></tt></dt>
+<dd>Finds the first DCL in the pool not preceeded by any other DCL.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetRefCon_DONTLINK_0x5d25590" target="doc">GetRefCon</a></tt></dt>
+<dd>Returns the user refCon value for this async stream interface.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/GetRefCon_DONTLINK_0x38a0294" target="doc">GetRefCon </a></tt></dt>
+<dd>Set reference value associated with this channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ModifyJumpDCL" target="doc">ModifyJumpDCL </a></tt></dt>
+<dd>Change the jump target label of a jump DCL.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ModifyTransferPacketDCL" target="doc">ModifyTransferPacketDCL </a></tt></dt>
+<dd>Modify the transfer size of a transfer packet DCL (send or receive)
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ModifyTransferPacketDCLBuffer" target="doc">ModifyTransferPacketDCLBuffer </a></tt></dt>
+<dd>NOT IMPLEMENTED. Modify the transfer size of a
+transfer packet DCL (send or receive)
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ModifyTransferPacketDCLSize" target="doc">ModifyTransferPacketDCLSize </a></tt></dt>
+<dd>Modify the transfer size of a transfer packet DCL (send or
+receive)
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/NotificationIsOn_DONTLINK_0x38a72e4" target="doc">NotificationIsOn</a></tt></dt>
+<dd>Is notification on?
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/PrintDCLProgram_DONTLINK_0x5d14acc" target="doc">PrintDCLProgram</a></tt></dt>
+<dd>Display the contents of a DCL program.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/ReleaseChannel" target="doc">ReleaseChannel </a></tt></dt>
+<dd>Release all hardware after stopping the isochronous channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetChannelForceStopHandler" target="doc">SetChannelForceStopHandler </a></tt></dt>
+<dd>Set the channel force stop handler.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetCurrentTagAndSync" target="doc">SetCurrentTagAndSync </a></tt></dt>
+<dd>Set current tag and sync bits
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLBranch" target="doc">SetDCLBranch </a></tt></dt>
+<dd>Set the branch pointer for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLCallback" target="doc">SetDCLCallback (NuDCLRef, NuDCLCallback)</a></tt></dt>
+<dd>Set the callback for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:func/SetDCLCallback" target="doc">SetDCLCallback (NuDCLRef, UInt32 *, UInt32 *)</a></tt></dt>
+<dd>Set a user specified header for a send NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLRanges" target="doc">SetDCLRanges </a></tt></dt>
+<dd>Set the scatter gather list for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLStatusPtr" target="doc">SetDCLStatusPtr </a></tt></dt>
+<dd>Set the status pointer for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLTimeStampPtr" target="doc">SetDCLTimeStampPtr </a></tt></dt>
+<dd>Set the time stamp pointer for a NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetDCLUserHeaderPtr" target="doc">SetDCLUserHeaderPtr </a></tt></dt>
+<dd>Set a user specified header for a send NuDCL
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetFinalizeCallback" target="doc">SetFinalizeCallback </a></tt></dt>
+<dd>Set the finalize callback for a local isoch port
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetFlags_DONTLINK_0xc0f1a18" target="doc">SetFlags</a></tt></dt>
+<dd>set flags for the listener.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetListenerHandler" target="doc">SetListenerHandler</a></tt></dt>
+<dd>Set the callback that should be called to handle incoming async stream packets
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetRefCon_DONTLINK_0x38a0228" target="doc">SetRefCon </a></tt></dt>
+<dd>Set reference value associated with this channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetSkippedPacketHandler_DONTLINK_0xc12bfe4" target="doc">SetSkippedPacketHandler</a></tt></dt>
+<dd>Set the callback that should be called when incoming packets are
+dropped by the address space.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/SetTalker" target="doc">SetTalker</a></tt></dt>
+<dd>Set the talker port for this channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/Start" target="doc">Start </a></tt></dt>
+<dd>Start the channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/Stop" target="doc">Stop </a></tt></dt>
+<dd>Stop the channel.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/TurnOffNotification_DONTLINK_0xc0c7ca0" target="doc">TurnOffNotification</a></tt></dt>
+<dd>Force packet notification off.
+		</dd>
+<dt><tt><a href="Functions.html#//apple_ref/c/func/TurnOnNotification_DONTLINK_0x38a73f8" target="doc">TurnOnNotification</a></tt></dt>
+<dd>Try to turn on packet notifications for this channel.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=title:func;  uid=//apple_ref/doc/title:func/AddDCLRange;  name=AddDCLRange --><a name="//apple_ref/doc/title:func/AddDCLRange"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AddDCLRange">AddDCLRange </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Add a memory range to the scatter gather list of a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AppendDCLRanges" logicalPath="//apple_ref/c/func/AppendDCLRanges" target="_top">AppendDCLRanges</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AppendDCLRanges" logicalPath="//apple_ref/cpp/instm/AppendDCLRanges //apple_ref/cpp/clm/AppendDCLRanges //apple_ref/cpp/intfcm/AppendDCLRanges //apple_ref/cpp/intfm/AppendDCLRanges //apple_ref/cpp/func/AppendDCLRanges" target="_top"><span class="function">AppendDCLRanges</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numRanges</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">range</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>range </code></dt>
+<dd>A IOVirtualRange to add to this DCL buffer list. Do not pass NULL.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AddListener;  name=AddListener --><a name="//apple_ref/c/func/AddListener"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AddListener">AddListener </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Modify the transfer size of a transfer packet DCL (send or receive)
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AddListener" logicalPath="//apple_ref/cpp/instm/AddListener //apple_ref/cpp/clm/AddListener //apple_ref/cpp/intfcm/AddListener //apple_ref/cpp/intfm/AddListener //apple_ref/cpp/func/AddListener" target="_top"><span class="function">AddListener</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef //apple_ref/cpp/intf/IOFireWireLibIsochPortRef" --><span class="type">IOFireWireLibIsochPortRef</span><!-- /a --> <span class="param">listener</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+<dt><code>listener </code></dt>
+<dd>The listener to add.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Allows you to modify transfer packet DCLs after they have
+been compiled and while the DCL program is still running. The
+transfer size can be set to any size less than or equal to the size
+set when the DCL program was compiled (including 0).
+<br><br>
+Availability: IOFireWireLocalIsochPortInterface_v3 and newer.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateChannel;  name=AllocateChannel --><a name="//apple_ref/c/func/AllocateChannel"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateChannel">AllocateChannel </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Prepare all hardware to begin sending or receiving isochronous data.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateChannel" logicalPath="//apple_ref/cpp/instm/AllocateChannel //apple_ref/cpp/clm/AllocateChannel //apple_ref/cpp/intfcm/AllocateChannel //apple_ref/cpp/intfm/AllocateChannel //apple_ref/cpp/func/AllocateChannel" target="_top"><span class="function">AllocateChannel</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Calling this function will result in all listener and talker ports on this 
+isochronous channel having their AllocatePort method called.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateReceivePacket;  name=AllocateReceivePacket --><a name="//apple_ref/c/func/AllocateReceivePacket"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateReceivePacket">AllocateReceivePacket </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocate a ReceivePacket NuDCL and append it to the program
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLReceivePacketRef //apple_ref/cpp/tdef/NuDCLReceivePacketRef //apple_ref/cpp/tag/NuDCLReceivePacketRef //apple_ref/cpp/econst/NuDCLReceivePacketRef //apple_ref/cpp/struct/NuDCLReceivePacketRef //apple_ref/cpp/clconst/NuDCLReceivePacketRef //apple_ref/cpp/intf/NuDCLReceivePacketRef" --><span class="type">NuDCLReceivePacketRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateReceivePacket" logicalPath="//apple_ref/cpp/instm/AllocateReceivePacket //apple_ref/cpp/clm/AllocateReceivePacket //apple_ref/cpp/intfcm/AllocateReceivePacket //apple_ref/cpp/intfm/AllocateReceivePacket //apple_ref/cpp/func/AllocateReceivePacket" target="_top"><span class="function">AllocateReceivePacket</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/CFMutableSetRef //apple_ref/cpp/tdef/CFMutableSetRef //apple_ref/cpp/tag/CFMutableSetRef //apple_ref/cpp/econst/CFMutableSetRef //apple_ref/cpp/struct/CFMutableSetRef //apple_ref/cpp/clconst/CFMutableSetRef //apple_ref/cpp/intf/CFMutableSetRef" --><span class="type">CFMutableSetRef</span><!-- /a --> <span class="param">saveBag</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="param">headerBytes</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numBuffers</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">buffers</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+<dt><code>headerBytes </code></dt>
+<dd>Number of bytes of isochronous header to receive with the data. Valid values are 0, 4, and 8.</dd>
+<dt><code>saveBag </code></dt>
+<dd>The allocated DCL can be added to a CFBag for easily setting DCL update lists. Pass a CFMutableSetRef to add the allocated
+DCL to a CFBag; pass NULL to ignore. SaveBag is unmodified on failure.</dd>
+<dt><code>numBuffers </code></dt>
+<dd>The number of virtual ranges in 'buffers'.</dd>
+<dt><code>buffers </code></dt>
+<dd>An array of virtual memory ranges containing the packet contents. The array is copied
+into the DCL.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an NuDCLReceivePacketRef on success or 0 on failure. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The ReceivePacket DCL receives an isochronous packet from the bus. One DCL runs per bus cycle.
+If receiving isochronous headers, an update must be run before the isochronous header is valid.
+<br><br>
+Receive DCLs can be modified using other functions of IOFireWireLibNuDCLPool.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateReceivePacket_v;  name=AllocateReceivePacket_v --><a name="//apple_ref/c/func/AllocateReceivePacket_v"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateReceivePacket_v">AllocateReceivePacket_v </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocate a ReceivePacket NuDCL and append it to the program
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLReceivePacketRef //apple_ref/cpp/tdef/NuDCLReceivePacketRef //apple_ref/cpp/tag/NuDCLReceivePacketRef //apple_ref/cpp/econst/NuDCLReceivePacketRef //apple_ref/cpp/struct/NuDCLReceivePacketRef //apple_ref/cpp/clconst/NuDCLReceivePacketRef //apple_ref/cpp/intf/NuDCLReceivePacketRef" --><span class="type">NuDCLReceivePacketRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateReceivePacket_v" logicalPath="//apple_ref/cpp/instm/AllocateReceivePacket_v //apple_ref/cpp/clm/AllocateReceivePacket_v //apple_ref/cpp/intfcm/AllocateReceivePacket_v //apple_ref/cpp/intfm/AllocateReceivePacket_v //apple_ref/cpp/func/AllocateReceivePacket_v" target="_top"><span class="function">AllocateReceivePacket_v</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/CFMutableSetRef //apple_ref/cpp/tdef/CFMutableSetRef //apple_ref/cpp/tag/CFMutableSetRef //apple_ref/cpp/econst/CFMutableSetRef //apple_ref/cpp/struct/CFMutableSetRef //apple_ref/cpp/clconst/CFMutableSetRef //apple_ref/cpp/intf/CFMutableSetRef" --><span class="type">CFMutableSetRef</span><!-- /a --> <span class="param">saveBag</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="param">headerBytes</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">firstRange</span>,
+    ... );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+<dt><code>saveBag </code></dt>
+<dd>The allocated DCL can be added to a CFBag for easily setting DCL update lists. Pass a CFMutableSetRef to add the allocated
+DCL to a CFBag; pass NULL to ignore. SaveBag is unmodified on failure.</dd>
+<dt><code>headerBytes </code></dt>
+<dd>Number of bytes of isochronous header to receive with the data. Valid values are 0, 4, and 8.</dd>
+<dt><code>firstRange </code></dt>
+<dd>The first buffer to be transmitted. Follow with additional ranges; terminate with NULL.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an NuDCLReceivePacketRef on success or 0 on failure. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Same as AllocateReceivePacket but ranges are passed as a NULL-terminated vector of IOVirtualRange's
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateSendPacket;  name=AllocateSendPacket --><a name="//apple_ref/c/func/AllocateSendPacket"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateSendPacket">AllocateSendPacket </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocate a SendPacket NuDCL and append it to the program.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLSendPacketRef //apple_ref/cpp/tdef/NuDCLSendPacketRef //apple_ref/cpp/tag/NuDCLSendPacketRef //apple_ref/cpp/econst/NuDCLSendPacketRef //apple_ref/cpp/struct/NuDCLSendPacketRef //apple_ref/cpp/clconst/NuDCLSendPacketRef //apple_ref/cpp/intf/NuDCLSendPacketRef" --><span class="type">NuDCLSendPacketRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateSendPacket" logicalPath="//apple_ref/cpp/instm/AllocateSendPacket //apple_ref/cpp/clm/AllocateSendPacket //apple_ref/cpp/intfcm/AllocateSendPacket //apple_ref/cpp/intfm/AllocateSendPacket //apple_ref/cpp/func/AllocateSendPacket" target="_top"><span class="function">AllocateSendPacket</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/CFMutableSetRef //apple_ref/cpp/tdef/CFMutableSetRef //apple_ref/cpp/tag/CFMutableSetRef //apple_ref/cpp/econst/CFMutableSetRef //apple_ref/cpp/struct/CFMutableSetRef //apple_ref/cpp/clconst/CFMutableSetRef //apple_ref/cpp/intf/CFMutableSetRef" --><span class="type">CFMutableSetRef</span><!-- /a --> <span class="param">saveBag</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numBuffers</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">buffers</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+<dt><code>saveBag </code></dt>
+<dd>The allocated DCL can be added to a CFBag for easily setting DCL update lists. Pass a CFMutableSetRef to add the allocated
+DCL to a CFBag; pass NULL to ignore. SaveBag is unmodified on failure.</dd>
+<dt><code>numBuffers </code></dt>
+<dd>The number of virtual ranges in 'buffers'.</dd>
+<dt><code>buffers </code></dt>
+<dd>An array of virtual memory ranges containing the packet contents. The array is copied
+into the DCL.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an NuDCLSendPacketRef on success or 0 on failure. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The SendPacket DCL sends an isochronous packet on the bus. One DCL runs per bus cycle.
+The isochronous header is automatically generated, but can be overriden. An update must be run to
+regenerate the isochronous header. The sync and tag fields of allocated DCLs default to 0, unless
+If SetCurrentTagAndSync has been called.
+<br><br>
+Send DCLs can be modified using other functions of IOFireWireLibNuDCLPool.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateSendPacket_v;  name=AllocateSendPacket_v --><a name="//apple_ref/c/func/AllocateSendPacket_v"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateSendPacket_v">AllocateSendPacket_v </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocate a SendPacket NuDCL and append it to the program.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLSendPacketRef //apple_ref/cpp/tdef/NuDCLSendPacketRef //apple_ref/cpp/tag/NuDCLSendPacketRef //apple_ref/cpp/econst/NuDCLSendPacketRef //apple_ref/cpp/struct/NuDCLSendPacketRef //apple_ref/cpp/clconst/NuDCLSendPacketRef //apple_ref/cpp/intf/NuDCLSendPacketRef" --><span class="type">NuDCLSendPacketRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateSendPacket_v" logicalPath="//apple_ref/cpp/instm/AllocateSendPacket_v //apple_ref/cpp/clm/AllocateSendPacket_v //apple_ref/cpp/intfcm/AllocateSendPacket_v //apple_ref/cpp/intfm/AllocateSendPacket_v //apple_ref/cpp/func/AllocateSendPacket_v" target="_top"><span class="function">AllocateSendPacket_v</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/CFMutableSetRef //apple_ref/cpp/tdef/CFMutableSetRef //apple_ref/cpp/tag/CFMutableSetRef //apple_ref/cpp/econst/CFMutableSetRef //apple_ref/cpp/struct/CFMutableSetRef //apple_ref/cpp/clconst/CFMutableSetRef //apple_ref/cpp/intf/CFMutableSetRef" --><span class="type">CFMutableSetRef</span><!-- /a --> <span class="param">saveBag</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">firstRange</span>,
+    ... );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+<dt><code>saveBag </code></dt>
+<dd>The allocated DCL can be added to a CFBag for easily setting DCL update lists. Pass a CFMutableSetRef to add the allocated
+DCL to a CFBag; pass NULL to ignore. SaveBag is unmodified on failure.</dd>
+<dt><code>firstRange </code></dt>
+<dd>The first buffer to be transmitted. Follow with additional ranges; terminate with NULL.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an NuDCLSendPacketRef on success or 0 on failure. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Same as AllocateSendPacket but ranges are passed as a NULL-terminated vector of IOVirtualRange's
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AllocateSkipCycle;  name=AllocateSkipCycle --><a name="//apple_ref/c/func/AllocateSkipCycle"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AllocateSkipCycle">AllocateSkipCycle </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocate a SkipCycle NuDCL and append it to the program.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLSkipCycleRef //apple_ref/cpp/tdef/NuDCLSkipCycleRef //apple_ref/cpp/tag/NuDCLSkipCycleRef //apple_ref/cpp/econst/NuDCLSkipCycleRef //apple_ref/cpp/struct/NuDCLSkipCycleRef //apple_ref/cpp/clconst/NuDCLSkipCycleRef //apple_ref/cpp/intf/NuDCLSkipCycleRef" --><span class="type">NuDCLSkipCycleRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AllocateSkipCycle" logicalPath="//apple_ref/cpp/instm/AllocateSkipCycle //apple_ref/cpp/clm/AllocateSkipCycle //apple_ref/cpp/intfcm/AllocateSkipCycle //apple_ref/cpp/intfm/AllocateSkipCycle //apple_ref/cpp/func/AllocateSkipCycle" target="_top"><span class="function">AllocateSkipCycle</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an NuDCLSkipCycleRef on success or 0 on failure. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The SkipCycle DCL causes the DCL program to "sends" an empty cycle.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/AppendDCLRanges;  name=AppendDCLRanges --><a name="//apple_ref/c/func/AppendDCLRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AppendDCLRanges">AppendDCLRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Add a memory range to the scatter gather list of a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/doc/title:func/AddDCLRange" logicalPath="//apple_ref/doc/title:func/AddDCLRange" target="_top">AddDCLRange</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/AppendDCLRanges" logicalPath="//apple_ref/cpp/instm/AppendDCLRanges //apple_ref/cpp/clm/AppendDCLRanges //apple_ref/cpp/intfcm/AppendDCLRanges //apple_ref/cpp/intfm/AppendDCLRanges //apple_ref/cpp/func/AppendDCLRanges" target="_top"><span class="function">AppendDCLRanges</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numRanges</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">range</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>range </code></dt>
+<dd>A IOVirtualRange to add to this DCL buffer list. Do not pass NULL.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ClientCommandIsComplete_DONTLINK_0xc0f59cc;  name=ClientCommandIsComplete --><a name="//apple_ref/c/func/ClientCommandIsComplete_DONTLINK_0xc0f59cc"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ClientCommandIsComplete">ClientCommandIsComplete </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Notify the async stream object that a packet notification handler has completed.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/ClientCommandIsComplete" logicalPath="//apple_ref/cpp/instm/ClientCommandIsComplete //apple_ref/cpp/clm/ClientCommandIsComplete //apple_ref/cpp/intfcm/ClientCommandIsComplete //apple_ref/cpp/intfm/ClientCommandIsComplete //apple_ref/cpp/func/ClientCommandIsComplete" target="_top"><span class="function">ClientCommandIsComplete</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWClientCommandID //apple_ref/cpp/tdef/FWClientCommandID //apple_ref/cpp/tag/FWClientCommandID //apple_ref/cpp/econst/FWClientCommandID //apple_ref/cpp/struct/FWClientCommandID //apple_ref/cpp/clconst/FWClientCommandID //apple_ref/cpp/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+<dt><code>commandID </code></dt>
+<dd>The ID of the packet notification being completed. This is the same
+ID that was passed when a packet notification handler is called.</dd>
+<dt><code>status </code></dt>
+<dd>The completion status of the packet handler</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Packet notifications are received one at a time, in order. This function
+must be called after a packet handler has completed its work.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/CountDCLRanges;  name=CountDCLRanges --><a name="//apple_ref/c/func/CountDCLRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="CountDCLRanges">CountDCLRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns number of buffers for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/CountDCLRanges" logicalPath="//apple_ref/cpp/instm/CountDCLRanges //apple_ref/cpp/clm/CountDCLRanges //apple_ref/cpp/intfcm/CountDCLRanges //apple_ref/cpp/intfm/CountDCLRanges //apple_ref/cpp/func/CountDCLRanges" target="_top"><span class="function">CountDCLRanges</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to query</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns number of ranges in DCLs scatter-gather list
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --><br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacket
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/FindDCLNextDCL;  name=FindDCLNextDCL --><a name="//apple_ref/c/func/FindDCLNextDCL"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FindDCLNextDCL">FindDCLNextDCL </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the next pointer for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/doc/title:func/GetDCLNextDCL" logicalPath="//apple_ref/doc/title:func/GetDCLNextDCL" target="_top">GetDCLNextDCL</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/FindDCLNextDCL" logicalPath="//apple_ref/cpp/instm/FindDCLNextDCL //apple_ref/cpp/clm/FindDCLNextDCL //apple_ref/cpp/intfcm/FindDCLNextDCL //apple_ref/cpp/intfm/FindDCLNextDCL //apple_ref/cpp/func/FindDCLNextDCL" target="_top"><span class="function">FindDCLNextDCL</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The dcl whose next pointer will be returned</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Applies: Any NuDCLRef
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLBranch;  name=GetDCLBranch --><a name="//apple_ref/c/func/GetDCLBranch"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLBranch">GetDCLBranch</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the branch pointer for a NuDCL
+@discussion: Applies: Any NuDCLRef.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLBranch" logicalPath="//apple_ref/cpp/instm/GetDCLBranch //apple_ref/cpp/clm/GetDCLBranch //apple_ref/cpp/intfcm/GetDCLBranch //apple_ref/cpp/intfm/GetDCLBranch //apple_ref/cpp/func/GetDCLBranch" target="_top"><span class="function">GetDCLBranch</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The dcl whose branch pointer will be returned.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the branch pointer of 'dcl' or 0 for none is set.
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLCallback;  name=GetDCLCallback --><a name="//apple_ref/c/func/GetDCLCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLCallback">GetDCLCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get callback for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLCallback //apple_ref/cpp/tdef/NuDCLCallback //apple_ref/cpp/tag/NuDCLCallback //apple_ref/cpp/econst/NuDCLCallback //apple_ref/cpp/struct/NuDCLCallback //apple_ref/cpp/clconst/NuDCLCallback //apple_ref/cpp/intf/NuDCLCallback" --><span class="type">NuDCLCallback</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLCallback" logicalPath="//apple_ref/cpp/instm/GetDCLCallback //apple_ref/cpp/clm/GetDCLCallback //apple_ref/cpp/intfcm/GetDCLCallback //apple_ref/cpp/intfm/GetDCLCallback //apple_ref/cpp/func/GetDCLCallback" target="_top"><span class="function">GetDCLCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to query</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the DCLs callback function or NULL if none is set.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the callback function for a DCL
+<br><br>
+Applies: Any NuDCLRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:func;  uid=//apple_ref/doc/title:func/GetDCLNextDCL;  name=GetDCLNextDCL --><a name="//apple_ref/doc/title:func/GetDCLNextDCL"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLNextDCL">GetDCLNextDCL </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the next pointer for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/FindDCLNextDCL" logicalPath="//apple_ref/c/func/FindDCLNextDCL" target="_top">FindDCLNextDCL</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/FindDCLNextDCL" logicalPath="//apple_ref/cpp/instm/FindDCLNextDCL //apple_ref/cpp/clm/FindDCLNextDCL //apple_ref/cpp/intfcm/FindDCLNextDCL //apple_ref/cpp/intfm/FindDCLNextDCL //apple_ref/cpp/func/FindDCLNextDCL" target="_top"><span class="function">FindDCLNextDCL</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The dcl whose next pointer will be returned</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the DCL immediately following this DCL in program order (ignoring branches) or 0 for none.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Applies: Any NuDCLRef
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLRanges;  name=GetDCLRanges --><a name="//apple_ref/c/func/GetDCLRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLRanges">GetDCLRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the scatter-gather list for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLRanges" logicalPath="//apple_ref/cpp/instm/GetDCLRanges //apple_ref/cpp/clm/GetDCLRanges //apple_ref/cpp/intfcm/GetDCLRanges //apple_ref/cpp/intfm/GetDCLRanges //apple_ref/cpp/func/GetDCLRanges" target="_top"><span class="function">GetDCLRanges</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">maxRanges</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">outRanges</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to query</dd>
+<dt><code>stopProc </code></dt>
+<dd>The handler to set.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously set handler or NULL is no handler was set.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --><br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLs;  name=GetDCLs --><a name="//apple_ref/c/func/GetDCLs"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLs">GetDCLs</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the pool's DCL program as a CFArray of NuDCLRef's. 
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/CFArrayRef //apple_ref/cpp/tdef/CFArrayRef //apple_ref/cpp/tag/CFArrayRef //apple_ref/cpp/econst/CFArrayRef //apple_ref/cpp/struct/CFArrayRef //apple_ref/cpp/clconst/CFArrayRef //apple_ref/cpp/intf/CFArrayRef" --><span class="type">CFArrayRef</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLs" logicalPath="//apple_ref/cpp/instm/GetDCLs //apple_ref/cpp/clm/GetDCLs //apple_ref/cpp/intfcm/GetDCLs //apple_ref/cpp/intfm/GetDCLs //apple_ref/cpp/func/GetDCLs" target="_top"><span class="function">GetDCLs</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->A CFArrayRef.
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLSize;  name=GetDCLSize --><a name="//apple_ref/c/func/GetDCLSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLSize">GetDCLSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns number of bytes to be transferred by a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOByteCount //apple_ref/cpp/tdef/IOByteCount //apple_ref/cpp/tag/IOByteCount //apple_ref/cpp/econst/IOByteCount //apple_ref/cpp/struct/IOByteCount //apple_ref/cpp/clconst/IOByteCount //apple_ref/cpp/intf/IOByteCount" --><span class="type">IOByteCount</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLSize" logicalPath="//apple_ref/cpp/instm/GetDCLSize //apple_ref/cpp/clm/GetDCLSize //apple_ref/cpp/intfcm/GetDCLSize //apple_ref/cpp/intfm/GetDCLSize //apple_ref/cpp/func/GetDCLSize" target="_top"><span class="function">GetDCLSize</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to query</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOByteCount.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --><br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacket
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLSpan;  name=GetDCLSpan --><a name="//apple_ref/c/func/GetDCLSpan"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLSpan">GetDCLSpan </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns a virtual range spanning lowest referenced buffer address to highest
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLSpan" logicalPath="//apple_ref/cpp/instm/GetDCLSpan //apple_ref/cpp/clm/GetDCLSpan //apple_ref/cpp/intfcm/GetDCLSpan //apple_ref/cpp/intfm/GetDCLSpan //apple_ref/cpp/func/GetDCLSpan" target="_top"><span class="function">GetDCLSpan</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">spanRange</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to query</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOVirtualRange.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --><br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacket
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLStatusPtr;  name=GetDCLStatusPtr --><a name="//apple_ref/c/func/GetDCLStatusPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLStatusPtr">GetDCLStatusPtr </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the status pointer for a NuDCL.
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/doc/title:func/GetDCLTimeStampPtr" logicalPath="//apple_ref/doc/title:func/GetDCLTimeStampPtr" target="_top">GetDCLTimeStampPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLStatusPtr" logicalPath="//apple_ref/cpp/instm/GetDCLStatusPtr //apple_ref/cpp/clm/GetDCLStatusPtr //apple_ref/cpp/intfcm/GetDCLStatusPtr //apple_ref/cpp/intfm/GetDCLStatusPtr //apple_ref/cpp/func/GetDCLStatusPtr" target="_top"><span class="function">GetDCLStatusPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL whose status pointer will be returned.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Applies: Any NuDCLRef.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetDCLTimeStampPtr;  name=GetDCLTimeStampPtr --><a name="//apple_ref/c/func/GetDCLTimeStampPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLTimeStampPtr(NuDCLRef)">GetDCLTimeStampPtr (NuDCLRef)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the time stamp pointer for a NuDCL.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLTimeStampPtr" logicalPath="//apple_ref/cpp/instm/GetDCLTimeStampPtr //apple_ref/cpp/clm/GetDCLTimeStampPtr //apple_ref/cpp/intfcm/GetDCLTimeStampPtr //apple_ref/cpp/intfm/GetDCLTimeStampPtr //apple_ref/cpp/func/GetDCLTimeStampPtr" target="_top"><span class="function">GetDCLTimeStampPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL whose timestamp pointer will be returned.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 time stamp pointer.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Applies: Any NuDCLRef.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:func;  uid=//apple_ref/doc/title:func/GetDCLTimeStampPtr;  name=GetDCLTimeStampPtr --><a name="//apple_ref/doc/title:func/GetDCLTimeStampPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetDCLTimeStampPtr(NuDCLRef)">GetDCLTimeStampPtr (NuDCLRef)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Get the status pointer for a NuDCL.
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLStatusPtr" logicalPath="//apple_ref/c/func/GetDCLStatusPtr" target="_top">GetDCLStatusPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetDCLStatusPtr" logicalPath="//apple_ref/cpp/instm/GetDCLStatusPtr //apple_ref/cpp/clm/GetDCLStatusPtr //apple_ref/cpp/intfcm/GetDCLStatusPtr //apple_ref/cpp/intfm/GetDCLStatusPtr //apple_ref/cpp/func/GetDCLStatusPtr" target="_top"><span class="function">GetDCLStatusPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL whose status pointer will be returned.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 status pointer.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Applies: Any NuDCLRef.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetFlags_DONTLINK_0x5d254b8;  name=GetFlags --><a name="//apple_ref/c/func/GetFlags_DONTLINK_0x5d254b8"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetFlags">GetFlags</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->get the flags of listener.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/GetFlags" logicalPath="//apple_ref/cpp/instm/GetFlags //apple_ref/cpp/clm/GetFlags //apple_ref/cpp/intfcm/GetFlags //apple_ref/cpp/intfm/GetFlags //apple_ref/cpp/func/GetFlags" target="_top"><span class="function">GetFlags</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->flags.	
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetOverrunCounter;  name=GetOverrunCounter --><a name="//apple_ref/c/func/GetOverrunCounter"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetOverrunCounter">GetOverrunCounter</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->get overrun counter from the DCL program.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetOverrunCounter" logicalPath="//apple_ref/cpp/instm/GetOverrunCounter //apple_ref/cpp/clm/GetOverrunCounter //apple_ref/cpp/intfcm/GetOverrunCounter //apple_ref/cpp/intfm/GetOverrunCounter //apple_ref/cpp/func/GetOverrunCounter" target="_top"><span class="function">GetOverrunCounter</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns the counter value.	
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetProgram;  name=GetProgram --><a name="//apple_ref/c/func/GetProgram"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetProgram">GetProgram </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Finds the first DCL in the pool not preceeded by any other DCL.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/DCLCommand //apple_ref/cpp/tdef/DCLCommand //apple_ref/cpp/tag/DCLCommand //apple_ref/cpp/econst/DCLCommand //apple_ref/cpp/struct/DCLCommand //apple_ref/cpp/clconst/DCLCommand //apple_ref/cpp/intf/DCLCommand" --><span class="type">DCLCommand</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/GetProgram" logicalPath="//apple_ref/cpp/instm/GetProgram //apple_ref/cpp/clm/GetProgram //apple_ref/cpp/intfcm/GetProgram //apple_ref/cpp/intfm/GetProgram //apple_ref/cpp/func/GetProgram" target="_top"><span class="function">GetProgram</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->A DCLCommand pointer.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns a backwards-compatible DCL program pointer. This can be passed
+to IOFireWireLibDeviceRef::CreateLocalIsochPort.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetRefCon_DONTLINK_0x5d25590;  name=GetRefCon --><a name="//apple_ref/c/func/GetRefCon_DONTLINK_0x5d25590"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetRefCon">GetRefCon</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the user refCon value for this async stream interface.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/GetRefCon" logicalPath="//apple_ref/cpp/instm/GetRefCon //apple_ref/cpp/clm/GetRefCon //apple_ref/cpp/intfcm/GetRefCon //apple_ref/cpp/intfm/GetRefCon //apple_ref/cpp/func/GetRefCon" target="_top"><span class="function">GetRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->returns the callback object.
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/GetRefCon_DONTLINK_0x38a0294;  name=GetRefCon --><a name="//apple_ref/c/func/GetRefCon_DONTLINK_0x38a0294"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="GetRefCon">GetRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set reference value associated with this channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --><span class="type">*</span> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/GetRefCon" logicalPath="//apple_ref/cpp/instm/GetRefCon //apple_ref/cpp/clm/GetRefCon //apple_ref/cpp/intfcm/GetRefCon //apple_ref/cpp/intfm/GetRefCon //apple_ref/cpp/func/GetRefCon" target="_top"><span class="function">GetRefCon</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+<dt><code>inRefCon </code></dt>
+<dd>The new reference value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Retrieve the reference value with SetRefCon()
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ModifyJumpDCL;  name=ModifyJumpDCL --><a name="//apple_ref/c/func/ModifyJumpDCL"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ModifyJumpDCL">ModifyJumpDCL </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Change the jump target label of a jump DCL.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/ModifyJumpDCL" logicalPath="//apple_ref/cpp/instm/ModifyJumpDCL //apple_ref/cpp/clm/ModifyJumpDCL //apple_ref/cpp/intfcm/ModifyJumpDCL //apple_ref/cpp/intfm/ModifyJumpDCL //apple_ref/cpp/func/ModifyJumpDCL" target="_top"><span class="function">ModifyJumpDCL</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLJump //apple_ref/cpp/tdef/DCLJump //apple_ref/cpp/tag/DCLJump //apple_ref/cpp/econst/DCLJump //apple_ref/cpp/struct/DCLJump //apple_ref/cpp/clconst/DCLJump //apple_ref/cpp/intf/DCLJump" --><span class="type">DCLJump</span><!-- /a --> *<span class="param">inJump</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLLabel //apple_ref/cpp/tdef/DCLLabel //apple_ref/cpp/tag/DCLLabel //apple_ref/cpp/econst/DCLLabel //apple_ref/cpp/struct/DCLLabel //apple_ref/cpp/clconst/DCLLabel //apple_ref/cpp/intf/DCLLabel" --><span class="type">DCLLabel</span><!-- /a --> *<span class="param">inLabel</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>inJump </code></dt>
+<dd>The jump DCL to modify.</dd>
+<dt><code>inLabel </code></dt>
+<dd>The label to jump to.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->kIOReturnSuccess on success. Will return an error if 'inJump'
+does not point to a valid jump DCL or 'inLabel' does not point to a
+			valid label DCL.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Use this function to change the flow of a DCL
+program. Works whether the DCL program is currently running
+or not.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ModifyTransferPacketDCL;  name=ModifyTransferPacketDCL --><a name="//apple_ref/c/func/ModifyTransferPacketDCL"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ModifyTransferPacketDCL">ModifyTransferPacketDCL </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Modify the transfer size of a transfer packet DCL (send or receive)
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/ModifyTransferPacketDCL" logicalPath="//apple_ref/cpp/instm/ModifyTransferPacketDCL //apple_ref/cpp/clm/ModifyTransferPacketDCL //apple_ref/cpp/intfcm/ModifyTransferPacketDCL //apple_ref/cpp/intfm/ModifyTransferPacketDCL //apple_ref/cpp/func/ModifyTransferPacketDCL" target="_top"><span class="function">ModifyTransferPacketDCL</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLTransferPacket //apple_ref/cpp/tdef/DCLTransferPacket //apple_ref/cpp/tag/DCLTransferPacket //apple_ref/cpp/econst/DCLTransferPacket //apple_ref/cpp/struct/DCLTransferPacket //apple_ref/cpp/clconst/DCLTransferPacket //apple_ref/cpp/intf/DCLTransferPacket" --><span class="type">DCLTransferPacket</span><!-- /a --> *<span class="param">inDCL</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buffer</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOByteCount //apple_ref/cpp/tdef/IOByteCount //apple_ref/cpp/tag/IOByteCount //apple_ref/cpp/econst/IOByteCount //apple_ref/cpp/struct/IOByteCount //apple_ref/cpp/clconst/IOByteCount //apple_ref/cpp/intf/IOByteCount" --><span class="type">IOByteCount</span><!-- /a --> <span class="param">size</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>inDCL </code></dt>
+<dd>A pointer to the DCL to modify.</dd>
+<dt><code>buffer </code></dt>
+<dd>The new buffer to or from data will be transferred.</dd>
+<dt><code>size </code></dt>
+<dd>The new size of data to be transferred.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success. Will return an
+error if 'size' is too large or 'inDCL' does not point to a
+valid transfer packet DCL, or the range specified by
+[buffer, buffer+size] is not in the range of memory locked
+			down for this program.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Allows you to modify transfer packet DCLs after they
+have been compiled and while the DCL program is still
+running. The transfer size can be set to any size less than
+or equal to the size set when the DCL program was compiled
+(including 0).
+<br><br>
+Availability: IOFireWireLocalIsochPortInterface_v3 and newer.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ModifyTransferPacketDCLBuffer;  name=ModifyTransferPacketDCLBuffer --><a name="//apple_ref/c/func/ModifyTransferPacketDCLBuffer"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ModifyTransferPacketDCLBuffer">ModifyTransferPacketDCLBuffer </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->NOT IMPLEMENTED. Modify the transfer size of a
+transfer packet DCL (send or receive)
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/ModifyTransferPacketDCLBuffer" logicalPath="//apple_ref/cpp/instm/ModifyTransferPacketDCLBuffer //apple_ref/cpp/clm/ModifyTransferPacketDCLBuffer //apple_ref/cpp/intfcm/ModifyTransferPacketDCLBuffer //apple_ref/cpp/intfm/ModifyTransferPacketDCLBuffer //apple_ref/cpp/func/ModifyTransferPacketDCLBuffer" target="_top"><span class="function">ModifyTransferPacketDCLBuffer</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLTransferPacket //apple_ref/cpp/tdef/DCLTransferPacket //apple_ref/cpp/tag/DCLTransferPacket //apple_ref/cpp/econst/DCLTransferPacket //apple_ref/cpp/struct/DCLTransferPacket //apple_ref/cpp/clconst/DCLTransferPacket //apple_ref/cpp/intf/DCLTransferPacket" --><span class="type">DCLTransferPacket</span><!-- /a --> *<span class="param">inDCL</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buffer</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>inDCL </code></dt>
+<dd>A pointer to the DCL to modify.</dd>
+<dt><code>buffer </code></dt>
+<dd>The new buffer to or from data will be transferred.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success. Will return an
+error if the range specified by [buffer, buffer+size] is not
+			in the range of memory locked down for this program.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->NOT IMPLEMENTED. Allows you to modify transfer packet DCLs
+after they have been compiled and while the DCL program is still
+running. The buffer can be set to be any location within the range
+of buffers specified when the DCL program was compiled (including
+0).
+
+Availability: IOFireWireLocalIsochPortInterface_v3 and newer.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ModifyTransferPacketDCLSize;  name=ModifyTransferPacketDCLSize --><a name="//apple_ref/c/func/ModifyTransferPacketDCLSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ModifyTransferPacketDCLSize">ModifyTransferPacketDCLSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Modify the transfer size of a transfer packet DCL (send or
+receive)
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/ModifyTransferPacketDCLSize" logicalPath="//apple_ref/cpp/instm/ModifyTransferPacketDCLSize //apple_ref/cpp/clm/ModifyTransferPacketDCLSize //apple_ref/cpp/intfcm/ModifyTransferPacketDCLSize //apple_ref/cpp/intfm/ModifyTransferPacketDCLSize //apple_ref/cpp/func/ModifyTransferPacketDCLSize" target="_top"><span class="function">ModifyTransferPacketDCLSize</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLTransferPacket //apple_ref/cpp/tdef/DCLTransferPacket //apple_ref/cpp/tag/DCLTransferPacket //apple_ref/cpp/econst/DCLTransferPacket //apple_ref/cpp/struct/DCLTransferPacket //apple_ref/cpp/clconst/DCLTransferPacket //apple_ref/cpp/intf/DCLTransferPacket" --><span class="type">DCLTransferPacket</span><!-- /a --> *<span class="param">inDCL</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOByteCount //apple_ref/cpp/tdef/IOByteCount //apple_ref/cpp/tag/IOByteCount //apple_ref/cpp/econst/IOByteCount //apple_ref/cpp/struct/IOByteCount //apple_ref/cpp/clconst/IOByteCount //apple_ref/cpp/intf/IOByteCount" --><span class="type">IOByteCount</span><!-- /a --> <span class="param">size</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>inDCL </code></dt>
+<dd>A pointer to the DCL to modify.</dd>
+<dt><code>size </code></dt>
+<dd>The new size of data to be transferred.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success. Will return an
+			error if 'size' is too large for this program.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Allows you to modify transfer packet DCLs after they have
+been compiled and while the DCL program is still running. The
+transfer size can be set to any size less than or equal to the size
+set when the DCL program was compiled (including 0).
+<br><br>
+Availability: IOFireWireLocalIsochPortInterface_v2 and newer.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/NotificationIsOn_DONTLINK_0x38a72e4;  name=NotificationIsOn --><a name="//apple_ref/c/func/NotificationIsOn_DONTLINK_0x38a72e4"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="NotificationIsOn">NotificationIsOn</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Is notification on?
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/Boolean //apple_ref/cpp/tdef/Boolean //apple_ref/cpp/tag/Boolean //apple_ref/cpp/econst/Boolean //apple_ref/cpp/struct/Boolean //apple_ref/cpp/clconst/Boolean //apple_ref/cpp/intf/Boolean" --><span class="type">Boolean</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/NotificationIsOn" logicalPath="//apple_ref/cpp/instm/NotificationIsOn //apple_ref/cpp/clm/NotificationIsOn //apple_ref/cpp/intfcm/NotificationIsOn //apple_ref/cpp/intfm/NotificationIsOn //apple_ref/cpp/func/NotificationIsOn" target="_top"><span class="function">NotificationIsOn</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns true if packet notifications for this channel are active 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/PrintDCLProgram_DONTLINK_0x5d14acc;  name=PrintDCLProgram --><a name="//apple_ref/c/func/PrintDCLProgram_DONTLINK_0x5d14acc"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="PrintDCLProgram">PrintDCLProgram</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Display the contents of a DCL program.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/PrintDCLProgram" logicalPath="//apple_ref/cpp/instm/PrintDCLProgram //apple_ref/cpp/clm/PrintDCLProgram //apple_ref/cpp/intfcm/PrintDCLProgram //apple_ref/cpp/intfm/PrintDCLProgram //apple_ref/cpp/func/PrintDCLProgram" target="_top"><span class="function">PrintDCLProgram</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/DCLCommand //apple_ref/cpp/tdef/DCLCommand //apple_ref/cpp/tag/DCLCommand //apple_ref/cpp/econst/DCLCommand //apple_ref/cpp/struct/DCLCommand //apple_ref/cpp/clconst/DCLCommand //apple_ref/cpp/intf/DCLCommand" --><span class="type">DCLCommand</span><!-- /a --> *<span class="param">inProgram</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">inLength</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>inProgram </code></dt>
+<dd>A pointer to the first DCL of the program to display.</dd>
+<dt><code>inLength </code></dt>
+<dd>The length (in DCLs) of the program.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/ReleaseChannel;  name=ReleaseChannel --><a name="//apple_ref/c/func/ReleaseChannel"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ReleaseChannel">ReleaseChannel </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Release all hardware after stopping the isochronous channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/ReleaseChannel" logicalPath="//apple_ref/cpp/instm/ReleaseChannel //apple_ref/cpp/clm/ReleaseChannel //apple_ref/cpp/intfcm/ReleaseChannel //apple_ref/cpp/intfm/ReleaseChannel //apple_ref/cpp/func/ReleaseChannel" target="_top"><span class="function">ReleaseChannel</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Calling this function will result in all listener and talker ports on this 
+isochronous channel having their ReleasePort method called.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetChannelForceStopHandler;  name=SetChannelForceStopHandler --><a name="//apple_ref/c/func/SetChannelForceStopHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetChannelForceStopHandler">SetChannelForceStopHandler </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the channel force stop handler.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/tdef/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/tag/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/econst/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/struct/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/clconst/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/intf/IOFireWireIsochChannelForceStopHandler" --><span class="type">IOFireWireIsochChannelForceStopHandler</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetChannelForceStopHandler" logicalPath="//apple_ref/cpp/instm/SetChannelForceStopHandler //apple_ref/cpp/clm/SetChannelForceStopHandler //apple_ref/cpp/intfcm/SetChannelForceStopHandler //apple_ref/cpp/intfm/SetChannelForceStopHandler //apple_ref/cpp/func/SetChannelForceStopHandler" target="_top"><span class="function">SetChannelForceStopHandler</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/tdef/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/tag/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/econst/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/struct/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/clconst/IOFireWireIsochChannelForceStopHandler //apple_ref/cpp/intf/IOFireWireIsochChannelForceStopHandler" --><span class="type">IOFireWireIsochChannelForceStopHandler</span><!-- /a --> <span class="param">stopProc</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+<dt><code>stopProc </code></dt>
+<dd>The handler to set.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously set handler or NULL is no handler was set.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The specified callback is called when the channel is stopped and cannot be 
+restarted automatically.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetCurrentTagAndSync;  name=SetCurrentTagAndSync --><a name="//apple_ref/c/func/SetCurrentTagAndSync"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetCurrentTagAndSync">SetCurrentTagAndSync </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set current tag and sync bits
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetCurrentTagAndSync" logicalPath="//apple_ref/cpp/instm/SetCurrentTagAndSync //apple_ref/cpp/clm/SetCurrentTagAndSync //apple_ref/cpp/intfcm/SetCurrentTagAndSync //apple_ref/cpp/intfm/SetCurrentTagAndSync //apple_ref/cpp/func/SetCurrentTagAndSync" target="_top"><span class="function">SetCurrentTagAndSync</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tdef/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/tag/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/econst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/struct/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/clconst/IOFireWireLibNuDCLPoolRef //apple_ref/cpp/intf/IOFireWireLibNuDCLPoolRef" --><span class="type">IOFireWireLibNuDCLPoolRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="param">tag</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="param">sync</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The NuDCL pool to use.</dd>
+<dt><code>tag </code></dt>
+<dd>Tag field value for subsequently allocated send DCLs</dd>
+<dt><code>sync </code></dt>
+<dd>Sync field value for subsequently allocated send DCLs</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the DCL pool's current tag and sync bits. All send DCLs allocated after calling
+this function will transmit the specified tag and sync values. These fields can also be
+set on each DCL using SetDCLTagBits() and SetDCLSyncBits().
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLBranch;  name=SetDCLBranch --><a name="//apple_ref/c/func/SetDCLBranch"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLBranch">SetDCLBranch </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the branch pointer for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLBranch" logicalPath="//apple_ref/cpp/instm/SetDCLBranch //apple_ref/cpp/clm/SetDCLBranch //apple_ref/cpp/intfcm/SetDCLBranch //apple_ref/cpp/intfm/SetDCLBranch //apple_ref/cpp/func/SetDCLBranch" target="_top"><span class="function">SetDCLBranch</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">branchDCL</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Program execution will jump to the DCL pointed to by 'branchDCL', after the DCL is executed. If set to 0, 
+execution will stop after this DCL.
+<br><br>
+This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: Any NuDCLRef.
+		<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLCallback;  name=SetDCLCallback --><a name="//apple_ref/c/func/SetDCLCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLCallback(NuDCLRef,NuDCLCallback)">SetDCLCallback (NuDCLRef, NuDCLCallback)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the callback for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLCallback" logicalPath="//apple_ref/cpp/instm/SetDCLCallback //apple_ref/cpp/clm/SetDCLCallback //apple_ref/cpp/intfcm/SetDCLCallback //apple_ref/cpp/intfm/SetDCLCallback //apple_ref/cpp/func/SetDCLCallback" target="_top"><span class="function">SetDCLCallback</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLCallback //apple_ref/cpp/tdef/NuDCLCallback //apple_ref/cpp/tag/NuDCLCallback //apple_ref/cpp/econst/NuDCLCallback //apple_ref/cpp/struct/NuDCLCallback //apple_ref/cpp/clconst/NuDCLCallback //apple_ref/cpp/intf/NuDCLCallback" --><span class="type">NuDCLCallback</span><!-- /a --> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>callback </code></dt>
+<dd>The callback function.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->A callback can be called each time a NuDCL is run. Use SetDCLCallback() to set the
+callback for a NuDCL. If the update option is also set, the callback will be called after the update
+has run.
+<br><br>
+This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: Any NuDCLRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:func;  uid=//apple_ref/doc/title:func/SetDCLCallback;  name=SetDCLCallback --><a name="//apple_ref/doc/title:func/SetDCLCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLCallback(NuDCLRef,UInt32*,UInt32*)">SetDCLCallback (NuDCLRef, UInt32 *, UInt32 *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set a user specified header for a send NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLUserHeaderPtr" logicalPath="//apple_ref/c/func/SetDCLUserHeaderPtr" target="_top">SetDCLUserHeaderPtr</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLUserHeaderPtr" logicalPath="//apple_ref/cpp/instm/SetDCLUserHeaderPtr //apple_ref/cpp/clm/SetDCLUserHeaderPtr //apple_ref/cpp/intfcm/SetDCLUserHeaderPtr //apple_ref/cpp/intfm/SetDCLUserHeaderPtr //apple_ref/cpp/func/SetDCLUserHeaderPtr" target="_top"><span class="function">SetDCLUserHeaderPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">headerPtr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">mask</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>headerPtr </code></dt>
+<dd>A pointer to a two-quadlet header. See section 9.6 of the the OHCI specification.</dd>
+<dt><code>mask </code></dt>
+<dd>A pointer to a two-quadlet mask. The quadlets in headerPtr are masked with 'mask' and the masked-out bits
+are replaced by the FireWire system software.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Allows the client to create a custom header for a transmitted isochronous packet. The header is masked with 'mask', 
+and the FireWire system software fills in the masked out bits.
+<br><br>
+This change will apply immediately to a non-running DCL program. 
+An update must be run on the DCL for changes to take effect in a running program.
+<br><br>
+Applies: NuDCLSendPacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLRanges;  name=SetDCLRanges --><a name="//apple_ref/c/func/SetDCLRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLRanges">SetDCLRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the scatter gather list for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLRanges" logicalPath="//apple_ref/cpp/instm/SetDCLRanges //apple_ref/cpp/clm/SetDCLRanges //apple_ref/cpp/intfcm/SetDCLRanges //apple_ref/cpp/intfm/SetDCLRanges //apple_ref/cpp/func/SetDCLRanges" target="_top"><span class="function">SetDCLRanges</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numRanges</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOVirtualRange //apple_ref/cpp/tdef/IOVirtualRange //apple_ref/cpp/tag/IOVirtualRange //apple_ref/cpp/econst/IOVirtualRange //apple_ref/cpp/struct/IOVirtualRange //apple_ref/cpp/clconst/IOVirtualRange //apple_ref/cpp/intf/IOVirtualRange" --><span class="type">IOVirtualRange</span><!-- /a --> *<span class="param">ranges</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>numRanges </code></dt>
+<dd>number of ranges in 'ranges'.</dd>
+<dt><code>ranges </code></dt>
+<dd>An array of virtual ranges</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Set the list of data buffers for a DCL. Setting too many ranges may result in a memory region
+with too many discontinous physical segments for the hardware to send or receive in a single packet.
+This will result in an error when the program is compiled.
+<br><br>
+This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: NuDCLSendPacketRef, NuDCLReceivePacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLStatusPtr;  name=SetDCLStatusPtr --><a name="//apple_ref/c/func/SetDCLStatusPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLStatusPtr">SetDCLStatusPtr </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the status pointer for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLStatusPtr" logicalPath="//apple_ref/cpp/instm/SetDCLStatusPtr //apple_ref/cpp/clm/SetDCLStatusPtr //apple_ref/cpp/intfcm/SetDCLStatusPtr //apple_ref/cpp/intfm/SetDCLStatusPtr //apple_ref/cpp/func/SetDCLStatusPtr" target="_top"><span class="function">SetDCLStatusPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">statusPtr</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL for which status pointer will be set</dd>
+<dt><code>timeStampPtr </code></dt>
+<dd>A pointer to a quadlet which will hold the status after 'dcl' is updated.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Setting a the status pointer for a NuDCL causes the packet transmit/receive hardware status to be recorded when the DCL executes. 
+This DCL must be updated after it has executed for the status to be valid. 
+<br><br>
+This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Status values are as follows: (from the OHCI spec, section 3.1.1)
+<br><br><dfn><table bgcolor="#EBEBEB">
+<tr>
+<td><b>5'h00</b></td> <td>No event status. </td>
+</tr>
+<tr>
+<td><b>5'h02</b></td> <td>evt_long_packet (receive)</td> <td>The received data length was greater than the buffer's data_length. </td>
+</tr>
+<tr>
+<td><b>5'h05</b></td> <td>evt_overrun (receive)</td> <td>A receive FIFO overflowed during the reception of an isochronous packet. </td>
+</tr>
+<tr>
+<td><b>5'h06</b></td> <td>evt_descriptor_read (receive/transmit)</td> <td>An unrecoverable error occurred while the Host Controller was reading a descriptor  block. </td>
+</tr>
+<tr>
+<td><b>5'h07</b></td> <td>evt_data_read (transmit)</td> <td>An error occurred while the Host Controller was attempting to read from host memory  in the data stage of descriptor processing. </td>
+</tr>
+<tr>
+<td><b>5'h08</b></td> <td>evt_data_write (receive/transmit)</td> <td>An error occurred while the Host Controller was attempting to write to host memory  either in the data stage of descriptor processing (AR, IR), or when processing a single  16-bit host memory write (IT). </td>
+</tr>
+<tr>
+<td><b>5'h0A</b></td> <td>evt_timeout (transmit)</td> <td>Indicates that the asynchronous transmit response packet expired and was not  transmitted, or that an IT DMA context experienced a skip processing overflow (See  section9.3.4). </td>
+</tr>
+<tr>
+<td><b>5'h0B</b></td> <td>evt_tcode_err (transmit)</td> <td>A bad tCode is associated with this packet. The packet was flushed. </td>
+</tr>
+<tr>
+<td><b>5'h0E</b></td> <td>evt_unknown (receive/transmit)</td> <td>An error condition has occurred that cannot be represented by any other event codes defined herein. </td>
+</tr>
+<tr>
+<td><b>5'h11</b></td> <td>ack_complete (receive/transmit)</td> <td>No event occurred. (Success)</td>
+</tr>
+<tr>
+<td><b>5'h1D</b></td> <td>ack_data_error (receive)</td> <td>A data field CRC or data_length error.</td>
+</tr>
+</table></dfn>
+<br><br>
+Applies: Any NuDCLRef.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLTimeStampPtr;  name=SetDCLTimeStampPtr --><a name="//apple_ref/c/func/SetDCLTimeStampPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLTimeStampPtr">SetDCLTimeStampPtr </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the time stamp pointer for a NuDCL
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLTimeStampPtr" logicalPath="//apple_ref/cpp/instm/SetDCLTimeStampPtr //apple_ref/cpp/clm/SetDCLTimeStampPtr //apple_ref/cpp/intfcm/SetDCLTimeStampPtr //apple_ref/cpp/intfm/SetDCLTimeStampPtr //apple_ref/cpp/func/SetDCLTimeStampPtr" target="_top"><span class="function">SetDCLTimeStampPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">timeStampPtr</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL for which time stamp pointer will be set</dd>
+<dt><code>timeStampPtr </code></dt>
+<dd>A pointer to a quadlet which will hold the timestamp after 'dcl' is updated.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Setting a the time stamp pointer for a NuDCL causes a time stamp to be recorded when a DCL executes. 
+This DCL must be updated after it has executed for the timestamp to be valid.
+<br><br>
+This change will apply immediately to a non-running DCL program. To apply the change to a running program
+use IOFireWireLocalIsochPortInterface::Notify()
+<br><br>
+Applies: Any NuDCLRef.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetDCLUserHeaderPtr;  name=SetDCLUserHeaderPtr --><a name="//apple_ref/c/func/SetDCLUserHeaderPtr"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetDCLUserHeaderPtr">SetDCLUserHeaderPtr </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set a user specified header for a send NuDCL
+<!-- end abstract --></p>
+<p></p>
+<b>See Also:</b><blockquote><dl>
+<dt>
+<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/doc/title:func/SetDCLCallback" logicalPath="//apple_ref/doc/title:func/SetDCLCallback" target="_top">SetDCLCallback</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetDCLUserHeaderPtr" logicalPath="//apple_ref/cpp/instm/SetDCLUserHeaderPtr //apple_ref/cpp/clm/SetDCLUserHeaderPtr //apple_ref/cpp/intfcm/SetDCLUserHeaderPtr //apple_ref/cpp/intfm/SetDCLUserHeaderPtr //apple_ref/cpp/func/SetDCLUserHeaderPtr" target="_top"><span class="function">SetDCLUserHeaderPtr</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/NuDCLRef //apple_ref/cpp/tdef/NuDCLRef //apple_ref/cpp/tag/NuDCLRef //apple_ref/cpp/econst/NuDCLRef //apple_ref/cpp/struct/NuDCLRef //apple_ref/cpp/clconst/NuDCLRef //apple_ref/cpp/intf/NuDCLRef" --><span class="type">NuDCLRef</span><!-- /a --> <span class="param">dcl</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">headerPtr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">mask</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>dcl </code></dt>
+<dd>The DCL to modify</dd>
+<dt><code>headerPtr </code></dt>
+<dd>A pointer to a two-quadlet header. See section 9.6 of the the OHCI specification.</dd>
+<dt><code>mask </code></dt>
+<dd>A pointer to a two-quadlet mask. The quadlets in headerPtr are masked with 'mask' and the masked-out bits
+are replaced by the FireWire system software.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Allows the client to create a custom header for a transmitted isochronous packet. The header is masked with 'mask', 
+and the FireWire system software fills in the masked out bits.
+<br><br>
+This change will apply immediately to a non-running DCL program. 
+An update must be run on the DCL for changes to take effect in a running program.
+<br><br>
+Applies: NuDCLSendPacketRef
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetFinalizeCallback;  name=SetFinalizeCallback --><a name="//apple_ref/c/func/SetFinalizeCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetFinalizeCallback">SetFinalizeCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the finalize callback for a local isoch port
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetFinalizeCallback" logicalPath="//apple_ref/cpp/instm/SetFinalizeCallback //apple_ref/cpp/clm/SetFinalizeCallback //apple_ref/cpp/intfcm/SetFinalizeCallback //apple_ref/cpp/intfm/SetFinalizeCallback //apple_ref/cpp/func/SetFinalizeCallback" target="_top"><span class="function">SetFinalizeCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/tag/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/econst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/struct/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibLocalIsochPortRef //apple_ref/cpp/intf/IOFireWireLibLocalIsochPortRef" --><span class="type">IOFireWireLibLocalIsochPortRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/tdef/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/tag/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/econst/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/struct/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/clconst/IOFireWireLibIsochPortFinalizeCallback //apple_ref/cpp/intf/IOFireWireLibIsochPortFinalizeCallback" --><span class="type">IOFireWireLibIsochPortFinalizeCallback</span><!-- /a --> <span class="param">finalizeCallback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The local isoch port interface to use.</dd>
+<dt><code>finalizeCalback </code></dt>
+<dd>The finalize callback.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns true if this isoch port has no more pending callbacks and does not
+			need any more runloop time.
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When Stop() is called on a LocalIsochPortInterface, there may or
+may not be isoch callbacks still pending for this isoch port. The port must be allowed
+to handle any pending callbacks, so the isoch runloop should not be stopped until a port 
+has handled all pending callbacks. The finalize callback is called after the final 
+callback has been made on the isoch runloop. After this callback is sent, it is safe
+to stop the isoch runloop.
+<br><br>
+You should not access the isoch port after the finalize callback has been made; it may
+be released immediately after this callback is sent.
+<br><br>
+Availability: IOFireWireLocalIsochPortInterface_v4 and newer.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetFlags_DONTLINK_0xc0f1a18;  name=SetFlags --><a name="//apple_ref/c/func/SetFlags_DONTLINK_0xc0f1a18"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetFlags">SetFlags</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->set flags for the listener.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/SetFlags" logicalPath="//apple_ref/cpp/instm/SetFlags //apple_ref/cpp/clm/SetFlags //apple_ref/cpp/intfcm/SetFlags //apple_ref/cpp/intfm/SetFlags //apple_ref/cpp/func/SetFlags" target="_top"><span class="function">SetFlags</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+<dt><code>flags </code></dt>
+<dd>indicate performance metrics.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->none.	
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetListenerHandler;  name=SetListenerHandler --><a name="//apple_ref/c/func/SetListenerHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetListenerHandler">SetListenerHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the callback that should be called to handle incoming async stream packets
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">const</span> <a href="../../../documentation/IOFireWireLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAsyncStreamListenerHandler" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerHandler //apple_ref/cpp/tdef/IOFWAsyncStreamListenerHandler" target="_top"><span class="type">IOFWAsyncStreamListenerHandler</span></a> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetListenerHandler" logicalPath="//apple_ref/cpp/instm/SetListenerHandler //apple_ref/cpp/clm/SetListenerHandler //apple_ref/cpp/intfcm/SetListenerHandler //apple_ref/cpp/intfm/SetListenerHandler //apple_ref/cpp/func/SetListenerHandler" target="_top"><span class="function">SetListenerHandler</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>,
+    <a href="../../../documentation/IOFireWireLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAsyncStreamListenerHandler" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerHandler //apple_ref/cpp/tdef/IOFWAsyncStreamListenerHandler" target="_top"><span class="type">IOFWAsyncStreamListenerHandler</span></a> <span class="param">inReceiver</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+<dt><code>inReceiver </code></dt>
+<dd>The callback to set.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the callback that was previously set or nil for none.
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetRefCon_DONTLINK_0x38a0228;  name=SetRefCon --><a name="//apple_ref/c/func/SetRefCon_DONTLINK_0x38a0228"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetRefCon">SetRefCon </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set reference value associated with this channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/SetRefCon" logicalPath="//apple_ref/cpp/instm/SetRefCon //apple_ref/cpp/clm/SetRefCon //apple_ref/cpp/intfcm/SetRefCon //apple_ref/cpp/intfm/SetRefCon //apple_ref/cpp/func/SetRefCon" target="_top"><span class="function">SetRefCon</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">stopProcRefCon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+<dt><code>inRefCon </code></dt>
+<dd>The new reference value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Retrieve the reference value with GetRefCon()
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetSkippedPacketHandler_DONTLINK_0xc12bfe4;  name=SetSkippedPacketHandler --><a name="//apple_ref/c/func/SetSkippedPacketHandler_DONTLINK_0xc12bfe4"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetSkippedPacketHandler">SetSkippedPacketHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the callback that should be called when incoming packets are
+dropped by the address space.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">const</span> <a href="../../../documentation/IOFireWireLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAsyncStreamListenerSkippedPacketHandler" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/cpp/tdef/IOFWAsyncStreamListenerSkippedPacketHandler" target="_top"><span class="type">IOFWAsyncStreamListenerSkippedPacketHandler</span></a> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/SetSkippedPacketHandler" logicalPath="//apple_ref/cpp/instm/SetSkippedPacketHandler //apple_ref/cpp/clm/SetSkippedPacketHandler //apple_ref/cpp/intfcm/SetSkippedPacketHandler //apple_ref/cpp/intfm/SetSkippedPacketHandler //apple_ref/cpp/func/SetSkippedPacketHandler" target="_top"><span class="function">SetSkippedPacketHandler</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>,
+    <a href="../../../documentation/IOFireWireLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAsyncStreamListenerSkippedPacketHandler" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/cpp/tdef/IOFWAsyncStreamListenerSkippedPacketHandler" target="_top"><span class="type">IOFWAsyncStreamListenerSkippedPacketHandler</span></a> <span class="param">inHandler</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The address space interface to use.</dd>
+<dt><code>inHandler </code></dt>
+<dd>The callback to set.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the callback that was previously set or nil for none.
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/SetTalker;  name=SetTalker --><a name="//apple_ref/c/func/SetTalker"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="SetTalker">SetTalker</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set the talker port for this channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/SetTalker" logicalPath="//apple_ref/cpp/instm/SetTalker //apple_ref/cpp/clm/SetTalker //apple_ref/cpp/intfcm/SetTalker //apple_ref/cpp/intfm/SetTalker //apple_ref/cpp/func/SetTalker" target="_top"><span class="function">SetTalker</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochPortRef //apple_ref/cpp/tdef/IOFireWireLibIsochPortRef //apple_ref/cpp/tag/IOFireWireLibIsochPortRef //apple_ref/cpp/econst/IOFireWireLibIsochPortRef //apple_ref/cpp/struct/IOFireWireLibIsochPortRef //apple_ref/cpp/clconst/IOFireWireLibIsochPortRef //apple_ref/cpp/intf/IOFireWireLibIsochPortRef" --><span class="type">IOFireWireLibIsochPortRef</span><!-- /a --> <span class="param">talker</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+<dt><code>talker </code></dt>
+<dd>The new talker.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/Start;  name=Start --><a name="//apple_ref/c/func/Start"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="Start">Start </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Start the channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/Start" logicalPath="//apple_ref/cpp/instm/Start //apple_ref/cpp/clm/Start //apple_ref/cpp/intfcm/Start //apple_ref/cpp/intfm/Start //apple_ref/cpp/func/Start" target="_top"><span class="function">Start</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Calling this function will result in all listener and talker ports on this 
+isochronous channel having their Start method called.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/Stop;  name=Stop --><a name="//apple_ref/c/func/Stop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="Stop">Stop </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Stop the channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLibIsoch/index.html?Functions/Functions.html#//apple_ref/c/func/Stop" logicalPath="//apple_ref/cpp/instm/Stop //apple_ref/cpp/clm/Stop //apple_ref/cpp/intfcm/Stop //apple_ref/cpp/intfm/Stop //apple_ref/cpp/func/Stop" target="_top"><span class="function">Stop</span></a>) (
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireLibIsochChannelRef //apple_ref/cpp/tdef/IOFireWireLibIsochChannelRef //apple_ref/cpp/tag/IOFireWireLibIsochChannelRef //apple_ref/cpp/econst/IOFireWireLibIsochChannelRef //apple_ref/cpp/struct/IOFireWireLibIsochChannelRef //apple_ref/cpp/clconst/IOFireWireLibIsochChannelRef //apple_ref/cpp/intf/IOFireWireLibIsochChannelRef" --><span class="type">IOFireWireLibIsochChannelRef</span><!-- /a --> <span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The isoch channel interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns an IOReturn error code. 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Calling this function will result in all listener and talker ports on this 
+isochronous channel having their Stop method called.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/TurnOffNotification_DONTLINK_0xc0c7ca0;  name=TurnOffNotification --><a name="//apple_ref/c/func/TurnOffNotification_DONTLINK_0xc0c7ca0"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="TurnOffNotification">TurnOffNotification</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Force packet notification off.
+		<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/TurnOffNotification" logicalPath="//apple_ref/cpp/instm/TurnOffNotification //apple_ref/cpp/clm/TurnOffNotification //apple_ref/cpp/intfcm/TurnOffNotification //apple_ref/cpp/intfm/TurnOffNotification //apple_ref/cpp/func/TurnOffNotification" target="_top"><span class="function">TurnOffNotification</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/c/func/TurnOnNotification_DONTLINK_0x38a73f8;  name=TurnOnNotification --><a name="//apple_ref/c/func/TurnOnNotification_DONTLINK_0x38a73f8"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="TurnOnNotification">TurnOnNotification</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Try to turn on packet notifications for this channel.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/cpp/cl/Boolean //apple_ref/cpp/tdef/Boolean //apple_ref/cpp/tag/Boolean //apple_ref/cpp/econst/Boolean //apple_ref/cpp/struct/Boolean //apple_ref/cpp/clconst/Boolean //apple_ref/cpp/intf/Boolean" --><span class="type">Boolean</span><!-- /a --> ( *<a href="../../../documentation/IOFireWireLib/index.html?Functions/Functions.html#//apple_ref/c/func/TurnOnNotification" logicalPath="//apple_ref/cpp/instm/TurnOnNotification //apple_ref/cpp/clm/TurnOnNotification //apple_ref/cpp/intfcm/TurnOnNotification //apple_ref/cpp/intfm/TurnOnNotification //apple_ref/cpp/func/TurnOnNotification" target="_top"><span class="function">TurnOnNotification</span></a>)(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/cpp/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>The async stream interface to use.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns true upon success 
+<!-- end return value --></p>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

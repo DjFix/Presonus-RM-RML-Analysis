@@ -1,0 +1,2039 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2Lib.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/header/IOFireWireSBP2Lib.h" title="IOFireWireSBP2Lib.h"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireSBP2Lib.h">IOFireWireSBP2Lib.h</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<dl>
+<b>Includes:</b> <a href="../../documentation/IOFireWireFamilyCommon/index.html#//apple_ref/doc/header/IOFireWireFamilyCommon.h" logicalPath="//apple_ref/doc/header/IOFireWireFamilyCommon.h" target="_top">&lt;IOKit/firewire/IOFireWireFamilyCommon.h&gt;</a>,
+<!-- a logicalPath="//apple_ref/doc/header/IOMessage.h" -->&lt;IOKit/IOMessage.h&gt;<!-- /a --><br>
+</dl>
+<p></p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/addCallbackDispatcherToRunLoop" target="_top">addCallbackDispatcherToRunLoop </a></tt></dt>
+<dd>Adds a dispatcher for kernel callbacks to the specified runloop.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/close" target="_top">close </a></tt></dt>
+<dd>Opens a connection to a device that is not already open.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/createLogin" target="_top">createLogin </a></tt></dt>
+<dd>Creates a new IOFireWireSBP2LibLoginInterface object.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/createMgmtORB" target="_top">createMgmtORB </a></tt></dt>
+<dd>Creates a new IOFireWireSBP2LibMgmntORBInterface object.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/createORB" target="_top">createORB </a></tt></dt>
+<dd>Creates a new IOFireWireSBP2ORB for this login.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/enableUnsolicitedStatus" target="_top">enableUnsolicitedStatus </a></tt></dt>
+<dd>Enables unsolicited status.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getLoginID" target="_top">getLoginID </a></tt></dt>
+<dd>Returns the current login ID.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getMaxCommandBlockSize" target="_top">getMaxCommandBlockSize </a></tt></dt>
+<dd>Returns the maximum command block size.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getRefCon" target="_top">getRefCon (void *)</a></tt></dt>
+<dd>Returns the refCon set with setRefCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3e96c1c" target="_top">getRefCon (void *)</a></tt></dt>
+<dd>Returns the refCon set with setRefCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3d94524" target="_top">getRefCon (void *)</a></tt></dt>
+<dd>Returns the refCon set with setRefCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3de98a4" target="_top">getRefCon (void *)</a></tt></dt>
+<dd>Returns the current function of the management ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/getSessionRef" target="_top">getSessionRef </a></tt></dt>
+<dd>Returns the session reference to an already open device.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/LSIWorkaroundSetCommandBuffersAsRanges" target="_top">LSIWorkaroundSetCommandBuffersAsRanges </a></tt></dt>
+<dd>Creates a page table with the LSI workaround from a list of ranges.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForInput" target="_top">LSIWorkaroundSyncBuffersForInput </a></tt></dt>
+<dd>Synchronize the buffers for input.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForOutput" target="_top">LSIWorkaroundSyncBuffersForOutput </a></tt></dt>
+<dd>Synchronize the buffers for output.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/open" target="_top">open </a></tt></dt>
+<dd>Exclusively opens a connection to the in-kernel device.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/openWithSessionRef" target="_top">openWithSessionRef </a></tt></dt>
+<dd>Opens a connection to a device that is already open.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/releaseCommandBuffers" target="_top">releaseCommandBuffers </a></tt></dt>
+<dd>Releases SBP2's reference to the command buffers.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/removeCallbackDispatcherFromRunLoop" target="_top">removeCallbackDispatcherFromRunLoop </a></tt></dt>
+<dd>Removes a dispatcher for kernel callbacks from the specified runloop.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/ringDoorbell" target="_top">ringDoorbell </a></tt></dt>
+<dd>Rings the doorbell on the LUN.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setBusyTimeoutRegisterValue" target="_top">setBusyTimeoutRegisterValue </a></tt></dt>
+<dd>Sets the value to be written to the BUSY_TIMEOUT register.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandBlock" target="_top">setCommandBlock </a></tt></dt>
+<dd>Sets the command block portion of the ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandBuffersAsRanges" target="_top">setCommandBuffersAsRanges </a></tt></dt>
+<dd>Creates a page table from a list of ranges.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandFlags" target="_top">setCommandFlags </a></tt></dt>
+<dd>Sets configuration flags for the ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandFunction" target="_top">setCommandFunction </a></tt></dt>
+<dd>Sets the function of the management ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandGeneration" target="_top">setCommandGeneration </a></tt></dt>
+<dd>Sets the command generation.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setCommandTimeout" target="_top">setCommandTimeout </a></tt></dt>
+<dd>Sets the timeout of the ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setFetchAgentResetCallback" target="_top">setFetchAgentResetCallback </a></tt></dt>
+<dd>Sets the callback to be called when a fetch agent reset completes.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setFetchAgentWriteCallback" target="_top">setFetchAgentWriteCallback </a></tt></dt>
+<dd>Sets the callback to be called when the fetch agent write completes.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setLoginCallback" target="_top">setLoginCallback </a></tt></dt>
+<dd>Sets the callback to be called when a login attempt is complete.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setLoginFlags" target="_top">setLoginFlags </a></tt></dt>
+<dd>Sets login configuration flags.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setLogoutCallback" target="_top">setLogoutCallback </a></tt></dt>
+<dd>Sets the callback to be called when a logout attempt is complete.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setManageeLogin" target="_top">setManageeLogin </a></tt></dt>
+<dd>Sets the command to be managed by the management ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setManageeORB" target="_top">setManageeORB </a></tt></dt>
+<dd>Sets the command to be managed by the management ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setMaxORBPayloadSize" target="_top">setMaxORBPayloadSize </a></tt></dt>
+<dd>Sets max payload size for the ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setMaxPayloadSize" target="_top">setMaxPayloadSize </a></tt></dt>
+<dd>Sets the maximum data transfer length for a normal command ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setMessageCallback" target="_top">setMessageCallback </a></tt></dt>
+<dd>Set callback for user space message routine.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setORBCompleteCallback" target="_top">setORBCompleteCallback </a></tt></dt>
+<dd>Sets the ORB completion routine.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setPassword" target="_top">setPassword </a></tt></dt>
+<dd>Sets the login password.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setReconnectTime" target="_top">setReconnectTime </a></tt></dt>
+<dd>Sets the desired reconnect duration.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setRefCon" target="_top">setRefCon (void *, void *)</a></tt></dt>
+<dd>Sets the ORB refCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3e8a63c" target="_top">setRefCon (void *, void *)</a></tt></dt>
+<dd>Sets the ORB refCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3d9456c" target="_top">setRefCon (void *, void *)</a></tt></dt>
+<dd>Sets the login refCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3de0bb4" target="_top">setRefCon (void *, void *)</a></tt></dt>
+<dd>Sets the login refCon.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setResponseBuffer" target="_top">setResponseBuffer </a></tt></dt>
+<dd>Sets the response buffer for the management ORB.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setStatusNotify" target="_top">setStatusNotify </a></tt></dt>
+<dd>Sets the callback to be called on normal command status.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/setUnsolicitedStatusNotify" target="_top">setUnsolicitedStatusNotify </a></tt></dt>
+<dd>Sets the callback to be called on normal command status.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/submitFetchAgentReset" target="_top">submitFetchAgentReset </a></tt></dt>
+<dd>Resets the LUN's fetch agent.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/submitLogin" target="_top">submitLogin </a></tt></dt>
+<dd>Attempts to login to the LUN.		
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/submitLogout" target="_top">submitLogout </a></tt></dt>
+<dd>Attempts to logout of the LUN.		
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/submitORB_DONTLINK_0x3fa5538" target="_top">submitORB (void *)</a></tt></dt>
+<dd>Submits this ORB for execution.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/c/func/submitORB" target="_top">submitORB (void *, IOFireWireSBP2LibORBInterface **)</a></tt></dt>
+<dd>Submits the given orb
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/addCallbackDispatcherToRunLoop;  name=addCallbackDispatcherToRunLoop --><a name="//apple_ref/doc/compositePage/c/func/addCallbackDispatcherToRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="addCallbackDispatcherToRunLoop">addCallbackDispatcherToRunLoop </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Adds a dispatcher for kernel callbacks to the specified runloop.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/addCallbackDispatcherToRunLoop" logicalPath="//apple_ref/c/instm/addCallbackDispatcherToRunLoop //apple_ref/c/clm/addCallbackDispatcherToRunLoop //apple_ref/c/intfcm/addCallbackDispatcherToRunLoop //apple_ref/c/intfm/addCallbackDispatcherToRunLoop //apple_ref/c/func/addCallbackDispatcherToRunLoop" target="_top"><span class="function">addCallbackDispatcherToRunLoop</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFRunLoopRef //apple_ref/c/tdef/CFRunLoopRef //apple_ref/c/tag/CFRunLoopRef //apple_ref/c/econst/CFRunLoopRef //apple_ref/c/struct/CFRunLoopRef //apple_ref/c/clconst/CFRunLoopRef //apple_ref/c/intf/CFRunLoopRef" --><span class="type">CFRunLoopRef</span><!-- /a --> <span class="param">cfRunLoopRef</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+<dt><code>cfRunLoopRef </code></dt>
+<dd>Reference to a runloop</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The user space portions of the SBP2 api communicate with the in-kernel services by 
+messaging the kernel.  Similarly, the kernel messages the user space services in response.  
+These responses need to be picked up by a piece of code.  This call adds that code to the specified
+runloop.  Most drivers will call this method on the runloop that was created when your task was 
+created.  To avoid deadlock you must avoid sleeping (or spin waiting) the runloop to wait for 
+SBP2 response.  If you do this the dispatcher will never get to run and you will wait forever.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/close;  name=close --><a name="//apple_ref/doc/compositePage/c/func/close"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="close">close </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Opens a connection to a device that is not already open.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/close" logicalPath="//apple_ref/c/instm/close //apple_ref/c/clm/close //apple_ref/c/intfcm/close //apple_ref/c/intfm/close //apple_ref/c/func/close" target="_top"><span class="function">close</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Closes an exclusive access to the device.  When a device is closed it may be 
+unloaded by the kernel.  If it is unloaded and then later reappears it will be represented 
+by a different object.  You won't be able to use this user client on the new object.  The 
+new object will have to be looked up in the IORegistry and a new user client will have to 
+be opened on it. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/createLogin;  name=createLogin --><a name="//apple_ref/doc/compositePage/c/func/createLogin"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createLogin">createLogin </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a new IOFireWireSBP2LibLoginInterface object.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IUnknownVTbl //apple_ref/c/tdef/IUnknownVTbl //apple_ref/c/tag/IUnknownVTbl //apple_ref/c/econst/IUnknownVTbl //apple_ref/c/struct/IUnknownVTbl //apple_ref/c/clconst/IUnknownVTbl //apple_ref/c/intf/IUnknownVTbl" --><span class="type">IUnknownVTbl</span><!-- /a --><span class="type">*</span><span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/createLogin" logicalPath="//apple_ref/c/instm/createLogin //apple_ref/c/clm/createLogin //apple_ref/c/intfcm/createLogin //apple_ref/c/intfm/createLogin //apple_ref/c/func/createLogin" target="_top"><span class="function">createLogin</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID //apple_ref/c/intf/REFIID" --><span class="type">REFIID</span><!-- /a --> <span class="param">iid</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+<dt><code>iid </code></dt>
+<dd>UUID for desired type of IOFireWireSBP2LibLoginInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a pointer to a new IOFireWireSBP2LibLoginInterface.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a new IOFireWireSBP2LibLoginInterface object for the LUN.  Login 
+objects supply most of the SBP2 APIs related to login maintenance and Normal 
+Command ORB execution.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/createMgmtORB;  name=createMgmtORB --><a name="//apple_ref/doc/compositePage/c/func/createMgmtORB"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createMgmtORB">createMgmtORB </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a new IOFireWireSBP2LibMgmntORBInterface object.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IUnknownVTbl //apple_ref/c/tdef/IUnknownVTbl //apple_ref/c/tag/IUnknownVTbl //apple_ref/c/econst/IUnknownVTbl //apple_ref/c/struct/IUnknownVTbl //apple_ref/c/clconst/IUnknownVTbl //apple_ref/c/intf/IUnknownVTbl" --><span class="type">IUnknownVTbl</span><!-- /a --><span class="type">*</span><span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/createMgmtORB" logicalPath="//apple_ref/c/instm/createMgmtORB //apple_ref/c/clm/createMgmtORB //apple_ref/c/intfcm/createMgmtORB //apple_ref/c/intfm/createMgmtORB //apple_ref/c/func/createMgmtORB" target="_top"><span class="function">createMgmtORB</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID //apple_ref/c/intf/REFIID" --><span class="type">REFIID</span><!-- /a --> <span class="param">iid</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+<dt><code>iid </code></dt>
+<dd>UUID for desired type of IOFireWireSBP2LibMgmtORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a pointer to a new IOFireWireSBP2Login.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a new IOFireWireSBP2LibMgmtORBInterface object.  Management objects let you 
+execute commands like QueryLogins, LogicalUnitReset, and AbortTask.  These commands are 
+configured after they are created here.  When they are done executing (after a call to submit) 
+the supplied completion routine will be called with the supplied refcon.  Usually this refCon
+is the "this" pointer of completion method's object.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/createORB;  name=createORB --><a name="//apple_ref/doc/compositePage/c/func/createORB"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createORB">createORB </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a new IOFireWireSBP2ORB for this login.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IUnknownVTbl //apple_ref/c/tdef/IUnknownVTbl //apple_ref/c/tag/IUnknownVTbl //apple_ref/c/econst/IUnknownVTbl //apple_ref/c/struct/IUnknownVTbl //apple_ref/c/clconst/IUnknownVTbl //apple_ref/c/intf/IUnknownVTbl" --><span class="type">IUnknownVTbl</span><!-- /a --><span class="type">*</span><span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/createORB" logicalPath="//apple_ref/c/instm/createORB //apple_ref/c/clm/createORB //apple_ref/c/intfcm/createORB //apple_ref/c/intfm/createORB //apple_ref/c/func/createORB" target="_top"><span class="function">createORB</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/REFIID //apple_ref/c/tdef/REFIID //apple_ref/c/tag/REFIID //apple_ref/c/econst/REFIID //apple_ref/c/struct/REFIID //apple_ref/c/clconst/REFIID //apple_ref/c/intf/REFIID" --><span class="type">REFIID</span><!-- /a --> <span class="param">iid</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>iid </code></dt>
+<dd>UUID for the desired type of IOFireWireSBP2LibLoginInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a pointer to the new ORB object.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Create a new IOFireWireSBP2ORB for this login.  It can be configured 
+with it's accessors and executed with submitORB below.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/enableUnsolicitedStatus;  name=enableUnsolicitedStatus --><a name="//apple_ref/doc/compositePage/c/func/enableUnsolicitedStatus"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="enableUnsolicitedStatus">enableUnsolicitedStatus </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Enables unsolicited status.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/enableUnsolicitedStatus" logicalPath="//apple_ref/c/instm/enableUnsolicitedStatus //apple_ref/c/clm/enableUnsolicitedStatus //apple_ref/c/intfcm/enableUnsolicitedStatus //apple_ref/c/intfm/enableUnsolicitedStatus //apple_ref/c/func/enableUnsolicitedStatus" target="_top"><span class="function">enableUnsolicitedStatus</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if the status enable write started successfully.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->After unsolicited is sent the device will not send any additional unsolicited status 
+until a specific register is written.  This serves as a sort of flow-control for unsolicited status.  
+After unsolicited status is recieved and processed drivers will want to reenable the delivery 
+of unsolicted status by a call to this method.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getLoginID;  name=getLoginID --><a name="//apple_ref/doc/compositePage/c/func/getLoginID"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getLoginID">getLoginID </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current login ID.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getLoginID" logicalPath="//apple_ref/c/instm/getLoginID //apple_ref/c/clm/getLoginID //apple_ref/c/intfcm/getLoginID //apple_ref/c/intfm/getLoginID //apple_ref/c/func/getLoginID" target="_top"><span class="function">getLoginID</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the current login ID.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When we successfully login to a device.  The device gives us a unique login id.  
+This is used internally for reconnecting to the device after bus resets and for certain other 
+management ORBs.  Most drivers are probably not interested in this value.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getMaxCommandBlockSize;  name=getMaxCommandBlockSize --><a name="//apple_ref/doc/compositePage/c/func/getMaxCommandBlockSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMaxCommandBlockSize">getMaxCommandBlockSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the maximum command block size.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getMaxCommandBlockSize" logicalPath="//apple_ref/c/instm/getMaxCommandBlockSize //apple_ref/c/clm/getMaxCommandBlockSize //apple_ref/c/intfcm/getMaxCommandBlockSize //apple_ref/c/intfm/getMaxCommandBlockSize //apple_ref/c/func/getMaxCommandBlockSize" target="_top"><span class="function">getMaxCommandBlockSize</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a UInt32 containing the maximum command block size.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The device publishes an upper limit on the size of command block that it can 
+accept.  That value can be accessed via this method.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getRefCon;  name=getRefCon --><a name="//apple_ref/doc/compositePage/c/func/getRefCon"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon(void*)">getRefCon (void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the refCon set with setRefCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/c/instm/getRefCon //apple_ref/c/clm/getRefCon //apple_ref/c/intfcm/getRefCon //apple_ref/c/intfm/getRefCon //apple_ref/c/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the ORB with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3e96c1c;  name=getRefCon --><a name="//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3e96c1c"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon(void*)">getRefCon (void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the refCon set with setRefCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/c/instm/getRefCon //apple_ref/c/clm/getRefCon //apple_ref/c/intfcm/getRefCon //apple_ref/c/intfm/getRefCon //apple_ref/c/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the ORB with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3d94524;  name=getRefCon --><a name="//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3d94524"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon(void*)">getRefCon (void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the refCon set with setRefCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/c/instm/getRefCon //apple_ref/c/clm/getRefCon //apple_ref/c/intfcm/getRefCon //apple_ref/c/intfm/getRefCon //apple_ref/c/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the previously stored user defined value.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the user defined value previously stored in the login with setRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3de98a4;  name=getRefCon --><a name="//apple_ref/doc/compositePage/c/func/getRefCon_DONTLINK_0x3de98a4"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRefCon(void*)">getRefCon (void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current function of the management ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> <span class="type">*</span> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getRefCon" logicalPath="//apple_ref/c/instm/getRefCon //apple_ref/c/clm/getRefCon //apple_ref/c/intfcm/getRefCon //apple_ref/c/intfm/getRefCon //apple_ref/c/func/getRefCon" target="_top"><span class="function">getRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns the function of the management ORB.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns the function of the management ORB.  This is the same value that was 
+set with setCommandFunction.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/getSessionRef;  name=getSessionRef --><a name="//apple_ref/doc/compositePage/c/func/getSessionRef"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getSessionRef">getSessionRef </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the session reference to an already open device.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/tdef/IOFireWireSessionRef //apple_ref/c/tag/IOFireWireSessionRef //apple_ref/c/econst/IOFireWireSessionRef //apple_ref/c/struct/IOFireWireSessionRef //apple_ref/c/clconst/IOFireWireSessionRef //apple_ref/c/intf/IOFireWireSessionRef" --><span class="type">IOFireWireSessionRef</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/getSessionRef" logicalPath="//apple_ref/c/instm/getSessionRef //apple_ref/c/clm/getSessionRef //apple_ref/c/intfcm/getSessionRef //apple_ref/c/intfm/getSessionRef //apple_ref/c/func/getSessionRef" target="_top"><span class="function">getSessionRef</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns a sessionRef on success.
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sometimes it is desirable to open multiple user clients on a device.  In the case 
+of FireWire sometimes we wish to have both the FireWire User Client and the SBP2 User Client 
+open at the same time.  
+</p>
+<p>The technique to arbitrate this is as follows:</p>
+<p>First open normally the device furthest from the root in the IORegistry.</p>
+<p>Second, get its sessionRef with a call to this method.</p>
+<p>Third open the device further up the chain by calling openWithSessionRef and passing the sessionRef returned from this call.</p>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/LSIWorkaroundSetCommandBuffersAsRanges;  name=LSIWorkaroundSetCommandBuffersAsRanges --><a name="//apple_ref/doc/compositePage/c/func/LSIWorkaroundSetCommandBuffersAsRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="LSIWorkaroundSetCommandBuffersAsRanges">LSIWorkaroundSetCommandBuffersAsRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table with the LSI workaround from a list of ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/LSIWorkaroundSetCommandBuffersAsRanges" logicalPath="//apple_ref/c/instm/LSIWorkaroundSetCommandBuffersAsRanges //apple_ref/c/clm/LSIWorkaroundSetCommandBuffersAsRanges //apple_ref/c/intfcm/LSIWorkaroundSetCommandBuffersAsRanges //apple_ref/c/intfm/LSIWorkaroundSetCommandBuffersAsRanges //apple_ref/c/func/LSIWorkaroundSetCommandBuffersAsRanges" target="_top"><span class="function">LSIWorkaroundSetCommandBuffersAsRanges</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2VirtualRange //apple_ref/c/tdef/FWSBP2VirtualRange //apple_ref/c/tag/FWSBP2VirtualRange //apple_ref/c/econst/FWSBP2VirtualRange //apple_ref/c/struct/FWSBP2VirtualRange //apple_ref/c/clconst/FWSBP2VirtualRange //apple_ref/c/intf/FWSBP2VirtualRange" --><span class="type">FWSBP2VirtualRange</span><!-- /a --> *<span class="param">ranges</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">withCount</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">withDirection</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>ranges </code></dt>
+<dd>An array of ranges representing the data to be transfered.</dd>
+<dt><code>withCount </code></dt>
+<dd>The number of ranges in the ranges array.</dd>
+<dt><code>withDirection </code></dt>
+<dd>An IODirection indicating the direction of data transfer.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates an LSI workaround page table with the given parameters. Any addresses 
+mapped by this method routine must remain valid until setCommandBuffers is called again
+or releaseCommandBuffers is called. The SBP2 services do not release references to the 
+command buffers just because the command has completed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForInput;  name=LSIWorkaroundSyncBuffersForInput --><a name="//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForInput"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="LSIWorkaroundSyncBuffersForInput">LSIWorkaroundSyncBuffersForInput </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Synchronize the buffers for input.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/LSIWorkaroundSyncBuffersForInput" logicalPath="//apple_ref/c/instm/LSIWorkaroundSyncBuffersForInput //apple_ref/c/clm/LSIWorkaroundSyncBuffersForInput //apple_ref/c/intfcm/LSIWorkaroundSyncBuffersForInput //apple_ref/c/intfm/LSIWorkaroundSyncBuffersForInput //apple_ref/c/func/LSIWorkaroundSyncBuffersForInput" target="_top"><span class="function">LSIWorkaroundSyncBuffersForInput</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if sync was successful.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Since double buffering may be invovled in the workaround.  The driver needs to 
+indicate when these buffers should be syncronized with the original descriptor.  For data 
+that will be input LSIWorkaroundSyncBuffersForInput should be called after receiving completion status 
+for the ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForOutput;  name=LSIWorkaroundSyncBuffersForOutput --><a name="//apple_ref/doc/compositePage/c/func/LSIWorkaroundSyncBuffersForOutput"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="LSIWorkaroundSyncBuffersForOutput">LSIWorkaroundSyncBuffersForOutput </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Synchronize the buffers for output.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/LSIWorkaroundSyncBuffersForOutput" logicalPath="//apple_ref/c/instm/LSIWorkaroundSyncBuffersForOutput //apple_ref/c/clm/LSIWorkaroundSyncBuffersForOutput //apple_ref/c/intfcm/LSIWorkaroundSyncBuffersForOutput //apple_ref/c/intfm/LSIWorkaroundSyncBuffersForOutput //apple_ref/c/func/LSIWorkaroundSyncBuffersForOutput" target="_top"><span class="function">LSIWorkaroundSyncBuffersForOutput</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if sync was successful.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Since double buffering may be invovled in the workaround.  The driver needs to 
+indicate when these buffers should be syncronized with the original descriptor.  For data 
+that will be output LSIWorkaroundSyncBuffersForOutput should be called before submiting the ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/open;  name=open --><a name="//apple_ref/doc/compositePage/c/func/open"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="open">open </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Exclusively opens a connection to the in-kernel device.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/open" logicalPath="//apple_ref/c/instm/open //apple_ref/c/clm/open //apple_ref/c/intfcm/open //apple_ref/c/intfm/open //apple_ref/c/func/open" target="_top"><span class="function">open</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Exclusively opens a connection to the in-kernel device.  As long as the in-kernel 
+device object is open, no other drivers will be able to open a connection to the device. When 
+open the device on the bus may disappear, but the in-kernel object representing it will stay
+instantiated and can begin communicating with the device again if it ever reappears. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/openWithSessionRef;  name=openWithSessionRef --><a name="//apple_ref/doc/compositePage/c/func/openWithSessionRef"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="openWithSessionRef">openWithSessionRef </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Opens a connection to a device that is already open.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/openWithSessionRef" logicalPath="//apple_ref/c/instm/openWithSessionRef //apple_ref/c/clm/openWithSessionRef //apple_ref/c/intfcm/openWithSessionRef //apple_ref/c/intfm/openWithSessionRef //apple_ref/c/func/openWithSessionRef" target="_top"><span class="function">openWithSessionRef</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSessionRef //apple_ref/c/tdef/IOFireWireSessionRef //apple_ref/c/tag/IOFireWireSessionRef //apple_ref/c/econst/IOFireWireSessionRef //apple_ref/c/struct/IOFireWireSessionRef //apple_ref/c/clconst/IOFireWireSessionRef //apple_ref/c/intf/IOFireWireSessionRef" --><span class="type">IOFireWireSessionRef</span><!-- /a --> <span class="param">sessionRef</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>sessionRef </code></dt>
+<dd>SessionRef returned from getSessionRef call.</dd>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sometimes it is desirable to open multiple user clients on a device.  In the case 
+of FireWire sometimes we wish to have both the FireWire User Client and the SBP2 User Client 
+open at the same time. 
+</p>
+<p>The technique to arbitrate this is as follows :</p>
+<p>First open normally the device furthest from the root in the IORegistry.</p>
+<p>Second, get its sessionRef with the getSessionRef call.</p>
+<p>Third open the device further up the chain by calling this method and passing the sessionRef returned from the call in step 2.</p>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/releaseCommandBuffers;  name=releaseCommandBuffers --><a name="//apple_ref/doc/compositePage/c/func/releaseCommandBuffers"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="releaseCommandBuffers">releaseCommandBuffers </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Releases SBP2's reference to the command buffers.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/releaseCommandBuffers" logicalPath="//apple_ref/c/instm/releaseCommandBuffers //apple_ref/c/clm/releaseCommandBuffers //apple_ref/c/intfcm/releaseCommandBuffers //apple_ref/c/intfm/releaseCommandBuffers //apple_ref/c/func/releaseCommandBuffers" target="_top"><span class="function">releaseCommandBuffers</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was cleared successfully. 
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When you create a page table with one of the variants of setCommandBuffers.  
+SBP2 holds on to a reference to the buffers until this method is called.  This means that 
+if a command completed and you released the buffers 
+without calling this method you could leave FW in an inconsistent state.  
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/removeCallbackDispatcherFromRunLoop;  name=removeCallbackDispatcherFromRunLoop --><a name="//apple_ref/doc/compositePage/c/func/removeCallbackDispatcherFromRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="removeCallbackDispatcherFromRunLoop">removeCallbackDispatcherFromRunLoop </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Removes a dispatcher for kernel callbacks from the specified runloop.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/removeCallbackDispatcherFromRunLoop" logicalPath="//apple_ref/c/instm/removeCallbackDispatcherFromRunLoop //apple_ref/c/clm/removeCallbackDispatcherFromRunLoop //apple_ref/c/intfcm/removeCallbackDispatcherFromRunLoop //apple_ref/c/intfm/removeCallbackDispatcherFromRunLoop //apple_ref/c/func/removeCallbackDispatcherFromRunLoop" target="_top"><span class="function">removeCallbackDispatcherFromRunLoop</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Undoes the work of addCallbackDispatcherToRunLoop.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/ringDoorbell;  name=ringDoorbell --><a name="//apple_ref/doc/compositePage/c/func/ringDoorbell"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ringDoorbell">ringDoorbell </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Rings the doorbell on the LUN.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/ringDoorbell" logicalPath="//apple_ref/c/instm/ringDoorbell //apple_ref/c/clm/ringDoorbell //apple_ref/c/intfcm/ringDoorbell //apple_ref/c/intfm/ringDoorbell //apple_ref/c/func/ringDoorbell" target="_top"><span class="function">ringDoorbell</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if the ring started successfully.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Non-immediate appends to the ORB chain may require the fetch agent state machine 
+to be notified of the new ORB's presence.  This is accomplished by writing to the so called 
+doorbell register.  This method begins one of those writes.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setBusyTimeoutRegisterValue;  name=setBusyTimeoutRegisterValue --><a name="//apple_ref/doc/compositePage/c/func/setBusyTimeoutRegisterValue"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setBusyTimeoutRegisterValue">setBusyTimeoutRegisterValue </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the value to be written to the BUSY_TIMEOUT register.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setBusyTimeoutRegisterValue" logicalPath="//apple_ref/c/instm/setBusyTimeoutRegisterValue //apple_ref/c/clm/setBusyTimeoutRegisterValue //apple_ref/c/intfcm/setBusyTimeoutRegisterValue //apple_ref/c/intfm/setBusyTimeoutRegisterValue //apple_ref/c/func/setBusyTimeoutRegisterValue" target="_top"><span class="function">setBusyTimeoutRegisterValue</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">timeout</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>timeout </code></dt>
+<dd>desired value of the BUSY_TIMEOUT register.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->1394-1995 defines a register known as the BUSY_TIMEOUT register. This register 
+controls the busy retry behavior of your device.  The initial value for this register is 
+0x00000000.  Which means busied transactions will not be retried.  Since most devices want 
+their transactions retired on busy acks, the SBP2 service automatically updates the 
+BUSY_TIMEOUT register with the value specified here whenever necessary.  Most drivers should 
+set this value to 0x0000000f.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandBlock;  name=setCommandBlock --><a name="//apple_ref/doc/compositePage/c/func/setCommandBlock"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBlock">setCommandBlock </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command block portion of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandBlock" logicalPath="//apple_ref/c/instm/setCommandBlock //apple_ref/c/clm/setCommandBlock //apple_ref/c/intfcm/setCommandBlock //apple_ref/c/intfm/setCommandBlock //apple_ref/c/func/setCommandBlock" target="_top"><span class="function">setCommandBlock</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buffer</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>buffer </code></dt>
+<dd>Pointer to buffer to copy command block from.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to copy.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the command block was updated successfully. 
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Copys the data provided in the buffer to the command block portion of the ORB.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandBuffersAsRanges;  name=setCommandBuffersAsRanges --><a name="//apple_ref/doc/compositePage/c/func/setCommandBuffersAsRanges"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandBuffersAsRanges">setCommandBuffersAsRanges </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates a page table from a list of ranges.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandBuffersAsRanges" logicalPath="//apple_ref/c/instm/setCommandBuffersAsRanges //apple_ref/c/clm/setCommandBuffersAsRanges //apple_ref/c/intfcm/setCommandBuffersAsRanges //apple_ref/c/intfm/setCommandBuffersAsRanges //apple_ref/c/func/setCommandBuffersAsRanges" target="_top"><span class="function">setCommandBuffersAsRanges</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2VirtualRange //apple_ref/c/tdef/FWSBP2VirtualRange //apple_ref/c/tag/FWSBP2VirtualRange //apple_ref/c/econst/FWSBP2VirtualRange //apple_ref/c/struct/FWSBP2VirtualRange //apple_ref/c/clconst/FWSBP2VirtualRange //apple_ref/c/intf/FWSBP2VirtualRange" --><span class="type">FWSBP2VirtualRange</span><!-- /a --> *<span class="param">ranges</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">withCount</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">withDirection</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>ranges </code></dt>
+<dd>An array of ranges representing the data to be transfered.</dd>
+<dt><code>withCount </code></dt>
+<dd>The number of ranges in the ranges array.</dd>
+<dt><code>withDirection </code></dt>
+<dd>An IODirection indicating the direction of data transfer.</dd>
+<dt><code>offset </code></dt>
+<dd>Offset in bytes into data to begin writing table at.</dd>
+<dt><code>length </code></dt>
+<dd>Number of bytes of data to map from offset.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns KIOReturnSuccess if the page table was written successfully. 
+    
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a page table with the given parameters. Any addresses mapped by this method 
+must remain valid until setCommandBuffers is called again or releaseCommandBuffers is called.  
+The SBP2 services do not release references to the command buffers just because the command 
+has completed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandFlags;  name=setCommandFlags --><a name="//apple_ref/doc/compositePage/c/func/setCommandFlags"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandFlags">setCommandFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets configuration flags for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandFlags" logicalPath="//apple_ref/c/instm/setCommandFlags //apple_ref/c/clm/setCommandFlags //apple_ref/c/intfcm/setCommandFlags //apple_ref/c/intfm/setCommandFlags //apple_ref/c/func/setCommandFlags" target="_top"><span class="function">setCommandFlags</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>flags </code></dt>
+<dd>The flags to be set.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the configuration flags for the ORB.  These can be any of the following:
+</p>
+<p>kFWSBP2CommandCompleteNotify - Set the notify bit as specified in SBP2 standard. Set to receive completion/timeout notification on this ORB.  You almost always want to set this.</p>
+<p>kFWSBP2CommandTransferDataFromTarget - Transfer direction as specified in SBP2 standard.  Set if data is to be written by the device into the host's memory.</p>
+<p>kFWSBP2CommandImmediate - Immediate Append.  ORB address will be written to fetch agent and not chained.  It is only legal to have one immediate ORB in progress at a time.</p>
+<p>kFWSBP2CommandNormalORB - ORB format 0 - Format specified by SBP2 standard.  Set this for most ORBs.</p>
+<p>kFWSBP2CommandReservedORB - ORB format 1 - Format reserved by SBP2 standard for future standardization.</p>
+<p>kFWSBP2CommandVendorORB - ORB format 2 - Format specified by SBP2 standard for vendor dependent ORBs.</p>
+<p>kFWSBP2CommandDummyORB - ORB format 3 - Format specified by SBP2 standard for dummy ORBs.</p>
+<p>kFWSBP2CommandCheckGeneration - If set upon submitORB, the ORB will only be appended if generation set with setCommandGeneration() matches the current generation.  Pretty much all SBP2 drivers need sophisticated logic to track login state, so this is generally not used. </p>
+<p>kFWSBP2CommandFixedSize - Do not allocate more memory for page table if needed.  If there is not enough space in the currently allocated page table, the setCommandBuffers call will fail.  This is important to set if your device is the backing store, as we don't want to cause memory allocations on the paging path. </p>
+<p>kFWSBP2CommandVirtualORBs - Normally ORBs are backed by physical address spaces.  Setting this flag makes this ORB backed by a pseudo address space.  This can make ORBs easier to see in a bus trace.  Virtual ORBs will have an address in the form of ffcX.XXXX.0000.0000.  Pseudo address space backed ORBs are slower, so you won't want to set for deployment builds.</p>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandFunction;  name=setCommandFunction --><a name="//apple_ref/doc/compositePage/c/func/setCommandFunction"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandFunction">setCommandFunction </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the function of the management ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandFunction" logicalPath="//apple_ref/c/instm/setCommandFunction //apple_ref/c/clm/setCommandFunction //apple_ref/c/intfcm/setCommandFunction //apple_ref/c/intfm/setCommandFunction //apple_ref/c/func/setCommandFunction" target="_top"><span class="function">setCommandFunction</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">function</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>function </code></dt>
+<dd>a value indicating the desired management function.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if function was a legal function.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the the function of the management ORB.  Legal values are kFWSBP2QueryLogins,
+kFWSBP2AbortTask, kFWSBP2AbortTaskSet,  kFWSBP2LogicalUnitReset, and kFWSBP2TargetReset.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandGeneration;  name=setCommandGeneration --><a name="//apple_ref/doc/compositePage/c/func/setCommandGeneration"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandGeneration">setCommandGeneration </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command generation.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandGeneration" logicalPath="//apple_ref/c/instm/setCommandGeneration //apple_ref/c/clm/setCommandGeneration //apple_ref/c/intfcm/setCommandGeneration //apple_ref/c/intfm/setCommandGeneration //apple_ref/c/func/setCommandGeneration" target="_top"><span class="function">setCommandGeneration</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">generation</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>gen </code></dt>
+<dd>The bus generation for command execution.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the bus generation this ORB should be appended in.  It is only meaningful 
+when combined with the kFWSBP2CommandCheckGeneration flags above.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setCommandTimeout;  name=setCommandTimeout --><a name="//apple_ref/doc/compositePage/c/func/setCommandTimeout"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setCommandTimeout">setCommandTimeout </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the timeout of the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setCommandTimeout" logicalPath="//apple_ref/c/instm/setCommandTimeout //apple_ref/c/clm/setCommandTimeout //apple_ref/c/intfcm/setCommandTimeout //apple_ref/c/intfm/setCommandTimeout //apple_ref/c/func/setCommandTimeout" target="_top"><span class="function">setCommandTimeout</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">timeout</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>timeout </code></dt>
+<dd>The timeout duration in milliseconds.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the timeout for the ORB in milliseconds. Note that ORBs without timeouts 
+can be "lost."  You will obviously not recieve timeout notification for timeouts of zero.  But 
+perhaps less obviously you will not recieve orb reset notification, which is really a sort of
+accelerated timeout notification for bus reset situations.  
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setFetchAgentResetCallback;  name=setFetchAgentResetCallback --><a name="//apple_ref/doc/compositePage/c/func/setFetchAgentResetCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setFetchAgentResetCallback">setFetchAgentResetCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called when a fetch agent reset completes.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setFetchAgentResetCallback" logicalPath="//apple_ref/c/instm/setFetchAgentResetCallback //apple_ref/c/clm/setFetchAgentResetCallback //apple_ref/c/intfcm/setFetchAgentResetCallback //apple_ref/c/intfm/setFetchAgentResetCallback //apple_ref/c/func/setFetchAgentResetCallback" target="_top"><span class="function">setFetchAgentResetCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2StatusCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2StatusCallback //apple_ref/c/tdef/IOFWSBP2StatusCallback" target="_top"><span class="type">IOFWSBP2StatusCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>address of callback method of type FWSBP2FetchAgentWriteCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The fetch agent state machine on the device can be reset by a write to a specific 
+register.  The SBP2 services offer a utility method to reset the fetch agent.  You can register 
+a callback routine here to be notified when this rest write completes.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setFetchAgentWriteCallback;  name=setFetchAgentWriteCallback --><a name="//apple_ref/doc/compositePage/c/func/setFetchAgentWriteCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setFetchAgentWriteCallback">setFetchAgentWriteCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called when the fetch agent write completes.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setFetchAgentWriteCallback" logicalPath="//apple_ref/c/instm/setFetchAgentWriteCallback //apple_ref/c/clm/setFetchAgentWriteCallback //apple_ref/c/intfcm/setFetchAgentWriteCallback //apple_ref/c/intfm/setFetchAgentWriteCallback //apple_ref/c/func/setFetchAgentWriteCallback" target="_top"><span class="function">setFetchAgentWriteCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2FetchAgentWriteCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/tdef/IOFWSBP2FetchAgentWriteCallback" target="_top"><span class="type">IOFWSBP2FetchAgentWriteCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>address of callback method of type FWSBP2FetchAgentWriteCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->When an immediate orb is executed with submitORB, it's address is written to a 
+specific address on the device.  This address is called the fetch agent.  The device the 
+reads that orb from the Mac's memory and executes it.  With this call you can register to 
+be called back when this write to the fetch agent completes.  The SBP2 services guarantee 
+that the fetch agent write will be complete before status is reported for an ORB, so for 
+most drivers this notification is not required.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setLoginCallback;  name=setLoginCallback --><a name="//apple_ref/doc/compositePage/c/func/setLoginCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setLoginCallback">setLoginCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called when a login attempt is complete.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setLoginCallback" logicalPath="//apple_ref/c/instm/setLoginCallback //apple_ref/c/clm/setLoginCallback //apple_ref/c/intfcm/setLoginCallback //apple_ref/c/intfm/setLoginCallback //apple_ref/c/func/setLoginCallback" target="_top"><span class="function">setLoginCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2LoginCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2LoginCallback //apple_ref/c/tdef/IOFWSBP2LoginCallback" target="_top"><span class="type">IOFWSBP2LoginCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>address of callback method of type FWSBP2LoginCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The supplied callback is called when a login attempt has completed. "status" in the
+callback's params should be checked to determine the success or failure of the login attempt.
+The "refCon" field in the params will return the refcon set with setRefCon.   
+If "statusBlock" is non-null then login status was written and it has been supplied here.  If 
+the login attempt was successful then the login response will be supplied in the "loginResponse" 
+buffer.  Note: all buffers supplied to callbacks are only valid for the duration of the callback.  
+Also, you are not to modify the contents of any supplied buffer.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setLoginFlags;  name=setLoginFlags --><a name="//apple_ref/doc/compositePage/c/func/setLoginFlags"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setLoginFlags">setLoginFlags </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets login configuration flags.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setLoginFlags" logicalPath="//apple_ref/c/instm/setLoginFlags //apple_ref/c/clm/setLoginFlags //apple_ref/c/intfcm/setLoginFlags //apple_ref/c/intfm/setLoginFlags //apple_ref/c/func/setLoginFlags" target="_top"><span class="function">setLoginFlags</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>loginFlags </code></dt>
+<dd>the login configuration flags.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Configures the login behavior according to the provided flags.  Currently two 
+flags are defined for this API.  kFWSBP2ExclusiveLogin sets the exclusive login bit in the 
+login ORB. kFWSBP2DontSynchronizeMgmtAgent allows simultaneous logins or reconnects to LUNs
+with a common management agent (ie LUNs in the same unit directory).
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setLogoutCallback;  name=setLogoutCallback --><a name="//apple_ref/doc/compositePage/c/func/setLogoutCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setLogoutCallback">setLogoutCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called when a logout attempt is complete.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setLogoutCallback" logicalPath="//apple_ref/c/instm/setLogoutCallback //apple_ref/c/clm/setLogoutCallback //apple_ref/c/intfcm/setLogoutCallback //apple_ref/c/intfm/setLogoutCallback //apple_ref/c/func/setLogoutCallback" target="_top"><span class="function">setLogoutCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2LogoutCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2LogoutCallback //apple_ref/c/tdef/IOFWSBP2LogoutCallback" target="_top"><span class="type">IOFWSBP2LogoutCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>address of callback method of type FWSBP2LogoutCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The supplied callback is called when a logout attempt has completed. "status" in the
+callback's params should be checked to determine the success or failure of the logout attempt.
+The "refCon" field in the params will return the refcon set with setRefCon.  
+If "statusBlock" is non-null then logout status was written and it has been supplied here. 
+Note: all buffers supplied to callbacks are only valid for the duration of the callback.  
+Also, you are not to modify the contents of any supplied buffer.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setManageeLogin;  name=setManageeLogin --><a name="//apple_ref/doc/compositePage/c/func/setManageeLogin"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setManageeLogin">setManageeLogin </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command to be managed by the management ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setManageeLogin" logicalPath="//apple_ref/c/instm/setManageeLogin //apple_ref/c/clm/setManageeLogin //apple_ref/c/intfcm/setManageeLogin //apple_ref/c/intfm/setManageeLogin //apple_ref/c/func/setManageeLogin" target="_top"><span class="function">setManageeLogin</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">command</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>command </code></dt>
+<dd>a reference to an IOFireWireSBP2Login or an IOFireWireSBP2ORB.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on a success.
+ 	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->All management functions except kFWSBP2QueryLogins require a reference to an ORB of 
+some sort.  kFWSBP2AbortTaskSet,  kFWSBP2LogicalUnitReset, and kFWSBP2TargetReset require a 
+reference to the login ORB.    
+This method allows you to set the login ORB to be managed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setManageeORB;  name=setManageeORB --><a name="//apple_ref/doc/compositePage/c/func/setManageeORB"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setManageeORB">setManageeORB </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the command to be managed by the management ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setManageeORB" logicalPath="//apple_ref/c/instm/setManageeORB //apple_ref/c/clm/setManageeORB //apple_ref/c/intfcm/setManageeORB //apple_ref/c/intfm/setManageeORB //apple_ref/c/func/setManageeORB" target="_top"><span class="function">setManageeORB</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">command</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>command </code></dt>
+<dd>a reference to an IOFireWireSBP2Login or an IOFireWireSBP2ORB.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on a success.
+ 	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->All management functions except kFWSBP2QueryLogins require a reference to an ORB of 
+some sort.  kFWSBP2AbortTask requires a reference to the ORB to be aborted.  
+This method allows you to set the Normal Command ORB to be managed.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setMaxORBPayloadSize;  name=setMaxORBPayloadSize --><a name="//apple_ref/doc/compositePage/c/func/setMaxORBPayloadSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMaxORBPayloadSize">setMaxORBPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets max payload size for the ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMaxORBPayloadSize" logicalPath="//apple_ref/c/instm/setMaxORBPayloadSize //apple_ref/c/clm/setMaxORBPayloadSize //apple_ref/c/intfcm/setMaxORBPayloadSize //apple_ref/c/intfm/setMaxORBPayloadSize //apple_ref/c/func/setMaxORBPayloadSize" target="_top"><span class="function">setMaxORBPayloadSize</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">size</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>maxPayloadSize </code></dt>
+<dd>The maximum payload size in bytes.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This sets the maximum payload size for this ORB only.  This size is clipped by 
+the global max payload size set in the login object.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setMaxPayloadSize;  name=setMaxPayloadSize --><a name="//apple_ref/doc/compositePage/c/func/setMaxPayloadSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMaxPayloadSize">setMaxPayloadSize </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the maximum data transfer length for a normal command ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMaxPayloadSize" logicalPath="//apple_ref/c/instm/setMaxPayloadSize //apple_ref/c/clm/setMaxPayloadSize //apple_ref/c/intfcm/setMaxPayloadSize //apple_ref/c/intfm/setMaxPayloadSize //apple_ref/c/func/setMaxPayloadSize" target="_top"><span class="function">setMaxPayloadSize</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">size</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>reconnectTime </code></dt>
+<dd>The desired maximum payload size in bytes.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the maximum data transfer length for a normal command ORB.  This value is 
+the maximum for all ORBs sent to this LUN.  This can be trimmed further on an ORB by ORB basis, 
+by a similar call in the IOFireWireSBP2ORB itself.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setMessageCallback;  name=setMessageCallback --><a name="//apple_ref/doc/compositePage/c/func/setMessageCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMessageCallback">setMessageCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Set callback for user space message routine.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMessageCallback" logicalPath="//apple_ref/c/instm/setMessageCallback //apple_ref/c/clm/setMessageCallback //apple_ref/c/intfcm/setMessageCallback //apple_ref/c/intfm/setMessageCallback //apple_ref/c/func/setMessageCallback" target="_top"><span class="function">setMessageCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWSBP2MessageCallback //apple_ref/c/tdef/IOFWSBP2MessageCallback //apple_ref/c/tag/IOFWSBP2MessageCallback //apple_ref/c/econst/IOFWSBP2MessageCallback //apple_ref/c/struct/IOFWSBP2MessageCallback //apple_ref/c/clconst/IOFWSBP2MessageCallback //apple_ref/c/intf/IOFWSBP2MessageCallback" --><span class="type">IOFWSBP2MessageCallback</span><!-- /a --> <span class="param">callback</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>RefCon to be returned as first argument of completion routine</dd>
+<dt><code>callback </code></dt>
+<dd>Address of completion routine.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->In FireWire &amp; SBP2 bus status messages are delivered via IOKit's message routine.  
+This routine is emulated in user space for SBP2 &amp; FireWire messages via this callback.  You should
+register here for bus reset, and reconnect messages.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setORBCompleteCallback;  name=setORBCompleteCallback --><a name="//apple_ref/doc/compositePage/c/func/setORBCompleteCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setORBCompleteCallback">setORBCompleteCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the ORB completion routine.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setORBCompleteCallback" logicalPath="//apple_ref/c/instm/setORBCompleteCallback //apple_ref/c/clm/setORBCompleteCallback //apple_ref/c/intfcm/setORBCompleteCallback //apple_ref/c/intfm/setORBCompleteCallback //apple_ref/c/func/setORBCompleteCallback" target="_top"><span class="function">setORBCompleteCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>, 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2ORBCompleteCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2ORBCompleteCallback //apple_ref/c/tdef/IOFWSBP2ORBCompleteCallback" target="_top"><span class="type">IOFWSBP2ORBCompleteCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed as first argument to completion routine</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the completion routine to be called when the ORB finishes execution. The refCon 
+set with setRefCon will also be passed as the third argument to the completion handler.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setPassword;  name=setPassword --><a name="//apple_ref/doc/compositePage/c/func/setPassword"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setPassword">setPassword </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login password.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setPassword" logicalPath="//apple_ref/c/instm/setPassword //apple_ref/c/clm/setPassword //apple_ref/c/intfcm/setPassword //apple_ref/c/intfm/setPassword //apple_ref/c/func/setPassword" target="_top"><span class="function">setPassword</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buffer</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>buf </code></dt>
+<dd>a pointer to the password buffer.</dd>
+<dt><code>len </code></dt>
+<dd>the length in bytes of the password buffer.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the login password using a buffer and a length.  An alternate version exists 
+that accepts an IOMemoryDescriptor.  If the password length is 8 or less the password is copied 
+directly into the login orb.  If the length is greater than 8 the buffer is referenced by address 
+in the login ORB.  In this case the buffer is not copied and should remain allocated for the 
+duration of the login attempt.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setReconnectTime;  name=setReconnectTime --><a name="//apple_ref/doc/compositePage/c/func/setReconnectTime"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setReconnectTime">setReconnectTime </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the desired reconnect duration.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setReconnectTime" logicalPath="//apple_ref/c/instm/setReconnectTime //apple_ref/c/clm/setReconnectTime //apple_ref/c/intfcm/setReconnectTime //apple_ref/c/intfm/setReconnectTime //apple_ref/c/func/setReconnectTime" target="_top"><span class="function">setReconnectTime</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">time</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>reconnectTime </code></dt>
+<dd>The desired reconnect timeout encoded as 2^reconnectTime seconds.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The target and initiator arbitrate the duration of the reconnect timeout.  Here 
+the initiator specifies its desired timeout time in 2^reconnectTime seconds.  After a 
+successful login the device returns the actual timeout value it wishes to use.  This value 
+may be less than the reconnect timeout that the intiator specified if this is all that the 
+device can support.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setRefCon;  name=setRefCon --><a name="//apple_ref/doc/compositePage/c/func/setRefCon"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon(void*,void*)">setRefCon (void *, void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the ORB refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/c/instm/setRefCon //apple_ref/c/clm/setRefCon //apple_ref/c/intfcm/setRefCon //apple_ref/c/intfm/setRefCon //apple_ref/c/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLUNInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the ORB that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3e8a63c;  name=setRefCon --><a name="//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3e8a63c"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon(void*,void*)">setRefCon (void *, void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the ORB refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/c/instm/setRefCon //apple_ref/c/clm/setRefCon //apple_ref/c/intfcm/setRefCon //apple_ref/c/intfm/setRefCon //apple_ref/c/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibORBInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the ORB that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3d9456c;  name=setRefCon --><a name="//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3d9456c"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon(void*,void*)">setRefCon (void *, void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/c/instm/setRefCon //apple_ref/c/clm/setRefCon //apple_ref/c/intfcm/setRefCon //apple_ref/c/intfm/setRefCon //apple_ref/c/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the login that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3de0bb4;  name=setRefCon --><a name="//apple_ref/doc/compositePage/c/func/setRefCon_DONTLINK_0x3de0bb4"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setRefCon(void*,void*)">setRefCon (void *, void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the login refCon.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setRefCon" logicalPath="//apple_ref/c/instm/setRefCon //apple_ref/c/clm/setRefCon //apple_ref/c/intfcm/setRefCon //apple_ref/c/intfm/setRefCon //apple_ref/c/func/setRefCon" target="_top"><span class="function">setRefCon</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>a user defined value.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets a user defined value on the login that can be retrieved later with the 
+method getRefCon.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setResponseBuffer;  name=setResponseBuffer --><a name="//apple_ref/doc/compositePage/c/func/setResponseBuffer"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setResponseBuffer">setResponseBuffer </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the response buffer for the management ORB.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setResponseBuffer" logicalPath="//apple_ref/c/instm/setResponseBuffer //apple_ref/c/clm/setResponseBuffer //apple_ref/c/intfcm/setResponseBuffer //apple_ref/c/intfm/setResponseBuffer //apple_ref/c/func/setResponseBuffer" target="_top"><span class="function">setResponseBuffer</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+<dt><code>buf </code></dt>
+<dd>backing store for buffer</dd>
+<dt><code>len </code></dt>
+<dd>length of buffer.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on a success.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Sets the response buffer for the management ORB.  kFWSBP2QueryLogins returns 
+a response to its query and needs to write it somewhere.  This routine allows you to 
+specify the location.        
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setStatusNotify;  name=setStatusNotify --><a name="//apple_ref/doc/compositePage/c/func/setStatusNotify"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setStatusNotify">setStatusNotify </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called on normal command status.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setStatusNotify" logicalPath="//apple_ref/c/instm/setStatusNotify //apple_ref/c/clm/setStatusNotify //apple_ref/c/intfcm/setStatusNotify //apple_ref/c/intfm/setStatusNotify //apple_ref/c/func/setStatusNotify" target="_top"><span class="function">setStatusNotify</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2NotifyCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2NotifyCallback //apple_ref/c/tdef/IOFWSBP2NotifyCallback" target="_top"><span class="type">IOFWSBP2NotifyCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>Address of callback method of type FWSBP2NotifyCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The supplied callback is called when normal command status is recieved, when 
+a normal command times out, or when a normal command is aborted. 
+"notificationEvent" in the callback's params will indicate what happened.
+It will be set to one of the following values: kFWSBP2NormalCommandReset, kFWSBP2NormalCommandStatus, 
+or kFWSBP2NormalCommandTimeout.  If the event type is kFWSBP2NormalCommandTimeout and "len" is 
+non-zero then "message" contains the data written to the status block.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/setUnsolicitedStatusNotify;  name=setUnsolicitedStatusNotify --><a name="//apple_ref/doc/compositePage/c/func/setUnsolicitedStatusNotify"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setUnsolicitedStatusNotify">setUnsolicitedStatusNotify </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the callback to be called on normal command status.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setUnsolicitedStatusNotify" logicalPath="//apple_ref/c/instm/setUnsolicitedStatusNotify //apple_ref/c/clm/setUnsolicitedStatusNotify //apple_ref/c/intfcm/setUnsolicitedStatusNotify //apple_ref/c/intfm/setUnsolicitedStatusNotify //apple_ref/c/func/setUnsolicitedStatusNotify" target="_top"><span class="function">setUnsolicitedStatusNotify</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWSBP2NotifyCallback" logicalPath="//apple_ref/c/cl/IOFWSBP2NotifyCallback //apple_ref/c/tdef/IOFWSBP2NotifyCallback" target="_top"><span class="type">IOFWSBP2NotifyCallback</span></a> <span class="param">callback</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>refCon </code></dt>
+<dd>refCon passed to callback.</dd>
+<dt><code>callback </code></dt>
+<dd>address of callback method of type FWSBP2NotifyCallback.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The supplied callback is called when unsolicited status is recieved.
+"notificationEvent" in the callback's params will indicate what happened.  In this 
+case it will be set to kFWSBP2UnsolicitedStatus. If "len" is 
+non-zero then "message" contains the data written to the status block. Note: any buffers 
+returned by callbacks are only valid for the duration of the login and should not have 
+their contents modified. The "refCon" field in the callback's
+params will return the refcon set with setRefCon. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/submitFetchAgentReset;  name=submitFetchAgentReset --><a name="//apple_ref/doc/compositePage/c/func/submitFetchAgentReset"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="submitFetchAgentReset">submitFetchAgentReset </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Resets the LUN's fetch agent.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/submitFetchAgentReset" logicalPath="//apple_ref/c/instm/submitFetchAgentReset //apple_ref/c/clm/submitFetchAgentReset //apple_ref/c/intfcm/submitFetchAgentReset //apple_ref/c/intfm/submitFetchAgentReset //apple_ref/c/func/submitFetchAgentReset" target="_top"><span class="function">submitFetchAgentReset</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if the reset started successfully.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The fetch agent state machine on the device can be reset by a write to a specific 
+register.  This reset can be intiated by a call to this method.  Notification of the completion 
+of this write can be had by registering a callback with the setFetchAgentResetCallback method.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/submitLogin;  name=submitLogin --><a name="//apple_ref/doc/compositePage/c/func/submitLogin"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="submitLogin">submitLogin </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Attempts to login to the LUN.		
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/submitLogin" logicalPath="//apple_ref/c/instm/submitLogin //apple_ref/c/clm/submitLogin //apple_ref/c/intfcm/submitLogin //apple_ref/c/intfm/submitLogin //apple_ref/c/func/submitLogin" target="_top"><span class="function">submitLogin</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess login has successlly begun.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This call begins the login process.  The login object should be configured prior 
+to this call. If kIOReturnSuccess is returned from this call then the loginCompletion routine 
+will be called when the login completes (successfully or unsuccesfully). 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/submitLogout;  name=submitLogout --><a name="//apple_ref/doc/compositePage/c/func/submitLogout"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="submitLogout">submitLogout </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Attempts to logout of the LUN.		
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/submitLogout" logicalPath="//apple_ref/c/instm/submitLogout //apple_ref/c/clm/submitLogout //apple_ref/c/intfcm/submitLogout //apple_ref/c/intfm/submitLogout //apple_ref/c/func/submitLogout" target="_top"><span class="function">submitLogout</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if logout has successfully begun.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This call begins the logout process.  If kIOReturnSuccess is returned from this call then
+the logoutCompletion routine will be called when the logout completes (successfully or unsuccesfully). 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/submitORB_DONTLINK_0x3fa5538;  name=submitORB --><a name="//apple_ref/doc/compositePage/c/func/submitORB_DONTLINK_0x3fa5538"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="submitORB(void*)">submitORB (void *)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Submits this ORB for execution.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/submitORB" logicalPath="//apple_ref/c/instm/submitORB //apple_ref/c/clm/submitORB //apple_ref/c/intfcm/submitORB //apple_ref/c/intfm/submitORB //apple_ref/c/func/submitORB" target="_top"><span class="function">submitORB</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to a IOFireWireSBP2LibMgmtORBInterface.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Submits this ORB for execution
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=func;  uid=//apple_ref/doc/compositePage/c/func/submitORB;  name=submitORB --><a name="//apple_ref/doc/compositePage/c/func/submitORB"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="submitORB(void*,IOFireWireSBP2LibORBInterface**)">submitORB (void *, IOFireWireSBP2LibORBInterface **)</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Submits the given orb
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/submitORB" logicalPath="//apple_ref/c/instm/submitORB //apple_ref/c/clm/submitORB //apple_ref/c/intfcm/submitORB //apple_ref/c/intfm/submitORB //apple_ref/c/func/submitORB" target="_top"><span class="function">submitORB</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireSBP2LibORBInterface //apple_ref/c/tdef/IOFireWireSBP2LibORBInterface //apple_ref/c/tag/IOFireWireSBP2LibORBInterface //apple_ref/c/econst/IOFireWireSBP2LibORBInterface //apple_ref/c/struct/IOFireWireSBP2LibORBInterface //apple_ref/c/clconst/IOFireWireSBP2LibORBInterface //apple_ref/c/intf/IOFireWireSBP2LibORBInterface" --><span class="type">IOFireWireSBP2LibORBInterface</span><!-- /a --> *<span class="type">*</span> <span class="param">orb</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireSBP2LibLoginInterface object.</dd>
+<dt><code>orb </code></dt>
+<dd>The orb to be executed.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if the ORB has been started successfully.
+	
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Starts execution of the given ORB.  If the ORB is an immediate ORB it's 
+addresss is written to the fetch agent.  If it is a non immediate orb its address 
+is appended to the last orb of the currently processing chain.  The doorbell is not 
+rung automatically it must be run manually with the ringDoorbell command described below.
+<!-- end discussion --></p>
+<p></p>
+<h2>Typedefs</h2>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCompleteParams;  name=FWSBP2LoginCompleteParams --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginCompleteParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginCompleteParams">FWSBP2LoginCompleteParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">refCon</span>; <span class="comment">// refCon from login object</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span> 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginResponse" logicalPath="//apple_ref/c/cl/FWSBP2LoginResponse //apple_ref/c/tdef/FWSBP2LoginResponse" target="_top"><span class="type">FWSBP2LoginResponse</span></a> *<span class="var">loginResponse</span>; <span class="comment">// pointer to loginResponse buffer</span> 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span> 
+} <span class="var">FWSBP2LoginCompleteParams</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>refCon set on login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>loginResponse </code></dt>
+<dd>Pointer to login response struct.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginResponse;  name=FWSBP2LoginResponse --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LoginResponse"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LoginResponse">FWSBP2LoginResponse</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">loginID</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressHi</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">commandBlockAgentAddressLo</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reserved</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">reconnectHold</span>; 
+} <span class="var">FWSBP2LoginResponse</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>length </code></dt>
+<dd>Length of login response.</dd>
+<dt><code>loginID </code></dt>
+<dd>Unique id representing this login.</dd>
+<dt><code>commandBlockAgentAddressHi </code></dt>
+<dd>High 32 bits of command block agent address.</dd>
+<dt><code>commandBlockAgentAddressLo </code></dt>
+<dd>Low 32 bits of command block agent address.</dd>
+<dt><code>reserved </code></dt>
+<dd>Reserved.</dd>
+<dt><code>reconnectHold </code></dt>
+<dd>Reconnect timeout encoded as 2^reconnectHold seconds.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCompleteParams;  name=FWSBP2LogoutCompleteParams --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2LogoutCompleteParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2LogoutCompleteParams">FWSBP2LogoutCompleteParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">refCon</span>; <span class="comment">// refCon from login object</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of login attempt</span> 
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">statusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">statusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span> 
+} <span class="var">FWSBP2LogoutCompleteParams</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>refCon set on login object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of login attempt.</dd>
+<dt><code>statusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyParams;  name=FWSBP2NotifyParams --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2NotifyParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2NotifyParams">FWSBP2NotifyParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">refCon</span>; <span class="comment">// refCon from ORB object</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">notificationEvent</span>; 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">message</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">length</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; 
+} <span class="var">FWSBP2NotifyParams</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>refCon set on Login object for unsolicited status or refCon set ORB for normal status.</dd>
+<dt><code>notificationEvent </code></dt>
+<dd>Type of event we are being notified of.</dd>
+<dt><code>message </code></dt>
+<dd>buffer containing message.</dd>
+<dt><code>length </code></dt>
+<dd>length of message field.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2ReconnectParams;  name=FWSBP2ReconnectParams --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2ReconnectParams"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2ReconnectParams">FWSBP2ReconnectParams</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="var">refCon</span>; <span class="comment">// refCon from lun object</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">generation</span>; <span class="comment">// generation this login was attempted in</span>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="var">status</span>; <span class="comment">// status of reconnect attempt</span>  
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2StatusBlock" logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock" target="_top"><span class="type">FWSBP2StatusBlock</span></a> *<span class="var">reconnectStatusBlock</span>; <span class="comment">// pointer to statusBlock buffer</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">reconnectStatusBlockLength</span>; <span class="comment">// size of statusBlock buffer</span> 
+} <span class="var">FWSBP2ReconnectParams</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>refCon set on LUN object.</dd>
+<dt><code>generation </code></dt>
+<dd>FireWire generation value.</dd>
+<dt><code>status </code></dt>
+<dd>Status of reconnect attempt.</dd>
+<dt><code>reconnectStatusBlock </code></dt>
+<dd>Pointer to status block buffer.</dd>
+<dt><code>reconnectStatusBlockLength </code></dt>
+<dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusBlock;  name=FWSBP2StatusBlock --><a name="//apple_ref/doc/compositePage/c/tdef/FWSBP2StatusBlock"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="FWSBP2StatusBlock">FWSBP2StatusBlock</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <span class="keyword">struct</span> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8 //apple_ref/c/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="var">details</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8 //apple_ref/c/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> <span class="var">sbpStatus</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="var">orbOffsetHi</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="var">orbOffsetLo</span>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/status //apple_ref/c/tdef/status //apple_ref/c/tag/status //apple_ref/c/econst/status //apple_ref/c/struct/status //apple_ref/c/clconst/status //apple_ref/c/intf/status" --><span class="type">status</span><!-- /a -->[<span class="number">6</span>]; 
+} <span class="var">FWSBP2StatusBlock</span>;  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
+<blockquote>
+<dl>
+<dt><code>details </code></dt>
+<dd>Src, Resp, D, Len fields of status block format</dd>
+<dt><code>sbpStatus </code></dt>
+<dd>SBP2 specific status</dd>
+<dt><code>orbOffsetHi </code></dt>
+<dd>High 32 bits of address of orb status is for.</dd>
+<dt><code>orbOffsetLo </code></dt>
+<dd>Low 32 bits of address of orb status is for.</dd>
+<dt><code>status </code></dt>
+<dd>[6] Up to 48 bytes of additional data. Length is determined by len field.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2FetchAgentWriteCallback;  name=IOFWSBP2FetchAgentWriteCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2FetchAgentWriteCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2FetchAgentWriteCallback">IOFWSBP2FetchAgentWriteCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/clm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/intfcm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/intfm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/func/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/ftmplt/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/defn/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/macro/IOFWSBP2FetchAgentWriteCallback" --><span class="function">IOFWSBP2FetchAgentWriteCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">orbRefCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+<dt><code>orbRefCon </code></dt>
+<dd>refCon from last orb in chain.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2LoginCallback;  name=IOFWSBP2LoginCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2LoginCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2LoginCallback">IOFWSBP2LoginCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2LoginCallback //apple_ref/c/clm/IOFWSBP2LoginCallback //apple_ref/c/intfcm/IOFWSBP2LoginCallback //apple_ref/c/intfm/IOFWSBP2LoginCallback //apple_ref/c/func/IOFWSBP2LoginCallback //apple_ref/c/ftmplt/IOFWSBP2LoginCallback //apple_ref/c/defn/IOFWSBP2LoginCallback //apple_ref/c/macro/IOFWSBP2LoginCallback" --><span class="function">IOFWSBP2LoginCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LoginCompleteParams" logicalPath="//apple_ref/c/cl/FWSBP2LoginCompleteParams //apple_ref/c/tdef/FWSBP2LoginCompleteParams" target="_top"><span class="type">FWSBP2LoginCompleteParams</span></a> *<span class="param">params</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>Structure containing additional information about the status of the login.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2LogoutCallback;  name=IOFWSBP2LogoutCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2LogoutCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2LogoutCallback">IOFWSBP2LogoutCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2LogoutCallback //apple_ref/c/clm/IOFWSBP2LogoutCallback //apple_ref/c/intfcm/IOFWSBP2LogoutCallback //apple_ref/c/intfm/IOFWSBP2LogoutCallback //apple_ref/c/func/IOFWSBP2LogoutCallback //apple_ref/c/ftmplt/IOFWSBP2LogoutCallback //apple_ref/c/defn/IOFWSBP2LogoutCallback //apple_ref/c/macro/IOFWSBP2LogoutCallback" --><span class="function">IOFWSBP2LogoutCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2LogoutCompleteParams" logicalPath="//apple_ref/c/cl/FWSBP2LogoutCompleteParams //apple_ref/c/tdef/FWSBP2LogoutCompleteParams" target="_top"><span class="type">FWSBP2LogoutCompleteParams</span></a> *<span class="param">params</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>Structure containing additional information about the status of the logout.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2NotifyCallback;  name=IOFWSBP2NotifyCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2NotifyCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2NotifyCallback">IOFWSBP2NotifyCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2NotifyCallback //apple_ref/c/clm/IOFWSBP2NotifyCallback //apple_ref/c/intfcm/IOFWSBP2NotifyCallback //apple_ref/c/intfm/IOFWSBP2NotifyCallback //apple_ref/c/func/IOFWSBP2NotifyCallback //apple_ref/c/ftmplt/IOFWSBP2NotifyCallback //apple_ref/c/defn/IOFWSBP2NotifyCallback //apple_ref/c/macro/IOFWSBP2NotifyCallback" --><span class="function">IOFWSBP2NotifyCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../documentation/IOFireWireSBP2Lib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWSBP2NotifyParams" logicalPath="//apple_ref/c/cl/FWSBP2NotifyParams //apple_ref/c/tdef/FWSBP2NotifyParams" target="_top"><span class="type">FWSBP2NotifyParams</span></a> *<span class="param">params</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params </code></dt>
+<dd>FWSBP2NotifyParams containing notification information.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2ORBAppendCallback;  name=IOFWSBP2ORBAppendCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2ORBAppendCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2ORBAppendCallback">IOFWSBP2ORBAppendCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2ORBAppendCallback //apple_ref/c/clm/IOFWSBP2ORBAppendCallback //apple_ref/c/intfcm/IOFWSBP2ORBAppendCallback //apple_ref/c/intfm/IOFWSBP2ORBAppendCallback //apple_ref/c/func/IOFWSBP2ORBAppendCallback //apple_ref/c/ftmplt/IOFWSBP2ORBAppendCallback //apple_ref/c/defn/IOFWSBP2ORBAppendCallback //apple_ref/c/macro/IOFWSBP2ORBAppendCallback" --><span class="function">IOFWSBP2ORBAppendCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">orb</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+<dt><code>orb </code></dt>
+<dd>refCon set on management orb.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2ORBCompleteCallback;  name=IOFWSBP2ORBCompleteCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2ORBCompleteCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2ORBCompleteCallback">IOFWSBP2ORBCompleteCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2ORBCompleteCallback //apple_ref/c/clm/IOFWSBP2ORBCompleteCallback //apple_ref/c/intfcm/IOFWSBP2ORBCompleteCallback //apple_ref/c/intfm/IOFWSBP2ORBCompleteCallback //apple_ref/c/func/IOFWSBP2ORBCompleteCallback //apple_ref/c/ftmplt/IOFWSBP2ORBCompleteCallback //apple_ref/c/defn/IOFWSBP2ORBCompleteCallback //apple_ref/c/macro/IOFWSBP2ORBCompleteCallback" --><span class="function">IOFWSBP2ORBCompleteCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">orb</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+<dt><code>orb </code></dt>
+<dd>refCon set on management orb.</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/doc/compositePage/c/tdef/IOFWSBP2StatusCallback;  name=IOFWSBP2StatusCallback --><a name="//apple_ref/doc/compositePage/c/tdef/IOFWSBP2StatusCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWSBP2StatusCallback">IOFWSBP2StatusCallback</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2StatusCallback //apple_ref/c/clm/IOFWSBP2StatusCallback //apple_ref/c/intfcm/IOFWSBP2StatusCallback //apple_ref/c/intfm/IOFWSBP2StatusCallback //apple_ref/c/func/IOFWSBP2StatusCallback //apple_ref/c/ftmplt/IOFWSBP2StatusCallback //apple_ref/c/defn/IOFWSBP2StatusCallback //apple_ref/c/macro/IOFWSBP2StatusCallback" --><span class="function">IOFWSBP2StatusCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status </code></dt>
+<dd>Indicates success or failure of operation.</dd>
+</dl>
+</blockquote>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

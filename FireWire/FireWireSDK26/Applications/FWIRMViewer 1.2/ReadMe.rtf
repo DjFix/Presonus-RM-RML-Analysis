@@ -1,0 +1,221 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww15320\viewh15920\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\qc
+
+\f0\b\fs36 \cf0 FireWire IRM Viewer 1.2\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\qr
+
+\b0\fs24 \cf0 12/10/2007
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+\cf0 \
+
+\fs28 Introduction
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 This tool provides interaction with the Isochronous Resource Manager (IRM) node. For more information see 
+\i\b Note 1
+\i0\b0  below.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 Uses
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 Aids in the development of FireWire applications such as audio and video. Handy development tool whenever isochronous resource management is required. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 Features
+\fs24 :\
+o 
+\b0 Allocate and deallocate resources through the 
+\b Channels Available
+\b0  and 
+\b Bandwidth Available
+\b0  IRM node registers. \
+\
+
+\b o 
+\b0 Translates current information into human readable form.\
+\
+
+\b o 
+\b0 Records history of events.\
+
+\b \
+o 
+\b0 Bus control for reseting the bus and testing reallocation support of other nodes.\
+\
+\
+
+\b\fs28 Instructions
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li420\fi-420\ri-1440\ql\qnatural
+\cf0 1)
+\b0  Launch the application. If you have a single FireWire interface, the tool activates immediately, goto step 3.  \
+
+\b \
+2)
+\b0  If you have more than one FireWire interface plugged in, select an interface via the pop-up menu in the upper left of the main window. The application will remain inactive until this is done.\
+\
+
+\b 3)
+\b0  You may allocate and deallocate isochronous bandwidth and channels either within this application or observe the effects of allocation requests made by other applications.  \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi280\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs30 \cf0 \
+Window Contents
+\fs26 :
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 \
+Interface Picker pop-up menu
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 When more than one OHCI link is discovered you must choose among them. In the application window upper left is a pop-up menu containing a list of all installed FireWire interfaces. Controls become functional after an interface is chosen.
+\b\fs28 \
+\
+Channels Available
+\fs24 :\
+
+\b0 Shows the current hex value of the Channels Available register. The "
+\b Allocated
+\b0 " window shows which channels have been allocated by all nodes on the bus. You may allocate or deallocate a channel by entering a value in the Channel field and pressing 
+\b Allocate
+\b0  or 
+\b Deallocate
+\b0  respectively. The Event History window will tell you whether your request was granted.  \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 Bandwidth Available
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 Shows the current hex value of the Bandwidth Available register. Bandwidth may also be allocated or deallocated. To allocate or deallocate bandwidth available, enter a hex value and press 
+\b Allocate
+\b0  or 
+\b Deallocate
+\b0  respectively. The Event History window will tell you whether your request was successful or not. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 Bus Control
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 The Bus Control section shows the current IRM, and local, node IDs. The 
+\b Cause Bus Reset
+\b0  button is used for testing re-allocation activity (see 
+\i\b Note 2
+\i0\b0 ). \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs28 \cf0 Event History
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 This window reports related events as they occur. A 
+\b Clear
+\b0  button is provided to wipe the history clean and start over. The following activities are recorded. (see 
+\i\b Note 3
+\i0\b0 ):\
+	
+\b - 
+\b0 Successful allocations or deallocations\
+ 	
+\b -
+\b0  Bandwidth Available or Channels Available register content changes\
+	
+\b - 
+\b0 All bus resets. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs30 \cf0 More Info
+\fs26 :
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\i\b \cf0 \
+Note 1: 
+\i0\b0 The 1394 (FireWire bus) specification provides a limited amount of bandwidth for transmitting packets at regular intervals. These regular interval packets are required to arrive on time, therefore the term "isochronous." Too many packets on the bus will foil this requirement causing a glitch in audio data streams or dropped frames in video data streams. To avoid this problem, per the 1394 Specification, one node is automatically appointed as the isochronous resource manager. All nodes shall refer to this allocation management node. \
+
+\i\b \
+Note 2: 
+\i0\b0 When the bus is reset, IRM registers should temporarily show no allocations and devices on the bus then should automatically re-allocate their Bandwidth and Channels within one second. The allocations done by hand using IRM viewer will NOT be re-allocated automatically after a bus reset. \
+\
+
+\i\b Note 3:
+\i0\b0  FireWire IRM Viewer polls the registers several times a second. If several transactions occur between the polling, only the final value will be recorded.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs30 \cf0 References - 
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0 \cf0 Section 8.4.3 of the 1394 and 1394a specifications regarding Isochronous Management and the Allocation Registers.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi280\ri-740\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-1440\ql\qnatural
+\cf0  ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs30 \cf0 Known Bugs - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1160\fi-1160\ri-1440\ql\qnatural
+\cf0 	
+\b o
+\b0  Application is ineffective without FireWire devices connected. FWIRMViewer requires at least two functional FireWire nodes. An additional bus analyzer node does not count and a "functional" FireWire node since it does not participate in IRM requests.
+\b \
+
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\fi280\ri-740\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\b\fs30 \cf0 Revision History - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-1440\ql\qnatural
+
+\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1020\fi-1020\ri-1440\ql\qnatural
+\cf0 1.2 - 12/10/2007\
+	o
+\b0  First release for SDK 26\
+
+\b \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-740\qc\pardirnatural
+
+\b0\fs20 \cf0 Copyright \'a9 2007 Apple Computer, Inc.  \
+All Rights Reserved
+\b\fs24 \
+}

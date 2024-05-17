@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>gIOEthernetWakeOnLANFilterGroup</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">gIOEthernetWakeOnLANFilterGroup</font></h1><br>
+<a name="//apple_ref/doc/class/gIOEthernetWakeOnLANFilterGroup" title="gIOEthernetWakeOnLANFilterGroup"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/data/IONetworkController //apple_ref/cpp/clconst/IONetworkController //apple_ref/cpp/instm/IONetworkController //apple_ref/cpp/clm/IONetworkController //apple_ref/cpp/intfcm/IONetworkController //apple_ref/cpp/func/IONetworkController //apple_ref/cpp/ftmplt/IONetworkController //apple_ref/cpp/defn/IONetworkController //apple_ref/cpp/macro/IONetworkController" -->IONetworkController<!-- /a --><br>
+<h2>Discussion</h2>
+gIOEthernetWakeOnLANFilterGroup is an OSSymbol object
+that contains the name of the FireWire wake-on-LAN filter group
+        defined by kIOFWWakeOnLANFilterGroup. <hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/createInterface/virtualIONetworkInterface*/()" target="_top">createInterface</a></tt></dt>
+<dd>Create an IOFWInterface object.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/disablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits)" target="_top">disablePacketFilter</a></tt></dt>
+<dd>Disable a packet filter that is currently enabled from the
+given filter group.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/enablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits)" target="_top">enablePacketFilter</a></tt></dt>
+<dd>Enable one of the supported packet filters from the
+given filter group.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/free/virtualvoid/()" target="_top">free</a></tt></dt>
+<dd>Free the IOFWController instance. Release resources,
+ then followed by a call to super::free(). </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(IOFWAddress*)" target="_top">getHardwareAddress(IOFWAddress *)</a></tt></dt>
+<dd>Get the FireWire controller's permanent station address.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(void*,UInt32*)" target="_top">getHardwareAddress(void *, UInt32 *)</a></tt></dt>
+<dd>Get the FireWire controller's station address.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMaxPacketSize/virtualIOReturn/(UInt32*)" target="_top">getMaxPacketSize</a></tt></dt>
+<dd>Get the maximum packet size supported by the FireWire
+controller, including the frame header and FCS.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMinPacketSize/virtualIOReturn/(UInt32*)" target="_top">getMinPacketSize</a></tt></dt>
+<dd>Get the minimum packet size supported by the FireWire
+controller, including the frame header and FCS.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(constOSSymbol*,UInt32*)" target="_top">getPacketFilters(const OSSymbol *, UInt32 *)</a></tt></dt>
+<dd>Get the set of packet filters supported by the FireWire 
+controller in the given filter group.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(UInt32*)" target="_top">getPacketFilters(UInt32 *)</a></tt></dt>
+<dd>Get the set of packet filters supported by the FireWire 
+controller in the network filter group.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/init/virtualbool/(OSDictionary*)" target="_top">init</a></tt></dt>
+<dd>Initialize an IOFWController object.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/clm/gIOEthernetWakeOnLANFilterGroup/initialize/staticvoid/()" target="_top">initialize</a></tt></dt>
+<dd>IOFWController class initializer.
+ </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/publishProperties/virtualbool/()" target="_top">publishProperties</a></tt></dt>
+<dd>Publish FireWire controller properties and capabilities.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constIOFWAddress*)" target="_top">setHardwareAddress(const IOFWAddress *)</a></tt></dt>
+<dd>Set or change the station address used by the FireWire
+controller.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constvoid*,UInt32)" target="_top">setHardwareAddress(const void *, UInt32)</a></tt></dt>
+<dd>Set or change the station address used by the FireWire
+controller.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastList/virtualIOReturn/(IOFWAddress*,UInt32)" target="_top">setMulticastList</a></tt></dt>
+<dd>Set the list of multicast addresses that the multicast filter
+should use to match against the destination address of an incoming frame.
+The frame should be accepted when a match occurs.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastMode/virtualIOReturn/(bool)" target="_top">setMulticastMode</a></tt></dt>
+<dd>Enable or disable multicast mode.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setPromiscuousMode/virtualIOReturn/(bool)" target="_top">setPromiscuousMode</a></tt></dt>
+<dd>Enable or disable promiscuous mode.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setWakeOnMagicPacket/virtualIOReturn/(bool)" target="_top">setWakeOnMagicPacket</a></tt></dt>
+<dd>Enable or disable the wake on Magic Packet support.
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/createInterface/virtualIONetworkInterface*/();  name=gIOEthernetWakeOnLANFilterGroup::createInterface -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/createInterface/virtualIONetworkInterface*/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="createInterface">createInterface</a></h2>
+</td></tr></table>Create an IOFWInterface object.
+<BR>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkInterface //apple_ref/cpp/cl/IONetworkInterface //apple_ref/cpp/tdef/IONetworkInterface //apple_ref/cpp/tag/IONetworkInterface //apple_ref/cpp/econst/IONetworkInterface //apple_ref/cpp/struct/IONetworkInterface //apple_ref/cpp/clconst/IONetworkInterface" --><font class="type">IONetworkInterface</font><!-- /a --> <font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/createInterface //apple_ref/cpp/clm/createInterface //apple_ref/cpp/intfcm/createInterface //apple_ref/cpp/func/createInterface //apple_ref/cpp/ftmplt/createInterface //apple_ref/cpp/defn/createInterface //apple_ref/cpp/macro/createInterface" --><font class="function">createInterface</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Allocate and return a new IOFWInterface instance.
+A subclass of IONetworkController must implement this method and return
+a matching interface object. The implementation in IOFWController
+will return an IOFWInterface object. Subclasses of
+IOFWController, such as FireWire controller drivers, will have
+little reason to override this implementation.
+ </p>
+<dl><dt><i>function result</i></dt><dd>A newly allocated and initialized IOFWInterface object. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/disablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits);  name=gIOEthernetWakeOnLANFilterGroup::disablePacketFilter -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/disablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="disablePacketFilter">disablePacketFilter</a></h2>
+</td></tr></table>Disable a packet filter that is currently enabled from the
+given filter group.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/disablePacketFilter //apple_ref/cpp/clm/disablePacketFilter //apple_ref/cpp/intfcm/disablePacketFilter //apple_ref/cpp/func/disablePacketFilter //apple_ref/cpp/ftmplt/disablePacketFilter //apple_ref/cpp/defn/disablePacketFilter //apple_ref/cpp/macro/disablePacketFilter" --><font class="function">disablePacketFilter</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/tdef/OSSymbol //apple_ref/cpp/tag/OSSymbol //apple_ref/cpp/econst/OSSymbol //apple_ref/cpp/struct/OSSymbol //apple_ref/cpp/clconst/OSSymbol" --><font class="type">OSSymbol</font><!-- /a --> *<font class="param">group</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">aFilter</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">enabledFilters</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/tdef/IOOptionBits //apple_ref/cpp/tag/IOOptionBits //apple_ref/cpp/econst/IOOptionBits //apple_ref/cpp/struct/IOOptionBits //apple_ref/cpp/clconst/IOOptionBits" --><font class="type">IOOptionBits</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/options //apple_ref/cpp/cl/options //apple_ref/cpp/tdef/options //apple_ref/cpp/tag/options //apple_ref/cpp/econst/options //apple_ref/cpp/struct/options //apple_ref/cpp/clconst/options" --><font class="type">options</font><!-- /a --> = <font class="number">0</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The default implementation of the abstract method inherited
+from IONetworkController. This method will call setMulticastMode() or
+setPromiscuousMode() when the multicast or the promiscuous filter is to be
+disabled. Requests to disable the Unicast or Broadcast filters are handled
+silently, without informing the subclass. Subclasses can override this
+method to change this default behavior, or to extend it to handle
+additional filter types or filter groups. This method call is synchronized
+by the workloop's gate.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>group</em></tt></dt><dd>The name of the filter group containing the filter to be
+disabled.</dd>
+<dt><tt><em>aFilter</em></tt></dt><dd>The filter to disable.</dd>
+<dt><tt><em>enabledFilters</em></tt></dt><dd>All filters currently enabled by the client.</dd>
+<dt><tt><em>options</em></tt></dt><dd>Optional flags for the disable request.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The return from setMulticastMode() or setPromiscuousMode() if
+either of those two methods are called. kIOReturnSuccess if the filter
+specified is kIOPacketFilterUnicast or kIOPacketFilterBroadcast.
+kIOReturnUnsupported if the filter group specified is not
+ gIONetworkFilterGroup. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/enablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits);  name=gIOEthernetWakeOnLANFilterGroup::enablePacketFilter -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/enablePacketFilter/virtualIOReturn/(constOSSymbol*,UInt32,UInt32,IOOptionBits)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="enablePacketFilter">enablePacketFilter</a></h2>
+</td></tr></table>Enable one of the supported packet filters from the
+given filter group.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/enablePacketFilter //apple_ref/cpp/clm/enablePacketFilter //apple_ref/cpp/intfcm/enablePacketFilter //apple_ref/cpp/func/enablePacketFilter //apple_ref/cpp/ftmplt/enablePacketFilter //apple_ref/cpp/defn/enablePacketFilter //apple_ref/cpp/macro/enablePacketFilter" --><font class="function">enablePacketFilter</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/tdef/OSSymbol //apple_ref/cpp/tag/OSSymbol //apple_ref/cpp/econst/OSSymbol //apple_ref/cpp/struct/OSSymbol //apple_ref/cpp/clconst/OSSymbol" --><font class="type">OSSymbol</font><!-- /a --> *<font class="param">group</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">aFilter</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">enabledFilters</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/tdef/IOOptionBits //apple_ref/cpp/tag/IOOptionBits //apple_ref/cpp/econst/IOOptionBits //apple_ref/cpp/struct/IOOptionBits //apple_ref/cpp/clconst/IOOptionBits" --><font class="type">IOOptionBits</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/cl/options //apple_ref/cpp/cl/options //apple_ref/cpp/tdef/options //apple_ref/cpp/tag/options //apple_ref/cpp/econst/options //apple_ref/cpp/struct/options //apple_ref/cpp/clconst/options" --><font class="type">options</font><!-- /a --> = <font class="number">0</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The default implementation of the abstract method inherited
+from IONetworkController. This method will call setMulticastMode() or
+setPromiscuousMode() when the multicast or the promiscuous filter is to be
+enabled. Requests to disable the Unicast or Broadcast filters are handled
+silently, without informing the subclass. Subclasses can override this
+method to change this default behavior, or to extend it to handle
+additional filter types or filter groups. This method call is synchronized
+by the workloop's gate.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>group</em></tt></dt><dd>The name of the filter group containing the filter to be
+enabled.</dd>
+<dt><tt><em>aFilter</em></tt></dt><dd>The filter to enable.</dd>
+<dt><tt><em>enabledFilters</em></tt></dt><dd>All filters currently enabled by the client.</dd>
+<dt><tt><em>options</em></tt></dt><dd>Optional flags for the enable request.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The return from setMulticastMode() or setPromiscuousMode() if
+either of those two methods are called. kIOReturnSuccess if the filter
+specified is kIOPacketFilterUnicast or kIOPacketFilterBroadcast.
+kIOReturnUnsupported if the filter group specified is not
+ gIONetworkFilterGroup. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/free/virtualvoid/();  name=gIOEthernetWakeOnLANFilterGroup::free -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/free/virtualvoid/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="free">free</a></h2>
+</td></tr></table>Free the IOFWController instance. Release resources,
+ then followed by a call to super::free(). <BR>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/free //apple_ref/cpp/clm/free //apple_ref/cpp/intfcm/free //apple_ref/cpp/func/free //apple_ref/cpp/ftmplt/free //apple_ref/cpp/defn/free //apple_ref/cpp/macro/free" --><font class="function">free</font><!-- /a -->();</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(IOFWAddress*);  name=gIOEthernetWakeOnLANFilterGroup::getHardwareAddress -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(IOFWAddress*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getHardwareAddress(IOFWAddress%32*)">getHardwareAddress(IOFWAddress *)</a></h2>
+</td></tr></table>Get the FireWire controller's permanent station address.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getHardwareAddress //apple_ref/cpp/clm/getHardwareAddress //apple_ref/cpp/intfcm/getHardwareAddress //apple_ref/cpp/func/getHardwareAddress //apple_ref/cpp/ftmplt/getHardwareAddress //apple_ref/cpp/defn/getHardwareAddress //apple_ref/cpp/macro/getHardwareAddress" --><font class="function">getHardwareAddress</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/tdef/IOFWAddress //apple_ref/cpp/tag/IOFWAddress //apple_ref/cpp/econst/IOFWAddress //apple_ref/cpp/struct/IOFWAddress //apple_ref/cpp/clconst/IOFWAddress" --><font class="type">IOFWAddress</font><!-- /a --> *<font class="param">addrP</font>) = <font class="number">0</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>addrP</em></tt></dt><dd>Pointer to an IOFWAddress where the hardware address
+should be returned.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess on success, or an error return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(void*,UInt32*);  name=gIOEthernetWakeOnLANFilterGroup::getHardwareAddress -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getHardwareAddress/virtualIOReturn/(void*,UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getHardwareAddress(void%32*,%32UInt32%32*)">getHardwareAddress(void *, UInt32 *)</a></h2>
+</td></tr></table>Get the FireWire controller's station address.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getHardwareAddress //apple_ref/cpp/clm/getHardwareAddress //apple_ref/cpp/intfcm/getHardwareAddress //apple_ref/cpp/func/getHardwareAddress //apple_ref/cpp/ftmplt/getHardwareAddress //apple_ref/cpp/defn/getHardwareAddress //apple_ref/cpp/macro/getHardwareAddress" --><font class="function">getHardwareAddress</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">addr</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">inOutAddrBytes</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The default implementation of the abstract method inherited
+from IONetworkController. This method will call the overloaded form
+IOFWController::getHardwareAddress() that subclasses are expected
+to override.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>addr</em></tt></dt><dd>The buffer where the controller's hardware address should
+be written.</dd>
+<dt><tt><em>inOutAddrBytes</em></tt></dt><dd>The size of the address buffer provided by the
+client, and replaced by this method with the actual size of
+the hardware address in bytes.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess on success, or an error otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMaxPacketSize/virtualIOReturn/(UInt32*);  name=gIOEthernetWakeOnLANFilterGroup::getMaxPacketSize -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMaxPacketSize/virtualIOReturn/(UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getMaxPacketSize">getMaxPacketSize</a></h2>
+</td></tr></table>Get the maximum packet size supported by the FireWire
+controller, including the frame header and FCS.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMaxPacketSize //apple_ref/cpp/clm/getMaxPacketSize //apple_ref/cpp/intfcm/getMaxPacketSize //apple_ref/cpp/func/getMaxPacketSize //apple_ref/cpp/ftmplt/getMaxPacketSize //apple_ref/cpp/defn/getMaxPacketSize //apple_ref/cpp/macro/getMaxPacketSize" --><font class="function">getMaxPacketSize</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">maxSize</font>) <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>maxSize</em></tt></dt><dd>Pointer to the return value.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess on success, or an error code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMinPacketSize/virtualIOReturn/(UInt32*);  name=gIOEthernetWakeOnLANFilterGroup::getMinPacketSize -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getMinPacketSize/virtualIOReturn/(UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getMinPacketSize">getMinPacketSize</a></h2>
+</td></tr></table>Get the minimum packet size supported by the FireWire
+controller, including the frame header and FCS.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMinPacketSize //apple_ref/cpp/clm/getMinPacketSize //apple_ref/cpp/intfcm/getMinPacketSize //apple_ref/cpp/func/getMinPacketSize //apple_ref/cpp/ftmplt/getMinPacketSize //apple_ref/cpp/defn/getMinPacketSize //apple_ref/cpp/macro/getMinPacketSize" --><font class="function">getMinPacketSize</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">minSize</font>) <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>minSize</em></tt></dt><dd>Pointer to the return value.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess on success, or an error code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(constOSSymbol*,UInt32*);  name=gIOEthernetWakeOnLANFilterGroup::getPacketFilters -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(constOSSymbol*,UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getPacketFilters(const%32OSSymbol%32*,%32UInt32%32*)">getPacketFilters(const OSSymbol *, UInt32 *)</a></h2>
+</td></tr></table>Get the set of packet filters supported by the FireWire 
+controller in the given filter group.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getPacketFilters //apple_ref/cpp/clm/getPacketFilters //apple_ref/cpp/intfcm/getPacketFilters //apple_ref/cpp/func/getPacketFilters //apple_ref/cpp/ftmplt/getPacketFilters //apple_ref/cpp/defn/getPacketFilters //apple_ref/cpp/macro/getPacketFilters" --><font class="function">getPacketFilters</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/cl/OSSymbol //apple_ref/cpp/tdef/OSSymbol //apple_ref/cpp/tag/OSSymbol //apple_ref/cpp/econst/OSSymbol //apple_ref/cpp/struct/OSSymbol //apple_ref/cpp/clconst/OSSymbol" --><font class="type">OSSymbol</font><!-- /a --> *<font class="param">group</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">filters</font>) <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The default implementation of the abstract method inherited
+from IONetworkController. When the filter group specified is
+gIONetworkFilterGroup, then this method will return a value formed by
+a bitwise OR of kIOPacketFilterUnicast, kIOPacketFilterBroadcast,
+kIOPacketFilterMulticast, kIOPacketFilterPromiscuous. Otherwise, the 
+return value will be set to zero (0). Subclasses must override this
+method if their filtering capability differs from what is reported by
+this default implementation. This method is called from the workloop
+context, and the result is published to the I/O Kit registry.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>group</em></tt></dt><dd>The name of the filter group.</dd>
+<dt><tt><em>filters</em></tt></dt><dd>Pointer to the mask of supported filters returned by
+this method.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess. Drivers that override this
+method must return kIOReturnSuccess to indicate success, or an error 
+ return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(UInt32*);  name=gIOEthernetWakeOnLANFilterGroup::getPacketFilters -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/getPacketFilters/virtualIOReturn/(UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getPacketFilters(UInt32%32*)">getPacketFilters(UInt32 *)</a></h2>
+</td></tr></table>Get the set of packet filters supported by the FireWire 
+controller in the network filter group.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getPacketFilters //apple_ref/cpp/clm/getPacketFilters //apple_ref/cpp/intfcm/getPacketFilters //apple_ref/cpp/func/getPacketFilters //apple_ref/cpp/ftmplt/getPacketFilters //apple_ref/cpp/defn/getPacketFilters //apple_ref/cpp/macro/getPacketFilters" --><font class="function">getPacketFilters</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">filters</font>) <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>filters</em></tt></dt><dd>Pointer to the return value containing a mask of
+supported filters.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess. Drivers that override this
+method must return kIOReturnSuccess to indicate success, or an error 
+ return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/init/virtualbool/(OSDictionary*);  name=gIOEthernetWakeOnLANFilterGroup::init -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/init/virtualbool/(OSDictionary*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table>Initialize an IOFWController object.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/init //apple_ref/cpp/clm/init //apple_ref/cpp/intfcm/init //apple_ref/cpp/func/init //apple_ref/cpp/ftmplt/init //apple_ref/cpp/defn/init //apple_ref/cpp/macro/init" --><font class="function">init</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/OSDictionary //apple_ref/cpp/cl/OSDictionary //apple_ref/cpp/tdef/OSDictionary //apple_ref/cpp/tag/OSDictionary //apple_ref/cpp/econst/OSDictionary //apple_ref/cpp/struct/OSDictionary //apple_ref/cpp/clconst/OSDictionary" --><font class="type">OSDictionary</font><!-- /a --> *<font class="param">properties</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>properties</em></tt></dt><dd>A dictionary object containing a property table
+associated with this instance.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>true on success, false otherwise. </dd></dl>
+<hr><!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/cpp/clm/gIOEthernetWakeOnLANFilterGroup/initialize/staticvoid/();  name=gIOEthernetWakeOnLANFilterGroup::initialize -->
+<a name="//apple_ref/doc/compositePage/cpp/clm/gIOEthernetWakeOnLANFilterGroup/initialize/staticvoid/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="initialize">initialize</a></h2>
+</td></tr></table>IOFWController class initializer.
+ <BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">static</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initialize //apple_ref/cpp/clm/initialize //apple_ref/cpp/intfcm/initialize //apple_ref/cpp/func/initialize //apple_ref/cpp/ftmplt/initialize //apple_ref/cpp/defn/initialize //apple_ref/cpp/macro/initialize" --><font class="function">initialize</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Create global OSSymbol objects that are used as keys. </p>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/publishProperties/virtualbool/();  name=gIOEthernetWakeOnLANFilterGroup::publishProperties -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/publishProperties/virtualbool/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="publishProperties">publishProperties</a></h2>
+</td></tr></table>Publish FireWire controller properties and capabilities.
+<BR>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/publishProperties //apple_ref/cpp/clm/publishProperties //apple_ref/cpp/intfcm/publishProperties //apple_ref/cpp/func/publishProperties //apple_ref/cpp/ftmplt/publishProperties //apple_ref/cpp/defn/publishProperties //apple_ref/cpp/macro/publishProperties" --><font class="function">publishProperties</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Publish FireWire controller properties to the property
+table. For instance, getHardwareAddress() is called to fetch the
+hardware address, and the address is then published to the property
+table. This method call is synchronized by the workloop's gate,
+and must never be called directly by subclasses.
+</p>
+<dl><dt><i>function result</i></dt><dd>true if all properties and capabilities were discovered,
+and published successfully, false otherwise. Returning false will
+prevent client objects from attaching to the FireWire controller
+ since a property that a client relies upon may be missing. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constIOFWAddress*);  name=gIOEthernetWakeOnLANFilterGroup::setHardwareAddress -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constIOFWAddress*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setHardwareAddress(const%32IOFWAddress%32*)">setHardwareAddress(const IOFWAddress *)</a></h2>
+</td></tr></table>Set or change the station address used by the FireWire
+controller.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setHardwareAddress //apple_ref/cpp/clm/setHardwareAddress //apple_ref/cpp/intfcm/setHardwareAddress //apple_ref/cpp/func/setHardwareAddress //apple_ref/cpp/ftmplt/setHardwareAddress //apple_ref/cpp/defn/setHardwareAddress //apple_ref/cpp/macro/setHardwareAddress" --><font class="function">setHardwareAddress</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/tdef/IOFWAddress //apple_ref/cpp/tag/IOFWAddress //apple_ref/cpp/econst/IOFWAddress //apple_ref/cpp/struct/IOFWAddress //apple_ref/cpp/clconst/IOFWAddress" --><font class="type">IOFWAddress</font><!-- /a --> *<font class="param">addrP</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This method is called in response to a client command to
+change the station address used by the FireWire controller. Implementation
+of this method is optional. This method is called from the workloop context.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>addrP</em></tt></dt><dd>Pointer to an IOFWAddress containing the new station
+address.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>The default implementation will always return kIOReturnUnsupported.
+If overridden, drivers must return kIOReturnSuccess on success, or an error
+ return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constvoid*,UInt32);  name=gIOEthernetWakeOnLANFilterGroup::setHardwareAddress -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setHardwareAddress/virtualIOReturn/(constvoid*,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setHardwareAddress(const%32void%32*,%32UInt32)">setHardwareAddress(const void *, UInt32)</a></h2>
+</td></tr></table>Set or change the station address used by the FireWire
+controller.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setHardwareAddress //apple_ref/cpp/clm/setHardwareAddress //apple_ref/cpp/intfcm/setHardwareAddress //apple_ref/cpp/func/setHardwareAddress //apple_ref/cpp/ftmplt/setHardwareAddress //apple_ref/cpp/defn/setHardwareAddress //apple_ref/cpp/macro/setHardwareAddress" --><font class="function">setHardwareAddress</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">addr</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">addrBytes</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>The default implementation of the abstract method inherited
+from IONetworkController. This method will call the overloaded form
+IOFWController::setHardwareAddress() that subclasses are expected
+to override.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>addr</em></tt></dt><dd>The buffer containing the hardware address provided by
+the client.</dd>
+<dt><tt><em>addrBytes</em></tt></dt><dd>The size of the address buffer provided by the
+client in bytes.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnSuccess on success, or an error otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastList/virtualIOReturn/(IOFWAddress*,UInt32);  name=gIOEthernetWakeOnLANFilterGroup::setMulticastList -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastList/virtualIOReturn/(IOFWAddress*,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setMulticastList">setMulticastList</a></h2>
+</td></tr></table>Set the list of multicast addresses that the multicast filter
+should use to match against the destination address of an incoming frame.
+The frame should be accepted when a match occurs.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setMulticastList //apple_ref/cpp/clm/setMulticastList //apple_ref/cpp/intfcm/setMulticastList //apple_ref/cpp/func/setMulticastList //apple_ref/cpp/ftmplt/setMulticastList //apple_ref/cpp/defn/setMulticastList //apple_ref/cpp/macro/setMulticastList" --><font class="function">setMulticastList</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/cl/IOFWAddress //apple_ref/cpp/tdef/IOFWAddress //apple_ref/cpp/tag/IOFWAddress //apple_ref/cpp/econst/IOFWAddress //apple_ref/cpp/struct/IOFWAddress //apple_ref/cpp/clconst/IOFWAddress" --><font class="type">IOFWAddress</font><!-- /a --> *<font class="param">addrs</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">count</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Called when the multicast group membership of an interface
+object is changed. Drivers that support kIOPacketFilterMulticast should
+override this method and update the hardware multicast filter using the
+list of FireWire addresses provided. Perfect multicast filtering is
+preferred if supported by the hardware, to order to reduce the number of
+unwanted packets received. If the number of multicast addresses in the
+list exceeds what the hardware is capable of supporting, or if perfect
+filtering is not supported, then ideally the hardware should be programmed
+to perform imperfect filtering, thorugh some form of hash filtering
+mechanism. Only at the last resort should the driver enable reception of
+all multicast packets to satisfy this request. This method is called
+from the workloop context, and only if the driver reports
+kIOPacketFilterMulticast support in getPacketFilters().
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>addrs</em></tt></dt><dd>An array of FireWire addresses. This argument must be
+ignored if the count argument is 0.</dd>
+<dt><tt><em>count</em></tt></dt><dd>The number of FireWire addresses in the list. This value
+will be zero when the list becomes empty.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnUnsupported. Drivers must return kIOReturnSuccess to
+ indicate success, or an error return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastMode/virtualIOReturn/(bool);  name=gIOEthernetWakeOnLANFilterGroup::setMulticastMode -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setMulticastMode/virtualIOReturn/(bool)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setMulticastMode">setMulticastMode</a></h2>
+</td></tr></table>Enable or disable multicast mode.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setMulticastMode //apple_ref/cpp/clm/setMulticastMode //apple_ref/cpp/intfcm/setMulticastMode //apple_ref/cpp/func/setMulticastMode //apple_ref/cpp/ftmplt/setMulticastMode //apple_ref/cpp/defn/setMulticastMode //apple_ref/cpp/macro/setMulticastMode" --><font class="function">setMulticastMode</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">active</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Called by enablePacketFilter() or disablePacketFilter()
+when there is a change in the activation state of the multicast filter
+identified by kIOPacketFilterMulticast. This method is called from the
+workloop context.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>active</em></tt></dt><dd>True to enable multicast mode, false to disable it.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnUnsupported. If overridden, drivers must return
+ kIOReturnSuccess on success, or an error return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setPromiscuousMode/virtualIOReturn/(bool);  name=gIOEthernetWakeOnLANFilterGroup::setPromiscuousMode -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setPromiscuousMode/virtualIOReturn/(bool)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setPromiscuousMode">setPromiscuousMode</a></h2>
+</td></tr></table>Enable or disable promiscuous mode.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setPromiscuousMode //apple_ref/cpp/clm/setPromiscuousMode //apple_ref/cpp/intfcm/setPromiscuousMode //apple_ref/cpp/func/setPromiscuousMode //apple_ref/cpp/ftmplt/setPromiscuousMode //apple_ref/cpp/defn/setPromiscuousMode //apple_ref/cpp/macro/setPromiscuousMode" --><font class="function">setPromiscuousMode</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">active</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Called by enablePacketFilter() or disablePacketFilter()
+when there is a change in the activation state of the promiscuous
+filter identified by kIOPacketFilterPromiscuous. This method is 
+called from the workloop context.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>active</em></tt></dt><dd>True to enable promiscuous mode, false to disable it.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnUnsupported. If overridden, drivers must return
+ kIOReturnSuccess on success, or an error return code otherwise. </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setWakeOnMagicPacket/virtualIOReturn/(bool);  name=gIOEthernetWakeOnLANFilterGroup::setWakeOnMagicPacket -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/gIOEthernetWakeOnLANFilterGroup/setWakeOnMagicPacket/virtualIOReturn/(bool)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setWakeOnMagicPacket">setWakeOnMagicPacket</a></h2>
+</td></tr></table>Enable or disable the wake on Magic Packet support.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setWakeOnMagicPacket //apple_ref/cpp/clm/setWakeOnMagicPacket //apple_ref/cpp/intfcm/setWakeOnMagicPacket //apple_ref/cpp/func/setWakeOnMagicPacket //apple_ref/cpp/ftmplt/setWakeOnMagicPacket //apple_ref/cpp/defn/setWakeOnMagicPacket //apple_ref/cpp/macro/setWakeOnMagicPacket" --><font class="function">setWakeOnMagicPacket</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">active</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Called by enablePacketFilter() or disablePacketFilter()
+when there is a change in the activation state of the wake-on-LAN
+filter identified by kIOFWWakeOnMagicPacket. This method is
+called from the workloop context.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>active</em></tt></dt><dd>True to enable support for system wake on reception
+of a Magic Packet, false to disable it.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>kIOReturnUnsupported. If overridden, drivers must return
+ kIOReturnSuccess on success, or an error return code otherwise. </dd></dl>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/gIOEthernetWakeOnLANFilterGroup/_reserved;  name=gIOEthernetWakeOnLANFilterGroup::_reserved -->
+<a name="//apple_ref/doc/compositePage/cpp/data/gIOEthernetWakeOnLANFilterGroup/_reserved"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="_reserved">_reserved</a></h2>
+</td></tr></table><blockquote><tt>protected</tt> <!-- a logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData //apple_ref/cpp/econst/ExpansionData //apple_ref/cpp/struct/ExpansionData //apple_ref/cpp/clconst/ExpansionData" --><font class="type">ExpansionData</font><!-- /a --> <font class="type">*</font> <font class="var">_reserved</font>;</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Reserved for future use. (Internal use only)</p>
+<hr><!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/gIOEthernetWakeOnLANFilterGroup/reserved;  name=gIOEthernetWakeOnLANFilterGroup::reserved -->
+<a name="//apple_ref/doc/compositePage/cpp/data/gIOEthernetWakeOnLANFilterGroup/reserved"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="reserved">reserved</a></h2>
+</td></tr></table><blockquote><tt>protected</tt> <!-- a logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData //apple_ref/cpp/econst/ExpansionData //apple_ref/cpp/struct/ExpansionData //apple_ref/cpp/clconst/ExpansionData" --><font class="type">ExpansionData</font><!-- /a --> <font class="type">*</font> <font class="var">_reserved</font>;</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Reserved for future use. (Internal use only)</p>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

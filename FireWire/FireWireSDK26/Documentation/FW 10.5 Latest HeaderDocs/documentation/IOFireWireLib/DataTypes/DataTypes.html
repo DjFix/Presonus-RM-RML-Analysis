@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Defined Types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireBusResetDoneHandler;  name=IOFireWireBusResetDoneHandler --><a name="//apple_ref/c/tdef/IOFireWireBusResetDoneHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireBusResetDoneHandler">IOFireWireBusResetDoneHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Called when a bus reset has occured and FireWire has completed configuring
+the bus.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireBusResetDoneHandler //apple_ref/c/clm/IOFireWireBusResetDoneHandler //apple_ref/c/intfcm/IOFireWireBusResetDoneHandler //apple_ref/c/intfm/IOFireWireBusResetDoneHandler //apple_ref/c/func/IOFireWireBusResetDoneHandler //apple_ref/c/ftmplt/IOFireWireBusResetDoneHandler //apple_ref/c/defn/IOFireWireBusResetDoneHandler //apple_ref/c/macro/IOFireWireBusResetDoneHandler" --><span class="function">IOFireWireBusResetDoneHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibDeviceRef //apple_ref/c/tdef/IOFireWireLibDeviceRef //apple_ref/c/tag/IOFireWireLibDeviceRef //apple_ref/c/econst/IOFireWireLibDeviceRef //apple_ref/c/struct/IOFireWireLibDeviceRef //apple_ref/c/clconst/IOFireWireLibDeviceRef //apple_ref/c/intf/IOFireWireLibDeviceRef" --><span class="type">IOFireWireLibDeviceRef</span><!-- /a --> <span class="param">interface</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span> );  <span class="comment">// parameters may change</span> </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>interface </code></dt>
+<dd>A reference to the device on which the callback was installed</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireBusResetHandler;  name=IOFireWireBusResetHandler --><a name="//apple_ref/c/tdef/IOFireWireBusResetHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireBusResetHandler">IOFireWireBusResetHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Called when a bus reset has occured, but before FireWire has completed
+configuring the bus.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireBusResetHandler //apple_ref/c/clm/IOFireWireBusResetHandler //apple_ref/c/intfcm/IOFireWireBusResetHandler //apple_ref/c/intfm/IOFireWireBusResetHandler //apple_ref/c/func/IOFireWireBusResetHandler //apple_ref/c/ftmplt/IOFireWireBusResetHandler //apple_ref/c/defn/IOFireWireBusResetHandler //apple_ref/c/macro/IOFireWireBusResetHandler" --><span class="function">IOFireWireBusResetHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibDeviceRef //apple_ref/c/tdef/IOFireWireLibDeviceRef //apple_ref/c/tag/IOFireWireLibDeviceRef //apple_ref/c/econst/IOFireWireLibDeviceRef //apple_ref/c/struct/IOFireWireLibDeviceRef //apple_ref/c/clconst/IOFireWireLibDeviceRef //apple_ref/c/intf/IOFireWireLibDeviceRef" --><span class="type">IOFireWireLibDeviceRef</span><!-- /a --> <span class="param">interface</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span> );  <span class="comment">// parameters may change</span> </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>interface </code></dt>
+<dd>A reference to the device on which the callback was installed</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireLibCommandCallback;  name=IOFireWireLibCommandCallback --><a name="//apple_ref/c/tdef/IOFireWireLibCommandCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireLibCommandCallback">IOFireWireLibCommandCallback</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called when an asynchronous command has completed executing
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireLibCommandCallback //apple_ref/c/clm/IOFireWireLibCommandCallback //apple_ref/c/intfcm/IOFireWireLibCommandCallback //apple_ref/c/intfm/IOFireWireLibCommandCallback //apple_ref/c/func/IOFireWireLibCommandCallback //apple_ref/c/ftmplt/IOFireWireLibCommandCallback //apple_ref/c/defn/IOFireWireLibCommandCallback //apple_ref/c/macro/IOFireWireLibCommandCallback" --><span class="function">IOFireWireLibCommandCallback</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">completionStatus</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon </code></dt>
+<dd>A user specified reference value set before command object was submitted</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireLibIRMAllocationLostNotificationProc;  name=IOFireWireLibIRMAllocationLostNotificationProc --><a name="//apple_ref/c/tdef/IOFireWireLibIRMAllocationLostNotificationProc"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireLibIRMAllocationLostNotificationProc">IOFireWireLibIRMAllocationLostNotificationProc</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called when an IOFireWireLibIRMAllocationRef fails to reclaim IRM resources after a bus-reset
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/clm/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/intfcm/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/intfm/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/func/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/ftmplt/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/defn/IOFireWireLibIRMAllocationLostNotificationProc //apple_ref/c/macro/IOFireWireLibIRMAllocationLostNotificationProc" --><span class="function">IOFireWireLibIRMAllocationLostNotificationProc</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibIRMAllocationRef //apple_ref/c/tdef/IOFireWireLibIRMAllocationRef //apple_ref/c/tag/IOFireWireLibIRMAllocationRef //apple_ref/c/econst/IOFireWireLibIRMAllocationRef //apple_ref/c/struct/IOFireWireLibIRMAllocationRef //apple_ref/c/clconst/IOFireWireLibIRMAllocationRef //apple_ref/c/intf/IOFireWireLibIRMAllocationRef" --><span class="type">IOFireWireLibIRMAllocationRef</span><!-- /a --> <span class="param">irmAllocation</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>);  </pre>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireLibPHYPacketCallback;  name=IOFireWireLibPHYPacketCallback --><a name="//apple_ref/c/tdef/IOFireWireLibPHYPacketCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireLibPHYPacketCallback">IOFireWireLibPHYPacketCallback</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called to handle incoming PHY packets
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireLibPHYPacketCallback //apple_ref/c/clm/IOFireWireLibPHYPacketCallback //apple_ref/c/intfcm/IOFireWireLibPHYPacketCallback //apple_ref/c/intfm/IOFireWireLibPHYPacketCallback //apple_ref/c/func/IOFireWireLibPHYPacketCallback //apple_ref/c/ftmplt/IOFireWireLibPHYPacketCallback //apple_ref/c/defn/IOFireWireLibPHYPacketCallback //apple_ref/c/macro/IOFireWireLibPHYPacketCallback" --><span class="function">IOFireWireLibPHYPacketCallback</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibPHYPacketListenerRef //apple_ref/c/tdef/IOFireWireLibPHYPacketListenerRef //apple_ref/c/tag/IOFireWireLibPHYPacketListenerRef //apple_ref/c/econst/IOFireWireLibPHYPacketListenerRef //apple_ref/c/struct/IOFireWireLibPHYPacketListenerRef //apple_ref/c/clconst/IOFireWireLibPHYPacketListenerRef //apple_ref/c/intf/IOFireWireLibPHYPacketListenerRef" --><span class="type">IOFireWireLibPHYPacketListenerRef</span><!-- /a --> <span class="param">listener</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">data1</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">data2</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>listener </code></dt>
+<dd>The listener which received the callback</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>data1 </code></dt>
+<dd>first quad of received PHY packet</dd>
+<dt><code>data2 </code></dt>
+<dd>second quad of received PHY packet</dd>
+<dt><code>refCon </code></dt>
+<dd>user specified reference value specified on the listener</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWireLibPHYPacketSkippedCallback;  name=IOFireWireLibPHYPacketSkippedCallback --><a name="//apple_ref/c/tdef/IOFireWireLibPHYPacketSkippedCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWireLibPHYPacketSkippedCallback">IOFireWireLibPHYPacketSkippedCallback</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called when incoming packets have been dropped from the internal queue
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/clm/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/intfcm/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/intfm/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/func/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/ftmplt/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/defn/IOFireWireLibPHYPacketSkippedCallback //apple_ref/c/macro/IOFireWireLibPHYPacketSkippedCallback" --><span class="function">IOFireWireLibPHYPacketSkippedCallback</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibPHYPacketListenerRef //apple_ref/c/tdef/IOFireWireLibPHYPacketListenerRef //apple_ref/c/tag/IOFireWireLibPHYPacketListenerRef //apple_ref/c/econst/IOFireWireLibPHYPacketListenerRef //apple_ref/c/struct/IOFireWireLibPHYPacketListenerRef //apple_ref/c/clconst/IOFireWireLibPHYPacketListenerRef //apple_ref/c/intf/IOFireWireLibPHYPacketListenerRef" --><span class="type">IOFireWireLibPHYPacketListenerRef</span><!-- /a --> <span class="param">listener</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">skippedPacketCount</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>listener </code></dt>
+<dd>The listener which dropped the packets</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>skippedPacketCount </code></dt>
+<dd>The number of skipped packets</dd>
+<dt><code>refCon </code></dt>
+<dd>user specified reference value specified on the listener</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceReadHandler;  name=IOFireWirePseudoAddressSpaceReadHandler --><a name="//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceReadHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWirePseudoAddressSpaceReadHandler">IOFireWirePseudoAddressSpaceReadHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->This callback is called to handle read requests to pseudo address spaces. This function
+should fill in the specified area in the pseudo address space backing store and call
+ClientCommandIsComplete with the specified command ID
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/clm/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/intfcm/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/intfm/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/func/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/ftmplt/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/defn/IOFireWirePseudoAddressSpaceReadHandler //apple_ref/c/macro/IOFireWirePseudoAddressSpaceReadHandler" --><span class="function">IOFireWirePseudoAddressSpaceReadHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tdef/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tag/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/econst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/struct/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/clconst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/intf/IOFireWireLibPseudoAddressSpaceRef" --><span class="type">IOFireWireLibPseudoAddressSpaceRef</span><!-- /a --> <span class="param">addressSpace</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">packetLen</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">packetOffset</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">srcNodeID</span>, <span class="comment">// nodeID of requester</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destAddressHi</span>, <span class="comment">// destination on this node</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destAddressLo</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>addressSpace </code></dt>
+<dd>The address space to which the request is being made</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID which should be passed to ClientCommandIsComplete when
+the buffer has been filled in</dd>
+<dt><code>packetLen </code></dt>
+<dd>number of bytes requested</dd>
+<dt><code>packetOffset </code></dt>
+<dd>number of bytes from beginning of address space backing store</dd>
+<dt><code>srcNodeID </code></dt>
+<dd>nodeID of the requester</dd>
+<dt><code>destAddressHi </code></dt>
+<dd>high 16 bits of destination address on this computer</dd>
+<dt><code>destAddressLo </code></dt>
+<dd>low 32 bits of destination address on this computer</dd>
+<dt><code>refCon </code></dt>
+<dd>user specified reference number passed in when the address space was created</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceSkippedPacketHandler;  name=IOFireWirePseudoAddressSpaceSkippedPacketHandler --><a name="//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceSkippedPacketHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWirePseudoAddressSpaceSkippedPacketHandler">IOFireWirePseudoAddressSpaceSkippedPacketHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called when incoming packets have been dropped from the internal queue
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/clm/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/intfcm/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/intfm/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/func/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/ftmplt/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/defn/IOFireWirePseudoAddressSpaceSkippedPacketHandler //apple_ref/c/macro/IOFireWirePseudoAddressSpaceSkippedPacketHandler" --><span class="function">IOFireWirePseudoAddressSpaceSkippedPacketHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tdef/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tag/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/econst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/struct/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/clconst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/intf/IOFireWireLibPseudoAddressSpaceRef" --><span class="type">IOFireWireLibPseudoAddressSpaceRef</span><!-- /a --> <span class="param">addressSpace</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">skippedPacketCount</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>addressSpace </code></dt>
+<dd>The address space which dropped the packet(s)</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>skippedPacketCount </code></dt>
+<dd>The number of skipped packets</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceWriteHandler;  name=IOFireWirePseudoAddressSpaceWriteHandler --><a name="//apple_ref/c/tdef/IOFireWirePseudoAddressSpaceWriteHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFireWirePseudoAddressSpaceWriteHandler">IOFireWirePseudoAddressSpaceWriteHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called to handle write requests to a pseudo address space.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/clm/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/intfcm/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/intfm/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/func/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/ftmplt/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/defn/IOFireWirePseudoAddressSpaceWriteHandler //apple_ref/c/macro/IOFireWirePseudoAddressSpaceWriteHandler" --><span class="function">IOFireWirePseudoAddressSpaceWriteHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tdef/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/tag/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/econst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/struct/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/clconst/IOFireWireLibPseudoAddressSpaceRef //apple_ref/c/intf/IOFireWireLibPseudoAddressSpaceRef" --><span class="type">IOFireWireLibPseudoAddressSpaceRef</span><!-- /a --> <span class="param">addressSpace</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">packetLen</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">packet</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">srcNodeID</span>, <span class="comment">// nodeID of sender</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destAddressHi</span>, <span class="comment">// destination on this node</span> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destAddressLo</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>addressSpace </code></dt>
+<dd>The address space to which the write is being made</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>packetLen </code></dt>
+<dd>Length in bytes of incoming packet</dd>
+<dt><code>packet </code></dt>
+<dd>Pointer to the received data</dd>
+<dt><code>srcNodeID </code></dt>
+<dd>Node ID of the sender</dd>
+<dt><code>destAddressHi </code></dt>
+<dd>high 16 bits of destination address on this computer</dd>
+<dt><code>destAddressLo </code></dt>
+<dd>low 32 bits of destination address on this computer</dd>
+<dt><code>refCon </code></dt>
+<dd>user specified reference number passed in when the address space was created</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAsyncStreamListenerHandler;  name=IOFWAsyncStreamListenerHandler --><a name="//apple_ref/c/tdef/IOFWAsyncStreamListenerHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAsyncStreamListenerHandler">IOFWAsyncStreamListenerHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called to handle Async Stream packets.
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWAsyncStreamListenerHandler //apple_ref/c/clm/IOFWAsyncStreamListenerHandler //apple_ref/c/intfcm/IOFWAsyncStreamListenerHandler //apple_ref/c/intfm/IOFWAsyncStreamListenerHandler //apple_ref/c/func/IOFWAsyncStreamListenerHandler //apple_ref/c/ftmplt/IOFWAsyncStreamListenerHandler //apple_ref/c/defn/IOFWAsyncStreamListenerHandler //apple_ref/c/macro/IOFWAsyncStreamListenerHandler" --><span class="function">IOFWAsyncStreamListenerHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">listener</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">size</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">packet</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>listener </code></dt>
+<dd>The listener which received the callback</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>packet </code></dt>
+<dd>Pointer to the received data</dd>
+<dt><code>refCon </code></dt>
+<dd>user specified reference number passed in when async stream 
+interface is created</dd>
+</dl>
+</blockquote>
+<p></p>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAsyncStreamListenerSkippedPacketHandler;  name=IOFWAsyncStreamListenerSkippedPacketHandler --><a name="//apple_ref/c/tdef/IOFWAsyncStreamListenerSkippedPacketHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAsyncStreamListenerSkippedPacketHandler">IOFWAsyncStreamListenerSkippedPacketHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback called when incoming packets have been dropped from the internal queue
+<!-- end abstract --></p>
+<p></p>
+<pre><span class="keyword">typedef</span> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/clm/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/intfcm/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/intfm/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/func/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/ftmplt/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/defn/IOFWAsyncStreamListenerSkippedPacketHandler //apple_ref/c/macro/IOFWAsyncStreamListenerSkippedPacketHandler" --><span class="function">IOFWAsyncStreamListenerSkippedPacketHandler</span><!-- /a -->)( 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/tdef/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/tag/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/econst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/struct/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/clconst/IOFWAsyncStreamListenerInterfaceRef //apple_ref/c/intf/IOFWAsyncStreamListenerInterfaceRef" --><span class="type">IOFWAsyncStreamListenerInterfaceRef</span><!-- /a --> <span class="param">listener</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/FWClientCommandID //apple_ref/c/tdef/FWClientCommandID //apple_ref/c/tag/FWClientCommandID //apple_ref/c/econst/FWClientCommandID //apple_ref/c/struct/FWClientCommandID //apple_ref/c/clconst/FWClientCommandID //apple_ref/c/intf/FWClientCommandID" --><span class="type">FWClientCommandID</span><!-- /a --> <span class="param">commandID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">skippedPacketCount</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<blockquote>
+<dl>
+<dt><code>listener </code></dt>
+<dd>The listener which dropped the packets</dd>
+<dt><code>commandID </code></dt>
+<dd>An FWClientCommandID to be passed to ClientCommandIsComplete()</dd>
+<dt><code>skippedPacketCount </code></dt>
+<dd>The number of skipped packets</dd>
+</dl>
+</blockquote>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

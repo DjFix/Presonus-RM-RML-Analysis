@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D776E6005ED2FE6008F1CBB /* resetHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F53EA0AD03F1CCBE01FFABA0 /* resetHandler.h */; };
+		4D776E6105ED2FE6008F1CBB /* viewHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F53EA0AF03F1CCBE01FFABA0 /* viewHandler.h */; };
+		4D776E6305ED2FE6008F1CBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		4D776E6405ED2FE6008F1CBB /* resetHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EA0AE03F1CCBE01FFABA0 /* resetHandler.m */; };
+		4D776E6505ED2FE6008F1CBB /* viewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F53EA0B003F1CCBE01FFABA0 /* viewHandler.m */; };
+		4D776E6705ED2FE6008F1CBB /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		4D776E6805ED2FE6008F1CBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		4D776E6A05ED2FE6008F1CBB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		4D776E6B05ED2FE6008F1CBB /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F548284803E6549101C6E38B /* IOKit.framework */; };
+		4D776E6C05ED2FE6008F1CBB /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5482DDA03E6553901C6E38B /* Carbon.framework */; };
+		844FBABA0D0A1E9E00E64D3C /* IORegSearch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 844FBAB80D0A1E9E00E64D3C /* IORegSearch.mm */; };
+		844FBABB0D0A1E9E00E64D3C /* IORegSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 844FBAB90D0A1E9E00E64D3C /* IORegSearch.h */; };
+		8459F6890D0DEED5003E38F6 /* Info-Bus_Reset_Handler (Cocoa).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8459F6880D0DEED5003E38F6 /* Info-Bus_Reset_Handler (Cocoa).plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		4D776E6F05ED2FE6008F1CBB /* Bus Reset Handler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bus Reset Handler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		844FBAB80D0A1E9E00E64D3C /* IORegSearch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IORegSearch.mm; sourceTree = "<group>"; };
+		844FBAB90D0A1E9E00E64D3C /* IORegSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IORegSearch.h; sourceTree = "<group>"; };
+		8459F6880D0DEED5003E38F6 /* Info-Bus_Reset_Handler (Cocoa).plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = "Info-Bus_Reset_Handler (Cocoa).plist"; sourceTree = "<group>"; };
+		F53EA0AD03F1CCBE01FFABA0 /* resetHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = resetHandler.h; sourceTree = "<group>"; };
+		F53EA0AE03F1CCBE01FFABA0 /* resetHandler.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = resetHandler.m; sourceTree = "<group>"; };
+		F53EA0AF03F1CCBE01FFABA0 /* viewHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = viewHandler.h; sourceTree = "<group>"; };
+		F53EA0B003F1CCBE01FFABA0 /* viewHandler.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = viewHandler.m; sourceTree = "<group>"; };
+		F548284803E6549101C6E38B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		F5482DDA03E6553901C6E38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D776E6905ED2FE6008F1CBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D776E6A05ED2FE6008F1CBB /* Cocoa.framework in Frameworks */,
+				4D776E6B05ED2FE6008F1CBB /* IOKit.framework in Frameworks */,
+				4D776E6C05ED2FE6008F1CBB /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F53EA0AD03F1CCBE01FFABA0 /* resetHandler.h */,
+				F53EA0AE03F1CCBE01FFABA0 /* resetHandler.m */,
+				F53EA0AF03F1CCBE01FFABA0 /* viewHandler.h */,
+				F53EA0B003F1CCBE01FFABA0 /* viewHandler.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				F548284803E6549101C6E38B /* IOKit.framework */,
+				F5482DDA03E6553901C6E38B /* Carbon.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D776E6F05ED2FE6008F1CBB /* Bus Reset Handler.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CocoaReset */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CocoaReset;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				844FBAB80D0A1E9E00E64D3C /* IORegSearch.mm */,
+				844FBAB90D0A1E9E00E64D3C /* IORegSearch.h */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8459F6880D0DEED5003E38F6 /* Info-Bus_Reset_Handler (Cocoa).plist */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4D776E5F05ED2FE6008F1CBB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D776E6005ED2FE6008F1CBB /* resetHandler.h in Headers */,
+				4D776E6105ED2FE6008F1CBB /* viewHandler.h in Headers */,
+				844FBABB0D0A1E9E00E64D3C /* IORegSearch.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4D776E5E05ED2FE6008F1CBB /* Bus Reset Handler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 302FAE5B096B472000144DF8 /* Build configuration list for PBXNativeTarget "Bus Reset Handler" */;
+			buildPhases = (
+				4D776E5F05ED2FE6008F1CBB /* Headers */,
+				4D776E6205ED2FE6008F1CBB /* Sources */,
+				4D776E6605ED2FE6008F1CBB /* Resources */,
+				4D776E6905ED2FE6008F1CBB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bus Reset Handler";
+			productInstallPath = "$(HOME)/Applications";
+			productName = CocoaReset;
+			productReference = 4D776E6F05ED2FE6008F1CBB /* Bus Reset Handler.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 302FAE5F096B472000144DF8 /* Build configuration list for PBXProject "Bus Reset Handler" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaReset */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D776E5E05ED2FE6008F1CBB /* Bus Reset Handler */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D776E6605ED2FE6008F1CBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D776E6705ED2FE6008F1CBB /* MainMenu.nib in Resources */,
+				4D776E6805ED2FE6008F1CBB /* InfoPlist.strings in Resources */,
+				8459F6890D0DEED5003E38F6 /* Info-Bus_Reset_Handler (Cocoa).plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D776E6205ED2FE6008F1CBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D776E6305ED2FE6008F1CBB /* main.m in Sources */,
+				4D776E6405ED2FE6008F1CBB /* resetHandler.m in Sources */,
+				4D776E6505ED2FE6008F1CBB /* viewHandler.m in Sources */,
+				844FBABA0D0A1E9E00E64D3C /* IORegSearch.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B97319FDCFA39411CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		302FAE5C096B472000144DF8 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1.1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-Bus_Reset_Handler (Cocoa).plist";
+				INSTALL_PATH = /Developer/Applications/FireWire;
+				LIBRARY_SEARCH_PATHS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "Bus Reset Handler";
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SECTORDER_FLAGS = "";
+				VERSIONING_SYSTEM = "apple-generic";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Development;
+		};
+		302FAE5D096B472000144DF8 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-Bus_Reset_Handler (Cocoa).plist";
+				INSTALL_PATH = /Developer/Applications/FireWire;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "Bus Reset Handler";
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SECTORDER_FLAGS = "";
+				STRIP_STYLE = all;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		302FAE5E096B472000144DF8 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_2 = "\"$(SRCROOT)\"";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-Bus_Reset_Handler (Cocoa).plist";
+				INSTALL_PATH = /Developer/Applications/FireWire;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "Bus Reset Handler";
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		302FAE60096B472000144DF8 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+			};
+			name = Development;
+		};
+		302FAE61096B472000144DF8 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+			};
+			name = Deployment;
+		};
+		302FAE62096B472000144DF8 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		302FAE5B096B472000144DF8 /* Build configuration list for PBXNativeTarget "Bus Reset Handler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302FAE5C096B472000144DF8 /* Development */,
+				302FAE5D096B472000144DF8 /* Deployment */,
+				302FAE5E096B472000144DF8 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		302FAE5F096B472000144DF8 /* Build configuration list for PBXProject "Bus Reset Handler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				302FAE60096B472000144DF8 /* Development */,
+				302FAE61096B472000144DF8 /* Deployment */,
+				302FAE62096B472000144DF8 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

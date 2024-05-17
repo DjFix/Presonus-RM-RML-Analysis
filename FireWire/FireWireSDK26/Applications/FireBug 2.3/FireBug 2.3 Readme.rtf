@@ -1,0 +1,606 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Helvetica-Bold;\f1\fswiss\fcharset77 Helvetica;\f2\fmodern\fcharset77 Courier;
+\f3\fmodern\fcharset77 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww15160\viewh14480\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f0\b\fs26 \cf0 FireBug Readme 2.3\
+April 27, 2005\
+
+\f1\b0 \
+FireBug is a crude bus analyzer ("snooper") for FireWire that uses the Texas Instruments PCI-Lynx interface.  This interface may be present on a PCI Card, a CardBus card, or the built-in FireWire interface of a "Blue and White" Power Macintosh G3 or a "PCI Graphics" Power Macintosh G4.  FireBug cannot run on the built-in FireWire ports of modern Macintosh computers.\
+\
+FireBug directly accesses the TI PCI-Lynx interface, using a special Kernel Extension called FWSkeletonKey.  This extension can be automatically installed by FireBug.  Admin authentication will be required, and please read the security warning with care.\
+\
+
+\f0\b Note
+\f1\b0 :  If the installer shows that your boot disk is not available, click "Back" and then click "Continue".\
+\
+FireBug is not for customer use.  Apple Computer does not provide support for FireBug, but feedback is welcome on the public FireWire mailing list.  Visit the following page to fine the mailing list address, and the latest Mac OS X FireWire SDK, including the latest version of FireBug:\
+\
+http://developer.apple.com/firewire\
+\
+---- Mac OS X notes ----\
+\
+This version of FireBug provides nearly identical functionality to the last version of FireBug for Mac OS 9.  But, in Mac OS X, FireBug will allow other applications to run.  However, FireBug will still provide the best performance if no other applications are running, and unneeded services are disabled or disconnected.\
+\
+The Jaguar AppleLynx driver may have difficulty on some Macintosh systems (Panther and Tiger are OK).  If you intend to use a PCI-Lynx interface only for FireBug, 
+\f0\b you should disable AppleLynx for best results
+\f1\b0 .  It is best to disable AppleLynx 
+\f0\b before
+\f1\b0  installing the Lynx hardware.  Using Terminal, become root, and use this command, then reboot:\
+\
+It is often helpful to disable Lynx on Panther or Tiger too, so Mac OS X won't try to load drivers when FireBug isn't running.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f2 \cf0 # cd /System/Library/Extensions\
+
+\f3\b PANTHER/TIGER ONLY:
+\f2\b0  # cd IOFireWireFamily.kext/Contents/PlugIns\
+# mv AppleLynx.kext AppleLynx.null\
+# touch /System/Library/Extensions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f1 \cf0 \
+FireBug for Mac OS X has received limited testing.  Save all open files before running FireBug, and do not attempt to run other applications while using FireBug.\
+\
+FireBug must displace the normal Mac OS X FireWire services for PCI-Lynx so that it can access the PCI-Lynx hardware.  All other FireWire drivers for the PCI-Lynx interface will be unloaded when FireBug runs, and then reloaded when FireBug exits (unless AppleLynx is disabled).  FireBug will give a warning if it finds any FireWire devices on the bus that might have drivers.  FireBug will refuse to operate if it would displace the driver for a FireWire disk drive, possibly causing data loss.  Unmount and then unplug any FireWire disks before running FireBug.  (unmounting alone is not sufficient)\
+\
+---- "Documentation" ----\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+** SUMMARY **\
+\
+FireBug is a FireWire analyzer/snooper tool.  FireBug examines the packets on a FireWire bus, and generates real-time analysis, including running counts of tCodes, ack types, packet speeds, and so on, as well as formatted output of individual packets, such as quadlet reads or self-IDs.  A variety of filters can be applied to the bus in order to select packets of interest for display.\
+\
+Unless certain optional commands are used (e.g. "busreset"), FireBug is a passive entity on the FireWire bus.  FireBug uses the snooping feature in TI PCI-Lynx (rev A and rev B) to receive all packets, regardless of the actual destination node.  By default, FireBug does not send acknowledgements to any packet.  Other nodes on the FireWire bus will see FireBug as a repeater, with an active PHY layer only.  FireBug may be root, but does not act as cycle master, isochronous resource manager, or bus manager.\
+\
+FireBug is not a supported Apple product.\
+\
+\
+** CHARTER **\
+\
+FireBug was developed to solve immediate debugging problems, not to be a good general-purpose FireWire analyzer.  If you have ideas about what you'd like to see FireBug do, please let us know.  You can discuss FireBug on our public FireWire Developers mailing list, but Apple does not guarantee to answer questions or provide any kind of support.\
+\
+\
+** INSTALLATION **\
+\
+FireBug works on any PCI Mac with a TI PCI-Lynx interface.  FireBug does not work on any 1394 Open HCI interface, including built-in Open HCI interfaces.  FireBug will tell you if it found suitable hardware or not.\
+\
+Sources of PCI-Lynx interfaces with the (better) rev B chipset:\
+\
+  "IOI-1394TT NON-OHCI IEEE-1394 PCI"\
+  http://fwdepot.com/thestore/product_info.php/products_id/481\
+\
+  Newer Technologies FireWire 2 Go CardBus card ("Mac only") (discontinued)\
+\
+  Technoscope "Zenkuman" PFW-41 PCI card\
+  http://www.technoscope.co.jp\
+\
+  UniBrain FireBoard 400 PCI card\
+  http://www.unibrain.com\
+\
+  Texas Instruments TSBKPCI403 eval kit / PCI card (discontinued)\
+\
+  Orange Micro "Mac Only" HotLink PCI card (discontinued)\
+\
+\
+** ACCURACY **\
+\
+FireBug uses the PCI-Lynx chip to snoop packets.  This chip is connected to the CPU by the PCI bus.  Therefore, FireBug does not have the ability to do high-precision timing.  Normally, FireBug can identify event times with an accuracy or less than one 1394 isochronous cycle (i.e., less than 125 microseconds).  FireBug should be able to detect and report any error that causes the loss of a packet.  Unless FireBug's DMA ring buffer wraps around completely, FireBug can compensate for\
+falling behind by skipping packets.  A message indicates that this has happened.  By default, FireBug checks the header CRC (but not the data CRC) on all packets.\
+\
+FireBug presently uses a 7168-packet DMA ring, but it will skip packets if it finds the ring is more than half full.  Any number of packets can be displayed, as long as no more than 3583 packets accumulate in the DMA ring at once.\
+\
+FireBug counts most values with unsigned 32-bit integers, so it can count about 4 billion events before the counters overflow.  Most on-screen counters will stop counting at a lower limit, such as 999999.  When receiving several isochronous streams, this overflow could happen in a day or two.  Don't trust the counters if you've left FireBug running overnight.\
+\
+FireBug snoops up to about 4040 bytes per packet.  Packets larger than this will cause cryptic error messages.\
+\
+\
+** OUTPUT **\
+\
+In general, hex values are displayed with zero-padding, while decimal values are unpadded (except the running totals).  Usually it should be obvious which is which.  Cycle timer and timestamp values are shown as seconds:cycles:offset, where seconds counts from 0 to 127, cycles counts from 0 to 7999, and offset counts from 0 to 3071.  The Cycle timer in the upper left reads "CycleStart" and shows the most recently received cycle start packet, if there is a cycle master.  It reads "CycleTimer" when the local clock is being used (this happens if no cycle start packets are arriving).  The NodeID, Root, and CPS values show FireBug's current Node ID on the FireWire bus, whether or not FireBug is root (0 or 1), and the value of the CPS (Cable Power Status) bit in the PHY.  Note:  "Root:" (usually) does not indicate the root node ID.\
+\
+Running totals (tCodes, acks, etc.) show both the cumulative total and the total for the last one-second period.  One second is defined in one of two ways.  If FireBug is receiving cycle start packets, then one second is measured by when the seconds field in those snooped cycle start packets increments.  In this case, the cycSt counter should show exactly 8000 cycle start packets each second, and the isoch counter should be accurate (e.g., 8000 packets/second from a DV camera).  If FireBug is not receiving cycle start packets, then the local PCI-Lynx cycle timer will be used.  However, its value is read by software, so FireBug's concept of "one second" may not be perfectly accurate in this case.  But, if there are no cycle start packets, perfect accuracy in measuring the length of a second may not matter.\
+\
+If a node sends more than one Self-ID packet (because it has 4 or more ports), each will be shown, but only the first one will be decoded.\
+\
+Bus reset timestamps are really the timestamp of the next displayed packet, which is often a self ID.  Exception:  If no packet is received immediately after a reset, the timestamp is instead determined by software, and is approximate.  Warning: Sometimes a packet (especially a block packet) received just before a bus reset will be displayed on the line 
+\f0\b after
+\f1\b0  the bus reset.  In this case, the packet and reset timestamps will be identical.  The packet actually happened before the bus reset.\
+\
+All output except the command history can be saved to a file with the "log" command.\
+\
+\
+** COMMANDS **\
+\
+If a PCI-Lynx chip is detected, FireBug will automatically start snooping, using a default set of generally useful settings.  The commands documented below may be useful if you want to change the filter parameters, or use other features of FireBug.  To exit FireBug, press Command-Q or close the window.  All commands are entered from the keyboard.\
+\
+Some commands have command-key equivalents, such as Command-R to cause a bus reset.  You can use these command-keys at any time, even in the middle of typing in a command.  The command you are typing will not be affected by the command-key.\
+\
+To repeat the last typed command, press Command-Return or Command-Enter.\
+\
+The remainder of this document lists the various commands supported by FireBug.\
+\
+\
+** FILTERS **\
+\
+FireBug snoops all packets (even cycle-starts) from the FireWire bus.  All of these packets are counted in the running totals of tCodes, speeds, etc. at the top of the screen.  Only some of these packets will be shown in formatted output.  When selecting filters, best results will be obtained by choosing filters that yield only a few hundred packets per second, or less.\
+\
+FireBug's filters are mostly subtractive.  This means that a packet must satisfy every filter in order to be shown in the formatted output.  The general assumption is that you are looking for one particular packet of interest, not several kinds of packets.  For example, if you filter for tCode 1 (Write block) and ACK 1 (complete), you will see only block write packets for which the target node responded with an ack_complete.  You will not see any other packets that caused ack_complete, and you will not see any other block write packets.\
+\
+There is a master filter that controls all output.  To toggle this filter, press Command-F.  To turn off the master filter at any time, press Escape.  To turn on the master filter if you don't know its current state, press Escape, then Command-F.\
+\
+The tCode and ack filters operate as follows:  Any or all of the filter values may be selected.  For example, the tCode filter can be set to match tCodes 4, 6, 9, and b (quadlet read, quadlet response, lock request, and lock response).  The filter can also be set to match all tCodes, in which case the filter has no effect, or to match no tCodes, in which case the filter removes all packets except PHY packets (which do not have any tCode).  The following commands are used to set the tCode filter:\
+\
+> tcode on               // match all tCodes (disables filter)\
+> tcode off               // match no tCodes (no async or isoch packets)\
+> tcode 4 6 9 b         // show only quadlet read/response & lock req/resp\
+> tcode 469b            // (same as above)\
+> tcode on 469 b      // add tCodes 4, 6, 9, and b to the current filter\
+> tcode off 4 6-b       // remove tCodes 4, 6, 7, 8, 9, a, and b\
+> tcode                    // show current filter settings\
+\
+The "short" filter will show block packets only if they are shorter than their header says they should be:\
+\
+> short on\
+\
+The xwindow command can be used to display a fixed number of packets before and after any packet that passes the filter.  For example, you could filter on acks 4 (busyX) and d (data error) and set the window to show the previous and next two packets.  The previous packets might have interesting timestamps (say, unusually close together), and the following packets might show retries.  This command has three forms:\
+\
+> xwindow 3 10           // show 3 packets before and 10 after any filtered packet\
+> xwindow 5               // show 5 packets before and after any filtered packet\
+> xwindow                  // show current window setting\
+\
+The xwindow command acts as an override, showing some packets that otherwise might not have been seen.  The extra packets are still subject to filtering, meaning that if they also trigger a filter, they will cause yet more window packets to be shown.  However, packets that fall in multiple windows are not shown multiple times.\
+\
+The xwindow command does not handle packets prior to the trigger packet completely correctly (hence the "x" in the command name).  There are three problems:  First, if the pre-packet window includes bus resets, they will be shown out of order (they will preceed the windowed packets).  The timestamps may be helpful in finding the true order of events.  Also, pre-packet window packets will not display ack codes or actual packet lengths, and may have incorrect length payload dumps (if any).  Finally, pre-window packets will include cycle starts.\
+\
+To disable windowing, use the command "xwindow 0".  The maximum pre- and post-packet window sizes are 99 and 500.  Note that windowing shows all packets, even cycle starts, during the pre-window period, but only all packets except cycle starts during the post-window period.\
+\
+The cyclestart command is related to the xwindow command, and controls how many cycle start packets are shown after a filtered packet.  This is different from the xwindow command, which selects how many non-cycle-start packets are shown after a filtered packet.  The cyclestart command also has two forms:\
+\
+> cyclestart 2           // show 2 cycle starts after any filtered packet\
+> cyclestart              // report current setting\
+\
+There is a special filter for looking for missing isochronous packets:\
+\
+> xisogap 62\
+\
+This filter (technically) matches a cycle start packet that follows a missing isochronous packet.  The filter works as follows:  When a cycle start packet is received, the filter is "armed".  When a packet with isochronous channel 62 (for example) is received, the filter is "disarmed".  If another cycle start packet arrives when the filter is "armed", this triggers the filter, because two cycle starts arrived without a channel 62 packet between them.  The filter will not operate again until a channel 62 packet arrives (otherwise, it would fire forever once channel 62 shut down).  You probably want to use "xisogap" together with the "xwindow" option in order to see the real isochronous packets before and after the missing packet, so that you can examine the payloads or timestamps.\
+\
+You can disable this filter by setting it to an illegal channel number (e.g. 64).  When used with an isochronous source such as an IIDC (aka DCAM or  CCM) camera, which only transmits on about 7200 out of every 8000 cycles, the filter will be triggered fairly often. Only one isochronous channel can be monitored for gaps with this filter.\
+\
+There is a special filter for displaying a burst of isochronous packets:\
+\
+> isosnap 20\
+\
+This filter causes the next 20 (for example) isochronous packets to be displayed, regardless of the other filters.  This filter turns itself off after the "snapshot" is complete, or it can be cleared by setting it to zero.\
+\
+\
+** OPTIONS **\
+\
+FireBug attempts to record a timestamp for each snooped packet or bus reset event.  Because of the nature of PCI-Lynx and the PCLs used to control it, the recorded timestamps indicate a time shortly after a packet was completely transferred into Mac memory.  This time differs from the actual packet arrival time for two main reasons.  First, PCI-Lynx contains a FIFO that buffers received packets in order to compensate for PCI access latencies.  After a packet arrives from the 1394 bus, the packet will not arrive in Mac memory until the FIFO has drained.  This delays the capture of the timestamp.  The second reason for delay is the operational speed of the PCL engine in PCI-Lynx.  Once the packet has been placed in memory, Lynx (like a CPU) must fetch its next instruction.  The next instruction after each packet reception is to sample the local cycle timer and record the value in memory.  This operation requires several PCI accesses, so it consumes more time.  [Note that once the cycle timer value has been sampled, the additional delay of the accesses required to store that sample in memory will not affect the timestamp value.  In specific Lynx terms, the PCL operations are RCV to snoop a packet, followed by LOAD to copy the cycle timer to the Lynx temporary register, and finally STORE_QUAD to record the cycle timer in host memory along with the snooped packet.]\
+\
+Timestamps are based on the local cycle timer, which is not synchronized to the received cycle start packets.  There is usually some drift between the two clocks.\
+\
+Timestamp display is optional, and can be controlled with these two commands:\
+\
+> timestamp on\
+> timestamp off\
+\
+These commands do not cause a change to optimize the Lynx PCLs.  The timestamps are still recorded by the DMA, they just aren't shown.  This leads to a small performance improvement, because less information is being drawn on the screen, but the DMA performance does not change.  See also the "sampletime" and "sampleints" commands below (which do improve PCL performance).\
+\
+FireBug can display a hex dump of packet payloads.  Packets with tCodes of 1 (block write), 7 (read block response), 9 (lock request), A (isochronous), and B (lock response) have variable-length payloads.  To specify the number of quadlets of payload to be dumped, use the data command:\
+\
+> data 16\
+\
+The above command causes (up to) 16 quadlets of payload to be displayed for all of the above packets (when they pass all active filters).  The actual number of quadlets shown will depend on the true length of each received packet.  To see the entire contents of such packets, use an impossibly large quadlet count, such as 1025.  To disable payload dumping, specify 0 quadlets.  The default value is 4.\
+\
+Note that displaying payload contents takes a while, and will reduce the maximum rate at which packets can be displayed.  Select the lowest number of quadlets possible to get best performance.\
+\
+Payloads that are not a whole number of quadlets are zero-padded in 1394.  The snooped packets should show this zero padding.\
+\
+\
+** PACKET HISTORY **\
+\
+FireBug presently stores 20479 lines of snooped packet history.  You can scroll back through this history using the up/down arrow keys, the page up/down keys, and the home/end keys.  Any new activity will cause the history to snap back to the bottom.\
+\
+The history consists of 20479 lines of text, not (usually) the last 20479 packets on the bus.  There is no way to apply or change filters after packets have been received.\
+\
+You can save part or all of the history to a file, together with the latest cumulative statistics.  Use the "log" command, with an optional count of the number of lines to write out.  This command writes the last 1000 lines of history, plus statistics, to a file:\
+\
+> log 1000\
+\
+With no argument, "log" writes the entire history buffer.  You will be prompted for a file name.\
+\
+\
+** OTHER COMMANDS **\
+\
+> busreset (Command-R)\
+\
+The busreset command will cause FireBug to initiate a (1995-style) reset of the FireWire bus by writing the IBR bit of PHY register 1.  In the rare event that FireBug detects a bus reset or other interrupt while it is attempting to trigger a reset, it will abort its attempt and print a warning.  (This may happen a lot, it's a bug.)\
+\
+You can hold down Command-R to fire off large quantities of bus resets.  This can be a useful way to test the robustness of your software, without wearing out connectors.\
+\
+You can cause a "short" 1394a-style bus reset using the "phywrite" command (see below).\
+\
+> sync (Command-S)\
+\
+FireBug will suspend snooping for a brief period (typically less than a millisecond) so that the PCI-Lynx cycle timer can be updated with an incoming cycle start packet.  This allows timestamps to reflect the "real time" on the bus.  It is interesting to snoop cycle start packets after performing a sync; one can watch the PCI-Lynx clock drift out of sync with the cycle master.  Examining the timestamps of snooped cycle starts also yields some insights as to the accuracy of the timestamp mechanism.\
+\
+Using the sync command will cause some packets to be missed (at least one cycle start, and any other packets arriving during the sync time).  Examining the per-second counts may give some indication of the impact of the sync.\
+\
+After the local cycle timer has been updated, FireBug will display one cycle start packet in the packet output, regardless of filter settings.  At present, this is a cycle start that is selected somewhat randomly.\
+\
+Because the "sync" command must disable the snoop function, PCI-Lynx sometimes picks up a garbage packet as a result.  I think this is a hardware "feature".  If you are using "sync" during isoch or heavy async traffic, watch for unusual/illegal packets.\
+\
+> zero (Command-Z)\
+\
+All cumulative-total counts will be zeroed.  Filters and other operations are not affected.\
+\
+> clear (Command-K)\
+\
+The scrolling window of snooped text will be cleared.\
+\
+> bread address length\
+\
+This command sends a block-read request packet on the bus.  The outbound packet will not be shown in the snoop history, but the response (if any) will be shown - if it passes the active filters.  You can use this command to read the CSR of a remote node, or any other address.  Note that if an error is reported, the ack that is reported may not be meaningful.  Typical usage of the bread command is:\
+\
+> bread ffc0fffff000040c 8\
+\
+This sends a block read request to node 0 for CSR ROM address 40c of length 8.  The returned data (if the target supports block reads) will be the 8-byte unique ID of node 0.  You can specify length 4, and FireBug will still send a block read (not a quadlet read).  Be sure to enable the correct filters so that you can see the response.  ("tcode on 67", "ack all" and "data 4" (or more)).\
+\
+> qread address\
+\
+This command works just like bread, except that it sends tCode 4 (quadlet read request) and you don't specify a length.  Some devices won't respond to block reads in their CSR, even of length 4, but will respond to quadlet reads.  Example:\
+\
+> qread ffc1fffff000040c\
+\
+Note that FireBug does not acknowledge the response to a bread or qread command, and this can confuse the other node.\
+\
+FireBug can read and write PHY registers using these commands:\
+\
+> phyread 0\
+\
+> phywrite 1 40\
+\
+Register numbers are decimal arguments (0-15), the write data is given in hex.  The above example reads register 0, then forces a bus reset.  Use with caution.\
+\
+FireBug can send PHY configuration packets using these self-explanatory commands that take one hex argument each:\
+\
+> phyconfig 00ff0000            // Raw packet (force root 0, gap count 3f)\
+\
+> phyconfig 003c0000          // 1394a Global Resume (helpful for debugging)\
+\
+> gap 3f                              // Set gap count 0x3f only\
+\
+> root 4                               // Set force_root 0x4 only\
+\
+> linkon 1c                          // Send link-on to node 0x1c\
+\
+FireBug can read and manipulate the Lynx GPIO pins using these commands:\
+\
+> gpio                    // Show current values only\
+> gpio 0 on             // Set GPIO 0 to output a one\
+> gpio 3 off             // Set GPIO 3 to output a zero\
+> gpio 2 z               // Put GPIO 2 in tristate\
+\
+On the Apple FireWire PCI card, "gpio 0 on" sets the Contender bit.  FireBug places all four GPIOs in tristate when it starts up, except on the Newer FireWire 2 Go CardBus card.  Only one GPIO can be manipulated per command.  The state shown does not indicate whether FireBug is driving the state, or sampling it (tri-state) [you are supposed to remember how you set them].  WARNING:  Make sure you know what the GPIOs do on your particular hardware before you use this command.\
+\
+These commands can turn off (or on) the hardware sampling of one timestamp and one interrupt set per packet:\
+\
+> sampletime off\
+> sampleints off\
+\
+When timestamp sampling is off, timestamps are not shown.  When interrupt sampling is off, interrupts (notably, bus reset) are not shown.  Bus resets can be inferred from the presence of self-ID packets.  Turning off both options will eliminate a lot of DMA/PCI overhead.\
+\
+The snoop, asynch, and isoch commands can select what receive mode the Link operates in.  In asynch/isoch mode, PCI-Lynx will receive only certain packets sent to it, rather than receiving all packets.  Asynch mode will acknowledge packets with ack_pending or an error ack.  FireBug will not see cycle start packets when snooping is off, but the cycle timer will be updated if cycle start packets arrive.\
+\
+Two utility commands are provided that have nothing to do with snopping:\
+\
+The first command performs a CRC on seven bytes, as used in the serial EEPROM on PCI-Lynx.  Exactly seven bytes of hex data must be entered as shown here, with leading zeroes, and with one space between.  For example, these values from the TSBKPCI card give the answer 0x70:\
+\
+> lynxCRC 04 03 02 4c 10 03 80\
+\
+The other utility command computes 1394-style Bus Info Block checksums.  Exactly four quadlets of hex data, each eight characters long, must be entered.  One space is used between each value.  The CRC is computed, and the resulting five-quadlet Bus Info Block is displayed.  For example:\
+\
+> romCRC 31333934 f0647000 08002851 000009de\
+\
+Additional useful commands (qlock, topology, etc.) are listed in the version history, below.\
+\
+\
+** DEFAULTS **\
+\
+FireBug's default configuration is essentially what would result from these commands:\
+\
+> zero\
+> clear\
+> tcode 0-7 9 b-f\
+> ack on\
+> data 4\
+> datafull 63\
+> xwindow 0\
+> cyclestart 0\
+> timestamp on\
+> snoop\
+> sampleints on\
+> sampletime on\
+> short off\
+\
+\
+** VERSION HISTORY **\
+\
+97.02.03\
+* First internal distribution.\
+\
+97.02.10\
+* Fixed payload size displayed for block write packet.\
+* Added "map" command.\
+* The check for missed interrupts was made tighter.  Warnings should be more rare now.\
+\
+97.02.12\
+* Added "data" command.\
+\
+97.02.25  1.0d1\
+* Fixed payload dump for payloads with zero-padding.\
+* Fixed tCode 7 (block response) payload display.\
+* Added "bread" command.\
+\
+1.0d2\
+* Added tCodes 1, 5, and 7 to default settings.\
+* Lock request/response packets, if shown, always dump at least 4 quads of payload.\
+* Now look for both pci104c,8003 and pci403,605 automatically.\
+* Added "qread" command.\
+* Added "clear" command.\
+* Added master filter (Command-F and Escape key).\
+* Added "xwindow" and "cyclestart" commands.\
+* Now check keystrokes more often when swamped with packets.\
+* Added "xisogap" command.\
+\
+97.11.03  1.0d3e1\
+* Added "isosnap" command.\
+\
+98.02.08  1.0d3e2\
+* Added lynxCRC and ROMCRC commands to compute EEPROM CRC values.\
+\
+98.03.12		1.0d4e1\
+* Look for pci106b,1a Lynx cards.\
+* Support Self-ID packets for PHYs with >3 ports.\
+\
+98.03.29  1.0d4e2\
+* Added auto-detect of any Lynx card.\
+* Added save-to-file ("log").\
+* Added last command repeat (press command-enter or command-return).\
+* Added resource file with version string.\
+\
+98.05?  1.0d4e3\
+* Added some 1394a PHY support.\
+\
+98.06.22  1.0d5e1\
+* Added support for VM and ROM-in-RAM / New World.\
+* Added phyread and phywrite commands.\
+* Added Command-K shortcut.\
+\
+98.07.07  1.0d5e2\
+* Fixed bug in Bus Reset to make more reliable (fewer "interrupted" errors).\
+\
+98.07.25  1.0d5\
+* Version for distribution with FireWire 1.1 SDK.\
+* Fixed negative actual packet sizes in block read/write packets\
+* Removed write to PHY register 0xD during setup (it fixed an early\
+  prototype PHY but made modern PHYs fail).\
+\
+98.08.01  1.0d6\
+* Real version for distribution with FireWire 1.1 SDK.\
+* Show speed code on all snooped packets (except PHY packets): s100, s200, or s400.\
+* Detect missing self-ID packets ("m" bit set, followed by bit 23 clear).\
+* Added phyconfig, gap, root, and linkon commands.\
+* Added gpio command.\
+\
+99.??.??  1.0d7\
+* No longer set Posted Writes or enable Slave Bursts - Lynx rev A says not to.\
+* Added "short" command.\
+* Count short block packets [and any non-4n packet!] as DMA errors.\
+* New index argument for map command (e.g. "map pci104c,8003 2" for second card).\
+* No longer clear PCI Write Invalidate Enable bit on startup.\
+* New sampletime and sampleints commands.\
+* Can map another Lynx chip while running.\
+* Report more information about chip we use.\
+* Added SBP-2 decode feature.  "sbp off" to disable it.  Accurate until a bus reset.\
+* Shows any non-zero rCode on snooped packets.\
+* Can put a comment in the log text by preceeding it with *.  Enter only * for a line of *s.\
+* Show tLabel for write req/resp.  Show rCode in write response.\
+* Added qlock command to send compare/swap.  Type "qlock" for syntax.\
+* Added topology map.  Type "topology off" to disable.  Requires 1394a PHY.\
+* Supports the Newer FireWire 2 Go CardBus card on PowerBook G3 Series (need 8.6).\
+* Uses nearly twice as much RAM, and support packets up to nearly 4K each.\
+* Uses larger window on larger monitors.\
+* Added three receive modes: snoop, asynch, isoch (snoop is default).\
+* xisogap reports number of consecutive missed iso packets.\
+* Clears contender bit when run.\
+* Decodes some AV/C commands, IRM, and CMP activity.\
+* No longer tags zero-padded packets as "short" or DMA errors.\
+* Added crcdata and crcheader commands (on/off).\
+* Fixed to detect CardBus cards in top slot.\
+* Raised xwindow limit from 100 to 2000.  Use with caution (watch for ring-wrap).\
+* Now decodes OS X SBP-2.\
+\
+00.11.24 1.1\
+* Auto-detect all Lynx cards in system (favors rev B).\
+* Prints a helpful message if no Lynx card found.\
+* Warns if PHY is not 1394a.\
+* Refuses to run if FWIM is present on interface.\
+* Fixed random acks on overflow packets.\
+* Shows "?" for unknown ack or actual length.\
+* Changed emergency exit from Button to Command-Button.\
+* Removed "map" command.\
+* Made "data 8" the default.\
+\
+------\
+\
+New in FireBug 1.2d3 (relative to FireBug 1.1)\
+\
+Decode all 1394a PHY packets.\
+\
+Added "phydump" command (target node ID is optional)\
+\
+Fixed to read PHY register 0 at startup so we know our node ID, root status, etc.\
+\
+Added support for second Self-ID packet (up to 10 ports per device)\
+\
+Added check for missing final self-ID\
+\
+Added in-order check for self-IDs\
+\
+No longer show (meaningless) topology if any self-ID errors encountered, or if PHY Ping response packet (one or more Self-IDs) is received.\
+\
+Disable processor cycling while FireBug runs (restore on exit)\
+\
+"qread", "bwrite" etc. now remember the last address used.  You can enter a new address by typing only the last few characters.  The full 16-character address is printed for confirmation.  For commands such as qwrite that take additional arguments, at least one character of address must be specified.  For example, use these two commands in this order:\
+\
+  qread ffc1fffff000040c     [reads GUID hi from ffc1fffff000040c]\
+  qread 410                      [reads GUID lo from ffc1fffff0000410]\
+  qwrite 1000 0                 [writes 0 to ffc1fffff0001000]\
+\
+Added "keeplog on" command to stop log display when log is full.  Note: the log is "full" when its (invisible) line 0 is reached.  Use the "clear" command (Command-K) before or just after "keeplog on" to ensure that the entire log is available to be filled, otherwise, the stop point will be somewhat random (perhaps after just a few lines).  ("clear" clears the log and sets it on line 0.)\
+\
+Decodes more SBP-2 information:\
+  Reconnect (in login) and reconnect_hold (in response) now shown in seconds\
+  Full decode of Status FIFO messages (Note: most are untested)\
+\
+\
+(FireBug 1.2d5) ---------------------------\
+\
+Recognizes 1394b PHYs\
+\
+Decode pre-Wooten Fast Start packet (SBP-2)\
+\
+Reports NTSC or PAL in AVC OUTPUT SIGNAL MODE inquiry response\
+\
+Annotate start and stop of isoch channels, with some statistics.\
+> This depends on receipt of cycle start packets, and won't be accurate\
+> if the cycle master is disrupted.\
+\
+Identify isoch data as DV, NTSC/PAL, and show source node ID\
+\
+New commands:\
+  isostats on/off            report start/stop activity and stats for isoch\
+  isodup on/off              complain about duplicate channels in one cycle\
+  isowait <number>       sets number of idle cycles to wait before declaring channel inactive\
+Defaults:  isostats on; isodup on; isowait 5\
+\
+Now reports elapsed time when nothing happens in log for >60 seconds.\
+\
+Notes log file name and date/time in log before writing log.\
+\
+All on/off and <integer> commands report current setting if no argument specified; try "data" or "keeplog" for an example.\
+\
+Added "datafull" command to show entire block packet if below a specified size (default 63 quads).\
+Changed default setting of "data" command to 4 (quads).\
+\
+Added "node", "src" and "dest" commands to filter by node ID\
+  "src"/"dest" set source/destination node ID filter;\
+  "node" sets both at once\
+  packet must pass *both* filters to be displayed\
+  syntax is similar to ack or tcode filter:\
+    src 1-3 5 7       // show only packets from nodes 1, 2, 3, 5, or 7\
+    src on 12-15     // add nodes 12-15 to the active source nodes list\
+    dest off 1-14     // remove nodes 1-14 from active dest nodes list\
+    node 3 5          // show only packets between nodes 3 and 5\
+    node on 6        // add node 6 (source and dest) to active node lists\
+    src 3               // show only packets sent by node 3\
+    node on           // set all node ID filters on (default state)\
+If you have any setting other than "node on" (default) you will get a warning after each bus reset to remind you that the filters are *not* adjusted by tracking GUIDs, so if the node IDs have changed, your filters are probably set wrong.\
+\
+New command "ids" replays the most recent self IDs.  This is automatic when saving a log.\
+\
+Command-F and Escape now provide some feedback to explain what they did.\
+\
+(FireBug 1.2d6) ---------------------------\
+\
+Notes GUIDs and prints during "ids" command and before saving log\
+Identifies FireBug node in topology display\
+Prints qread, bread, etc. commands in log\
+Turns off Link bit automatically\
+Always prints time before self IDs when saving log\
+Prints warning if self-ID missing and explains known PCI-Lynx snoop bug\
+\
+(FireBug 1.2d7) ---------------------------\
+\
+Four quick fixes:\
+\
+Isochronous channel statistics are suppressed for channel 31, all the time.\
+\
+The "Master Filter" now should truly stop everything in the center pane - even errors.\
+\
+An isochronous channel filter was added.  The command is "channel" and it works just like the node ID filter described in 1.2d5 above.  Please read that part with care.  e.g. "channel 3-7 14 63"\
+\
+Added command "windowhidecs" to hide Cycle Start packets in the xwindow command.  Use on or off; default is off.  This will reduce the number of packets displayed by xwindow.\
+\
+(FireBug 1.6 for Mac OS X) ------------------------\
+\
+The ability to select which PCI-Lynx interface to use is no longer available.  Few people have more than one interface.\
+\
+FireBug no longer "tickles" the system to prevent sleep.  I haven't figured out how yet.  Be sure to disable sleep.\
+\
+Now takes advantage of up to two CPUs.\
+\
+Improved SBP detection after bus reset.  Also added RBC decode.  Also warns about mismatched ORBs and status.\
+\
+Added AVC Unit command decode.\
+\
+NOTE:  FireBug may print SBP warnings on Windows because FireBug doesn't understand the doorbell.  Ignore those.\
+\
+(FireBug 1.7 for Mac OS X) ------------------------\
+\
+Optional color display added.  Type "color" for more information.  Using color may reduce performance a bit.\
+\
+A problem crashing on launch if the Dock was in the way has been fixed.\
+\
+(FireBug 1.8 for Mac OS X) ------------------------\
+\
+Updated support for SBP-3 Fast Start (post-Wooten style)\
+\
+(FireBug 1.9 for Mac OS X) ------------------------\
+\
+Added blinking warning when Master Filter is on.\
+\
+Made running totals keep running after they reach 999999 or 999999999; first digit changes to +.\
+\
+Fixed negative numbers in log files after very long runs.\
+\
+Decode 1394b loop-test packet.\
+\
+Now show first cycle start packet seen after each bus reset (with comment).\
+\
+Added "phy on" and "phy off" commands to filter (most) PHY packets (for use with PHYTool).\
+\
+Changed default setting of "isowait" command from 5 to 200 packets, for better "isostats" results with iSight.\
+\
+Made FireBug safe during system sleep, with CardBus (reportedly works on desktops too)\
+\
+(FireBug 2.0 for Mac OS X) ------------------------\
+\
+Fixed crash receiving over 256 forged self-ID packets\
+\
+(FireBug 2.1 for Mac OS X) ------------------------\
+\
+New command "logto <filename>" to bypass Save File dialog\
+\
+Accepts commands over FireWire; send a block write to 4242.0000.0000.0000 of the form "fb-do: <command>"\
+(execution may be slow)\
+\
+Replays the first 4242... write after each bus reset during the self-ID recap (e.g. to identify FireStarter, etc.)\
+\
+(FireBug 2.3 for Mac OS X) ------------------------\
+\
+Partial decoding of IP (Internet Protocol) and minor improvements in AV/C decoding.\
+\
+\
+FireBug software and documentation Copyright \'a9 1997-2004 Apple Computer, Inc.  All rights reserved.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+\cf0 \
+FireWire and the FireWire logo are trademarks of Apple Computer.\
+}

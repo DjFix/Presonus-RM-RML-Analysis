@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFWInterface.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/header/IOFWInterface.h" title="IOFWInterface.h"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFWInterface.h">IOFWInterface.h</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<dl>
+<b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/IONetworkInterface.h" -->&lt;IOKit/network/IONetworkInterface.h&gt;<!-- /a -->,
+<a href="../../documentation/IOFWController/index.html#//apple_ref/doc/header/IOFWController.h" logicalPath="//apple_ref/doc/header/IOFWController.h" target="_top">"IOFWController.h"</a>,
+<a href="../../documentation/IOFWStats/index.html#//apple_ref/doc/header/IOFWStats.h" logicalPath="//apple_ref/doc/header/IOFWStats.h" target="_top">"IOFWStats.h"</a><br>
+</dl>
+<p></p>
+<hr>
+<br><h2>Classes</h2>
+<a name="HeaderDoc_classes"></a><dl>
+<dt><tt><a href="Classes/IOFWInterface/index.html#//apple_ref/cpp/cl/IOFWInterface" target="_top">IOFWInterface</a></tt></dt>
+<dd> The FireWire interface object. An FireWire controller driver,
+that is a subclass of IOFWController, will instantiate an object
+of this class when the driver calls the attachInterface() method.
+This interface object will then vend an FireWire interface to DLIL,
+and manage the connection between the controller driver and the upper
+networking layers. Drivers will seldom need to subclass
+    IOFWInterface. </dd>
+</dl>
+<hr>
+<br><h2>#defines</h2>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOActivePacketFilters;  name=kIOActivePacketFilters --><a name="//apple_ref/doc/compositePage/c/macro/kIOActivePacketFilters"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOActivePacketFilters">kIOActivePacketFilters </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->kIOActivePacketFilters is a property of IOFWInterface
+objects. It has an OSDictionary value.<!-- end abstract --></p>
+<p></p>
+<pre><span class="">#define</span><span class="preprocessor"> </span><a href="../../documentation/IOFWInterface/index.html?PDefines/PDefines.html#//apple_ref/c/macro/kIOActivePacketFilters" logicalPath="//apple_ref/c/cl/kIOActivePacketFilters //apple_ref/c/tdef/kIOActivePacketFilters //apple_ref/c/tag/kIOActivePacketFilters //apple_ref/c/econst/kIOActivePacketFilters //apple_ref/c/struct/kIOActivePacketFilters //apple_ref/c/data/kIOActivePacketFilters //apple_ref/c/clconst/kIOActivePacketFilters //apple_ref/c/intf/kIOActivePacketFilters //apple_ref/c/instm/kIOActivePacketFilters //apple_ref/c/clm/kIOActivePacketFilters //apple_ref/c/intfcm/kIOActivePacketFilters //apple_ref/c/intfm/kIOActivePacketFilters //apple_ref/c/func/kIOActivePacketFilters //apple_ref/c/ftmplt/kIOActivePacketFilters //apple_ref/c/defn/kIOActivePacketFilters //apple_ref/c/macro/kIOActivePacketFilters" target="_top"><span class="preprocessor">kIOActivePacketFilters</span></a><span class="preprocessor"> </span><span class="preprocessor">"</span><!-- a logicalPath="//apple_ref/c/cl/IOActivePacketFilters //apple_ref/c/tdef/IOActivePacketFilters //apple_ref/c/tag/IOActivePacketFilters //apple_ref/c/econst/IOActivePacketFilters //apple_ref/c/struct/IOActivePacketFilters //apple_ref/c/data/IOActivePacketFilters //apple_ref/c/clconst/IOActivePacketFilters //apple_ref/c/intf/IOActivePacketFilters //apple_ref/c/instm/IOActivePacketFilters //apple_ref/c/clm/IOActivePacketFilters //apple_ref/c/intfcm/IOActivePacketFilters //apple_ref/c/intfm/IOActivePacketFilters //apple_ref/c/func/IOActivePacketFilters //apple_ref/c/ftmplt/IOActivePacketFilters //apple_ref/c/defn/IOActivePacketFilters //apple_ref/c/macro/IOActivePacketFilters //apple_ref/doc/com/intfm/IOActivePacketFilters" --><span class="preprocessor">IOActivePacketFilters</span><!-- /a --><span class="preprocessor">"</span> </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The kIOActivePacketFilters property describes the current
+set of packet filters that have been successfully activated. Each
+entry in the dictionary is a key/value pair consisting of the filter
+group name, and an OSNumber describing the set of active filters for
+that group. Entries in this dictionary will mirror those in
+kIORequiredPacketFilters if the controller has reported success for
+        all filter change requests from the IOFWInterface object. <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWInterfaceClass;  name=kIOFWInterfaceClass --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWInterfaceClass"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWInterfaceClass">kIOFWInterfaceClass</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->kIOFWInterfaceClass is the name of the
+        IOFWInterface class. <!-- end abstract --></p>
+<p></p>
+<pre><span class="">#define</span><span class="preprocessor"> </span><a href="../../documentation/IOFWInterface/index.html?PDefines/PDefines.html#//apple_ref/c/macro/kIOFWInterfaceClass" logicalPath="//apple_ref/c/cl/kIOFWInterfaceClass //apple_ref/c/tdef/kIOFWInterfaceClass //apple_ref/c/tag/kIOFWInterfaceClass //apple_ref/c/econst/kIOFWInterfaceClass //apple_ref/c/struct/kIOFWInterfaceClass //apple_ref/c/data/kIOFWInterfaceClass //apple_ref/c/clconst/kIOFWInterfaceClass //apple_ref/c/intf/kIOFWInterfaceClass //apple_ref/c/instm/kIOFWInterfaceClass //apple_ref/c/clm/kIOFWInterfaceClass //apple_ref/c/intfcm/kIOFWInterfaceClass //apple_ref/c/intfm/kIOFWInterfaceClass //apple_ref/c/func/kIOFWInterfaceClass //apple_ref/c/ftmplt/kIOFWInterfaceClass //apple_ref/c/defn/kIOFWInterfaceClass //apple_ref/c/macro/kIOFWInterfaceClass" target="_top"><span class="preprocessor">kIOFWInterfaceClass</span></a><span class="preprocessor"> </span><span class="preprocessor">"</span><!-- a logicalPath="//apple_ref/c/cl/IOFWInterface //apple_ref/c/tdef/IOFWInterface //apple_ref/c/tag/IOFWInterface //apple_ref/c/econst/IOFWInterface //apple_ref/c/struct/IOFWInterface //apple_ref/c/data/IOFWInterface //apple_ref/c/clconst/IOFWInterface //apple_ref/c/intf/IOFWInterface //apple_ref/c/instm/IOFWInterface //apple_ref/c/clm/IOFWInterface //apple_ref/c/intfcm/IOFWInterface //apple_ref/c/intfm/IOFWInterface //apple_ref/c/func/IOFWInterface //apple_ref/c/ftmplt/IOFWInterface //apple_ref/c/defn/IOFWInterface //apple_ref/c/macro/IOFWInterface //apple_ref/doc/com/intfm/IOFWInterface" --><span class="preprocessor">IOFWInterface</span><!-- /a --><span class="preprocessor">"</span> </pre>
+<p></p>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOMulticastAddressList;  name=kIOMulticastAddressList --><a name="//apple_ref/doc/compositePage/c/macro/kIOMulticastAddressList"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOMulticastAddressList">kIOMulticastAddressList </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->kIOMulticastAddressList is a property of IOFWInterface
+objects. It is an OSData object.<!-- end abstract --></p>
+<p></p>
+<pre><span class="">#define</span><span class="preprocessor"> </span><a href="../../documentation/IOFWInterface/index.html?PDefines/PDefines.html#//apple_ref/c/macro/kIOMulticastAddressList" logicalPath="//apple_ref/c/cl/kIOMulticastAddressList //apple_ref/c/tdef/kIOMulticastAddressList //apple_ref/c/tag/kIOMulticastAddressList //apple_ref/c/econst/kIOMulticastAddressList //apple_ref/c/struct/kIOMulticastAddressList //apple_ref/c/data/kIOMulticastAddressList //apple_ref/c/clconst/kIOMulticastAddressList //apple_ref/c/intf/kIOMulticastAddressList //apple_ref/c/instm/kIOMulticastAddressList //apple_ref/c/clm/kIOMulticastAddressList //apple_ref/c/intfcm/kIOMulticastAddressList //apple_ref/c/intfm/kIOMulticastAddressList //apple_ref/c/func/kIOMulticastAddressList //apple_ref/c/ftmplt/kIOMulticastAddressList //apple_ref/c/defn/kIOMulticastAddressList //apple_ref/c/macro/kIOMulticastAddressList" target="_top"><span class="preprocessor">kIOMulticastAddressList</span></a><span class="preprocessor"> </span><span class="preprocessor">"</span><!-- a logicalPath="//apple_ref/c/cl/IOMulticastAddressList //apple_ref/c/tdef/IOMulticastAddressList //apple_ref/c/tag/IOMulticastAddressList //apple_ref/c/econst/IOMulticastAddressList //apple_ref/c/struct/IOMulticastAddressList //apple_ref/c/data/IOMulticastAddressList //apple_ref/c/clconst/IOMulticastAddressList //apple_ref/c/intf/IOMulticastAddressList //apple_ref/c/instm/IOMulticastAddressList //apple_ref/c/clm/IOMulticastAddressList //apple_ref/c/intfcm/IOMulticastAddressList //apple_ref/c/intfm/IOMulticastAddressList //apple_ref/c/func/IOMulticastAddressList //apple_ref/c/ftmplt/IOMulticastAddressList //apple_ref/c/defn/IOMulticastAddressList //apple_ref/c/macro/IOMulticastAddressList //apple_ref/doc/com/intfm/IOMulticastAddressList" --><span class="preprocessor">IOMulticastAddressList</span><!-- /a --><span class="preprocessor">"</span> </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The kIOMulticastAddressList property describes the
+list of multicast addresses that are being used by the
+controller to match against the destination address of an
+        incoming frame. <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIORequiredPacketFilters;  name=kIORequiredPacketFilters --><a name="//apple_ref/doc/compositePage/c/macro/kIORequiredPacketFilters"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIORequiredPacketFilters">kIORequiredPacketFilters </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->kIORequiredPacketFilters is a property of IOFWInterface
+objects. It has an OSDictionary value.<!-- end abstract --></p>
+<p></p>
+<pre><span class="">#define</span><span class="preprocessor"> </span><a href="../../documentation/IOFWInterface/index.html?PDefines/PDefines.html#//apple_ref/c/macro/kIORequiredPacketFilters" logicalPath="//apple_ref/c/cl/kIORequiredPacketFilters //apple_ref/c/tdef/kIORequiredPacketFilters //apple_ref/c/tag/kIORequiredPacketFilters //apple_ref/c/econst/kIORequiredPacketFilters //apple_ref/c/struct/kIORequiredPacketFilters //apple_ref/c/data/kIORequiredPacketFilters //apple_ref/c/clconst/kIORequiredPacketFilters //apple_ref/c/intf/kIORequiredPacketFilters //apple_ref/c/instm/kIORequiredPacketFilters //apple_ref/c/clm/kIORequiredPacketFilters //apple_ref/c/intfcm/kIORequiredPacketFilters //apple_ref/c/intfm/kIORequiredPacketFilters //apple_ref/c/func/kIORequiredPacketFilters //apple_ref/c/ftmplt/kIORequiredPacketFilters //apple_ref/c/defn/kIORequiredPacketFilters //apple_ref/c/macro/kIORequiredPacketFilters" target="_top"><span class="preprocessor">kIORequiredPacketFilters</span></a><span class="preprocessor"> </span><span class="preprocessor">"</span><!-- a logicalPath="//apple_ref/c/cl/IORequiredPacketFilters //apple_ref/c/tdef/IORequiredPacketFilters //apple_ref/c/tag/IORequiredPacketFilters //apple_ref/c/econst/IORequiredPacketFilters //apple_ref/c/struct/IORequiredPacketFilters //apple_ref/c/data/IORequiredPacketFilters //apple_ref/c/clconst/IORequiredPacketFilters //apple_ref/c/intf/IORequiredPacketFilters //apple_ref/c/instm/IORequiredPacketFilters //apple_ref/c/clm/IORequiredPacketFilters //apple_ref/c/intfcm/IORequiredPacketFilters //apple_ref/c/intfm/IORequiredPacketFilters //apple_ref/c/func/IORequiredPacketFilters //apple_ref/c/ftmplt/IORequiredPacketFilters //apple_ref/c/defn/IORequiredPacketFilters //apple_ref/c/macro/IORequiredPacketFilters //apple_ref/doc/com/intfm/IORequiredPacketFilters" --><span class="preprocessor">IORequiredPacketFilters</span><!-- /a --><span class="preprocessor">"</span> </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The kIORequiredPacketFilters property describes the current
+set of required packet filters. Each entry in the dictionary is a
+key/value pair consisting of the filter group name, and an OSNumber
+        describing the set of required filters for that group. <!-- end discussion --></p>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

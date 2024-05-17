@@ -1,0 +1,213 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red193\green0\blue0;\red0\green0\blue194;}
+\vieww19000\viewh16520\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\f0\b\fs32 \cf0 \
+
+\fs36 About FireWireGDB
+\b0\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\fs20 \cf2 Copyright \'a9 2005-2007 by Apple Inc.  All Rights Reserved.
+\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul \ulc0 Introduction
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 FireWireGDB allows you to connect via GDB, using a plugin, to a remote Mac connected over FireWire. FireWireGDB allows for live gdb debugging of a non-trapped kernel. This means it is particularly useful when debugging hard freezes or hangs that prevent a Mac from dropping into the debugger (panicking).\
+\
+If you can get the Mac which you wish to debug into the debugger (e.g. panic) at the point you want to debug, than FireWireKDP is a better solution for you. If you can insert traps into your code to have the Mac drop into the debugger at specific points, than FireWireKDP will also work for you. For more information on the differences between FireWireKDP and FireWireGDB, read the "Comparing FireWireGDB and FireWireKDP" note below. For more info on dropping to the debugger and traps, see {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptDebugger/hello_debugger.html#//apple_ref/doc/uid/20002367-100014-CHDCDIGH"}}{\fldrslt \cf3 http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptDebugger/hello_debugger.html#//apple_ref/doc/uid/20002367-100014-CHDCDIGH}}. FireWireKDP is typically available in the same location as FireWireGDB.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Download
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b0 \cf0 \ulnone The project is available in the FireWireSDK, traditionally posted at: {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/sdk/"}}{\fldrslt \cf3 http://developer.apple.com/sdk/#FireWireX}}.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+
+\b\fs28 \ul Components
+\b0\fs24 \ulnone \
+There are two components of the FireWireGDB project that are necessary for operation:\
+1. AppleFireWireGDB.kext is to be installed on the Mac you wish to debug (target). This kext's functionality is built into Mac OS X 10.5, so it is not require for machine with a Leopard-based OS.\
+2. A gdb plugin that relates to your target Mac's OS. \
+\
+
+\b\fs28 \ul Compatibility
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 When the AppleFireWireGDB.kext is installed, the normal FireWire stack does 
+\i not
+\i0  load and hence, all typical FireWire services are disabled. This is in contrast to the way FireWireKDP works.\
+\
+FireWireGDB supports debugging Intel-based Macs, however, the debugger (or host) Mac must also be an Intel-based Mac with the proper gdb plugin loaded. Please see below. Please note that special steps need to be taken to use FireWireGDB with a 64-bit Mac.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+
+\b\fs28 \ul Usage
+\b0\fs24 \ulnone \
+Connect two Macs via FireWire and follow the steps below.\
+On the target (to be debugged) machine:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	1. Install AppleFireWireGDB.kext into /System/Library/Extensions:\
+		
+\i This step, installing the kext, is optional on Leopard-based machines.
+\i0 \
+		Within Terminal.app run the following:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		a.
+\f1  
+\fs20 \cf2 % cd <location_of_AppleFireWireGDB.kext>
+\f0\fs24 \cf0 \
+		b.
+\f1 \cf2  
+\fs20 % sudo cp -r AppleFireWireGDB.kext /System/Library/Extensions
+\f0\fs24 \cf0 \
+		c.
+\f1 \cf2  
+\fs20 % sudo chown -R root:wheel /System/Library/Extensions/AppleFireWireGDB.kext
+\f0\fs24 \cf0 \
+		d.
+\f1  
+\fs20 \cf2 % sudo touch /System/Library/Extensions 
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	2. Set kernel boot arguments to enable NMI and debugger printing:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		
+\f1\fs20 \cf2 % sudo nvram boot-args="debug=0x146"
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	3. Reboot the target.\
+	4. Put the Mac into the state you wish to debug (e.g. hard freeze).\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+On the debugger machine:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	1. Fix the permissions of the plugins.\
+\pard\tx720\tx1440\tx2160\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		Run the FixPluginPermissions.command script (included with FireWireGDB) in the same directory as the plugin you wish to use.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 		
+\f1\fs20 \cf2 % /Users/tester/Desktop/FixPluginPermissions.command
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		This script will set the proper permissions for the plugin.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	2. Run gdb with the target OS' symbol file.\
+		
+\f1\fs20 \cf2 % gdb mach_kernel
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		See {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/sdk/#Kernel"}}{\fldrslt \cf3 http://developer.apple.com/sdk/#Kernel}} for the proper Kernel Debug Kit which will contain the proper "mach_kernel" symbol file. See step 5 for more info.\
+		Also, if you're debugging an Intel-based Mac, you must debug from a second Intel-based Mac using the proper i386 plugin, see below.\
+	3. Within gdb load the proper plugin for the architecture and OS of the target Mac.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 		
+\f1\fs20 \cf2 (gdb) load-plugin /Users/tester/Desktop/FireWirePlugini386-Leopard
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\ql\qnatural\pardirnatural
+\cf0 Be sure to use a full path to the plugin, not a relative path.\
+Note: If you receive a permissions error while loading the plugin, please see the notes below regarding fixing permissions.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 	4. Within gdb set the target to remote-fw.\
+		
+\f1\fs20 \cf2 (gdb) target remote-fw
+\f0\fs24 \cf0 \
+	5. Within gdb, attach.\
+		
+\f1\fs20 \cf2 (gdb) attach
+\f0\fs24 \cf0 \
+	6. The connection should be established. Use gdb as you would over Ethernet.\
+	7. For more info on remote kernel debugging, please see:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2880\fi-2160\ql\qnatural\pardirnatural
+\cf0 		{\field{\*\fldinst{HYPERLINK "http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/DebuggingDrivers/chapter_8_section_4.html"}}{\fldrslt \cf3 http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/DebuggingDrivers/chapter_8_section_4.html}}\cf3 \
+		{\field{\*\fldinst{HYPERLINK "http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUGFLAGS"}}{\fldrslt http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUGFLAGS}}\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+
+\b\fs28 \ul Other Notes
+\fs24 \ulnone \
+\
+Cross-archtecture Debugging:
+\b0 \
+	FireWireGDB does support debugging Intel-based machines, however the debug (or host) Mac must also be an Intel-based Mac using the proper i386 plugin. Furthermore, you must debug a PowerPC Mac with another PPC-based Mac.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b \cf0 \
+Leopard on PPC:
+\b0 \
+	A plugin is provided for debugging Leopard running on 32-bit PowerPC based Macs. Currently, there is no plugin for 64-bit Leopard machines.\
+\
+
+\b Debugging a 64-bit Mac:
+\b0 \
+	FireWireGDB does not support 64-bit addressing and therefore special steps need to be taken to ensure that only 32-bit addressing is in use while debugging 64-bit capable machines. If you wish to debug a 64-bit Intel based Mac, add "himemory_mode=1" to the machine's boot-args during installation of the AppleFireWireGDB.kext. If you wish to debug a G5 Mac, add "dart=0" to its boot-args during installation. Both of these debug options will prevent the machine from using addressing greater than 32-bits.\
+\
+
+\b Fixing a plugin's permissions:
+\b0 \
+	If gdb can't load your plugin due to permissions problems, you must use the 
+\i FireWirePlugini386-Chardonnay-Later
+\i0  plugin and reset it's permissions. To do this, run the 
+\i FixPluginPermissions.command
+\i0  script in the same directory as the plugin. This script will set the proper permissions for the plugin.
+\b\fs28 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b \cf0 GDB fails to load a Chardonnay plugin because of symbol problems:
+\b0 \
+	If gdb can't load a Chardonnay plugin due to symbol problems, you are mostly likely using the wrong version of the plugin. 
+\i FireWirePlugini386-Chardonnay-Later
+\i0  is for later versions of gdb.
+\b\fs28 \ul \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b \cf0 AppleFireWireKPrintf:
+\b0 \
+	If the AppleFireWireKPrintf kext is installed on the target Mac, the AppleFireWireGDB.kext is 
+\i not
+\i0  also needed. They are capable of working cooperatively, from the same kext.\
+\
+
+\b Other FireWire Devices:
+\b0 \
+	To avoid conflicts it is best not to have other FireWire devices plugged into the host or target machines while using FireWireGDB. Having more than 2 nodes total (i.e. the two CPUs) will cause unexpected results.\
+\
+
+\b Second FireWire Interface:
+\b0 \
+	FireWireGDB may not work with multiple FireWire interfaces. Please use the built-in FireWire port and remove any FireWire PCI cards.\
+\
+
+\b Post-Panic Hot-Plugs:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi20\ql\qnatural\pardirnatural
+\cf0 Some Macs do not support debugging after hot-plugging another Mac after it has panicked. To avoid this problem, keep a debugger Mac connected in anticipation of a panic.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b \cf0 Comparing FireWireGDB and FireWireKDP:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi20\ql\qnatural\pardirnatural
+\cf0 FireWireKDP is the recommended method for performing remote (two-)machine debugging. FireWireKDP uses the target machine's kernel debugger kdp protocol for performing memory lookup and inspection. FireWireKDP is dependable as long as the kernel debugger is available and the AppleFireWireKDP.kext has loaded. When these services are not available, such as 
+\b very
+\b0  early in boot, 
+\b very
+\b0  early during waking, or 
+\b very
+\b0  late upon sleeping, FireWireGDB may be useful. FireWireGDB does not require any software interaction from the target machine. It does all of it's memory lookup and inspection remotely. While FireWireGDB is a useful tool, it somewhat limits gdb's usefulness because not all commands and macros are available for use.}

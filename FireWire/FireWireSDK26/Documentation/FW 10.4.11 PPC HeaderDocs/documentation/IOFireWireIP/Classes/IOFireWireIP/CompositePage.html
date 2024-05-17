@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireIP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFireWireIP</font></h1>
+<br><a name="//apple_ref/doc/class/IOFireWireIP" title="IOFireWireIP"></a><h2>Abstract</h2>
+<p>
+ nub for IP1394 devices
+<b>Superclass:</b> <a href="../../../../documentation/IOFWController/Classes/IOFWController/index.html#//apple_ref/cpp/cl/IOFWController" logicalPath="//apple_ref/cpp/cl/IOFWController" target="_top">IOFWController</a><br></p>
+<hr>
+<br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createIPConfigRomEntry/IOReturn/()" target="_top">createIPConfigRomEntry</a></tt></dt>
+<dd>creates the config rom entry for IP over Firewire.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createMediumState/bool/()" target="_top">createMediumState</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/deRegisterFWIPPrivateHandlers/void/()" target="_top">deRegisterFWIPPrivateHandlers</a></tt></dt>
+<dd>Callback for a detaching FWIPPrivateHandlers
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/clm/IOFireWireIP/fwIPUnitAttach/staticbool/(void*,void*,IOService*)" target="_top">fwIPUnitAttach</a></tt></dt>
+<dd>Callback for a Unit attached of type IP1394
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getBytesFromGUID/void/(void*,u_char*,UInt8)" target="_top">getBytesFromGUID</a></tt></dt>
+<dd>constructs byte array from the GUID.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getDevice/IOFireWireNub*/()" target="_top">getDevice</a></tt></dt>
+<dd>Returns the FireWire device nub that is this object's provider .
+ </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getIPLock/IORecursiveLock*/()" target="_top">getIPLock</a></tt></dt>
+<dd>Returns lock from the link control block
+ </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getLcb/LCB*/()" target="_top">getLcb</a></tt></dt>
+<dd>Returns the link control block for the IOLocalNode
+ </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/makeEthernetAddress/void/(CSRNodeUniqueID*,u_char*,UInt32)" target="_top">makeEthernetAddress</a></tt></dt>
+<dd>constructs mac address from the GUID.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createIPConfigRomEntry/IOReturn/();  name=IOFireWireIP::createIPConfigRomEntry --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createIPConfigRomEntry/IOReturn/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="createIPConfigRomEntry">createIPConfigRomEntry</a></h2>
+</td></tr></table>
+<p>creates the config rom entry for IP over Firewire.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/createIPConfigRomEntry //apple_ref/cpp/clm/createIPConfigRomEntry //apple_ref/cpp/intfcm/createIPConfigRomEntry //apple_ref/cpp/func/createIPConfigRomEntry //apple_ref/cpp/ftmplt/createIPConfigRomEntry //apple_ref/cpp/defn/createIPConfigRomEntry //apple_ref/cpp/macro/createIPConfigRomEntry" --><font class="function">createIPConfigRomEntry</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>none</em></tt></dt>
+<dd></dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>IOReturn - kIOReturnSuccess or error if failure.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createMediumState/bool/();  name=IOFireWireIP::createMediumState --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/createMediumState/bool/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="createMediumState">createMediumState</a></h2>
+</td></tr></table>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/createMediumState //apple_ref/cpp/clm/createMediumState //apple_ref/cpp/intfcm/createMediumState //apple_ref/cpp/func/createMediumState //apple_ref/cpp/ftmplt/createMediumState //apple_ref/cpp/defn/createMediumState //apple_ref/cpp/macro/createMediumState" --><font class="function">createMediumState</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>none.</em></tt></dt>
+<dd></dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>create a supported medium information and 
+attach to the IONetworkingFamily.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/deRegisterFWIPPrivateHandlers/void/();  name=IOFireWireIP::deRegisterFWIPPrivateHandlers --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/deRegisterFWIPPrivateHandlers/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="deRegisterFWIPPrivateHandlers">deRegisterFWIPPrivateHandlers</a></h2>
+</td></tr></table>
+<p>Callback for a detaching FWIPPrivateHandlers
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/deRegisterFWIPPrivateHandlers //apple_ref/cpp/clm/deRegisterFWIPPrivateHandlers //apple_ref/cpp/intfcm/deRegisterFWIPPrivateHandlers //apple_ref/cpp/func/deRegisterFWIPPrivateHandlers //apple_ref/cpp/ftmplt/deRegisterFWIPPrivateHandlers //apple_ref/cpp/defn/deRegisterFWIPPrivateHandlers //apple_ref/cpp/macro/deRegisterFWIPPrivateHandlers" --><font class="function">deRegisterFWIPPrivateHandlers</font><!-- /a -->();</pre></blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>void.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/cpp/clm/IOFireWireIP/fwIPUnitAttach/staticbool/(void*,void*,IOService*);  name=IOFireWireIP::fwIPUnitAttach --><a name="//apple_ref/doc/compositePage/cpp/clm/IOFireWireIP/fwIPUnitAttach/staticbool/(void*,void*,IOService*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="fwIPUnitAttach">fwIPUnitAttach</a></h2>
+</td></tr></table>
+<p>Callback for a Unit attached of type IP1394
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">static</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/fwIPUnitAttach //apple_ref/cpp/clm/fwIPUnitAttach //apple_ref/cpp/intfcm/fwIPUnitAttach //apple_ref/cpp/func/fwIPUnitAttach //apple_ref/cpp/ftmplt/fwIPUnitAttach //apple_ref/cpp/defn/fwIPUnitAttach //apple_ref/cpp/macro/fwIPUnitAttach" --><font class="function">fwIPUnitAttach</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">target</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/clconst/IOService" --><font class="type">IOService</font><!-- /a --> *<font class="param">newService</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>target</em></tt></dt>
+<dd>- callback data.</dd>
+<dt><tt><em>refcon</em></tt></dt>
+<dd>- callback data.</dd>
+<dt><tt><em>newService</em></tt></dt>
+<dd>- handle to the new IP1394 unit created.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>bool.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getBytesFromGUID/void/(void*,u_char*,UInt8);  name=IOFireWireIP::getBytesFromGUID --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getBytesFromGUID/void/(void*,u_char*,UInt8)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getBytesFromGUID">getBytesFromGUID</a></h2>
+</td></tr></table>
+<p>constructs byte array from the GUID.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getBytesFromGUID //apple_ref/cpp/clm/getBytesFromGUID //apple_ref/cpp/intfcm/getBytesFromGUID //apple_ref/cpp/func/getBytesFromGUID //apple_ref/cpp/ftmplt/getBytesFromGUID //apple_ref/cpp/defn/getBytesFromGUID //apple_ref/cpp/macro/getBytesFromGUID" --><font class="function">getBytesFromGUID</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">guid</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/u_char //apple_ref/cpp/cl/u_char //apple_ref/cpp/tdef/u_char //apple_ref/cpp/tag/u_char //apple_ref/cpp/econst/u_char //apple_ref/cpp/struct/u_char //apple_ref/cpp/clconst/u_char" --><font class="type">u_char</font><!-- /a --> *<font class="param">bufAddr</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> <font class="param">type</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>fwuid</em></tt></dt>
+<dd>- GUID of the node.</dd>
+<dt><tt><em>bufAddr</em></tt></dt>
+<dd>- pointer to the buffer.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>void.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getDevice/IOFireWireNub*/();  name=IOFireWireIP::getDevice --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getDevice/IOFireWireNub*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getDevice">getDevice</a></h2>
+</td></tr></table>
+<p>Returns the FireWire device nub that is this object's provider .
+ <br></p>
+<blockquote><pre><tt>public</tt>
+<br><a href="../../../../documentation/IOFireWireNub/Classes/IOFireWireNub/index.html#//apple_ref/cpp/cl/IOFireWireNub" logicalPath="//apple_ref/cpp/cl/IOFireWireNub" target="_top"><font class="type">IOFireWireNub</font></a><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getDevice //apple_ref/cpp/clm/getDevice //apple_ref/cpp/intfcm/getDevice //apple_ref/cpp/func/getDevice //apple_ref/cpp/ftmplt/getDevice //apple_ref/cpp/defn/getDevice //apple_ref/cpp/macro/getDevice" --><font class="function">getDevice</font><!-- /a -->() <font class="keyword">const</font> </pre></blockquote>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getIPLock/IORecursiveLock*/();  name=IOFireWireIP::getIPLock --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getIPLock/IORecursiveLock*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getIPLock">getIPLock</a></h2>
+</td></tr></table>
+<p>Returns lock from the link control block
+ <br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IORecursiveLock //apple_ref/cpp/cl/IORecursiveLock //apple_ref/cpp/tdef/IORecursiveLock //apple_ref/cpp/tag/IORecursiveLock //apple_ref/cpp/econst/IORecursiveLock //apple_ref/cpp/struct/IORecursiveLock //apple_ref/cpp/clconst/IORecursiveLock" --><font class="type">IORecursiveLock</font><!-- /a --> <font class="type">*</font><!-- a logicalPath="//apple_ref/cpp/instm/getIPLock //apple_ref/cpp/clm/getIPLock //apple_ref/cpp/intfcm/getIPLock //apple_ref/cpp/func/getIPLock //apple_ref/cpp/ftmplt/getIPLock //apple_ref/cpp/defn/getIPLock //apple_ref/cpp/macro/getIPLock" --><font class="function">getIPLock</font><!-- /a -->() <font class="keyword">const</font> </pre></blockquote>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getLcb/LCB*/();  name=IOFireWireIP::getLcb --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/getLcb/LCB*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getLcb">getLcb</a></h2>
+</td></tr></table>
+<p>Returns the link control block for the IOLocalNode
+ <br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/LCB //apple_ref/cpp/cl/LCB //apple_ref/cpp/tdef/LCB //apple_ref/cpp/tag/LCB //apple_ref/cpp/econst/LCB //apple_ref/cpp/struct/LCB //apple_ref/cpp/clconst/LCB" --><font class="type">LCB</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getLcb //apple_ref/cpp/clm/getLcb //apple_ref/cpp/intfcm/getLcb //apple_ref/cpp/func/getLcb //apple_ref/cpp/ftmplt/getLcb //apple_ref/cpp/defn/getLcb //apple_ref/cpp/macro/getLcb" --><font class="function">getLcb</font><!-- /a -->() <font class="keyword">const</font> </pre></blockquote>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/makeEthernetAddress/void/(CSRNodeUniqueID*,u_char*,UInt32);  name=IOFireWireIP::makeEthernetAddress --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireIP/makeEthernetAddress/void/(CSRNodeUniqueID*,u_char*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="makeEthernetAddress">makeEthernetAddress</a></h2>
+</td></tr></table>
+<p>constructs mac address from the GUID.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/makeEthernetAddress //apple_ref/cpp/clm/makeEthernetAddress //apple_ref/cpp/intfcm/makeEthernetAddress //apple_ref/cpp/func/makeEthernetAddress //apple_ref/cpp/ftmplt/makeEthernetAddress //apple_ref/cpp/defn/makeEthernetAddress //apple_ref/cpp/macro/makeEthernetAddress" --><font class="function">makeEthernetAddress</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/CSRNodeUniqueID //apple_ref/cpp/cl/CSRNodeUniqueID //apple_ref/cpp/tdef/CSRNodeUniqueID //apple_ref/cpp/tag/CSRNodeUniqueID //apple_ref/cpp/econst/CSRNodeUniqueID //apple_ref/cpp/struct/CSRNodeUniqueID //apple_ref/cpp/clconst/CSRNodeUniqueID" --><font class="type">CSRNodeUniqueID</font><!-- /a --> *<font class="param">fwuid</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/u_char //apple_ref/cpp/cl/u_char //apple_ref/cpp/tdef/u_char //apple_ref/cpp/tag/u_char //apple_ref/cpp/econst/u_char //apple_ref/cpp/struct/u_char //apple_ref/cpp/clconst/u_char" --><font class="type">u_char</font><!-- /a --> *<font class="param">bufAddr</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">vendorID</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>fwuid</em></tt></dt>
+<dd>- GUID of the node.</dd>
+<dt><tt><em>bufAddr</em></tt></dt>
+<dd>- pointer to the buffer.</dd>
+<dt><tt><em>vendorID</em></tt></dt>
+<dd>- vendorID.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>void.
+ </dd>
+</dl>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/IOFireWireIP/reserved;  name=IOFireWireIP::reserved --><a name="//apple_ref/doc/compositePage/cpp/data/IOFireWireIP/reserved"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="reserved">reserved</a></h2>
+</td></tr></table>
+<blockquote>
+<tt>protected</tt> <a href="../../../../documentation/IOFireWireBus/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><font class="type">ExpansionData</font></a> <font class="type">*</font><font class="var">reserved</font>;</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Reserved for future use. (Internal use only)</p>
+<hr>
+<h2>Structs and Unions</h2>
+<hr>
+<!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/cpp/tag/IOFireWireIP/ExpansionData;  name=IOFireWireIP::ExpansionData --><a name="//apple_ref/doc/compositePage/cpp/tag/IOFireWireIP/ExpansionData"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ExpansionData">ExpansionData</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">struct</font> <a href="../../../../documentation/IOFireWireBus/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><font class="type">ExpansionData</font></a> {
+};</pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This structure will be used to expand the capablilties of the class in the future.
+ </p>
+</dl>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

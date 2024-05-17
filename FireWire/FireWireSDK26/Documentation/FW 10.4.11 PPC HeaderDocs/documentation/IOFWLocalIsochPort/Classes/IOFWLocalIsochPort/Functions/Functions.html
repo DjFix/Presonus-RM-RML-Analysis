@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1>
+<br><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWLocalIsochPort/notify/virtualIOReturn/(IOFWDCLNotificationType,DCLCommand**,UInt32)" target="doc">notify</a></tt></dt>
+<dd>Informs hardware of a change to the DCL program.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWLocalIsochPort/notify/virtualIOReturn/(IOFWDCLNotificationType,DCLCommand**,UInt32);  name=IOFWLocalIsochPort::notify --><a name="//apple_ref/cpp/instm/IOFWLocalIsochPort/notify/virtualIOReturn/(IOFWDCLNotificationType,DCLCommand**,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="notify">notify</a></h2>
+</td></tr></table>
+<p>Informs hardware of a change to the DCL program.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/notify //apple_ref/cpp/clm/notify //apple_ref/cpp/intfcm/notify //apple_ref/cpp/func/notify //apple_ref/cpp/ftmplt/notify //apple_ref/cpp/defn/notify //apple_ref/cpp/macro/notify" --><font class="function">notify</font><!-- /a -->( 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWDCLNotificationType //apple_ref/cpp/cl/IOFWDCLNotificationType //apple_ref/cpp/tdef/IOFWDCLNotificationType //apple_ref/cpp/tag/IOFWDCLNotificationType //apple_ref/cpp/econst/IOFWDCLNotificationType //apple_ref/cpp/struct/IOFWDCLNotificationType //apple_ref/cpp/clconst/IOFWDCLNotificationType" --><font class="type">IOFWDCLNotificationType</font><!-- /a --> <font class="param">notificationType</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/DCLCommand //apple_ref/cpp/cl/DCLCommand //apple_ref/cpp/tdef/DCLCommand //apple_ref/cpp/tag/DCLCommand //apple_ref/cpp/econst/DCLCommand //apple_ref/cpp/struct/DCLCommand //apple_ref/cpp/clconst/DCLCommand" --><font class="type">DCLCommand</font><!-- /a --> *<font class="type">*</font> <font class="param">dclCommandList</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">numDCLCommands</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>notificationType</em></tt></dt>
+<dd>Type of change.</dd>
+<dt><tt><em>dclCommandList</em></tt></dt>
+<dd>List of DCL commands that have been changed.</dd>
+<dt><tt><em>numDCLCommands</em></tt></dt>
+<dd>Number of commands in list.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>IOKit error code. </dd>
+</dl>
+<hr>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

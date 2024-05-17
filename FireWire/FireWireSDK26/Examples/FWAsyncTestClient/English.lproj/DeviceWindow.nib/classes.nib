@@ -1,0 +1,40 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {changePacketSize = id; changeTestMode = id; toggleAction = id; }; 
+            CLASS = DeviceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fPacketSizePopup = id; 
+                fSelectorController = id; 
+                fStartStopToggle = id; 
+                fTestModePopup = id; 
+                fTextView = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                cancelRead = id; 
+                doRead = id; 
+                loginToDevice = id; 
+                logoutOfDevice = id; 
+                performRead = id; 
+            }; 
+            CLASS = LUNController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fCancelButton = id; 
+                fLoginButton = id; 
+                fLogoutButton = id; 
+                fReadButton = id; 
+                fTextView = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

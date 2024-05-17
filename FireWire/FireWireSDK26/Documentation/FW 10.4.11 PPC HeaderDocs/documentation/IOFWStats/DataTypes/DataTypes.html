@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Defined Types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Defined Types</font></h1>
+<br><hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IODot3CollEntry;  name=IODot3CollEntry --><a name="//apple_ref/c/tdef/IODot3CollEntry"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IODot3CollEntry">IODot3CollEntry</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/collFrequencies //apple_ref/c/cl/collFrequencies //apple_ref/c/tdef/collFrequencies //apple_ref/c/tag/collFrequencies //apple_ref/c/econst/collFrequencies //apple_ref/c/struct/collFrequencies //apple_ref/c/clconst/collFrequencies" --><font class="type">collFrequencies</font><!-- /a -->[<font class="number">16</font>]; 
+} <font class="var">IODot3CollEntry</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>collFrequencies</code></dt>
+<dd>dot3StatsCollFrequencies.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Collision statistics structure.
+    </p>
+</dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IODot3RxExtraEntry;  name=IODot3RxExtraEntry --><a name="//apple_ref/c/tdef/IODot3RxExtraEntry"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IODot3RxExtraEntry">IODot3RxExtraEntry</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">overruns</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">watchdogTimeouts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">frameTooShorts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">collisionErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">phyErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">timeouts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">interrupts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">resets</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">resourceErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/reserved //apple_ref/c/cl/reserved //apple_ref/c/tdef/reserved //apple_ref/c/tag/reserved //apple_ref/c/econst/reserved //apple_ref/c/struct/reserved //apple_ref/c/clconst/reserved" --><font class="type">reserved</font><!-- /a -->[<font class="number">4</font>]; 
+} <font class="var">IODot3RxExtraEntry</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>overruns</code></dt>
+<dd>receiver overruns.</dd>
+<dt><code>watchdogTimeouts</code></dt>
+<dd>watchdog timer expirations.</dd>
+<dt><code>frameTooShorts</code></dt>
+<dd>runt frames.</dd>
+<dt><code>collisionErrors</code></dt>
+<dd>frames damages by late collision.</dd>
+<dt><code>phyErrors</code></dt>
+<dd>PHY receive errors.</dd>
+<dt><code>timeouts</code></dt>
+<dd>receiver timeouts.</dd>
+<dt><code>interrupts</code></dt>
+<dd>receiver interrupts.</dd>
+<dt><code>resets</code></dt>
+<dd>receiver resets.</dd>
+<dt><code>resourceErrors</code></dt>
+<dd>receiver resource shortages.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Extra receiver statistics not defined by RFC1650.
+</p>
+</dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IODot3StatsEntry;  name=IODot3StatsEntry --><a name="//apple_ref/c/tdef/IODot3StatsEntry"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IODot3StatsEntry">IODot3StatsEntry</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">alignmentErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">fcsErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">singleCollisionFrames</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">multipleCollisionFrames</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">sqeTestErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">deferredTransmissions</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">lateCollisions</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">excessiveCollisions</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">internalMacTransmitErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">carrierSenseErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">frameTooLongs</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">internalMacReceiveErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">etherChipSet</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">missedFrames</font>; 
+} <font class="var">IODot3StatsEntry</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>alignmentErrors</code></dt>
+<dd>dot3StatsAlignmentErrors.</dd>
+<dt><code>fcsErrors</code></dt>
+<dd>dot3StatsFCSErrors.</dd>
+<dt><code>singleCollisionFrames</code></dt>
+<dd>dot3StatsSingleCollisionFrames.</dd>
+<dt><code>multipleCollisionFrames</code></dt>
+<dd>dot3StatsMultipleCollisionFrames.</dd>
+<dt><code>sqeTestErrors</code></dt>
+<dd>dot3StatsSQETestErrors.</dd>
+<dt><code>deferredTransmissions</code></dt>
+<dd>dot3StatsDeferredTransmissions.</dd>
+<dt><code>lateCollisions</code></dt>
+<dd>dot3StatsLateCollisions.</dd>
+<dt><code>excessiveCollisions</code></dt>
+<dd>dot3StatsExcessiveCollisions.</dd>
+<dt><code>internalMacTransmitErrors</code></dt>
+<dd>dot3StatsInternalMacTransmitErrors.</dd>
+<dt><code>carrierSenseErrors</code></dt>
+<dd>dot3StatsCarrierSenseErrors.</dd>
+<dt><code>frameTooLongs</code></dt>
+<dd>dot3StatsFrameTooLongs.</dd>
+<dt><code>internalMacReceiveErrors</code></dt>
+<dd>dot3StatsInternalMacReceiveErrors.</dd>
+<dt><code>etherChipSet</code></dt>
+<dd>dot3StatsEtherChipSet.</dd>
+<dt><code>missedFrames</code></dt>
+<dd>dot3StatsMissedFrames (not in RFC1650).</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Ethernet MIB statistics structure.
+</p>
+</dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IODot3TxExtraEntry;  name=IODot3TxExtraEntry --><a name="//apple_ref/c/tdef/IODot3TxExtraEntry"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IODot3TxExtraEntry">IODot3TxExtraEntry</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">underruns</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">jabbers</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">phyErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">timeouts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">interrupts</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">resets</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">resourceErrors</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/reserved //apple_ref/c/cl/reserved //apple_ref/c/tdef/reserved //apple_ref/c/tag/reserved //apple_ref/c/econst/reserved //apple_ref/c/struct/reserved //apple_ref/c/clconst/reserved" --><font class="type">reserved</font><!-- /a -->[<font class="number">4</font>]; 
+} <font class="var">IODot3TxExtraEntry</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>underruns</code></dt>
+<dd>transmit underruns.</dd>
+<dt><code>jabbers</code></dt>
+<dd>jabber events.</dd>
+<dt><code>phyErrors</code></dt>
+<dd>PHY transmit errors.</dd>
+<dt><code>timeouts</code></dt>
+<dd>transmitter timeouts.</dd>
+<dt><code>interrupts</code></dt>
+<dd>transmitter interrupts.</dd>
+<dt><code>resets</code></dt>
+<dd>transmitter resets.</dd>
+<dt><code>resourceErrors</code></dt>
+<dd>transmitter resource shortages.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Extra transmitter statistics not defined by RFC1650.
+</p>
+</dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWStats;  name=IOFWStats --><a name="//apple_ref/c/tdef/IOFWStats"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWStats">IOFWStats</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <a href="../../../documentation/IOFWStats/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IODot3StatsEntry" logicalPath="//apple_ref/c/cl/IODot3StatsEntry //apple_ref/c/cl/IODot3StatsEntry //apple_ref/c/tdef/IODot3StatsEntry" target="_top"><font class="type">IODot3StatsEntry</font></a> <font class="var">dot3StatsEntry</font>; 
+    <a href="../../../documentation/IOFWStats/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IODot3CollEntry" logicalPath="//apple_ref/c/cl/IODot3CollEntry //apple_ref/c/cl/IODot3CollEntry //apple_ref/c/tdef/IODot3CollEntry" target="_top"><font class="type">IODot3CollEntry</font></a> <font class="var">dot3CollEntry</font>; 
+    <a href="../../../documentation/IOFWStats/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IODot3RxExtraEntry" logicalPath="//apple_ref/c/cl/IODot3RxExtraEntry //apple_ref/c/cl/IODot3RxExtraEntry //apple_ref/c/tdef/IODot3RxExtraEntry" target="_top"><font class="type">IODot3RxExtraEntry</font></a> <font class="var">dot3RxExtraEntry</font>; 
+    <a href="../../../documentation/IOFWStats/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IODot3TxExtraEntry" logicalPath="//apple_ref/c/cl/IODot3TxExtraEntry //apple_ref/c/cl/IODot3TxExtraEntry //apple_ref/c/tdef/IODot3TxExtraEntry" target="_top"><font class="type">IODot3TxExtraEntry</font></a> <font class="var">dot3TxExtraEntry</font>; 
+} <font class="var">IOFWStats</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>dot3StatsEntry</code></dt>
+<dd>IODot3StatsEntry statistics group.</dd>
+<dt><code>dot3CollEntry</code></dt>
+<dd>IODot3CollEntry statistics group.</dd>
+<dt><code>dot3RxExtraEntry</code></dt>
+<dd>IODot3RxExtraEntry statistics group.</dd>
+<dt><code>dot3TxExtraEntry</code></dt>
+<dd>IODot3TxExtraEntry statistics group.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Aggregate Ethernet statistics structure.
+</p>
+</dl>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

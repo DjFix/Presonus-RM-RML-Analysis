@@ -1,0 +1,39 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {changeBufferMode = id; toggleAction = id; }; 
+            CLASS = DeviceController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fBufferModePopup = id; 
+                fSelectorController = id; 
+                fStartStopToggle = id; 
+                fTextView = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                cancelRead = id; 
+                doRead = id; 
+                loginToDevice = id; 
+                logoutOfDevice = id; 
+                performRead = id; 
+            }; 
+            CLASS = LUNController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                fCancelButton = id; 
+                fLoginButton = id; 
+                fLogoutButton = id; 
+                fReadButton = id; 
+                fTextView = id; 
+                fWindow = id; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

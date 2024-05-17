@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Structs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Structs</font></h1>
+<br><hr>
+<!-- headerDoc=tag;  uid=//apple_ref/c/tag/IOFWCmdQ;  name=IOFWCmdQ --><a name="//apple_ref/c/tag/IOFWCmdQ"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWCmdQ">IOFWCmdQ</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Structure for head of a queue of IOFWCommands
+</p>
+<blockquote><pre><font class="keyword">struct</font> <a href="../../../documentation/IOFWCommand/index.html?Structs/Structs.html#//apple_ref/c/tag/IOFWCmdQ" logicalPath="//apple_ref/c/cl/IOFWCmdQ //apple_ref/c/cl/IOFWCmdQ //apple_ref/c/tdef/IOFWCmdQ //apple_ref/c/tag/IOFWCmdQ" target="_top"><font class="type">IOFWCmdQ</font></a> { 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWCommand //apple_ref/c/cl/IOFWCommand //apple_ref/c/tdef/IOFWCommand //apple_ref/c/tag/IOFWCommand //apple_ref/c/econst/IOFWCommand //apple_ref/c/struct/IOFWCommand //apple_ref/c/clconst/IOFWCommand" --><font class="type">IOFWCommand</font><!-- /a --> *<font class="var">fHead</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWCommand //apple_ref/c/cl/IOFWCommand //apple_ref/c/tdef/IOFWCommand //apple_ref/c/tag/IOFWCommand //apple_ref/c/econst/IOFWCommand //apple_ref/c/struct/IOFWCommand //apple_ref/c/clconst/IOFWCommand" --><font class="type">IOFWCommand</font><!-- /a --> *<font class="var">fTail</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/executeQueue //apple_ref/c/clm/executeQueue //apple_ref/c/intfcm/executeQueue //apple_ref/c/func/executeQueue //apple_ref/c/ftmplt/executeQueue //apple_ref/c/defn/executeQueue //apple_ref/c/macro/executeQueue" --><font class="function">executeQueue</font><!-- /a -->(
+        <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool" --><font class="type">bool</font><!-- /a --> <font class="param">all</font>); 
+    <!-- a logicalPath="//apple_ref/c/cl/virtual //apple_ref/c/cl/virtual //apple_ref/c/tdef/virtual //apple_ref/c/tag/virtual //apple_ref/c/econst/virtual //apple_ref/c/struct/virtual //apple_ref/c/clconst/virtual" --><font class="type">virtual</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/headChanged //apple_ref/c/clm/headChanged //apple_ref/c/intfcm/headChanged //apple_ref/c/func/headChanged //apple_ref/c/ftmplt/headChanged //apple_ref/c/defn/headChanged //apple_ref/c/macro/headChanged" --><font class="function">headChanged</font><!-- /a -->(
+        <!-- a logicalPath="//apple_ref/c/cl/IOFWCommand //apple_ref/c/cl/IOFWCommand //apple_ref/c/tdef/IOFWCommand //apple_ref/c/tag/IOFWCommand //apple_ref/c/econst/IOFWCommand //apple_ref/c/struct/IOFWCommand //apple_ref/c/clconst/IOFWCommand" --><font class="type">IOFWCommand</font><!-- /a --> <font class="type">*</font><font class="param">oldHead</font>); 
+}; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Field Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>fHead</code></dt>
+<dd>Points to the head of the queue, or NULL if queue is empty</dd>
+<dt><code>fTail</code></dt>
+<dd>Points to the tail of the queue, or NULL if queue is empty</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

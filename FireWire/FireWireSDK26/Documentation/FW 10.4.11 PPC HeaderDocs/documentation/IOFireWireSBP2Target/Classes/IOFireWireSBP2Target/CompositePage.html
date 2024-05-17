@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2Target</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFireWireSBP2Target</font></h1>
+<br><a name="//apple_ref/doc/class/IOFireWireSBP2Target" title="IOFireWireSBP2Target"></a><h2>Abstract</h2>
+<p>
+ Serves as bridge between IOFireWireUnit and IOFireWireLUN.
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/data/IOService //apple_ref/cpp/clconst/IOService //apple_ref/cpp/instm/IOService //apple_ref/cpp/clm/IOService //apple_ref/cpp/intfcm/IOService //apple_ref/cpp/func/IOService //apple_ref/cpp/ftmplt/IOService //apple_ref/cpp/defn/IOService //apple_ref/cpp/macro/IOService" -->IOService<!-- /a --><br></p>
+<h2>Discussion</h2>
+<p>
+ Matches against IOFireWireUnits supporting the SBP2 protocol.  Creates IOFireWireSBP2LUN nubs 	for matching. Most drivers will match against an IOFireWireSBP2LUN, but matching against an 	IOFireWireSBP2Target is also supported. This can be useful in cases where a single driver wishes to 
+control all LUNs on a device. Support for this technique is minimal, however, and the driver will be
+required to discover it's LUNs through the registry.
+</p>
+<hr>
+<br><h2>Member Functions</h2>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

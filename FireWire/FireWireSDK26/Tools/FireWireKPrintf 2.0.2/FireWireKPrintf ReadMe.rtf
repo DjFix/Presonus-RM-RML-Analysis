@@ -1,0 +1,440 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red193\green0\blue0;\red255\green0\blue0;\red0\green0\blue194;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc2\leveljcn2\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid0\'02\'05.;}{\levelnumbers\'01;}}{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\f0\b\fs36 \cf0 \
+About FireWireKPrintf\
+
+\b0\fs20 Information about FireWire's integrated kprintf functionality
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\fs20 \cf2 Copyright \'a9 2007 by Apple Inc.  All Rights Reserved.
+\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul \ulc0 Introduction
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 FireWireKPrintf redirects "kprintf()" logging to FireWire. Kernel printfs or "kprintfs" are used by many kernel services as a low level logging mechanism. They can also be used in third party kernel extensions. FireWire kprintfs are available very early in the kernel's startup and right until the cpu is powered down at sleep, restarted, or shutdown. Similarly, they are available almost as soon as the cpu is powered when waking. They can be useful for debugging kernel code (including KEXTs), particularly sleep/wake issues where the display and/or ethernet is unavailable. FireWireKPrintf provides the following advantages over serial logging:\
+\pard\tx220\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\ls1\ilvl0\cf0 	\'95 No special hardware is required.\
+\pard\tx220\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\ls2\ilvl0\cf0 	\'95 Does not dramatically upset timing.\
+	\'95 Easy setup.\
+\pard\tx220\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\ls3\ilvl0\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Integrated FWKPF
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 Unlike in the past, Mac OS X 10.5 has integrated FireWireKPrintf functionality, so it is 
+\b not
+\b0  necessary to install a separate kext to enable kprintf logging over FireWire.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1420\fi-700\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Compatibility
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 While the symbol for kprintf() is available at all times, the calls are essentially ignored unless activated with a boot argument (see below).\
+\
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\i \cf0 While the new FireWireKPrintf is integrated with the normal FireWire stack, once the machine begins logging kprintfs via FireWire, \cf3 normal FireWire services will stop until the machine is restarted\cf0 . Once in logging mode, all typical FireWire services (like FireWire hard disk access) will be unavailable.
+\i0  It is expected that any devices connected before logging will be forcefully removed.  If you need to log while also using the FireWire stack, please use FireLog (see FireWireSDK).\
+\
+The new integrated FireWireKPrintf cannot be used while the old AppleFireWireKPrintf.kext is installed. Remove it to use the integrated version.\
+\
+The new viewer will be able to capture kprintf logs from the old-style AppleFireWireKPrintf.kext, however, the old-style viewer will not work with the integrated FireWireKPrintf services.\
+\
+Currently, the FireWireGDB functionality should be integrated as well. Hence, it is unnecessary to install AppleFireWireGDB.kext. The same FireWireGDB plugins will work. Additionally, FireWireKDP can be installed while using the integrated FireWireKPrintf (interlaced breaks may not yet be supported; for this use the old version, AppleFireWireKPrintf.kext).\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Usage
+\b0\fs24 \ulnone \
+\'95 On the Target (to be debugged):\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Use 
+\i Set_FWKPF_Boot-Args.command
+\i0 \
+
+\b or
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+\cf0 1. Boot the Mac from the partition you wish to use.\
+2. Set kernel boot arguments to enable kernel printfs:\
+	
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x8"
+\f0\fs24 \cf0 \
+	- While only the debug bit equivalent to '0x8' is required for kprintf logging, you may want to set the debug variable to '0x14e' to enable other debugging services. For more information on the debug flags, please see\cf4  {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUGFLAGS"}}{\fldrslt Technical Note TN2118}}\cf0 .\
+	- For power management logging, see the note below about "Other debug/boot-arg options."\
+3. Restart the target Mac.\
+4. Disconnect any FireWire device.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\'95 On the debugger machine:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 If the machine is running Leopard with Developer Tools installed:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\ql\qnatural\pardirnatural
+\cf0 Run from Terminal.app:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % fwkpfv\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 \
+If the machine is running Tiger:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\ql\qnatural\pardirnatural
+\cf0 Run the fwkpfv tool included in the FireWireSDK available at http://developer.apple.com/sdk/.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \'95 Connect the two machines together using a FireWire cable.\
+\'95 After 5 seconds, you should see output in the viewer and kprintf logging is flowing.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b \cf0 Note: At this point, normal FireWire services will cease to exist until the machine is restarted.
+\b0 \
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Logging-side Options\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone FireWireKPrintf implements a few options that can be set as a "boot-arg," much like the "debug" variable. The "fwkpf" variable specifies the timestamp format (calculated on the target, before transmission), timestamp padding, verbose kprintf printing, and synchronous mode. To set the "fwkpf" variable, choose a timestamp unit and add any of the "additive" options.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 Timestamp Formats (not additive):\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2520\fi-1800\ql\qnatural\pardirnatural
+\cf0 0x0		Converted FW Cycle Time Units (c) - Classic time format. Seconds.Microseconds. The seconds rollover every 128 seconds. Driven by the FireWire clock.\
+0x1		Absolute Time Units (a) - "Absolute" time units derived directly from the kernel's uptime clock.\
+0x2		FireWire Time Units (w) - Seconds:Cycles:Offset. Driven by the FireWire clock. Seconds rollover every 128 seconds. 8000 cycles per second. 3072 offset counts per cycle. Equivalent to FireBug's time format.\
+0x3		Nanoseconds Time Units (n) - The kernel's uptime clock converted to nanoseconds.\
+0x4		Microseconds Time Units (u) - The kernel's uptime clock converted to microseconds.\
+0x5		Milliseconds Time Units (m) - The kernel's uptime clock converted to milliseconds.\
+0x6		Seconds Time Units (s) - Seconds:Milliseconds:Microseconds. Converted from kernel's uptime clock.\
+0x7		Day Time Units (d) - Days:Hours:Minutes:Seconds:Milliseconds:Microseconds. Converted from kernel's uptime clock.\
+0xF		No Time Units (-) - No time units, displayed as "-".\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 Additive Options:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0 0x10		Enable Time Units Padding- Pads all of the above time units.\
+0x100		Disable Verbose Printing - Disables the kprintf of the version each time AppleFireWireKPrintf (re)initializes the FireWire hardware for its use.\
+0x800		Force Built-in Matching Only - Will prohibit FireWireKPrintf from starting on non-builtin interfaces. This option will cause FWKPF not to match on built-in interfaces on PPC.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 For example, if you wish to display microsecond time units with padding, synchronous mode enabled, and verbose printing disabled, the target's boot-args would be as follows: "debug=0x14e fwkpf=0x114". On the target, run the following in Terminal.app:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x14e fwkpf=0x114"
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 If not defined, the "fwkpf" variable defaults to "0x000."\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Deciphering The Output\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone Once the viewer is running, he target machine is logging, and both machines are connected with a FireWire cable, you will see output similar to the following:
+\f1\fs20 \
+\
+% fwkpfv\
+Welcome to FireWireKPrintf (viewer x.x.x).\
+c>50.097255 AppleFWOHCI_KPF version x.x.x\
+c>55.110783 AppleFWOHCI_KPF (re)initialized\
+c>55.110793 Log saver\
+c>55.129614 in.c: warning can't plumb proto if=fw0 type 144 error=17\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 "
+\f1\fs20 Welcome to FireWireKPrintf (viewer x.x.x)
+\f0\fs24 " - signifies viewer tool start correctly. If multiple interfaces are present on the debugger machine, it will give an interface count.\
+"
+\f1\fs20 AppleFWOHCI_KPF version x.x.x
+\f0\fs24 " - signifies the AppleFireWireKPrintf kext has (re)initialized the FireWire hardware for use in a FireWIreKPrintf manner.\
+"
+\f1\fs20 FWKPF: Time Format->...
+\f0\fs24 " - displays the time format declared in the target's boot-args. See the "Options" section of this document to select a different time format.\
+"
+\f1\fs20 c>13.481567
+\f0\fs24 " - displays the time at which the kprintf call was logged. Prefixed with the letter that corresponds to the time formats listed above. The format of this time log is displayed upon start and can be changed in the target's boot-args. See above.\
+"
+\f1\fs20 ... in.c: warning can't...
+\f0\fs24 " - the const char * string from the kprintf() call; the log. (This is a normal log.)\
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Viewer Options
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 The fwkpfv utility takes three optional arguments.\
+\
+SYNOPSIS\
+     fwkpfv [-ocnips]\
+\
+DESCRIPTION\
+     The following options are available:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-1440\ql\qnatural\pardirnatural
+\cf0      -o		Append output logging to \CocoaLigature0 /Library/Logs/FireWireKPrintf.log\CocoaLigature1 .\
+     -c		Open log file with Console.app. Only valid with "-o".\
+     -n		Create a new log file, rather than append. Only valid with "-o".\
+     -i		Prefix target machine's ID to each log.\
+     -p		Do not publish unit directory keys.\
+     -s		Use single window even if multiple loggers are present.\
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Troubleshooting
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 You are seeing the following symptoms:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+There is no output from the fwkpfv tool on the second machine:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 \'95 Make sure the two machines are connected with a good FireWire cable.\
+\'95\'a0Run "
+\f1\fs20 \cf3 nvram boot-args
+\f0\fs24 \cf0 " and verify that the boot-args are set correctly.\
+\'95 Be sure you're using the new fwkpfv utility, version 2.1 or newer.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 The machine hangs of boot:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 \'95 Sometimes the console will hang on boot when there is a high volume of logging to screen. Try booting in non-verbose mode or limiting the volume of logging. Remove the "-v" from your machine's boot-args. Or remove "io=0x80".\
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Disabling
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 To disable the FireWireKPrintf:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Delete the target machine's boot-args. Within Terminal.app run the following:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+\cf0 	
+\f1\fs20 \cf3 % sudo nvram -d boot-args\cf2 \
+	
+\f0\fs24 \cf0 or set the boot-args variable to your previous setting.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Restart to target Mac.\
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Known Issues\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b0\fs24 \cf0 \ulnone - FireWireKPrintf may not work during sleep/wake cycling with Mirrored Door Drive PowerMac G4 machines. If unexplained panics occurs after enabling FireWireKPrintf, set the target machine's boot args to: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x14e fwkpf=0x1000"
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Other Notes
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 The timestamps for very early boot logs are inconsistent:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 FireWireKPrintf tries to catch kprintf calls as soon as its start() routine is called. All kprintf calls after this point will be saved until the FireWire hardware has been initialized completely (which is also early in the boot process), however, the timestamps for these very early logs will reference the time they were sent via FireWire, not when kprintf() was called. All timestamps can be assumed accurate after the log from FireWireKPrintf that reads something similar to:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li2160\fi-720\ql\qnatural\pardirnatural
+\cf0 	"
+\f1\fs20 FWKPF: Time Format->...
+\f0\fs24 " \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 The timestamps for very early wake logs are inconsistent:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Similar to very early boot logs, kprintf() calls by the kernel very early upon wake will be saved and sent after the FireWire hardware has had time to initialize. Likewise, the timestamps for these early logs may reflect a yet-to-be-initialized cpu time. This timestamps will be extremely large and clearly recognizable.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Synchronous or Non-Synchronous?:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 With exception to the two cases above (very early boot and very early sleep) when the FireWire hardware cannot be initialized without stopping kernel progression, all FireWireKPrintf logs are sent synchronously. This means that if the log is sent successfully, it is guaranteed to be on the wire before the call returns. If the log cannot be sent, an error will be written to system.log.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 How do I know if I have run the viewer and have "normal" FireWire disabled?:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 The "FireWire" tab of "
+\i /Applications/Utilities/System Profiler.app
+\i0 " will allow you to see if FireWireKPrintf has disabled normal FireWire services. To this end, if FireWire is disabled, unplug any FireWire cables and restart the Mac to restore normal FireWire services. Additionally, be mindful to restart machines that have dropped into logging mode as soon as you have finished using FireWireKPrintf logging.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 My boot-args disappeared unexpectedly:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Some applications, such as the Startup Disk preference pane, set the boot-args themselves. Therefore, it is always best to boot to the partition you wish to debug, set the boot-args, and then restart.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 My FireWire drive mounts on a second machine and then disappears off the first:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 When a viewer Mac is connected to a logging (target) Mac, all normal FireWire services stop, including FireWire disk access. It may take a few moments for the disk to disappear on the logging Mac, but once you have connected a viewer Mac, it will be impossible to use a FireWire hard disk without restarting.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 I see a 5 second delay upon connection of logger and viewer:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 This delay is intentional and allows the FireWire bus to stabilize. If you require logging sooner, connect the viewer earlier.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 I see an error when I first connect:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 The following log is often shown when you first connect.\
+ 
+\f1\fs20 in.c: warning can't plumb proto if=fw0 type 144 error=17\
+
+\f0\fs24 It is a normal log from a different part of the system and should not be of any concern. \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Compatibility with Intel and PPC:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 FireWireKPrintf works on both Intel and PowerPC based Macs. The integrated FireWireKPrintf and fwkpfv is new for Leopard and is not included in any previous OS release.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Other FireWire Devices:
+\b0 \
+\pard\tx720\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 To avoid conflicts it is best not to have other FireWire devices plugged into the host or target machines while using FireWireKPrintf. Having more than 2 nodes total (i.e. the two CPUs) may cause unexpected results.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Logging from multiple machines:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 The fwkpfv utility is able to receive logging from multiple machines. Connecting more than one logging target machine to a viewer will result in individual Terminal windows showing machine specific logs. A full, unparsed log is saved to "
+\i /Library/Logs/fwkpf.log
+\i0 ". You may also force machine ID prefixation to each log by specifying the "-i" flags to fwkpfv.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Other debug/boot-arg options:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 For more information on the debug flags, please see\cf4  {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/technotes/tn2004/tn2118.html#SECDEBUGFLAGS"}}{\fldrslt Technical Note TN2118}}\cf0 . Setting the boot-arg variable "io" to "0x80" will turn on a 
+\b significant
+\b0  volume of power management logging, which may be useful while debugging sleep/wake issues.
+\f1\fs20 \cf2  
+\f0\fs24 \cf0 Similarly, adding the "-v" argument to the boot-args will enable Mac OS X's verbose mode. This may be useful for watching local logging during boot or shutdown. For example, to add power management logging and verbose mode:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x8 io=0x80 -v"
+\f0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Using FireWireKPrintf with FireWireKDP:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 FireWireKPrintf is compatible with FireWireKDP. To use both, it is recommended to set the boot-args using the following command:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x14e kdp_match_name=bogus"
+\f0\fs24 \cf0 \
+Of course, you may modify or add boot-args to suit your needs (see note above).\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 How do I clear the viewer?:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\b0 \cf0 Remember, you can clear the scrollback buffer of Terminal.app by selecting "Clear Scrollback" (or Cmd-K) from the "Scrollback" menu.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Why do I see different logging with different machines?:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\b0 \cf0 The "built-in" kprintf output is target machine specific. This is due to special casing of hardware and other states. It may also vary with operating system version and even kext versions. Remember, a developer can change their kprintf() calls at any time.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 Can I see more logging?:
+\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Most Macs have the ability to output a 
+\b significant
+\b0  volume of power management logging, which may be useful while debugging sleep/wake issues. To turn it on, add "io=0x80" to the target machine's boot-args, as such:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\f1\fs20 \cf3 % sudo nvram boot-args="debug=0x8 io=0x80"\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 More "io" logging is defined in <Kernel/IOKit/IOKitDebug.h>.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-720\ql\qnatural\pardirnatural
+
+\b \cf0 What about FireLog?:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\b0 \cf0 FireLog and FireWireKPrintf are different, both in theory and practice. FireLog is a high speed logging system which requires a framework. Most importantly, FireLog uses a buffering system (in a pull manner) to prevent the loss of logs during high logging volume or low processing time. Conversely, FireWireKPrintf employs a push method of sending each log onto the wire as soon as it is available. Furthermore, FireWireKPrintf is available sooner in the kernel's startup. FireLog is an excellent solution if you need high speed logging and can be found in the FireWireSDK.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Where can I find other FireWire Tools?
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+\cf0 Other FireWire tools, such as FireWireKDP, FireWireGDB, FireLog, FWPanicView, and MemView can be found in the FireWireSDK, traditionally posted on the {\field{\*\fldinst{HYPERLINK "http://developer.apple.com/sdk/"}}{\fldrslt \cf4 Development Kits}} page.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\ql\qnatural\pardirnatural
+
+\b\fs28 \cf0 \ul Distribution
+\b0\fs24 \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\ql\qnatural\pardirnatural
+
+\b \cf0 This software is copyright Apple, Inc., and may not be duplicated or distributed in any way. However, you are welcome to distribute the above link to Apple's SDK download page so others may download their own copy of this software directly from Apple.
+\b0 \
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireSBP2LSIWorkaroundDescriptor</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/header/IOFireWireSBP2LSIWorkaroundDescriptor.h" title="IOFireWireSBP2LSIWorkaroundDescriptor"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireSBP2LSIWorkaroundDescriptor">IOFireWireSBP2LSIWorkaroundDescriptor</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<dl>
+<b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/IOMemoryDescriptor.h" -->&lt;IOKit/IOMemoryDescriptor.h&gt;<!-- /a --><br>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Contains the class definition for IOFireWireSBP2LSIWorkaroundDescriptor.<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Classes</h2>
+<a name="HeaderDoc_classes"></a><dl>
+<dt><tt><a href="Classes/IOFireWireSBP2LSIWorkaroundDescriptor/index.html#//apple_ref/cpp/cl/IOFireWireSBP2LSIWorkaroundDescriptor" target="_top">IOFireWireSBP2LSIWorkaroundDescriptor</a></tt></dt>
+<dd> This is a subclass of IOGeneralMemoryDescriptor. It is designed to work around
+a hardware problem in a common SBP2 target.  It takes a memory descriptor as
+an argument.  It retains this descriptor and returns a new one with resegmented
+physical segments and potentially some "unfixable" segments double buffered.
+<br><br>
+If the transfer will cause data to be sent from the Mac, syncBuffersForOutput
+must be called before the transfer.
+<br><br>
+If the transfer will cause data to be recieve by the Mac, syncBuffersForInput
+must be called after the transfer.
+<br><br>
+This class calculates the new segmentation only once when it is created.
+Any changes to the structure of the original memory descriptor will render
+this one useless.  It must be released and a new IOFireWireSBP2LSIWorkaroundDescriptor
+can be created.
+<br><br>
+LSI Bridge Workaround Algorithm Details
+<br><br>
+Goals:
+1. Avoid LSI Logic "<br>
+Solution:
+Write a page table such that the bridge will nor use packets smaller than 16 bytes.
+In other words, rearrange the memory descriptor to avoid the bug, and do it such
+that the SBP-2 layer will not break up a segment (du ro the 64k-1 limit) and
+re-introduces the problem
+<br><br>
+SBP-2 defines the kFWSBP2MaxPageClusterSize constant.   We simply make sure
+none of our segments are larger than this size and SBP-2 will not break them
+up when it writes the SBP-2 page table.
+<br><br>
+Notes:
+- Some double buffering is unavoidable.  Discontiguous pages may yield page
+fragments at the start or end of the buffer (or both, with non-512x buffers).
+solution uses less than 33 bytes of double-buffer per segment in original
+memory descriptor.
+- If driver must break up IO to meet ATA limit of 255 (250?) blocks, assume
+the driver does this at a higher level (before applying workaround).
+- It is expected that the original memory descriptor has been prepared (wired)
+</dd>
+</dl>
+<hr>
+<br><p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

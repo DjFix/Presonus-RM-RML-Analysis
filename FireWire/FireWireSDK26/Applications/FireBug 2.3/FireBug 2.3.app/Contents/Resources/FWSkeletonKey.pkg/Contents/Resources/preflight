@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if ( kextstat | grep --silent "FWSkeletonKey" ); then
+	kextunload -b com.apple.iokit.FWSkeletonKey ;
+fi ;

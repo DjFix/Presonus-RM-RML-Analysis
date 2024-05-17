@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireAVCUnit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/class/IOFireWireAVCUnit" title="IOFireWireAVCUnit"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireAVCUnit">IOFireWireAVCUnit</a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> nub for AVC devices
+<!-- end abstract --></p>
+<p><b>Superclass:</b> <a href="../../../../documentation/IOFireWireAVCUnit/Classes/IOFireWireAVCNub/index.html#//apple_ref/cpp/cl/IOFireWireAVCNub" logicalPath="//apple_ref/cpp/cl/IOFireWireAVCNub" target="_top">IOFireWireAVCNub</a><br><b>Declared In:</b> <a href="../../index.html" target="_top">IOFireWireAVCUnit.h</a><br></p>
+<p></p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*)" target="_top">AVCCommand</a></tt></dt>
+<dd>Sends an AVC command to the device and stores the response.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*)" target="_top">AVCCommandInGeneration</a></tt></dt>
+<dd>Sends an AVC command to the device and stores the response. The command must complete in the specified
+FireWire bus generation otherwise kIOFireWireBusReset is returned.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleClose/virtualvoid/(IOService*,IOOptionBits)" target="_top">handleClose </a></tt></dt>
+<dd>Overrideable method to control the open / close behaviour of an IOService.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleOpen/virtualbool/(IOService*,IOOptionBits,void*)" target="_top">handleOpen </a></tt></dt>
+<dd>Overrideable method to control the open / close behaviour of an IOService.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/matchPropertyTable/virtualbool/(OSDictionary*)" target="_top">matchPropertyTable</a></tt></dt>
+<dd>Matching language support
+Match on the following properties of the unit:
+Vendor_ID
+GUID
+Unit_Type
+and available sub-units, match if the device has at least the requested number of a sub-unit type:
+AVCSubUnit_0 -&gt; AVCSubUnit_1f
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/updateAVCCommandTimeout/virtualIOReturn/()" target="_top">updateAVCCommandTimeout</a></tt></dt>
+<dd>By default, AVCCommands timeout 10 seconds after receiving an Interim response.
+This function resets the timeout of the current command to 10 seconds from the current time.
+Call this repeatedly for AVC commands that take a very long time to execute to prevent premature
+timeout.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*);  name=IOFireWireAVCUnit::AVCCommand --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AVCCommand">AVCCommand</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sends an AVC command to the device and stores the response.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/AVCCommand //apple_ref/cpp/clm/AVCCommand //apple_ref/cpp/intfcm/AVCCommand //apple_ref/cpp/intfm/AVCCommand //apple_ref/cpp/func/AVCCommand //apple_ref/cpp/ftmplt/AVCCommand //apple_ref/cpp/defn/AVCCommand //apple_ref/cpp/macro/AVCCommand" --><span class="function">AVCCommand</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">command</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">cmdLen</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">response</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">responseLen</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>command </code></dt>
+<dd>Pointer to command to send.</dd>
+<dt><code>cmdLen </code></dt>
+<dd>Length of the command.</dd>
+<dt><code>response </code></dt>
+<dd>Pointer to place to store the response.</dd>
+<dt><code>responseLen </code></dt>
+<dd>Pointer to response length - initialize to the size of the buffer pointed to by response,
+updated to the number of bytes returned by the device.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*);  name=IOFireWireAVCUnit::AVCCommandInGeneration --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="AVCCommandInGeneration">AVCCommandInGeneration</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sends an AVC command to the device and stores the response. The command must complete in the specified
+FireWire bus generation otherwise kIOFireWireBusReset is returned.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/AVCCommandInGeneration //apple_ref/cpp/clm/AVCCommandInGeneration //apple_ref/cpp/intfcm/AVCCommandInGeneration //apple_ref/cpp/intfm/AVCCommandInGeneration //apple_ref/cpp/func/AVCCommandInGeneration //apple_ref/cpp/ftmplt/AVCCommandInGeneration //apple_ref/cpp/defn/AVCCommandInGeneration //apple_ref/cpp/macro/AVCCommandInGeneration" --><span class="function">AVCCommandInGeneration</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">generation</span>, 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">command</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">cmdLen</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">response</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">responseLen</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>generation </code></dt>
+<dd>The bus generation that the command must execute in.</dd>
+<dt><code>command </code></dt>
+<dd>Pointer to command to send.</dd>
+<dt><code>cmdLen </code></dt>
+<dd>Length of the command.</dd>
+<dt><code>response </code></dt>
+<dd>Pointer to place to store the response.</dd>
+<dt><code>responseLen </code></dt>
+<dd>Pointer to response length - initialize to the size of the buffer pointed to by response,
+updated to the number of bytes returned by the device.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleClose/virtualvoid/(IOService*,IOOptionBits);  name=IOFireWireAVCUnit::handleClose --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleClose/virtualvoid/(IOService*,IOOptionBits)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="handleClose">handleClose </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Overrideable method to control the open / close behaviour of an IOService.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/handleClose //apple_ref/cpp/clm/handleClose //apple_ref/cpp/intfcm/handleClose //apple_ref/cpp/intfm/handleClose //apple_ref/cpp/func/handleClose //apple_ref/cpp/ftmplt/handleClose //apple_ref/cpp/defn/handleClose //apple_ref/cpp/macro/handleClose" --><span class="function">handleClose</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/clconst/IOService //apple_ref/cpp/intf/IOService" --><span class="type">IOService</span><!-- /a --> *<span class="param">forClient</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/tdef/IOOptionBits //apple_ref/cpp/tag/IOOptionBits //apple_ref/cpp/econst/IOOptionBits //apple_ref/cpp/struct/IOOptionBits //apple_ref/cpp/clconst/IOOptionBits //apple_ref/cpp/intf/IOOptionBits" --><span class="type">IOOptionBits</span><!-- /a --> <span class="param">options</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>forClient </code></dt>
+<dd>Designates the client of the provider requesting the close.</dd>
+<dt><code>options </code></dt>
+<dd>Options for the close, may be interpreted by the implementor of handleOpen.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->See IOService for discussion.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleOpen/virtualbool/(IOService*,IOOptionBits,void*);  name=IOFireWireAVCUnit::handleOpen --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/handleOpen/virtualbool/(IOService*,IOOptionBits,void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="handleOpen">handleOpen </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Overrideable method to control the open / close behaviour of an IOService.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/handleOpen //apple_ref/cpp/clm/handleOpen //apple_ref/cpp/intfcm/handleOpen //apple_ref/cpp/intfm/handleOpen //apple_ref/cpp/func/handleOpen //apple_ref/cpp/ftmplt/handleOpen //apple_ref/cpp/defn/handleOpen //apple_ref/cpp/macro/handleOpen" --><span class="function">handleOpen</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/clconst/IOService //apple_ref/cpp/intf/IOService" --><span class="type">IOService</span><!-- /a --> *<span class="param">forClient</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOOptionBits //apple_ref/cpp/tdef/IOOptionBits //apple_ref/cpp/tag/IOOptionBits //apple_ref/cpp/econst/IOOptionBits //apple_ref/cpp/struct/IOOptionBits //apple_ref/cpp/clconst/IOOptionBits //apple_ref/cpp/intf/IOOptionBits" --><span class="type">IOOptionBits</span><!-- /a --> <span class="param">options</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">arg</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>forClient </code></dt>
+<dd>Designates the client of the provider requesting the open.</dd>
+<dt><code>options </code></dt>
+<dd>Options for the open, may be interpreted by the implementor of handleOpen.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Return true if the open was successful, false otherwise.
+
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->See IOService for discussion. 
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/matchPropertyTable/virtualbool/(OSDictionary*);  name=IOFireWireAVCUnit::matchPropertyTable --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/matchPropertyTable/virtualbool/(OSDictionary*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="matchPropertyTable">matchPropertyTable</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Matching language support
+Match on the following properties of the unit:
+Vendor_ID
+GUID
+Unit_Type
+and available sub-units, match if the device has at least the requested number of a sub-unit type:
+AVCSubUnit_0 -&gt; AVCSubUnit_1f
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/matchPropertyTable //apple_ref/cpp/clm/matchPropertyTable //apple_ref/cpp/intfcm/matchPropertyTable //apple_ref/cpp/intfm/matchPropertyTable //apple_ref/cpp/func/matchPropertyTable //apple_ref/cpp/ftmplt/matchPropertyTable //apple_ref/cpp/defn/matchPropertyTable //apple_ref/cpp/macro/matchPropertyTable" --><span class="function">matchPropertyTable</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/OSDictionary //apple_ref/cpp/tdef/OSDictionary //apple_ref/cpp/tag/OSDictionary //apple_ref/cpp/econst/OSDictionary //apple_ref/cpp/struct/OSDictionary //apple_ref/cpp/clconst/OSDictionary //apple_ref/cpp/intf/OSDictionary" --><span class="type">OSDictionary</span><!-- /a --> *<span class="param">table</span>); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/updateAVCCommandTimeout/virtualIOReturn/();  name=IOFireWireAVCUnit::updateAVCCommandTimeout --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCUnit/updateAVCCommandTimeout/virtualIOReturn/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateAVCCommandTimeout">updateAVCCommandTimeout</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->By default, AVCCommands timeout 10 seconds after receiving an Interim response.
+This function resets the timeout of the current command to 10 seconds from the current time.
+Call this repeatedly for AVC commands that take a very long time to execute to prevent premature
+timeout.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateAVCCommandTimeout //apple_ref/cpp/clm/updateAVCCommandTimeout //apple_ref/cpp/intfcm/updateAVCCommandTimeout //apple_ref/cpp/intfm/updateAVCCommandTimeout //apple_ref/cpp/func/updateAVCCommandTimeout //apple_ref/cpp/ftmplt/updateAVCCommandTimeout //apple_ref/cpp/defn/updateAVCCommandTimeout //apple_ref/cpp/macro/updateAVCCommandTimeout" --><span class="function">updateAVCCommandTimeout</span><!-- /a -->(); </pre>
+<p></p>
+<h2>Structs and Unions</h2>
+<hr>
+<!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/cpp/tag/IOFireWireAVCUnit/ExpansionData;  name=IOFireWireAVCUnit::ExpansionData --><a name="//apple_ref/doc/compositePage/cpp/tag/IOFireWireAVCUnit/ExpansionData"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ExpansionData">ExpansionData </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><tt>protected</tt>
+<br><span class="keyword">struct</span> <a href="../../../../documentation/IOFWAddressSpace/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><span class="type">ExpansionData</span></a> { 
+    <!-- a logicalPath="//apple_ref/cpp/cl/OSArray //apple_ref/cpp/tdef/OSArray //apple_ref/cpp/tag/OSArray //apple_ref/cpp/econst/OSArray //apple_ref/cpp/struct/OSArray //apple_ref/cpp/clconst/OSArray //apple_ref/cpp/intf/OSArray" --><span class="type">OSArray</span><!-- /a --> *<span class="var">fAVCAsyncCommands</span>; 
+    <a href="../../../../documentation/IOFireWireController/Classes/IOFireWireController/index.html#//apple_ref/cpp/cl/IOFireWireController" logicalPath="//apple_ref/cpp/cl/IOFireWireController" target="_top"><span class="type">IOFireWireController</span></a> *<span class="var">fControl</span>; 
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <span class="var">enableRobustAVCCommandResponseMatching</span>; 
+}; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This structure is used to expand the capablilties of the class in a binary compatible way
+ <!-- end discussion --></p>
+<p></p>
+<h2>Member Data</h2>
+<hr>
+<!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/IOFireWireAVCUnit/fIOFireWireAVCUnitExpansion;  name=IOFireWireAVCUnit::fIOFireWireAVCUnitExpansion --><a name="//apple_ref/doc/compositePage/cpp/data/IOFireWireAVCUnit/fIOFireWireAVCUnitExpansion"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="fIOFireWireAVCUnitExpansion">fIOFireWireAVCUnitExpansion</a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><tt>protected</tt>
+<br><a href="../../../../documentation/IOFWAddressSpace/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><span class="type">ExpansionData</span></a> <span class="type">*</span><span class="var">fIOFireWireAVCUnitExpansion</span>; </pre>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

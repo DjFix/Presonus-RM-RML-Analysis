@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>Defined Types</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Defined Types</font></h1><br>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2LoginCompleteParams;  name=FWSBP2LoginCompleteParams -->
+<a name="//apple_ref/c/tdef/FWSBP2LoginCompleteParams"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2LoginCompleteParams">FWSBP2LoginCompleteParams</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="var">refCon</font>; <font class="comment">// refCon from login object</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">generation</font>; <font class="comment">// generation this login was attempted in</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="var">status</font>; <font class="comment">// status of login attempt</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2LoginResponse //apple_ref/c/cl/FWSBP2LoginResponse //apple_ref/c/tdef/FWSBP2LoginResponse //apple_ref/c/tag/FWSBP2LoginResponse //apple_ref/c/econst/FWSBP2LoginResponse //apple_ref/c/struct/FWSBP2LoginResponse //apple_ref/c/clconst/FWSBP2LoginResponse" --><font class="type">FWSBP2LoginResponse</font><!-- /a --> *<font class="var">loginResponse</font>; <font class="comment">// pointer to loginResponse buffer</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock //apple_ref/c/tag/FWSBP2StatusBlock //apple_ref/c/econst/FWSBP2StatusBlock //apple_ref/c/struct/FWSBP2StatusBlock //apple_ref/c/clconst/FWSBP2StatusBlock" --><font class="type">FWSBP2StatusBlock</font><!-- /a --> *<font class="var">statusBlock</font>; <font class="comment">// pointer to statusBlock buffer</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">statusBlockLength</font>; <font class="comment">// size of statusBlock buffer</font> 
+} <font class="var">FWSBP2LoginCompleteParams</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>refCon set on login object.</dd>
+<dt><code>generation</code></dt><dd>FireWire generation value.</dd>
+<dt><code>status</code></dt><dd>Status of login attempt.</dd>
+<dt><code>loginResponse</code></dt><dd>Pointer to login response struct.</dd>
+<dt><code>statusBlock</code></dt><dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength</code></dt><dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2LoginResponse;  name=FWSBP2LoginResponse -->
+<a name="//apple_ref/c/tdef/FWSBP2LoginResponse"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2LoginResponse">FWSBP2LoginResponse</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="var">length</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="var">loginID</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">commandBlockAgentAddressHi</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">commandBlockAgentAddressLo</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="var">reserved</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="var">reconnectHold</font>; 
+} <font class="var">FWSBP2LoginResponse</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>length</code></dt><dd>Length of login response.</dd>
+<dt><code>loginID</code></dt><dd>Unique id representing this login.</dd>
+<dt><code>commandBlockAgentAddressHi</code></dt><dd>High 32 bits of command block agent address.</dd>
+<dt><code>commandBlockAgentAddressLo</code></dt><dd>Low 32 bits of command block agent address.</dd>
+<dt><code>reserved</code></dt><dd>Reserved.</dd>
+<dt><code>reconnectHold</code></dt><dd>Reconnect timeout encoded as 2^reconnectHold seconds.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2LogoutCompleteParams;  name=FWSBP2LogoutCompleteParams -->
+<a name="//apple_ref/c/tdef/FWSBP2LogoutCompleteParams"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2LogoutCompleteParams">FWSBP2LogoutCompleteParams</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="var">refCon</font>; <font class="comment">// refCon from login object</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">generation</font>; <font class="comment">// generation this login was attempted in</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="var">status</font>; <font class="comment">// status of login attempt</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock //apple_ref/c/tag/FWSBP2StatusBlock //apple_ref/c/econst/FWSBP2StatusBlock //apple_ref/c/struct/FWSBP2StatusBlock //apple_ref/c/clconst/FWSBP2StatusBlock" --><font class="type">FWSBP2StatusBlock</font><!-- /a --> *<font class="var">statusBlock</font>; <font class="comment">// pointer to statusBlock buffer</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">statusBlockLength</font>; <font class="comment">// size of statusBlock buffer</font> 
+} <font class="var">FWSBP2LogoutCompleteParams</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>refCon set on login object.</dd>
+<dt><code>generation</code></dt><dd>FireWire generation value.</dd>
+<dt><code>status</code></dt><dd>Status of login attempt.</dd>
+<dt><code>statusBlock</code></dt><dd>Pointer to status block buffer.</dd>
+<dt><code>statusBlockLength</code></dt><dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2NotifyParams;  name=FWSBP2NotifyParams -->
+<a name="//apple_ref/c/tdef/FWSBP2NotifyParams"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2NotifyParams">FWSBP2NotifyParams</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="var">refCon</font>; <font class="comment">// refCon from ORB object</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">notificationEvent</font>; 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="var">message</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">length</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">generation</font>; 
+} <font class="var">FWSBP2NotifyParams</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>refCon set on Login object for unsolicited status or refCon set ORB for normal status.</dd>
+<dt><code>notificationEvent</code></dt><dd>Type of event we are being notified of.</dd>
+<dt><code>message</code></dt><dd>buffer containing message.</dd>
+<dt><code>length</code></dt><dd>length of message field.</dd>
+<dt><code>generation</code></dt><dd>FireWire generation value.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2ReconnectParams;  name=FWSBP2ReconnectParams -->
+<a name="//apple_ref/c/tdef/FWSBP2ReconnectParams"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2ReconnectParams">FWSBP2ReconnectParams</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="var">refCon</font>; <font class="comment">// refCon from lun object</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">generation</font>; <font class="comment">// generation this login was attempted in</font>  
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="var">status</font>; <font class="comment">// status of reconnect attempt</font>  
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/cl/FWSBP2StatusBlock //apple_ref/c/tdef/FWSBP2StatusBlock //apple_ref/c/tag/FWSBP2StatusBlock //apple_ref/c/econst/FWSBP2StatusBlock //apple_ref/c/struct/FWSBP2StatusBlock //apple_ref/c/clconst/FWSBP2StatusBlock" --><font class="type">FWSBP2StatusBlock</font><!-- /a --> *<font class="var">reconnectStatusBlock</font>; <font class="comment">// pointer to statusBlock buffer</font> 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">reconnectStatusBlockLength</font>; <font class="comment">// size of statusBlock buffer</font> 
+} <font class="var">FWSBP2ReconnectParams</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>refCon set on LUN object.</dd>
+<dt><code>generation</code></dt><dd>FireWire generation value.</dd>
+<dt><code>status</code></dt><dd>Status of reconnect attempt.</dd>
+<dt><code>reconnectStatusBlock</code></dt><dd>Pointer to status block buffer.</dd>
+<dt><code>reconnectStatusBlockLength</code></dt><dd>Length of entire status block.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/FWSBP2StatusBlock;  name=FWSBP2StatusBlock -->
+<a name="//apple_ref/c/tdef/FWSBP2StatusBlock"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="FWSBP2StatusBlock">FWSBP2StatusBlock</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <font class="keyword">struct</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> <font class="var">details</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> <font class="var">sbpStatus</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="var">orbOffsetHi</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="var">orbOffsetLo</font>; 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/status //apple_ref/c/cl/status //apple_ref/c/tdef/status //apple_ref/c/tag/status //apple_ref/c/econst/status //apple_ref/c/struct/status //apple_ref/c/clconst/status" --><font class="type">status</font><!-- /a -->[<font class="number">6</font>]; 
+} <font class="var">FWSBP2StatusBlock</font>; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>details</code></dt><dd>Src, Resp, D, Len fields of status block format</dd>
+<dt><code>sbpStatus</code></dt><dd>SBP2 specific status</dd>
+<dt><code>orbOffsetHi</code></dt><dd>High 32 bits of address of orb status is for.</dd>
+<dt><code>orbOffsetLo</code></dt><dd>Low 32 bits of address of orb status is for.</dd>
+<dt><code>status</code></dt><dd>[6] Up to 48 bytes of additional data. Length is determined by len field.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2FetchAgentWriteCallback;  name=IOFWSBP2FetchAgentWriteCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2FetchAgentWriteCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2FetchAgentWriteCallback">IOFWSBP2FetchAgentWriteCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/clm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/intfcm/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/func/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/ftmplt/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/defn/IOFWSBP2FetchAgentWriteCallback //apple_ref/c/macro/IOFWSBP2FetchAgentWriteCallback" --><font class="function">IOFWSBP2FetchAgentWriteCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="param">status</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">orbRefCon</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status</code></dt><dd>Indicates success or failure of operation.</dd>
+<dt><code>orbRefCon</code></dt><dd>refCon from last orb in chain.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2LoginCallback;  name=IOFWSBP2LoginCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2LoginCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2LoginCallback">IOFWSBP2LoginCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2LoginCallback //apple_ref/c/clm/IOFWSBP2LoginCallback //apple_ref/c/intfcm/IOFWSBP2LoginCallback //apple_ref/c/func/IOFWSBP2LoginCallback //apple_ref/c/ftmplt/IOFWSBP2LoginCallback //apple_ref/c/defn/IOFWSBP2LoginCallback //apple_ref/c/macro/IOFWSBP2LoginCallback" --><font class="function">IOFWSBP2LoginCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2LoginCompleteParams //apple_ref/c/cl/FWSBP2LoginCompleteParams //apple_ref/c/tdef/FWSBP2LoginCompleteParams //apple_ref/c/tag/FWSBP2LoginCompleteParams //apple_ref/c/econst/FWSBP2LoginCompleteParams //apple_ref/c/struct/FWSBP2LoginCompleteParams //apple_ref/c/clconst/FWSBP2LoginCompleteParams" --><font class="type">FWSBP2LoginCompleteParams</font><!-- /a --> *<font class="param">params</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params</code></dt><dd>Structure containing additional information about the status of the login.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2LogoutCallback;  name=IOFWSBP2LogoutCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2LogoutCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2LogoutCallback">IOFWSBP2LogoutCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2LogoutCallback //apple_ref/c/clm/IOFWSBP2LogoutCallback //apple_ref/c/intfcm/IOFWSBP2LogoutCallback //apple_ref/c/func/IOFWSBP2LogoutCallback //apple_ref/c/ftmplt/IOFWSBP2LogoutCallback //apple_ref/c/defn/IOFWSBP2LogoutCallback //apple_ref/c/macro/IOFWSBP2LogoutCallback" --><font class="function">IOFWSBP2LogoutCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2LogoutCompleteParams //apple_ref/c/cl/FWSBP2LogoutCompleteParams //apple_ref/c/tdef/FWSBP2LogoutCompleteParams //apple_ref/c/tag/FWSBP2LogoutCompleteParams //apple_ref/c/econst/FWSBP2LogoutCompleteParams //apple_ref/c/struct/FWSBP2LogoutCompleteParams //apple_ref/c/clconst/FWSBP2LogoutCompleteParams" --><font class="type">FWSBP2LogoutCompleteParams</font><!-- /a --> *<font class="param">params</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params</code></dt><dd>Structure containing additional information about the status of the logout.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2NotifyCallback;  name=IOFWSBP2NotifyCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2NotifyCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2NotifyCallback">IOFWSBP2NotifyCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2NotifyCallback //apple_ref/c/clm/IOFWSBP2NotifyCallback //apple_ref/c/intfcm/IOFWSBP2NotifyCallback //apple_ref/c/func/IOFWSBP2NotifyCallback //apple_ref/c/ftmplt/IOFWSBP2NotifyCallback //apple_ref/c/defn/IOFWSBP2NotifyCallback //apple_ref/c/macro/IOFWSBP2NotifyCallback" --><font class="function">IOFWSBP2NotifyCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/FWSBP2NotifyParams //apple_ref/c/cl/FWSBP2NotifyParams //apple_ref/c/tdef/FWSBP2NotifyParams //apple_ref/c/tag/FWSBP2NotifyParams //apple_ref/c/econst/FWSBP2NotifyParams //apple_ref/c/struct/FWSBP2NotifyParams //apple_ref/c/clconst/FWSBP2NotifyParams" --><font class="type">FWSBP2NotifyParams</font><!-- /a --> *<font class="param">params</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>params</code></dt><dd>FWSBP2NotifyParams containing notification information.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2ORBAppendCallback;  name=IOFWSBP2ORBAppendCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2ORBAppendCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2ORBAppendCallback">IOFWSBP2ORBAppendCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2ORBAppendCallback //apple_ref/c/clm/IOFWSBP2ORBAppendCallback //apple_ref/c/intfcm/IOFWSBP2ORBAppendCallback //apple_ref/c/func/IOFWSBP2ORBAppendCallback //apple_ref/c/ftmplt/IOFWSBP2ORBAppendCallback //apple_ref/c/defn/IOFWSBP2ORBAppendCallback //apple_ref/c/macro/IOFWSBP2ORBAppendCallback" --><font class="function">IOFWSBP2ORBAppendCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="param">status</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">orb</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status</code></dt><dd>Indicates success or failure of operation.</dd>
+<dt><code>orb</code></dt><dd>refCon set on management orb.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2ORBCompleteCallback;  name=IOFWSBP2ORBCompleteCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2ORBCompleteCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2ORBCompleteCallback">IOFWSBP2ORBCompleteCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2ORBCompleteCallback //apple_ref/c/clm/IOFWSBP2ORBCompleteCallback //apple_ref/c/intfcm/IOFWSBP2ORBCompleteCallback //apple_ref/c/func/IOFWSBP2ORBCompleteCallback //apple_ref/c/ftmplt/IOFWSBP2ORBCompleteCallback //apple_ref/c/defn/IOFWSBP2ORBCompleteCallback //apple_ref/c/macro/IOFWSBP2ORBCompleteCallback" --><font class="function">IOFWSBP2ORBCompleteCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="param">status</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">orb</font> ); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status</code></dt><dd>Indicates success or failure of operation.</dd>
+<dt><code>orb</code></dt><dd>refCon set on management orb.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr><!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWSBP2StatusCallback;  name=IOFWSBP2StatusCallback -->
+<a name="//apple_ref/c/tdef/IOFWSBP2StatusCallback"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="IOFWSBP2StatusCallback">IOFWSBP2StatusCallback</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWSBP2StatusCallback //apple_ref/c/clm/IOFWSBP2StatusCallback //apple_ref/c/intfcm/IOFWSBP2StatusCallback //apple_ref/c/func/IOFWSBP2StatusCallback //apple_ref/c/ftmplt/IOFWSBP2StatusCallback //apple_ref/c/defn/IOFWSBP2StatusCallback //apple_ref/c/macro/IOFWSBP2StatusCallback" --><font class="function">IOFWSBP2StatusCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <font class="param">status</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl><dt><code>refCon</code></dt><dd>Reference constant supplied when the notification was registered.</dd>
+<dt><code>status</code></dt><dd>Indicates success or failure of operation.</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

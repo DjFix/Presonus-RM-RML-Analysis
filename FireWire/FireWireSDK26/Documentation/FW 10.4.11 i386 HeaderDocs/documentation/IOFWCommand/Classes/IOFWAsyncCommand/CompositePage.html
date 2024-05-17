@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>IOFWAsyncCommand</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFWAsyncCommand</font></h1><br>
+<a name="//apple_ref/doc/class/IOFWAsyncCommand" title="IOFWAsyncCommand"></a>
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWCommand //apple_ref/cpp/cl/IOFWCommand //apple_ref/cpp/tdef/IOFWCommand //apple_ref/cpp/tag/IOFWCommand //apple_ref/cpp/econst/IOFWCommand //apple_ref/cpp/struct/IOFWCommand //apple_ref/cpp/data/IOFWCommand //apple_ref/cpp/clconst/IOFWCommand //apple_ref/cpp/instm/IOFWCommand //apple_ref/cpp/clm/IOFWCommand //apple_ref/cpp/intfcm/IOFWCommand //apple_ref/cpp/func/IOFWCommand //apple_ref/cpp/ftmplt/IOFWCommand //apple_ref/cpp/defn/IOFWCommand //apple_ref/cpp/macro/IOFWCommand" -->IOFWCommand<!-- /a --><br>
+<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFWAsyncCommand/setMaxPacket/IOReturn/(UInt32)" target="_top">setMaxPacket</a></tt></dt>
+<dd></dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFWAsyncCommand/setMaxPacket/IOReturn/(UInt32);  name=IOFWAsyncCommand::setMaxPacket -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFWAsyncCommand/setMaxPacket/IOReturn/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setMaxPacket">setMaxPacket</a></h2>
+</td></tr></table><blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setMaxPacket //apple_ref/cpp/clm/setMaxPacket //apple_ref/cpp/intfcm/setMaxPacket //apple_ref/cpp/func/setMaxPacket //apple_ref/cpp/ftmplt/setMaxPacket //apple_ref/cpp/defn/setMaxPacket //apple_ref/cpp/macro/setMaxPacket" --><font class="function">setMaxPacket</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">maxBytes</font>) </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Sets the maximum size for block transfers used by the command.
+The command is initialized to use the maximum packet size calculated from the device's
+PHY speed, bus info block and the bus topology.
+Call this method before calling submit().</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>maxBytes</em></tt></dt><dd>Maximum packet size in bytes. If the maxsize is 4 then quadlet transfers will be used.</dd>
+</dl>
+</blockquote>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

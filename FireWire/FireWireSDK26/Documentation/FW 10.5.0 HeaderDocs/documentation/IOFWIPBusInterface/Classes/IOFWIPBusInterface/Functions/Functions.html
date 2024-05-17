@@ -1,0 +1,1013 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/bufferToMbuf/bool/(mbuf_t,UInt32,UInt8*,UInt32)" target="doc">bufferToMbuf</a></tt></dt>
+<dd>Copies buffer to Mbuf.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/calculateMaxTransferUnit/void/()" target="doc">calculateMaxTransferUnit</a></tt></dt>
+<dd>checks whether the FWIM is for builtin H/W.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/cleanRCBCache/void/()" target="doc">cleanRCBCache</a></tt></dt>
+<dd>cleans the Link control block's stale rcb's. UnAssembled RCB's
+are returned to the free CBLKs
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/createIPFifoAddress/IOReturn/(UInt32)" target="doc">createIPFifoAddress</a></tt></dt>
+<dd>creates the pseudo address space for IP over Firewire.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/decrementUnitCount/void/()" target="doc">decrementUnitCount</a></tt></dt>
+<dd>Decrements the unit count
+ </dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncCmdPool/void/()" target="doc">freeAsyncCmdPool</a></tt></dt>
+<dd>frees the command objects from the pool
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncStreamCmdPool/void/()" target="doc">freeAsyncStreamCmdPool</a></tt></dt>
+<dd>frees the command objects from the pool
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:instm/IOFWIPBusInterface/freeIPCmdPool/void/()" target="doc">freeIPCmdPool</a></tt></dt>
+<dd>frees the command objects from the pool
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitAttach/void/()" target="doc">fwIPUnitAttach</a></tt></dt>
+<dd>Callback for a Unit Attach of type IPv4 or IPv6
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitTerminate/void/()" target="doc">fwIPUnitTerminate</a></tt></dt>
+<dd>Callback for a Unit detach of type IPv4 or IPv6
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getARBFromEui64/ARB*/(UWIDE)" target="doc">getARBFromEui64</a></tt></dt>
+<dd>Locates the corresponding Unicast ARB (Address resolution block) for GUID
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getArbFromFwAddr/ARB*/(UInt8*)" target="doc">getArbFromFwAddr</a></tt></dt>
+<dd>Locates the corresponding Unicast ARB (Address resolution block) for GUID
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getDeviceID/UInt32/(UWIDE,bool*)" target="doc">getDeviceID</a></tt></dt>
+<dd>returns a fireWire device object for the GUID
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromDeviceID/DRB*/(void*)" target="doc">getDrbFromDeviceID</a></tt></dt>
+<dd>Locates the corresponding DRB (Address resolution block) for IOFireWireNub
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromEui64/DRB*/(UWIDE)" target="doc">getDrbFromEui64</a></tt></dt>
+<dd>Locates the corresponding DRB (device reference block) for GUID
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromFwAddr/DRB*/(UInt8*)" target="doc">getDrbFromFwAddr</a></tt></dt>
+<dd>Locates the corresponding DRB (device reference block) for GUID
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getMulticastArb/MARB*/(UInt32)" target="doc">getMulticastArb</a></tt></dt>
+<dd>Locates the corresponding multicast ARB (Address resolution block) for ipaddress
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getRcb/RCB*/(UInt16,UInt16)" target="doc">getRcb</a></tt></dt>
+<dd>Locates a reassembly control block.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/getUnicastArb/ARB*/(UInt32)" target="doc">getUnicastArb</a></tt></dt>
+<dd>Locates the corresponding unicast ARB (Address resolution block) for ipaddress
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/incrementUnitCount/void/()" target="doc">incrementUnitCount</a></tt></dt>
+<dd>Increments the unit count
+ </dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncCmdPool/UInt32/()" target="doc">initAsyncCmdPool</a></tt></dt>
+<dd>constructs Asynchronous Send command objects and queues them in the pool
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncStreamCmdPool/UInt32/()" target="doc">initAsyncStreamCmdPool</a></tt></dt>
+<dd>constructs Asyncstream Send command objects and queues them in the pool
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/mbufTobuffer/mbuf_t/(constmbuf_t,UInt32*,UInt8*,UInt32,UInt32)" target="doc">mbufTobuffer</a></tt></dt>
+<dd>Copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/rxARP/IOReturn/(IP1394_ARP*,UInt32)" target="doc">rxARP</a></tt></dt>
+<dd>ARP processing routine called from both Asynstream path and Async path.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/clm/IOFWIPBusInterface/rxAsyncStream/staticvoid/(void*,constvoid*)" target="doc">rxAsyncStream</a></tt></dt>
+<dd>callback for an Asyncstream packet, can be both IP or ARP packet.
+This procedure receives an indication when an asynchronous stream
+packet arrives on the default broadcast channel. The packet "should" be GASP,
+but we perform a few checks to make sure. Once we know these are OK, we check
+the etherType field in the unfragmented encapsulation header. This is necessary
+to dispatch the three types of packet that RFC 2734 permits on the default
+broadcast channel: an IPv4 datagram, and ARP request or response or a multi-
+channel allocation protocol (MCAP) message. The only remaining check, for each
+of these three cases, is to make sure that the packet is large enough to hold
+meaningful data. If so, send the packet to another procedure for further
+processing. 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/rxIP/IOReturn/(void*,UInt32,UInt32,UInt16)" target="doc">rxIP</a></tt></dt>
+<dd>Receive IP packet.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/rxMCAP/void/(LCB*,UInt16,IP1394_MCAP*,UInt32)" target="doc">rxMCAP</a></tt></dt>
+<dd>called from rxAsyncstream for processing MCAP advertisement.
+When an MCAP advertisement is received, parse all of its descriptors 
+looking for any that match group addreses in our MCAP cache. For those that 
+match, update the channel number (it may have changed from the default
+broadcast channel or since the last advertisement), update the speed 
+(the MCAP owner may have changed the speed requirements as nodes joined or 
+left the group) and refresh the expiration timer so that the MCAP 
+channel is valid for another number of seconds into the future. 
+Th-th-th-that's all, folks!
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicast/staticUInt32/(void*,UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon)" target="doc">rxUnicast</a></tt></dt>
+<dd>block write handler
+ </dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicastComplete/staticvoid/(void*)" target="doc">rxUnicastComplete</a></tt></dt>
+<dd>triggers the indication workloop to do batch processing
+of incoming packets.
+ </dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/rxUnicastFlush/void/()" target="doc">rxUnicastFlush</a></tt></dt>
+<dd>Starts the batch processing of the packets, its
+already on its own workloop.
+ </dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/txARP/SInt32/(mbuf_t,UInt16,UInt32,IOFWSpeed)" target="doc">txARP</a></tt></dt>
+<dd>Transmit ARP request or response.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/doc/title:clm/IOFWIPBusInterface/txAsyncStreamComplete/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*)" target="doc">txAsyncStreamComplete</a></tt></dt>
+<dd>Callback for the Async stream transmit complete 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteAsyncStream/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*)" target="doc">txCompleteAsyncStream</a></tt></dt>
+<dd>Callback for the Async stream transmit complete 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteBlockWrite/staticvoid/(void*,IOReturn,IOFireWireNub*,IOFWCommand*)" target="doc">txCompleteBlockWrite</a></tt></dt>
+<dd>Callback for the Async write complete 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/txIP/SInt32/(mbuf_t,UInt16,UInt32,UInt16,UInt16,IOFWSpeed,UInt16)" target="doc">txIP</a></tt></dt>
+<dd>Transmit IP packet.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/txMCAP/void/(MCB*,UInt32)" target="doc">txMCAP</a></tt></dt>
+<dd>multicast solicitation and advertisement messages.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/updateBroadcastValues/void/(bool)" target="doc">updateBroadcastValues</a></tt></dt>
+<dd>Updates the max broadcast payload and speed 
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPBusInterface/updateLinkStatus/void/()" target="doc">updateLinkStatus</a></tt></dt>
+<dd>Updates the link status based on maxbroadcast speed &amp; payload. 
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/bufferToMbuf/bool/(mbuf_t,UInt32,UInt8*,UInt32);  name=IOFWIPBusInterface::bufferToMbuf --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/bufferToMbuf/bool/(mbuf_t,UInt32,UInt8*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="bufferToMbuf">bufferToMbuf</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Copies buffer to Mbuf.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/bufferToMbuf //apple_ref/cpp/clm/bufferToMbuf //apple_ref/cpp/intfcm/bufferToMbuf //apple_ref/cpp/intfm/bufferToMbuf //apple_ref/cpp/func/bufferToMbuf //apple_ref/cpp/ftmplt/bufferToMbuf //apple_ref/cpp/defn/bufferToMbuf //apple_ref/cpp/macro/bufferToMbuf" --><span class="function">bufferToMbuf</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/mbuf_t //apple_ref/cpp/tdef/mbuf_t //apple_ref/cpp/tag/mbuf_t //apple_ref/cpp/econst/mbuf_t //apple_ref/cpp/struct/mbuf_t //apple_ref/cpp/clconst/mbuf_t //apple_ref/cpp/intf/mbuf_t" --><span class="type">mbuf_t</span><!-- /a --> <span class="param">m</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">srcbuf</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">srcbufLen</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>m </code></dt>
+<dd>- destination mbuf.</dd>
+<dt><code>offset </code></dt>
+<dd>- offset into the mbuf data pointer.</dd>
+<dt><code>srcbuf </code></dt>
+<dd>- source buf.</dd>
+<dt><code>srcbufLen </code></dt>
+<dd>- source buffer length.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->bool - true if success else false.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/calculateMaxTransferUnit/void/();  name=IOFWIPBusInterface::calculateMaxTransferUnit --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/calculateMaxTransferUnit/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="calculateMaxTransferUnit">calculateMaxTransferUnit</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->checks whether the FWIM is for builtin H/W.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/calculateMaxTransferUnit //apple_ref/cpp/clm/calculateMaxTransferUnit //apple_ref/cpp/intfcm/calculateMaxTransferUnit //apple_ref/cpp/intfm/calculateMaxTransferUnit //apple_ref/cpp/func/calculateMaxTransferUnit //apple_ref/cpp/ftmplt/calculateMaxTransferUnit //apple_ref/cpp/defn/calculateMaxTransferUnit //apple_ref/cpp/macro/calculateMaxTransferUnit" --><span class="function">calculateMaxTransferUnit</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/cleanRCBCache/void/();  name=IOFWIPBusInterface::cleanRCBCache --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/cleanRCBCache/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="cleanRCBCache">cleanRCBCache</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->cleans the Link control block's stale rcb's. UnAssembled RCB's
+are returned to the free CBLKs
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/cleanRCBCache //apple_ref/cpp/clm/cleanRCBCache //apple_ref/cpp/intfcm/cleanRCBCache //apple_ref/cpp/intfm/cleanRCBCache //apple_ref/cpp/func/cleanRCBCache //apple_ref/cpp/ftmplt/cleanRCBCache //apple_ref/cpp/defn/cleanRCBCache //apple_ref/cpp/macro/cleanRCBCache" --><span class="function">cleanRCBCache</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/createIPFifoAddress/IOReturn/(UInt32);  name=IOFWIPBusInterface::createIPFifoAddress --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/createIPFifoAddress/IOReturn/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createIPFifoAddress">createIPFifoAddress</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->creates the pseudo address space for IP over Firewire.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/createIPFifoAddress //apple_ref/cpp/clm/createIPFifoAddress //apple_ref/cpp/intfcm/createIPFifoAddress //apple_ref/cpp/intfm/createIPFifoAddress //apple_ref/cpp/func/createIPFifoAddress //apple_ref/cpp/ftmplt/createIPFifoAddress //apple_ref/cpp/defn/createIPFifoAddress //apple_ref/cpp/macro/createIPFifoAddress" --><span class="function">createIPFifoAddress</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">fifosize</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>UInt32 </code></dt>
+<dd>fifosize - size of the pseudo address space</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->IOReturn - kIOReturnSuccess or error if failure.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/decrementUnitCount/void/();  name=IOFWIPBusInterface::decrementUnitCount --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/decrementUnitCount/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="decrementUnitCount">decrementUnitCount</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Decrements the unit count
+ <!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/decrementUnitCount //apple_ref/cpp/clm/decrementUnitCount //apple_ref/cpp/intfcm/decrementUnitCount //apple_ref/cpp/intfm/decrementUnitCount //apple_ref/cpp/func/decrementUnitCount //apple_ref/cpp/ftmplt/decrementUnitCount //apple_ref/cpp/defn/decrementUnitCount //apple_ref/cpp/macro/decrementUnitCount" --><span class="function">decrementUnitCount</span><!-- /a -->(); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncCmdPool/void/();  name=IOFWIPBusInterface::freeAsyncCmdPool --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncCmdPool/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="freeAsyncCmdPool">freeAsyncCmdPool</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->frees the command objects from the pool
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/freeAsyncCmdPool //apple_ref/cpp/clm/freeAsyncCmdPool //apple_ref/cpp/intfcm/freeAsyncCmdPool //apple_ref/cpp/intfm/freeAsyncCmdPool //apple_ref/cpp/func/freeAsyncCmdPool //apple_ref/cpp/ftmplt/freeAsyncCmdPool //apple_ref/cpp/defn/freeAsyncCmdPool //apple_ref/cpp/macro/freeAsyncCmdPool" --><span class="function">freeAsyncCmdPool</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncStreamCmdPool/void/();  name=IOFWIPBusInterface::freeAsyncStreamCmdPool --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/freeAsyncStreamCmdPool/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="freeAsyncStreamCmdPool">freeAsyncStreamCmdPool</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->frees the command objects from the pool
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/freeAsyncStreamCmdPool //apple_ref/cpp/clm/freeAsyncStreamCmdPool //apple_ref/cpp/intfcm/freeAsyncStreamCmdPool //apple_ref/cpp/intfm/freeAsyncStreamCmdPool //apple_ref/cpp/func/freeAsyncStreamCmdPool //apple_ref/cpp/ftmplt/freeAsyncStreamCmdPool //apple_ref/cpp/defn/freeAsyncStreamCmdPool //apple_ref/cpp/macro/freeAsyncStreamCmdPool" --><span class="function">freeAsyncStreamCmdPool</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:instm;  uid=//apple_ref/doc/title:instm/IOFWIPBusInterface/freeIPCmdPool/void/();  name=IOFWIPBusInterface::freeIPCmdPool --><a name="//apple_ref/doc/title:instm/IOFWIPBusInterface/freeIPCmdPool/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="freeIPCmdPool">freeIPCmdPool</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->frees the command objects from the pool
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/freeAsyncCmdPool //apple_ref/cpp/clm/freeAsyncCmdPool //apple_ref/cpp/intfcm/freeAsyncCmdPool //apple_ref/cpp/intfm/freeAsyncCmdPool //apple_ref/cpp/func/freeAsyncCmdPool //apple_ref/cpp/ftmplt/freeAsyncCmdPool //apple_ref/cpp/defn/freeAsyncCmdPool //apple_ref/cpp/macro/freeAsyncCmdPool" --><span class="function">freeAsyncCmdPool</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitAttach/void/();  name=IOFWIPBusInterface::fwIPUnitAttach --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitAttach/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="fwIPUnitAttach">fwIPUnitAttach</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback for a Unit Attach of type IPv4 or IPv6
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/fwIPUnitAttach //apple_ref/cpp/clm/fwIPUnitAttach //apple_ref/cpp/intfcm/fwIPUnitAttach //apple_ref/cpp/intfm/fwIPUnitAttach //apple_ref/cpp/func/fwIPUnitAttach //apple_ref/cpp/ftmplt/fwIPUnitAttach //apple_ref/cpp/defn/fwIPUnitAttach //apple_ref/cpp/macro/fwIPUnitAttach" --><span class="function">fwIPUnitAttach</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitTerminate/void/();  name=IOFWIPBusInterface::fwIPUnitTerminate --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/fwIPUnitTerminate/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="fwIPUnitTerminate">fwIPUnitTerminate</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback for a Unit detach of type IPv4 or IPv6
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/fwIPUnitTerminate //apple_ref/cpp/clm/fwIPUnitTerminate //apple_ref/cpp/intfcm/fwIPUnitTerminate //apple_ref/cpp/intfm/fwIPUnitTerminate //apple_ref/cpp/func/fwIPUnitTerminate //apple_ref/cpp/ftmplt/fwIPUnitTerminate //apple_ref/cpp/defn/fwIPUnitTerminate //apple_ref/cpp/macro/fwIPUnitTerminate" --><span class="function">fwIPUnitTerminate</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getARBFromEui64/ARB*/(UWIDE);  name=IOFWIPBusInterface::getARBFromEui64 --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getARBFromEui64/ARB*/(UWIDE)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getARBFromEui64">getARBFromEui64</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding Unicast ARB (Address resolution block) for GUID
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/ARB //apple_ref/cpp/tdef/ARB //apple_ref/cpp/tag/ARB //apple_ref/cpp/econst/ARB //apple_ref/cpp/struct/ARB //apple_ref/cpp/clconst/ARB //apple_ref/cpp/intf/ARB" --><span class="type">ARB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getARBFromEui64 //apple_ref/cpp/clm/getARBFromEui64 //apple_ref/cpp/intfcm/getARBFromEui64 //apple_ref/cpp/intfm/getARBFromEui64 //apple_ref/cpp/func/getARBFromEui64 //apple_ref/cpp/ftmplt/getARBFromEui64 //apple_ref/cpp/defn/getARBFromEui64 //apple_ref/cpp/macro/getARBFromEui64" --><span class="function">getARBFromEui64</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UWIDE //apple_ref/cpp/tdef/UWIDE //apple_ref/cpp/tag/UWIDE //apple_ref/cpp/econst/UWIDE //apple_ref/cpp/struct/UWIDE //apple_ref/cpp/clconst/UWIDE //apple_ref/cpp/intf/UWIDE" --><span class="type">UWIDE</span><!-- /a --> <span class="param">eui64</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>eui64 </code></dt>
+<dd>- global unique id of a device on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns ARB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getArbFromFwAddr/ARB*/(UInt8*);  name=IOFWIPBusInterface::getArbFromFwAddr --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getArbFromFwAddr/ARB*/(UInt8*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getArbFromFwAddr">getArbFromFwAddr</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding Unicast ARB (Address resolution block) for GUID
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/ARB //apple_ref/cpp/tdef/ARB //apple_ref/cpp/tag/ARB //apple_ref/cpp/econst/ARB //apple_ref/cpp/struct/ARB //apple_ref/cpp/clconst/ARB //apple_ref/cpp/intf/ARB" --><span class="type">ARB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getArbFromFwAddr //apple_ref/cpp/clm/getArbFromFwAddr //apple_ref/cpp/intfcm/getArbFromFwAddr //apple_ref/cpp/intfm/getArbFromFwAddr //apple_ref/cpp/func/getArbFromFwAddr //apple_ref/cpp/ftmplt/getArbFromFwAddr //apple_ref/cpp/defn/getArbFromFwAddr //apple_ref/cpp/macro/getArbFromFwAddr" --><span class="function">getArbFromFwAddr</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">fwaddr</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>FwAddr </code></dt>
+<dd>- global unique id of a device on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns ARB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getDeviceID/UInt32/(UWIDE,bool*);  name=IOFWIPBusInterface::getDeviceID --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getDeviceID/UInt32/(UWIDE,bool*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getDeviceID">getDeviceID</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->returns a fireWire device object for the GUID
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getDeviceID //apple_ref/cpp/clm/getDeviceID //apple_ref/cpp/intfcm/getDeviceID //apple_ref/cpp/intfm/getDeviceID //apple_ref/cpp/func/getDeviceID //apple_ref/cpp/ftmplt/getDeviceID //apple_ref/cpp/defn/getDeviceID //apple_ref/cpp/macro/getDeviceID" --><span class="function">getDeviceID</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UWIDE //apple_ref/cpp/tdef/UWIDE //apple_ref/cpp/tag/UWIDE //apple_ref/cpp/econst/UWIDE //apple_ref/cpp/struct/UWIDE //apple_ref/cpp/clconst/UWIDE //apple_ref/cpp/intf/UWIDE" --><span class="type">UWIDE</span><!-- /a --> <span class="param">eui64</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> *<span class="param">itsMac</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>eui64 </code></dt>
+<dd>- global unique id of a device on the bus.</dd>
+<dt><code>itsMac </code></dt>
+<dd>- destination is Mac or not.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns IOFireWireNub if successfull else 0.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromDeviceID/DRB*/(void*);  name=IOFWIPBusInterface::getDrbFromDeviceID --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromDeviceID/DRB*/(void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getDrbFromDeviceID">getDrbFromDeviceID</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding DRB (Address resolution block) for IOFireWireNub
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/DRB //apple_ref/cpp/tdef/DRB //apple_ref/cpp/tag/DRB //apple_ref/cpp/econst/DRB //apple_ref/cpp/struct/DRB //apple_ref/cpp/clconst/DRB //apple_ref/cpp/intf/DRB" --><span class="type">DRB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getDrbFromDeviceID //apple_ref/cpp/clm/getDrbFromDeviceID //apple_ref/cpp/intfcm/getDrbFromDeviceID //apple_ref/cpp/intfm/getDrbFromDeviceID //apple_ref/cpp/func/getDrbFromDeviceID //apple_ref/cpp/ftmplt/getDrbFromDeviceID //apple_ref/cpp/defn/getDrbFromDeviceID //apple_ref/cpp/macro/getDrbFromDeviceID" --><span class="function">getDrbFromDeviceID</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">deviceID</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>deviceID </code></dt>
+<dd>- IOFireWireNub to look for.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns DRB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromEui64/DRB*/(UWIDE);  name=IOFWIPBusInterface::getDrbFromEui64 --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromEui64/DRB*/(UWIDE)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getDrbFromEui64">getDrbFromEui64</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding DRB (device reference block) for GUID
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/DRB //apple_ref/cpp/tdef/DRB //apple_ref/cpp/tag/DRB //apple_ref/cpp/econst/DRB //apple_ref/cpp/struct/DRB //apple_ref/cpp/clconst/DRB //apple_ref/cpp/intf/DRB" --><span class="type">DRB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getDrbFromEui64 //apple_ref/cpp/clm/getDrbFromEui64 //apple_ref/cpp/intfcm/getDrbFromEui64 //apple_ref/cpp/intfm/getDrbFromEui64 //apple_ref/cpp/func/getDrbFromEui64 //apple_ref/cpp/ftmplt/getDrbFromEui64 //apple_ref/cpp/defn/getDrbFromEui64 //apple_ref/cpp/macro/getDrbFromEui64" --><span class="function">getDrbFromEui64</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UWIDE //apple_ref/cpp/tdef/UWIDE //apple_ref/cpp/tag/UWIDE //apple_ref/cpp/econst/UWIDE //apple_ref/cpp/struct/UWIDE //apple_ref/cpp/clconst/UWIDE //apple_ref/cpp/intf/UWIDE" --><span class="type">UWIDE</span><!-- /a --> <span class="param">eui64</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>eui64 </code></dt>
+<dd>- global unique id of a device on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns DRB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromFwAddr/DRB*/(UInt8*);  name=IOFWIPBusInterface::getDrbFromFwAddr --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getDrbFromFwAddr/DRB*/(UInt8*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getDrbFromFwAddr">getDrbFromFwAddr</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding DRB (device reference block) for GUID
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/DRB //apple_ref/cpp/tdef/DRB //apple_ref/cpp/tag/DRB //apple_ref/cpp/econst/DRB //apple_ref/cpp/struct/DRB //apple_ref/cpp/clconst/DRB //apple_ref/cpp/intf/DRB" --><span class="type">DRB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getDrbFromFwAddr //apple_ref/cpp/clm/getDrbFromFwAddr //apple_ref/cpp/intfcm/getDrbFromFwAddr //apple_ref/cpp/intfm/getDrbFromFwAddr //apple_ref/cpp/func/getDrbFromFwAddr //apple_ref/cpp/ftmplt/getDrbFromFwAddr //apple_ref/cpp/defn/getDrbFromFwAddr //apple_ref/cpp/macro/getDrbFromFwAddr" --><span class="function">getDrbFromFwAddr</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">fwaddr</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>fwaddr </code></dt>
+<dd>- global unique id of a device on the bus.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns DRB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getMulticastArb/MARB*/(UInt32);  name=IOFWIPBusInterface::getMulticastArb --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getMulticastArb/MARB*/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getMulticastArb">getMulticastArb</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding multicast ARB (Address resolution block) for ipaddress
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/MARB //apple_ref/cpp/tdef/MARB //apple_ref/cpp/tag/MARB //apple_ref/cpp/econst/MARB //apple_ref/cpp/struct/MARB //apple_ref/cpp/clconst/MARB //apple_ref/cpp/intf/MARB" --><span class="type">MARB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getMulticastArb //apple_ref/cpp/clm/getMulticastArb //apple_ref/cpp/intfcm/getMulticastArb //apple_ref/cpp/intfm/getMulticastArb //apple_ref/cpp/func/getMulticastArb //apple_ref/cpp/ftmplt/getMulticastArb //apple_ref/cpp/defn/getMulticastArb //apple_ref/cpp/macro/getMulticastArb" --><span class="function">getMulticastArb</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">groupAddress</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>groupAddress </code></dt>
+<dd>- destination ipaddress to send the multicast packet.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns ARB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getRcb/RCB*/(UInt16,UInt16);  name=IOFWIPBusInterface::getRcb --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getRcb/RCB*/(UInt16,UInt16)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getRcb">getRcb</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates a reassembly control block.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/RCB //apple_ref/cpp/tdef/RCB //apple_ref/cpp/tag/RCB //apple_ref/cpp/econst/RCB //apple_ref/cpp/struct/RCB //apple_ref/cpp/clconst/RCB //apple_ref/cpp/intf/RCB" --><span class="type">RCB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getRcb //apple_ref/cpp/clm/getRcb //apple_ref/cpp/intfcm/getRcb //apple_ref/cpp/intfm/getRcb //apple_ref/cpp/func/getRcb //apple_ref/cpp/ftmplt/getRcb //apple_ref/cpp/defn/getRcb //apple_ref/cpp/macro/getRcb" --><span class="function">getRcb</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">sourceID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">dgl</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>sourceID </code></dt>
+<dd>- source nodeid which generated the fragmented packet.</dd>
+<dt><code>dgl </code></dt>
+<dd>- datagram label for the fragmented packet.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns RCB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/getUnicastArb/ARB*/(UInt32);  name=IOFWIPBusInterface::getUnicastArb --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/getUnicastArb/ARB*/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getUnicastArb">getUnicastArb</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Locates the corresponding unicast ARB (Address resolution block) for ipaddress
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/ARB //apple_ref/cpp/tdef/ARB //apple_ref/cpp/tag/ARB //apple_ref/cpp/econst/ARB //apple_ref/cpp/struct/ARB //apple_ref/cpp/clconst/ARB //apple_ref/cpp/intf/ARB" --><span class="type">ARB</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/getUnicastArb //apple_ref/cpp/clm/getUnicastArb //apple_ref/cpp/intfcm/getUnicastArb //apple_ref/cpp/intfm/getUnicastArb //apple_ref/cpp/func/getUnicastArb //apple_ref/cpp/ftmplt/getUnicastArb //apple_ref/cpp/defn/getUnicastArb //apple_ref/cpp/macro/getUnicastArb" --><span class="function">getUnicastArb</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">ipAddress</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>ipAddress </code></dt>
+<dd>- destination ipaddress to send the unicast packet.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns ARB if successfull else NULL.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/incrementUnitCount/void/();  name=IOFWIPBusInterface::incrementUnitCount --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/incrementUnitCount/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="incrementUnitCount">incrementUnitCount</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Increments the unit count
+ <!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/incrementUnitCount //apple_ref/cpp/clm/incrementUnitCount //apple_ref/cpp/intfcm/incrementUnitCount //apple_ref/cpp/intfm/incrementUnitCount //apple_ref/cpp/func/incrementUnitCount //apple_ref/cpp/ftmplt/incrementUnitCount //apple_ref/cpp/defn/incrementUnitCount //apple_ref/cpp/macro/incrementUnitCount" --><span class="function">incrementUnitCount</span><!-- /a -->(); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncCmdPool/UInt32/();  name=IOFWIPBusInterface::initAsyncCmdPool --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncCmdPool/UInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="initAsyncCmdPool">initAsyncCmdPool</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->constructs Asynchronous Send command objects and queues them in the pool
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initAsyncCmdPool //apple_ref/cpp/clm/initAsyncCmdPool //apple_ref/cpp/intfcm/initAsyncCmdPool //apple_ref/cpp/intfm/initAsyncCmdPool //apple_ref/cpp/func/initAsyncCmdPool //apple_ref/cpp/ftmplt/initAsyncCmdPool //apple_ref/cpp/defn/initAsyncCmdPool //apple_ref/cpp/macro/initAsyncCmdPool" --><span class="function">initAsyncCmdPool</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if it was successful, else kIOReturnNoMemory.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncStreamCmdPool/UInt32/();  name=IOFWIPBusInterface::initAsyncStreamCmdPool --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/initAsyncStreamCmdPool/UInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="initAsyncStreamCmdPool">initAsyncStreamCmdPool</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->constructs Asyncstream Send command objects and queues them in the pool
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initAsyncStreamCmdPool //apple_ref/cpp/clm/initAsyncStreamCmdPool //apple_ref/cpp/intfcm/initAsyncStreamCmdPool //apple_ref/cpp/intfm/initAsyncStreamCmdPool //apple_ref/cpp/func/initAsyncStreamCmdPool //apple_ref/cpp/ftmplt/initAsyncStreamCmdPool //apple_ref/cpp/defn/initAsyncStreamCmdPool //apple_ref/cpp/macro/initAsyncStreamCmdPool" --><span class="function">initAsyncStreamCmdPool</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>none. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess if it was successful, else kIOReturnNoMemory.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/mbufTobuffer/mbuf_t/(constmbuf_t,UInt32*,UInt8*,UInt32,UInt32);  name=IOFWIPBusInterface::mbufTobuffer --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/mbufTobuffer/mbuf_t/(constmbuf_t,UInt32*,UInt8*,UInt32,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="mbufTobuffer">mbufTobuffer</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Copies mbuf data into the buffer pointed by IOMemoryDescriptor.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/mbuf_t //apple_ref/cpp/tdef/mbuf_t //apple_ref/cpp/tag/mbuf_t //apple_ref/cpp/econst/mbuf_t //apple_ref/cpp/struct/mbuf_t //apple_ref/cpp/clconst/mbuf_t //apple_ref/cpp/intf/mbuf_t" --><span class="type">mbuf_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/mbufTobuffer //apple_ref/cpp/clm/mbufTobuffer //apple_ref/cpp/intfcm/mbufTobuffer //apple_ref/cpp/intfm/mbufTobuffer //apple_ref/cpp/func/mbufTobuffer //apple_ref/cpp/ftmplt/mbufTobuffer //apple_ref/cpp/defn/mbufTobuffer //apple_ref/cpp/macro/mbufTobuffer" --><span class="function">mbufTobuffer</span><!-- /a -->(
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/mbuf_t //apple_ref/cpp/tdef/mbuf_t //apple_ref/cpp/tag/mbuf_t //apple_ref/cpp/econst/mbuf_t //apple_ref/cpp/struct/mbuf_t //apple_ref/cpp/clconst/mbuf_t //apple_ref/cpp/intf/mbuf_t" --><span class="type">mbuf_t</span><!-- /a --> <span class="param">src</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">offset</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8 //apple_ref/cpp/intf/UInt8" --><span class="type">UInt8</span><!-- /a --> *<span class="param">dstbuf</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">dstbufLen</span>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">length</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>src </code></dt>
+<dd>- source mbuf.</dd>
+<dt><code>offset </code></dt>
+<dd>- offset into the mbuf data pointer.</dd>
+<dt><code>dstbuf </code></dt>
+<dd>- destination buf.</dd>
+<dt><code>dstbufLen </code></dt>
+<dd>- destination buffer length.</dd>
+<dt><code>length </code></dt>
+<dd>- length to copy.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->NULL if copied else should be invoked again till 
+the residual is copied into the buffer.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/rxARP/IOReturn/(IP1394_ARP*,UInt32);  name=IOFWIPBusInterface::rxARP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/rxARP/IOReturn/(IP1394_ARP*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxARP">rxARP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->ARP processing routine called from both Asynstream path and Async path.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxARP //apple_ref/cpp/clm/rxARP //apple_ref/cpp/intfcm/rxARP //apple_ref/cpp/intfm/rxARP //apple_ref/cpp/func/rxARP //apple_ref/cpp/ftmplt/rxARP //apple_ref/cpp/defn/rxARP //apple_ref/cpp/macro/rxARP" --><span class="function">rxARP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IP1394_ARP //apple_ref/cpp/tdef/IP1394_ARP //apple_ref/cpp/tag/IP1394_ARP //apple_ref/cpp/econst/IP1394_ARP //apple_ref/cpp/struct/IP1394_ARP //apple_ref/cpp/clconst/IP1394_ARP //apple_ref/cpp/intf/IP1394_ARP" --><span class="type">IP1394_ARP</span><!-- /a --> *<span class="param">arp</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>fwIPObj </code></dt>
+<dd>- IOFireWireIP object.</dd>
+<dt><code>arp </code></dt>
+<dd>- 1394 arp packet without the GASP or Async header.
+@params flags - indicates broadcast or unicast</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->IOReturn.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/cpp/clm/IOFWIPBusInterface/rxAsyncStream/staticvoid/(void*,constvoid*);  name=IOFWIPBusInterface::rxAsyncStream --><a name="//apple_ref/cpp/clm/IOFWIPBusInterface/rxAsyncStream/staticvoid/(void*,constvoid*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxAsyncStream">rxAsyncStream</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->callback for an Asyncstream packet, can be both IP or ARP packet.
+This procedure receives an indication when an asynchronous stream
+packet arrives on the default broadcast channel. The packet "should" be GASP,
+but we perform a few checks to make sure. Once we know these are OK, we check
+the etherType field in the unfragmented encapsulation header. This is necessary
+to dispatch the three types of packet that RFC 2734 permits on the default
+broadcast channel: an IPv4 datagram, and ARP request or response or a multi-
+channel allocation protocol (MCAP) message. The only remaining check, for each
+of these three cases, is to make sure that the packet is large enough to hold
+meaningful data. If so, send the packet to another procedure for further
+processing. 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxAsyncStream //apple_ref/cpp/clm/rxAsyncStream //apple_ref/cpp/intfcm/rxAsyncStream //apple_ref/cpp/intfm/rxAsyncStream //apple_ref/cpp/func/rxAsyncStream //apple_ref/cpp/ftmplt/rxAsyncStream //apple_ref/cpp/defn/rxAsyncStream //apple_ref/cpp/macro/rxAsyncStream" --><span class="function">rxAsyncStream</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>DCLCommandStruct </code></dt>
+<dd>*callProc.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/rxIP/IOReturn/(void*,UInt32,UInt32,UInt16);  name=IOFWIPBusInterface::rxIP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/rxIP/IOReturn/(void*,UInt32,UInt32,UInt16)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxIP">rxIP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Receive IP packet.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxIP //apple_ref/cpp/clm/rxIP //apple_ref/cpp/intfcm/rxIP //apple_ref/cpp/intfm/rxIP //apple_ref/cpp/func/rxIP //apple_ref/cpp/ftmplt/rxIP //apple_ref/cpp/defn/rxIP //apple_ref/cpp/macro/rxIP" --><span class="function">rxIP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">pkt</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">type</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>fwIPObj </code></dt>
+<dd>- IOFireWireIP object.</dd>
+<dt><code>pkt </code></dt>
+<dd>- points to the IP packet without the header.</dd>
+<dt><code>len </code></dt>
+<dd>- length of the packet.
+@params flags - indicates broadcast or unicast 
+@params type - indicates type of the packet IPv4 or IPv6</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->IOReturn.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/rxMCAP/void/(LCB*,UInt16,IP1394_MCAP*,UInt32);  name=IOFWIPBusInterface::rxMCAP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/rxMCAP/void/(LCB*,UInt16,IP1394_MCAP*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxMCAP">rxMCAP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->called from rxAsyncstream for processing MCAP advertisement.
+When an MCAP advertisement is received, parse all of its descriptors 
+looking for any that match group addreses in our MCAP cache. For those that 
+match, update the channel number (it may have changed from the default
+broadcast channel or since the last advertisement), update the speed 
+(the MCAP owner may have changed the speed requirements as nodes joined or 
+left the group) and refresh the expiration timer so that the MCAP 
+channel is valid for another number of seconds into the future. 
+Th-th-th-that's all, folks!
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxMCAP //apple_ref/cpp/clm/rxMCAP //apple_ref/cpp/intfcm/rxMCAP //apple_ref/cpp/intfm/rxMCAP //apple_ref/cpp/func/rxMCAP //apple_ref/cpp/ftmplt/rxMCAP //apple_ref/cpp/defn/rxMCAP //apple_ref/cpp/macro/rxMCAP" --><span class="function">rxMCAP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/LCB //apple_ref/cpp/tdef/LCB //apple_ref/cpp/tag/LCB //apple_ref/cpp/econst/LCB //apple_ref/cpp/struct/LCB //apple_ref/cpp/clconst/LCB //apple_ref/cpp/intf/LCB" --><span class="type">LCB</span><!-- /a --> *<span class="param">lcb</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">mcapSourceID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IP1394_MCAP //apple_ref/cpp/tdef/IP1394_MCAP //apple_ref/cpp/tag/IP1394_MCAP //apple_ref/cpp/econst/IP1394_MCAP //apple_ref/cpp/struct/IP1394_MCAP //apple_ref/cpp/clconst/IP1394_MCAP //apple_ref/cpp/intf/IP1394_MCAP" --><span class="type">IP1394_MCAP</span><!-- /a --> *<span class="param">mcap</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">dataSize</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>lcb </code></dt>
+<dd>- the firewire link control block for this interface.</dd>
+<dt><code>mcapSourceID </code></dt>
+<dd>- source nodeid which generated the multicast advertisement packet.</dd>
+<dt><code>mcap </code></dt>
+<dd>- mulitcast advertisment packet without the GASP header.</dd>
+<dt><code>dataSize </code></dt>
+<dd>- size of the packet.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicast/staticUInt32/(void*,UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon);  name=IOFWIPBusInterface::rxUnicast --><a name="//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicast/staticUInt32/(void*,UInt16,IOFWSpeed%38,FWAddress,UInt32,constvoid*,IOFWRequestRefCon)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxUnicast">rxUnicast</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->block write handler
+ <!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxUnicast //apple_ref/cpp/clm/rxUnicast //apple_ref/cpp/intfcm/rxUnicast //apple_ref/cpp/intfm/rxUnicast //apple_ref/cpp/func/rxUnicast //apple_ref/cpp/ftmplt/rxUnicast //apple_ref/cpp/defn/rxUnicast //apple_ref/cpp/macro/rxUnicast" --><span class="function">rxUnicast</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> &amp;<span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> <span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">buf</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWRequestRefCon //apple_ref/cpp/tdef/IOFWRequestRefCon //apple_ref/cpp/tag/IOFWRequestRefCon //apple_ref/cpp/econst/IOFWRequestRefCon //apple_ref/cpp/struct/IOFWRequestRefCon //apple_ref/cpp/clconst/IOFWRequestRefCon //apple_ref/cpp/intf/IOFWRequestRefCon" --><span class="type">IOFWRequestRefCon</span><!-- /a --> <span class="param">requestRefcon</span>); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicastComplete/staticvoid/(void*);  name=IOFWIPBusInterface::rxUnicastComplete --><a name="//apple_ref/cpp/clm/IOFWIPBusInterface/rxUnicastComplete/staticvoid/(void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxUnicastComplete">rxUnicastComplete</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->triggers the indication workloop to do batch processing
+of incoming packets.
+ <!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxUnicastComplete //apple_ref/cpp/clm/rxUnicastComplete //apple_ref/cpp/intfcm/rxUnicastComplete //apple_ref/cpp/intfm/rxUnicastComplete //apple_ref/cpp/func/rxUnicastComplete //apple_ref/cpp/ftmplt/rxUnicastComplete //apple_ref/cpp/defn/rxUnicastComplete //apple_ref/cpp/macro/rxUnicastComplete" --><span class="function">rxUnicastComplete</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/rxUnicastFlush/void/();  name=IOFWIPBusInterface::rxUnicastFlush --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/rxUnicastFlush/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rxUnicastFlush">rxUnicastFlush</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Starts the batch processing of the packets, its
+already on its own workloop.
+ <!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/rxUnicastFlush //apple_ref/cpp/clm/rxUnicastFlush //apple_ref/cpp/intfcm/rxUnicastFlush //apple_ref/cpp/intfm/rxUnicastFlush //apple_ref/cpp/func/rxUnicastFlush //apple_ref/cpp/ftmplt/rxUnicastFlush //apple_ref/cpp/defn/rxUnicastFlush //apple_ref/cpp/macro/rxUnicastFlush" --><span class="function">rxUnicastFlush</span><!-- /a -->(); </pre>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/txARP/SInt32/(mbuf_t,UInt16,UInt32,IOFWSpeed);  name=IOFWIPBusInterface::txARP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/txARP/SInt32/(mbuf_t,UInt16,UInt32,IOFWSpeed)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txARP">txARP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Transmit ARP request or response.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/SInt32 //apple_ref/cpp/tdef/SInt32 //apple_ref/cpp/tag/SInt32 //apple_ref/cpp/econst/SInt32 //apple_ref/cpp/struct/SInt32 //apple_ref/cpp/clconst/SInt32 //apple_ref/cpp/intf/SInt32" --><span class="type">SInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txARP //apple_ref/cpp/clm/txARP //apple_ref/cpp/intfcm/txARP //apple_ref/cpp/intfm/txARP //apple_ref/cpp/func/txARP //apple_ref/cpp/ftmplt/txARP //apple_ref/cpp/defn/txARP //apple_ref/cpp/macro/txARP" --><span class="function">txARP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/mbuf_t //apple_ref/cpp/tdef/mbuf_t //apple_ref/cpp/tag/mbuf_t //apple_ref/cpp/econst/mbuf_t //apple_ref/cpp/struct/mbuf_t //apple_ref/cpp/clconst/mbuf_t //apple_ref/cpp/intf/mbuf_t" --><span class="type">mbuf_t</span><!-- /a --> <span class="param">m</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">busGeneration</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> <span class="param">speed</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>ifp </code></dt>
+<dd>- ifnet pointer.</dd>
+<dt><code>m </code></dt>
+<dd>- mbuf containing the ARP packet.</dd>
+<dt><code>nodeID </code></dt>
+<dd>- our node id.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=title:clm;  uid=//apple_ref/doc/title:clm/IOFWIPBusInterface/txAsyncStreamComplete/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*);  name=IOFWIPBusInterface::txAsyncStreamComplete --><a name="//apple_ref/doc/title:clm/IOFWIPBusInterface/txAsyncStreamComplete/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txAsyncStreamComplete">txAsyncStreamComplete</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback for the Async stream transmit complete 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txCompleteAsyncStream //apple_ref/cpp/clm/txCompleteAsyncStream //apple_ref/cpp/intfcm/txCompleteAsyncStream //apple_ref/cpp/intfm/txCompleteAsyncStream //apple_ref/cpp/func/txCompleteAsyncStream //apple_ref/cpp/ftmplt/txCompleteAsyncStream //apple_ref/cpp/defn/txCompleteAsyncStream //apple_ref/cpp/macro/txCompleteAsyncStream" --><span class="function">txCompleteAsyncStream</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <a href="../../../../../documentation/IOFireWireBus/Classes/IOFireWireBus/index.html#//apple_ref/cpp/cl/IOFireWireBus" logicalPath="//apple_ref/cpp/cl/IOFireWireBus" target="_top"><span class="type">IOFireWireBus</span></a> *<span class="param">bus</span>,
+    <a href="../../../../../documentation/IOFWCommand/Classes/IOFWAsyncStreamCommand/index.html#//apple_ref/cpp/cl/IOFWAsyncStreamCommand" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamCommand" target="_top"><span class="type">IOFWAsyncStreamCommand</span></a> *<span class="param">fwCmd</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refcon </code></dt>
+<dd>- callback data.</dd>
+<dt><code>status </code></dt>
+<dd>- status of the command.</dd>
+<dt><code>bus </code></dt>
+<dd>information.</dd>
+<dt><code>fwCmd </code></dt>
+<dd>- command object which generated the transaction.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteAsyncStream/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*);  name=IOFWIPBusInterface::txCompleteAsyncStream --><a name="//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteAsyncStream/staticvoid/(void*,IOReturn,IOFireWireBus*,IOFWAsyncStreamCommand*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txCompleteAsyncStream">txCompleteAsyncStream</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback for the Async stream transmit complete 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txCompleteAsyncStream //apple_ref/cpp/clm/txCompleteAsyncStream //apple_ref/cpp/intfcm/txCompleteAsyncStream //apple_ref/cpp/intfm/txCompleteAsyncStream //apple_ref/cpp/func/txCompleteAsyncStream //apple_ref/cpp/ftmplt/txCompleteAsyncStream //apple_ref/cpp/defn/txCompleteAsyncStream //apple_ref/cpp/macro/txCompleteAsyncStream" --><span class="function">txCompleteAsyncStream</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <a href="../../../../../documentation/IOFireWireBus/Classes/IOFireWireBus/index.html#//apple_ref/cpp/cl/IOFireWireBus" logicalPath="//apple_ref/cpp/cl/IOFireWireBus" target="_top"><span class="type">IOFireWireBus</span></a> *<span class="param">bus</span>,
+    <a href="../../../../../documentation/IOFWCommand/Classes/IOFWAsyncStreamCommand/index.html#//apple_ref/cpp/cl/IOFWAsyncStreamCommand" logicalPath="//apple_ref/cpp/cl/IOFWAsyncStreamCommand" target="_top"><span class="type">IOFWAsyncStreamCommand</span></a> *<span class="param">fwCmd</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refcon </code></dt>
+<dd>- callback data.</dd>
+<dt><code>status </code></dt>
+<dd>- status of the command.</dd>
+<dt><code>bus </code></dt>
+<dd>information.</dd>
+<dt><code>fwCmd </code></dt>
+<dd>- command object which generated the transaction.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteBlockWrite/staticvoid/(void*,IOReturn,IOFireWireNub*,IOFWCommand*);  name=IOFWIPBusInterface::txCompleteBlockWrite --><a name="//apple_ref/cpp/clm/IOFWIPBusInterface/txCompleteBlockWrite/staticvoid/(void*,IOReturn,IOFireWireNub*,IOFWCommand*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txCompleteBlockWrite">txCompleteBlockWrite</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Callback for the Async write complete 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">static</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txCompleteBlockWrite //apple_ref/cpp/clm/txCompleteBlockWrite //apple_ref/cpp/intfcm/txCompleteBlockWrite //apple_ref/cpp/intfm/txCompleteBlockWrite //apple_ref/cpp/func/txCompleteBlockWrite //apple_ref/cpp/ftmplt/txCompleteBlockWrite //apple_ref/cpp/defn/txCompleteBlockWrite //apple_ref/cpp/macro/txCompleteBlockWrite" --><span class="function">txCompleteBlockWrite</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn //apple_ref/cpp/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> <span class="param">status</span>,
+    <a href="../../../../../documentation/IOFireWireNub/Classes/IOFireWireNub/index.html#//apple_ref/cpp/cl/IOFireWireNub" logicalPath="//apple_ref/cpp/cl/IOFireWireNub" target="_top"><span class="type">IOFireWireNub</span></a> *<span class="param">device</span>,
+    <a href="../../../../../documentation/IOFWCommand/Classes/IOFWCommand/index.html#//apple_ref/cpp/cl/IOFWCommand" logicalPath="//apple_ref/cpp/cl/IOFWCommand" target="_top"><span class="type">IOFWCommand</span></a> *<span class="param">fwCmd</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>refcon </code></dt>
+<dd>- callback data.</dd>
+<dt><code>status </code></dt>
+<dd>- status of the command.</dd>
+<dt><code>device </code></dt>
+<dd>- device.</dd>
+<dt><code>fwCmd </code></dt>
+<dd>- command object which generated the transaction.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/txIP/SInt32/(mbuf_t,UInt16,UInt32,UInt16,UInt16,IOFWSpeed,UInt16);  name=IOFWIPBusInterface::txIP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/txIP/SInt32/(mbuf_t,UInt16,UInt32,UInt16,UInt16,IOFWSpeed,UInt16)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txIP">txIP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Transmit IP packet.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/SInt32 //apple_ref/cpp/tdef/SInt32 //apple_ref/cpp/tag/SInt32 //apple_ref/cpp/econst/SInt32 //apple_ref/cpp/struct/SInt32 //apple_ref/cpp/clconst/SInt32 //apple_ref/cpp/intf/SInt32" --><span class="type">SInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txIP //apple_ref/cpp/clm/txIP //apple_ref/cpp/intfcm/txIP //apple_ref/cpp/intfm/txIP //apple_ref/cpp/func/txIP //apple_ref/cpp/ftmplt/txIP //apple_ref/cpp/defn/txIP //apple_ref/cpp/macro/txIP" --><span class="function">txIP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/mbuf_t //apple_ref/cpp/tdef/mbuf_t //apple_ref/cpp/tag/mbuf_t //apple_ref/cpp/econst/mbuf_t //apple_ref/cpp/struct/mbuf_t //apple_ref/cpp/clconst/mbuf_t //apple_ref/cpp/intf/mbuf_t" --><span class="type">mbuf_t</span><!-- /a --> <span class="param">m</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">busGeneration</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">ownMaxPayload</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">maxBroadcastPayload</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> <span class="param">speed</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt16 //apple_ref/cpp/tdef/UInt16 //apple_ref/cpp/tag/UInt16 //apple_ref/cpp/econst/UInt16 //apple_ref/cpp/struct/UInt16 //apple_ref/cpp/clconst/UInt16 //apple_ref/cpp/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">type</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>m </code></dt>
+<dd>- mbuf containing the IP packet.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->SInt32 - can be EHOSTUNREACH or 0;
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/txMCAP/void/(MCB*,UInt32);  name=IOFWIPBusInterface::txMCAP --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/txMCAP/void/(MCB*,UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="txMCAP">txMCAP</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->multicast solicitation and advertisement messages.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/txMCAP //apple_ref/cpp/clm/txMCAP //apple_ref/cpp/intfcm/txMCAP //apple_ref/cpp/intfm/txMCAP //apple_ref/cpp/func/txMCAP //apple_ref/cpp/ftmplt/txMCAP //apple_ref/cpp/defn/txMCAP //apple_ref/cpp/macro/txMCAP" --><span class="function">txMCAP</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/MCB //apple_ref/cpp/tdef/MCB //apple_ref/cpp/tag/MCB //apple_ref/cpp/econst/MCB //apple_ref/cpp/struct/MCB //apple_ref/cpp/clconst/MCB //apple_ref/cpp/intf/MCB" --><span class="type">MCB</span><!-- /a --> *<span class="param">mcb</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">groupAddress</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>MCB* </code></dt>
+<dd>- mcb - multicast channel control block</dd>
+<dt><code>ipAddress </code></dt>
+<dd>- address of the multicast group.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/updateBroadcastValues/void/(bool);  name=IOFWIPBusInterface::updateBroadcastValues --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/updateBroadcastValues/void/(bool)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateBroadcastValues">updateBroadcastValues</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the max broadcast payload and speed 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateBroadcastValues //apple_ref/cpp/clm/updateBroadcastValues //apple_ref/cpp/intfcm/updateBroadcastValues //apple_ref/cpp/intfm/updateBroadcastValues //apple_ref/cpp/func/updateBroadcastValues //apple_ref/cpp/ftmplt/updateBroadcastValues //apple_ref/cpp/defn/updateBroadcastValues //apple_ref/cpp/macro/updateBroadcastValues" --><span class="function">updateBroadcastValues</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <span class="param">reset</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>reset </code></dt>
+<dd>- useful to know whether to start from beginning.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPBusInterface/updateLinkStatus/void/();  name=IOFWIPBusInterface::updateLinkStatus --><a name="//apple_ref/cpp/instm/IOFWIPBusInterface/updateLinkStatus/void/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateLinkStatus">updateLinkStatus</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the link status based on maxbroadcast speed &amp; payload. 
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateLinkStatus //apple_ref/cpp/clm/updateLinkStatus //apple_ref/cpp/intfcm/updateLinkStatus //apple_ref/cpp/intfm/updateLinkStatus //apple_ref/cpp/func/updateLinkStatus //apple_ref/cpp/ftmplt/updateLinkStatus //apple_ref/cpp/defn/updateLinkStatus //apple_ref/cpp/macro/updateLinkStatus" --><span class="function">updateLinkStatus</span><!-- /a -->(); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>None. </code></dt>
+<dd> </dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->void.
+ 
+<!-- end return value --></p>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

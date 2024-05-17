@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFWController.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFWController.h</font></h1>
+<br><a name="//apple_ref/doc/header/IOFWController.h" title="IOFWController.h"></a><hr>
+<br><h2>Classes</h2>
+<dl>
+<dt><tt><a href="Classes/gIOEthernetWakeOnLANFilterGroup/CompositePage.html#//apple_ref/doc/class/gIOEthernetWakeOnLANFilterGroup" target="_top">gIOEthernetWakeOnLANFilterGroup</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Classes/IOFWController/CompositePage.html#//apple_ref/doc/class/IOFWController" target="_top">IOFWController</a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<br><h2>Constants</h2>
+<hr>
+<!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/c/data/gIOEthernetWakeOnLANFilterGroup;  name=gIOEthernetWakeOnLANFilterGroup --><a name="//apple_ref/doc/compositePage/c/data/gIOEthernetWakeOnLANFilterGroup"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="gIOEthernetWakeOnLANFilterGroup">gIOEthernetWakeOnLANFilterGroup</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<b>See Also:</b><br><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFWController/index.html?PDefines/PDefines.html#//apple_ref/c/macro/gIOEthernetWakeOnLANFilterGroup" logicalPath="//apple_ref/c/macro/gIOEthernetWakeOnLANFilterGroup" target="_top">gIOEthernetWakeOnLANFilterGroup</a>
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><font class="keyword">extern</font> <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/OSSymbol //apple_ref/c/cl/OSSymbol //apple_ref/c/tdef/OSSymbol //apple_ref/c/tag/OSSymbol //apple_ref/c/econst/OSSymbol //apple_ref/c/struct/OSSymbol //apple_ref/c/clconst/OSSymbol" --><font class="type">OSSymbol</font><!-- /a --> <font class="type">*</font> <font class="var">gIOEthernetWakeOnLANFilterGroup</font>; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>gIOEthernetWakeOnLANFilterGroup is an OSSymbol object
+that contains the name of the FireWire wake-on-LAN filter group
+        defined by kIOFWWakeOnLANFilterGroup. </p>
+</dl>
+<h2>Enumerations</h2>
+<hr>
+<!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/c/tag/Enumeration%32of%32wake-On-LAN%32filters.;  name=Enumerationofwake-On-LANfilters. --><a name="//apple_ref/doc/compositePage/c/tag/Enumeration%32of%32wake-On-LAN%32filters."></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="Enumeration%32of%32wake-On-LAN%32filters.">Enumeration of wake-On-LAN filters.</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<blockquote><pre><font class="keyword">enum</font> { 
+    <a href="../../documentation/IOFWController/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWWakeOnMagicPacket" logicalPath="//apple_ref/c/cl/kIOFWWakeOnMagicPacket //apple_ref/c/cl/kIOFWWakeOnMagicPacket //apple_ref/c/tdef/kIOFWWakeOnMagicPacket //apple_ref/c/tag/kIOFWWakeOnMagicPacket //apple_ref/c/econst/kIOFWWakeOnMagicPacket" target="_top"><font class="type">kIOFWWakeOnMagicPacket</font></a> = <font class="number">0x00000001</font>, 
+    <a href="../../documentation/IOFWController/index.html?Enums/Enums.html#//apple_ref/c/econst/kIOFWWakeOnPacketAddressMatch" logicalPath="//apple_ref/c/cl/kIOFWWakeOnPacketAddressMatch //apple_ref/c/cl/kIOFWWakeOnPacketAddressMatch //apple_ref/c/tdef/kIOFWWakeOnPacketAddressMatch //apple_ref/c/tag/kIOFWWakeOnPacketAddressMatch //apple_ref/c/econst/kIOFWWakeOnPacketAddressMatch" target="_top"><font class="type">kIOFWWakeOnPacketAddressMatch</font></a> = <font class="number">0x00000002</font> 
+}; </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Constants</font></h5>
+<blockquote>
+<dl>
+<dt><code>kIOFWWakeOnMagicPacket</code></dt>
+<dd>Reception of a Magic Packet.</dd>
+<dt><code>kIOFWWakeOnPacketAddressMatch</code></dt>
+<dd>Reception of a packet
+which passes through any of the address filtering mechanisms based
+on its destination FireWire address. This may include unicast,
+broadcast, or multicast addresses depending on the current state
+    and setting of the corresponding packet filters.</dd>
+</dl>
+</blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>An enumeration of all filters in the wake-on-LAN filter
+group. Each filter listed will respond to a network event that
+will trigger a system wake-up.
+</p>
+</dl>
+<h2>#defines</h2>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/gIOEthernetWakeOnLANFilterGroup;  name=gIOEthernetWakeOnLANFilterGroup --><a name="//apple_ref/doc/compositePage/c/macro/gIOEthernetWakeOnLANFilterGroup"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="gIOEthernetWakeOnLANFilterGroup">gIOEthernetWakeOnLANFilterGroup</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<b>See Also:</b><br><blockquote><dl>
+<dt>
+<a href="../../documentation/IOFWController/index.html?Constants/Constants.html#//apple_ref/c/data/gIOEthernetWakeOnLANFilterGroup" logicalPath="//apple_ref/c/data/gIOEthernetWakeOnLANFilterGroup" target="_top">gIOEthernetWakeOnLANFilterGroup</a>
+</dt>
+<dd></dd>
+<dt>
+<!-- a logicalPath="//apple_ref/cpp//gIOEthernetWakeOnLANFilterGroup" -->gIOEthernetWakeOnLANFilterGroup<!-- /a -->
+</dt>
+<dd></dd>
+<dt>
+<!-- a logicalPath="//apple_ref/cpp//IOFWController" -->IOFWController<!-- /a -->
+</dt>
+<dd></dd>
+</dl></blockquote>
+<blockquote><pre><font class="comment">/*
+ * FIXME: remove this.</font>
+    <font class="comment">*/</font>
+<font class="keyword">enum</font> { 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOEnetPromiscuousModeOff //apple_ref/c/cl/kIOEnetPromiscuousModeOff //apple_ref/c/tdef/kIOEnetPromiscuousModeOff //apple_ref/c/tag/kIOEnetPromiscuousModeOff //apple_ref/c/econst/kIOEnetPromiscuousModeOff //apple_ref/c/struct/kIOEnetPromiscuousModeOff //apple_ref/c/clconst/kIOEnetPromiscuousModeOff" --><font class="type">kIOEnetPromiscuousModeOff</font><!-- /a --> = <font class="keyword">false</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOEnetPromiscuousModeOn //apple_ref/c/cl/kIOEnetPromiscuousModeOn //apple_ref/c/tdef/kIOEnetPromiscuousModeOn //apple_ref/c/tag/kIOEnetPromiscuousModeOn //apple_ref/c/econst/kIOEnetPromiscuousModeOn //apple_ref/c/struct/kIOEnetPromiscuousModeOn //apple_ref/c/clconst/kIOEnetPromiscuousModeOn" --><font class="type">kIOEnetPromiscuousModeOn</font><!-- /a --> = <font class="keyword">true</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOEnetPromiscuousModeAll //apple_ref/c/cl/kIOEnetPromiscuousModeAll //apple_ref/c/tdef/kIOEnetPromiscuousModeAll //apple_ref/c/tag/kIOEnetPromiscuousModeAll //apple_ref/c/econst/kIOEnetPromiscuousModeAll //apple_ref/c/struct/kIOEnetPromiscuousModeAll //apple_ref/c/clconst/kIOEnetPromiscuousModeAll" --><font class="type">kIOEnetPromiscuousModeAll</font><!-- /a --> = <font class="keyword">true</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOEnetMulticastModeOff //apple_ref/c/cl/kIOEnetMulticastModeOff //apple_ref/c/tdef/kIOEnetMulticastModeOff //apple_ref/c/tag/kIOEnetMulticastModeOff //apple_ref/c/econst/kIOEnetMulticastModeOff //apple_ref/c/struct/kIOEnetMulticastModeOff //apple_ref/c/clconst/kIOEnetMulticastModeOff" --><font class="type">kIOEnetMulticastModeOff</font><!-- /a --> = <font class="keyword">false</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/kIOEnetMulticastModeFilter //apple_ref/c/cl/kIOEnetMulticastModeFilter //apple_ref/c/tdef/kIOEnetMulticastModeFilter //apple_ref/c/tag/kIOEnetMulticastModeFilter //apple_ref/c/econst/kIOEnetMulticastModeFilter //apple_ref/c/struct/kIOEnetMulticastModeFilter //apple_ref/c/clconst/kIOEnetMulticastModeFilter" --><font class="type">kIOEnetMulticastModeFilter</font><!-- /a --> = <font class="keyword">true</font> 
+}; </pre></blockquote>
+<dl>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>gIOEthernetWakeOnLANFilterGroup is an OSSymbol object
+that contains the name of the FireWire wake-on-LAN filter group
+        defined by kIOFWWakeOnLANFilterGroup. </p>
+</dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWAddressSize;  name=kIOFWAddressSize --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWAddressSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWAddressSize">kIOFWAddressSize</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>The number of bytes in an FireWire hardware address. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWAddressSize //apple_ref/c/cl/kIOFWAddressSize //apple_ref/c/tdef/kIOFWAddressSize //apple_ref/c/tag/kIOFWAddressSize //apple_ref/c/econst/kIOFWAddressSize //apple_ref/c/struct/kIOFWAddressSize //apple_ref/c/clconst/kIOFWAddressSize" --><font class="type">kIOFWAddressSize</font><!-- /a --> <font class="number">8</font> </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWControllerClass;  name=kIOFWControllerClass --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWControllerClass"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWControllerClass">kIOFWControllerClass</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>kIOFWControllerClass is the name of the
+        IOFWController class. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWControllerClass //apple_ref/c/cl/kIOFWControllerClass //apple_ref/c/tdef/kIOFWControllerClass //apple_ref/c/tag/kIOFWControllerClass //apple_ref/c/econst/kIOFWControllerClass //apple_ref/c/struct/kIOFWControllerClass //apple_ref/c/clconst/kIOFWControllerClass" --><font class="type">kIOFWControllerClass</font><!-- /a --> "<!-- a logicalPath="//apple_ref/c/cl/IOFWController //apple_ref/c/cl/IOFWController //apple_ref/c/tdef/IOFWController //apple_ref/c/tag/IOFWController //apple_ref/c/econst/IOFWController //apple_ref/c/struct/IOFWController //apple_ref/c/clconst/IOFWController" --><font class="type">IOFWController</font><!-- /a -->" </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWCRCSize;  name=kIOFWCRCSize --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWCRCSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWCRCSize">kIOFWCRCSize</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>The size in bytes of the 32-bit CRC value appended
+        to the end of each FireWire frame. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWCRCSize //apple_ref/c/cl/kIOFWCRCSize //apple_ref/c/tdef/kIOFWCRCSize //apple_ref/c/tag/kIOFWCRCSize //apple_ref/c/econst/kIOFWCRCSize //apple_ref/c/struct/kIOFWCRCSize //apple_ref/c/clconst/kIOFWCRCSize" --><font class="type">kIOFWCRCSize</font><!-- /a --> <font class="number">0</font> </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWMaxPacketSize;  name=kIOFWMaxPacketSize --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWMaxPacketSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWMaxPacketSize">kIOFWMaxPacketSize</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>The maximum size of an FireWire packet, including
+        the FCS bytes. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWMaxPacketSize //apple_ref/c/cl/kIOFWMaxPacketSize //apple_ref/c/tdef/kIOFWMaxPacketSize //apple_ref/c/tag/kIOFWMaxPacketSize //apple_ref/c/econst/kIOFWMaxPacketSize //apple_ref/c/struct/kIOFWMaxPacketSize //apple_ref/c/clconst/kIOFWMaxPacketSize" --><font class="type">kIOFWMaxPacketSize</font><!-- /a --> <font class="number">4096</font> </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWMinPacketSize;  name=kIOFWMinPacketSize --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWMinPacketSize"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWMinPacketSize">kIOFWMinPacketSize</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>The minimum size of an FireWire packet, including
+        the FCS bytes. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWMinPacketSize //apple_ref/c/cl/kIOFWMinPacketSize //apple_ref/c/tdef/kIOFWMinPacketSize //apple_ref/c/tag/kIOFWMinPacketSize //apple_ref/c/econst/kIOFWMinPacketSize //apple_ref/c/struct/kIOFWMinPacketSize //apple_ref/c/clconst/kIOFWMinPacketSize" --><font class="type">kIOFWMinPacketSize</font><!-- /a --> <font class="number">64</font> </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=macro;  uid=//apple_ref/doc/compositePage/c/macro/kIOFWWakeOnLANFilterGroup;  name=kIOFWWakeOnLANFilterGroup --><a name="//apple_ref/doc/compositePage/c/macro/kIOFWWakeOnLANFilterGroup"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="kIOFWWakeOnLANFilterGroup">kIOFWWakeOnLANFilterGroup</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>kIOFWWakeOnLANFilterGroup describes the name assigned
+        to the FireWire wake-On-LAN filter group. </p>
+<blockquote><pre>#define <!-- a logicalPath="//apple_ref/c/cl/kIOFWWakeOnLANFilterGroup //apple_ref/c/cl/kIOFWWakeOnLANFilterGroup //apple_ref/c/tdef/kIOFWWakeOnLANFilterGroup //apple_ref/c/tag/kIOFWWakeOnLANFilterGroup //apple_ref/c/econst/kIOFWWakeOnLANFilterGroup //apple_ref/c/struct/kIOFWWakeOnLANFilterGroup //apple_ref/c/clconst/kIOFWWakeOnLANFilterGroup" --><font class="type">kIOFWWakeOnLANFilterGroup</font><!-- /a --> "<!-- a logicalPath="//apple_ref/c/cl/IOFWWakeOnLANFilterGroup //apple_ref/c/cl/IOFWWakeOnLANFilterGroup //apple_ref/c/tdef/IOFWWakeOnLANFilterGroup //apple_ref/c/tag/IOFWWakeOnLANFilterGroup //apple_ref/c/econst/IOFWWakeOnLANFilterGroup //apple_ref/c/struct/IOFWWakeOnLANFilterGroup //apple_ref/c/clconst/IOFWWakeOnLANFilterGroup" --><font class="type">IOFWWakeOnLANFilterGroup</font><!-- /a -->" </pre></blockquote>
+<dl></dl>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

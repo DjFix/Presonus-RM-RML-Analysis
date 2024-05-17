@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>IOFireWirePCRSpace</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFireWirePCRSpace</font></h1><br>
+<a name="//apple_ref/doc/class/IOFireWirePCRSpace" title="IOFireWirePCRSpace"></a>
+<h2>Abstract</h2>
+ object to multiplex users of the PCR plug registers
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWPseudoAddressSpace //apple_ref/cpp/cl/IOFWPseudoAddressSpace //apple_ref/cpp/tdef/IOFWPseudoAddressSpace //apple_ref/cpp/tag/IOFWPseudoAddressSpace //apple_ref/cpp/econst/IOFWPseudoAddressSpace //apple_ref/cpp/struct/IOFWPseudoAddressSpace //apple_ref/cpp/data/IOFWPseudoAddressSpace //apple_ref/cpp/clconst/IOFWPseudoAddressSpace //apple_ref/cpp/instm/IOFWPseudoAddressSpace //apple_ref/cpp/clm/IOFWPseudoAddressSpace //apple_ref/cpp/intfcm/IOFWPseudoAddressSpace //apple_ref/cpp/func/IOFWPseudoAddressSpace //apple_ref/cpp/ftmplt/IOFWPseudoAddressSpace //apple_ref/cpp/defn/IOFWPseudoAddressSpace //apple_ref/cpp/macro/IOFWPseudoAddressSpace" -->IOFWPseudoAddressSpace<!-- /a --><br>
+<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateInputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38)" target="_top">allocateInputPlug</a></tt></dt>
+<dd>allocates an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateOutputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38)" target="_top">allocateOutputPlug</a></tt></dt>
+<dd>allocates an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/clearAllP2PConnections/virtualvoid/()" target="_top">clearAllP2PConnections</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeInputPlug/virtualvoid/(UInt32)" target="_top">freeInputPlug</a></tt></dt>
+<dd>deallocates an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeOutputPlug/virtualvoid/(UInt32)" target="_top">freeOutputPlug</a></tt></dt>
+<dd>deallocates an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/clm/IOFireWirePCRSpace/getPCRAddressSpace/staticIOFireWirePCRSpace*/(IOFireWireBus*)" target="_top">getPCRAddressSpace</a></tt></dt>
+<dd>returns the IOFireWirePCRSpace object for the given FireWire bus
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/init/virtualbool/(IOFireWireBus*)" target="_top">init</a></tt></dt>
+<dd>initializes the IOFireWirePCRSpace object
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputMasterPlug/virtualUInt32/()" target="_top">readInputMasterPlug</a></tt></dt>
+<dd>returns the current value of the input master plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputPlug/virtualUInt32/(UInt32)" target="_top">readInputPlug</a></tt></dt>
+<dd>returns the current value of an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputMasterPlug/virtualUInt32/()" target="_top">readOutputMasterPlug</a></tt></dt>
+<dd>returns the current value of the output master plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputPlug/virtualUInt32/(UInt32)" target="_top">readOutputPlug</a></tt></dt>
+<dd>returns the current value of an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/setAVCTargetSpacePointer/virtualvoid/(IOFireWireAVCTargetSpace*)" target="_top">setAVCTargetSpacePointer</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputMasterPlug/virtualIOReturn/(UInt32,UInt32)" target="_top">updateInputMasterPlug</a></tt></dt>
+<dd>updates the value of the master input plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputPlug/virtualIOReturn/(UInt32,UInt32,UInt32)" target="_top">updateInputPlug</a></tt></dt>
+<dd>updates the value of an input plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputMasterPlug/virtualIOReturn/(UInt32,UInt32)" target="_top">updateOutputMasterPlug</a></tt></dt>
+<dd>updates the value of the master output plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputPlug/virtualIOReturn/(UInt32,UInt32,UInt32)" target="_top">updateOutputPlug</a></tt></dt>
+<dd>updates the value of an output plug (simulating a lock transaction).
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateInputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38);  name=IOFireWirePCRSpace::allocateInputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateInputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="allocateInputPlug">allocateInputPlug</a></h2>
+</td></tr></table>allocates an input plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/allocateInputPlug //apple_ref/cpp/clm/allocateInputPlug //apple_ref/cpp/intfcm/allocateInputPlug //apple_ref/cpp/func/allocateInputPlug //apple_ref/cpp/ftmplt/allocateInputPlug //apple_ref/cpp/defn/allocateInputPlug //apple_ref/cpp/macro/allocateInputPlug" --><font class="function">allocateInputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWirePCRCallback //apple_ref/cpp/cl/IOFireWirePCRCallback //apple_ref/cpp/tdef/IOFireWirePCRCallback //apple_ref/cpp/tag/IOFireWirePCRCallback //apple_ref/cpp/econst/IOFireWirePCRCallback //apple_ref/cpp/struct/IOFireWirePCRCallback //apple_ref/cpp/clconst/IOFireWirePCRCallback" --><font class="type">IOFireWirePCRCallback</font><!-- /a --> <font class="param">func</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> &amp;<font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>refcon</em></tt></dt><dd>arbitrary value passed back as first argument of callback.</dd>
+<dt><tt><em>func</em></tt></dt><dd>callback function when a successful lock transaction to the plug has been performed</dd>
+<dt><tt><em>plug</em></tt></dt><dd>set to the plug number if a plug is successfully allocated</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateOutputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38);  name=IOFireWirePCRSpace::allocateOutputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/allocateOutputPlug/virtualIOReturn/(void*,IOFireWirePCRCallback,UInt32%38)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="allocateOutputPlug">allocateOutputPlug</a></h2>
+</td></tr></table>allocates an output plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/allocateOutputPlug //apple_ref/cpp/clm/allocateOutputPlug //apple_ref/cpp/intfcm/allocateOutputPlug //apple_ref/cpp/func/allocateOutputPlug //apple_ref/cpp/ftmplt/allocateOutputPlug //apple_ref/cpp/defn/allocateOutputPlug //apple_ref/cpp/macro/allocateOutputPlug" --><font class="function">allocateOutputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWirePCRCallback //apple_ref/cpp/cl/IOFireWirePCRCallback //apple_ref/cpp/tdef/IOFireWirePCRCallback //apple_ref/cpp/tag/IOFireWirePCRCallback //apple_ref/cpp/econst/IOFireWirePCRCallback //apple_ref/cpp/struct/IOFireWirePCRCallback //apple_ref/cpp/clconst/IOFireWirePCRCallback" --><font class="type">IOFireWirePCRCallback</font><!-- /a --> <font class="param">func</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> &amp;<font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>refcon</em></tt></dt><dd>arbitrary value passed back as first argument of callback.</dd>
+<dt><tt><em>func</em></tt></dt><dd>callback function when a successful lock transaction to the plug has been performed</dd>
+<dt><tt><em>plug</em></tt></dt><dd>set to the plug number if a plug is successfully allocated</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/clearAllP2PConnections/virtualvoid/();  name=IOFireWirePCRSpace::clearAllP2PConnections -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/clearAllP2PConnections/virtualvoid/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="clearAllP2PConnections">clearAllP2PConnections</a></h2>
+</td></tr></table><blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/clearAllP2PConnections //apple_ref/cpp/clm/clearAllP2PConnections //apple_ref/cpp/intfcm/clearAllP2PConnections //apple_ref/cpp/func/clearAllP2PConnections //apple_ref/cpp/ftmplt/clearAllP2PConnections //apple_ref/cpp/defn/clearAllP2PConnections //apple_ref/cpp/macro/clearAllP2PConnections" --><font class="function">clearAllP2PConnections</font><!-- /a -->(
+    <font class="param">void</font>);</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeInputPlug/virtualvoid/(UInt32);  name=IOFireWirePCRSpace::freeInputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeInputPlug/virtualvoid/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="freeInputPlug">freeInputPlug</a></h2>
+</td></tr></table>deallocates an input plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/freeInputPlug //apple_ref/cpp/clm/freeInputPlug //apple_ref/cpp/intfcm/freeInputPlug //apple_ref/cpp/func/freeInputPlug //apple_ref/cpp/ftmplt/freeInputPlug //apple_ref/cpp/defn/freeInputPlug //apple_ref/cpp/macro/freeInputPlug" --><font class="function">freeInputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateInputPlug.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeOutputPlug/virtualvoid/(UInt32);  name=IOFireWirePCRSpace::freeOutputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/freeOutputPlug/virtualvoid/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="freeOutputPlug">freeOutputPlug</a></h2>
+</td></tr></table>deallocates an output plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/freeOutputPlug //apple_ref/cpp/clm/freeOutputPlug //apple_ref/cpp/intfcm/freeOutputPlug //apple_ref/cpp/func/freeOutputPlug //apple_ref/cpp/ftmplt/freeOutputPlug //apple_ref/cpp/defn/freeOutputPlug //apple_ref/cpp/macro/freeOutputPlug" --><font class="function">freeOutputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateOutputPlug.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/cpp/clm/IOFireWirePCRSpace/getPCRAddressSpace/staticIOFireWirePCRSpace*/(IOFireWireBus*);  name=IOFireWirePCRSpace::getPCRAddressSpace -->
+<a name="//apple_ref/doc/compositePage/cpp/clm/IOFireWirePCRSpace/getPCRAddressSpace/staticIOFireWirePCRSpace*/(IOFireWireBus*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getPCRAddressSpace">getPCRAddressSpace</a></h2>
+</td></tr></table>returns the IOFireWirePCRSpace object for the given FireWire bus
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">static</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWirePCRSpace //apple_ref/cpp/cl/IOFireWirePCRSpace //apple_ref/cpp/tdef/IOFireWirePCRSpace //apple_ref/cpp/tag/IOFireWirePCRSpace //apple_ref/cpp/econst/IOFireWirePCRSpace //apple_ref/cpp/struct/IOFireWirePCRSpace //apple_ref/cpp/clconst/IOFireWirePCRSpace" --><font class="type">IOFireWirePCRSpace</font><!-- /a --> <font class="type">*</font><!-- a logicalPath="//apple_ref/cpp/instm/getPCRAddressSpace //apple_ref/cpp/clm/getPCRAddressSpace //apple_ref/cpp/intfcm/getPCRAddressSpace //apple_ref/cpp/func/getPCRAddressSpace //apple_ref/cpp/ftmplt/getPCRAddressSpace //apple_ref/cpp/defn/getPCRAddressSpace //apple_ref/cpp/macro/getPCRAddressSpace" --><font class="function">getPCRAddressSpace</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireBus //apple_ref/cpp/cl/IOFireWireBus //apple_ref/cpp/tdef/IOFireWireBus //apple_ref/cpp/tag/IOFireWireBus //apple_ref/cpp/econst/IOFireWireBus //apple_ref/cpp/struct/IOFireWireBus //apple_ref/cpp/clconst/IOFireWireBus" --><font class="type">IOFireWireBus</font><!-- /a --> *<font class="param">bus</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>bus</em></tt></dt><dd>The FireWire bus</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/init/virtualbool/(IOFireWireBus*);  name=IOFireWirePCRSpace::init -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/init/virtualbool/(IOFireWireBus*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="init">init</a></h2>
+</td></tr></table>initializes the IOFireWirePCRSpace object
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/init //apple_ref/cpp/clm/init //apple_ref/cpp/intfcm/init //apple_ref/cpp/func/init //apple_ref/cpp/ftmplt/init //apple_ref/cpp/defn/init //apple_ref/cpp/macro/init" --><font class="function">init</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireBus //apple_ref/cpp/cl/IOFireWireBus //apple_ref/cpp/tdef/IOFireWireBus //apple_ref/cpp/tag/IOFireWireBus //apple_ref/cpp/econst/IOFireWireBus //apple_ref/cpp/struct/IOFireWireBus //apple_ref/cpp/clconst/IOFireWireBus" --><font class="type">IOFireWireBus</font><!-- /a --> *<font class="param">bus</font>);</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputMasterPlug/virtualUInt32/();  name=IOFireWirePCRSpace::readInputMasterPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputMasterPlug/virtualUInt32/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="readInputMasterPlug">readInputMasterPlug</a></h2>
+</td></tr></table>returns the current value of the input master plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/readInputMasterPlug //apple_ref/cpp/clm/readInputMasterPlug //apple_ref/cpp/intfcm/readInputMasterPlug //apple_ref/cpp/func/readInputMasterPlug //apple_ref/cpp/ftmplt/readInputMasterPlug //apple_ref/cpp/defn/readInputMasterPlug //apple_ref/cpp/macro/readInputMasterPlug" --><font class="function">readInputMasterPlug</font><!-- /a -->();</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputPlug/virtualUInt32/(UInt32);  name=IOFireWirePCRSpace::readInputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readInputPlug/virtualUInt32/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="readInputPlug">readInputPlug</a></h2>
+</td></tr></table>returns the current value of an input plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/readInputPlug //apple_ref/cpp/clm/readInputPlug //apple_ref/cpp/intfcm/readInputPlug //apple_ref/cpp/func/readInputPlug //apple_ref/cpp/ftmplt/readInputPlug //apple_ref/cpp/defn/readInputPlug //apple_ref/cpp/macro/readInputPlug" --><font class="function">readInputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateInputPlug.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputMasterPlug/virtualUInt32/();  name=IOFireWirePCRSpace::readOutputMasterPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputMasterPlug/virtualUInt32/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="readOutputMasterPlug">readOutputMasterPlug</a></h2>
+</td></tr></table>returns the current value of the output master plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/readOutputMasterPlug //apple_ref/cpp/clm/readOutputMasterPlug //apple_ref/cpp/intfcm/readOutputMasterPlug //apple_ref/cpp/func/readOutputMasterPlug //apple_ref/cpp/ftmplt/readOutputMasterPlug //apple_ref/cpp/defn/readOutputMasterPlug //apple_ref/cpp/macro/readOutputMasterPlug" --><font class="function">readOutputMasterPlug</font><!-- /a -->();</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputPlug/virtualUInt32/(UInt32);  name=IOFireWirePCRSpace::readOutputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/readOutputPlug/virtualUInt32/(UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="readOutputPlug">readOutputPlug</a></h2>
+</td></tr></table>returns the current value of an output plug.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/readOutputPlug //apple_ref/cpp/clm/readOutputPlug //apple_ref/cpp/intfcm/readOutputPlug //apple_ref/cpp/func/readOutputPlug //apple_ref/cpp/ftmplt/readOutputPlug //apple_ref/cpp/defn/readOutputPlug //apple_ref/cpp/macro/readOutputPlug" --><font class="function">readOutputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateOutputPlug.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/setAVCTargetSpacePointer/virtualvoid/(IOFireWireAVCTargetSpace*);  name=IOFireWirePCRSpace::setAVCTargetSpacePointer -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/setAVCTargetSpacePointer/virtualvoid/(IOFireWireAVCTargetSpace*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="setAVCTargetSpacePointer">setAVCTargetSpacePointer</a></h2>
+</td></tr></table><blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setAVCTargetSpacePointer //apple_ref/cpp/clm/setAVCTargetSpacePointer //apple_ref/cpp/intfcm/setAVCTargetSpacePointer //apple_ref/cpp/func/setAVCTargetSpacePointer //apple_ref/cpp/ftmplt/setAVCTargetSpacePointer //apple_ref/cpp/defn/setAVCTargetSpacePointer //apple_ref/cpp/macro/setAVCTargetSpacePointer" --><font class="function">setAVCTargetSpacePointer</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireAVCTargetSpace //apple_ref/cpp/cl/IOFireWireAVCTargetSpace //apple_ref/cpp/tdef/IOFireWireAVCTargetSpace //apple_ref/cpp/tag/IOFireWireAVCTargetSpace //apple_ref/cpp/econst/IOFireWireAVCTargetSpace //apple_ref/cpp/struct/IOFireWireAVCTargetSpace //apple_ref/cpp/clconst/IOFireWireAVCTargetSpace" --><font class="type">IOFireWireAVCTargetSpace</font><!-- /a --> *<font class="param">pAVCTargetSpace</font>);</pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputMasterPlug/virtualIOReturn/(UInt32,UInt32);  name=IOFireWirePCRSpace::updateInputMasterPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputMasterPlug/virtualIOReturn/(UInt32,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="updateInputMasterPlug">updateInputMasterPlug</a></h2>
+</td></tr></table>updates the value of the master input plug (simulating a lock transaction).
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateInputMasterPlug //apple_ref/cpp/clm/updateInputMasterPlug //apple_ref/cpp/intfcm/updateInputMasterPlug //apple_ref/cpp/func/updateInputMasterPlug //apple_ref/cpp/ftmplt/updateInputMasterPlug //apple_ref/cpp/defn/updateInputMasterPlug //apple_ref/cpp/macro/updateInputMasterPlug" --><font class="function">updateInputMasterPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">oldVal</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">newVal</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>oldVal</em></tt></dt><dd>value returned by readInputMasterPlug.</dd>
+<dt><tt><em>newVal</em></tt></dt><dd>new value to store in plug if it's current value is oldVal.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputPlug/virtualIOReturn/(UInt32,UInt32,UInt32);  name=IOFireWirePCRSpace::updateInputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateInputPlug/virtualIOReturn/(UInt32,UInt32,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="updateInputPlug">updateInputPlug</a></h2>
+</td></tr></table>updates the value of an input plug (simulating a lock transaction).
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateInputPlug //apple_ref/cpp/clm/updateInputPlug //apple_ref/cpp/intfcm/updateInputPlug //apple_ref/cpp/func/updateInputPlug //apple_ref/cpp/ftmplt/updateInputPlug //apple_ref/cpp/defn/updateInputPlug //apple_ref/cpp/macro/updateInputPlug" --><font class="function">updateInputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">oldVal</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">newVal</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateInputPlug.</dd>
+<dt><tt><em>oldVal</em></tt></dt><dd>value returned by readInputPlug.</dd>
+<dt><tt><em>newVal</em></tt></dt><dd>new value to store in plug if it's current value is oldVal.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputMasterPlug/virtualIOReturn/(UInt32,UInt32);  name=IOFireWirePCRSpace::updateOutputMasterPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputMasterPlug/virtualIOReturn/(UInt32,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="updateOutputMasterPlug">updateOutputMasterPlug</a></h2>
+</td></tr></table>updates the value of the master output plug (simulating a lock transaction).
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateOutputMasterPlug //apple_ref/cpp/clm/updateOutputMasterPlug //apple_ref/cpp/intfcm/updateOutputMasterPlug //apple_ref/cpp/func/updateOutputMasterPlug //apple_ref/cpp/ftmplt/updateOutputMasterPlug //apple_ref/cpp/defn/updateOutputMasterPlug //apple_ref/cpp/macro/updateOutputMasterPlug" --><font class="function">updateOutputMasterPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">oldVal</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">newVal</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>oldVal</em></tt></dt><dd>value returned by readOutputMasterPlug.</dd>
+<dt><tt><em>newVal</em></tt></dt><dd>new value to store in plug if it's current value is oldVal.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputPlug/virtualIOReturn/(UInt32,UInt32,UInt32);  name=IOFireWirePCRSpace::updateOutputPlug -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWirePCRSpace/updateOutputPlug/virtualIOReturn/(UInt32,UInt32,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="updateOutputPlug">updateOutputPlug</a></h2>
+</td></tr></table>updates the value of an output plug (simulating a lock transaction).
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateOutputPlug //apple_ref/cpp/clm/updateOutputPlug //apple_ref/cpp/intfcm/updateOutputPlug //apple_ref/cpp/func/updateOutputPlug //apple_ref/cpp/ftmplt/updateOutputPlug //apple_ref/cpp/defn/updateOutputPlug //apple_ref/cpp/macro/updateOutputPlug" --><font class="function">updateOutputPlug</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">oldVal</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">newVal</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>plug</em></tt></dt><dd>value returned by allocateOutputPlug.</dd>
+<dt><tt><em>oldVal</em></tt></dt><dd>value returned by readOutputPlug.</dd>
+<dt><tt><em>newVal</em></tt></dt><dd>new value to store in plug if it's current value is oldVal.</dd>
+</dl>
+</blockquote>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/IOFireWirePCRSpace/reserved;  name=IOFireWirePCRSpace::reserved -->
+<a name="//apple_ref/doc/compositePage/cpp/data/IOFireWirePCRSpace/reserved"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="reserved">reserved</a></h2>
+</td></tr></table><blockquote><tt>protected</tt> <!-- a logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData //apple_ref/cpp/econst/ExpansionData //apple_ref/cpp/struct/ExpansionData //apple_ref/cpp/clconst/ExpansionData" --><font class="type">ExpansionData</font><!-- /a --> <font class="type">*</font><font class="var">reserved</font>;</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p> Reserved for future use. (Internal use only)</p>
+<hr>
+<h2>Structs and Unions</h2>
+<hr><!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/cpp/tag/IOFireWirePCRSpace/ExpansionData;  name=IOFireWirePCRSpace::ExpansionData -->
+<a name="//apple_ref/doc/compositePage/cpp/tag/IOFireWirePCRSpace/ExpansionData"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h3><a name="ExpansionData">ExpansionData</a></h3>
+</td></tr></table><hr><dl></dl><blockquote><pre><font class="keyword">struct</font> <!-- a logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData //apple_ref/cpp/econst/ExpansionData //apple_ref/cpp/struct/ExpansionData //apple_ref/cpp/clconst/ExpansionData" --><font class="type">ExpansionData</font><!-- /a --> {
+};</pre></blockquote>
+<dl><h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>This structure will be used to expand the capablilties of the class in the future.
+ </p>
+</dl>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

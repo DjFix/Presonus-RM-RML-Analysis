@@ -1,0 +1,734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireAVCLibProtocolInterface </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/class/IOFireWireAVCLibProtocolInterface" title="IOFireWireAVCLibProtocolInterface "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireAVCLibProtocolInterface">IOFireWireAVCLibProtocolInterface </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> Initial interface discovered for all AVC protocol drivers. 
+<!-- end abstract --></p>
+<p><b>Declared In:</b> <a href="../../index.html" target="_top">IOFireWireAVCLib.h</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> The IOFireWireAVCLibProtocolInterface is used to set up local plug control registers and to receive AVC requests.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addCallbackDispatcherToRunLoop" target="_top">addCallbackDispatcherToRunLoop </a></tt></dt>
+<dd>Adds a dispatcher for kernel callbacks to the specified run loop.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addSubunit" target="_top">addSubunit</a></tt></dt>
+<dd>Installs a virtual AVC subunit.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateInputPlug" target="_top">allocateInputPlug</a></tt></dt>
+<dd>Allocates an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateOutputPlug" target="_top">allocateOutputPlug</a></tt></dt>
+<dd>Allocates an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/connectTargetPlugs" target="_top">connectTargetPlugs</a></tt></dt>
+<dd>Establishes an internal AVC plug connection between subunit/unit plugs.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/disconnectTargetPlugs" target="_top">disconnectTargetPlugs</a></tt></dt>
+<dd>Breaks an internal AVC plug connection between subunit/unit plugs.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeInputPlug" target="_top">freeInputPlug</a></tt></dt>
+<dd>Deallocates an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeOutputPlug" target="_top">freeOutputPlug</a></tt></dt>
+<dd>Deallocates an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getSubunitPlugSignalFormat" target="_top">getSubunitPlugSignalFormat</a></tt></dt>
+<dd>Gets the signal format of the specifed plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getTargetPlugConnection" target="_top">getTargetPlugConnection</a></tt></dt>
+<dd>Gets the connection details for a specific plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/installAVCCommandHandler" target="_top">installAVCCommandHandler</a></tt></dt>
+<dd>Installs a command handler for handling specific incoming AVC commands.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/publishAVCUnitDirectory" target="_top">publishAVCUnitDirectory</a></tt></dt>
+<dd>Publishes an AVC unit directory in the config ROM.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputMasterPlug" target="_top">readInputMasterPlug</a></tt></dt>
+<dd>Returns the current value of the input master plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputPlug" target="_top">readInputPlug</a></tt></dt>
+<dd>Returns the current value of an input plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputMasterPlug" target="_top">readOutputMasterPlug</a></tt></dt>
+<dd>Returns the current value of the output master plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputPlug" target="_top">readOutputPlug</a></tt></dt>
+<dd>Returns the current value of an output plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/removeCallbackDispatcherFromRunLoop" target="_top">removeCallbackDispatcherFromRunLoop </a></tt></dt>
+<dd>Removes a dispatcher for kernel callbacks to the specified run loop.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/sendAVCResponse" target="_top">sendAVCResponse</a></tt></dt>
+<dd>Sends an AVC response packet.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setAVCRequestCallback" target="_top">setAVCRequestCallback</a></tt></dt>
+<dd>This function has been deprecated. Use installAVCCommandHandler instead.
+ </dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setMessageCallback" target="_top">setMessageCallback </a></tt></dt>
+<dd>Sets callback for user space message routine.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setSubunitPlugSignalFormat" target="_top">setSubunitPlugSignalFormat</a></tt></dt>
+<dd>Sets the signal format of the specifed plug.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputMasterPlug" target="_top">updateInputMasterPlug</a></tt></dt>
+<dd>Updates the value of the master input plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputPlug" target="_top">updateInputPlug</a></tt></dt>
+<dd>Updates the value of an input plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputMasterPlug" target="_top">updateOutputMasterPlug</a></tt></dt>
+<dd>Updates the value of the master output plug (simulating a lock transaction).
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputPlug" target="_top">updateOutputPlug</a></tt></dt>
+<dd>Updates the value of an output plug (simulating a lock transaction).
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addCallbackDispatcherToRunLoop;  name=addCallbackDispatcherToRunLoop --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addCallbackDispatcherToRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="addCallbackDispatcherToRunLoop">addCallbackDispatcherToRunLoop </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Adds a dispatcher for kernel callbacks to the specified run loop.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/addCallbackDispatcherToRunLoop" logicalPath="//apple_ref/c/instm/addCallbackDispatcherToRunLoop //apple_ref/c/clm/addCallbackDispatcherToRunLoop //apple_ref/c/intfcm/addCallbackDispatcherToRunLoop //apple_ref/c/intfm/addCallbackDispatcherToRunLoop //apple_ref/c/func/addCallbackDispatcherToRunLoop" target="_top"><span class="function">addCallbackDispatcherToRunLoop</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/CFRunLoopRef //apple_ref/c/tdef/CFRunLoopRef //apple_ref/c/tag/CFRunLoopRef //apple_ref/c/econst/CFRunLoopRef //apple_ref/c/struct/CFRunLoopRef //apple_ref/c/clconst/CFRunLoopRef //apple_ref/c/intf/CFRunLoopRef" --><span class="type">CFRunLoopRef</span><!-- /a --> <span class="param">cfRunLoopRef</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>cfRunLoopRef </code></dt>
+<dd>Reference to a run loop.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns kIOReturnSuccess on success.
+ 
+<!-- end return value --></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->The user space portions of the AVC API communicate with the in-kernel services by 
+messaging the kernel. Similarly, the kernel messages the user space services in response. 
+These responses need to be picked up by a piece of code. This call adds that code to the specified
+run loop. Most drivers will call this method on the run loop that was created when your task was 
+created. To avoid deadlock you must avoid sleeping (or spin waiting) the run loop to wait for 
+AVC response. If you do this the dispatcher will never get to run and you will wait forever.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addSubunit;  name=addSubunit --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/addSubunit"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="addSubunit">addSubunit</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Installs a virtual AVC subunit.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/addSubunit //apple_ref/c/clm/addSubunit //apple_ref/c/intfcm/addSubunit //apple_ref/c/intfm/addSubunit //apple_ref/c/func/addSubunit //apple_ref/c/ftmplt/addSubunit //apple_ref/c/defn/addSubunit //apple_ref/c/macro/addSubunit" --><span class="function">addSubunit</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subunitType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numSourcePlugs</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">numDestPlugs</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>, 
+    <a href="../../../../documentation/IOFireWireAVCLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAVCSubunitPlugHandlerCallback" logicalPath="//apple_ref/c/cl/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/tdef/IOFWAVCSubunitPlugHandlerCallback" target="_top"><span class="type">IOFWAVCSubunitPlugHandlerCallback</span></a> <span class="param">callback</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pSubunitTypeAndID</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>subunitType </code></dt>
+<dd>The type of subunit to create.</dd>
+<dt><code>numSourcePlugs </code></dt>
+<dd>The number of source plugs for this subunit.</dd>
+<dt><code>numDestPlugs </code></dt>
+<dd>The number of destination plugs for this subunit.</dd>
+<dt><code>refcon </code></dt>
+<dd>Arbitrary value passed back as first argument of callback.</dd>
+<dt><code>callback </code></dt>
+<dd>A pointer to the callback to receive plug management messages.</dd>
+<dt><code>pSubunitTypeAndID </code></dt>
+<dd>A pointer to a byte to hold the returned subunit address for the new subunit.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateInputPlug;  name=allocateInputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateInputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="allocateInputPlug">allocateInputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocates an input plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/allocateInputPlug //apple_ref/c/clm/allocateInputPlug //apple_ref/c/intfcm/allocateInputPlug //apple_ref/c/intfm/allocateInputPlug //apple_ref/c/func/allocateInputPlug //apple_ref/c/ftmplt/allocateInputPlug //apple_ref/c/defn/allocateInputPlug //apple_ref/c/macro/allocateInputPlug" --><span class="function">allocateInputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <a href="../../../../documentation/IOFireWireAVCLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAVCPCRCallback" logicalPath="//apple_ref/c/cl/IOFWAVCPCRCallback //apple_ref/c/tdef/IOFWAVCPCRCallback" target="_top"><span class="type">IOFWAVCPCRCallback</span></a> <span class="param">func</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>refcon </code></dt>
+<dd>Arbitrary value passed back as first argument of callback.</dd>
+<dt><code>func </code></dt>
+<dd>Callback function when a successful lock transaction to the plug has been performed.</dd>
+<dt><code>plug </code></dt>
+<dd>Set to the plug number if a plug is successfully allocated.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateOutputPlug;  name=allocateOutputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/allocateOutputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="allocateOutputPlug">allocateOutputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Allocates an output plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/allocateOutputPlug //apple_ref/c/clm/allocateOutputPlug //apple_ref/c/intfcm/allocateOutputPlug //apple_ref/c/intfm/allocateOutputPlug //apple_ref/c/func/allocateOutputPlug //apple_ref/c/ftmplt/allocateOutputPlug //apple_ref/c/defn/allocateOutputPlug //apple_ref/c/macro/allocateOutputPlug" --><span class="function">allocateOutputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>,
+    <a href="../../../../documentation/IOFireWireAVCLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAVCPCRCallback" logicalPath="//apple_ref/c/cl/IOFWAVCPCRCallback //apple_ref/c/tdef/IOFWAVCPCRCallback" target="_top"><span class="type">IOFWAVCPCRCallback</span></a> <span class="param">func</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>refcon </code></dt>
+<dd>Arbitrary value passed back as first argument of callback.</dd>
+<dt><code>func </code></dt>
+<dd>Callback function when a successful lock transaction to the plug has been performed.</dd>
+<dt><code>plug </code></dt>
+<dd>Set to the plug number if a plug is successfully allocated.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/connectTargetPlugs;  name=connectTargetPlugs --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/connectTargetPlugs"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="connectTargetPlugs">connectTargetPlugs</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Establishes an internal AVC plug connection between subunit/unit plugs.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/connectTargetPlugs //apple_ref/c/clm/connectTargetPlugs //apple_ref/c/intfcm/connectTargetPlugs //apple_ref/c/intfm/connectTargetPlugs //apple_ref/c/func/connectTargetPlugs //apple_ref/c/ftmplt/connectTargetPlugs //apple_ref/c/defn/connectTargetPlugs //apple_ref/c/macro/connectTargetPlugs" --><span class="function">connectTargetPlugs</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">sourceSubunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">sourcePlugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pSourcePlugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destSubunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">destPlugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pDestPlugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <span class="param">lockConnection</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> <span class="param">permConnection</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>sourceSubunitTypeAndID </code></dt>
+<dd>The subunit type and ID for the source plug</dd>
+<dt><code>sourcePlugType </code></dt>
+<dd>The source plug type.</dd>
+<dt><code>pSourcePlugNum </code></dt>
+<dd>A pointer to the source plug num. Will return the actual source plug num here.</dd>
+<dt><code>destSubunitTypeAndID </code></dt>
+<dd>The subunit type and ID for the destination plug.</dd>
+<dt><code>destPlugType </code></dt>
+<dd>The dest plug type.</dd>
+<dt><code>pDestPlugNum </code></dt>
+<dd>A pointer to the dest plug num. Will return the actual dest plug num here.</dd>
+<dt><code>lockConnection </code></dt>
+<dd>A flag to specify if this connection should be locked.</dd>
+<dt><code>permConnection </code></dt>
+<dd>A flag to specify if this connection is permanent.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/disconnectTargetPlugs;  name=disconnectTargetPlugs --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/disconnectTargetPlugs"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="disconnectTargetPlugs">disconnectTargetPlugs</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Breaks an internal AVC plug connection between subunit/unit plugs.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/disconnectTargetPlugs //apple_ref/c/clm/disconnectTargetPlugs //apple_ref/c/intfcm/disconnectTargetPlugs //apple_ref/c/intfm/disconnectTargetPlugs //apple_ref/c/func/disconnectTargetPlugs //apple_ref/c/ftmplt/disconnectTargetPlugs //apple_ref/c/defn/disconnectTargetPlugs //apple_ref/c/macro/disconnectTargetPlugs" --><span class="function">disconnectTargetPlugs</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">sourceSubunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">sourcePlugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">sourcePlugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destSubunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">destPlugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">destPlugNum</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>sourceSubunitTypeAndID </code></dt>
+<dd>The subunit type and ID for the source plug.</dd>
+<dt><code>sourcePlugType </code></dt>
+<dd>The source plug type.</dd>
+<dt><code>pSourcePlugNum </code></dt>
+<dd>The source plug num.</dd>
+<dt><code>destSubunitTypeAndID </code></dt>
+<dd>The subunit type and ID for the destination plug.</dd>
+<dt><code>destPlugType </code></dt>
+<dd>The dest plug type.</dd>
+<dt><code>pDestPlugNum </code></dt>
+<dd>The dest plug num.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeInputPlug;  name=freeInputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeInputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="freeInputPlug">freeInputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Deallocates an input plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/freeInputPlug //apple_ref/c/clm/freeInputPlug //apple_ref/c/intfcm/freeInputPlug //apple_ref/c/intfm/freeInputPlug //apple_ref/c/func/freeInputPlug //apple_ref/c/ftmplt/freeInputPlug //apple_ref/c/defn/freeInputPlug //apple_ref/c/macro/freeInputPlug" --><span class="function">freeInputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateInputPlug.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeOutputPlug;  name=freeOutputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/freeOutputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="freeOutputPlug">freeOutputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Deallocates an output plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/freeOutputPlug //apple_ref/c/clm/freeOutputPlug //apple_ref/c/intfcm/freeOutputPlug //apple_ref/c/intfm/freeOutputPlug //apple_ref/c/func/freeOutputPlug //apple_ref/c/ftmplt/freeOutputPlug //apple_ref/c/defn/freeOutputPlug //apple_ref/c/macro/freeOutputPlug" --><span class="function">freeOutputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateOutputPlug.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getSubunitPlugSignalFormat;  name=getSubunitPlugSignalFormat --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getSubunitPlugSignalFormat"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getSubunitPlugSignalFormat">getSubunitPlugSignalFormat</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the signal format of the specifed plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/getSubunitPlugSignalFormat //apple_ref/c/clm/getSubunitPlugSignalFormat //apple_ref/c/intfcm/getSubunitPlugSignalFormat //apple_ref/c/intfm/getSubunitPlugSignalFormat //apple_ref/c/func/getSubunitPlugSignalFormat //apple_ref/c/ftmplt/getSubunitPlugSignalFormat //apple_ref/c/defn/getSubunitPlugSignalFormat //apple_ref/c/macro/getSubunitPlugSignalFormat" --><span class="function">getSubunitPlugSignalFormat</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">plugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pSignalFormat</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>subunitTypeAndID </code></dt>
+<dd>The subunit type and ID of the plug.</dd>
+<dt><code>plugType </code></dt>
+<dd>The plug type.</dd>
+<dt><code>plugNum </code></dt>
+<dd>The plug number.</dd>
+<dt><code>pSignalFormat </code></dt>
+<dd>A pointer to the location to return the signal format value.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getTargetPlugConnection;  name=getTargetPlugConnection --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/getTargetPlugConnection"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getTargetPlugConnection">getTargetPlugConnection</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Gets the connection details for a specific plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/getTargetPlugConnection //apple_ref/c/clm/getTargetPlugConnection //apple_ref/c/intfcm/getTargetPlugConnection //apple_ref/c/intfm/getTargetPlugConnection //apple_ref/c/func/getTargetPlugConnection //apple_ref/c/ftmplt/getTargetPlugConnection //apple_ref/c/defn/getTargetPlugConnection //apple_ref/c/macro/getTargetPlugConnection" --><span class="function">getTargetPlugConnection</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">plugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pConnectedSubunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> *<span class="param">pConnectedPlugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> *<span class="param">pConnectedPlugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> *<span class="param">pLockConnection</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/bool //apple_ref/c/tdef/bool //apple_ref/c/tag/bool //apple_ref/c/econst/bool //apple_ref/c/struct/bool //apple_ref/c/clconst/bool //apple_ref/c/intf/bool" --><span class="type">bool</span><!-- /a --> *<span class="param">pPermConnection</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>subunitTypeAndID </code></dt>
+<dd>The subunit type and ID of the plug.</dd>
+<dt><code>plugType </code></dt>
+<dd>The plug type.</dd>
+<dt><code>plugNum </code></dt>
+<dd>The plug number.</dd>
+<dt><code>pConnectedSubunitTypeAndID </code></dt>
+<dd>The subunit type and ID of the connected plug.</dd>
+<dt><code>pConnectedPlugType </code></dt>
+<dd>The type of the connected plug.</dd>
+<dt><code>pConnectedPlugNum </code></dt>
+<dd>The number of the connected plug.</dd>
+<dt><code>pLockConnection </code></dt>
+<dd>A pointer for returning the lock status of the connection.</dd>
+<dt><code>pPermConnection </code></dt>
+<dd>A pointer for returning the perm status of the connection.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/installAVCCommandHandler;  name=installAVCCommandHandler --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/installAVCCommandHandler"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="installAVCCommandHandler">installAVCCommandHandler</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Installs a command handler for handling specific incoming AVC commands.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/installAVCCommandHandler //apple_ref/c/clm/installAVCCommandHandler //apple_ref/c/intfcm/installAVCCommandHandler //apple_ref/c/intfm/installAVCCommandHandler //apple_ref/c/func/installAVCCommandHandler //apple_ref/c/ftmplt/installAVCCommandHandler //apple_ref/c/defn/installAVCCommandHandler //apple_ref/c/macro/installAVCCommandHandler" --><span class="function">installAVCCommandHandler</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subUnitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">opCode</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>, 
+    <a href="../../../../documentation/IOFireWireAVCLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAVCCommandHandlerCallback" logicalPath="//apple_ref/c/cl/IOFWAVCCommandHandlerCallback //apple_ref/c/tdef/IOFWAVCCommandHandlerCallback" target="_top"><span class="type">IOFWAVCCommandHandlerCallback</span></a> <span class="param">callback</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>subUnitTypeAndID </code></dt>
+<dd>The subunit type and ID for this command handler.</dd>
+<dt><code>opCode </code></dt>
+<dd>The opcode for this command handler.</dd>
+<dt><code>refcon </code></dt>
+<dd>Arbitrary value passed back as first argument of callback.</dd>
+<dt><code>callback </code></dt>
+<dd>A pointer to the callback function</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/publishAVCUnitDirectory;  name=publishAVCUnitDirectory --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/publishAVCUnitDirectory"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="publishAVCUnitDirectory">publishAVCUnitDirectory</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Publishes an AVC unit directory in the config ROM.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/publishAVCUnitDirectory //apple_ref/c/clm/publishAVCUnitDirectory //apple_ref/c/intfcm/publishAVCUnitDirectory //apple_ref/c/intfm/publishAVCUnitDirectory //apple_ref/c/func/publishAVCUnitDirectory //apple_ref/c/ftmplt/publishAVCUnitDirectory //apple_ref/c/defn/publishAVCUnitDirectory //apple_ref/c/macro/publishAVCUnitDirectory" --><span class="function">publishAVCUnitDirectory</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputMasterPlug;  name=readInputMasterPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputMasterPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readInputMasterPlug">readInputMasterPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current value of the input master plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/readInputMasterPlug //apple_ref/c/clm/readInputMasterPlug //apple_ref/c/intfcm/readInputMasterPlug //apple_ref/c/intfm/readInputMasterPlug //apple_ref/c/func/readInputMasterPlug //apple_ref/c/ftmplt/readInputMasterPlug //apple_ref/c/defn/readInputMasterPlug //apple_ref/c/macro/readInputMasterPlug" --><span class="function">readInputMasterPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.
+<br><br>
+</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputPlug;  name=readInputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readInputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readInputPlug">readInputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current value of an input plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/readInputPlug //apple_ref/c/clm/readInputPlug //apple_ref/c/intfcm/readInputPlug //apple_ref/c/intfm/readInputPlug //apple_ref/c/func/readInputPlug //apple_ref/c/ftmplt/readInputPlug //apple_ref/c/defn/readInputPlug //apple_ref/c/macro/readInputPlug" --><span class="function">readInputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateInputPlug.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputMasterPlug;  name=readOutputMasterPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputMasterPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readOutputMasterPlug">readOutputMasterPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current value of the output master plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/readOutputMasterPlug //apple_ref/c/clm/readOutputMasterPlug //apple_ref/c/intfcm/readOutputMasterPlug //apple_ref/c/intfm/readOutputMasterPlug //apple_ref/c/func/readOutputMasterPlug //apple_ref/c/ftmplt/readOutputMasterPlug //apple_ref/c/defn/readOutputMasterPlug //apple_ref/c/macro/readOutputMasterPlug" --><span class="function">readOutputMasterPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputPlug;  name=readOutputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/readOutputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readOutputPlug">readOutputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns the current value of an output plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/readOutputPlug //apple_ref/c/clm/readOutputPlug //apple_ref/c/intfcm/readOutputPlug //apple_ref/c/intfm/readOutputPlug //apple_ref/c/func/readOutputPlug //apple_ref/c/ftmplt/readOutputPlug //apple_ref/c/defn/readOutputPlug //apple_ref/c/macro/readOutputPlug" --><span class="function">readOutputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateOutputPlug.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/removeCallbackDispatcherFromRunLoop;  name=removeCallbackDispatcherFromRunLoop --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/removeCallbackDispatcherFromRunLoop"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="removeCallbackDispatcherFromRunLoop">removeCallbackDispatcherFromRunLoop </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Removes a dispatcher for kernel callbacks to the specified run loop.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/removeCallbackDispatcherFromRunLoop" logicalPath="//apple_ref/c/instm/removeCallbackDispatcherFromRunLoop //apple_ref/c/clm/removeCallbackDispatcherFromRunLoop //apple_ref/c/intfcm/removeCallbackDispatcherFromRunLoop //apple_ref/c/intfm/removeCallbackDispatcherFromRunLoop //apple_ref/c/func/removeCallbackDispatcherFromRunLoop" target="_top"><span class="function">removeCallbackDispatcherFromRunLoop</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span> );  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Undoes the work of addCallbackDispatcherToRunLoop.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/sendAVCResponse;  name=sendAVCResponse --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/sendAVCResponse"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="sendAVCResponse">sendAVCResponse</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sends an AVC response packet.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/sendAVCResponse //apple_ref/c/clm/sendAVCResponse //apple_ref/c/intfcm/sendAVCResponse //apple_ref/c/intfm/sendAVCResponse //apple_ref/c/func/sendAVCResponse //apple_ref/c/ftmplt/sendAVCResponse //apple_ref/c/defn/sendAVCResponse //apple_ref/c/macro/sendAVCResponse" --><span class="function">sendAVCResponse</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">generation</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16 //apple_ref/c/intf/UInt16" --><span class="type">UInt16</span><!-- /a --> <span class="param">nodeID</span>, 
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/econst/char //apple_ref/c/struct/char //apple_ref/c/clconst/char //apple_ref/c/intf/char" --><span class="type">char</span><!-- /a --> *<span class="param">response</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">responseLen</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>generation </code></dt>
+<dd>The Firewire bus generation that this response should be sent in.</dd>
+<dt><code>nodeID </code></dt>
+<dd>The node ID of the device we are sending this response to.</dd>
+<dt><code>response </code></dt>
+<dd>A pointer to the response bytes.</dd>
+<dt><code>responseLen </code></dt>
+<dd>The number of response bytes.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setAVCRequestCallback;  name=setAVCRequestCallback --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setAVCRequestCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setAVCRequestCallback">setAVCRequestCallback</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->This function has been deprecated. Use installAVCCommandHandler instead.
+ <!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/setAVCRequestCallback //apple_ref/c/clm/setAVCRequestCallback //apple_ref/c/intfcm/setAVCRequestCallback //apple_ref/c/intfm/setAVCRequestCallback //apple_ref/c/func/setAVCRequestCallback //apple_ref/c/ftmplt/setAVCRequestCallback //apple_ref/c/defn/setAVCRequestCallback //apple_ref/c/macro/setAVCRequestCallback" --><span class="function">setAVCRequestCallback</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subUnitType</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subUnitID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <a href="../../../../documentation/IOFireWireAVCLib/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/IOFWAVCRequestCallback" logicalPath="//apple_ref/c/cl/IOFWAVCRequestCallback //apple_ref/c/tdef/IOFWAVCRequestCallback" target="_top"><span class="type">IOFWAVCRequestCallback</span></a> <span class="param">callback</span>);  </pre>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setMessageCallback;  name=setMessageCallback --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setMessageCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMessageCallback">setMessageCallback </a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets callback for user space message routine.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> ( *<a href="../../../../documentation/IOFireWireSBP2Lib/index.html?Functions/Functions.html#//apple_ref/c/func/setMessageCallback" logicalPath="//apple_ref/c/instm/setMessageCallback //apple_ref/c/clm/setMessageCallback //apple_ref/c/intfcm/setMessageCallback //apple_ref/c/intfm/setMessageCallback //apple_ref/c/func/setMessageCallback" target="_top"><span class="function">setMessageCallback</span></a>)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refCon</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCMessageCallback //apple_ref/c/tdef/IOFWAVCMessageCallback //apple_ref/c/tag/IOFWAVCMessageCallback //apple_ref/c/econst/IOFWAVCMessageCallback //apple_ref/c/struct/IOFWAVCMessageCallback //apple_ref/c/clconst/IOFWAVCMessageCallback //apple_ref/c/intf/IOFWAVCMessageCallback" --><span class="type">IOFWAVCMessageCallback</span><!-- /a --> <span class="param">callback</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>refCon </code></dt>
+<dd>RefCon to be returned as first argument of completion routine.</dd>
+<dt><code>callback </code></dt>
+<dd>Address of completion routine.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->In FireWire and AVC, bus status messages are delivered via IOKit's message routine. 
+This routine is emulated in user space for AVC and FireWire messages via this callback. You should
+register here for bus reset and reconnect messages.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setSubunitPlugSignalFormat;  name=setSubunitPlugSignalFormat --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/setSubunitPlugSignalFormat"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setSubunitPlugSignalFormat">setSubunitPlugSignalFormat</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the signal format of the specifed plug.
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/setSubunitPlugSignalFormat //apple_ref/c/clm/setSubunitPlugSignalFormat //apple_ref/c/intfcm/setSubunitPlugSignalFormat //apple_ref/c/intfm/setSubunitPlugSignalFormat //apple_ref/c/func/setSubunitPlugSignalFormat //apple_ref/c/ftmplt/setSubunitPlugSignalFormat //apple_ref/c/defn/setSubunitPlugSignalFormat //apple_ref/c/macro/setSubunitPlugSignalFormat" --><span class="function">setSubunitPlugSignalFormat</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">subunitTypeAndID</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes //apple_ref/c/intf/IOFWAVCPlugTypes" --><span class="type">IOFWAVCPlugTypes</span><!-- /a --> <span class="param">plugType</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plugNum</span>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">signalFormat</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>subunitTypeAndID </code></dt>
+<dd>The subunit type and ID of the plug.</dd>
+<dt><code>plugType </code></dt>
+<dd>The plug type.</dd>
+<dt><code>plugNum </code></dt>
+<dd>The plug number.</dd>
+<dt><code>signalFormat </code></dt>
+<dd>The 32-bit signal format value.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputMasterPlug;  name=updateInputMasterPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputMasterPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateInputMasterPlug">updateInputMasterPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the value of the master input plug (simulating a lock transaction).
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/updateInputMasterPlug //apple_ref/c/clm/updateInputMasterPlug //apple_ref/c/intfcm/updateInputMasterPlug //apple_ref/c/intfm/updateInputMasterPlug //apple_ref/c/func/updateInputMasterPlug //apple_ref/c/ftmplt/updateInputMasterPlug //apple_ref/c/defn/updateInputMasterPlug //apple_ref/c/macro/updateInputMasterPlug" --><span class="function">updateInputMasterPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">oldVal</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">newVal</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>oldVal </code></dt>
+<dd>Value returned by readInputMasterPlug.</dd>
+<dt><code>newVal </code></dt>
+<dd>New value to store in plug if its current value is oldVal.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputPlug;  name=updateInputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateInputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateInputPlug">updateInputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the value of an input plug (simulating a lock transaction).
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/updateInputPlug //apple_ref/c/clm/updateInputPlug //apple_ref/c/intfcm/updateInputPlug //apple_ref/c/intfm/updateInputPlug //apple_ref/c/func/updateInputPlug //apple_ref/c/ftmplt/updateInputPlug //apple_ref/c/defn/updateInputPlug //apple_ref/c/macro/updateInputPlug" --><span class="function">updateInputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">oldVal</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">newVal</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateInputPlug.</dd>
+<dt><code>oldVal </code></dt>
+<dd>Value returned by readInputPlug.</dd>
+<dt><code>newVal </code></dt>
+<dd>New value to store in plug if its current value is oldVal.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputMasterPlug;  name=updateOutputMasterPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputMasterPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateOutputMasterPlug">updateOutputMasterPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the value of the master output plug (simulating a lock transaction).
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/updateOutputMasterPlug //apple_ref/c/clm/updateOutputMasterPlug //apple_ref/c/intfcm/updateOutputMasterPlug //apple_ref/c/intfm/updateOutputMasterPlug //apple_ref/c/func/updateOutputMasterPlug //apple_ref/c/ftmplt/updateOutputMasterPlug //apple_ref/c/defn/updateOutputMasterPlug //apple_ref/c/macro/updateOutputMasterPlug" --><span class="function">updateOutputMasterPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">oldVal</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">newVal</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>oldVal </code></dt>
+<dd>Value returned by readOutputMasterPlug.</dd>
+<dt><code>newVal </code></dt>
+<dd>New value to store in plug if its current value is oldVal.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=com;  uid=//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputPlug;  name=updateOutputPlug --><a name="//apple_ref/doc/compositePage/doc/com/intfm/IOFireWireAVCLibProtocolInterface/updateOutputPlug"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="updateOutputPlug">updateOutputPlug</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Updates the value of an output plug (simulating a lock transaction).
+<!-- end abstract --></p>
+<p></p>
+<pre><!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn //apple_ref/c/intf/IOReturn" --><span class="type">IOReturn</span><!-- /a --> ( *<!-- a logicalPath="//apple_ref/c/instm/updateOutputPlug //apple_ref/c/clm/updateOutputPlug //apple_ref/c/intfcm/updateOutputPlug //apple_ref/c/intfm/updateOutputPlug //apple_ref/c/func/updateOutputPlug //apple_ref/c/ftmplt/updateOutputPlug //apple_ref/c/defn/updateOutputPlug //apple_ref/c/macro/updateOutputPlug" --><span class="function">updateOutputPlug</span><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void //apple_ref/c/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">self</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">plug</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">oldVal</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32 //apple_ref/c/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">newVal</span>);  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>self </code></dt>
+<dd>Pointer to IOFireWireAVCLibProtocolInterface.</dd>
+<dt><code>plug </code></dt>
+<dd>Value returned by allocateOutputPlug.</dd>
+<dt><code>oldVal </code></dt>
+<dd>Value returned by readOutputPlug.</dd>
+<dt><code>newVal </code></dt>
+<dd>New value to store in plug if its current value is oldVal.</dd>
+</dl>
+<p></p>
+<p>Last Updated: Tuesday, November 27, 2007
+</p>
+</body>
+</html>

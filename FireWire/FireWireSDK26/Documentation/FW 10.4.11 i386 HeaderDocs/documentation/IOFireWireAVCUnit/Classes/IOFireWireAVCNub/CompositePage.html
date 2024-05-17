@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>IOFireWireAVCNub</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFireWireAVCNub</font></h1><br>
+<a name="//apple_ref/doc/class/IOFireWireAVCNub" title="IOFireWireAVCNub"></a>
+<h2>Abstract</h2>
+ nub for AVC devices
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/data/IOService //apple_ref/cpp/clconst/IOService //apple_ref/cpp/instm/IOService //apple_ref/cpp/clm/IOService //apple_ref/cpp/intfcm/IOService //apple_ref/cpp/func/IOService //apple_ref/cpp/ftmplt/IOService //apple_ref/cpp/defn/IOService //apple_ref/cpp/macro/IOService" -->IOService<!-- /a --><br>
+<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*)" target="_top">AVCCommand</a></tt></dt>
+<dd>Sends an AVC command to the device and stores the response.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*)" target="_top">AVCCommandInGeneration</a></tt></dt>
+<dd>Sends an AVC command to the device and stores the response. The command must complete in the specified
+FireWire bus generation otherwise kIOFireWireBusReset is returned.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/getDevice/IOFireWireNub*/()" target="_top">getDevice</a></tt></dt>
+<dd>Returns the FireWire device nub that is this object's provider .
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/updateAVCCommandTimeout/virtualIOReturn/()" target="_top">updateAVCCommandTimeout</a></tt></dt>
+<dd>By default, AVCCommands timeout 10 seconds after receiving an Interim response.
+This function resets the timeout of the current command to 10 seconds from the current time.
+Call this repeatedly for AVC commands that take a very long time to execute to prevent premature
+timeout.
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*);  name=IOFireWireAVCNub::AVCCommand -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommand/virtualIOReturn/(constUInt8*,UInt32,UInt8*,UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="AVCCommand">AVCCommand</a></h2>
+</td></tr></table>Sends an AVC command to the device and stores the response.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/AVCCommand //apple_ref/cpp/clm/AVCCommand //apple_ref/cpp/intfcm/AVCCommand //apple_ref/cpp/func/AVCCommand //apple_ref/cpp/ftmplt/AVCCommand //apple_ref/cpp/defn/AVCCommand //apple_ref/cpp/macro/AVCCommand" --><font class="function">AVCCommand</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">response</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">responseLen</font>) = <font class="number">0</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>command</em></tt></dt><dd>Pointer to command to send.</dd>
+<dt><tt><em>cmdLen</em></tt></dt><dd>Length of the command.</dd>
+<dt><tt><em>response</em></tt></dt><dd>Pointer to place to store the response.</dd>
+<dt><tt><em>responseLen</em></tt></dt><dd>Pointer to response length - initialize to the size of the buffer pointed to by response,
+updated to the number of bytes returned by the device.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*);  name=IOFireWireAVCNub::AVCCommandInGeneration -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/AVCCommandInGeneration/virtualIOReturn/(UInt32,constUInt8*,UInt32,UInt8*,UInt32*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="AVCCommandInGeneration">AVCCommandInGeneration</a></h2>
+</td></tr></table>Sends an AVC command to the device and stores the response. The command must complete in the specified
+FireWire bus generation otherwise kIOFireWireBusReset is returned.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/AVCCommandInGeneration //apple_ref/cpp/clm/AVCCommandInGeneration //apple_ref/cpp/intfcm/AVCCommandInGeneration //apple_ref/cpp/func/AVCCommandInGeneration //apple_ref/cpp/ftmplt/AVCCommandInGeneration //apple_ref/cpp/defn/AVCCommandInGeneration //apple_ref/cpp/macro/AVCCommandInGeneration" --><font class="function">AVCCommandInGeneration</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt8 //apple_ref/cpp/cl/UInt8 //apple_ref/cpp/tdef/UInt8 //apple_ref/cpp/tag/UInt8 //apple_ref/cpp/econst/UInt8 //apple_ref/cpp/struct/UInt8 //apple_ref/cpp/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">response</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">responseLen</font>) = <font class="number">0</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>generation</em></tt></dt><dd>The bus generation that the command must execute in.</dd>
+<dt><tt><em>command</em></tt></dt><dd>Pointer to command to send.</dd>
+<dt><tt><em>cmdLen</em></tt></dt><dd>Length of the command.</dd>
+<dt><tt><em>response</em></tt></dt><dd>Pointer to place to store the response.</dd>
+<dt><tt><em>responseLen</em></tt></dt><dd>Pointer to response length - initialize to the size of the buffer pointed to by response,
+updated to the number of bytes returned by the device.</dd>
+</dl>
+</blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/getDevice/IOFireWireNub*/();  name=IOFireWireAVCNub::getDevice -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/getDevice/IOFireWireNub*/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getDevice">getDevice</a></h2>
+</td></tr></table>Returns the FireWire device nub that is this object's provider .
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireNub //apple_ref/cpp/cl/IOFireWireNub //apple_ref/cpp/tdef/IOFireWireNub //apple_ref/cpp/tag/IOFireWireNub //apple_ref/cpp/econst/IOFireWireNub //apple_ref/cpp/struct/IOFireWireNub //apple_ref/cpp/clconst/IOFireWireNub" --><font class="type">IOFireWireNub</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getDevice //apple_ref/cpp/clm/getDevice //apple_ref/cpp/intfcm/getDevice //apple_ref/cpp/func/getDevice //apple_ref/cpp/ftmplt/getDevice //apple_ref/cpp/defn/getDevice //apple_ref/cpp/macro/getDevice" --><font class="function">getDevice</font><!-- /a -->() <font class="keyword">const</font> </pre></blockquote>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/updateAVCCommandTimeout/virtualIOReturn/();  name=IOFireWireAVCNub::updateAVCCommandTimeout -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireAVCNub/updateAVCCommandTimeout/virtualIOReturn/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="updateAVCCommandTimeout">updateAVCCommandTimeout</a></h2>
+</td></tr></table>By default, AVCCommands timeout 10 seconds after receiving an Interim response.
+This function resets the timeout of the current command to 10 seconds from the current time.
+Call this repeatedly for AVC commands that take a very long time to execute to prevent premature
+timeout.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/updateAVCCommandTimeout //apple_ref/cpp/clm/updateAVCCommandTimeout //apple_ref/cpp/intfcm/updateAVCCommandTimeout //apple_ref/cpp/func/updateAVCCommandTimeout //apple_ref/cpp/ftmplt/updateAVCCommandTimeout //apple_ref/cpp/defn/updateAVCCommandTimeout //apple_ref/cpp/macro/updateAVCCommandTimeout" --><font class="function">updateAVCCommandTimeout</font><!-- /a -->() = <font class="number">0</font>;</pre></blockquote>
+<hr>
+<h2>Member Data</h2>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

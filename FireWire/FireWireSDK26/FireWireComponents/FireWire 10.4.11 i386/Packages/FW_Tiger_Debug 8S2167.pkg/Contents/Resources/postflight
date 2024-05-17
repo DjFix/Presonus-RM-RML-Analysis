@@ -1,0 +1,24 @@
+#!/bin/sh -
+
+year=`date | awk '{ print $6 }'`
+
+#
+# remove the kext caches
+#
+
+# touch is the recommended way to invalidate kext caches
+	
+touch /System/Library/Extensions/
+	
+# Deleteing these caches manually is highly discouraged.
+# The recommended proceedure is to touch the Extensions
+# folder, however, if the clock is wrong on your machine
+# the touch can be ineffectual, so we still delete the
+# caches manually in this case.  Bad us.
+	
+if [ $year -lt 2002 ]
+then
+	rm -f /System/Library/Extensions.mkext
+	rm -f /System/Library/Extensions.kextcache
+fi
+

@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1>
+<br><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/controllerDidChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*)" target="doc">controllerDidChangePowerState</a></tt></dt>
+<dd>Handle a notification that the network controller which is servicing
+this interface object has transitioned to a new power state.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/controllerDidOpen/virtualbool/(IONetworkController*)" target="doc">controllerDidOpen</a></tt></dt>
+<dd>A notification that the interface has opened the network
+controller.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/controllerWillChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*)" target="doc">controllerWillChangePowerState</a></tt></dt>
+<dd>Handle a notification that the network controller which is
+servicing this interface object is about to transition to a new power state.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/controllerWillClose/virtualvoid/(IONetworkController*)" target="doc">controllerWillClose</a></tt></dt>
+<dd>A notification that the interface will close the network
+controller.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/free/virtualvoid/()" target="doc">free</a></tt></dt>
+<dd>Free the IOFWInterface instance.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/getIfnet/virtualifnet_t/()" target="doc">getIfnet</a></tt></dt>
+<dd>Get the ifnet structure allocated by the interface object.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/getNamePrefix/virtualconstchar*/()" target="doc">getNamePrefix</a></tt></dt>
+<dd>Return a string containing the prefix to use when
+creating a BSD name for this interface.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/init/virtualbool/(IONetworkController*)" target="doc">init</a></tt></dt>
+<dd>Initialize an IOFWInterface instance.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/initIfnetParams/virtualbool/(structifnet_init_params*)" target="doc">initIfnetParams</a></tt></dt>
+<dd>Initialize the ifnet structure given.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/performCommand/virtualSInt32/(IONetworkController*,UInt32,void*,void*)" target="doc">performCommand</a></tt></dt>
+<dd>Handle an ioctl command sent to the FireWire interface.
+</dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWInterface/setProperties/virtualIOReturn/(OSObject*)" target="doc">setProperties</a></tt></dt>
+<dd>Handle a request to set FireWire interface properties from
+kernel or non-kernel clients. For non-kernel clients, the preferred
+access mechanism is through an user client connection.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/controllerDidChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*);  name=IOFWInterface::controllerDidChangePowerState --><a name="//apple_ref/cpp/instm/IOFWInterface/controllerDidChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="controllerDidChangePowerState">controllerDidChangePowerState</a></h2>
+</td></tr></table>
+<p>Handle a notification that the network controller which is servicing
+this interface object has transitioned to a new power state.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/controllerDidChangePowerState //apple_ref/cpp/clm/controllerDidChangePowerState //apple_ref/cpp/intfcm/controllerDidChangePowerState //apple_ref/cpp/func/controllerDidChangePowerState //apple_ref/cpp/ftmplt/controllerDidChangePowerState //apple_ref/cpp/defn/controllerDidChangePowerState //apple_ref/cpp/macro/controllerDidChangePowerState" --><font class="function">controllerDidChangePowerState</font><!-- /a -->( 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOPMPowerFlags //apple_ref/cpp/cl/IOPMPowerFlags //apple_ref/cpp/tdef/IOPMPowerFlags //apple_ref/cpp/tag/IOPMPowerFlags //apple_ref/cpp/econst/IOPMPowerFlags //apple_ref/cpp/struct/IOPMPowerFlags //apple_ref/cpp/clconst/IOPMPowerFlags" --><font class="type">IOPMPowerFlags</font><!-- /a --> <font class="param">flags</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">stateNumber</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/clconst/IOService" --><font class="type">IOService</font><!-- /a --> *<font class="param">policyMaker</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>If the controller did transition to a usable state, and it was
+previously disabled due to a previous power change, then it is re-enabled.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>The network controller object.</dd>
+<dt><tt><em>flags</em></tt></dt>
+<dd>Flags that describe the capability of the controller in the new
+power state.</dd>
+<dt><tt><em>stateNumber</em></tt></dt>
+<dd>An index to a state in the network controller's
+power state array that the controller has switched to.</dd>
+<dt><tt><em>policyMaker</em></tt></dt>
+<dd>A reference to the network controller's policy-maker,
+and is also the originator of this notification.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>The return value is always kIOReturnSuccess. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/controllerDidOpen/virtualbool/(IONetworkController*);  name=IOFWInterface::controllerDidOpen --><a name="//apple_ref/cpp/instm/IOFWInterface/controllerDidOpen/virtualbool/(IONetworkController*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="controllerDidOpen">controllerDidOpen</a></h2>
+</td></tr></table>
+<p>A notification that the interface has opened the network
+controller.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/controllerDidOpen //apple_ref/cpp/clm/controllerDidOpen //apple_ref/cpp/intfcm/controllerDidOpen //apple_ref/cpp/func/controllerDidOpen //apple_ref/cpp/ftmplt/controllerDidOpen //apple_ref/cpp/defn/controllerDidOpen //apple_ref/cpp/macro/controllerDidOpen" --><font class="function">controllerDidOpen</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This method will be called by IONetworkInterface after a
+network controller has accepted an open from this interface object.
+IOFWInterface will first call the implementation in its
+superclass, then inspect the controller through properties published
+in the registry. This method is called with the arbitration lock held.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>The controller object that was opened.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>true on success, false otherwise. Returning false will
+cause the controller to be closed, and any pending client opens to be
+ rejected. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/controllerWillChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*);  name=IOFWInterface::controllerWillChangePowerState --><a name="//apple_ref/cpp/instm/IOFWInterface/controllerWillChangePowerState/virtualIOReturn/(IONetworkController*,IOPMPowerFlags,UInt32,IOService*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="controllerWillChangePowerState">controllerWillChangePowerState</a></h2>
+</td></tr></table>
+<p>Handle a notification that the network controller which is
+servicing this interface object is about to transition to a new power state.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/controllerWillChangePowerState //apple_ref/cpp/clm/controllerWillChangePowerState //apple_ref/cpp/intfcm/controllerWillChangePowerState //apple_ref/cpp/func/controllerWillChangePowerState //apple_ref/cpp/ftmplt/controllerWillChangePowerState //apple_ref/cpp/defn/controllerWillChangePowerState //apple_ref/cpp/macro/controllerWillChangePowerState" --><font class="function">controllerWillChangePowerState</font><!-- /a -->( 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOPMPowerFlags //apple_ref/cpp/cl/IOPMPowerFlags //apple_ref/cpp/tdef/IOPMPowerFlags //apple_ref/cpp/tag/IOPMPowerFlags //apple_ref/cpp/econst/IOPMPowerFlags //apple_ref/cpp/struct/IOPMPowerFlags //apple_ref/cpp/clconst/IOPMPowerFlags" --><font class="type">IOPMPowerFlags</font><!-- /a --> <font class="param">flags</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">stateNumber</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOService //apple_ref/cpp/cl/IOService //apple_ref/cpp/tdef/IOService //apple_ref/cpp/tag/IOService //apple_ref/cpp/econst/IOService //apple_ref/cpp/struct/IOService //apple_ref/cpp/clconst/IOService" --><font class="type">IOService</font><!-- /a --> *<font class="param">policyMaker</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>If the controller is about to transition to an unusable state,
+and it is currently enabled, then the disable() method on the controller is
+called.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>The network controller object.</dd>
+<dt><tt><em>flags</em></tt></dt>
+<dd>Flags that describe the capability of the controller in the new
+power state.</dd>
+<dt><tt><em>stateNumber</em></tt></dt>
+<dd>An index to a state in the network controller's
+power state array that the controller is switching to.</dd>
+<dt><tt><em>policyMaker</em></tt></dt>
+<dd>A reference to the network controller's policy-maker,
+and is also the originator of this notification.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>The return value is always kIOReturnSuccess. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/controllerWillClose/virtualvoid/(IONetworkController*);  name=IOFWInterface::controllerWillClose --><a name="//apple_ref/cpp/instm/IOFWInterface/controllerWillClose/virtualvoid/(IONetworkController*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="controllerWillClose">controllerWillClose</a></h2>
+</td></tr></table>
+<p>A notification that the interface will close the network
+controller.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/controllerWillClose //apple_ref/cpp/clm/controllerWillClose //apple_ref/cpp/intfcm/controllerWillClose //apple_ref/cpp/func/controllerWillClose //apple_ref/cpp/ftmplt/controllerWillClose //apple_ref/cpp/defn/controllerWillClose //apple_ref/cpp/macro/controllerWillClose" --><font class="function">controllerWillClose</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This method will simply call super to propagate the method
+call. This method is called with the arbitration lock held.
+ </p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>The controller that is about to be closed.</dd>
+</dl>
+</blockquote>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/free/virtualvoid/();  name=IOFWInterface::free --><a name="//apple_ref/cpp/instm/IOFWInterface/free/virtualvoid/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="free">free</a></h2>
+</td></tr></table>
+<p>Free the IOFWInterface instance.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/free //apple_ref/cpp/clm/free //apple_ref/cpp/intfcm/free //apple_ref/cpp/func/free //apple_ref/cpp/ftmplt/free //apple_ref/cpp/defn/free //apple_ref/cpp/macro/free" --><font class="function">free</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>The memory allocated for internal bookkeeping is released,
+ followed by a call to super::free(). </p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/getIfnet/virtualifnet_t/();  name=IOFWInterface::getIfnet --><a name="//apple_ref/cpp/instm/IOFWInterface/getIfnet/virtualifnet_t/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getIfnet">getIfnet</a></h2>
+</td></tr></table>
+<p>Get the ifnet structure allocated by the interface object.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/ifnet_t //apple_ref/cpp/cl/ifnet_t //apple_ref/cpp/tdef/ifnet_t //apple_ref/cpp/tag/ifnet_t //apple_ref/cpp/econst/ifnet_t //apple_ref/cpp/struct/ifnet_t //apple_ref/cpp/clconst/ifnet_t" --><font class="type">ifnet_t</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getIfnet //apple_ref/cpp/clm/getIfnet //apple_ref/cpp/intfcm/getIfnet //apple_ref/cpp/func/getIfnet //apple_ref/cpp/ftmplt/getIfnet //apple_ref/cpp/defn/getIfnet //apple_ref/cpp/macro/getIfnet" --><font class="function">getIfnet</font><!-- /a -->() <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This method returns a pointer to an ifnet structure
+that was allocated by a concrete subclass of IONetworkInterface.
+ </p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Pointer to an ifnet structure. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/getNamePrefix/virtualconstchar*/();  name=IOFWInterface::getNamePrefix --><a name="//apple_ref/cpp/instm/IOFWInterface/getNamePrefix/virtualconstchar*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getNamePrefix">getNamePrefix</a></h2>
+</td></tr></table>
+<p>Return a string containing the prefix to use when
+creating a BSD name for this interface.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/char //apple_ref/cpp/cl/char //apple_ref/cpp/tdef/char //apple_ref/cpp/tag/char //apple_ref/cpp/econst/char //apple_ref/cpp/struct/char //apple_ref/cpp/clconst/char" --><font class="type">char</font><!-- /a --> <font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getNamePrefix //apple_ref/cpp/clm/getNamePrefix //apple_ref/cpp/intfcm/getNamePrefix //apple_ref/cpp/func/getNamePrefix //apple_ref/cpp/ftmplt/getNamePrefix //apple_ref/cpp/defn/getNamePrefix //apple_ref/cpp/macro/getNamePrefix" --><font class="function">getNamePrefix</font><!-- /a -->() <font class="keyword">const</font>;</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>The BSD name for each interface object is created by
+concatenating a string returned by this method, with an unique
+unit number assigned by IONetworkStack.
+</p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>A pointer to a constant C string "fw". Therefore, FireWire
+ interfaces will be registered with BSD as fw0, fw1, etc. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/init/virtualbool/(IONetworkController*);  name=IOFWInterface::init --><a name="//apple_ref/cpp/instm/IOFWInterface/init/virtualbool/(IONetworkController*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="init">init</a></h2>
+</td></tr></table>
+<p>Initialize an IOFWInterface instance.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/init //apple_ref/cpp/clm/init //apple_ref/cpp/intfcm/init //apple_ref/cpp/func/init //apple_ref/cpp/ftmplt/init //apple_ref/cpp/defn/init //apple_ref/cpp/macro/init" --><font class="function">init</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Instance variables are initialized
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>A network controller object that will service
+the interface object being initialized.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>true on success, false otherwise. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/initIfnetParams/virtualbool/(structifnet_init_params*);  name=IOFWInterface::initIfnetParams --><a name="//apple_ref/cpp/instm/IOFWInterface/initIfnetParams/virtualbool/(structifnet_init_params*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="initIfnetParams">initIfnetParams</a></h2>
+</td></tr></table>
+<p>Initialize the ifnet structure given.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initIfnetParams //apple_ref/cpp/clm/initIfnetParams //apple_ref/cpp/intfcm/initIfnetParams //apple_ref/cpp/func/initIfnetParams //apple_ref/cpp/ftmplt/initIfnetParams //apple_ref/cpp/defn/initIfnetParams //apple_ref/cpp/macro/initIfnetParams" --><font class="function">initIfnetParams</font><!-- /a -->(
+    <font class="keyword">struct</font> <!-- a logicalPath="//apple_ref/cpp/cl/ifnet_init_params //apple_ref/cpp/cl/ifnet_init_params //apple_ref/cpp/tdef/ifnet_init_params //apple_ref/cpp/tag/ifnet_init_params //apple_ref/cpp/econst/ifnet_init_params //apple_ref/cpp/struct/ifnet_init_params //apple_ref/cpp/clconst/ifnet_init_params" --><font class="type">ifnet_init_params</font><!-- /a --> *<font class="param">params</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>IOFWInterface will initialize this structure in a manner
+that is appropriate for FireWire interfaces, then call super::initIfnetParams()
+to allow the superclass to perform generic interface initialization.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>ifp</em></tt></dt>
+<dd>Pointer to an ifnet structure obtained earlier through
+the getIfnet() method call.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>true on success, false otherwise. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/performCommand/virtualSInt32/(IONetworkController*,UInt32,void*,void*);  name=IOFWInterface::performCommand --><a name="//apple_ref/cpp/instm/IOFWInterface/performCommand/virtualSInt32/(IONetworkController*,UInt32,void*,void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="performCommand">performCommand</a></h2>
+</td></tr></table>
+<p>Handle an ioctl command sent to the FireWire interface.
+<br></p>
+<blockquote><pre><tt>protected</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/SInt32 //apple_ref/cpp/cl/SInt32 //apple_ref/cpp/tdef/SInt32 //apple_ref/cpp/tag/SInt32 //apple_ref/cpp/econst/SInt32 //apple_ref/cpp/struct/SInt32 //apple_ref/cpp/clconst/SInt32" --><font class="type">SInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/performCommand //apple_ref/cpp/clm/performCommand //apple_ref/cpp/intfcm/performCommand //apple_ref/cpp/func/performCommand //apple_ref/cpp/ftmplt/performCommand //apple_ref/cpp/defn/performCommand //apple_ref/cpp/macro/performCommand" --><font class="function">performCommand</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/cl/IONetworkController //apple_ref/cpp/tdef/IONetworkController //apple_ref/cpp/tag/IONetworkController //apple_ref/cpp/econst/IONetworkController //apple_ref/cpp/struct/IONetworkController //apple_ref/cpp/clconst/IONetworkController" --><font class="type">IONetworkController</font><!-- /a --> *<font class="param">controller</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmd</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">arg0</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">arg1</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>This method handles socket ioctl commands sent to the FireWire
+interface from DLIL. Commands recognized and processed by this method are
+SIOCSIFADDR, SIOCSIFFLAGS, SIOCADDMULTI, and SIOCDELMULTI. Other commands
+are passed to the superclass.
+</p>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>controller</em></tt></dt>
+<dd>The controller object.</dd>
+<dt><tt><em>cmd</em></tt></dt>
+<dd>The ioctl command code.</dd>
+<dt><tt><em>arg0</em></tt></dt>
+<dd>Command argument 0. Generally a pointer to an ifnet structure
+associated with the interface.</dd>
+<dt><tt><em>arg1</em></tt></dt>
+<dd>Command argument 1.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>A BSD return value defined in bsd/sys/errno.h. </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWInterface/setProperties/virtualIOReturn/(OSObject*);  name=IOFWInterface::setProperties --><a name="//apple_ref/cpp/instm/IOFWInterface/setProperties/virtualIOReturn/(OSObject*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="setProperties">setProperties</a></h2>
+</td></tr></table>
+<p>Handle a request to set FireWire interface properties from
+kernel or non-kernel clients. For non-kernel clients, the preferred
+access mechanism is through an user client connection.
+<br></p>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setProperties //apple_ref/cpp/clm/setProperties //apple_ref/cpp/intfcm/setProperties //apple_ref/cpp/func/setProperties //apple_ref/cpp/ftmplt/setProperties //apple_ref/cpp/defn/setProperties //apple_ref/cpp/macro/setProperties" --><font class="function">setProperties</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/OSObject //apple_ref/cpp/cl/OSObject //apple_ref/cpp/tdef/OSObject //apple_ref/cpp/tag/OSObject //apple_ref/cpp/econst/OSObject //apple_ref/cpp/struct/OSObject //apple_ref/cpp/clconst/OSObject" --><font class="type">OSObject</font><!-- /a --> *<font class="param">properties</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>properties</em></tt></dt>
+<dd>An OSDictionary containing a collection of
+properties.</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i>function result</i></dt>
+<dd>Returns kIOReturnUnsupported if the interface did not
+recognize any of the properties provided. Otherwise, the return
+code will be kIOReturnSuccess to indicate no errors, or an
+IOReturn error code to indicate that an error occurred while
+ handling one of the properties. </dd>
+</dl>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p>
+</body>
+</html>

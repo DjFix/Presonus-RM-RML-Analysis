@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Functions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Functions</font></h1>
+<br><a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getBufferFromDesc/void*/()" target="doc">getBufferFromDesc</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getMaxBufLen/UInt32/()" target="doc">getMaxBufLen</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/initAll/virtualbool/(IOFireWireIP*,IOFireWireController*,UInt32,UInt32,UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*)" target="doc">initAll</a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Functions.html#//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/reinit/virtualIOReturn/(UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*)" target="doc">reinit</a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getBufferFromDesc/void*/();  name=IOFWIPAsyncStreamTxCommand::getBufferFromDesc --><a name="//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getBufferFromDesc/void*/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getBufferFromDesc">getBufferFromDesc</a></h2>
+</td></tr></table>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --><font class="type">*</font> <!-- a logicalPath="//apple_ref/cpp/instm/getBufferFromDesc //apple_ref/cpp/clm/getBufferFromDesc //apple_ref/cpp/intfcm/getBufferFromDesc //apple_ref/cpp/func/getBufferFromDesc //apple_ref/cpp/ftmplt/getBufferFromDesc //apple_ref/cpp/defn/getBufferFromDesc //apple_ref/cpp/macro/getBufferFromDesc" --><font class="function">getBufferFromDesc</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Usefull for copying data from the mbuf</p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>void* - pre-allocated buffer pointer
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getMaxBufLen/UInt32/();  name=IOFWIPAsyncStreamTxCommand::getMaxBufLen --><a name="//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/getMaxBufLen/UInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="getMaxBufLen">getMaxBufLen</a></h2>
+</td></tr></table>
+<blockquote><pre><tt>public</tt>
+<br><!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getMaxBufLen //apple_ref/cpp/clm/getMaxBufLen //apple_ref/cpp/intfcm/getMaxBufLen //apple_ref/cpp/func/getMaxBufLen //apple_ref/cpp/ftmplt/getMaxBufLen //apple_ref/cpp/defn/getMaxBufLen //apple_ref/cpp/macro/getMaxBufLen" --><font class="function">getMaxBufLen</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Usefull when MTU changes to a greater value and we need to
+accomodate more data in the buffer without a 1394 fragmentation</p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>UInt32 - size of the pre-allocated buffer
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/initAll/virtualbool/(IOFireWireIP*,IOFireWireController*,UInt32,UInt32,UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*);  name=IOFWIPAsyncStreamTxCommand::initAll --><a name="//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/initAll/virtualbool/(IOFireWireIP*,IOFireWireController*,UInt32,UInt32,UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="initAll">initAll</a></h2>
+</td></tr></table>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initAll //apple_ref/cpp/clm/initAll //apple_ref/cpp/intfcm/initAll //apple_ref/cpp/func/initAll //apple_ref/cpp/ftmplt/initAll //apple_ref/cpp/defn/initAll //apple_ref/cpp/macro/initAll" --><font class="function">initAll</font><!-- /a -->( 
+    <a href="../../../../../documentation/IOFireWireIP/Classes/IOFireWireIP/index.html#//apple_ref/cpp/cl/IOFireWireIP" logicalPath="//apple_ref/cpp/cl/IOFireWireIP" target="_top"><font class="type">IOFireWireIP</font></a> *<font class="param">networkObject</font>, 
+    <a href="../../../../../documentation/IOFireWireController/Classes/IOFireWireController/index.html#//apple_ref/cpp/cl/IOFireWireController" logicalPath="//apple_ref/cpp/cl/IOFireWireController" target="_top"><font class="type">IOFireWireController</font></a> *<font class="param">control</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">channel</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">sync</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">tag</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">speed</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAsyncStreamCallback //apple_ref/cpp/cl/FWAsyncStreamCallback //apple_ref/cpp/tdef/FWAsyncStreamCallback //apple_ref/cpp/tag/FWAsyncStreamCallback //apple_ref/cpp/econst/FWAsyncStreamCallback //apple_ref/cpp/struct/FWAsyncStreamCallback //apple_ref/cpp/clconst/FWAsyncStreamCallback" --><font class="type">FWAsyncStreamCallback</font><!-- /a --> <font class="param">completion</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>Initializes the Asynchronous transmit command object</p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>true if successfull.
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/reinit/virtualIOReturn/(UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*);  name=IOFWIPAsyncStreamTxCommand::reinit --><a name="//apple_ref/cpp/instm/IOFWIPAsyncStreamTxCommand/reinit/virtualIOReturn/(UInt32,UInt32,UInt32,int,FWAsyncStreamCallback,void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h2><a name="reinit">reinit</a></h2>
+</td></tr></table>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOReturn //apple_ref/cpp/cl/IOReturn //apple_ref/cpp/tdef/IOReturn //apple_ref/cpp/tag/IOReturn //apple_ref/cpp/econst/IOReturn //apple_ref/cpp/struct/IOReturn //apple_ref/cpp/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/reinit //apple_ref/cpp/clm/reinit //apple_ref/cpp/intfcm/reinit //apple_ref/cpp/func/reinit //apple_ref/cpp/ftmplt/reinit //apple_ref/cpp/defn/reinit //apple_ref/cpp/macro/reinit" --><font class="function">reinit</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">channel</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">speed</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAsyncStreamCallback //apple_ref/cpp/cl/FWAsyncStreamCallback //apple_ref/cpp/tdef/FWAsyncStreamCallback //apple_ref/cpp/tag/FWAsyncStreamCallback //apple_ref/cpp/econst/FWAsyncStreamCallback //apple_ref/cpp/struct/FWAsyncStreamCallback //apple_ref/cpp/clconst/FWAsyncStreamCallback" --><font class="type">FWAsyncStreamCallback</font><!-- /a --> <font class="param">completion</font>, 
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<p>reinit will re-initialize all the variables for this command object, good
+when we have to reconfigure our outgoing command objects.</p>
+<dl>
+<dt><i>function result</i></dt>
+<dd>true if successfull.
+ </dd>
+</dl>
+<hr>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>IOFireWireDevice </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><a name="//apple_ref/doc/class/IOFireWireDevice" title="IOFireWireDevice "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="IOFireWireDevice">IOFireWireDevice </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> Represents a FireWire device.
+<!-- end abstract --></p>
+<p><b>Superclass:</b> <a href="../../../../documentation/IOFireWireNub/Classes/IOFireWireNub/index.html#//apple_ref/cpp/cl/IOFireWireNub" logicalPath="//apple_ref/cpp/cl/IOFireWireNub" target="_top">IOFireWireNub</a><br><b>Declared In:</b> <a href="../../index.html" target="_top">IOFireWireDevice.h</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> The FireWire family tries to read the configuration ROM of each device on the FireWire bus. For each device that responds with 
+its bus information block, the FireWire family publishes an <code>IOFireWireDevice</code> object in the I/O Registry. An 
+<code>IOFireWireDevice</code> object keeps track of the device's node ID, copies config ROM properties into the object's property 
+list, and scans the config ROM for unit directories, publishing an <code>IOFireWireUnit</code> object for each unit directory it finds.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Functions</h2>
+<a name="HeaderDoc_functions"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/clearNodeFlags/virtualvoid/(UInt32)" target="_top">clearNodeFlags</a></tt></dt>
+<dd>Resets the node's characteristics.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPhysicalAddressSpace/virtualIOFWPhysicalAddressSpace*/(IOMemoryDescriptor*)" target="_top">createPhysicalAddressSpace</a></tt></dt>
+<dd>Creates local physical FireWire address spaces for the device to access.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPseudoAddressSpace/virtualIOFWPseudoAddressSpace*/(FWAddress*,UInt32,FWReadCallback,FWWriteCallback,void*)" target="_top">createPseudoAddressSpace</a></tt></dt>
+<dd>Creates local pseudo FireWire address spaces for the device to access.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getNodeFlags/virtualUInt32/()" target="_top">getNodeFlags</a></tt></dt>
+<dd>Retrieves the node's characteristics.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getUnitCount/inlineUInt32/()" target="_top">getUnitCount</a></tt></dt>
+<dd>Returns number of units attached to this device.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/init/virtualbool/(OSDictionary*,constIOFWNodeScan*)" target="_top">init</a></tt></dt>
+<dd>Initializes the nub.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setMaxSpeed/inlinevoid/(IOFWSpeed)" target="_top">setMaxSpeed</a></tt></dt>
+<dd>Sets the maximum speed for this node.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setNodeFlags/virtualvoid/(UInt32)" target="_top">setNodeFlags</a></tt></dt>
+<dd>Sets the node's characteristics.
+</dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/clearNodeFlags/virtualvoid/(UInt32);  indexgroup=FireWire ;  name=IOFireWireDevice::clearNodeFlags --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/clearNodeFlags/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="clearNodeFlags">clearNodeFlags</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Resets the node's characteristics.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/clearNodeFlags //apple_ref/cpp/clm/clearNodeFlags //apple_ref/cpp/intfcm/clearNodeFlags //apple_ref/cpp/intfm/clearNodeFlags //apple_ref/cpp/func/clearNodeFlags //apple_ref/cpp/ftmplt/clearNodeFlags //apple_ref/cpp/defn/clearNodeFlags //apple_ref/cpp/macro/clearNodeFlags" --><span class="function">clearNodeFlags</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>flags </code></dt>
+<dd>Refer to "node flags" in IOFireWireFamilyCommon.h.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPhysicalAddressSpace/virtualIOFWPhysicalAddressSpace*/(IOMemoryDescriptor*);  indexgroup=FireWire ;  name=IOFireWireDevice::createPhysicalAddressSpace --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPhysicalAddressSpace/virtualIOFWPhysicalAddressSpace*/(IOMemoryDescriptor*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createPhysicalAddressSpace">createPhysicalAddressSpace</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates local physical FireWire address spaces for the device to access.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWPhysicalAddressSpace //apple_ref/cpp/tdef/IOFWPhysicalAddressSpace //apple_ref/cpp/tag/IOFWPhysicalAddressSpace //apple_ref/cpp/econst/IOFWPhysicalAddressSpace //apple_ref/cpp/struct/IOFWPhysicalAddressSpace //apple_ref/cpp/clconst/IOFWPhysicalAddressSpace //apple_ref/cpp/intf/IOFWPhysicalAddressSpace" --><span class="type">IOFWPhysicalAddressSpace</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/createPhysicalAddressSpace //apple_ref/cpp/clm/createPhysicalAddressSpace //apple_ref/cpp/intfcm/createPhysicalAddressSpace //apple_ref/cpp/intfm/createPhysicalAddressSpace //apple_ref/cpp/func/createPhysicalAddressSpace //apple_ref/cpp/ftmplt/createPhysicalAddressSpace //apple_ref/cpp/defn/createPhysicalAddressSpace //apple_ref/cpp/macro/createPhysicalAddressSpace" --><span class="function">createPhysicalAddressSpace</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOMemoryDescriptor //apple_ref/cpp/tdef/IOMemoryDescriptor //apple_ref/cpp/tag/IOMemoryDescriptor //apple_ref/cpp/econst/IOMemoryDescriptor //apple_ref/cpp/struct/IOMemoryDescriptor //apple_ref/cpp/clconst/IOMemoryDescriptor //apple_ref/cpp/intf/IOMemoryDescriptor" --><span class="type">IOMemoryDescriptor</span><!-- /a --> *<span class="param">mem</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>mem </code></dt>
+<dd>Memory area allocated to back the physical access by Link hardware.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->A valid <code>IOFWPhysicalAddressSpace</code> object on success; NULL on failure.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPseudoAddressSpace/virtualIOFWPseudoAddressSpace*/(FWAddress*,UInt32,FWReadCallback,FWWriteCallback,void*);  indexgroup=FireWire ;  name=IOFireWireDevice::createPseudoAddressSpace --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/createPseudoAddressSpace/virtualIOFWPseudoAddressSpace*/(FWAddress*,UInt32,FWReadCallback,FWWriteCallback,void*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="createPseudoAddressSpace">createPseudoAddressSpace</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Creates local pseudo FireWire address spaces for the device to access.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <a href="../../../../documentation/IOFWPseudoAddressSpace/Classes/IOFWPseudoAddressSpace/index.html#//apple_ref/cpp/cl/IOFWPseudoAddressSpace" logicalPath="//apple_ref/cpp/cl/IOFWPseudoAddressSpace" target="_top"><span class="type">IOFWPseudoAddressSpace</span></a> <span class="type">*</span><!-- a logicalPath="//apple_ref/cpp/instm/createPseudoAddressSpace //apple_ref/cpp/clm/createPseudoAddressSpace //apple_ref/cpp/intfcm/createPseudoAddressSpace //apple_ref/cpp/intfm/createPseudoAddressSpace //apple_ref/cpp/func/createPseudoAddressSpace //apple_ref/cpp/ftmplt/createPseudoAddressSpace //apple_ref/cpp/defn/createPseudoAddressSpace //apple_ref/cpp/macro/createPseudoAddressSpace" --><span class="function">createPseudoAddressSpace</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/FWAddress //apple_ref/cpp/tdef/FWAddress //apple_ref/cpp/tag/FWAddress //apple_ref/cpp/econst/FWAddress //apple_ref/cpp/struct/FWAddress //apple_ref/cpp/clconst/FWAddress //apple_ref/cpp/intf/FWAddress" --><span class="type">FWAddress</span><!-- /a --> *<span class="param">addr</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">len</span>, 
+    <a href="../../../../documentation/IOFWAddressSpace/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWReadCallback" logicalPath="//apple_ref/cpp/cl/FWReadCallback //apple_ref/cpp/tdef/FWReadCallback" target="_top"><span class="type">FWReadCallback</span></a> <span class="param">reader</span>,
+    <a href="../../../../documentation/IOFWAddressSpace/index.html?DataTypes/DataTypes.html#//apple_ref/c/tdef/FWWriteCallback" logicalPath="//apple_ref/cpp/cl/FWWriteCallback //apple_ref/cpp/tdef/FWWriteCallback" target="_top"><span class="type">FWWriteCallback</span></a> <span class="param">writer</span>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> *<span class="param">refcon</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>addr </code></dt>
+<dd>The FireWire address that is mapped to the pseudo address access.</dd>
+<dt><code>len </code></dt>
+<dd>Size of the address space to allocate.</dd>
+<dt><code>reader </code></dt>
+<dd>Read callback, when the device reads from this address space.</dd>
+<dt><code>writer </code></dt>
+<dd>Write callback, when the device writes to this address space.</dd>
+<dt><code>refcon </code></dt>
+<dd>Client's callback object returned during reader/writer callbacks.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->A valid <code>IOFWPseudoAddressSpace</code> object on success; NULL on failure.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getNodeFlags/virtualUInt32/();  indexgroup=FireWire ;  name=IOFireWireDevice::getNodeFlags --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getNodeFlags/virtualUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getNodeFlags">getNodeFlags</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Retrieves the node's characteristics.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getNodeFlags //apple_ref/cpp/clm/getNodeFlags //apple_ref/cpp/intfcm/getNodeFlags //apple_ref/cpp/intfm/getNodeFlags //apple_ref/cpp/func/getNodeFlags //apple_ref/cpp/ftmplt/getNodeFlags //apple_ref/cpp/defn/getNodeFlags //apple_ref/cpp/macro/getNodeFlags" --><span class="function">getNodeFlags</span><!-- /a -->(
+    <span class="param">void</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>flags </code></dt>
+<dd>Refer to "node flags" in IOFireWireFamilyCommon.h.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UInt32 The flags set for a particular node. 
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getUnitCount/inlineUInt32/();  indexgroup=FireWire ;  name=IOFireWireDevice::getUnitCount --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/getUnitCount/inlineUInt32/()"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="getUnitCount">getUnitCount</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Returns number of units attached to this device.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getUnitCount //apple_ref/cpp/clm/getUnitCount //apple_ref/cpp/intfcm/getUnitCount //apple_ref/cpp/intfm/getUnitCount //apple_ref/cpp/func/getUnitCount //apple_ref/cpp/ftmplt/getUnitCount //apple_ref/cpp/defn/getUnitCount //apple_ref/cpp/macro/getUnitCount" --><span class="function">getUnitCount</span><!-- /a -->(
+    <span class="param">void</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->UInt32 The number of units attached to this device.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/init/virtualbool/(OSDictionary*,constIOFWNodeScan*);  indexgroup=FireWire ;  name=IOFireWireDevice::init --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/init/virtualbool/(OSDictionary*,constIOFWNodeScan*)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="init">init</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Initializes the nub.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool //apple_ref/cpp/intf/bool" --><span class="type">bool</span><!-- /a --> <a href="../../../../documentation/IOFWPhysicalAddressSpace/index.html?Functions/Functions.html#//apple_ref/c/func/init" logicalPath="//apple_ref/cpp/instm/init //apple_ref/cpp/clm/init //apple_ref/cpp/intfcm/init //apple_ref/cpp/intfm/init //apple_ref/cpp/func/init" target="_top"><span class="function">init</span></a>(
+    <!-- a logicalPath="//apple_ref/cpp/cl/OSDictionary //apple_ref/cpp/tdef/OSDictionary //apple_ref/cpp/tag/OSDictionary //apple_ref/cpp/econst/OSDictionary //apple_ref/cpp/struct/OSDictionary //apple_ref/cpp/clconst/OSDictionary //apple_ref/cpp/intf/OSDictionary" --><span class="type">OSDictionary</span><!-- /a --> *<span class="param">propTable</span>,
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/cpp/cl/IOFWNodeScan //apple_ref/cpp/tdef/IOFWNodeScan //apple_ref/cpp/tag/IOFWNodeScan //apple_ref/cpp/econst/IOFWNodeScan //apple_ref/cpp/struct/IOFWNodeScan //apple_ref/cpp/clconst/IOFWNodeScan //apple_ref/cpp/intf/IOFWNodeScan" --><span class="type">IOFWNodeScan</span><!-- /a --> *<span class="param">scan</span>); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>propTable </code></dt>
+<dd>Property table passed to the standard nub initialization.</dd>
+<dt><code>scan </code></dt>
+<dd>Pointer to the node scan structure.</dd>
+</dl>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value -->Returns <code>true</code> if initialization was successful; <code>false</code> otherwise.
+ 
+<!-- end return value --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setMaxSpeed/inlinevoid/(IOFWSpeed);  indexgroup=FireWire ;  name=IOFireWireDevice::setMaxSpeed --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setMaxSpeed/inlinevoid/(IOFWSpeed)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setMaxSpeed">setMaxSpeed</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the maximum speed for this node.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">inline</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setMaxSpeed //apple_ref/cpp/clm/setMaxSpeed //apple_ref/cpp/intfcm/setMaxSpeed //apple_ref/cpp/intfm/setMaxSpeed //apple_ref/cpp/func/setMaxSpeed //apple_ref/cpp/ftmplt/setMaxSpeed //apple_ref/cpp/defn/setMaxSpeed //apple_ref/cpp/macro/setMaxSpeed" --><span class="function">setMaxSpeed</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFWSpeed //apple_ref/cpp/tdef/IOFWSpeed //apple_ref/cpp/tag/IOFWSpeed //apple_ref/cpp/econst/IOFWSpeed //apple_ref/cpp/struct/IOFWSpeed //apple_ref/cpp/clconst/IOFWSpeed //apple_ref/cpp/intf/IOFWSpeed" --><span class="type">IOFWSpeed</span><!-- /a --> <span class="param">speed</span> ) </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>speed </code></dt>
+<dd>Maximum speed. Refer to "bus speed numbers" in IOFireWireFamilyCommon.h.</dd>
+</dl>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setNodeFlags/virtualvoid/(UInt32);  indexgroup=FireWire ;  name=IOFireWireDevice::setNodeFlags --><a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireDevice/setNodeFlags/virtualvoid/(UInt32)"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="setNodeFlags">setNodeFlags</a></h3>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract -->Sets the node's characteristics.
+<!-- end abstract --></p>
+<p></p>
+<pre><tt>public</tt>
+<br><span class="keyword">virtual</span> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void //apple_ref/cpp/intf/void" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/setNodeFlags //apple_ref/cpp/clm/setNodeFlags //apple_ref/cpp/intfcm/setNodeFlags //apple_ref/cpp/intfm/setNodeFlags //apple_ref/cpp/func/setNodeFlags //apple_ref/cpp/ftmplt/setNodeFlags //apple_ref/cpp/defn/setNodeFlags //apple_ref/cpp/macro/setNodeFlags" --><span class="function">setNodeFlags</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32 //apple_ref/cpp/intf/UInt32" --><span class="type">UInt32</span><!-- /a --> <span class="param">flags</span> ); </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>flags </code></dt>
+<dd>Refer to "node flags" in IOFireWireFamilyCommon.h.</dd>
+</dl>
+<p></p>
+<h2>Structs and Unions</h2>
+<hr>
+<!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/cpp/tag/IOFireWireDevice/ExpansionData;  indexgroup=FireWire ;  name=IOFireWireDevice::ExpansionData --><a name="//apple_ref/doc/compositePage/cpp/tag/IOFireWireDevice/ExpansionData"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="ExpansionData">ExpansionData </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><tt>protected</tt>
+<br><span class="keyword">struct</span> <a href="../../../../documentation/IOFWAddressSpace/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><span class="type">ExpansionData</span></a> {
+}; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->This structure will be used to expand the capablilties of the class in the future.
+ <!-- end discussion --></p>
+<p></p>
+<h2>Member Data</h2>
+<hr>
+<!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/IOFireWireDevice/reserved;  indexgroup=FireWire ;  name=IOFireWireDevice::reserved --><a name="//apple_ref/doc/compositePage/cpp/data/IOFireWireDevice/reserved"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="reserved">reserved </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><tt>protected</tt>
+<br><a href="../../../../documentation/IOFWAddressSpace/index.html?Structs/Structs.html#//apple_ref/c/tag/ExpansionData" logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData" target="_top"><span class="type">ExpansionData</span></a> <span class="type">*</span><span class="var">reserved</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Reserved for future use. (Internal use only)<!-- end discussion --></p>
+<p></p>
+<p>Last Updated: Friday, January 18, 2008
+</p>
+</body>
+</html>

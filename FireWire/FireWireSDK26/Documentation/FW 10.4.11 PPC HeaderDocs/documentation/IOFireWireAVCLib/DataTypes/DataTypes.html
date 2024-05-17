@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Defined Types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">Defined Types</font></h1>
+<br><hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAVCCommandHandlerCallback;  name=IOFWAVCCommandHandlerCallback --><a name="//apple_ref/c/tdef/IOFWAVCCommandHandlerCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAVCCommandHandlerCallback">IOFWAVCCommandHandlerCallback</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Callback called when a incoming AVC command matching a registered command handler is received.
+</p>
+<blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWAVCCommandHandlerCallback //apple_ref/c/clm/IOFWAVCCommandHandlerCallback //apple_ref/c/intfcm/IOFWAVCCommandHandlerCallback //apple_ref/c/func/IOFWAVCCommandHandlerCallback //apple_ref/c/ftmplt/IOFWAVCCommandHandlerCallback //apple_ref/c/defn/IOFWAVCCommandHandlerCallback //apple_ref/c/macro/IOFWAVCCommandHandlerCallback" --><font class="function">IOFWAVCCommandHandlerCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="param">srcNodeID</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWSpeed //apple_ref/c/cl/IOFWSpeed //apple_ref/c/tdef/IOFWSpeed //apple_ref/c/tag/IOFWSpeed //apple_ref/c/econst/IOFWSpeed //apple_ref/c/struct/IOFWSpeed //apple_ref/c/clconst/IOFWSpeed" --><font class="type">IOFWSpeed</font><!-- /a --> <font class="param">speed</font>,
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon</code></dt>
+<dd>The refcon supplied when a client is registered</dd>
+<dt><code>generation</code></dt>
+<dd>The FireWire bus generation value at the time the command was received</dd>
+<dt><code>scrNodeID</code></dt>
+<dd>The node ID of the device who sent us this command</dd>
+<dt><code>speed</code></dt>
+<dd>The speed the AVC command packet</dd>
+<dt><code>command</code></dt>
+<dd>A pointer to the command bytes</dd>
+<dt><code>cmdLen</code></dt>
+<dd>The length of the AVC command bytes buffer in bytes</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i> result</i></dt>
+<dd>The callback handler should return success if it will send the AVC response, or an error if it doesn't want to handle the command
+ </dd>
+</dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAVCPCRCallback;  name=IOFWAVCPCRCallback --><a name="//apple_ref/c/tdef/IOFWAVCPCRCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAVCPCRCallback">IOFWAVCPCRCallback</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Callback called after a successful lock transaction to a CMP plug.
+</p>
+<blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWAVCPCRCallback //apple_ref/c/clm/IOFWAVCPCRCallback //apple_ref/c/intfcm/IOFWAVCPCRCallback //apple_ref/c/func/IOFWAVCPCRCallback //apple_ref/c/ftmplt/IOFWAVCPCRCallback //apple_ref/c/defn/IOFWAVCPCRCallback //apple_ref/c/macro/IOFWAVCPCRCallback" --><font class="function">IOFWAVCPCRCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refcon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="param">nodeID</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plug</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">oldVal</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">newVal</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>refcon</code></dt>
+<dd>refcon supplied when a client is registered</dd>
+<dt><code>generation</code></dt>
+<dd>Bus generation command was received in</dd>
+<dt><code>nodeID</code></dt>
+<dd>is the node originating the request</dd>
+<dt><code>plugNo</code></dt>
+<dd>is the plug number</dd>
+<dt><code>oldVal</code></dt>
+<dd>is the value the plug used to contain</dd>
+<dt><code>newVal</code></dt>
+<dd>is the quad written into the plug</dd>
+</dl>
+</blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAVCRequestCallback;  name=IOFWAVCRequestCallback --><a name="//apple_ref/c/tdef/IOFWAVCRequestCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAVCRequestCallback">IOFWAVCRequestCallback</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>This Callback has been deprecated. Use installAVCCommandHandler instead.
+</p>
+<blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWAVCRequestCallback //apple_ref/c/clm/IOFWAVCRequestCallback //apple_ref/c/intfcm/IOFWAVCRequestCallback //apple_ref/c/func/IOFWAVCRequestCallback //apple_ref/c/ftmplt/IOFWAVCRequestCallback //apple_ref/c/defn/IOFWAVCRequestCallback //apple_ref/c/macro/IOFWAVCRequestCallback" --><font class="function">IOFWAVCRequestCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt16 //apple_ref/c/cl/UInt16 //apple_ref/c/tdef/UInt16 //apple_ref/c/tag/UInt16 //apple_ref/c/econst/UInt16 //apple_ref/c/struct/UInt16 //apple_ref/c/clconst/UInt16" --><font class="type">UInt16</font><!-- /a --> <font class="param">srcNodeID</font>, 
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">command</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">cmdLen</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt8 //apple_ref/c/cl/UInt8 //apple_ref/c/tdef/UInt8 //apple_ref/c/tag/UInt8 //apple_ref/c/econst/UInt8 //apple_ref/c/struct/UInt8 //apple_ref/c/clconst/UInt8" --><font class="type">UInt8</font><!-- /a --> *<font class="param">response</font>,
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> *<font class="param">responseLen</font>); </pre></blockquote>
+<dl></dl>
+<hr>
+<!-- headerDoc=tdef;  uid=//apple_ref/c/tdef/IOFWAVCSubunitPlugHandlerCallback;  name=IOFWAVCSubunitPlugHandlerCallback --><a name="//apple_ref/c/tdef/IOFWAVCSubunitPlugHandlerCallback"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="IOFWAVCSubunitPlugHandlerCallback">IOFWAVCSubunitPlugHandlerCallback</a></h3>
+</td></tr></table>
+<hr>
+<dl></dl>
+<p>Callback called when a incoming AVC command matching a registered command handler is received.
+</p>
+<blockquote><pre><font class="keyword">typedef</font> <!-- a logicalPath="//apple_ref/c/cl/IOReturn //apple_ref/c/cl/IOReturn //apple_ref/c/tdef/IOReturn //apple_ref/c/tag/IOReturn //apple_ref/c/econst/IOReturn //apple_ref/c/struct/IOReturn //apple_ref/c/clconst/IOReturn" --><font class="type">IOReturn</font><!-- /a --> (*<!-- a logicalPath="//apple_ref/c/instm/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/clm/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/intfcm/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/func/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/ftmplt/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/defn/IOFWAVCSubunitPlugHandlerCallback //apple_ref/c/macro/IOFWAVCSubunitPlugHandlerCallback" --><font class="function">IOFWAVCSubunitPlugHandlerCallback</font><!-- /a -->)(
+    <!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/econst/void //apple_ref/c/struct/void //apple_ref/c/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">refCon</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">subunitTypeAndID</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/cl/IOFWAVCPlugTypes //apple_ref/c/tdef/IOFWAVCPlugTypes //apple_ref/c/tag/IOFWAVCPlugTypes //apple_ref/c/econst/IOFWAVCPlugTypes //apple_ref/c/struct/IOFWAVCPlugTypes //apple_ref/c/clconst/IOFWAVCPlugTypes" --><font class="type">IOFWAVCPlugTypes</font><!-- /a --> <font class="param">plugType</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">plugNum</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/IOFWAVCSubunitPlugMessages //apple_ref/c/cl/IOFWAVCSubunitPlugMessages //apple_ref/c/tdef/IOFWAVCSubunitPlugMessages //apple_ref/c/tag/IOFWAVCSubunitPlugMessages //apple_ref/c/econst/IOFWAVCSubunitPlugMessages //apple_ref/c/struct/IOFWAVCSubunitPlugMessages //apple_ref/c/clconst/IOFWAVCSubunitPlugMessages" --><font class="type">IOFWAVCSubunitPlugMessages</font><!-- /a --> <font class="param">plugMessage</font>, 
+    <!-- a logicalPath="//apple_ref/c/cl/UInt32 //apple_ref/c/cl/UInt32 //apple_ref/c/tdef/UInt32 //apple_ref/c/tag/UInt32 //apple_ref/c/econst/UInt32 //apple_ref/c/struct/UInt32 //apple_ref/c/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">messageParams</font>); </pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><code>refCon</code></dt>
+<dd>The refcon supplied when a client is registered</dd>
+<dt><code>subunitTypeAndID</code></dt>
+<dd>The subunit type and id of this plug</dd>
+<dt><code>plugType</code></dt>
+<dd>The type of plug receiving the message</dd>
+<dt><code>plugNum</code></dt>
+<dd>The number of the plug receiving the message</dd>
+<dt><code>plugMessage</code></dt>
+<dd>The plug message</dd>
+<dt><code>messageParams</code></dt>
+<dd>The parameters associated with the plug message</dd>
+</dl>
+</blockquote>
+<dl>
+<dt><i> result</i></dt>
+<dd>The return value is only pertinent for the kIOFWAVCSubunitPlugMsgSignalFormatModified message. Return an error if not accepting the sig format change.
+ </dd>
+</dl>
+<p>(Last Updated July 26, 2007)
+</p>
+</body>
+</html>

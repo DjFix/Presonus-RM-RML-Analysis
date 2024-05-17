@@ -1,0 +1,151 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\vieww13280\viewh16380\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+
+\f0\b\fs36 \cf0 IsocViewer v1.6\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qr
+
+\b0\fs24 \cf0 12/6/2007	
+\b \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+
+\fs28 Introduction
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0 \cf0 A general purpose Isochronous Stream receiver. Scans all isochronous channels looking for incoming data, parses for known header information, and reports what it finds. No attempt is made to verify payload content. This tool is compatible with Mac OS X 10.4 or later.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Uses
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0 \cf0 Verification of audio and video stream activity on a FireWire bus. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Features
+\fs24 :\
+o 
+\b0 Channel scanning counter. \
+\
+
+\b o 
+\b0 Keeps a history of discovered channels in a list of buttons. Clicking on a channel button selects it for viewing header info.\
+
+\b \
+o 
+\b0 Choice of FireWire interface when multiple are installed.\
+\
+
+\b o 
+\b0 Uses the AVCVideoServices framework and its Universal Receiver to detect incoming streams.\
+\
+
+\b\fs28 Instructions
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li420\fi-420\ri-2160\ql\qnatural
+\cf0 1)
+\b0  Create a FireWire bus by attaching other nodes that are ready to transmit some form on isochronous stream.\
+\
+
+\b 2)
+\b0  Run app.\
+\
+
+\b 3)
+\b0  Start multiple isochronous streams from other nodes.  \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 \
+Window Contents
+\fs26 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\fs28 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+
+\fs24 \cf0 Stream Header Information text view - 
+\b0 The large text area in the middle of the application window is used to display header information of selected stream. The first channel found is automatically selected. \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+
+\b \cf0 Scanning, Viewing, and ScanTime - 
+\b0 The 
+\b Scanning
+\b0  field updates as each channel is tested. The 
+\b Viewing
+\b0  field indicates which channel information is displayed in the text view. ScanTime reports how long it took to scan all 64 channels each time through.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs28 \cf0 Control Buttons
+\fs24 :\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+\cf0 \
+
+\b0  
+\b Interface Picker pop up menu -
+\b0  When more than one OHCI link is discovered you may choose among them. In the application window upper left corner, there is a pop-up menu listing all installed FireWire interfaces. Controls become functional when an interface is chosen.  \
+\
+ 
+\b Stop/Start -
+\b0  Used to temporarily cease and resume channel scanning.\
+\
+ 
+\b Isochronous channels found -
+\b0  Shows all the active streaming channels discovered.  Additionally used to select which channel is reported in the text view. This array of button grows across the bottom of the application window. When a stream becomes inactive its button becomes shaded thereby no longer reporting header information.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li300\fi-300\ri-2160\ql\qnatural
+
+\b0 \cf0  ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 Known Bugs - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b0\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1160\fi-1160\ri-2160\ql\qnatural
+\cf0 	
+\b o
+\b0  Short  bursts of isochronous data largely go undetected. It requires a steady stream of data to show up in this viewer.
+\b \
+
+\b0 \
+	
+\b o
+\b0  Unable to view isochronous channel transmissions that are generated locally. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\qc
+\cf0 ----------------------------------------------------------------------------------------------------------------------------\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\b\fs30 \cf0 Revision History - \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ri-2160\ql\qnatural
+
+\fs24 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1020\fi-1020\ri-2160\ql\qnatural
+\cf0 1.6 - 12/6/2007\
+	o
+\b0  First public release.  \
+
+\b \
+}

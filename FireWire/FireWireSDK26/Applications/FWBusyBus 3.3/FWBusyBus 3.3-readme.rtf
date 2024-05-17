@@ -1,0 +1,43 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf410
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww12740\viewh13100\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 Changes in FWBusyBus 3.3 relative to FWBusyBus 1.9:\
+\
+FWBusyBus versions 3.2 earlier set the retry code in asynchronous packets to retry_1, which asks for "split phase" retry.  FWBusyBus was not honoring the "split phase" protocol when busy acks were received, so this behavior was messy and inconvenient.  FWBusyBus 3.3 now uses exclusively retry_X (just like IOFireWireFamily does).\
+\
+Payload control was added; the selected quadlet will repeat.  If Ascending is selected, each quadlet will be one more than the previous quadlet, starting with the entered value.\
+\
+Block packet size control was added, as a percentage from 1 to 100.\
+\
+Isochronous transmission was added.  Be sure someone is cycle master when using this.  Isoch packets are always sent in clumps of 15.  If a cycle skip happens, a four-byte packet will be sent (on purpose).\
+\
+A button was added to make FWBusyBus immediately become the root node.\
+\
+The activity level may now be set as high as 1000.  Above 100, the increase in activity is not linear.  At level 1000, all packets will be sent in clusters of 15 similar packets.\
+\
+The automatic, always-on ARDMA programs that throw away received packets now use 16K buffers instead of 4K buffers, to avoid an illegal situation when an inbound 4K packet spans three buffers.  Note these programs do not contain a valid res_count field, but they operate correctly on common OHCI hardware where res_count is treated as write-only.\
+\
+You can now option-click on a speed (e.g. s100) or an asynch packet type (e.g. quad read) and FWBusyBus will turn on that item, and turn off all competing items.  Try it...\
+\
+When switching to a different OHCI, the packet speed selectors no longer change, except to disable any impossible speeds (such as when switching from an 800 OHCI to a 400 OHCI) or to enable newly possible speeds.\
+\
+The OHCI Physical unit is now on by default.  It is enabled when OHCI is set up, and then again each time "Run" is selected.  Any bus reset will turn it off.  A contiguous 8KB scratch buffer (for physical targeting) is allocated and the address is printed to the Console (note the address changes each time a new OHCI is selected).\
+\
+Run time now stops advancing when the tool is stopped.\
+\
+A Special menu was added with two new features:\
+\
+Special menu feature one will set the destination address for asynch packets to ffff.f0000400 (low and high), causing all asynch request packets to go to the config ROM of other nodes.  Reads may produce responses; writes will generally produce ack_type_error.\
+\
+Special menu feature two will cause FWBusyBus to auto-stop when something "interesting" happens in the transmit DMA, for asynch block and isoch transmit only.  The "Stop" button will change back to "Run" by itself when this happens, and a brief explanation will be printed to the Console.  "Interesting" things are:\
+\
+1. Any OHCI DMA event code below 0x10\
+2. DMA stores no status (timeout)\
+3. Any isoch skip branch is taken.  Skip branches will cause a 4-byte channel 0 packet to be sent.\
+\
+For each of the above conditions, FWBusyBus will transition from Run to Stop and will print a comment in /var/log/console.log, which can be viewed in Terminal, or by using the Console application (in the Utilities folder).  FWBusyBus will also turn off the cycle master if it was on.  For isoch events, the cycle master will be turned off much more quickly than for asynch.\
+\
+[End of 3.3 update]}

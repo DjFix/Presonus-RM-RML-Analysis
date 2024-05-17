@@ -1,0 +1,48 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                allocateBandwidth = id; 
+                allocateChannel = id; 
+                causeReset = id; 
+                clearTheLog = id; 
+                deallocateBandwidth = id; 
+                deallocateChannel = id; 
+                pickOHCI = id; 
+            }; 
+            CLASS = MyController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                AllocatedChannels = id; 
+                Bandwidth = id; 
+                BandwidthInUnits = NSTextField; 
+                BandwidthInnS = NSTextField; 
+                BandwidthInput = id; 
+                ChannelNumberInput = id; 
+                ChannelsHi = id; 
+                ChannelsLo = id; 
+                LocalNodeID = id; 
+                allocateBus = id; 
+                allocateChannel = id; 
+                causeBusReset = id; 
+                deallocateBus = id; 
+                deallocateChannel = id; 
+                logView = id; 
+                menuOHCI = id; 
+                nodeID = id; 
+                resetHandler = ResetHandler; 
+                titleWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = MyObject; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = ResetHandler; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {myController = id; }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

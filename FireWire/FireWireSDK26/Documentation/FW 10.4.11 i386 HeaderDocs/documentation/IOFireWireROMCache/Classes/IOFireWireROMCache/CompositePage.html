@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+    "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html><head>
+    <title>IOFireWireROMCache</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style></head><body bgcolor="#ffffff">
+<h1><font face="Geneva,Arial,Helvtica">IOFireWireROMCache</font></h1><br>
+<a name="//apple_ref/doc/class/IOFireWireROMCache" title="IOFireWireROMCache"></a>
+<h2>Abstract</h2>
+ A class to hold a cache of a device's config ROM.
+<b>Superclass:</b> <!-- a logicalPath="//apple_ref/cpp/cl/OSObject //apple_ref/cpp/cl/OSObject //apple_ref/cpp/tdef/OSObject //apple_ref/cpp/tag/OSObject //apple_ref/cpp/econst/OSObject //apple_ref/cpp/struct/OSObject //apple_ref/cpp/data/OSObject //apple_ref/cpp/clconst/OSObject //apple_ref/cpp/instm/OSObject //apple_ref/cpp/clm/OSObject //apple_ref/cpp/intfcm/OSObject //apple_ref/cpp/func/OSObject //apple_ref/cpp/ftmplt/OSObject //apple_ref/cpp/defn/OSObject //apple_ref/cpp/macro/OSObject" -->OSObject<!-- /a --><br>
+<hr><br><h2>Member Functions</h2>
+<a name="HeaderDoc_functions"></a>
+<dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constOSData*)" target="_top">appendBytes(const OSData *)</a></tt></dt>
+<dd>A member function which appends the data contained in an IOFireWireROMCache object to the receiver.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constvoid*,unsignedint)" target="_top">appendBytes(const void *, unsigned int)</a></tt></dt>
+<dd>A member function which appends a buffer of data onto the end of the object's internal data buffer.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/ensureCapacity/virtualunsignedint/(unsignedint)" target="_top">ensureCapacity</a></tt></dt>
+<dd>A member function which will expand the size of the collection to a given storage capacity.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/free/virtualvoid/()" target="_top">free</a></tt></dt>
+<dd>A member function which releases all resources created or used by the IOFireWireROMCache object.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/()" target="_top">getBytesNoCopy</a></tt></dt>
+<dd>A member function to return a pointer to the IOFireWireROMCache object's internal data buffer.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/(unsignedint,unsignedint)" target="_top">getBytesNoCopy(unsigned int, unsigned int)</a></tt></dt>
+<dd>Returns a reference into the IOFireWireROMCache object's internal data buffer at particular offset and with a particular length.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getLength/virtualunsignedint/()" target="_top">getLength</a></tt></dt>
+<dd>A member function which returns the length of the internal data buffer.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/initWithOwnerAndBytes/virtualbool/(IOFireWireDevice*,constvoid*,unsignedint,UInt32)" target="_top">initWithOwnerAndBytes</a></tt></dt>
+<dd>A member function to initialize an instance of IOFireWireROMCache which references a block of data.
+</dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/cpp/clm/IOFireWireROMCache/withOwnerAndBytes/staticIOFireWireROMCache*/(IOFireWireDevice*,constvoid*,unsignedint,UInt32)" target="_top">withOwnerAndBytes</a></tt></dt>
+<dd>A static constructor function to create and initialize an instance of IOFireWireROMCache and copies in the provided data.
+</dd>
+</dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constOSData*);  name=IOFireWireROMCache::appendBytes -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constOSData*)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="appendBytes(const%32OSData%32*)">appendBytes(const OSData *)</a></h2>
+</td></tr></table>A member function which appends the data contained in an IOFireWireROMCache object to the receiver.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/appendBytes //apple_ref/cpp/clm/appendBytes //apple_ref/cpp/intfcm/appendBytes //apple_ref/cpp/func/appendBytes //apple_ref/cpp/ftmplt/appendBytes //apple_ref/cpp/defn/appendBytes //apple_ref/cpp/macro/appendBytes" --><font class="function">appendBytes</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/OSData //apple_ref/cpp/cl/OSData //apple_ref/cpp/tdef/OSData //apple_ref/cpp/tag/OSData //apple_ref/cpp/econst/OSData //apple_ref/cpp/struct/OSData //apple_ref/cpp/clconst/OSData" --><font class="type">OSData</font><!-- /a --> *<font class="param">other</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>other</em></tt></dt><dd>An IOFireWireROMCache object.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns true if appending the new data was successful, false otherwise.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constvoid*,unsignedint);  name=IOFireWireROMCache::appendBytes -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/appendBytes/virtualbool/(constvoid*,unsignedint)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="appendBytes(const%32void%32*,%32unsigned%32int)">appendBytes(const void *, unsigned int)</a></h2>
+</td></tr></table>A member function which appends a buffer of data onto the end of the object's internal data buffer.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/appendBytes //apple_ref/cpp/clm/appendBytes //apple_ref/cpp/intfcm/appendBytes //apple_ref/cpp/func/appendBytes //apple_ref/cpp/ftmplt/appendBytes //apple_ref/cpp/defn/appendBytes //apple_ref/cpp/macro/appendBytes" --><font class="function">appendBytes</font><!-- /a -->(
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">bytes</font>,
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">inLength</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>bytes</em></tt></dt><dd>A pointer to the block of data.</dd>
+<dt><tt><em>inLength</em></tt></dt><dd>The length of the data block.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns true if the object was able to append the new data, false otherwise.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/ensureCapacity/virtualunsignedint/(unsignedint);  name=IOFireWireROMCache::ensureCapacity -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/ensureCapacity/virtualunsignedint/(unsignedint)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="ensureCapacity">ensureCapacity</a></h2>
+</td></tr></table>A member function which will expand the size of the collection to a given storage capacity.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/ensureCapacity //apple_ref/cpp/clm/ensureCapacity //apple_ref/cpp/intfcm/ensureCapacity //apple_ref/cpp/func/ensureCapacity //apple_ref/cpp/ftmplt/ensureCapacity //apple_ref/cpp/defn/ensureCapacity //apple_ref/cpp/macro/ensureCapacity" --><font class="function">ensureCapacity</font><!-- /a -->(
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">newCapacity</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>newCapacity</em></tt></dt><dd>The new capacity for the data buffer.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns the new capacity of the data buffer or the previous capacity upon error.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/free/virtualvoid/();  name=IOFireWireROMCache::free -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/free/virtualvoid/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="free">free</a></h2>
+</td></tr></table>A member function which releases all resources created or used by the IOFireWireROMCache object.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/free //apple_ref/cpp/clm/free //apple_ref/cpp/intfcm/free //apple_ref/cpp/func/free //apple_ref/cpp/ftmplt/free //apple_ref/cpp/defn/free //apple_ref/cpp/macro/free" --><font class="function">free</font><!-- /a -->();</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Do not call this function directly, use release() instead.
+ </p>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/();  name=IOFireWireROMCache::getBytesNoCopy -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getBytesNoCopy">getBytesNoCopy</a></h2>
+</td></tr></table>A member function to return a pointer to the IOFireWireROMCache object's internal data buffer.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <font class="type">*</font><!-- a logicalPath="//apple_ref/cpp/instm/getBytesNoCopy //apple_ref/cpp/clm/getBytesNoCopy //apple_ref/cpp/intfcm/getBytesNoCopy //apple_ref/cpp/func/getBytesNoCopy //apple_ref/cpp/ftmplt/getBytesNoCopy //apple_ref/cpp/defn/getBytesNoCopy //apple_ref/cpp/macro/getBytesNoCopy" --><font class="function">getBytesNoCopy</font><!-- /a -->();</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns a reference to the IOFireWireROMCache object's internal data buffer.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/(unsignedint,unsignedint);  name=IOFireWireROMCache::getBytesNoCopy -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getBytesNoCopy/virtualconstvoid*/(unsignedint,unsignedint)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getBytesNoCopy(unsigned%32int,%32unsigned%32int)">getBytesNoCopy(unsigned int, unsigned int)</a></h2>
+</td></tr></table>Returns a reference into the IOFireWireROMCache object's internal data buffer at particular offset and with a particular length.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> <font class="type">*</font><!-- a logicalPath="//apple_ref/cpp/instm/getBytesNoCopy //apple_ref/cpp/clm/getBytesNoCopy //apple_ref/cpp/intfcm/getBytesNoCopy //apple_ref/cpp/func/getBytesNoCopy //apple_ref/cpp/ftmplt/getBytesNoCopy //apple_ref/cpp/defn/getBytesNoCopy //apple_ref/cpp/macro/getBytesNoCopy" --><font class="function">getBytesNoCopy</font><!-- /a -->(
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">start</font>, 
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">inLength</font>);</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>start</em></tt></dt><dd>The offset from the base of the internal data buffer.</dd>
+<dt><tt><em>inLength</em></tt></dt><dd>The length of window.</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns a pointer at a particular offset into the data buffer, or 0 if the starting offset or length are not valid.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getLength/virtualunsignedint/();  name=IOFireWireROMCache::getLength -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/getLength/virtualunsignedint/()"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="getLength">getLength</a></h2>
+</td></tr></table>A member function which returns the length of the internal data buffer.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/getLength //apple_ref/cpp/clm/getLength //apple_ref/cpp/intfcm/getLength //apple_ref/cpp/func/getLength //apple_ref/cpp/ftmplt/getLength //apple_ref/cpp/defn/getLength //apple_ref/cpp/macro/getLength" --><font class="function">getLength</font><!-- /a -->();</pre></blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns an integer value for the length of data in the object's internal data buffer.
+ </dd></dl>
+<hr><!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/initWithOwnerAndBytes/virtualbool/(IOFireWireDevice*,constvoid*,unsignedint,UInt32);  name=IOFireWireROMCache::initWithOwnerAndBytes -->
+<a name="//apple_ref/doc/compositePage/cpp/instm/IOFireWireROMCache/initWithOwnerAndBytes/virtualbool/(IOFireWireDevice*,constvoid*,unsignedint,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="initWithOwnerAndBytes">initWithOwnerAndBytes</a></h2>
+</td></tr></table>A member function to initialize an instance of IOFireWireROMCache which references a block of data.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">virtual</font> <!-- a logicalPath="//apple_ref/cpp/cl/bool //apple_ref/cpp/cl/bool //apple_ref/cpp/tdef/bool //apple_ref/cpp/tag/bool //apple_ref/cpp/econst/bool //apple_ref/cpp/struct/bool //apple_ref/cpp/clconst/bool" --><font class="type">bool</font><!-- /a --> <!-- a logicalPath="//apple_ref/cpp/instm/initWithOwnerAndBytes //apple_ref/cpp/clm/initWithOwnerAndBytes //apple_ref/cpp/intfcm/initWithOwnerAndBytes //apple_ref/cpp/func/initWithOwnerAndBytes //apple_ref/cpp/ftmplt/initWithOwnerAndBytes //apple_ref/cpp/defn/initWithOwnerAndBytes //apple_ref/cpp/macro/initWithOwnerAndBytes" --><font class="function">initWithOwnerAndBytes</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireDevice //apple_ref/cpp/cl/IOFireWireDevice //apple_ref/cpp/tdef/IOFireWireDevice //apple_ref/cpp/tag/IOFireWireDevice //apple_ref/cpp/econst/IOFireWireDevice //apple_ref/cpp/struct/IOFireWireDevice //apple_ref/cpp/clconst/IOFireWireDevice" --><font class="type">IOFireWireDevice</font><!-- /a --> *<font class="param">owner</font>,
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">bytes</font>,
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">inLength</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>owner</em></tt></dt><dd>A reference to the owner of this ROM</dd>
+<dt><tt><em>bytes</em></tt></dt><dd>A reference to a block of data</dd>
+<dt><tt><em>inLength</em></tt></dt><dd>The length of the block of data.</dd>
+<dt><tt><em>generation</em></tt></dt><dd>The bus generation</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns true if initialization was successful, false otherwise.
+ </dd></dl>
+<hr><!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/cpp/clm/IOFireWireROMCache/withOwnerAndBytes/staticIOFireWireROMCache*/(IOFireWireDevice*,constvoid*,unsignedint,UInt32);  name=IOFireWireROMCache::withOwnerAndBytes -->
+<a name="//apple_ref/doc/compositePage/cpp/clm/IOFireWireROMCache/withOwnerAndBytes/staticIOFireWireROMCache*/(IOFireWireDevice*,constvoid*,unsignedint,UInt32)"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="withOwnerAndBytes">withOwnerAndBytes</a></h2>
+</td></tr></table>A static constructor function to create and initialize an instance of IOFireWireROMCache and copies in the provided data.
+<BR>
+<blockquote><pre><tt>public</tt>
+<br><font class="keyword">static</font> <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireROMCache //apple_ref/cpp/cl/IOFireWireROMCache //apple_ref/cpp/tdef/IOFireWireROMCache //apple_ref/cpp/tag/IOFireWireROMCache //apple_ref/cpp/econst/IOFireWireROMCache //apple_ref/cpp/struct/IOFireWireROMCache //apple_ref/cpp/clconst/IOFireWireROMCache" --><font class="type">IOFireWireROMCache</font><!-- /a --> <font class="type">*</font><!-- a logicalPath="//apple_ref/cpp/instm/withOwnerAndBytes //apple_ref/cpp/clm/withOwnerAndBytes //apple_ref/cpp/intfcm/withOwnerAndBytes //apple_ref/cpp/func/withOwnerAndBytes //apple_ref/cpp/ftmplt/withOwnerAndBytes //apple_ref/cpp/defn/withOwnerAndBytes //apple_ref/cpp/macro/withOwnerAndBytes" --><font class="function">withOwnerAndBytes</font><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/cpp/cl/IOFireWireDevice //apple_ref/cpp/cl/IOFireWireDevice //apple_ref/cpp/tdef/IOFireWireDevice //apple_ref/cpp/tag/IOFireWireDevice //apple_ref/cpp/econst/IOFireWireDevice //apple_ref/cpp/struct/IOFireWireDevice //apple_ref/cpp/clconst/IOFireWireDevice" --><font class="type">IOFireWireDevice</font><!-- /a --> *<font class="param">owner</font>,
+    <font class="keyword">const</font> <!-- a logicalPath="//apple_ref/cpp/cl/void //apple_ref/cpp/cl/void //apple_ref/cpp/tdef/void //apple_ref/cpp/tag/void //apple_ref/cpp/econst/void //apple_ref/cpp/struct/void //apple_ref/cpp/clconst/void" --><font class="type">void</font><!-- /a --> *<font class="param">bytes</font>,
+    <font class="keyword">unsigned</font> <!-- a logicalPath="//apple_ref/cpp/cl/int //apple_ref/cpp/cl/int //apple_ref/cpp/tdef/int //apple_ref/cpp/tag/int //apple_ref/cpp/econst/int //apple_ref/cpp/struct/int //apple_ref/cpp/clconst/int" --><font class="type">int</font><!-- /a --> <font class="param">inLength</font>,
+    <!-- a logicalPath="//apple_ref/cpp/cl/UInt32 //apple_ref/cpp/cl/UInt32 //apple_ref/cpp/tdef/UInt32 //apple_ref/cpp/tag/UInt32 //apple_ref/cpp/econst/UInt32 //apple_ref/cpp/struct/UInt32 //apple_ref/cpp/clconst/UInt32" --><font class="type">UInt32</font><!-- /a --> <font class="param">generation</font> );</pre></blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Parameter Descriptions</font></h5>
+<blockquote>
+<dl>
+<dt><tt><em>owner</em></tt></dt><dd>A reference to the owner of this ROM</dd>
+<dt><tt><em>bytes</em></tt></dt><dd>A buffer of data.</dd>
+<dt><tt><em>inLength</em></tt></dt><dd>The size of the given buffer.</dd>
+<dt><tt><em>generation</em></tt></dt><dd>The bus generation</dd>
+</dl>
+</blockquote>
+<dl><dt><i>function result</i></dt><dd>Returns an instance of IOFireWireROMCache or 0 if a failure occurs.
+ </dd></dl>
+<hr>
+<h2>Member Data</h2>
+<hr><!-- headerDoc=data;  uid=//apple_ref/doc/compositePage/cpp/data/IOFireWireROMCache/reserved;  name=IOFireWireROMCache::reserved -->
+<a name="//apple_ref/doc/compositePage/cpp/data/IOFireWireROMCache/reserved"></a>
+<table border="0"  cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5"><h2><a name="reserved">reserved</a></h2>
+</td></tr></table><blockquote><tt>protected</tt> <!-- a logicalPath="//apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/cl/ExpansionData //apple_ref/cpp/tdef/ExpansionData //apple_ref/cpp/tag/ExpansionData //apple_ref/cpp/econst/ExpansionData //apple_ref/cpp/struct/ExpansionData //apple_ref/cpp/clconst/ExpansionData" --><font class="type">ExpansionData</font><!-- /a --> <font class="type">*</font><font class="var">reserved</font>;</blockquote>
+<h5><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5><p>Reserved for future use. (Internal use only)</p>
+<hr>
+<p>(Last Updated November 27, 2007)
+</p></body></html>

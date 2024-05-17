@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>API Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {background:#ffffff; color:#000000;}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {background:#ffffff; color:#000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<a name="top"></a><h1>IOFireWireIP.h</h1>
+<hr>
+<p></p>
+<p>
+Use the links in the table of contents to the left to access documentation.<br><br><b>Includes:</b> <!-- a logicalPath="//apple_ref/doc/header/param.h" -->&lt;sys/param.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/kernel.h" -->&lt;sys/kernel.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/malloc.h" -->&lt;sys/malloc.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/mbuf.h" -->&lt;sys/mbuf.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/socket.h" -->&lt;sys/socket.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/sockio.h" -->&lt;sys/sockio.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/dlil.h" -->&lt;net/dlil.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/sysctl.h" -->&lt;sys/sysctl.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/syslog.h" -->&lt;sys/syslog.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/kern_event.h" -->&lt;sys/kern_event.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/if.h" -->&lt;net/if.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/route.h" -->&lt;net/route.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/if_dl.h" -->&lt;net/if_dl.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/if_types.h" -->&lt;net/if_types.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/firewire.h" -->&lt;firewire.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/if_firewire.h" -->&lt;if_firewire.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/in.h" -->&lt;netinet/in.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/in_var.h" -->&lt;netinet/in_var.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/icmp6.h" -->&lt;netinet/icmp6.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/ip6.h" -->&lt;netinet/ip6.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/socketvar.h" -->&lt;sys/socketvar.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/dlil.h" -->&lt;net/dlil.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/version.h" -->&lt;libkern/version.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/assert.h" -->&lt;IOKit/assert.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOLib.h" -->&lt;IOKit/IOLib.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOBSD.h" -->&lt;IOKit/IOBSD.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOMessage.h" -->&lt;IOKit/IOMessage.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOCommandPool.h" -->&lt;IOKit/IOCommandPool.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOBufferMemoryDescriptor.h" -->&lt;IOKit/IOBufferMemoryDescriptor.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOTimerEventSource.h" -->&lt;IOKit/IOTimerEventSource.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOInterruptEventSource.h" -->&lt;IOKit/IOInterruptEventSource.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOService.h" -->&lt;IOKit/IOService.h&gt;<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOFWRegs.h" -->&lt;IOKit/firewire/IOFWRegs.h&gt;<!-- /a -->,
+<a href="../../documentation/IOFWAddressSpace/index.html#//apple_ref/doc/header/IOFWAddressSpace.h" logicalPath="//apple_ref/doc/header/IOFWAddressSpace.h" target="_top">&lt;IOKit/firewire/IOFWAddressSpace.h&gt;</a>,
+<a href="../../documentation/IOLocalConfigDirectory/index.html#//apple_ref/doc/header/IOLocalConfigDirectory.h" logicalPath="//apple_ref/doc/header/IOLocalConfigDirectory.h" target="_top">&lt;IOKit/firewire/IOLocalConfigDirectory.h&gt;</a>,
+<a href="../../documentation/IOFireWireBus/index.html#//apple_ref/doc/header/IOFireWireBus.h" logicalPath="//apple_ref/doc/header/IOFireWireBus.h" target="_top">&lt;IOKit/firewire/IOFireWireBus.h&gt;</a>,
+<a href="../../documentation/IOFWDCLProgram/index.html#//apple_ref/doc/header/IOFWDCLProgram.h" logicalPath="//apple_ref/doc/header/IOFWDCLProgram.h" target="_top">&lt;IOKit/firewire/IOFWDCLProgram.h&gt;</a>,
+<a href="../../documentation/IOFireWireUnit/index.html#//apple_ref/doc/header/IOFireWireUnit.h" logicalPath="//apple_ref/doc/header/IOFireWireUnit.h" target="_top">&lt;IOKit/firewire/IOFireWireUnit.h&gt;</a>,
+<a href="../../documentation/IOFireWireDevice/index.html#//apple_ref/doc/header/IOFireWireDevice.h" logicalPath="//apple_ref/doc/header/IOFireWireDevice.h" target="_top">&lt;IOKit/firewire/IOFireWireDevice.h&gt;</a>,
+<!-- a logicalPath="//apple_ref/doc/header/IOGatedOutputQueue.h" -->&lt;IOKit/network/IOGatedOutputQueue.h&gt;<!-- /a -->,
+<a href="../../documentation/IOFWController/index.html#//apple_ref/doc/header/IOFWController.h" logicalPath="//apple_ref/doc/header/IOFWController.h" target="_top">&lt;IOFWController.h&gt;</a>,
+<a href="../../documentation/IOFWInterface/index.html#//apple_ref/doc/header/IOFWInterface.h" logicalPath="//apple_ref/doc/header/IOFWInterface.h" target="_top">&lt;IOFWInterface.h&gt;</a>,
+<a href="../../documentation/IOFireWireIPCommand/index.html#//apple_ref/doc/header/IOFireWireIPCommand.h" logicalPath="//apple_ref/doc/header/IOFireWireIPCommand.h" target="_top">"IOFireWireIPCommand.h"</a>,
+<!-- a logicalPath="//apple_ref/doc/header/IOFWIPDefinitions.h" -->"IOFWIPDefinitions.h"<!-- /a -->,
+<!-- a logicalPath="//apple_ref/doc/header/IOFireWireIPDiagnostics.h" -->"IOFireWireIPDiagnostics.h"<!-- /a -->,
+<a href="../../documentation/IOFWIPBusInterface/index.html#//apple_ref/doc/header/IOFWIPBusInterface.h" logicalPath="//apple_ref/doc/header/IOFWIPBusInterface.h" target="_top">"IOFWIPBusInterface.h"</a><br></p>
+<p></p>
+<dl></dl>
+<p></p>
+<hr>
+<br><br><br><p></p>
+<hr>
+<br><center>Last Updated: Friday, January 18, 2008
+<br><font size="-1">HTML documentation generated by <a href="http://www.opensource.apple.com/projects" target="_blank">HeaderDoc</a></font>
+</center>
+</body>
+</html>
