@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pkg-info overwrite-permissions="true" relocatable="false" identifier="presonus.pkg.Universal.Control.fw_audio_driver" postinstall-action="none" version="4.2.1" format-version="2" generator-version="InstallCmds-681 (18G87)" auth="root">
+    <payload numberOfFiles="16" installKBytes="341"/>
+    <bundle path="./Library/Extensions/PaeFireStudio.kext" id="tc.tctechnologies.driver.PaeFireStudio" CFBundleShortVersionString="4.2.1" CFBundleVersion="4.2.1 46437"/>
+    <bundle-version>
+        <bundle id="tc.tctechnologies.driver.PaeFireStudio"/>
+    </bundle-version>
+    <upgrade-bundle>
+        <bundle id="tc.tctechnologies.driver.PaeFireStudio"/>
+    </upgrade-bundle>
+    <update-bundle/>
+    <atomic-update-bundle/>
+    <strict-identifier/>
+    <relocate/>
+    <scripts>
+        <preinstall file="./preinstall"/>
+        <postinstall file="./postinstall"/>
+    </scripts>
+</pkg-info>

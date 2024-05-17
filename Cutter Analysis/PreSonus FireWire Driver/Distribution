@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <options rootVolumeOnly="true"/>
+    <title>PreSonus FireWire Driver</title>
+    <!-- background file -->
+    <!-- welcome file -->
+    <license file="EULA.txt"/>
+    <allowed-os-versions>
+        <os-version min="10.10.5"/>
+    </allowed-os-versions>
+    <pkg-ref id="presonus.pkg.Universal.Control.fw_audio_driver"/>
+    <pkg-ref id="presonus.pkg.Universal.Control.fw_midi_driver">
+        <bundle-version>
+            <bundle CFBundleShortVersionString="4.2.1" CFBundleVersion="4.2.1.46437" id="tc.tctechnologies.PaeFireStudio.midiplugin" path="Library/Audio/MIDI Drivers/PaeFireStudioMIDIDriver.plugin"/>
+        </bundle-version>
+    </pkg-ref>
+    <options customize="always" require-scripts="false"/>
+    <choices-outline>
+        <line choice="presonus.pkg.Universal.Control.firewire_driver"/>
+    </choices-outline>
+    <choice id="presonus.pkg.Universal.Control.firewire_driver" title="StudioLive AI/RM FireWire Driver" visible="true">
+        <pkg-ref id="presonus.pkg.Universal.Control.fw_audio_driver"/>
+        <pkg-ref id="presonus.pkg.Universal.Control.fw_midi_driver"/>
+    </choice>
+    <pkg-ref id="presonus.pkg.Universal.Control.fw_audio_driver" onConclusion="none">#FW%20Audio%20Driver.pkg</pkg-ref>
+    <pkg-ref id="presonus.pkg.Universal.Control.fw_audio_driver" version="4.2.1" installKBytes="341">
+        <must-close>
+            <app id="com.presonus.ucapp"/>
+        </must-close>
+        <bundle-version>
+            <bundle CFBundleShortVersionString="4.2.1" CFBundleVersion="4.2.1 46437" id="tc.tctechnologies.driver.PaeFireStudio" path="Library/Extensions/PaeFireStudio.kext"/>
+        </bundle-version>
+    </pkg-ref>
+    <pkg-ref id="presonus.pkg.Universal.Control.fw_midi_driver" onConclusion="none" version="4.2.1" installKBytes="144">#FW%20MIDI%20Driver.pkg</pkg-ref>
+    <product version="4.2.1"/>
+</installer-gui-script>
