@@ -179,6 +179,23 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   explicit repository-relative CCL dependencies. A green fixture replay alone
   does not prove that a fragment meets the readiness schema.
 
+## Project trash and deletion approval
+
+- Use `.trashes/` at the repository root as the project trash. During project
+  housekeeping, move files selected for deletion there first, retaining their
+  original paths relative to the repository root: `path/to/file` becomes
+  `.trashes/path/to/file`. Do not discard existing work products directly.
+- Record each move with its original path, trash path, size, SHA-256, timestamp
+  and reason in a managed move manifest. Verify the moved bytes; preserve links
+  to prior evidence and do not rewrite historical provenance cosmetically.
+- Never overwrite an existing trash entry. If the original relative path is
+  already occupied, use a dated batch directory inside `.trashes/`, retaining
+  the complete original relative path beneath that directory.
+- Permanently delete trash contents only after the user's explicit permission
+  for that deletion. Moving something to trash is not permission to purge it.
+- Keep trash contents outside Git. This policy does not authorize moving
+  unrelated user files, firmware inputs or still-required evidence into trash.
+
 ## Working locations and firmware boundaries
 
 - The canonical project is `/home/rs/projects/opencs/ai-line-analysis`

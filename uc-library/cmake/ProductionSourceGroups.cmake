@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Panel/ControlRegistrarAccess.cpp
   src/Presonus/UARTPowerGainSender.cpp
   src/Presonus/UARTColorBrightnessSender.cpp
   src/Presonus/UARTLedStateSender.cpp
@@ -416,6 +417,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/surface_panel/ControlGroup.hpp
   presonus/surface_panel/DigitalPotControl.hpp
   presonus/surface_panel/ControlHelpers.hpp
+  presonus/panel/registrar_group_registry.hpp
   presonus/surface_panel/DbTable.hpp
   presonus/surface_panel/InputPin.hpp
   presonus/surface_panel/LEDState.hpp

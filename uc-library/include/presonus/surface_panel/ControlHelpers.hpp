@@ -4,13 +4,28 @@
 
 // Portable class declarations for the evidenced methods only. These do
 // not reproduce original inheritance, object storage, vtables or ARM32 layouts.
+namespace presonus::panel_binding {
+struct RegistrarGroupRegistry;
+}
 namespace Presonus::Panel {
+class ControlGroup;
 class ControlRegistrar {
 public:
+  // Independent borrowed setup only; original lifecycle/layout unresolved.
+  ControlRegistrar() = default;
+  explicit ControlRegistrar(
+      presonus::panel_binding::RegistrarGroupRegistry &state)
+      : groupRegistry_(&state) {}
+  // Original return spellings are unencoded; these are portable declarations.
+  int count() const;
+  ControlGroup *at(int index) const;
   // Original nested enum identity is encoded in the method's mangled name.
   // Original enumerator names/range/underlying declaration are unresolved;
   // the portable int32 domain preserves the observed ARM register behavior.
   enum ControlType : int {};
+
+private:
+  presonus::panel_binding::RegistrarGroupRegistry *groupRegistry_ = nullptr;
 };
 class SevenSegControl {
 public:

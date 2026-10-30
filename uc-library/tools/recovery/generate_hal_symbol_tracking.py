@@ -1,17 +1,35 @@
 """Evidence-separated HAL priority index; never changes readiness ledgers."""
 from pathlib import Path
-import hashlib,json,re
-r=Path.cwd();lib=r/'uc-library';out=r/'evidence/recovery/2026-10-29/surface-hal-priority';out.mkdir(parents=True,exist_ok=True);sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();coverage=json.loads((lib/'tracking/coverage.json').read_text());ready=json.loads((lib/'validation/ready-functions.json').read_text())['functions'];pending=json.loads((lib/'validation/compiled-functions.json').read_text())['functions'];R={(x['original_elf_sha256'],x['mangled']):x for x in ready};P={(x['original_elf_sha256'],x['mangled']):x for x in pending};assert R.keys().isdisjoint(P);cache={}
+import hashlib,json,re,argparse,sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'registry'))
+from adapter import snapshot
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from merge_readiness import ValidationCache
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--repository',type=Path,default=Path(__file__).resolve().parents[3])
+parser.add_argument('--registry-db',type=Path)
+parser.add_argument('--output-dir',type=Path)
+parser.add_argument('--markdown',type=Path)
+args=parser.parse_args()
+r=args.repository.resolve();lib=r/'uc-library';out=args.output_dir.resolve() if args.output_dir else r/'evidence/recovery/2026-10-29/surface-hal-priority';out.mkdir(parents=True,exist_ok=True)
+cache=ValidationCache();sha=cache.sha;coverage=cache.read_json(lib/'tracking/coverage.json')
+with snapshot(lib,args.registry_db) as registry:
+ ready=registry.ready['functions'];pending=registry.pending['functions'];registry_source=registry.provenance()
+R={(x['original_elf_sha256'],x['mangled']):x for x in ready};P={(x['original_elf_sha256'],x['mangled']):x for x in pending};assert R.keys().isdisjoint(P)
+checked_domains={};empty_sources={}
+
 def current(row):
- for n,h in row.get('sources',{}).items():
-  p=lib/n
-  if p not in cache:cache[p]=sha(p) if p.is_file() else None
-  if cache[p]!=h:return False
- for n,h in row.get('repository_sources',{}).items():
-  p=r/n
-  if p not in cache:cache[p]=sha(p) if p.is_file() else None
-  if cache[p]!=h:return False
- return True
+ sources=row.get('sources',empty_sources);repository=row.get('repository_sources',empty_sources)
+ key=(id(sources),id(repository))
+ if key in checked_domains:return checked_domains[key][2]
+ fresh=True
+ for root,items in ((lib,sources),(r,repository)):
+  for n,h in items.items():
+   p=root/n
+   if not cache.is_file(p) or sha(p)!=h:fresh=False;break
+  if not fresh:break
+ checked_domains[key]=(sources,repository,fresh)
+ return fresh
 
 def category(name):
  if re.search(r'Presonus::ScribbleStripMgr',name):return 'display-draw'
@@ -36,7 +54,8 @@ for role,data in coverage['roles'].items():
   fresh=current(entry) if entry else None
   if entry and not fresh:status+='; active-refresh-pending'
   rows.append(dict(role=role,priority=kind,upstream_body_available=x.get('upstream_body_available',False),upstream_api_match=x.get('upstream_api_match',False),mangled=x['mangled'],demangled=x['demangled'],address=x['address'],size=x['size'],section=x['section'],kind=x['kind'],firmware_version='CS18AI13840' if role=='client' else 'RM13731',elf_sha256=m['sha256'],elf_path=m['path'],status=status,source_bindings_current=fresh,bytes_extracted=x.get('bytes_extracted',False),bytes_verified=x.get('bytes_verified',False),pseudocode_exported=x.get('pseudocode_exported',False),cpp_compiled=bool(entry and entry.get('cpp_compiled')),mangling_checked=bool(entry and entry.get('mangling_namespace_checked')),behavior_domain=entry.get('domain','') if entry else '',hardware_verified=bool(entry and entry.get('hardware_verified')),evidence=entry.get('validation') if entry else (x.get('pseudocode') or x.get('machine_code') or '').removeprefix('../')))
-summary={role:{'function_records':sum(x['role']==role and x['kind']=='STT_FUNC' for x in rows),'data_records':sum(x['role']==role and x['kind']!='STT_FUNC' for x in rows)} for role in coverage['roles']};report=dict(scope='Priority candidate selection by explicit class/name rules; agent inventories must refine drawing/driver/OSS ownership. Entire-project SYMBOLS.md remains authoritative. No ready status added or hardware claim.',selection_function=Path(__file__).read_text().split('def category(name):')[1].split('rows=[]')[0],inputs=inputs,ledger_sha256={n:sha(lib/'validation'/n) for n in ['ready-functions.json','compiled-functions.json']},summary=summary,symbols=rows)
+summary={role:{'function_records':sum(x['role']==role and x['kind']=='STT_FUNC' for x in rows),'data_records':sum(x['role']==role and x['kind']!='STT_FUNC' for x in rows)} for role in coverage['roles']};report=dict(scope='Priority candidate selection by explicit class/name rules; agent inventories must refine drawing/driver/OSS ownership. Entire-project SYMBOLS.md remains authoritative. No ready status added or hardware claim.',selection_function=Path(__file__).read_text().split('def category(name):')[1].split('rows=[]')[0],inputs=inputs,registry_source=registry_source,summary=summary,symbols=rows)
+cache.unchanged()
 (out/'hal-priority-symbols.json').write_text(json.dumps(report,indent=2)+'\n')
 text='# HAL priority symbol index\n\nPrioritize CS18AI surface system update (offline), panel operations, fader control/readout, scribble-strip drawing, buttons, LEDs, encoders and pots. Use available OSS source first: verify exact identity/API, pin source and licenses, then recover application-specific gaps. Core stays pinned CCL source; never binary-reconstruct it.\n\nThis focused index does not replace [the complete tracker](SYMBOLS.md). Selection is explicit and provisional; reviewers must add missed HAL ownership and exclude unrelated matches. `active-refresh-pending` means current batch changes invalidated an old source binding; it is not fresh validation. Embedded MCU/FPGA artifacts remain separate architecture/data workloads. Hardware testing and any flash/erase execution are excluded.\n\n'
 for role in ['client','server']:
@@ -58,4 +77,5 @@ for candidate in ['cs18-motorized-fader','cs18-encoder-control','cs18-blink-led'
  for item in c.get('products',[]):
   q=lib/item['source'];assert sha(q)==item['sha256'],str(q)
  text+=f'- [{candidate}](candidates/{candidate}/SYMBOLS.md): candidate-only source/native validation; [proof](candidates/{candidate}/NATIVE-VALIDATION.json), SHA-256 `{sha(proof)}`. Original declarations, source/role admission and hardware status retain their explicit separate limits.\n'
-(lib/'HAL_SYMBOLS.md').write_text(text);print(json.dumps(summary))
+cache.unchanged()
+(args.markdown.resolve() if args.markdown else lib/'HAL_SYMBOLS.md').write_text(text);print(json.dumps(summary))

@@ -4,7 +4,12 @@ import argparse
 import hashlib
 import json
 import subprocess
+import sys
 from pathlib import Path
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / 'registry'))
+from adapter import snapshot
 
 
 def sha(path):
@@ -19,6 +24,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--provider-sdk', type=Path,
                         help='Expected SDK from the current source provider build')
+    parser.add_argument('--registry-db', type=Path, help='Explicit SQLite registry; defaults to ACTIVE')
     args = parser.parse_args()
     library = args.library.resolve()
     prefix = args.prefix.resolve()
@@ -61,12 +67,14 @@ def main():
         if symbol.startswith('__Z'):
             symbol = symbol[1:]  # Mach-O object-format decoration.
         symbols.add(symbol)
-    ready = json.loads((library / 'validation/ready-functions.json').read_text())
+    with snapshot(library, args.registry_db) as registry:
+        ready = registry.ready
+        registry_source = registry.provenance()
     required = {item['mangled'] for item in ready['functions']}
     missing = sorted(required - symbols)
     if missing:
         raise SystemExit('Missing original ready symbols: ' + repr(missing))
-    report = dict(public_header_hashes=expected, archive_sha256=sha(archive),
+    report = dict(registry_source=registry_source, public_header_hashes=expected, archive_sha256=sha(archive),
                   application_header_count=len(expected),
                   provider_header_count=len(provider_headers),
                   provider_header_hashes=provider_headers,

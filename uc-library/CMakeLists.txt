@@ -1777,6 +1777,10 @@ if(BUILD_TESTING)
   target_compile_options(uc_network_callbacks_report_production PRIVATE -frtti -fno-lto -UNDEBUG)
   target_link_options(uc_network_callbacks_report_production PRIVATE -Wl,--wrap=vsnprintf -Wl,--wrap=__vsnprintf_chk)
   add_test(NAME uc_network_callbacks_report_production COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/candidates/uc-factory-callbacks-hierarchy-native-profile/tests/replay_production.py --suite report --executable $<TARGET_FILE:uc_network_callbacks_report_production> --input ${CMAKE_CURRENT_SOURCE_DIR}/../evidence/recovery/2026-10-29/uc-network-manager-callbacks-report-multicast/report-native-01/fixtures.txt --input-sha256 a997b19911303a788f4884027323a85d8695f8015629e343699c4b27273b90c5 --work ${CMAKE_CURRENT_SOURCE_DIR}/../temp/test-work/uc_network_callbacks_report_production)
+  add_executable(panel_registrar_access_tests tests/panel_registrar_access_tests.cpp)
+  target_link_libraries(panel_registrar_access_tests PRIVATE stdc++ presonus::uc)
+  target_compile_options(panel_registrar_access_tests PRIVATE -frtti -fno-lto -UNDEBUG)
+  add_test(NAME panel_registrar_access COMMAND panel_registrar_access_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/fixtures/panel_registrar_access.txt)
   add_executable(uc_outgoing_socket_identity_tests tests/outgoing_socket_identity_tests.cpp)
   target_link_libraries(uc_outgoing_socket_identity_tests PRIVATE stdc++ presonus::uc)
   target_compile_options(uc_outgoing_socket_identity_tests PRIVATE -frtti -fno-lto -UNDEBUG)
@@ -1942,6 +1946,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/mixer_dsp/FilterControllers.hpp
   presonus/mixer_state/MixerState.hpp
   presonus/surface_panel/ControlHelpers.hpp
+  presonus/panel/registrar_group_registry.hpp
   presonus/surface_panel/DbTable.hpp
   presonus/surface_panel/MeterControl.hpp
   presonus/surface_panel/BitmapDrawing.hpp

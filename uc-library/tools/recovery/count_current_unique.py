@@ -1,22 +1,31 @@
 """Count current unique host obligations using the audited fixed workload policy."""
 import hashlib
 import json
+import argparse
+import sys
 from pathlib import Path
 
-ROOT = Path('/home/rs/projects/opencs/ai-line-analysis')
-LIB = ROOT/"uc-library"
-OUT = ROOT/"evidence/recovery/2026-10-27/file-transfer-panel-root/unique-current.json"
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'registry'))
+from adapter import snapshot
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--repository',type=Path,default=Path(__file__).resolve().parents[3])
+parser.add_argument('--registry-db',type=Path)
+parser.add_argument('--output',type=Path)
+args=parser.parse_args()
+ROOT = args.repository.resolve()
+LIB = ROOT/'uc-library'
+OUT = args.output.resolve() if args.output else ROOT/'evidence/recovery/2026-10-27/file-transfer-panel-root/unique-current.json'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 policy_path = LIB/"candidates/unique-workload-audit/validation/unique-02/validation.json"
 assert sha(policy_path) == "e5ff76ffef4b7b0254ead72cb791a21172e6c46d3d8a5f269cc7649d01a7687e"
 policy = json.loads(policy_path.read_text())
 wrappers = set(policy["core_keyed_initializers_additional_to_tracker_policy"])
 assert len(wrappers) == 13
-paths = [LIB/"tracking/coverage.json", LIB/"validation/ready-functions.json", LIB/"validation/compiled-functions.json"]
+paths = [LIB/"tracking/coverage.json"]
 before = {str(p.relative_to(ROOT)):sha(p) for p in paths}
 coverage = json.loads(paths[0].read_text())
-ready = json.loads(paths[1].read_text())["functions"]
-pending = json.loads(paths[2].read_text())["functions"]
+with snapshot(LIB,args.registry_db) as registry:
+    ready=registry.ready['functions'];pending=registry.pending['functions'];registry_source=registry.provenance()
 ready_keys = {(r["original_elf_sha256"],r["mangled"]) for r in ready}
 pending_keys = {(r["original_elf_sha256"],r["mangled"]) for r in pending}
 assert len(ready_keys)==len(ready) and len(pending_keys)==len(pending) and ready_keys.isdisjoint(pending_keys)
@@ -53,7 +62,8 @@ result = {
     "manual_buckets":{"no_current_admitted_compiled_reconstruction":len(uncompiled),"declaration_pending":len(declaration_pending),"partial_role_ready":len(partial)},
     "per_elf_ready":len(ready),"per_elf_pending":len(pending),
     "partial_role_names":sorted(partial),"policy_sha256":sha(policy_path),
-    "inputs":before,"tool_sha256":sha(Path(__file__)),"global_inputs_unchanged":True,
+    "inputs":before,"registry_source":registry_source,"tool_sha256":sha(Path(__file__)),"global_inputs_unchanged":True,
 }
+OUT.parent.mkdir(parents=True,exist_ok=True)
 with OUT.open("x") as stream: stream.write(json.dumps(result,indent=2)+"\n")
 print(json.dumps(result))
