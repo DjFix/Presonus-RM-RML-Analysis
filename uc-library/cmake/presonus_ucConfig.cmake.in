@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+if(@PRESONUS_ENABLE_UPSTREAM_CORE@)
+  find_dependency(PresonusCore 5.0.0 EXACT CONFIG)
+endif()
+get_filename_component(_presonus_uc_package_prefix "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
+if(NOT TARGET presonus::private_glibc29)
+  add_library(presonus::private_glibc29 STATIC IMPORTED)
+  set_target_properties(presonus::private_glibc29 PROPERTIES
+    IMPORTED_LOCATION "${_presonus_uc_package_prefix}/lib/libpresonus_private_glibc29.a"
+    INTERFACE_LINK_LIBRARIES m)
+endif()
+unset(_presonus_uc_package_prefix)
+include("${CMAKE_CURRENT_LIST_DIR}/presonus_uc_targets.cmake")
+check_required_components(presonus_uc)

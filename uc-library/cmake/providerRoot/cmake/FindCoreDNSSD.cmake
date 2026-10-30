@@ -1,0 +1,10 @@
+find_path(CoreDNSSD_INCLUDE_DIR NAMES dns_sd.h PATH_SUFFIXES avahi-compat-libdns_sd)
+find_library(CoreDNSSD_LIBRARY NAMES dns_sd)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(CoreDNSSD REQUIRED_VARS CoreDNSSD_INCLUDE_DIR CoreDNSSD_LIBRARY)
+if(CoreDNSSD_FOUND AND NOT TARGET CoreDNSSD::CoreDNSSD)
+  add_library(CoreDNSSD::CoreDNSSD UNKNOWN IMPORTED)
+  set_target_properties(CoreDNSSD::CoreDNSSD PROPERTIES IMPORTED_LOCATION "${CoreDNSSD_LIBRARY}"
+    INTERFACE_INCLUDE_DIRECTORIES "${CoreDNSSD_INCLUDE_DIR}")
+endif()
+mark_as_advanced(CoreDNSSD_INCLUDE_DIR CoreDNSSD_LIBRARY)

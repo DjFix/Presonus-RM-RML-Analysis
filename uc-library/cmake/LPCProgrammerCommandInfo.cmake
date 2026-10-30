@@ -1,0 +1,5 @@
+add_executable(lpc_programmer_command_info_tests tests/lpc_programmer_command_info/command_info.cpp)
+target_compile_options(lpc_programmer_command_info_tests PRIVATE -frtti -UNDEBUG -fno-lto)
+target_link_libraries(lpc_programmer_command_info_tests PRIVATE stdc++ presonus::uc)
+target_link_options(lpc_programmer_command_info_tests PRIVATE -Wl,--wrap=read -Wl,--wrap=__read_chk -Wl,--wrap=write -Wl,--wrap=clock_gettime)
+add_test(NAME lpc_programmer_command_info COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/lpc_programmer_command_info_replay.py --repository ${CMAKE_CURRENT_SOURCE_DIR}/.. --executable $<TARGET_FILE:lpc_programmer_command_info_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/validation/lpc-programmer-command-info/fixtures.stdin --work ${CMAKE_CURRENT_SOURCE_DIR}/../temp/test-work/lpc-programmer-command-info)

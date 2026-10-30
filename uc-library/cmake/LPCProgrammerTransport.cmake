@@ -1,0 +1,5 @@
+add_executable(lpc_programmer_transport_tests tests/lpc_programmer_transport/transport.cpp)
+target_compile_options(lpc_programmer_transport_tests PRIVATE -frtti -UNDEBUG -fno-lto)
+target_link_libraries(lpc_programmer_transport_tests PRIVATE stdc++ presonus::uc)
+target_link_options(lpc_programmer_transport_tests PRIVATE -Wl,--wrap=open -Wl,--wrap=tcgetattr -Wl,--wrap=cfmakeraw -Wl,--wrap=tcflush -Wl,--wrap=tcsetattr -Wl,--wrap=write -Wl,--wrap=close -Wl,--wrap=_ZN4Core11DebugPrintfEPKcz)
+add_test(NAME lpc_programmer_transport COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/lpc_programmer_transport_replay.py --repository ${CMAKE_CURRENT_SOURCE_DIR}/.. --executable $<TARGET_FILE:lpc_programmer_transport_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/validation/lpc-programmer-transport/fixtures.stdin --work ${CMAKE_CURRENT_SOURCE_DIR}/../temp/test-work/lpc-programmer-transport)

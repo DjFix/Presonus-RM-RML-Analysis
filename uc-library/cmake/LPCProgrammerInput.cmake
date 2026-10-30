@@ -1,0 +1,5 @@
+add_executable(lpc_programmer_input_tests tests/lpc_programmer_input/input.cpp)
+target_compile_options(lpc_programmer_input_tests PRIVATE -frtti -UNDEBUG -fno-lto)
+target_link_libraries(lpc_programmer_input_tests PRIVATE stdc++ presonus::uc)
+target_link_options(lpc_programmer_input_tests PRIVATE -Wl,--wrap=read -Wl,--wrap=__read_chk -Wl,--wrap=clock_gettime)
+add_test(NAME lpc_programmer_input COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/lpc_programmer_input_replay.py --repository ${CMAKE_CURRENT_SOURCE_DIR}/.. --executable $<TARGET_FILE:lpc_programmer_input_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/validation/lpc-programmer-input/fixtures.stdin --work ${CMAKE_CURRENT_SOURCE_DIR}/../temp/test-work/lpc-programmer-input)
