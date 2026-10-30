@@ -147,6 +147,21 @@ their UC, DICE, audio, panel, hardware and supporting functions.
 - Keep ready and declaration-pending ledgers disjoint, keyed by original ELF
   SHA-256 and mangled name. Pointer-valued/string behavior alone does not prove
   the original static pointer return declaration or character const qualification.
+- The converted `merge_readiness.py`, `generate_symbol_tracking.py` and
+  `generate_checkpoint.py` use the operational SQLite registry identified by
+  `uc-library/validation/registry-sqlite/ACTIVE.json`. Use the shared registry
+  adapter and an explicit database override for isolated tests. Do not fall back
+  to, overwrite or refresh the preserved legacy ready/pending JSON implicitly.
+  Explicit JSON imports create a new independent baseline and working generation;
+  preserve meaningful task/history data by original identity and retain old DBs.
+  Keep fresh proof/source/Core/format/integration checks, optimistic transaction
+  guards, backups and append-only classification journals. Stale existing records
+  must fail admission rather than disappear silently. Archive historical producer
+  inputs with exact hashes and explicit provenance when their working paths change;
+  never relabel a historical proof as having executed a newly changed producer.
+  Other legacy JSON consumers require explicit migration before using them after
+  SQLite admission changes. Operator and schema-upgrade instructions are in
+  `uc-library/tools/registry/README.md`.
 - Use the readiness merger's guarded `--demote` manifest for ready-to-pending
   transitions: previous proof hash, explicit reason and fresh pending validation.
   A validated explicit promotion must remove the old pending entry. Preserve both

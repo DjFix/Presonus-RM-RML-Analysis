@@ -164,3 +164,33 @@ explicit backed-up migration. The benchmark-only complete value comparison took
 Shared CPU/cache load and future batch composition can change timings. These
 savings exclude firmware extraction, native execution, builds, behavioral tests,
 review and hardware work; no overall reconstruction speedup is claimed.
+
+## Actual converted consumer CLI observations
+
+The authorized cutover now runs all three consumers against SQLite rather than
+retired JSON inputs. Actual source-frozen CLI receipts record:
+
+| Consumer phase | Earlier JSON workflow, seconds | Current SQLite workflow, seconds |
+| --- | ---: | ---: |
+| Merger full preflight | 2,032.605336 | 7.463389 |
+| Merger admission | 2,045.570320 | 8.794792 |
+| Full symbol tracker | 1,461.119 | 22.093 isolated / 20.155 canonical |
+| Checkpoint | 4.156 | 0.781 isolated / 0.865 current default-ACTIVE |
+
+The current merger no-op admission validates all current records and leaves DB
+and retired JSON bytes unchanged; the earlier legacy admission performed the
+specific 16 provenance corrections. These modes differ. The actual 437-record
+historical administrative-context continuation was separately reviewed,
+preflighted, backed up and journaled; it preserved native C++, declarations,
+domains and ready/pending statuses. A separate current proof audit passes all
+2,100 records, and the current full Linux integration replay passes 321 suites.
+
+The old tracker repeatedly read roughly 1.066 TB of logical cached data. The
+new readers restore shared source sets once and use fresh operation-local file
+and proof caches with final path/stat checks. Earlier and current timings share
+neither identical cache conditions nor identical administrative context links,
+so the table is an observed bookkeeping comparison rather than a controlled
+causal speedup. It excludes firmware reconstruction, builds, native/original
+oracle work and hardware. The earlier exact-same-16 comparison and its complete
+full-audit cost remain separately documented above; do not substitute no-op
+admission time for a newly reconstructed-function admission claim.

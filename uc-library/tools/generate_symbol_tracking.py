@@ -6,9 +6,11 @@ import hashlib
 import html
 import json
 import re
+import sys
+import time
 from pathlib import Path
 from extraction_verify_bounded import owning_namespace
-from merge_readiness import proof_covers, repository_sources_match
+from merge_readiness import proof_covers, repository_sources_match, ValidationCache
 from source_provider_tracking import load_source_providers
 
 
@@ -45,59 +47,99 @@ def group(name):
     return 'Other C / application'
 
 
-def main():
+def main(argv=None, registry_data=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--library',type=Path,default=Path(__file__).resolve().parents[1])
     locations=parser.add_mutually_exclusive_group(required=True)
     locations.add_argument('--inputs',type=Path)
     locations.add_argument('--repository',type=Path)
-    args=parser.parse_args()
+    parser.add_argument('--registry-db',type=Path,help='Explicit active SQLite working registry; default resolves active registry pointer')
+    parser.add_argument('--output-root',type=Path,help='Write generated tables here instead of the analysis library')
+    parser.add_argument('--timing',type=Path,help='Write operation timing/provenance separately from generated content')
+    args=parser.parse_args(argv)
+    started=time.monotonic()
+    cache=ValidationCache()
+    tool_sha256=cache.sha(Path(__file__))
     library=args.library.resolve()
-    target=library/'tracking'
-    target.mkdir(exist_ok=True)
-    work_scope_path=target/'work-scope.json'
-    work_scope=json.loads(work_scope_path.read_text()) if work_scope_path.exists() else {}
+    output_root=args.output_root.resolve() if args.output_root else library
+    target=output_root/'tracking'
+    target.mkdir(parents=True,exist_ok=True)
+    work_scope_path=library/'tracking/work-scope.json'
+    work_scope=cache.read_json(work_scope_path) if work_scope_path.exists() else {}
     deferred_namespaces=set(work_scope.get('deferred_original_namespaces',[]))
     source_providers,source_provenance=load_source_providers(library,work_scope.get('source_policy',{}))
     integration_file=library/'validation/integration.json'
-    integrated=json.loads(integration_file.read_text()) if integration_file.exists() else {}
+    integrated=cache.read_json(integration_file) if integration_file.exists() else {}
     integrated_log=next((parent/integrated['test_log'] for parent in (library,*library.parents)
                          if integrated.get('test_log') and (parent/integrated['test_log']).is_file()),None)
     tests_passed=bool(integrated.get('ctest_passed')) and bool(integrated.get('files')) and \
-        all((library/name).is_file() and hashlib.sha256((library/name).read_bytes()).hexdigest()==digest
+        all((library/name).is_file() and cache.sha(library/name)==digest
             for name,digest in integrated.get('files',{}).items()) and \
-        integrated_log is not None and hashlib.sha256(integrated_log.read_bytes()).hexdigest()==integrated.get('test_log_sha256')
+        integrated_log is not None and cache.sha(integrated_log)==integrated.get('test_log_sha256')
+    source_checks={}
+    repository_checks={}
+    format_checks={}
+    def sources_match(sources):
+        # Adapter dictionaries are borrowed immutable source sets, loaded once
+        # per SQLite set ID. Keep a strong reference to avoid object-id reuse.
+        key=id(sources)
+        if key not in source_checks:
+            valid=all((library/path).is_file() and cache.sha(library/path)==digest
+                      for path,digest in sources.items())
+            source_checks[key]=(sources,valid)
+        return source_checks[key][1]
+    def repository_match(item):
+        sources=item.get('repository_sources',{})
+        key=id(sources)
+        if key not in repository_checks:
+            repository_checks[key]=(sources,repository_sources_match(library,item,cache))
+        return repository_checks[key][1]
+    def formatted_sources(sources):
+        key=id(sources)
+        if key not in format_checks:
+            valid=format_valid and all(current_format.get('files',{}).get(path)==digest
+                                       for path,digest in sources.items()
+                                       if Path(path).suffix in ('.cpp','.hpp','.h'))
+            format_checks[key]=(sources,valid)
+        return format_checks[key][1]
     ready={}
     format_path=library/'validation/formatting.json'
-    current_format=json.loads(format_path.read_text()) if format_path.exists() else {}
+    current_format=cache.read_json(format_path) if format_path.exists() else {}
     config=next((parent/'.clang-format' for parent in (library,*library.parents) if (parent/'.clang-format').is_file()),None)
-    format_valid=bool(current_format.get('format_check_passed')) and config is not None and hashlib.sha256(config.read_bytes()).hexdigest()==current_format.get('configuration_sha256')
-    ready_ledger=library/'validation/ready-functions.json'
-    if ready_ledger.exists():
-        for item in json.loads(ready_ledger.read_text()).get('functions',[]):
-            if not repository_sources_match(library,item):
+    format_valid=bool(current_format.get('format_check_passed')) and config is not None and cache.sha(config)==current_format.get('configuration_sha256')
+    if registry_data is None:
+        sys.path.insert(0,str(Path(__file__).resolve().parent/'registry'))
+        from adapter import snapshot
+        with snapshot(library,args.registry_db) as reader:
+            registry_data={status:reader.load_registry(status) for status in ('ready','pending')}
+            registry_provenance=reader.provenance()
+    else:
+        # Explicit in-memory test injection only; production CLI has no JSON fallback.
+        registry_provenance={'test_injected_registry':True}
+    if registry_data.get('ready') is not None:
+        for item in registry_data['ready'].get('functions',[]):
+            if not repository_match(item):
                 continue
             validation=library/item['validation']
-            if not validation.is_file() or hashlib.sha256(validation.read_bytes()).hexdigest()!=item['validation_sha256']:
+            if not validation.is_file() or cache.sha(validation)!=item['validation_sha256']:
                 continue
-            proof=json.loads(validation.read_text())
+            proof=cache.read_json(validation)
             if not proof_covers(proof,item):
                 continue
-            if not all((library/path).is_file() and hashlib.sha256((library/path).read_bytes()).hexdigest()==digest for path,digest in item['sources'].items()):
+            if not sources_match(item['sources']):
                 continue
-            if not format_valid or not all(current_format.get('files',{}).get(path)==digest for path,digest in item['sources'].items() if Path(path).suffix in ('.cpp','.hpp','.h')):
+            if not formatted_sources(item['sources']):
                 continue
             ready[(item['original_elf_sha256'],item['mangled'])]=item
     compiled_pending={}
-    pending_ledger=library/'validation/compiled-functions.json'
-    if pending_ledger.exists():
-        for item in json.loads(pending_ledger.read_text()).get('functions',[]):
-            if not repository_sources_match(library,item):
+    if registry_data.get('pending') is not None:
+        for item in registry_data['pending'].get('functions',[]):
+            if not repository_match(item):
                 continue
             path=library/item['validation']
-            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest()!=item['validation_sha256']:continue
-            if not all((library/name).is_file() and hashlib.sha256((library/name).read_bytes()).hexdigest()==digest for name,digest in item['sources'].items()):continue
-            proofs=json.loads(path.read_text())
+            if not path.is_file() or cache.sha(path)!=item['validation_sha256']:continue
+            if not sources_match(item['sources']):continue
+            proofs=cache.read_json(path)
             if isinstance(proofs,dict):proofs=proofs.get('functions',[proofs])
             if not any(p.get('mangled')==item['mangled'] and p.get('original_elf_sha256')==item['original_elf_sha256'] and p.get('cpp_compiled') and p.get('mangling_namespace_checked') for p in proofs):continue
             compiled_pending[(item['original_elf_sha256'],item['mangled'])]=item
@@ -111,11 +153,11 @@ def main():
     subsystem_rows=[]
     for role,label,filename in [('client','CS18AI surface 13840','surface-13840.elf'),('server','RM/RML mixer 13731','mixer-13731.elf')]:
         root=library/'recovered'/role
-        manifest=json.loads((root/'manifest.json').read_text())
+        manifest=cache.read_json(root/'manifest.json')
         source=((args.inputs/filename) if args.inputs else args.repository/manifest['path']).resolve()
         raw=source.read_bytes()
         assert hashlib.sha256(raw).hexdigest()==manifest['sha256'], f'{role}: original ELF identity mismatch'
-        symbols=json.loads((root/'all-symbols.json').read_text())
+        symbols=cache.read_json(root/'all-symbols.json')
         deferred_addresses={sym['address'] for sym in symbols
                             if sym['kind']=='STT_FUNC' and isinstance(sym['section'],int) and sym['size']
                             and owning_namespace(sym['mangled']) in deferred_namespaces}
@@ -126,17 +168,17 @@ def main():
             scoped_root=library/directory/role
             if not (scoped_root/'manifest.json').exists():
                 continue
-            scoped_manifest=json.loads((scoped_root/'manifest.json').read_text())
+            scoped_manifest=cache.read_json(scoped_root/'manifest.json')
             assert scoped_manifest['sha256']==manifest['sha256'], 'scope uses a different ELF'
             index_path=scoped_root/'trusted-exports.json'
             if index_path.exists():
-                index=json.loads(index_path.read_text())
+                index=cache.read_json(index_path)
                 assert index['source_sha256']==manifest['sha256'], 'pseudocode index uses a different ELF'
                 trusted_indexes[scoped_root]=index['exports']
             status_file=scoped_root/'decompilation.json'
-            statuses={s['address']:s for s in json.loads(status_file.read_text())} if status_file.exists() else {}
+            statuses={s['address']:s for s in cache.read_json(status_file)} if status_file.exists() else {}
             scopes.append(dict(directory=directory,manifest=scoped_manifest))
-            for item in json.loads((scoped_root/'symbols.json').read_text()):
+            for item in cache.read_json(scoped_root/'symbols.json'):
                 selected[(item['mangled'],item['address'],item['size'],item['section'])].append((item,scoped_root,statuses))
         entries=[]
         for sym in symbols:
@@ -315,11 +357,11 @@ Grouping below is based on symbol names and is a navigation aid, not a proven mo
 
 Regenerate with `tools/generate_symbol_tracking.py --inputs <directory-containing-surface-13840.elf-and-mixer-13731.elf>` after each extraction phase. This checks source identities and each existing byte export again. Keep semantic/hardware verification false until concrete validation evidence is added; do not promote pseudocode exports to verified source.
 
-The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies source identity and available byte exports, and uses recorded decompilation results. Function aliases sharing an entry address share a pseudocode export; every symbol's own byte range is checked separately. `validation/ready-functions.json` grants portable readiness only when its proof file and current source hashes match, compiled mangled names were checked, and ARM differential tests passed. Readiness applies only to the recorded buffer/semantic domain; it does not establish original ARM object-layout or hardware compatibility. No original implementation is promoted to fully verified merely because a portable reconstruction is ready.
+The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies source identity and available byte exports, and uses recorded decompilation results. Function aliases sharing an entry address share a pseudocode export; every symbol's own byte range is checked separately. `validation/registry-sqlite/ACTIVE.json` selects the authoritative SQLite registry, which grants portable readiness only when its proof file and current source hashes match, compiled mangled names were checked, and ARM differential tests passed. Retired JSON ledgers are historical snapshots. Readiness applies only to the recorded buffer/semantic domain; it does not establish original ARM object-layout or hardware compatibility. No original implementation is promoted to fully verified merely because a portable reconstruction is ready.
 '''
-    scope_path=target/'work-scope.json'
+    scope_path=library/'tracking/work-scope.json'
     if scope_path.exists():
-        scope=json.loads(scope_path.read_text())
+        scope=cache.read_json(scope_path)
         if 'Core' in scope.get('deferred_original_namespaces',[]):
             source_notice=('Upstream Core source integration and prototype/mangling matching are active, using the earliest verified official public version. Source availability will be tracked separately from binary-behavior validation. ' if scope.get('source_policy',{}).get('requested') else '')
             header=header.replace('## Coverage\n',
@@ -331,7 +373,7 @@ The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies
                 'See [work-scope.json](tracking/work-scope.json).\n\n## Coverage\n')
     provider_report=library/'validation/core-upstream/root-provider-validation.json'
     if provider_report.is_file():
-        provider=json.loads(provider_report.read_text())
+        provider=cache.read_json(provider_report)
         if provider.get('passed') and provider.get('relocated_package_consumer_passed'):
             footer += ('\nActual pinned CCL source is built and publicly linked on Linux. '
                        'Its relocated installed package passed a consumer check; all 248 SDK headers matched '
@@ -348,8 +390,14 @@ The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies
                     '[source partitions](cmake/ProductionSourceGroups.cmake) and '
                     '[production audit](candidates/common-build/validation/production-audit-01/validation.json). '
                     'These component archives do not establish completed application startup.\n')
-    (library/'SYMBOLS.md').write_text(header+''.join(main_rows)+footer+''.join(subsystem_rows)+trailer)
-    print(json.dumps({role:value['summary'] for role,value in result['roles'].items()},indent=2))
+    cache.unchanged()
+    (output_root/'SYMBOLS.md').write_text(header+''.join(main_rows)+footer+''.join(subsystem_rows)+trailer)
+    summary={role:value['summary'] for role,value in result['roles'].items()}
+    if args.timing:
+        args.timing.parent.mkdir(parents=True,exist_ok=True)
+        args.timing.write_text(json.dumps({'seconds':time.monotonic()-started,'tool_sha256':tool_sha256,'registry':registry_provenance,'fresh_hashed_files':len(cache.files),'fresh_source_sets':len(source_checks),'resolved_paths':len(cache.paths),'summary':summary},indent=2)+'\n')
+    print(json.dumps(summary,indent=2))
+    return result
 
 
 if __name__=='__main__':

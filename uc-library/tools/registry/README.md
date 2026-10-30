@@ -1,8 +1,10 @@
 # SQLite registry mirror
 
-This additive utility mirrors the legacy ready and declaration-pending registries.
-Legacy JSON remains authoritative. Capture/import leaves admission and legacy
-registries unchanged; explicit SQLite classification operators are described below.
+The operational SQLite registry stores ready and declaration-pending records,
+original catalog data and independent work tracking. Original JSON files remain
+untouched import provenance. The explicitly converted merger, symbol tracker and
+checkpoint consumers use the database selected by ACTIVE; other consumers are
+listed separately below. Capture/import preserves all previous generations.
 No operator performs hardware operations. Python's standard
 library is sufficient for capture/import/query/export; ORM work operators use the separately pinned dependencies below. Run from the checkout root:
 
@@ -156,10 +158,11 @@ binding once per request. This is an auditable local tool, not an access-control
 boundary against someone able to alter the database schema.
 
 Legacy export remains an explicit new file operation, never an overwrite or an
-implicit legacy admission. Task/stage/audit metadata stays SQLite-only. No
-cutover is performed: canonical admission still uses the original JSON tools.
-A future cutover requires explicit review, parity/freshness checks on the new
-producer generation, and preservation/migration of independent task history.
+implicit legacy admission. Task/stage/audit metadata stays SQLite-only. The user-authorized cutover converts `merge_readiness.py`,
+`generate_symbol_tracking.py` and `generate_checkpoint.py` to SQLite. Their
+original validation domains and metadata remain explicit, with parity and
+freshness checks and preserved independent task history. There is no silent
+JSON fallback or implicit export back to the original ledgers.
 
 ## Timing replay
 
@@ -254,36 +257,59 @@ Catalog task transfer is a separate stable-anchor operation documented with
 its module. No transfer writes canonical JSON, imports old classifications over
 a newer baseline, or claims that historical stages have been freshly replayed.
 
-## Remaining JSON consumers and pause boundary
+## Converted consumers and remaining legacy scope
 
-The legacy `generate_symbol_tracking.py`, `generate_checkpoint.py` and
-`merge_readiness.py` still read/write their existing JSON workflow. This change
-does not silently switch those consumers to SQLite or alter their proof gates.
-In particular, the old tracker's expensive repeated reads are outside the
-measured SQLite correction-cycle timing. A 30-second measured SQL bookkeeping
-cycle does not mean complete reconstruction, tracker generation, builds or
-hardware validation take 30 seconds.
+`merge_readiness.py`, `generate_symbol_tracking.py` and
+`generate_checkpoint.py` use the shared `adapter.py` snapshot reader. Both
+statuses come from one SQLite read transaction; normalized source dictionaries
+are restored once per operation rather than copied into every function row.
+`--registry-db` can select an explicit working DB; otherwise ACTIVE selects it.
+There is no JSON fallback. The merger retains full proof/source/Core/format/
+integration/original-identity gates, then persists only changed rows through
+`commit_snapshot`, guarded by the validated generation and final dirty-file
+checks. Old JSON is never overwritten. Implicit stale-record removal fails
+closed and requires explicit review; guarded demotions preserve their manifests
+and previous proof hashes. Metadata-only updates are audited without fake
+function transitions, and a no-op still checks evidence freshness.
 
-At the next authorized resume, replacing legacy tracker reads with the validated
-DB can be a separate bounded task, preserving original symbols, coverage and
-freshness gates. No consumer rewrite, automatic cutover, or new firmware
-reconstruction is performed as part of finishing and pausing this registry work.
+Other legacy consumers, including the HAL tracker and bespoke audit/counter
+operators, can still use JSON. They are outside this explicit three-tool cutover
+and must not be silently treated as converted. Existing source/proof requirements
+remain in force. Their later migration is a separate bounded task. No new
+firmware reconstruction or hardware operation is part of this registry work.
 
 ## Final operational checkpoint
 
 The managed pointer is `validation/registry-sqlite/ACTIVE.json`. It identifies
-`validation/registry-sqlite/runs/20261030-final-generation/operational.sqlite`,
+`validation/registry-sqlite/runs/20261030-consumer-cutover01/operational.sqlite`,
 its publication hash, schema revisions, immutable baseline/input hashes, source
 hashes and complete catalog provenance. The finalized import contains 1,052
 ready + 1,048 pending records, 51,137 original catalog anchors and 98,123 raw
-source rows. All 51,137 task rows start `todo`; no benchmark owner, request,
-journal or stage history was imported as operational work. Old test databases
+source rows. All 51,137 task rows remain `todo`; no benchmark ownership or synthetic history
+was imported. The operational DB also preserves one meaningful reviewed
+administrative-context continuation request with 437 journal rows (207 ready,
+230 pending), without native C++, declaration, domain or status changes. Old test databases
 and their histories remain archived separately.
 
 The working DB is mutable: a successful explicit work operation changes its
 hash. Treat ACTIVE's hash as a publication checkpoint, and explicitly refresh
 the managed manifest after reviewed commits; do not infer that a stale observed
 hash means the baseline or canonical JSON should be rewritten. Immutable
-baseline, snapshots, test DBs and old pointer revisions remain preserved. The
-operational validation receipt is alongside the working DB, and the final
-runtime benchmark is `validation/registry-sqlite/runs/20261030-orm-final02/`.
+baseline, snapshots, test DBs and old pointer revisions remain preserved. The fresh proof audit is `fresh-current-validation.json` alongside the working DB.
+The original JSON import remains lossless and immutable; the reviewed 437-record
+continuation is separately journaled and backed up. Actual converted-consumer
+benchmark receipts are under `evidence/recovery/2026-10-30/registry-consumer-cutover/`
+and the tracker/checkpoint cutover evidence directories. The earlier ORM API
+benchmark remains preserved at `validation/registry-sqlite/runs/20261030-orm-final02/`.
+
+
+The raw catalog is an immutable capture-time import, not a mutable readiness
+ledger. Its coverage input SHA is
+`08d8c918e8c075b56139f06388a86912426256d703fc461f705fa7e9472047d2`;
+the exact prior bytes remain at
+`evidence/recovery/2026-10-30/tracker-sqlite-cutover/prior-json-baseline/tracking/coverage.json`.
+Current tracker output can contain intentionally continued proof links, so
+current readiness queries must use `records` keyed by original ELF SHA plus
+mangled name, rather than infer current proof links from historical raw coverage
+rows. Original catalog identities, ranges, aliases and data rows remain intact.
+ACTIVE records this distinction and the archive location explicitly.

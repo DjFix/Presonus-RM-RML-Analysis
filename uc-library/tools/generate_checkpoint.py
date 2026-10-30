@@ -1,39 +1,42 @@
-"""Summarize canonical ledgers; this does not replace readiness validation."""
+"""Summarize the active SQLite registry; this does not replace readiness validation."""
 import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / 'registry'))
+from adapter import RegistrySnapshot, resolve_db
 
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def snapshot(library, repository, phase):
+def snapshot(library, repository, phase, db=None):
     inputs = {}
-    ledgers = {}
-    for filename in ('ready-functions.json', 'compiled-functions.json', 'integration.json'):
-        path = library / 'validation' / filename
-        ledgers[filename] = json.loads(path.read_text())
-        inputs[str(path.relative_to(repository))] = sha256(path)
-    ready = ledgers['ready-functions.json']['functions']
-    pending = ledgers['compiled-functions.json']['functions']
+    integration_path = library / 'validation' / 'integration.json'
+    integration = json.loads(integration_path.read_text())
+    inputs[str(integration_path.relative_to(repository))] = sha256(integration_path)
+    with RegistrySnapshot(resolve_db(library, db)) as registry:
+        ready = registry.load_registry('ready')['functions']
+        pending = registry.load_registry('pending')['functions']
+        registry_provenance = registry.provenance()
     identities = lambda rows: {(r['original_elf_sha256'], r['mangled']) for r in rows}
     ready_keys, pending_keys = identities(ready), identities(pending)
     if len(ready_keys) != len(ready) or len(pending_keys) != len(pending):
         raise ValueError('Duplicate original identities in a ledger')
     if ready_keys & pending_keys:
         raise ValueError('Ready/pending identities overlap')
-    integration = ledgers['integration.json']
     if integration.get('platform') != 'linux' or integration.get('ctest_passed') is not True:
         raise ValueError('Current integration must report passing Linux validation')
     test_log = (repository / integration['test_log']).resolve()
     if not test_log.is_relative_to(repository) or sha256(test_log) != integration['test_log_sha256']:
         raise ValueError('Integration test log hash/path mismatch')
     return dict(
-        phase=phase, generated_at=datetime.now(timezone.utc).isoformat(), inputs=inputs,
+        registry=registry_provenance, phase=phase, generated_at=datetime.now(timezone.utc).isoformat(), inputs=inputs,
         ready_entries=len(ready), ready_distinct_mangles=len({r['mangled'] for r in ready}),
         declaration_pending_entries=len(pending),
         roles=dict(Counter(r.get('role', 'unspecified') for r in ready)),
@@ -51,6 +54,7 @@ def main():
     parser.add_argument('--repository', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True, help='Project temp/ Markdown; paired JSON is written beside it')
     parser.add_argument('--phase', required=True)
+    parser.add_argument('--db', type=Path, help='Explicit registry database; defaults to validation/registry-sqlite/ACTIVE.json')
     parser.add_argument('--baseline', type=Path, help='Previous generated checkpoint JSON for identity deltas')
     args = parser.parse_args()
     repository = args.repository.resolve()
@@ -60,7 +64,7 @@ def main():
         parser.error('Library must be in the project; checkpoint output must be in project temp/')
     if output.suffix != '.md' or output.exists() or output.with_suffix('.json').exists():
         parser.error('Use a new .md checkpoint path; existing artifacts are preserved')
-    result = snapshot(library, repository, args.phase)
+    result = snapshot(library, repository, args.phase, args.db)
     if args.baseline:
         previous = json.loads(args.baseline.read_text())
         result['baseline_sha256'] = sha256(args.baseline)
@@ -76,6 +80,7 @@ def main():
             f"Current Linux integration reports {result['test_suites']} passing suites; test-log hash checked.",
             '', result['scope'], result['validation'], '', '## Bound inputs', '']
     text.extend(f'- `{path}`: `{digest}`' for path, digest in result['inputs'].items())
+    text.extend(['', '## Registry snapshot', '', '```json', json.dumps(result['registry'], indent=2), '```'])
     if 'delta' in result:
         text.extend(['', '## Changes from previous generated checkpoint', ''])
         for kind, delta in result['delta'].items():
