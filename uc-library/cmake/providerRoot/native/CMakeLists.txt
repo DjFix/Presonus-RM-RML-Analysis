@@ -41,6 +41,12 @@ set(PROJECT_DEBUG_SUFFIX "" CACHE STRING "" FORCE)
 set(corelib_BUILD_TESTAPP OFF CACHE BOOL "" FORCE)
 set(CCL_SYSTEM_INSTALL OFF CACHE BOOL "" FORCE)
 add_subdirectory("${PRESONUS_CORE_SOURCE_DIR}/core/cmake" upstream)
+# Provide genuine Component RTTI for ordinary public Component-derived consumers.
+# Source stays pinned; replace this existing upstream archive member exactly once.
+set_property(SOURCE
+  "${PRESONUS_CORE_SOURCE_DIR}/core/portable/corecomponent.cpp"
+  TARGET_DIRECTORY corelib APPEND PROPERTY COMPILE_OPTIONS
+  "$<$<COMPILE_LANGUAGE:CXX>:-frtti>")
 # Keep source implementations untouched. Replace only the packaging interface:
 # upstream's build-only paths and TARGET_FILE link option are not relocatable.
 set_target_properties(corelib PROPERTIES EXPORT_NAME Archive

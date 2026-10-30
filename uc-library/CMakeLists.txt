@@ -1813,6 +1813,10 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/mixer_update/FirmwareUpdateComponent.hpp
+  presonus/surface/mapping_input_routes.hpp
+  presonus/surface_update/CallbackText.hpp
+  presonus/surface_update/FirmwareUpdateComponent.hpp
   presonus/panel/phantom_power_control.hpp
   presonus/panel/uart_message_sender.hpp
   presonus/surface/DisplayManager.hpp
@@ -2051,3 +2055,7 @@ endif()
 if(BUILD_TESTING)
   include(cmake/LPCProgrammerHandshake.cmake)
 endif()
+
+include(cmake/SurfaceMapping.cmake)
+
+include(cmake/FirmwareUpdateCallbacks.cmake)

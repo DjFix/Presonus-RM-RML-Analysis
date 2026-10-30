@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/common/FirmwareCallbackText.cpp
   src/Presonus/Panel/PhantomPowerControl.cpp
   src/Presonus/LPCProgrammerTransport.cpp
   src/Presonus/LPCProgrammerHandshake.cpp
@@ -148,6 +149,11 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/MappingInputRoutes.cpp
+  src/Presonus/Surface/MappingRadioRoutes.cpp
+  src/Presonus/Surface/MappingRadioValidation.cpp
+  src/Presonus/Surface/MappingMeterRouting.cpp
+  src/Presonus/Surface/FirmwareUpdateCallbacks.cpp
   src/Presonus/DisplayManagerFlush.cpp
   src/Presonus/ScribbleStripMgr.cpp
   src/Presonus/Surface/LCDPort.cpp
@@ -203,6 +209,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Mixer/FirmwareUpdateCallbacks.cpp
   src/Presonus/NOAA/TCardProgrammerProtocol.cpp
   src/Presonus/NOAA/TCardProgrammerInformation.cpp
   src/Presonus/NOAA/TCardProgrammerReceive.cpp
