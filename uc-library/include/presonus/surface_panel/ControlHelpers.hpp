@@ -1,7 +1,8 @@
 #pragma once
+#include "core/portable/coreparams.h"
 #include <cstdint>
 
-// Portable class declarations for the recovered pure methods only. These do
+// Portable class declarations for the evidenced methods only. These do
 // not reproduce original inheritance, object storage, vtables or ARM32 layouts.
 namespace Presonus::Panel {
 class ControlRegistrar {
@@ -18,12 +19,50 @@ public:
   std::uint16_t convertCharToBmp(char character, bool decimalPoint) const;
 };
 } // namespace Presonus::Panel
+namespace Presonus {
+class IPanelPort;
+}
+namespace presonus::surface {
+// Independent borrowed live port selection, not original registrar fields.
+struct PanelRegistrarCommandState {
+  Presonus::IPanelPort *port = nullptr;
+};
+} // namespace presonus::surface
 namespace Presonus::Surface {
 class PanelRegistrar {
 public:
+  // Independent constructors; original AppMode lifecycle remains unrecovered.
+  PanelRegistrar() = default;
+  explicit PanelRegistrar(presonus::surface::PanelRegistrarCommandState &state)
+      : commandState_(&state) {}
+  // Independent borrowed CCL list adapter; no original layout/lifecycle claim.
+  // Both selected tags must exist and yield finite signed32-representable
+  // values.
+  explicit PanelRegistrar(const Core::Portable::ParamList &parameters)
+      : parameters_(&parameters) {}
+  // Independent combined borrowed-state constructor; not original lifecycle.
+  PanelRegistrar(const Core::Portable::ParamList &parameters,
+                 presonus::surface::PanelRegistrarCommandState &state)
+      : commandState_(&state), parameters_(&parameters) {}
+  // Incidental signed32 result observed; original return spelling unresolved.
+  int bumpFaderTouchSensitivity(int delta);
+  int bumpFaderSpeed(int delta);
+  // Observed signed32 conversion results; original return declarations
+  // unresolved.
+  int getFaderSensitivity();
+  int getFaderSpeed();
+  // void returns are portable choices; ordinary original returns are
+  // unresolved.
+  void sendFaderFunctionMessage(unsigned char);
+  void requestUpdatedFaderParameters();
+  void invokeFaderCalibration(bool);
   // Observed signed 32-bit mapping result; original return spelling unresolved.
   int mapGroupIdToControlType(
       Presonus::Panel::ControlRegistrar::ControlType group) const;
+
+private:
+  presonus::surface::PanelRegistrarCommandState *commandState_ = nullptr;
+  const Core::Portable::ParamList *parameters_ = nullptr;
 };
 class SurfaceRootComponent {
 public:

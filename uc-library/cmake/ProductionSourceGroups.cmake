@@ -1,4 +1,9 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/UARTPowerGainSender.cpp
+  src/Presonus/UARTColorBrightnessSender.cpp
+  src/Presonus/UARTLedStateSender.cpp
+  src/Presonus/Panel/LCDDisplayControl.cpp
+  src/Presonus/Panel/TemperatureControl.cpp
   src/common/FirmwareCallbackText.cpp
   src/Presonus/Panel/PhantomPowerControl.cpp
   src/Presonus/LPCProgrammerTransport.cpp
@@ -149,6 +154,9 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/PanelRegistrarFaderCommands.cpp
+  src/Presonus/Surface/PanelRegistrarFaderReadout.cpp
+  src/Presonus/Surface/PanelRegistrarFaderParameterWrites.cpp
   src/Presonus/Surface/MappingInputRoutes.cpp
   src/Presonus/Surface/MappingRadioRoutes.cpp
   src/Presonus/Surface/MappingRadioValidation.cpp
@@ -275,6 +283,10 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/panel/uart_led_state_token.hpp
+  presonus/panel/lcd_display_control.hpp
+  presonus/panel/temperature_control.hpp
+  presonus/panel/uart_message_sender.hpp
   presonus/uc/source_default_factory.hpp
   presonus/uc/report.hpp
   presonus/uc/owned_data_factory_codec.hpp

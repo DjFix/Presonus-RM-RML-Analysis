@@ -1813,6 +1813,9 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/panel/uart_led_state_token.hpp
+  presonus/panel/lcd_display_control.hpp
+  presonus/panel/temperature_control.hpp
   presonus/mixer_update/FirmwareUpdateComponent.hpp
   presonus/surface/mapping_input_routes.hpp
   presonus/surface_update/CallbackText.hpp
@@ -2059,3 +2062,11 @@ endif()
 include(cmake/SurfaceMapping.cmake)
 
 include(cmake/FirmwareUpdateCallbacks.cmake)
+
+include(cmake/UARTSenderExtensions.cmake)
+
+include(cmake/SurfaceFaderControls.cmake)
+
+include(cmake/PanelLCDDisplayControl.cmake)
+
+include(cmake/PanelTemperature.cmake)

@@ -1,5 +1,7 @@
 #pragma once
 #include "presonus/panel/protocol_comm.hpp"
+#include "presonus/panel/uart_led_state_token.hpp"
+#include "presonus/surface_panel/LEDState.hpp"
 
 namespace Presonus {
 // Partial portable source model, not the original layout/inheritance/vtable.
@@ -15,6 +17,12 @@ public:
   void setLedMeterPosition(int, int, int);
   void setLedMeterPositionCA(int, int, int);
   void setLedMeterClip(int, int);
+  void setPhantomPower(int, int, bool);
+  void setGainBoost(int, int, bool);
+  void setLedBrightness(unsigned char);
+  void setLedColorLinear(int, int, int, bool);
+  void setLedColor(int, int, RGBLedColors, bool);
+  void setLedState(int, int, kLedStates);
 
 private:
   IPanelPort &port_; // Independent borrowed real provider, not an ARM field.
