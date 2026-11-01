@@ -1,0 +1,5 @@
+FROM ubuntu:24.04
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    clang-18 libclang-18-dev python3 python3-clang-18 g++ ca-certificates
+ENV PYTHONDONTWRITEBYTECODE=1
+ENTRYPOINT ["python3"]

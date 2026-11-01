@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "task_id": "graph_trial03_daw",
+  "namespace": "Presonus::DAWTimeInfo",
+  "packet_manifest": "temp/recovery-work/graph-live-trial-03/daw-packet/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZNK8Presonus11DAWTimeInfo16isMusicalDisplayEv",
+      "address": 489788,
+      "size": 20,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/DAWTimeInfo.cpp",
+      "sha256": "6c9fd860f4e995fe3195f4e5804a40fa50e996e7bec4772c12d3aee65640593e"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/DAWTimeInfo.hpp",
+      "sha256": "41ab15d187095807b1c6784224a47d37b67aa445da74bd9692b33c2c23453950"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial03_daw_tests.cpp",
+      "sha256": "e22a0f453bf74bc23b7555604ad7c9ecdfc2868287ad74eb4352d60ed85d238e"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-03-daw/oracle.py",
+      "sha256": "9e513eb2133485d0f564f4fd80c4b50efbb432102cf707c585927bc887f5979a"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/graph-live-trial-03-daw/local.py",
+      "sha256": "dd84804ce2f59ca158b38d5d5f6839610d497c4ca034174c1eb31bca40886d38"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/graph-live-trial-03-daw/fixtures.txt",
+      "sha256": "37614196d6bdba5b77f721b98d41d049f7f8f8900411eb7fc0615836f4a1ee3b"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-03-daw/native-observations.json",
+      "sha256": "691c51bc6b551274e2a8a9043bedac17d4b4d6ca1c86cffd1a0f52d2cfc9e4a7"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-03-daw/proof.json",
+      "sha256": "a3d85ca69cc8a51427c2c37d0b94c3ab1d8acb4a9380773fa9e7afbc0305fe6e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/graph-live-trial-03/daw-packet/context.json",
+      "sha256": "8b383ae828de522fd008c5fb44c72d6e7253e9a9609c66edd1939f6f933bf9a0"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/src/Presonus/DAWTimeInfo.cpp",
+        "uc-library/include/presonus/DAWTimeInfo.hpp",
+        "uc-library/tests/graph_trial03_daw_tests.cpp"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Iuc-library/include",
+        "uc-library/src/Presonus/DAWTimeInfo.cpp",
+        "uc-library/tests/graph_trial03_daw_tests.cpp",
+        "-o",
+        "temp/recovery-work/graph-live-trial-03/daw-worker/daw-replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-03-daw/local.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "temp/recovery-work/graph-live-trial-03/daw-worker/daw-replay",
+        "uc-library/candidates/graph-live-trial-03-daw/fixtures.txt"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "all 256 offset-0x134 byte values across four deterministic 512-byte state patterns; observe r0, all memory accesses and unchanged state",
+  "limitations": [
+    "original return declaration unresolved; selected unsigned int preserves register observation",
+    "borrowed-state pointer is adapter storage, not original class layout",
+    "no ARM ABI, invalid-pointer, concurrency or hardware verification"
+  ],
+  "build_integration": {
+    "production_partition": "CS18/client only: sole covered original client ownership; Root to verify role audit",
+    "public_headers": [
+      "uc-library/include/presonus/DAWTimeInfo.hpp"
+    ],
+    "production_sources": [
+      "uc-library/src/Presonus/DAWTimeInfo.cpp"
+    ],
+    "test_target": "graph_trial03_daw_tests",
+    "test_sources": [
+      "uc-library/tests/graph_trial03_daw_tests.cpp"
+    ],
+    "link_dependencies": [
+      "uc_recovery client facade target selected by Root; no Core dependencies"
+    ],
+    "ctest_argv": [
+      "$<TARGET_FILE:graph_trial03_daw_tests>",
+      "${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-03-daw/fixtures.txt"
+    ],
+    "fixture_bindings": {
+      "uc-library/candidates/graph-live-trial-03-daw/fixtures.txt": "37614196d6bdba5b77f721b98d41d049f7f8f8900411eb7fc0615836f4a1ee3b"
+    },
+    "replay_adapter": "test executable takes one fixture path; checks exactly 1024 independent native cases and unchanged borrowed state"
+  }
+}

@@ -217,6 +217,13 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   thread `01a17fc6-3e44-7dd1-beb3-319f5d4d97a0`. Preserve the research pause
   until that launch message arrives. Then work directly on Linux with subagents,
   using this checkout and the existing proof/readiness workflow.
+  Scoped exception: the user explicitly authorized one real reconstruction trial
+  in the current graph-development chat on 2026-10-31, after ELF context and empty
+  packet rejection are implemented. This authorization supersedes the destination
+  chat restriction for that one trial only. That trial is now closed with two new
+  C++ implementations and three compiled-pending ELF identities; evidence is in
+  `evidence/recovery/2026-10-31/dependency-graph/live-trial-02/`. Do not start another
+  reconstruction batch without a new user instruction.
 - Use `docs/vm101-chats.md` for migrated destination thread IDs and explicit
   VM101 host links. Historical source IDs retain their original provenance.
 
@@ -248,6 +255,107 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   mangling, readiness, installed-role and mirror-audit requirements. Keep exact
   shell commands visible. These recommendations do not authorize the separate
   admission-runner/schema redesign or proof-reuse changes from the audit.
+
+## Graph-selected context before reconstruction subagents
+
+- The user authorized Memgraph context selection on 2026-10-31. Before delegating
+  a reconstruction/research subtask, Root prepares a task with exact original
+  ELF SHA-256 and mangled identities, namespace ownership and disjoint owned files.
+  Run `uc-library/.venv/bin/python uc-library/tools/recovery/select_context.py
+  prepare --task TASK.json --out temp/recovery-work/UNIQUE_PACKET`, then `dispatch
+  --packet PACKET`. Use the generated `DISPATCH.json` as the arguments to
+  `collaboration.spawn_agent`, normally with `fork_turns="none"`. Do not replace
+  the packet with the whole coordinator chat or broad proof bundles.
+- For parallel workers prepare all packets before edits, then use
+  `batch-dispatch --packets PACKET... --out temp/recovery-work/UNIQUE_BATCH` before
+  spawning the first worker. It rejects write/read dependency conflicts and mixed
+  generations. Dispatch the sealed batch, not independently reselected contexts
+  after another worker has begun editing. Root retains shared CMake/build files,
+  global trackers, registry and final admission ownership.
+- Workers read AGENTS.md, TASK.md, SOURCE_SLICES.md and CONTEXT.md. Use the bound
+  ELF_CONTEXT.md supplies hash/range-verified native target bodies and typed
+  one-hop relationships for unreconstructed methods. Each target must have a real
+  source or native body; research mode and uncertainty_work never permit an empty
+  packet. ELF SHA-256, firmware version, role and original range remain separate
+  identities. Cross-version name correspondences are never execution edges.
+  SQL symbol_resolution.strategy=external_source means use the pinned provider,
+  not firmware recovery. Binding status verifies only its recorded scope; it is
+  not readiness or proof of original return/layout/behavior/ARM ABI.
+  baseline source snapshots if workspace files changed. Missing context is an
+  explicit request to Root with a query, seed and reason; Root uses `expand`.
+  `expand --baseline` is for an already dispatched task's frozen generation,
+  never a claim that its graph describes newly edited source. No silent truncation
+  or interpreting missing mappings as independence. Unmapped original symbols
+  require an explicitly scoped research task, not an empty reconstruction packet.
+- Memgraph is a derived code index; SQLite remains canonical for original
+  identities, readiness and current proof links. Ordinary registry assignments
+  do not invalidate code context. Selected target/evidence changes require a new
+  packet. `prepare` automatically refreshes changed source/build observations and
+  registers the new graph under a shared lock before selecting context. It reuses
+  unaffected compiler observations; headers invalidate all captured dependent TUs,
+  configuration changes and added/deleted source/header paths conservatively
+  replay all current compile commands (including optional-include/glob cases).
+  Prepare the next batch after the preceding workers finish editing. A failed
+  refresh blocks preparation; a durable publication journal is retried on the next
+  preparation. There is no ignore-staleness override. Registration must not
+  bless source hashes that differ from the graph's captured inputs.
+- This gate changes initial reading context only. Preserve all existing Linux,
+  formatting, active-source, mangling, behavior, role and readiness gates. It
+  does not release the Extract UC launch pause or authorize hardware work.
+  Operator details: `dependency-graph/CONTEXT_SELECTION.md`.
+
+## Worker delivery and automatic acceptance
+
+- Reconstruction workers own the complete local cycle: original ELF range
+  verification, C++ implementation, independent native/provider observations,
+  replay fixtures, executable replay, formatting, compilation, mangling checks
+  and local proof. Follow `docs/worker-handoff.md`, version 1. Deliver a
+  hash-bound `HANDOFF.json`; prose alone is not a reconstruction handoff.
+  Research-only tasks must explicitly report no reconstruction handoff.
+- Workers use original ELF instructions as the native oracle, not expected
+  values computed from their new C++ or decompiled pseudocode. Core continues
+  to use the pinned official provider; no Core binary reconstruction. Record
+  memory assumptions, stubs, coverage, unresolved declarations and exclusions.
+  Prepare replay integration metadata without editing shared CMake or ledgers.
+- Root reviews the bounded handoff and exact argv, then runs
+  `uc-library/.venv/bin/python uc-library/tools/recovery/accept_worker.py
+  --handoff PATH/HANDOFF.json --out temp/recovery-work/UNIQUE_ACCEPTANCE`.
+  It checks hashes, runs format/compile/symbol/replay checks and records timings
+  and logs. This executes worker code; it is not a sandbox or semantic reviewer.
+  Local acceptance is not readiness admission. Root retains shared integration,
+  canonical Linux/full CTest, installed-role/compile-once audits, fresh proof,
+  guarded SQLite dry-run/admission, tracker and mirror audit. Preserve every
+  existing gate; do not invent fixtures or rewrite a worker's native proof at
+  Root merely to make admission pass. Return local failures to the owner.
+- The user authorized a follow-up real reconstruction trial after completion
+  of the Compare SQLite and Neo4j thread
+  `01a18eec-1cfe-7962-8411-1bfd168bba4f`. This is conditional authorization,
+  not an immediate batch launch. Record explicit completion evidence before
+  starting; no new permission is needed once that condition is satisfied.
+  Freeze infrastructure before measurement. Record Root and each worker's
+  session ID, cumulative token baseline/end (cached input is a subset), wall
+  timestamps and tool durations separately. Distinguish packet preparation,
+  worker reconstruction, local acceptance, global integration and reporting;
+  record overlaps, context requests, failed preparation and redundant checks.
+  Infrastructure changes during the trial are separately charged, never hidden
+  as ordinary reconstruction or omitted from whole-cycle totals.
+
+## Unique ELF work before graph packets
+
+- The derived unique-work index is selected by `dependency-graph/DEDUP_ACTIVE.json`.
+  `select_context.py prepare` plans and claims one unique work item before source
+  refresh/selection and includes all covered original identities in the packet.
+  Name equality, exact bytes and shared portable implementation are distinct.
+  Unresolved equivalence requires a research comparison; external providers use
+  binding/adapter work. Existing canonical C++ goes to explicit
+  `review_existing_result` audit/research, never repeated firmware reconstruction.
+- Keep claims and their history. A failed prepare retains its claim. Inspect the
+  live process/agent and resumable state before explicit release; timeout alone
+  does not authorize stealing. Batch dispatch checks unique work identities in
+  addition to file/dependency conflicts. Changed generations or decisions require
+  re-preparation. No group automatically inherits readiness from a representative.
+- Operator/schema details: `dependency-graph/DEDUPLICATION.md`. This gate does not
+  authorize a new reconstruction batch or change the canonical readiness schema.
 
 ## Conversational reporting adjustment
 

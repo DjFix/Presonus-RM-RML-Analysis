@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Panel/Book.cpp
   src/Presonus/Panel/ControlRegistrarAccess.cpp
   src/Presonus/UARTPowerGainSender.cpp
   src/Presonus/UARTColorBrightnessSender.cpp
@@ -155,6 +156,8 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/PCM4104/Pcm4104Spi.cpp
+  src/Presonus/DAWTimeInfo.cpp
   src/Presonus/Surface/PanelRegistrarFaderCommands.cpp
   src/Presonus/Surface/PanelRegistrarFaderReadout.cpp
   src/Presonus/Surface/PanelRegistrarFaderParameterWrites.cpp
@@ -218,6 +221,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/BeastPanelRegistrar.cpp
   src/Presonus/Mixer/FirmwareUpdateCallbacks.cpp
   src/Presonus/NOAA/TCardProgrammerProtocol.cpp
   src/Presonus/NOAA/TCardProgrammerInformation.cpp
@@ -284,6 +288,10 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/pcm4104/Pcm4104Spi.hpp
+  presonus/DAWTimeInfo.hpp
+  presonus/panel/Book.hpp
+  presonus/panel/BeastPanelRegistrar.hpp
   presonus/panel/uart_led_state_token.hpp
   presonus/panel/lcd_display_control.hpp
   presonus/panel/temperature_control.hpp

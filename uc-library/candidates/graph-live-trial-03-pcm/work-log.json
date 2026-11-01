@@ -1,0 +1,108 @@
+{
+  "session_id": "/root/graph_trial03_pcm",
+  "provider_session_id": "coordinator-owned; not exposed to worker",
+  "completed_utc": "2026-11-01T00:01:05.777366+00:00",
+  "phase_timestamps": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/src/Presonus/PCM4104/Pcm4104Spi.cpp",
+        "uc-library/include/presonus/pcm4104/Pcm4104Spi.hpp",
+        "uc-library/tests/graph_trial03_pcm_tests.cpp"
+      ],
+      "exit_code": 0,
+      "start_unix": 1793491235.8448236,
+      "end_unix": 1793491235.9030902
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "c++",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Iuc-library/include",
+        "uc-library/src/Presonus/PCM4104/Pcm4104Spi.cpp",
+        "uc-library/tests/graph_trial03_pcm_tests.cpp",
+        "-o",
+        "temp/recovery-work/graph-live-trial-03/pcm-worker/pcm-replay"
+      ],
+      "exit_code": 0,
+      "start_unix": 1793491235.9030924,
+      "end_unix": 1793491236.4648135
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "nm",
+        "--defined-only",
+        "temp/recovery-work/graph-live-trial-03/pcm-worker/pcm-replay"
+      ],
+      "exit_code": 0,
+      "start_unix": 1793491236.4648166,
+      "end_unix": 1793491236.4981263
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "temp/recovery-work/graph-live-trial-03/pcm-worker/pcm-replay",
+        "uc-library/candidates/graph-live-trial-03-pcm/fixtures.txt"
+      ],
+      "exit_code": 0,
+      "start_unix": 1793491236.4981287,
+      "end_unix": 1793491236.5303898
+    }
+  ],
+  "early_phases": "Instruction/packet review, implementation and oracle preceded local-proof checks; exact earlier UTC timestamps unavailable in worker tool outputs; Root provider log is authoritative",
+  "read_paths": [
+    {
+      "path": "AGENTS.md",
+      "reason": "mandatory policy"
+    },
+    {
+      "path": "docs/worker-handoff.md",
+      "reason": "handoff contract"
+    },
+    {
+      "path": "temp/recovery-work/graph-live-trial-03/pcm-packet/TASK.md",
+      "reason": "sealed task context"
+    },
+    {
+      "path": "temp/recovery-work/graph-live-trial-03/pcm-packet/ELF_CONTEXT.md",
+      "reason": "sealed task context"
+    },
+    {
+      "path": "temp/recovery-work/graph-live-trial-03/pcm-packet/SOURCE_SLICES.md",
+      "reason": "sealed task context"
+    },
+    {
+      "path": "temp/recovery-work/graph-live-trial-03/pcm-packet/CONTEXT.md",
+      "reason": "sealed task context"
+    },
+    {
+      "path": "temp/recovery-work/graph-live-trial-03/pcm-packet/request.json",
+      "reason": "sealed task context"
+    }
+  ],
+  "context_requests": [
+    {
+      "request": "Unicorn interpreter path requested",
+      "resolution": "prescribed project interpreter contains Unicorn 2.1.4; no expansion"
+    }
+  ],
+  "failed_checks": [
+    {
+      "kind": "sandbox read",
+      "reason": "bwrap RTM_NEWADDR Operation not permitted",
+      "resolution": "escalated tool calls"
+    }
+  ],
+  "redundant_checks": [],
+  "infrastructure_changes": []
+}

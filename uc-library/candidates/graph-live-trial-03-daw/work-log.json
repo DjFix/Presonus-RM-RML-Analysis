@@ -1,0 +1,45 @@
+{
+  "session_id": "/root/graph_trial03_daw",
+  "provider_session_id": "not exposed to worker; Root owns provider usage capture",
+  "phase_timestamps": {
+    "local_checks_start_unix": 1793491247.0931597,
+    "local_checks_end_unix": 1793491247.4322822,
+    "handoff_delivered_utc": "2026-11-01T00:01:01.560302+00:00"
+  },
+  "read_paths_reasons": [
+    {
+      "paths": [
+        "AGENTS.md",
+        "docs/worker-handoff.md",
+        "temp/recovery-work/graph-live-trial-03/daw-packet/TASK.md",
+        "temp/recovery-work/graph-live-trial-03/daw-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-03/daw-packet/SOURCE_SLICES.md",
+        "temp/recovery-work/graph-live-trial-03/daw-packet/CONTEXT.md"
+      ],
+      "reason": "mandatory initial rules/task/native evidence"
+    },
+    {
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "reason": "hash-bound native execution and ELF section/symbol verification"
+    }
+  ],
+  "context_requests": [
+    {
+      "query": "existing Unicorn environment and validation tooling",
+      "reason": "packet has no tool/test entrypoints",
+      "resolution": "Root supplied administrative tool context; no graph expansion required",
+      "queue_delay_seconds": "not independently timestamped; useful source implementation continued while awaiting response"
+    }
+  ],
+  "failed_checks": [
+    {
+      "phase": "initial read",
+      "reason": "sandbox bwrap RTM_NEWADDR Operation not permitted",
+      "resolution": "all subsequent commands escalated successfully"
+    }
+  ],
+  "redundant_checks": [],
+  "commands_and_durations": "proof.json commands and tool results retain exact argv and durations",
+  "no_infrastructure_changes": true,
+  "classification": "compiled-pending: original return declaration and class layout unresolved"
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=UC dependency graph Memgraph and Lab
+Requires=docker.service
+After=docker.service network-online.target nftables.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/memgraph
+ExecStart=/usr/bin/docker compose --project-directory /opt/memgraph -f /opt/memgraph/compose.yaml up -d
+ExecStop=/usr/bin/docker compose --project-directory /opt/memgraph -f /opt/memgraph/compose.yaml stop
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

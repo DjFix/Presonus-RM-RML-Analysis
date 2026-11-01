@@ -1777,6 +1777,30 @@ if(BUILD_TESTING)
   target_compile_options(uc_network_callbacks_report_production PRIVATE -frtti -fno-lto -UNDEBUG)
   target_link_options(uc_network_callbacks_report_production PRIVATE -Wl,--wrap=vsnprintf -Wl,--wrap=__vsnprintf_chk)
   add_test(NAME uc_network_callbacks_report_production COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/candidates/uc-factory-callbacks-hierarchy-native-profile/tests/replay_production.py --suite report --executable $<TARGET_FILE:uc_network_callbacks_report_production> --input ${CMAKE_CURRENT_SOURCE_DIR}/../evidence/recovery/2026-10-29/uc-network-manager-callbacks-report-multicast/report-native-01/fixtures.txt --input-sha256 a997b19911303a788f4884027323a85d8695f8015629e343699c4b27273b90c5 --work ${CMAKE_CURRENT_SOURCE_DIR}/../temp/test-work/uc_network_callbacks_report_production)
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-03-pcm/fixtures.txt" graph_trial03_pcm_fixture_sha)
+  if(NOT graph_trial03_pcm_fixture_sha STREQUAL "601ed290b333c07038a868adb86282cf4d0d572c0128fce32eb281e32c916a5c")
+    message(FATAL_ERROR "graph_trial03_pcm native fixture hash mismatch")
+  endif()
+  add_executable(graph_trial03_pcm_tests tests/graph_trial03_pcm_tests.cpp)
+  target_link_libraries(graph_trial03_pcm_tests PRIVATE stdc++ presonus::cs18_components)
+  target_compile_options(graph_trial03_pcm_tests PRIVATE -frtti -fno-lto -UNDEBUG)
+  add_test(NAME graph_trial03_pcm_replay COMMAND graph_trial03_pcm_tests ${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-03-pcm/fixtures.txt)
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-03-daw/fixtures.txt" graph_trial03_daw_fixture_sha)
+  if(NOT graph_trial03_daw_fixture_sha STREQUAL "37614196d6bdba5b77f721b98d41d049f7f8f8900411eb7fc0615836f4a1ee3b")
+    message(FATAL_ERROR "graph_trial03_daw native fixture hash mismatch")
+  endif()
+  add_executable(graph_trial03_daw_tests tests/graph_trial03_daw_tests.cpp)
+  target_link_libraries(graph_trial03_daw_tests PRIVATE stdc++ presonus::cs18_components)
+  target_compile_options(graph_trial03_daw_tests PRIVATE -frtti -fno-lto -UNDEBUG)
+  add_test(NAME graph_trial03_daw_replay COMMAND graph_trial03_daw_tests ${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-03-daw/fixtures.txt)
+  add_executable(native_book_tests tests/native_book_tests.cpp)
+  target_link_libraries(native_book_tests PRIVATE stdc++ presonus::uc)
+  target_compile_options(native_book_tests PRIVATE -frtti -fno-lto -UNDEBUG)
+  add_test(NAME native_book_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/recovery/native_fixture_replay.py --kind book --executable $<TARGET_FILE:native_book_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/candidates/native-live-trial-02-book/fixture.json --sha256 1eb6b812cab78e9d820318285810906e3f776643a1c0569d7f3e4ddc4fec5818)
+  add_executable(native_beast_tests tests/native_beast_tests.cpp)
+  target_link_libraries(native_beast_tests PRIVATE stdc++ presonus::uc)
+  target_compile_options(native_beast_tests PRIVATE -frtti -fno-lto -UNDEBUG)
+  add_test(NAME native_beast_differential COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/recovery/native_fixture_replay.py --kind beast --executable $<TARGET_FILE:native_beast_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/candidates/native-live-trial-02-beast/fixture.json --sha256 a0a492aca8ea5f477c7e0507860102fc8bb712d695a69b529fc0e9bf1110cd38)
   add_executable(panel_registrar_access_tests tests/panel_registrar_access_tests.cpp)
   target_link_libraries(panel_registrar_access_tests PRIVATE stdc++ presonus::uc)
   target_compile_options(panel_registrar_access_tests PRIVATE -frtti -fno-lto -UNDEBUG)
@@ -1817,6 +1841,10 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/pcm4104/Pcm4104Spi.hpp
+  presonus/DAWTimeInfo.hpp
+  presonus/panel/Book.hpp
+  presonus/panel/BeastPanelRegistrar.hpp
   presonus/panel/uart_led_state_token.hpp
   presonus/panel/lcd_display_control.hpp
   presonus/panel/temperature_control.hpp

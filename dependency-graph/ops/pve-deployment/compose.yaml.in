@@ -1,0 +1,31 @@
+# Render only after CT LAN address and both registry digests are verified.
+services:
+  memgraph:
+    image: memgraph/memgraph-mage:3.13.0@${MEMGRAPH_DIGEST:?verified digest required}
+    command: ["--memory-limit=16384", "--storage-mode=IN_MEMORY_TRANSACTIONAL"]
+    restart: unless-stopped
+    mem_limit: 18g
+    ports:
+      - "${CT_LAN_IP:?verified LAN IP required}:7687:7687"
+      - "${CT_LAN_IP}:7444:7444"
+    volumes:
+      - /srv/memgraph/data:/var/lib/memgraph
+      - /srv/memgraph/log:/var/log/memgraph
+    logging:
+      driver: json-file
+      options: {max-size: "20m", max-file: "3"}
+  lab:
+    image: memgraph/lab:${LAB_TAG:?verified compatible release required}@${LAB_DIGEST:?verified digest required}
+    restart: unless-stopped
+    mem_limit: 1g
+    depends_on: [memgraph]
+    ports:
+      - "${CT_LAN_IP}:3000:3000"
+    environment:
+      QUICK_CONNECT_MG_HOST: memgraph
+      QUICK_CONNECT_MG_PORT: "7687"
+      LOG_REQUEST_BODY_IS_ENABLED: "false"
+      LOG_RESPONSE_BODY_IS_ENABLED: "false"
+    logging:
+      driver: json-file
+      options: {max-size: "20m", max-file: "3"}

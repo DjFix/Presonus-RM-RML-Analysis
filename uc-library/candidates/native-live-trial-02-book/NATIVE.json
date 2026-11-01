@@ -1,0 +1,64 @@
+{
+  "originals": [
+    {
+      "anchor": "43ca64ac465b258c0a7ae9cf3afaf8c7a79b73b23c095365d8efaea0c2a23e26",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "role": "client",
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN8Presonus5Panel4Book10isValidPosEi",
+      "demangled": "Presonus::Panel::Book::isValidPos(int)",
+      "address": 125788,
+      "size": 60,
+      "section_json": "12",
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "policy": "application-or-other",
+      "section": ".text",
+      "section_index": 12,
+      "range_sha256": "d7d8bb072cd07a6a6ee0e9af35ee19191e132d6c52f96be46c075d47af818586",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface"
+    },
+    {
+      "anchor": "285f6731f9e861d3392b86dde876c1f52bb766cefc3e362c5eed5734743fb87d",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus5Panel4Book10isValidPosEi",
+      "demangled": "Presonus::Panel::Book::isValidPos(int)",
+      "address": 622540,
+      "size": 60,
+      "section_json": "12",
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "policy": "application-or-other",
+      "section": ".text",
+      "section_index": 12,
+      "range_sha256": "d7d8bb072cd07a6a6ee0e9af35ee19191e132d6c52f96be46c075d47af818586",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer"
+    }
+  ],
+  "cpp_compiled": true,
+  "mangling_namespace_checked": true,
+  "portable_ready": false,
+  "original_function_verified": false,
+  "hardware_verified": false,
+  "arm_differential_verified": true,
+  "original_arm_abi_verified": false,
+  "original_declaration_verified": false,
+  "validation_domain": "Each ELF: all 256 raw bytes; signed index extrema, -1, 0 and upper bound; null slots; zero/negative counts. Valid mapped borrowed memory only; no concurrency, invalid-address fault equivalence, hardware or original C++ declaration/layout claim.",
+  "formatter_version": "clang-format version 23.1.3",
+  "sources": {
+    "src/Presonus/Panel/Book.cpp": "57a3cc1a31115c1f557b3fc0117e33d8c6b87d46f62f1f680796a63e61fa191f",
+    "include/presonus/panel/Book.hpp": "c155bc4c1c63ceac710bc4195ce73ac9bc71e2f6a72d961b196f6a69edfbe5ed",
+    "tests/native_book_tests.cpp": "8ff47c684b281af4300a92111effdfab659861011edb07f6596b64e97983b317"
+  },
+  "repository_sources": {
+    "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+  },
+  "fixture_sha256": "1eb6b812cab78e9d820318285810906e3f776643a1c0569d7f3e4ddc4fec5818",
+  "producer_sha256": "753535cd7ba7ff2910d21017d56c866440da100fed348460b03e2bca6d7b8005",
+  "declaration_uncertainties": [
+    "Original return declaration unresolved; std::uint32_t is an explicit portable choice.",
+    "Original Book layout, fields, ownership and inheritance unresolved; borrowed state is independent."
+  ]
+}

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 1 ]] || { echo 'one fixed action required' >&2; exit 2; }
+export PATH=/usr/sbin:/usr/bin:/sbin:/bin HOME=/root
+unset DOCKER_HOST DOCKER_CONTEXT DOCKER_CONFIG COMPOSE_FILE COMPOSE_PROJECT_NAME COMPOSE_PROFILES
+cd /opt/memgraph
+compose=(/usr/bin/docker compose --project-directory /opt/memgraph -f /opt/memgraph/compose.yaml)
+case "$1" in
+ status) "${compose[@]}" ps ;;
+ logs) "${compose[@]}" logs --tail=100 ;;
+ start) "${compose[@]}" start ;;
+ stop) "${compose[@]}" stop ;;
+ restart) "${compose[@]}" restart ;;
+ health) printf 'RETURN 1;\n' | "${compose[@]}" exec -T memgraph mgconsole ;;
+ snapshot) printf 'CREATE SNAPSHOT;\n' | "${compose[@]}" exec -T memgraph mgconsole ;;
+ *) echo 'allowed: status logs start stop restart health snapshot' >&2; exit 2 ;;
+esac
