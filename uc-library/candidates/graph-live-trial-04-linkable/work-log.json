@@ -1,0 +1,209 @@
+{
+  "version": 1,
+  "provider_thread_id": "01a194a2-628b-73d2-bdb9-9bf93da62c46",
+  "environment_session_id": "01a19475-d9a3-7690-a0bf-0af05b4c6a42",
+  "sealed_utc": "2026-11-01T01:08:40.984892+00:00",
+  "phase_timings": {
+    "native_final": {
+      "start_utc": "2026-11-01T01:07:10.000880+00:00",
+      "end_utc": "2026-11-01T01:07:11.589644+00:00",
+      "seconds": 1.5887696129993856,
+      "argv": [
+        "uc-library/candidates/graph-live-trial-04-linkable/oracle.py"
+      ],
+      "executions": 480,
+      "unicorn_version": "2.1.4"
+    },
+    "local_checks": [
+      {
+        "start_utc": "2026-11-01T01:07:17.508274+00:00",
+        "end_utc": "2026-11-01T01:07:17.540628+00:00",
+        "seconds": 0.03235468999992008,
+        "argv": [
+          "uc-library/.venv/bin/clang-format",
+          "--style=file",
+          "--fallback-style=LLVM",
+          "--dry-run",
+          "--Werror",
+          "uc-library/include/presonus/LinkableComponent.hpp",
+          "uc-library/src/Presonus/LinkableComponent.cpp",
+          "uc-library/tests/graph_trial04_linkable_tests.cpp"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "start_utc": "2026-11-01T01:07:17.576749+00:00",
+        "end_utc": "2026-11-01T01:07:18.104585+00:00",
+        "seconds": 0.5278360470001644,
+        "argv": [
+          "g++",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-Iuc-library/include",
+          "uc-library/src/Presonus/LinkableComponent.cpp",
+          "uc-library/tests/graph_trial04_linkable_tests.cpp",
+          "-o",
+          "temp/recovery-work/graph-live-trial-04/linkable-worker/replay"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "start_utc": "2026-11-01T01:07:18.140963+00:00",
+        "end_utc": "2026-11-01T01:07:18.146376+00:00",
+        "seconds": 0.005401043999881949,
+        "argv": [
+          "nm",
+          "--defined-only",
+          "temp/recovery-work/graph-live-trial-04/linkable-worker/replay"
+        ],
+        "returncode": 0,
+        "stdout": "000000000000a010 V DW.ref.__gxx_personality_v0\n0000000000009cd8 d _DYNAMIC\n0000000000009ee8 d _GLOBAL_OFFSET_TABLE_\n0000000000007000 R _IO_stdin_used\n0000000000003400 W _ZN14OracleBoundary2idEPN8Presonus17LinkableComponentE\n0000000000003670 W _ZN14OracleBoundary3setERN8Presonus17LinkableComponentES2_b\n000000000000348a W _ZN14OracleBoundary5queryERN8Presonus17LinkableComponentEj\n0000000000003760 W _ZN14OracleBoundary6masterERN8Presonus17LinkableComponentES2_\n000000000000359a W _ZN14OracleBoundary6removeERN8Presonus17LinkableComponentE\n00000000000032e4 W _ZN14OracleBoundary8snapshotEv\n0000000000003920 W _ZN14OracleBoundaryC1Ev\n0000000000003920 W _ZN14OracleBoundaryC2Ev\n00000000000039cc W _ZN14OracleBoundaryD0Ev\n000000000000398e W _ZN14OracleBoundaryD1Ev\n000000000000398e W _ZN14OracleBoundaryD2Ev\n000000000000384c W _ZN8Presonus13linkable_port8BoundaryC1Ev\n000000000000384c W _ZN8Presonus13linkable_port8BoundaryC2Ev\n0000000000003888 W _ZN8Presonus13linkable_port8BoundaryD0Ev\n000000000000386a W _ZN8Presonus13linkable_port8BoundaryD1Ev\n000000000000386a W _ZN8Presonus13linkable_port8BoundaryD2Ev\n0000000000002554 T _ZN8Presonus17LinkableComponent10removeLinkEv\n000000000000248a T _ZN8Presonus17LinkableComponent11linkAsSlaveERS0_\n0000000000002692 T _ZN8Presonus17LinkableComponent14setLinkEnabledEb\n00000000000024c6 T _ZN8Presonus17LinkableComponent7setLinkERS0_b\n00000000000032a0 W _ZN8Presonus17LinkableComponentC1ERNS_13linkable_port5StateERNS1_8BoundaryE\n00000000000032a0 W _ZN8Presonus17LinkableComponentC2ERNS_13linkable_port5StateERNS1_8BoundaryE\n0000000000004e58 W _ZN9__gnu_cxx17__normal_iteratorIPKxSt6vectorIxSaIxEEEC1ERKS2_\n0000000000003c68 W _ZN9__gnu_cxx17__normal_iteratorIPKxSt6vectorIxSaIxEEEC1IPxvEERKNS0_IT_S5_EE\n0000000000004e58 W _ZN9__gnu_cxx17__normal_iteratorIPKxSt6vectorIxSaIxEEEC2ERKS2_\n0000000000003c68 W _ZN9__gnu_cxx17__normal_iteratorIPKxSt6vectorIxSaIxEEEC2IPxvEERKNS0_IT_S5_EE\n0000000000005928 W _ZN9__gnu_cxx17__normal_iteratorIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEEC1ERKS4_\n0000000000005928 W _ZN9__gnu_cxx17__normal_iteratorIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEEC2ERKS4_\n0000000000004280 W _ZN9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEC1ERKS1_\n0000000000004280 W _ZN9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEC2ERKS1_\n0000000000004300 W _ZN9__gnu_cxxmiIPKxSt6vectorIxSaIxEEEENS_17__normal_iteratorIT_T0_E15difference_typeERKS9_SC_\n0000000000005a9a W _ZN9__gnu_cxxmiIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEEENS_17__normal_iteratorIT_T0_E15difference_typeERKSB_SE_\n0000000000004ea2 W _ZN9__gnu_cxxmiIPxSt6vectorIxSaIxEEEENS_17__normal_iteratorIT_T0_E15difference_typeERKS8_SB_\n000000000000276a T _ZNK8Presonus17LinkableComponent8isLinkedEv\n0000000000004e7a W _ZNK9__gnu_cxx17__normal_iteratorIPKxSt6vectorIxSaIxEEE4baseEv\n0000000000005b64 W _ZNK9__gnu_cxx17__normal_iteratorIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEE4baseEv\n0000000000005be0 W _ZNK9__gnu_cxx17__normal_iteratorIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEEdeEv\n0000000000005b76 W _ZNK9__gnu_cxx17__normal_iteratorIPPN8Presonus17LinkableComponentESt6vectorIS3_SaIS3_EEEmiEl\n00000000000042a2 W _ZNK9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEE4baseEv\n0000000000004392 W _ZNK9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEplEl\n0000000000004102 W _ZNKSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EE3getEv\n00000000000041ee W _ZNKSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EEdeEv\n00000000000041d0 W _ZNKSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EEptEv\n000000000000614e W _ZNKSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE19_M_get_Tp_allocatorEv\n0000000000005e20 W _ZNKSt12_Vector_baseIxSaIxEE19_M_get_Tp_allocatorEv\n000000000000650a W _ZNKSt13move_iteratorIPxE4baseEv\n0000000000004b0e W _ZNKSt14default_deleteIN8Presonus17LinkableComponentEEclEPS1_\n0000000000004d2e W _ZNKSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EE6_M_ptrEv\n000000000000440e W _ZNKSt16initializer_listIxE3endEv\n0000000000004e8c W _ZNKSt16initializer_listIxE4sizeEv\n00000000000043f8 W _ZNKSt16initializer_listIxE5beginEv\n0000000000004e42 W _ZNKSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE11_M_data_ptrIS2_EEPT_S7_\n000000000000594a W _ZNKSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE12_M_check_lenEmPKc\n00000000000041a8 W _ZNKSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE4sizeEv\n0000000000005ef8 W _ZNKSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE8max_sizeEv\n0000000000005012 W _ZNKSt6vectorIxSaIxEE12_M_check_lenEmPKc\n0000000000004234 W _ZNKSt6vectorIxSaIxEE4sizeEv\n00000000000042b4 W _ZNKSt6vectorIxSaIxEE6cbeginEv\n000000000000579c W _ZNKSt6vectorIxSaIxEE8max_sizeEv\n00000000000060ba W _ZNSt10_Head_baseILm0EPN8Presonus17LinkableComponentELb0EE7_M_headERKS3_\n0000000000006096 W _ZNSt10_Head_baseILm0EPN8Presonus17LinkableComponentELb0EE7_M_headERS3_\n0000000000003a78 W _ZNSt10_Head_baseILm0EPN8Presonus17LinkableComponentELb0EEC2Ev\n00000000000060a8 W _ZNSt10_Head_baseILm1ESt14default_deleteIN8Presonus17LinkableComponentEELb1EE7_M_headERS4_\n0000000000003a68 W _ZNSt10_Head_baseILm1ESt14default_deleteIN8Presonus17LinkableComponentEELb1EEC2Ev\n0000000000004ade W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EE11get_deleterEv\n0000000000004c30 W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EEC1IS3_vEEPS1_\n0000000000004c30 W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EEC2IS3_vEEPS1_\n0000000000003eac W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EED1Ev\n0000000000003eac W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EED2Ev\n0000000000003bea W _ZNSt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS1_EEaSEOS4_\n0000000000005ed9 W _ZNSt11_Tuple_implILm0EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEE7_M_headERKS5_\n0000000000005e9d W _ZNSt11_Tuple_implILm0EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEE7_M_headERS5_\n0000000000003a1c W _ZNSt11_Tuple_implILm0EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEEC2Ev\n0000000000005ebb W _ZNSt11_Tuple_implILm1EJSt14default_deleteIN8Presonus17LinkableComponentEEEE7_M_headERS4_\n0000000000003a48 W _ZNSt11_Tuple_implILm1EJSt14default_deleteIN8Presonus17LinkableComponentEEEEC2Ev\n00000000000064e9 W _ZNSt11__copy_moveILb0ELb0ESt26random_access_iterator_tagE12__assign_oneIxKxEEvPT_PT0_\n0000000000006332 W _ZNSt11__copy_moveILb0ELb1ESt26random_access_iterator_tagE8__copy_mIKxxEEPT0_PT_S7_S5_\n00000000000064bc W _ZNSt11__copy_moveILb1ELb0ESt26random_access_iterator_tagE12__assign_oneIxxEEvPT_PT0_\n0000000000006593 W _ZNSt11__copy_moveILb1ELb1ESt26random_access_iterator_tagE8__copy_mIxxEEPT0_PT_S6_S4_\n00000000000058d9 W _ZNSt12_Destroy_auxILb1EE9__destroyIPPN8Presonus17LinkableComponentEEEvT_S6_\n0000000000005873 W _ZNSt12_Destroy_auxILb1EE9__destroyIPxEEvT_S3_\n0000000000005ae0 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE11_M_allocateEm\n0000000000003f14 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE12_Vector_implC1Ev\n0000000000003f14 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE12_Vector_implC2Ev\n0000000000003ad2 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE12_Vector_implD1Ev\n0000000000003ad2 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE12_Vector_implD2Ev\n0000000000004b7e W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE13_M_deallocateEPS2_m\n0000000000004b3c W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE17_Vector_impl_dataC1Ev\n0000000000004b3c W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE17_Vector_impl_dataC2Ev\n0000000000004bd0 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EE19_M_get_Tp_allocatorEv\n0000000000003afa W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EEC1Ev\n0000000000003afa W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EEC2Ev\n0000000000003f46 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EED1Ev\n0000000000003f46 W _ZNSt12_Vector_baseIPN8Presonus17LinkableComponentESaIS2_EED2Ev\n0000000000005116 W _ZNSt12_Vector_baseIxSaIxEE11_M_allocateEm\n0000000000003dce W _ZNSt12_Vector_baseIxSaIxEE12_Vector_implC1Ev\n0000000000003dce W _ZNSt12_Vector_baseIxSaIxEE12_Vector_implC2Ev\n00000000000038b8 W _ZNSt12_Vector_baseIxSaIxEE12_Vector_implD1Ev\n00000000000038b8 W _ZNSt12_Vector_baseIxSaIxEE12_Vector_implD2Ev\n0000000000004a5c W _ZNSt12_Vector_baseIxSaIxEE13_M_deallocateEPxm\n0000000000004a1a W _ZNSt12_Vector_baseIxSaIxEE17_Vector_impl_dataC1Ev\n0000000000004a1a W _ZNSt12_Vector_baseIxSaIxEE17_Vector_impl_dataC2Ev\n0000000000004aae W _ZNSt12_Vector_baseIxSaIxEE19_M_get_Tp_allocatorEv\n00000000000038e0 W _ZNSt12_Vector_baseIxSaIxEEC1Ev\n00000000000038e0 W _ZNSt12_Vector_baseIxSaIxEEC2Ev\n0000000000003e00 W _ZNSt12_Vector_baseIxSaIxEED1Ev\n0000000000003e00 W _ZNSt12_Vector_baseIxSaIxEED2Ev\n0000000000005c08 W _ZNSt13move_iteratorIPxEC1ES0_\n0000000000005c08 W _ZNSt13move_iteratorIPxEC2ES0_\n00000000000058a4 W _ZNSt15__new_allocatorIPN8Presonus17LinkableComponentEE10deallocateEPS2_m\n0000000000006160 W _ZNSt15__new_allocatorIPN8Presonus17LinkableComponentEE8allocateEmPKv\n0000000000004b6e W _ZNSt15__new_allocatorIPN8Presonus17LinkableComponentEED1Ev\n0000000000004b6e W _ZNSt15__new_allocatorIPN8Presonus17LinkableComponentEED2Ev\n000000000000583e W _ZNSt15__new_allocatorIxE10deallocateEPxm\n0000000000005e32 W _ZNSt15__new_allocatorIxE8allocateEmPKv\n0000000000004a4c W _ZNSt15__new_allocatorIxED1Ev\n0000000000004a4c W _ZNSt15__new_allocatorIxED2Ev\n0000000000004c06 W _ZNSt15__uniq_ptr_dataIN8Presonus17LinkableComponentESt14default_deleteIS1_ELb1ELb1EECI1St15__uniq_ptr_implIS1_S3_EEPS1_\n0000000000004c06 W _ZNSt15__uniq_ptr_dataIN8Presonus17LinkableComponentESt14default_deleteIS1_ELb1ELb1EECI2St15__uniq_ptr_implIS1_S3_EEPS1_\n0000000000003bbc W _ZNSt15__uniq_ptr_dataIN8Presonus17LinkableComponentESt14default_deleteIS1_ELb1ELb1EEaSEOS4_\n0000000000004cfe W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EE10_M_deleterEv\n0000000000004c5a W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EE5resetEPS1_\n0000000000004ac0 W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EE6_M_ptrEv\n0000000000004cc2 W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EE7releaseEv\n000000000000522c W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EEC1EPS1_\n000000000000522c W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EEC2EPS1_\n00000000000040aa W _ZNSt15__uniq_ptr_implIN8Presonus17LinkableComponentESt14default_deleteIS1_EEaSEOS4_\n0000000000006293 W _ZNSt20__copy_move_backwardILb1ELb1ESt26random_access_iterator_tagE13__copy_move_bIxxEEPT0_PT_S6_S4_\n0000000000005d6d W _ZNSt20__uninitialized_copyILb1EE13__uninit_copyIPKxPxEET0_T_S6_S5_\n0000000000005f85 W _ZNSt20__uninitialized_copyILb1EE13__uninit_copyISt13move_iteratorIPxES3_EET0_T_S6_S5_\n0000000000004018 W _ZNSt5arrayIN8Presonus13linkable_port5StateELm4EEixEm\n0000000000003d82 W _ZNSt5arrayIPN8Presonus17LinkableComponentELm4EEixEm\n0000000000003a92 W _ZNSt5arrayISt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS2_EELm4EED1Ev\n0000000000003a92 W _ZNSt5arrayISt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS2_EELm4EED2Ev\n0000000000003ff2 W _ZNSt5arrayISt10unique_ptrIN8Presonus17LinkableComponentESt14default_deleteIS2_EELm4EEixEm\n0000000000003b3a W _ZNSt5arrayISt6vectorIPN8Presonus17LinkableComponentESaIS3_EELm4EEC1Ev\n0000000000003b3a W _ZNSt5arrayISt6vectorIPN8Presonus17LinkableComponentESaIS3_EELm4EEC2Ev\n0000000000003b7c W _ZNSt5arrayISt6vectorIPN8Presonus17LinkableComponentESaIS3_EELm4EED1Ev\n0000000000003b7c W _ZNSt5arrayISt6vectorIPN8Presonus17LinkableComponentESaIS3_EELm4EED2Ev\n0000000000004120 W _ZNSt5arrayISt6vectorIPN8Presonus17LinkableComponentESaIS3_EELm4EEixEm\n0000000000003da8 W _ZNSt5arrayIiLm4EEixEm\n00000000000039fc W _ZNSt5tupleIJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEEC1ILb1ELb1EEEv\n00000000000060cc W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE11_S_max_sizeERKS3_\n0000000000005b2d W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE11_S_relocateEPS2_S5_S5_RS3_\n0000000000004d50 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE12emplace_backIJS2_EEERS2_DpOT_\n0000000000005306 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE17_M_realloc_insertIJS2_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S4_EEDpOT_\n00000000000052b6 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE3endEv\n0000000000005544 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE4backEv\n0000000000004180 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE4dataEv\n0000000000005a4e W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE5beginEv\n000000000000414a W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EE9push_backEOS2_\n0000000000003b1a W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EEC1Ev\n0000000000003b1a W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EEC2Ev\n0000000000003f98 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EED1Ev\n0000000000003f98 W _ZNSt6vectorIPN8Presonus17LinkableComponentESaIS2_EED2Ev\n0000000000005d9e W _ZNSt6vectorIxSaIxEE11_S_max_sizeERKS0_\n0000000000004448 W _ZNSt6vectorIxSaIxEE15_M_range_insertIPKxEEvN9__gnu_cxx17__normal_iteratorIPxS1_EET_S9_St20forward_iterator_tag\n0000000000003c18 W _ZNSt6vectorIxSaIxEE3endEv\n0000000000004346 W _ZNSt6vectorIxSaIxEE5beginEv\n0000000000003c96 W _ZNSt6vectorIxSaIxEE6insertEN9__gnu_cxx17__normal_iteratorIPKxS1_EESt16initializer_listIxE\n0000000000003900 W _ZNSt6vectorIxSaIxEEC1Ev\n0000000000003900 W _ZNSt6vectorIxSaIxEEC2Ev\n0000000000003e52 W _ZNSt6vectorIxSaIxEED1Ev\n0000000000003e52 W _ZNSt6vectorIxSaIxEED2Ev\n000000000000425c W _ZNSt6vectorIxSaIxEEixEm\n000000000000707a r _ZNSt8__detail30__integer_to_chars_is_unsignedIjEE\n000000000000707b r _ZNSt8__detail30__integer_to_chars_is_unsignedImEE\n000000000000707c r _ZNSt8__detail30__integer_to_chars_is_unsignedIyEE\n000000000000403c W _ZSt11make_uniqueIN8Presonus17LinkableComponentEJRNS0_13linkable_port5StateER14OracleBoundaryEENSt8__detail9_MakeUniqIT_E15__single_objectEDpOT0_\n000000000000590a W _ZSt12__get_helperILm0EPN8Presonus17LinkableComponentEJSt14default_deleteIS1_EEERKT0_RKSt11_Tuple_implIXT_EJS5_DpT1_EE\n0000000000005886 W _ZSt12__get_helperILm0EPN8Presonus17LinkableComponentEJSt14default_deleteIS1_EEERT0_RSt11_Tuple_implIXT_EJS5_DpT1_EE\n00000000000058ec W _ZSt12__get_helperILm1ESt14default_deleteIN8Presonus17LinkableComponentEEJEERT0_RSt11_Tuple_implIXT_EJS4_DpT1_EE\n00000000000056b6 W _ZSt12__miter_baseIPKxET_S2_\n0000000000006428 W _ZSt12__miter_baseIPxEDTcl12__miter_basecldtfp_4baseEEESt13move_iteratorIT_E\n0000000000005636 W _ZSt12__miter_baseIPxET_S1_\n0000000000005cc7 W _ZSt12__niter_baseIPKxET_S2_\n00000000000061cb W _ZSt12__niter_baseIPPN8Presonus17LinkableComponentEET_S4_\n0000000000005c6e W _ZSt12__niter_baseIPxET_S1_\n0000000000005cd9 W _ZSt12__niter_baseIPxSt6vectorIxSaIxEEET_N9__gnu_cxx17__normal_iteratorIS4_T0_EE\n0000000000005d2b W _ZSt12__niter_wrapIN9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEES2_ET_S7_T0_\n0000000000005cb1 W _ZSt12__niter_wrapIPxET_RKS1_S1_\n0000000000005f1e W _ZSt12__relocate_aIPPN8Presonus17LinkableComponentES3_SaIS2_EET0_T_S6_S5_RT1_\n00000000000056c8 W _ZSt13__copy_move_aILb0EPKxN9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEEET1_T0_SA_S9_\n00000000000063ba W _ZSt13__copy_move_aILb0EPKxPxET1_T0_S4_S3_\n000000000000644e W _ZSt13__copy_move_aILb1EPxS0_ET1_T0_S2_S1_\n0000000000004f3f W _ZSt13move_backwardIPxS0_ET0_T_S2_S1_\n0000000000005cfa W _ZSt14__copy_move_a1ILb0EPKxPxET1_T0_S4_S3_\n000000000000651f W _ZSt14__copy_move_a1ILb1EPxS0_ET1_T0_S2_S1_\n0000000000005fe7 W _ZSt14__copy_move_a2ILb0EPKxPxET1_T0_S4_S3_\n0000000000006562 W _ZSt14__copy_move_a2ILb1EPxS0_ET1_T0_S2_S1_\n00000000000061dd W _ZSt14__relocate_a_1IPN8Presonus17LinkableComponentES2_ENSt9enable_ifIXsrSt24__is_bitwise_relocatableIT_vE5valueEPS5_E4typeES7_S7_S7_RSaIT0_E\n00000000000055aa W _ZSt18make_move_iteratorIPxESt13move_iteratorIT_ES2_\n0000000000005762 W _ZSt18uninitialized_copyIPKxPxET0_T_S4_S3_\n0000000000005c35 W _ZSt18uninitialized_copyISt13move_iteratorIPxES1_ET0_T_S4_S3_\n0000000000005648 W _ZSt22__copy_move_backward_aILb1EPxS0_ET1_T0_S2_S1_\n0000000000004fdd W _ZSt22__uninitialized_copy_aIPKxPxxET0_T_S4_S3_RSaIT1_E\n0000000000005601 W _ZSt22__uninitialized_copy_aISt13move_iteratorIPxES1_xET0_T_S4_S3_RSaIT1_E\n0000000000004ee8 W _ZSt22__uninitialized_move_aIPxS0_SaIxEET0_T_S3_S2_RT1_\n0000000000005c80 W _ZSt23__copy_move_backward_a1ILb1EPxS0_ET1_T0_S2_S1_\n0000000000005fb6 W _ZSt23__copy_move_backward_a2ILb1EPxS0_ET1_T0_S2_S1_\n0000000000003291 W _ZSt23__is_constant_evaluatedv\n00000000000057f1 W _ZSt32__make_move_if_noexcept_iteratorIxSt13move_iteratorIPxEET0_PT_\n0000000000005163 W _ZSt34__uninitialized_move_if_noexcept_aIPxS0_SaIxEET0_T_S3_S2_RT1_\n0000000000005285 W _ZSt3getILm0EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEERKNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERKS9_\n00000000000051e4 W _ZSt3getILm0EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS9_\n0000000000005267 W _ZSt3getILm1EJPN8Presonus17LinkableComponentESt14default_deleteIS1_EEERNSt13tuple_elementIXT_ESt5tupleIJDpT0_EEE4typeERS9_\n00000000000057c2 W _ZSt3maxImERKT_S2_S2_\n0000000000006067 W _ZSt3minImERKT_S2_S2_\n000000000000a160 B _ZSt4cerr@GLIBCXX_3.4\n0000000000004f8e W _ZSt4copyIPKxN9__gnu_cxx17__normal_iteratorIPxSt6vectorIxSaIxEEEEET0_T_SA_S9_\n0000000000006018 W _ZSt4copyIPKxPxET0_T_S4_S3_\n0000000000006244 W _ZSt4copyISt13move_iteratorIPxES1_ET0_T_S4_S3_\n000000000000a040 B _ZSt4cout@GLIBCXX_3.4\n0000000000004afc W _ZSt4moveIRPN8Presonus17LinkableComponentEEONSt16remove_referenceIT_E4typeEOS5_\n0000000000005bf5 W _ZSt4moveIRPxEONSt16remove_referenceIT_E4typeEOS3_\n0000000000006550 W _ZSt4moveIRxEONSt16remove_referenceIT_E4typeEOS2_\n00000000000052a3 W _ZSt7forwardIPN8Presonus17LinkableComponentEEOT_RNSt16remove_referenceIS3_E4typeE\n0000000000004bf4 W _ZSt7forwardIR14OracleBoundaryEOT_RNSt16remove_referenceIS2_E4typeE\n0000000000004be2 W _ZSt7forwardIRN8Presonus13linkable_port5StateEEOT_RNSt16remove_referenceIS4_E4typeE\n0000000000004d1c W _ZSt7forwardISt14default_deleteIN8Presonus17LinkableComponentEEEOT_RNSt16remove_referenceIS4_E4typeE\n0000000000005202 W _ZSt8_DestroyIPPN8Presonus17LinkableComponentEEvT_S4_\n00000000000051ba W _ZSt8_DestroyIPxEvT_S1_\n0000000000005736 W _ZSt9__advanceIPKxlEvRT_T0_St26random_access_iterator_tag\n0000000000009cb0 V _ZTI14OracleBoundary\n0000000000009cc8 V _ZTIN8Presonus13linkable_port8BoundaryE\n0000000000009c60 V _ZTIi@CXXABI_1.3\n0000000000007080 V _ZTS14OracleBoundary\n00000000000070a0 V _ZTSN8Presonus13linkable_port8BoundaryE\n0000000000009c20 V _ZTV14OracleBoundary\n0000000000009c70 V _ZTVN8Presonus13linkable_port8BoundaryE\n00000000000032ce W _ZnwmPv\n0000000000008f70 r __FRAME_END__\n00000000000070c4 r __GNU_EH_FRAME_HDR\n000000000000a018 D __TMC_END__\n000000000000038c r __abi_tag\n000000000000a040 B __bss_start\n000000000000a000 D __data_start\n0000000000002440 t __do_global_dtors_aux\n0000000000009c18 d __do_global_dtors_aux_fini_array_entry\n000000000000a008 D __dso_handle\n0000000000009c10 d __frame_dummy_init_array_entry\n000000000000a018 D _edata\n000000000000a278 B _end\n000000000000661c T _fini\n0000000000002000 T _init\n00000000000023a0 T _start\n000000000000a270 b completed.0\n000000000000a000 W data_start\n00000000000023d0 t deregister_tm_clones\n0000000000002480 t frame_dummy\n0000000000002788 T main\n0000000000002400 t register_tm_clones\n",
+        "stderr": ""
+      },
+      {
+        "start_utc": "2026-11-01T01:07:18.179746+00:00",
+        "end_utc": "2026-11-01T01:07:18.184796+00:00",
+        "seconds": 0.005050192999988212,
+        "argv": [
+          "temp/recovery-work/graph-live-trial-04/linkable-worker/replay",
+          "uc-library/candidates/graph-live-trial-04-linkable/fixtures.txt"
+        ],
+        "returncode": 0,
+        "stdout": "passed 480 native fixture cases\n",
+        "stderr": ""
+      }
+    ],
+    "initial_read_and_edit": {
+      "start_utc": null,
+      "end_utc": null,
+      "reason": "Local timestamp instrumentation started after initial packet reads/editing; use provider trace for full cycle, no invented duration."
+    }
+  },
+  "context_requests": [
+    {
+      "packet": "temp/recovery-work/graph-live-trial-04/trial04_linkable_2-packet",
+      "seed": "_ZN8Presonus17LinkableComponent7setLinkERS0_b",
+      "query": "native_body 0x82bd8 and app child/provider contracts",
+      "reason": "Missing tail dependency and original class bindings",
+      "result": "Root expanded master body and approved explicit portable mandatory app boundary; five target scope retained."
+    },
+    {
+      "query": "pending-fragment schema",
+      "result": "Root retains merger/schema ownership; worker delivers HANDOFFs only."
+    }
+  ],
+  "per_symbol_dependencies": [
+    {
+      "symbol": "_ZN8Presonus17LinkableComponent11linkAsSlaveERS0_",
+      "read_verified": [
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_1-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_1-packet/native-context.json"
+      ],
+      "protective": [
+        "Unvalidated pseudocode read as analysis only; never oracle",
+        "Original memory offsets are native observations, not recovered declarations"
+      ],
+      "irrelevant": [
+        "Core integration not invoked within these target instruction ranges"
+      ],
+      "unknown": [
+        "Original return declaration",
+        "Class layout/inheritance"
+      ]
+    },
+    {
+      "symbol": "_ZN8Presonus17LinkableComponent7setLinkERS0_b",
+      "read_verified": [
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_2-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_2-packet/native-context.json"
+      ],
+      "protective": [
+        "Unvalidated pseudocode read as analysis only; never oracle",
+        "Original memory offsets are native observations, not recovered declarations"
+      ],
+      "irrelevant": [
+        "Core integration not invoked within these target instruction ranges"
+      ],
+      "unknown": [
+        "Original return declaration",
+        "Class layout/inheritance",
+        "Master implementation",
+        "Original virtual providers and child interface type"
+      ]
+    },
+    {
+      "symbol": "_ZN8Presonus17LinkableComponent10removeLinkEv",
+      "read_verified": [
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_3-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_3-packet/native-context.json"
+      ],
+      "protective": [
+        "Unvalidated pseudocode read as analysis only; never oracle",
+        "Original memory offsets are native observations, not recovered declarations"
+      ],
+      "irrelevant": [
+        "Core integration not invoked within these target instruction ranges"
+      ],
+      "unknown": [
+        "Original return declaration",
+        "Class layout/inheritance",
+        "Master implementation",
+        "Original virtual providers and child interface type"
+      ]
+    },
+    {
+      "symbol": "_ZN8Presonus17LinkableComponent14setLinkEnabledEb",
+      "read_verified": [
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_4-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_4-packet/native-context.json"
+      ],
+      "protective": [
+        "Unvalidated pseudocode read as analysis only; never oracle",
+        "Original memory offsets are native observations, not recovered declarations"
+      ],
+      "irrelevant": [
+        "Core integration not invoked within these target instruction ranges"
+      ],
+      "unknown": [
+        "Original return declaration",
+        "Class layout/inheritance",
+        "Master implementation",
+        "Original virtual providers and child interface type"
+      ]
+    },
+    {
+      "symbol": "_ZNK8Presonus17LinkableComponent8isLinkedEv",
+      "read_verified": [
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_5-packet/ELF_CONTEXT.md",
+        "temp/recovery-work/graph-live-trial-04/trial04_linkable_5-packet/native-context.json"
+      ],
+      "protective": [
+        "Unvalidated pseudocode read as analysis only; never oracle",
+        "Original memory offsets are native observations, not recovered declarations"
+      ],
+      "irrelevant": [
+        "Core integration not invoked within these target instruction ranges"
+      ],
+      "unknown": [
+        "Original return declaration",
+        "Class layout/inheritance"
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "phase": "initial oracle attempt",
+      "error": "Unused native_context.functions lookup raised KeyError before any execution; removed."
+    }
+  ],
+  "redundant_checks": [
+    "Final oracle repeated after adding sealed hash assertions and callback-time snapshots; final checks repeated after formatting changed test."
+  ],
+  "token_accounting": "Coordinator-owned; no estimated counts."
+}

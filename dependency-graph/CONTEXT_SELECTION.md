@@ -152,3 +152,21 @@ resumed by these producers. Preparation is blocked until an explicit reviewed
 migration has been activated; do not set a version flag on the legacy DB to
 bypass the gate. See [SOURCE_IDENTITIES.md](SOURCE_IDENTITIES.md) for the isolated
 rehearsal and the separate physical-publication requirements.
+
+## Ten-worker grouped reconstruction trial
+
+`group_dispatch.py --groups GROUPS.json --out temp/recovery-work/NEW_BATCH`
+accepts exactly ten groups with `task_name`, five `packets`, `scope_reason`,
+and an `execution_order` containing those five paths exactly once. Each packet
+is prepared normally as one claimed unique work item. Each must cover exactly
+one original for this trial. All fifty bindings are checked together, followed
+by the existing full packet validation (native/source bodies, freshness, tool
+hashes, record bindings, claims, selected-file and snapshot seals, Memgraph
+markers). Publication is locked throughout. Inter-group write/read conflicts
+are rejected; shared files within one group have one worker owner. The operator
+emits the only authorized grouped `BATCH_DISPATCH.json`, with ten generated
+`fork_turns=none` argument objects. No workers start until it succeeds. Packet
+`DISPATCH.json` files retain baseline expansion support. One HANDOFF v1 per
+packet binds final shared-file hashes after all five methods are complete.
+Failure retains logs and claims; a partial dispatch is never spawn permission.
+This operator changes no readiness schema or reconstruction acceptance gates.

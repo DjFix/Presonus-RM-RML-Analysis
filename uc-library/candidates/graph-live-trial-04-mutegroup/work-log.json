@@ -1,0 +1,126 @@
+{
+  "session_id": "01a194a2-ca93-7f80-a35a-32d11bffd85d",
+  "phase": "local-validation-complete",
+  "timestamp": "2026-11-01T01:06:08.876474+00:00",
+  "dependencies_read": [
+    "docs/worker-handoff.md",
+    "docs/core-framework-lineage.md",
+    "third_party/ccl-framework/core/portable/coreparams.h"
+  ],
+  "context_requests": [
+    "native Parameter virtual slot bindings",
+    "standalone compile/link metadata"
+  ],
+  "failures": [
+    "initial combined packet output truncated; reread target instruction blocks and packet 2 source/context separately",
+    "Native oracle initially omitted mapped return sentinel page; fixed mapping then reran full oracle.",
+    "Root supplied nonexistent archive path; corrected by Root to upstream-core/sdk/lib/libcorelib.a (administrative misinformation)."
+  ],
+  "protective_relations": [
+    "Core source must not be reconstructed"
+  ],
+  "unknown_relations": [
+    "native virtual slots to exact provider methods"
+  ],
+  "token_estimates": null,
+  "end_utc": "2026-11-01T01:08:54.137903+00:00",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:08:53.427003+00:00",
+      "end_utc": "2026-11-01T01:08:53.484348+00:00",
+      "seconds": 0.05734830500023236,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:08:53.484368+00:00",
+      "end_utc": "2026-11-01T01:08:53.977718+00:00",
+      "seconds": 0.49336482000035176,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:08:53.977739+00:00",
+      "end_utc": "2026-11-01T01:08:54.007874+00:00",
+      "seconds": 0.030146626999339787,
+      "returncode": 0,
+      "stdout": "all five original ELF names present; matching names do not establish returns/layout/ABI\n",
+      "stderr": ""
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/replay.py"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:08:54.007892+00:00",
+      "end_utc": "2026-11-01T01:08:54.051672+00:00",
+      "seconds": 0.04379416499978106,
+      "returncode": 0,
+      "stdout": "matched 900 native fixtures; finite values, nonnull parameter boundaries, zero/two maximum, member counts zero through two; native call traces preserved; portable state/output differential\n",
+      "stderr": ""
+    }
+  ],
+  "per_symbol_dependencies": {
+    "1": [
+      "bound native body/range",
+      "coreparams.h/.cpp",
+      "corevector.h",
+      "provider-context.json"
+    ],
+    "2": [
+      "bound native body/range",
+      "coreparams.h/.cpp",
+      "corevector.h",
+      "provider-context.json"
+    ],
+    "3": [
+      "bound native body/range",
+      "coreparams.h/.cpp",
+      "corevector.h",
+      "provider-context.json"
+    ],
+    "4": [
+      "bound native body/range",
+      "coreparams.h/.cpp",
+      "corevector.h",
+      "provider-context.json"
+    ],
+    "5": [
+      "bound native body/range",
+      "coreparams.h/.cpp",
+      "corevector.h",
+      "provider-context.json"
+    ]
+  },
+  "limitations": [
+    "Original unencoded returns, class fields/layout, inheritance, ownership, ARM ABI and hardware interoperability unresolved.",
+    "Native slots 0x3c/0x44/0x50/0x58/0x5c are named boundaries; mapping to CCL getMax/getValue/setMax/setValue/resetValue is an intentional source-port assumption, not original declaration proof.",
+    "Native parameter providers, aeabi comparisons and vector empty are boundary models, not recovered Core. rangeChanged is native boundary trace, real pinned CCL call in C++.",
+    "Finite nonnull boundaries only; null paths, NaN/infinity, dynamically changing getters, allocation failure and controller/observer behavior untested. Portable differential checks output state/boolean results; native call traces retained but not differentially compared."
+  ]
+}

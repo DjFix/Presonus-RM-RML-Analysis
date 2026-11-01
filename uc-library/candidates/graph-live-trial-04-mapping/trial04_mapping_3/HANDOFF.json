@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "task_id": "trial04_mapping_3",
+  "namespace": "Presonus::MappingTable",
+  "packet_manifest": "temp/recovery-work/graph-live-trial-04/trial04_mapping_3-packet/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus12MappingTable21setControlInverseModeEPKcb",
+      "address": 484560,
+      "size": 44,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/MappingTable.hpp",
+      "sha256": "bb5f34e0fceacd02bd561a7d0a798395f76448ce592bee817d4c05ef44cf1075"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/MappingTable.cpp",
+      "sha256": "58e434a81eaa8ad2fe367a5f9fce418265e7c31537122c3c8c2c6875a5079138"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial04_mapping_tests.cpp",
+      "sha256": "838dd27f45f5350dbc7dd276e7308c87848134684f61023adcadde40d2e523fa"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/native-boundary-fixtures.json",
+      "sha256": "f52d8653c60597c75dd98ed7d9f57f68f47dcd8f1b7d54b41a74eddf194e0f6e"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/native-boundary-proof.json",
+      "sha256": "6c57841efe11fb7abbfdb46c35817b29cbb56074a338f159f23152f21daa3dd3"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/local-proof.json",
+      "sha256": "68c98c3c542cbdf82137244c1f4bb91a79246b9fb674e984a8dca185ff48a895"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+      "sha256": "1e6c44194329f11181ca733f766d0182af55ed110493a53d4df71a0e0b992b6e"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/native_oracle.py",
+      "sha256": "6072a9ae50bde359182e337c305d5030ac045b5acf25c8fbdcf074d335986e6c"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mapping/seal.py",
+      "sha256": "2f980d47130430648569767a6dddcff20c2ad413894fb7d97a00d170f890a70d"
+    },
+    {
+      "kind": "manifest",
+      "path": "temp/recovery-work/graph-live-trial-04/trial04_mapping_3-packet/context.json",
+      "sha256": "a356db1f9fbcf1b028d54b616e453d5a8d6aa930dba7a31a169b463b988fdcf0"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/coreplatform.h",
+      "sha256": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/coreclibrary.h",
+      "sha256": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/coremalloc.h",
+      "sha256": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/corecontainer.h",
+      "sha256": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mapping/native_oracle.py",
+        "--verify"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately.",
+  "limitations": [
+    "All five original return declarations unresolved: source port chooses Item* for findItem and void for mutations.",
+    "Independent entry/state/constructor and lexical name comparison are intentional source-port contracts, not original Item or MappingTable layout. Names nonnull, unique, sorted, length 1..31.",
+    "Original Item constructor, comparison and mutation implementations are excluded; production requires independent ItemOperations service, test uses recorder. No panel/provider behavioral verification.",
+    "Native oracle executes only original five target bodies; constructor/bsearch/findItem/Item methods replaced at explicit call boundaries.",
+    "No ARM32 binary ABI, hardware, null name, duplicate name, long name or original item semantics claims. CCL upstream search has source-based zero-count behavior."
+  ],
+  "build_integration": {
+    "production_partition": "CS18",
+    "production_sources": [
+      "uc-library/src/Presonus/MappingTable.cpp"
+    ],
+    "public_headers": [
+      "uc-library/include/presonus/MappingTable.hpp"
+    ],
+    "test_target": "graph_trial04_mapping_tests",
+    "test_source": "uc-library/tests/graph_trial04_mapping_tests.cpp",
+    "link_dependencies": [
+      "pinned CCL Core headers",
+      "required application-supplied presonus::mapping::ItemOperations"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/graph-live-trial-04-mapping/check.py",
+      "replay",
+      "--executable",
+      "<canonical built graph_trial04_mapping_tests>"
+    ],
+    "fixture": "uc-library/candidates/graph-live-trial-04-mapping/native-boundary-fixtures.json",
+    "fixture_sha256": "f52d8653c60597c75dd98ed7d9f57f68f47dcd8f1b7d54b41a74eddf194e0f6e"
+  }
+}

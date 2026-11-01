@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "task_id": "trial04_mutegroup_2",
+  "namespace": "Presonus::MuteGroupBase",
+  "packet_manifest": "temp/recovery-work/graph-live-trial-04/trial04_mutegroup_2-packet/context.json",
+  "originals": [
+    {
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus13MuteGroupBase12updateStatusEv",
+      "address": 478956,
+      "size": 244,
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/MuteGroupBase.cpp",
+      "sha256": "5b919b16c72b794ddc6434e366ceb5729b1bc3f8b69ca66b4beb3a7035118e7b"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/MuteGroupBase.hpp",
+      "sha256": "dddb2856b6b7687fe07685815363f38630c5fac177f85e8116b6992dd5e74de4"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial04_mutegroup_tests.cpp",
+      "sha256": "92c5c96e3c478708689afc5f9237cf6e7db1e7be8b53a98c67fbfc795e1934c8"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/fixtures.json",
+      "sha256": "9e666fd231fc5b5a261f983fc0a8a81afff11fd3bdd0f50e12e8e82e49c48d26"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/seal.py",
+      "sha256": "ddbc51fe9821265377169d1abd439215556a9d1572bf73ed7fd85ad2fd8b7e8c"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+      "sha256": "54683280fc58e4442f1c847cb2a527501b17c5df1cc71c7eeeca2144d36ff4a3"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/oracle.py",
+      "sha256": "018015604613b60657ccb5c723234837f671498e60c7f49a5832dc31db7002b5"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/replay.py",
+      "sha256": "20f1439e7345d8dfab5caf207a131e593d4772120c3ef1eea57e8b8588c722a1"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/ranges.json",
+      "sha256": "471928698c1f6c495d17c10f3b19de42de7fefcbf86adaf6b28935f304d12d46"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/proof.json",
+      "sha256": "f27bd764ac47dc717aa8c701bec84923d0f63da89ab50f04006070aa6344e342"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mutegroup/work-log.json",
+      "sha256": "bbce028c34d3dece768198dd386357a69970453016c8bd6da6fdc3317a25ae2c"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "source",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "evidence",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/recovery-work/graph-live-trial-04/trial04_mutegroup_2-packet/context.json",
+      "sha256": "899119527fe05c3f0b6187279d502376ac6037668aceef0ae72f5d9947681e1c"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mutegroup/replay.py"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded.",
+  "limitations": [
+    "Original unencoded returns, class fields/layout, inheritance, ownership, ARM ABI and hardware interoperability unresolved.",
+    "Native slots 0x3c/0x44/0x50/0x58/0x5c are named boundaries; mapping to CCL getMax/getValue/setMax/setValue/resetValue is an intentional source-port assumption, not original declaration proof.",
+    "Native parameter providers, aeabi comparisons and vector empty are boundary models, not recovered Core. rangeChanged is native boundary trace, real pinned CCL call in C++.",
+    "Finite nonnull boundaries only; null paths, NaN/infinity, dynamically changing getters, allocation failure and controller/observer behavior untested. Portable differential checks output state/boolean results; native call traces retained but not differentially compared."
+  ],
+  "build_integration": {
+    "production_partition": "RM",
+    "sources": [
+      "src/Presonus/MuteGroupBase.cpp"
+    ],
+    "public_headers": [
+      "include/presonus/MuteGroupBase.hpp"
+    ],
+    "test_target": "graph_trial04_mutegroup_tests",
+    "link_dependencies": [
+      "pinned CCL corelib"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/graph-live-trial-04-mutegroup/replay.py",
+      "<canonical-built-graph_trial04_mutegroup_tests>"
+    ],
+    "fixtures": "uc-library/candidates/graph-live-trial-04-mutegroup/fixtures.json"
+  }
+}

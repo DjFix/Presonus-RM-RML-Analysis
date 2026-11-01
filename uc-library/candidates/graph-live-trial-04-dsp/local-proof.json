@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "session_id": "01a194a2-7e71-7b61-a0d9-d5bd733773e4",
+  "sealed_utc": "2026-11-01T01:11:00.033204+00:00",
+  "elf_input": {
+    "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+  },
+  "ranges": [
+    {
+      "address": 730900,
+      "size": 60,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 698132,
+      "bytes_sha256": "9e7c1189975495c732ab17a6b3debf16bedf420b5b20922cb073ca55222e9048"
+    },
+    {
+      "address": 730840,
+      "size": 60,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 698072,
+      "bytes_sha256": "9bfe4a3c68a5cbe7dcb9e26fc44fed5c2258d1c7a25aa1f7cc079c1a5b28906b"
+    },
+    {
+      "address": 735180,
+      "size": 388,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 702412,
+      "bytes_sha256": "b8df973ce05028cc20e2fe69e21bc7bb570c76d3d04f3bccb518558ed3fa2cfe"
+    },
+    {
+      "address": 734792,
+      "size": 388,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 702024,
+      "bytes_sha256": "c90a7f9f060080e563ef68c4d7676fd38b5d98a93c0ca9ad4eca3a30c540e004"
+    },
+    {
+      "address": 734372,
+      "size": 420,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 701604,
+      "bytes_sha256": "a28197397990c2d88cbfbe95208618f52a9bef7eb2be1e2a87d12b0ce43d2a18"
+    }
+  ],
+  "original_executions": {
+    "1": 16,
+    "2": 16,
+    "3": 208,
+    "4": 208,
+    "5": 238
+  },
+  "portable_executions": {
+    "1": 16,
+    "2": 16,
+    "3": 208,
+    "4": 208,
+    "5": 238
+  },
+  "fixture_sha256": "d00b15b2e9b4f9ce0d736fb4c42296a43a34703b759a200701b0795f70444721",
+  "producer_sha256": {
+    "uc-library/candidates/graph-live-trial-04-dsp/native_oracle.py": "954eadac8d2d795c09da37fb4f4420fffbea8555251317396e9b745f135960a9",
+    "uc-library/candidates/graph-live-trial-04-dsp/replay.py": "1e9f1f25894036872e165ef7dc3e73beec98d0dfe845d92cfdfad5f573db0041",
+    "uc-library/candidates/graph-live-trial-04-dsp/checks.py": "b2059927cd24fe3eb03e873e280d4a46eb7f99e20f68b54042f09bdcb5d4d902",
+    "uc-library/candidates/graph-live-trial-04-dsp/seal.py": "22a08ced6f84487df7dcc27aaf0bc055bca7d0a7b64e534c0f6f812bb045c86e"
+  },
+  "formatted_sources": {
+    "uc-library/src/Presonus/Dsp/Controller.cpp": "fba645c88716e5c9782984410bb92f77cca791e0311d84f96c1483bf44955c80",
+    "uc-library/include/presonus/dsp/Controller.hpp": "05e2f0256118327848ec6c2ecaf7787b453c13369058fd13a3a6b28a3fac5bfd",
+    "uc-library/tests/graph_trial04_dsp_tests.cpp": "bdbcec67f456cda9ecf0a7e6b6d4a622fd8118d6612aee8f4fbdb06187a97d22"
+  },
+  "formatter_version": "clang-format version 23.1.3",
+  "unicorn_version": "2.1.4",
+  "python_version": "Python 3.12.3",
+  "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "core": {
+    "source_root": "third_party/ccl-framework",
+    "commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "dependencies": {
+      "uc-library/include/presonus/mixer_dsp/ParamDescriptorList.hpp": "151a7501bef8a2a50031c58f15c5b063dc8ae828ed07bebb77f896a69bcf343d",
+      "uc-library/src/Presonus/Dsp/ParamDescriptorList.cpp": "eff914dcc107605713747c3d7842c95503bea940f38d3b23309c40c024ffcb63",
+      "third_party/ccl-framework/core/public/coreinterpolator.h": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202",
+      "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    }
+  },
+  "checks": [
+    {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-dsp/native_oracle.py"
+      ],
+      "start_utc": "2026-11-01T01:09:36.212568+00:00",
+      "end_utc": "2026-11-01T01:09:45.345657+00:00",
+      "seconds": 9.133089512999504,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/dsp/Controller.hpp",
+        "uc-library/src/Presonus/Dsp/Controller.cpp",
+        "uc-library/tests/graph_trial04_dsp_tests.cpp"
+      ],
+      "start_utc": "2026-11-01T01:09:56.782302+00:00",
+      "end_utc": "2026-11-01T01:09:56.815159+00:00",
+      "seconds": 0.03285820800010697,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-dsp/replay.py",
+        "--exe",
+        "temp/recovery-work/graph-live-trial-04/dsp-worker/build/dsp-tests",
+        "--fixture",
+        "uc-library/candidates/graph-live-trial-04-dsp/native-fixtures.json",
+        "--work",
+        "temp/recovery-work/graph-live-trial-04/dsp-worker/replay"
+      ],
+      "start_utc": "2026-11-01T01:09:56.815301+00:00",
+      "end_utc": "2026-11-01T01:09:56.857909+00:00",
+      "seconds": 0.04261775899976783,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/c++",
+        "-DCORE_USE_OPENSSL=1",
+        "-DNDEBUG=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-Iuc-library/include",
+        "-isystem",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-pthread",
+        "-Ulinux",
+        "-fno-lto",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-builtin",
+        "-fno-rtti",
+        "-c",
+        "uc-library/src/Presonus/Dsp/Controller.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/Controller.o"
+      ],
+      "start_utc": "2026-11-01T01:08:38.374626+00:00",
+      "end_utc": "2026-11-01T01:08:38.447105+00:00",
+      "seconds": 0.07249558600051387,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/c++",
+        "-DCORE_USE_OPENSSL=1",
+        "-DNDEBUG=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-Iuc-library/include",
+        "-isystem",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-pthread",
+        "-Ulinux",
+        "-fno-lto",
+        "-fno-fast-math",
+        "-ffp-contract=off",
+        "-frounding-math",
+        "-fno-builtin",
+        "-fno-rtti",
+        "-c",
+        "uc-library/tests/graph_trial04_dsp_tests.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/tests.o"
+      ],
+      "start_utc": "2026-11-01T01:08:38.447290+00:00",
+      "end_utc": "2026-11-01T01:08:38.920422+00:00",
+      "seconds": 0.4731465169998046,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/c++",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/Controller.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/tests.o",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/dsp-tests",
+        "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-Wl,-rpath,/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "/usr/lib/x86_64-linux-gnu/libssl.so",
+        "/usr/lib/x86_64-linux-gnu/libcrypto.so",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "-ldl",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-lm",
+        "-pthread"
+      ],
+      "start_utc": "2026-11-01T01:08:38.920590+00:00",
+      "end_utc": "2026-11-01T01:08:38.983887+00:00",
+      "seconds": 0.06331356099963159,
+      "returncode": 0
+    },
+    {
+      "argv": [
+        "/usr/bin/nm",
+        "--defined-only",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/Controller.o"
+      ],
+      "start_utc": "2026-11-01T01:08:44.119824+00:00",
+      "end_utc": "2026-11-01T01:08:44.121660+00:00",
+      "seconds": 0.0018466569999873172,
+      "returncode": 0
+    }
+  ],
+  "compiled_symbols": "0000000000000000 r .LC0\n0000000000000000 u _ZN4Core11ConstVectorIPN8Presonus3Dsp15ParamDescriptorEE5errorE\n00000000000001b0 T _ZN8Presonus3Dsp10Controller13setNormalizedEif\n0000000000000000 W _ZNK4Core12Interpolator17normalizedToRangeEf\n0000000000000000 W _ZNK4Core12Interpolator17rangeToNormalizedEf\n0000000000000230 T _ZNK8Presonus3Dsp10Controller10boundValueEif\n0000000000000000 T _ZNK8Presonus3Dsp10Controller10descriptorEi\n0000000000000120 T _ZNK8Presonus3Dsp10Controller13getNormalizedEi\n0000000000000080 T _ZNK8Presonus3Dsp10Controller22normalizedValueToRangeEif\n00000000000000d0 T _ZNK8Presonus3Dsp10Controller22rangeToNormalizedValueEif\n0000000000000000 V _ZTVN8Presonus3Dsp10ControllerE\n",
+  "limitations": [
+    "All original unencoded return declarations remain unresolved; float returns, virtual declaration order, construction and ControllerSourceState are explicit portable source-port choices.",
+    "Original ARM32 object layout, binary calling convention/interoperability and hardware behavior are unverified.",
+    "Original get/set and converter dispatch boundaries use explicit deterministic test doubles; Core comparator calls use IEEE host comparisons. No original Core bodies are executed or reconstructed. Actual Core vector/accessor/provider source APIs supply production bindings.",
+    "ARM fallback static initialization writes/guard/atexit traces are captured in fixture; portable fallback uses existing ParamDescriptorList::getError lifecycle and compares semantic conversion/bounds outputs, not original raw object addresses/writes.",
+    "Fixed dynamic object type, single thread, valid nonnull tag-mode entries and initialized memory only. Invalid pointer faults, vtable replacement, concurrent Core error sentinel mutation and allocation failures are excluded.",
+    "Source port skips null entries during tag lookup, a deliberate defensive extension; no such invalid native tag-list inputs are claimed verified.",
+    "No global readiness admission or full integration/installed-role audit is claimed by this worker."
+  ],
+  "scope_flags": {
+    "original_declaration_verified": false,
+    "original_arm_abi_verified": false,
+    "hardware_validated": false,
+    "compiled": true,
+    "namespace_signature_validated": true,
+    "behavioral_validation": "bounded original ARM differential with explicit stub/provider boundaries"
+  },
+  "link_input_sha256": {
+    "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/graph-live-trial-04/dsp-worker/build/dsp-tests": "7dc18cac89a6deb394a4f4dc92a952584c0693b2a65aaa8691d45f8f2027682b",
+    "temp/core-upstream/root-integration-01/libpresonus_uc.a": "f94a8039487502a09f3cea85db05344d6593269de047df74a03eef438913d003",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "/usr/lib/x86_64-linux-gnu/libpng16.so.16": "89c0c6569a8c00480d451401ad4c0a74942e62dc57f229a970592fdc5adb29e8",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1": "f61677c7bdb7c2aa2a243ea781bfd16afcb361cede7b4ef76127a9d8eb9a5242",
+    "/usr/lib/x86_64-linux-gnu/libssl.so": "a40e7b67489bbd257e432c700ff8f6a1ad796425b5eccecdc2930127fdd86624",
+    "/usr/lib/x86_64-linux-gnu/libcrypto.so": "6866ed711dab8927e1bf82bf1cd30e828bdfc34f3cc1e83b1c9eb01ce6c37d9a",
+    "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so": "28b67af5dddb8eef17b77280db249c50344554c82226705733b1912a30c114a5",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+  },
+  "installed_core_header_matches": {
+    "core/public/coreinterpolator.h": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202",
+    "core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+  }
+}

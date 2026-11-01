@@ -1,0 +1,2122 @@
+{
+  "version": 1,
+  "generated_utc": "2026-11-01T01:09:13.935789+00:00",
+  "worker_session_id": "01a194a2-978d-7fe0-be36-d23872f98010",
+  "cpp_differential_passed": true,
+  "compiled_mangled_names_matched": true,
+  "portable_ready": false,
+  "cpp_compiled": true,
+  "mangling_namespace_checked": true,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_verified": false,
+  "sources": {
+    "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+    "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+    "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+  },
+  "repository_sources": {
+    "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+    "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+  },
+  "fixture": "uc-library/candidates/graph-live-trial-04-avb/fixtures.json",
+  "fixture_sha256": "1857dc2fa6a479c88833e7160186f02d1d7c37137d1154b0e0569c2e79853210",
+  "case_count": 720,
+  "native_execution_count": 720,
+  "commands": [
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-avb/oracle.py"
+      ],
+      "started_utc": "2026-11-01T01:09:10.285880+00:00",
+      "ended_utc": "2026-11-01T01:09:13.418671+00:00",
+      "duration_seconds": 3.1325987520003764,
+      "returncode": 0,
+      "log": "uc-library/candidates/graph-live-trial-04-avb/native.log",
+      "log_sha256": "741c106c7d4fbfd985601bd1afdde170ceb0608ee341a2d218b744552fb6ceb8"
+    },
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/avb/AvbComponent.hpp",
+        "uc-library/src/Presonus/AVB/AvbComponent.cpp",
+        "uc-library/tests/graph_trial04_avb_tests.cpp"
+      ],
+      "started_utc": "2026-11-01T01:09:13.418752+00:00",
+      "ended_utc": "2026-11-01T01:09:13.451097+00:00",
+      "duration_seconds": 0.03224164900075266,
+      "returncode": 0,
+      "log": "uc-library/candidates/graph-live-trial-04-avb/format.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-pthread",
+        "-Ulinux",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "uc-library/src/Presonus/AVB/AvbComponent.cpp",
+        "uc-library/tests/graph_trial04_avb_tests.cpp",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "-o",
+        "temp/recovery-work/graph-live-trial-04/avb-worker/avb-tests"
+      ],
+      "started_utc": "2026-11-01T01:09:13.451169+00:00",
+      "ended_utc": "2026-11-01T01:09:13.805432+00:00",
+      "duration_seconds": 0.35414797099929274,
+      "returncode": 0,
+      "log": "uc-library/candidates/graph-live-trial-04-avb/compile.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-avb/checks.py",
+        "symbols"
+      ],
+      "started_utc": "2026-11-01T01:09:13.805487+00:00",
+      "ended_utc": "2026-11-01T01:09:13.846503+00:00",
+      "duration_seconds": 0.04082328399999824,
+      "returncode": 0,
+      "log": "uc-library/candidates/graph-live-trial-04-avb/symbols.log",
+      "log_sha256": "194b4c49219227b60374d16e69754789dd682fba58eecdaf692bf07dedc944ef"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-avb/replay.py",
+        "--executable",
+        "temp/recovery-work/graph-live-trial-04/avb-worker/avb-tests",
+        "--fixtures",
+        "uc-library/candidates/graph-live-trial-04-avb/fixtures.json"
+      ],
+      "started_utc": "2026-11-01T01:09:13.846558+00:00",
+      "ended_utc": "2026-11-01T01:09:13.903168+00:00",
+      "duration_seconds": 0.05642016599995259,
+      "returncode": 0,
+      "log": "uc-library/candidates/graph-live-trial-04-avb/replay.log",
+      "log_sha256": "7d566f3f96e2e60fd4c16a573e943fb797f873202057b5d6329e513f0f1dcfb5"
+    }
+  ],
+  "ranges": [
+    {
+      "address": 690888,
+      "size": 92,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 658120,
+      "bytes_sha256": "c15d661d46d68d8177c8e71b3f8c33c7ab66aab7a5bd31361d6fd34c21871144",
+      "storage": "file",
+      "instructions": [
+        {
+          "address": 690888,
+          "bytes": "0dc0a0e1",
+          "mnemonic": "mov",
+          "operands": "ip, sp"
+        },
+        {
+          "address": 690892,
+          "bytes": "30d82de9",
+          "mnemonic": "push",
+          "operands": "{r4, r5, fp, ip, lr, pc}"
+        },
+        {
+          "address": 690896,
+          "bytes": "020051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #2"
+        },
+        {
+          "address": 690900,
+          "bytes": "04b04ce2",
+          "mnemonic": "sub",
+          "operands": "fp, ip, #4"
+        },
+        {
+          "address": 690904,
+          "bytes": "08509be5",
+          "mnemonic": "ldr",
+          "operands": "r5, [fp, #8]"
+        },
+        {
+          "address": 690908,
+          "bytes": "04c0dbe5",
+          "mnemonic": "ldrb",
+          "operands": "ip, [fp, #4]"
+        },
+        {
+          "address": 690912,
+          "bytes": "0c40dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r4, [fp, #0xc]"
+        },
+        {
+          "address": 690916,
+          "bytes": "0b00000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8b18"
+        },
+        {
+          "address": 690920,
+          "bytes": "030051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #3"
+        },
+        {
+          "address": 690924,
+          "bytes": "0400000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8b04"
+        },
+        {
+          "address": 690928,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690932,
+          "bytes": "30a89d18",
+          "mnemonic": "ldmne",
+          "operands": "sp, {r4, r5, fp, sp, pc}"
+        },
+        {
+          "address": 690936,
+          "bytes": "04c08be5",
+          "mnemonic": "str",
+          "operands": "ip, [fp, #4]"
+        },
+        {
+          "address": 690940,
+          "bytes": "30689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, fp, sp, lr}"
+        },
+        {
+          "address": 690944,
+          "bytes": "a5ffffea",
+          "mnemonic": "b",
+          "operands": "#0xa899c"
+        },
+        {
+          "address": 690948,
+          "bytes": "04c08be5",
+          "mnemonic": "str",
+          "operands": "ip, [fp, #4]"
+        },
+        {
+          "address": 690952,
+          "bytes": "08508be5",
+          "mnemonic": "str",
+          "operands": "r5, [fp, #8]"
+        },
+        {
+          "address": 690956,
+          "bytes": "0c408be5",
+          "mnemonic": "str",
+          "operands": "r4, [fp, #0xc]"
+        },
+        {
+          "address": 690960,
+          "bytes": "30689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, fp, sp, lr}"
+        },
+        {
+          "address": 690964,
+          "bytes": "2fffffea",
+          "mnemonic": "b",
+          "operands": "#0xa87d8"
+        },
+        {
+          "address": 690968,
+          "bytes": "04c08be5",
+          "mnemonic": "str",
+          "operands": "ip, [fp, #4]"
+        },
+        {
+          "address": 690972,
+          "bytes": "30689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, fp, sp, lr}"
+        },
+        {
+          "address": 690976,
+          "bytes": "e7feffea",
+          "mnemonic": "b",
+          "operands": "#0xa86c4"
+        }
+      ],
+      "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+      "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000a8ac8.cpp.txt",
+      "pseudocode_sha256": "0a405eb14da27f0b02e8a93f602a466ac9d40d1fd603721181a651f9de7d9708",
+      "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::AVB::AvbComponent::addListener(Presonus::AVB::AvbComponent::ListenerType, long long, bool, int, bool)\n// Symbol _ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib address=0xa8ac8\ntypedef struct st_a7fd0_3 {\n    char padding_0[152];\n    struct st_a7fd0_1 *field_98;\n    char padding_9c[20];\n    unsigned int field_b0;\n} st_a7fd0_3;\n\ntypedef struct st_a7fd0_2 {\n    struct st_a7fd0_0 *field_0;\n} st_a7fd0_2;\n\ntypedef struct st_a7fd0_0 {\n    unsigned int field_0;\n} st_a7fd0_0;\n\ntypedef struct st_a7fd0_1 {\n    char padding_0[896];\n    struct st_a7fd0_2 *field_380;\n} st_a7fd0_1;\n\n\nvoid Presonus::AVB::AvbComponent::addListener(st_a7fd0_3 *a0, unsigned int a1, int a2, int a3, char a4, unsigned int a5, char a6, unsigned int a7, unsigned int a8)\n{\n    unsigned int v3;  // r12\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 690900;\n    v1 = &a4;\n    v0 = &a4;\n    v3 = a4;\n    if (a1 == 2)\n    {\n        a4 = v3;\n        Presonus::AVB::AvbComponent::addCSInputListener(a0, 2, a2, a3);\n        return;\n    }\n    if (a1 != 3)\n    {\n        if (!a1)\n            goto LABEL_0xa8af8;\n        return;\n        a5 = v3;\n        Presonus::AVB::AvbComponent::addCascadeListener(a0, ic_3, a2, a3);\n    }\n    else\n    {\n        a4 = v3;\n        Presonus::AVB::AvbComponent::addConsoleBusListener(a0, 3, a2, a3, a4, a5, a6);\n    }\n    return;\n}\n\n"
+    },
+    {
+      "address": 689860,
+      "size": 120,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 657092,
+      "bytes_sha256": "a68bb9bcadf45c17be307b0001f1dadd0c3524a63d4041e79ea4fcbbc4a3b7c5",
+      "storage": "file",
+      "instructions": [
+        {
+          "address": 689860,
+          "bytes": "0dc0a0e1",
+          "mnemonic": "mov",
+          "operands": "ip, sp"
+        },
+        {
+          "address": 689864,
+          "bytes": "f0d82de9",
+          "mnemonic": "push",
+          "operands": "{r4, r5, r6, r7, fp, ip, lr, pc}"
+        },
+        {
+          "address": 689868,
+          "bytes": "04b04ce2",
+          "mnemonic": "sub",
+          "operands": "fp, ip, #4"
+        },
+        {
+          "address": 689872,
+          "bytes": "08d04de2",
+          "mnemonic": "sub",
+          "operands": "sp, sp, #8"
+        },
+        {
+          "address": 689876,
+          "bytes": "a81090e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r0, #0xa8]"
+        },
+        {
+          "address": 689880,
+          "bytes": "0040a0e1",
+          "mnemonic": "mov",
+          "operands": "r4, r0"
+        },
+        {
+          "address": 689884,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 689888,
+          "bytes": "0250a0e1",
+          "mnemonic": "mov",
+          "operands": "r5, r2"
+        },
+        {
+          "address": 689892,
+          "bytes": "0360a0e1",
+          "mnemonic": "mov",
+          "operands": "r6, r3"
+        },
+        {
+          "address": 689896,
+          "bytes": "0470dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r7, [fp, #4]"
+        },
+        {
+          "address": 689900,
+          "bytes": "0100000a",
+          "mnemonic": "beq",
+          "operands": "#0xa86f8"
+        },
+        {
+          "address": 689904,
+          "bytes": "9c0090e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, #0x9c]"
+        },
+        {
+          "address": 689908,
+          "bytes": "0bfaffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6f28"
+        },
+        {
+          "address": 689912,
+          "bytes": "9c0094e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r4, #0x9c]"
+        },
+        {
+          "address": 689916,
+          "bytes": "04c0a0e3",
+          "mnemonic": "mov",
+          "operands": "ip, #4"
+        },
+        {
+          "address": 689920,
+          "bytes": "0520a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r5"
+        },
+        {
+          "address": 689924,
+          "bytes": "0630a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r6"
+        },
+        {
+          "address": 689928,
+          "bytes": "0010a0e3",
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 689932,
+          "bytes": "02108de8",
+          "mnemonic": "stm",
+          "operands": "sp, {r1, ip}"
+        },
+        {
+          "address": 689936,
+          "bytes": "6cfaffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa70c8"
+        },
+        {
+          "address": 689940,
+          "bytes": "a80084e5",
+          "mnemonic": "str",
+          "operands": "r0, [r4, #0xa8]"
+        },
+        {
+          "address": 689944,
+          "bytes": "0010d0e5",
+          "mnemonic": "ldrb",
+          "operands": "r1, [r0]"
+        },
+        {
+          "address": 689948,
+          "bytes": "0720a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r7"
+        },
+        {
+          "address": 689952,
+          "bytes": "10009fe5",
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x10]"
+        },
+        {
+          "address": 689956,
+          "bytes": "c3b801eb",
+          "mnemonic": "bl",
+          "operands": "#0x116a38"
+        },
+        {
+          "address": 689960,
+          "bytes": "0400a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r4"
+        },
+        {
+          "address": 689964,
+          "bytes": "1cd04be2",
+          "mnemonic": "sub",
+          "operands": "sp, fp, #0x1c"
+        },
+        {
+          "address": 689968,
+          "bytes": "f0689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, r6, r7, fp, sp, lr}"
+        },
+        {
+          "address": 689972,
+          "bytes": "25feffea",
+          "mnemonic": "b",
+          "operands": "#0xa7fd0"
+        }
+      ],
+      "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+      "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000a86c4.cpp.txt",
+      "pseudocode_sha256": "53d8f4ef5dbd07985348686077bb80f97330e3506998ad7864d479713fd29ce0",
+      "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::AVB::AvbComponent::addCSInputListener(long long, bool)\n// Symbol _ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb address=0xa86c4\ntypedef struct st_a7fd0_3 {\n    char padding_0[152];\n    struct st_a7fd0_1 *field_98;\n    char padding_9c[20];\n    unsigned int field_b0;\n} st_a7fd0_3;\n\ntypedef struct st_a70c8_0 {\n    struct st_a70c8_0 *field_0;\n    struct st_a70c8_0 *field_4;\n    struct st_a70c8_0 *field_8;\n    char padding_c[4];\n    unsigned int field_10;\n    unsigned int field_14;\n} st_a70c8_0;\n\ntypedef struct st_a7fd0_2 {\n    struct st_a7fd0_0 *field_0;\n} st_a7fd0_2;\n\ntypedef struct st_a7fd0_0 {\n    unsigned int field_0;\n} st_a7fd0_0;\n\ntypedef struct st_a7fd0_1 {\n    char padding_0[896];\n    struct st_a7fd0_2 *field_380;\n} st_a7fd0_1;\n\n\nvoid Presonus::AVB::AvbComponent::addCSInputListener(st_a7fd0_3 *a0, unsigned int a1, int a2, int a3)\n{\n    unsigned int v8;  // lr\n    unsigned int v9;  // r7\n    unsigned int v10;  // r6\n    unsigned int v11;  // r5\n    unsigned int v12;  // r4\n    st_a70c8_0 *v13;  // r0\n    unsigned int v0;  // [bp-0x20]\n    unsigned int v1;  // [bp-0x1c]\n    unsigned int v2;  // [bp-0x18]\n    unsigned int v3;  // [bp-0x14]\n    char *v4;  // [bp-0x10]\n    unsigned int v5;  // [bp-0x8]\n    unsigned int v6;  // [bp-0x4]\n    char v7;  // [bp+0x0]\n\n    v6 = 689872;\n    v5 = v8;\n    v4 = &v7;\n    v3 = v9;\n    v2 = v10;\n    v1 = v11;\n    v0 = v12;\n    if (*(int *)&a0->padding_9c[12])\n        Presonus::AVB::AvbManagerBase::removeListener(*(int *)&a0->padding_9c[0], *(int *)&a0->padding_9c[12]);\n    v13 = Presonus::AVB::AvbManagerBase::addListener(*(int *)&a0->padding_9c[0], 0, a2, a3, 0, 4);\n    *(st_a70c8_0 **)&a0->padding_9c[12] = v13;\n    Core::DebugPrintf(\"AvbComponent::addCSInputListener avb listener index = %d  clock to listener ? %d\\n\", (char)v13->field_0, v7);\n    Presonus::AVB::AvbComponent::configureStaticTalkerStreams(a0);\n    return;\n}\n\n"
+    },
+    {
+      "address": 689980,
+      "size": 156,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 657212,
+      "bytes_sha256": "5bf33f919394ec9de758e03a68782578345d341eb59b821b7a26a77e6cb8c7ce",
+      "storage": "file",
+      "instructions": [
+        {
+          "address": 689980,
+          "bytes": "0dc0a0e1",
+          "mnemonic": "mov",
+          "operands": "ip, sp"
+        },
+        {
+          "address": 689984,
+          "bytes": "f0d82de9",
+          "mnemonic": "push",
+          "operands": "{r4, r5, r6, r7, fp, ip, lr, pc}"
+        },
+        {
+          "address": 689988,
+          "bytes": "04b04ce2",
+          "mnemonic": "sub",
+          "operands": "fp, ip, #4"
+        },
+        {
+          "address": 689992,
+          "bytes": "08d04de2",
+          "mnemonic": "sub",
+          "operands": "sp, sp, #8"
+        },
+        {
+          "address": 689996,
+          "bytes": "a41090e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r0, #0xa4]"
+        },
+        {
+          "address": 690000,
+          "bytes": "0060a0e1",
+          "mnemonic": "mov",
+          "operands": "r6, r0"
+        },
+        {
+          "address": 690004,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690008,
+          "bytes": "0240a0e1",
+          "mnemonic": "mov",
+          "operands": "r4, r2"
+        },
+        {
+          "address": 690012,
+          "bytes": "0350a0e1",
+          "mnemonic": "mov",
+          "operands": "r5, r3"
+        },
+        {
+          "address": 690016,
+          "bytes": "0470dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r7, [fp, #4]"
+        },
+        {
+          "address": 690020,
+          "bytes": "0100000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8770"
+        },
+        {
+          "address": 690024,
+          "bytes": "9c0090e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, #0x9c]"
+        },
+        {
+          "address": 690028,
+          "bytes": "edf9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6f28"
+        },
+        {
+          "address": 690032,
+          "bytes": "9c0096e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r6, #0x9c]"
+        },
+        {
+          "address": 690036,
+          "bytes": "2010a0e3",
+          "mnemonic": "mov",
+          "operands": "r1, #0x20"
+        },
+        {
+          "address": 690040,
+          "bytes": "0420a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r4"
+        },
+        {
+          "address": 690044,
+          "bytes": "0530a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r5"
+        },
+        {
+          "address": 690048,
+          "bytes": "0140a0e3",
+          "mnemonic": "mov",
+          "operands": "r4, #1"
+        },
+        {
+          "address": 690052,
+          "bytes": "04108de5",
+          "mnemonic": "str",
+          "operands": "r1, [sp, #4]"
+        },
+        {
+          "address": 690056,
+          "bytes": "00408de5",
+          "mnemonic": "str",
+          "operands": "r4, [sp]"
+        },
+        {
+          "address": 690060,
+          "bytes": "4dfaffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa70c8"
+        },
+        {
+          "address": 690064,
+          "bytes": "000057e3",
+          "mnemonic": "cmp",
+          "operands": "r7, #0"
+        },
+        {
+          "address": 690068,
+          "bytes": "a40086e5",
+          "mnemonic": "str",
+          "operands": "r0, [r6, #0xa4]"
+        },
+        {
+          "address": 690072,
+          "bytes": "0010d0e5",
+          "mnemonic": "ldrb",
+          "operands": "r1, [r0]"
+        },
+        {
+          "address": 690076,
+          "bytes": "0700000a",
+          "mnemonic": "beq",
+          "operands": "#0xa87c0"
+        },
+        {
+          "address": 690080,
+          "bytes": "0420a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r4"
+        },
+        {
+          "address": 690084,
+          "bytes": "28009fe5",
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0x28]"
+        },
+        {
+          "address": 690088,
+          "bytes": "7688fdeb",
+          "mnemonic": "bl",
+          "operands": "#0xa988"
+        },
+        {
+          "address": 690092,
+          "bytes": "a41096e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r6, #0xa4]"
+        },
+        {
+          "address": 690096,
+          "bytes": "9c0096e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r6, #0x9c]"
+        },
+        {
+          "address": 690100,
+          "bytes": "1cd04be2",
+          "mnemonic": "sub",
+          "operands": "sp, fp, #0x1c"
+        },
+        {
+          "address": 690104,
+          "bytes": "f0689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, r6, r7, fp, sp, lr}"
+        },
+        {
+          "address": 690108,
+          "bytes": "1ff9ffea",
+          "mnemonic": "b",
+          "operands": "#0xa6c40"
+        },
+        {
+          "address": 690112,
+          "bytes": "0c009fe5",
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0xc]"
+        },
+        {
+          "address": 690116,
+          "bytes": "0720a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r7"
+        },
+        {
+          "address": 690120,
+          "bytes": "1cd04be2",
+          "mnemonic": "sub",
+          "operands": "sp, fp, #0x1c"
+        },
+        {
+          "address": 690124,
+          "bytes": "f0689de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, r6, r7, fp, sp, lr}"
+        },
+        {
+          "address": 690128,
+          "bytes": "6c88fdea",
+          "mnemonic": "b",
+          "operands": "#0xa988"
+        }
+      ],
+      "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+      "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000a873c.cpp.txt",
+      "pseudocode_sha256": "accf95f8497d0a9636355a60fd913d7da01c71699e795142a6f58dc3949ff942",
+      "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::AVB::AvbComponent::addMixerInputListener(long long, bool)\n// Symbol _ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb address=0xa873c\n\nvoid Presonus::AVB::AvbComponent::addMixerInputListener(void* a0, unsigned int a1, int a2, int a3)\n{\n    unsigned int v8;  // lr\n    unsigned int v9;  // r7\n    unsigned int v10;  // r6\n    unsigned int v11;  // r5\n    unsigned int v12;  // r4\n    unsigned int v0;  // [bp-0x20]\n    unsigned int v1;  // [bp-0x1c]\n    unsigned int v2;  // [bp-0x18]\n    unsigned int v3;  // [bp-0x14]\n    char *v4;  // [bp-0x10]\n    unsigned int v5;  // [bp-0x8]\n    unsigned int v6;  // [bp-0x4]\n    char v7;  // [bp+0x0]\n\n    v6 = 689992;\n    v5 = v8;\n    v4 = &v7;\n    v3 = v9;\n    v2 = v10;\n    v1 = v11;\n    v0 = v12;\n    if ((int)a0[164])\n        Presonus::AVB::AvbManagerBase::removeListener((int)a0[156], (int)a0[164]);\n    *(st_a70c8_0 **)&a0[164] = Presonus::AVB::AvbManagerBase::addListener((int)a0[156], 32, a2, a3, 1, 32);\n    if (v7)\n    {\n        printf(\"AvbComponent::addMixerInputListener avb listener index = %d clock to listener ? %d\\n\");\n        Presonus::AVB::AvbManagerBase::setAudioClockToListener((int)a0[156], (int)a0[164]);\n    }\n    else\n    {\n        printf();\n    }\n    return;\n}\n\n"
+    },
+    {
+      "address": 690588,
+      "size": 300,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 657820,
+      "bytes_sha256": "ea1505069f224f1b106df4e79a773025b7374f1cc2b9435b8cef1fb22989e567",
+      "storage": "file",
+      "instructions": [
+        {
+          "address": 690588,
+          "bytes": "0dc0a0e1",
+          "mnemonic": "mov",
+          "operands": "ip, sp"
+        },
+        {
+          "address": 690592,
+          "bytes": "f0d82de9",
+          "mnemonic": "push",
+          "operands": "{r4, r5, r6, r7, fp, ip, lr, pc}"
+        },
+        {
+          "address": 690596,
+          "bytes": "04b04ce2",
+          "mnemonic": "sub",
+          "operands": "fp, ip, #4"
+        },
+        {
+          "address": 690600,
+          "bytes": "20d04de2",
+          "mnemonic": "sub",
+          "operands": "sp, sp, #0x20"
+        },
+        {
+          "address": 690604,
+          "bytes": "a01090e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r0, #0xa0]"
+        },
+        {
+          "address": 690608,
+          "bytes": "0040a0e1",
+          "mnemonic": "mov",
+          "operands": "r4, r0"
+        },
+        {
+          "address": 690612,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690616,
+          "bytes": "0250a0e1",
+          "mnemonic": "mov",
+          "operands": "r5, r2"
+        },
+        {
+          "address": 690620,
+          "bytes": "0360a0e1",
+          "mnemonic": "mov",
+          "operands": "r6, r3"
+        },
+        {
+          "address": 690624,
+          "bytes": "0470dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r7, [fp, #4]"
+        },
+        {
+          "address": 690628,
+          "bytes": "0100000a",
+          "mnemonic": "beq",
+          "operands": "#0xa89d0"
+        },
+        {
+          "address": 690632,
+          "bytes": "9c0090e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, #0x9c]"
+        },
+        {
+          "address": 690636,
+          "bytes": "55f9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6f28"
+        },
+        {
+          "address": 690640,
+          "bytes": "9c0094e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r4, #0x9c]"
+        },
+        {
+          "address": 690644,
+          "bytes": "0010a0e3",
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690648,
+          "bytes": "0520a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r5"
+        },
+        {
+          "address": 690652,
+          "bytes": "21c0a0e3",
+          "mnemonic": "mov",
+          "operands": "ip, #0x21"
+        },
+        {
+          "address": 690656,
+          "bytes": "0630a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r6"
+        },
+        {
+          "address": 690660,
+          "bytes": "02108de8",
+          "mnemonic": "stm",
+          "operands": "sp, {r1, ip}"
+        },
+        {
+          "address": 690664,
+          "bytes": "b6f9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa70c8"
+        },
+        {
+          "address": 690668,
+          "bytes": "000057e3",
+          "mnemonic": "cmp",
+          "operands": "r7, #0"
+        },
+        {
+          "address": 690672,
+          "bytes": "a00084e5",
+          "mnemonic": "str",
+          "operands": "r0, [r4, #0xa0]"
+        },
+        {
+          "address": 690676,
+          "bytes": "0010d005",
+          "mnemonic": "ldrbeq",
+          "operands": "r1, [r0]"
+        },
+        {
+          "address": 690680,
+          "bytes": "0720a001",
+          "mnemonic": "moveq",
+          "operands": "r2, r7"
+        },
+        {
+          "address": 690684,
+          "bytes": "2500001a",
+          "mnemonic": "bne",
+          "operands": "#0xa8a98"
+        },
+        {
+          "address": 690688,
+          "bytes": "b8009fe5",
+          "mnemonic": "ldr",
+          "operands": "r0, [pc, #0xb8]"
+        },
+        {
+          "address": 690692,
+          "bytes": "df87fdeb",
+          "mnemonic": "bl",
+          "operands": "#0xa988"
+        },
+        {
+          "address": 690696,
+          "bytes": "0630a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r6"
+        },
+        {
+          "address": 690700,
+          "bytes": "0010a0e3",
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690704,
+          "bytes": "0520a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r5"
+        },
+        {
+          "address": 690708,
+          "bytes": "0400a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r4"
+        },
+        {
+          "address": 690712,
+          "bytes": "00108de5",
+          "mnemonic": "str",
+          "operands": "r1, [sp]"
+        },
+        {
+          "address": 690716,
+          "bytes": "46ffffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa873c"
+        },
+        {
+          "address": 690720,
+          "bytes": "b03094e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r4, #0xb0]"
+        },
+        {
+          "address": 690724,
+          "bytes": "010053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #1"
+        },
+        {
+          "address": 690728,
+          "bytes": "2100000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8ab4"
+        },
+        {
+          "address": 690732,
+          "bytes": "a43094e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r4, #0xa4]"
+        },
+        {
+          "address": 690736,
+          "bytes": "000053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690740,
+          "bytes": "1500000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8a90"
+        },
+        {
+          "address": 690744,
+          "bytes": "0000d3e5",
+          "mnemonic": "ldrb",
+          "operands": "r0, [r3]"
+        },
+        {
+          "address": 690748,
+          "bytes": "b01094e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r4, #0xb0]"
+        },
+        {
+          "address": 690752,
+          "bytes": "7c309fe5",
+          "mnemonic": "ldr",
+          "operands": "r3, [pc, #0x7c]"
+        },
+        {
+          "address": 690756,
+          "bytes": "1820a0e3",
+          "mnemonic": "mov",
+          "operands": "r2, #0x18"
+        },
+        {
+          "address": 690760,
+          "bytes": "98c094e5",
+          "mnemonic": "ldr",
+          "operands": "ip, [r4, #0x98]"
+        },
+        {
+          "address": 690764,
+          "bytes": "010051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #1"
+        },
+        {
+          "address": 690768,
+          "bytes": "0010a013",
+          "mnemonic": "movne",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690772,
+          "bytes": "0110a003",
+          "mnemonic": "moveq",
+          "operands": "r1, #1"
+        },
+        {
+          "address": 690776,
+          "bytes": "34300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x34]"
+        },
+        {
+          "address": 690780,
+          "bytes": "30200be5",
+          "mnemonic": "str",
+          "operands": "r2, [fp, #-0x30]"
+        },
+        {
+          "address": 690784,
+          "bytes": "0030a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690788,
+          "bytes": "082082e2",
+          "mnemonic": "add",
+          "operands": "r2, r2, #8"
+        },
+        {
+          "address": 690792,
+          "bytes": "2c000be5",
+          "mnemonic": "str",
+          "operands": "r0, [fp, #-0x2c]"
+        },
+        {
+          "address": 690796,
+          "bytes": "20104be5",
+          "mnemonic": "strb",
+          "operands": "r1, [fp, #-0x20]"
+        },
+        {
+          "address": 690800,
+          "bytes": "28300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x28]"
+        },
+        {
+          "address": 690804,
+          "bytes": "24200be5",
+          "mnemonic": "str",
+          "operands": "r2, [fp, #-0x24]"
+        },
+        {
+          "address": 690808,
+          "bytes": "80239ce5",
+          "mnemonic": "ldr",
+          "operands": "r2, [ip, #0x380]"
+        },
+        {
+          "address": 690812,
+          "bytes": "34104be2",
+          "mnemonic": "sub",
+          "operands": "r1, fp, #0x34"
+        },
+        {
+          "address": 690816,
+          "bytes": "0200a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r2"
+        },
+        {
+          "address": 690820,
+          "bytes": "003092e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r2]"
+        },
+        {
+          "address": 690824,
+          "bytes": "0fe0a0e1",
+          "mnemonic": "mov",
+          "operands": "lr, pc"
+        },
+        {
+          "address": 690828,
+          "bytes": "00f093e5",
+          "mnemonic": "ldr",
+          "operands": "pc, [r3]"
+        },
+        {
+          "address": 690832,
+          "bytes": "1cd04be2",
+          "mnemonic": "sub",
+          "operands": "sp, fp, #0x1c"
+        },
+        {
+          "address": 690836,
+          "bytes": "f0a89de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, r6, r7, fp, sp, pc}"
+        },
+        {
+          "address": 690840,
+          "bytes": "0010a0e1",
+          "mnemonic": "mov",
+          "operands": "r1, r0"
+        },
+        {
+          "address": 690844,
+          "bytes": "9c0094e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r4, #0x9c]"
+        },
+        {
+          "address": 690848,
+          "bytes": "66f8ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6c40"
+        },
+        {
+          "address": 690852,
+          "bytes": "a03094e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r4, #0xa0]"
+        },
+        {
+          "address": 690856,
+          "bytes": "0120a0e3",
+          "mnemonic": "mov",
+          "operands": "r2, #1"
+        },
+        {
+          "address": 690860,
+          "bytes": "0010d3e5",
+          "mnemonic": "ldrb",
+          "operands": "r1, [r3]"
+        },
+        {
+          "address": 690864,
+          "bytes": "d2ffffea",
+          "mnemonic": "b",
+          "operands": "#0xa8a00"
+        },
+        {
+          "address": 690868,
+          "bytes": "0400a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r4"
+        },
+        {
+          "address": 690872,
+          "bytes": "a3feffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa854c"
+        },
+        {
+          "address": 690876,
+          "bytes": "daffffea",
+          "mnemonic": "b",
+          "operands": "#0xa8a2c"
+        }
+      ],
+      "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+      "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000a899c.cpp.txt",
+      "pseudocode_sha256": "258f3d6284e2b5b700a0e8260a50900a04554d9eed774e62868683cb592c9098",
+      "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::AVB::AvbComponent::addCascadeListener(long long, bool)\n// Symbol _ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb address=0xa899c\n\nvoid Presonus::AVB::AvbComponent::addCascadeListener(void* a0, unsigned int a1, int a2, int a3)\n{\n    unsigned int v15;  // lr\n    unsigned int v16;  // r7\n    unsigned int v17;  // r6\n    unsigned int v18;  // r5\n    unsigned int v19;  // r4\n    unsigned int v20;  // r7\n    void* v21;  // r0\n    char v22;  // r1\n    unsigned int v0;  // [bp-0x40]\n    char v1[4];  // [bp-0x38]\n    unsigned int v2;  // [bp-0x34]\n    unsigned int v3;  // [bp-0x30]\n    unsigned int v4;  // [bp-0x2c]\n    unsigned int v5;  // [bp-0x28]\n    char v6;  // [bp-0x24]\n    unsigned int v7;  // [bp-0x20]\n    unsigned int v8;  // [bp-0x1c]\n    unsigned int v9;  // [bp-0x18]\n    unsigned int v10;  // [bp-0x14]\n    char *v11;  // [bp-0x10]\n    unsigned int v12;  // [bp-0x8]\n    unsigned int v13;  // [bp-0x4]\n    char v14;  // [bp+0x0]\n\n    v13 = 690600;\n    v12 = v15;\n    v11 = &v14;\n    v10 = v16;\n    v9 = v17;\n    v8 = v18;\n    v7 = v19;\n    v20 = v14;\n    if ((int)a0[160])\n        Presonus::AVB::AvbManagerBase::removeListener((int)a0[156], (int)a0[160]);\n    v21 = Presonus::AVB::AvbManagerBase::addListener((int)a0[156], 0, a2, a3, 0, 33);\n    *(void* *)&a0[160] = v21;\n    if (!v20)\n    {\n        if (v20)\n            goto LABEL_a8a98;\n    }\n    else\n    {\n        if (v20)\n        {\nLABEL_a8a98:\n            Presonus::AVB::AvbManagerBase::setAudioClockToListener((int)a0[156], v21);\n        }\n    }\n    printf(\"AvbComponent::addCascadeListener avb listener index = %d clock to listener ? %d\\n\");\n    v0 = 0;\n    Presonus::AVB::AvbComponent::addMixerInputListener(a0, 0, a2, a3);\n    if ((int)a0[176] == 1)\n        Presonus::AVB::AvbComponent::routeLinkSlotsFromAvb(a0);\n    if (!(int)a0[164])\n        return;\n    if ((int)a0[176] != 1)\n    {\n        v22 = 0;\n        if ((int)a0[176] != 1)\n            goto LABEL_a8a56;\nLABEL_a8a55:\n        v22 = 1;\n    }\n    else\n    {\n        v22 = 1;\n        if ((int)a0[176] == 1)\n            goto LABEL_a8a55;\nLABEL_a8a56:\n    }\n    strncpy(v1, \"rfsa\", 4);\n    v2 = 24;\n    v3 = *(char *)(int)a0[164];\n    v6 = v22;\n    v4 = 0;\n    v5 = 32;\n    (*(int *)*(int *)*(int *)((int)a0[152] + 896))();\n    return;\n}\n\n"
+    },
+    {
+      "address": 690136,
+      "size": 452,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 657368,
+      "bytes_sha256": "1e08f101b1c073a4ec77cd79cae145db1bb2f861bb837bbaa6696d692c9dfbbb",
+      "storage": "file",
+      "instructions": [
+        {
+          "address": 690136,
+          "bytes": "0dc0a0e1",
+          "mnemonic": "mov",
+          "operands": "ip, sp"
+        },
+        {
+          "address": 690140,
+          "bytes": "f0dd2de9",
+          "mnemonic": "push",
+          "operands": "{r4, r5, r6, r7, r8, sl, fp, ip, lr, pc}"
+        },
+        {
+          "address": 690144,
+          "bytes": "04b04ce2",
+          "mnemonic": "sub",
+          "operands": "fp, ip, #4"
+        },
+        {
+          "address": 690148,
+          "bytes": "60d04de2",
+          "mnemonic": "sub",
+          "operands": "sp, sp, #0x60"
+        },
+        {
+          "address": 690152,
+          "bytes": "ac1090e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r0, #0xac]"
+        },
+        {
+          "address": 690156,
+          "bytes": "0060a0e1",
+          "mnemonic": "mov",
+          "operands": "r6, r0"
+        },
+        {
+          "address": 690160,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690164,
+          "bytes": "0270a0e1",
+          "mnemonic": "mov",
+          "operands": "r7, r2"
+        },
+        {
+          "address": 690168,
+          "bytes": "0380a0e1",
+          "mnemonic": "mov",
+          "operands": "r8, r3"
+        },
+        {
+          "address": 690172,
+          "bytes": "0450dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r5, [fp, #4]"
+        },
+        {
+          "address": 690176,
+          "bytes": "0c40dbe5",
+          "mnemonic": "ldrb",
+          "operands": "r4, [fp, #0xc]"
+        },
+        {
+          "address": 690180,
+          "bytes": "0300000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8818"
+        },
+        {
+          "address": 690184,
+          "bytes": "9c0090e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r0, #0x9c]"
+        },
+        {
+          "address": 690188,
+          "bytes": "c5f9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6f28"
+        },
+        {
+          "address": 690192,
+          "bytes": "0030a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690196,
+          "bytes": "ac3086e5",
+          "mnemonic": "str",
+          "operands": "r3, [r6, #0xac]"
+        },
+        {
+          "address": 690200,
+          "bytes": "a41096e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r6, #0xa4]"
+        },
+        {
+          "address": 690204,
+          "bytes": "000051e3",
+          "mnemonic": "cmp",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690208,
+          "bytes": "0300000a",
+          "mnemonic": "beq",
+          "operands": "#0xa8834"
+        },
+        {
+          "address": 690212,
+          "bytes": "9c0096e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r6, #0x9c]"
+        },
+        {
+          "address": 690216,
+          "bytes": "bef9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa6f28"
+        },
+        {
+          "address": 690220,
+          "bytes": "0030a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690224,
+          "bytes": "a43086e5",
+          "mnemonic": "str",
+          "operands": "r3, [r6, #0xa4]"
+        },
+        {
+          "address": 690228,
+          "bytes": "01a034e2",
+          "mnemonic": "eors",
+          "operands": "sl, r4, #1"
+        },
+        {
+          "address": 690232,
+          "bytes": "3e00001a",
+          "mnemonic": "bne",
+          "operands": "#0xa8938"
+        },
+        {
+          "address": 690236,
+          "bytes": "ac3096e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r6, #0xac]"
+        },
+        {
+          "address": 690240,
+          "bytes": "000053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690244,
+          "bytes": "0370a001",
+          "mnemonic": "moveq",
+          "operands": "r7, r3"
+        },
+        {
+          "address": 690248,
+          "bytes": "0070d315",
+          "mnemonic": "ldrbne",
+          "operands": "r7, [r3]"
+        },
+        {
+          "address": 690252,
+          "bytes": "08309be5",
+          "mnemonic": "ldr",
+          "operands": "r3, [fp, #8]"
+        },
+        {
+          "address": 690256,
+          "bytes": "010053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #1"
+        },
+        {
+          "address": 690260,
+          "bytes": "00c0a013",
+          "mnemonic": "movne",
+          "operands": "ip, #0"
+        },
+        {
+          "address": 690264,
+          "bytes": "4b00000a",
+          "mnemonic": "beq",
+          "operands": "#0xa898c"
+        },
+        {
+          "address": 690268,
+          "bytes": "980096e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r6, #0x98]"
+        },
+        {
+          "address": 690272,
+          "bytes": "30519fe5",
+          "mnemonic": "ldr",
+          "operands": "r5, [pc, #0x130]"
+        },
+        {
+          "address": 690276,
+          "bytes": "741190e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r0, #0x174]"
+        },
+        {
+          "address": 690280,
+          "bytes": "1c40a0e3",
+          "mnemonic": "mov",
+          "operands": "r4, #0x1c"
+        },
+        {
+          "address": 690284,
+          "bytes": "2a30a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0x2a"
+        },
+        {
+          "address": 690288,
+          "bytes": "0020a0e3",
+          "mnemonic": "mov",
+          "operands": "r2, #0"
+        },
+        {
+          "address": 690292,
+          "bytes": "2c100be5",
+          "mnemonic": "str",
+          "operands": "r1, [fp, #-0x2c]"
+        },
+        {
+          "address": 690296,
+          "bytes": "28c04be5",
+          "mnemonic": "strb",
+          "operands": "ip, [fp, #-0x28]"
+        },
+        {
+          "address": 690300,
+          "bytes": "38300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x38]"
+        },
+        {
+          "address": 690304,
+          "bytes": "30200be5",
+          "mnemonic": "str",
+          "operands": "r2, [fp, #-0x30]"
+        },
+        {
+          "address": 690308,
+          "bytes": "40500be5",
+          "mnemonic": "str",
+          "operands": "r5, [fp, #-0x40]"
+        },
+        {
+          "address": 690312,
+          "bytes": "3c400be5",
+          "mnemonic": "str",
+          "operands": "r4, [fp, #-0x3c]"
+        },
+        {
+          "address": 690316,
+          "bytes": "34700be5",
+          "mnemonic": "str",
+          "operands": "r7, [fp, #-0x34]"
+        },
+        {
+          "address": 690320,
+          "bytes": "802390e5",
+          "mnemonic": "ldr",
+          "operands": "r2, [r0, #0x380]"
+        },
+        {
+          "address": 690324,
+          "bytes": "40104be2",
+          "mnemonic": "sub",
+          "operands": "r1, fp, #0x40"
+        },
+        {
+          "address": 690328,
+          "bytes": "0200a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r2"
+        },
+        {
+          "address": 690332,
+          "bytes": "003092e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r2]"
+        },
+        {
+          "address": 690336,
+          "bytes": "0fe0a0e1",
+          "mnemonic": "mov",
+          "operands": "lr, pc"
+        },
+        {
+          "address": 690340,
+          "bytes": "00f093e5",
+          "mnemonic": "ldr",
+          "operands": "pc, [r3]"
+        },
+        {
+          "address": 690344,
+          "bytes": "3a30a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0x3a"
+        },
+        {
+          "address": 690348,
+          "bytes": "981096e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r6, #0x98]"
+        },
+        {
+          "address": 690352,
+          "bytes": "1220a0e3",
+          "mnemonic": "mov",
+          "operands": "r2, #0x12"
+        },
+        {
+          "address": 690356,
+          "bytes": "54300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x54]"
+        },
+        {
+          "address": 690360,
+          "bytes": "393043e2",
+          "mnemonic": "sub",
+          "operands": "r3, r3, #0x39"
+        },
+        {
+          "address": 690364,
+          "bytes": "4c200be5",
+          "mnemonic": "str",
+          "operands": "r2, [fp, #-0x4c]"
+        },
+        {
+          "address": 690368,
+          "bytes": "48300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x48]"
+        },
+        {
+          "address": 690372,
+          "bytes": "5c500be5",
+          "mnemonic": "str",
+          "operands": "r5, [fp, #-0x5c]"
+        },
+        {
+          "address": 690376,
+          "bytes": "58400be5",
+          "mnemonic": "str",
+          "operands": "r4, [fp, #-0x58]"
+        },
+        {
+          "address": 690380,
+          "bytes": "50700be5",
+          "mnemonic": "str",
+          "operands": "r7, [fp, #-0x50]"
+        },
+        {
+          "address": 690384,
+          "bytes": "44a04be5",
+          "mnemonic": "strb",
+          "operands": "sl, [fp, #-0x44]"
+        },
+        {
+          "address": 690388,
+          "bytes": "802391e5",
+          "mnemonic": "ldr",
+          "operands": "r2, [r1, #0x380]"
+        },
+        {
+          "address": 690392,
+          "bytes": "5c104be2",
+          "mnemonic": "sub",
+          "operands": "r1, fp, #0x5c"
+        },
+        {
+          "address": 690396,
+          "bytes": "0200a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r2"
+        },
+        {
+          "address": 690400,
+          "bytes": "003092e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r2]"
+        },
+        {
+          "address": 690404,
+          "bytes": "0fe0a0e1",
+          "mnemonic": "mov",
+          "operands": "lr, pc"
+        },
+        {
+          "address": 690408,
+          "bytes": "00f093e5",
+          "mnemonic": "ldr",
+          "operands": "pc, [r3]"
+        },
+        {
+          "address": 690412,
+          "bytes": "3c30a0e3",
+          "mnemonic": "mov",
+          "operands": "r3, #0x3c"
+        },
+        {
+          "address": 690416,
+          "bytes": "981096e5",
+          "mnemonic": "ldr",
+          "operands": "r1, [r6, #0x98]"
+        },
+        {
+          "address": 690420,
+          "bytes": "0220a0e3",
+          "mnemonic": "mov",
+          "operands": "r2, #2"
+        },
+        {
+          "address": 690424,
+          "bytes": "70300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x70]"
+        },
+        {
+          "address": 690428,
+          "bytes": "2c3043e2",
+          "mnemonic": "sub",
+          "operands": "r3, r3, #0x2c"
+        },
+        {
+          "address": 690432,
+          "bytes": "78500be5",
+          "mnemonic": "str",
+          "operands": "r5, [fp, #-0x78]"
+        },
+        {
+          "address": 690436,
+          "bytes": "74400be5",
+          "mnemonic": "str",
+          "operands": "r4, [fp, #-0x74]"
+        },
+        {
+          "address": 690440,
+          "bytes": "6c700be5",
+          "mnemonic": "str",
+          "operands": "r7, [fp, #-0x6c]"
+        },
+        {
+          "address": 690444,
+          "bytes": "68300be5",
+          "mnemonic": "str",
+          "operands": "r3, [fp, #-0x68]"
+        },
+        {
+          "address": 690448,
+          "bytes": "64200be5",
+          "mnemonic": "str",
+          "operands": "r2, [fp, #-0x64]"
+        },
+        {
+          "address": 690452,
+          "bytes": "60a04be5",
+          "mnemonic": "strb",
+          "operands": "sl, [fp, #-0x60]"
+        },
+        {
+          "address": 690456,
+          "bytes": "802391e5",
+          "mnemonic": "ldr",
+          "operands": "r2, [r1, #0x380]"
+        },
+        {
+          "address": 690460,
+          "bytes": "78104be2",
+          "mnemonic": "sub",
+          "operands": "r1, fp, #0x78"
+        },
+        {
+          "address": 690464,
+          "bytes": "0200a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r2"
+        },
+        {
+          "address": 690468,
+          "bytes": "003092e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r2]"
+        },
+        {
+          "address": 690472,
+          "bytes": "0fe0a0e1",
+          "mnemonic": "mov",
+          "operands": "lr, pc"
+        },
+        {
+          "address": 690476,
+          "bytes": "00f093e5",
+          "mnemonic": "ldr",
+          "operands": "pc, [r3]"
+        },
+        {
+          "address": 690480,
+          "bytes": "24d04be2",
+          "mnemonic": "sub",
+          "operands": "sp, fp, #0x24"
+        },
+        {
+          "address": 690484,
+          "bytes": "f0ad9de8",
+          "mnemonic": "ldm",
+          "operands": "sp, {r4, r5, r6, r7, r8, sl, fp, sp, pc}"
+        },
+        {
+          "address": 690488,
+          "bytes": "0720a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r7"
+        },
+        {
+          "address": 690492,
+          "bytes": "14c0a0e3",
+          "mnemonic": "mov",
+          "operands": "ip, #0x14"
+        },
+        {
+          "address": 690496,
+          "bytes": "9c0096e5",
+          "mnemonic": "ldr",
+          "operands": "r0, [r6, #0x9c]"
+        },
+        {
+          "address": 690500,
+          "bytes": "0010a0e3",
+          "mnemonic": "mov",
+          "operands": "r1, #0"
+        },
+        {
+          "address": 690504,
+          "bytes": "0830a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r8"
+        },
+        {
+          "address": 690508,
+          "bytes": "02108de8",
+          "mnemonic": "stm",
+          "operands": "sp, {r1, ip}"
+        },
+        {
+          "address": 690512,
+          "bytes": "dcf9ffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa70c8"
+        },
+        {
+          "address": 690516,
+          "bytes": "0720a0e1",
+          "mnemonic": "mov",
+          "operands": "r2, r7"
+        },
+        {
+          "address": 690520,
+          "bytes": "ac0086e5",
+          "mnemonic": "str",
+          "operands": "r0, [r6, #0xac]"
+        },
+        {
+          "address": 690524,
+          "bytes": "0830a0e1",
+          "mnemonic": "mov",
+          "operands": "r3, r8"
+        },
+        {
+          "address": 690528,
+          "bytes": "0600a0e1",
+          "mnemonic": "mov",
+          "operands": "r0, r6"
+        },
+        {
+          "address": 690532,
+          "bytes": "00508de5",
+          "mnemonic": "str",
+          "operands": "r5, [sp]"
+        },
+        {
+          "address": 690536,
+          "bytes": "73ffffeb",
+          "mnemonic": "bl",
+          "operands": "#0xa873c"
+        },
+        {
+          "address": 690540,
+          "bytes": "ac3096e5",
+          "mnemonic": "ldr",
+          "operands": "r3, [r6, #0xac]"
+        },
+        {
+          "address": 690544,
+          "bytes": "000053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #0"
+        },
+        {
+          "address": 690548,
+          "bytes": "0370a001",
+          "mnemonic": "moveq",
+          "operands": "r7, r3"
+        },
+        {
+          "address": 690552,
+          "bytes": "0070d315",
+          "mnemonic": "ldrbne",
+          "operands": "r7, [r3]"
+        },
+        {
+          "address": 690556,
+          "bytes": "08309be5",
+          "mnemonic": "ldr",
+          "operands": "r3, [fp, #8]"
+        },
+        {
+          "address": 690560,
+          "bytes": "010053e3",
+          "mnemonic": "cmp",
+          "operands": "r3, #1"
+        },
+        {
+          "address": 690564,
+          "bytes": "00c0a013",
+          "mnemonic": "movne",
+          "operands": "ip, #0"
+        },
+        {
+          "address": 690568,
+          "bytes": "b3ffff1a",
+          "mnemonic": "bne",
+          "operands": "#0xa885c"
+        },
+        {
+          "address": 690572,
+          "bytes": "00c05ae2",
+          "mnemonic": "subs",
+          "operands": "ip, sl, #0"
+        },
+        {
+          "address": 690576,
+          "bytes": "01c0a013",
+          "mnemonic": "movne",
+          "operands": "ip, #1"
+        },
+        {
+          "address": 690580,
+          "bytes": "b0ffffea",
+          "mnemonic": "b",
+          "operands": "#0xa885c"
+        }
+      ],
+      "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+      "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000a87d8.cpp.txt",
+      "pseudocode_sha256": "6a1439b6a7d332d3ded3bbb1917f0c63055c5f9d24cbb786481e27e3b0165c25",
+      "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::AVB::AvbComponent::addConsoleBusListener(long long, bool, int, bool)\n// Symbol _ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib address=0xa87d8\ntypedef struct st_a87d8_3 {\n    char padding_0[152];\n    struct st_a87d8_2 *field_98;\n    void* field_9c;\n    char padding_a0[4];\n    unsigned int field_a4;\n    char padding_a8[4];\n    struct st_a87d8_4 *field_ac;\n} st_a87d8_3;\n\ntypedef struct st_a87d8_1 {\n    struct st_a87d8_0 *field_0;\n} st_a87d8_1;\n\ntypedef struct st_a87d8_0 {\n    unsigned int field_0;\n} st_a87d8_0;\n\ntypedef struct st_a87d8_2 {\n    char padding_0[372];\n    unsigned int field_174;\n    char padding_178[520];\n    struct st_a87d8_1 *field_380;\n} st_a87d8_2;\n\ntypedef struct st_a87d8_4 {\n    char field_0;\n} st_a87d8_4;\n\n\nvoid Presonus::AVB::AvbComponent::addConsoleBusListener(st_a87d8_3 *a0, unsigned int a1, int a2, int a3, char a4, unsigned int a5, char a6)\n{\n    char *v32;  // r12\n    unsigned int v33;  // lr\n    unsigned int v42;  // r7\n    unsigned int v44;  // r1\n    st_a87d8_1 **v45;  // r2\n    st_a87d8_1 **v46;  // r2\n    st_a87d8_1 **v47;  // r2\n    unsigned int v34;  // r10\n    unsigned int v35;  // r8\n    unsigned int v36;  // r7\n    unsigned int v37;  // r6\n    unsigned int v38;  // r5\n    unsigned int v39;  // r4\n    unsigned int v40;  // r4\n    char *v41;  // r10\n    unsigned int v0;  // [bp-0x88]\n    char v1[4];  // [bp-0x7c]\n    unsigned int v2;  // [bp-0x78]\n    unsigned int v3;  // [bp-0x74]\n    unsigned int v4;  // [bp-0x70]\n    unsigned int v5;  // [bp-0x6c]\n    unsigned int v6;  // [bp-0x68]\n    char v7;  // [bp-0x64]\n    char v8[4];  // [bp-0x60]\n    unsigned int v9;  // [bp-0x5c]\n    unsigned int v10;  // [bp-0x58]\n    unsigned int v11;  // [bp-0x54]\n    unsigned int v12;  // [bp-0x50]\n    unsigned int v13;  // [bp-0x4c]\n    char v14;  // [bp-0x48]\n    char v15[4];  // [bp-0x44]\n    unsigned int v16;  // [bp-0x40]\n    unsigned int v17;  // [bp-0x3c]\n    unsigned int v18;  // [bp-0x38]\n    unsigned int v19;  // [bp-0x34]\n    unsigned int v20;  // [bp-0x30]\n    char v21;  // [bp-0x2c]\n    unsigned int v22;  // [bp-0x28]\n    unsigned int v23;  // [bp-0x24]\n    unsigned int v24;  // [bp-0x20]\n    unsigned int v25;  // [bp-0x1c]\n    unsigned int v26;  // [bp-0x18]\n    unsigned int v27;  // [bp-0x14]\n    char *v28;  // [bp-0x10]\n    char *v29;  // [bp-0xc]\n    unsigned int v30;  // [bp-0x8]\n    unsigned int v31;  // [bp-0x4]\n\n    v32 = &a4;\n    v31 = 690148;\n    v30 = v33;\n    v29 = &a4;\n    v28 = &a4;\n    v27 = v34;\n    v26 = v35;\n    v25 = v36;\n    v24 = v37;\n    v23 = v38;\n    v22 = v39;\n    v40 = a6;\n    if (a0->field_ac)\n    {\n        Presonus::AVB::AvbManagerBase::removeListener(a0->field_9c, a0->field_ac);\n        a0->field_ac = NULL;\n    }\n    if (a0->field_a4)\n    {\n        Presonus::AVB::AvbManagerBase::removeListener(a0->field_9c, a0->field_a4);\n        a0->field_a4 = 0;\n    }\n    v41 = v40 ^ 1;\n    if (!(v40 ^ 1))\n    {\n        v42 = *(char *)a0->field_ac;\n        if (a5 != 1)\n        {\n            v32 = NULL;\n            if (a5 == 1)\n                goto LABEL_a898c;\n        }\n        else if (a5 == 1)\n        {\n            goto LABEL_a898c;\n        }\n    }\n    else\n    {\n        v32 = 0x14;\n        a0->field_ac = Presonus::AVB::AvbManagerBase::addListener(a0->field_9c, 0, a2, a3, 0, 20);\n        v0 = a4;\n        Presonus::AVB::AvbComponent::addMixerInputListener(a0, v44, a2, a3);\n        v42 = *(char *)a0->field_ac;\n        if (a5 != 1)\n        {\n            v32 = NULL;\n            if (a5 == 1)\n                goto LABEL_a898c;\n        }\n        else if (a5 == 1)\n        {\nLABEL_a898c:\n            if (v41)\n                v32 = 0x1;\n            else\n                v32 = v41;\n        }\n    }\n    v20 = a0->field_98->field_174;\n    v21 = (char)v32;\n    v17 = 42;\n    v19 = 0;\n    strncpy(v15, \"rbda\", 4);\n    v16 = 28;\n    v18 = v42;\n    v45 = a0->field_98->field_380;\n    (*(int *)*v45)(v45, v15, v45, *v45);\n    v10 = 58;\n    v12 = 18;\n    v13 = 1;\n    strncpy(v8, \"rbda\", 4);\n    v9 = 28;\n    v11 = v42;\n    v14 = (char)v41;\n    v46 = a0->field_98->field_380;\n    (*(int *)*v46)(v46, v8, v46, *v46);\n    v3 = 60;\n    strncpy(v1, \"rbda\", 4);\n    v2 = 28;\n    v4 = v42;\n    v5 = 16;\n    v6 = 2;\n    v7 = (char)v41;\n    v47 = a0->field_98->field_380;\n    (*(int *)*v47)(v47, v1, v47, *v47);\n    return;\n}\n\n"
+    }
+  ],
+  "elf": {
+    "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+  },
+  "formatter_version": "clang-format version 23.1.3",
+  "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "unicorn_version": "2.1.4",
+  "producers": {
+    "uc-library/candidates/graph-live-trial-04-avb/oracle.py": "22fe95a3a1e3fd7a2bba102efdf5274f1b2daeaf6371dd1580596979ca6b4309",
+    "uc-library/candidates/graph-live-trial-04-avb/replay.py": "b9aa539c0718af7081bdc5722577832902d6beb104af2c0413888cd2efe00df2",
+    "uc-library/candidates/graph-live-trial-04-avb/checks.py": "b64ac5ecaf61dca6971452a1c6d882063cc52fa1591cdda5c2ec3f7ca10847be",
+    "uc-library/candidates/graph-live-trial-04-avb/seal.py": "0524d3a5cd9ebeb9831411d0d7b3acb1cbf46816253bb5cdb463eeee0d14a66a"
+  },
+  "core": {
+    "pin": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "mapping": "uc-library/validation/core-upstream/source-map/server-functions.json",
+    "mapping_sha256": "e1ab6bcee2c4b2f8e1cd2184cece3951ae5e8a455f3c624e96c801681500c863",
+    "debug_provider": {
+      "mangled": "_ZN4Core11DebugPrintfEPKcz",
+      "demangled": "Core::DebugPrintf(char const*, ...)",
+      "address": 1141304,
+      "size": 80,
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "section": 12,
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "upstream_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+      "exact_encoded_interface_match": true,
+      "original_return_type_recovered": false,
+      "original_layout_verified": false,
+      "original_behavior_verified": false,
+      "status": "upstream-source-provided; binary behavior unverified",
+      "skip_manual_reconstruction": true,
+      "upstream": [
+        {
+          "name": "Core::DebugPrintf",
+          "displayname": "DebugPrintf(CStringPtr, ...)",
+          "kind": "FUNCTION_DECL",
+          "path": "core/system/coredebug.h",
+          "line": 65,
+          "column": 6,
+          "usr": "c:@N@Core@F@DebugPrintf#*1C.#",
+          "type": "void (CStringPtr, ...)",
+          "result_type": "void",
+          "arguments": [
+            "CStringPtr"
+          ],
+          "mangled_names": [
+            "_ZN4Core11DebugPrintfEPKcz"
+          ],
+          "definition": false,
+          "url": "https://github.com/cclsoftware/ccl-framework/blob/e8cbdea4a4a20e15111f5a690798a259c0374b31/core/system/coredebug.h#L65",
+          "source_sha256": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005"
+        },
+        {
+          "name": "Core::DebugPrintf",
+          "displayname": "DebugPrintf(CStringPtr, ...)",
+          "kind": "FUNCTION_DECL",
+          "path": "core/system/coredebug.cpp",
+          "line": 45,
+          "column": 12,
+          "usr": "c:@N@Core@F@DebugPrintf#*1C.#",
+          "type": "void (CStringPtr, ...)",
+          "result_type": "void",
+          "arguments": [
+            "CStringPtr"
+          ],
+          "mangled_names": [
+            "_ZN4Core11DebugPrintfEPKcz"
+          ],
+          "definition": true,
+          "definition_extent_start": 1683,
+          "definition_extent_end": 2004,
+          "definition_extent_sha256": "c4b586ecabd92de4e88692eeeba74240d88fc44a4c08d76dc0160e6194ebc0d5",
+          "url": "https://github.com/cclsoftware/ccl-framework/blob/e8cbdea4a4a20e15111f5a690798a259c0374b31/core/system/coredebug.cpp#L45",
+          "source_sha256": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+        }
+      ],
+      "source_body_available": true,
+      "matching_method": "compiler-mangled source declaration and definition",
+      "compiled_source_match": false,
+      "original_function_verified": false,
+      "hardware_verified": false
+    },
+    "library": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+    "library_sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+  },
+  "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+  "limitations": [
+    "Native class memory is synthetic; no original layout claim.",
+    "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+    "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+    "Core native debug body excluded; actual pinned Core used in C++ source port.",
+    "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+    "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+    "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+    "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+    "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+  ],
+  "functions": [
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib",
+      "demangled": "Presonus::AVB::AvbComponent::addListener(Presonus::AVB::AvbComponent::ListenerType, long long, bool, int, bool)",
+      "address": 690888,
+      "size": 92,
+      "section": 12,
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "cpp_compiled": true,
+      "mangling_namespace_checked": true,
+      "portable_ready": false,
+      "sources": {
+        "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+        "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+        "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+      },
+      "repository_sources": {
+        "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+        "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+      },
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+      "declaration_uncertainties": [
+        "Native class memory is synthetic; no original layout claim.",
+        "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+        "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+        "Core native debug body excluded; actual pinned Core used in C++ source port.",
+        "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+        "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+        "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+        "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+        "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+      ]
+    },
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb",
+      "demangled": "Presonus::AVB::AvbComponent::addCSInputListener(long long, bool)",
+      "address": 689860,
+      "size": 120,
+      "section": 12,
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "cpp_compiled": true,
+      "mangling_namespace_checked": true,
+      "portable_ready": false,
+      "sources": {
+        "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+        "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+        "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+      },
+      "repository_sources": {
+        "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+        "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+      },
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+      "declaration_uncertainties": [
+        "Native class memory is synthetic; no original layout claim.",
+        "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+        "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+        "Core native debug body excluded; actual pinned Core used in C++ source port.",
+        "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+        "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+        "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+        "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+        "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+      ]
+    },
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb",
+      "demangled": "Presonus::AVB::AvbComponent::addMixerInputListener(long long, bool)",
+      "address": 689980,
+      "size": 156,
+      "section": 12,
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "cpp_compiled": true,
+      "mangling_namespace_checked": true,
+      "portable_ready": false,
+      "sources": {
+        "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+        "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+        "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+      },
+      "repository_sources": {
+        "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+        "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+      },
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+      "declaration_uncertainties": [
+        "Native class memory is synthetic; no original layout claim.",
+        "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+        "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+        "Core native debug body excluded; actual pinned Core used in C++ source port.",
+        "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+        "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+        "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+        "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+        "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+      ]
+    },
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb",
+      "demangled": "Presonus::AVB::AvbComponent::addCascadeListener(long long, bool)",
+      "address": 690588,
+      "size": 300,
+      "section": 12,
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "cpp_compiled": true,
+      "mangling_namespace_checked": true,
+      "portable_ready": false,
+      "sources": {
+        "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+        "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+        "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+      },
+      "repository_sources": {
+        "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+        "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+      },
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+      "declaration_uncertainties": [
+        "Native class memory is synthetic; no original layout claim.",
+        "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+        "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+        "Core native debug body excluded; actual pinned Core used in C++ source port.",
+        "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+        "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+        "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+        "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+        "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+      ]
+    },
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib",
+      "demangled": "Presonus::AVB::AvbComponent::addConsoleBusListener(long long, bool, int, bool)",
+      "address": 690136,
+      "size": 452,
+      "section": 12,
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "cpp_compiled": true,
+      "mangling_namespace_checked": true,
+      "portable_ready": false,
+      "sources": {
+        "include/presonus/avb/AvbComponent.hpp": "6a24eeb63ae7d3e45a5d7dfcf2033166775760c9bacb9130a120a51e1b2e145b",
+        "src/Presonus/AVB/AvbComponent.cpp": "7ed21e245c83bf8ebcc3f736b923cc549a7d2cad0bc21bef96ab9c28ce6dd34f",
+        "tests/graph_trial04_avb_tests.cpp": "e72fda7be96581c820b0b514272d24f06ea9d44d19c66f2c18093d54dc073cf3"
+      },
+      "repository_sources": {
+        "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+        "third_party/ccl-framework/core/system/coredebug.cpp": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+      },
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented.",
+      "declaration_uncertainties": [
+        "Native class memory is synthetic; no original layout claim.",
+        "Manager/routing/debug and indirect packet sender calls are boundary stubs.",
+        "Manager returns distinct non-null listeners; allocation failure/native null dereference outside domain.",
+        "Core native debug body excluded; actual pinned Core used in C++ source port.",
+        "Packet padding bytes uninitialized; only explicit initialized fields compared.",
+        "Original void return declarations, class layout, inheritance, enum representation and ARM ABI remain unresolved; void and fixed int enum are explicit source-port choices.",
+        "App-specific dependency services are required external boundaries; no production manager or routing provider recovered in this scope.",
+        "CS logging uses pinned official CCL DebugPrintf; its firmware body is not reconstructed.",
+        "Packet padding is intentionally excluded; independent RoutingPacket is not original packet/class layout."
+      ]
+    }
+  ],
+  "mangled_names": [
+    "_ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib",
+    "_ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb",
+    "_ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb",
+    "_ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb",
+    "_ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib"
+  ]
+}

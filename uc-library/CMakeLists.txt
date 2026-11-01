@@ -1841,6 +1841,16 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/uc/DataChannel.hpp
+  presonus/MackieControlModel.hpp
+  presonus/MappingTable.hpp
+  presonus/LinkableComponent.hpp
+  presonus/dsp/Controller.hpp
+  presonus/avb/AvbComponent.hpp
+  presonus/panel/MixerLCD.hpp
+  presonus/MuteGroupBase.hpp
+  presonus/surface/MidiMixerHandler.hpp
+  presonus/panel/PanelComponent.hpp
   presonus/pcm4104/Pcm4104Spi.hpp
   presonus/DAWTimeInfo.hpp
   presonus/panel/Book.hpp
@@ -2103,3 +2113,5 @@ include(cmake/SurfaceFaderControls.cmake)
 include(cmake/PanelLCDDisplayControl.cmake)
 
 include(cmake/PanelTemperature.cmake)
+
+include(cmake/GraphTrial04.cmake)

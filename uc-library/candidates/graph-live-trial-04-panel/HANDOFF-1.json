@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "task_id": "trial04_panel_1",
+  "namespace": "Presonus::Panel::PanelComponent",
+  "packet_manifest": "temp/recovery-work/graph-live-trial-04/trial04_panel_1-packet/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZNK8Presonus5Panel14PanelComponent11detachGroupERKNS0_12ControlGroupE",
+      "address": 337444,
+      "size": 96,
+      "section": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Panel/PanelComponent.cpp",
+      "sha256": "a8bb3fca2eb97d4a63d4886b90afaec0537f2a990e6467e8df4fbe73fe81244b"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/panel/PanelComponent.hpp",
+      "sha256": "b57366e1fc2dc3b516d27eb09a6e605f4655d85497fb7e38c713ae8d0f1c1f9b"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial04_panel_tests.cpp",
+      "sha256": "eff2fb6b75544d2858d604e23a57494ab7a6e48f4f3b6ce79e7866d6855627c1"
+    },
+    {
+      "kind": "oracle",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/oracle.py",
+      "sha256": "ed5483174e24fb7ab76fecccf77dbcb46305d1b6565105c45ae1c6fa6b2d7e6e"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/fixtures.json",
+      "sha256": "adc1057a84677b49f166fdea6a41861da5c96dd40775d07db52601fcc5e9a6db"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/replay.py",
+      "sha256": "eed03799d3d053bca00016c8a3159f2f7cccd8e19922d5aa8404eca8cab5999d"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/check.py",
+      "sha256": "0f792e1a648d42d7a74051958d33910ac0a897f6a345112a8308c662f5480c83"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/proof.json",
+      "sha256": "d6b8b217554f8959aa69b0b4c15634f26cfc24f902a1e06605250666ebda7f5d"
+    },
+    {
+      "kind": "native",
+      "path": "uc-library/candidates/graph-live-trial-04-panel/native-ranges.json",
+      "sha256": "53b38e859dcd5ccd5a07a14a5a8589208575348d8297f709bf13cd5825906045"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/graph-live-trial-04/trial04_panel_1-packet/context.json",
+      "sha256": "8f89c712f58b4adb6dcce61e37b08e0e2ddedeab993a663e0451dc9c39a638e7"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-panel/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-panel/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-panel/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-panel/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers.",
+  "limitations": [
+    "dependency bodies stubbed",
+    "unencoded original returns unresolved",
+    "no original layouts, ARM ABI or hardware established"
+  ],
+  "build_integration": {
+    "production_partition": "RM proposed; Root verify ownership",
+    "public_headers": [
+      "include/presonus/panel/PanelComponent.hpp"
+    ],
+    "production_sources": [
+      "src/Presonus/Panel/PanelComponent.cpp"
+    ],
+    "test_sources": [
+      "tests/graph_trial04_panel_tests.cpp"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/graph-live-trial-04-panel/replay.py",
+      "CANONICAL_TEST_EXECUTABLE"
+    ],
+    "fixture": "uc-library/candidates/graph-live-trial-04-panel/fixtures.json",
+    "link_dependencies": []
+  }
+}

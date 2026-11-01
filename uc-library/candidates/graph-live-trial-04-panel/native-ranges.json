@@ -1,0 +1,683 @@
+[
+  {
+    "address": 337444,
+    "size": 96,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 304676,
+    "bytes_sha256": "675b155bf85cfc72c95372577de6aae4103f29a71360eccc565865091958227d",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 337444,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 337448,
+        "bytes": "70d82de9",
+        "mnemonic": "push",
+        "operands": "{r4, r5, r6, fp, ip, lr, pc}"
+      },
+      {
+        "address": 337452,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 337456,
+        "bytes": "04d04de2",
+        "mnemonic": "sub",
+        "operands": "sp, sp, #4"
+      },
+      {
+        "address": 337460,
+        "bytes": "0100a0e1",
+        "mnemonic": "mov",
+        "operands": "r0, r1"
+      },
+      {
+        "address": 337464,
+        "bytes": "0160a0e1",
+        "mnemonic": "mov",
+        "operands": "r6, r1"
+      },
+      {
+        "address": 337468,
+        "bytes": "31ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8db08"
+      },
+      {
+        "address": 337472,
+        "bytes": "005050e2",
+        "mnemonic": "subs",
+        "operands": "r5, r0, #0"
+      },
+      {
+        "address": 337476,
+        "bytes": "70a89dd9",
+        "mnemonic": "ldmible",
+        "operands": "sp, {r4, r5, r6, fp, sp, pc}"
+      },
+      {
+        "address": 337480,
+        "bytes": "0040a0e3",
+        "mnemonic": "mov",
+        "operands": "r4, #0"
+      },
+      {
+        "address": 337484,
+        "bytes": "0410a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r4"
+      },
+      {
+        "address": 337488,
+        "bytes": "0600a0e1",
+        "mnemonic": "mov",
+        "operands": "r0, r6"
+      },
+      {
+        "address": 337492,
+        "bytes": "d3ec00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8d9a8"
+      },
+      {
+        "address": 337496,
+        "bytes": "0010a0e3",
+        "mnemonic": "mov",
+        "operands": "r1, #0"
+      },
+      {
+        "address": 337500,
+        "bytes": "003050e2",
+        "mnemonic": "subs",
+        "operands": "r3, r0, #0"
+      },
+      {
+        "address": 337504,
+        "bytes": "014084e2",
+        "mnemonic": "add",
+        "operands": "r4, r4, #1"
+      },
+      {
+        "address": 337508,
+        "bytes": "0120a0e1",
+        "mnemonic": "mov",
+        "operands": "r2, r1"
+      },
+      {
+        "address": 337512,
+        "bytes": "0200000a",
+        "mnemonic": "beq",
+        "operands": "#0x52678"
+      },
+      {
+        "address": 337516,
+        "bytes": "003093e5",
+        "mnemonic": "ldr",
+        "operands": "r3, [r3]"
+      },
+      {
+        "address": 337520,
+        "bytes": "0fe0a0e1",
+        "mnemonic": "mov",
+        "operands": "lr, pc"
+      },
+      {
+        "address": 337524,
+        "bytes": "10f093e5",
+        "mnemonic": "ldr",
+        "operands": "pc, [r3, #0x10]"
+      },
+      {
+        "address": 337528,
+        "bytes": "040055e1",
+        "mnemonic": "cmp",
+        "operands": "r5, r4"
+      },
+      {
+        "address": 337532,
+        "bytes": "f2ffffca",
+        "mnemonic": "bgt",
+        "operands": "#0x5264c"
+      },
+      {
+        "address": 337536,
+        "bytes": "70a89de9",
+        "mnemonic": "ldmib",
+        "operands": "sp, {r4, r5, r6, fp, sp, pc}"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+    "pseudocode_path": "uc-library/recovered-all/server/pseudocode/00052624.cpp.txt",
+    "pseudocode_sha256": "8ee726adedf72c31b401af56135701406914ed3efda3e51e3271f9707bc14668",
+    "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Panel::PanelComponent::detachGroup(Presonus::Panel::ControlGroup const&) const\n// Symbol _ZNK8Presonus5Panel14PanelComponent11detachGroupERKNS0_12ControlGroupE address=0x52624\ntypedef struct st_52624_0 {\n    char padding_0[16];\n    struct st_52624_1 *field_10;\n} st_52624_0;\n\ntypedef struct st_52624_1 {\n    unsigned int field_0;\n} st_52624_1;\n\n\nvoid Presonus::Panel::PanelComponent::detachGroup(unsigned int a0, int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8, unsigned int a9, unsigned int a10)\n{\n    int v4;  // r0\n    int i;  // r4\n    st_52624_0 **v6;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x8]\n    unsigned int v3;  // [bp-0x4]\n\n    v3 = 337456;\n    v1 = &a4;\n    v0 = &a4;\n    v4 = Presonus::Panel::ControlGroup::count(a1);\n    if (v4 <= 0)\n        goto *((void *)(v2));\n    i = 0;\n    do\n    {\n        v6 = Presonus::Panel::ControlGroup::at(a1, i);\n        i += 1;\n        if (v6)\n            *v6->field_10();\n    } while (i < v4);\n    goto *((void *)(v2));\n}\n\n"
+  },
+  {
+    "address": 337656,
+    "size": 80,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 304888,
+    "bytes_sha256": "46cbe96bd9c34b35771275bff8cb4fe2f467c24998f333e77894ff1ee250696b",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 337656,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 337660,
+        "bytes": "70d82de9",
+        "mnemonic": "push",
+        "operands": "{r4, r5, r6, fp, ip, lr, pc}"
+      },
+      {
+        "address": 337664,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 337668,
+        "bytes": "04d04de2",
+        "mnemonic": "sub",
+        "operands": "sp, sp, #4"
+      },
+      {
+        "address": 337672,
+        "bytes": "0050a0e1",
+        "mnemonic": "mov",
+        "operands": "r5, r0"
+      },
+      {
+        "address": 337676,
+        "bytes": "900090e5",
+        "mnemonic": "ldr",
+        "operands": "r0, [r0, #0x90]"
+      },
+      {
+        "address": 337680,
+        "bytes": "07ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8db34"
+      },
+      {
+        "address": 337684,
+        "bytes": "006050e2",
+        "mnemonic": "subs",
+        "operands": "r6, r0, #0"
+      },
+      {
+        "address": 337688,
+        "bytes": "70a89dd9",
+        "mnemonic": "ldmible",
+        "operands": "sp, {r4, r5, r6, fp, sp, pc}"
+      },
+      {
+        "address": 337692,
+        "bytes": "0040a0e3",
+        "mnemonic": "mov",
+        "operands": "r4, #0"
+      },
+      {
+        "address": 337696,
+        "bytes": "0410a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r4"
+      },
+      {
+        "address": 337700,
+        "bytes": "900095e5",
+        "mnemonic": "ldr",
+        "operands": "r0, [r5, #0x90]"
+      },
+      {
+        "address": 337704,
+        "bytes": "06ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8db48"
+      },
+      {
+        "address": 337708,
+        "bytes": "014084e2",
+        "mnemonic": "add",
+        "operands": "r4, r4, #1"
+      },
+      {
+        "address": 337712,
+        "bytes": "0010a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r0"
+      },
+      {
+        "address": 337716,
+        "bytes": "0500a0e1",
+        "mnemonic": "mov",
+        "operands": "r0, r5"
+      },
+      {
+        "address": 337720,
+        "bytes": "b9ffffeb",
+        "mnemonic": "bl",
+        "operands": "#0x52624"
+      },
+      {
+        "address": 337724,
+        "bytes": "040056e1",
+        "mnemonic": "cmp",
+        "operands": "r6, r4"
+      },
+      {
+        "address": 337728,
+        "bytes": "f6ffffca",
+        "mnemonic": "bgt",
+        "operands": "#0x52720"
+      },
+      {
+        "address": 337732,
+        "bytes": "70a89de9",
+        "mnemonic": "ldmib",
+        "operands": "sp, {r4, r5, r6, fp, sp, pc}"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+    "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000526f8.cpp.txt",
+    "pseudocode_sha256": "d5a50a817ecc2f07313fcd510fa7e9b54fc0f83c09dcebcd80a82ff94d378602",
+    "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Panel::PanelComponent::detachAll() const\n// Symbol _ZNK8Presonus5Panel14PanelComponent9detachAllEv address=0x526f8\ntypedef struct st_526f8_0 {\n    char padding_0[144];\n    int field_90;\n} st_526f8_0;\n\n\nint Presonus::Panel::PanelComponent::detachAll(st_526f8_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8, unsigned int a9, unsigned int a10)\n{\n    int v6;  // r0\n    int i;  // r4\n    unsigned int v9;  // r2\n    unsigned int v10;  // r3\n    char v0;  // [bp-0x20]\n    unsigned int v1;  // [bp-0x1c]\n    unsigned int v2;  // [bp-0x18]\n    unsigned int v3;  // [bp-0x14]\n    unsigned int v4;  // [bp-0x8]\n    unsigned int v5;  // [bp-0x4]\n\n    v5 = 337668;\n    v6 = Presonus::Panel::ControlRegistrar::count(a0->field_90);\n    if (v6 <= 0)\n        goto *((void *)(v4));\n    i = 0;\n    do\n    {\n        i += 1;\n        Presonus::Panel::PanelComponent::detachGroup(a0, Presonus::Panel::ControlRegistrar::at(a0->field_90, i), v9, v10, v0, v1, v2, v3, &a4, &a4, v4);\n    } while (i < v6);\n    goto *((void *)(v4));\n}\n\n"
+  },
+  {
+    "address": 337540,
+    "size": 116,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 304772,
+    "bytes_sha256": "f11c920bad073a7c1b44ffde3e1c06734ca3d234fed93fdb5ec3fe1b309fe53f",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 337540,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 337544,
+        "bytes": "f0d82de9",
+        "mnemonic": "push",
+        "operands": "{r4, r5, r6, r7, fp, ip, lr, pc}"
+      },
+      {
+        "address": 337548,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 337552,
+        "bytes": "0050a0e1",
+        "mnemonic": "mov",
+        "operands": "r5, r0"
+      },
+      {
+        "address": 337556,
+        "bytes": "900090e5",
+        "mnemonic": "ldr",
+        "operands": "r0, [r0, #0x90]"
+      },
+      {
+        "address": 337560,
+        "bytes": "25ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8db34"
+      },
+      {
+        "address": 337564,
+        "bytes": "006050e2",
+        "mnemonic": "subs",
+        "operands": "r6, r0, #0"
+      },
+      {
+        "address": 337568,
+        "bytes": "f0a89dd8",
+        "mnemonic": "ldmle",
+        "operands": "sp, {r4, r5, r6, r7, fp, sp, pc}"
+      },
+      {
+        "address": 337572,
+        "bytes": "0040a0e3",
+        "mnemonic": "mov",
+        "operands": "r4, #0"
+      },
+      {
+        "address": 337576,
+        "bytes": "0170a0e3",
+        "mnemonic": "mov",
+        "operands": "r7, #1"
+      },
+      {
+        "address": 337580,
+        "bytes": "0410a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r4"
+      },
+      {
+        "address": 337584,
+        "bytes": "900095e5",
+        "mnemonic": "ldr",
+        "operands": "r0, [r5, #0x90]"
+      },
+      {
+        "address": 337588,
+        "bytes": "23ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8db48"
+      },
+      {
+        "address": 337592,
+        "bytes": "043090e5",
+        "mnemonic": "ldr",
+        "operands": "r3, [r0, #4]"
+      },
+      {
+        "address": 337596,
+        "bytes": "014084e2",
+        "mnemonic": "add",
+        "operands": "r4, r4, #1"
+      },
+      {
+        "address": 337600,
+        "bytes": "0b0053e3",
+        "mnemonic": "cmp",
+        "operands": "r3, #0xb"
+      },
+      {
+        "address": 337604,
+        "bytes": "28209fe5",
+        "mnemonic": "ldr",
+        "operands": "r2, [pc, #0x28]"
+      },
+      {
+        "address": 337608,
+        "bytes": "0600008a",
+        "mnemonic": "bhi",
+        "operands": "#0x526e8"
+      },
+      {
+        "address": 337612,
+        "bytes": "1733a0e1",
+        "mnemonic": "lsl",
+        "operands": "r3, r7, r3"
+      },
+      {
+        "address": 337616,
+        "bytes": "022003e0",
+        "mnemonic": "and",
+        "operands": "r2, r3, r2"
+      },
+      {
+        "address": 337620,
+        "bytes": "000052e3",
+        "mnemonic": "cmp",
+        "operands": "r2, #0"
+      },
+      {
+        "address": 337624,
+        "bytes": "0010a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r0"
+      },
+      {
+        "address": 337628,
+        "bytes": "0500a0e1",
+        "mnemonic": "mov",
+        "operands": "r0, r5"
+      },
+      {
+        "address": 337632,
+        "bytes": "0000000a",
+        "mnemonic": "beq",
+        "operands": "#0x526e8"
+      },
+      {
+        "address": 337636,
+        "bytes": "ceffffeb",
+        "mnemonic": "bl",
+        "operands": "#0x52624"
+      },
+      {
+        "address": 337640,
+        "bytes": "040056e1",
+        "mnemonic": "cmp",
+        "operands": "r6, r4"
+      },
+      {
+        "address": 337644,
+        "bytes": "eeffffca",
+        "mnemonic": "bgt",
+        "operands": "#0x526ac"
+      },
+      {
+        "address": 337648,
+        "bytes": "f0a89de8",
+        "mnemonic": "ldm",
+        "operands": "sp, {r4, r5, r6, r7, fp, sp, pc}"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+    "pseudocode_path": "uc-library/recovered-all/server/pseudocode/00052684.cpp.txt",
+    "pseudocode_sha256": "e910e5fb2359cefdb2dff8ee0c73117c6ccf972f4dc46086bb2c9e83a5630d93",
+    "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Panel::PanelComponent::detachSwitches() const\n// Symbol _ZNK8Presonus5Panel14PanelComponent14detachSwitchesEv address=0x52684\ntypedef struct st_52684_0 {\n    char padding_0[1];\n    char field_1;\n    char padding_2[2];\n    unsigned int field_4;\n    char padding_8[136];\n    int field_90;\n} st_52684_0;\n\n\nst_52684_0 * Presonus::Panel::PanelComponent::detachSwitches(st_52684_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8, unsigned int a9, unsigned int a10)\n{\n    st_52684_0 *v6;  // r0\n    st_52684_0 *i;  // r4\n    st_52684_0 *v8;  // r0\n    unsigned int v9;  // r3\n    st_52684_0 *v10;  // r0\n    unsigned int v11;  // r3\n    unsigned int v12;  // r2\n    char v0;  // [bp-0x20]\n    unsigned int v1;  // [bp-0x1c]\n    unsigned int v2;  // [bp-0x18]\n    unsigned int v3;  // [bp-0x14]\n    unsigned int v4;  // [bp-0x8]\n    unsigned int v5;  // [bp-0x4]\n\n    v5 = 337552;\n    v6 = Presonus::Panel::ControlRegistrar::count(a0->field_90);\n    if (v6 > NULL)\n        goto LABEL_526a4;\n    return v6;\nLABEL_526a4:\n    i = NULL;\n    do\n    {\n        v8 = Presonus::Panel::ControlRegistrar::at(a0->field_90, i);\n        v9 = v8->field_4;\n        i = &i->field_1;\n        v10 = v8;\n        if (11 >= v9)\n        {\n            v11 = 1 << ((char)v9 & 31) & (int)((v9 & 0xff) - 32) >> 31;\n            v12 = v11 & 4079;\n            v10 = a0;\n            if (v12)\n                v10 = (unsigned int)Presonus::Panel::PanelComponent::detachGroup(v10, v8, v12, v11, v0, v1, v2, v3, &a4, &a4, v4);\n        }\n    } while (i < v6);\n    return v10;\n}\n\n"
+  },
+  {
+    "address": 337120,
+    "size": 28,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 304352,
+    "bytes_sha256": "2620db362d0ff0f5f2e0561bc25ca9ebfc78c4593bea0467637e70fbd9a0200c",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 337120,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 337124,
+        "bytes": "00d82de9",
+        "mnemonic": "push",
+        "operands": "{fp, ip, lr, pc}"
+      },
+      {
+        "address": 337128,
+        "bytes": "003090e5",
+        "mnemonic": "ldr",
+        "operands": "r3, [r0]"
+      },
+      {
+        "address": 337132,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 337136,
+        "bytes": "0fe0a0e1",
+        "mnemonic": "mov",
+        "operands": "lr, pc"
+      },
+      {
+        "address": 337140,
+        "bytes": "38f093e5",
+        "mnemonic": "ldr",
+        "operands": "pc, [r3, #0x38]"
+      },
+      {
+        "address": 337144,
+        "bytes": "00a89de8",
+        "mnemonic": "ldm",
+        "operands": "sp, {fp, sp, pc}"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+    "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000524e0.cpp.txt",
+    "pseudocode_sha256": "d0f2d3e0d547262e3603c54a3e2fe4d342644918de29f1cbe0be355a0063e49e",
+    "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Panel::PanelComponent::activateAll()\n// Symbol _ZN8Presonus5Panel14PanelComponent11activateAllEv address=0x524e0\ntypedef struct st_524e0_1 {\n    unsigned int field_0;\n} st_524e0_1;\n\ntypedef struct st_524e0_0 {\n    char padding_0[56];\n    struct st_524e0_1 *field_38;\n} st_524e0_0;\n\n\nvoid Presonus::Panel::PanelComponent::activateAll(st_524e0_0 **a0)\n{\n    char *v0;  // [bp-0x10]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 337132;\n    v0 = &v2;\n    *a0->field_38();\n    return;\n}\n\n"
+  },
+  {
+    "address": 337348,
+    "size": 96,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 304580,
+    "bytes_sha256": "cfe484457c4186d0e7231f17a23af8bd7afa144be7e0fd90adaecca26d925ccb",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 337348,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 337352,
+        "bytes": "30d82de9",
+        "mnemonic": "push",
+        "operands": "{r4, r5, fp, ip, lr, pc}"
+      },
+      {
+        "address": 337356,
+        "bytes": "0240a0e1",
+        "mnemonic": "mov",
+        "operands": "r4, r2"
+      },
+      {
+        "address": 337360,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 337364,
+        "bytes": "900090e5",
+        "mnemonic": "ldr",
+        "operands": "r0, [r0, #0x90]"
+      },
+      {
+        "address": 337368,
+        "bytes": "0350a0e1",
+        "mnemonic": "mov",
+        "operands": "r5, r3"
+      },
+      {
+        "address": 337372,
+        "bytes": "b2ef00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8e4ac"
+      },
+      {
+        "address": 337376,
+        "bytes": "0410a0e1",
+        "mnemonic": "mov",
+        "operands": "r1, r4"
+      },
+      {
+        "address": 337380,
+        "bytes": "00ed00eb",
+        "mnemonic": "bl",
+        "operands": "#0x8d9ec"
+      },
+      {
+        "address": 337384,
+        "bytes": "000050e3",
+        "mnemonic": "cmp",
+        "operands": "r0, #0"
+      },
+      {
+        "address": 337388,
+        "bytes": "30a89d08",
+        "mnemonic": "ldmeq",
+        "operands": "sp, {r4, r5, fp, sp, pc}"
+      },
+      {
+        "address": 337392,
+        "bytes": "24109fe5",
+        "mnemonic": "ldr",
+        "operands": "r1, [pc, #0x24]"
+      },
+      {
+        "address": 337396,
+        "bytes": "24209fe5",
+        "mnemonic": "ldr",
+        "operands": "r2, [pc, #0x24]"
+      },
+      {
+        "address": 337400,
+        "bytes": "0030a0e3",
+        "mnemonic": "mov",
+        "operands": "r3, #0"
+      },
+      {
+        "address": 337404,
+        "bytes": "bce1feeb",
+        "mnemonic": "bl",
+        "operands": "#0xacf4"
+      },
+      {
+        "address": 337408,
+        "bytes": "000050e3",
+        "mnemonic": "cmp",
+        "operands": "r0, #0"
+      },
+      {
+        "address": 337412,
+        "bytes": "30a89d08",
+        "mnemonic": "ldmeq",
+        "operands": "sp, {r4, r5, fp, sp, pc}"
+      },
+      {
+        "address": 337416,
+        "bytes": "000055e3",
+        "mnemonic": "cmp",
+        "operands": "r5, #0"
+      },
+      {
+        "address": 337420,
+        "bytes": "0210a013",
+        "mnemonic": "movne",
+        "operands": "r1, #2"
+      },
+      {
+        "address": 337424,
+        "bytes": "0010a003",
+        "mnemonic": "moveq",
+        "operands": "r1, #0"
+      },
+      {
+        "address": 337428,
+        "bytes": "30689de8",
+        "mnemonic": "ldm",
+        "operands": "sp, {r4, r5, fp, sp, lr}"
+      },
+      {
+        "address": 337432,
+        "bytes": "6af500ea",
+        "mnemonic": "b",
+        "operands": "#0x8fbc8"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+    "pseudocode_path": "uc-library/recovered-all/server/pseudocode/000525c4.cpp.txt",
+    "pseudocode_sha256": "5a82864a37ef16ddfd0ff968b5709d49d927b35a60cf15eeefab5e4f47ec80eb",
+    "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Panel::PanelComponent::blinkLed(int, int, bool)\n// Symbol _ZN8Presonus5Panel14PanelComponent8blinkLedEiib address=0x525c4\ntypedef struct st_525c4_0 {\n    char padding_0[144];\n    int field_90;\n} st_525c4_0;\n\n\nvoid Presonus::Panel::PanelComponent::blinkLed(st_525c4_0 *a0, unsigned int a1, int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6, unsigned int a7, unsigned int a8)\n{\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 337360;\n    v1 = &a4;\n    v0 = &a4;\n    if (Presonus::Panel::ControlGroup::byTag(Presonus::Panel::ControlRegistrar::findGroup(a0->field_90), a2))\n        goto LABEL_525f0;\n    return;\nLABEL_525f0:\n    if (__dynamic_cast())\n        goto LABEL_52608;\n    return;\nLABEL_52608:\n    if (a3)\n    {\n        if (a3)\n            goto LABEL_52612;\nLABEL_52611:\n    }\n    else\n    {\n        if (!a3)\n            goto LABEL_52611;\nLABEL_52612:\n    }\n    Presonus::Panel::LEDControl::setBlinkMode();\n    return;\n}\n\n"
+  }
+]

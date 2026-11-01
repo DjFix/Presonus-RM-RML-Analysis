@@ -1,0 +1,147 @@
+{
+  "session_id": "01a194a2-3269-7c52-b8ca-323c781215c4",
+  "sealed_utc": "2026-11-01T01:06:27.114831+00:00",
+  "phases": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/src/Presonus/MackieControlModel.cpp",
+        "uc-library/include/presonus/MackieControlModel.hpp",
+        "uc-library/tests/graph_trial04_mackie_tests.cpp"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:06:26.127370+00:00",
+      "duration_seconds": 0.0319351589996586,
+      "returncode": 0,
+      "log": "temp/recovery-work/graph-live-trial-04/mackie-worker/format.log"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:06:26.159323+00:00",
+      "duration_seconds": 0.7584846970003127,
+      "returncode": 0,
+      "log": "temp/recovery-work/graph-live-trial-04/mackie-worker/compile.log"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:06:26.917822+00:00",
+      "duration_seconds": 0.07072438599971065,
+      "returncode": 0,
+      "log": "temp/recovery-work/graph-live-trial-04/mackie-worker/symbols.log"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-01T01:06:26.988567+00:00",
+      "duration_seconds": 0.07131628099978116,
+      "returncode": 0,
+      "log": "temp/recovery-work/graph-live-trial-04/mackie-worker/replay.log"
+    }
+  ],
+  "per_symbol": [
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel15sendMidiMessageEPKhj",
+      "context_read": [
+        "SUBAGENT_PROMPT.md",
+        "TASK.md",
+        "ELF_CONTEXT.md",
+        "SOURCE_SLICES.md",
+        "CONTEXT.md"
+      ],
+      "dependencies_verified": "getEntryByTag bounded expansion read: native bsearch call, not executed; same-scope sendMidiMessage executed natively for setButtonState/touchFader; sink and dispatch observed at stubs",
+      "unknown": "original declarations, layout, dynamic dispatch concrete providers",
+      "protective": "Core boundary respected; no Core functions present",
+      "irrelevant": "neighbor callers not executed"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel14setButtonStateEib",
+      "context_read": [
+        "SUBAGENT_PROMPT.md",
+        "TASK.md",
+        "ELF_CONTEXT.md",
+        "SOURCE_SLICES.md",
+        "CONTEXT.md"
+      ],
+      "dependencies_verified": "getEntryByTag bounded expansion read: native bsearch call, not executed; same-scope sendMidiMessage executed natively for setButtonState/touchFader; sink and dispatch observed at stubs",
+      "unknown": "original declarations, layout, dynamic dispatch concrete providers",
+      "protective": "Core boundary respected; no Core functions present",
+      "irrelevant": "neighbor callers not executed"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel17releaseAllButtonsEv",
+      "context_read": [
+        "SUBAGENT_PROMPT.md",
+        "TASK.md",
+        "ELF_CONTEXT.md",
+        "SOURCE_SLICES.md",
+        "CONTEXT.md"
+      ],
+      "dependencies_verified": "getEntryByTag bounded expansion read: native bsearch call, not executed; same-scope sendMidiMessage executed natively for setButtonState/touchFader; sink and dispatch observed at stubs",
+      "unknown": "original declarations, layout, dynamic dispatch concrete providers",
+      "protective": "Core boundary respected; no Core functions present",
+      "irrelevant": "neighbor callers not executed"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel9resetLedsEv",
+      "context_read": [
+        "SUBAGENT_PROMPT.md",
+        "TASK.md",
+        "ELF_CONTEXT.md",
+        "SOURCE_SLICES.md",
+        "CONTEXT.md"
+      ],
+      "dependencies_verified": "getEntryByTag bounded expansion read: native bsearch call, not executed; same-scope sendMidiMessage executed natively for setButtonState/touchFader; sink and dispatch observed at stubs",
+      "unknown": "original declarations, layout, dynamic dispatch concrete providers",
+      "protective": "Core boundary respected; no Core functions present",
+      "irrelevant": "neighbor callers not executed"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel10touchFaderEib",
+      "context_read": [
+        "SUBAGENT_PROMPT.md",
+        "TASK.md",
+        "ELF_CONTEXT.md",
+        "SOURCE_SLICES.md",
+        "CONTEXT.md"
+      ],
+      "dependencies_verified": "getEntryByTag bounded expansion read: native bsearch call, not executed; same-scope sendMidiMessage executed natively for setButtonState/touchFader; sink and dispatch observed at stubs",
+      "unknown": "original declarations, layout, dynamic dispatch concrete providers",
+      "protective": "Core boundary respected; no Core functions present",
+      "irrelevant": "neighbor callers not executed"
+    }
+  ],
+  "context_requests": [
+    "getEntryByTag native body baseline expansion requested",
+    "Root confirmed canonical pending schema/admission ownership; no worker fragment required"
+  ],
+  "failures": [
+    "Initial combined packet output truncated; native evidence reread separately",
+    "task.json and TASK.json absent; used request.json"
+  ],
+  "redundant_checks": [
+    "One no-op producer rewrite; no source semantic change"
+  ],
+  "timing_limitations": "Initial read/edit calls tool durations available in provider transcript; per-call wall UTC not captured before final checks. No token estimates."
+}

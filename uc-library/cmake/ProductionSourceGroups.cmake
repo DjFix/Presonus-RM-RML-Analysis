@@ -156,6 +156,9 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/MidiMixerHandler.cpp
+  src/Presonus/MappingTable.cpp
+  src/Presonus/MackieControlModel.cpp
   src/Presonus/PCM4104/Pcm4104Spi.cpp
   src/Presonus/DAWTimeInfo.cpp
   src/Presonus/Surface/PanelRegistrarFaderCommands.cpp
@@ -221,6 +224,13 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/PanelComponent.cpp
+  src/Presonus/MuteGroupBase.cpp
+  src/Presonus/Panel/MixerLCD.cpp
+  src/Presonus/AVB/AvbComponent.cpp
+  src/Presonus/Dsp/Controller.cpp
+  src/Presonus/LinkableComponent.cpp
+  src/Presonus/UC/DataChannel.cpp
   src/Presonus/Panel/BeastPanelRegistrar.cpp
   src/Presonus/Mixer/FirmwareUpdateCallbacks.cpp
   src/Presonus/NOAA/TCardProgrammerProtocol.cpp

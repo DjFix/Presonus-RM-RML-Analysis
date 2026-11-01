@@ -1,0 +1,25 @@
+import datetime,hashlib,json,os
+from pathlib import Path
+import checks
+B=checks.BASE
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def dump(p,d):Path(p).write_text(json.dumps(d,indent=2)+'\n')
+proof=json.loads((B/'proof.json').read_text())
+log=json.loads((B/'work-log.json').read_text());log['context_resolution']={'provider_supplement':'evidence/recovery/2026-11-01/dependency-graph/live-trial-04-10x5/provider-context.json','no_existing_avb_provider_files_supplied':True,'expansions_read':[f'temp/recovery-work/graph-live-trial-04/expansions/{i}-avb' for i in range(15,20)],'manager_result':'bound app-specific methods; implementations outside assigned scope remain explicit Services boundary','route_result':'routeLinkSlotsFromAvb native body reviewed; external routing implementation excluded from oracle; CS tail corrected to configureStaticTalkerStreams from original one-hop relationship'}
+log['merger_preflight']={'argv':['uc-library/.venv/bin/python','uc-library/tools/merge_readiness.py','--library','uc-library','--pending','candidates/graph-live-trial-04-avb/pending.fragment.json','--dry-run'],'returncode':1,'failure':'canonical shared formatting proof does not include new AVB header yet','log':str(B/'merger-preflight.log'),'next_owner':'Root global formatting/integration refresh'}
+log['phase_timestamps'].append({'phase':'handoffs_sealed','utc':datetime.datetime.now(datetime.timezone.utc).isoformat()});dump(B/'work-log.json',log)
+base_artifacts=[{'kind':'source' if str(p) in checks.SOURCES else 'test' if p.name.endswith('_tests.cpp') else 'evidence','path':str(p),'sha256':sha(p)} for p in [Path(x) for x in checks.SOURCES]+[p for p in B.iterdir() if p.is_file() and p.name not in ['HANDOFF_INDEX.json'] and not p.name.startswith('HANDOFF-')]]
+for name in proof['repository_sources']:base_artifacts.append({'kind':'dependency','path':name,'sha256':sha(name)})
+for name in ['docs/worker-handoff.md','docs/core-framework-lineage.md','uc-library/validation/core-upstream/source-map/server-functions.json',checks.CORE]:base_artifacts.append({'kind':'dependency','path':name,'sha256':sha(name)})
+for i in range(15,20):
+ p=Path(f'temp/recovery-work/graph-live-trial-04/expansions/{i}-avb')
+ for n in ['expansion.json','native-context.json']:
+  if (p/n).exists():base_artifacts.append({'kind':'context','path':str(p/n),'sha256':sha(p/n)})
+index=[]
+for i in range(1,6):
+ packet=Path(f'temp/recovery-work/graph-live-trial-04/trial04_avb_{i}-packet');manifest=packet/'context.json';d=json.loads(manifest.read_text());o=d['originals'][0]['original']
+ artifacts=base_artifacts+[{'kind':'packet','path':str(packet/n),'sha256':sha(packet/n)} for n in ['context.json','native-context.json','TASK.md','ELF_CONTEXT.md','CONTEXT.md','SOURCE_SLICES.md','SUBAGENT_PROMPT.md']]
+ handoff={'version':1,'task_id':d['task_id'],'namespace':'Presonus::AVB::AvbComponent','packet_manifest':str(manifest),'originals':[{'elf_sha256':o['elf'],'firmware':o['firmware'],'role':o['role'],'mangled':o['mangled'],'demangled':o['demangled'],'address':o['address'],'size':o['size'],'section':12}],'artifacts':artifacts,'checks':[{'kind':kind,'argv':argv,'timeout_seconds':120} for kind,argv in [('format',checks.FORMAT),('compile',checks.COMPILE),('symbols',['uc-library/.venv/bin/python',str(B/'checks.py'),'symbols']),('replay',checks.REPLAY)]],'validation_domain':proof['validation_domain'],'limitations':proof['limitations'],'build_integration':{'production_partition':'RM','production_cpp':'src/Presonus/AVB/AvbComponent.cpp','partition_rationale':'All five original identities are RM/RML 13731 server .text methods; add once to RM OBJECT source partition and retain Root role/compile-once audit. No client-target equivalence or ABI claim.','public_headers':['include/presonus/avb/AvbComponent.hpp'],'test_target':'graph_trial04_avb_tests','test_sources':['tests/graph_trial04_avb_tests.cpp'],'link_dependencies':['production RM facade target','actual pinned upstream corelib (Core::DebugPrintf)','pthread'],'replay_argv':['uc-library/.venv/bin/python',str(B/'replay.py'),'--executable','$<TARGET_FILE:graph_trial04_avb_tests>','--fixtures',str(B/'fixtures.json')],'ctest_name':'graph_trial04_avb_differential','ctest_argv':['uc-library/.venv/bin/ctest','--test-dir','temp/core-upstream/root-integration-01','--output-on-failure','-R','^graph_trial04_avb_differential$'],'fixture':{'path':str(B/'fixtures.json'),'sha256':sha(B/'fixtures.json')},'pending_fragment':str(B/'pending.fragment.json'),'shared_preflight':'attempted; requires canonical shared formatting refresh before Root admission'}}
+ p=B/f'HANDOFF-{i}.json';dump(p,handoff);index.append({'task_id':d['task_id'],'path':str(p),'sha256':sha(p),'mangled':o['mangled']})
+dump(B/'HANDOFF_INDEX.json',{'version':1,'worker':'trial04_avb','worker_session_id':os.environ.get('CODEX_THREAD_ID'),'handoffs':index,'compiled_pending_originals':5,'local_differential_cases':720,'proof':str(B/'proof.json'),'proof_sha256':sha(B/'proof.json')})
+print(str(B/'HANDOFF_INDEX.json'))

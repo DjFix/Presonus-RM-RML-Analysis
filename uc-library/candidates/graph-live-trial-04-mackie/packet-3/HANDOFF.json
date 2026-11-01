@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "task_id": "trial04_mackie_3",
+  "namespace": "Presonus::MackieControlModel",
+  "packet_manifest": "temp/recovery-work/graph-live-trial-04/trial04_mackie_3-packet/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus18MackieControlModel17releaseAllButtonsEv",
+      "address": 786536,
+      "size": 172,
+      "section": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/MackieControlModel.cpp",
+      "sha256": "946e7c88232a96beee9d256eae4a4ef0e4f15cb6e4cfc4e2708a9e281f507c77"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/MackieControlModel.hpp",
+      "sha256": "9a33010e6a136424642edd02d74deaf9698df3567e10e7679455adb33b88ef70"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial04_mackie_tests.cpp",
+      "sha256": "1843be212b54154d7c53039d22c94cb0c368beee51eca141dad4ecfe15dd5268"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+      "sha256": "8eb2f73d0f6f5e916ac86f5ce54f815b49fc738a40fb291f649d12b6457cf0a3"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/graph-live-trial-04-mackie/fixtures.json",
+      "sha256": "c0a69f879ada7da4ecc0677106d27d30cf32833329e31bc4e5c70ea3dad0e0c2"
+    },
+    {
+      "kind": "proof",
+      "path": "uc-library/candidates/graph-live-trial-04-mackie/proof.json",
+      "sha256": "5bf033a3a6f8fa3aaa3e133ad0fced7d3796ba10ac43f5afb87121ebc62c8da0"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mackie/work-log.json",
+      "sha256": "2183474bb7a28de938e37a5b9c377a41622bb41de3e2ff67786804435f32748d"
+    },
+    {
+      "kind": "evidence",
+      "path": "uc-library/candidates/graph-live-trial-04-mackie/seal.py",
+      "sha256": "1730f422fa1ee7ee00bf0aab267f069fef34fbde6f05519fedeb4a8a1387f57c"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/recovery-work/graph-live-trial-04/trial04_mackie_3-packet/context.json",
+      "sha256": "82b8d25bf79266e69198a6b6683dca21c069e9025c7798f2ecdb869f708d5771"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/recovery-work/graph-live-trial-04/trial04_mackie_3-packet/native-context.json",
+      "sha256": "9869d850652e1b1181aecd5d00e9eca6f66801555d80590627ff61071d04c5c8"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/recovery-work/graph-live-trial-04/expansions/06-mackie/ELF_CONTEXT.md",
+      "sha256": "f044ef35cf8ea1a76708f69b6be3939905947cd35f6fad28696b039783106e28"
+    },
+    {
+      "kind": "evidence",
+      "path": "temp/recovery-work/graph-live-trial-04/expansions/06-mackie/expansion.json",
+      "sha256": "327ab436a24304c249af542d12bb2a27cee6ce406b3bb0365cae536e5862a0fd"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/src/Presonus/MackieControlModel.cpp",
+        "uc-library/include/presonus/MackieControlModel.hpp",
+        "uc-library/tests/graph_trial04_mackie_tests.cpp"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared.",
+  "limitations": [
+    "Original return declarations and class layout unresolved; intentionally portable source port, no ARM ABI or hardware claim.",
+    "Sink/LED/virtual dispatch hooks are observation stubs. getEntryByTag expansion establishes native bsearch dependency; lookup remains a stub and portable linear search intentionally only validates sorted unique single-entry mapping here. Duplicate/unsorted mapping behavior excluded.",
+    "Only valid stateIndex allocated buffers tested; resetLeds requires non-null LED sink for nonempty entries.",
+    "Original callback mutation of entry count/pointers and reentrancy untested."
+  ],
+  "build_integration": {
+    "production_partition": "CS18",
+    "production_cpp": "uc-library/src/Presonus/MackieControlModel.cpp",
+    "public_headers": [
+      "uc-library/include/presonus/MackieControlModel.hpp"
+    ],
+    "test_source": "uc-library/tests/graph_trial04_mackie_tests.cpp",
+    "link_dependencies": [],
+    "test_target": "graph_trial04_mackie_tests",
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/graph-live-trial-04-mackie/validate.py",
+      "replay",
+      "<canonical-built-test-executable>"
+    ],
+    "fixture": "uc-library/candidates/graph-live-trial-04-mackie/fixtures.json"
+  }
+}

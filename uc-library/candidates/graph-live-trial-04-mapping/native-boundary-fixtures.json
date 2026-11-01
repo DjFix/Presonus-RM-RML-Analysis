@@ -1,0 +1,463 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "scope": "original target bodies only; dependency calls are explicit boundary doubles; no item behavior, comparison, original return declaration or ARM ABI claim",
+  "ranges": [
+    {
+      "original": {
+        "anchor": "b6973d97cf4a6ac68f5cfab0c476bc7fc0ea408d6a427f5490e83cef763741c4",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZNK8Presonus12MappingTable8findItemEPKc",
+        "demangled": "Presonus::MappingTable::findItem(char const*) const",
+        "address": 484008,
+        "size": 72,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "policy": "application-or-other"
+      },
+      "file_offset": 451240,
+      "section": ".text",
+      "sha256": "f70ed4bc3332ba2af91a1b62fa34bb70da1f5d06262258d8885db4faa2fb773b"
+    },
+    {
+      "original": {
+        "anchor": "7b928c1bd070a2a946d5b66bdb774f424f4b5f22a29b142683876ba9eeddab1c",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus12MappingTable17setControlFullOffEPKc",
+        "demangled": "Presonus::MappingTable::setControlFullOff(char const*)",
+        "address": 484484,
+        "size": 32,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "policy": "application-or-other"
+      },
+      "file_offset": 451716,
+      "section": ".text",
+      "sha256": "8dfd30ce32b721472a5f9730d354b385f81baa9cb95735bbc9b659291aa075ef"
+    },
+    {
+      "original": {
+        "anchor": "59e7c3f11e1b35ddd93d2380c07ccbcaf5af21a3b78f8f3f40bd942d68d8833d",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus12MappingTable21setControlInverseModeEPKcb",
+        "demangled": "Presonus::MappingTable::setControlInverseMode(char const*, bool)",
+        "address": 484560,
+        "size": 44,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "policy": "application-or-other"
+      },
+      "file_offset": 451792,
+      "section": ".text",
+      "sha256": "6984ce92df68ec14b67bfc5ec65ef4db9fb067ac3fc108888ce1314fa236b4e3"
+    },
+    {
+      "original": {
+        "anchor": "9605c93d2a0cbd72961bae774a49cd8cd11074aa784dd06964bac6de5e6e1bdf",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus12MappingTable17setControlEnabledEPKcb",
+        "demangled": "Presonus::MappingTable::setControlEnabled(char const*, bool)",
+        "address": 484108,
+        "size": 44,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "policy": "application-or-other"
+      },
+      "file_offset": 451340,
+      "section": ".text",
+      "sha256": "1d105f19f3bd8b81a1013c3399c7dc77dfacef83a566120c26d8e270c30f92dd"
+    },
+    {
+      "original": {
+        "anchor": "b2c7f3a4b9fff55dfcd4507d458701b612f7909765f7d5b8512c1bb4edaadb9c",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus12MappingTable19setControlImmediateEPKcb",
+        "demangled": "Presonus::MappingTable::setControlImmediate(char const*, bool)",
+        "address": 484516,
+        "size": 44,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "policy": "application-or-other"
+      },
+      "file_offset": 451748,
+      "section": ".text",
+      "sha256": "c0ddbd63a24d833775c2581de369fb3d88c834e27860ed2433f0af2601caa7c6"
+    }
+  ],
+  "cases": [
+    {
+      "task_id": "trial04_mapping_1",
+      "found": 0,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "Item::Item boundary",
+          "args": [
+            2293760,
+            0
+          ]
+        },
+        {
+          "call": "bsearch boundary",
+          "base": 2228224,
+          "count": 3,
+          "stride": 72,
+          "comparator": 487452
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_1",
+      "found": 0,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "Item::Item boundary",
+          "args": [
+            2293760,
+            0
+          ]
+        },
+        {
+          "call": "bsearch boundary",
+          "base": 2228224,
+          "count": 3,
+          "stride": 72,
+          "comparator": 487452
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_1",
+      "found": 2162688,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "Item::Item boundary",
+          "args": [
+            2293760,
+            0
+          ]
+        },
+        {
+          "call": "bsearch boundary",
+          "base": 2228224,
+          "count": 3,
+          "stride": 72,
+          "comparator": 487452
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_1",
+      "found": 2162688,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "Item::Item boundary",
+          "args": [
+            2293760,
+            0
+          ]
+        },
+        {
+          "call": "bsearch boundary",
+          "base": 2228224,
+          "count": 3,
+          "stride": 72,
+          "comparator": 487452
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_2",
+      "found": 0,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_2",
+      "found": 0,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_2",
+      "found": 2162688,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setFullOff",
+          "item": 2162688,
+          "flag": null
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_2",
+      "found": 2162688,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setFullOff",
+          "item": 2162688,
+          "flag": null
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_3",
+      "found": 0,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_3",
+      "found": 0,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_3",
+      "found": 2162688,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setInverseMode",
+          "item": 2162688,
+          "flag": 0
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_3",
+      "found": 2162688,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setInverseMode",
+          "item": 2162688,
+          "flag": 1
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_4",
+      "found": 0,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_4",
+      "found": 0,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_4",
+      "found": 2162688,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setEnabled",
+          "item": 2162688,
+          "flag": 0
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_4",
+      "found": 2162688,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setEnabled",
+          "item": 2162688,
+          "flag": 1
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_5",
+      "found": 0,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_5",
+      "found": 0,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        }
+      ],
+      "r0_observed": 0,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_5",
+      "found": 2162688,
+      "flag": 0,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setImmediate",
+          "item": 2162688,
+          "flag": 0
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    },
+    {
+      "task_id": "trial04_mapping_5",
+      "found": 2162688,
+      "flag": 1,
+      "trace": [
+        {
+          "call": "findItem boundary",
+          "name": 2293760
+        },
+        {
+          "call": "setImmediate",
+          "item": 2162688,
+          "flag": 1
+        }
+      ],
+      "r0_observed": 2162688,
+      "table_bytes_after": "000000000000220003000000",
+      "item_bytes_after": "7420256c64202823256c64290a000000256c6c752d000000557365722d4167656e743a2025730d0a00000000436c6f73696e6720636f6e6e656374696f6e20256c640a00436f6e6e"
+    }
+  ]
+}

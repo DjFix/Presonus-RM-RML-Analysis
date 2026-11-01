@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "kind": "bounded-native-analysis-only",
+  "session_id": "01a194a2-4a65-75f3-a5f8-daa63dc1eff5",
+  "utc": "2026-11-01T01:09:37.441009+00:00",
+  "producer": {
+    "path": "uc-library/candidates/graph-live-trial-04-mapping/native_oracle.py",
+    "sha256": "6072a9ae50bde359182e337c305d5030ac045b5acf25c8fbdcf074d335986e6c"
+  },
+  "fixture": {
+    "path": "uc-library/candidates/graph-live-trial-04-mapping/native-boundary-fixtures.json",
+    "sha256": "f52d8653c60597c75dd98ed7d9f57f68f47dcd8f1b7d54b41a74eddf194e0f6e"
+  },
+  "versions": {
+    "unicorn": "2.1.4"
+  },
+  "argv": [
+    "uc-library/.venv/bin/python",
+    "uc-library/candidates/graph-live-trial-04-mapping/native_oracle.py",
+    "--verify"
+  ],
+  "outcome": "pass",
+  "cases": 20,
+  "limitations": [
+    "No reconstructed C++ yet. Awaiting bounded item dependency expansions.",
+    "External boundaries are test doubles. Original item behaviors and bsearch comparator not validated.",
+    "Return declarations and original class layout unresolved."
+  ]
+}

@@ -26,7 +26,7 @@ def tools():
            'dependency-graph/dedup_work.py','dependency-graph/dedup_schema.sql',
            'dependency-graph/memgraph_endpoint.py','dependency-graph/code_identity.py',
            'dependency-graph/full_source_graph.py','dependency-graph/gcc_source_graph.py',
-           'dependency-graph/batch_publication.py')
+           'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py')
     return {p:sha(ROOT/p) for p in paths}
 
 
