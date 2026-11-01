@@ -38,3 +38,13 @@ Testing/
 *.stdout
 *.stderr
 *.dSYM/
+
+# Worker delivery/admission metadata stays local; regression fixtures stay versioned.
+/uc-library/candidates/**/HANDOFF*.json
+/uc-library/candidates/**/handoff*.json
+/uc-library/candidates/**/work-log.json
+/uc-library/candidates/**/delivery.json
+/uc-library/candidates/**/*proof*.json
+/uc-library/candidates/**/pending.json
+/uc-library/candidates/**/pending.fragment.json
+/uc-library/candidates/**/ready.fragment.json

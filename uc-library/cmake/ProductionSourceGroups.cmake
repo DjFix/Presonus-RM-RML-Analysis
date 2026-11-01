@@ -156,6 +156,11 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/PanControl.cpp
+  src/Presonus/LinkControl.cpp
+  src/Presonus/Surface/GroupsPageComponent.cpp
+  src/Presonus/Surface/DawFxPageComponent.cpp
+  src/Presonus/PageComponent.cpp
   src/Presonus/Surface/MidiMixerHandler.cpp
   src/Presonus/MappingTable.cpp
   src/Presonus/MackieControlModel.cpp
@@ -224,6 +229,11 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Mixer/PermissionsComponent.cpp
+  src/Presonus/MeterManagerBase.cpp
+  src/Presonus/Mixer/AVBCascadeManager.cpp
+  src/Presonus/Mixer/FXComponent.cpp
+  src/Presonus/StormMixSceneComponent.cpp
   src/Presonus/Panel/PanelComponent.cpp
   src/Presonus/MuteGroupBase.cpp
   src/Presonus/Panel/MixerLCD.cpp

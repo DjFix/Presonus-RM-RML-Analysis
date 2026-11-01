@@ -1,0 +1,45 @@
+{
+  "kind": "compile",
+  "utc": "2026-11-01T10:25:29.534169+00:00",
+  "duration_seconds": 0.8854121429976658,
+  "commands": [
+    [
+      "/usr/bin/c++",
+      "-std=c++17",
+      "-O2",
+      "-fno-lto",
+      "-UNDEBUG",
+      "-fno-rtti",
+      "-pthread",
+      "-Ulinux",
+      "-Iuc-library/include",
+      "-Itemp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+      "-c",
+      "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp",
+      "-o",
+      "temp/recovery-work/graph-live-trial-05/permissions-worker/permissions.o"
+    ],
+    [
+      "/usr/bin/c++",
+      "-std=c++17",
+      "-O2",
+      "-fno-lto",
+      "-UNDEBUG",
+      "-fno-rtti",
+      "-pthread",
+      "-Ulinux",
+      "-Iuc-library/include",
+      "-Itemp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+      "uc-library/tests/graph_trial05_permissions_tests.cpp",
+      "temp/recovery-work/graph-live-trial-05/permissions-worker/permissions.o",
+      "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "-lpthread",
+      "-ldl",
+      "-lm",
+      "-o",
+      "temp/recovery-work/graph-live-trial-05/permissions-worker/test"
+    ]
+  ],
+  "outcome": "passed"
+}

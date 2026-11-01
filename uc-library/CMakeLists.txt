@@ -1841,6 +1841,16 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/PageComponent.hpp
+  presonus/surface/DawFxPageComponent.hpp
+  presonus/surface/GroupsPageComponent.hpp
+  presonus/StormMixSceneComponent.hpp
+  presonus/mixer/FXComponent.hpp
+  presonus/mixer/AVBCascadeManager.hpp
+  presonus/MeterManagerBase.hpp
+  presonus/LinkControl.hpp
+  presonus/mixer/PermissionsComponent.hpp
+  presonus/PanControl.hpp
   presonus/uc/DataChannel.hpp
   presonus/MackieControlModel.hpp
   presonus/MappingTable.hpp
@@ -2115,3 +2125,5 @@ include(cmake/PanelLCDDisplayControl.cmake)
 include(cmake/PanelTemperature.cmake)
 
 include(cmake/GraphTrial04.cmake)
+
+include(cmake/GraphTrial05.cmake)

@@ -1,0 +1,368 @@
+{
+  "reviewed_utc": "2026-11-01T10:24:55.832202+00:00",
+  "provenance": {
+    "evidence/recovery/2026-11-01/dependency-graph/live-trial-05-10x5/context-expansion-receipts.json": {
+      "sha256": "ea8195b79208d87570f97b5771bed7256d30f249952c174dc38eb9abe9282f04",
+      "scope": "explicit selected supplement; parent provenance retained"
+    },
+    "evidence/recovery/2026-11-01/dependency-graph/live-trial-05-10x5/requested-literal-data.json": {
+      "sha256": "64fa3420795a1ed1c091cbd44565a2ca31b6f40cfae9d830c25f6d506ea3f196",
+      "scope": "explicit selected supplement; parent provenance retained"
+    },
+    "evidence/recovery/2026-11-01/dependency-graph/live-trial-05-10x5/parameter-vtable-data.json": {
+      "sha256": "c88ae3f64b449d179db198bf68da7fee87bb1206dcff18647c0b9c34f783820e",
+      "scope": "explicit selected supplement; parent provenance retained"
+    },
+    "evidence/recovery/2026-11-01/dependency-graph/live-trial-05-10x5/provider-context.json": {
+      "sha256": "bf678ce7cde84e166131c2182797607f803a24400ad32ba7ae4555bc29298783",
+      "scope": "explicit selected supplement; parent provenance retained"
+    }
+  },
+  "selection": {
+    "context-expansion-receipts.json": [
+      {
+        "worker": "pan",
+        "packet": "temp/recovery-work/graph-live-trial-05/trial05_pan_1-packet",
+        "seed": "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de",
+        "query": "callees",
+        "reason": "Worker missing provider/type/indirect declaration context; enumerate bound one-hop dependencies, no Core recovery",
+        "out": "temp/recovery-work/graph-live-trial-05/expansions/21-pan",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tools/recovery/select_context.py",
+          "expand",
+          "--packet",
+          "temp/recovery-work/graph-live-trial-05/trial05_pan_1-packet",
+          "--seed",
+          "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de",
+          "--query",
+          "callees",
+          "--reason",
+          "Worker missing provider/type/indirect declaration context; enumerate bound one-hop dependencies, no Core recovery",
+          "--baseline",
+          "--out",
+          "temp/recovery-work/graph-live-trial-05/expansions/21-pan"
+        ],
+        "start_utc": "2026-11-01T10:20:41.328277+00:00",
+        "seconds": 3.669123904997832,
+        "returncode": 0
+      }
+    ],
+    "requested-literal-data.json": [
+      {
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "path": "rootfs/CS18_v13840/home/root/surface",
+        "address": 425672,
+        "section": ".text",
+        "file_offset": 392904,
+        "size": 64,
+        "hex": "706d6f430dc0a0e130d82de904b04ce20040a0e10100a0e13f14a0e3417d04eb0050a0e10400a0e192ffffeb000050e30300001a0510a0e13f04a0e3907c04eb",
+        "sha256": "efa40e8342833ba021dcb2c59116822cf0a17950099d4a3e4513fdfdbd45da32",
+        "scope": "bounded raw data view, not symbol extent or recovered class declaration"
+      }
+    ],
+    "parameter-vtable-data.json": [
+      {
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "path": "rootfs/CS18_v13840/home/root/surface",
+        "mangled": "_ZTVN4Core8Portable10AliasParamE",
+        "address": 2117520,
+        "size": 148,
+        "section": ".rodata",
+        "file_offset": 2084752,
+        "bytes_sha256": "9e8eb8eca78cb1856a65491fd3437c88eac4587ceb0aece72f7fe7387344bd7b",
+        "address_point_offset": 8,
+        "header_typeinfo_symbols": [
+          "_ZTIN4Core8Portable10AliasParamE"
+        ],
+        "slots": {
+          "0x3c": {
+            "address": 1174504,
+            "symbols": [
+              "$a",
+              "_ZNK4Core8Portable10AliasParam6getMaxEv"
+            ]
+          },
+          "0x44": {
+            "address": 1174552,
+            "symbols": [
+              "$a",
+              "_ZNK4Core8Portable10AliasParam8getValueEv"
+            ]
+          },
+          "0x50": {
+            "address": 1174368,
+            "symbols": [
+              "$a",
+              "_ZN4Core8Portable10AliasParam6setMaxEf"
+            ]
+          },
+          "0x58": {
+            "address": 1174696,
+            "symbols": [
+              "$a",
+              "_ZN4Core8Portable10AliasParam8setValueEfb"
+            ]
+          },
+          "0x5c": {
+            "address": 1174740,
+            "symbols": [
+              "$a",
+              "_ZN4Core8Portable10AliasParam10resetValueEb"
+            ]
+          },
+          "0x70": {
+            "address": 1174964,
+            "symbols": [
+              "$a",
+              "_ZNK4Core8Portable10AliasParam8toStringEPci"
+            ]
+          },
+          "0x74": {
+            "address": 1175012,
+            "symbols": [
+              "$a",
+              "_ZN4Core8Portable10AliasParam10fromStringEPKcb"
+            ]
+          }
+        }
+      }
+    ],
+    "provider-context.json": {
+      "third_party/ccl-framework/core/portable/coreparams.h": {
+        "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd",
+        "source_snapshot": "dependency-graph/state/sources/50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+      },
+      "third_party/ccl-framework/core/portable/coreparams.cpp": {
+        "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5",
+        "source_snapshot": "dependency-graph/state/sources/d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+      },
+      "third_party/ccl-framework/core/portable/gui/corecontrols.h": {
+        "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb",
+        "source_snapshot": "dependency-graph/state/sources/79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+      },
+      "third_party/ccl-framework/core/portable/gui/corecontrols.cpp": {
+        "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b",
+        "source_snapshot": "dependency-graph/state/sources/9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+      }
+    }
+  },
+  "expansion": {
+    "path": "temp/recovery-work/graph-live-trial-05/expansions/21-pan/expansion.json",
+    "sha256": "8109d49c2b86e4f58eed6e9c757b6cc8fa1f7c98d77aa352b0c0889694183271",
+    "result": {
+      "parent_manifest_sha256": "2d6c46e3ba7fe2cae34beac6fbbc4d83d8bb6ba4b523d2536b8c4195649bda56",
+      "request": {
+        "parent": "temp/recovery-work/graph-live-trial-05/trial05_pan_1-packet",
+        "query": "callees",
+        "seed": "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de",
+        "reason": "Worker missing provider/type/indirect declaration context; enumerate bound one-hop dependencies, no Core recovery",
+        "view": "task-baseline"
+      },
+      "nodes": {
+        "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de": {
+          "kind": "NativeFunction",
+          "label": "Presonus::PanControl::isStereo() const",
+          "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+          "metadata": {
+            "address": 411436,
+            "anchor": "50b164158bf777145c3d97093c7cd7f2fdb96e434a44e23ccda717e3f0691c1d",
+            "binding": "STB_GLOBAL",
+            "core_source_boundary": false,
+            "demangled": "Presonus::PanControl::isStereo() const",
+            "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+            "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+            "firmware": "CS18AI surface 13840",
+            "kind": "STT_FUNC",
+            "mangled": "_ZNK8Presonus10PanControl8isStereoEv",
+            "policy": "application-or-other",
+            "role": "client",
+            "section": 12,
+            "section_json": "12",
+            "size": 72
+          },
+          "resolution": {
+            "symbol_id": "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de",
+            "strategy": "reconstruct",
+            "provider_id": null,
+            "binding_status": "unmatched",
+            "evidence": {
+              "original_declaration_verified": false,
+              "original_arm_abi_verified": false,
+              "binary_behavior_verified": false,
+              "upstream": []
+            }
+          }
+        },
+        "native:ddf2fb720e2a1b6f34ebbd31823ead9198388b5f84e5161a196dd49f08c80576": {
+          "kind": "NativeFunction",
+          "label": "__aeabi_fcmpeq",
+          "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+          "metadata": {
+            "address": 1603456,
+            "anchor": "cbff7cd320ff953d44c402822436e9781d6e2bc82cd7631cb8a7d098fc461534",
+            "binding": "STB_GLOBAL",
+            "core_source_boundary": false,
+            "demangled": "__aeabi_fcmpeq",
+            "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+            "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+            "firmware": "CS18AI surface 13840",
+            "kind": "STT_FUNC",
+            "mangled": "__aeabi_fcmpeq",
+            "policy": "application-or-other",
+            "role": "client",
+            "section": 12,
+            "section_json": "12",
+            "size": 24
+          },
+          "resolution": {
+            "symbol_id": "native:ddf2fb720e2a1b6f34ebbd31823ead9198388b5f84e5161a196dd49f08c80576",
+            "strategy": "reconstruct",
+            "provider_id": null,
+            "binding_status": "unmatched",
+            "evidence": {
+              "original_declaration_verified": false,
+              "original_arm_abi_verified": false,
+              "binary_behavior_verified": false,
+              "upstream": []
+            }
+          }
+        }
+      },
+      "edges": [
+        {
+          "src": "native:6c39a5246604e0b884fa82e0bdb84a96fdb44a5fbd20980db41a0ad9e20559de",
+          "dst": "native:ddf2fb720e2a1b6f34ebbd31823ead9198388b5f84e5161a196dd49f08c80576",
+          "kind": "ELF_CALLS",
+          "site": 411484,
+          "metadata": {
+            "instruction": "bl",
+            "target_address": 1603456
+          }
+        }
+      ],
+      "body": {
+        "address": 411436,
+        "size": 72,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 378668,
+        "bytes_sha256": "3023df9ad675d7f4d44d314f66b87e4b7e266b5f59085939c4629736ac03f728",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 411436,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 411440,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 411444,
+            "bytes": "683090e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r0, #0x68]"
+          },
+          {
+            "address": 411448,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 411452,
+            "bytes": "000053e3",
+            "mnemonic": "cmp",
+            "operands": "r3, #0"
+          },
+          {
+            "address": 411456,
+            "bytes": "0300a001",
+            "mnemonic": "moveq",
+            "operands": "r0, r3"
+          },
+          {
+            "address": 411460,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 411464,
+            "bytes": "0300a0e1",
+            "mnemonic": "mov",
+            "operands": "r0, r3"
+          },
+          {
+            "address": 411468,
+            "bytes": "003093e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r3]"
+          },
+          {
+            "address": 411472,
+            "bytes": "0fe0a0e1",
+            "mnemonic": "mov",
+            "operands": "lr, pc"
+          },
+          {
+            "address": 411476,
+            "bytes": "44f093e5",
+            "mnemonic": "ldr",
+            "operands": "pc, [r3, #0x44]"
+          },
+          {
+            "address": 411480,
+            "bytes": "0010a0e3",
+            "mnemonic": "mov",
+            "operands": "r1, #0"
+          },
+          {
+            "address": 411484,
+            "bytes": "078c04eb",
+            "mnemonic": "bl",
+            "operands": "#0x187780"
+          },
+          {
+            "address": 411488,
+            "bytes": "000050e3",
+            "mnemonic": "cmp",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 411492,
+            "bytes": "0000a0e3",
+            "mnemonic": "mov",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 411496,
+            "bytes": "0100a003",
+            "mnemonic": "moveq",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 411500,
+            "bytes": "ff0000e2",
+            "mnemonic": "and",
+            "operands": "r0, r0, #0xff"
+          },
+          {
+            "address": 411504,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0006472c.cpp.txt",
+        "pseudocode_sha256": "fbcefa4978051358539a20dc0d4797d25bd7a2cea3ae34e2bec2a3b8a01ec60c"
+      }
+    }
+  }
+}

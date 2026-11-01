@@ -1,0 +1,38 @@
+{
+  "production_partition": "RM",
+  "ownership_evidence": "All five sealed originals in RM/RML mixer 13731; source unit exclusive to this role within requested workload. No CS18 equivalence claimed.",
+  "sources": [
+    "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp"
+  ],
+  "public_headers": [
+    "uc-library/include/presonus/mixer/PermissionsComponent.hpp"
+  ],
+  "test_targets": [
+    {
+      "name": "graph_trial05_permissions_tests",
+      "sources": [
+        "uc-library/tests/graph_trial05_permissions_tests.cpp"
+      ],
+      "compile_options": [
+        "-fno-rtti"
+      ],
+      "link_dependencies": [
+        "presonus_rm_components",
+        "presonus_core_upstream"
+      ]
+    }
+  ],
+  "ctest": {
+    "name": "graph_trial05_permissions_differential",
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/graph-live-trial-05-permissions/check.py",
+      "replay",
+      "--executable",
+      "$<TARGET_FILE:graph_trial05_permissions_tests>",
+      "--fixtures",
+      "uc-library/candidates/graph-live-trial-05-permissions/native-fixtures.json"
+    ]
+  },
+  "test_compile_note": "fno-rtti required for subclassing official no-RTTI Core provider; original initial frtti attempt failed typeinfo link and was fixed."
+}
