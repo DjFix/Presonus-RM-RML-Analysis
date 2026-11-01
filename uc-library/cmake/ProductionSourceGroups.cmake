@@ -156,6 +156,10 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/CapturePageComponent.cpp
+  src/Presonus/Surface/GroupsEditPageComponent.cpp
+  src/Presonus/Surface/PresetsPageComponent.cpp
+  src/Presonus/Surface/WifiSetupComponent.cpp
   src/Presonus/PanControl.cpp
   src/Presonus/LinkControl.cpp
   src/Presonus/Surface/GroupsPageComponent.cpp
@@ -229,6 +233,12 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Mixer/MasterSectionComponent.cpp
+  src/Presonus/Mixer/InputComponent.cpp
+  src/Presonus/Mixer/NetworkSelectComponent.cpp
+  src/Presonus/Panel/PresetComponent.cpp
+  src/Presonus/Panel/GeqUIComponent.cpp
+  src/Presonus/Mixer/NetworkSetupComponent.cpp
   src/Presonus/Mixer/PermissionsComponent.cpp
   src/Presonus/MeterManagerBase.cpp
   src/Presonus/Mixer/AVBCascadeManager.cpp
@@ -308,6 +318,16 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/mixer/NetworkSetupComponent.hpp
+  presonus/surface/WifiSetupComponent.hpp
+  presonus/surface/PresetsPageComponent.hpp
+  presonus/surface/GroupsEditPageComponent.hpp
+  presonus/surface/CapturePageComponent.hpp
+  presonus/panel/GeqUIComponent.hpp
+  presonus/panel/PresetComponent.hpp
+  presonus/mixer/NetworkSelectComponent.hpp
+  presonus/mixer/InputComponent.hpp
+  presonus/mixer/MasterSectionComponent.hpp
   presonus/pcm4104/Pcm4104Spi.hpp
   presonus/DAWTimeInfo.hpp
   presonus/panel/Book.hpp

@@ -1841,6 +1841,16 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/mixer/NetworkSetupComponent.hpp
+  presonus/surface/WifiSetupComponent.hpp
+  presonus/surface/PresetsPageComponent.hpp
+  presonus/surface/GroupsEditPageComponent.hpp
+  presonus/surface/CapturePageComponent.hpp
+  presonus/panel/GeqUIComponent.hpp
+  presonus/panel/PresetComponent.hpp
+  presonus/mixer/NetworkSelectComponent.hpp
+  presonus/mixer/InputComponent.hpp
+  presonus/mixer/MasterSectionComponent.hpp
   presonus/PageComponent.hpp
   presonus/surface/DawFxPageComponent.hpp
   presonus/surface/GroupsPageComponent.hpp
@@ -2127,3 +2137,5 @@ include(cmake/PanelTemperature.cmake)
 include(cmake/GraphTrial04.cmake)
 
 include(cmake/GraphTrial05.cmake)
+
+include(cmake/GraphTrial06.cmake)
