@@ -13,7 +13,7 @@ import time
 ROOT = pathlib.Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'dependency-graph'))
 sys.path.insert(0, str(ROOT / 'uc-library/tools/registry'))
-from context_runtime import ContextError, guard, inside, sha, validate_task
+from context_runtime import ContextError, guard, inside, sha, validate_task, validate_original_scope
 from refresh_graph import ensure_fresh
 from memgraph_endpoint import memgraph_uri
 import adapter
@@ -41,8 +41,7 @@ def enrich(task):
             if len(rows) != 1:
                 raise ContextError('Resolve exact catalog anchor/range; ambiguous or absent original: ' + mangled)
             original = rows[0]
-            if not re.search(r'(?<![A-Za-z0-9_])'+re.escape(task['namespace'].rstrip(':'))+r'::', original['demangled']):
-                raise ContextError('Target outside assigned namespace: ' + original['demangled'])
+            validate_original_scope(task, original)
             identities.append({'original': original, 'record': record})
         enriched['originals'] = identities
         enriched['registry_guard'] = snapshot.guard

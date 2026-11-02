@@ -4,7 +4,8 @@
 #include "presonus/panel/key_input_provider.hpp"
 namespace presonus::surface {
 struct SLMixerEncoderAccess;
-}
+struct PageObserverAccess;
+} // namespace presonus::surface
 namespace Presonus {
 // Original twelve-pure-slot interface, no virtual destructor slots. Ordinary
 // return spellings are source-port choices pending independent declarations.
@@ -81,6 +82,12 @@ public:
   protected:
     ~IObserver() = default;
   };
+  // Portable composition; original fields/layout and return remain unresolved.
+  void removeObserver(IObserver *);
+
+private:
+  Core::Vector<IObserver *> observers_;
+  friend struct presonus::surface::PageObserverAccess;
 };
 class GeqPageComponent {
 public:
@@ -91,6 +98,12 @@ public:
   protected:
     ~IObserver() = default;
   };
+  // Portable composition; original fields/layout and return remain unresolved.
+  void removeObserver(IObserver *);
+
+private:
+  Core::Vector<IObserver *> observers_;
+  friend struct presonus::surface::PageObserverAccess;
 };
 class SLMixerHandler : public MixerAssignmentHandler,
                        public IMixerComponentObserver,
@@ -159,6 +172,18 @@ struct SLMixerEncoderAccess {
   }
   static auto &savedMeterMode(Presonus::Surface::SLMixerHandler &v) {
     return v.savedMeterMode_;
+  }
+};
+} // namespace presonus::surface
+
+namespace presonus::surface {
+// Independent source-port setup/inspection API, not recovered ELF methods.
+struct PageObserverAccess {
+  static auto &observers(Presonus::Surface::EQPageComponent &v) {
+    return v.observers_;
+  }
+  static auto &observers(Presonus::Surface::GeqPageComponent &v) {
+    return v.observers_;
   }
 };
 } // namespace presonus::surface

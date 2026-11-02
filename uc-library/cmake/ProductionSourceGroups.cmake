@@ -156,6 +156,17 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/PageObservers.cpp
+  src/Presonus/Surface/NetworkListSelection.cpp
+  src/Presonus/MainLCDPageStack.cpp
+  src/Presonus/DisplayManagerInstance.cpp
+  src/Presonus/DAWTimeMaps.cpp
+  src/Presonus/AssignmentHandlerTable.cpp
+  src/Presonus/MappingTableTrial08.cpp
+  src/Presonus/DAWTimeInfoTrial08.cpp
+  src/Presonus/MackieControlModelTrial08.cpp
+  src/Presonus/EQControlTrial08.cpp
+  src/Presonus/MainLCDComponentTrial08.cpp
   src/Presonus/Surface/MappingComponent.cpp
   src/Presonus/Surface/DAWMixerHandler.cpp
   src/Presonus/MeterControl.cpp
@@ -237,6 +248,19 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/SPIControlGroup.cpp
+  src/Presonus/Panel/PresetNameManager.cpp
+  src/Presonus/Panel/GeqAssignedChannel.cpp
+  src/Presonus/Mixer/OutputComponent.cpp
+  src/Presonus/Mixer/MixerBaseLinks.cpp
+  src/Presonus/Dsp/RuntimeGlobals.cpp
+  src/Presonus/Dsp/ControllerSetupProcess.cpp
+  src/Presonus/AliasComponent.cpp
+  src/Presonus/DspComponentTrial08.cpp
+  src/Presonus/Mixer/MixerComponentTrial08.cpp
+  src/Presonus/Mixer/MixerComponentBaseTrial08.cpp
+  src/Presonus/Panel/FXPresetRecallComponentTrial08.cpp
+  src/Presonus/Panel/StormFrontPanelComponentTrial08.cpp
   src/Presonus/StormMuteGroupComponent.cpp
   src/Presonus/Mixer/ChannelComponent.cpp
   src/Presonus/Panel/FrontPanelComponent.cpp
@@ -328,6 +352,24 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/surface/sl_mixer_encoder.hpp
+  presonus/surface/IDisplayPort.hpp
+  presonus/surface/DisplayManager.hpp
+  presonus/surface/AssignmentHandlerTable.hpp
+  presonus/panel/SPIControlGroup.hpp
+  presonus/panel/PresetNameManager.hpp
+  presonus/mixer/OutputComponent.hpp
+  presonus/dsp/RuntimeGlobals.hpp
+  presonus/dsp/Controller.hpp
+  presonus/AliasComponent.hpp
+  presonus/trial08/DspComponent.hpp
+  presonus/MappingTable.hpp
+  presonus/MackieControlModel.hpp
+  presonus/trial08/MixerComponent.hpp
+  presonus/trial08/MixerComponentBase.hpp
+  presonus/trial08/FXPresetRecallComponent.hpp
+  presonus/trial08/StormFrontPanelComponent.hpp
+  presonus/trial08/MainLCDComponent.hpp
   presonus/surface/NetworkSetupComponent.hpp
   presonus/panel/RackPanelComponent.hpp
   presonus/MeterControl.hpp

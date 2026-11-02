@@ -380,6 +380,9 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
     task_paths = [x if isinstance(x, str) else x['task'] for x in items]
     tasks = [json.loads(inside(root, p).read_text()) for p in task_paths]
     groups = manifest.get('groups')
+    allow_smaller = manifest.get('allow_smaller') is True
+    if allow_smaller and not manifest.get('smaller_batch_authorization'):
+        raise ContextError('Explicit smaller-batch authorization required in manifest')
     validate_tasks(tasks, groups)
     # All packet outputs live below the one writable batch mount.
     packets = [str((output / 'packets' / t['task_id']).relative_to(root)) for t in tasks]
@@ -518,7 +521,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             if groups:
                 from group_dispatch import check_groups
                 count = len(groups[0]['packets'])
-                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count)
+                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count, allow_smaller)
             else:
                 check_conflicts(entries, requests)
             timings.append({'phase': 'common_checks', 'seconds': time.perf_counter() - common_start})
@@ -558,6 +561,8 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             payload = {'version': 1, 'generation': frozen['inputs']['active']['state_sha256'],
                        'workers': workers, 'mode': 'sealed_before_first_worker_write',
                        'dependency_conflicts': []}
+            if allow_smaller:
+                payload['smaller_batch_authorization'] = manifest['smaller_batch_authorization']
             result = output / 'BATCH_DISPATCH.json'
             if result.exists():
                 if not resume:

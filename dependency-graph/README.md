@@ -12,6 +12,10 @@ See [IMPLEMENTATION_REPORT.md](IMPLEMENTATION_REPORT.md) for validation and limi
 Automatic incremental refresh before preparation is implemented:
 [AUTOMATIC_REFRESH.md](AUTOMATIC_REFRESH.md).
 
+Derived native work ranking, scoped requirement events, real-corpus validation
+and exact 10×10 planning receipts: [RANKING.md](RANKING.md). Ranking never grants
+dispatch or readiness; the ordinary context and admission gates still apply.
+
 ## Current full-corpus result
 
 Read [FULL_REPORT.md](FULL_REPORT.md) and [FULL_SCHEMA.md](FULL_SCHEMA.md).

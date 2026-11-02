@@ -1,0 +1,321 @@
+{
+  "cases": [
+    {
+      "target": 7,
+      "text": "LowShelf",
+      "result": 1,
+      "calls": [
+        {
+          "left": "LowShelf",
+          "right": "LowShelf",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "lowshelf",
+      "result": 1,
+      "calls": [
+        {
+          "left": "lowshelf",
+          "right": "LowShelf",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "LOWSHELF",
+      "result": 1,
+      "calls": [
+        {
+          "left": "LOWSHELF",
+          "right": "LowShelf",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "HighShelf",
+      "result": 2,
+      "calls": [
+        {
+          "left": "HighShelf",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "HighShelf",
+          "right": "HighShelf",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "hIgHsHeLf",
+      "result": 2,
+      "calls": [
+        {
+          "left": "hIgHsHeLf",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "hIgHsHeLf",
+          "right": "HighShelf",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "LowCut",
+      "result": 0,
+      "calls": [
+        {
+          "left": "LowCut",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "LowCut",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "LowCut",
+          "right": "LowCut",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "lowcut",
+      "result": 0,
+      "calls": [
+        {
+          "left": "lowcut",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "lowcut",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "lowcut",
+          "right": "LowCut",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "Peaking",
+      "result": 3,
+      "calls": [
+        {
+          "left": "Peaking",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "Peaking",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "Peaking",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "Peaking",
+          "right": "Peaking",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "PEAKING",
+      "result": 3,
+      "calls": [
+        {
+          "left": "PEAKING",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "PEAKING",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "PEAKING",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "PEAKING",
+          "right": "Peaking",
+          "equal": true
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "",
+      "result": 3,
+      "calls": [
+        {
+          "left": "",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "",
+          "right": "Peaking",
+          "equal": false
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "unknown",
+      "result": 3,
+      "calls": [
+        {
+          "left": "unknown",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "unknown",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "unknown",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "unknown",
+          "right": "Peaking",
+          "equal": false
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "LowShelfX",
+      "result": 3,
+      "calls": [
+        {
+          "left": "LowShelfX",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "LowShelfX",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "LowShelfX",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "LowShelfX",
+          "right": "Peaking",
+          "equal": false
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": "High",
+      "result": 3,
+      "calls": [
+        {
+          "left": "High",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": "High",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": "High",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": "High",
+          "right": "Peaking",
+          "equal": false
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    },
+    {
+      "target": 7,
+      "text": " LowCut",
+      "result": 3,
+      "calls": [
+        {
+          "left": " LowCut",
+          "right": "LowShelf",
+          "equal": false
+        },
+        {
+          "left": " LowCut",
+          "right": "HighShelf",
+          "equal": false
+        },
+        {
+          "left": " LowCut",
+          "right": "LowCut",
+          "equal": false
+        },
+        {
+          "left": " LowCut",
+          "right": "Peaking",
+          "equal": false
+        }
+      ],
+      "boundary": "actual host libc strcasecmp; original parser ARM and actual ELF table/strings"
+    }
+  ]
+}

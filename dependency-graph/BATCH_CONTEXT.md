@@ -9,6 +9,13 @@ uc-library/.venv/bin/python uc-library/tools/recovery/select_context.py batch-pr
 ```
 
 `TASKS.json` contains `{"tasks":["repository/relative/task-a.json", "repository/relative/task-b.json"]}`.
+An explicitly authorized smaller trial can set `"allow_smaller": true` and a
+nonempty `"smaller_batch_authorization"` in this manifest. Grouped trials then
+allow one to ten groups, each with one to ten packets, including unequal sizes.
+Without that explicit flag the original exact ten groups of five or ten rule
+remains. Identity, coverage, ownership, claim, source freshness, nonempty packet,
+full validation and the complete atomic publication barrier are unchanged.
+The standalone group publisher additionally requires `--allow-smaller`.
 Each task retains the ordinary exact ELF/name identity, mode, namespace and file
 ownership contract. Each packet is in `NEW_BATCH/packets/TASK_ID`, with its own
 claim, enriched request, manifest, native context, slices and evidence. Use

@@ -1841,6 +1841,18 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/surface/AssignmentHandlerTable.hpp
+  presonus/panel/SPIControlGroup.hpp
+  presonus/panel/PresetNameManager.hpp
+  presonus/mixer/OutputComponent.hpp
+  presonus/dsp/RuntimeGlobals.hpp
+  presonus/AliasComponent.hpp
+  presonus/trial08/DspComponent.hpp
+  presonus/trial08/MixerComponent.hpp
+  presonus/trial08/MixerComponentBase.hpp
+  presonus/trial08/FXPresetRecallComponent.hpp
+  presonus/trial08/StormFrontPanelComponent.hpp
+  presonus/trial08/MainLCDComponent.hpp
   presonus/surface/NetworkSetupComponent.hpp
   presonus/panel/RackPanelComponent.hpp
   presonus/MeterControl.hpp
@@ -2151,3 +2163,7 @@ include(cmake/GraphTrial05.cmake)
 include(cmake/GraphTrial06.cmake)
 
 include(cmake/GraphTrial07.cmake)
+
+include(cmake/GraphTrial08.cmake)
+
+include(cmake/GraphRanked09.cmake)

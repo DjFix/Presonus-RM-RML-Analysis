@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/public/corevector.h"
 #include <cstdint>
 namespace Presonus::Mixer {
 class ChannelComponent;
@@ -8,6 +9,12 @@ class GEQComponent;
 namespace presonus::gequi_port {
 // Independent app dependency boundary. No original layout, inheritance or
 // ownership is asserted. Core operations use actual CCL objects.
+// Explicit independent source-port selection input, not original object layout.
+struct ChannelSelection {
+  const Core::ConstVector<Presonus::Mixer::ChannelComponent *> &main;
+  const Core::ConstVector<Presonus::Mixer::ChannelComponent *> &aux;
+  int geqCount;
+};
 struct Dependencies {
   virtual ~Dependencies() = default;
   virtual int geqCount() const = 0;
@@ -42,6 +49,13 @@ public:
   explicit GeqUIComponent(presonus::gequi_port::Dependencies &dependencies)
       : dependencies(dependencies) {}
   void updateStereoLink(Mixer::ChannelComponent *, bool);
+  Mixer::ChannelComponent *getChannelAssignedToCurrentGeq();
+  // Independent binding: caller retains vectors and pointed-to channel
+  // lifetime.
+  void
+  configureChannelSelection(const presonus::gequi_port::ChannelSelection &s) {
+    channelSelection = &s;
+  }
   bool isChildParameter(const Core::Portable::Parameter &) const;
   bool isChannelLinked(unsigned int);
   void flattenCurrentGeq();
@@ -64,6 +78,7 @@ public:
 private:
   Mixer::GEQComponent *geqAt(int index) const;
   presonus::gequi_port::Dependencies &dependencies;
+  const presonus::gequi_port::ChannelSelection *channelSelection = nullptr;
   int currentGeq = -1;
   int currentBand = 0;
 };

@@ -71,6 +71,16 @@ class NetworkSetupComponent : public Core::Portable::Component {
 public:
   explicit NetworkSetupComponent(presonus::surface::SurfaceNetworkState &state)
       : state_(state) {}
+  // Portable provider-backed nested model. Original inheritance/state/returns
+  // remain unresolved. selectedItem is non-owning userData identity.
+  class ListModel : public Core::Portable::ListViewModel {
+  public:
+    bool isItemSelected(int) const override;
+    void setSelectedItem(void *item) { selectedItem_ = item; }
+
+  private:
+    void *selectedItem_ = nullptr;
+  };
   void syncListParam(int, const Core::Vector<UC::NetworkItem *> &,
                      UC::NetworkItem *) const;
   void onNetworkItemAdded(UC::NetworkItem *);

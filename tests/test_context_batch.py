@@ -351,6 +351,32 @@ class BatchOrchestrationTests(unittest.TestCase):
     def test_ten_by_ten_shares_ownership_only_within_group(self):
         self.grouped_batch(10)
 
+    def test_explicit_smaller_unequal_groups_publish_same_barrier(self):
+        groups=[]
+        for i in range(4):
+            task=self.task(i)
+            task['owned_files']=[f'uc-library/src/smallgroup{0 if i == 0 else 1}.cpp']
+            (self.root/f'tasks/{i}.json').write_text(json.dumps(task))
+        for index,ids in enumerate(([0],[1,2,3])):
+            paths=[f'temp/recovery-work/batch/packets/work{i}' for i in ids]
+            groups.append({'task_name':f'small{index}','packets':paths,
+                           'execution_order':paths[:],'scope_reason':'explicit scoped small trial'})
+        self.manifest.write_text(json.dumps({'tasks':[f'tasks/{i}.json' for i in range(4)],
+            'groups':groups,'allow_smaller':True,'smaller_batch_authorization':'synthetic fixture authorization'}))
+        payload=json.loads(self.run_batch().read_text())
+        self.assertEqual(len(payload['workers']),2)
+        self.assertEqual(len(payload['packet_manifests']),4)
+        self.assertEqual(payload['publication_state'],'complete')
+        for worker in payload['workers']:
+            for packet in worker['packets']:
+                publication.authorization(self.root,self.root/packet)
+
+    def test_smaller_flag_requires_explicit_authorization_before_claim(self):
+        manifest=json.loads(self.manifest.read_text());manifest['allow_smaller']=True
+        self.manifest.write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ContextError,'authorization'):self.run_batch()
+        self.assertFalse(self.claims)
+
     def test_parallel_builders_obey_selection_limit_and_publish_after_validation(self):
         result = self.run_batch()
         self.assertEqual(self.envs[0].maximum, 2)

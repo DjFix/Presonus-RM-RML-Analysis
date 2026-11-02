@@ -42,6 +42,37 @@ class GroupDispatchTests(unittest.TestCase):
         g,e,r=self.fixture()
         with self.assertRaisesRegex(ContextError,'ten'):check_groups(g[:3],e,r)
 
+    def small_fixture(self):
+        g,e,r=self.fixture()
+        g=g[:2]
+        for group,count in zip(g,(1,3)):
+            group['packets']=group['packets'][:count]
+            group['execution_order']=group['packets'][:]
+        paths={p for group in g for p in group['packets']}
+        return g,{p:v for p,v in e.items() if p in paths},{p:v for p,v in r.items() if p in paths}
+
+    def test_explicit_smaller_unequal_groups(self):
+        g,e,r=self.small_fixture()
+        self.assertEqual(len(check_groups(g,e,r,allow_smaller=True)),4)
+        with self.assertRaisesRegex(ContextError,'ten'):check_groups(g,e,r)
+
+    def test_smaller_retains_every_negative_gate(self):
+        for mutation in ('generation','empty','work','overlap','original','extra'):
+            with self.subTest(mutation=mutation):
+                g,e,r=self.small_fixture()
+                if mutation=='generation':e['p1_0']['generation_sha256']='other'
+                if mutation=='empty':e['p1_0']['state']='selected'
+                if mutation=='work':e['p1_0']['work_binding']['work_item_id']='p0_0'
+                if mutation=='overlap':e['p1_0']['selected_file_sha256']['uc-library/src/0.cpp']='hash'
+                if mutation=='original':e['p1_0']['work_binding']['covered_occurrences']*=2
+                if mutation=='extra':e['outside']=e['p1_0']
+                with self.assertRaises(ContextError):check_groups(g,e,r,allow_smaller=True)
+
+    def test_smaller_cannot_be_empty(self):
+        with self.assertRaises(ContextError):check_groups([],{}, {},allow_smaller=True)
+        g,e,r=self.small_fixture();g[0]['packets']=[]
+        with self.assertRaises(ContextError):check_groups(g,e,r,allow_smaller=True)
+
     def test_ten_packets(self):
         g,e,r=self.fixture(10);self.assertEqual(len(check_groups(g,e,r,10)),100)
 

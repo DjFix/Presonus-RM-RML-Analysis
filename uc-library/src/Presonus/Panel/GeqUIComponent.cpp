@@ -69,7 +69,8 @@ void GeqUIComponent::updateBandSelect() {
     p->setValue(selected, true);
 }
 void GeqUIComponent::updateStereoField() {
-  auto *channel = dependencies.assignedChannel(currentGeq);
+  auto *channel = channelSelection ? getChannelAssignedToCurrentGeq()
+                                   : dependencies.assignedChannel(currentGeq);
   bool stereo = channel && (dependencies.linked(channel) ||
                             dependencies.channelKind(channel) == 7);
   if (auto *p = getParameterByTag(5))
@@ -81,7 +82,8 @@ void GeqUIComponent::updateStereoField() {
 void GeqUIComponent::updateStereoLink(Mixer::ChannelComponent *channel,
                                       bool update) {
   if (!channel)
-    channel = dependencies.assignedChannel(currentGeq);
+    channel = channelSelection ? getChannelAssignedToCurrentGeq()
+                               : dependencies.assignedChannel(currentGeq);
   bool stereo = false;
   bool linked = false;
   if (channel) {

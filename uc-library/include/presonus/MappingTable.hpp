@@ -1,13 +1,21 @@
 #pragma once
+#include "core/portable/coreparams.h"
 #include "core/public/corevector.h"
+#include "core/public/gui/corecolor.h"
 #include <cstring>
 
 namespace presonus::mapping {
 class ItemOperations;
 struct Entry;
+class ExtendedOperations;
+class ColorOperations;
 } // namespace presonus::mapping
 
 namespace Presonus {
+class IMainScreenPageController;
+namespace Panel {
+class Control;
+}
 // Intentional portable source contract. Members/constructor and return types
 // below do not establish the firmware declaration, layout, or ARM32 ABI.
 class MappingTable {
@@ -21,7 +29,26 @@ public:
   void setControlEnabled(const char *name, bool state);
   void setControlImmediate(const char *name, bool state);
 
+  void setExtendedOperations(presonus::mapping::ExtendedOperations &);
+  static void setColorOperations(presonus::mapping::ColorOperations &);
+  void setControlBlinkMode(const char *, const char *);
+  static int mapColor(const Core::Color &);
+  static Core::Color mapColor(const char *);
+  void addMainScreenPage(IMainScreenPageController *);
+  // Independent source-port state observation, not an original ELF interface.
+  int sourcePortPageCount() const { return pageCount_; }
+  IMainScreenPageController *findPage(const char *) const;
+  void setPanelControl(const char *, Panel::Control *, const char *);
+  void connectAltParameter(const char *, Core::Portable::Parameter *);
+  void connectTertiaryParameter(const char *, Core::Portable::Parameter *);
+  void setControlColor(const char *, const char *);
+  void setControlDefaultColor(const char *, const char *, bool);
+
 private:
+  presonus::mapping::ExtendedOperations &extended() const;
+  presonus::mapping::ExtendedOperations *extended_ = nullptr;
+  IMainScreenPageController *pages_[128]{};
+  int pageCount_ = 0;
   const presonus::mapping::Entry *entries_;
   int count_;
   presonus::mapping::ItemOperations &operations_;
@@ -52,5 +79,39 @@ public:
   virtual void inverseMode(Presonus::MappingTable::Item &, bool) = 0;
   virtual void enabled(Presonus::MappingTable::Item &, bool) = 0;
   virtual void immediate(Presonus::MappingTable::Item &, bool) = 0;
+};
+} // namespace presonus::mapping
+
+namespace presonus::mapping {
+// Required independent application boundaries, not recovered object layouts.
+// No default implementation; callers explicitly supply all dependencies.
+class ColorOperations {
+public:
+  virtual ~ColorOperations() = default;
+  virtual int map(Core::Color) = 0;
+  virtual Core::Color map(const char *) = 0;
+  virtual int enumFromString(const char *, int) = 0;
+};
+class ExtendedOperations {
+public:
+  virtual ~ExtendedOperations() = default;
+  virtual void blink(Presonus::MappingTable::Item &, const char *) = 0;
+  virtual const char *pageName(Presonus::IMainScreenPageController &) = 0;
+  virtual Presonus::Panel::Control *control(Presonus::MappingTable::Item &) = 0;
+  virtual void control(Presonus::MappingTable::Item &,
+                       Presonus::Panel::Control *) = 0;
+  virtual Core::Portable::Parameter *
+  parameter(Presonus::MappingTable::Item &) = 0;
+  virtual int translateMode(const char *) = 0;
+  virtual void bind(Presonus::Panel::Control &, Core::Portable::Parameter *,
+                    int) = 0;
+  virtual Core::Portable::Parameter *alternate(Presonus::Panel::Control &,
+                                               bool tertiary) = 0;
+  virtual void alternate(Presonus::Panel::Control &,
+                         Core::Portable::Parameter *, bool tertiary) = 0;
+  virtual bool hasLED(Presonus::Panel::Control &) = 0;
+  virtual void color(Presonus::Panel::Control &, int) = 0;
+  virtual const char *defaultColor(Presonus::MappingTable::Item &) = 0;
+  virtual void defaultColor(Presonus::MappingTable::Item &, const char *) = 0;
 };
 } // namespace presonus::mapping

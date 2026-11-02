@@ -10,8 +10,11 @@ namespace Presonus {
 class DisplayManager {
 public:
   void flushColorLcdUpdates();
+  // Portable choice: original return and static declaration remain unresolved.
+  static DisplayManager *getInstance();
 
 private:
+  static DisplayManager *theInstance;
   Core::Portable::RootView *root_ = nullptr;
   IDisplayPort *port_ = nullptr;
   bool suspended_ = false;
@@ -20,6 +23,10 @@ private:
 } // namespace Presonus
 namespace presonus::surface_display_port {
 struct DisplayManagerAccess {
+  // Independent binding helper; no original lifecycle/ownership claim.
+  static void bindInstance(Presonus::DisplayManager *instance) {
+    Presonus::DisplayManager::theInstance = instance;
+  }
   static void bind(Presonus::DisplayManager &m, Core::Portable::RootView &root,
                    Presonus::IDisplayPort &port, bool suspended) {
     m.root_ = &root;

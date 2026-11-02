@@ -8,9 +8,13 @@ struct ControllerSourceState {
   const Core::ConstVector<Presonus::Dsp::ParamDescriptor *> *descriptors =
       nullptr;
   bool lookupByTag = false;
+  // Independent storage for observed +0x1c and +0x24 state, not ARM layout.
+  std::uint8_t processDirty = 0;
+  std::uint32_t processRateBits = 0;
 };
 } // namespace presonus::dsp
 namespace Presonus::Dsp {
+struct SetupProperty;
 class Controller {
 public:
   explicit Controller(presonus::dsp::ControllerSourceTag) {}
@@ -28,6 +32,9 @@ public:
   float getNormalized(int) const;
   float setNormalized(int, float);
   float boundValue(int, float) const;
+  // Portable void contract; original return declaration remains unresolved.
+  // property must borrow at least 12 readable bytes; +8 is the observed word.
+  void setupProcess(const SetupProperty &property);
 
 private:
   const ParamDescriptor &descriptor(int) const;

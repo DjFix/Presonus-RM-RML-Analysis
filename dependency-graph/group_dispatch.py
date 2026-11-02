@@ -16,18 +16,22 @@ from context_runtime import ContextError, guard, inside, sha
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-def check_groups(groups, entries, requests, packets_per_worker=5):
-    if packets_per_worker not in (5, 10):
+def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False):
+    if not allow_smaller and packets_per_worker not in (5, 10):
         raise ContextError("Supported packet counts per worker: five or ten")
-    expected = 10 * packets_per_worker
-    if len(groups) != 10:
+    if allow_smaller and (not 1 <= len(groups) <= 10 or any(not 1 <= len(g['packets']) <= 10 for g in groups)):
+        raise ContextError('Explicit smaller batch requires one to ten nonempty groups, at most ten packets each')
+    if not allow_smaller and len(groups) != 10:
         raise ContextError('Exactly ten worker groups required')
     names = [g['task_name'] for g in groups]
-    if len(set(names)) != 10 or any(not re.fullmatch('[a-z][a-z0-9_]{0,63}', n) for n in names):
+    if len(set(names)) != len(groups) or any(not re.fullmatch('[a-z][a-z0-9_]{0,63}', n) for n in names):
         raise ContextError('Unique valid worker names required')
     paths = [p for g in groups for p in g['packets']]
-    if any(len(g['packets']) != packets_per_worker for g in groups) or len(set(paths)) != expected:
+    expected = len(paths) if allow_smaller else 10 * packets_per_worker
+    if (not allow_smaller and any(len(g['packets']) != packets_per_worker for g in groups)) or len(set(paths)) != expected:
         raise ContextError('Exactly the configured distinct work packets per worker required')
+    if set(paths) != set(entries) or set(paths) != set(requests):
+        raise ContextError('Exact group/entry/request coverage required')
     if len({e['task_id'] for e in entries.values()}) != expected:
         raise ContextError('Duplicate packet task identity')
     if len({e['generation_sha256'] for e in entries.values()}) != 1:
@@ -47,7 +51,7 @@ def check_groups(groups, entries, requests, packets_per_worker=5):
     if len(set(identities)) != expected:
         raise ContextError('Duplicate original identity')
     for g in groups:
-        if not g.get('scope_reason') or set(g.get('execution_order', [])) != set(g['packets']) or len(g['execution_order']) != packets_per_worker:
+        if not g.get('scope_reason') or set(g.get('execution_order', [])) != set(g['packets']) or len(g['execution_order']) != len(g['packets']):
             raise ContextError('Scope reason and exact intra-worker execution order required')
         owned = set().union(*(set(requests[p]['owned_files']) for p in g['packets']))
         for h in groups:
@@ -64,12 +68,16 @@ def main():
     parser.add_argument('--groups', required=True)
     parser.add_argument('--out', required=True)
     parser.add_argument('--packets-per-worker', type=int, choices=(5, 10), default=5)
+    parser.add_argument('--allow-smaller', action='store_true')
     a = parser.parse_args()
     groups_path = inside(ROOT, a.groups)
     group_bytes = groups_path.read_bytes()
     import hashlib
     groups_digest = hashlib.sha256(group_bytes).hexdigest()
-    groups = json.loads(group_bytes)['groups']
+    specification_payload = json.loads(group_bytes)
+    groups = specification_payload['groups']
+    if a.allow_smaller and not specification_payload.get('smaller_batch_authorization'):
+        raise ContextError('Explicit smaller-batch authorization required in manifest')
     output = inside(ROOT, a.out)
     if not output.is_relative_to(ROOT / 'temp/recovery-work'):
         raise ContextError('Output must be in project recovery work')
@@ -87,7 +95,7 @@ def main():
         entries = {p: json.loads((inside(ROOT,p)/'context.json').read_text()) for p in paths}
         requests = {p: json.loads((inside(ROOT,p)/'request.json').read_text()) for p in paths}
         expected_manifests = {p:sha(inside(ROOT,p)/'context.json') for p in paths}
-        check_groups(groups, entries, requests, a.packets_per_worker)
+        check_groups(groups, entries, requests, a.packets_per_worker, a.allow_smaller)
         from context_work_batch import BatchWorkValidator
         work_validator = BatchWorkValidator(ROOT)
         cleanup.callback(work_validator.close)
@@ -128,7 +136,7 @@ def main():
                 single={'task_name':requests[p]['task_id'],'fork_turns':'none','message':(packet/'SUBAGENT_PROMPT.md').read_text()+' Context manifest SHA-256: '+sha(packet/'context.json')}
                 messages.append(single['message'])
             owned=sorted(set().union(*(set(requests[p]['owned_files']) for p in g['packets'])))
-            message=(f'You are one reconstruction worker owning {a.packets_per_worker} sealed work packets as a single coherent scope. Read every packet before editing. '+
+            message=(f'You are one reconstruction worker owning {len(g["packets"])} sealed work packets as a single coherent scope. Read every packet before editing. '+
                      'Scope rationale: '+g['scope_reason']+'\nExecution order: '+json.dumps(g['execution_order'])+
                      '\nOwned file union: '+json.dumps(owned)+
                      '\nDeliver one HANDOFF v1 per packet with its exact task_id and originals, then an aggregate index. '+

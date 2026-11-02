@@ -47,6 +47,12 @@ def validate_task(task):
             raise ContextError('Nonempty task field required: ' + name)
     if not re.fullmatch('[a-z][a-z0-9_]{0,63}',task['task_id']):
         raise ContextError('task_id must be a valid subagent task name')
+    if task.get('linkage_scope') not in (None, 'global_elf'):
+        raise ContextError('Unknown linkage_scope')
+    if task.get('linkage_scope') == 'global_elf' and task['namespace'] != '::':
+        raise ContextError('global_elf requires exact global namespace ::')
+    if not task['namespace'].rstrip(':') and task.get('linkage_scope') != 'global_elf':
+        raise ContextError('Global ELF scope requires explicit linkage_scope')
     if task.get('mode') not in ('audit', 'reconstruct', 'research'):
         raise ContextError('mode must be audit, reconstruct or research')
     if not task.get('targets') or not isinstance(task['targets'], list):
@@ -70,6 +76,16 @@ def validate_task(task):
         raise ContextError('unmapped_policy must be block or research')
     if task.get('unmapped_policy') == 'research' and task['mode'] != 'research':
         raise ContextError('Unknown source mappings require an explicit research task')
+
+
+def validate_original_scope(task, original):
+    if task.get('linkage_scope') == 'global_elf':
+        # Exact ELF identity/range was already resolved by enrich. This marker
+        # establishes global symbol scope only, never a C prototype or ABI.
+        if task['namespace'] != '::' or original['mangled'].startswith('_Z') or '::' in original['demangled']:
+            raise ContextError('Target outside explicit global ELF scope: ' + original['demangled'])
+    elif not re.search(r'(?<![A-Za-z0-9_])'+re.escape(task['namespace'].rstrip(':'))+r'::', original['demangled']):
+        raise ContextError('Target outside assigned namespace: ' + original['demangled'])
 
 
 def snapshot_guard_inputs(root, active, state):
