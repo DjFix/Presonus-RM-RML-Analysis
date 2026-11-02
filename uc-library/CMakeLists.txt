@@ -1841,6 +1841,16 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/surface/NetworkSetupComponent.hpp
+  presonus/panel/RackPanelComponent.hpp
+  presonus/MeterControl.hpp
+  presonus/surface/DAWMixerHandler.hpp
+  presonus/panel/PresetNameCache.hpp
+  presonus/dsp/SLReverbController.hpp
+  presonus/panel/FrontPanelComponent.hpp
+  presonus/mixer/ChannelComponent.hpp
+  presonus/StormMuteGroupComponent.hpp
+  presonus/surface/MappingComponent.hpp
   presonus/mixer/NetworkSetupComponent.hpp
   presonus/surface/WifiSetupComponent.hpp
   presonus/surface/PresetsPageComponent.hpp
@@ -2139,3 +2149,5 @@ include(cmake/GraphTrial04.cmake)
 include(cmake/GraphTrial05.cmake)
 
 include(cmake/GraphTrial06.cmake)
+
+include(cmake/GraphTrial07.cmake)

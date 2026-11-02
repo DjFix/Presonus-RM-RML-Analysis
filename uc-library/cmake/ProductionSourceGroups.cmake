@@ -156,6 +156,10 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/MappingComponent.cpp
+  src/Presonus/Surface/DAWMixerHandler.cpp
+  src/Presonus/MeterControl.cpp
+  src/Presonus/Surface/NetworkSetupComponent.cpp
   src/Presonus/Surface/CapturePageComponent.cpp
   src/Presonus/Surface/GroupsEditPageComponent.cpp
   src/Presonus/Surface/PresetsPageComponent.cpp
@@ -233,6 +237,12 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/StormMuteGroupComponent.cpp
+  src/Presonus/Mixer/ChannelComponent.cpp
+  src/Presonus/Panel/FrontPanelComponent.cpp
+  src/Presonus/Dsp/SLReverbController.cpp
+  src/Presonus/Panel/PresetNameCache.cpp
+  src/Presonus/Panel/RackPanelComponent.cpp
   src/Presonus/Mixer/MasterSectionComponent.cpp
   src/Presonus/Mixer/InputComponent.cpp
   src/Presonus/Mixer/NetworkSelectComponent.cpp
@@ -318,6 +328,16 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/surface/NetworkSetupComponent.hpp
+  presonus/panel/RackPanelComponent.hpp
+  presonus/MeterControl.hpp
+  presonus/surface/DAWMixerHandler.hpp
+  presonus/panel/PresetNameCache.hpp
+  presonus/dsp/SLReverbController.hpp
+  presonus/panel/FrontPanelComponent.hpp
+  presonus/mixer/ChannelComponent.hpp
+  presonus/StormMuteGroupComponent.hpp
+  presonus/surface/MappingComponent.hpp
   presonus/mixer/NetworkSetupComponent.hpp
   presonus/surface/WifiSetupComponent.hpp
   presonus/surface/PresetsPageComponent.hpp

@@ -1,0 +1,5332 @@
+{
+  "version": 1,
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "range_checks": [
+    {
+      "packet": 1,
+      "identity": "native:fa1f51e8c6a680e25a5886a50babc9c3bbe6405d5de3fcaa3d0598dfebe8523c",
+      "address": 545220,
+      "size": 1084,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 512452,
+      "bytes_sha256": "9aea549616ecad788fcd12a4a4f3447ee5f0d7cc9c9c4c788cd1d899026bef64"
+    },
+    {
+      "packet": 2,
+      "identity": "native:d9f77b6b8ac98f447a04a2c5d7df862946de14d4eb6c1f935682a080616d5a6c",
+      "address": 546304,
+      "size": 356,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 513536,
+      "bytes_sha256": "cbb82c0ec3d643ba321d33a2b50c88d78ebb13bc8ec459375ed02a1219b90895"
+    },
+    {
+      "packet": 3,
+      "identity": "native:95d531214a89f31f10bd13e278064c7686088d243f9f9bbfeb0feb4e9269dbd4",
+      "address": 546660,
+      "size": 112,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 513892,
+      "bytes_sha256": "7cad1ec9b8ff57b9878a9404589e2efc608ff2453600f4c35aa5eb449aff937b"
+    },
+    {
+      "packet": 4,
+      "identity": "native:25a8c54e93b4cbec3f4c9afb85e40429b76f0f243f65e39d24636c9a9dfc0827",
+      "address": 542472,
+      "size": 32,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 509704,
+      "bytes_sha256": "fef623ba89d32ad1a17357ad6b99a9442074b4a040c8140d2d91b80a8a546390"
+    },
+    {
+      "packet": 5,
+      "identity": "native:d76ee3bc49c437c52db6b961d1204edaf488a59ab845bfb1994eafc334dd8b99",
+      "address": 546772,
+      "size": 424,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 514004,
+      "bytes_sha256": "84b00025db4c40880d003aa0af551302086cffb975cfa39429fa3b99040851a3"
+    },
+    {
+      "packet": 6,
+      "identity": "native:bcb4b2a99d49638c6dc680ad022cf7f6d8a0fb28685468f3dad70c7df8e0dd5d",
+      "address": 547256,
+      "size": 296,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 514488,
+      "bytes_sha256": "1c58c6df368c81db396d653a5b304267b009ff44bf24d1784575921d2bb4a720"
+    },
+    {
+      "packet": 7,
+      "identity": "native:5c3703568c78c152a8cf4c7b71e7dda5552863123c29e1876c67ad5489e0229e",
+      "address": 544832,
+      "size": 116,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 512064,
+      "bytes_sha256": "226b4835cfed37586f28389d5b017dbb1df98d88dde6b18b059692b05f4b340a"
+    },
+    {
+      "packet": 8,
+      "identity": "native:3fd7354a36463339bf148612a9c5e4165089f69f0aa10007ddb1a627da4ae747",
+      "address": 356008,
+      "size": 140,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 323240,
+      "bytes_sha256": "735d57403bce2f1578d334b8b70cef9f7096255f5e7359a040fdc11d88b51ad2"
+    },
+    {
+      "packet": 9,
+      "identity": "native:dac853d1e8fbd077cbb6f29def1d9d8648a5137850f22c38b40ce1b54251071e",
+      "address": 547756,
+      "size": 104,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 514988,
+      "bytes_sha256": "d53b51b787e0b981613138076720781903a8e61e3dbb075bf6a6862f4988cd81"
+    },
+    {
+      "packet": 10,
+      "identity": "native:988cd6429e7760733ed2501a5b9d61930a1d907518f93ec081a972ae46e5f680",
+      "address": 547552,
+      "size": 104,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 514784,
+      "bytes_sha256": "c852fb24cfb295819514d3637012e8ccee239ac90acaeee6b945b21be839a332"
+    }
+  ],
+  "oracle": "original ARM instructions with explicit Core/libc/observer boundary hooks",
+  "cases": [
+    {
+      "argv": [
+        "canDelete",
+        "-3",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=-3\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "canDelete",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "canDelete",
+        "1",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "canDelete",
+        "2",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=2\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "canDelete",
+        "3",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=3\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "canDelete",
+        "100",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=100\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "static",
+        "0",
+        " Alpha ",
+        " Vocal ",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=30312e416c7068612e566f63616c2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087920,
+            16844208,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087920,
+            16844208,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087600,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502968,
+            1,
+            153087856
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            86
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844176,
+            3502980,
+            153087920,
+            86
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            86
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            240
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087600,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "static",
+        "9",
+        "?A/B",
+        "Drums",
+        "sub",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=9\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f7375622f31302e5f415f422e4472756d732e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087920,
+            16844208,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087920,
+            16844208,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087600,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502968,
+            10,
+            153087856
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            68
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844176,
+            3502980,
+            153087920,
+            68
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            68
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            241
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087344,
+            16844096,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087344,
+            16844224,
+            256,
+            16844224
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087344,
+            153087600,
+            256,
+            16844224
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087344,
+            256,
+            16844224
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "static",
+        "-1",
+        "",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=-1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=30302e2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087920,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087920,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087600,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502968,
+            0,
+            153087856
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844176,
+            3502968,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087600,
+            3502968,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            251
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087600,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "static",
+        "100",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=100\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f3130312e7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878782e797979797979797979797979797979797979797979797979797979797979792e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087856,
+            16844192,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087920,
+            16844288,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087920,
+            16844288,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087600,
+            0,
+            16844096,
+            16844176
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502968,
+            101,
+            153087856
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            121
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844176,
+            3502980,
+            153087920,
+            121
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087600,
+            3502980,
+            153087920,
+            121
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            155
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087600,
+            16844176,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087344,
+            16844096,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087344,
+            16844352,
+            256,
+            16844352
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087344,
+            153087600,
+            256,
+            16844352
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087344,
+            256,
+            16844352
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "member",
+        "0",
+        " Alpha ",
+        " Vocal ",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=30312e416c7068612e566f63616c2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087704,
+            16777285,
+            256,
+            16844096
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087608,
+            16844112,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087608,
+            16844112,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087288,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502968,
+            1,
+            153087544
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            86
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502980,
+            153087608,
+            86
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            86
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            240
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087288,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "member",
+        "9",
+        "?A/B",
+        "Drums",
+        "sub",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=9\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f7375622f31302e5f415f422e4472756d732e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087704,
+            16777285,
+            256,
+            16844096
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087608,
+            16844112,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087608,
+            16844112,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087288,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502968,
+            10,
+            153087544
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            68
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502980,
+            153087608,
+            68
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            68
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            241
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087032,
+            153087704,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087032,
+            16844128,
+            256,
+            16844128
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087032,
+            153087288,
+            256,
+            16844128
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087032,
+            256,
+            16844128
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "member",
+        "-1",
+        "",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=-1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=30302e2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087704,
+            16777285,
+            256,
+            16844096
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087608,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087608,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087288,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502968,
+            0,
+            153087544
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502968,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087288,
+            3502968,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            251
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087288,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "member",
+        "100",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=100\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f3130312e7878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878782e797979797979797979797979797979797979797979797979797979797979792e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087704,
+            16777285,
+            256,
+            16844096
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087544,
+            16844096,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087608,
+            16844192,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087608,
+            16844192,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087288,
+            0,
+            153087704,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502968,
+            101,
+            153087544
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            121
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502980,
+            153087608,
+            121
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087288,
+            3502980,
+            153087608,
+            121
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            155
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087288,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087032,
+            153087704,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087032,
+            16844256,
+            256,
+            16844256
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153087032,
+            153087288,
+            256,
+            16844256
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153087032,
+            256,
+            16844256
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=-1\nname=2a20456d707479204c6f636174696f6e202a\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "01.Alpha.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=0\nname=416c706861\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083535,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843200,
+            16843200,
+            32
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            5,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083535,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "01.Alpha.Vocal.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=0\nname=416c706861\ncategory=566f63616c\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083541,
+            8,
+            16844304
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16844160,
+            153087892,
+            32,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            153087892,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153087892,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            5,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083535,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "02.a.b.Drums.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=1\nname=6162\ncategory=4472756d73\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            5,
+            4,
+            4
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            5,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083539,
+            12,
+            16844320
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843200,
+            16843200,
+            32
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16844160,
+            153087892,
+            32,
+            32
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            153087892,
+            4,
+            16844320
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153087892,
+            4,
+            16844320
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            1,
+            63
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083537,
+            153083535,
+            8,
+            16844320
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            8,
+            16844320
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083537,
+            1,
+            62
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083537,
+            0,
+            3
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "03.a.Other.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=2\nname=614f74686572\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083537,
+            8,
+            16844304
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843200,
+            16843200,
+            32
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            16843200,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16843200,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            1,
+            63
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083537,
+            153083535,
+            8,
+            16844304
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            8,
+            16844304
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083537,
+            5,
+            62
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083537,
+            0,
+            3
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "xx.Name.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=-1\nname=4e616d65\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083535,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843200,
+            16843200,
+            32
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            4,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083535,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "-2.Name.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=-3\nname=4e616d65\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083535,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843200,
+            16843200,
+            32
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16843200,
+            4,
+            16844272
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            4,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083535,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "..01...a..Vocal..preset..",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=0\nname=61\ncategory=566f63616c\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083534,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083542,
+            8,
+            16844304
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16844160,
+            153087892,
+            32,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083539,
+            153087892,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153087892,
+            4,
+            16844304
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083539,
+            1,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083539,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "one.two",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=-1\nname=2a20456d707479204c6f636174696f6e202a\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            4299912,
+            2,
+            153087952
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "parse",
+        "0",
+        "01.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.Vocal.preset",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=0\nname=787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878\ncategory=566f63616c\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153083900,
+            153083900,
+            16844160
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16844096,
+            3502984,
+            18,
+            16844160
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087636,
+            0,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844208,
+            153087636,
+            16844160,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087636,
+            153087952,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153083532,
+            153087636,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153083532,
+            4299912,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            1,
+            153087952,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087952
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153087924,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087952
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153083532,
+            1523360,
+            153087944,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087892,
+            153083626,
+            8,
+            16844384
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153087892,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16844160,
+            153087892,
+            32,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153083535,
+            153087892,
+            4,
+            16844384
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153087892,
+            4,
+            16844384
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            16844096,
+            153083535,
+            63,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153087924,
+            153083535,
+            0,
+            2
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "cache",
+        "-1",
+        "a",
+        "b",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=-1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "cache",
+        "3",
+        "a",
+        "b",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=3\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "cache",
+        "0",
+        "Alpha",
+        "Vocal",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=change,1,0,416c706861,566f63616c;change,2,0,416c706861,566f63616c;\nentry=416c706861,566f63616c\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16842752,
+            16844096,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16844096,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842752,
+            16844096,
+            5,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844112,
+            16844096,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842816,
+            16844112,
+            5,
+            0
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            0,
+            16844096
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            0,
+            16844096
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          65536,
+          1,
+          0
+        ],
+        [
+          65541,
+          1,
+          0
+        ],
+        [
+          65600,
+          1,
+          0
+        ],
+        [
+          65605,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "cache",
+        "1",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=change,1,1,null,null;change,2,1,null,null;\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16842848,
+            3518812,
+            16842752,
+            128
+          ]
+        },
+        {
+          "address": 548060,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<64> >::init(char const*)",
+          "args": [
+            16842848,
+            3502984,
+            16842752,
+            4792068
+          ]
+        },
+        {
+          "address": 230436,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<32> >::init(char const*)",
+          "args": [
+            16842912,
+            3518812,
+            16842752,
+            4792068
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            1,
+            0
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            1,
+            0
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          65632,
+          1,
+          0
+        ],
+        [
+          65696,
+          1,
+          0
+        ],
+        [
+          65632,
+          1,
+          0
+        ],
+        [
+          65696,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "cache",
+        "2",
+        "* Empty Location *",
+        "",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=2\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16842944,
+            16844096,
+            16842752,
+            256
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16843008,
+            16844128,
+            16842752,
+            256
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "cache",
+        "0",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=change,1,0,78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878,7979797979797979797979797979797979797979797979797979797979797979797979797979797979797979797979797979;change,2,0,78787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878,7979797979797979797979797979797979797979797979797979797979797979797979797979797979797979797979797979;\nentry=787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878787878,79797979797979797979797979797979797979797979797979797979797979\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16842752,
+            16844096,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844096,
+            16844096,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842752,
+            16844096,
+            63,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16844208,
+            16844096,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842816,
+            16844208,
+            31,
+            0
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            0,
+            16844096
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            0,
+            16844096
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          65536,
+          1,
+          0
+        ],
+        [
+          65599,
+          1,
+          0
+        ],
+        [
+          65600,
+          1,
+          0
+        ],
+        [
+          65631,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "category",
+        "0",
+        "Vocal",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\ncat=566f63616c\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087936,
+            16844096,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843232,
+            153087936,
+            32,
+            16843168
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          380,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "category",
+        "0",
+        "New",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\ncat=4e6577\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087936,
+            16844096,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843232,
+            153087936,
+            32,
+            16843168
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          380,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "category",
+        "0",
+        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\ncat=78787878787878787878787878787878787878787878787878787878787878\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087936,
+            16844096,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843232,
+            153087936,
+            32,
+            16843168
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          380,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "category",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\ncat=\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087936,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843232,
+            153087936,
+            32,
+            16843168
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          380,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "observer",
+        "1",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=1\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "observer",
+        "2",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=2\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "observer",
+        "3",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=3\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\nobserver=3\n",
+      "native_trace": [],
+      "native_writes": [
+        [
+          340,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "observer",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\nobserver=0\n",
+      "native_trace": [],
+      "native_writes": [
+        [
+          340,
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "info",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=0\nname=2a20456d707479204c6f636174696f6e202a\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843744,
+            16842752,
+            64,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843808,
+            16842816,
+            32,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "info",
+        "2",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=1\nslot=2\nname=2a20456d707479204c6f636174696f6e202a\ncategory=\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843744,
+            16842944,
+            64,
+            192
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843808,
+            16843008,
+            32,
+            192
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "info",
+        "3",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=0\nslot=3\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "file",
+        "0",
+        "~",
+        "~",
+        "~",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f30312e5f20456d707479204c6f636174696f6e205f2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087648,
+            16777285,
+            256,
+            16842752
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087488,
+            16842752,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087488,
+            16842752,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087552,
+            16842816,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087552,
+            16842816,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087232,
+            0,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087232,
+            3502968,
+            1,
+            153087488
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502968,
+            1,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087232,
+            3502968,
+            1,
+            0
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087232,
+            16777220,
+            6,
+            233
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087232,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153086976,
+            153087648,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153086976,
+            153087232,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153086976,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "file",
+        "2",
+        "~",
+        "~",
+        "~",
+        "1",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=2\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=74656d702f7265636f766572792d776f726b2f67726170682d6c6976652d747269616c2d30372f70726573657463616368652d776f726b65722f7265706c61792d66696c65732f30332e5f20456d707479204c6f636174696f6e205f2e707265736574\nevents=\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087648,
+            16777285,
+            256,
+            16842944
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087488,
+            16842944,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 234868,
+          "label": "Core::CStringBuffer<64>::trimWhitespace()",
+          "args": [
+            153087488,
+            16842944,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087552,
+            16843008,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 548804,
+          "label": "Core::CStringBuffer<32>::trimWhitespace()",
+          "args": [
+            153087552,
+            16843008,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153087232,
+            0,
+            153087648,
+            16777220
+          ]
+        },
+        {
+          "address": 76392,
+          "label": "Core::MutableCStringTraits<Core::CStringBuffer<256> >::appendFormat(char const*, ...)",
+          "args": [
+            153087232,
+            3502968,
+            3,
+            153087488
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            16777220,
+            3502968,
+            3,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087232,
+            3502968,
+            3,
+            0
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087232,
+            16777220,
+            6,
+            233
+          ]
+        },
+        {
+          "address": 1211376,
+          "label": "Core::Portable::FileName::makeValid()",
+          "args": [
+            153087232,
+            16777220,
+            6,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153086976,
+            153087648,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1214964,
+          "label": "Core::Portable::FileName::descend(char const*)",
+          "args": [
+            153086976,
+            153087232,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            16843840,
+            153086976,
+            256,
+            0
+          ]
+        }
+      ],
+      "native_writes": []
+    },
+    {
+      "argv": [
+        "rebuild",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=rebuild,1;rebuild,2;\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087596,
+            16777285,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219916,
+          "label": "Core::Portable::FileIterator::FileIterator(char const*)",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            16843680,
+            16843696
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            16843712,
+            16843728
+          ]
+        },
+        {
+          "address": 1210916,
+          "label": "Core::Portable::FileIterator::~FileIterator()",
+          "args": [
+            153087076,
+            16777216,
+            16843712,
+            16843728
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          325,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "rebuild",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [
+        {
+          "name": "01.Alpha.Vocal.preset"
+        }
+      ],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=change,1,0,416c706861,566f63616c;change,2,0,416c706861,566f63616c;rebuild,1;rebuild,2;\nentry=416c706861,566f63616c\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087596,
+            16777285,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219916,
+          "label": "Core::Portable::FileIterator::FileIterator(char const*)",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 118672,
+          "label": "Core::CStringBuffer<64>::CStringBuffer(char const*)",
+          "args": [
+            153087852,
+            0,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153087916,
+            0,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            3502984,
+            153082964,
+            153082964,
+            153087916
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            153087852,
+            3502984,
+            18,
+            153087916
+          ]
+        },
+        {
+          "address": 1219492,
+          "label": "Core::Portable::FileName::FileName(char const*)",
+          "args": [
+            153086700,
+            0,
+            153087916,
+            4294967295
+          ]
+        },
+        {
+          "address": 1211084,
+          "label": "Core::Portable::FileName::getName(Core::Portable::FileName&) const",
+          "args": [
+            16844096,
+            153086700,
+            153087916,
+            4294967295
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153086700,
+            153087016,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 44000,
+          "label": "strcpy@@GLIBC_2.4",
+          "args": [
+            153082596,
+            153086700,
+            4294962872,
+            1
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153086988,
+            0,
+            3503224,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            153082596,
+            4299912,
+            153087016,
+            0
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153086988,
+            1,
+            153087016,
+            0
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            1,
+            153087016
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153086988,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            2,
+            153087016
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153086988,
+            3,
+            2,
+            2
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            3,
+            153087016
+          ]
+        },
+        {
+          "address": 548148,
+          "label": "Core::Vector<char const*>::resize(int)",
+          "args": [
+            153086988,
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "address": 43484,
+          "label": "strtok@@GLIBC_2.4",
+          "args": [
+            0,
+            4299912,
+            4,
+            153087016
+          ]
+        },
+        {
+          "address": 45020,
+          "label": "sscanf@@GLIBC_2.4",
+          "args": [
+            153082596,
+            1523360,
+            153087008,
+            0
+          ]
+        },
+        {
+          "address": 122556,
+          "label": "Core::CStringBuffer<32>::CStringBuffer(char const*)",
+          "args": [
+            153086956,
+            153082605,
+            8,
+            16844432
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            153086956,
+            16843168,
+            16843168,
+            0
+          ]
+        },
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087916,
+            153086956,
+            32,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153082599,
+            153086956,
+            4,
+            16844432
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087852,
+            153086956,
+            4,
+            16844432
+          ]
+        },
+        {
+          "address": 44552,
+          "label": "strncat@@GLIBC_2.4",
+          "args": [
+            153087852,
+            153082599,
+            5,
+            63
+          ]
+        },
+        {
+          "address": 548404,
+          "label": "Core::Vector<char const*>::~Vector()",
+          "args": [
+            153086988,
+            153082599,
+            0,
+            2
+          ]
+        },
+        {
+          "address": 44912,
+          "label": "strcmp@@GLIBC_2.4",
+          "args": [
+            16842752,
+            153087852,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087852,
+            153087852,
+            16842752,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842752,
+            153087852,
+            5,
+            0
+          ]
+        },
+        {
+          "address": 44696,
+          "label": "strlen@@GLIBC_2.4",
+          "args": [
+            153087916,
+            153087852,
+            0,
+            0
+          ]
+        },
+        {
+          "address": 45032,
+          "label": "strncpy@@GLIBC_2.4",
+          "args": [
+            16842816,
+            153087916,
+            5,
+            0
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            0,
+            153087852
+          ]
+        },
+        {
+          "address": 16805888,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            0,
+            153087852
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            16777216,
+            0,
+            153087852
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            16843680,
+            16843696
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            16843712,
+            16843728
+          ]
+        },
+        {
+          "address": 1210916,
+          "label": "Core::Portable::FileIterator::~FileIterator()",
+          "args": [
+            153087076,
+            16777216,
+            16843712,
+            16843728
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          325,
+          1,
+          0
+        ],
+        [
+          65536,
+          1,
+          0
+        ],
+        [
+          65541,
+          1,
+          0
+        ],
+        [
+          65600,
+          1,
+          0
+        ],
+        [
+          65605,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "argv": [
+        "rebuild",
+        "0",
+        "~",
+        "~",
+        "~",
+        "0",
+        "temp/recovery-work/graph-live-trial-07/presetcache-worker/replay-files"
+      ],
+      "files": [
+        {
+          "name": "02.Hidden.preset",
+          "hidden": true
+        },
+        {
+          "name": "folder",
+          "directory": true
+        }
+      ],
+      "expected": "result=-999\nslot=0\nname=756e6368616e676564\ncategory=756e6368616e676564\npath=\nevents=rebuild,1;rebuild,2;\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\nentry=2a20456d707479204c6f636174696f6e202a,\ncat=566f63616c\ncat=4472756d73\nobserver=1\nobserver=2\n",
+      "native_trace": [
+        {
+          "address": 44648,
+          "label": "memcpy@@GLIBC_2.4",
+          "args": [
+            153087596,
+            16777285,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219916,
+          "label": "Core::Portable::FileIterator::FileIterator(char const*)",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            0
+          ]
+        },
+        {
+          "address": 1219580,
+          "label": "Core::Portable::FileIterator::next()",
+          "args": [
+            153087076,
+            153087596,
+            256,
+            1
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843680,
+            16777216,
+            16843680,
+            16843696
+          ]
+        },
+        {
+          "address": 16805892,
+          "label": "",
+          "args": [
+            16843712,
+            16777216,
+            16843712,
+            16843728
+          ]
+        },
+        {
+          "address": 1210916,
+          "label": "Core::Portable::FileIterator::~FileIterator()",
+          "args": [
+            153087076,
+            16777216,
+            16843712,
+            16843728
+          ]
+        }
+      ],
+      "native_writes": [
+        [
+          325,
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}
