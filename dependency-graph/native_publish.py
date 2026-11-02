@@ -49,4 +49,7 @@ def main():
     print(json.dumps(receipt));c.close();driver.close()
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    from context_writer_lock import exclusive_writer
+    with exclusive_writer(ROOT):
+        main()

@@ -69,4 +69,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    from context_writer_lock import exclusive_writer
+    with exclusive_writer():
+        main()

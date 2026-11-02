@@ -286,4 +286,7 @@ def main(out):
         d.close(); c.close(); driver.close()
 
 
-if __name__ == '__main__': main(pathlib.Path(sys.argv[1]))
+if __name__ == '__main__':
+    from context_writer_lock import exclusive_writer
+    with exclusive_writer():
+        main(pathlib.Path(sys.argv[1]))

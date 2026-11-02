@@ -51,6 +51,15 @@ def docker(script, out, label, analysis=False):
     run(['sg', 'docker', '-c', shlex.join(argv)], out, label)
 
 
+def publisher_script(output):
+    # Internal entry: ensure_fresh / --resume retain the host exclusive lock
+    # across this child. The publisher CLI takes its own lock for direct use.
+    return ['-c',
+            'import pathlib,sys;sys.path.insert(0,sys.argv[1]);'
+            'from refresh_publish import main;main(pathlib.Path(sys.argv[2]))',
+            str(BASE), str(output)]
+
+
 def rows():
     return sorted({owner_id(ROOT, group, row): row for group, build in GROUPS
                    for row in json.loads((build / 'compile_commands.json').read_text())}.items())
@@ -99,7 +108,7 @@ def ensure_fresh(force=False):
         recovery.close()
         if pending:
             output = pathlib.Path(pending[0])
-            docker([str(BASE / 'refresh_publish.py'), str(output)], output, 'resume-' + str(time.time_ns()))
+            docker(publisher_script(output), output, 'resume-' + str(time.time_ns()))
         recovery = connect(index_path)
         row = recovery.execute('SELECT value FROM meta WHERE key="unregistered_baseline"').fetchone()
         recovery.close()
@@ -155,7 +164,7 @@ def ensure_fresh(force=False):
             out, 'ctest-inventory')
         # Current build facts and publication report are constructed by the worker,
         # with all prior TU contributors available for exact retraction.
-        docker([str(BASE / 'refresh_publish.py'), str(out)], out, 'publish')
+        docker(publisher_script(out), out, 'publish')
         if c.execute('SELECT 1 FROM meta WHERE key="unregistered_baseline"').fetchone():
             raise ContextError('Sources moved during publication; next prepare will reconcile them: ' + str(out))
         elapsed = time.perf_counter() - start
@@ -179,7 +188,7 @@ if __name__ == '__main__':
             pending = c.execute('SELECT value FROM meta WHERE key="pending"').fetchone(); c.close()
             if not pending: raise SystemExit('No pending publication')
             output = pathlib.Path(pending[0])
-            docker([str(BASE / 'refresh_publish.py'), str(output)], output,
+            docker(publisher_script(output), output,
                    'resume-' + str(time.time_ns()))
         else:
             ensure_fresh('--force' in sys.argv)

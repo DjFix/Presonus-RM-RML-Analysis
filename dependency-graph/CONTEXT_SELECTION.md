@@ -43,6 +43,14 @@ finalization. Dispatch refuses incomplete or modified packets, changed instructi
 or operator code, stale source/build inputs and a missing/loading/wrong Memgraph
 generation. A source-only catalog miss is unknown, not an independent leaf.
 
+## Batch preparation
+
+Use `batch-prepare --tasks TASKS.json --out NEW_BATCH --jobs auto` for bounded
+parallel builders and one atomic launch barrier. See [BATCH_CONTEXT.md](BATCH_CONTEXT.md)
+for snapshots, shared/exclusive locking, resource estimates, resume and measurement
+limits. Batch members never receive standalone launch arguments; authenticate
+the complete common publication before spawning workers.
+
 ## Parallel batches
 
 Prepare every packet before any worker starts editing, then:
@@ -156,7 +164,8 @@ rehearsal and the separate physical-publication requirements.
 ## Ten-worker grouped reconstruction trial
 
 `group_dispatch.py --groups GROUPS.json --out temp/recovery-work/NEW_BATCH`
-accepts exactly ten groups with `task_name`, five `packets`, `scope_reason`,
+accepts exactly ten groups with `task_name`, five (or ten with
+`--packets-per-worker 10`) `packets`, `scope_reason`,
 and an `execution_order` containing those five paths exactly once. Each packet
 is prepared normally as one claimed unique work item. Each must cover exactly
 one original for this trial. All fifty bindings are checked together, followed
@@ -165,8 +174,8 @@ hashes, record bindings, claims, selected-file and snapshot seals, Memgraph
 markers). Publication is locked throughout. Inter-group write/read conflicts
 are rejected; shared files within one group have one worker owner. The operator
 emits the only authorized grouped `BATCH_DISPATCH.json`, with ten generated
-`fork_turns=none` argument objects. No workers start until it succeeds. Packet
-`DISPATCH.json` files retain baseline expansion support. One HANDOFF v1 per
+`fork_turns=none` argument objects. No workers start until it succeeds. The common publication authenticates baseline expansion for every member;
+no per-packet `DISPATCH.json` is written for a batch. One HANDOFF v1 per
 packet binds final shared-file hashes after all five methods are complete.
 Failure retains logs and claims; a partial dispatch is never spawn permission.
 This operator changes no readiness schema or reconstruction acceptance gates.

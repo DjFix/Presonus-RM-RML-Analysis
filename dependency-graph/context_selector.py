@@ -3,6 +3,7 @@ import argparse
 import json
 import pathlib
 import shutil
+import sys
 import time
 
 from neo4j import GraphDatabase
@@ -26,7 +27,10 @@ def tools():
            'dependency-graph/dedup_work.py','dependency-graph/dedup_schema.sql',
            'dependency-graph/memgraph_endpoint.py','dependency-graph/code_identity.py',
            'dependency-graph/full_source_graph.py','dependency-graph/gcc_source_graph.py',
-           'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py')
+           'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py',
+           'dependency-graph/context_publication.py','dependency-graph/context_batch.py',
+           'dependency-graph/context_resources.py','dependency-graph/context_work_batch.py',
+           'dependency-graph/context_writer_lock.py','dependency-graph/native_publish.py')
     return {p:sha(ROOT/p) for p in paths}
 
 
@@ -112,25 +116,29 @@ def read_nodes(session,ids):
                                  'RETURN n.id AS id,n.kind AS kind,n.label AS label,n.metadata AS metadata',ids=sorted(ids))}
 
 
-def validate_packet(session,out,active,require_ready=True,baseline=False):
+def validate_packet(session,out,active,require_ready=True,baseline=False,common=None):
     graph_marker(session,active)
     if baseline:
         state_path=inside(ROOT,active['state'])
         if sha(state_path)!=active['state_sha256']:raise ContextError('Generation state changed')
         state=json.loads(state_path.read_text())
-        if not (out/'DISPATCH.json').exists():raise ContextError('Baseline expansion requires a dispatched packet')
-    else:state = guard(ROOT,active)
+        from context_publication import authorization
+        authorization(ROOT, out)
+    else:state = common['state'] if common is not None else guard(ROOT,active)
     packet = json.loads((out/'context.json').read_text())
     if require_ready and packet.get('state') != 'dispatch_ready':
         raise ContextError('Packet source slicing/finalization has not passed')
     if require_ready:require_nonempty(packet)
     from dedup_work import validate_packet_work
-    validate_packet_work(ROOT, packet, str(out.relative_to(ROOT)))
+    if common is not None and common.get('work') is not None:
+        common['work'].validate(packet,str(out.relative_to(ROOT)))
+    else:
+        validate_packet_work(ROOT, packet, str(out.relative_to(ROOT)))
     if packet.get('native_context',{}).get('bodies'):
         marker=session.run('MATCH(g:NativeGeneration {id:"active"}) RETURN g.state AS state,g.digest AS digest').single()
         if not marker or marker['state']!='ready' or marker['digest']!=packet['native_context']['generation_sha256']:
             raise ContextError('Native Memgraph projection is absent, loading or differs from packet')
-    if packet['tool_sha256'] != tools():
+    if packet['tool_sha256'] != (common['tools'] if common is not None else tools()):
         raise ContextError('Context operator/policy changed: prepare a new packet')
     if packet['generation_sha256'] != active['state_sha256']:
         raise ContextError('Packet generation is no longer active')
@@ -303,37 +311,134 @@ def prepare(session,out,active):
                       'native_relations':len(native['edges']),'unknowns':len(packet['unknowns'])}))
 
 
+
+def finalize(session, out, active):
+    packet=validate_packet(session,out,active,require_ready=False)
+    if packet['state']!='selected':raise ContextError('Already finalized')
+    slices=json.loads((out/'source-slices.json').read_text())
+    task=json.loads((out/'request.json').read_text())
+    if slices['missing_bodies'] and task['mode']=='reconstruct' and not task.get('uncertainty_work'):
+        raise ContextError('Missing source bodies require an explicit uncertainty_work task')
+    for item in slices['functions'].values():
+        if sha(inside(ROOT,item['path']))!=item['source_sha256']:
+            raise ContextError('Slice input changed')
+    packet['source_slices']=slices
+    require_nonempty(packet)
+    packet['packet_sha256'].update({p:sha(out/p) for p in ('SOURCE_SLICES.md','source-slices.json')})
+    packet['state']='dispatch_ready'
+    (out/'context.json').write_text(json.dumps(packet,indent=2)+'\n')
+    validate_packet(session,out,active)
+    print(json.dumps({'finalized':True,'source_lines':slices['source_lines']}))
+
+
+class TimedResult:
+    def __init__(self, result, metrics):
+        self.result, self.metrics = result, metrics
+
+    def _call(self, name, *args, **kwargs):
+        started = time.perf_counter()
+        try:
+            return getattr(self.result,name)(*args,**kwargs)
+        finally:
+            self.metrics['graph_seconds'] += time.perf_counter()-started
+
+    def single(self, *args, **kwargs):
+        return self._call('single',*args,**kwargs)
+
+    def consume(self):
+        return self._call('consume')
+
+    def __iter__(self):
+        iterator = iter(self.result)
+        while True:
+            started = time.perf_counter()
+            try:
+                row = next(iterator)
+            except StopIteration:
+                self.metrics['graph_seconds'] += time.perf_counter()-started
+                return
+            self.metrics['graph_seconds'] += time.perf_counter()-started
+            yield row
+
+
+class TimedSession:
+    """Measure driver query/consumption wall time, excluding client processing."""
+    def __init__(self, session):
+        self.session = session
+        self.metrics = {'graph_queries':0,'graph_seconds':0.0}
+
+    def run(self, *args, **kwargs):
+        self.metrics['graph_queries'] += 1
+        started = time.perf_counter()
+        try:
+            result = self.session.run(*args,**kwargs)
+        finally:
+            self.metrics['graph_seconds'] += time.perf_counter()-started
+        return TimedResult(result,self.metrics)
+
+    def __getattr__(self, name):
+        return getattr(self.session,name)
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',choices=('register','prepare','finalize','validate','dispatch','expand'))
+    p.add_argument('action',choices=('register','prepare','finalize','validate','dispatch','expand','batch-validate','batch-run'))
     p.add_argument('--out',required=True)
+    p.add_argument('--packets-json')
     a=p.parse_args();out=inside(ROOT,a.out)
     driver=GraphDatabase.driver(memgraph_uri(ROOT),auth=None)
-    with driver.session() as session:
+    with driver.session() as raw_session:
+        session = TimedSession(raw_session)
         if a.action=='register':register(session,out)
         else:
             active=json.loads(ACTIVE.read_text())
-            if a.action=='prepare':prepare(session,out,active)
+            if a.action in ('batch-validate', 'batch-run'):
+                specification = json.loads((inside(ROOT,a.packets_json) if a.packets_json else out/'batch-run.json').read_text())
+                action = 'validate' if a.action == 'batch-validate' else specification['action']
+                paths = specification if isinstance(specification, list) else specification['packets']
+                if action not in ('prepare','finalize','validate') or not paths or len(set(paths)) != len(paths):
+                    raise ContextError('Invalid batch operation or duplicate packets')
+                common = {'state': guard(ROOT, active), 'tools': tools()}
+                if action == 'validate':
+                    from context_work_batch import BatchWorkValidator
+                    common['work'] = BatchWorkValidator(ROOT)
+                receipts = []
+                receipt_path = out/('batch-run-results-'+str(time.time_ns())+'.json')
+                try:
+                    for path in paths:
+                        packet_out = inside(ROOT,path)
+                        started = time.perf_counter()
+                        previous_metrics = dict(session.metrics)
+                        try:
+                            if action == 'prepare': prepare(session,packet_out,active)
+                            elif action == 'finalize': finalize(session,packet_out,active)
+                            else: validate_packet(session,packet_out,active,common=common)
+                        except Exception as error:
+                            receipts.append({'packet':path,'seconds':time.perf_counter()-started,'success':False,'error':str(error)})
+                            raise
+                        receipts.append({'packet':path,'seconds':time.perf_counter()-started,'success':True,
+                                         **{key:session.metrics[key]-previous_metrics[key] for key in previous_metrics}})
+                    if json.loads(ACTIVE.read_text()) != active:
+                        raise ContextError('Active generation changed during batch')
+                    guard(ROOT,active); graph_marker(session,active)
+                    if action == 'validate':
+                        from context_publication import verify_packet_files
+                        verify_packet_files(ROOT,paths)
+                        common['work'].finish()
+                    if tools() != common['tools']:
+                        raise ContextError('Tools changed during batch')
+                finally:
+                    if common.get('work') is not None:
+                        common['work'].close()
+                    receipt_path.write_text(json.dumps({'action':action,'receipts':receipts,**session.metrics},indent=2)+'\n')
+                print(json.dumps({'batch_valid':True,'packets':len(paths),'receipts':str(receipt_path.relative_to(ROOT))}))
+            elif a.action=='prepare':prepare(session,out,active)
             elif a.action=='finalize':
-                packet=validate_packet(session,out,active,require_ready=False)
-                if packet['state']!='selected':raise ContextError('Already finalized')
-                slices=json.loads((out/'source-slices.json').read_text())
-                task=json.loads((out/'request.json').read_text())
-                if slices['missing_bodies'] and task['mode']=='reconstruct' and not task.get('uncertainty_work'):
-                    raise ContextError('Missing source bodies require an explicit uncertainty_work task')
-                for item in slices['functions'].values():
-                    if sha(inside(ROOT,item['path']))!=item['source_sha256']:
-                        raise ContextError('Slice input changed')
-                packet['source_slices']=slices
-                require_nonempty(packet)
-                packet['packet_sha256'].update({p:sha(out/p) for p in ('SOURCE_SLICES.md','source-slices.json')})
-                packet['state']='dispatch_ready'
-                (out/'context.json').write_text(json.dumps(packet,indent=2)+'\n')
-                validate_packet(session,out,active)
-                print(json.dumps({'finalized':True,'source_lines':slices['source_lines']}))
+                finalize(session, out, active)
             elif a.action in ('validate','dispatch'):
                 packet=validate_packet(session,out,active)
                 if a.action=='dispatch':
+                    if (out/'BATCH_MEMBER.json').exists():
+                        raise ContextError('Batch member requires completed common publication; standalone dispatch forbidden')
                     destination=out/'DISPATCH.json'
                     if destination.exists():raise ContextError('Dispatch already materialized; validate/reuse its exact payload')
                     task=json.loads((out/'request.json').read_text())
@@ -381,9 +486,16 @@ def main():
                 graph_marker(session,active)
                 (out/'expansion.json').write_text(json.dumps(result,indent=2)+'\n')
                 print(json.dumps({'expanded':True,'nodes':len(nodes)}))
+        print(json.dumps({'graph_metrics':session.metrics}))
     driver.close()
 
 
 if __name__=='__main__':
-    try:main()
+    try:
+        if len(sys.argv) > 1 and sys.argv[1] == 'register':
+            from context_writer_lock import exclusive_writer
+            with exclusive_writer(ROOT):
+                main()
+        else:
+            main()
     except (ContextError,ValueError,KeyError) as exc:raise SystemExit('CONTEXT BLOCKED: '+str(exc))

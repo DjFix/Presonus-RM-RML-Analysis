@@ -1,6 +1,7 @@
 """Shared filesystem/task guards for subagent context packets."""
 import hashlib
 import json
+import os
 import pathlib
 import re
 
@@ -71,14 +72,67 @@ def validate_task(task):
         raise ContextError('Unknown source mappings require an explicit research task')
 
 
+def snapshot_guard_inputs(root, active, state):
+    """Internal immutable-copy stat cache, never a live-workspace freshness override.
+
+    The coordinator verifies copy bytes before recording fingerprints and pins the
+    read-only receipt in its container invocation. A canonical path must refer to
+    that independent copy before its cached fingerprint can be used. Host paths
+    continue through the ordinary generation guard even if they inherit this env.
+    """
+    relative = os.environ.get('CONTEXT_SNAPSHOT_MANIFEST')
+    expected = os.environ.get('CONTEXT_SNAPSHOT_SHA256')
+    if relative is None and expected is None:
+        return None
+    if not relative or not expected or not re.fullmatch('[0-9a-f]{64}', expected):
+        raise ContextError('Incomplete pinned snapshot receipt')
+    requested = root / relative
+    if requested.is_symlink() or requested.resolve() != requested:
+        raise ContextError('Snapshot receipt path must be canonical')
+    receipt = inside(root, relative)
+    if not receipt.parent.is_relative_to(root / 'temp/recovery-work'):
+        raise ContextError('Snapshot receipt must be in recovery work')
+    before = fingerprint(receipt)
+    raw = receipt.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != expected or fingerprint(receipt) != before:
+        raise ContextError('Pinned snapshot receipt changed')
+    manifest = json.loads(raw)
+    if manifest.get('version') != 1:
+        raise ContextError('Unsupported snapshot receipt version')
+    if manifest.get('active') != active:
+        raise ContextError('Snapshot receipt generation changed')
+    copy_root = receipt.parent / 'snapshot'
+    if copy_root.is_symlink() or copy_root.resolve() != copy_root or not copy_root.is_dir():
+        raise ContextError('Invalid immutable snapshot root')
+    fingerprints = manifest.get('guard_fingerprints', {})
+    for path, item in state['files'].items():
+        if manifest.get('files', {}).get(path) != item['sha256']:
+            raise ContextError('Snapshot does not bind generation input: ' + path)
+        value = fingerprints.get(path)
+        if (not isinstance(value, list) or len(value) != 5 or
+                any(not isinstance(v, int) or isinstance(v, bool) for v in value)):
+            raise ContextError('Invalid snapshot fingerprint: ' + path)
+        candidate = copy_root / path
+        if candidate.is_symlink() or not candidate.resolve().is_relative_to(copy_root):
+            raise ContextError('Snapshot input escapes copied tree: ' + path)
+    return copy_root, fingerprints
+
+
 def guard(root, active):
     state_path = inside(root, active['state'])
     if sha(state_path) != active['state_sha256']:
         raise ContextError('Generation state hash mismatch')
     state = json.loads(state_path.read_text())
+    snapshot = snapshot_guard_inputs(root, active, state)
     dirty = []
     for path, item in state['files'].items():
         file = inside(root, path)
+        if snapshot and file.is_file():
+            copy_root, copy_fingerprints = snapshot
+            copied = copy_root / path
+            if (copied.is_file() and copied.stat().st_nlink == 1 and
+                    os.path.samefile(file, copied) and fingerprint(file) == copy_fingerprints[path]):
+                continue
         if not file.is_file() or fingerprint(file) != item['fingerprint']:
             if not file.is_file() or sha(file) != item['sha256']:
                 dirty.append(path)

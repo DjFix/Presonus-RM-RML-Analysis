@@ -1,5 +1,6 @@
 """Sealed multi-packet worker dispatch; all original packet gates remain mandatory."""
 import argparse
+import contextlib
 import fcntl
 import importlib.util
 import json
@@ -11,7 +12,6 @@ import sys
 import time
 
 from context_runtime import ContextError, guard, inside, sha
-from dedup_work import validate_batch_work
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -66,7 +66,10 @@ def main():
     parser.add_argument('--packets-per-worker', type=int, choices=(5, 10), default=5)
     a = parser.parse_args()
     groups_path = inside(ROOT, a.groups)
-    groups = json.loads(groups_path.read_text())['groups']
+    group_bytes = groups_path.read_bytes()
+    import hashlib
+    groups_digest = hashlib.sha256(group_bytes).hexdigest()
+    groups = json.loads(group_bytes)['groups']
     output = inside(ROOT, a.out)
     if not output.is_relative_to(ROOT / 'temp/recovery-work'):
         raise ContextError('Output must be in project recovery work')
@@ -74,47 +77,55 @@ def main():
     spec = importlib.util.spec_from_file_location('select_context_operator', ROOT/'uc-library/tools/recovery/select_context.py')
     operator = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(operator)
-    with (ROOT/'dependency-graph/state/context.lock').open('a') as lock:
+    with (ROOT/'dependency-graph/state/context.lock').open('a') as lock, contextlib.ExitStack() as cleanup:
         fcntl.flock(lock, fcntl.LOCK_EX)
+        if sha(groups_path) != groups_digest:
+            raise ContextError('Group assignments changed while acquiring lock')
         active = json.loads((ROOT/'dependency-graph/ACTIVE.json').read_text())
         guard(ROOT, active)
         paths = [p for g in groups for p in g['packets']]
         entries = {p: json.loads((inside(ROOT,p)/'context.json').read_text()) for p in paths}
         requests = {p: json.loads((inside(ROOT,p)/'request.json').read_text()) for p in paths}
+        expected_manifests = {p:sha(inside(ROOT,p)/'context.json') for p in paths}
         check_groups(groups, entries, requests, a.packets_per_worker)
-        validate_batch_work(ROOT, list(entries.values()), list(entries))
+        from context_work_batch import BatchWorkValidator
+        work_validator = BatchWorkValidator(ROOT)
+        cleanup.callback(work_validator.close)
+        for path in paths:
+            work_validator.validate(entries[path],path)
         # Validate every selected record and full packet in the existing operator,
         # while holding the shared publication lock across all packet checks.
         for p in paths:
             if (inside(ROOT,p)/'DISPATCH.json').exists():
                 raise ContextError('Already dispatched packet: '+p)
-        receipts = []
-        for index, p in enumerate(paths):
-            packet = inside(ROOT,p)
+            if (inside(ROOT,p)/'BATCH_MEMBER.json').exists():
+                raise ContextError('Packet already belongs to a batch; resume its coordinator: '+p)
+        from context_publication import atomic_json
+        for p in paths:
+            atomic_json(inside(ROOT,p)/'BATCH_MEMBER.json', {'version':1,'state':'pending',
+                        'manifest':str((output/'BATCH_DISPATCH.json').relative_to(ROOT))})
+        for p in paths:
             if operator.enrich(requests[p])['originals'] != requests[p]['originals']:
                 raise ContextError('Selected original/evidence binding changed: '+p)
-            command = operator.selector_command(ROOT, packet, 'validate')
-            started = time.time()
-            result = subprocess.run(['sg','docker','-c',shlex.join(command)], cwd=ROOT, capture_output=True, text=True)
-            (output/f'{index:02d}-validate.log').write_text(result.stdout+result.stderr)
-            receipts.append({'packet':p,'argv':command,'start_epoch':started,'seconds':time.time()-started,'returncode':result.returncode})
-            (output/'validation-receipts.json').write_text(json.dumps(receipts,indent=2)+'\n')
-            if result.returncode:
-                raise ContextError('Packet validation failed; no workers authorized: '+p)
+        specification = output/'validation-packets.json'
+        specification.write_text(json.dumps(paths,indent=2)+'\n')
+        command = operator.selector_command(ROOT,output,'batch-validate')
+        command += ['--packets-json',str(specification.relative_to(ROOT))]
+        started = time.time()
+        result = subprocess.run(['sg','docker','-c',shlex.join(command)],cwd=ROOT,capture_output=True,text=True)
+        (output/'batch-validate.log').write_text(result.stdout+result.stderr)
+        (output/'validation-receipts.json').write_text(json.dumps({'argv':command,'seconds':time.time()-started,'returncode':result.returncode},indent=2)+'\n')
+        if result.returncode:
+            raise ContextError('Batch validation failed; no workers authorized')
         # Existing packet validation also authenticates each SUBAGENT_PROMPT.
         # Materialize per-packet baseline dispatch only after every gate passes.
         guard(ROOT,active)
-        validate_batch_work(ROOT,list(entries.values()),list(entries))
         workers = []
         for g in groups:
             messages=[]
             for p in g['execution_order']:
                 packet=inside(ROOT,p)
                 single={'task_name':requests[p]['task_id'],'fork_turns':'none','message':(packet/'SUBAGENT_PROMPT.md').read_text()+' Context manifest SHA-256: '+sha(packet/'context.json')}
-                dest=packet/'DISPATCH.json'
-                if dest.exists():
-                    raise ContextError('Already dispatched packet: '+p)
-                dest.write_text(json.dumps(single,indent=2)+'\n')
                 messages.append(single['message'])
             owned=sorted(set().union(*(set(requests[p]['owned_files']) for p in g['packets'])))
             message=(f'You are one reconstruction worker owning {a.packets_per_worker} sealed work packets as a single coherent scope. Read every packet before editing. '+
@@ -127,11 +138,22 @@ def main():
                      'No shared build/ledger edits. Ask Root for missing context with packet/seed/query/reason; no broad dependency scans.\n\n'+
                      'Read SUBAGENT_PROMPT.md, TASK.md, ELF_CONTEXT.md, SOURCE_SLICES.md and CONTEXT.md in every packet listed above. The authenticated packet prompts apply in full. Manifest bindings: '+json.dumps({p:sha(inside(ROOT,p)/'context.json') for p in g['packets']}))
             workers.append({'packets':g['packets'],'arguments':{'task_name':g['task_name'],'fork_turns':'none','message':message}})
-        payload={'version':1,'packets_per_worker':a.packets_per_worker,'generation':active['state_sha256'],'groups_sha256':sha(groups_path),
+        payload={'version':1,'packets_per_worker':a.packets_per_worker,'generation':active['state_sha256'],'groups_sha256':groups_digest,
                  'operator_sha256':sha(pathlib.Path(__file__)), 'workers':workers,'mode':'sealed_before_first_worker_write',
                  'packet_manifests':{p:sha(inside(ROOT,p)/'context.json') for p in paths},'dependency_conflicts':[]}
-        (output/'BATCH_DISPATCH.json').write_text(json.dumps(payload,indent=2)+'\n')
-        print(output/'BATCH_DISPATCH.json')
+        # Fresh selected registry bindings are required again at the publication barrier.
+        for p in paths:
+            if operator.enrich(requests[p])['originals'] != requests[p]['originals']:
+                raise ContextError('Selected original/evidence binding changed before publication: '+p)
+        from context_publication import publish_batch, verify_packet_files
+        if json.loads((ROOT/'dependency-graph/ACTIVE.json').read_text()) != active:
+            raise ContextError('Generation changed before publication')
+        guard(ROOT,active)
+        verify_packet_files(ROOT,paths,expected_manifests)
+        work_validator.finish()
+        if sha(groups_path) != groups_digest:
+            raise ContextError('Group assignments changed before publication')
+        print(publish_batch(ROOT,output,payload,paths))
 
 
 if __name__=='__main__':

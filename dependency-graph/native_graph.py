@@ -245,4 +245,7 @@ def build(out, manifests=None):
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--out',required=True)
     p.add_argument('--manifest',action='append',type=pathlib.Path,help='Repeat for every role/version to retain in this index; defaults to current client/server')
-    a=p.parse_args();build(ROOT/a.out,a.manifest)
+    a=p.parse_args()
+    from context_writer_lock import exclusive_writer
+    with exclusive_writer(ROOT):
+        build(ROOT/a.out,a.manifest)
