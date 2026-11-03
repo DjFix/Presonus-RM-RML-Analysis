@@ -16,19 +16,24 @@ from context_runtime import ContextError, guard, inside, sha
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False):
-    if not allow_smaller and packets_per_worker not in (5, 10, 20):
+def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False, flexible_total=None):
+    flexible = flexible_total is not None
+    if flexible and (allow_smaller or flexible_total != 200):
+        raise ContextError("Flexible trial requires exactly 200 packets and no smaller-batch mode")
+    if flexible and (not 1 <= len(groups) <= 10 or any(not 1 <= len(g["packets"]) <= 25 for g in groups)):
+        raise ContextError("Flexible trial requires one to ten nonempty groups, at most 25 packets each")
+    if not flexible and not allow_smaller and packets_per_worker not in (5, 10, 20):
         raise ContextError("Supported packet counts per worker: five, ten or twenty")
     if allow_smaller and (not 1 <= len(groups) <= 10 or any(not 1 <= len(g['packets']) <= 10 for g in groups)):
         raise ContextError('Explicit smaller batch requires one to ten nonempty groups, at most ten packets each')
-    if not allow_smaller and len(groups) != 10:
+    if not flexible and not allow_smaller and len(groups) != 10:
         raise ContextError('Exactly ten worker groups required')
     names = [g['task_name'] for g in groups]
     if len(set(names)) != len(groups) or any(not re.fullmatch('[a-z][a-z0-9_]{0,63}', n) for n in names):
         raise ContextError('Unique valid worker names required')
     paths = [p for g in groups for p in g['packets']]
-    expected = len(paths) if allow_smaller else 10 * packets_per_worker
-    if (not allow_smaller and any(len(g['packets']) != packets_per_worker for g in groups)) or len(set(paths)) != expected:
+    expected = flexible_total if flexible else len(paths) if allow_smaller else 10 * packets_per_worker
+    if (not flexible and not allow_smaller and any(len(g['packets']) != packets_per_worker for g in groups)) or len(set(paths)) != expected:
         raise ContextError('Exactly the configured distinct work packets per worker required')
     if set(paths) != set(entries) or set(paths) != set(requests):
         raise ContextError('Exact group/entry/request coverage required')
@@ -69,6 +74,7 @@ def main():
     parser.add_argument('--out', required=True)
     parser.add_argument('--packets-per-worker', type=int, choices=(5, 10, 20), default=5)
     parser.add_argument('--allow-smaller', action='store_true')
+    parser.add_argument('--flexible-total', type=int, choices=(200,))
     a = parser.parse_args()
     groups_path = inside(ROOT, a.groups)
     group_bytes = groups_path.read_bytes()
@@ -95,7 +101,7 @@ def main():
         entries = {p: json.loads((inside(ROOT,p)/'context.json').read_text()) for p in paths}
         requests = {p: json.loads((inside(ROOT,p)/'request.json').read_text()) for p in paths}
         expected_manifests = {p:sha(inside(ROOT,p)/'context.json') for p in paths}
-        check_groups(groups, entries, requests, a.packets_per_worker, a.allow_smaller)
+        check_groups(groups, entries, requests, a.packets_per_worker, a.allow_smaller, a.flexible_total)
         from context_work_batch import BatchWorkValidator
         work_validator = BatchWorkValidator(ROOT)
         cleanup.callback(work_validator.close)
@@ -146,7 +152,7 @@ def main():
                      'No shared build/ledger edits. Ask Root for missing context with packet/seed/query/reason; no broad dependency scans.\n\n'+
                      'Read SUBAGENT_PROMPT.md, TASK.md, ELF_CONTEXT.md, SOURCE_SLICES.md and CONTEXT.md in every packet listed above. The authenticated packet prompts apply in full. Manifest bindings: '+json.dumps({p:sha(inside(ROOT,p)/'context.json') for p in g['packets']}))
             workers.append({'packets':g['packets'],'arguments':{'task_name':g['task_name'],'fork_turns':'none','message':message}})
-        payload={'version':1,'packets_per_worker':a.packets_per_worker,'generation':active['state_sha256'],'groups_sha256':groups_digest,
+        payload={'version':1,'packets_per_worker':a.packets_per_worker,'flexible_total':a.flexible_total,'maximum_packets_per_worker':25 if a.flexible_total else a.packets_per_worker,'generation':active['state_sha256'],'groups_sha256':groups_digest,
                  'operator_sha256':sha(pathlib.Path(__file__)), 'workers':workers,'mode':'sealed_before_first_worker_write',
                  'packet_manifests':{p:sha(inside(ROOT,p)/'context.json') for p in paths},'dependency_conflicts':[]}
         # Fresh selected registry bindings are required again at the publication barrier.

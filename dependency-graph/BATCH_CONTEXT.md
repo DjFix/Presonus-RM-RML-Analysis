@@ -162,3 +162,12 @@ rechecks actual container constraints before choosing its pool. Unknown limits
 force one job. Host/container resource receipts are retained in each refresh.
 These estimates do not guarantee peak memory. Publication parameters, source
 hashes, actual GCC/Clang replay and all validation gates are unchanged.
+
+### Flexible 200-target trial
+
+`group_dispatch.py --flexible-total 200` permits one to ten simultaneous worker
+scopes with one to 25 packets each, exactly 200 packets in total. This mode is
+separate from `--allow-smaller`; they cannot be combined. Group sizes may differ.
+All original generation, identity, original range, ownership, dependency,
+publication and per-packet validation gates still apply. This does not authorize
+selecting research-required work or bypassing a candidate deficit.

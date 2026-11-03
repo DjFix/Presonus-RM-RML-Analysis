@@ -119,5 +119,27 @@ class GroupDispatchTests(unittest.TestCase):
             g,e,r=self.fixture(actual)
             with self.assertRaises(ContextError):check_groups(g,e,r,expected)
 
+    def test_flexible200_eight_workers25(self):
+        g,e,r=self.fixture(25); g=g[:8]
+        paths={p for group in g for p in group['packets']}
+        e={p:v for p,v in e.items() if p in paths};r={p:v for p,v in r.items() if p in paths}
+        self.assertEqual(len(check_groups(g,e,r,flexible_total=200)),200)
+        g[0]['packets'].pop()
+        with self.assertRaises(ContextError):check_groups(g,e,r,flexible_total=200)
+
+    def test_flexible_retains_negative_gates(self):
+        for mutation in ('generation','empty','work','overlap','identity','order','oversize','small'):
+            with self.subTest(mutation=mutation):
+                g,e,r=self.fixture(20)
+                if mutation=='generation':e['p1_0']['generation_sha256']='other'
+                if mutation=='empty':e['p1_0']['state']='selected'
+                if mutation=='work':e['p1_0']['work_binding']['work_item_id']='p0_0'
+                if mutation=='overlap':e['p1_0']['selected_file_sha256']['uc-library/src/0.cpp']='hash'
+                if mutation=='identity':e['p1_0']['work_binding']['covered_occurrences']=e['p0_0']['work_binding']['covered_occurrences']
+                if mutation=='order':g[0]['execution_order']=[]
+                if mutation=='oversize':g[0]['packets']+=['extra']*6
+                if mutation=='small':g.pop()
+                with self.assertRaises(ContextError):check_groups(g,e,r,flexible_total=200)
+
 
 if __name__=='__main__':unittest.main()
