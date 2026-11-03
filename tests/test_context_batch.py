@@ -321,29 +321,32 @@ class BatchOrchestrationTests(unittest.TestCase):
             with self.assertRaises(ContextError):
                 publication.authorization(self.root, packet)
 
-    def grouped_batch(self, count):
-        tasks = [self.task(i) for i in range(10 * count)]
+    def grouped_batch(self, count, worker_count=10, flexible=False):
+        tasks = [self.task(i) for i in range(worker_count * count)]
         groups = []
         for i, task in enumerate(tasks):
             task['owned_files'] = [f'uc-library/src/group{i // count}.cpp']
             (self.root / f'tasks/{i}.json').write_text(json.dumps(task))
-        for i in range(10):
+        for i in range(worker_count):
             paths = [f'temp/recovery-work/batch/packets/work{j}'
                      for j in range(i * count, (i + 1) * count)]
             groups.append({'task_name': f'group{i}', 'packets': paths,
                            'execution_order': paths[::-1], 'scope_reason': 'shared class ownership'})
         self.manifest.write_text(json.dumps({'tasks': [f'tasks/{i}.json' for i in range(len(tasks))],
-                                             'groups': groups}))
+                                             'groups': groups, **({'flexible_total':200} if flexible else {})}))
         result = self.run_batch()
         payload = json.loads(result.read_text())
-        self.assertEqual(len(payload['workers']), 10)
-        self.assertEqual(len(payload['packet_manifests']), 10 * count)
+        self.assertEqual(len(payload['workers']), worker_count)
+        self.assertEqual(len(payload['packet_manifests']), worker_count * count)
         for worker, expected in zip(payload['workers'], groups):
             self.assertEqual(worker['packets'], expected['packets'])
             self.assertEqual(worker['arguments']['task_name'], expected['task_name'])
             for packet in worker['packets']:
                 self.assertFalse((self.root / packet / 'DISPATCH.json').exists())
                 publication.authorization(self.root, self.root / packet)
+
+    def test_flexible_eight_by25_same_atomic_barrier(self):
+        self.grouped_batch(25, worker_count=8, flexible=True)
 
     def test_ten_by_five_shares_ownership_only_within_group(self):
         self.grouped_batch(5)

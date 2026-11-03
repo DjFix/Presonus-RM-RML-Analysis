@@ -381,6 +381,9 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
     tasks = [json.loads(inside(root, p).read_text()) for p in task_paths]
     groups = manifest.get('groups')
     allow_smaller = manifest.get('allow_smaller') is True
+    flexible_total = manifest.get('flexible_total')
+    if flexible_total is not None and (flexible_total != 200 or not groups or allow_smaller):
+        raise ContextError('Flexible trial requires200 targets, grouped scopes, and no smaller mode')
     if allow_smaller and not manifest.get('smaller_batch_authorization'):
         raise ContextError('Explicit smaller-batch authorization required in manifest')
     validate_tasks(tasks, groups)
@@ -521,7 +524,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             if groups:
                 from group_dispatch import check_groups
                 count = len(groups[0]['packets'])
-                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count, allow_smaller)
+                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count, allow_smaller, flexible_total)
             else:
                 check_conflicts(entries, requests)
             timings.append({'phase': 'common_checks', 'seconds': time.perf_counter() - common_start})
@@ -561,6 +564,9 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             payload = {'version': 1, 'generation': frozen['inputs']['active']['state_sha256'],
                        'workers': workers, 'mode': 'sealed_before_first_worker_write',
                        'dependency_conflicts': []}
+            if flexible_total is not None:
+                payload['flexible_total'] = flexible_total
+                payload['maximum_packets_per_worker'] = 25
             if allow_smaller:
                 payload['smaller_batch_authorization'] = manifest['smaller_batch_authorization']
             result = output / 'BATCH_DISPATCH.json'
