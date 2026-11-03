@@ -1841,6 +1841,10 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/rank20cycle01/rank20c01_w02.hpp
+  presonus/rank20cycle01/rank20c01_w04.hpp
+  presonus/rank20cycle01/rank20c01_w05.hpp
+  presonus/rank20cycle01/rank20c01_w06.hpp
   presonus/surface/AssignmentHandlerTable.hpp
   presonus/panel/SPIControlGroup.hpp
   presonus/panel/PresetNameManager.hpp
@@ -2167,3 +2171,5 @@ include(cmake/GraphTrial07.cmake)
 include(cmake/GraphTrial08.cmake)
 
 include(cmake/GraphRanked09.cmake)
+
+include(cmake/GraphRank20Cycle01.cmake)

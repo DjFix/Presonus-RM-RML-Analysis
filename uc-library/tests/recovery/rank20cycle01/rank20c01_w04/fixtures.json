@@ -1,0 +1,1344 @@
+{
+  "oracle": "original ELF ARM execution under Unicorn; external app calls hooked only",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_16",
+      "op": "L",
+      "present": 0,
+      "value": 0,
+      "result": 0,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 496896,
+        "size": 48,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 464128,
+        "bytes_sha256": "71734dcab30d0333cdb9235356ec3dec1ae12afcbd9a1f11f1a785d610da04a7",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 496896,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 496900,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 496904,
+            "bytes": "b43090e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r0, #0xb4]"
+          },
+          {
+            "address": 496908,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 496912,
+            "bytes": "4c1093e5",
+            "mnemonic": "ldr",
+            "operands": "r1, [r3, #0x4c]"
+          },
+          {
+            "address": 496916,
+            "bytes": "000051e3",
+            "mnemonic": "cmp",
+            "operands": "r1, #0"
+          },
+          {
+            "address": 496920,
+            "bytes": "0100a001",
+            "mnemonic": "moveq",
+            "operands": "r0, r1"
+          },
+          {
+            "address": 496924,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 496928,
+            "bytes": "b00090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0xb0]"
+          },
+          {
+            "address": 496932,
+            "bytes": "696cffeb",
+            "mnemonic": "bl",
+            "operands": "#0x546d0"
+          },
+          {
+            "address": 496936,
+            "bytes": "0100a0e3",
+            "mnemonic": "mov",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 496940,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/00079500.cpp.txt",
+        "pseudocode_sha256": "c901b5ed84d904b24f6519fbbee1f5da19b9404e1f6d4ec60a8e30743329674b",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWLoadDocumentPage::onOk()\n// Symbol _ZN8Presonus7Surface19DAWLoadDocumentPage4onOkEv address=0x79500\ntypedef struct st_79500_1 {\n    char padding_0[176];\n    int field_b0;\n    struct st_79500_0 *field_b4;\n} st_79500_1;\n\ntypedef struct st_79500_0 {\n    char padding_0[76];\n    unsigned int field_4c;\n} st_79500_0;\n\n\nst_79500_1 * Presonus::Surface::DAWLoadDocumentPage::onOk(st_79500_1 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    st_79500_1 *v3;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 496908;\n    v1 = &a4;\n    v0 = &a4;\n    if (!a0->field_b4->field_4c)\n    {\n        v3 = NULL;\n        if (a0->field_b4->field_4c)\n            goto LABEL_79520;\n        return NULL;\n    }\n    if (a0->field_b4->field_4c)\n        goto LABEL_79520;\n    return a0;\n    v3 = a0;\nLABEL_79520:\n    Presonus::DAWClientComponent::loadDocument(v3->field_b0);\n    return 0x1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_16",
+      "op": "L",
+      "present": 0,
+      "value": 1,
+      "result": 0,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 496896,
+        "size": 48,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 464128,
+        "bytes_sha256": "71734dcab30d0333cdb9235356ec3dec1ae12afcbd9a1f11f1a785d610da04a7",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 496896,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 496900,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 496904,
+            "bytes": "b43090e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r0, #0xb4]"
+          },
+          {
+            "address": 496908,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 496912,
+            "bytes": "4c1093e5",
+            "mnemonic": "ldr",
+            "operands": "r1, [r3, #0x4c]"
+          },
+          {
+            "address": 496916,
+            "bytes": "000051e3",
+            "mnemonic": "cmp",
+            "operands": "r1, #0"
+          },
+          {
+            "address": 496920,
+            "bytes": "0100a001",
+            "mnemonic": "moveq",
+            "operands": "r0, r1"
+          },
+          {
+            "address": 496924,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 496928,
+            "bytes": "b00090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0xb0]"
+          },
+          {
+            "address": 496932,
+            "bytes": "696cffeb",
+            "mnemonic": "bl",
+            "operands": "#0x546d0"
+          },
+          {
+            "address": 496936,
+            "bytes": "0100a0e3",
+            "mnemonic": "mov",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 496940,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/00079500.cpp.txt",
+        "pseudocode_sha256": "c901b5ed84d904b24f6519fbbee1f5da19b9404e1f6d4ec60a8e30743329674b",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWLoadDocumentPage::onOk()\n// Symbol _ZN8Presonus7Surface19DAWLoadDocumentPage4onOkEv address=0x79500\ntypedef struct st_79500_1 {\n    char padding_0[176];\n    int field_b0;\n    struct st_79500_0 *field_b4;\n} st_79500_1;\n\ntypedef struct st_79500_0 {\n    char padding_0[76];\n    unsigned int field_4c;\n} st_79500_0;\n\n\nst_79500_1 * Presonus::Surface::DAWLoadDocumentPage::onOk(st_79500_1 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    st_79500_1 *v3;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 496908;\n    v1 = &a4;\n    v0 = &a4;\n    if (!a0->field_b4->field_4c)\n    {\n        v3 = NULL;\n        if (a0->field_b4->field_4c)\n            goto LABEL_79520;\n        return NULL;\n    }\n    if (a0->field_b4->field_4c)\n        goto LABEL_79520;\n    return a0;\n    v3 = a0;\nLABEL_79520:\n    Presonus::DAWClientComponent::loadDocument(v3->field_b0);\n    return 0x1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_16",
+      "op": "L",
+      "present": 1,
+      "value": 0,
+      "result": 1,
+      "events": [
+        "L"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 496896,
+        "size": 48,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 464128,
+        "bytes_sha256": "71734dcab30d0333cdb9235356ec3dec1ae12afcbd9a1f11f1a785d610da04a7",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 496896,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 496900,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 496904,
+            "bytes": "b43090e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r0, #0xb4]"
+          },
+          {
+            "address": 496908,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 496912,
+            "bytes": "4c1093e5",
+            "mnemonic": "ldr",
+            "operands": "r1, [r3, #0x4c]"
+          },
+          {
+            "address": 496916,
+            "bytes": "000051e3",
+            "mnemonic": "cmp",
+            "operands": "r1, #0"
+          },
+          {
+            "address": 496920,
+            "bytes": "0100a001",
+            "mnemonic": "moveq",
+            "operands": "r0, r1"
+          },
+          {
+            "address": 496924,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 496928,
+            "bytes": "b00090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0xb0]"
+          },
+          {
+            "address": 496932,
+            "bytes": "696cffeb",
+            "mnemonic": "bl",
+            "operands": "#0x546d0"
+          },
+          {
+            "address": 496936,
+            "bytes": "0100a0e3",
+            "mnemonic": "mov",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 496940,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/00079500.cpp.txt",
+        "pseudocode_sha256": "c901b5ed84d904b24f6519fbbee1f5da19b9404e1f6d4ec60a8e30743329674b",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWLoadDocumentPage::onOk()\n// Symbol _ZN8Presonus7Surface19DAWLoadDocumentPage4onOkEv address=0x79500\ntypedef struct st_79500_1 {\n    char padding_0[176];\n    int field_b0;\n    struct st_79500_0 *field_b4;\n} st_79500_1;\n\ntypedef struct st_79500_0 {\n    char padding_0[76];\n    unsigned int field_4c;\n} st_79500_0;\n\n\nst_79500_1 * Presonus::Surface::DAWLoadDocumentPage::onOk(st_79500_1 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    st_79500_1 *v3;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 496908;\n    v1 = &a4;\n    v0 = &a4;\n    if (!a0->field_b4->field_4c)\n    {\n        v3 = NULL;\n        if (a0->field_b4->field_4c)\n            goto LABEL_79520;\n        return NULL;\n    }\n    if (a0->field_b4->field_4c)\n        goto LABEL_79520;\n    return a0;\n    v3 = a0;\nLABEL_79520:\n    Presonus::DAWClientComponent::loadDocument(v3->field_b0);\n    return 0x1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_16",
+      "op": "L",
+      "present": 1,
+      "value": 1,
+      "result": 1,
+      "events": [
+        "L"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 496896,
+        "size": 48,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 464128,
+        "bytes_sha256": "71734dcab30d0333cdb9235356ec3dec1ae12afcbd9a1f11f1a785d610da04a7",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 496896,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 496900,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 496904,
+            "bytes": "b43090e5",
+            "mnemonic": "ldr",
+            "operands": "r3, [r0, #0xb4]"
+          },
+          {
+            "address": 496908,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 496912,
+            "bytes": "4c1093e5",
+            "mnemonic": "ldr",
+            "operands": "r1, [r3, #0x4c]"
+          },
+          {
+            "address": 496916,
+            "bytes": "000051e3",
+            "mnemonic": "cmp",
+            "operands": "r1, #0"
+          },
+          {
+            "address": 496920,
+            "bytes": "0100a001",
+            "mnemonic": "moveq",
+            "operands": "r0, r1"
+          },
+          {
+            "address": 496924,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 496928,
+            "bytes": "b00090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0xb0]"
+          },
+          {
+            "address": 496932,
+            "bytes": "696cffeb",
+            "mnemonic": "bl",
+            "operands": "#0x546d0"
+          },
+          {
+            "address": 496936,
+            "bytes": "0100a0e3",
+            "mnemonic": "mov",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 496940,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/00079500.cpp.txt",
+        "pseudocode_sha256": "c901b5ed84d904b24f6519fbbee1f5da19b9404e1f6d4ec60a8e30743329674b",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWLoadDocumentPage::onOk()\n// Symbol _ZN8Presonus7Surface19DAWLoadDocumentPage4onOkEv address=0x79500\ntypedef struct st_79500_1 {\n    char padding_0[176];\n    int field_b0;\n    struct st_79500_0 *field_b4;\n} st_79500_1;\n\ntypedef struct st_79500_0 {\n    char padding_0[76];\n    unsigned int field_4c;\n} st_79500_0;\n\n\nst_79500_1 * Presonus::Surface::DAWLoadDocumentPage::onOk(st_79500_1 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    st_79500_1 *v3;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 496908;\n    v1 = &a4;\n    v0 = &a4;\n    if (!a0->field_b4->field_4c)\n    {\n        v3 = NULL;\n        if (a0->field_b4->field_4c)\n            goto LABEL_79520;\n        return NULL;\n    }\n    if (a0->field_b4->field_4c)\n        goto LABEL_79520;\n    return a0;\n    v3 = a0;\nLABEL_79520:\n    Presonus::DAWClientComponent::loadDocument(v3->field_b0);\n    return 0x1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 0,
+      "value": 0,
+      "result": 1,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 0,
+      "value": 1,
+      "result": 1,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 0,
+      "value": 2147483647,
+      "result": 1,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 0,
+      "value": 2147483648,
+      "result": 1,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 0,
+      "value": 4294967295,
+      "result": 1,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 1,
+      "value": 0,
+      "result": 0,
+      "events": [
+        "M"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 1,
+      "value": 1,
+      "result": 0,
+      "events": [
+        "M"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 1,
+      "value": 2147483647,
+      "result": 0,
+      "events": [
+        "M"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 1,
+      "value": 2147483648,
+      "result": 1,
+      "events": [
+        "M"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_17",
+      "op": "M",
+      "present": 1,
+      "value": 4294967295,
+      "result": 1,
+      "events": [
+        "M"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 506048,
+        "size": 24,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 473280,
+        "bytes_sha256": "abdfb6a5c266b24017549b78238025b481d5c37392a9f9e6e37f54edca2df41a",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 506048,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 506052,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 506056,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 506060,
+            "bytes": "edffffeb",
+            "mnemonic": "bl",
+            "operands": "#0x7b888"
+          },
+          {
+            "address": 506064,
+            "bytes": "a00fa0e1",
+            "mnemonic": "lsr",
+            "operands": "r0, r0, #0x1f"
+          },
+          {
+            "address": 506068,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/0007b8c0.cpp.txt",
+        "pseudocode_sha256": "7c0a8c5fe3c3ab460d2691e1303a109fd1b9f10c830744994c1ba854a38e3bd3",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters() const\n// Symbol _ZNK8Presonus7Surface15DAWMixerHandler31shouldShowStripEncodersAsMetersEv address=0x7b8c0\ntypedef struct st_7b888_3 {\n    struct st_7b888_0 *field_0;\n} st_7b888_3;\n\ntypedef struct st_7b888_1 {\n    unsigned int field_0;\n} st_7b888_1;\n\ntypedef struct st_7b888_0 {\n    char padding_0[4];\n    struct st_7b888_1 *field_4;\n} st_7b888_0;\n\ntypedef struct st_7b888_2 {\n    char padding_0[8];\n    struct st_7b888_3 *field_8;\n} st_7b888_2;\n\n\nunsigned int Presonus::Surface::DAWMixerHandler::shouldShowStripEncodersAsMeters(st_7b888_2 *a0, unsigned int a1, unsigned int a2, unsigned int a3)\n{\n    unsigned int v0;  // [bp-0x8]\n    unsigned int v1;  // [bp-0x4]\n    char v2;  // [bp+0x0]\n\n    v1 = 506060;\n    return Presonus::Surface::DAWMixerHandler::getSelectedMeterMode(a0, a1, a2, a3, (char)&v2, &v2, v0) >> 31;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_21",
+      "op": "V",
+      "present": 0,
+      "value": 0,
+      "result": 0,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 529056,
+        "size": 40,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 496288,
+        "bytes_sha256": "49f9704701d157cf7326dc82c7d56b758874ce25cda9a7d560492ebd9f141c78",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 529056,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 529060,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 529064,
+            "bytes": "2c0090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0x2c]"
+          },
+          {
+            "address": 529068,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 529072,
+            "bytes": "000050e3",
+            "mnemonic": "cmp",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 529076,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 529080,
+            "bytes": "c59bffeb",
+            "mnemonic": "bl",
+            "operands": "#0x681d4"
+          },
+          {
+            "address": 529084,
+            "bytes": "000050e2",
+            "mnemonic": "subs",
+            "operands": "r0, r0, #0"
+          },
+          {
+            "address": 529088,
+            "bytes": "0100a013",
+            "mnemonic": "movne",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 529092,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/000812a0.cpp.txt",
+        "pseudocode_sha256": "dd15c708a28a96e03617c10e4998b8d8576a3b8cc7205c5cdb22c578a523381f",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::SLMixerHandler::isGeqMode() const\n// Symbol _ZNK8Presonus7Surface14SLMixerHandler9isGeqModeEv address=0x812a0\ntypedef struct st_812a0_0 {\n    char padding_0[44];\n    int field_2c;\n} st_812a0_0;\n\n\nint Presonus::Surface::SLMixerHandler::isGeqMode(st_812a0_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    int v3;  // r0\n    int v4;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 529068;\n    v1 = &a4;\n    v0 = &a4;\n    v3 = a0->field_2c;\n    if (v3)\n        goto LABEL_812b8;\n    return v3;\nLABEL_812b8:\n    v4 = Presonus::PageComponent::isVisible(v3);\n    if (!v4)\n        return v4;\n    return 1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_21",
+      "op": "V",
+      "present": 0,
+      "value": 1,
+      "result": 0,
+      "events": [],
+      "memory_unchanged": true,
+      "range": {
+        "address": 529056,
+        "size": 40,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 496288,
+        "bytes_sha256": "49f9704701d157cf7326dc82c7d56b758874ce25cda9a7d560492ebd9f141c78",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 529056,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 529060,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 529064,
+            "bytes": "2c0090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0x2c]"
+          },
+          {
+            "address": 529068,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 529072,
+            "bytes": "000050e3",
+            "mnemonic": "cmp",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 529076,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 529080,
+            "bytes": "c59bffeb",
+            "mnemonic": "bl",
+            "operands": "#0x681d4"
+          },
+          {
+            "address": 529084,
+            "bytes": "000050e2",
+            "mnemonic": "subs",
+            "operands": "r0, r0, #0"
+          },
+          {
+            "address": 529088,
+            "bytes": "0100a013",
+            "mnemonic": "movne",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 529092,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/000812a0.cpp.txt",
+        "pseudocode_sha256": "dd15c708a28a96e03617c10e4998b8d8576a3b8cc7205c5cdb22c578a523381f",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::SLMixerHandler::isGeqMode() const\n// Symbol _ZNK8Presonus7Surface14SLMixerHandler9isGeqModeEv address=0x812a0\ntypedef struct st_812a0_0 {\n    char padding_0[44];\n    int field_2c;\n} st_812a0_0;\n\n\nint Presonus::Surface::SLMixerHandler::isGeqMode(st_812a0_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    int v3;  // r0\n    int v4;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 529068;\n    v1 = &a4;\n    v0 = &a4;\n    v3 = a0->field_2c;\n    if (v3)\n        goto LABEL_812b8;\n    return v3;\nLABEL_812b8:\n    v4 = Presonus::PageComponent::isVisible(v3);\n    if (!v4)\n        return v4;\n    return 1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_21",
+      "op": "V",
+      "present": 1,
+      "value": 0,
+      "result": 0,
+      "events": [
+        "V"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 529056,
+        "size": 40,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 496288,
+        "bytes_sha256": "49f9704701d157cf7326dc82c7d56b758874ce25cda9a7d560492ebd9f141c78",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 529056,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 529060,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 529064,
+            "bytes": "2c0090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0x2c]"
+          },
+          {
+            "address": 529068,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 529072,
+            "bytes": "000050e3",
+            "mnemonic": "cmp",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 529076,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 529080,
+            "bytes": "c59bffeb",
+            "mnemonic": "bl",
+            "operands": "#0x681d4"
+          },
+          {
+            "address": 529084,
+            "bytes": "000050e2",
+            "mnemonic": "subs",
+            "operands": "r0, r0, #0"
+          },
+          {
+            "address": 529088,
+            "bytes": "0100a013",
+            "mnemonic": "movne",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 529092,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/000812a0.cpp.txt",
+        "pseudocode_sha256": "dd15c708a28a96e03617c10e4998b8d8576a3b8cc7205c5cdb22c578a523381f",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::SLMixerHandler::isGeqMode() const\n// Symbol _ZNK8Presonus7Surface14SLMixerHandler9isGeqModeEv address=0x812a0\ntypedef struct st_812a0_0 {\n    char padding_0[44];\n    int field_2c;\n} st_812a0_0;\n\n\nint Presonus::Surface::SLMixerHandler::isGeqMode(st_812a0_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    int v3;  // r0\n    int v4;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 529068;\n    v1 = &a4;\n    v0 = &a4;\n    v3 = a0->field_2c;\n    if (v3)\n        goto LABEL_812b8;\n    return v3;\nLABEL_812b8:\n    v4 = Presonus::PageComponent::isVisible(v3);\n    if (!v4)\n        return v4;\n    return 1;\n}\n\n"
+      }
+    },
+    {
+      "packet": "temp/recovery-work/ranked20-cycle01/batch02/packets/rank20c01_w04_21",
+      "op": "V",
+      "present": 1,
+      "value": 1,
+      "result": 1,
+      "events": [
+        "V"
+      ],
+      "memory_unchanged": true,
+      "range": {
+        "address": 529056,
+        "size": 40,
+        "section": ".text",
+        "section_index": 12,
+        "file_offset": 496288,
+        "bytes_sha256": "49f9704701d157cf7326dc82c7d56b758874ce25cda9a7d560492ebd9f141c78",
+        "storage": "file",
+        "instructions": [
+          {
+            "address": 529056,
+            "bytes": "0dc0a0e1",
+            "mnemonic": "mov",
+            "operands": "ip, sp"
+          },
+          {
+            "address": 529060,
+            "bytes": "00d82de9",
+            "mnemonic": "push",
+            "operands": "{fp, ip, lr, pc}"
+          },
+          {
+            "address": 529064,
+            "bytes": "2c0090e5",
+            "mnemonic": "ldr",
+            "operands": "r0, [r0, #0x2c]"
+          },
+          {
+            "address": 529068,
+            "bytes": "04b04ce2",
+            "mnemonic": "sub",
+            "operands": "fp, ip, #4"
+          },
+          {
+            "address": 529072,
+            "bytes": "000050e3",
+            "mnemonic": "cmp",
+            "operands": "r0, #0"
+          },
+          {
+            "address": 529076,
+            "bytes": "00a89d08",
+            "mnemonic": "ldmeq",
+            "operands": "sp, {fp, sp, pc}"
+          },
+          {
+            "address": 529080,
+            "bytes": "c59bffeb",
+            "mnemonic": "bl",
+            "operands": "#0x681d4"
+          },
+          {
+            "address": 529084,
+            "bytes": "000050e2",
+            "mnemonic": "subs",
+            "operands": "r0, r0, #0"
+          },
+          {
+            "address": 529088,
+            "bytes": "0100a013",
+            "mnemonic": "movne",
+            "operands": "r0, #1"
+          },
+          {
+            "address": 529092,
+            "bytes": "00a89de8",
+            "mnemonic": "ldm",
+            "operands": "sp, {fp, sp, pc}"
+          }
+        ],
+        "coverage": "static decoded instruction ranges; indirect dispatch explicit",
+        "pseudocode_path": "uc-library/recovered-all/client/pseudocode/000812a0.cpp.txt",
+        "pseudocode_sha256": "dd15c708a28a96e03617c10e4998b8d8576a3b8cc7205c5cdb22c578a523381f",
+        "unvalidated_pseudocode": "// UNVALIDATED DECOMPILER OUTPUT. Not buildable C++ or an ABI declaration.\n// Presonus::Surface::SLMixerHandler::isGeqMode() const\n// Symbol _ZNK8Presonus7Surface14SLMixerHandler9isGeqModeEv address=0x812a0\ntypedef struct st_812a0_0 {\n    char padding_0[44];\n    int field_2c;\n} st_812a0_0;\n\n\nint Presonus::Surface::SLMixerHandler::isGeqMode(st_812a0_0 *a0, unsigned int a1, unsigned int a2, unsigned int a3, char a4, unsigned int a5, unsigned int a6)\n{\n    int v3;  // r0\n    int v4;  // r0\n    char *v0;  // [bp-0x10]\n    char *v1;  // [bp-0xc]\n    unsigned int v2;  // [bp-0x4]\n\n    v2 = 529068;\n    v1 = &a4;\n    v0 = &a4;\n    v3 = a0->field_2c;\n    if (v3)\n        goto LABEL_812b8;\n    return v3;\nLABEL_812b8:\n    v4 = Presonus::PageComponent::isVisible(v3);\n    if (!v4)\n        return v4;\n    return 1;\n}\n\n"
+      }
+    }
+  ]
+}

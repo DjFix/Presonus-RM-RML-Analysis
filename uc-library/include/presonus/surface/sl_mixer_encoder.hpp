@@ -7,6 +7,7 @@ struct SLMixerEncoderAccess;
 struct PageObserverAccess;
 } // namespace presonus::surface
 namespace Presonus {
+class PageComponent;
 // Original twelve-pure-slot interface, no virtual destructor slots. Ordinary
 // return spellings are source-port choices pending independent declarations.
 class IMappingController {
@@ -115,6 +116,7 @@ public:
   Core::Portable::Parameter *getMappingParameter(int) const;
   bool altKeyPressed() const override;
   int getMeterMode() const;
+  bool isGeqMode() const;
   void setDigitalParams(Core::Portable::Parameter *,
                         Core::Portable::Parameter *);
   void onEncoderChanged(int) override;
@@ -145,12 +147,16 @@ private:
   Core::Portable::Parameter *digitalSecond_ = nullptr;
   Core::Portable::Parameter *footswitchTarget_ = nullptr;
   Core::Vector<Core::Portable::Parameter *> footswitchParameters_;
+  PageComponent *geqPage_ = nullptr; // Borrowed portable composition.
   friend struct presonus::surface::SLMixerEncoderAccess;
 };
 } // namespace Surface
 } // namespace Presonus
 namespace presonus::surface {
 struct SLMixerEncoderAccess {
+  static auto &geqPage(Presonus::Surface::SLMixerHandler &v) {
+    return v.geqPage_;
+  }
   static auto &digitalFirst(Presonus::Surface::SLMixerHandler &v) {
     return v.digitalFirst_;
   }

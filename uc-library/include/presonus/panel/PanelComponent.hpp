@@ -31,6 +31,8 @@ public:
   void detachAll() const;
   void detachSwitches() const;
   void activateAll();
+  // Chosen source-port return declaration; original ordinary return unresolved.
+  int runTests(int, int, char **);
   void blinkLed(int, int, bool);
 
 private:

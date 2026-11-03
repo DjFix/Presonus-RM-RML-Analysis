@@ -58,6 +58,7 @@ public:
                   presonus::surface::DAWMixerState &state,
                   Core::Portable::ParamList &automation)
       : dependencies(dependencies), state(state), automation(automation) {}
+  bool shouldShowStripEncodersAsMeters() const;
   void updatePanEncoderConnection();
   void onChannelsChanged(DAWChannelGroup *);
   void getMixTargets(MixTargets &, DAWChannel *, int) const;

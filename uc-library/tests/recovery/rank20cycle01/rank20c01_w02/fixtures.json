@@ -1,0 +1,2955 @@
+{
+  "oracle": "actual pinned CCL 5.0.0 Component destructor executed directly; independent of MackieControlUnit instantiation",
+  "pinned_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+  "provider_argv": [
+    "temp/recovery-work/ranked20-cycle01/rank20c01_w02/driver",
+    "provider"
+  ],
+  "provider_stdout": "0 0\n1 1\n2 2\n7 7\n",
+  "native_prefix": {
+    "kind": "original ARM execution; unresolved call boundary halt",
+    "limitations": "No callee replaced or executed; prefix memory/call observations only; does not validate completion, return, cleanup or portable behavior.",
+    "cases": [
+      {
+        "task_id": "rank20c01_w02_01",
+        "mangled": "_ZN8Presonus3Dsp10ControllerD2Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 698344,
+        "size": 48,
+        "range_sha256": "b22353a296a3a93deef0a79d82d6bf33f78bb671cdd0c43f87fb13a25dc01021",
+        "variant": 0,
+        "executed_addresses": [
+          731112,
+          731116,
+          731120,
+          731124,
+          731128,
+          731132,
+          731136,
+          731140,
+          731144
+        ],
+        "boundary": {
+          "address": 730980,
+          "identity": "Presonus::Dsp::Controller::setTarget(Core::IPropertyHandler*)",
+          "arguments": [
+            16777216,
+            0,
+            2271560481,
+            3527424
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3527424
+          }
+        ],
+        "object_hex": "00d33500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_02",
+        "mangled": "_ZN8Presonus3Dsp17LimiterControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 810800,
+        "size": 44,
+        "range_sha256": "ac74897d2109370a92bd8f4882bf4cee2fe84f22db1050c619dfb655eb022922",
+        "variant": 0,
+        "executed_addresses": [
+          843568,
+          843572,
+          843576,
+          843580,
+          843584,
+          843588,
+          843592,
+          843596
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3532952
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3532952
+          }
+        ],
+        "object_hex": "98e83500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_03",
+        "mangled": "_ZN8Presonus3Dsp13EQ8ControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 803940,
+        "size": 44,
+        "range_sha256": "8f500cb9a6f9d253724b5af2b85297e6f22473c9ab63e1ff167f23a4202a995d",
+        "variant": 0,
+        "executed_addresses": [
+          836708,
+          836712,
+          836716,
+          836720,
+          836724,
+          836728,
+          836732,
+          836736
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3532336
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3532336
+          }
+        ],
+        "object_hex": "30e63500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_04",
+        "mangled": "_ZN8Presonus3Dsp10ControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 698296,
+        "size": 48,
+        "range_sha256": "d32a116ffec4af3f446ed56b8b954386fd82b41363aa0c337b7717560507d62e",
+        "variant": 0,
+        "executed_addresses": [
+          731064,
+          731068,
+          731072,
+          731076,
+          731080,
+          731084,
+          731088,
+          731092,
+          731096
+        ],
+        "boundary": {
+          "address": 730980,
+          "identity": "Presonus::Dsp::Controller::setTarget(Core::IPropertyHandler*)",
+          "arguments": [
+            16777216,
+            0,
+            2271560481,
+            3527424
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3527424
+          }
+        ],
+        "object_hex": "00d33500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_05",
+        "mangled": "_ZN8Presonus3Dsp19ShelbyGEQControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 822484,
+        "size": 44,
+        "range_sha256": "b4c45a3be1bdb6429f2427107ab1d0bb02762bb2ce4888c4aba1b35a1d229b7f",
+        "variant": 0,
+        "executed_addresses": [
+          855252,
+          855256,
+          855260,
+          855264,
+          855268,
+          855272,
+          855276,
+          855280
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3533344
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3533344
+          }
+        ],
+        "object_hex": "20ea3500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_06",
+        "mangled": "_ZN8Presonus3Dsp14CompControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 716060,
+        "size": 44,
+        "range_sha256": "b356f3cd30c0c6043731dff994e2a73d4c9ac6cfe2133dc747dea98ca9ba6304",
+        "variant": 0,
+        "executed_addresses": [
+          748828,
+          748832,
+          748836,
+          748840,
+          748844,
+          748848,
+          748852,
+          748856
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3528104
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3528104
+          }
+        ],
+        "object_hex": "a8d53500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_07",
+        "mangled": "_ZN8Presonus3Dsp16LoPassControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 803748,
+        "size": 44,
+        "range_sha256": "a65fc5253afa0c2a7576c8e9773f5da896e341d4d52e60107d56faf8bf327f69",
+        "variant": 0,
+        "executed_addresses": [
+          836516,
+          836520,
+          836524,
+          836528,
+          836532,
+          836536,
+          836540,
+          836544
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3532336
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3532336
+          }
+        ],
+        "object_hex": "30e63500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_08",
+        "mangled": "_ZN8Presonus3Dsp18SLReverbControllerD1Ev",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": ".text",
+        "file_offset": 750944,
+        "size": 44,
+        "range_sha256": "d6bdc531e9bf6892ba026db136104714b27aca52521a3df5b7ba52683a043034",
+        "variant": 0,
+        "executed_addresses": [
+          783712,
+          783716,
+          783720,
+          783724,
+          783728,
+          783732,
+          783736,
+          783740
+        ],
+        "boundary": {
+          "address": 731112,
+          "identity": "Presonus::Dsp::Controller::~Controller()",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            3528776
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 3528776
+          }
+        ],
+        "object_hex": "48d83500a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_09",
+        "mangled": "_ZN8Presonus17FocusHelperButtonD1Ev",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 400816,
+        "size": 120,
+        "range_sha256": "5af64b6a9b0b70c1e651f35a45a103dfc0ae90504d053fb3fc024eeb1acd1ebe",
+        "variant": 0,
+        "executed_addresses": [
+          433584,
+          433588,
+          433592,
+          433596,
+          433600,
+          433604,
+          433608,
+          433612,
+          433616,
+          433620,
+          433624,
+          433628,
+          433632,
+          433636,
+          433640,
+          433644,
+          433648,
+          433652,
+          433656,
+          433660,
+          433664,
+          433668,
+          433672,
+          433676,
+          433680,
+          433684,
+          433688
+        ],
+        "boundary": {
+          "address": 1028444,
+          "identity": "Core::Portable::Control::~Control()",
+          "arguments": [
+            16777216,
+            2107752,
+            0,
+            2107608
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777220,
+            "size": 4,
+            "value": 2107724
+          },
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 2107608
+          },
+          {
+            "address": 16777284,
+            "size": 4,
+            "value": 2107752
+          }
+        ],
+        "object_hex": "d82820004c292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a568292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_09",
+        "mangled": "_ZN8Presonus17FocusHelperButtonD1Ev",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 400816,
+        "size": 120,
+        "range_sha256": "5af64b6a9b0b70c1e651f35a45a103dfc0ae90504d053fb3fc024eeb1acd1ebe",
+        "variant": 1,
+        "executed_addresses": [
+          433584,
+          433588,
+          433592,
+          433596,
+          433600,
+          433604,
+          433608,
+          433612,
+          433616,
+          433620,
+          433624,
+          433628,
+          433632,
+          433636,
+          433640,
+          433644,
+          433648,
+          433652,
+          433656,
+          433660,
+          433664,
+          433668,
+          433672,
+          433676,
+          433680,
+          433684,
+          433688
+        ],
+        "boundary": {
+          "address": 1028444,
+          "identity": "Core::Portable::Control::~Control()",
+          "arguments": [
+            16777216,
+            2107752,
+            0,
+            8
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777220,
+            "size": 4,
+            "value": 2107724
+          },
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 2107608
+          },
+          {
+            "address": 16777284,
+            "size": 4,
+            "value": 2107752
+          },
+          {
+            "address": 16781364,
+            "size": 4,
+            "value": 8
+          },
+          {
+            "address": 16777304,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "object_hex": "d82820004c292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a568292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 8
+      },
+      {
+        "task_id": "rank20c01_w02_09",
+        "mangled": "_ZN8Presonus17FocusHelperButtonD1Ev",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 400816,
+        "size": 120,
+        "range_sha256": "5af64b6a9b0b70c1e651f35a45a103dfc0ae90504d053fb3fc024eeb1acd1ebe",
+        "variant": 2,
+        "executed_addresses": [
+          433584,
+          433588,
+          433592,
+          433596,
+          433600,
+          433604,
+          433608,
+          433612,
+          433616,
+          433620,
+          433624,
+          433628,
+          433632,
+          433636,
+          433640,
+          433644,
+          433648,
+          433652,
+          433656,
+          433660,
+          433664,
+          433668,
+          433672,
+          433676,
+          433680,
+          433684,
+          433688
+        ],
+        "boundary": {
+          "address": 1028444,
+          "identity": "Core::Portable::Control::~Control()",
+          "arguments": [
+            16777216,
+            2107752,
+            0,
+            8
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777220,
+            "size": 4,
+            "value": 2107724
+          },
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 2107608
+          },
+          {
+            "address": 16777284,
+            "size": 4,
+            "value": 2107752
+          },
+          {
+            "address": 16781364,
+            "size": 4,
+            "value": 8
+          },
+          {
+            "address": 16777308,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "object_hex": "d82820004c292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a568292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 8
+      },
+      {
+        "task_id": "rank20c01_w02_09",
+        "mangled": "_ZN8Presonus17FocusHelperButtonD1Ev",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 400816,
+        "size": 120,
+        "range_sha256": "5af64b6a9b0b70c1e651f35a45a103dfc0ae90504d053fb3fc024eeb1acd1ebe",
+        "variant": 3,
+        "executed_addresses": [
+          433584,
+          433588,
+          433592,
+          433596,
+          433600,
+          433604,
+          433608,
+          433612,
+          433616,
+          433620,
+          433624,
+          433628,
+          433632,
+          433636,
+          433640,
+          433644,
+          433648,
+          433652,
+          433656,
+          433660,
+          433664,
+          433668,
+          433672,
+          433676,
+          433680,
+          433684,
+          433688
+        ],
+        "boundary": {
+          "address": 1028444,
+          "identity": "Core::Portable::Control::~Control()",
+          "arguments": [
+            16777216,
+            2107752,
+            0,
+            7
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777220,
+            "size": 4,
+            "value": 2107724
+          },
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 2107608
+          },
+          {
+            "address": 16777284,
+            "size": 4,
+            "value": 2107752
+          },
+          {
+            "address": 16781364,
+            "size": 4,
+            "value": 8
+          },
+          {
+            "address": 16777308,
+            "size": 4,
+            "value": 0
+          },
+          {
+            "address": 16781364,
+            "size": 4,
+            "value": 7
+          },
+          {
+            "address": 16777304,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "object_hex": "d82820004c292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a568292000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 7
+      },
+      {
+        "task_id": "rank20c01_w02_10",
+        "mangled": "_ZN8Presonus17MackieControlUnitD1Ev",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 751508,
+        "size": 76,
+        "range_sha256": "dcfe5d17631b4090956bcb64761f52feeabae7e25538667a6ac6f6f57b61faad",
+        "variant": 0,
+        "executed_addresses": [
+          784276,
+          784280,
+          784284,
+          784288,
+          784292,
+          784296,
+          784300,
+          784304,
+          784308,
+          784312,
+          784316,
+          784320,
+          784324,
+          784328
+        ],
+        "boundary": {
+          "address": 1160672,
+          "identity": "Core::Portable::Component::~Component()",
+          "arguments": [
+            16777216,
+            2009240,
+            2009296,
+            2009464
+          ]
+        },
+        "writes": [
+          {
+            "address": 16777352,
+            "size": 4,
+            "value": 2009128
+          },
+          {
+            "address": 16777220,
+            "size": 4,
+            "value": 2009296
+          },
+          {
+            "address": 16777348,
+            "size": 4,
+            "value": 2009464
+          },
+          {
+            "address": 16777216,
+            "size": 4,
+            "value": 2009240
+          }
+        ],
+        "object_hex": "98a81e00d0a81e00a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a578a91e0028a81e00a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_11",
+        "mangled": "_ZNK8Presonus12MeterControl12isHorizontalEv",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 380688,
+        "size": 28,
+        "range_sha256": "9ed2dc43405cd0496a49afff6e1db15fd28f2e1794b1e771ec6d9c42c832eb6b",
+        "variant": 0,
+        "executed_addresses": [
+          413456,
+          413460,
+          413464,
+          413468
+        ],
+        "boundary": {
+          "address": 413400,
+          "identity": "Presonus::MeterControl::isVertical() const",
+          "arguments": [
+            16777216,
+            305419896,
+            2271560481,
+            0
+          ]
+        },
+        "writes": [],
+        "object_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      },
+      {
+        "task_id": "rank20c01_w02_12",
+        "mangled": "_ZN8Presonus15SpectrumPainter21calculateNextDrawRectERKN4Core5TRectIiEE",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": ".text",
+        "file_offset": 406596,
+        "size": 124,
+        "range_sha256": "c2f11b8426cf4d8612c05d27e8af495a9683f98eda843286b3f0d1f37af63e45",
+        "variant": 0,
+        "executed_addresses": [
+          439364,
+          439368,
+          439372,
+          439376,
+          439380,
+          439384,
+          439388,
+          439392,
+          439396,
+          439400
+        ],
+        "boundary": {
+          "address": 438892,
+          "identity": "Presonus::SpectrumPainter::calculateBars(Core::TRect<int> const&)",
+          "arguments": [
+            17887176,
+            305419896,
+            2271560481,
+            0
+          ]
+        },
+        "writes": [],
+        "object_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+        "referenced_counter": 9
+      }
+    ]
+  },
+  "meter": {
+    "expansion_path": "temp/recovery-work/ranked20-cycle01/expansions/w02_11_0/expansion.json",
+    "expansion_sha256": "28aefa6ccfe45ac6e9ee93fb53c88205dd5ce3d733f63a170c842a046c81cc60",
+    "isVertical_range": {
+      "address": 413400,
+      "size": 56,
+      "section": ".text",
+      "file_offset": 380632,
+      "bytes_sha256": "5bf61afda6c43f4cd21b3dd494d116a27183fbaa8e974e206fc2289d5ae4b329"
+    },
+    "domain": "136 rectangles; zero/square/tall/wide/negative origins/inverted extents plus seeded rectangles; differences within int32; getSize boundary supplies immutable four-int rect.",
+    "cases": [
+      {
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          0,
+          0,
+          10,
+          10
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          0,
+          0,
+          10,
+          11
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          0,
+          0,
+          11,
+          10
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -50,
+          -40,
+          -20,
+          -10
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          8,
+          9,
+          -12,
+          -11
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          0,
+          0,
+          -10,
+          10
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          0,
+          0,
+          10,
+          -10
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -76554,
+          -62359,
+          -57500,
+          -57255
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -49100,
+          62472,
+          61323,
+          -64979
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -85665,
+          38612,
+          -33436,
+          38859
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          93901,
+          78485,
+          84256,
+          33252
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -70001,
+          -53256,
+          18697,
+          99318
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -50382,
+          -14814,
+          68732,
+          31351
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -53028,
+          -18066,
+          -15885,
+          19242
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          94433,
+          -10914,
+          18881,
+          -46249
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -36382,
+          38498,
+          -69236,
+          -92204
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -80625,
+          -18339,
+          -42871,
+          37041
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          26531,
+          -40566,
+          -70296,
+          4385
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -4426,
+          -89450,
+          -77716,
+          27135
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -66091,
+          -48685,
+          54096,
+          -25729
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -31225,
+          -87844,
+          51349,
+          -71502
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -11093,
+          -44826,
+          14056,
+          98152
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -39438,
+          97011,
+          25460,
+          -95395
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          69882,
+          55303,
+          29590,
+          -56496
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          92068,
+          -89603,
+          -64781,
+          32383
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -71718,
+          84606,
+          5998,
+          -71406
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          80686,
+          37469,
+          -72759,
+          58365
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -8207,
+          69690,
+          -67086,
+          -53693
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          71328,
+          -13527,
+          -84900,
+          -85086
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -43451,
+          -53675,
+          34468,
+          11821
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -86200,
+          -6879,
+          -34404,
+          54775
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -41209,
+          65515,
+          85478,
+          92747
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -15526,
+          48498,
+          17188,
+          87140
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          29551,
+          51868,
+          -7702,
+          8739
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -35596,
+          25620,
+          -81618,
+          76436
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          70067,
+          40697,
+          -75037,
+          -68029
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          95527,
+          89796,
+          40434,
+          55461
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -21178,
+          2941,
+          79476,
+          -84794
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -15409,
+          -4951,
+          -3675,
+          41303
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          49219,
+          -26083,
+          62986,
+          45446
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          97187,
+          -12959,
+          29480,
+          -68782
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -27895,
+          36688,
+          -27921,
+          -64826
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -99995,
+          -8357,
+          80801,
+          96918
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -7901,
+          39466,
+          -9258,
+          -37047
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -55093,
+          -28152,
+          76145,
+          -54724
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          66397,
+          -10937,
+          6827,
+          17810
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -91204,
+          78264,
+          -49724,
+          -99489
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          7089,
+          -48611,
+          31419,
+          16087
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -54007,
+          98866,
+          -4820,
+          61098
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -87958,
+          27807,
+          -40041,
+          12684
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -79840,
+          79078,
+          48717,
+          6049
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -48588,
+          2199,
+          632,
+          60456
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -75427,
+          56083,
+          86273,
+          43281
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          646,
+          70788,
+          14379,
+          -56577
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -70698,
+          46544,
+          -82881,
+          35105
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          87730,
+          91738,
+          30543,
+          -68372
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -23247,
+          37338,
+          -58678,
+          6006
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          27556,
+          25780,
+          33651,
+          -84047
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -23104,
+          65547,
+          98690,
+          31347
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          51314,
+          47408,
+          -82094,
+          -34492
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          15973,
+          -25576,
+          -21923,
+          11380
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          41524,
+          -84586,
+          92151,
+          -68464
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -95591,
+          95312,
+          -84136,
+          40077
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          21111,
+          47685,
+          -52777,
+          74967
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -69662,
+          58496,
+          -19226,
+          -62396
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -6209,
+          -8522,
+          47704,
+          -12498
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -80819,
+          -76616,
+          -77656,
+          -36932
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          14670,
+          16419,
+          -71385,
+          36160
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          64535,
+          -95218,
+          16945,
+          -8638
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          63805,
+          49554,
+          -16660,
+          83329
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          90198,
+          13802,
+          -52044,
+          -2478
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          97254,
+          96596,
+          70746,
+          -41498
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          27683,
+          54630,
+          -7801,
+          34666
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          95046,
+          -78154,
+          29950,
+          -14382
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -57330,
+          -31854,
+          87199,
+          14868
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          27822,
+          47757,
+          -42208,
+          12214
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          12346,
+          55183,
+          89923,
+          78144
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          40856,
+          -96585,
+          43221,
+          -6261
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -30118,
+          21436,
+          -49366,
+          82067
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          89078,
+          80867,
+          -55113,
+          48256
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          35716,
+          -79179,
+          66817,
+          47438
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          86975,
+          80769,
+          37376,
+          -80586
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -13483,
+          -99856,
+          80805,
+          -93578
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          7250,
+          46148,
+          95304,
+          49947
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          50339,
+          -33386,
+          -21504,
+          40012
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          47111,
+          -72700,
+          -4350,
+          13604
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -86942,
+          64117,
+          52579,
+          36292
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          65289,
+          88718,
+          -61697,
+          2501
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -42625,
+          584,
+          18545,
+          86980
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          39246,
+          82385,
+          16275,
+          86755
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -13824,
+          85794,
+          -53776,
+          -34633
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          86408,
+          20547,
+          76670,
+          2129
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          77752,
+          68622,
+          -56133,
+          -25197
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          56574,
+          -120,
+          -88162,
+          28312
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          73297,
+          -96607,
+          -99728,
+          1733
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -15636,
+          -63593,
+          26550,
+          57412
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -99203,
+          -80892,
+          86607,
+          -93795
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -3183,
+          93312,
+          55826,
+          36623
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          37014,
+          -31446,
+          52690,
+          8324
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -78703,
+          80745,
+          -55799,
+          22799
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          19980,
+          -50260,
+          69263,
+          33637
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          65757,
+          -63548,
+          43444,
+          8363
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          10240,
+          -80912,
+          60545,
+          42352
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -15736,
+          33983,
+          86835,
+          78443
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          24416,
+          -87983,
+          -15026,
+          80541
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -22794,
+          50142,
+          79776,
+          65889
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -83932,
+          -81308,
+          64777,
+          -94249
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          83186,
+          25479,
+          48121,
+          -24644
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          34347,
+          -16293,
+          68551,
+          -67842
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -15215,
+          -52282,
+          -67910,
+          -36047
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -1867,
+          40279,
+          -8022,
+          22836
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          52623,
+          40753,
+          97146,
+          68776
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          98858,
+          93857,
+          93104,
+          89989
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          95361,
+          -89455,
+          63343,
+          -50393
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -65511,
+          90914,
+          71451,
+          67386
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          22460,
+          89968,
+          42745,
+          45399
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -40975,
+          84924,
+          78392,
+          31542
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -10155,
+          63893,
+          -85782,
+          65086
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -91978,
+          31532,
+          46277,
+          -57272
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          98473,
+          -36181,
+          64484,
+          90189
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          19992,
+          84935,
+          -5873,
+          -94131
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          50666,
+          60760,
+          -9554,
+          -19008
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          99807,
+          -10775,
+          -92014,
+          37319
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          16753,
+          -5264,
+          92393,
+          79165
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          87909,
+          -55226,
+          76297,
+          -41011
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -54133,
+          94150,
+          5533,
+          -34719
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -2078,
+          17991,
+          -33132,
+          85887
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          76253,
+          -10408,
+          20051,
+          -73337
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          32300,
+          24019,
+          -64422,
+          -7569
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          99902,
+          -38218,
+          -6990,
+          -42843
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -76139,
+          10556,
+          49391,
+          34343
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          37062,
+          75452,
+          -64756,
+          1699
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          29010,
+          -74186,
+          -78095,
+          94142
+        ],
+        "return_word": 0,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -57492,
+          22575,
+          95176,
+          -37109
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      },
+      {
+        "rect": [
+          -73399,
+          75767,
+          -46547,
+          -64531
+        ],
+        "return_word": 1,
+        "provider_calls": [
+          {
+            "address": 1108392,
+            "this": 16777216
+          }
+        ],
+        "object_and_rectangle_unchanged": true
+      }
+    ]
+  }
+}

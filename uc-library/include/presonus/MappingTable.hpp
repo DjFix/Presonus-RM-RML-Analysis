@@ -24,6 +24,7 @@ public:
   MappingTable(const presonus::mapping::Entry *sortedEntries, int count,
                presonus::mapping::ItemOperations &operations);
   Item *findItem(const char *name) const;
+  Core::Portable::Parameter *getHardwareParameter(const char *name) const;
   void setControlFullOff(const char *name);
   void setControlInverseMode(const char *name, bool state);
   void setControlEnabled(const char *name, bool state);

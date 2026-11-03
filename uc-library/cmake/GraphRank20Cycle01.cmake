@@ -1,0 +1,12 @@
+# Original role ownership and exact common/CS18/RM partition recorded by Root.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/rank20cycle01/rank20c01_w02.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+if(BUILD_TESTING)
+  add_subdirectory(tests/recovery/rank20cycle01/rank20c01_w01)
+  add_subdirectory(tests/recovery/rank20cycle01/rank20c01_w02)
+  add_subdirectory(tests/recovery/rank20cycle01/rank20c01_w04)
+  add_subdirectory(tests/recovery/rank20cycle01/rank20c01_w05)
+  add_subdirectory(tests/recovery/rank20cycle01/rank20c01_w06)
+  foreach(target rank20c01_w01_replay_driver rank20c01_w02_replay rank20c01_w04_driver rank20c01_w05_replay rank20cycle01_w06_tests)
+    target_compile_options(${target} PRIVATE -UNDEBUG -fno-lto -Ulinux)
+  endforeach()
+endif()

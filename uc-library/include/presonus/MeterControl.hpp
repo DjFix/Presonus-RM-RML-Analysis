@@ -10,6 +10,8 @@ namespace Presonus {
 class MeterControl : public Core::Portable::Control {
 public:
   using Control::Control;
+  // Portable bool contract; original unencoded return declaration unresolved.
+  bool isHorizontal() const;
   Core::Rect getLitRect(float value) const;
   Core::Rect getPeakRect(float value) const;
   Core::Rect subtractRect(const Core::Rect &a, const Core::Rect &b) const;

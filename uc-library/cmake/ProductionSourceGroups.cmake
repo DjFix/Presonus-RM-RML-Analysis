@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/rank20cycle01/rank20c01_w06.cpp
   src/Presonus/Panel/Book.cpp
   src/Presonus/Panel/ControlRegistrarAccess.cpp
   src/Presonus/UARTPowerGainSender.cpp
@@ -156,6 +157,8 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/rank20cycle01/rank20c01_w04.cpp
+  src/Presonus/rank20cycle01/rank20c01_w02.cpp
   src/Presonus/Surface/PageObservers.cpp
   src/Presonus/Surface/NetworkListSelection.cpp
   src/Presonus/MainLCDPageStack.cpp
@@ -248,6 +251,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/rank20cycle01/rank20c01_w05.cpp
+  src/Presonus/rank20cycle01/rank20c01_w01.cpp
   src/Presonus/Panel/SPIControlGroup.cpp
   src/Presonus/Panel/PresetNameManager.cpp
   src/Presonus/Panel/GeqAssignedChannel.cpp
@@ -352,6 +357,10 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/rank20cycle01/rank20c01_w02.hpp
+  presonus/rank20cycle01/rank20c01_w04.hpp
+  presonus/rank20cycle01/rank20c01_w05.hpp
+  presonus/rank20cycle01/rank20c01_w06.hpp
   presonus/surface/sl_mixer_encoder.hpp
   presonus/surface/IDisplayPort.hpp
   presonus/surface/DisplayManager.hpp
