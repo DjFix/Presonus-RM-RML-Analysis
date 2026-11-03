@@ -216,11 +216,17 @@ class Environment:
     def command(self, argv, tag):
         started = time.perf_counter()
         logfile = self.output / (tag + '.log')
+        command_file = self.output / (tag + '.command.sh')
+        with command_file.open('x') as script:
+            script.write('exec ' + shlex.join(argv) + '\n')
+        # Keep sg's single -c argument below Linux MAX_ARG_STRLEN even when
+        # immutable per-file mounts make the complete Docker argv much larger.
+        launcher = shlex.join(['/bin/sh', str(command_file)])
         with logfile.open('x') as log:
-            result = subprocess.run(['sg', 'docker', '-c', shlex.join(argv)], cwd=self.root,
+            result = subprocess.run(['sg', 'docker', '-c', launcher], cwd=self.root,
                                     stdout=log, stderr=subprocess.STDOUT)
         write_new(self.output / (tag + '.json'), {'argv': argv, 'seconds': time.perf_counter() - started,
-                                                'returncode': result.returncode})
+                                                'returncode': result.returncode, 'command_file_sha256': sha(command_file)})
         if result.returncode:
             raise ContextError('Batch environment command failed: ' + str(logfile))
 
