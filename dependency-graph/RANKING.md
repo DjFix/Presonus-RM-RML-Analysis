@@ -148,3 +148,22 @@ or converts context availability into behavioral readiness. If the pool is
 insufficient, stop before expensive refresh/prepare and report the deficit;
 rank thresholds, unknowns, claims and dependency requirements stay unchanged.
 A stale code-context guard remains an independent dispatch blocker.
+
+## Recovery frontier before complexity
+
+`recovery_frontier.py --db DATABASE --out OUTPUT` restores the recovery-progress
+selection order: fewer unique unreconstructed required inputs first, then more
+already recovered inputs, then source-provided inputs. Existing uncertainty and
+complexity bins remain tie breakers; no thresholds are changed or fitted to a
+quota. Recovered inputs require exact canonical identities with current proof,
+source and repository bindings. Existing compiled variants route to review and
+reuse, not repeated firmware implementation. Source-provided input counts require
+hash-checked real definition extents, not merely declarations.
+
+These are cost/planning facts, not automatic caller-scope satisfaction. The
+export retains zero-recovered-input work, new classes, constructors/destructors
+and research-required work. Research/context gates remain visible, and claims
+retain their owners. Group cost counts shared prerequisite closure once, including
+cycles; unknown external/provider inputs require explicit work. Choose connected
+scopes near completed work while retaining starting points for untouched regions.
+There is no existing-C++-header eligibility filter and no fixed batch quota.

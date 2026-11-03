@@ -58,3 +58,17 @@ Do not fill a fixed quota with unreviewed work. Classify unreviewed candidates,
 review connected scopes, and select only tasks that pass this stage. The current
 legacy ranking queue name `reconstruction_eligible` denotes native-context
 eligibility; it does not bypass this additional source-port planning gate.
+
+## No pre-existing-declaration prerequisite
+
+Missing declarations are normally reconstruction outputs. A native-only scoped
+plan can pass with declarations/state/lifecycle/providers assigned bounded work;
+the owned C++ files need not exist yet. Do not interpret earlier worker prose
+saying “no declaration” as a proven impossibility. A real outside dependency or
+insufficient evidence must be identified separately. Original full layout/ABI
+proof is not a prerequisite for an explicitly bounded portable source port.
+
+Recovery order is based on already recovered required inputs, not on whether a
+C++ header happens to exist. See `recovery_frontier.py` and RANKING.md. Zero-input
+and zero-recovery regions remain eligible for scoped planning. A review document
+is an assignment of work and evidence, not a demand for prewritten declarations.

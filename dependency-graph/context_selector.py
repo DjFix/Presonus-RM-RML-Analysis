@@ -31,7 +31,7 @@ def tools():
            'dependency-graph/context_publication.py','dependency-graph/context_batch.py',
            'dependency-graph/context_resources.py','dependency-graph/context_work_batch.py',
            'dependency-graph/context_writer_lock.py','dependency-graph/native_publish.py',
-           'dependency-graph/reconstruction_contract.py')
+           'dependency-graph/reconstruction_contract.py','dependency-graph/recovery_frontier.py')
     return {p:sha(ROOT/p) for p in paths}
 
 
@@ -278,6 +278,9 @@ def prepare(session,out,active):
               'Your assigned namespace is '+task['namespace']+'. Read TASK.md, ELF_CONTEXT.md, SOURCE_SLICES.md and CONTEXT.md in '+
               '/home/rs/projects/opencs/ai-line-analysis/'+str(out.relative_to(ROOT))+'. '
               'Respect exact original identities, assigned file ownership and all validation gates. '
+              'Missing declarations and source-port state are reconstruction outputs, not a reason to stop by themselves. Recover them from bound instructions, call sites and independent observations inside owned scope. '
+              'Do not infer original fields, inheritance or return declarations from mangled names alone, or claim original layout/ARM ABI from a portable source model. '
+              'Read the Root reconstruction_contract plan in request.json when present; bounded unknowns are assigned work. Request missing evidence or an explicit scope change for a real outside dependency, not a prewritten header for work you already own. '
               'For reconstruction deliver C++, native/provider fixtures, executable replay and local proof as HANDOFF.json according to docs/worker-handoff.md; read that contract before starting. '
               'Do not expand whole proof bundles by default. If context is missing, request Root to run select_context.py expand with query, seed and reason. '
               'For an in-flight task use --baseline to query the dispatched source generation; use bound source snapshots if workspace files have changed. '

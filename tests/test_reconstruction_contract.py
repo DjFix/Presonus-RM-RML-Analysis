@@ -23,6 +23,13 @@ class ContractTests(unittest.TestCase):
         self.review={'version':1,'reviewer':'Root','targets':copy.deepcopy(self.task['targets']),'owned_files':self.task['owned_files'][:],'domain':'bounded source port; no original declaration/ABI claim','requirements':{name:{'status':'established','reason':'Reviewed specific source-port contract','evidence':[self.cppref if name in ('declarations','state') else self.implref]} for name in gate.SCOPES},'dependencies':[]}
     def test_native_body_alone_cannot_dispatch(self):
         with self.assertRaisesRegex(ValueError,'reviewed'):gate.validate_request(self.root,self.task)
+    def test_native_only_plan_can_recover_all_missing_cpp_inside_scope(self):
+        self.task['owned_files']=['uc-library/src/NewClass.cpp','uc-library/include/NewClass.hpp']
+        self.review['owned_files']=self.task['owned_files'][:]
+        for name in gate.SCOPES:
+            self.review['requirements'][name].update(status='bounded_work',evidence=[self.ref],work={'objective':'Recover required interface/state or app helper from original instructions, not from names alone','oracle_plan':'Independent native execution and actual source-port/provider replay; unresolved ABI excluded','owned_files':self.task['owned_files'][:]})
+        self.assertTrue(gate.evaluate(self.root,self.task,self.review)['dispatch_reconstruction'])
+
     def test_missing_base_routes_to_prerequisite(self):
         self.review['requirements']['lifecycle']['status']='missing'
         self.assertEqual(gate.evaluate(self.root,self.task,self.review)['disposition'],'prepare_dependencies_first')
