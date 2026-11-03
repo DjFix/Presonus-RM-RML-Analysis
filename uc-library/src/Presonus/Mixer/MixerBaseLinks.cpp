@@ -9,6 +9,8 @@ void MixerComponentBase::removeDelegate(Delegate &delegate) {
 }
 ChannelComponent *
 MixerComponentBase::getLinkableChannelPair(ChannelComponent *channel) const {
+  if (inputChannelNamingBound)
+    validateInputChannelBinding();
   if (!channelIdentity)
     throw std::logic_error("channel identity query binding required");
   const auto identity = channelIdentity(channel);

@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "method": 9,
+      "filename": "result.channel",
+      "name": "Display",
+      "count": 3,
+      "trace": [
+        [
+          "presetSaved",
+          "result.channel",
+          "Display",
+          "channel",
+          3
+        ]
+      ],
+      "domain": "initialized cascade singleton; app notification calls captured, their internal app side effects excluded"
+    },
+    {
+      "method": 10,
+      "filename": "result.scene",
+      "name": "cache",
+      "count": 3,
+      "trace": [
+        [
+          "presetSaved",
+          "result.scene",
+          "cache",
+          "scene",
+          3
+        ],
+        [
+          "cascadePresetStored",
+          "scene",
+          3
+        ]
+      ],
+      "domain": "initialized cascade singleton; app notification calls captured, their internal app side effects excluded"
+    }
+  ]
+}

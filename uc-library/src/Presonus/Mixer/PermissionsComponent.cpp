@@ -1,4 +1,7 @@
 #include "presonus/mixer/PermissionsComponent.hpp"
+#include "core/portable/corefile.h"
+#include "core/portable/corepersistence.h"
+#include "presonus/trial08/MixerComponentBase.hpp"
 
 namespace Presonus::Mixer {
 void PermissionsComponent::getSelectedFileName(
@@ -27,5 +30,27 @@ void PermissionsComponent::auxLinkingChanged() {
 void PermissionsComponent::setFullPermissions(bool enabled) {
   if (enabled && bindings_.restricted == 0)
     bindings_.mix->fromString("FOH", false);
+}
+void PermissionsComponent::resetPermissionsPW() {
+  bindings_.accessCodeParameters->getParameterByTag(4)->resetValue(false);
+  saveAccessCode();
+}
+void PermissionsComponent::getAccessCodeFileName(
+    Core::Portable::FileName &filename) const {
+  filename = bindings_.mixer->getDataDir("permissions");
+  filename.descend("access");
+  filename.append(".code");
+}
+void PermissionsComponent::saveAccessCode() const {
+  auto *parameter = bindings_.accessCodeParameters->getParameterByTag(4);
+  if (!parameter)
+    return;
+  auto *code = Core::Portable::StringParam::cast(parameter);
+  Core::Portable::Attributes attributes(
+      Core::Portable::AttributeAllocator::getDefault());
+  attributes.set(parameter->getName(), code->getText().str());
+  Core::Portable::FileName filename;
+  getAccessCodeFileName(filename);
+  Core::Portable::ArchiveUtils::saveInBackground(filename.str(), attributes);
 }
 } // namespace Presonus::Mixer

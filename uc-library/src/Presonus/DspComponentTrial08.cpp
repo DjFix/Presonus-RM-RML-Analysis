@@ -3,7 +3,9 @@
 #include <stdexcept>
 namespace Presonus {
 DspComponent::DspComponent(const char *name, Dsp::IController *controller)
-    : name_(name), controller_(controller) {}
+    : coreComponent_(name),
+      linkAttributes_(Core::Portable::AttributeAllocator::getDefault()),
+      name_(name), controller_(controller) {}
 dspcomponent_port::Boundary &DspComponent::boundary() const {
   if (!boundary_)
     throw std::logic_error("DspComponent requires an application boundary");

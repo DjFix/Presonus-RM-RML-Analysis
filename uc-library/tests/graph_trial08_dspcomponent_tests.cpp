@@ -40,6 +40,54 @@ int main(int argc, char **argv) {
   if (argc != 3)
     return 2;
   std::string method = argv[1];
+  if (method == "c1") {
+    std::string input = argv[2];
+    auto colon = input.find(':');
+    bool present = input.substr(0, colon) == "1";
+    std::string name = input.substr(colon + 1);
+    Presonus::Dsp::IController live;
+    int cleaned = 0;
+    struct Child : Core::Portable::Component {
+      int &cleaned;
+      explicit Child(int &c) : Component("child"), cleaned(c) {}
+      ~Child() { ++cleaned; }
+    };
+    {
+      Presonus::DspComponent constructed(name.c_str(),
+                                         present ? &live : nullptr);
+      auto &core = constructed.coreComponent();
+      auto &attrs = constructed.linkAttributes();
+      auto &state = constructed.lifecycleState();
+      if (std::string(core.getName()) != name.substr(0, 31) ||
+          core.getParent() != nullptr || core.countChildren() != 0 ||
+          core.countParameters() != 0 || core.getStorageTag() != 0 ||
+          attrs.countAttributes() != 0)
+        return 8;
+      std::cout << "{\"serverFlag\":" << state.serverFlag
+                << ",\"baseFlag\":" << state.baseFlag
+                << ",\"targetedFlag\":" << state.targetedFlag
+                << ",\"slave\":" << state.slave
+                << ",\"enabled\":" << state.enabled
+                << ",\"partner\":" << (state.partner ? 1 : 0)
+                << ",\"controller\":"
+                << (constructed.getController() == (present ? &live : nullptr)
+                        ? (present ? 0x1001000 : 0)
+                        : -1)
+                << ",\"readoutCount\":" << constructed.readoutCount() << "}";
+      const std::string copiedName(core.getName());
+      if (!name.empty())
+        name[0] = 'Q';
+      if (std::string(core.getName()) != copiedName)
+        return 11;
+      attrs.set("lifecycle-test", 42);
+      if (attrs.countAttributes() != 1)
+        return 9;
+      core.addChild(new Child(cleaned));
+    }
+    if (cleaned != 1)
+      return 10;
+    return 0;
+  }
   long long value = std::stoll(argv[2]);
   Presonus::DspComponent c("fixture", nullptr);
   if (method == "castTo") {
@@ -77,7 +125,8 @@ int main(int argc, char **argv) {
   else if (method == "paramChanged")
     control.paramChanged(nullptr, 0x1001000);
   else if (method == "load") {
-    Core::Portable::DefaultAllocatedAttributes attributes;
+    Core::Portable::Attributes attributes(
+        Core::Portable::AttributeAllocator::getDefault());
     Core::Portable::InputStorage storage(attributes);
     result = control.load(storage);
   } else

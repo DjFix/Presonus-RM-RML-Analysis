@@ -1,10 +1,14 @@
 #pragma once
+#include "core/portable/corecomponent.h"
+#include "core/portable/corefilename.h"
+#include "core/portable/corestorage.h"
 #include "core/public/corevector.h"
 #include <cstdint>
 #include <functional>
 #include <utility>
 namespace Presonus::Mixer {
 class ChannelComponent;
+class PermissionsComponent;
 // Portable state model. Fields and return declarations are source-port choices,
 // not recovered ARM layout or independently established original declarations.
 class MixerComponentBase {
@@ -33,5 +37,48 @@ public:
   const char *getCompanyName() const;
   std::uint32_t getSpectrumSendSlot() const;
   void setTryingToQuit();
+  // Independent source-port bindings, not original object fields/layout.
+  // Bound naming reuses inputChannels; no independent mirror vector.
+  std::function<Core::Portable::Component *(ChannelComponent *)>
+      channelParameters;
+  bool inputChannelNamingBound = false;
+  void bindInputChannelNaming(
+      std::function<Core::Portable::Component *(ChannelComponent *)> resolver);
+  void validateInputChannelBinding() const;
+  Core::Portable::Component *cascadeParameters = nullptr;
+  PermissionsComponent *permissions = nullptr;
+  bool cascadeStatePending = false;
+  Core::Portable::FileName applicationDataRoot;
+  Core::CString256 deviceDataFolder;
+  Core::Portable::FileName getDataDir(const char *subdir) const;
+  bool isSlave();
+  void validateChannelNaming();
+  void resetPermissionsPW();
+  void onCascadeStateChange();
+  // Application-specific cache/path/filter/notification policies remain
+  // mandatory source-port contracts. Actual storage and tasks come from CCL.
+  struct CacheInfo {
+    bool found = false;
+    Core::Portable::FileName directory;
+    Core::Portable::FileName obsoleteFile;
+    int itemCount = 0;
+  };
+  struct SaveServices {
+    Core::Portable::Component *parameters = nullptr;
+    std::function<CacheInfo(const Core::Portable::FileName &)> inspectCache;
+    std::function<void(const CacheInfo &)> refreshCache;
+    std::function<Core::Portable::FileName(Core::ConstString)> localFile;
+    std::function<int(int, Core::Portable::Component *)> saveFlags;
+    std::function<void(Core::Portable::OutputStorage &, int)> configureStorage;
+    std::function<void(Core::Portable::FileName, const char *, const char *,
+                       int)>
+        completed;
+    std::function<void(const char *, int)> cascadePresetStored;
+  } saveServices;
+  Core::Portable::FileName findLocalFile(Core::ConstString name) const;
+  void presetSaved(Core::Portable::FileName, const char *, const char *, int);
+  bool savePreset(const Core::Portable::FileName &, const char *,
+                  Core::ConstString);
+  bool saveScene(const Core::Portable::FileName &, const char *, bool);
 };
 } // namespace Presonus::Mixer

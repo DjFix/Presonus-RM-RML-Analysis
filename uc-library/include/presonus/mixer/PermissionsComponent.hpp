@@ -4,10 +4,12 @@
 
 namespace Core::Portable {
 class FileName;
-}
+class Component;
+} // namespace Core::Portable
 
 namespace Presonus::Mixer {
 class PermissionsComponent;
+class MixerComponentBase;
 
 // Independent source-port boundary. These fields are not a recovered ARM
 // layout. App-specific delegates must be supplied by the embedding application;
@@ -16,6 +18,8 @@ struct PermissionsBindings {
   Core::Portable::Parameter *mix = nullptr;
   Core::Portable::Parameter *other = nullptr;
   const Core::CStringBuffer<64> *selectedName = nullptr;
+  Core::Portable::Component *accessCodeParameters = nullptr;
+  MixerComponentBase *mixer = nullptr;
   unsigned char restricted = 0;
   unsigned char dirty = 0;
   void *context = nullptr;
@@ -39,6 +43,9 @@ public:
   void getOtherString(Core::CStringBuffer<128> &string) const;
   void auxLinkingChanged();
   void setFullPermissions(bool enabled);
+  void resetPermissionsPW();
+  void saveAccessCode() const;
+  void getAccessCodeFileName(Core::Portable::FileName &) const;
 
 private:
   PermissionsBindings &bindings_;

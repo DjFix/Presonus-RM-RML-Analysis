@@ -4,8 +4,8 @@ os.chdir(root)
 out=pathlib.Path('temp/recovery-work/graph-live-trial-08/dspcomponent-worker');out.mkdir(exist_ok=True,parents=True);os.environ['TMPDIR']=str(out.resolve())
 source='uc-library/src/Presonus/DspComponentTrial08.cpp';test='uc-library/tests/graph_trial08_dspcomponent_tests.cpp';exe=str(out/'replay')
 if sys.argv[1]=='compile':
- subprocess.run(['c++','-std=c++17','-fno-rtti','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework',source,test,'temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a','-ldl','-lpthread','-o',exe],check=True)
- subprocess.run(['c++','-std=c++17','-fno-rtti','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework','-c',source,'-o',str(out/'source.o')],check=True)
+ subprocess.run(['c++','-std=c++17','-O3','-DNDEBUG','-frtti','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework',source,test,'temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a','-ldl','-lpthread','-o',exe],check=True)
+ subprocess.run(['c++','-std=c++17','-O3','-DNDEBUG','-frtti','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework','-c',source,'-o',str(out/'source.o')],check=True)
 elif sys.argv[1]=='symbols':
  text=subprocess.check_output(['nm','--defined-only',str(out/'source.o')],text=True);rows=json.loads((out/'ranges.json').read_text())
  for row in rows:assert row['mangled'] in text,row
