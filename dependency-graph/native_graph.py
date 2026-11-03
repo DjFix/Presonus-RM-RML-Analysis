@@ -25,6 +25,15 @@ def byte_address(address, kind):
     return address & ~1 if kind=='STT_FUNC' else address
 
 
+def execution_targets(address, by_address, function_set):
+    """Only STT_FUNC identities can be named direct execution endpoints.
+
+    Mapping symbols and co-located data remain address observations. Unknown
+    destinations are handled by an explicit NativeAddress node by the caller.
+    """
+    return [k for k in by_address.get(address & ~1, ()) if k in function_set]
+
+
 def build(out, manifests=None):
     from capstone import Cs, CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_THUMB, CS_MODE_LITTLE_ENDIAN, CS_GRP_CALL, CS_GRP_JUMP
     from capstone.arm import ARM_OP_IMM, ARM_OP_REG, ARM_OP_MEM, ARM_REG_PC, ARM_REG_LR
@@ -138,9 +147,12 @@ def build(out, manifests=None):
                     if sec['sh_type']=='SHT_NOBITS': return None,sec,None
                     offset=sec['sh_offset']+address-sec['sh_addr'];return raw[offset:offset+size],sec,offset
             return None,None,None
-        def address_node(address):
-            if address in by_address:return by_address[address]
-            if address&1 and function_addresses.get(address & ~1):return function_addresses[address & ~1]
+        def address_node(address, execution=False):
+            if execution:
+                targets=execution_targets(address, by_address, function_set)
+                if targets:return targets
+            elif address in by_address:return by_address[address]
+            if not execution and address&1 and function_addresses.get(address & ~1):return function_addresses[address & ~1]
             data,sec,offset=read(address,1)
             k=f'native-address:{elfsha}:{address:x}'
             node(k,'NativeAddress',hex(address),elfsha,{'elf_sha256':elfsha,'firmware':firmware,
@@ -175,13 +187,13 @@ def build(out, manifests=None):
                     is_call=ins.group(CS_GRP_CALL)
                     if is_call and ops and ops[0].type==ARM_OP_IMM:
                         target=ops[0].imm & ~1
-                        for dest in address_node(target):edge(k,dest,'ELF_CALLS',ins.address,{'instruction':mnemonic,'target_address':target})
+                        for dest in address_node(target, execution=True):edge(k,dest,'ELF_CALLS',ins.address,{'instruction':mnemonic,'target_address':target})
                     elif is_call or (mnemonic.startswith('bx') and ops and ops[0].type==ARM_OP_REG and ops[0].reg!=ARM_REG_LR):
                         edge(k,k,'ELF_UNRESOLVED',ins.address,{'reason':'indirect dispatch','instruction':mnemonic,'operands':ins.op_str})
                     elif ins.group(CS_GRP_JUMP) and ops and ops[0].type==ARM_OP_IMM:
                         target=ops[0].imm & ~1
                         if not address<=target<address+size:
-                            for dest in address_node(target):edge(k,dest,'ELF_TAIL_BRANCH',ins.address,{'instruction':mnemonic,'target_address':target,'classification':'external branch candidate'})
+                            for dest in address_node(target, execution=True):edge(k,dest,'ELF_TAIL_BRANCH',ins.address,{'instruction':mnemonic,'target_address':target,'classification':'external branch candidate'})
                     # PC-relative literal loads: preserve literal cell and its value separately.
                     for operand in ops:
                         if operand.type==ARM_OP_MEM and operand.mem.base!=ARM_REG_PC:
