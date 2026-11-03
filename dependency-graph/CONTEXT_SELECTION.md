@@ -179,3 +179,9 @@ no per-packet `DISPATCH.json` is written for a batch. One HANDOFF v1 per
 packet binds final shared-file hashes after all owned methods are complete.
 Failure retains logs and claims; a partial dispatch is never spawn permission.
 This operator changes no readiness schema or reconstruction acceptance gates.
+
+New `mode: reconstruct` preparation also requires a hash-bound Root-reviewed
+source-port plan; see [RECONSTRUCTION_CONTRACT.md](RECONSTRUCTION_CONTRACT.md).
+Single and grouped preparation reject missing plans before new claims/refresh.
+Exact compiled names route to existing-result audit. Native context remains
+necessary; it does not establish source-port state/lifecycle/provider closure.

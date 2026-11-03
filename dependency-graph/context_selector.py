@@ -30,7 +30,8 @@ def tools():
            'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py',
            'dependency-graph/context_publication.py','dependency-graph/context_batch.py',
            'dependency-graph/context_resources.py','dependency-graph/context_work_batch.py',
-           'dependency-graph/context_writer_lock.py','dependency-graph/native_publish.py')
+           'dependency-graph/context_writer_lock.py','dependency-graph/native_publish.py',
+           'dependency-graph/reconstruction_contract.py')
     return {p:sha(ROOT/p) for p in paths}
 
 

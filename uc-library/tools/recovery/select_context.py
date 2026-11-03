@@ -19,8 +19,25 @@ from memgraph_endpoint import memgraph_uri
 import adapter
 
 
+def validate_reconstruction_plan(task):
+    from reconstruction_contract import validate_request
+    try:
+        return validate_request(ROOT, task)
+    except (ValueError, KeyError, TypeError) as error:
+        raise ContextError("Source-port planning gate: " + str(error)) from error
+
+
+def prepare_task(task):
+    validate_reconstruction_plan(task)
+    if task.get("included_dependency_work"):
+        raise ContextError("Included dependency work requires a grouped batch manifest")
+    return enrich(task)
+
+
 def enrich(task):
     validate_task(task)
+    if task.get("reconstruction_contract"):
+        validate_reconstruction_plan(task)
     enriched = dict(task)
     identities = []
     with adapter.snapshot(ROOT / 'uc-library') as snapshot:
@@ -117,7 +134,7 @@ def main():
     if a.action == 'prepare':
         from dedup_work import claim_task
         claim_started = time.perf_counter()
-        prepared_task = claim_task(ROOT, enrich(json.loads(inside(ROOT,a.task).read_text())), a.out)
+        prepared_task = claim_task(ROOT, prepare_task(json.loads(inside(ROOT,a.task).read_text())), a.out)
         # All covered originals become actual packet targets; each needs a body.
         prepared_task = enrich(prepared_task)
         phase_timings.append({'phase': 'claim/enrich', 'seconds': time.perf_counter()-claim_started})

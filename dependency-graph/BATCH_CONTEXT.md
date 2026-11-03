@@ -171,3 +171,14 @@ separate from `--allow-smaller`; they cannot be combined. Group sizes may differ
 All original generation, identity, original range, ownership, dependency,
 publication and per-packet validation gates still apply. This does not authorize
 selecting research-required work or bypassing a candidate deficit.
+
+## Source-port planning before native-context preparation
+
+New reconstruction requests must pass the reviewed
+[reconstruction contract](RECONSTRUCTION_CONTRACT.md). This is a separate stage
+from complexity ranking and native-body availability. Missing app bases are
+included as actual same-worker work or prepared first; unknown details can be
+assigned bounded owned work. An unreviewed context candidate is not permission
+to reconstruct. Reviews and evidence are frozen with the batch inputs, and the
+contract producer is included in tool hashes. No validation/readiness gate is
+removed, and historical packets/proofs are not rewritten.

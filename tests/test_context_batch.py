@@ -321,6 +321,14 @@ class BatchOrchestrationTests(unittest.TestCase):
             with self.assertRaises(ContextError):
                 publication.authorization(self.root, packet)
 
+    def test_planning_failure_precedes_claims_and_output(self):
+        def reject(task):
+            raise ContextError('Missing lifecycle source-port contract')
+        self.operator.validate_reconstruction_plan = reject
+        with self.assertRaisesRegex(ContextError, 'lifecycle'):
+            self.run_batch()
+        self.assertFalse((self.root / 'temp/recovery-work/batch/FROZEN.json').exists())
+
     def grouped_batch(self, count, worker_count=10, flexible=False):
         tasks = [self.task(i) for i in range(worker_count * count)]
         groups = []

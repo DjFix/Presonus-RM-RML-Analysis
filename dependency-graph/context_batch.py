@@ -55,6 +55,19 @@ def validate_tasks(tasks, groups=None):
         raise ContextError('Empty batch')
 
 
+def check_dependency_inclusion(tasks, work, groups):
+    scope_by_task = {pathlib.PurePosixPath(p).name: g['task_name']
+                     for g in groups or [] for p in g['packets']}
+    scope_work = {}
+    for task, ident in zip(tasks, work):
+        owner = scope_by_task.get(task['task_id'], task['task_id'])
+        scope_work.setdefault(owner, set()).add(ident)
+    for task in tasks:
+        owner = scope_by_task.get(task['task_id'], task['task_id'])
+        if not set(task.get('included_dependency_work', [])) <= scope_work[owner]:
+            raise ContextError('Included dependency is outside actual grouped unique work')
+
+
 def check_conflicts(entries, requests):
     if len({e['task_id'] for e in entries}) != len(entries):
         raise ContextError('Duplicate task identity')
@@ -86,6 +99,10 @@ def capture_inputs(root, operator, task_paths):
     if endpoint.exists():
         paths.append(endpoint)
     paths += [inside(root, p) for p in task_paths]
+    from reconstruction_contract import bound_files
+    for path in task_paths:
+        task = json.loads(inside(root, path).read_text())
+        paths += [inside(root, p) for p in bound_files(root, task)]
     return {'active': active, 'registry_tool_inventory': sorted(str(p.relative_to(root)) for p in registry_tools), 'memgraph_uri': memgraph_uri(root), 'endpoint_present': endpoint.exists(), 'instruction_inventory': sorted(str(p.relative_to(root)) for p in (root / 'uc-library').rglob('AGENTS.md')), 'tool_inventory': sorted(str(p.relative_to(root)) for p in (root / 'dependency-graph').glob('*.py')), 'files': {str(p.relative_to(root)): sha(p) for p in paths}}
 
 
@@ -385,6 +402,11 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
     items = manifest['tasks']
     task_paths = [x if isinstance(x, str) else x['task'] for x in items]
     tasks = [json.loads(inside(root, p).read_text()) for p in task_paths]
+    # Reject source-port planning failures before claims, refresh or containers.
+    review_gate = getattr(operator, 'validate_reconstruction_plan', None)
+    if review_gate:
+        for task in tasks:
+            review_gate(task)
     groups = manifest.get('groups')
     allow_smaller = manifest.get('allow_smaller') is True
     flexible_total = manifest.get('flexible_total')
@@ -433,6 +455,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                     c.close()
                 if len(set(work)) != len(work):
                     raise ContextError('Duplicate unique work before claiming')
+                check_dependency_inclusion(tasks, work, groups)
                 before = time.perf_counter()
                 operator.ensure_fresh()
                 timings.append({'phase': 'refresh', 'seconds': time.perf_counter() - before})
@@ -464,6 +487,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                     write_new(member, {'version': 1, 'manifest': str((output / 'BATCH_DISPATCH.json').relative_to(root)), 'state': 'pending'})
                 requests.append(request)
                 timings.append({'phase': 'claim/enrich', 'packet': packet, 'seconds': time.perf_counter() - before})
+            check_dependency_inclusion(tasks, [q['work_binding']['work_item_id'] for q in requests], groups)
             from context_work_batch import BatchWorkValidator
             setup_validator = BatchWorkValidator(root)
             try:
