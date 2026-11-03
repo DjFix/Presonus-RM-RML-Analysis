@@ -128,7 +128,7 @@ class GroupDispatchTests(unittest.TestCase):
         with self.assertRaises(ContextError):check_groups(g,e,r,flexible_total=200)
 
     def test_flexible_retains_negative_gates(self):
-        for mutation in ('generation','empty','work','overlap','identity','order','oversize','small'):
+        for mutation in ('generation','empty','work','overlap','identity','order','oversize','small','duplicate'):
             with self.subTest(mutation=mutation):
                 g,e,r=self.fixture(20)
                 if mutation=='generation':e['p1_0']['generation_sha256']='other'
@@ -139,6 +139,7 @@ class GroupDispatchTests(unittest.TestCase):
                 if mutation=='order':g[0]['execution_order']=[]
                 if mutation=='oversize':g[0]['packets']+=['extra']*6
                 if mutation=='small':g.pop()
+                if mutation=='duplicate':g[0]['packets'].append(g[0]['packets'][0]);g[0]['execution_order']=g[0]['packets'][:]
                 with self.assertRaises(ContextError):check_groups(g,e,r,flexible_total=200)
 
 

@@ -33,7 +33,7 @@ def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=
         raise ContextError('Unique valid worker names required')
     paths = [p for g in groups for p in g['packets']]
     expected = flexible_total if flexible else len(paths) if allow_smaller else 10 * packets_per_worker
-    if (not flexible and not allow_smaller and any(len(g['packets']) != packets_per_worker for g in groups)) or len(set(paths)) != expected:
+    if (not flexible and not allow_smaller and any(len(g['packets']) != packets_per_worker for g in groups)) or len(paths) != expected or len(set(paths)) != expected:
         raise ContextError('Exactly the configured distinct work packets per worker required')
     if set(paths) != set(entries) or set(paths) != set(requests):
         raise ContextError('Exact group/entry/request coverage required')
