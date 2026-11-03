@@ -4,10 +4,18 @@
 #include <functional>
 #include <string>
 #include <vector>
+namespace Presonus {
+class MappingTable;
+}
 namespace presonus::surface::midi_port {
 // Independent source-port state; no original layout or ownership claim.
 struct State {
   bool enabled{};
+  // Borrowed terminated 44-byte descriptions. Only byte 0 (name) and byte
+  // 37 (eligibility) are interpreted; this is an independent portable record.
+  // The caller supplies a readable terminator and valid terminated names.
+  const std::array<unsigned char, 44> *controlDescriptions{};
+  Presonus::MappingTable *mappingTable{};
   std::array<std::uint32_t, 17> accumulation{};
   std::vector<std::string> colorControls;
 };
@@ -30,6 +38,7 @@ public:
   MidiMixerHandler(presonus::surface::midi_port::State &state,
                    presonus::surface::midi_port::Services &services)
       : state_(state), services_(services) {}
+  void setControlsEnabled(bool);
   void resetColors();
   const char *getMappingName(int);
   void resetAccumulation();

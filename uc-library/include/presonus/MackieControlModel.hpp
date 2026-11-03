@@ -37,6 +37,9 @@ public:
   std::array<char, 3> assignmentData{};
   std::array<char, 11> timecodeData{};
   void addMapping(int, int);
+  // Independent source-port bytes corresponding to observed native reads.
+  std::array<unsigned char, 8> hostConnectionIdentity{};
+  void sendHostConnectionConfirmation(bool);
   void initConnection();
   void updateAssignmentData();
   void updateTimecodeData();

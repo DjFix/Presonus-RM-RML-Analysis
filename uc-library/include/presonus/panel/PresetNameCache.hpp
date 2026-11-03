@@ -37,6 +37,7 @@ public:
   Core::Portable::FileName getFileNameForSlot(unsigned, bool);
 
 private:
+  friend class PresetNameManager;
   friend struct presonus::panel::PresetCacheAccess;
   struct Entry {
     Core::CString64 name;

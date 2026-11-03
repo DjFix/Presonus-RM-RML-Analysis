@@ -2,6 +2,7 @@
 
 #include "core/portable/coreattributes.h"
 #include "core/portable/corecomponent.h"
+#include "core/portable/corefilename.h"
 #include "core/public/corestringbuffer.h"
 #include "core/public/corevector.h"
 
@@ -26,6 +27,8 @@ public:
   void updatePresetName() const;
   void presetStored() const;
   PresetNameCache *getCache() const;
+  // Aggregate return is a portable declaration; original spelling unresolved.
+  Core::Portable::FileName getFileNameForSlot(unsigned int) const;
   void updateEditName() const;
   bool getCurrentPresetName(Core::CStringBuffer<128> &name) const;
   int recall();

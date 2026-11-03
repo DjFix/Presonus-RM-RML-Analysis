@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/frontier01/frontier01_w03.cpp
   src/Presonus/rank20cycle01/rank20c01_w06.cpp
   src/Presonus/Panel/Book.cpp
   src/Presonus/Panel/ControlRegistrarAccess.cpp
@@ -157,6 +158,7 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/frontier01/frontier01_w04.cpp
   src/Presonus/rank20cycle01/rank20c01_w04.cpp
   src/Presonus/rank20cycle01/rank20c01_w02.cpp
   src/Presonus/Surface/PageObservers.cpp
@@ -251,6 +253,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/frontier01/frontier01_w02.cpp
+  src/Presonus/frontier01/frontier01_w01.cpp
   src/Presonus/rank20cycle01/rank20c01_w05.cpp
   src/Presonus/rank20cycle01/rank20c01_w01.cpp
   src/Presonus/Panel/SPIControlGroup.cpp
@@ -357,6 +361,10 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/frontier01/frontier01_w01.hpp
+  presonus/frontier01/frontier01_w02.hpp
+  presonus/frontier01/frontier01_w03.hpp
+  presonus/frontier01/frontier01_w04.hpp
   presonus/rank20cycle01/rank20c01_w02.hpp
   presonus/rank20cycle01/rank20c01_w04.hpp
   presonus/rank20cycle01/rank20c01_w05.hpp

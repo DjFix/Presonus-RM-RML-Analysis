@@ -9,6 +9,7 @@ public:
   PresetNameManager(PresetNameCache *const *items, int count)
       : caches(items, count) {}
   PresetNameCache *getCache(int index) const;
+  void rebuildAllCaches() const;
 
 private:
   Core::ConstVector<PresetNameCache *> caches;

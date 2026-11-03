@@ -1,0 +1,693 @@
+{
+  "version": 1,
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "unicorn_version": "2.1.4",
+  "ranges": [
+    {
+      "packet": 1,
+      "address": 540128,
+      "size": 56,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 507360,
+      "bytes_sha256": "6918ab8bc76f3e1232d8a9667eddede0a3a833838b0912a795d34ab2cc054436"
+    },
+    {
+      "packet": 2,
+      "address": 364612,
+      "size": 44,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 331844,
+      "bytes_sha256": "07ea20454ec8356b45caa384a55136963a4f1a3cd562a80199c02c0b3f0af994"
+    },
+    {
+      "packet": 3,
+      "address": 709692,
+      "size": 44,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 676924,
+      "bytes_sha256": "2dec5a2cfde98b860bbd4291d6a629e7cd1e4eb3f7784b99ae61ded3915cb8d6"
+    },
+    {
+      "packet": 4,
+      "address": 547924,
+      "size": 64,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 515156,
+      "bytes_sha256": "be3168cbd737417e81974e3692fbc9fdeaeb5254b4550031c6126e3bde7c4285"
+    },
+    {
+      "packet": 5,
+      "address": 353620,
+      "size": 60,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 320852,
+      "bytes_sha256": "309924acff3da30890cf8fb9bee2ea44669b326638096a58fc8ccd11aba77d8f"
+    }
+  ],
+  "cases": [
+    {
+      "packet": 1,
+      "argument": 0,
+      "calls": [
+        {
+          "target": 539820,
+          "args": [
+            4194304,
+            4194304,
+            0,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 547552,
+          "args": [
+            4390912,
+            4325376,
+            0,
+            1
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4390912,
+      "normalized": [
+        "lookup",
+        "file:0:1"
+      ]
+    },
+    {
+      "packet": 1,
+      "argument": 1,
+      "calls": [
+        {
+          "target": 539820,
+          "args": [
+            4194304,
+            4194304,
+            1,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 547552,
+          "args": [
+            4390912,
+            4325376,
+            1,
+            1
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4390912,
+      "normalized": [
+        "lookup",
+        "file:1:1"
+      ]
+    },
+    {
+      "packet": 1,
+      "argument": 2,
+      "calls": [
+        {
+          "target": 539820,
+          "args": [
+            4194304,
+            4194304,
+            2,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 547552,
+          "args": [
+            4390912,
+            4325376,
+            2,
+            1
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4390912,
+      "normalized": [
+        "lookup",
+        "file:2:1"
+      ]
+    },
+    {
+      "packet": 1,
+      "argument": 15,
+      "calls": [
+        {
+          "target": 539820,
+          "args": [
+            4194304,
+            4194304,
+            15,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 547552,
+          "args": [
+            4390912,
+            4325376,
+            15,
+            1
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4390912,
+      "normalized": [
+        "lookup",
+        "file:15:1"
+      ]
+    },
+    {
+      "packet": 1,
+      "argument": 4294967295,
+      "calls": [
+        {
+          "target": 539820,
+          "args": [
+            4194304,
+            4194304,
+            4294967295,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 547552,
+          "args": [
+            4390912,
+            4325376,
+            4294967295,
+            1
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4390912,
+      "normalized": [
+        "lookup",
+        "file:4294967295:1"
+      ]
+    },
+    {
+      "packet": 2,
+      "argument": 0,
+      "calls": [
+        {
+          "target": 1043452,
+          "args": [
+            4194304,
+            4391168,
+            0,
+            3571504
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [
+        [
+          4194304,
+          4,
+          3571504
+        ]
+      ],
+      "r0_observation": 4194304,
+      "normalized": [
+        "base"
+      ]
+    },
+    {
+      "packet": 2,
+      "argument": 1,
+      "calls": [
+        {
+          "target": 1043452,
+          "args": [
+            4194304,
+            4391168,
+            1,
+            3571504
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [
+        [
+          4194304,
+          4,
+          3571504
+        ]
+      ],
+      "r0_observation": 4194304,
+      "normalized": [
+        "base"
+      ]
+    },
+    {
+      "packet": 3,
+      "argument": 0,
+      "calls": [
+        {
+          "target": 599824,
+          "args": [
+            4194304,
+            4391168,
+            0,
+            3507736
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [
+        [
+          4194304,
+          4,
+          3507736
+        ]
+      ],
+      "r0_observation": 4194304,
+      "normalized": [
+        "base"
+      ]
+    },
+    {
+      "packet": 3,
+      "argument": 1,
+      "calls": [
+        {
+          "target": 599824,
+          "args": [
+            4194304,
+            4391168,
+            1,
+            3507736
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [
+        [
+          4194304,
+          4,
+          3507736
+        ]
+      ],
+      "r0_observation": 4194304,
+      "normalized": [
+        "base"
+      ]
+    },
+    {
+      "packet": 4,
+      "argument": 0,
+      "calls": [],
+      "writes": [],
+      "r0_observation": 4194304,
+      "normalized": []
+    },
+    {
+      "packet": 4,
+      "argument": 1,
+      "calls": [
+        {
+          "target": 547256,
+          "args": [
+            4325376,
+            4391168,
+            1,
+            39030
+          ],
+          "dirty": 1
+        }
+      ],
+      "writes": [
+        [
+          4325701,
+          1,
+          1
+        ]
+      ],
+      "r0_observation": 4325376,
+      "normalized": [
+        "rebuild:0:1"
+      ]
+    },
+    {
+      "packet": 4,
+      "argument": 2,
+      "calls": [
+        {
+          "target": 547256,
+          "args": [
+            4325376,
+            4391168,
+            2,
+            39030
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        }
+      ],
+      "writes": [
+        [
+          4325701,
+          1,
+          1
+        ],
+        [
+          4329797,
+          1,
+          1
+        ]
+      ],
+      "r0_observation": 4329472,
+      "normalized": [
+        "rebuild:0:1",
+        "rebuild:1:1"
+      ]
+    },
+    {
+      "packet": 4,
+      "argument": 3,
+      "calls": [
+        {
+          "target": 547256,
+          "args": [
+            4325376,
+            4391168,
+            3,
+            39030
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4333568,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        }
+      ],
+      "writes": [
+        [
+          4325701,
+          1,
+          1
+        ],
+        [
+          4329797,
+          1,
+          1
+        ],
+        [
+          4333893,
+          1,
+          1
+        ]
+      ],
+      "r0_observation": 4333568,
+      "normalized": [
+        "rebuild:0:1",
+        "rebuild:1:1",
+        "rebuild:2:1"
+      ]
+    },
+    {
+      "packet": 4,
+      "argument": 4,
+      "calls": [
+        {
+          "target": 547256,
+          "args": [
+            4325376,
+            4391168,
+            4,
+            39030
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4333568,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        },
+        {
+          "target": 547256,
+          "args": [
+            4325376,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": 1
+        }
+      ],
+      "writes": [
+        [
+          4325701,
+          1,
+          1
+        ],
+        [
+          4329797,
+          1,
+          1
+        ],
+        [
+          4333893,
+          1,
+          1
+        ],
+        [
+          4325701,
+          1,
+          1
+        ]
+      ],
+      "r0_observation": 4325376,
+      "normalized": [
+        "rebuild:0:1",
+        "rebuild:1:1",
+        "rebuild:2:1",
+        "rebuild:0:1"
+      ]
+    },
+    {
+      "packet": 5,
+      "argument": 0,
+      "calls": [],
+      "writes": [],
+      "r0_observation": 4194304,
+      "normalized": []
+    },
+    {
+      "packet": 5,
+      "argument": 1,
+      "calls": [
+        {
+          "target": 352584,
+          "args": [
+            4325376,
+            4391168,
+            1,
+            39030
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4325376,
+      "normalized": [
+        "fx:0"
+      ]
+    },
+    {
+      "packet": 5,
+      "argument": 2,
+      "calls": [
+        {
+          "target": 352584,
+          "args": [
+            4325376,
+            4391168,
+            2,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4329472,
+      "normalized": [
+        "fx:0",
+        "fx:1"
+      ]
+    },
+    {
+      "packet": 5,
+      "argument": 3,
+      "calls": [
+        {
+          "target": 352584,
+          "args": [
+            4325376,
+            4391168,
+            3,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4333568,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4333568,
+      "normalized": [
+        "fx:0",
+        "fx:1",
+        "fx:2"
+      ]
+    },
+    {
+      "packet": 5,
+      "argument": 4,
+      "calls": [
+        {
+          "target": 352584,
+          "args": [
+            4325376,
+            4391168,
+            4,
+            39030
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4329472,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4333568,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        },
+        {
+          "target": 352584,
+          "args": [
+            4325376,
+            3422552131,
+            3422552132,
+            3422552133
+          ],
+          "dirty": null
+        }
+      ],
+      "writes": [],
+      "r0_observation": 4325376,
+      "normalized": [
+        "fx:0",
+        "fx:1",
+        "fx:2",
+        "fx:0"
+      ]
+    }
+  ],
+  "domain": "Five full target ranges; caller-saved clobbers; sret sentinel app boundary; borrowed arrays length 0..4 with repeats; dirty byte observed at rebuild entry and reset by modeled callee. D1 base calls intercepted; vptr writes recorded; no callee native execution, no D0 claim, no Core decompilation."
+}
