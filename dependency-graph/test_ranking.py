@@ -119,6 +119,26 @@ class RankingTests(unittest.TestCase):
         self.assertEqual(result['symbol_deficit'], 98)
         self.assertTrue(any('leaves excluded' in x['reason'] for x in result['skipped']))
 
+    def test_global_helpers_are_not_reported_as_a_class_group(self):
+        c=database()
+        for i in range(10):
+            name='global'+str(i)
+            c.execute("INSERT INTO items SELECT ?,kind,original_kind,'',identities,features,feature_hash FROM items WHERE id='a'",(name,))
+            c.execute('INSERT INTO states VALUES(?,?,?,?)',(name,'remaining',0,'baseline'))
+            c.execute('INSERT INTO requirements VALUES(?,?,?,?,?,?)',(name+'call',name,'b','callable_behavior','{}',0))
+        r.reevaluate(c)
+        self.assertEqual(r.plan(c)['namespace_groups_with_ten'],0)
+        self.assertEqual(r.plan(c,20)['namespace_groups_with_required_count'],0)
+
+    def test_twenty_plan_deficit_is200_and_never_fills_with_leaves(self):
+        c=database();result=r.plan(c,20)
+        self.assertEqual(result['required_symbols'],200)
+        self.assertEqual(result['packets_per_worker'],20)
+        self.assertEqual(result['symbol_deficit'],198)
+        self.assertEqual(result['status'],'blocked')
+        self.assertFalse(result['spawn_authorized'])
+        with self.assertRaises(ValueError):r.plan(c,19)
+
     def test_atomic_event_rollback(self):
         c = database(); before = rows(c)
         with self.assertRaises(ValueError):

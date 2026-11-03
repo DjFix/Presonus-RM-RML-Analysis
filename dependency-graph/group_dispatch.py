@@ -17,8 +17,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False):
-    if not allow_smaller and packets_per_worker not in (5, 10):
-        raise ContextError("Supported packet counts per worker: five or ten")
+    if not allow_smaller and packets_per_worker not in (5, 10, 20):
+        raise ContextError("Supported packet counts per worker: five, ten or twenty")
     if allow_smaller and (not 1 <= len(groups) <= 10 or any(not 1 <= len(g['packets']) <= 10 for g in groups)):
         raise ContextError('Explicit smaller batch requires one to ten nonempty groups, at most ten packets each')
     if not allow_smaller and len(groups) != 10:
@@ -67,7 +67,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--groups', required=True)
     parser.add_argument('--out', required=True)
-    parser.add_argument('--packets-per-worker', type=int, choices=(5, 10), default=5)
+    parser.add_argument('--packets-per-worker', type=int, choices=(5, 10, 20), default=5)
     parser.add_argument('--allow-smaller', action='store_true')
     a = parser.parse_args()
     groups_path = inside(ROOT, a.groups)

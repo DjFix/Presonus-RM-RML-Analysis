@@ -12,6 +12,7 @@ import time
 
 from context_runtime import ContextError, guard, inventory, sha
 from code_identity import VERSION, owner_id
+from context_resources import choose_compiler_limits, MIB
 from refresh_facts import connect, facts, replace, requires_reconfigure, stale_units
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -20,7 +21,7 @@ BUILD = ROOT / 'temp/core-upstream/root-integration-01'
 GROUPS = [('app', BUILD), ('core', BUILD / 'upstream-core/build')]
 PRODUCERS = ('refresh_graph.py', 'refresh_facts.py', 'refresh_extract.py',
              'refresh_publish.py', 'full_source_graph.py', 'gcc_source_graph.py',
-             'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py')
+             'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py', 'context_resources.py')
 
 
 def run(argv, out, label):
@@ -34,9 +35,23 @@ def run(argv, out, label):
 
 
 def docker(script, out, label, analysis=False):
+    memory, cpus = '4g', 2
+    if analysis:
+        count = len(json.loads((out / 'units.json').read_text()))
+        profile = choose_compiler_limits(max(1, count))
+        cpus = profile['builder_jobs']
+        available = profile['resources'].get('available_memory_bytes')
+        budget = (cpus * 1536 + 3072) * MIB
+        if available is not None:
+            budget = min(budget, max(512 * MIB, available - 2048 * MIB))
+        else:
+            budget = 4 * 1024 * MIB
+        memory = str(max(512, budget // MIB)) + 'm'
+        profile.update(docker_memory=memory, docker_cpus=cpus, task_count=count)
+        (out / 'compiler-host-resources.json').write_text(json.dumps(profile, indent=2) + '\n')
     argv = ['docker', 'run', '--name', 'graph-' + label + '-' + str(time.time_ns()),
             '--network=' + ('none' if analysis else 'dependency-graph-experiment'),
-            '--memory=4g', '--cpus=2', '--user', '1000:1000',
+            '--memory=' + memory, '--cpus=' + str(cpus), '--user', '1000:1000',
             '-v', str(ROOT) + ':' + str(ROOT) + ':ro',
             '-v', str(out) + ':' + str(out) + ':rw',
             '-v', str(BASE / 'state') + ':' + str(BASE / 'state') + ':rw',

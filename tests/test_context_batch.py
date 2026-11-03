@@ -351,6 +351,9 @@ class BatchOrchestrationTests(unittest.TestCase):
     def test_ten_by_ten_shares_ownership_only_within_group(self):
         self.grouped_batch(10)
 
+    def test_ten_by_twenty_preserves_atomic200_publication(self):
+        self.grouped_batch(20)
+
     def test_explicit_smaller_unequal_groups_publish_same_barrier(self):
         groups=[]
         for i in range(4):

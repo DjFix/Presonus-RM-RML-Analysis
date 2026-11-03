@@ -684,12 +684,14 @@ def reconcile(c):
     return event(c, payload)
 
 
-def plan(c):
-    """Read-only conservative exact10x10 proposal; no claims or packet dispatch.
+def plan(c, packets_per_worker=10):
+    """Read-only conservative exact ten-worker proposal; no claims or packet dispatch.
 
     Missing callable requirements are blockers, not permission to create stubs.
     The ordinary batch context gate is still required for any complete proposal.
     """
+    if packets_per_worker not in (5, 10, 20):
+        raise ValueError('Supported group sizes: five, ten or twenty')
     candidates, skipped = [], []
     for item in c.execute('SELECT i.*,e.queue,e.rank FROM items i JOIN evaluations e USING(id)'):
         r = dict(item); r['rank'] = json.loads(r['rank'])
@@ -706,16 +708,16 @@ def plan(c):
     groups = collections.defaultdict(list)
     for r in candidates:
         groups[r['namespace']].append(r)
-    adequate = {name: values for name, values in groups.items() if name and len(values) >= 10}
+    adequate = {name: values for name, values in groups.items() if name and len(values) >= packets_per_worker}
     # No claimed independence until exact source read/write sets are sealed.
     observation = hashlib.sha256(packed([tuple(x) for x in c.execute('SELECT * FROM evaluations ORDER BY id')]).encode()).hexdigest()
     return {'status': 'blocked' if len(adequate) < 10 else 'context_validation_required',
             'evaluation_digest': observation,
             'provenance': json.loads(c.execute("SELECT value FROM meta WHERE key='provenance'").fetchone()[0]),
-            'eligible_with_proven_dependencies': len(candidates), 'namespace_groups_with_ten': len(adequate),
-            'symbol_deficit': max(0, 100-len(candidates)), 'group_deficit': max(0, 10-len(adequate)),
+            'eligible_with_proven_dependencies': len(candidates), 'namespace_groups_with_ten': sum(bool(n) and len(v)>=10 for n,v in groups.items()), 'namespace_groups_with_required_count': len(adequate), 'packets_per_worker': packets_per_worker, 'required_symbols': 10*packets_per_worker,
+            'symbol_deficit': max(0, 10*packets_per_worker-len(candidates)), 'group_deficit': max(0, 10-len(adequate)),
             'policy': json.loads(c.execute("SELECT value FROM meta WHERE key='policy'").fetchone()[0]),
-            'groups': {name: [r['id'] for r in values[:10]] for name, values in sorted(adequate.items())},
+            'groups': {name: [r['id'] for r in values[:packets_per_worker]] for name, values in sorted(adequate.items())},
             'skipped': skipped,
             'limitations': ['Deficit is under this evidence-conservative policy, not a proof no future scoped research can unlock work.',
                             'Native index has no proven typed data reader/writer edges; address candidates not upgraded.',
@@ -731,7 +733,9 @@ def main():
         s = sub.add_parser(name); s.add_argument('--db', required=True)
         if name == 'explain': s.add_argument('--item', required=True)
         if name == 'update': s.add_argument('--event', required=True)
-        if name in ('plan', 'validate-plan'): s.add_argument('--out', type=pathlib.Path, required=True)
+        if name in ('plan', 'validate-plan'):
+            s.add_argument('--out', type=pathlib.Path, required=True)
+            s.add_argument('--packets-per-worker', type=int, choices=(5, 10, 20), default=10)
         if name == 'validate-plan': s.add_argument('--plan', type=pathlib.Path, required=True)
     a = p.parse_args()
     if a.command == 'build':
@@ -749,10 +753,10 @@ def main():
         c = sqlite3.connect(a.db); c.row_factory = sqlite3.Row
         check_inputs(c)
         reconcile(c)
-        result = plan(c)
+        result = plan(c, a.packets_per_worker)
         if a.command == 'validate-plan':
             prior = json.loads(a.plan.read_text())
-            for key in ('evaluation_digest', 'provenance', 'groups', 'policy'):
+            for key in ('evaluation_digest', 'provenance', 'groups', 'policy', 'packets_per_worker', 'required_symbols'):
                 if prior.get(key) != result[key]:
                     raise ValueError('stale or changed plan: ' + key)
         try:
@@ -763,7 +767,7 @@ def main():
             result['source_blocker'] = str(error)
         a.out.mkdir(parents=True, exist_ok=False)
         (a.out / 'PLAN.json').write_text(json.dumps(result, indent=2) + '\n')
-        (a.out / 'PLAN.md').write_text('# Exact 10×10 planning gate\n\n' + packed({k: v for k, v in result.items() if k not in ('skipped', 'policy')}) + '\n')
+        (a.out / 'PLAN.md').write_text(f'# Exact 10×{a.packets_per_worker} planning gate\n\n' + packed({k: v for k, v in result.items() if k not in ('skipped', 'policy')}) + '\n')
         result = {k: v for k, v in result.items() if k not in ('skipped', 'policy')}
     else:
         c = sqlite3.connect(a.db); c.row_factory = sqlite3.Row

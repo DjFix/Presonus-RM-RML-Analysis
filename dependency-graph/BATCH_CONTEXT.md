@@ -12,7 +12,7 @@ uc-library/.venv/bin/python uc-library/tools/recovery/select_context.py batch-pr
 An explicitly authorized smaller trial can set `"allow_smaller": true` and a
 nonempty `"smaller_batch_authorization"` in this manifest. Grouped trials then
 allow one to ten groups, each with one to ten packets, including unequal sizes.
-Without that explicit flag the original exact ten groups of five or ten rule
+Without that explicit flag the original exact ten groups of five, ten or twenty rule
 remains. Identity, coverage, ownership, claim, source freshness, nonempty packet,
 full validation and the complete atomic publication barrier are unchanged.
 The standalone group publisher additionally requires `--allow-smaller`.
@@ -21,7 +21,7 @@ ownership contract. Each packet is in `NEW_BATCH/packets/TASK_ID`, with its own
 claim, enriched request, manifest, native context, slices and evidence. Use
 `--selection-jobs N` and `--slicing-jobs N` to impose separate stage ceilings.
 Numeric `--jobs N` is an upper bound subject to resource safety ceilings.
-For grouped preparation add the existing `groups` array (ten groups, five or ten
+For grouped preparation add the existing `groups` array (ten groups, five, ten or twenty
 `packets` each, `task_name`, `scope_reason`, exact `execution_order`) beside
 `tasks`; packet paths must be `NEW_BATCH/packets/TASK_ID`. One worker owns
 each group, allowing shared files only within that group.
@@ -144,3 +144,21 @@ Pipeline wall time includes the new path's immutable snapshot, image pinning and
 environment startup. Kernel wall time excludes snapshot preparation separately.
 The old path is a container per stage; the new path uses the actual batch
 environment and the same selection/slicing/finalization schedule.
+
+## Twenty-target groups and compilation resources
+
+Exact10×20 uses200 distinct one-original work packets. Every existing identity,
+unique-work, nonempty, conflict, freshness and atomic publication gate is the
+same. `group_dispatch.py --packets-per-worker 20` is supported. The explicit
+smaller-batch exception retains its previous maximum10 packets per group; it
+is not a way to launch a partial200 trial. Unit/atomic fixture coverage does
+not assert that a real200-target reconstruction has run.
+
+Source refresh compiler/AST concurrency now observes affinity, all cgroup CPU
+and memory ancestors and current available memory. It leaves one CPU on small
+hosts, two on hosts with at least8 CPUs, budgets1.5GiB per job and reserves2GiB.
+Docker receives a corresponding bounded CPU/memory budget; the extractor
+rechecks actual container constraints before choosing its pool. Unknown limits
+force one job. Host/container resource receipts are retained in each refresh.
+These estimates do not guarantee peak memory. Publication parameters, source
+hashes, actual GCC/Clang replay and all validation gates are unchanged.

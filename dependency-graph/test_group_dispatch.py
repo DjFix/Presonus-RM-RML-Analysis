@@ -96,4 +96,28 @@ class GroupDispatchTests(unittest.TestCase):
                 with self.assertRaises(ContextError):check_groups(g,e,r,10)
 
 
+    def test_twenty_packets_exact200(self):
+        g,e,r=self.fixture(20);self.assertEqual(len(check_groups(g,e,r,20)),200)
+
+    def test_twenty_retains_negative_gates(self):
+        for mutation in ('generation','empty','work','overlap','original','identity','order','coverage','waves'):
+            with self.subTest(mutation=mutation):
+                g,e,r=self.fixture(20)
+                if mutation=='generation':e['p1_0']['generation_sha256']='other'
+                if mutation=='empty':e['p1_0']['state']='selected'
+                if mutation=='work':e['p1_0']['work_binding']['work_item_id']='p0_0'
+                if mutation=='overlap':e['p1_0']['selected_file_sha256']['uc-library/src/0.cpp']='hash'
+                if mutation=='original':e['p1_0']['work_binding']['covered_occurrences']*=2
+                if mutation=='identity':e['p1_0']['work_binding']['covered_occurrences']=e['p0_0']['work_binding']['covered_occurrences']
+                if mutation=='order':g[0]['execution_order']=g[0]['execution_order'][:-1]
+                if mutation=='coverage':g[0]['packets']=g[0]['packets'][:-1]
+                if mutation=='waves':g=g[:5]
+                with self.assertRaises(ContextError):check_groups(g,e,r,20)
+
+    def test_group_sizes_do_not_silently_mix(self):
+        for expected,actual in ((20,10),(10,20),(5,20),(20,5)):
+            g,e,r=self.fixture(actual)
+            with self.assertRaises(ContextError):check_groups(g,e,r,expected)
+
+
 if __name__=='__main__':unittest.main()

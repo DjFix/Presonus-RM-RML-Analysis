@@ -9,6 +9,7 @@ from full_source_graph import extract
 from gcc_source_graph import replay
 from context_runtime import sha
 from code_identity import normalize_ast
+from context_resources import choose_limits
 
 
 def canonical_inputs(inputs):
@@ -58,7 +59,15 @@ def unit(owner, row, out):
 
 if __name__ == '__main__':
     out = pathlib.Path(sys.argv[1]); selected = json.loads((out / 'units.json').read_text())
-    with concurrent.futures.ProcessPoolExecutor(max_workers=2) as pool:
+    host_profile = json.loads((out / 'compiler-host-resources.json').read_text())
+    # Recheck actual container constraints; the host upper bound cannot bypass
+    # a lower current quota or memory headroom.
+    profile = choose_limits(host_profile['builder_jobs'], max(1, len(selected)),
+                            memgraph_cap=host_profile['builder_jobs'],
+                            selection_memory_mib=1536, slicing_memory_mib=1536,
+                            reserve_memory_mib=2048)
+    (out / 'compiler-container-resources.json').write_text(json.dumps(profile, indent=2) + '\n')
+    with concurrent.futures.ProcessPoolExecutor(max_workers=profile['builder_jobs']) as pool:
         futures = [pool.submit(unit, owner, row, out) for owner, row in selected]
         for future in concurrent.futures.as_completed(futures):
             with (out / 'extract-progress.jsonl').open('a') as log:

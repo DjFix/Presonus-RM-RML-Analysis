@@ -82,7 +82,7 @@ deficits require research; raising priority is not evidence.
 leaf quota filling. Its output is a planning receipt, **not** `BATCH_DISPATCH.json`.
 Even a candidate plan requires exact source ownership, conflict checks, generated
 task manifests, ordinary `batch-prepare --jobs auto`, and complete grouped dispatch
-before any worker launch. An exact 10×10 deficit never authorizes smaller waves.
+before any worker launch. An exact ten-worker deficit never authorizes smaller waves.
 A validated index can be advertised by `RANKING_ACTIVE.json`, independently of
 whether a reconstruction batch is possible. That pointer is not dispatch or
 admission permission; its digest is a publication checkpoint for mutable derived
@@ -137,3 +137,14 @@ provider behavioral evidence and never enter production readiness.
 ## Completed smaller trial
 
 The user explicitly authorized a smaller validation batch after the exact10x10 deficit. [Trial09 result](../docs/ranked-reconstruction-trial-09.md) records24 compiled-pending identities and4 blockers from28 targets across10 concurrent workers. `RANKING_ACTIVE.json` publishes the derived snapshot; its explicit code-context freshness flag preserves the next-prepare refresh gate after source edits. This is not a second-batch authorization.
+
+## Requested10×20 planning
+
+Use `ranking.py plan --packets-per-worker 20 --db DB --out NEW_PLAN`;
+validate-plan must use the same explicit cardinality. Default10 remains
+compatible. The plan records required200 packets, the exact total deficit,
+and namespaces with enough candidates. It never fills missing work with leaves
+or converts context availability into behavioral readiness. If the pool is
+insufficient, stop before expensive refresh/prepare and report the deficit;
+rank thresholds, unknowns, claims and dependency requirements stay unchanged.
+A stale code-context guard remains an independent dispatch blocker.

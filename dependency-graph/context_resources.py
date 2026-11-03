@@ -189,3 +189,18 @@ def choose_limits(jobs, task_count, selection_jobs=None, slicing_jobs=None, *,
             'policy': {'memgraph_cap': graph, 'selection_memory_mib': select_mem,
                        'slicing_memory_mib': slice_mem, 'reserve_memory_mib': reserve,
                        'requested_jobs_ceiling': requested}}
+
+
+def choose_compiler_limits(task_count, *, resources=None):
+    """Bound compiler/AST workers by current affinity, quota and memory.
+
+    Leave one CPU on small hosts and two on hosts with eight or more CPUs.
+    Reserve2GiB host memory, estimate1.5GiB per compiler/AST job. These are
+    planning estimates, not proof of peak use; unknown resources remain serial.
+    """
+    observed = detect_resources() if resources is None else dict(resources)
+    cpus = max(1, int(observed.get('available_cpus') or 1))
+    ceiling = max(1, cpus - (2 if cpus >= 8 else 1))
+    return choose_limits(ceiling, task_count, memgraph_cap=ceiling,
+                         selection_memory_mib=1536, slicing_memory_mib=1536,
+                         reserve_memory_mib=2048, resources=observed)

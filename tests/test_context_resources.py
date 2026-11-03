@@ -11,6 +11,17 @@ spec.loader.exec_module(resources)
 
 
 class ResourcesTests(unittest.TestCase):
+    def test_compiler_rechecks_cpu_memory_and_unknown(self):
+        observed={'available_cpus':10,'available_memory_bytes':18*1024**3,'unknown':[]}
+        self.assertEqual(resources.choose_compiler_limits(757,resources=observed)['builder_jobs'],8)
+        self.assertEqual(resources.choose_compiler_limits(3,resources=observed)['builder_jobs'],3)
+        observed['available_cpus']=3
+        self.assertEqual(resources.choose_compiler_limits(757,resources=observed)['builder_jobs'],2)
+        observed['available_cpus']=10;observed['available_memory_bytes']=3*1024**3
+        self.assertEqual(resources.choose_compiler_limits(757,resources=observed)['builder_jobs'],1)
+        observed['available_memory_bytes']=18*1024**3;observed['unknown']=['quota missing']
+        self.assertEqual(resources.choose_compiler_limits(757,resources=observed)['builder_jobs'],1)
+
     def test_numeric_and_auto_stage_caps(self):
         detected = {'available_cpus': 16, 'available_memory_bytes': 32 * 1024**3, 'unknown': []}
         for jobs, expected in [('auto', 10), (1, 1), (4, 4), (8, 8)]:
