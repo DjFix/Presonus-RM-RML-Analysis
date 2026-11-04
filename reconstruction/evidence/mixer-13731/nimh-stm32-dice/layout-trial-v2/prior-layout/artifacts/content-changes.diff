@@ -1,0 +1,61 @@
+--- evidence/recovery/2026-10-27/xmen-stm32/REPORT.md
++++ reconstruction/artifacts/mixer-13731/app/embedded-extraction/REPORT.md
+@@ -38,9 +38,9 @@
+ 
+ | Original ELF symbol | ELF address | ELF file offset | Bytes | Reset pointer | Export |
+ | --- | --- | --- | ---: | --- | --- |
+-| `_ZL13nimh_arm_code` | `0x2608d7` | `0x2588d7` | 216,908 | `0x08004511` | [NIMH STM32](images/mixer-analysis/_ZL13nimh_arm_code.bin) |
+-| `_ZL13noaa_arm_code` | `0x1c82d8` | `0x1c02d8` | 173,808 | `0x080047b9` | [NOAA STM32](images/mixer-analysis/_ZL13noaa_arm_code.bin) |
+-| `_ZL12esa_arm_code` | `0x2f4767` | `0x2ec767` | 147,900 | `0x080040e5` | [ESA STM32](images/mixer-analysis/_ZL12esa_arm_code.bin) |
++| `_ZL13nimh_arm_code` | `0x2608d7` | `0x2588d7` | 216,908 | `0x08004511` | [NIMH STM32](../../nimh-stm32-dice/extraction/mixer-analysis/_ZL13nimh_arm_code.bin) |
++| `_ZL13noaa_arm_code` | `0x1c82d8` | `0x1c02d8` | 173,808 | `0x080047b9` | [NOAA STM32](../../noaa-stm32-dice/extraction/mixer-analysis/_ZL13noaa_arm_code.bin) |
++| `_ZL12esa_arm_code` | `0x2f4767` | `0x2ec767` | 147,900 | `0x080040e5` | [ESA STM32](../../esa-stm32-dice/extraction/mixer-analysis/_ZL12esa_arm_code.bin) |
+ 
+ All are file-backed `.rodata` objects. Their original case-sensitive symbol
+ identities, full image hashes and per-release provenance are in
+@@ -53,7 +53,7 @@
+ The surface host ELF is SHA-256
+ `304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0`.
+ Its exact `_ZL18dice3_surface_code` export is
+-[230,512 bytes](images/surface-analysis/_ZL18dice3_surface_code.bin), hash
++[230,512 bytes](../../../surface-13840/dice3/extraction/surface-analysis/_ZL18dice3_surface_code.bin), hash
+ `0468d888f3d615e70065f5d535b9eadac7f8bf67185b53cc19c2cb7986c1d946`.
+ The existing `components/dice3-surface-bin` has four additional zero bytes;
+ it must not replace the exact symbol export.
+--- evidence/recovery/2026-10-27/nimh-command-map/tracker-fragment.md
++++ reconstruction/artifacts/mixer-13731/nimh-stm32-dice/command-map/tracker-fragment.md
+@@ -4,8 +4,8 @@
+ Original embedded object `_ZL13nimh_arm_code`, mixer 13731 ELF SHA-256
+ `9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07`,
+ image SHA-256 `b0979352e18a1093051fc6118a47694773cb9240e88087eca03aaa2ffe0f5e17`.
+-[Phase proof](validation/nimh-command-map/validation.json) and
+-[evidence index](validation/nimh-command-map/README.md).
++[Phase proof](../../../../evidence/mixer-13731/nimh-stm32-dice/legacy-validation-index/validation.json) and
++[evidence index](../../../../evidence/mixer-13731/nimh-stm32-dice/legacy-validation-index/README.md).
+ 
+ | Scope | Byte identity | Analysis | Offline native validation | C++ / hardware |
+ | --- | --- | --- | --- | --- |
+--- evidence/recovery/2026-10-27/nimh-command-map/REPORT.md
++++ reconstruction/artifacts/mixer-13731/nimh-stm32-dice/command-map/REPORT.md
+@@ -76,7 +76,7 @@
+ 
+ ## eCos and TCAT source identification
+ 
+-The local [TCAT firmware-development guide](../../../../doc/DICE_III_User_Guide/TCD30xx%20-%20Firmware%20Development.pdf),
++The local [TCAT firmware-development guide](<../../../../../doc/DICE_III_User_Guide/TCD30xx - Firmware Development.pdf>),
+ PDF pages 1–2, explicitly identifies eCos, GNU ARM EABI, HAL, DAL, CLI, routing,
+ mixing, flash and AVB modules. It describes an SDK distributed through Subversion
+ and configurable via eCos CDL. That is architectural context, not evidence that
+--- evidence/recovery/2026-10-28/nimh-spi-rx/tracker-fragment.md
++++ reconstruction/artifacts/mixer-13731/nimh-stm32-dice/spi-rx/tracker-fragment.md
+@@ -9,7 +9,7 @@
+ |---|---|---|---|
+ | Embedded NIMH setup `0x08000f2c`, parser `0x08000aa4`, dequeue `0x08000ce8`, release `0x08000d28` (candidate entries; exact extents unresolved) | Original container symbol retained; bytes verified via ELF section mapping | Disassembly exported; 20 framing/queue + 3 alternate queue + 4 receive-to-dispatch Linux cases passed with explicit MMIO/RTOS models | No reconstructed C++; original embedded names and ABI unresolved; no hardware validation |
+ 
+-Evidence: [report](../evidence/recovery/2026-10-28/nimh-spi-rx/REPORT.md),
+-[replay](../evidence/recovery/2026-10-28/nimh-spi-rx/replay.json),
+-[seal](../evidence/recovery/2026-10-28/nimh-spi-rx/validation.json).
++Evidence: [report](REPORT.md),
++[replay](replay.json),
++[seal](validation.json).
+ DMA delivery, interrupts and scheduling remain modeled; no readiness promotions.

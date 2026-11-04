@@ -1,0 +1,1302 @@
+
+=== PDF PAGE 1 ===
+  
+TCD30xx User Guide 
+ 
+Copyright  2014-2015, TC Applied Technologies.  All rights reserved.    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+SPI 
+ 
+ 
+Serial Peripheral Interface 
+ 
+Revision 0.9.0-41360 
+ 
+ 
+May 6, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-2     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+LIST OF TABLES ................................................................................................................................................. 13-3 
+LIST OF FIGURES ................................................................................................................................................ 13-4 
+13 SPI ......................................................................................................................................................... 13-5 
+13.1 OVERVIEW .................................................................................................................................................. 13-5 
+ SPI Module Block Diagram ............................................................................................................... 13-6 13.1.1
+13.2 MODULE CONFIGURATION ............................................................................................................................. 13-7 
+ Addressing ....................................................................................................................................... 13-8 13.2.1
+ SPI Control Register 0 – HAL_DICE3_SPI_CTRL0 .............................................................................. 13-8 13.2.2
+ SPI Control Register 1 – HAL_DICE3_SPI_CTRL1 ............................................................................ 13-13 13.2.3
+ SPI SSI Enable Register – HAL_DICE3_SPI_SSIENR ......................................................................... 13-14 13.2.4
+ SPI Slave Enable Register – HAL_DICE3_SPI_SER ........................................................................... 13-14 13.2.5
+ SPI Baud Rate Select – HAL_DICE3_SPI_BAUDR ............................................................................ 13-15 13.2.6
+ SPI Transmit FIFO Threshold Level – HAL_DICE3_SPI_TXFTLR ....................................................... 13-16 13.2.7
+ SPI Receive FIFO Threshold Level – HAL_DICE3_SPI_RXFTLR ......................................................... 13-17 13.2.8
+ SPI Transmit FIFO Level Register – HAL_DICE3_SPI_TXFLR ............................................................ 13-18 13.2.9
+ SPI Receive FIFO Level Register – HAL_DICE3_SPI_RXFLR .......................................................... 13-18 13.2.10
+ SPI Status Register – HAL_DICE3_SPI_SR ................................................................................... 13-19 13.2.11
+ SPI Interrupt Mask Register – HAL_DICE3_SPI_IMR .................................................................. 13-20 13.2.12
+ SPI Interrupt Status Register – HAL_DICE3_SPI_ISR ................................................................... 13-21 13.2.13
+ SPI Raw Interrupt Status Register  – HAL_DICE3_SPI_RISR ........................................................ 13-23 13.2.14
+ SPI TX FIFO Overflow Interrupt Clear – HAL_DICE3_SPI_TXOICR ............................................... 13-24 13.2.15
+ SPI RX FIFO Overerflow Interrupt Clear – HAL_DICE3_SPI_RXOICR ........................................... 13-24 13.2.16
+ SPI RX FIFO Underflow Interrupt Clear – HAL_DICE3_SPI_RXUICR ............................................ 13-25 13.2.17
+ SPI Multi-Master Interrupt Clear – HAL_DICE3_SPI_MSTICR ..................................................... 13-25 13.2.18
+ SPI Interrupt Clear Register – HAL_DICE3_SPI_ICR .................................................................... 13-25 13.2.19
+ SPI DMA Control Register – HAL_DICE3_SPI_DMACR ................................................................ 13-26 13.2.20
+ SPI DMA Transmit Data Level – HAL_DICE3_SPI_DMATDLR ...................................................... 13-26 13.2.21
+ SPI DMA Receive Data Level – HAL_DICE3_SPI_DMARDLR ....................................................... 13-27 13.2.22
+ SPI Data Register – HAL_DICE3_SPI_DR..................................................................................... 13-28 13.2.23
+ SPI Rx Sample Delay Register – HAL_DICE3_SPI_RXDLY ............................................................ 13-29 13.2.24
+13.3 REVISIONS ................................................................................................................................................. 13-30 
+
+=== PDF PAGE 3 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-3     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Tables 
+TABLE 13.1  SPI MODULE BASE ADDRESSES ....................................................................................................................... 13-7 
+TABLE 13.2  SPI MODULE REGISTER SUMMARY .................................................................................................................. 13-7 
+TABLE 13.3  SPI CONTROL REGISTER 0 BIT ASSIGNMENTS .................................................................................................... 13-8 
+TABLE 13.4  DFS DECODE. .......................................................................................................................................... 13-11 
+TABLE 13.5  SPI CONTROL REGISTER 1 BIT ASSIGNMENTS .................................................................................................. 13-13 
+TABLE 13.6  SPI SSI ENABLE REGISTER BIT ASSIGNMENTS .................................................................................................. 13-14 
+TABLE 13.7  SSI SLAVE ENABLE REGISTER BIT ASSIGNMENTS ............................................................................................... 13-14 
+TABLE 13.8  SPI BAUD RATE SELECT REGISTER BIT ASSIGNMENTS ........................................................................................ 13-15 
+TABLE 13.9  SPI TRANSMIT FIFO THRESHOLD LEVEL REGISTER BIT ASSIGNMENTS .................................................................. 13-16 
+TABLE 13.10  TFT DECODE. ......................................................................................................................................... 13-16 
+TABLE 13.11  SPI RECEIVE FIFO THRESHOLD LEVEL REGISTER BIT ASSIGNMENTS ................................................................... 13-17 
+TABLE 13.12  RFT DECODE. ........................................................................................................................................ 13-17 
+TABLE 13.13  SPI TRANSMIT FIFO LEVEL REGISTER BIT ASSIGNMENTS ................................................................................. 13-18 
+TABLE 13.14  SPI RECEIVE FIFO LEVEL REGISTER BIT ASSIGNMENTS .................................................................................... 13-18 
+TABLE 13.15  SPI STATUS REGISTER BIT ASSIGNMENTS ...................................................................................................... 13-19 
+TABLE 13.16  SPI INTERRUPT MASK REGISTER BIT ASSIGNMENTS ........................................................................................ 13-21 
+TABLE 13.17  SPI INTERRUPT STATUS REGISTER BIT ASSIGNMENTS ...................................................................................... 13-21 
+TABLE 13.18  SPI RAW INTERRUPT STATUS REGISTER BIT ASSIGNMENTS............................................................................... 13-23 
+TABLE 13.19  SPI TX FIFO OVERFLOW INTERRUPT CLEAR REGISTER BIT ASSIGNMENTS ........................................................... 13-24 
+TABLE 13.20  SPI RX FIFO OVERFLOW INTERRUPT CLEAR REGISTER BIT ASSIGNMENTS ........................................................... 13-24 
+TABLE 13.21  SPI RX FIFO UNDERFLOW INTERRUPT CLEAR REGISTER BIT ASSIGNMENTS ......................................................... 13-25 
+TABLE 13.22  SPI MULTI-MASTER INTERRUPT CLEAR REGISTER BIT ASSIGNMENTS ................................................................. 13-25 
+TABLE 13.23  SPI INTERRUPT CLEAR REGISTER BIT ASSIGNMENTS ........................................................................................ 13-25 
+TABLE 13.24  SPI DMA CONTROL REGISTER BIT ASSIGNMENTS .......................................................................................... 13-26 
+TABLE 13.25  SPI TRANSMIT DATA LEVEL REGISTER BIT ASSIGNMENTS ................................................................................. 13-26 
+TABLE 13.26  DMATDL DECODE. ................................................................................................................................ 13-27 
+TABLE 13.27  SPI DMA RECEIVE DATA LEVEL REGISTER BIT ASSIGNMENTS ........................................................................... 13-27 
+TABLE 13.28  DMARDL DECODE. ................................................................................................................................ 13-28 
+TABLE 13.29  SPI DATA REGISTER BIT ASSIGNMENTS ........................................................................................................ 13-28 
+TABLE 13.30  SPI SAMPLE DELAY REGISTER BIT ASSIGNMENTS............................................................................................ 13-29 
+TABLE 13.31  DOCUMENT REVISION HISTORY .................................................................................................................. 13-30 
+ 
+
+=== PDF PAGE 4 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-4     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Figures 
+FIGURE 13.1  SPI MODULE BLOCK DIAGRAM .................................................................................................................... 13-6 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+=== PDF PAGE 5 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-5     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+13 SPI 
+ 
+13.1 Overview 
+[TBD] 
+ 
+SPI 0 and 1 are master only 
+ 
+  
+
+=== PDF PAGE 6 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-6     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ SPI Module Block Diagram 13.1.1
+Signal names in bold in this chapter refer to labels in this diagram. 
+ 
+Figure 13.1  SPI Module block diagram 
+ 
+  
+
+
+=== PDF PAGE 7 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-7     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+13.2 Module Configuration 
+Each of the three SPI modules is independently programmable using duplicate module 
+register sets. The registers are located at the base addresses in Table 13.1. 
+ 
+Modules 0 and 1 are configured as Master. Masters have 4 slave selects. 
+Module 2 is configured as Slave. 
+ 
+Each module has transmit and receive FIFO depths of 8. 
+ 
+ 
+Table 13.1  SPI module base addresses 
+Base address SPI module number 
+0xCC000000 0 
+0xCE000000 2 
+0xCF000000 1 
+ 
+SPI module registers are described below by their offsets from their respective base 
+addresses. 
+Table 13.2  SPI Module register summary 
+Address Offset Register Description 
+0x0000 HAL_DICE3_SPI_CTRL0 See SPI Control Register 0 
+0x0004 HAL_DICE3_SPI_CTRL1 See SPI Control Register 1 
+0x0008 HAL_DICE3_SPI_SSIENR See SPI SSI Enable Register 
+0x0010 HAL_DICE3_SPI_SER See SPI Slave Enable Register 
+0x0014 HAL_DICE3_SPI_BAUDR See SPI Baud Rate Select 
+0x0018 HAL_DICE3_SPI_TXFTLR See SPI Transmit FIFO Threshold Level 
+0x001C HAL_DICE3_SPI_RXFTLR See SPI Receive FIFO Threshold Level 
+0x0020 HAL_DICE3_SPI_TXFLR See SPI Transmit FIFO Level Register 
+0x0024 HAL_DICE3_SPI_RXFLR See SPI Receive FIFO Level Register 
+0x0028 HAL_DICE3_SPI_SR See SPI Status Register 
+0x002C HAL_DICE3_SPI_IMR See SPI Interrupt Mask Register 
+0x0030 HAL_DICE3_SPI_ISR See SPI Interrupt Status Register 
+0x0034 HAL_DICE3_SPI_RISR See SPI Raw Interrupt Status Register 
+0x0038 HAL_DICE3_SPI_TXOICR See SPI TX FIFO Overflow Interrupt Clear 
+0x003C HAL_DICE3_SPI_RXOICR See SPI RX FIFO Overflow Interrupt Clear 
+0x0040 HAL_DICE3_SPI_RXUICR See SPI RX FIFO Underflow Interrupt Clear 
+0x0044 HAL_DICE3_SPI_MSTICR See SPI Multi-Master Interrupt Clear 
+
+=== PDF PAGE 8 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-8     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Address Offset Register Description 
+0x0048 HAL_DICE3_SPI_ICR See SPI Interrupt Clear Register 
+0x004C HAL_DICE3_SPI_DMACR See SPI DMA Control Register 
+0x0050 HAL_DICE3_SPI_DMATDLR See SPI DMA Transmit Data Level 
+0x0054 HAL_DICE3_SPI_DMARDLR See SPI DMA Receive Data Level 
+0x0060 HAL_DICE3_SPI_DR See SPI Data Register 
+0x00F0 HAL_DICE3_SPI_RXDLY See SPI Rx Sample Delay Register 
+ 
+ 
+ Addressing 13.2.1
+All registers in the SPI Module are addressed at 32-bit boundaries to remain consistent with 
+the AHB bus. Where the physical size of any register is less than 32-bits wide, the upper 
+unused bits of the 32-bit boundary are reserved. Writing to these bits has no effect; reading 
+from these bits returns 0. 
+ 
+ SPI Control Register 0 – HAL_DICE3_SPI_CTRL0 13.2.2
+Address offset: 0x0000   HAL_DICE3_SPI_CTRL0 
+This register controls the serial data transfer. It is impossible to write to this register when 
+the SPI Module is enabled. The SPI Module is enabled and disabled by writing to the 
+HAL_DICE3_SPI_SSIENR register. 
+ 
+15 : 12
+ 11
+ 10
+ 9 : 8
+ 7
+ 6
+ 5 : 4
+ 3 : 0
+CFS
+SRL
+SLV_OE
+TMOD
+SCPOL
+SCHPH
+FRF
+DFS
+ 
+Table 13.3  SPI Control Register 0 bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:16 0 N/A Reserved 
+CFS 15:12 0 N/A 
+Control Frame Size. Selects the length of the 
+control word for the Microwire frame format. These 
+bits are not used. 
+
+=== PDF PAGE 9 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-9     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+SRL 11 0 RW 
+Shift Register Loop. Used for testing purposes only. 
+When internally active, connects the transmit shift 
+register output to the receive shift register input. 
+Can be used in both serial-slave and serial-master 
+modes (only SPI 2 is slave). 
+0 – Normal Mode Operation 
+1 – Test Mode Operation 
+When the SPI Module is configured as a slave in 
+loopback mode, the ss_in_n and ssi_clk signals 
+must be provided by an external source. In this 
+mode, the slave cannot generate these signals 
+because there is nothing to which to loop back. 
+SLV_OE 10 0 RW 
+Slave Output Enable. Relevant only when the SPI 
+Module is configured as a serial-slave device. When 
+configured as a serial master, this bit field has no 
+functionality. This bit enables or disables the 
+setting of the ssi_oe_n output from the SPI 
+Module serial slave (only SPI 2 is slave). 
+When SLV_OE=1, the ssi_oe_n output can never 
+be active. When the ssi_oe_n output controls the 
+tri-state buffer on the txd output from the slave, a 
+high impedance state is always present on the 
+slave txd output when SLV_OE=1. 
+This is useful when the master transmits in 
+broadcast mode (master transmits data to all slave 
+devices). Only one slave may respond with data on 
+the master rxd line. This bit is enabled after reset 
+and must be disabled by software (when broadcast 
+mode is used), if you do not want this device to 
+respond with data. 
+0 - Slave txd is enabled 
+1 - Slave txd is disabled 
+
+=== PDF PAGE 10 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-10     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+TMOD 9:8 0 RW 
+Transfer Mode. Selects the mode of transfer for 
+serial communication. This field does not affect the 
+transfer duplicity. Only indicates whether the 
+receive or transmit data are valid. 
+In transmit-only mode, data received from the 
+external device is not valid and is not stored in the 
+receive FIFO memory; it is overwritten on the next 
+transfer. 
+In receive-only mode, transmitted data are not 
+valid. After the first write to the transmit FIFO, the 
+same word is retransmitted for the duration of the 
+transfer. 
+In transmit-and-receive mode, both transmit and 
+receive data are valid. The transfer continues until 
+the transmit FIFO is empty. Data received from the 
+external device are stored into the receive FIFO 
+memory, where it can be accessed by the host 
+processor. 
+In eeprom-read mode, receive data is not valid 
+while control data is being transmitted. When all 
+control data is sent to the EEPROM, receive data 
+becomes valid and transmit data becomes invalid. 
+All data in the transmit FIFO is considered control 
+data in this mode. This transfer mode is only valid 
+when the SPI Module is configured as a master 
+device. 
+00 - Transmit & Receive 
+01 - Transmit Only 
+10 - Receive Only 
+11 - EEPROM Read 
+SCPOL 7 
+SSI_ 
+DFLT_ 
+SCPOL 
+RW 
+Serial Clock Polarity. Valid when the frame format 
+(FRF) is set to Motorola SPI. Used to select the 
+polarity of the inactive serial clock, which is held 
+inactive when the SPI Module master is not actively 
+transferring data on the serial bus. 
+0 – Inactive state of serial clock is low 
+1 – Inactive state of serial clock is high 
+Dependencies: When SSI_HC_FRF=1, SCPOL bit 
+is a read-only bit with its value set by 
+SSI_DFLT_SCPOL. 
+
+=== PDF PAGE 11 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-11     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+SCPH 6 
+SSI_ 
+DFLT_ 
+SCPH 
+RW 
+Serial Clock Phase. Valid when the frame format 
+(FRF) is set to Motorola SPI. The serial clock phase 
+selects the relationship of the serial clock with the 
+slave select signal (only SPI 2 is slave). 
+When SCPH = 0, data are captured on the first 
+edge of the serial clock. When SCPH = 1, the serial 
+clock starts toggling one cycle after the slave select 
+line is activated, and data are captured on the 
+second edge of the serial clock. 
+0: Serial clock toggles in middle of first data bit 
+1: Serial clock toggles at start of first data bit 
+Dependencies: When SSI_HC_FRF=1, SCPH bit is 
+a read-only bit, with its value set by 
+SSI_DFLT_SCPH. 
+FRF 5:4 
+SSI_ 
+DFLT_ 
+FRF 
+RW 
+Frame Format. Selects which serial protocol 
+transfers the data. 
+00 - Motorola SPI 
+01 - Texas Instruments SSP 
+10 - National Semiconductors Microwire 
+11 - Reserved 
+Dependencies: When SSI_HC_FRF=1, FRF is 
+read-only and its value is set by 
+SSI_DFLT_FRF. 
+FDFS 3:0 0x07 RW 
+Data Frame Size. Selects the data frame length. 
+When the data frame size is 
+programmed to be less than 16 bits, the receive 
+data are automatically right-justified by 
+the receive logic, with the upper bits of the receive 
+FIFO zero-padded. 
+You must right-justify transmit data before writing 
+into the transmit FIFO. The transmit logic ignores 
+the upper unused bits when transmitting the data. 
+For the field decode, refer 
+to Table 13.4 
+ 
+ 
+Table 13.4  DFS Decode. 
+DFS Value Description 
+b0000 Reserved – undefined operation 
+b0001 Reserved – undefined operation 
+b0010 Reserved – undefined operation 
+b0011 4-bit serial data transfer 
+
+=== PDF PAGE 12 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-12     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+DFS Value Description 
+b0100 5-bit serial data transfer 
+b0101 6-bit serial data transfer 
+b0110 7-bit serial data transfer 
+b0111 8-bit serial data transfer 
+b1000 9-bit serial data transfer 
+b1001 10-bit serial data transfer 
+b1010 11-bit serial data transfer 
+b1011 12-bit serial data transfer 
+b1100 13-bit serial data transfer 
+b1101 14-bit serial data transfer 
+b1110 15-bit serial data transfer 
+b1111 16-bit serial data transfer 
+ 
+
+=== PDF PAGE 13 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-13     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ SPI Control Register 1 – HAL_DICE3_SPI_CTRL1 13.2.3
+Address offset: 0x0004   HAL_DICE3_SPI_CTRL1 
+This register exists only when the SPI Module is configured as a master device. When the 
+SPI Module is configured as a serial slave, writing to this location has no effect; reading 
+from this location returns 0 (only SPI 2 is slave). Control register 1 controls the end of serial 
+transfers when in receive-only mode. It is impossible to write to this register when the SPI 
+Module is enabled. The SPI Module is enabled and disabled by writing to the 
+HAL_DICE3_SPI_SSIENR register. 
+ 
+15:0
+NDF
+ 
+Table 13.5  SPI Control Register 1 bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:16 0 N/A Reserved 
+NDF 15:0 0 RW 
+Number of Data Frames. When TMOD = 10 or 
+TMOD = 11, this register field sets the number of 
+data frames to be continuously received by the SPI 
+Module. The SPI Module continues to receive serial 
+data until the number of data frames received is 
+equal to this register value plus 1, which enables 
+you to receive up to 64 KB of data in a continuous 
+transfer. 
+When the SPI Module is configured as a serial 
+slave, the transfer continues for as long as the 
+slave is selected. Therefore, this register serves no 
+purpose and is not present when the SPI Module is 
+configured as a serial slave (only SPI 2 is slave). 
+ 
+  
+
+=== PDF PAGE 14 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-14     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ SPI SSI Enable Register – HAL_DICE3_SPI_SSIENR 13.2.4
+Address offset: 0x0008   HAL_DICE3_SPI_SSIENR 
+This register enables and disables the SPI Module. 
+ 
+0
+SSI_EN
+ 
+Table 13.6  SPI SSI Enable Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+SSI_EN 0 0 RW 
+SSI Enable. Enables and disables all SPI Module 
+operations. When disabled, all serial transfers are 
+halted immediately. Transmit and receive FIFO 
+buffers are cleared when the device is disabled. It 
+is impossible to program some of the SPI Module 
+control registers when enabled. When disabled, the 
+ssi_sleep output is set (after delay) to inform the 
+system that it is safe to remove the ssi_clk, thus 
+saving power consumption in the system. 
+ 
+ SPI Slave Enable Register – HAL_DICE3_SPI_SER 13.2.5
+Address offset: 0x0010   HAL_DICE3_SPI_SER 
+ 
+Note 
+This only applies to Serial Masters SPI 0 and SPI. 
+ 
+31 : 4
+ 3 : 0
+Reserved
+SER
+ 
+ 
+Table 13.7  SSI Slave Enable Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:4 0 N/A Reserved 
+SSI_EN 3:0 0 RW 
+Slave Select Enable Flag. Each bit in this register 
+corresponds to a slave select line (ss_x_n) from 
+the SPI Module master. When a bit in this register 
+is set (1), the corresponding slave select line from 
+the master is activated when a serial transfer 
+begins. It should be noted that setting or clearing 
+
+=== PDF PAGE 15 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-15     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+bits in this register have no effect on the 
+corresponding slave select outputs until a transfer 
+is started. Before beginning a transfer, you should 
+enable the bit in this register that corresponds to 
+the slave device with which the master wants to 
+communicate. 
+When not operating in broadcast mode, only one 
+bit in this field should be set. 
+1: Selected 
+0: Not Selected 
+ 
+ SPI Baud Rate Select – HAL_DICE3_SPI_BAUDR 13.2.6
+Address offset: 0x0014   HAL_DICE3_SPI_BAUDR 
+ 
+This register is valid only when the SPI Module is configured as a master device. When the 
+SPI Module is configured as a serial slave, writing to this location has no effect; reading 
+from this location returns 0 (only SPI 2 is slave). The register derives the frequency of the 
+serial clock that regulates the data transfer. The 16-bit field in this register defines the 
+ssi_clk divider value. It is impossible to write to this register when the SPI Module is 
+enabled. The SPI Module is enabled and disabled by writing to the HAL_DICE3_SPI_SSIENR 
+register. 
+ 
+15 : 0
+SCKDV
+ 
+Table 13.8  SPI Baud Rate Select Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:16 0 N/A Reserved 
+SCKDV 15:0 0 RW 
+SSI Clock Divider. The LSB for this field is always 
+set to 0 and is unaffected by a write operation, 
+which ensures an even value is held in this 
+register. If the value is 0, the serial output clock 
+(sclk_out) is disabled. The frequency of the 
+sclk_out is derived from the following equation: 
+Fsclk_out/ SCKDV = Fssi_clk 
+where SCKDV is any even value between 2 and 
+65534.  
+For example: 
+for Fssi_clk = 3.6864MHz and SCKDV =2 
+Fsclk_out = 3.6864/2 = 1.8432MHz 
+
+=== PDF PAGE 16 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-16     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ 
+ SPI Transmit FIFO Threshold Level – HAL_DICE3_SPI_TXFTLR 13.2.7
+Address offset: 0x0018   HAL_DICE3_SPI_TXFTLR 
+This register controls the threshold value for the transmit FIFO memory. The SPI Module is 
+enabled and disabled by writing to the HAL_DICE3_SPI_SSIENR register. 
+ 
+31 : 3
+ 2 : 0
+Reserved
+TFT
+ 
+Table 13.9  SPI Transmit FIFO Threshold Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:3 0 N/A Reserved 
+TFT 2:0 0 RW 
+Transmit FIFO Threshold. Controls the level of 
+entries (or below) at which the transmit FIFO 
+controller triggers an interrupt. The FIFO depth is 
+configurable in the range 2-256; this register is 
+sized to the number of address bits needed to 
+access the FIFO. 
+If you attempt to set bits [7:0] of this register to a 
+value greater than or equal to the depth of the 
+FIFO, this field is not written and retains its current 
+value. 
+When the number of transmit FIFO entries is less 
+than or equal to this value, the transmit FIFO 
+empty interrupt is triggered. For field decode, refer 
+to Table 13.10. 
+ 
+Table 13.10  TFT Decode. 
+DFS Value Description 
+b0000_0000 ssi_txe_intr is asserted when 0 data entries are present in transmit FIFO 
+b0000_0001 ssi_txe_intr is asserted when 1 or less data entry is present in transmit FIFO 
+b0000_0010 ssi_txe_intr is asserted when 2 or less data entries are present in transmit FIFO 
+b0000_0011 ssi_txe_intr is asserted when 3 or less data entries are present in transmit FIFO 
+.. .. 
+b1111_1100 ssi_txe_intr is asserted when 252 or less data entries are present in transmit FIFO 
+b1111_1101 ssi_txe_intr is asserted when 253 or less data entries are present in transmit FIFO 
+b1111_1110 ssi_txe_intr is asserted when 254 or less data entries are present in transmit FIFO 
+b1111_1111 ssi_txe_intr is asserted when 255 or less data entries are present in transmit FIFO 
+
+=== PDF PAGE 17 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-17     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ 
+ SPI Receive FIFO Threshold Level – HAL_DICE3_SPI_RXFTLR 13.2.8
+Address offset: 0x001C   HAL_DICE3_SPI_RXFTLR 
+This register controls the threshold value for the receive FIFO memory. The SPI Module is 
+enabled and disabled by writing to the HAL_DICE3_SPI_SSIENR register. 
+ 
+31 : 3
+ 2 : 0
+Reserved
+RFT
+ 
+ 
+Table 13.11  SPI Receive FIFO Threshold Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:3 0 N/A Reserved 
+RFT 2:0 0 RW 
+Receive FIFO Threshold. Controls the level of 
+entries (or above) at which the receive FIFO 
+controller triggers an interrupt. The FIFO depth is 
+configurable in the range 2-256; this register is 
+sized to the number of address bits needed to 
+access the FIFO. 
+If you attempt to set this value greater than the 
+depth of the FIFO, this field is not written and 
+retains its current value. 
+When the number of receive FIFO entries is greater 
+than or equal to this value + 1, the receive FIFO 
+full interrupt is triggered. For field decode, refer to 
+Table 13.12. 
+ 
+Table 13.12  RFT Decode. 
+DFS Value Description 
+b0000_0000 ssi_rxf_intr is asserted when 1 or more data entry is present in receive FIFO 
+b0000_0001 ssi_rxf_intr is asserted when 2 or more data entries are present in receive FIFO 
+b0000_0010 ssi_rxf_intr is asserted when 3 or more data entries are present in receive FIFO 
+b0000_0011 ssi_rxf_intr is asserted when 4 or more data entries are present in receive FIFO 
+.. .. 
+b1111_1100 ssi_rxf_intr is asserted when 253 or more data entries are present in receive FIFO 
+b1111_1101 ssi_rxf_intr is asserted when 254 or more data entries are present in receive FIFO 
+b1111_1110 ssi_rxf_intr is asserted when 255 or more data entries are present in receive FIFO 
+b1111_1111 ssi_rxf_intr is asserted when 256 data entries are present in receive FIFO 
+
+=== PDF PAGE 18 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-18     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ SPI Transmit FIFO Level Register – HAL_DICE3_SPI_TXFLR 13.2.9
+Address offset: 0x0020   HAL_DICE3_SPI_TXFLR 
+This register contains the number of valid data entries in the transmit FIFO memory. 
+ 
+31 : 4
+ 3 : 0
+Reserved
+RFT
+ 
+Table 13.13  SPI Transmit FIFO Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:4 0 N/A Reserved 
+TXTFL 3:0 0 R Transmit FIFO Level. Contains the number of valid data entries in the transmit FIFO. 
+ 
+ SPI Receive FIFO Level Register – 13.2.10
+HAL_DICE3_SPI_RXFLR 
+Address offset: 0x0024   HAL_DICE3_SPI_RXFLR 
+This register contains the number of valid data entries in the receive FIFO memory. This 
+register can be read any time. 
+ 
+31 : 4
+ 3 : 0
+Reserved
+RXTFL
+ 
+Table 13.14  SPI Receive FIFO Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:4 0 N/A Reserved 
+RXTFL 3:0 0 R Receive FIFO Level. Contains the number of valid data entries in the receive FIFO. 
+ 
+  
+
+=== PDF PAGE 19 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-19     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ SPI Status Register – HAL_DICE3_SPI_SR 13.2.11
+Address offset: 0x0028   HAL_DICE3_SPI_SR 
+This is a read-only register used to indicate the current transfer status, FIFO status, and any 
+transmission/reception errors that may have occurred. The status register may be read at 
+any time. None of the bits in this register request an interrupt. 
+ 
+6
+ 5
+ 4
+ 3
+ 2
+ 1
+ 0
+DCOL
+TXE
+RFF
+RFNE
+TFE
+TFNF
+BUSY
+ 
+Table 13.15  SPI Status Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:7 0 N/A Reserved 
+DCOL 6 0 R 
+Data Collision Error. Relevant only when the SPI 
+Module is configured as a master device. 
+This bit is set if the SPI Module master is actively 
+transmitting when another master selects this 
+device as a slave. This informs the processor that 
+the last data transfer was halted before 
+completion. This bit is cleared when read. 
+0 – No error 
+1 – Transmit data collision error 
+TXE 5 0 R 
+Transmission Error. Set if the transmit FIFO is 
+empty when a transfer is started. This bit can be 
+set only when the SPI Module is configured as a 
+slave device. Data from the previous transmission 
+is resent on the txd line. This bit is cleared when 
+read. 
+0 – No error 
+1 – Transmission error 
+RFF 4 0 R 
+Receive FIFO Full. When the receive FIFO is 
+completely full, this bit is set. When the receive 
+FIFO contains one or more empty location, this bit 
+is cleared. 
+0 – Receive FIFO is not full 
+1 – Receive FIFO is full 
+
+=== PDF PAGE 20 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-20     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+RFNE 3 0 R 
+Receive FIFO Not Empty. Set when the receive 
+FIFO contains one or more entries and is cleared 
+when the receive FIFO is empty. This bit can be 
+polled by software to completely empty the receive 
+FIFO. 
+0 – Receive FIFO is empty 
+1 – Receive FIFO is not empty 
+TFE 2 0 R 
+Transmit FIFO Empty. When the transmit FIFO is 
+completely empty, this bit is set. When the 
+transmit FIFO contains one or more valid entries, 
+this bit is cleared. This bit field does not request an 
+interrupt. 
+0 – Transmit FIFO is not empty 
+1 – Transmit FIFO is empty 
+TFNF 1 0 R 
+Transmit FIFO Not Full. Set when the transmit FIFO 
+contains one or more empty locations, and is 
+cleared when the FIFO is full. 
+0 – Transmit FIFO is full 
+1 – Transmit FIFO is not full 
+BUSY 0 0 R 
+SSI Busy Flag. When set, indicates that a serial 
+transfer is in progress; when cleared indicates that 
+the SPI Module is idle or disabled. 
+0 – SPI Module is idle or disabled 
+1 – SPI Module is actively transferring data 
+ 
+ SPI Interrupt Mask Register – HAL_DICE3_SPI_IMR 13.2.12
+Address offset: 0x002C   HAL_DICE3_SPI_IMR 
+This read/write register masks or enables all interrupts generated by the SPI Module. When 
+the SPI Module is configured as a slave device, the MSTIM bit field is not present. This 
+changes the reset value from 0x3F for serial-master configurations to 0x1F for serial-slave 
+configurations. Only SPI 2 is slave. 
+ 
+5
+ 4
+ 3
+ 2
+ 1
+ 0
+[MSTIM]
+RXFIM
+RXOIM
+RXUIM
+TXOIM
+TXEIM
+ 
+ 
+ 
+
+=== PDF PAGE 21 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-21     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Table 13.16  SPI Interrupt Mask Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:6 0 N/A Reserved 
+MSTIM 5 M:1 S:0 RW 
+Multi-Master Contention Interrupt Mask. This bit 
+field is not present if the SPI Module is configured 
+as a serial-slave device (only SPI 2 is slave). When 
+the module is master this bit resets to 1, and zero 
+when slave. 
+0 – ssi_mst_intr interrupt is masked 
+1 – ssi_mst_intr interrupt is not masked 
+RXFIM 4 1 RW 
+Receive FIFO Full Interrupt Mask 
+0 – ssi_rxf_intr interrupt is masked 
+1 – ssi_rxf_intr interrupt is not masked 
+RXOIM 3 1 RW 
+Receive FIFO Overflow Interrupt Mask 
+0 – ssi_rxo_intr interrupt is masked 
+1 – ssi_rxo_intr interrupt is not masked 
+RXUIM 2 1 RW 
+Receive FIFO Underflow Interrupt Mask 
+0 – ssi_rxu_intr interrupt is masked 
+1 – ssi_rxu_intr interrupt is not masked 
+TXOIM 1 1 RW 
+Transmit FIFO Overflow Interrupt Mask 
+0 – ssi_txo_intr interrupt is masked 
+1 – ssi_txo_intr interrupt is not masked 
+TXEIM 0 1 RW 
+Transmit FIFO Empty Interrupt Mask 
+0 – ssi_txe_intr interrupt is masked 
+1 – ssi_txe_intr interrupt is not masked 
+ 
+ 
+ SPI Interrupt Status Register – HAL_DICE3_SPI_ISR 13.2.13
+Address offset: 0x0030   HAL_DICE3_SPI_ISR 
+ 
+This register reports the status of the SPI Module interrupts after they have been masked. 
+ 
+5
+ 4
+ 3
+ 2
+ 1
+ 0
+MSTIS
+RXFIS
+RXOIS
+RXUIS
+TXOIS
+TXEIS
+ 
+Table 13.17  SPI Interrupt Status Register bit assignments 
+Name Bit Reset Dir Description 
+
+=== PDF PAGE 22 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-22     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+Reserved 31:6 0 N/A Reserved 
+MSTIS 5 0 R 
+Multi-Master Contention Interrupt Status. This bit 
+field is not present if the SPI Module is configured 
+as a serial-slave device (only SPI 2 is slave). 
+0 = ssi_mst_intr interrupt not active after 
+masking 
+1 = ssi_mst_intr interrupt is active after masking 
+RXFIS 4 0 R 
+Receive FIFO Full Interrupt Status 
+0 = ssi_rxf_intr interrupt is not active after 
+masking 
+1 = ssi_rxf_intr interrupt is full after masking 
+RXOIS 3 0 R 
+Receive FIFO Overflow Interrupt Status 
+0 = ssi_rxo_intr interrupt is not active after 
+masking 
+1 = ssi_rxo_intr interrupt is active after masking 
+RXUIS 2 0 R 
+Receive FIFO Underflow Interrupt Status 
+0 = ssi_rxu_intr interrupt is not active after 
+masking 
+1 = ssi_rxu_intr interrupt is active after masking 
+TXOIS 1 0 R 
+Transmit FIFO Overflow Interrupt Status 
+0 = ssi_txo_intr interrupt is not active after 
+masking 
+1 = ssi_txo_intr interrupt is active after masking 
+TXEIS 0 0 R 
+Transmit FIFO Overflow Interrupt Status 
+0 = ssi_txo_intr interrupt is not active after 
+masking 
+1 = b interrupt is active after masking 
+ 
+  
+
+=== PDF PAGE 23 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-23     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ SPI Raw Interrupt Status Register  – 13.2.14
+HAL_DICE3_SPI_RISR 
+Address offset: 0x0034   HAL_DICE3_SPI_RISR 
+This read-only register reports the status of the SPI Module interrupts prior to masking. 
+ 
+5
+ 4
+ 3
+ 2
+ 1
+ 0
+MSTIR
+RXFIR
+RXOIR
+RXUIR
+TXIOR
+TXEIR
+ 
+Table 13.18  SPI Raw Interrupt Status Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:6 0 N/A Reserved 
+MSTIR 5 0 R 
+Multi-Master Contention Raw Interrupt Status. This 
+bit field is not present if the SPI Module is 
+configured as a serial-slave device (only SPI 2 is 
+slave). 
+0 = ssi_mst_intr interrupt is not active prior to 
+masking 
+1 = ssi_mst_intr interrupt is active prior masking 
+RXFIR 4 0 R 
+Receive FIFO Full Raw Interrupt Status 
+0 = ssi_rxf_intr interrupt is not active prior to 
+masking 
+1 = ssi_rxf_intr interrupt is active prior to 
+masking 
+RXOIR 3 0 R 
+Receive FIFO Overflow Raw Interrupt Status 
+0 = ssi_rxo_intr interrupt is not active prior to 
+masking 
+1 = ssi_rxo_intr interrupt is active prior masking 
+RXUIR 2 0 R 
+Receive FIFO Underflow Raw Interrupt Status 
+0 = ssi_rxu_intr interrupt is not active prior to 
+masking 
+1 = ssi_rxu_intr interrupt is active prior to 
+masking 
+TXOIR 1 0 R 
+Transmit FIFO Overflow Raw Interrupt Status 
+0 = ssi_txo_intr interrupt is not active prior to 
+masking 
+1 = ssi_txo_intr interrupt is active prior masking 
+
+=== PDF PAGE 24 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-24     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+TXEIR 0 0 R 
+Transmit FIFO Empty Raw Interrupt Status 
+0 = ssi_txe_intr interrupt is not active prior to 
+masking 
+1 = ssi_txe_intr interrupt is active prior masking 
+ 
+ 
+ SPI TX FIFO Overflow Interrupt Clear – 13.2.15
+HAL_DICE3_SPI_TXOICR 
+Address offset: 0x0038   HAL_DICE3_SPI_TXOICR 
+ 
+0
+TXOICR
+ 
+Table 13.19  SPI TX FIFO Overflow Interrupt Clear Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+TXOICR 0 0 R 
+Clear Transmit FIFO Overflow Interrupt. This 
+register reflects the status of the interrupt. A read 
+from this register clears the ssi_txo_intr 
+interrupt; writing has no effect. 
+ 
+ SPI RX FIFO Overerflow Interrupt Clear – 13.2.16
+HAL_DICE3_SPI_RXOICR 
+Address offset: 0x003C   HAL_DICE3_SPI_RXOICR 
+ 
+0
+RXOICR
+ 
+Table 13.20  SPI RX FIFO Overflow Interrupt Clear Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+RXOICR 0 0 R 
+Clear Receive FIFO Overflow Interrupt. This 
+register reflects the status of the interrupt. 
+A read from this register clears the ssi_rxo_intr 
+interrupt; writing has no effect. 
+ 
+
+=== PDF PAGE 25 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-25     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ SPI RX FIFO Underflow Interrupt Clear – 13.2.17
+HAL_DICE3_SPI_RXUICR 
+Address offset: 0x0040   HAL_DICE3_SPI_RXUICR 
+ 
+0
+RXUICR
+ 
+Table 13.21  SPI RX FIFO Underflow Interrupt Clear Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+RXUICR 0 0 R 
+Clear Receive FIFO Underflow Interrupt. This 
+register reflects the status of the interrupt. 
+A read from this register clears the ssi_rxu_intr 
+interrupt; writing has no effect. 
+ 
+ SPI Multi-Master Interrupt Clear – 13.2.18
+HAL_DICE3_SPI_MSTICR 
+Address offset: 0x0044   HAL_DICE3_SPI_MSTICR 
+ 
+0
+MSTICR
+ 
+Table 13.22  SPI Multi-Master Interrupt Clear Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+MSTICR 0 0 R 
+Clear Multi-Master Contention Interrupt. This 
+register reflects the status of the interrupt. 
+A read from this register clears the ssi_mst_intr 
+interrupt; writing has no effect. 
+ 
+ SPI Interrupt Clear Register – HAL_DICE3_SPI_ICR 13.2.19
+Address offset: 0x0048   HAL_DICE3_SPI_ICR 
+ 
+0
+ICR
+ 
+Table 13.23  SPI Interrupt Clear Register bit assignments 
+
+=== PDF PAGE 26 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-26     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+ICR 0 0 R 
+Clear Interrupts. This register is set if any of the 
+interrupts below are active. A read clears the 
+ssi_txo_intr, ssi_rxu_intr, ssi_rxo_intr, and 
+the ssi_mst_intr interrupts. Writing to this 
+register has no effect. 
+ 
+ SPI DMA Control Register – HAL_DICE3_SPI_DMACR 13.2.20
+Address offset: 0x004C   HAL_DICE3_SPI_DMACR 
+This register is used to enable the DMA Controller interface operation. 
+ 
+1
+ 0
+TDMAE
+RDMAE
+ 
+Table 13.24  SPI DMA Control Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:2 0 N/A Reserved 
+ICR 1 0 RW 
+Transmit DMA Enable. This bit enables/disables the 
+transmit FIFO DMA channel. 
+0 = Transmit DMA disabled 
+1 = Transmit DMA enabled 
+ICR 0 0 RW 
+Receive DMA Enable. This bit enables/disables the 
+receive FIFO DMA channel 
+0 = Receive DMA disabled 
+1 = Receive DMA enabled 
+ 
+ SPI DMA Transmit Data Level – 13.2.21
+HAL_DICE3_SPI_DMATDLR 
+Address offset: 0x0050   HAL_DICE3_SPI_DMATDLR 
+ 
+2 : 0
+DMATDL
+ 
+Table 13.25  SPI Transmit Data Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:3 0 N/A Reserved 
+
+=== PDF PAGE 27 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-27     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+DMATDL 2:0 0 RW 
+Transmit Data Level. This bit field controls the level 
+at which a DMA request is made by the transmit 
+logic. It is equal to the watermark level; that is, 
+the dma_tx_req signal is generated when the 
+number of valid data entries in the transmit FIFO is 
+equal to or below this field value, and TDMAE = 1. 
+Refer to Table 13.26 for the field decode. 
+ 
+Table 13.26  DMATDL Decode. 
+DMATDL 
+Value Description 
+b0000_0000 dma_tx_req is asserted when 0 data entries are present in transmit FIFO 
+b0000_0001 dma_tx_req is asserted when 1 or less data entry is present in transmit FIFO 
+b0000_0010 dma_tx_req is asserted when 2 or less data entries are present in transmit FIFO 
+b0000_0011 dma_tx_req is asserted when 3 or less data entries are present in transmit FIFO 
+.. .. 
+b1111_1100 dma_tx_req is asserted when 252 or less data entries are present in transmit FIFO 
+b1111_1101 dma_tx_req is asserted when 253 or less data entries are present in transmit FIFO 
+b1111_1110 dma_tx_req is asserted when 254 or less data entries are present in transmit FIFO 
+b1111_1111 dma_tx_req is asserted when 255 or less data entries are present in transmit FIFO 
+ 
+ SPI DMA Receive Data Level – 13.2.22
+HAL_DICE3_SPI_DMARDLR 
+Address offset: 0x0054   HAL_DICE3_SPI_DMARDLR 
+ 
+2 : 0
+DMARDL
+ 
+Table 13.27  SPI DMA Receive Data Level Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:3 0 N/A Reserved 
+
+=== PDF PAGE 28 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-28     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+DMARDL 2:0 0 RW 
+Receive Data Level. This bit field controls the level 
+at which a DMA request is made by the receive 
+logic. The watermark level = DMARDL+1; that is, 
+dma_rx_req is generated when the number of 
+valid data entries in the receive FIFO is equal to or 
+above this field value + 1, and RDMAE=1. Refer to 
+Table 13.28 for the field decode. 
+ 
+Table 13.28  DMARDL Decode. 
+DMARDL  
+Value Description 
+b0000_0000 dma_rx_req is asserted when 1 or more data entry is present in receive FIFO 
+b0000_0001 dma_rx_req is asserted when 2 or more data entries are present in receive FIFO 
+b0000_0010 dma_rx_req is asserted when 3 or more data entries are present in receive FIFO 
+b0000_0011 dma_rx_req is asserted when 4 or more data entries are present in receive FIFO 
+.. .. 
+b1111_1100 dma_rx_req is asserted when 253 or more data entries are present in receive FIFO 
+b1111_1101 dma_rx_req is asserted when 254 or more data entries are present in receive FIFO 
+b1111_1110 dma_rx_req is asserted when 255 or more data entries are present in receive FIFO 
+b1111_1111 dma_rx_req is asserted when 256 data entries are present in receive FIFO 
+ 
+ SPI Data Register – HAL_DICE3_SPI_DR 13.2.23
+Address offset: 0x0060   HAL_DICE3_SPI_DR 
+The SPI Module data register is a 16-bit read/write buffer for the transmit/receive FIFOs. 
+When the register is read, data in the receive FIFO buffer is accessed. When it is written to, 
+data are moved into the transmit FIFO buffer; a write can occur only when SSI_EN=1. 
+FIFOs are reset when SSI_EN=0. 
+ 
+15 : 0
+DR
+ 
+Table 13.29  SPI Data Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:16 0 N/A Reserved. 
+
+=== PDF PAGE 29 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-29     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+DR 15:0 0 RW 
+Data Register. When writing to this register, you 
+must right-justify the data. Read data are 
+automatically right-justified. 
+Read = Receive FIFO buffer 
+Write = Transmit FIFO buffer 
+ 
+Note 
+The HAL_DICE3_SPI_DR register in the SPI Module occupies thirty-six 32-bit address 
+locations of the memory map to facilitate AHB burst transfers. Writing to any of these 
+address locations has the same effect as pushing the data from the pwdata bus into the 
+transmit FIFO. Reading from any of these locations has the same effect as popping data 
+from the receive FIFO onto the prdata bus. The FIFO buffers on the SPI Module are not 
+addressable. 
+ 
+ SPI Rx Sample Delay Register – 13.2.24
+HAL_DICE3_SPI_RXDLY 
+Address offset: 0x00FC   HAL_DICE3_SPI_RXDLY 
+This register is valid only for SPI 0 and SPI 1. For SPI 2, this register does not exist and 
+writing to its address location has no effect; reading from its address returns zero (0). 
+This register controls the number of ssi_clk cycles that are delayed - from the default 
+sample time - before the actual sample of the rxd input signal occurs. It is impossible to 
+write to this register when the SPI Module is enabled; the SPI Module is enabled and 
+disabled by writing to the HAL_DICE3_SPI_SSIENR register. 
+ 
+15 : 0
+RSD
+ 
+Table 13.30  SPI Sample Delay Register bit assignments 
+Name Bit Reset Dir Description 
+RSD 7:0 0 RW 
+Receive Data (rxd) Sample Delay. This register is 
+used to delay the sample of the rxd input signal. 
+Each value represents a single ssi_clk delay on the 
+sample of the rxd signal. 
+NOTE: If this register is programmed with a value 
+that exceeds the depth of the internal shift 
+registers (4), a zero (0) delay will be applied to the 
+rxd sample. 
+ 
+  
+
+=== PDF PAGE 30 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 13-30     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+13.3 Revisions 
+ 
+Table 13.31  Document revision history 
+Date Rev. By Change 
+May 6, 2015 0.9.0-41360 BK Initial publication 
+    
+    
+ 

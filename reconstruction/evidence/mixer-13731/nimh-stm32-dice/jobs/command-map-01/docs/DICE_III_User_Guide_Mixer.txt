@@ -1,0 +1,269 @@
+
+=== PDF PAGE 1 ===
+  
+TCD30xx User Guide 
+ 
+Copyright  2014-2015, TC Applied Technologies.  All rights reserved.     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Mixer 
+ 
+ 
+Mixer Module 
+ 
+Revision 0.9.0-41360 
+ 
+ 
+May 6, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-2     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+LIST OF TABLES ................................................................................................................................................. 27-3 
+LIST OF FIGURES ................................................................................................................................................ 27-4 
+27 MIXER ................................................................................................................................................... 27-5 
+27.1 OVERVIEW .................................................................................................................................................. 27-5 
+27.2 MODULE CONFIGURATION ............................................................................................................................. 27-6 
+ Mixer Control Register – HAL_DICE3_MIXER_CSR ........................................................................... 27-6 27.2.1
+ Mixer Coefficients Register – HAL_DICE3_MIXER_COEFF ................................................................ 27-7 27.2.2
+ Mixer Saturation Register – HAL_DICE3_MIXER_SAT ...................................................................... 27-8 27.2.3
+27.3 REVISIONS ................................................................................................................................................... 27-9 
+
+=== PDF PAGE 3 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-3     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Tables 
+TABLE 27.1 MIXER MODULE REGISTER SUMMARY .............................................................................................................. 27-6 
+TABLE 27.2 MIXER CONTROL REGISTER BIT ASSIGNMENTS ................................................................................................... 27-6 
+TABLE 27.3 MIXER COEFFICIENTS REGISTER BIT ASSIGNMENTS .............................................................................................. 27-7 
+TABLE 27.4  DOCUMENT REVISION HISTORY ...................................................................................................................... 27-9 
+ 
+
+=== PDF PAGE 4 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-4     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Figures 
+FIGURE 27.1:  GENERIC MIXER CONFIGURATION ................................................................................................................ 27-5 
+ 
+  
+
+=== PDF PAGE 5 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-5     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+27 Mixer 
+ 
+27.1 Overview 
+The Mixer module is a 32 input, 32 output, dynamically configurable matrix. Mixer inputs 
+and outputs are connected to the streaming engine and other audio paths via the Router 
+module [bkbk: link to Router section]. The module also provides saturation status for each 
+output so that software may indicate clipping. The module is configured by specifying the 
+number of inputs (INS) and outputs (OUTS) and global enabled state, and coefficients are 
+programmed by indexing INn, OUTn coordinates in the matrix. Coefficients are interpreted 
+as 16-bit signed integers, where 0x2000 represents unity and 0x7fff is equivalent to +12dB 
+gain. Saturation occurs when the final sum in an output is larger than  ±1.0 in the 24-bit 
+fixed-point result, i.e. when the value is either 0x7FFFFFFor 0x800000. 
+ 
+On every sample cycle, the mixer will compute the results for all outputs and present them 
+to the router in the following sample period. This means that in sample[0] all input values 
+are transferred from the router, all active mixer outputs are calculated in sample[1] and 
+transferred out of the router in sample[2]. This results in a latency of one sample, not 
+including the 2 router transfers. 
+0
+1
+INS-1
+0 1 OUTS-1
+0, 0 0, 1 0, OUTS-1
+1, 0 1, 1 1, OUTS-1
+2, 0 2, 1
+INS-1, 
+OUTS-1
+INS
+INS, 0 INS, 1
+INS, 
+OUTS-1
+OUTS
+0, OUTS
+1, OUTS
+INS-1, 
+OUTS
+INS, 
+OUTS
+ 
+Figure 27.1:  generic mixer configuration 
+ 
+The mixer will compute up to 32x32 multiplications. It can be programmed to compute a 
+smaller matrix in order to save power and to accommodate higher sample rates. The total 
+number of route multiplications the mixer can handle (M = INS*OUTS) is found by: 
+ 
+M = min( Fsys_clk/Fsrate - 8, 1024) 
+ 
+For example: Fsys_clk = 100MHz 
+Fsrate = 48k  M = 1024 
+Fsrate = 96k  M = 1024 
+Fsrate = 192k  M = 512 
+
+=== PDF PAGE 6 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-6     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ 
+27.2 Module Configuration 
+Table 27.1 Mixer Module register summary 
+Address Register Description 
+0xC4000200 HAL_DICE3_MIXER_CSR Mixer Control Register 
+0xC4000204 HAL_DICE3_MIXER_COEFF Mixer Coefficient Register 
+0xC400020C HAL_DICE3_MIXER_SAT Mixer Saturation Register 
+ 
+ 
+ Mixer Control Register – HAL_DICE3_MIXER_CSR 27.2.1
+Address offset: 0xC4000200    HAL_DICE3_MIXER_CSR 
+ 
+This register is used to configure the number of active mixer inputs and outputs. The entire 
+mixer can be enabled and disabled with this register, and it includes a bit that indicates a 
+process overflow state. The ERR bit indicates that the mixer did not have time to process all 
+coefficient multiplies and adds in a given cycle. 
+ 
+28:24
+ 23:21
+ 20:16
+15:2
+ 1
+ 0
+INS
+Reserved
+OUTS
+Reserved
+ERR
+EN
+31:29
+Reserved
+ 
+ 
+Table 27.2 Mixer Control Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:29 0 N/A Reserved 
+INS-1 28:24 0 RW The number of mixer inputs less one (program 31 for 32 inputs). 
+Reserved 23:21 0 N/A Reserved 
+OUTS-1 20:16 0 RW The number of mixer outputs less one (program 31 for 32 outputs). 
+Reserved 15:2 0 N/A Reserved 
+
+=== PDF PAGE 7 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-7     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+ERR 1 0 RW 
+Overflow error state. When set 
+this confirms that the mixer can 
+compute all outputs as configured. 
+Write 1 to clear. 
+EN 0 0 RW Global enable/disable. Set this bit to enable the mixer. 
+ 
+ 
+ Mixer Coefficients Register – HAL_DICE3_MIXER_COEFF 27.2.2
+Address offset: 0xC4000204    HAL_DICE3_MIXER_COEFF 
+ 
+This register is used to configure the coefficient for a coordinate in the mix matrix. 
+ 
+31:27
+ 26:22
+ 21:16
+15:0
+OUTn
+INn
+Reserved
+VAL
+ 
+ 
+Table 27.3 Mixer Coefficients Register bit assignments 
+Name Bit Reset Dir Description 
+OUTn 31:27 0 RW Output id 
+Reserved 26:22 N/A RW Reserved 
+INn 21:16 0 RW Input id 
+VAL 15:0 0 RW 
+Gain value for the specified 
+coefficient at INn, OUTn. This is 
+interpreted as a 16-bit signed 
+number, where 0x2000 is unity 
+and 0x7fff is +12dB. 
+ 
+ 
+  
+
+=== PDF PAGE 8 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-8     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Mixer Saturation Register – HAL_DICE3_MIXER_SAT 27.2.3
+Address offset: 0xC400020C    HAL_DICE3_MIXER_SAT 
+ 
+This register is used to read the saturation status of the 32 possible mixer outputs. When a 
+bit is set, the corresponding mixer output was in a saturation state one or more times since 
+this register was last read. This register is read-to-clear. 
+ 
+31
+ 30
+ 1
+ 0
+Output 31 saturation status
+Output 0 saturation status
+ 
+  
+
+=== PDF PAGE 9 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 27-9     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+27.3 Revisions 
+ 
+Table 27.4  Document revision history 
+Date Rev. By Change 
+May 6, 2015 0.9.0-41360 BK Initial publication 
+    
+    
+ 

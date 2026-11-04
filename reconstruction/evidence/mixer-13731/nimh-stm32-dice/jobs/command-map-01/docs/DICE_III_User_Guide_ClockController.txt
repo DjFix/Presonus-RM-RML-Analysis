@@ -1,0 +1,362 @@
+
+=== PDF PAGE 1 ===
+  
+TCD30xx User Guide 
+ 
+Copyright  2014-2015, TC Applied Technologies.  All rights reserved.    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Clock Controller 
+ 
+ 
+ 
+Revision 0.9.0-41360 
+ 
+ 
+May 6, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-2     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+LIST OF TABLES ........................................................................................................................................... 18-3 
+LIST OF FIGURES .......................................................................................................................................... 18-4 
+18 CLOCK CONTROLLER ........................................................................................................................ 18-5 
+18.1 OVERVIEW ............................................................................................................................................ 18-5 
+18.2 MODULE CONFIGURATION ....................................................................................................................... 18-5 
+ Clock Domain Register – DICE_CLK_DOMAIN ............................................................................ 18-6 18.2.1
+ Clock External Clock Register – DICE_CLK_EXT_CLK .................................................................. 18-7 18.2.2
+ Clock Reference Event Register – DICE_CLK_REF_EVT ............................................................... 18-8 18.2.3
+ Clock Control0 Register – DICE_CLK_CTRL0 ............................................................................... 18-9 18.2.4
+ Clock Control1 Register – DICE_CLK_CTRL1 ............................................................................... 18-9 18.2.5
+ Clock Prescale Register – DICE_CLK_PRESCALE........................................................................ 18-10 18.2.6
+ Clock Count Value0 Register – DICE_CLK_CNT_VAL ................................................................ 18-10 18.2.7
+ Clock Count Value1 Register – DICE_CLK_CNT_VAL1 .............................................................. 18-10 18.2.8
+ Clock Count Max Register – DICE_CLK_CNT_MAX ................................................................... 18-10 18.2.9
+ Clock Count Max1 Register – DICE_CLK_CNT_MAX1 ........................................................... 18-11 18.2.10
+18.3 REVISIONS ........................................................................................................................................... 18-12 
+
+=== PDF PAGE 3 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-3     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Tables 
+TABLE 18.1  CLOCK CONTROLLER BASE ADDRESS .......................................................................................................... 18-5 
+TABLE 18.2  CLOCK CONTROLLER REGISTER SUMMARY .................................................................................................. 18-5 
+TABLE 18.3  CLOCK DOMAIN REGISTER BIT ASSIGNMENTS .............................................................................................. 18-6 
+TABLE 18.4  CLOCK EXTERNAL CLOCK REGISTER BIT ASSIGNMENTS ................................................................................... 18-7 
+TABLE 18.5  CLOCK REFERENCE EVENT REGISTER BIT ASSIGNMENTS ................................................................................. 18-8 
+TABLE 18.6  CLOCK CONTROL0 REGISTER BIT ASSIGNMENTS ........................................................................................... 18-9 
+TABLE 18.7  CLOCK CONTROL1 REGISTER BIT ASSIGNMENTS ......................................................................................... 18-10 
+TABLE 18.8  CLOCK PRESCALE REGISTER BIT ASSIGNMENTS ........................................................................................... 18-10 
+TABLE 18.9  DOCUMENT REVISION HISTORY .............................................................................................................. 18-12 
+ 
+
+=== PDF PAGE 4 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-4     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Figures 
+NO TABLE OF FIGURES ENTRIES FOUND. 
+  
+
+=== PDF PAGE 5 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-5     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+18 Clock Controller 
+ 
+18.1 Overview 
+The Clock Controller controls the routing of audio sample clocks through the system, it 
+selects sources for the JET PLL and has features to count sample clocks. 
+ 
+18.2 Module Configuration 
+The Clock Controller is addressed through one base address, CYGHWR_HAL_DICE3_CC. 
+ 
+Table 18.1  Clock Controller base address 
+Base address GPIO module number 
+0xC4000100 Clock Controller 
+ 
+Table 18.2  Clock Controller register summary 
+Address Offset Register Description 
+0x0004 DICE_CLK_DOMAIN Clock Controller Domain Register 
+0x0008 DICE_CLK_EXT_CLK Clock Controller External Clock Register 
+0x0010 DICE_CLK_REF_EVT Clock Controller Reference Event Register 
+0x0014 DICE_CLK_CNT_CTRL Clock Controller Count Control 1 Register 
+0x0018 DICE_CLK_CNT_CTRL1 Clock Controller Count Control 1 Register 
+0x0034 DICE_CLK_PRESCALE Clock Controller Prescale Register 
+0x0040 DICE_CLK_CNT_VAL Clock Controller Count Value 0 Register 
+0x0044 DICE_CLK_CNT_VAL1 Clock Controller Count Value 1 Register 
+0x0048 DICE_CLK_CNT_MAX Clock Controller Max Count 0 Register 
+0x004C DICE_CLK_CNT_MAX1 Clock Controller Max Count 1 Register 
+ 
+  
+
+=== PDF PAGE 6 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-6     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Clock Domain Register – DICE_CLK_DOMAIN 18.2.1
+Address offset: 0x0004     DICE_CLK_DOMAIN 
+This register is used to set the rate mode and frame clock source for the system clock.  
+ 
+31:6 5:4 3:2 1:0
+Reserved
+SYS_MODE
+Reserved
+FBSCR
+ 
+Table 18.3  Clock Domain Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:6 0 N/A Reserved 
+SYS_MODE 5:4 0 RW 
+0 = low 
+1 = mid 
+2 = high 
+Reserved 3:2 0 N/A Reserved 
+FBSCR 1:0 0 RW 
+Frame clock source. 
+0 = Standard from Jet PLL 
+1 = From WCLK0 input (if JET PLL is not used 
+and chip is slaved to another chip) 
+2 = From WCLK1 input (if JET PLL is not used 
+and chip is slaved to another chip) 
+3 = Free running (no 1fs reference) 
+ 
+FBSCR: In all normal JET PLL cases this will be 0. In the case where the DICE III sync 
+source is from an external source such as another DICE chip the FB signal can come 
+from one of the WCLK inputs. In that case the system should be programmed to take 
+F1024BR or F2048BR from the VCO in pin as well. 
+  
+
+=== PDF PAGE 7 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-7     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Clock External Clock Register – DICE_CLK_EXT_CLK 18.2.2
+Address offset: 0x0008     DICE_CLK_EXT_CLK 
+This register is used to select the source for the external Word Clock outputs. 
+ 
+31:6 5:3 2:0
+Reserved
+WCK1
+WCK0
+ 
+Table 18.4  Clock External Clock Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:6 0 N/A Reserved 
+WCK1 5:3 0 RW 
+Select source for word clock outputs 
+0 = Off 
+1 = fbr (base rate) 
+2 = f2br (base rate X 2) 
+3 = f4br (base rate X 4) 
+4 = 1fs  (actual fs based on rate mode) 
+5 = ref  (the reference event selected for the JET 
+PLL) 
+WCK0 2:0 0 RW 
+Select source for word clock outputs 
+0 = Off 
+1 = fbr (base rate) 
+2 = f2br (base rate X 2) 
+3 = f4br (base rate X 4) 
+4 = 1fs  (actual fs based on rate mode) 
+5 = ref  (the reference event selected for the JET 
+PLL) 
+ 
+  
+
+=== PDF PAGE 8 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-8     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Clock Reference Event Register – DICE_CLK_REF_EVT 18.2.3
+Address offset: 0x0010     DICE_CLK_REF_EVT 
+This register is used to select the reference clock used for the DICE III JET PLL module.  
+ 
+31:5 4:0
+Reserved
+REF_EVT
+ 
+Table 18.5  Clock Reference Event Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:5 0 N/A Reserved 
+REF_EVENT 4:0 0 RW 
+reference clock used for JET PLL 
+0  = none 
+1  = adat_sync[0] 
+2  = adat_sync[1] 
+3  = wclk_in[0] 
+4 = wclk_in[1]                      
+5  = aes_sync 
+6  = none  
+7  = usb_sync 
+8  = prescale_out                      
+9  = avb_time_8khz 
+10 = avb_time_match                      
+11 = none        
+12 = syt_clk_1394[0] 
+13 = syt_clk_1394[1] 
+13 = none 
+15 = none                       
+16-31 = syt_clk_avb[0-15] 
+ 
+  
+
+=== PDF PAGE 9 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-9     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Clock Control0 Register – DICE_CLK_CTRL0 18.2.4
+Address offset: 0x0014     DICE_CLK_CTRL0 
+The counter counts rising edge to rising edge. When in phase counting mode, it counts 
+from rising edge of src1 to rising edge of src2. 
+ 
+31:17 16 15:13 12:8 7:5 4:0
+Reserved
+SRM
+Reserved
+SRC_2
+Reserved
+SRC_1
+ 
+Table 18.6  Clock Control0 Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:17 0 N/A Reserved 
+SRM 16 0 RW 1 = measure the period for SRC_1 
+0 = measure phase between SRC_1 and SRC_2 
+Reserved 15:13 0 RW Reserved 
+SRC_2 12:8 0 RW Selects from the same sources as REF_EVENT 
+Reserved 7:5 0 RW Reserved 
+SRC_1 4:0 0 RW Selects from the same sources as REF_EVENT 
+ 
+ 
+ Clock Control1 Register – DICE_CLK_CTRL1 18.2.5
+Address offset: 0x0018     DICE_CLK_CTRL1 
+The counter counts rising edge to rising edge. When in phase counting mode, it counts 
+from rising edge of src1 to rising edge of src2. 
+ 
+31:17 16 15:13 12:8 7:5 4:0
+Reserved
+SRM
+Reserved
+SRC_2
+Reserved
+SRC_1
+ 
+ 
+ 
+
+=== PDF PAGE 10 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-10     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Table 18.7  Clock Control1 Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:17 0 N/A Reserved 
+SRM 16 0 RW 1 = measure the period for SRC_1 
+0 = measure phase between SRC_1 and SRC_2 
+Reserved 15:13 0 RW Reserved 
+SRC_2 12:8 0 RW Selects from the same sources as REF_EVENT 
+Reserved 7:5 0 RW Reserved 
+SRC_1 4:0 0 RW Selects from the same sources as REF_EVENT 
+ 
+ 
+ Clock Prescale Register – DICE_CLK_PRESCALE 18.2.6
+Address offset: 0x0034     DICE_CLK_PRESCALE 
+This register is used to set the divider value used for generating internal audio clocks. 
+ 
+31:17 16:0
+Reserved
+PRESCALE
+ 
+Table 18.8  Clock Prescale Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:17 0 N/A Reserved 
+PRESCALE 16:0 0 RW 
+The divider value used for generating internal 
+audio clocks. The clock generated is 
+jet_clk/PRESCALE, jet_clk is typically 50MHz. 
+ 
+ Clock Count Value0 Register – DICE_CLK_CNT_VAL 18.2.7
+Address offset: 0x0040     DICE_CLK_CNT_VAL 
+This register contains the last count from sr counter 0, counted in sys_clk clocks (typ. 
+100MHz) 
+ 
+ Clock Count Value1 Register – DICE_CLK_CNT_VAL1 18.2.8
+Address offset: 0x0044     DICE_CLK_CNT_VAL1 
+This register contains the last count from sr counter 1, counted in sys_clk clocks (typ. 
+100MHz) 
+ 
+ Clock Count Max Register – DICE_CLK_CNT_MAX 18.2.9
+Address offset: 0x0048     DICE_CLK_CNT_MAX 
+
+=== PDF PAGE 11 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-11     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+This register contains the count at which counters saturate. 
+ 
+ Clock Count Max1 Register – DICE_CLK_CNT_MAX1 18.2.10
+Address offset: 0x004C     DICE_CLK_CNT_MAX1 
+This register contains the count at which counters saturate. 
+ 
+  
+
+=== PDF PAGE 12 ===
+TCD30XX User Guide          5/6/2015  
+ 
+ 18-12     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+18.3 Revisions 
+ 
+Table 18.9  Document revision history 
+Date Rev. By Change 
+May 6, 2015 0.9.0-41360 BK Initial publication 
+    
+    
+ 
+ 
+ 

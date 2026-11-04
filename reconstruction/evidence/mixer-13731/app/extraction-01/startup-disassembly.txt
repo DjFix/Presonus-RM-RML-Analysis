@@ -1,0 +1,150 @@
+
+# _ZL13noaa_arm_code
+080047b8 00b5     push {lr}
+080047ba 81b0     sub sp, #4
+080047bc 00f0defa bl #0x8004d7c
+080047c0 364b     ldr r3, [pc, #0xd8]
+080047c2 3749     ldr r1, [pc, #0xdc]
+080047c4 0222     movs r2, #2
+080047c6 41f82230 str.w r3, [r1, r2, lsl #2]
+080047ca 0132     adds r2, #1
+080047cc 0f2a     cmp r2, #0xf
+080047ce 3448     ldr r0, [pc, #0xd0]
+080047d0 f9d1     bne #0x80047c6
+080047d2 344b     ldr r3, [pc, #0xd0]
+080047d4 dff8d0c0 ldr.w ip, [pc, #0xd0]
+080047d8 c0f82cc0 str.w ip, [r0, #0x2c]
+080047dc 8363     str r3, [r0, #0x38]
+080047de 334b     ldr r3, [pc, #0xcc]
+080047e0 41f82230 str.w r3, [r1, r2, lsl #2]
+080047e4 0132     adds r2, #1
+080047e6 4b2a     cmp r2, #0x4b
+080047e8 2d48     ldr r0, [pc, #0xb4]
+080047ea f9d1     bne #0x80047e0
+080047ec 304a     ldr r2, [pc, #0xc0]
+080047ee 3149     ldr r1, [pc, #0xc4]
+080047f0 4ff00053 mov.w r3, #0x20000000
+080047f4 1360     str r3, [r2]
+080047f6 c162     str r1, [r0, #0x2c]
+080047f8 bff35f8f dmb sy
+080047fc 00df     svc #0
+080047fe 2e49     ldr r1, [pc, #0xb8]
+08004800 c0f82cc0 str.w ip, [r0, #0x2c]
+08004804 dff8b4c0 ldr.w ip, [pc, #0xb4]
+08004808 6145     cmp r1, ip
+0800480a 08d2     bhs #0x800481e
+0800480c 2c48     ldr r0, [pc, #0xb0]
+0800480e 0022     movs r2, #0
+08004810 8358     ldr r3, [r0, r2]
+08004812 8b50     str r3, [r1, r2]
+08004814 0432     adds r2, #4
+
+# _ZL13nimh_arm_code
+08004510 10b5     push {r4, lr}
+08004512 00f097fa bl #0x8004a44
+08004516 3048     ldr r0, [pc, #0xc0]
+08004518 3049     ldr r1, [pc, #0xc0]
+0800451a 0223     movs r3, #2
+0800451c 41f82300 str.w r0, [r1, r3, lsl #2]
+08004520 0133     adds r3, #1
+08004522 0f2b     cmp r3, #0xf
+08004524 2d4a     ldr r2, [pc, #0xb4]
+08004526 f9d1     bne #0x800451c
+08004528 2d48     ldr r0, [pc, #0xb4]
+0800452a 2e49     ldr r1, [pc, #0xb8]
+0800452c 2e4c     ldr r4, [pc, #0xb8]
+0800452e d062     str r0, [r2, #0x2c]
+08004530 9163     str r1, [r2, #0x38]
+08004532 42f82340 str.w r4, [r2, r3, lsl #2]
+08004536 0133     adds r3, #1
+08004538 4b2b     cmp r3, #0x4b
+0800453a 2849     ldr r1, [pc, #0xa0]
+0800453c f9d1     bne #0x8004532
+0800453e 2b4b     ldr r3, [pc, #0xac]
+08004540 4ff00052 mov.w r2, #0x20000000
+08004544 1a60     str r2, [r3]
+08004546 2a4b     ldr r3, [pc, #0xa8]
+08004548 cb62     str r3, [r1, #0x2c]
+0800454a bff35f8f dmb sy
+0800454e 00df     svc #0
+08004550 284a     ldr r2, [pc, #0xa0]
+08004552 c862     str r0, [r1, #0x2c]
+08004554 284b     ldr r3, [pc, #0xa0]
+08004556 2949     ldr r1, [pc, #0xa4]
+08004558 03e0     b #0x8004562
+0800455a 52f8040b ldr r0, [r2], #4
+0800455e 43f8040b str r0, [r3], #4
+08004562 8b42     cmp r3, r1
+08004564 f9d3     blo #0x800455a
+08004566 264b     ldr r3, [pc, #0x98]
+08004568 2649     ldr r1, [pc, #0x98]
+0800456a 0022     movs r2, #0
+0800456c 01e0     b #0x8004572
+
+# _ZL12esa_arm_code
+080040e4 10b5     push {r4, lr}
+080040e6 00f097fa bl #0x8004618
+080040ea 3048     ldr r0, [pc, #0xc0]
+080040ec 3049     ldr r1, [pc, #0xc0]
+080040ee 0223     movs r3, #2
+080040f0 41f82300 str.w r0, [r1, r3, lsl #2]
+080040f4 0133     adds r3, #1
+080040f6 0f2b     cmp r3, #0xf
+080040f8 2d4a     ldr r2, [pc, #0xb4]
+080040fa f9d1     bne #0x80040f0
+080040fc 2d48     ldr r0, [pc, #0xb4]
+080040fe 2e49     ldr r1, [pc, #0xb8]
+08004100 2e4c     ldr r4, [pc, #0xb8]
+08004102 d062     str r0, [r2, #0x2c]
+08004104 9163     str r1, [r2, #0x38]
+08004106 42f82340 str.w r4, [r2, r3, lsl #2]
+0800410a 0133     adds r3, #1
+0800410c 4b2b     cmp r3, #0x4b
+0800410e 2849     ldr r1, [pc, #0xa0]
+08004110 f9d1     bne #0x8004106
+08004112 2b4b     ldr r3, [pc, #0xac]
+08004114 4ff00052 mov.w r2, #0x20000000
+08004118 1a60     str r2, [r3]
+0800411a 2a4b     ldr r3, [pc, #0xa8]
+0800411c cb62     str r3, [r1, #0x2c]
+0800411e bff35f8f dmb sy
+08004122 00df     svc #0
+08004124 284a     ldr r2, [pc, #0xa0]
+08004126 c862     str r0, [r1, #0x2c]
+08004128 284b     ldr r3, [pc, #0xa0]
+0800412a 2949     ldr r1, [pc, #0xa4]
+0800412c 03e0     b #0x8004136
+0800412e 52f8040b ldr r0, [r2], #4
+08004132 43f8040b str r0, [r3], #4
+08004136 8b42     cmp r3, r1
+08004138 f9d3     blo #0x800412e
+0800413a 264b     ldr r3, [pc, #0x98]
+0800413c 2649     ldr r1, [pc, #0x98]
+0800413e 0022     movs r2, #0
+08004140 01e0     b #0x8004146
+
+# _ZL18dice3_surface_code
+00000200 0e0000ea b #0x240
+00000204 18f09fe5 ldr pc, [pc, #0x18]
+00000208 18f09fe5 ldr pc, [pc, #0x18]
+0000020c 18f09fe5 ldr pc, [pc, #0x18]
+00000210 18f09fe5 ldr pc, [pc, #0x18]
+00000214 00000000 andeq r0, r0, r0
+00000218 18f09fe5 ldr pc, [pc, #0x18]
+0000021c 18f09fe5 ldr pc, [pc, #0x18]
+00000220 40000000 andeq r0, r0, r0, asr #32
+00000224 5c030000 andeq r0, r0, ip, asr r3
+00000228 80030000 andeq r0, r0, r0, lsl #7
+0000022c ac030000 andeq r0, r0, ip, lsr #7
+00000230 c8030000 andeq r0, r0, r8, asr #7
+00000234 00000000 andeq r0, r0, r0
+00000238 c8040000 andeq r0, r0, r8, asr #9
+0000023c 90040000 muleq r0, r0, r4
+00000240 10d49fe5 ldr sp, [pc, #0x410]
+00000244 f40c00eb bl #0x361c
+00000248 060c00eb bl #0x3268
+0000024c 00700fe1 mrs r7, apsr
+00000250 1f7007e2 and r7, r7, #0x1f
+00000254 130057e3 cmp r7, #0x13
+00000258 0700000a beq #0x27c
+0000025c 0000a0e3 mov r0, #0

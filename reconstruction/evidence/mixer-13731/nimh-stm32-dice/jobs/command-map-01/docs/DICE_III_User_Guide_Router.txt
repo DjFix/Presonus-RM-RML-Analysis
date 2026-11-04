@@ -1,0 +1,413 @@
+
+=== PDF PAGE 1 ===
+  
+TCD30xx User Guide 
+ 
+Copyright  2014-2015, TC Applied Technologies.  All rights reserved.    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Router 
+ 
+ 
+Revision 0.9.0-41360 
+ 
+ 
+May 6, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-2     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+LIST OF TABLES ................................................................................................................................................. 19-3 
+LIST OF FIGURES ................................................................................................................................................ 19-4 
+19 ROUTER ................................................................................................................................................. 19-5 
+19.1 OVERVIEW .................................................................................................................................................. 19-5 
+19.2 MODULE CONFIGURATION ............................................................................................................................. 19-6 
+ Router Control Register – HAL_DICE3_RTR_CTRL ............................................................................ 19-6 19.2.1
+ Router Peak Control Register – HAL_DICE3_RTR_PKCTRL ............................................................... 19-7 19.2.2
+ Router Write Low Register – HAL_DICE3_RTR_WRLO ..................................................................... 19-7 19.2.3
+ Router Write High Register – HAL_DICE3_RTR_WRHI ..................................................................... 19-8 19.2.4
+ Router Table – HAL_DICE3_RTR_TBL ............................................................................................. 19-11 19.2.5
+ Router Peak Data – HAL_DICE3_RTR_PK ....................................................................................... 19-11 19.2.6
+19.3 REVISIONS ................................................................................................................................................. 19-12 
+
+=== PDF PAGE 3 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-3     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Tables 
+TABLE 19.1  ROUTER BASE ADDRESSES ............................................................................................................................. 19-6 
+TABLE 19.2 ROUTER MODULE CONFIGURATION REGISTER SUMMARY ..................................................................................... 19-6 
+TABLE 19.3 ROUTER CONTROL REGISTER BIT ASSIGNMENTS ................................................................................................. 19-6 
+TABLE 19.4 ROUTER PEAK CONTROL REGISTER BIT ASSIGNMENTS.......................................................................................... 19-7 
+TABLE 19.5 ROUTER WRITE LOW REGISTER BIT ASSIGNMENTS .............................................................................................. 19-8 
+TABLE 19.6 ROUTER WRITE HIGH REGISTER BIT ASSIGNMENTS ............................................................................................. 19-9 
+TABLE 19.7  ROUTER SOURCE AND DESTINATION DEVICE ASSIGNMENTS .............................................................................. 19-10 
+TABLE 19.8  DOCUMENT REVISION HISTORY .................................................................................................................... 19-12 
+ 
+
+=== PDF PAGE 4 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-4     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+List of Figures 
+NO TABLE OF FIGURES ENTRIES FOUND. 
+  
+
+=== PDF PAGE 5 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-5     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+19 Router 
+ 
+19.1 Overview 
+The Router moves audio from source devices to destination devices. The router uses a table 
+and executes all routes in the table for each sample period. If the same destination is listed 
+more than once in the router table, the latter will be the one being used. 
+ 
+The router state machine runs on sys_clk and the actual maximum number of routes 
+depends on the relation between the sample rate and sys_clk. 
+ 
+In a typical DICE III application sys_clk will be running at 100MHz. The router reserves 8 
+clocks for pipelining so the maximum number of routes at a given sample rate can be 
+calculated as: 
+nRoutes = MIN( (0.5*Fsys_clk/Fsrate) - 8, 512) 
+ 
+Example: Fsys_clk = 100MHz 
+Fsrate = 48k nRoutes = 512 
+Fsrate = 96k nROutes = 512 
+Fsrate = 192k nRoutes = 252 
+ 
+The router also contains a peak measurement mechanism. While the routes are being 
+processed each audio sample is compared to a locally stored maximum value. If the 
+absolute value of the routed sample is larger than the stored value, the new value will be 
+stored. Only the top 12 bits of the unsigned absolute value is stored. 
+ 
+The system uses a ping/pong buffer style. The host writes to a register to flip the buffers. 
+The host can now read the captured peaks at will while the new peaks get collected into the 
+other buffer. 
+ 
+The router can also be used to convert values from fixed point to floating point and from 
+floating point to fixed point. The router has 64 channels of float to fixed-point conversion 
+and 64 channels of fixed to floating-point conversion. 
+ 
+In addition to routing between DICE audio peripheral devices, the router can move samples 
+to and from the ARM Subsystem (AIO) Module. The AIO module enables routing of up to 64 
+channels of audio to and from the ARM sub-system. The ARM can then process those 
+samples in an interrupt routine. 
+ 
+  
+
+=== PDF PAGE 6 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-6     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+19.2 Module Configuration 
+The router is addressed through 3 base addresses, the first being a configuration register 
+and the others are memory spaces which contain offsets which can be read to obtain router 
+configuration and peak values for each associated router output entry. 
+ 
+ 
+Table 19.1  Router base addresses 
+Base address  Description 
+0xC4000000 DICE3_RTR_REG Router Control 
+0x50008000 DICE3_RTR_TBL Router Table 
+0x50008800 DICE3_RTR_PK Peak Data 
+0xC4000300 DICE3_FLT_FIX Float/Fix Control 
+ 
+Table 19.2 Router Module Configuration register summary 
+Address Register Description 
+0xC4000000 HAL_DICE3_RTR_CTRL Router Control Register 
+0xC4000000 HAL_DICE3_RTR_PKCTRL Router Peak Control Register 
+0xC4000000 HAL_DICE3_RTR_WRLO Router Write Low Register 
+0xC4000000 HAL_DICE3_RTR_WRHI Router Write High Register 
+0x50008000 HAL_DICE3_RTR_TBL Router Table 
+0x50008800 HAL_DICE3_RTR_PK Router Peak Data 
+ 
+ 
+ Router Control Register – HAL_DICE3_RTR_CTRL 19.2.1
+Address: 0xC4000000     HAL_DICE3_RTR_CTRL 
+ 
+31:17 16:8 7:2 1 0
+Reserved
+ENTRIES-1
+Reserved
+ERR
+EN
+ 
+ 
+ 
+Table 19.3 Router Control Register bit assignments 
+Name Bit Reset Dir Description 
+
+=== PDF PAGE 7 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-7     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Name Bit Reset Dir Description 
+Reserved 31:17 0 N/A Reserved 
+ENTRIES-1 16:8 0 RW Number of routes to run less 1 (i.e. 10 means 11 routes). 
+Reserved 7:2 0 N/A Reserved 
+ERR 1 0 RW 
+Set by hardware if router overflow 
+(all router moves cannot complete 
+in one cycle). Clear by writing 1. 
+EN 0 0 RW Set to enable the router 
+ 
+ 
+ Router Peak Control Register – HAL_DICE3_RTR_PKCTRL 19.2.2
+Address: 0xC4000004     HAL_DICE3_RTR_PKCTRL 
+ 
+This register is used to capture a snapshot of the peak values, which can then be read from 
+the peak data table (see below). 
+ 
+31:1 0
+Reserved
+CPT
+ 
+ 
+Table 19.4 Router Peak Control Register bit assignments 
+Name Bit Reset Dir Description 
+Reserved 31:1 0 N/A Reserved 
+CPT 1 0 W 
+Write-only, read is undefined. 
+Write 1 to swap to the other of the 
+two peak capture buffers. This will 
+freeze the current peaks since the 
+last CPT while new peaks will be 
+collected in the backup buffer.  
+ 
+ Router Write Low Register – HAL_DICE3_RTR_WRLO 19.2.3
+Address offset: 0xC4000008     HAL_DICE3_RTR_WRLO 
+ 
+
+=== PDF PAGE 8 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-8     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+23:19 18:12 11:7 6:0
+SOURCE_DEV
+SOURCE_CH
+DST_DEV
+DST_CH
+31:24
+ROUTE_ID
+ 
+ 
+Writing to this register will program a route into the location specified. Use this register to 
+write any of the upper 256 routes. 
+The routes can also be written by writing directly to the CYGHWR_HAL_DICE3_RTR_TBL 
+offset location 0 to 4*511 but these writes are unpredictable unless the router is not 
+enabled. 
+ 
+Table 19.5 Router Write Low Register bit assignments 
+Name Bit Reset Dir Description 
+ROUTE_ID 31:24 0 W Write-only, read undefined. Route number to write. 
+SOURCE_DEV 23:19 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+SOURCE_CH 18:12 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+DEST_ DEV 11:7 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+DEST_CH 6:0 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+ 
+ 
+ Router Write High Register – HAL_DICE3_RTR_WRHI 19.2.4
+Address: 0xC400000C     HAL_DICE3_RTR_WRHI 
+ 
+Writing to this register will program a route into the location specified. Use this register to 
+write any of the upper 256 routes. 
+The routes can also be written by writing directly to the CYGHWR_HAL_DICE3_RTR_TBL 
+offset location 0 to 4*511 but these writes are unpredictable unless the router is not 
+enabled. 
+ 
+
+=== PDF PAGE 9 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-9     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+23:19 18:12 11:7 6:0
+SOURCE_DEV
+SOURCE_CH
+DST_DEV
+DST_CH
+31:24
+ROUTE_ID
+ 
+ 
+ 
+Table 19.6 Router Write High Register bit assignments 
+Name Bit Reset Dir Description 
+ROUTE_ID 31:24 0 W 
+Write-only, read undefined. Route 
+number to write. This will write 
+route number ROUTE+256. 
+SOURCE_DEV 23:19 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+SOURCE_CH 18:12 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+DEST_DEV 11:7 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+DEST_CH 6:0 0 W 
+Write-only, read undefined. Router 
+word to write, see definition 
+below. 
+ 
+  
+
+=== PDF PAGE 10 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-10     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+Table 19.7  Router Source and Destination Device Assignments 
+Source Id Device  Destination Id Device 
+0 0x00 DEV_MUTED  0 0x00 DEV_RES_TX0 
+1 0x01 DEV_INS_RX0  1 0x01 DEV_INS_TX0 
+2 0x02 DEV_RES_RX2 
+Reserved 
+ 2 0x02 DEV_RES_TX2 
+3 0x03 DEV_AES_RX0  3 0x03 DEV_AES_TX0 
+4 0x04 DEV_ADAT_RX  4 0x04 DEV_ADAT_TX 
+51 0x05 DEV_FLTFIX_RX0  52 0x05 DEV_FLTFIX_TX0 
+6 0x06 DEV_MIXER_RX0  6 0x06 DEV_MIXER_TX0 
+7 0x07 DEV_CPU_RX0  7 0x07 DEV_CPU_TX0 
+8 0x08 DEV_AVS_RX0  8 0x08 DEV_AVS_TX0 
+9 0x09 DEV_AVS_RX1  9 0x09 DEV_AVS_TX1 
+10 0x0A DEV_RES_RX10  10 0x0A DEV_RES_TX10 
+11 0x0B DEV_RES_RX11  11 0x0B DEV_RES_TX11 
+12 0x0C DEV_USB_RX0  12 0x0C DEV_USB_TX0 
+13 0x0D DEV_RES_RX13  13 0x0D DEV_RES_TX13 
+14 0x0E DEV_RES_RX14  14 0x0E DEV_RES_TX14 
+15 0x0F DEV_RES_RX15  15 0x0F DEV_RES_TX15 
+16 0x10 DEV_AVB_RX0  16 0x10 DEV_AVB_TX0 
+17 0x11 DEV_AVB_RX1  17 0x11 Reserved 
+18 0x12 DEV_AVB_RX2  … … … 
+19 0x13 DEV_AVB_RX3  31 0x1F Reserved 
+20 0x14 DEV_AVB_RX4     
+21 0x15 DEV_AVB_RX5  Note 1, DEV_FLTFIX_RX0 
+  channels 0-63: fixed result from flt2fix 
+  channels 64-127: float result from fix2flt 
+ 
+Note 2, DEV_FLTFIX_TX0 
+  channels 0-63: float input to flt2fix 
+  channels 64-127: fixed input to fix2flt 
+ 
+Source Id’s 2, 10-11, 13-15 are reserved 
+ 
+Destination Id’s 0, 2, 10-11, 13-15, 17-31 
+are reserved 
+22 0x16 DEV_AVB_RX6  
+23 0x17 DEV_AVB_RX7  
+24 0x18 DEV_AVB_RX8  
+25 0x19 DEV_AVB_RX9  
+26 0x1A DEV_AVB_RX10  
+27 0x1B DEV_AVB_RX11  
+28 0x1C DEV_AVB_RX12  
+29 0x1D DEV_AVB_RX13  
+30 0x1E DEV_AVB_RX14  
+31 0x1F DEV_AVB_RX15  
+ 
+  
+
+=== PDF PAGE 11 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-11     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ Router Table – HAL_DICE3_RTR_TBL 19.2.5
+Address: 0x50008000-0x50008200    HAL_DICE3_RTR_TBL 
+ 
+This is a memory range which provides direct access to the 512 possible router words. It is 
+used for reading routes back, and can be used to write routes as well, however writing 
+should be done using the command method described above unless the router is stopped.  
+ 
+ Router Peak Data – HAL_DICE3_RTR_PK 19.2.6
+Address: 0x50008800-0x50008A00    HAL_DICE3_RTR_PK 
+ 
+This memory range is used for reading the captured peaks. It consists of 512 32-bit 
+locations each containing the peak value for that router location. The peak value is a signed 
+integer, contained in the low 12 bits. The value represents bits [22:11] of the absolute 
+maximum value of the 24 bit audio signal. 
+ 
+Example:  
+  0xFFF = 0dBFS 
+  0x800 = -6dBFS 
+  
+
+=== PDF PAGE 12 ===
+TCD30XX User Guide          5/6/2015 
+ 
+ 19-12     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+ 
+19.3 Revisions 
+ 
+Table 19.8  Document revision history 
+Date Rev. By Change 
+May 6, 2015 0.9.0-41360 BK Initial publication 
+    
+    
+ 
+ 

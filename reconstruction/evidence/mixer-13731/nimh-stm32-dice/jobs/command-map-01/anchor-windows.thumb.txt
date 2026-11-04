@@ -1,0 +1,647 @@
+
+# SPI_CMD_UI_SET: xref 0x80016a4, candidate window only
+08001644 strb.w r3, [sp, #0x1a]
+08001648 lsrs r3, r7, #0x10
+0800164a mov r6, r0
+0800164c strb.w r3, [sp, #0x1b]
+08001650 ldr r0, [pc, #0x80]
+08001652 lsrs r3, r7, #8
+08001654 strb.w r3, [sp, #0x1c]
+08001658 strb.w r7, [sp, #0x1d]
+0800165c bl #0x8014d68
+08001660 mov r2, r6
+08001662 mov r1, r4
+08001664 add r0, sp, #0x18
+08001666 bl #0x8013ee4
+0800166a mov r1, r0
+0800166c ldr r0, [pc, #0x68]
+0800166e bl #0x8014d68
+08001672 bl #0x8013e98
+08001676 mov r7, r0
+08001678 mov r1, r7
+0800167a ldr r0, [pc, #0x60]
+0800167c bl #0x8014d68
+08001680 rsbs.w r1, r7, #1
+08001684 b #0x80019dc
+08001686 ldrb r0, [r4, #2]
+08001688 ldr r6, [pc, #0x54]
+0800168a ldr r7, [pc, #0x58]
+0800168c adds r0, #1
+0800168e uxtb r0, r0
+08001690 ldrb r1, [r7]
+08001692 ldrb r2, [r4, #3]
+08001694 strb r0, [r6]
+08001696 bl #0x8003338
+0800169a ldrb r0, [r6]
+0800169c bl #0x800f584
+080016a0 ldrb r1, [r7]
+080016a2 ldrb r2, [r6]
+080016a4 ldr r0, [pc, #0x40]
+080016a6 bl #0x8014d68
+080016aa b #0x80019fa
+080016ac mov r0, r4
+080016ae mov r1, r8
+080016b0 bl #0x8001d88
+080016b4 b #0x80019fa
+080016b6 nop 
+080016b8 asrs r4, r7, #0x18
+080016ba movs r0, #0
+080016bc asrs r0, r7, #0x18
+080016be movs r0, #0
+080016c0 ldr r3, [pc, #0x2bc]
+080016c2 lsrs r2, r0, #0x20
+080016c4 ldr r3, [pc, #0x324]
+080016c6 lsrs r2, r0, #0x20
+080016c8 subs r4, r5, r5
+080016ca movs r0, #0
+080016cc subs r4, r7, r1
+080016ce movs r0, #0
+080016d0 subs r4, r6, r4
+080016d2 movs r0, #0
+080016d4 ldr r3, [pc, #0x34c]
+080016d6 lsrs r2, r0, #0x20
+080016d8 ldr r3, [pc, #0x374]
+080016da lsrs r2, r0, #0x20
+080016dc ldr r3, [pc, #0x3bc]
+080016de lsrs r2, r0, #0x20
+080016e0 lsls r4, r2, #0x1c
+080016e2 movs r0, #0
+080016e4 lsls r4, r1, #0x1c
+080016e6 movs r0, #0
+080016e8 ldr r4, [pc, #0xc]
+080016ea lsrs r2, r0, #0x20
+080016ec movs r5, r0
+080016ee .byte 0x00, 0xc4
+080016f0 cmp.w r8, #6
+080016f4 bls.w #0x80019fe
+080016f8 sub.w r8, r8, #7
+080016fc and r8, r8, #0xfc
+08001700 add.w r8, r8, #6
+08001704 adds r6, r4, #2
+08001706 movs r7, #1
+08001708 add r4, r8
+0800170a ldrb r1, [r6]
+0800170c ldrb r2, [r6, #1]
+0800170e ldrb r3, [r6, #2]
+08001710 ldrb r0, [r6, #3]
+08001712 cbz r1, #0x8001740
+08001714 cmp r1, #1
+08001716 bne #0x800171e
+08001718 adds r2, #0x40
+0800171a uxtb r2, r2
+0800171c b #0x8001752
+0800171e cmp r1, #2
+08001720 beq #0x8001744
+08001722 cmp r1, #3
+
+# bad route rcvd: xref 0x80017aa, candidate window only
+0800174a b #0x8001752
+0800174c movs r1, #0xc
+0800174e b #0x8001752
+08001750 movs r1, #8
+08001752 cbz r3, #0x8001780
+08001754 cmp r3, #1
+08001756 bne #0x800175e
+08001758 adds r0, #0x40
+0800175a uxtb r0, r0
+0800175c b #0x8001792
+0800175e cmp r3, #2
+08001760 beq #0x8001784
+08001762 cmp r3, #3
+08001764 beq #0x8001788
+08001766 cmp r3, #4
+08001768 bne #0x8001770
+0800176a adds r0, #0x40
+0800176c uxtb r0, r0
+0800176e b #0x8001788
+08001770 cmp r3, #5
+08001772 beq #0x800178c
+08001774 cmp r3, #6
+08001776 beq #0x8001790
+08001778 cmp r3, #7
+0800177a it eq
+0800177c moveq r3, #9
+0800177e b #0x8001792
+08001780 movs r3, #1
+08001782 b #0x8001792
+08001784 movs r3, #0
+08001786 b #0x8001792
+08001788 movs r3, #5
+0800178a b #0x8001792
+0800178c movs r3, #0xc
+0800178e b #0x8001792
+08001790 movs r3, #8
+08001792 stm.w sp, {r0, r7}
+08001796 movs r0, #0
+08001798 bl #0x800fda4
+0800179c cmp r0, sl
+0800179e bne #0x80017b2
+080017a0 ldrb r0, [r6, #3]
+080017a2 ldrb r1, [r6]
+080017a4 ldrb r2, [r6, #1]
+080017a6 ldrb r3, [r6, #2]
+080017a8 str r0, [sp]
+080017aa ldr r0, [pc, #0x2a0]
+080017ac bl #0x8014d68
+080017b0 b #0x80019fe
+080017b2 adds r6, #4
+080017b4 cmp r6, r4
+080017b6 bne #0x800170a
+080017b8 b #0x80019fa
+080017ba movs r6, #8
+080017bc mov.w r8, #0xc
+080017c0 mov.w sb, #1
+080017c4 movs r7, #1
+080017c6 ldrb r3, [r4, #2]
+080017c8 uxtb r1, r6
+080017ca movs r0, #0
+080017cc movs r2, #2
+080017ce adds r6, r6, r7
+080017d0 str.w r8, [sp]
+080017d4 str.w sb, [sp, #4]
+080017d8 bl #0x801181c
+080017dc cmp r6, #0xd
+080017de bne #0x80017c4
+080017e0 ldrb r1, [r4, #2]
+080017e2 ldr r0, [pc, #0x26c]
+080017e4 bl #0x8014d68
+080017e8 movs r2, #0xc
+080017ea ldrb r3, [r4, #2]
+080017ec movs r1, #0xa
+080017ee stm.w sp, {r2, r7}
+080017f2 movs r0, #0
+080017f4 movs r2, #2
+080017f6 bl #0x8011880
+080017fa mov r1, r7
+080017fc b #0x8001a00
+080017fe ldrb r0, [r4, #2]
+08001800 bl #0x800123c
+08001804 ldrb r1, [r4, #2]
+08001806 ldr r0, [pc, #0x24c]
+08001808 bl #0x8014d68
+0800180c b #0x80019fa
+0800180e ldrb r3, [r4, #3]
+08001810 ldrb r1, [r4, #2]
+08001812 ldrb r2, [r4, #4]
+08001814 orr.w r1, r3, r1, lsl #4
+08001818 ldrb r3, [r4, #5]
+0800181a ldrb r0, [r4, #6]
+0800181c orr.w r2, r3, r2, lsl #4
+08001820 ldrb r3, [r4, #7]
+08001822 uxtb r1, r1
+08001824 orr.w r3, r3, r0, lsl #4
+08001828 uxtb r2, r2
+
+# AVB Start: xref 0x800182c, candidate window only
+080017cc movs r2, #2
+080017ce adds r6, r6, r7
+080017d0 str.w r8, [sp]
+080017d4 str.w sb, [sp, #4]
+080017d8 bl #0x801181c
+080017dc cmp r6, #0xd
+080017de bne #0x80017c4
+080017e0 ldrb r1, [r4, #2]
+080017e2 ldr r0, [pc, #0x26c]
+080017e4 bl #0x8014d68
+080017e8 movs r2, #0xc
+080017ea ldrb r3, [r4, #2]
+080017ec movs r1, #0xa
+080017ee stm.w sp, {r2, r7}
+080017f2 movs r0, #0
+080017f4 movs r2, #2
+080017f6 bl #0x8011880
+080017fa mov r1, r7
+080017fc b #0x8001a00
+080017fe ldrb r0, [r4, #2]
+08001800 bl #0x800123c
+08001804 ldrb r1, [r4, #2]
+08001806 ldr r0, [pc, #0x24c]
+08001808 bl #0x8014d68
+0800180c b #0x80019fa
+0800180e ldrb r3, [r4, #3]
+08001810 ldrb r1, [r4, #2]
+08001812 ldrb r2, [r4, #4]
+08001814 orr.w r1, r3, r1, lsl #4
+08001818 ldrb r3, [r4, #5]
+0800181a ldrb r0, [r4, #6]
+0800181c orr.w r2, r3, r2, lsl #4
+08001820 ldrb r3, [r4, #7]
+08001822 uxtb r1, r1
+08001824 orr.w r3, r3, r0, lsl #4
+08001828 uxtb r2, r2
+0800182a uxtb r3, r3
+0800182c ldr r0, [pc, #0x228]
+0800182e bl #0x8014d68
+08001832 ldrb r3, [r4, #3]
+08001834 ldrb r2, [r4, #2]
+08001836 ldrb r1, [r4, #4]
+08001838 orr.w r2, r3, r2, lsl #4
+0800183c ldrb r3, [r4, #5]
+0800183e ldrb r0, [r4, #6]
+08001840 orr.w r3, r3, r1, lsl #4
+08001844 ldrb r1, [r4, #7]
+08001846 uxtb r2, r2
+08001848 orr.w r1, r1, r0, lsl #4
+0800184c uxtb r1, r1
+0800184e str r1, [sp]
+08001850 uxtb r3, r3
+08001852 movs r0, #2
+08001854 movs r1, #3
+08001856 bl #0x800f544
+0800185a b #0x80019d8
+0800185c ldr r0, [pc, #0x1fc]
+0800185e bl #0x8014d68
+08001862 bl #0x800f56c
+08001866 b #0x80019d8
+08001868 ldrb r3, [r4, #3]
+0800186a ldrb r1, [r4, #2]
+0800186c ldrb r2, [r4, #4]
+0800186e orr.w r1, r3, r1, lsl #4
+08001872 ldrb r3, [r4, #5]
+08001874 ldrb r0, [r4, #6]
+08001876 orr.w r2, r3, r2, lsl #4
+0800187a ldrb r3, [r4, #7]
+0800187c uxtb r1, r1
+0800187e orr.w r3, r3, r0, lsl #4
+08001882 uxtb r2, r2
+08001884 uxtb r3, r3
+08001886 ldr r0, [pc, #0x1d8]
+08001888 bl #0x8014d68
+0800188c ldrb r3, [r4, #3]
+0800188e ldrb r0, [r4, #2]
+08001890 ldrb r1, [r4, #4]
+08001892 orr.w r0, r3, r0, lsl #4
+08001896 ldrb r3, [r4, #5]
+08001898 ldrb r2, [r4, #6]
+0800189a orr.w r1, r3, r1, lsl #4
+0800189e ldrb r3, [r4, #7]
+080018a0 uxtb r1, r1
+080018a2 orr.w r2, r3, r2, lsl #4
+080018a6 uxtb r2, r2
+080018a8 uxtb r0, r0
+080018aa .byte 0x0d, 0xf0
+
+# AVB Stop: xref 0x800185c, candidate window only
+080017fc b #0x8001a00
+080017fe ldrb r0, [r4, #2]
+08001800 bl #0x800123c
+08001804 ldrb r1, [r4, #2]
+08001806 ldr r0, [pc, #0x24c]
+08001808 bl #0x8014d68
+0800180c b #0x80019fa
+0800180e ldrb r3, [r4, #3]
+08001810 ldrb r1, [r4, #2]
+08001812 ldrb r2, [r4, #4]
+08001814 orr.w r1, r3, r1, lsl #4
+08001818 ldrb r3, [r4, #5]
+0800181a ldrb r0, [r4, #6]
+0800181c orr.w r2, r3, r2, lsl #4
+08001820 ldrb r3, [r4, #7]
+08001822 uxtb r1, r1
+08001824 orr.w r3, r3, r0, lsl #4
+08001828 uxtb r2, r2
+0800182a uxtb r3, r3
+0800182c ldr r0, [pc, #0x228]
+0800182e bl #0x8014d68
+08001832 ldrb r3, [r4, #3]
+08001834 ldrb r2, [r4, #2]
+08001836 ldrb r1, [r4, #4]
+08001838 orr.w r2, r3, r2, lsl #4
+0800183c ldrb r3, [r4, #5]
+0800183e ldrb r0, [r4, #6]
+08001840 orr.w r3, r3, r1, lsl #4
+08001844 ldrb r1, [r4, #7]
+08001846 uxtb r2, r2
+08001848 orr.w r1, r1, r0, lsl #4
+0800184c uxtb r1, r1
+0800184e str r1, [sp]
+08001850 uxtb r3, r3
+08001852 movs r0, #2
+08001854 movs r1, #3
+08001856 bl #0x800f544
+0800185a b #0x80019d8
+0800185c ldr r0, [pc, #0x1fc]
+0800185e bl #0x8014d68
+08001862 bl #0x800f56c
+08001866 b #0x80019d8
+08001868 ldrb r3, [r4, #3]
+0800186a ldrb r1, [r4, #2]
+0800186c ldrb r2, [r4, #4]
+0800186e orr.w r1, r3, r1, lsl #4
+08001872 ldrb r3, [r4, #5]
+08001874 ldrb r0, [r4, #6]
+08001876 orr.w r2, r3, r2, lsl #4
+0800187a ldrb r3, [r4, #7]
+0800187c uxtb r1, r1
+0800187e orr.w r3, r3, r0, lsl #4
+08001882 uxtb r2, r2
+08001884 uxtb r3, r3
+08001886 ldr r0, [pc, #0x1d8]
+08001888 bl #0x8014d68
+0800188c ldrb r3, [r4, #3]
+0800188e ldrb r0, [r4, #2]
+08001890 ldrb r1, [r4, #4]
+08001892 orr.w r0, r3, r0, lsl #4
+08001896 ldrb r3, [r4, #5]
+08001898 ldrb r2, [r4, #6]
+0800189a orr.w r1, r3, r1, lsl #4
+0800189e ldrb r3, [r4, #7]
+080018a0 uxtb r1, r1
+080018a2 orr.w r2, r3, r2, lsl #4
+080018a6 uxtb r2, r2
+080018a8 uxtb r0, r0
+080018aa bl #0x800f5b0
+080018ae b #0x80019d8
+080018b0 ldrb r3, [r4, #3]
+080018b2 ldrb r1, [r4, #2]
+080018b4 ldrb r2, [r4, #4]
+080018b6 orr.w r1, r3, r1, lsl #4
+080018ba ldrb r3, [r4, #5]
+080018bc uxtb r1, r1
+080018be orr.w r2, r3, r2, lsl #4
+080018c2 uxtb r2, r2
+080018c4 ldr r0, [pc, #0x19c]
+080018c6 bl #0x8014d68
+080018ca ldrb r3, [r4, #3]
+080018cc ldrb r0, [r4, #2]
+080018ce ldrb r1, [r4, #4]
+080018d0 orr.w r0, r3, r0, lsl #4
+080018d4 ldrb r3, [r4, #5]
+080018d6 uxtb r0, r0
+080018d8 orr.w r1, r3, r1, lsl #4
+
+# Storm SPI: xref 0x80014ca, candidate window only
+0800146a add r0, sp, #0x28
+0800146c bl #0x8001c5c
+08001470 bl #0x8014dac
+08001474 adds r6, r0, #0
+08001476 it ne
+08001478 movne r6, #1
+0800147a bl #0x80034e8
+0800147e mov r5, r0
+08001480 bl #0x8014dac
+08001484 ldr r4, [sp, #0x24]
+08001486 cbnz r0, #0x800148c
+08001488 mov.w r4, #-1
+0800148c bl #0x8014dac
+08001490 ldr r3, [sp, #0x28]
+08001492 cbnz r0, #0x8001498
+08001494 mov.w r3, #-1
+08001498 mov r1, r5
+0800149a mov r0, r6
+0800149c mov r2, r4
+0800149e bl #0x8001354
+080014a2 ldr r5, [pc, #0x218]
+080014a4 ldr.w sl, [pc, #0x244]
+080014a8 add.w r0, sp, #0x2f
+080014ac bl #0x8000ce8
+080014b0 ldrb r3, [r0, #1]
+080014b2 mov r4, r0
+080014b4 cmp r3, #5
+080014b6 str r0, [r5]
+080014b8 bhi #0x80015aa
+080014ba cmp r3, #2
+080014bc bne #0x80014f4
+080014be bl #0x8013e48
+080014c2 cbnz r0, #0x80014ea
+080014c4 ldr r0, [pc, #0x1f8]
+080014c6 bl #0x8014d68
+080014ca ldr r1, [pc, #0x1f8]
+080014cc mov.w r0, #0x1000000
+080014d0 bl #0x8014078
+080014d4 mov r1, r0
+080014d6 cbnz r0, #0x80014ea
+080014d8 ldr r3, [pc, #0x1ec]
+080014da movs r2, #1
+080014dc strb r2, [r3]
+080014de ldr r3, [pc, #0x1ec]
+080014e0 str r0, [r3]
+080014e2 ldr r3, [pc, #0x1ec]
+080014e4 strb r0, [r3]
+080014e6 movs r0, #0x7f
+080014e8 b #0x80015a4
+080014ea ldr r3, [pc, #0x1dc]
+080014ec movs r2, #0
+080014ee strb r2, [r3]
+080014f0 movs r0, #0x7f
+080014f2 b #0x80015a2
+080014f4 ldr r7, [pc, #0x1d0]
+080014f6 ldrb r2, [r7]
+080014f8 cmp r2, #0
+080014fa beq.w #0x8001a46
+080014fe cmp r3, #3
+08001500 bne #0x8001582
+08001502 ldr r3, [pc, #0x1cc]
+08001504 ldrb r0, [r0, #3]
+08001506 ldrb r3, [r3]
+08001508 mov.w r6, #0
+0800150c cmp r3, r0
+0800150e ittt eq
+08001510 addeq.w fp, r4, #4
+08001514 moveq r7, r4
+08001516 moveq sb, r4
+08001518 beq #0x800152c
+0800151a strb r6, [r7]
+0800151c movs r1, #1
+0800151e b #0x80015a4
+08001520 bl #0x800112a
+08001524 adds r6, #4
+08001526 str r0, [sb, #4]!
+0800152a uxtb r6, r6
+0800152c adds r0, r7, #4
+0800152e ldrb.w r8, [r7, #4]
+08001532 cmp r6, #0xf9
+08001534 ite hi
+08001536 movhi r3, #0
+08001538 movls r3, #1
+0800153a cmp.w r8, #0xf7
+0800153e ite eq
+08001540 moveq.w r8, #0
+08001544 andne r8, r3, #1
+08001548 adds r7, #5
+
+# Idle Thread: xref 0x80065dc, candidate window only
+0800657c bl #0x8005efc
+08006580 bl #0x8006190
+08006584 ldrb.w r3, [r4, #0x81]
+08006588 subs r3, #5
+0800658a cmp r3, #1
+0800658c bhi #0x8006596
+0800658e pop.w {r4, r6, r7, lr}
+08006592 b.w #0x8006478
+08006596 pop {r4, r6, r7, pc}
+08006598 subs r5, #0xfc
+0800659a movs r0, #0
+0800659c push {r4, lr}
+0800659e bl #0x8005eec
+080065a2 ldr r2, [pc, #0x28]
+080065a4 mov.w r4, #-1
+080065a8 ldr r3, [r2]
+080065aa cbz r3, #0x80065c8
+080065ac rsbs r4, r3, #0
+080065ae ands r4, r3
+080065b0 clz r4, r4
+080065b4 movs r1, #1
+080065b6 rsb.w r4, r4, #0x1f
+080065ba lsl.w r1, r1, r4
+080065be bic.w r3, r3, r1
+080065c2 str r3, [r2]
+080065c4 bl #0x8005efc
+080065c8 mov r0, r4
+080065ca pop {r4, pc}
+080065cc lsrs r4, r1, #0x16
+080065ce movs r0, #0
+080065d0 push {r4, r5, lr}
+080065d2 ldr r5, [pc, #0x38]
+080065d4 ldr r3, [pc, #0x38]
+080065d6 subs r5, r0, r5
+080065d8 asrs r5, r5, #3
+080065da muls r5, r3, r5
+080065dc ldr r3, [pc, #0x34]
+080065de sub sp, #0x14
+080065e0 ldr r2, [pc, #0x34]
+080065e2 str r3, [sp]
+080065e4 mov.w r3, #0x550
+080065e8 mla r2, r3, r5, r2
+080065ec mov r4, r0
+080065ee str r2, [sp, #4]
+080065f0 str r3, [sp, #8]
+080065f2 movs r1, #0x1f
+080065f4 movs r3, #0
+080065f6 ldr r2, [pc, #0x24]
+080065f8 bl #0x80061b8
+080065fc ldr r0, [pc, #0x20]
+080065fe mov r1, r4
+08006600 mov r2, r5
+08006602 bl #0x80068dc
+08006606 mov r0, r4
+08006608 add sp, #0x14
+0800660a pop {r4, r5, pc}
+0800660c adds r7, #0x88
+0800660e movs r0, #0
+08006610 ldm r7!, {r0, r2, r3, r4, r5}
+08006612 subs r4, #0xf3
+08006614 ldrb r6, [r5, r1]
+08006616 lsrs r2, r0, #0x20
+08006618 adds r2, #0x38
+0800661a movs r0, #0
+0800661c str r1, [r2, #0x14]
+0800661e lsrs r0, r0, #0x20
+08006620 subs r0, #0x50
+08006622 movs r0, #0
+08006624 cmp r0, #1
+08006626 bne #0x800662e
+08006628 ldr r0, [pc, #0xc]
+0800662a b.w #0x80065d0
+0800662e cbnz r0, #0x8006636
+08006630 ldr r0, [pc, #4]
+08006632 b.w #0x8006328
+08006636 bx lr
+08006638 adds r7, #0x88
+0800663a movs r0, #0
+0800663c movs r0, #1
+0800663e b.w #0x8006624
+08006642 bx lr
+08006644 ldr r3, [pc, #8]
+08006646 ldr r2, [pc, #0xc]
+08006648 str r2, [r3]
+0800664a movs r2, #0
+0800664c str r2, [r3, #4]
+0800664e bx lr
+08006650 subs r0, #0x38
+08006652 movs r0, #0
+08006654 str r3, [r0, #0x64]
+08006656 lsrs r0, r0, #0x20
+08006658 stm.w r0, {r1, r2}
+
+# linkHandler.c: xref 0x8002cdc, candidate window only
+08002c7c ldr r1, [sp, #0x20]
+08002c7e strb r1, [r2, #9]
+08002c80 cmp r1, #0xff
+08002c82 it eq
+08002c84 moveq r5, #0
+08002c86 strb r3, [r4, #3]
+08002c88 b #0x8002c8e
+08002c8a ldr r5, [sp, #0x14]
+08002c8c mov r4, r8
+08002c8e add r0, sp, #0x44
+08002c90 bl #0x8016484
+08002c94 cbz r0, #0x8002c9e
+08002c96 ldr r2, [r4, #4]
+08002c98 ldr r3, [sp, #0x44]
+08002c9a cmp r2, r3
+08002c9c beq #0x8002ca6
+08002c9e mov.w r3, #-1
+08002ca2 str r3, [r4, #4]
+08002ca4 b #0x8002d54
+08002ca6 adds r6, #1
+08002ca8 uxtb r6, r6
+08002caa ldrh.w r3, [sl, #0xa]
+08002cae cmp r3, r6
+08002cb0 bhi.w #0x8002b84
+08002cb4 b #0x8002cfa
+08002cb6 add.w r8, r6, #4
+08002cba add.w r8, r7, r8, lsl #4
+08002cbe ldrb.w r0, [r8, #8]
+08002cc2 add r1, sp, #0x1c
+08002cc4 bl #0x8002ac0
+08002cc8 cbnz r0, #0x8002cd8
+08002cca ldr r3, [sp, #0x20]
+08002ccc strb.w r3, [r8, #9]
+08002cd0 ldr r3, [sp, #0x2c]
+08002cd2 str.w r3, [r8, #4]
+08002cd6 b #0x8002ce2
+08002cd8 movw r1, #0x215
+08002cdc ldr r2, [pc, #0x94]
+08002cde bl #0x8014c70
+08002ce2 ldr r3, [sp, #0x20]
+08002ce4 adds r6, #1
+08002ce6 cmp r3, #0xff
+08002ce8 it eq
+08002cea moveq r5, #0
+08002cec uxtb r6, r6
+08002cee b #0x8002cf4
+08002cf0 ldr r7, [pc, #0x7c]
+08002cf2 movs r5, #1
+08002cf4 ldrb r3, [r4, #3]
+08002cf6 cmp r3, r6
+08002cf8 bhi #0x8002cb6
+08002cfa cbz r5, #0x8002d4c
+08002cfc ldr r6, [pc, #0x70]
+08002cfe ldrb r1, [r4, #3]
+08002d00 movs r2, #0x10
+08002d02 ldr r3, [pc, #0x74]
+08002d04 add.w r0, r6, #0x3c
+08002d08 bl #0x8008eda
+08002d0c movs r3, #0
+08002d0e strb r3, [r4, #1]
+08002d10 ldrb.w r2, [r6, #0x48]
+08002d14 ldrb r1, [r4, #3]
+08002d16 strb r2, [r4, #0xc]
+08002d18 ldr r2, [r6, #0x44]
+08002d1a str r2, [r4, #8]
+08002d1c b #0x8002d44
+08002d1e ldrb.w r0, [r6, #0x48]
+08002d22 ldr.w r2, [sl]
+08002d26 adds r6, #0x10
+08002d28 cmp r0, r2
+08002d2a add.w r2, r3, #1
+08002d2e bne #0x8002d42
+08002d30 strb r2, [r4, #2]
+08002d32 ldr r2, [pc, #0x3c]
+08002d34 strb r3, [r4]
+08002d36 add.w r3, r2, r3, lsl #4
+08002d3a ldrb.w r3, [r3, #0x58]
+08002d3e strb r3, [r4, #0xd]
+08002d40 b #0x8002d4c
+08002d42 uxtb r3, r2
+08002d44 cmp r3, r1
+08002d46 bne #0x8002d1e
+08002d48 movs r0, #3
+08002d4a b #0x8002d56
+08002d4c eor r5, r5, #1
+08002d50 uxtb r0, r5
+08002d52 b #0x8002d56
+08002d54 movs r0, #2
+08002d56 add sp, #0x4c
+08002d58 pop.w {r4, r5, r6, r7, r8, sb, sl, fp, pc}

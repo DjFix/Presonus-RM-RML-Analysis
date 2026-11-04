@@ -1,0 +1,119 @@
+
+=== PDF PAGE 1 ===
+TC Applied Technologies  • 156  DUNCAN MILL ROAD, SUITE  1 A, TORONTO  ONTARIO, M 3B 3 N2 CANADA
++1 (416 ) 444-1394  • info @tctechnologies.tc  • www.tctechnologies.tc
+Distributed in Europe by Profusion plc  • + 44 (0) 1702 543500  • sales @profusionplc.com  • www.profusionplc.com
+PAGE 1
+REV 1.0
+DICE III - TCD30xx FIRMWARE DEVELOPMENT
+Firmware Developers create device applications for products based on the DICE III family with the TCAT Firmware  
+Development Environment (FDE) and the comprehensive firmware source code tree (SDK).
+The TCAT FDE is available as a downloadable archive, which is a self-contained Linux Virtual Machine (VM). The VM can 
+be used on the developer’s host operating system of choice.
+The SDK is available via SCM and contains all of the sources necessary to build device firmware applications.  
+Sample applications are included for TCAT TCD30xx Evaluation Modules and can be used as a basis for customer  
+device applications.
+TCAT also provides branded drivers, host applications such as Control Panels where appropriate, and other utilities  
+for OS X and Windows, at no extra cost.
+TCAT FDE Features
+Pre-configured Linux Virtual Machine
+4 Ubuntu LTS Release
+4 Version-stabilized ARM toolchain
+4 GNU ARM EABI
+4 Eclipse IDE, CTD
+4 eCos configuration tools
+4 Scripting tools (Python, etc.)
+4 SCM Command Line tools (Subversion, Git, Mercurial)
+4 Doxygen
+4 No per-seat developer fees, royalty-free
+4 Streamlined, developer-oriented 
+ Ubuntu distribution
+4Flexible host computer options: 
+ Windows, OS X, Linux
+4Install your VM player, open 
+ the FDE Virtual Machine and go
+4Minimal developer configuration
+ required
+4IDE and firmware ready for 
+ Segger J-Link debug probes
+4GNU Tools running on Linux
+ rovide lightning-fast build times
+4eCos configuration tools and 
+ hardware interface
+4Familiar edit, build and debug 
+ environment
+4Well-established Eclipse support 
+ community
+
+=== PDF PAGE 2 ===
+TC Applied Technologies  • 156  DUNCAN MILL ROAD, SUITE  1 A, TORONTO  ONTARIO, M 3B 3 N2 CANADA
++1 (416 ) 444-1394  • info @tctechnologies.tc  • www.tctechnologies.tc
+Distributed in Europe by Profusion plc  • + 44 (0) 1702 543500  • sales @profusionplc.com  • www.profusionplc.com
+PAGE 2
+REV 1.0
+FIRMWARE SDK 
+The SDK is provided from TCAT’s Subversion repository. The core SDK implements all peripheral drivers, protocol 
+stacks, streaming state engines, RTOS scheduling, flash management, memory management, etc. that may be required 
+for your applications. 
+Customer Applications are created by overriding standard functionality. You need only implement the parts that make 
+your device unique. Streaming configurations, routing, mixing, CODECs, descriptors, branding, etc. are added using 
+logical, well-documented APIs. Core modules are configurable using standard eCos CDL methodology.
+4 Languages: C, C++, asm, Python
+4 eCos RTOS
+4 DICE I/O peripheral drivers, implemented in the eCos 
+ HAL where appropriate
+4 Support for Segger J-Link debug probes integrated into
+ project settings (JTAG Interface hardware not included)
+4 Flash file management
+4 Firmware update protocols
+4 Ethernet Network Stack
+4 Serial, USB, Telnet CLI options
+4 USB Stack and Audio Control
+4 AVB Stack and Audio Control
+4 IEEE1394 Stack and Audio Control
+4 Various project templates can be used with 
+ TCAT EVM’s and as a starting point for your devices. 
+Application (customer code)
+Kernel
+Networking 
+Stack
+Flash 
+management
+FSS/SPS
+HAL
+Target Hardware
+Libraries
+Math, C/C++, 
+TDL
+Interrupts
+Exceptions
+Vectors
+I2C, SPI, GPIO, 
+MAC, UART
+USB 2.0 
+AudioCtrl
+PWM
+802.1Q
+1722.1
+1722 MAAP
+DCP Host 
+protocol
+MIDI
+JetTMPLL Ctrl
+Float/Fix
+InS, ADAT, AES, 
+AIO
+Mixer Ctrl
+Router Ctrl
+Timers
+DMA
+CLI
+DAL
+MPMC
+SDIO
+Sys Ctrl
+802.1 AS
+AVB Audio Ctrl
+1394 Audio Ctrl
+1394 Stack
+USB 2.0 Stack

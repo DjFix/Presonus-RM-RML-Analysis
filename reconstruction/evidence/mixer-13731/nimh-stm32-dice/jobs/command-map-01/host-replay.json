@@ -1,0 +1,607 @@
+{
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "functions": [
+    {
+      "role": "clock",
+      "mangled": "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+      "address": "0x9dcd0",
+      "size": 260,
+      "section": ".text",
+      "file_offset": "0x95cd0",
+      "sha256": "68a9ffa5f202a8ed99b2663a10619d0825c351dfcd29fcbec58001e56695c0ae"
+    },
+    {
+      "role": "rate",
+      "mangled": "_ZN8Presonus4NOAA5TCard14sendSampleRateEii",
+      "address": "0x9ddd4",
+      "size": 484,
+      "section": ".text",
+      "file_offset": "0x95dd4",
+      "sha256": "357135c1aee1df0982e45be06100657b2f41d65c90a30baee586bcf79620dd68"
+    },
+    {
+      "role": "label",
+      "mangled": "_ZNK8Presonus4NOAA11SysexPacket18getSysexCommandStrEh",
+      "address": "0xa4704",
+      "size": 728,
+      "section": ".text",
+      "file_offset": "0x9c704",
+      "sha256": "7608b3695ebd18e4c90f126817e1a31141e8622f9616122b9ae3bfe10e42f377"
+    },
+    {
+      "role": "arm_bundle",
+      "mangled": "_ZN8Presonus4NOAA5TCard20getArmFirmwareBundleEv",
+      "address": "0x9cec8",
+      "size": 212,
+      "section": ".text",
+      "file_offset": "0x94ec8",
+      "sha256": "8f0a9c9a480eb852196bb4379a38d5a89a2a72fc2375e7997c1d575a77108ea7"
+    },
+    {
+      "role": "fpga_bundle",
+      "mangled": "_ZN8Presonus4NOAA5TCard21getFpgaFirmwareBundleEv",
+      "address": "0x9cf9c",
+      "size": 212,
+      "section": ".text",
+      "file_offset": "0x94f9c",
+      "sha256": "affd07e2aa20c039ff86491c6a5ab0641cf08aaaa66d4fb8cb29f448e39c21c0"
+    },
+    {
+      "role": "route",
+      "mangled": "_ZN8Presonus4NOAA11TCardRouter15doRouteCommandsEPNS0_9DiceRouteEih",
+      "address": "0xa1418",
+      "size": 456,
+      "section": ".text",
+      "file_offset": "0x99418",
+      "sha256": "8e215fba4e2bd4c4f6cc7d22bd007f31497c0845fda9a560fc0109c1fd00080a"
+    }
+  ],
+  "cases": [
+    {
+      "method": "clock",
+      "argument": 0,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0280000f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 1,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0280001f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 2,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0280002f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 15,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f028000ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 16,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0280100f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 127,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f028070ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "clock",
+      "argument": 255,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0280f0ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 72
+    },
+    {
+      "method": "rate",
+      "argument": 0,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 0,
+      "link_id": 1,
+      "model": 0,
+      "packets": [
+        "f0110001f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 0,
+      "link_id": 127,
+      "model": 0,
+      "packets": [
+        "f011007ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 1,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0110100f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 1,
+      "link_id": 1,
+      "model": 0,
+      "packets": [
+        "f0110101f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 1,
+      "link_id": 127,
+      "model": 0,
+      "packets": [
+        "f011017ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 2,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0110200f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 2,
+      "link_id": 1,
+      "model": 0,
+      "packets": [
+        "f0110201f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 2,
+      "link_id": 127,
+      "model": 0,
+      "packets": [
+        "f011027ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 3,
+      "link_id": 0,
+      "model": 0,
+      "packets": [
+        "f0110300f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 3,
+      "link_id": 1,
+      "model": 0,
+      "packets": [
+        "f0110301f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 3,
+      "link_id": 127,
+      "model": 0,
+      "packets": [
+        "f011037ff7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 76
+    },
+    {
+      "method": "rate",
+      "argument": 0,
+      "link_id": 3,
+      "model": 23,
+      "packets": [
+        "f02100f7",
+        "f0110003f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 0,
+      "link_id": 3,
+      "model": 24,
+      "packets": [
+        "f02100f7",
+        "f0110003f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 1,
+      "link_id": 3,
+      "model": 23,
+      "packets": [
+        "f02100f7",
+        "f0110103f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 1,
+      "link_id": 3,
+      "model": 24,
+      "packets": [
+        "f02100f7",
+        "f0110103f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 2,
+      "link_id": 3,
+      "model": 23,
+      "packets": [
+        "f02101f7",
+        "f0110203f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 2,
+      "link_id": 3,
+      "model": 24,
+      "packets": [
+        "f02101f7",
+        "f0110203f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 3,
+      "link_id": 3,
+      "model": 23,
+      "packets": [
+        "f02101f7",
+        "f0110303f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    },
+    {
+      "method": "rate",
+      "argument": 3,
+      "link_id": 3,
+      "model": 24,
+      "packets": [
+        "f02101f7",
+        "f0110303f7"
+      ],
+      "boundary_models": [
+        "_ZN4Core11DebugPrintfEPKcz",
+        "_ZN4Core15GetAbsoluteTimeEv",
+        "_ZN8Presonus4NOAA13SysexReceiver7waitAckEx",
+        "__aeabi_ldivmod",
+        "memcpy",
+        "memset",
+        "virtual transport post captured; no SPI device"
+      ],
+      "instructions": 135
+    }
+  ],
+  "command_labels": {
+    "0x1": "INIT",
+    "0x2": "IMG_START",
+    "0x3": "IMG_PROGRAM",
+    "0x4": "IMG_CONFIRM",
+    "0x5": "IMG_FINISH",
+    "0x9": "PROG_SERIAL",
+    "0x11": "UI_SET",
+    "0x12": "MUTE_START",
+    "0x13": "MUTE_DONE",
+    "0x14": "LINK_MODE",
+    "0x15": "INTERCOM",
+    "0x16": "ROUTE",
+    "0x17": "STAT_REQ",
+    "0x18": "STAT_RSP",
+    "0x19": "CARD_REQ",
+    "0x1a": "CARD_RSP",
+    "0x1b": "DRIVER EVENT",
+    "0x1c": "GEQ_SETUP",
+    "0x1d": "GEQ",
+    "0x1e": "UCNETB",
+    "0x40": "UCNET"
+  },
+  "scope": "actual selected host ARM packet assembly; libc/time/log/ack and virtual post modelled; not SPI, timing, ACK semantics, or hardware proof",
+  "tool_sha256": "139dccd37575bc3a0a112a55c8254ca830c2f53bf997976bbdbc4c848e8c90f7"
+}

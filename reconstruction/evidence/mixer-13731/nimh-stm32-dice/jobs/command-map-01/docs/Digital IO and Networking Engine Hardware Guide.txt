@@ -1,0 +1,1364 @@
+
+=== PDF PAGE 1 ===
+ 
+ 
+TCD30xx 
+ 
+COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Digital IO and Networking 
+Engine 
+ 
+Hardware Guide 
+ 
+ 
+ 
+ 
+Revision 1.03 
+ 
+ 
+May 2, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 2   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+ 
+ 
+CONTENTS 
+ 
+1 ABOUT TCD30XX ...................................................................................................................................... 6 
+2 INTRODUCTION ........................................................................................................................................ 7 
+2.1 BLOCK DIAGRAM ......................................................................................................................................... 7 
+2.2 MAIN FEATURES .......................................................................................................................................... 8 
+3 PACKAGE ................................................................................................................................................ 11 
+3.1 QFN-88 .................................................................................................................................................. 12 
+3.2 QFN-148 ................................................................................................................................................ 13 
+3.3 BGA-225 ................................................................................................................................................ 14 
+4 PIN-OUT ................................................................................................................................................. 15 
+4.1 SIGNAL DESCRIPTION .................................................................................................................................. 15 
+4.2 POWER AND GROUND ................................................................................................................................ 20 
+4.3 MULTIFUNCTION PINS (APORT) .................................................................................................................. 21 
+4.3.1 Configuration after reset .............................................................................................................. 21 
+4.3.2 Primary function selection ............................................................................................................ 21 
+4.3.3 Input Function Select ..................................................................................................................... 21 
+4.4 UNUSED PINS ............................................................................................................................................ 23 
+4.4.1 RGMII Inputs ................................................................................................................................. 23 
+4.4.2 Firewire IO’s .................................................................................................................................. 23 
+4.4.3 SDIO Interface ............................................................................................................................... 23 
+4.4.4 External VCO pins .......................................................................................................................... 23 
+5 GROUND AND POWER CONSIDERATIONS .............................................................................................. 24 
+5.1 ADC REFERENCE RESISTOR .......................................................................................................................... 24 
+6 CRYSTAL OSCILLATOR ............................................................................................................................. 25 
+6.1 CRYSTAL OSCILLATOR CIRCUIT ...................................................................................................................... 25 
+6.2 CRYSTAL SPECIFICATIONS ............................................................................................................................. 25 
+6.3 OSCILLATION FREQUENCY ............................................................................................................................ 25 
+6.4 C1, C2,RF AND RX SELECTION ..................................................................................................................... 25 
+6.5 PCB CONSIDERATIONS .......................................................................................................................... 26 
+7 TEST AND JTAG OPERATION ................................................................................................................... 27 
+8 RESET CIRCUITRY .................................................................................................................................... 28 
+9 ELECTRICAL SPECIFICATIONS .................................................................................................................. 29 
+9.1 PARAMETER CONDITIONS ............................................................................................................................ 29 
+9.1.1 Minimum and maximum values ................................................................................................... 29 
+9.1.2 Typical values ................................................................................................................................ 29 
+9.1.3 Loading capacitor ......................................................................................................................... 29 
+9.1.4 Power supply scheme .................................................................................................................... 29 
+9.2 ABSOLUTE MAXIMUM RATINGS ..................................................................................................................... 29 
+9.3 OPERATING CONDITIONS ............................................................................................................................. 30 
+9.4 TYPICAL POWER CONSUMPTION BY APPLICATION ............................................................................................. 31 
+9.5 I/O CHARACTERISTICS ................................................................................................................................ 31 
+9.6 AC CHARACTERISTICS ................................................................................................................................. 32 
+9.6.1 RGMII ............................................................................................................................................ 32 
+9.6.2 IEEE1394 ....................................................................................................................................... 32 
+
+=== PDF PAGE 3 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 3   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+9.6.3 InS ................................................................................................................................................. 32 
+9.6.4 EBI ................................................................................................................................................. 33 
+9.6.5 SDIO .............................................................................................................................................. 34 
+9.6.6 SPI Master ..................................................................................................................................... 34 
+10 REVISIONS .......................................................................................................................................... 35 
+ 
+  
+
+=== PDF PAGE 4 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 4   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+LIST OF TABLES 
+ 
+TABLE 1, ORDERING INFORMATION ................................................................................................................................. 6 
+TABLE 2, POWER CONSUMPTION.................................................................................................................................. 10 
+TABLE 3, PACKAGE CODES ........................................................................................................................................... 11 
+TABLE 4, IO CELL TYPES .............................................................................................................................................. 15 
+TABLE 5, PIN DESCRIPTION .......................................................................................................................................... 19 
+TABLE 6, POWER AND GROUND ................................................................................................................................... 20 
+TABLE 7, MULTIFUNCTION PINS .................................................................................................................................... 22 
+TABLE 8, ABSOLUTE MAXIMUM RATINGS ....................................................................................................................... 29 
+TABLE 9, OPERATING CONDITIONS ................................................................................................................................ 30 
+TABLE 10, I/O CHARACTERISTICS ................................................................................................................................. 31 
+TABLE 11, RGMII TIMING .......................................................................................................................................... 32 
+TABLE 12, IEEE1394 TIMING ..................................................................................................................................... 32 
+TABLE 13, INS TIMING ............................................................................................................................................... 33 
+TABLE 14, INS SAMPLING POINT .................................................................................................................................. 33 
+TABLE 15, EBI TIMING ............................................................................................................................................... 34 
+TABLE 16, SDIO TIMING ............................................................................................................................................ 34 
+TABLE 17, SPI TIMING ............................................................................................................................................... 34 
+TABLE 18, DOCUMENT REVISION HISTORY ...................................................................................................................... 35 
+ 
+  
+
+=== PDF PAGE 5 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 5   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+LIST OF FIGURES 
+ 
+FIGURE 1, BLOCK DIAGRAM ........................................................................................................................................... 7 
+FIGURE 2, QFN-88 PACKAGE OUTLINE DRAWING ........................................................................................................... 12 
+FIGURE 3, QFN-148 PACKAGE OUTLINE DRAWING ......................................................................................................... 13 
+FIGURE 4, BGA-225 PACKAGE OUTLINE DRAWING ......................................................................................................... 14 
+FIGURE 5, ON-CHIP OSCILLATOR TYPICAL CONNECTIONS .................................................................................................... 25 
+FIGURE 6, CAPACITIVE OUTPUT LOAD ............................................................................................................................ 29 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+=== PDF PAGE 6 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 6   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+1 About TCD30xx 
+The DICE 30xx (TCD30xx) family of chips is based on the DICE III platform. There are a 
+number of options for package and functionality. 
+ 
+Ordering information 
+ 
+ID ROHS  Temp. Package 
+TCD3000-CF √ USB2, 8 ports, SDIO 0 °C to 70 °C QFN 88 
+TCD3020-CG √ USB2, 19 ports, SDIO 0 °C to 70 °C QFN 148 
+TCD3040-CG √ AVB, USB2, 19 ports, SDIO 0 °C to 70 °C QFN 148 
+TCD3070-CH √ AVB, USB2, 1394, 32 ports, EBI 0 °C to 70 °C BGA 225 
+Table 1, Ordering Information 
+ 
+
+=== PDF PAGE 7 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 7   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+2 Introduction 
+The TCD30xx chip family covers a wide range of audio applications, professional as well 
+as consumer. 
+ 
+The audio sub-system is centered on the DICE III platform with JET-PLLTM, router, mixer 
+and audio clock controller. Apart from traditional digital audio interfaces such as I2S, 
+TDM, ADAT and SPDIF/AES3 the system includes USB2, FireWire (IEEE1394) and 
+Ethernet AVB streaming engines. 
+ 
+While the moving of audio streams between interfaces is done entirely in hardware the 
+platform features a rather powerful host processor (ARM9, 200MHz). The processor will 
+typically handle configuration of the audio engine, UI tasks etc. It is however possible to 
+transfer up to 64 channels of audio between the processor and the audio system 
+enabling DSP processing. 
+ 
+The processor has a number of peripherals including the traditional UART, TIMER, SPI, 
+I2C etc. It also features an SDCARD/SDIO controller capable of 200Mbit/s transfer rates, 
+and advanced 8 channel DMA controller, internal RAM and boot ROM. 
+For demanding system control applications an SDRAM controller is included supporting 
+up to 128Mbytes external memory. 
+ 
+2.1 Block Diagram 
+ 
+Figure 1, Block Diagram 
+ 
+ 
+  
+
+
+=== PDF PAGE 8 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 8   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+2.2 Main Features 
+CPU core 
+ 32-bit ARM9EJ-S RISC processor 
+ 32-bit internal bus 
+ 32-bit ARM and 16-bit Thumb mode 
+ 320 Kb internal RAM 
+ 16 Kb internal ROM   
+ 4K ICache, 4K DCache and MMU 
+ External Dynamic Memory Interface (EBI) 
+I2C Interface 
+ Standard and Full Speed support 
+ Slave mode with address match logic 
+ Master Mode 
+ 10 bit and 7 bit addressing mode 
+ 8 deep Rx/Tx FIFO 
+ DMA support 
+Dual SPI Master Interface 
+ Up to 25MHz 
+ Supports all SPI modes 
+ 4 SS signals per controller 
+ 8 deep Rx/Tx FIFO 
+ DMA support 
+SPI Slave Interface 
+ Up to 3MHz 
+ Supports all SPI modes 
+ Dedicated SS signal 
+ 8 deep Rx/Tx FIFO 
+ DMA support 
+Quad Timer Unit 
+ 32 bit down counter 
+ Free running and user-defined count 
+ Prescaler, clocked by CPU clock 
+ Interrupt on counter wrap 
+ Each configurable for independent operation 
+Watch Dog 
+ 32 bit down counter 
+Dual Universal Asynchronous Receiver Transmitter (UART) 
+ Industry standard 16550 Compliant 
+ 16 byte deep receive and transmit FIFOs 
+ Supports all standard RS232 Rates 
+ Supports MIDI rate 
+ DMA support 
+ 
+
+=== PDF PAGE 9 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 9   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+General Purpose Input Output (GPIO) 
+ 16 individual ports (8 on TCD3000) 
+ Each port configurable as input or output 
+ Each port configurable for level or edge sensitive interrupts 
+ Configurable deglitching logic for each port 
+SDCARD/SDIO Controller 
+ Standard and high speed, 4 bit data. DMA support. 
+DMA Controller 
+ 8 channel DMA with descriptor scatter/gather support 
+EBI 
+ External SDRAM interface, 2 chip selects, 128MBytes 
+Analog to Digital Converter 
+ 3 channel 10 bit ADC 
+Interrupt Controller 
+ 27 interrupt sources with priority handling 
+USB2 Device Controller 
+ 1 Control Endpoint, 6 IN and 6 OUT endpoints 
+ 4k byte local FIFO 
+ Integrated descriptor based scatter/gather DMA 
+ Audio IN and OUT endpoint for hardware streaming 
+IEEE 1394b Link Layer Controller (LLC) 
+ IEEE 1394b compliant LLC 
+ Compliant Beta PHY interface 
+ 512x32 FIFO for asynchronous communication 
+ Dual Isochronous Audio streaming 
+GigE Ethernet MAC with PTP and RTC (AVB) support 
+JetPLLTM 
+Router 
+Audio Clock Controller 
+Mixer 
+Float/Fix Converter 
+CPU Audio Buffer Interface 
+I2S/TDM Interface 
+ADAT Interface 
+SPDIF/AES3 Interface 
+IEEE1394 Audio Streaming Engine 
+Ethernet AVB Streaming Engine 
+USB Audio Streaming Engine 
+System Clock and Reset Controller 
+
+=== PDF PAGE 10 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 10   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Operating Voltage 
+3.3 volts - I/O 
+1.2 volts – core 
+Power Consumption  
+DICE III variant Max Typical 
+TCD3000 500mW 240mW 
+TCD3020 500mW 240mW 
+TCD3040 500mW 240mW 
+TCD3070 740mW 310mW 
+ 
+Table 2, Power Consumption 
+ 
+
+=== PDF PAGE 11 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 11   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+3 Package 
+There are a number of different packages available. The last letter in the ID indicates the 
+package type. 
+ 
+CODE Type Spacing Pins Size 
+F QFN-Single Row 0.4mm 88 10x10mm 
+G QFN-Dual Row 0.5 mm 148 12x12mm 
+H BGA 1.0mm 225 16x16mm 
+Table 3, Package codes 
+  
+
+=== PDF PAGE 12 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 12   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+3.1 QFN-88 
+ 
+ 
+ 
+Figure 2, QFN-88 Package Outline Drawing 
+ 
+
+
+=== PDF PAGE 13 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 13   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+3.2 QFN-148 
+ 
+Figure 3, QFN-148 Package Outline Drawing 
+ 
+
+
+=== PDF PAGE 14 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 14   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+3.3 BGA-225 
+ 
+Figure 4, BGA-225 Package Outline Drawing 
+ 
+  
+  
+
+
+=== PDF PAGE 15 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 15   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+4 Pin-out 
+ 
+4.1 Signal Description 
+ 
+The following table lists each I/O signal for the TCD30xx.  Note that the chips use a 
+number of shared pins, whereby each shared pin can be configured to contain different 
+signals.  The SYS_CTRL module is used to configure the shared pins for a particular 
+signal.  The shared pins and their multiple functions are also listed in a table that follows 
+the table below.  Note that all the shared pins are bi-directional. 
+ 
+ID IBIS Model Type Drive Slew Schmitt Trigger Pull 
+1 PBS8W Bidir 8mA Low Yes  
+2 PISW Input   Yes  
+3 PO8W Output 8mA Normal   
+4 POL8W Output 8mA Low   
+5 PBDL8W Bidir 8mA Low  Down 
+6 PIW Input     
+7 POTL8W Output/Z 8mA Low   
+8 PISDW Input   Yes Down 
+9 PO16W Output 16mA Normal   
+10 PBSUL8W Bidir 8mA Low Yes Up 
+11 PIUW Input    Up 
+12 PBL8W Bidir 8mA Low   
+13 PBD8W Bidir 8mA Normal  Down 
+14 PB12W Bidir 12mA Normal   
+Table 4, IO Cell Types 
+  
+
+=== PDF PAGE 16 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 16   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+ 
+Pin Name 
+TCD3000 
+TCD3020 
+TCD3040 
+TCD3070 
+TYPE 
+DRIVE 
+SLEW 
+STRIG 
+PULL 
+IBIS 
+Description 
+adc_in[0]  B49 B49 J15 A      Input for 10bit ADC, 0-adc_vref 
+adc_in[1] 56 A46 A46 J13 A      Input for 10bit ADC, 0-adc_vref 
+adc_in[2] 55 B48 B48 J14 A      Input for 10bit ADC, 0-adc_vref 
+adc_25k 59 A48 A48 H14 A      25k 1% resistor to GND for ADC 
+adc_vref 58 B50 B50 H13 A      Vref for adc 0 - 0.9*AVDD_ADC 
+fw_d[7]    M1 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[6]    L1 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[5]    K3 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[4]    J3 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[3]    J2 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[2]    J1 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[1]    H3 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_d[0]    H2 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_ctl[1]    N1 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_ctl[0]    K2 IO 8mA  S  1 FireWire PHY interface 3.3v 
+fw_pclk    K1 I   S  2 FireWire PHY interface 3.3v 
+fw_lreq    L2 O 8mA    3 FireWire PHY interface 3.3v 
+fw_pint    P1 I   S  2 FireWire PHY interface 3.3v 
+fw_lps    M2 O 8mA    3 FireWire PHY interface 3.3v 
+bclk0 60 A49 A49 H15 O 8mA L   4 Serial Audio Bit clock 0 
+mclk0 62 A50 A50 G15 O 8mA L   4 Serial Audio master clock 0 
+fclk0 64 A51 A51 G13 O 8mA L   4 Serial Audio LR/frame clock 0 
+aport[0] 34 A26 A26 R9 IO 8mA L  PD 5 see aport-mux section below 
+aport[1] 35 B28 B28 N9 IO 8mA L  PD 5 see aport-mux section 
+aport[2] 40 B34 B34 N11 IO 8mA L  PD 5 see aport-mux section 
+aport[3] 42 B35 B35 R13 IO 8mA L  PD 5 see aport-mux section 
+aport[4] 45 A37 A37 N14 IO 8mA L  PD 5 see aport-mux section 
+aport[5] 46 B40 B40 P15 IO 8mA L  PD 5 see aport-mux section 
+aport[6] 50 B44 B44 M15 IO 8mA L  PD 5 see aport-mux section 
+aport[7] 51 A42 A42 L15 IO 8mA L  PD 5 see aport-mux section 
+aport[8]  A24 A24 R8 IO 8mA L  PD 5 see aport-mux section 
+aport[9]  B26 B26 N8 IO 8mA L  PD 5 see aport-mux section 
+aport[10]  B29 B29 R10 IO 8mA L  PD 5 see aport-mux section 
+aport[11]  B30 B30 R11 IO 8mA L  PD 5 see aport-mux section 
+aport[12]  B31 B31 N10 IO 8mA L  PD 5 see aport-mux section 
+aport[13]  A34 A34 R14 IO 8mA L  PD 5 see aport-mux section 
+aport[14]  B36 B36 R15 IO 8mA L  PD 5 see aport-mux section 
+aport[15]  B42 B42 M14 IO 8mA L  PD 5 see aport-mux section 
+aport[16]  A40 A40 L13 IO 8mA L  PD 5 see aport-mux section 
+aport[17]  B47 B47 K15 IO 8mA L  PD 5 see aport-mux section 
+aport[18]  B46 B46 K13 IO 8mA L  PD 5 see aport-mux section 
+aport[19]    K14 IO 8mA L  PD 5 see aport-mux section 
+
+=== PDF PAGE 17 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 17   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Pin Name 
+TCD3000 
+TCD3020 
+TCD3040 
+TCD3070 
+TYPE 
+DRIVE 
+SLEW 
+STRIG 
+PULL 
+IBIS 
+Description 
+aport[20]    P8 IO 8mA L  PD 5 see aport-mux section 
+aport[21]    P9 IO 8mA L  PD 5 see aport-mux section 
+aport[22]    P10 IO 8mA L  PD 5 see aport-mux section 
+aport[23]    R12 IO 8mA L  PD 5 see aport-mux section 
+aport[24]    P11 IO 8mA L  PD 5 see aport-mux section 
+aport[25]    P12 IO 8mA L  PD 5 see aport-mux section 
+aport[26]    P13 IO 8mA L  PD 5 see aport-mux section 
+aport[27]    N12 IO 8mA L  PD 5 see aport-mux section 
+aport[28]    P14 IO 8mA L  PD 5 see aport-mux section 
+aport[29]    M13 IO 8mA L  PD 5 see aport-mux section 
+aport[30]    N15 IO 8mA L  PD 5 see aport-mux section 
+aport[31]    L14 IO 8mA L  PD 5 see aport-mux section 
+pll_filter 5 A7 A7 F4 A      passive filter for PLL 
+vco_ext_u  B6 B6 F2 O 8mA L   4 Charge pump up signal for optional external VCO 
+vco_ext_d  A6 A6 F3 O 8mA L   4 Charge pump down signal for optional external VCO 
+vco_ext_in  B7 B7 F1 I     6 Clock input from optional external VCO (nominal 50MHz or 100MHz) 
+spi0_clk 80 B68 B68 B5 O 8mA L   4 spi0 signals (spi0 ss0 is used for SPI Flash boot, mandatory) 
+spi0_mosi 81 A65 A65 C5 O 8mA L   7 spi0 signals (spi0 ss0 is used for SPI Flash boot, mandatory) 
+spi0_miso 83 A66 A66 A3 I   S  2 spi0 signals (spi0 ss0 is used for SPI Flash boot, mandatory) 
+spi0_ss0 84 B70 B70 B3 O 8mA L   4 spi0 signals (spi0 ss0 is used for SPI Flash boot, mandatory) 
+tsten 85 A67 A67 B4 I   S PD 8 For internal use pull down or leave floating. 
+rgmii_txgclk   A68 A2 I     6 Ethernet GigE RGMII interface 
+rgmii_txctl   B72 A1 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_txd[0]   A69 B2 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_txd[1]   B73 B1 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_txd[2]   B74 C2 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_txd[3]   A71 C1 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_txclk   B75 C3 O 16mA    9 Ethernet GigE RGMII interface 
+rgmii_rxclk   A72 C4 I     6 Ethernet GigE RGMII interface 
+rgmii_rxd[0]   B2 D2 I     6 Ethernet GigE RGMII interface 
+rgmii_rxd[1]   A2 D1 I     6 Ethernet GigE RGMII interface 
+rgmii_rxd[2]   A3 E2 I     6 Ethernet GigE RGMII interface 
+rgmii_rxd[3]   B4 E1 I     6 Ethernet GigE RGMII interface 
+rgmii_rxctl   A4 E3 I     6 Ethernet GigE RGMII interface 
+mdio_clk   A14 R1 O 8mA L   4 Ethernet GigE RGMII interface 
+mdio_d   B15 N2 IO 8mA L S PU 10 Ethernet GigE RGMII interface 
+jtag_tck 68 B59 B59 B14 I    PU 11 JTAG for debugging 
+jtag_tms 69 A56 A56 B13 I    PU 11 JTAG for debugging 
+jtag_tdi 74 B65 B65 A9 I    PU 11 JTAG for debugging 
+jtag_tdo 75 A62 A62 B8 O 8mA L   12 JTAG for debugging 
+jtag_trstn 77 A63 A63 B7 I    PU 11 JTAG for debugging 
+
+=== PDF PAGE 18 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 18   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Pin Name 
+TCD3000 
+TCD3020 
+TCD3040 
+TCD3070 
+TYPE 
+DRIVE 
+SLEW 
+STRIG 
+PULL 
+IBIS 
+Description 
+sdio_cmd 22 B19 B19 N3 IO 8mA  S  1 SDIO Card interface (max 50MHz) 
+sdio_clk 21 A18 A18 M3 O 8mA    3 SDIO Card interface (max 50MHz) 
+sdio_d[0] 20 B18 B18 L3 IO 8mA  S  1 SDIO Card interface (max 50MHz) 
+sdio_d[1] 18 B17 B17 P3 IO 8mA  S  1 SDIO Card interface (max 50MHz) 
+sdio_d[2] 17 A16 A16 R2 IO 8mA  S  1 SDIO Card interface (max 50MHz) 
+sdio_d[3] 15 A15 A15 P2 IO 8mA  S  1 SDIO Card interface (max 50MHz) 
+uart0_rx 30 A23 A23 P7 I   S  2 Uart, typically for debug and boot 
+uart0_tx 31 B25 B25 R7 O 8mA L   4 Uart, typically for debug and boot 
+ebi_d[0]    G14 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[1]    F15 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[2]    F13 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[3]    F14 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[4]    E13 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[5]    E15 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[6]    E14 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[7]    D15 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[8]    D14 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[9]    D13 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[10]    C13 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[11]    C12 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[12]    C14 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[13]    C15 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[14]    D11 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_d[15]    B15 IO 8mA   PD 13 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[0]    A15 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[1]    B12 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[2]    A14 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[3]    B11 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[4]    C11 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[5]    A13 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[6]    A12 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[7]    C10 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[8]    B10 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[9]    A11 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+
+=== PDF PAGE 19 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 19   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Pin Name 
+TCD3000 
+TCD3020 
+TCD3040 
+TCD3070 
+TYPE 
+DRIVE 
+SLEW 
+STRIG 
+PULL 
+IBIS 
+Description 
+ebi_a[10]    D9 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[11]    A10 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[12]    B9 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[13]    C9 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_a[14]    D8 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_dqm[0]    C8 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_dqm[1]    A8 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_ncas    C7 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_nras    A7 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_nwe    A5 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_ncs[0]    B6 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_ncs[1]    C6 O 8mA    3 External SDRAM interface, upper addresses are bank select signals 
+ebi_clk    A4 O 12mA    14 External SDRAM interface, upper addresses are bank select signals 
+xi 9 B10 B10 G1 A      Xtal, 12MHz required for USB operation 
+xo 10 A10 A10 H1 A      Xtal, 12MHz required for USB operation 
+nreset 78 B67 B67 A6 I   S  2 Active low reset 
+usb_vbus 23 B20 B20 R3 A      USB VBUS for internal comparator 
+usb_dp 25 A20 A20 R4 A      USB D+ signal, directly from connector, device only 
+usb_tune 26 B22 B22 P5 A      Use 44.1 Ohms 1% to GND 
+usb_dm 27 A21 A21 R5 A      USB D- signal, directly from connector, device only 
+Table 5, Pin description 
+  
+
+=== PDF PAGE 20 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 20   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+4.2 Power and Ground 
+ 
+Pin 
+Voltage 
+TCD3000 TCD3020 TCD3040 TCD3070 Description 
+AVDD_USB 3.3V 24, 28 A19, B23 A19, B23 M5, N5, N6 VDD for USB PHY 
+AVDD_PLL 3.3V 8 B9 B9 
+G4 
+H4 
+VDD for CPU PLL 
+AVDD_VCO 3.3V 6 B8 B8 G3 VDD for JET PLL VCO 
+AVDD_PLL1_2 1.2V 7 A8 A8 G2 VDD for PLL’s 
+AVDD_ADC 3.3V 57 A47 A47 H12 VDD for ADC 
+VDD 1.2V 
+1, 3, 12, 14, 
+16, 29, 33, 
+37, 39, 43, 
+47, 49, 53, 
+61, 65, 67, 
+71, 73, 79, 
+86, 88 
+A1, A11, A22, 
+A28, A32, A35, 
+A38, A39, A41, 
+A44, A61, A64, 
+B5, B16, B27, 
+B52, B54, B55, 
+B58, B61, B71, 
+B76 
+A1, A11, A22, 
+A28, A32, A35, 
+A38, A39, A41, 
+A44, A61, A64, 
+B5, B16, B27, 
+B52, B54, B55, 
+B58, B61, B71, 
+B76 
+E6, E7, E8, E9, 
+E10, F5, F11, 
+G5, G11, H11, 
+J5, J11, K5, 
+K11, L8, L9, 
+L10, M6 
+Core VDD 
+VDDIO 3.3V 
+2, 4, 11, 13, 
+19, 32, 36, 
+38, 41, 44, 
+48, 52, 54, 
+63, 66, 70, 
+72, 76, 82, 
+87, 
+B3, B13, B24, 
+B37, B41, B53, 
+B60, B64, B66, 
+B69,  A5, A17, 
+A25, A27, A30, 
+A33, A43, A45, 
+A52, A54, A70  
+B3, B13, B24, 
+B37, B41, B53, 
+B60, B64, B66, 
+B69,  A5, A17, 
+A25, A27, A30, 
+A33, A43, A45, 
+A52, A54, A70 
+D5, D6, D7, 
+D10, E4, E12, 
+F12, G12, J4, 
+J12, K4, K12, 
+L4, L12, M8, 
+M9, M10, M11 
+IO VDD 
+VSS 0V PAD PAD PAD 
+D3, D4, D12, 
+E5, E11, F6, F7, 
+F8, F9, F10, G6, 
+G7, G8, G9, 
+G10, H5, H6, 
+H7, H8, H9, 
+H10, J6, J7, J8, 
+J9, J10, K6, K7, 
+K8, K9, K10, 
+L5, L6, L7, L11, 
+M4, M7, M12, 
+N4, N7, N13, 
+P4, P6, R6 
+Ground 
+NC   
+B1, B2, A2, A3, 
+A4, B4, A9, 
+B11, B12, A12, 
+A13, B14, A14, 
+B15, B21, A29, 
+B32, A31, B33, 
+A36, B38, B39, 
+B43, B45, B51, 
+A53, B56, B57, 
+A55, A57, A58, 
+B62, A59, B63, 
+A60, A68, B72, 
+A69, B73, B74, 
+A71, B75, A72,   
+B1, A9, B11, 
+B12, A12, A13, 
+B14, B21, A29, 
+B32, A31, B33, 
+A36, B38, B39, 
+B43, B45, B51, 
+A53, B56, B57, 
+A55, A57, A58, 
+B62, A59, B63, 
+A60 
+  
+Table 6, Power and Ground 
+  
+
+=== PDF PAGE 21 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 21   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+4.3 Multifunction pins (APORT) 
+The APORT is a multi-function port. The functionality is programmable from firmware. 
+The port is highly configurable providing several alternative pins for certain signals. This 
+can help make layout easier as the functionality can be placed where it is easily routable 
+on the PCB. 
+ 
+4.3.1 Configuration after reset 
+After reset the ports will come up in ‘Audio’ mode. This also means that all the even 
+numbered ports will come up as an output driven low. Care must be taken if they are 
+intended to be used as inputs (GPIO or SPI) to avoid a short after boot. 
+If possible use odd pins for GPIO inputs. If that is not possible, use a series resistor or 
+assure that the external signal is low until the firmware has configured the port. 
+If the SPI2 Slave is being used please note that the SPI2_SS signal will be an output 
+driven low until configured by firmware. It is suggested that a series resistor is put on 
+this pin to avoid a short or assure that the SPI2_SS signal is dot driven high by the 
+external master until firmware has configured it for SPI functionality. 
+ 
+4.3.2 Primary function selection 
+The primary function is selected by firmware on a per pin basis. Some functions can 
+appear on several pins. If the same function is configured to more than one pin then if 
+the function is an output it will appear on all the pins and if it is an input the input will be 
+taken from the pin with the lowest number. 
+ 
+4.3.3 Input Function Select 
+There are a number of input functions which can be selected to come from any of the 
+odd numbered pins. Those are independent of the primary function selection but if the 
+primary function selected is an output the function will simply receive what that function 
+is sending out. 
+For that reason it is suggested that if one of the input select functions are used the 
+primary function should be set to ‘Audio’ as that will assure that the pin is an input. 
+ 
+  
+
+=== PDF PAGE 22 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 22   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+ 
+Primary function 
+Input selects 
+(when primary=Audio) 
+Port 
+Audio 
+Alt 
+Audio 
+SPDIF tx 
+ADAT tx 
+GPIO 
+UART1 
+tx 
+SPI 
+I2C 
+SPDIF in 
+ADAT in 
+UART1 
+in 
+wclk in 
+jet_ext 
+in 
+0 InS_O0 wclk_out spdif adat0 gpio0 uart1 spi0_ss1 i2c_sck           
+1 InS_I0       gpio1   spi0_ss2 i2c_d spdif adat0 uart1 wclk_in0 jet_ext 
+2 InS_O1       gpio2   spi0_ss3             
+3 InS_I1       gpio3       spdif adat1 uart1 wclk_in1 jet_ext 
+4 InS_O2       gpio4 uart1               
+5 InS_I2       gpio5       spdif adat0 uart1 wclk_in0 jet_ext 
+6 InS_O3   spdif adat1 gpio6 uart1 spi0_ss1             
+7 InS_I3       gpio7   spi0_ss2   spdif adat1 uart1 wclk_in1 jet_ext 
+8 InS_O4       gpio8   spi1_mosi             
+9 InS_I4       gpio9   spi1_miso   spdif adat0 uart1 wclk_in0 jet_ext 
+10 InS_O5   spdif adat0 gpio10   spi1_sck             
+11 InS_I5       gpio11   spi1_ss0   spdif adat1 uart1 wclk_in1 jet_ext 
+12 InS_O6       gpio12   spi1_ss1             
+13 InS_I6       gpio13   spi1_ss2   spdif adat0  uart1 wclk_in0 jet_ext 
+14 InS_O7       gpio14   spi1_ss3             
+15 InS_I7       gpio15   spi2_mosi   spdif adat1 uart1 wclk_in1 jet_ext 
+16 InS_O8 bclk1     gpio0   spi2_miso             
+17 InS_I8 mclk1     gpio1   spi2_sck   spdif adat0 uart1 wclk_in0 jet_ext 
+18 InS_O9 fck1 spdif adat1 gpio2 uart1 spi2_ss             
+19 InS_I9       gpio3   spi0_ss3   spdif adat1 uart1 wclk_in1 jet_ext 
+20 InS_O10   spdif adat0 gpio4   spi1_mosi             
+21 InS_I10       gpio5   spi1_miso   spdif adat0 uart1 wclk_in0 jet_ext 
+22 InS_O11       gpio6   spi1_sck             
+23 InS_I11       gpio7   spi1_ss0   spdif adat1 uart1 wclk_in1 jet_ext 
+24 InS_O12 mclk2 spdif adat1 gpio8 uart1 spi1_ss1             
+25 InS_I12       gpio9   spi1_ss2 i2c_sck spdif adat0 uart1 wclk_in0 jet_ext 
+26 InS_O13   spdif adat0 gpio10   spi1_ss3 i2c_d           
+27 InS_I13       gpio11   spi2_mosi   spdif adat1 uart1 wclk_in1 jet_ext 
+28 InS_O14       gpio12   spi2_miso             
+29 InS_I14       gpio13   spi2_sck   spdif adat0 uart1 wclk_in0 jet_ext 
+30 InS_O15 wclk_out     gpio14   spi2_ss             
+31 InS_I15 bclk2     gpio15       spdif adat1 uart1 wclk_in1 jet_ext 
+ 
+Table 7, Multifunction pins 
+ 
+
+=== PDF PAGE 23 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 23   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+4.4 Unused pins 
+Most of the input pins have internal pulls as stated in the table but a few are pure CMOS 
+inputs with no internal pull. These pins must be tied to either VSS or VDDIO either 
+directly or through a resistor (10K suggested).  
+ 
+4.4.1 RGMII Inputs 
+If the RGMII interface is not used connect rgmii_rx* pins to VSS. 
+ 
+ 
+4.4.2 Firewire IO’s 
+If the firewire interface is not used make sure to connect the fw_* inputs to VSS and the 
+fw_* bidirectional pins to VSS through 100k. 
+ 
+4.4.3 SDIO Interface 
+If the SDIO interface is not being used make sure to connect the sdio_* bidirectional 
+pins to VSS or VDDIO through 100k. 
+ 
+4.4.4 External VCO pins 
+The pin vco_ext_in should be connected to VSS if an external VCO is not used in the 
+design. 
+
+=== PDF PAGE 24 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 24   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+5 Ground and Power Considerations 
+Extended copper planes must be used for the ground and power supplies. 
+Ground planes for each voltage domain should be separate and analog ground should be 
+kept separate from digital to ensure analog performance of ADC, USB and PLL’s. It is 
+suggested to use a  separate voltage regulator for 3.3V analog power supply for use by 
+the two chip PLL’s or make sure these supplies are decoupled from the noise of the other 
+supplies by inductors and local decoupling capacitors. 
+ 
+Designs should make sure that the supply has a proper amount of bypass capacitors 
+placed as close as possible to the supply pins. The amount of capacitors on the VDDIO 
+might vary depending on the applications use of high speed IO. 
+ 
+The capacitors should be placed as close to the packag e as possible, preferably on the 
+bottom side of the board . The decoupling capacitors should be tied directly to the  power 
+and ground planes with vias that touch their solder pads. Surface -mount capacitors are 
+recommended because of their lower series  inductances (ESL) and higher series 
+resonant frequency. Connect the  power and ground planes to the TCD30xx pins directly 
+with vias—do not use traces. The ground planes should not  be densely perforated with 
+vias or traces as this will reduce their effectiveness. 
+ 
+In addition, we recommend tantalum capacitors (or better) on the board to be used for 
+decoupling. 
+ 
+5.1 ADC Reference resistor 
+The ADC requires a precision resistor for internal calibration. The resistor is connected 
+between adc_25k and VSS. The resistor value should be 25k Ohms 1% and it should 
+have a 10nF capacitor in parallel. 
+
+=== PDF PAGE 25 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 25   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+6 Crystal Oscillator 
+ 
+The TCD30xx features an on-board oscillator.  The on-board ARM processor is clocked by 
+this oscillator after reset. For applications using USB this crystal must be 12MHz. It is 
+also possible to feed a clock directly to the XI pin of the chip. If USB is not being used a 
+crystal between 10MHz and 20MHz can be used or an external clock to XI from 10MHz to 
+30MHz. 
+ 
+It is strongly recommended that 12MHz is used, as the boot sector is assuming this 
+frequency when functioning in UART mode (if SPI load fails). 
+ 
+6.1 Crystal Oscillator Circuit 
+ 
+Inside of a chip
+Feedback
+amplifier
+XI
+XO
+Rf
+C1
+C2 Rx
+ 
+Figure 5, On-Chip oscillator typical connections 
+The tolerance of the crystal should be 100ppm or better if more precision is needed in 
+customer application. 
+ 
+The external components commonly used for the oscillator circuit are a positive 
+reactance (normal crystal oscillator), two capacitors, C1 and C2;  and two resistors, Rf  
+and Rx. 
+ 
+ 
+6.2 Crystal Specifications 
+Specifications for an appropriate crystal are not very critical. Any fundamental mode 
+crystal of medium or better quality can be used. Crystal resistance affects start-up time 
+and steady state amplitude but can be compensated by the choice of C1 and C2, 
+however, the lower the crystal resistance, the better. A discussion of external R and C 
+components follows below. 
+ 
+6.3 Oscillation Frequency 
+The oscillation frequency is mainly determined by the crystal. The USB PHY requires the 
+frequency to be within 100ppm of 12MHz. 
+The precision of the oscillator is dependent on the selection of the external components. 
+For applications not using USB it is possible to use other frequencies but it is 
+recommended that 12MHz is used. 
+ 
+6.4 C1, C2,Rf and Rx Selection 
+Optimal values for C1 and C2 depend on the crystal parameters. 
+CL Crystal Load Capacitance (typical 12pF) 
+ESR Equivalent Series Resistance (typical 80 Ω) 
+The values of C1 and C2 should be selected such that C1*C2/(C1+C2) = CL. 
+
+=== PDF PAGE 26 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 26   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Assuming that C1==C2 the value should be 2*CL. 
+For a typical crystal with a CL of 12pF we get C1=C2=24pF. 
+Higher values of C1 and C2 give better frequency precision but longer start-up time. 
+ 
+A large Rf (1M) holds the on-chip oscillator (a CMOS inverter) in its linear region allowing 
+it to oscillate. The inverter has a fairly low output resistance which destabilizes the 
+oscillator circuit. Rx size could be anywhere between 33Ohm and 100Ohm. This resistor 
+is added to the feedback network, as shown in the Figure 5, to stabilize the oscillator 
+circuit. 
+ 
+6.5 PCB CONSIDERATIONS 
+Noise glitches arising at XI or XO pins at the wrong time can cause a miscount in the 
+internal clock-generating circuitry. These kinds of glitches can be produced through 
+capacitive coupling between the oscillator components and PCB traces carrying digital 
+signals with fast rise and fall times.  For this reason, the oscillator components should be 
+mounted close to the chip and have short, direct traces to the XTAL1, XTAL2, and VSS 
+pins. Additionally surrounding oscillator components with “quiet” traces (V DD and VSS) 
+will alleviate capacitive coupling to signals having fast edges. To minimize inductive 
+coupling, the PCB layout should minimize lead, wire, and trace lengths for oscillator 
+components. 
+ 
+
+=== PDF PAGE 27 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 27   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+7 Test and JTAG operation 
+ 
+TCD30xx JTAG interface is predominantly used for JTAG debugging of the ARM. 
+The general recommendation is to put external pull-ups on TCK pin and to provide space 
+for the JTAG connector on the board. 
+ 
+The TCD30xx chips have internal pull-up resistors on the input pins. Those resistors are 
+nominally 60k and it is required to put a stronger pull-up on TRSTN as debuggers drive 
+to low only (OC). 
+ 
+Important note: 
+It is important that the debug circuit is reset during a power cycle as the debug circuit is 
+not reset by NRESET. It is suggested that TRSTN have an external pull-up of 10k and is 
+reset by the reset circuit on the design when power is cycled.  
+In order for debugging to work in an optimal way it is also recommended that these 
+signals be isolated such that when the debugger issues a reset it will not affect TRSTN. 
+This functionality can be obtained with two diodes. 
+It is also possible to simply connect NRESET to TRSTN through a OR resistor. While 
+debugging the target this resistor should be removed. 
+ 
+
+=== PDF PAGE 28 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 28   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+8 Reset circuitry 
+ 
+The TCD30xx chip will always use the crystal oscillator after reset. The firmware can 
+program the internal circuits to use a PLL generated clock. The PLL will use the crystal 
+oscillator as reference. 
+ 
+It is important that the system has a reliable active RESET that is released once the 
+power supplies and internal clock circuits have stabilized. The RESET signal should not 
+only offer a suitable delay, but it should also have a clean monotonic edge. The reset 
+input does have Schmitt Trigger functionality. 
+ 
+The external reset circuitry should be designed to hold system in reset enough time for 
+the oscillator to settle after the initial power surge. The rise time should be less than one 
+half oscillator cycle (<40ns). 
+ 
+
+=== PDF PAGE 29 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 29   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+9 Electrical Specifications 
+ 
+9.1 Parameter conditions 
+Unless otherwise specified, all voltages are referenced to VSS 
+ 
+9.1.1 Minimum and maximum values  
+Unless otherwise specified the minimum and maximum values are guaranteed in the 
+worst conditions of ambient temperature, supply voltage and frequencies by tests in 
+production on 100% of the devices with an ambient temperature at T A = 25 °C and TA = 
+TAmax (given by the selected temperature range). 
+Data based on characterization results, design simulation and/or technology 
+characteristics are indicated in the table footnotes and are not tested in production. 
+Based on characterization, the minimum and maximum values refer to sample tests and 
+represent the mean value plus or minus three times the standard deviation (mean±3Σ). 
+ 
+9.1.2 Typical values 
+Unless otherwise specified, typical data are based on TA = 25 °C, VDD = 1.2 V, Vddio = 3.3 
+V. They are given only as design guidelines and are not tested. 
+ 
+9.1.3 Loading capacitor 
+The loading condition used for output pin parameter measurements are: 
+ 
+Signal Capacitive load 
+fw_d[7:0], fw_ctl[1:0], fw_lreq, fw_lps, 
+rgmii_txctl, rgmii_txd[3:0], rgmii_txclk 
+5pF 
+All other signals 15pF 
+Figure 6, Capacitive output load 
+ 
+9.1.4 Power supply scheme 
+The TCD30xx uses two supply voltages. The order of voltage ramp-up should not differ 
+by a significant amount of time. The 3.3V supplies should be ramped up ahead of the 
+1.2V supplies. Sustained periods with only one voltage can result in long term damage of 
+the chip. 
+ 
+9.2 Absolute maximum ratings 
+Stress outside absolute maximum listed may cause permanent damage to the device. 
+These are stress ratings only and functional operation of the device at these conditions  is 
+not implied. Exposure to maximum rating conditions for extended periods may affect 
+device reliability. 
+ 
+Symbol Ratings Min Max Unit 
+VDD-VSS External core supply voltage -0.5 1.8 V 
+VDDIO-VSS External IO supply voltage -0.5 4.6 V 
+VIN Input voltage -0.5 6.0 V 
+TSTG Storage temperature -65 150 °C 
+Table 8, Absolute Maximum Ratings 
+
+=== PDF PAGE 30 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 30   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+9.3 Operating conditions 
+ 
+Symbol Parameter Min Max Unit 
+fARM Internal ARM clock 0 200 MHz 
+VDD Core supply 1.14 1.26 V 
+AVDD_PLL1_2 PLL/VCO Analog supply 1.14 1.26 V 
+VDDIO I/O Supply 2.97 3.63 V 
+AVDD_USB USB Analog supply 2.97 3.63 V 
+AVDD_PLL CPU PLL Analog supply 2.97 3.63 V 
+AVDD_VCO JET VCO Analog supply 2.97 3.63 V 
+AVDD_ADC ADC Analog supply 2.97 3.63 V 
+IDD Core Supply  300 mA 
+IDD_PLL12 PLL/VCO analog supply  2 mA 
+IDDIO I/O Supply TCD3000  14 mA 
+TCD3020  21 mA 
+TCD3040  33 mA 
+TCD3070  80 mA 
+IDD_USB USB Analog supply  15 mA 
+IDD_PLL CPU PLL Analog supply  3 mA 
+IDD_VCO VCO PLL Analog supply  3 mA 
+IDD_ADC VCO PLL Analog supply  0.2 mA 
+PD Power 
+dissipation at TA 
+= 85°C 
+TCD3000  496 mW 
+TCD3020  520 mW 
+TCD3040  560 mW 
+TCD3070  717 mW 
+TA Temperature range 0 85 °C 
+TJ Junction temperature  125 °C 
+Table 9, Operating conditions 
+ 
+ 
+  
+
+=== PDF PAGE 31 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 31   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+9.4 Typical Power Consumption by application 
+ 
+Application mW 
+Minimal, 12MHz, boot sector 63 
+USB 48x48 Channels 248 
+USB Suspended 150 
+Firewire S800, 100X100 218 
+ 
+9.5 I/O Characteristics 
+ 
+Symbol Parameter Condition Min Typ Max Unit 
+VIL Input low level voltage  -0.3  0.8 V 
+VIH Input high level voltage  2.0  5.5 V 
+VT- Schmitt trig H->L Thr. For Schmitt Trig. cells 0.95 1.02 1.09 V 
+VT+ Schmitt trig L->H Thr. For Schmitt Trig. cells 1.53 1.64 1.73 V 
+IL Input leakage current    ±1 µA 
+IOZ Tri-state leakage 
+current 
+   ±1 µA 
+RPU Pull up resistor  62 77 112 kΩ 
+RPD Pull down resistor  48 85 174 kΩ 
+VOL Output low voltage @IOL = 8,12,16mA   0.4 V 
+VOH Output high voltage @IOH = 8,12,16mA 2.4   V 
+IOL Low level current @VOL = 0.4V 8mA 8.6 13.9 18.9 mA 
+12mA 12.9 20.8 28.3 mA 
+ 16mA 17.2 27.7 37.8 mA 
+IOH High level current @VOL = 2.4V 8mA 12.5 26.9 47.1 mA 
+12mA 18.7 40.3 70.7 mA 
+16mA 25.0 53.8 94.2 mA 
+Table 10, I/O Characteristics 
+  
+
+=== PDF PAGE 32 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 32   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+9.6 AC Characteristics 
+ 
+9.6.1 RGMII 
+ 
+Symbol Parameter Min Max Unit 
+TSKEW Output Skew -500 500 ps 
+TSU Input Setup 500  ps 
+THLD Input Hold 500  ps 
+Table 11, RGMII Timing 
+ 
+9.6.2 IEEE1394 
+ 
+Symbol Parameter Min Max Unit 
+TDO Data out from 
+fw_pclk rising 
+1.7 6.2 ns 
+Tsu Input Setup 
+before fw_pclk 
+rising 
+2.4  ns 
+Thld Input Hold after 
+fw_pclk rising 
+0  ns 
+Table 12, IEEE1394 Timing 
+ 
+9.6.3 InS 
+The InS is highly configurable in regards to the polarity of clocks and the interpretation 
+of the fsync signal. 
+The outputs will be driven relative to the “driving edge” which depends on the 
+programmed polarity of the bclk signal. The timing diagrams using bclk inverted which 
+means the driving edge is the negative edge. 
+Attached devices will sample data on the “sampling edge” which is the edge of opposite 
+direction to the “driving edge”. 
+As the TCD30xx is always the clock master the sampling point is chosen to be closer to 
+the driving edge. This will make it easier to comply with timing for compliant devices  
+driving on the “driving edge”. 
+ 
+There are a few non-compliant ADC’s on the market which only drive their outputs in a 
+very narrow window around the sampling edge. For those devices it might be necessary 
+to insert a flip flop sampling the data from the ADC on the “sampling edge”. 
+ 
+9.6.3.1 Internal Sampling Edge 
+Data are sampled on the first positive edge of the internal sys_f512br after the 
+“sampling edge”. The period of sys_f512br is 512 times the base sampling rate which for 
+44k1 based rates is 44.29ns and for 48k based rates is 40.69ns. 
+  
+
+=== PDF PAGE 33 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 33   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+ 
+ 
+Symbol Parameter Min Max Unit 
+TBCLK Bit clock cycle 40  ns 
+TDO Data out from 
+driving edge 
+0.7 9.3 ns 
+Tsu Input Setup 
+before internal 
+sampling edge 
+12  ns 
+Thld Input Hold after 
+internal 
+sampling edge 
+-2  ns 
+Table 13, InS Timing 
+ 
+The timing will depend on the ratio of BCLK to the internal clock in the sense that when 
+BCLK is equal to sys_f512br the internal sampling edge is half a period after the BCLK 
+sampling edge. That only happens in I4S @high_rate and I8S @ mid_rate. 
+In all other configurations the sampling edge is one full period of sys_f512fsbr after the 
+BCLK sampling edge. 
+Examples of sampling point for rates based on 48KHz. 
+ 
+Mode Rate TBCLK(ns) 
+Data stable after BCLK sampling edge 
+Min (ns) Max (ns) 
+I2S 48K 325.52 
+28.69 38.69 
+I4S 48K 
+162.76 
+I2S 96K 
+I8S 48K 
+81.38 
+ 
+I4S 96K 
+I2S 192K 
+I8S 96K 
+40.69 8.35 18.35 
+I4S 192K 
+Table 14, InS Sampling point 
+ 
+ 
+9.6.4 EBI 
+Note that while many SDRAM devices only promise a hold time of 1ns the PCB path from 
+the TCD30xx ebi_clk output to the SDRAM and the return PCB path of ebi_d[] to the 
+TCD30xx chip should assure that hold time is not a problem. 
+ 
+Symbol Parameter Min Max Unit 
+TCLK ebi_clk 10  ns 
+TDO Data out delay 
+from ebi_clk 
+2.8 6.8 ns 
+
+=== PDF PAGE 34 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 34   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+Symbol Parameter Min Max Unit 
+Tsu Input Setup 
+before ebi_clk 
+1.2  ns 
+Thld Input Hold after 
+ebi_clk 
+1.05  ns 
+Table 15, EBI Timing 
+ 
+9.6.5 SDIO 
+Note that the minimum TDO can be programmed in firmware. It can be programmed to 
+5.0ns or 7.5ns. In that case the Max will increase with similar amounts. It might be 
+necessary to program a Min time of 5ns for use with ‘default speed’ devices. Those 
+devices will only run as fast as 25MHz (TCLK = 40ns) so in that case the increase of the 
+Max value will not be a problem. 
+ 
+Symbol Parameter Min Max Unit 
+TCLK sdio_clk Clock 20  ns 
+TDO Data out delay 
+from sdio_clk 
+2.5 8.25 ns 
+Tsu Input Setup 
+before sdio_clk 
+5.35  ns 
+Thld Input Hold after 
+sdio_clk 
+1.80  ns 
+Table 16, SDIO Timing 
+ 
+9.6.6 SPI Master 
+The various SPI0 and SPI1 signals can be programmed to appear on different pins of the 
+chip. The timing is for the worst case combination. 
+ 
+Symbol Parameter Min Max Unit 
+TCLK spi0/1_clk 40  ns 
+TDO Data out delay 
+from spi_clk 
+0 4.6 ns 
+Tsu Input Setup 
+before spi_clk 
+11.8  ns 
+Thld Input Hold after 
+spi_clk 
+-2.6  ns 
+Table 17, SPI Timing 
+
+=== PDF PAGE 35 ===
+TCD30xx Hardware Guide        5/2/2015  
+ 
+PAGE 35   COPYRIGHT  2014-2015, TC APPLIED TECHNOLOGIES.  ALL RIGHTS RESERVED.                     
+10 Revisions 
+ 
+Date Rev. By Change 
+April 24, 2014 0.1 ML First version created 
+April 25, 2014 0.2 BK Document formatting, branding 
+April 28, 2014 0.2.1 BK Updated figure 1 block diagram 
+May. 27, 2014 0.3 ML Fixed typos and changed QFN124 to QFN148 
+including updated pin-out. Added preliminary 
+current consumption values. 
+June 2, 2014 0.4 ML nreset is pin B67 not B57 on QFN148 
+Updated preliminary QFN148 drawing 
+June 12, 2014 0.5 ML Changed QFN148 pinouts as USB DP/DM were 
+brought to outer pin row. 
+Fixed bugs in VDD, VDIO and NC lists. 
+June 13, 2014 0.6 ML Removed replicated A4 in the TCD3020 NC list. 
+July 17, 2014 0.7 BK Corrected fw_ctl and fw_d signal names in Table 
+4. Clarified number of GPIO lines on TCD3000. 
+October 23, 2014 0.75 BK Replaced package outline diagrams with scalable 
+versions, add ‘preliminary’ watermark, various 
+edits. 
+November 22, 2014 0.8 BK Various typographical edits, tables and diagrams 
+reformatted, remove ‘preliminary’ watermark. 
+November 28, 2014 0.9 ML Added more explanation to the APORT mux 
+section to help designers choose pins for designs. 
+December 2, 2014 0.95 BK Review and formatting. 
+December 4, 2014 0.96 BK Fix typos. 
+December 4, 2014 1.0 BK Replace cover page logo. 
+December 10, 2014 1.01 BK Doc no longer confidential, change footer. 
+December 16, 2014 1.02 ML Relaxed requirement for separate regulator for 
+PLL 3.3V, added section about decoupling the 
+adc_25k resistor. Added pull-up on TRSTN as a 
+requirement. 
+April 29, 2015 1.03 ML Added more description of the InS sampling 
+point. 
+April 29, 2015 1.03 ML Added description of what to do with unused 
+input and bidirectional pins. 
+April 29, 2015 1.03 ML Added description of TRSTN requirements during 
+power cycle. 
+ 
+Table 18, Document revision history 

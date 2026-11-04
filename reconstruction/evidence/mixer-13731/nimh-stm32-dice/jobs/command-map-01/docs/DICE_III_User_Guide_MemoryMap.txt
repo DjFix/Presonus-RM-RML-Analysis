@@ -1,0 +1,468 @@
+
+=== PDF PAGE 1 ===
+  
+TCD30xx User Guide 
+ 
+Copyright © 2014-2015, TC Applied Technologies. All rights reserved.     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Memory, Interrupt 
+and DMA Maps 
+ 
+ 
+ 
+ 
+Revision 1.0.0-41569 
+ 
+ 
+July 5, 2015 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+
+=== PDF PAGE 2 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 1-2     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+CONTENTS 
+1 MEMORY MAP ................................ ................................ ................................ ......................1-3 
+1.1 OVERVIEW .................................................................................................................................................... 1-3 
+1.2 MEMORY BLOCK DIAGRAM .............................................................................................................................. 1-4 
+1.3 MAP TABLES .................................................................................................................................................. 1-4 
+2 INTERRUPT ASSIGNMENTS ................................ ................................ ................................ ....2-6 
+2.1 OVERVIEW .................................................................................................................................................... 2-6 
+3 DMA HANDSHAKE ASSIGNMENTS ................................ ................................ ......................... 3-7 
+ Overview ............................................................................................................................................ 3-7 3.1.1
+3.2 REVISIONS ..................................................................................................................................................... 3-8 
+ 
+ 
+LIST OF TABLES 
+ 
+TABLE 2.1  INTERRUPT MAP ............................................................................................................................................. 2-6 
+TABLE 3.1  DMA HANDSHAKE MAPPING ............................................................................................................................. 3-7 
+TABLE 3.2  DOCUMENT REVISION HISTORY .......................................................................................................................... 3-8 
+ 
+ 
+LIST OF FIGURES 
+ 
+FIGURE 1.1:  MEMORY BLOCK DIAGRAM ........................................................................................................................... 1-4 
+FIGURE 1.2:  GLOBAL MEMORY MAP (ALLOCATED ADDRESS SPACE) ....................................................................................... 1-5 
+ 
+  
+
+=== PDF PAGE 3 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 1-3     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+1 Memory Map 
+ 
+1.1 Overview 
+This section explains how the various modules in the system are addressed from the on-chip 
+ARM processor. There are two memory maps, one in the case where Remap is active and 
+one where it is inactive. The remap functionality is used during boot. The ARM processor 
+assumes that the exception vectors are placed from address 0x00000000 after reset and 
+therefore it is essential that the BOOT ROM is mapped to this address after reset. 
+ 
+In most applications it is necessary to be able to change exception vectors at runtime, and 
+for that purpose the internal RAM can be mapped into the low address space. A reset will 
+always force the BOOT ROM to be mapped to address 0x00000000. By writing a "1" to 
+register 0xC0000008 in the Remap module, the low portion of the address space can be 
+replaced with the internal RAM. A shadow of the internal RAM will always be present at 
+address 0x70000000 enabling the application to write to it before the remapping is done.  
+ 
+The size of internal SRAM is 320KB (327680 bytes). While 256MB of address space is 
+allocated to this segment, addressing areas outside of the 320KB memory will have 
+unpredictable results. 
+ 
+Note, that in regular DICE applications the BOOT ROM will load the application or the 
+secondary boot loader into internal RAM and perform the Remap so in normal circumstances 
+the Remap module will not have to be used. 
+  
+
+=== PDF PAGE 4 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 1-4     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+1.2 Memory Block Diagram 
+ 
+Figure 1.1 shows the memory block diagram in the TCD30xx. The vertical dark arrows 
+indicate modules that can be masters on their respective memory buses. Memory 
+transactions may occur simultaneously and independently on one or more buses. The 
+Interconnect Matrix queues requests made by modules where there may be contentions. 
+Peripherals which may be accessed from the DMA controller (i.e. for DMA-based device 
+driver implementations) are indicated. 
+ 
+Figure 1.1:  Memory Block Diagram 
+ 
+LLC 
+Reg
+1394 
+Tx/Rx
+AVB 
+Listener
+AVB 
+Talker
+USB 
+Audio1394 Tx/Rx
+Router 
+Table
+Peak 
+Table
+AIO 
+Buffers
+LLC 
+Buffer
+AHB
+Jet 
+PLL
+SYS 
+CTRL
+AIO 
+Reg
+Float/
+Fix Mixer Clock CTRL UART x2Remap/Pause Timer x2 I2C(DMA)
+ARM AHB Bus (CPU MHz/2)
+ROM
+4Kx32
+SRAM
+80Kx32
+ARM926 
+EJS
+Vectored 
+Interrupt 
+Controller
+MPMC USB2 DMAC
+SDIO
+(DMA)
+AES 
+Tx/Rx
+ADAT 
+Tx/Rx
+Router 
+Reg
+Watch
+dog SPI x3GPIO x2
+AHB
+AHB
+AHB
+AHB
+ETH
+MAC
+AHB
+InS 
+Tx/Rx
+AES 
+Tx/Rx
+ADAT 
+Tx/Rx
+InS 
+Tx/Rx
+UART 
+x2
+(DMA)
+Timer 
+x4Timer x4Timer x4 SPI x3SPI x3(DMA)PWM
+AHB
+AHB-
+APB 
+Bridge
+GPIO 
+x2
+APB (CPU MHz/4)
+DMA Bus
+Interconnect
+Matrix
+ 
+ 
+ 
+1.3 Map Tables 
+ 
+Figure 1.2 below shows the memory map of the TCD30xx. The MPMC memories segment 
+(SDRAM) is present only on the TCD3070, otherwise the map is the same for all variants. 
+The table shows the memory map from the CPU point-of-view, and a second column shows 
+the map from the DMA controller point-of-view. The DMA controller does not have access to 
+all memory segments, and the addressing is different for SDRAM access. 
+ 
+ 
+ 
+ 
+ 
+
+=== PDF PAGE 5 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 1-5     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+Figure 1.2:  Global Memory Map (allocated address space) 
+0x36000000-0x3DFFFFFF
+0x0000000-0x0FFFFFF
+0xF0000000-0xFFFFFFFF
+0xCF000000-0xCFFFFFFF
+0xCE000000-0xCEFFFFFF
+0xCD000000-0xCDFFFFFF
+0xCC000000-0xCCFFFFFF
+0xCB000000-0xCBFFFFFF
+0xCA000000-0xCAFFFFFF
+0xC9000000-0xC9FFFFFF
+0xC8000000-0xC8FFFFFF
+0xC70000000xC7FFFFFF
+0xC6000000-0xC6FFFFFF
+0xC5000000-0xC5FFFFFF
+0xC4001000-0xC4001FFF
+0xC4000A00-0xC4000AFF
+0xC4000900-0xC40009FF
+0xC4000800-0xC40008FF
+0xC4000700-0xC40007FF
+0xC4000600-0xC40006FF
+0xC4000500-0xC40005FF
+0xC4000400-0xC40004FF
+0xC4000300-0xC40003FF
+0xC4000200-0xC40002FF
+0xC4000100-0xC40001FF
+0xC4000000-0xC40000FF
+0xC3000000-0xC3FFFFFF
+0xC2000000-0xC2FFFFFF
+0xC1000000-0xC1FFFFFF
+0xC0000000-0xC07FFFFF
+0xA0000000-0xAFFFFFFF
+0x90000000-0x9FFFFFFF
+0x80000000-0x8FFFFFFF
+0x60005000-0x60005FFF
+0x60004000-0x60004FFF
+0x60003000-0x60003FFF
+0x60002000-0x60002FFF
+0x60001000-0x60001FFF
+0x60000000-0x60000FFF
+0x50009000-0x500091FF
+0x50008800-0x50008FFF
+0x50008000-0x500087FF
+0x50000000-0x50000FFF
+0x40000000-0x4FFFFFFF
+0x30000000-0x30FFFFFF
+0x70000000-0x70050000
+0x31000000-0x38FFFFFF
+0x2000000-0x2FFFFFF
+100 MHz AHB Bus
+50 MHz APB Bus Interrupt Controller
+SPI 1
+SPI 2
+I2C
+SPI 0
+GPIO 1
+GPIO 0
+SYS_CTL
+Remap/Pause
+PWM
+UART 1
+UART 0
+JET PLL
+ADAT Tx
+ADAT Rx
+AES Tx
+AES Rx
+InS Tx
+InS Rx
+CPU Audio (AIO)
+Float/Fixed-point conversion
+Mixer
+Clock Controller
+Router Control
+Timer 1
+Timer 0
+Watchdog
+ADC
+SDIO
+USB Audio
+AVB Talker
+AVB Listener
+1394 Audio (AVS) Tx
+1394 Audio (AVS) Rx
+1394 LLC
+CPU Audio (AIO) Buffer
+Router Peak
+Router Table
+1394 LLC Buffers
+Ethernet
+MPMC Registers
+Internal SRAM (Mirror)
+MPMC Memories
+Boot ROM Mirror
+CPU DMA
+Interrupt Controller
+SPI 1
+SPI 2
+I2C
+SPI 0
+GPIO 1
+GPIO 0
+SYS_CTL
+Remap/Pause
+PWM
+UART 1
+UART 0
+JET PLL
+ADAT Tx
+ADAT Rx
+AES Tx
+AES Rx
+InS Tx
+InS Rx
+CPU Audio (AIO)
+Float/Fixed-point conversion
+Mixer
+Clock Controller
+Router Control
+Timer 1
+Timer 0
+Watchdog
+ADC
+SDIO
+USB 2.0
+DMA Controller
+USB Audio
+AVB Talker
+AVB Listener
+1394 Audio (AVS) Tx
+1394 Audio (AVS) Rx
+1394 LLC
+CPU Audio (AIO) Buffer
+Router Peak
+Router Table
+1394 LLC Buffers
+Ethernet
+MPMC Registers
+Internal SRAM (Mirror)
+MPMC Memories
+Boot ROM Mirror
+* Boot ROM / Internal SRAM
+* Boot ROM when 
+Remap is LOW.
+Internal SRAM when 
+Remap is HIGH.
+ 
+
+=== PDF PAGE 6 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 2-6     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+2 Interrupt Assignments 
+ 
+2.1 Overview 
+The various interrupts provided by the system are connected to the interrupt controller as 
+specified below. The interrupt controller (reference TBD) takes care of mapping the 
+interrupts to either the IRQ or FIQ of the processor. 
+ 
+Table 2.1  Interrupt Map 
+Interrupt number Description 
+0 UART 0 
+1 UART 1 
+2 COMM RX 
+3 COMM TX 
+4 TIMER 1 
+5 TIMER 2 
+6 TIMER 11 
+7 TIMER 12 
+8 Watchdog 
+9 GPIO 
+10 DMAC INT C 
+11 DMAC INT Err 
+12 ADC 
+13 I2C 
+14 USB 
+15 SDIO 
+16 SPI 2 
+17 SPI 1 
+18 SPI 0 
+19 - 
+20 - 
+21 PWM 
+22 AUSB Audio 
+23 AVS Audio 
+24 LLC 
+25 AVB Audio 
+26 Ethernet 
+27 Jet PLL 
+28 AIO 
+ 
+  
+
+=== PDF PAGE 7 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 3-7     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+3 DMA Handshake Assignments 
+ 
+ Overview 3.1.1
+The DMA controller has 8 concurrent channels. Each channel can be programmed to 
+exchange handshakes with a number of modules. The specifics of how the DMA interacts 
+with the modules can be found in the description of the specific module and in the 
+description of the DMA engine. 
+ 
+Table 3.1  DMA handshake mapping 
+DMA Request# Component name Flow Ctrl 
+0 I2C TX  
+1 I2C RX  
+2 SPIO Master TX  
+3 SPI0 Master RX  
+4 SPI1 Master TX  
+5 SPI1 Master RX  
+6 SPI2 Slave TX  
+7 SPI2 Slave RX  
+* 8 ETH_FIFO_RX √ 
+9 PWM_TX  
+10 SDIO_RX/TX  
+11 Reserved  
+12 UART0 TX  
+13 UART0 RX  
+14 UART1 TX  
+15 UART1 RX  
+ 
+* See section 14 of the DICE_III_User_Guide_DMA document. 
+  
+
+=== PDF PAGE 8 ===
+TCD30XX User Guide          7/5/2015  
+ 
+ 3-8     Copyright  2014-2015, TC Applied Technologies.  All rights reserved.   
+ 
+ 
+ 
+3.2 Revisions 
+ 
+Table 3.2  Document revision history 
+Date Rev. By Change 
+May 6, 2015 0.9.0-41360 BK Initial publication 
+June 2, 2015 1.0.0-41569 ML Added flow-control column to DMA list 
+    
+ 
+ 
+ 

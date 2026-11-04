@@ -1,0 +1,640 @@
+{
+  "image_sha256": "b0979352e18a1093051fc6118a47694773cb9240e88087eca03aaa2ffe0f5e17",
+  "tool_sha256": "b0aca54b46d4b27159b3b64be50a76506ee78579e8c254a3dde95d5835914104",
+  "host": "fs-rs",
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "unicorn": "2.1.4",
+  "root": "/home/rs/projects/opencs/ai-line-analysis",
+  "init_mmio_writes": [
+    [
+      "0x40013004",
+      4,
+      1
+    ],
+    [
+      "0x40013000",
+      4,
+      337
+    ],
+    [
+      "0x4001300c",
+      4,
+      248
+    ],
+    [
+      "0x4002001c",
+      4,
+      0
+    ],
+    [
+      "0x40020028",
+      4,
+      536923412
+    ],
+    [
+      "0x40020024",
+      4,
+      1073819660
+    ],
+    [
+      "0x40020020",
+      4,
+      1024
+    ],
+    [
+      "0x4002001c",
+      4,
+      175
+    ],
+    [
+      "0x40020030",
+      4,
+      0
+    ]
+  ],
+  "init_boundary_calls": [
+    [
+      "0x8004720",
+      [
+        262148,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        327684,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        458756,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        393227,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        264195,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        329731,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x8004720",
+      [
+        395267,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x800478c",
+      [
+        264195,
+        1,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x800478c",
+      [
+        329731,
+        1,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x800478c",
+      [
+        395267,
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      "0x800478c",
+      [
+        264195,
+        1,
+        337,
+        1073819652
+      ]
+    ],
+    [
+      "0x800478c",
+      [
+        329731,
+        0,
+        337,
+        1073819652
+      ]
+    ],
+    [
+      "0x800611c",
+      [
+        536924456,
+        0,
+        337,
+        248
+      ]
+    ],
+    [
+      "0x800611c",
+      [
+        536924464,
+        0,
+        337,
+        248
+      ]
+    ],
+    [
+      "0x8006080",
+      [
+        13,
+        2,
+        536923348,
+        134236269
+      ]
+    ],
+    [
+      "0x80060a2",
+      [
+        0,
+        2,
+        536923348,
+        134236269
+      ]
+    ],
+    [
+      "0x80060aa",
+      [
+        13,
+        2,
+        536923348,
+        134236269
+      ]
+    ],
+    [
+      "0x80047cc",
+      [
+        20,
+        2,
+        536923348,
+        1
+      ]
+    ],
+    [
+      "0x80060b8",
+      [
+        536923348,
+        1073872888,
+        175,
+        1
+      ]
+    ],
+    [
+      "0x80060b2",
+      [
+        0,
+        536935380,
+        175,
+        1
+      ]
+    ],
+    [
+      "0x80060d4",
+      [
+        536932352,
+        134220873,
+        0,
+        536924472
+      ]
+    ],
+    [
+      "0x80060c4",
+      [
+        0,
+        134220873,
+        0,
+        536924472
+      ]
+    ],
+    [
+      "0x80060f0",
+      [
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    [
+      "0x8006080",
+      [
+        14,
+        2,
+        536917048,
+        134236269
+      ]
+    ],
+    [
+      "0x80060a2",
+      [
+        0,
+        2,
+        536917048,
+        134236269
+      ]
+    ],
+    [
+      "0x80060aa",
+      [
+        14,
+        2,
+        536917048,
+        134236269
+      ]
+    ],
+    [
+      "0x80047cc",
+      [
+        20,
+        2,
+        536917048,
+        1
+      ]
+    ]
+  ],
+  "dma_descriptor": "0x2000ccd4",
+  "dma_buffer": "0x2000cd14",
+  "dma_count_register": "0x40020020",
+  "cases": [
+    {
+      "name": "single",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 553,
+      "wake_calls": 1
+    },
+    {
+      "name": "split-1",
+      "chunks": [
+        "f0",
+        "110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 581,
+      "wake_calls": 1
+    },
+    {
+      "name": "split-2",
+      "chunks": [
+        "f011",
+        "0000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 581,
+      "wake_calls": 1
+    },
+    {
+      "name": "split-3",
+      "chunks": [
+        "f01100",
+        "00f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 622,
+      "wake_calls": 1
+    },
+    {
+      "name": "split-4",
+      "chunks": [
+        "f0110000",
+        "f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 622,
+      "wake_calls": 1
+    },
+    {
+      "name": "bytewise",
+      "chunks": [
+        "f0",
+        "11",
+        "00",
+        "00",
+        "f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 747,
+      "wake_calls": 1
+    },
+    {
+      "name": "noise-and-idle",
+      "chunks": [
+        "00127ff8f0110000f7f8"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 662,
+      "wake_calls": 1
+    },
+    {
+      "name": "two-packets",
+      "chunks": [
+        "f0110000f7f0280102f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7",
+        "f0280102f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 754,
+      "wake_calls": 2
+    },
+    {
+      "name": "idle-aborts-header",
+      "chunks": [
+        "f0f8f0110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 594,
+      "wake_calls": 1
+    },
+    {
+      "name": "start-restarts-header",
+      "chunks": [
+        "f0f0f0110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 595,
+      "wake_calls": 1
+    },
+    {
+      "name": "dma-wrap-1018",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 1018,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 20941,
+      "wake_calls": 1
+    },
+    {
+      "name": "dma-wrap-1020",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 1020,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 21024,
+      "wake_calls": 1
+    },
+    {
+      "name": "dma-wrap-1021",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 1021,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 21044,
+      "wake_calls": 1
+    },
+    {
+      "name": "dma-wrap-1022",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 1022,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 21022,
+      "wake_calls": 1
+    },
+    {
+      "name": "dma-wrap-1023",
+      "chunks": [
+        "f0110000f7"
+      ],
+      "prefill": 1023,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 21042,
+      "wake_calls": 1
+    },
+    {
+      "name": "incomplete",
+      "chunks": [
+        "f0110000"
+      ],
+      "prefill": 0,
+      "packets": [],
+      "parser_state": 2,
+      "native_instructions": 482,
+      "wake_calls": 0
+    },
+    {
+      "name": "queue-full",
+      "chunks": [
+        "f0110000f7f0110000f7f0110000f7f0110000f7f0110000f7f0110000f7f0110000f7f0110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7",
+        "f0110000f7",
+        "f0110000f7",
+        "f0110000f7",
+        "f0110000f7",
+        "f0110000f7",
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 1916,
+      "wake_calls": 7
+    },
+    {
+      "name": "max-packet",
+      "chunks": [
+        "f011010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f011010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 3554,
+      "wake_calls": 1
+    },
+    {
+      "name": "oversize-recover",
+      "chunks": [
+        "f0110101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101f7f0110000f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f0110000f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 3750,
+      "wake_calls": 1
+    },
+    {
+      "name": "idle-inside-body",
+      "chunks": [
+        "f01101f802f7"
+      ],
+      "prefill": 0,
+      "packets": [
+        "f01101f802f7"
+      ],
+      "parser_state": 0,
+      "native_instructions": 565,
+      "wake_calls": 1
+    }
+  ],
+  "alternate_queues": [
+    {
+      "command": 21,
+      "queue": "0x2000c4b8",
+      "packets": [
+        "f01501f7"
+      ]
+    },
+    {
+      "command": 64,
+      "queue": "0x2000bc9c",
+      "packets": [
+        "f04001f7"
+      ]
+    },
+    {
+      "command": 127,
+      "queue": "0x2000bc9c",
+      "packets": [
+        "f07f01f7"
+      ]
+    }
+  ],
+  "end_to_end": [
+    {
+      "split": 1,
+      "response": [
+        "f01101f7"
+      ],
+      "pending_state": "01011800",
+      "executed_native_dequeue_release": true,
+      "instructions": 656
+    },
+    {
+      "split": 2,
+      "response": [
+        "f01101f7"
+      ],
+      "pending_state": "01011800",
+      "executed_native_dequeue_release": true,
+      "instructions": 656
+    },
+    {
+      "split": 3,
+      "response": [
+        "f01101f7"
+      ],
+      "pending_state": "01011800",
+      "executed_native_dequeue_release": true,
+      "instructions": 697
+    },
+    {
+      "split": 4,
+      "response": [
+        "f01101f7"
+      ],
+      "pending_state": "01011800",
+      "executed_native_dequeue_release": true,
+      "instructions": 697
+    }
+  ],
+  "scope": "Native NIMH init, DMA register programming, RX framing, queue publish/dequeue/release. MMIO backed by RAM; DMA delivery injected; GPIO, interrupts and eCos scheduling modeled. No physical SPI or concurrency proof."
+}
