@@ -1873,7 +1873,11 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/NetworkItem.hpp
   presonus/frontier01/frontier01_w01.hpp
   presonus/frontier01/frontier01_w02.hpp
-  presonus/frontier01/frontier01_w03.hpp
+  presonus/PotControl.hpp
+  presonus/FocusHelperButton.hpp
+  presonus/AllMutesGroup.hpp
+  presonus/FileMuteGroup.hpp
+  presonus/McuVpotControl.hpp
   presonus/frontier01/frontier01_w04.hpp
   presonus/rank20cycle01/rank20c01_w02.hpp
   presonus/rank20cycle01/rank20c01_w04.hpp

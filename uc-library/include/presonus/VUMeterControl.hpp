@@ -1,7 +1,7 @@
 #pragma once
 #include "core/public/corevector.h"
+#include "presonus/PotControl.hpp"
 #include "presonus/delay_timer.hpp"
-#include "presonus/frontier01/frontier01_w03.hpp"
 namespace Presonus {
 // Portable source state. Native field offsets and original ABI are not claimed.
 class VUMeterControl : public PotControl {

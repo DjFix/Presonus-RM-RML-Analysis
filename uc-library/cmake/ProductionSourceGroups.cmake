@@ -13,7 +13,11 @@ set(PRESONUS_common_SOURCES
   src/Presonus/reconstruction200/large01_w03.cpp
   src/Presonus/reconstruction200/large01_w01.cpp
   src/Presonus/UC/NetworkItem.cpp
-  src/Presonus/frontier01/frontier01_w03.cpp
+  src/Presonus/PotControl.cpp
+  src/Presonus/FocusHelperButton.cpp
+  src/Presonus/AllMutesGroup.cpp
+  src/Presonus/FileMuteGroup.cpp
+  src/Presonus/McuVpotControl.cpp
   src/Presonus/rank20cycle01/rank20c01_w06.cpp
   src/Presonus/Panel/Book.cpp
   src/Presonus/Panel/ControlRegistrarAccess.cpp
@@ -436,7 +440,11 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/NetworkItem.hpp
   presonus/frontier01/frontier01_w01.hpp
   presonus/frontier01/frontier01_w02.hpp
-  presonus/frontier01/frontier01_w03.hpp
+  presonus/PotControl.hpp
+  presonus/FocusHelperButton.hpp
+  presonus/AllMutesGroup.hpp
+  presonus/FileMuteGroup.hpp
+  presonus/McuVpotControl.hpp
   presonus/frontier01/frontier01_w04.hpp
   presonus/rank20cycle01/rank20c01_w02.hpp
   presonus/rank20cycle01/rank20c01_w04.hpp

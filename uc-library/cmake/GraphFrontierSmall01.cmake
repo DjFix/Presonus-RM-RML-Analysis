@@ -1,7 +1,11 @@
 # Bounded app source ports; exact role ownership is retained in trial evidence.
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w01.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w02.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
-set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w03.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/PotControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/FocusHelperButton.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/AllMutesGroup.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/FileMuteGroup.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/McuVpotControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w04.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 if(BUILD_TESTING)
   add_subdirectory(tests/recovery/frontier-small01/frontier01_w01)

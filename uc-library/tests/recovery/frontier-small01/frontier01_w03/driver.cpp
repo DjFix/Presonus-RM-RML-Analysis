@@ -1,4 +1,8 @@
-#include "presonus/frontier01/frontier01_w03.hpp"
+#include "presonus/AllMutesGroup.hpp"
+#include "presonus/FileMuteGroup.hpp"
+#include "presonus/FocusHelperButton.hpp"
+#include "presonus/McuVpotControl.hpp"
+#include "presonus/PotControl.hpp"
 #include <iostream>
 #include <string>
 #include <vector>

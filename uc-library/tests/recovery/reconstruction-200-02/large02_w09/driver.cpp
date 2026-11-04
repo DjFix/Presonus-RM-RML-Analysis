@@ -1,4 +1,6 @@
 #include "core/portable/gui/coregraphics.h"
+#include "presonus/AllMutesGroup.hpp"
+#include "presonus/FileMuteGroup.hpp"
 #include "presonus/VUMeterControl.hpp"
 #include "presonus/trial08/MixerComponentBase.hpp"
 #include <iostream>
