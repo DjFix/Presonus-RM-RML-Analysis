@@ -292,7 +292,9 @@ set(PRESONUS_cs18_SOURCES
 set(PRESONUS_rm_SOURCES
   src/Presonus/Panel/FrontPanelUartTest.cpp
   src/Presonus/Mixer/MixerRouteInputsToNet.cpp
-  src/Presonus/reconstruction200/large02_w06.cpp
+  src/Presonus/Panel/ChannelPresetComponent.cpp
+  src/Presonus/Panel/GeqPresetComponent.cpp
+  src/Presonus/Panel/ScenesComponent.cpp
   src/Presonus/reconstruction200/large02_w05.cpp
   src/Presonus/reconstruction200/large02_w04.cpp
   src/Presonus/reconstruction200/large02_w03.cpp
@@ -417,7 +419,9 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/VUMeterControl.hpp
   presonus/reconstruction200/large02_w08.hpp
   presonus/reconstruction200/large02_w07.hpp
-  presonus/reconstruction200/large02_w06.hpp
+  presonus/panel/ChannelPresetComponent.hpp
+  presonus/panel/GeqPresetComponent.hpp
+  presonus/panel/ScenesComponent.hpp
   presonus/reconstruction200/large02_w05.hpp
   presonus/reconstruction200/large02_w04.hpp
   presonus/reconstruction200/large02_w03.hpp

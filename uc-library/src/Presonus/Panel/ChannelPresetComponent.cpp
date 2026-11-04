@@ -1,25 +1,9 @@
-#include "presonus/reconstruction200/large02_w06.hpp"
+#include "presonus/panel/ChannelPresetComponent.hpp"
+#include "PresetParameterAccess.hpp"
 #include "core/portable/corepersistence.h"
-#include "presonus/panel/FxPresetComponent.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
-#include <cmath>
 #include <cstring>
-#include <stdexcept>
-namespace {
-Core::Portable::Parameter &required(const Core::Portable::Component &component,
-                                    int tag) {
-  auto *p = component.getParameterByTag(tag);
-  if (!p)
-    throw std::logic_error("missing preset parameter binding");
-  return *p;
-}
-int integerValue(Core::Portable::Parameter &p) {
-  const float v = p.getValue();
-  if (!std::isfinite(v) || v < -2147483648.f || v >= 2147483648.f)
-    throw std::domain_error("preset integer domain");
-  return static_cast<int>(v);
-}
-} // namespace
+
 namespace presonus::panel {
 Core::Portable::Component &ChannelPresetState::selected() const {
   const auto index = mixer.getSelectedChannel();
@@ -31,8 +15,6 @@ Core::Portable::Component &ChannelPresetState::selected() const {
 } // namespace presonus::panel
 namespace Presonus::Panel {
 ChannelPresetComponent::~ChannelPresetComponent() = default;
-GeqPresetComponent::~GeqPresetComponent() = default;
-ScenesComponent::~ScenesComponent() = default;
 bool ChannelPresetComponent::saveUserName() const {
   auto &channel = state.selected();
   auto &source = required(*this, 3);
@@ -79,50 +61,6 @@ bool ChannelPresetComponent::store() {
   saveUserName();
   return true;
 }
-bool GeqPresetComponent::recall(Core::Portable::Attributes &attributes, bool) {
-  const int index = state.selection ? integerValue(*state.selection) : 0;
-  if (index < 0 || index >= state.equalizers.count())
-    return false;
-  auto *equalizer = state.equalizers.at(index);
-  if (!equalizer)
-    return false;
-  Core::Portable::InputStorage storage(attributes);
-  storage.setMode("ignoreAltMemory");
-  if (!equalizer->load(storage))
-    return false;
-  presetRecalled();
-  return true;
-}
-int FxPresetComponent::getFxIndex() const {
-  if (!fxParameters)
-    throw std::logic_error("FX parameter component binding required");
-  auto *p = fxParameters->getParameterByTag(13);
-  return p ? integerValue(*p) : 0;
-}
-const char *FxPresetComponent::getPresetType() const {
-  // The native null provider returns the literal empty type. A bound provider
-  // returns a pointer to its type text; source-port storage owns a stable copy.
-  return presetTypeBound ? presetType.str() : "";
-}
-bool ScenesComponent::store() {
-  const int slot = getSlotNum();
-  if (!slot)
-    return false;
-  Core::CString256 name;
-  required(*this, 2).toString(name.getBuffer(), name.getSize());
-  auto *cache = getCache();
-  const auto filename = cache->buildFileName(static_cast<unsigned>(slot), name,
-                                             "", nullptr, true);
-  const auto previous = getFileNameForSlot(static_cast<unsigned>(slot));
-  if (!previous.isEmpty() && std::strcmp(filename.str(), previous.str()) != 0)
-    Core::Portable::FileUtils::deleteFile(previous.str());
-  mixer.saveScene(filename, name, true);
-  getCache()->cachePreset(name, "", slot);
-  presetStored();
-  return true;
-}
-} // namespace Presonus::Panel
-namespace Presonus::Panel {
 const char *ChannelPresetComponent::getCategory(int slot) {
   // Original app uses a function-static category scratch buffer. This source
   // port reuses the actual cache provider; negative original cache indices are

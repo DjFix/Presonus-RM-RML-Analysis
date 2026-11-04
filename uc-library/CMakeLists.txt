@@ -1852,7 +1852,9 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/VUMeterControl.hpp
   presonus/reconstruction200/large02_w08.hpp
   presonus/reconstruction200/large02_w07.hpp
-  presonus/reconstruction200/large02_w06.hpp
+  presonus/panel/ChannelPresetComponent.hpp
+  presonus/panel/GeqPresetComponent.hpp
+  presonus/panel/ScenesComponent.hpp
   presonus/reconstruction200/large02_w05.hpp
   presonus/reconstruction200/large02_w04.hpp
   presonus/reconstruction200/large02_w03.hpp

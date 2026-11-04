@@ -1,8 +1,10 @@
 #include "core/portable/corepersistence.h"
 #include "core/portable/coreworker.h"
+#include "presonus/panel/ChannelPresetComponent.hpp"
 #include "presonus/panel/FxPresetComponent.hpp"
+#include "presonus/panel/GeqPresetComponent.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
-#include "presonus/reconstruction200/large02_w06.hpp"
+#include "presonus/panel/ScenesComponent.hpp"
 #include <condition_variable>
 #include <cstdlib>
 #include <filesystem>
