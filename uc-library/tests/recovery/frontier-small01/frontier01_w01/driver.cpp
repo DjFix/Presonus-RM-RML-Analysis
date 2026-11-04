@@ -1,5 +1,8 @@
-#include "presonus/frontier01/frontier01_w01.hpp"
+#include "presonus/MixerSceneLoader.hpp"
+#include "presonus/panel/FxPresetComponent.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
+#include "presonus/panel/PresetNameManager.hpp"
+#include "presonus/panel/SPIControl.hpp"
 #include <cassert>
 #include <iostream>
 #include <memory>

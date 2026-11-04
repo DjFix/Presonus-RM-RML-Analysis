@@ -1,5 +1,9 @@
 # Bounded app source ports; exact role ownership is retained in trial evidence.
-set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w01.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MixerSceneLoader.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/SPIControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/FxPresetComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/PresetComponentSlotPaths.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/PresetNameManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/frontier01/frontier01_w02.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/PotControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/FocusHelperButton.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)

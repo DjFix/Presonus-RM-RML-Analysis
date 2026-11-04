@@ -1,6 +1,6 @@
 #include "presonus/reconstruction200/large02_w06.hpp"
 #include "core/portable/corepersistence.h"
-#include "presonus/frontier01/frontier01_w01.hpp"
+#include "presonus/panel/FxPresetComponent.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
 #include <cmath>
 #include <cstring>

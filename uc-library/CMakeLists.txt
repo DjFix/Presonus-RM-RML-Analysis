@@ -1871,7 +1871,9 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/panel/SceneBook.hpp
   presonus/panel/FXBook.hpp
   presonus/uc/NetworkItem.hpp
-  presonus/frontier01/frontier01_w01.hpp
+  presonus/MixerSceneLoader.hpp
+  presonus/panel/SPIControl.hpp
+  presonus/panel/FxPresetComponent.hpp
   presonus/frontier01/frontier01_w02.hpp
   presonus/PotControl.hpp
   presonus/FocusHelperButton.hpp

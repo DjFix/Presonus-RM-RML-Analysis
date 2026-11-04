@@ -302,7 +302,10 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/frontier02/frontier02_w05.cpp
   src/Presonus/Panel/FXBook.cpp
   src/Presonus/frontier01/frontier01_w02.cpp
-  src/Presonus/frontier01/frontier01_w01.cpp
+  src/Presonus/MixerSceneLoader.cpp
+  src/Presonus/Panel/SPIControl.cpp
+  src/Presonus/Panel/FxPresetComponent.cpp
+  src/Presonus/Panel/PresetComponentSlotPaths.cpp
   src/Presonus/rank20cycle01/rank20c01_w05.cpp
   src/Presonus/rank20cycle01/rank20c01_w01.cpp
   src/Presonus/Panel/SPIControlGroup.cpp
@@ -438,7 +441,9 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/panel/SceneBook.hpp
   presonus/panel/FXBook.hpp
   presonus/uc/NetworkItem.hpp
-  presonus/frontier01/frontier01_w01.hpp
+  presonus/MixerSceneLoader.hpp
+  presonus/panel/SPIControl.hpp
+  presonus/panel/FxPresetComponent.hpp
   presonus/frontier01/frontier01_w02.hpp
   presonus/PotControl.hpp
   presonus/FocusHelperButton.hpp

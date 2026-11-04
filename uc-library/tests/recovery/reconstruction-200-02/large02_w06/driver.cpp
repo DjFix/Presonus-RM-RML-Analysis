@@ -1,6 +1,6 @@
 #include "core/portable/corepersistence.h"
 #include "core/portable/coreworker.h"
-#include "presonus/frontier01/frontier01_w01.hpp"
+#include "presonus/panel/FxPresetComponent.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
 #include "presonus/reconstruction200/large02_w06.hpp"
 #include <condition_variable>
