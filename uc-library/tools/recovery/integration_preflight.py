@@ -88,6 +88,8 @@ def production_groups(library):
 
 
 def automatic_inputs(library, build):
+    from production_paths import check as check_production_paths
+    check_production_paths(library)
     groups = production_groups(library)
     headers = installed_headers(library, build)
     paths = set().union(*groups.values()) | headers

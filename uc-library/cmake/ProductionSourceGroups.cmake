@@ -7,7 +7,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/UC/ServerLifetime.cpp
   src/Presonus/MuteGroupBase.cpp
   src/Presonus/ChannelGroupFilter.cpp
-  src/Presonus/reconstruction200/large02_w09.cpp
+  src/Presonus/VUMeterControl.cpp
   src/Presonus/LinkableComponent.cpp
   src/Presonus/reconstruction200/large01_w10.cpp
   src/Presonus/reconstruction200/large01_w03.cpp
@@ -407,7 +407,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/color/MixerColorConverter.hpp
   presonus/surface/GroupsPageComponent.hpp
   presonus/reconstruction200/large02_w10.hpp
-  presonus/reconstruction200/large02_w09.hpp
+  presonus/VUMeterControl.hpp
   presonus/reconstruction200/large02_w08.hpp
   presonus/reconstruction200/large02_w07.hpp
   presonus/reconstruction200/large02_w06.hpp

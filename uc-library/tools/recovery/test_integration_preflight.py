@@ -41,6 +41,107 @@ class IntegrationPreflightTests(unittest.TestCase):
             'file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/' + destination +
             '" TYPE FILE FILES "' + str(self.lib / name) + '")\n')
 
+    def relocation_fixture(self):
+        import hashlib
+        sys.path.insert(0, str(ROOT / 'uc-library/tools'))
+        from capture_integration_inputs import apply_relocations
+        old = self.lib / 'src/old.cpp'
+        new = self.lib / 'src/New.cpp'
+        new.write_text('// canonical body')
+        trash = self.work / '.trashes/library/src/old.cpp'
+        trash.parent.mkdir(parents=True)
+        trash.write_text('// historical body')
+        old_hash = hashlib.sha256(trash.read_bytes()).hexdigest()
+        move = {'original_path': str(old.relative_to(self.work)),
+                'new_path': str(new.relative_to(self.work)),
+                'trash_path': str(trash.relative_to(self.work)),
+                'sha256': old_hash,
+                'new_sha256': hashlib.sha256(new.read_bytes()).hexdigest(),
+                'size': trash.stat().st_size}
+        manifest = self.work / 'moves.json'
+        manifest.write_text(json.dumps({'version': 1, 'moves': [move]}))
+        return apply_relocations, manifest, {'files': {'src/old.cpp': old_hash}}, trash
+
+    def test_explicit_relocation_keeps_historical_hash_and_new_input(self):
+        apply, manifest, prior, _ = self.relocation_fixture()
+        names = {'src/old.cpp', 'src/common.cpp'}
+        proof = apply(self.lib, prior, names, manifest)
+        self.assertEqual(names, {'src/New.cpp', 'src/common.cpp'})
+        self.assertIn('src/old.cpp', prior['files'])
+        self.assertTrue(proof['previous_provenance_preserved'])
+
+    def test_relocation_rejects_changed_preserved_bytes(self):
+        apply, manifest, prior, trash = self.relocation_fixture()
+        trash.write_text('// tampered')
+        with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+            apply(self.lib, prior, {'src/old.cpp'}, manifest)
+
+    def test_relocation_rejects_unbound_historical_path(self):
+        apply, manifest, _, _ = self.relocation_fixture()
+        with self.assertRaisesRegex(ValueError, 'unbound original'):
+            apply(self.lib, {'files': {}}, {'src/old.cpp'}, manifest)
+
+    def test_relocation_rejects_preserved_bytes_outside_project_trash(self):
+        apply, manifest, prior, trash = self.relocation_fixture()
+        data = json.loads(manifest.read_text())
+        data['moves'][0]['trash_path'] = str(trash.relative_to(self.work)).replace('.trashes/', '')
+        manifest.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError, 'Invalid preserved'):
+            apply(self.lib, prior, {'src/old.cpp'}, manifest)
+
+    def test_new_worker_named_source_is_rejected(self):
+        from production_paths import check, ProductionPathError
+        (self.lib / 'src/frontier99_w01.cpp').write_text('// new debt')
+        with self.assertRaisesRegex(ProductionPathError, 'New noncanonical'):
+            check(self.lib)
+
+    def test_reviewed_exact_debt_does_not_allow_another_worker(self):
+        from production_paths import check, ProductionPathError
+        name = 'include/presonus/trial08/Existing.hpp'
+        p = self.lib / name
+        p.parent.mkdir(parents=True)
+        p.write_text('#pragma once')
+        manifest = {'version': 1, 'entries': [{'path': name, 'owner': 'Root',
+            'reason': 'Existing debt', 'baseline_sha256': '0' * 64,
+            'destinations': ['include/presonus/Existing.hpp']}]}
+        (self.lib / 'cmake/ProductionPathMigration.json').write_text(json.dumps(manifest))
+        self.assertEqual(check(self.lib)['reviewed_existing_path_exceptions'], 1)
+        (p.parent / 'New.hpp').write_text('#pragma once')
+        with self.assertRaisesRegex(ProductionPathError, 'New noncanonical'):
+            check(self.lib)
+
+    def test_transitive_candidate_dependency_is_rejected(self):
+        from production_paths import check, ProductionPathError
+        (self.lib / 'src/common.cpp').write_text('#include "presonus/New.hpp"')
+        (self.lib / 'include/presonus/New.hpp').write_text('#include "presonus/Private.hpp"')
+        (self.lib / 'include/presonus/Private.hpp').write_text('#include "../../candidates/Impl.hpp"')
+        with self.assertRaisesRegex(ProductionPathError, 'scratch/candidates'):
+            check(self.lib)
+
+    def test_symlink_cannot_hide_scratch_dependency(self):
+        from production_paths import check, ProductionPathError
+        candidate = self.work / 'candidates/Impl.hpp'
+        candidate.parent.mkdir()
+        candidate.write_text('#pragma once')
+        (self.lib / 'include/presonus/Alias.hpp').symlink_to(candidate)
+        (self.lib / 'src/common.cpp').write_text('#include "presonus/Alias.hpp"')
+        with self.assertRaises(ProductionPathError):
+            check(self.lib)
+
+    def test_removed_debt_entry_requires_inventory_update(self):
+        from production_paths import check, ProductionPathError
+        manifest = {'version': 1, 'entries': [{'path': 'src/trial08.cpp',
+            'owner': 'Root', 'reason': 'Existing debt', 'baseline_sha256': '0' * 64,
+            'destinations': ['src/Actual.cpp']}]}
+        (self.lib / 'cmake/ProductionPathMigration.json').write_text(json.dumps(manifest))
+        with self.assertRaisesRegex(ProductionPathError, 'stale migration entry'):
+            check(self.lib)
+
+    def test_canonical_paths_do_not_depend_on_fixture_parent_name(self):
+        from production_paths import check
+        (self.lib / 'src/common.cpp').write_text('#include "presonus/New.hpp"')
+        self.assertTrue(check(self.lib)['passed'])
+
     def test_new_production_header_test_and_tool_inputs_are_automatic(self):
         names, groups, headers = checks.automatic_inputs(self.lib, self.build)
         self.assertTrue({'src/common.cpp', 'src/cs18.cpp', 'src/rm.cpp',

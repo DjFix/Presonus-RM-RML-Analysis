@@ -1,5 +1,5 @@
 #include "core/portable/gui/coregraphics.h"
-#include "presonus/reconstruction200/large02_w09.hpp"
+#include "presonus/VUMeterControl.hpp"
 #include "presonus/trial08/MixerComponentBase.hpp"
 #include <iostream>
 #include <stdexcept>

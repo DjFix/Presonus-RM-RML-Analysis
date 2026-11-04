@@ -7,7 +7,7 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/large02_w06.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/large02_w07.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/large02_w08.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -fno-rtti)
-set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/large02_w09.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/VUMeterControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/reconstruction200/large02_w10.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Dsp/Controller.cpp" APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-fast-math -ffp-contract=off)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/GroupsPageRecovery.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off)

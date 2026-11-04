@@ -33,6 +33,7 @@ def main():
     parser.add_argument('--evidence', type=Path, required=True)
     parser.add_argument('--additional-list', type=Path, help='Optional extra inputs beyond automatic production/test/tool inventory')
     parser.add_argument('--expected-suites', type=int, required=True)
+    parser.add_argument('--source-relocations', type=Path, help='Explicit verified project-trash move manifest for retired integration inputs')
     parser.add_argument('--jobs', type=int, default=4)
     parser.add_argument('--install-prefix', type=Path, required=True,
                         help='New install destination under repository temp/')
@@ -103,7 +104,9 @@ def main():
     (out/'additional-effective.json').write_text(json.dumps(additional, indent=2)+'\n')
     run('capture', [python, '-B', library/'tools/capture_integration_inputs.py',
         '--library', library, '--additional-list', out/'additional-effective.json',
-        '--expected-suites', args.expected_suites, '--output', out/'inputs.json'])
+        '--expected-suites', args.expected_suites, '--output', out/'inputs.json'] +
+        (['--source-relocations', args.source_relocations.resolve()]
+         if args.source_relocations else []))
     run('build', [cmake, '--build', build, '--parallel', args.jobs])
     run('inventory', [ctest, '--test-dir', build, '--show-only=json-v1'])
     inventory = json.loads((out/'inventory.log').read_text())
