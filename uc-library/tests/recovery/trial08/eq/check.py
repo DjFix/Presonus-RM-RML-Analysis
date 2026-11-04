@@ -3,7 +3,7 @@ import argparse,json,pathlib,subprocess,os
 ROOT=pathlib.Path(__file__).resolve().parents[5]
 SCRATCH=ROOT/'temp/recovery-work/graph-live-trial-08/eq-worker'
 EXE=SCRATCH/'replay'
-SOURCES=['uc-library/src/Presonus/EQControlTrial08.cpp','uc-library/include/presonus/mixer_dsp/EQControl.hpp','uc-library/tests/graph_trial08_eq_tests.cpp']
+SOURCES=['uc-library/src/Presonus/EQControl.cpp','uc-library/include/presonus/mixer_dsp/EQControl.hpp','uc-library/tests/graph_trial08_eq_tests.cpp']
 COMPILE=['/usr/bin/c++','-std=c++17','-fno-rtti','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework',SOURCES[0],SOURCES[2],'temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a','-o',str(EXE.relative_to(ROOT))]
 def run(argv):
  print(json.dumps(argv),flush=True);return subprocess.run(argv,cwd=ROOT,env={**os.environ,'TMPDIR':str(SCRATCH)},text=True,check=True,capture_output=True)

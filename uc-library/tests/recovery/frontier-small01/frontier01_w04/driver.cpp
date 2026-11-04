@@ -1,7 +1,12 @@
+#include "presonus/FaderUnitComponent.hpp"
+#include "presonus/MackieControlComponent.hpp"
+#include "presonus/MackieControlExtender.hpp"
 #include "presonus/MackieControlModel.hpp"
 #include "presonus/MappingTable.hpp"
-#include "presonus/frontier01/frontier01_w04.hpp"
+#include "presonus/surface/AudioUtilitiesPage.hpp"
+#include "presonus/surface/FaderUtilitiesPage.hpp"
 #include "presonus/surface/MidiMixerHandler.hpp"
+#include "presonus/surface/StartPageComponent.hpp"
 #include <iostream>
 #include <memory>
 #include <string>

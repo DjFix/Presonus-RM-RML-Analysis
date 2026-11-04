@@ -1,4 +1,4 @@
-#include "presonus/trial08/DspComponent.hpp"
+#include "presonus/DspComponent.hpp"
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>

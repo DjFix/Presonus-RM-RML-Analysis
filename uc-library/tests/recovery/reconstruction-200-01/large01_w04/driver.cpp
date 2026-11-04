@@ -1,4 +1,7 @@
-#include "presonus/reconstruction200/large01_w04.hpp"
+#include "presonus/surface/AssignmentHandlerTable.hpp"
+#include "presonus/surface/DAWMixerHandler.hpp"
+#include "presonus/surface/MappingComponent.hpp"
+#include "presonus/surface/PresetsPageComponent.hpp"
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>

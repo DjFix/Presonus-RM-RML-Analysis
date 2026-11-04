@@ -1,5 +1,7 @@
+#include "presonus/ColorMapping.hpp"
+#include "presonus/DisplayCommandList.hpp"
+#include "presonus/SpectrumPainter.hpp"
 #include "presonus/color/MixerColorConverter.hpp"
-#include "presonus/reconstruction200/large01_w06.hpp"
 #include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstdlib>
 #include <cstring>

@@ -1,6 +1,8 @@
 #include "presonus/color/MixerColorConverter.hpp"
 #include "core/public/corestringbuffer.h"
-#include "presonus/reconstruction200/large01_w06.hpp"
+#include "presonus/ColorMapping.hpp"
+#include "presonus/DisplayCommandList.hpp"
+#include "presonus/SpectrumPainter.hpp"
 #include <array>
 #include <cstring>
 namespace {

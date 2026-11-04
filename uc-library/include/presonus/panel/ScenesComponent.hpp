@@ -1,6 +1,6 @@
 #pragma once
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/panel/PresetComponent.hpp"
-#include "presonus/trial08/MixerComponentBase.hpp"
 
 namespace Presonus::Panel {
 // Partial portable interface. Original declaration, layout and ARM ABI remain

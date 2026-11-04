@@ -1,4 +1,4 @@
-#include "presonus/trial08/MixerComponent.hpp"
+#include "presonus/mixer/MixerComponent.hpp"
 #include <cstring>
 #include <iostream>
 #include <memory>
@@ -66,7 +66,7 @@ struct PresetServices : presonus::panel::PresetApplicationServices {
   int recallAttributes(P &, Attributes &, bool) override { return 0; }
   void notifyDelegate(P::Delegate *, const P &, int, bool) const override {}
 };
-struct Services : presonus::trial08::MixerServices {
+struct Services : presonus::mixer_component_port::MixerServices {
   std::vector<std::unique_ptr<ChannelComponent>> channels;
   std::vector<std::unique_ptr<Component>> components;
   std::vector<std::unique_ptr<Presonus::LinkableComponent>> links;
@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
   int i = std::stoi(argv[1]), count = std::stoi(argv[2]),
       match = std::stoi(argv[3]), attrs = std::stoi(argv[4]);
   Services svc;
-  presonus::trial08::MixerState state;
+  presonus::mixer_component_port::MixerState state;
   ChannelServices cs;
   LinkServices ls;
   presonus::mixer::ChannelState channelStates[8];

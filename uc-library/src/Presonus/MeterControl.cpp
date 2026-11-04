@@ -198,3 +198,9 @@ void MeterControl::draw(const Core::Portable::DrawEvent &e) {
   drawnPeak = peak;
 }
 } // namespace Presonus
+
+#include "presonus/MeterControl.hpp"
+namespace Presonus {
+bool MeterControl::isHorizontal() const { return !portableIsVertical(); }
+
+} // namespace Presonus

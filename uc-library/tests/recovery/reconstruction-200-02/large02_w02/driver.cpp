@@ -1,8 +1,8 @@
 #include "core/portable/coreparaminfo.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/panel/FrontPanelComponent.hpp"
 #include "presonus/panel/PanelComponent.hpp"
-#include "presonus/reconstruction200/large01_w10.hpp"
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/panel/PanelRegistrar.hpp"
 #include <cstddef>
 #include <cstdio>
 #include <cstdlib>

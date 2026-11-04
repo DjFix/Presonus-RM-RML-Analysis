@@ -1,4 +1,4 @@
-#include "presonus/trial08/FXPresetRecallComponent.hpp"
+#include "presonus/panel/FXPresetRecallComponent.hpp"
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -24,9 +24,9 @@ struct Observer : ParamObserverBase {
                       ":1");
   }
 };
-struct Services : presonus::trial08::FxRecallServices {
+struct Services : presonus::fx_preset_recall_port::FxRecallServices {
   std::string path;
-  presonus::trial08::FxRecallCache cache;
+  presonus::fx_preset_recall_port::FxRecallCache cache;
   bool hasCache = true;
   FileName presetPath(unsigned int index, const char *) override {
     trace.push_back("path:" + std::to_string(index));
@@ -38,7 +38,8 @@ struct Services : presonus::trial08::FxRecallServices {
     std::string name = "preset-" + std::to_string(index);
     std::snprintf(text, size, "%s", name.c_str());
   }
-  presonus::trial08::FxRecallCache *lookupCache(const char *) override {
+  presonus::fx_preset_recall_port::FxRecallCache *
+  lookupCache(const char *) override {
     return hasCache ? &cache : nullptr;
   }
 };

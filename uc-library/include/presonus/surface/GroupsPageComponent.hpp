@@ -2,7 +2,8 @@
 
 #include "core/portable/coreparams.h"
 #include "core/public/corevector.h"
-#include "presonus/reconstruction200/large02_w07.hpp"
+#include "presonus/surface/MixerPageComponent.hpp"
+#include "presonus/surface/SubAssignPageComponent.hpp"
 #include <cstdint>
 
 namespace Core::Portable {

@@ -145,3 +145,15 @@ void DAWMixerHandler::syncAutomationParams(DAWChannel *channel) {
       parameter->setValue(selected == i + 1 ? 1.f : 0.f, false);
 }
 } // namespace Presonus::Surface
+
+#include "presonus/PageComponent.hpp"
+#include "presonus/surface/DAWMixerHandler.hpp"
+#include <cstdint>
+namespace Presonus::Surface {
+bool DAWMixerHandler::shouldShowStripEncodersAsMeters() const {
+  const int mode = state.mappingController
+                       ? state.mappingController->getRadioValue(34, 37)
+                       : -1;
+  return (static_cast<std::uint32_t>(mode) >> 31) != 0;
+}
+} // namespace Presonus::Surface

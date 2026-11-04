@@ -1848,70 +1848,89 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/surface/PageParam.hpp
   presonus/color/IColorConverter.hpp
   presonus/color/MixerColorConverter.hpp
-  presonus/reconstruction200/large02_w10.hpp
+  presonus/surface_panel/ControlHelpers.hpp
   presonus/VUMeterControl.hpp
-  presonus/reconstruction200/large02_w08.hpp
-  presonus/reconstruction200/large02_w07.hpp
+  presonus/MeterScaleControl.hpp
+  presonus/surface/MuteGroupsComponent.hpp
+  presonus/surface/MixerPageComponent.hpp
+  presonus/surface/SubAssignPageComponent.hpp
   presonus/panel/ChannelPresetComponent.hpp
   presonus/panel/GeqPresetComponent.hpp
   presonus/panel/ScenesComponent.hpp
-  presonus/reconstruction200/large02_w05.hpp
-  presonus/reconstruction200/large02_w04.hpp
-  presonus/reconstruction200/large02_w03.hpp
-  presonus/reconstruction200/large02_w01.hpp
+  presonus/uc/ServerComponent.hpp
+  presonus/avb/ComponentResource.hpp
+  presonus/mixer/AVBRemoteMixerHandler.hpp
+  presonus/dsp/ControllerProperties.hpp
+  presonus/surface/SLMappingState.hpp
   presonus/ChannelGroupFilter.hpp
-  presonus/reconstruction200/large01_w10.hpp
-  presonus/reconstruction200/large01_w09.hpp
-  presonus/reconstruction200/large01_w08.hpp
-  presonus/reconstruction200/large01_w07.hpp
-  presonus/reconstruction200/large01_w06.hpp
-  presonus/reconstruction200/large01_w05.hpp
-  presonus/reconstruction200/large01_w04.hpp
-  presonus/reconstruction200/large01_w03.hpp
-  presonus/reconstruction200/large01_w02.hpp
-  presonus/reconstruction200/large01_w01.hpp
+  presonus/panel/PanelRegistrar.hpp
+  presonus/surface/MarkerPageComponent.hpp
+  presonus/surface/DAWDialogHandler.hpp
+  presonus/mixer/AudioSetup.hpp
+  presonus/surface/SurfaceChannelComponent.hpp
+  presonus/surface/SurfaceInputComponent.hpp
+  presonus/surface/SurfaceOutputComponent.hpp
+  presonus/surface/ScribbleStripController.hpp
+  presonus/SpectrumPainter.hpp
+  presonus/DisplayCommandList.hpp
+  presonus/ColorMapping.hpp
+  presonus/IDAWTimeInfo.hpp
+  presonus/surface/TransportHandler.hpp
+  presonus/surface/AssignmentHandlerTable.hpp
+  presonus/surface/DAWMixerHandler.hpp
+  presonus/surface/MappingComponent.hpp
+  presonus/surface/PresetsPageComponent.hpp
+  presonus/mixer_dsp/Dsp.hpp
+  presonus/mixer_dsp/EQControl.hpp
+  presonus/IFaderPanel.hpp
+  presonus/avb/SurfaceAvbComponent.hpp
   presonus/panel/SceneBook.hpp
   presonus/panel/FXBook.hpp
   presonus/uc/NetworkItem.hpp
   presonus/MixerSceneLoader.hpp
   presonus/panel/SPIControl.hpp
   presonus/panel/FxPresetComponent.hpp
-  presonus/frontier01/frontier01_w02.hpp
+  presonus/mixer/RackMixerComponent.hpp
+  presonus/mixer/SendOutputComponent.hpp
+  presonus/mixer/FXBusComponent.hpp
+  presonus/mixer/GlobalComponent.hpp
+  presonus/mixer/GEQLinkHandler.hpp
   presonus/PotControl.hpp
   presonus/FocusHelperButton.hpp
   presonus/AllMutesGroup.hpp
   presonus/FileMuteGroup.hpp
   presonus/McuVpotControl.hpp
-  presonus/frontier01/frontier01_w04.hpp
-  presonus/rank20cycle01/rank20c01_w02.hpp
-  presonus/rank20cycle01/rank20c01_w04.hpp
-  presonus/rank20cycle01/rank20c01_w05.hpp
-  presonus/rank20cycle01/rank20c01_w06.hpp
-  presonus/surface/AssignmentHandlerTable.hpp
+  presonus/FaderUnitComponent.hpp
+  presonus/MackieControlExtender.hpp
+  presonus/MackieControlComponent.hpp
+  presonus/surface/AudioUtilitiesPage.hpp
+  presonus/surface/StartPageComponent.hpp
+  presonus/surface/FaderUtilitiesPage.hpp
+  presonus/MackieControlUnit.hpp
+  presonus/surface/DAWLoadDocumentPage.hpp
+  presonus/mixer/FilterGroupManager.hpp
+  presonus/GridPainter.hpp
   presonus/panel/SPIControlGroup.hpp
   presonus/panel/PresetNameManager.hpp
   presonus/mixer/OutputComponent.hpp
   presonus/dsp/RuntimeGlobals.hpp
   presonus/AliasComponent.hpp
-  presonus/trial08/DspComponent.hpp
-  presonus/trial08/MixerComponent.hpp
-  presonus/trial08/MixerComponentBase.hpp
-  presonus/trial08/FXPresetRecallComponent.hpp
-  presonus/trial08/StormFrontPanelComponent.hpp
-  presonus/trial08/MainLCDComponent.hpp
+  presonus/DspComponent.hpp
+  presonus/mixer/MixerComponent.hpp
+  presonus/mixer/MixerComponentBase.hpp
+  presonus/panel/FXPresetRecallComponent.hpp
+  presonus/panel/StormFrontPanelComponent.hpp
+  presonus/MainLCDComponent.hpp
   presonus/surface/NetworkSetupComponent.hpp
   presonus/panel/RackPanelComponent.hpp
   presonus/MeterControl.hpp
-  presonus/surface/DAWMixerHandler.hpp
   presonus/panel/PresetNameCache.hpp
   presonus/dsp/SLReverbController.hpp
   presonus/panel/FrontPanelComponent.hpp
   presonus/mixer/ChannelComponent.hpp
   presonus/StormMuteGroupComponent.hpp
-  presonus/surface/MappingComponent.hpp
   presonus/mixer/NetworkSetupComponent.hpp
   presonus/surface/WifiSetupComponent.hpp
-  presonus/surface/PresetsPageComponent.hpp
   presonus/surface/GroupsEditPageComponent.hpp
   presonus/surface/CapturePageComponent.hpp
   presonus/panel/GeqUIComponent.hpp
@@ -1999,7 +2018,6 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/client_implementation.hpp
   presonus/mixer_dsp/FilterParameterLists.hpp
   presonus/uc/network_activity_manager.hpp
-  presonus/mixer_dsp/EQControl.hpp
   presonus/uc/message_queue.hpp
   presonus/mixer_dsp/Eq8LimiterParameterLists.hpp
   presonus/uc/mutable_message_event.hpp
@@ -2068,10 +2086,8 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/avb/receive_services.hpp
   presonus/avb/streams.hpp
   presonus/core_uc/buffer.hpp
-  presonus/mixer_dsp/Dsp.hpp
   presonus/mixer_dsp/FilterControllers.hpp
   presonus/mixer_state/MixerState.hpp
-  presonus/surface_panel/ControlHelpers.hpp
   presonus/panel/registrar_group_registry.hpp
   presonus/surface_panel/DbTable.hpp
   presonus/surface_panel/MeterControl.hpp

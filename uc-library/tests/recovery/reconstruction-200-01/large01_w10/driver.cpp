@@ -1,7 +1,7 @@
 #include "presonus/LinkableComponent.hpp"
 #include "presonus/mixer/ChannelComponent.hpp"
 #include "presonus/panel/FrontPanelComponent.hpp"
-#include "presonus/reconstruction200/large01_w10.hpp"
+#include "presonus/panel/PanelRegistrar.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>

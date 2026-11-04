@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[5]
 SCRATCH=ROOT/'temp/recovery-work/graph-live-trial-08/stormpanel-worker'
 BASE=ROOT/'temp/core-upstream/root-integration-01'
-SOURCE='uc-library/src/Presonus/Panel/StormFrontPanelComponentTrial08.cpp'
+SOURCE='uc-library/src/Presonus/Panel/StormFrontPanelComponent.cpp'
 TEST='uc-library/tests/graph_trial08_stormpanel_tests.cpp'
 p=argparse.ArgumentParser();p.add_argument('mode',choices=['compile','symbols']);a=p.parse_args()
 os.chdir(ROOT);os.environ['TMPDIR']=str(SCRATCH);SCRATCH.mkdir(parents=True,exist_ok=True)

@@ -1,5 +1,10 @@
-#include "presonus/frontier01/frontier01_w04.hpp"
-#include "presonus/reconstruction200/large01_w02.hpp"
+#include "presonus/FaderUnitComponent.hpp"
+#include "presonus/IFaderPanel.hpp"
+#include "presonus/MackieControlComponent.hpp"
+#include "presonus/MackieControlExtender.hpp"
+#include "presonus/surface/AudioUtilitiesPage.hpp"
+#include "presonus/surface/FaderUtilitiesPage.hpp"
+#include "presonus/surface/StartPageComponent.hpp"
 #include <cstdint>
 #include <cstring>
 #include <iostream>

@@ -1,7 +1,7 @@
 #include "core/portable/corepersistence.h"
 #include "presonus/mixer/ChannelComponent.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/mixer/PermissionsComponent.hpp"
-#include "presonus/trial08/MixerComponentBase.hpp"
 #include <atomic>
 #include <cassert>
 #include <chrono>

@@ -1,10 +1,14 @@
-#include "presonus/frontier01/frontier01_w02.hpp"
+#include "presonus/mixer/FXBusComponent.hpp"
+#include "presonus/mixer/GEQLinkHandler.hpp"
+#include "presonus/mixer/GlobalComponent.hpp"
+#include "presonus/mixer/RackMixerComponent.hpp"
+#include "presonus/mixer/SendOutputComponent.hpp"
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <memory>
 #include <stdexcept>
-void state(const presonus::frontier01::SendState &s) {
+void state(const presonus::send_output_port::SendState &s) {
   std::cout << s.sendChanged << ' ' << s.output.outputCoeffChanged << ' '
             << s.childChanged << ' ' << s.fxChanged << ' '
             << s.output.updatePending << ' ';
@@ -48,19 +52,20 @@ int main(int argc, char **argv) {
                                            0,       0,  {}, {}};
     output.outputCoeffChanged = initial;
     output.updatePending = dirty;
-    presonus::frontier01::SendState own{output, initial, initial};
+    presonus::send_output_port::SendState own{output, initial, initial};
     std::vector<presonus::mixer::ChannelState> channels(count);
     std::vector<std::unique_ptr<presonus::output_port::Bindings>> childBindings;
-    std::vector<std::unique_ptr<presonus::frontier01::SendState>> childStates;
-    std::vector<presonus::frontier01::SendState *> children;
+    std::vector<std::unique_ptr<presonus::send_output_port::SendState>>
+        childStates;
+    std::vector<presonus::send_output_port::SendState *> children;
     for (int i = 0; i < count; ++i) {
       auto b = std::make_unique<presonus::output_port::Bindings>(
           presonus::output_port::Bindings{
               channels[i], {}, {}, false, 0, 0, {}, {}});
       b->outputCoeffChanged = initial;
       b->updatePending = dirty;
-      auto s = std::make_unique<presonus::frontier01::SendState>(
-          presonus::frontier01::SendState{*b, initial, initial});
+      auto s = std::make_unique<presonus::send_output_port::SendState>(
+          presonus::send_output_port::SendState{*b, initial, initial});
       s->fxChanged = initial;
       children.push_back(s.get());
       childStates.push_back(std::move(s));

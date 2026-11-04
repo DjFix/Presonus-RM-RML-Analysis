@@ -2,7 +2,7 @@
 #include "presonus/AllMutesGroup.hpp"
 #include "presonus/FileMuteGroup.hpp"
 #include "presonus/VUMeterControl.hpp"
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <iostream>
 #include <stdexcept>
 #include <string>

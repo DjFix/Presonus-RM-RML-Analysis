@@ -1,7 +1,7 @@
 #include "presonus/mixer/PermissionsComponent.hpp"
 #include "core/portable/corefile.h"
 #include "core/portable/corepersistence.h"
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 
 namespace Presonus::Mixer {
 void PermissionsComponent::getSelectedFileName(

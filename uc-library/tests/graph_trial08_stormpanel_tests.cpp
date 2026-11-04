@@ -2,7 +2,7 @@
 #include "presonus/StormMuteGroupComponent.hpp"
 #include "presonus/mixer/ChannelComponent.hpp"
 #include "presonus/panel/MixerLCD.hpp"
-#include "presonus/trial08/StormFrontPanelComponent.hpp"
+#include "presonus/panel/StormFrontPanelComponent.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>

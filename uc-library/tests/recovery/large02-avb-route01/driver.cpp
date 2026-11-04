@@ -1,5 +1,5 @@
 #include "core/portable/coreparams.h"
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <sstream>

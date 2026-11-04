@@ -1,5 +1,6 @@
 #pragma once
-#include "presonus/reconstruction200/large02_w05.hpp"
+#include "presonus/avb/ComponentResource.hpp"
+#include "presonus/uc/ServerComponent.hpp"
 #include <array>
 #include <cstdint>
 namespace presonus::avb {

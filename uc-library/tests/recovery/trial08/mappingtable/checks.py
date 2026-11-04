@@ -5,7 +5,7 @@ os.chdir(ROOT)
 SCRATCH=ROOT/'temp/recovery-work/graph-live-trial-08/mappingtable-worker';SCRATCH.mkdir(parents=True,exist_ok=True)
 env=dict(os.environ,TMPDIR=str(SCRATCH))
 if sys.argv[1]=='compile':
- argv=['g++','-std=c++17','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework','uc-library/src/Presonus/MappingTable.cpp','uc-library/src/Presonus/MappingTableTrial08.cpp','uc-library/tests/graph_trial08_mappingtable_tests.cpp','temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','-lpthread','-ldl','-lrt','-o',str(SCRATCH/'test')]
+ argv=['g++','-std=c++17','-Wno-multichar','-Iuc-library/include','-Ithird_party/ccl-framework','uc-library/src/Presonus/MappingTable.cpp','uc-library/tests/graph_trial08_mappingtable_tests.cpp','temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','-lpthread','-ldl','-lrt','-o',str(SCRATCH/'test')]
  print(json.dumps(argv),flush=True);subprocess.run(argv,env=env,check=True)
 elif sys.argv[1]=='symbols':
  result=subprocess.check_output(['nm','--defined-only',str(SCRATCH/'test')],text=True)

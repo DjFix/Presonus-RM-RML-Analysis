@@ -1,4 +1,4 @@
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <cstdlib>
 #include <iostream>
 int main(int argc, char **argv) {

@@ -1,4 +1,4 @@
-#include "presonus/trial08/MainLCDComponent.hpp"
+#include "presonus/MainLCDComponent.hpp"
 
 namespace Presonus {
 // Source-port state uses the pinned CCL container implementation. Original ARM

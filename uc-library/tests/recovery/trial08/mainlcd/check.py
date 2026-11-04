@@ -6,7 +6,7 @@ os.chdir(ROOT)
 SCRATCH=ROOT/'temp/recovery-work/graph-live-trial-08/mainlcd-worker'
 os.environ['TMPDIR']=str(SCRATCH)
 EXE=SCRATCH/'mainlcd-tests'
-CPP='uc-library/src/Presonus/MainLCDComponentTrial08.cpp'
+CPP='uc-library/src/Presonus/MainLCDComponent.cpp'
 TEST='uc-library/tests/graph_trial08_mainlcd_tests.cpp'
 wraps=['_ZN4Core8Portable9TextInput9isEditingEPNS0_8RootViewE','_ZN4Core8Portable9TextInput4stopEPNS0_8RootViewEb','_ZN4Core8Portable9Component6onIdleEv']
 flags=['-std=c++17','-O2','-DNDEBUG','-fno-lto','-frtti','-pthread','-Ulinux','-DCORE_USE_OPENSSL=1','-Iuc-library/include','-Ithird_party/ccl-framework']

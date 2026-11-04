@@ -1,4 +1,4 @@
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <cstring>
 #include <stdexcept>
 namespace Presonus::Mixer {

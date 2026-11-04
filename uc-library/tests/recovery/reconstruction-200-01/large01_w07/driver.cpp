@@ -1,4 +1,7 @@
-#include "presonus/reconstruction200/large01_w07.hpp"
+#include "presonus/surface/ScribbleStripController.hpp"
+#include "presonus/surface/SurfaceChannelComponent.hpp"
+#include "presonus/surface/SurfaceInputComponent.hpp"
+#include "presonus/surface/SurfaceOutputComponent.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

@@ -13,9 +13,9 @@ links=[str(build/'libpresonus_rm_components.a'),str(core/'libcorelib.a'),str(cor
 argv=flags+['uc-library/tests/recovery/trial08/mixerbase/finalfive/provider.cpp','-o',str(scratch/'provider')]+links
 print(argv,flush=True);subprocess.run(argv,env=env,check=True)
 if not a.provider_only:
- argv=flags+['uc-library/src/Presonus/Mixer/MixerComponentBaseTrial08.cpp','uc-library/src/Presonus/Mixer/PermissionsComponent.cpp','uc-library/src/Presonus/Mixer/MixerBaseLinks.cpp','uc-library/tests/recovery/trial08/mixerbase/finalfive/tests.cpp','-o',str(scratch/'tests')]+links
+ argv=flags+['uc-library/src/Presonus/Mixer/MixerComponentBase.cpp','uc-library/src/Presonus/Mixer/PermissionsComponent.cpp','uc-library/src/Presonus/Mixer/MixerBaseLinks.cpp','uc-library/tests/recovery/trial08/mixerbase/finalfive/tests.cpp','-o',str(scratch/'tests')]+links
  print(argv,flush=True);subprocess.run(argv,env=env,check=True)
 
 if not a.provider_only:
- argv=flags+['uc-library/src/Presonus/Mixer/MixerComponentBaseTrial08.cpp','uc-library/src/Presonus/Mixer/PermissionsComponent.cpp','uc-library/tests/graph_trial08_mixerbase_tests.cpp','-o',str(scratch/'raw-tests')]+links
+ argv=flags+['uc-library/src/Presonus/Mixer/MixerComponentBase.cpp','uc-library/src/Presonus/Mixer/PermissionsComponent.cpp','uc-library/tests/graph_trial08_mixerbase_tests.cpp','-o',str(scratch/'raw-tests')]+links
  print(argv,flush=True);subprocess.run(argv,env=env,check=True)

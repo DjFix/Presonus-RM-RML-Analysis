@@ -1,4 +1,6 @@
-#include "presonus/reconstruction200/large01_w06.hpp"
+#include "presonus/ColorMapping.hpp"
+#include "presonus/DisplayCommandList.hpp"
+#include "presonus/SpectrumPainter.hpp"
 #include <array>
 #include <cstring>
 namespace Presonus {

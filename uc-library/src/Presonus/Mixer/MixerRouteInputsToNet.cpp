@@ -1,6 +1,6 @@
 #include "core/portable/coreparams.h"
 #include "core/public/corestringbuffer.h"
-#include "presonus/trial08/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <cstring>
 #include <stdexcept>
 

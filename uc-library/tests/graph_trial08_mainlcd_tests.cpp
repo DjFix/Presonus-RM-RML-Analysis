@@ -1,5 +1,5 @@
 #include "core/portable/gui/corecontrols.h"
-#include "presonus/trial08/MainLCDComponent.hpp"
+#include "presonus/MainLCDComponent.hpp"
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>

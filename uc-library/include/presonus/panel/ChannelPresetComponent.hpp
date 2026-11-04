@@ -1,7 +1,7 @@
 #pragma once
 #include "core/portable/corestorage.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/panel/PresetComponent.hpp"
-#include "presonus/trial08/MixerComponentBase.hpp"
 
 namespace presonus::panel {
 // Explicit portable binding, never an ARM object layout. Selection uses the

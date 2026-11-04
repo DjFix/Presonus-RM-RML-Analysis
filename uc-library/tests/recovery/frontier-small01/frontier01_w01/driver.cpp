@@ -132,14 +132,15 @@ struct Services : presonus::panel::PresetApplicationServices {
     throw 1;
   }
 };
-struct FxServices : presonus::trial08::FxRecallServices {
+struct FxServices : presonus::fx_preset_recall_port::FxRecallServices {
   int infoCalls = 0;
   FileName presetPath(unsigned, const char *) override { throw 1; }
   void presetInfo(char *s, int cap, unsigned n, const char *) override {
     ++infoCalls;
     std::snprintf(s, cap, "fixture-%u", n);
   }
-  presonus::trial08::FxRecallCache *lookupCache(const char *) override {
+  presonus::fx_preset_recall_port::FxRecallCache *
+  lookupCache(const char *) override {
     throw 1;
   }
 };

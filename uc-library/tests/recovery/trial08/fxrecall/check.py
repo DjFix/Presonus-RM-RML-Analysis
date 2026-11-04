@@ -4,7 +4,7 @@ from pathlib import Path
 from oracle import run
 ROOT=Path(__file__).resolve().parents[5]
 SCRATCH=ROOT/'temp/recovery-work/graph-live-trial-08/fxrecall-worker'
-SOURCES=['uc-library/src/Presonus/Panel/FXPresetRecallComponentTrial08.cpp','uc-library/tests/graph_trial08_fxrecall_tests.cpp']
+SOURCES=['uc-library/src/Presonus/Panel/FXPresetRecallComponent.cpp','uc-library/tests/graph_trial08_fxrecall_tests.cpp']
 p=argparse.ArgumentParser();p.add_argument('kind',choices=['compile','symbols','native']);a=p.parse_args();os.chdir(ROOT)
 if a.kind=='compile':
  SCRATCH.mkdir(parents=True,exist_ok=True)
