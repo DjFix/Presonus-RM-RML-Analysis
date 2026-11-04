@@ -11,6 +11,8 @@ namespace presonus::surface::midi_port {
 // Independent source-port state; no original layout or ownership claim.
 struct State {
   bool enabled{};
+  std::uint8_t mappingCount{};
+  std::int32_t activeMapping{-1};
   // Borrowed terminated 44-byte descriptions. Only byte 0 (name) and byte
   // 37 (eligibility) are interpreted; this is an independent portable record.
   // The caller supplies a readable terminator and valid terminated names.
@@ -38,6 +40,11 @@ public:
   MidiMixerHandler(presonus::surface::midi_port::State &state,
                    presonus::surface::midi_port::Services &services)
       : state_(state), services_(services) {}
+  int countMappings() const;
+  const char *getName() const;
+  bool canActivate() const;
+  int getActiveMapping() const;
+  void setActiveMapping(int);
   void setControlsEnabled(bool);
   void resetColors();
   const char *getMappingName(int);

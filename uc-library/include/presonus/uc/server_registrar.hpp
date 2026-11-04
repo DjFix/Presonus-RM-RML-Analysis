@@ -2,6 +2,7 @@
 #include "core/public/corevector.h"
 #include <array>
 #include <cstdint>
+#include <memory>
 
 namespace Presonus::UC {
 // Independent source-port value composition. Original ServerInfo private
@@ -56,6 +57,14 @@ struct ServerRegistrarState {
 namespace Presonus::UC {
 class ServerRegistrar {
 public:
+  ServerRegistrar();
+  ~ServerRegistrar();
+  ServerRegistrar(const ServerRegistrar &) = delete;
+  ServerRegistrar &operator=(const ServerRegistrar &) = delete;
+  static ServerRegistrar &instance();
+  // Independent composition access; borrowed constructor never owns identities.
+  presonus::uc::ServerRegistrarState &sourcePortState() { return state_; }
+  bool sourcePortAddOwnedRemote(Server *, presonus::uc::AvailableServerView &);
   explicit ServerRegistrar(presonus::uc::ServerRegistrarState &state)
       : state_(state) {}
   bool hasListeners() const;
@@ -73,6 +82,7 @@ public:
   void notifyAvailable(INetworkListener *);
 
 private:
+  std::unique_ptr<presonus::uc::ServerRegistrarState> ownedState_;
   presonus::uc::ServerRegistrarState &state_;
 };
 } // namespace Presonus::UC

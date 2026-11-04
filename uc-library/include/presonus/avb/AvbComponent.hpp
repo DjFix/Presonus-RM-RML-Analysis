@@ -1,4 +1,5 @@
 #pragma once
+#include "presonus/reconstruction200/large02_w05.hpp"
 #include <array>
 #include <cstdint>
 namespace presonus::avb {
@@ -10,6 +11,7 @@ struct ListenerState {
   Listener *cascade{}, *mixer{}, *csInput{}, *console{};
   int linkMode{};
   std::uint32_t consoleSource{};
+  ComponentResource *resource{};
 };
 struct RoutingPacket {
   std::array<std::uint32_t, 6> words{};
@@ -31,12 +33,22 @@ namespace Presonus::AVB {
 // Original encoded method names/parameters; independent portable storage and
 // constructor. Original return declarations, inheritance and ARM layout
 // pending.
-class AvbComponent {
+class AvbComponent : public Presonus::UC::ServerComponent {
 public:
   enum ListenerType : int { Cascade = 0, CSInput = 2, ConsoleBus = 3 };
   AvbComponent(presonus::avb::ListenerState &s,
                presonus::avb::ListenerServices &v)
       : state_(s), services_(v) {}
+  ~AvbComponent() override;
+  void configureStaticTalkerStreams();
+  void routeLinkSlotsFromAvb();
+  void setSpectrumDataTxSource(int, int);
+  int getConsoleTalkbackListenerAndChannel(int *, int *);
+  int getCSTalkbackListenerAndChannel(int *, int *);
+  int getListenerAndChannelForInput(int *, int *, int, bool);
+  int getTalkerAndChannelForInput(int *, int *, int);
+  bool hasListeners() const;
+  int getAVBListenerIndex(int) const;
   void addListener(ListenerType, long long, bool, int, bool);
   void addCSInputListener(long long, bool);
   void addMixerInputListener(long long, bool);

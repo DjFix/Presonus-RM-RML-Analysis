@@ -50,10 +50,15 @@ public:
   int getModifiers() const override;
   int getRadioValue(int, int) const override;
   int getBankScrollingOffset() const override = 0;
-  Core::Portable::Parameter *getParamByTag(int) const override = 0;
-  Core::Portable::Parameter *getMainScreenParamByTag(int) const override = 0;
+  Core::Portable::Parameter *getParamByTag(int) const override;
+  Core::Portable::Parameter *getMainScreenParamByTag(int) const override;
+  // Independent initialized source-state binding. Borrowed actual CCL object,
+  // not a callback or a claim of original ARM field layout.
+  void bindMainScreenParameters(Core::Portable::Component *screen) {
+    mainScreenParameters_ = screen;
+  }
   bool isDisplayEncoderLocked() const override = 0;
-  bool areFadersLockedToMainMix() const override = 0;
+  bool areFadersLockedToMainMix() const override;
   void onSelectedChannelChanged() override;
   void selectedChannelUpdated() override = 0;
   void setRadioGroup(int, int, int, bool) override;
@@ -70,6 +75,7 @@ protected:
   ~MappingComponent() override = default;
 
 private:
+  Core::Portable::Component *mainScreenParameters_ = nullptr;
   MixerAssignmentHandler *normalFootswitchHandler_ = nullptr;
   MixerAssignmentHandler *alternateFootswitchHandler_ = nullptr;
   MixerAssignmentHandler *encoderHandler_ = nullptr;
@@ -82,6 +88,7 @@ private:
   Presonus::DelayTimer holdTimer_{1.f};
   Presonus::DelayTimer blinkTimer_{1.f};
   bool blinkState_ = false;
+  bool fadersLockedToMainMix_ = false;
   friend struct presonus::mapping::Access;
 };
 } // namespace Presonus::Surface
@@ -108,6 +115,9 @@ struct Access {
     v.displayHandler_ = display;
     v.secondaryHandler_ = secondary;
     v.dawHandler_ = daw;
+  }
+  static bool &fadersLockedToMainMix(Presonus::Surface::MappingComponent &v) {
+    return v.fadersLockedToMainMix_;
   }
   static Presonus::DelayTimer &hold(Presonus::Surface::MappingComponent &v) {
     return v.holdTimer_;

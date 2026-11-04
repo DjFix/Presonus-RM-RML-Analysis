@@ -5,6 +5,7 @@
 #include "core/public/corevector.h"
 #include "core/system/corethread.h"
 #include "presonus/uc/event_queue.hpp"
+#include <memory>
 
 namespace Presonus::UC {
 // Original interface name and single virtual dispatch slot are evidenced by
@@ -22,6 +23,8 @@ protected:
 };
 } // namespace Presonus::UC
 namespace presonus::uc {
+class BasicConnectionTypedValues;
+struct DispatcherSourceAccess;
 enum class DispatcherAudit {
   HandlerLock = 1,
   HandlerUnlock,
@@ -30,9 +33,11 @@ enum class DispatcherAudit {
 };
 // New source-port state using genuine pinned CCL storage/synchronization.
 // Container destruction releases container storage, never EventItems/handlers.
-// Caller must drain/resolve owned items. Original ctor/pools/intrusive layout
-// and allocation-failure equivalence are not recovered. No concurrent/reentrant
-// mutation of handler registrations or external IDs is in the proved domain.
+// Caller must drain/resolve owned items. Original private pools/intrusive
+// layout and allocation-failure equivalence are unresolved; owning construction
+// below intentionally composes the actual source providers. No
+// concurrent/reentrant mutation of handler registrations or external IDs is in
+// the proved domain.
 struct EventDispatcherState {
   explicit EventDispatcherState(int modulus = 8);
   EventDispatcherState(const EventDispatcherState &) = delete;
@@ -57,6 +62,9 @@ private:
   EventQueueState coalescerStorage_;
 
 public:
+  // Source-owned queue is the sole item owner; borrowed queued stays empty.
+  Presonus::UC::EventQueue *owningQueue = nullptr;
+  OwnedEventQueueState *owningStorage = nullptr;
   Presonus::UC::EventQueue coalescer;
   // Actual pinned CCL allocator; original ctor policy is offset100/delta128.
   Core::IDSet identifiers{100, 128};
@@ -64,10 +72,19 @@ public:
 } // namespace presonus::uc
 namespace Presonus::UC {
 class EventDispatcher {
+  struct SourceOwned;
+  std::unique_ptr<SourceOwned> owned_;
+  friend struct presonus::uc::DispatcherSourceAccess;
+
 public:
+  // Original encoded constructor/destructor identities, implemented as a
+  // portable owning source model; original private layout/ARM ABI unresolved.
+  EventDispatcher();
+  ~EventDispatcher();
+  EventDispatcher(const EventDispatcher &) = delete;
+  EventDispatcher &operator=(const EventDispatcher &) = delete;
   // New preinitialized-state helper, not an original constructor/ARM layout.
-  explicit EventDispatcher(presonus::uc::EventDispatcherState &state)
-      : state_(state) {}
+  explicit EventDispatcher(presonus::uc::EventDispatcherState &state);
   static int hashHandlerKey(const int &, int);
   bool updateEvent(const Event &);
   bool hasEvents() const;
@@ -86,3 +103,14 @@ private:
   presonus::uc::EventDispatcherState &state_;
 };
 } // namespace Presonus::UC
+
+namespace presonus::uc {
+// Independent bootstrap/access APIs. CCL StaticSingleton owns the initialized
+// dispatcher. These do not establish original singleton inheritance/layout.
+Presonus::UC::EventDispatcher &sourceDispatcherSingleton();
+struct DispatcherSourceAccess {
+  static EventDispatcherState &state(Presonus::UC::EventDispatcher &);
+  static BasicConnectionTypedValues &values(Presonus::UC::EventDispatcher &);
+  static OwnedEventQueueState &storage(Presonus::UC::EventDispatcher &);
+};
+} // namespace presonus::uc

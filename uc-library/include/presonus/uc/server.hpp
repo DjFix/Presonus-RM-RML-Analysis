@@ -3,6 +3,7 @@
 #include "presonus/uc/server_registrar.hpp"
 #include <array>
 #include <cstdint>
+#include <memory>
 
 namespace Presonus::UC {
 // Independent value composition of measured descriptor values. This is not an
@@ -36,12 +37,14 @@ struct RemoteServerState {
 namespace Presonus::UC {
 class LocalServer;
 class RemoteServer;
-// Partial source-port hierarchy. Original table: D1/D0/getType. Native table:
-// getType only; no original lifecycle symbol or ARM vtable compatibility claim.
-// A protected nonvirtual trivial lifetime avoids fabricating original D1/D0.
+// Portable owning and borrowed domains; no original private layout or ARM ABI.
 class Server {
 public:
+  virtual ~Server();
   virtual int getType() const = 0;
+  // Independent initialized storage corresponding to observed +0x110 cleanup.
+  // uint32_t is a portable choice; native private element type is unresolved.
+  Core::Vector<std::uint32_t> &sourcePortStorage() { return storage_; }
   void getInfo(ServerInfo &) const;
   void setInfo(const ServerInfo &);
 
@@ -49,7 +52,9 @@ protected:
   friend class NetworkManager;
   Server(presonus::uc::ServerSourcePortTag, presonus::uc::ServerState &state)
       : state_(state) {}
-  ~Server() = default;
+  Server();
+  std::unique_ptr<presonus::uc::ServerState> ownedState_;
+  Core::Vector<std::uint32_t> storage_;
   presonus::uc::ServerState &state_;
 };
 class LocalServer : public Server {
@@ -63,6 +68,9 @@ public:
 };
 class RemoteServer : public Server {
 public:
+  // Independent owning setup, no original constructor claim.
+  RemoteServer();
+  ~RemoteServer() override;
   RemoteServer(presonus::uc::ServerSourcePortTag tag,
                presonus::uc::RemoteServerState &state)
       : Server(tag, state.common), remote_(state) {}
@@ -72,6 +80,8 @@ public:
 
 private:
   friend class NetworkManager;
+  explicit RemoteServer(std::unique_ptr<presonus::uc::RemoteServerState>);
+  std::unique_ptr<presonus::uc::RemoteServerState> ownedRemote_;
   presonus::uc::RemoteServerState &remote_;
 };
 } // namespace Presonus::UC

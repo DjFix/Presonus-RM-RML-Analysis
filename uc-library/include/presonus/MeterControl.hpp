@@ -4,12 +4,14 @@
 
 namespace Presonus {
 // Portable source port on CCL 5.0.0. These fields are deliberate host state,
-// not a recovered original class layout. Constructors, ownership, and original
-// unencoded return declarations remain unresolved; ARM interoperability
-// unclaimed.
+// not a recovered original class layout. Original field ownership and
+// unencoded ordinary return declarations remain unresolved; ARM
+// interoperability unclaimed.
 class MeterControl : public Core::Portable::Control {
 public:
   using Control::Control;
+  explicit MeterControl(const Core::Rect &);
+  void connect(void *) override;
   // Portable bool contract; original unencoded return declaration unresolved.
   bool isHorizontal() const;
   Core::Rect getLitRect(float value) const;

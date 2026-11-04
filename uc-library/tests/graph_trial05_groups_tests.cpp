@@ -1,4 +1,5 @@
 #include "presonus/surface/GroupsPageComponent.hpp"
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -35,6 +36,35 @@ struct Parameter : Core::Portable::NumericParam {
     NumericParam::setValue(value, edit);
   }
 };
+// Test-only capture of the legacy caller fixture's original helper boundaries.
+// Real helpers are compiled once and exercised by the separate stage02 replay.
+static Dependencies *activeDependencies = nullptr;
+extern "C" void wrapRefresh(Presonus::Surface::GroupsPageComponent *) asm(
+    "__wrap__ZN8Presonus7Surface19GroupsPageComponent11refreshListEv");
+extern "C" void wrapRefresh(Presonus::Surface::GroupsPageComponent *) {
+  if (!activeDependencies)
+    std::abort();
+  activeDependencies->refreshList();
+}
+extern "C" void wrapSelect(Presonus::Surface::GroupsPageComponent *) asm(
+    "__wrap__ZN8Presonus7Surface19GroupsPageComponent8doselectEv");
+extern "C" void wrapSelect(Presonus::Surface::GroupsPageComponent *) {
+  if (!activeDependencies)
+    std::abort();
+  activeDependencies->doselect();
+}
+extern "C" void
+wrapObserve(Presonus::Surface::GroupsPageComponent *,
+            Core::Portable::Component
+                *) asm("__wrap__"
+                       "ZN8Presonus7Surface19GroupsPageComponent12observeGroupE"
+                       "PN4Core8Portable9ComponentE");
+extern "C" void wrapObserve(Presonus::Surface::GroupsPageComponent *,
+                            Core::Portable::Component *p) {
+  if (!activeDependencies)
+    std::abort();
+  activeDependencies->observeGroup(p);
+}
 int main() {
   int op, a, b, old, arg, selection, observed, n;
   while (std::cin >> op >> a >> b >> old >> arg >> selection >> observed >> n) {
@@ -66,6 +96,7 @@ int main() {
     s.selectionParameters =
         Core::ConstVector<Core::Portable::Parameter *>(params.data(), n);
     Presonus::Surface::GroupsPageComponent c(s, d);
+    activeDependencies = &d;
     int result = 0;
     switch (op) {
     case 1:
@@ -86,6 +117,7 @@ int main() {
     default:
       return 2;
     }
+    activeDependencies = nullptr;
     std::cout << result << ' ' << s.listOffset << ' ' << s.selection << ' '
               << reinterpret_cast<std::uintptr_t>(s.observedGroup) << ' '
               << d.trace.size();

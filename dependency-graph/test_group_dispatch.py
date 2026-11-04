@@ -73,6 +73,51 @@ class GroupDispatchTests(unittest.TestCase):
         g,e,r=self.small_fixture();g[0]['packets']=[]
         with self.assertRaises(ContextError):check_groups(g,e,r,allow_smaller=True)
 
+    def production_fixture(self):
+        g,e,r=self.small_fixture()
+        for index,(path,entry) in enumerate(e.items()):
+            targets=entry['work_binding']['covered_occurrences']
+            if index == 0:
+                targets.append({'elf_sha256':'elf','original_mangled':'co-covered'})
+            for offset,t in enumerate(targets):
+                t.update(original_address=100+index*16+offset*4,original_size=4)
+            entry['work_binding'].update(work_kind='reconstruct',equivalence_decision_id='verified-decision',
+                                         verification_scope='shared_portable_implementation')
+            r[path].update(mode='reconstruct',originals=[{'original':{'elf':t['elf_sha256'],
+                'mangled':t['original_mangled'],'address':t['original_address'],'size':t['original_size']}} for t in targets])
+        return g,e,r
+
+    def test_production_preserves_all_originals_without_changing_trial_gate(self):
+        g,e,r=self.production_fixture()
+        self.assertEqual(len(check_groups(g,e,r,allow_smaller=True,production_continuation='Close existing lifecycle targets')),4)
+        with self.assertRaisesRegex(ContextError,'expands'):
+            check_groups(g,e,r,allow_smaller=True)
+
+    def test_production_rejects_incomplete_or_unverified_original_coverage(self):
+        for mutation in ('missing','extra','range','malformed','duplicate','unverified','generation','overlap','empty','work'):
+            with self.subTest(mutation=mutation):
+                g,e,r=self.production_fixture()
+                if mutation=='missing':r['p0_0']['originals'].pop()
+                if mutation=='extra':r['p0_0']['originals'].append({'original':{'elf':'elf','mangled':'extra','address':99,'size':4}})
+                if mutation=='range':r['p0_0']['originals'][0]['original']['size']=8
+                if mutation=='malformed':e['p0_0']['work_binding']['covered_occurrences'][0].pop('original_address')
+                if mutation=='duplicate':e['p0_0']['work_binding']['covered_occurrences']*=2
+                if mutation=='unverified':e['p0_0']['work_binding']['verification_scope']='unresolved'
+                if mutation=='generation':e['p1_0']['generation_sha256']='other'
+                if mutation=='overlap':e['p1_0']['selected_file_sha256']['uc-library/src/0.cpp']='hash'
+                if mutation=='empty':e['p0_0']['state']='selected'
+                if mutation=='work':e['p1_0']['work_binding']['work_item_id']='p0_0'
+                with self.assertRaises(ContextError):
+                    check_groups(g,e,r,allow_smaller=True,production_continuation='Close existing lifecycle targets')
+
+    def test_production_requires_explicit_bounded_scope(self):
+        g,e,r=self.production_fixture()
+        for scope in ('',True,{}):
+            with self.assertRaises(ContextError):
+                check_groups(g,e,r,allow_smaller=True,production_continuation=scope)
+        with self.assertRaises(ContextError):
+            check_groups(g,e,r,production_continuation='Close existing targets')
+
     def test_ten_packets(self):
         g,e,r=self.fixture(10);self.assertEqual(len(check_groups(g,e,r,10)),100)
 

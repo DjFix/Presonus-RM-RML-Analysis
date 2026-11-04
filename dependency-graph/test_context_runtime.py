@@ -4,12 +4,53 @@ import pathlib
 import unittest
 import uuid
 
-from context_runtime import ContextError, fingerprint, guard, inside, inventory, sha, validate_task
+from context_runtime import ContextError, fingerprint, guard, inside, inventory, sha, validate_task, validate_original_scope
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 
 
 class ContextRuntimeTests(unittest.TestCase):
+    def test_mixed_cpp_scopes_require_exact_explicit_original_ranges(self):
+        target = {'original_elf_sha256': 'a'*64, 'mangled': '_ZN8Presonus15IColorConverterD1Ev',
+                  'address': 100, 'size': 28}
+        original = {'elf': 'a'*64, 'mangled': target['mangled'], 'address': 100,
+                    'size': 28, 'demangled': 'Presonus::IColorConverter::~IColorConverter()'}
+        task = {'task_id': 'mixed_scope', 'objective': 'Compare exact destructor aliases',
+                'namespace': 'MixerColorConverter', 'mode': 'research', 'owned_files': [],
+                'targets': [target]}
+        with self.assertRaisesRegex(ContextError, 'outside'):
+            validate_original_scope(task, original)
+        task['additional_original_scopes'] = [dict(target, namespace='Presonus::IColorConverter',
+                                                  reason='Explicitly assigned base alias comparison')]
+        validate_task(task)
+        validate_original_scope(task, original)
+        with self.assertRaisesRegex(ContextError, 'range'):
+            validate_original_scope(task, dict(original, size=24))
+        with self.assertRaisesRegex(ContextError, 'outside'):
+            validate_original_scope(task, dict(original, elf='b'*64))
+        with self.assertRaisesRegex(ContextError, 'outside'):
+            validate_original_scope(task, dict(original, demangled='Unrelated::method()'))
+        task['additional_original_scopes'].append(task['additional_original_scopes'][0])
+        with self.assertRaisesRegex(ContextError, 'unique'):
+            validate_task(task)
+
+    def test_global_cpp_scope_is_per_function_not_an_unrestricted_namespace(self):
+        target = {'original_elf_sha256': 'a'*64, 'mangled': '_Z4leafv', 'address': 120, 'size': 16}
+        task = {'task_id': 'global_cpp', 'objective': 'Compare exact no-op group',
+                'namespace': 'Example::Controller', 'mode': 'research', 'owned_files': [],
+                'targets': [target], 'additional_original_scopes': [dict(target,
+                    namespace='::', linkage_scope='global_cpp', reason='Exact global function member')]}
+        validate_task(task)
+        original = dict(elf='a'*64, mangled=target['mangled'], address=120,
+                        size=16, demangled='leaf()')
+        validate_original_scope(task, original)
+        for name in ('Other::leaf()', 'vtable for Example'):
+            with self.assertRaisesRegex(ContextError, 'outside'):
+                validate_original_scope(task, dict(original, demangled=name))
+        task['additional_original_scopes'][0]['namespace'] = '::Other'
+        with self.assertRaisesRegex(ContextError, 'scope'):
+            validate_task(task)
+
     def fixture(self):
         root=ROOT/'temp/test-work/context-gate'/uuid.uuid4().hex
         source=root/'uc-library/src/sample.cpp'

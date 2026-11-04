@@ -16,7 +16,11 @@ from context_runtime import ContextError, guard, inside, sha
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False, flexible_total=None):
+def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=False, flexible_total=None, production_continuation=None):
+    if production_continuation is not None and (
+            not isinstance(production_continuation, str) or not production_continuation.strip()
+            or not allow_smaller or flexible_total is not None):
+        raise ContextError('Production continuation requires an explicit scope and bounded grouped mode')
     flexible = flexible_total is not None
     if flexible and (allow_smaller or flexible_total != 200):
         raise ContextError("Flexible trial requires exactly 200 packets and no smaller-batch mode")
@@ -50,10 +54,33 @@ def check_groups(groups, entries, requests, packets_per_worker=5, allow_smaller=
         if e.get('state') != 'dispatch_ready':
             raise ContextError('Empty/unfinalized packet')
         targets = e['work_binding']['covered_occurrences']
-        if len(targets) != 1:
+        if not production_continuation and len(targets) != 1:
             raise ContextError('Trial requires one original symbol per packet; packet expands coverage')
+        if production_continuation:
+            # Production counts unique work separately from original identities.
+            # Never inherit coverage/readiness from a representative occurrence.
+            if not targets:
+                raise ContextError('Production work requires nonempty original coverage')
+            try:
+                covered = [(t['elf_sha256'], t['original_mangled'], t['original_address'], t['original_size']) for t in targets]
+                original = [o['original'] for o in requests[p].get('originals', [])]
+                requested = [(o['elf'], o['mangled'], o['address'], o['size']) for o in original]
+            except (KeyError, TypeError) as error:
+                raise ContextError('Production original/range coverage is malformed') from error
+            if (len(set(covered)) != len(covered) or len(set(requested)) != len(requested)
+                    or set(covered) != set(requested)
+                    or any(not elf or not name or type(address) is not int or address < 0
+                           or type(size) is not int or size <= 0
+                           for elf, name, address, size in covered)):
+                raise ContextError('Production original/range coverage must match every enriched original exactly')
+            if len(targets) > 1 and requests[p].get('mode') == 'reconstruct':
+                binding = e['work_binding']
+                if (not binding.get('equivalence_decision_id')
+                        or binding.get('verification_scope') != 'shared_portable_implementation'
+                        or binding.get('work_kind') != 'reconstruct'):
+                    raise ContextError('Combined production reconstruction requires verified implementation equivalence')
         identities.extend((t['elf_sha256'], t['original_mangled']) for t in targets)
-    if len(set(identities)) != expected:
+    if len(set(identities)) != (len(identities) if production_continuation else expected):
         raise ContextError('Duplicate original identity')
     for g in groups:
         if not g.get('scope_reason') or set(g.get('execution_order', [])) != set(g['packets']) or len(g['execution_order']) != len(g['packets']):
@@ -101,7 +128,8 @@ def main():
         entries = {p: json.loads((inside(ROOT,p)/'context.json').read_text()) for p in paths}
         requests = {p: json.loads((inside(ROOT,p)/'request.json').read_text()) for p in paths}
         expected_manifests = {p:sha(inside(ROOT,p)/'context.json') for p in paths}
-        check_groups(groups, entries, requests, a.packets_per_worker, a.allow_smaller, a.flexible_total)
+        check_groups(groups, entries, requests, a.packets_per_worker, a.allow_smaller, a.flexible_total,
+                     specification_payload.get('production_continuation'))
         from context_work_batch import BatchWorkValidator
         work_validator = BatchWorkValidator(ROOT)
         cleanup.callback(work_validator.close)

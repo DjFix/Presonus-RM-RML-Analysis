@@ -49,6 +49,10 @@ public:
   const ParamDescriptor *getAt(int) const;
   static ParamDescriptor *getError();
   int sourceCount() const { return descriptors_.count(); }
+  // Borrowed live CCL storage, an independent adapter; no native layout claim.
+  const Core::ConstVector<ParamDescriptor *> &sourceDescriptors() const {
+    return descriptors_;
+  }
 
 private:
   // Real CCL composition is an explicit source-port decision. No original

@@ -1,6 +1,9 @@
 #include "presonus/MuteGroupBase.hpp"
 
 namespace Presonus {
+MuteGroupBase::MuteGroupBase(Mixer::MixerComponentBase &mixer)
+    : state(ownedState), mixer(&mixer) {}
+MuteGroupBase::~MuteGroupBase() = default;
 bool MuteGroupBase::validStatus(Core::Portable::Parameter *p) const {
   if (!p)
     return false;

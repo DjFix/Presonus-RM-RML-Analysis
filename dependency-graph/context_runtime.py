@@ -63,6 +63,30 @@ def validate_task(task):
             raise ContextError('Exact original ELF SHA-256 required')
         if not item.get('mangled'):
             raise ContextError('Exact original mangled name required')
+    scopes = task.get('additional_original_scopes', [])
+    if not isinstance(scopes, list):
+        raise ContextError('Additional scopes must be explicit original identities')
+    targets = {(x['original_elf_sha256'], x['mangled'], x.get('address'), x.get('size'))
+               for x in task['targets']}
+    seen = set()
+    for scope in scopes:
+        if not isinstance(scope, dict):
+            raise ContextError('Additional scope must be an identity record')
+        key = (scope.get('original_elf_sha256'), scope.get('mangled'),
+               scope.get('address'), scope.get('size'))
+        if (key not in targets or key in seen or not isinstance(key[2], int)
+                or not isinstance(key[3], int) or key[3] <= 0):
+            raise ContextError('Additional scope needs an exact unique target/range')
+        seen.add(key)
+        namespace = scope.get('namespace', '')
+        linkage = scope.get('linkage_scope')
+        if linkage == 'global_cpp':
+            valid = namespace == '::'
+        else:
+            valid = linkage is None and isinstance(namespace, str) and bool(
+                re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*(?:::[A-Za-z_][A-Za-z_0-9]*)*', namespace))
+        if not valid or not isinstance(scope.get('reason'), str) or not scope['reason'].strip():
+            raise ContextError('Explicit C++ scope and reason required for each additional original')
     if task['mode'] == 'reconstruct' and not task.get('owned_files'):
         raise ContextError('Reconstruction requires explicit disjoint owned_files')
     if task['mode']=='audit' and task.get('owned_files'):
@@ -79,6 +103,19 @@ def validate_task(task):
 
 
 def validate_original_scope(task, original):
+    for scope in task.get('additional_original_scopes', []):
+        if (scope['original_elf_sha256'], scope['mangled']) != (original['elf'], original['mangled']):
+            continue
+        if (scope['address'], scope['size']) != (original['address'], original['size']):
+            raise ContextError('Additional original scope range differs')
+        if scope.get('linkage_scope') == 'global_cpp':
+            head = original['demangled'].split('(', 1)[0]
+            if (not original['mangled'].startswith('_Z') or '::' in head
+                    or '(' not in original['demangled']):
+                raise ContextError('Target outside exact global C++ function scope')
+        elif not re.search(r'(?<![A-Za-z0-9_])'+re.escape(scope['namespace'])+r'::', original['demangled']):
+            raise ContextError('Target outside explicit additional C++ scope')
+        return
     if task.get('linkage_scope') == 'global_elf':
         # Exact ELF identity/range was already resolved by enrich. This marker
         # establishes global symbol scope only, never a C prototype or ABI.

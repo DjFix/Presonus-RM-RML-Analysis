@@ -11,7 +11,7 @@ namespace Presonus {
 class DAWClientComponent;
 namespace UC {
 class MessageAttributes;
-class TimeCodeEvent;
+struct TimeCodeEvent;
 } // namespace UC
 
 // Portable borrowed-state adapter. This declaration does not establish the
@@ -30,6 +30,7 @@ public:
         : records_(records), count_(count) {}
     // Pointer-valued native behavior; original return declaration unresolved.
     const std::uint8_t *findItem(double) const;
+    const std::uint8_t *findItemByBar(int) const;
 
   private:
     const std::uint8_t *records_;
@@ -40,6 +41,7 @@ public:
     TempoMap(const std::uint8_t *records, int count) noexcept
         : records_(records), count_(count) {}
     const std::uint8_t *findItem(double) const;
+    double secondsToPpq(double) const;
 
   private:
     const std::uint8_t *records_;
@@ -86,11 +88,17 @@ public:
     bool musicalDisplay = false;
     bool milliSeconds = false;
     bool locating = false;
+    const TimeSignatureMap *signatureMap = nullptr;
     std::array<Core::Portable::Parameter *, 3> parameters{};
     std::array<TimeString, 3> times{};
   };
   DAWTimeInfo(const std::uint8_t *borrowedState, State &mutableState) noexcept
       : borrowedState_(borrowedState), sourceState_(&mutableState) {}
+  // Provisional pointer return; reference/pointer and original const
+  // qualification are not established by the address-only native body.
+  const TimeString *getLoopStartTime() const;
+  const TimeString *getTransportTime() const;
+  void createDeltaTimeEvent(UC::TimeCodeEvent &, int, const TimeString &);
   void updateTimeContext(const UC::MessageAttributes &);
   void init(DAWClientComponent *);
   void locateTransport(const TimeString &);

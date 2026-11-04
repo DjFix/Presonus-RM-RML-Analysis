@@ -58,6 +58,8 @@ struct Timer {
 struct State {
   explicit State(Services &services) : services(services) {}
   Services &services;
+  // Borrowed ordered parameter list observed by cleanup; independent storage.
+  Core::Vector<Core::Portable::Parameter *> cleanupParameters;
   Core::Vector<Group *> groups;
   Group *allGroup = nullptr;
   Observer *observer = nullptr;
@@ -78,6 +80,7 @@ public:
   explicit StormMuteGroupComponent(presonus::storm_mute_port::State &state)
       : state(state) {}
   ~StormMuteGroupComponent();
+  void cleanup();
   bool recallMutes(unsigned int, bool);
   void onObserveredParamChanged(Core::Portable::Parameter *, int);
   void onCascadeStateChange(bool);

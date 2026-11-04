@@ -44,15 +44,19 @@ struct NetworkSetupState {
   // clock.
   std::int64_t (*milliseconds)() = nullptr;
   std::uint64_t *restoreTicks = nullptr;
+  void *mixerHandler =
+      nullptr; // Borrowed source-port identity, not ARM storage.
 };
 } // namespace presonus::mixer
 namespace Presonus::Mixer {
+class AVBRemoteMixerHandler;
 // Encoded original method identities; ordinary returns and original layout,
 // inheritance, lifecycle and ARM32 interoperability remain unresolved.
 class NetworkSetupComponent {
 public:
   explicit NetworkSetupComponent(presonus::mixer::NetworkSetupState &state)
       : state_(state) {}
+  void setMixerHandler(AVBRemoteMixerHandler *);
   void onIdle();
   int sendEvent(UC::Event &);
   void onNetworkItemAdded(UC::NetworkItem *);

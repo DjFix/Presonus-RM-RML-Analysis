@@ -1,5 +1,6 @@
 #include "presonus/surface/GroupsEditPageComponent.hpp"
 #include <array>
+#include <cstdlib>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
@@ -235,10 +236,21 @@ struct Scenario : presonus::surface::GroupsEditDependencies,
 };
 } // namespace
 
+// Test-only original caller boundary; actual doselect is covered by stage02.
+static presonus::surface::GroupsPageDependencies *activeGroupDependencies =
+    nullptr;
+extern "C" void wrapLegacySelect(Presonus::Surface::GroupsPageComponent *) asm(
+    "__wrap__ZN8Presonus7Surface19GroupsPageComponent8doselectEv");
+extern "C" void wrapLegacySelect(Presonus::Surface::GroupsPageComponent *) {
+  if (!activeGroupDependencies)
+    std::abort();
+  activeGroupDependencies->doselect();
+}
 int main(int argc, char **argv) {
   if (argc != 27)
     return 2;
   Scenario scenario(argv + 2);
+  activeGroupDependencies = &scenario;
   const std::string method(argv[1]);
   int result = 0;
   if (method == "buildItemsList")
@@ -263,5 +275,6 @@ int main(int argc, char **argv) {
     scenario.target.onShow(scenario.values[10]);
   else
     return 2;
+  activeGroupDependencies = nullptr;
   scenario.output(result);
 }

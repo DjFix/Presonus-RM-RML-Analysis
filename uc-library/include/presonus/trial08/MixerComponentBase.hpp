@@ -53,6 +53,13 @@ public:
   Core::Portable::FileName getDataDir(const char *subdir) const;
   bool isSlave();
   void validateChannelNaming();
+  // Borrowed real CCL tree for the portable routing source port. The caller
+  // keeps the tree alive through routing and synchronous observer callbacks.
+  // hardwareMicLineInputs supplies native +0x1d8's signed 32-bit loop bound;
+  // this correspondence does not establish original fields or object layout.
+  Core::Portable::Component *routeInputParameters = nullptr;
+  // void is a source-port choice; original return declaration is unresolved.
+  void routeInputsToNet();
   void resetPermissionsPW();
   void onCascadeStateChange();
   // Application-specific cache/path/filter/notification policies remain

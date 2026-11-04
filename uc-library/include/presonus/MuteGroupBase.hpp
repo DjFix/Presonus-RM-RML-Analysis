@@ -2,7 +2,22 @@
 #include "core/portable/coreparams.h"
 #include "core/public/corevector.h"
 
+namespace Presonus::Mixer {
+class MixerComponentBase;
+}
 namespace presonus::mute_group_port {
+struct UnboundCompatibility {};
+// Borrowed, distinct native collections; independent binding, no mixer layout
+// claim.
+struct ChannelMute {
+  const char *parentName;
+  const char *name;
+  Core::Portable::Parameter *mute;
+};
+struct MixerData {
+  Core::Vector<Core::Portable::Parameter *> allMutes;
+  Core::Vector<ChannelMute> channels;
+};
 // Independent source-port state. No original class layout or ownership claim.
 struct State {
   Core::Portable::Parameter *active = nullptr;
@@ -20,13 +35,26 @@ class MuteGroupBase {
 public:
   explicit MuteGroupBase(presonus::mute_group_port::State &state)
       : state(state) {}
+  explicit MuteGroupBase(Mixer::MixerComponentBase &mixer);
+  // Independent compatibility construction; not a recovered original ctor.
+  explicit MuteGroupBase(presonus::mute_group_port::UnboundCompatibility)
+      : state(ownedState) {}
+  virtual ~MuteGroupBase();
+  void portableBindMixerData(presonus::mute_group_port::MixerData &data) {
+    mixerData = &data;
+  }
+  const Mixer::MixerComponentBase *portableMixer() const { return mixer; }
+  int portableMemberCount() const { return state.members.count(); }
   void updateActive();
   void updateStatus();
   bool groupDirty() const;
   bool validStatus(Core::Portable::Parameter *parameter) const;
   void deactivate();
 
-private:
+protected:
+  presonus::mute_group_port::State ownedState;
   presonus::mute_group_port::State &state;
+  Mixer::MixerComponentBase *mixer = nullptr;
+  presonus::mute_group_port::MixerData *mixerData = nullptr;
 };
 } // namespace Presonus

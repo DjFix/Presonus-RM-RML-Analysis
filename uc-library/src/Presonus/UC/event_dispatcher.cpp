@@ -57,6 +57,8 @@ void EventDispatcherState::observe(DispatcherAudit stage) const {
     audit(auditContext, stage);
 }
 Presonus::UC::EventItem *EventDispatcherState::retrieve() {
+  if (owningQueue)
+    return owningQueue->retrieveEvent();
   Core::Threads::ScopedLock guard(queueLock);
   observe(DispatcherAudit::QueueLock);
   auto *item = queued.isEmpty() ? nullptr : queued.removeFirst();
@@ -69,9 +71,13 @@ int EventDispatcher::hashHandlerKey(const int &key, int size) {
   return key % size;
 }
 bool EventDispatcher::updateEvent(const Event &event) {
-  return state_.coalescer.updateEvent(event);
+  return state_.owningQueue ? state_.owningQueue->updateEvent(event)
+                            : state_.coalescer.updateEvent(event);
 }
-bool EventDispatcher::hasEvents() const { return !state_.queued.isEmpty(); }
+bool EventDispatcher::hasEvents() const {
+  return state_.owningQueue ? !state_.owningQueue->isEmpty()
+                            : !state_.queued.isEmpty();
+}
 bool EventDispatcher::isExternalHandler(int key) {
   Core::Threads::ScopedLock guard(state_.handlerLock);
   state_.observe(presonus::uc::DispatcherAudit::HandlerLock);
@@ -85,6 +91,11 @@ bool EventDispatcher::isExternalHandler(int key) {
   return found;
 }
 void EventDispatcher::queueEvent(EventItem *item) {
+  if (state_.owningStorage) {
+    if (item)
+      state_.owningStorage->append(item);
+    return;
+  }
   Core::Threads::ScopedLock guard(state_.queueLock);
   state_.observe(presonus::uc::DispatcherAudit::QueueLock);
   // Original null append is memory-valid only when empty. Nonempty-null,

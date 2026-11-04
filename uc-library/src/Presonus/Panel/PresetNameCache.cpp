@@ -151,3 +151,9 @@ Core::Portable::FileName PresetNameCache::getFileNameForSlot(unsigned slot,
                        nullptr, full);
 }
 } // namespace Presonus::Panel
+
+namespace Presonus::Panel {
+void PresetNameCache::sourcePortRemoveObserver(Delegate *observer) {
+  observers.remove(observer);
+}
+} // namespace Presonus::Panel

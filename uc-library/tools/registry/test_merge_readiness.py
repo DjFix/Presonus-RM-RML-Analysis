@@ -128,5 +128,96 @@ class MergerTests(unittest.TestCase):
             cache.unchanged()
 
 
+    def two_record_fragment(self, shared_name='src/example.cpp'):
+        self.write('two-proof.json', {'cpp_differential_passed': True,
+            'compiled_mangled_names_matched': True,
+            'mangled_names': ['_Z3foov', '_Z3barv'], 'portable_ready': True})
+        first = dict(self.entry, validation='two-proof.json',
+            validation_sha256=reg.digest(self.lib/'two-proof.json'),
+            sources={shared_name: self.source_hash})
+        second = dict(first, mangled='_Z3barv', original_address=104,
+                      sources=dict(first['sources']))
+        self.write('two.json', {'functions': [first, second]})
+        return first, second
+
+    def test_shared_binding_across_distinct_maps_checks_path_once(self):
+        self.two_record_fragment()
+        checked = self.source.resolve()
+        calls = []
+        original = pathlib.Path.is_file
+        def observe(path):
+            if path == checked:
+                calls.append(path)
+            return original(path)
+        with patch.object(pathlib.Path, 'is_file', observe):
+            result = self.run_merger('--fragment', 'two.json', '--dry-run')
+        self.assertEqual(result['portable_ready_entries'], 2)
+        self.assertEqual(len(calls), 1)
+
+    def test_shared_path_with_different_digest_is_not_reused(self):
+        first, second = self.two_record_fragment()
+        second['sources']['src/example.cpp'] = '0'*64
+        self.write('two.json', {'functions': [first, second]})
+        before = reg.digest(self.db)
+        for options in [('--dry-run',), ()]:
+            with self.assertRaisesRegex(AssertionError, 'stale source seal'):
+                self.run_merger('--fragment', 'two.json', *options)
+            self.assertEqual(reg.digest(self.db), before)
+
+    def test_new_binding_still_requires_formatting(self):
+        first, second = self.two_record_fragment()
+        extra = self.lib/'src/unformatted.cpp'
+        extra.write_text('int extra() { return 0; }\n')
+        second['sources']['src/unformatted.cpp'] = reg.digest(extra)
+        self.write('two.json', {'functions': [first, second]})
+        with self.assertRaisesRegex(AssertionError, 'source not format-checked'):
+            self.run_merger('--fragment', 'two.json', '--dry-run')
+
+    def test_binding_cache_does_not_survive_an_invocation(self):
+        first, second = self.two_record_fragment()
+        extra = self.lib/'extra.txt'
+        extra.write_text('unchanged\n')
+        for row in (first, second):
+            row['sources']['extra.txt'] = reg.digest(extra)
+        self.write('two.json', {'functions': [first, second]})
+        self.run_merger('--fragment', 'two.json', '--dry-run')
+        extra.write_text('changed between independent operations\n')
+        with self.assertRaisesRegex(AssertionError, 'stale source seal'):
+            self.run_merger('--fragment', 'two.json', '--dry-run')
+
+    def test_repeated_binding_hit_keeps_final_file_race_guard(self):
+        self.two_record_fragment()
+        before = reg.digest(self.db)
+        original = merger.proof_covers
+        def mutate(proof, entry):
+            if entry['mangled'] == '_Z3barv':
+                self.source.write_text('changed after first binding check\n')
+            return original(proof, entry)
+        with patch.object(merger, 'proof_covers', mutate):
+            with self.assertRaisesRegex(AssertionError, 'evidence changed after validation'):
+                self.run_merger('--fragment', 'two.json')
+        self.assertEqual(reg.digest(self.db), before)
+
+    def test_repeated_binding_hit_keeps_final_symlink_race_guard(self):
+        alias = self.lib/'src/alias.cpp'
+        alternate = self.lib/'src/same-content.cpp'
+        alternate.write_bytes(self.source.read_bytes())
+        alias.symlink_to(self.source.name)
+        self.write('validation/formatting.json', {'format_check_passed': True,
+            'files': {'src/example.cpp': self.source_hash, 'src/alias.cpp': self.source_hash}})
+        self.two_record_fragment('src/alias.cpp')
+        before = reg.digest(self.db)
+        original = merger.proof_covers
+        def retarget(proof, entry):
+            if entry['mangled'] == '_Z3barv':
+                alias.unlink()
+                alias.symlink_to(alternate.name)
+            return original(proof, entry)
+        with patch.object(merger, 'proof_covers', retarget):
+            with self.assertRaisesRegex(AssertionError, 'evidence path changed'):
+                self.run_merger('--fragment', 'two.json')
+        self.assertEqual(reg.digest(self.db), before)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,5 +1,8 @@
 #pragma once
-#include "core/portable/coreparams.h"
+#include "core/portable/corecomponent.h"
+namespace Presonus {
+class IMappingController;
+}
 #include <cstdint>
 namespace presonus::surface {
 // Independent application boundary. Does not claim the original object layout.
@@ -12,8 +15,10 @@ struct DawFxBindings {
 } // namespace presonus::surface
 namespace Presonus::Surface {
 // Portable source port; original return declarations and ARM layout unresolved.
-class DawFxPageComponent {
+class DawFxPageComponent : public Core::Portable::Component {
 public:
+  ~DawFxPageComponent();
+  void setMappingController(Presonus::IMappingController *);
   DawFxPageComponent(Core::Portable::Parameter *mode,
                      presonus::surface::DawFxBindings bindings,
                      int insertOffset = 0, int sendOffset = 0);
@@ -25,6 +30,7 @@ public:
 
 private:
   friend struct DawFxTestAccess;
+  Presonus::IMappingController *mappingController_{};
   Core::Portable::Parameter *mode_;
   presonus::surface::DawFxBindings bindings_;
   mutable int insertOffset_, sendOffset_;

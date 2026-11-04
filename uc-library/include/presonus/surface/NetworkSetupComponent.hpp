@@ -75,7 +75,10 @@ public:
   // remain unresolved. selectedItem is non-owning userData identity.
   class ListModel : public Core::Portable::ListViewModel {
   public:
+    // Source-port adaptation: CCL scrolling must query our selection state.
+    bool isSelectionHandler() const override { return true; }
     bool isItemSelected(int) const override;
+    void setSelected(UC::NetworkItem *);
     void setSelectedItem(void *item) { selectedItem_ = item; }
 
   private:
@@ -92,6 +95,7 @@ public:
   void onNetworkShutdown();
   void onNetworkItemRemoved(UC::NetworkItem *);
   void setupNetworkInfo();
+  bool isSlaveItem(const UC::NetworkItem *) const;
 
 private:
   presonus::surface::SurfaceNetworkState &state_;

@@ -1841,6 +1841,36 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/MixerClientComponentBase.hpp
+  presonus/SLChannel.hpp
+  presonus/IMainScreenPageController.hpp
+  presonus/MappablePageComponent.hpp
+  presonus/surface/PageParam.hpp
+  presonus/color/IColorConverter.hpp
+  presonus/color/MixerColorConverter.hpp
+  presonus/reconstruction200/large02_w10.hpp
+  presonus/reconstruction200/large02_w09.hpp
+  presonus/reconstruction200/large02_w08.hpp
+  presonus/reconstruction200/large02_w07.hpp
+  presonus/reconstruction200/large02_w06.hpp
+  presonus/reconstruction200/large02_w05.hpp
+  presonus/reconstruction200/large02_w04.hpp
+  presonus/reconstruction200/large02_w03.hpp
+  presonus/reconstruction200/large02_w01.hpp
+  presonus/ChannelGroupFilter.hpp
+  presonus/reconstruction200/large01_w10.hpp
+  presonus/reconstruction200/large01_w09.hpp
+  presonus/reconstruction200/large01_w08.hpp
+  presonus/reconstruction200/large01_w07.hpp
+  presonus/reconstruction200/large01_w06.hpp
+  presonus/reconstruction200/large01_w05.hpp
+  presonus/reconstruction200/large01_w04.hpp
+  presonus/reconstruction200/large01_w03.hpp
+  presonus/reconstruction200/large01_w02.hpp
+  presonus/reconstruction200/large01_w01.hpp
+  presonus/panel/SceneBook.hpp
+  presonus/panel/FXBook.hpp
+  presonus/uc/NetworkItem.hpp
   presonus/frontier01/frontier01_w01.hpp
   presonus/frontier01/frontier01_w02.hpp
   presonus/frontier01/frontier01_w03.hpp
@@ -2179,3 +2209,31 @@ include(cmake/GraphRanked09.cmake)
 include(cmake/GraphRank20Cycle01.cmake)
 
 include(cmake/GraphFrontierSmall01.cmake)
+
+include(cmake/GraphFrontierScale01.cmake)
+
+include(cmake/GraphFrontierScale02.cmake)
+
+include(cmake/Reconstruction200Stage01.cmake)
+
+include(cmake/Reconstruction200Stage02.cmake)
+
+include(cmake/Large02LifecycleFix.cmake)
+
+if(BUILD_TESTING)
+  add_subdirectory(tests/recovery/large02-avb-route01)
+endif()
+
+if(BUILD_TESTING)
+  add_subdirectory(tests/recovery/large02_net_dispatcher01)
+  add_subdirectory(tests/recovery/large02_net_adapter01)
+  add_subdirectory(tests/recovery/large02_net_registrar01)
+endif()
+
+# Stabilized production cycle01: real provider composition, compile once per role.
+set_source_files_properties(src/Presonus/SLChannel.cpp PROPERTIES COMPILE_OPTIONS "-fno-rtti")
+if(BUILD_TESTING)
+  add_subdirectory(tests/recovery/stabilized01_channels)
+  add_subdirectory(tests/recovery/stabilized01_mapping)
+  add_subdirectory(tests/recovery/stabilized01_uart)
+endif()

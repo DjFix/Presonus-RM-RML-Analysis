@@ -11,6 +11,13 @@ bool SurfaceNetworkProvider::parseAddress(Core::Sockets::SocketAddress &address,
 }
 } // namespace presonus::surface
 namespace Presonus::Surface {
+void NetworkSetupComponent::ListModel::setSelected(UC::NetworkItem *item) {
+  const int count = views.count();
+  setSelectedItem(item);
+  for (int i = 0; i < count; ++i)
+    views[i]->makeSelectedItemVisible();
+}
+
 void NetworkSetupComponent::syncListParam(
     int tag, const Core::Vector<UC::NetworkItem *> &items,
     UC::NetworkItem *selected) const {

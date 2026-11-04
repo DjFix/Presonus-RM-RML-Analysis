@@ -26,6 +26,13 @@ public:
   FxPresetComponent(FXPresetRecallComponent *const *items, int count)
       : recalls(items, count) {}
   void presetStored(const PresetComponent &, int);
+  // Caller-owned source-port state; optional provider yields the observed zero
+  // default for a missing FX selection parameter. No original field inference.
+  Core::Portable::Component *fxParameters = nullptr;
+  Core::CString256 presetType;
+  bool presetTypeBound = false;
+  int getFxIndex() const;
+  const char *getPresetType() const;
 
 private:
   Core::ConstVector<FXPresetRecallComponent *> recalls;

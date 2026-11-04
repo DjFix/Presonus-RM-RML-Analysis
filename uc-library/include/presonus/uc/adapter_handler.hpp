@@ -3,6 +3,7 @@
 #include "core/public/corestringbuffer.h"
 #include <array>
 #include <cstdint>
+#include <memory>
 
 namespace presonus::uc {
 struct AdapterSourcePortTag {};
@@ -67,9 +68,19 @@ struct AdapterHandlerState {
 namespace Presonus::UC {
 class AdapterHandler {
 public:
+  // Owning initialized source port; storage is independent of original ARM
+  // layout.
+  AdapterHandler();
+  ~AdapterHandler();
   AdapterHandler(presonus::uc::AdapterSourcePortTag,
-                 presonus::uc::AdapterHandlerState &state)
-      : state_(state) {}
+                 presonus::uc::AdapterHandlerState &state);
+  AdapterHandler(const AdapterHandler &) = delete;
+  AdapterHandler &operator=(const AdapterHandler &) = delete;
+  // Independent source-port access, not a recovered original ELF interface.
+  presonus::uc::AdapterHandlerState &sourcePortState() { return state_; }
+  const presonus::uc::AdapterHandlerState &sourcePortState() const {
+    return state_;
+  }
   void invalidateAddressList();
   AdapterAddressList *getAddressList(bool);
   bool isLocalHostAddress_threadSafe(const char *) const;
@@ -79,6 +90,13 @@ public:
   // Core::Sockets::IPAddress differs from CCL SocketTypes::IPAddress encoding.
 
 private:
+  struct OwnedState;
+  std::unique_ptr<OwnedState> owned_;
   presonus::uc::AdapterHandlerState &state_;
 };
 } // namespace Presonus::UC
+
+namespace presonus::uc {
+// Independent source API backed by the pinned CCL StaticSingleton provider.
+Presonus::UC::AdapterHandler &sourceAdapterSingleton();
+} // namespace presonus::uc

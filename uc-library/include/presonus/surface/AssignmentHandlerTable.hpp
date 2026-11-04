@@ -8,6 +8,7 @@ class AssignmentHandlerTable {
 public:
   explicit AssignmentHandlerTable(Core::Vector<AssignmentHandler *> &handlers)
       : handlers_(handlers) {}
+  void addHandler(AssignmentHandler *);
   AssignmentHandler *getHandler(int) const;
   void removeHandler(AssignmentHandler *);
 

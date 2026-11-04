@@ -1,12 +1,27 @@
 #include "presonus/dsp/SLReverbController.hpp"
 #include <bit>
+#include <cstdlib>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 namespace {
+// Fixture boundary for an unreconstructed production virtual operation.
+// Existing replay cases never invoke setValue; fail explicitly if that changes.
+class ReverbFixture final : public Presonus::Dsp::SLReverbController {
+public:
+  // Original fixtures never exercise process updates; reject an unexpected
+  // call.
+  void doUpdates() override { std::abort(); }
+  using Presonus::Dsp::SLReverbController::SLReverbController;
+  float setValue(int, float) override {
+    throw std::logic_error("unreconstructed setValue fixture boundary");
+  }
+};
+
 std::vector<std::byte> decode(const std::string &s) {
   std::vector<std::byte> out;
   for (std::size_t i = 0; i < s.size(); i += 2)
@@ -42,7 +57,7 @@ int main() {
         std::memcpy(state.memory.data() + 0x338, fixture, sizeof(fixture));
       }
     };
-    Presonus::Dsp::SLReverbController c(state);
+    ReverbFixture c(state);
     std::uint32_t result = 0;
     switch (target) {
     case 1:

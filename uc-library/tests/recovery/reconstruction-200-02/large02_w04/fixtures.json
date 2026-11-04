@@ -1,0 +1,6149 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "oracle": "Unicorn exact app instructions with explicit external-call stubs",
+  "ranges": [
+    {
+      "index": 1,
+      "address": 383632,
+      "size": 44,
+      "file_offset": 350864,
+      "section": ".text",
+      "bytes_sha256": "df8aee83f71d6db4f233314bcef4703f04443a55e221850e38f935abb5ac1f11"
+    },
+    {
+      "index": 2,
+      "address": 119676,
+      "size": 216,
+      "file_offset": 86908,
+      "section": ".text",
+      "bytes_sha256": "ecc6b6381a5504b432654171f4da324a7ce50bd1a6f226ebf04a4725669042ea"
+    },
+    {
+      "index": 3,
+      "address": 118808,
+      "size": 80,
+      "file_offset": 86040,
+      "section": ".text",
+      "bytes_sha256": "8da1acfa2f05a262781f9081855585c444a7b7ba92952bb28caec4ea772b34e8"
+    },
+    {
+      "index": 4,
+      "address": 120044,
+      "size": 88,
+      "file_offset": 87276,
+      "section": ".text",
+      "bytes_sha256": "279cd840f461a39ebbd537ca36f5c491b7a4b3893e625fb600597e143b5c73e5"
+    },
+    {
+      "index": 5,
+      "address": 384064,
+      "size": 32,
+      "file_offset": 351296,
+      "section": ".text",
+      "bytes_sha256": "695342e96d5925f2bf83b2cdfc6be5d6e9e98fc96bb51eca4fd702a072669f61"
+    },
+    {
+      "index": 6,
+      "address": 120012,
+      "size": 24,
+      "file_offset": 87244,
+      "section": ".text",
+      "bytes_sha256": "02cbf90ef862a66d4eec0b66b21e9d9fc593804831b28750e68b5bed03170b7b"
+    },
+    {
+      "index": 7,
+      "address": 120616,
+      "size": 88,
+      "file_offset": 87848,
+      "section": ".text",
+      "bytes_sha256": "2f92a402523d1152d0971919259fb716864d6223d9e180ba49b8e151f3d6cb8a"
+    },
+    {
+      "index": 8,
+      "address": 119892,
+      "size": 120,
+      "file_offset": 87124,
+      "section": ".text",
+      "bytes_sha256": "767cf4899ec3262eab64d6b3ac5f9f50e05e9c2bb75b2ef11572b970ec899de5"
+    },
+    {
+      "index": 9,
+      "address": 120432,
+      "size": 96,
+      "file_offset": 87664,
+      "section": ".text",
+      "bytes_sha256": "df5e18ba7b07d0c6954fb6c8b780dd2f3d00ec9a17089321b8218a6b52916538"
+    },
+    {
+      "index": 10,
+      "address": 120528,
+      "size": 88,
+      "file_offset": 87760,
+      "section": ".text",
+      "bytes_sha256": "1ad461dea6b4c23e8a17cfb2ec6d45b3e161dd30d6ad4fdb2cec9b37c8281621"
+    },
+    {
+      "index": 11,
+      "address": 384096,
+      "size": 80,
+      "file_offset": 351328,
+      "section": ".text",
+      "bytes_sha256": "a2a336180dd966a5c6af2641c92e8ea9e880de6f61c96d3d4a6603b89c7adfc2"
+    },
+    {
+      "index": 12,
+      "address": 384376,
+      "size": 20,
+      "file_offset": 351608,
+      "section": ".text",
+      "bytes_sha256": "5030465059c86a7443103bbf0956e77414d9b519a304b26cde57c68741e9cba5"
+    },
+    {
+      "index": 13,
+      "address": 384616,
+      "size": 56,
+      "file_offset": 351848,
+      "section": ".text",
+      "bytes_sha256": "38d7ba0ed6527efacd615786e1059126a936940dcb9736e2be7d1147bb34da01"
+    },
+    {
+      "index": 14,
+      "address": 385852,
+      "size": 244,
+      "file_offset": 353084,
+      "section": ".text",
+      "bytes_sha256": "67f2f0a7f0e28275f430e0e358e617ce69d5406002f6e789e425860e988969f4"
+    },
+    {
+      "index": 15,
+      "address": 385088,
+      "size": 212,
+      "file_offset": 352320,
+      "section": ".text",
+      "bytes_sha256": "9f1ab24ce2a7ba892693b5f907e84f6d217da4021acb77c2dd20001504d56947"
+    },
+    {
+      "index": 16,
+      "address": 386096,
+      "size": 244,
+      "file_offset": 353328,
+      "section": ".text",
+      "bytes_sha256": "8a93db2666efccaab97f15fb340b5885cccf175b9e58644a9c72bb8bc0a35b82"
+    }
+  ],
+  "cases": [
+    {
+      "index": 1,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "idle"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "idle"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "idle"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "idle"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 1,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "idle"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "debug"
+          ],
+          [
+            "set",
+            0,
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 2,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": false,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "saved"
+          ],
+          [
+            "set",
+            1056964608,
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": false,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 3,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": false,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1212,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 0,
+        "same": false
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3,
+        "same": false
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 4,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5,
+        "same": false
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            0,
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 5,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 5,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {},
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "debug"
+          ],
+          [
+            "set",
+            0,
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 6,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": false,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 1208,
+            "size": 4,
+            "value": 16797696
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 7,
+      "state": {},
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "baseDestructor"
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 7,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ],
+          [
+            "baseDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": -0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "debug"
+          ],
+          [
+            "set",
+            0,
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 0.25,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": NaN,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 5
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "value",
+            "parameter"
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 8,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": false,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            1
+          ],
+          [
+            "connector",
+            0
+          ],
+          [
+            "connector",
+            0
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 9,
+      "state": {},
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [
+          {
+            "address": 16777216,
+            "size": 4096,
+            "boundary": "observed original operator delete call; modeled heap unmaps object page"
+          }
+        ],
+        "trace": [
+          [
+            "baseDestructor"
+          ],
+          [
+            "delete",
+            1
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 9,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [
+          {
+            "address": 16777216,
+            "size": 4096,
+            "boundary": "observed original operator delete call; modeled heap unmaps object page"
+          }
+        ],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ],
+          [
+            "baseDestructor"
+          ],
+          [
+            "delete",
+            1
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 10,
+      "state": {},
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "baseDestructor"
+          ]
+        ],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 10,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [
+          {
+            "object_offset": 0,
+            "size": 4,
+            "value": 1433584
+          },
+          {
+            "object_offset": 4,
+            "size": 4,
+            "value": 1433636
+          }
+        ],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "removeObserver",
+            1,
+            1
+          ],
+          [
+            "baseDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 11,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "child",
+            "global"
+          ],
+          [
+            "parameterByTag",
+            4294967295
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "child",
+            "global"
+          ],
+          [
+            "parameterByTag",
+            4294967295
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "child",
+            "global"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 11,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "child",
+            "global"
+          ],
+          [
+            "parameterByTag",
+            4294967295
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 12,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 12,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 13,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": false
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": false
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 13,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 0,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            0,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            1,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -2147483648,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            2147483648,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 14,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 2147483647,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "StoreCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            2147483647,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 0,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            0,
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            1,
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -2147483648,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            2147483648,
+            4294967295
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 15,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 2147483647,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "presetMuteGroup"
+          ],
+          [
+            "url",
+            "mutegroup"
+          ],
+          [
+            "attribute",
+            "presetMuteGroupIndex"
+          ],
+          [
+            "integer",
+            2147483647,
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {},
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": false,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": false,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": false,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": false,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": false,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": false,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": false,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            4294967295,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 0,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            0,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 1,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            1,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": -2147483648,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            2147483648,
+            4294967295
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    },
+    {
+      "index": 16,
+      "state": {
+        "peer": true,
+        "selected": true,
+        "component": true,
+        "parameter": true,
+        "saved": true,
+        "global": true,
+        "found": true,
+        "connectors": 3,
+        "activators": 2,
+        "value": 1.0,
+        "saved_value": 0.5,
+        "arg": 2147483647,
+        "message": 3
+      },
+      "native": {
+        "native_object_writes": [],
+        "native_deallocation": [],
+        "trace": [
+          [
+            "attributes",
+            "RecallCascadeScene"
+          ],
+          [
+            "url",
+            "presets"
+          ],
+          [
+            "attribute",
+            "AVBSceneSlot"
+          ],
+          [
+            "integer",
+            2147483647,
+            0
+          ],
+          [
+            "attribute",
+            "AVBMComponentID"
+          ],
+          [
+            "string",
+            "component/path",
+            0
+          ],
+          [
+            "event",
+            19021,
+            0
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "getComponent"
+          ],
+          [
+            "sendEvent"
+          ],
+          [
+            "bufferDestructor"
+          ],
+          [
+            "attributesDestructor"
+          ]
+        ],
+        "parameter_present": true,
+        "component_present": true,
+        "result_present": true
+      }
+    }
+  ]
+}

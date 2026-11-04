@@ -366,6 +366,32 @@ def event(c, payload):
     return receipt
 
 
+def add_execution_requirements(c, n, bodies, native_to_work):
+    # Preserve actual direct-call and tail-branch requirements; candidates and name bridges are
+    # retained as raw observations only, never promoted into execution edges.
+    for edge in n.execute("SELECT * FROM edges WHERE kind IN ('ELF_CALLS','ELF_TAIL_BRANCH') ORDER BY src,dst,site"):
+        for consumer in native_to_work.get(edge['src'], ()):
+            targets = native_to_work.get(edge['dst'], ())
+            for target in targets or {edge['dst']}:
+                rid = hashlib.sha256(packed([consumer, target, 'callable_behavior']).encode()).hexdigest()
+                c.execute('INSERT OR IGNORE INTO requirements VALUES(?,?,?,?,?,0)', (rid, consumer, target, 'callable_behavior', packed({'native_src': edge['src'], 'native_dst': edge['dst'], 'kind': edge['kind'], 'site': edge['site'], 'scope_note': 'direct call or tail branch proven; callable declaration/behavior not inferred from status'})))
+                target_body = bodies.get(edge['dst'], {})
+                resolution = n.execute('SELECT * FROM symbol_resolution WHERE symbol_id=?', (edge['dst'],)).fetchone()
+                provider_context = False
+                if resolution and resolution['strategy'] == 'external_source':
+                    binding = json.loads(resolution['evidence_json'])
+                    definitions = [entry for entry in binding.get('upstream', []) if entry.get('definition') and entry.get('definition_extent_sha256')]
+                    for definition in definitions:
+                        raw = (ROOT / definition['repository_path']).read_bytes()
+                        extent = raw[definition['definition_extent_start']:definition['definition_extent_end']]
+                        if hashlib.sha256(extent).hexdigest() != definition['definition_extent_sha256']:
+                            raise ValueError('provider definition extent changed')
+                    provider_context = bool(definitions)
+                context_available = bool(target_body.get('instructions')) or provider_context
+                context_id = hashlib.sha256(packed([consumer, target, 'callee_context']).encode()).hexdigest()
+                c.execute('INSERT OR IGNORE INTO requirements VALUES(?,?,?,?,?,?)', (context_id, consumer, target, 'callee_context', packed({'native_id': edge['dst'], 'body_hash': target_body.get('bytes_sha256'), 'provider_context': provider_context, 'scope': 'context availability only; no behavior/declaration/layout claim'}), int(context_available)))
+
+
 def build(out, reuse_db=None, registry_db=None):
     start = time.monotonic()
     ccl = ROOT / 'third_party/ccl-framework'
@@ -510,29 +536,7 @@ def build(out, reuse_db=None, registry_db=None):
         if data or initializer:
             for scope in (('representation', 'consumer_binding') if data else ('initialization_effects',)):
                 c.execute('INSERT INTO requirements VALUES(?,?,?,?,?,0)', (w['id'] + ':' + scope, w['id'], w['id'], scope, '{}'))
-    # Preserve actual direct-call requirements; candidates and name bridges are
-    # retained as raw observations only, never promoted into execution edges.
-    for edge in n.execute("SELECT * FROM edges WHERE kind='ELF_CALLS' ORDER BY src,dst,site"):
-        for consumer in native_to_work.get(edge['src'], ()):
-            targets = native_to_work.get(edge['dst'], ())
-            for target in targets or {edge['dst']}:
-                rid = hashlib.sha256(packed([consumer, target, 'callable_behavior']).encode()).hexdigest()
-                c.execute('INSERT OR IGNORE INTO requirements VALUES(?,?,?,?,?,0)', (rid, consumer, target, 'callable_behavior', packed({'native_src': edge['src'], 'native_dst': edge['dst'], 'kind': edge['kind'], 'site': edge['site'], 'scope_note': 'direct call proven; callable declaration/behavior not inferred from status'})))
-                target_body = bodies.get(edge['dst'], {})
-                resolution = n.execute('SELECT * FROM symbol_resolution WHERE symbol_id=?', (edge['dst'],)).fetchone()
-                provider_context = False
-                if resolution and resolution['strategy'] == 'external_source':
-                    binding = json.loads(resolution['evidence_json'])
-                    definitions = [entry for entry in binding.get('upstream', []) if entry.get('definition') and entry.get('definition_extent_sha256')]
-                    for definition in definitions:
-                        raw = (ROOT / definition['repository_path']).read_bytes()
-                        extent = raw[definition['definition_extent_start']:definition['definition_extent_end']]
-                        if hashlib.sha256(extent).hexdigest() != definition['definition_extent_sha256']:
-                            raise ValueError('provider definition extent changed')
-                    provider_context = bool(definitions)
-                context_available = bool(target_body.get('instructions')) or provider_context
-                context_id = hashlib.sha256(packed([consumer, target, 'callee_context']).encode()).hexdigest()
-                c.execute('INSERT OR IGNORE INTO requirements VALUES(?,?,?,?,?,?)', (context_id, consumer, target, 'callee_context', packed({'native_id': edge['dst'], 'body_hash': target_body.get('bytes_sha256'), 'provider_context': provider_context, 'scope': 'context availability only; no behavior/declaration/layout claim'}), int(context_available)))
+    add_execution_requirements(c, n, bodies, native_to_work)
     data_ranges = collections.defaultdict(list)
     for original in occurrences.values():
         if original['symbol_kind'] != 'STT_FUNC' and original['original_size']:

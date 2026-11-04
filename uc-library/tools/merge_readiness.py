@@ -142,16 +142,25 @@ def main():
             if sym['kind']=='STT_FUNC' and isinstance(sym['section'],int) and sym['size']:
                 originals.setdefault((manifest['sha256'],sym['mangled']),[]).append(sym['address'])
     checked_sources={}
+    checked_bindings=set()
     def check_sources(sources):
         assert isinstance(sources,dict), 'source bindings must be a dictionary'
         if checked_sources.get(id(sources)) is sources:
             return
         for name,digest in sources.items():
+            # Exact bindings are invariant within this operation. The cached
+            # file digest, formatting document and final path/stat guards
+            # remain fresh; no cache survives this invocation.
+            binding=(name,digest) if isinstance(name,str) and isinstance(digest,str) else None
+            if binding is not None and binding in checked_bindings:
+                continue
             path=cache.resolve(library/name)
             assert path.is_relative_to(library) and path.is_file(),f'source outside current library: {name}'
             assert cache.sha(path)==digest,f'stale source seal: {name}'
             if path.suffix in ('.cpp','.hpp','.h'):
                 assert formatting['files'].get(name)==digest,f'source not format-checked: {name}'
+            if binding is not None:
+                checked_bindings.add(binding)
         checked_sources[id(sources)]=sources
     candidates=[]
     for relative in a.fragment:

@@ -25,8 +25,49 @@ float inverseGain(float gain) {
 }
 } // namespace
 namespace Presonus::Dsp {
+SLReverbController::SLReverbController(int id)
+    : Controller(id, nullptr),
+      ownedState_(std::make_unique<presonus::dsp::ReverbPortState>()),
+      state_(*ownedState_) {
+  store(0x28, 64);
+  store(0x2b8, 0);
+  store(0x2bc, 0);
+  store(0x2c, 0);
+  biquad_ = std::make_unique<DSP::BiquadCalc<double, false>>();
+  // Keep the existing offset-oriented source API coherent with the real DSP
+  // provider. The untouched provider bytes are deliberately not copied/read.
+  const auto &b = biquad_->portableState();
+  for (std::size_t i = 0; i < 3; ++i) {
+    std::memcpy(state_.memory.data() + 0x2c0 + i * 24, &b.smoothers[i], 24);
+  }
+  state_.memory[0x308] = std::byte{b.byte48};
+  store(0x30c, b.dirty);
+  store(0x310, static_cast<std::uint32_t>(b.mode));
+  store(0x314, static_cast<std::uint32_t>(b.word54));
+  // Native +0x318 rate and +0x309..0x30b remain uninitialized in the provider;
+  // the owning portable memory is zero-filled by design, never claimed equal.
+  std::memcpy(state_.memory.data() + 0x320, &b.gain, 8);
+  std::memcpy(state_.memory.data() + 0x328, &b.frequency, 8);
+  std::memcpy(state_.memory.data() + 0x330, &b.q, 8);
+  std::memcpy(state_.memory.data() + 0x338, b.coefficients, 40);
+  std::memcpy(state_.memory.data() + 0x360, b.targets, 24);
+  std::memcpy(state_.memory.data() + 0x378, &b.piOverRate, 8);
+  std::memcpy(state_.memory.data() + 0x380, b.temporary, 104);
+  for (std::size_t o = 0x30; o < 0x60; o += 4)
+    store(o, 0);
+  for (unsigned i = 0; i < 57; ++i) {
+    store(0x60 + 4 * i, 0);
+    store(0x144 + 4 * i, 0xbf800000U);
+  }
+  for (unsigned i = 0; i < 35; ++i)
+    store(0x228 + 4 * i, 0);
+  store(0x54, 0x447a0000U);
+  store(0x58, 0);
+  store(0x5c, 0x3f333333U);
+  state_.memory[0x1c] = std::byte{0};
+}
 SLReverbController::SLReverbController(presonus::dsp::ReverbPortState &s)
-    : state_(s) {}
+    : Controller(presonus::dsp::ControllerSourceTag{}), state_(s) {}
 std::uint32_t SLReverbController::word(std::size_t offset) const {
   if (offset + 4 > state_.memory.size())
     throw std::out_of_range("reverb state");

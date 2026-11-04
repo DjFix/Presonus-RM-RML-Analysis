@@ -1,7 +1,9 @@
 #pragma once
 #include "presonus/noaa/setup_property.hpp"
+#include "presonus/reconstruction200/large01_w08.hpp"
 #include "presonus/uc/firmware_update_listener.hpp"
 #include "presonus/uc/network_client_factory.hpp"
+#include "presonus/uc/server_registrar.hpp"
 namespace presonus::mixer {
 struct SetupContextTag {};
 inline constexpr SetupContextTag setupContextTag{};
@@ -57,6 +59,8 @@ public:
                     const presonus::mixer::SetupContext &context)
       : RackMixerApplication(tag, context) {}
   NOAA::NOAASetupProperty getNOAASetupProperty() const override;
+  presonus::mixer::AudioSetupRecord getAudioEngineSetupProperty() const;
+  void getNetworkSetup(unsigned short &, UC::ServerInfo &) const;
 };
 class WolverineApplication : public RackMixerApplication {
 public:
@@ -64,6 +68,8 @@ public:
                        const presonus::mixer::SetupContext &context)
       : RackMixerApplication(tag, context) {}
   NOAA::NOAASetupProperty getNOAASetupProperty() const override;
+  presonus::mixer::AudioSetupRecord getAudioEngineSetupProperty() const;
+  void getNetworkSetup(unsigned short &, UC::ServerInfo &) const;
 };
 class BeastApplication : public StudioliveMixerApplication {
 public:
@@ -71,6 +77,8 @@ public:
                    const presonus::mixer::SetupContext &context)
       : StudioliveMixerApplication(tag, context) {}
   NOAA::NOAASetupProperty getNOAASetupProperty() const override;
+  presonus::mixer::AudioSetupRecord getAudioEngineSetupProperty() const;
+  void getNetworkSetup(unsigned short &, UC::ServerInfo &) const;
 };
 class StormApplication : public StudioliveMixerApplication {
 public:
@@ -78,6 +86,8 @@ public:
                    const presonus::mixer::SetupContext &context)
       : StudioliveMixerApplication(tag, context) {}
   NOAA::NOAASetupProperty getNOAASetupProperty() const override;
+  presonus::mixer::AudioSetupRecord getAudioEngineSetupProperty() const;
+  void getNetworkSetup(unsigned short &, UC::ServerInfo &) const;
 };
 class RogueApplication : public StudioliveMixerApplication {
 public:
@@ -85,5 +95,7 @@ public:
                    const presonus::mixer::SetupContext &context)
       : StudioliveMixerApplication(tag, context) {}
   NOAA::NOAASetupProperty getNOAASetupProperty() const override;
+  presonus::mixer::AudioSetupRecord getAudioEngineSetupProperty() const;
+  void getNetworkSetup(unsigned short &, UC::ServerInfo &) const;
 };
 } // namespace Presonus::Mixer

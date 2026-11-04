@@ -10,6 +10,7 @@ struct SendState {
   presonus::output_port::Bindings &output;
   std::uint32_t sendChanged{};  // observed native +0x178
   std::uint32_t childChanged{}; // observed native +0x18c
+  std::uint32_t fxChanged{};    // independent state for native +0x194
 };
 } // namespace presonus::frontier01
 
@@ -39,6 +40,19 @@ private:
   presonus::frontier01::SendState &state_;
   std::vector<presonus::frontier01::SendState *> &children_;
 };
+class FXBusComponent {
+public:
+  FXBusComponent(OutputComponent &output,
+                 presonus::frontier01::SendState &state,
+                 std::vector<presonus::frontier01::SendState *> &children)
+      : send_(output, state, children), state_(state), children_(children) {}
+  void paramChanged(Core::Portable::Parameter *, int);
+
+private:
+  SendOutputComponent send_;
+  presonus::frontier01::SendState &state_;
+  std::vector<presonus::frontier01::SendState *> &children_;
+};
 // CCL-backed lifecycle source ports. Native D1 writes its own two vtable words
 // and calls Component D2; compiler emits host vptr transitions and real pinned
 // Component cleanup. Original secondary base declaration/layout remain unknown.
@@ -46,6 +60,11 @@ class GlobalComponent : public Core::Portable::Component {
 public:
   using Core::Portable::Component::Component;
   ~GlobalComponent() override;
+  void bindMixer(MixerComponentBase &mixer) { mixer_ = &mixer; }
+  Core::Portable::FileName getTempFilePath();
+
+private:
+  MixerComponentBase *mixer_ = nullptr; // borrowed source-port binding
 };
 class GEQLinkHandler : public Core::Portable::Component {
 public:

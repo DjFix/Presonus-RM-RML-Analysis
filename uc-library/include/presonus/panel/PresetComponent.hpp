@@ -2,9 +2,11 @@
 
 #include "core/portable/coreattributes.h"
 #include "core/portable/corecomponent.h"
+#include "core/portable/corefile.h"
 #include "core/portable/corefilename.h"
 #include "core/public/corestringbuffer.h"
 #include "core/public/corevector.h"
+#include "presonus/panel/PresetNameCache.hpp"
 
 namespace presonus::panel {
 class PresetApplicationServices;
@@ -19,16 +21,29 @@ class PresetNameCache;
 // provider.
 class PresetComponent : public Core::Portable::Component {
 public:
+  class StorageCompletionHandler;
   struct Delegate; // Original callback object stays opaque.
 
   explicit PresetComponent(
       presonus::panel::PresetApplicationServices &services);
+  ~PresetComponent() override;
+  // Explicit independent registration token, not original subobject layout.
+  void sourcePortObserveCache(PresetNameCache::Delegate *);
+  // Ordinary return spellings are source-port contracts, not ELF declarations.
+  int getSlotNum() const;
+  Core::Portable::FileIOCompletionHandler *createStorageHandler() const;
+  void doPresetSave(const char *, const char *,
+                    const Core::Portable::Attributes &) const;
+  void cacheUpdated(PresetNameCache &, int, const char *, const char *);
   void paramChanged(Core::Portable::Parameter *parameter, int message) override;
-  void updatePresetName() const;
+  virtual void updatePresetName() const;
   void presetStored() const;
   PresetNameCache *getCache() const;
   // Aggregate return is a portable declaration; original spelling unresolved.
   Core::Portable::FileName getFileNameForSlot(unsigned int) const;
+  // Boolean source-port declaration; original return spelling remains
+  // unresolved.
+  bool isSlotEmpty(unsigned int) const;
   void updateEditName() const;
   bool getCurrentPresetName(Core::CStringBuffer<128> &name) const;
   int recall();
@@ -40,6 +55,7 @@ private:
   friend struct presonus::panel::PresetTestAccess;
   presonus::panel::PresetApplicationServices &services;
   Core::Vector<Delegate *> delegates;
+  PresetNameCache::Delegate *cacheObserver = nullptr;
 };
 } // namespace Presonus::Panel
 

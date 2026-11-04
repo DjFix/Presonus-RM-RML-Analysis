@@ -1,5 +1,6 @@
 #include "presonus/dsp/Controller.hpp"
 #include <cstdint>
+#include <cstdlib>
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -34,6 +35,9 @@ struct Curve : Core::Interpolator {
   std::vector<Event> &events;
 };
 struct Controller : Presonus::Dsp::Controller {
+  // This legacy fixture never exercises process updates. Fail if that changes;
+  // no default production Controller::doUpdates implementation is invented.
+  void doUpdates() override { std::abort(); }
   explicit Controller(std::vector<Event> &events, bool hooks)
       : Presonus::Dsp::Controller(presonus::dsp::ControllerSourceTag{}),
         events(events), hooks(hooks) {}

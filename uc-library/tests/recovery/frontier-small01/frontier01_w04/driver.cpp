@@ -6,10 +6,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-// Test-only opaque Item boundary: no production Item implementation or layout.
-namespace Presonus {
-class MappingTable::Item {};
-} // namespace Presonus
 namespace {
 const char *names[]{"", "alpha", "beta", "gamma", "delta"};
 using State = presonus::surface::midi_port::State;
@@ -24,12 +20,21 @@ struct Services : presonus::surface::midi_port::Services {
 };
 struct Operations : presonus::mapping::ItemOperations {
   State &state;
+  // Actual Item instances retain the old contiguous identity-array contract.
+  // The unused borrowed alias outlives all four items; no new connect call.
+  Core::Portable::ParamInfo aliasInfo = [] {
+    Core::Portable::ParamInfo value{};
+    value.type = Core::Portable::ParamInfo::kAlias;
+    return value;
+  }();
+  Core::Portable::AliasParam alias;
   Presonus::MappingTable::Item items[4];
   const Record *replacement;
   bool mutate;
   std::vector<int> trace;
   explicit Operations(State &s, const Record *r, bool m)
-      : state(s), replacement(r), mutate(m) {}
+      : state(s), alias(aliasInfo), items{{alias}, {alias}, {alias}, {alias}},
+        replacement(r), mutate(m) {}
   void fullOff(Presonus::MappingTable::Item &) override { throw 1; }
   void inverseMode(Presonus::MappingTable::Item &, bool) override { throw 1; }
   void immediate(Presonus::MappingTable::Item &, bool) override { throw 1; }

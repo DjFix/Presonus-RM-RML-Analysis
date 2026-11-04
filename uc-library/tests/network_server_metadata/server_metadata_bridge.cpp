@@ -26,9 +26,11 @@ public:
 private:
   std::uint32_t type_;
 };
-static_assert(std::is_trivially_destructible_v<Presonus::UC::LocalServer>);
-static_assert(std::is_trivially_destructible_v<Presonus::UC::RemoteServer>);
-static_assert(!std::has_virtual_destructor_v<Presonus::UC::Server>);
+// Native Server/RemoteServer D1/D0 evidence now establishes real virtual
+// cleanup. Borrowed metadata state remains external to these source facades.
+static_assert(!std::is_trivially_destructible_v<Presonus::UC::LocalServer>);
+static_assert(!std::is_trivially_destructible_v<Presonus::UC::RemoteServer>);
+static_assert(std::has_virtual_destructor_v<Presonus::UC::Server>);
 } // namespace
 
 int main() {

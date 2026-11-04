@@ -1,7 +1,5 @@
 #include "presonus/MappingTable.hpp"
 #include <iostream>
-// Test-only completion of opaque item identity; not a production layout.
-class Presonus::MappingTable::Item {};
 struct Recorder final : presonus::mapping::ItemOperations {
   const char *call = "none";
   int flag = -1;
@@ -27,7 +25,11 @@ struct Recorder final : presonus::mapping::ItemOperations {
   }
 };
 int main() {
-  Presonus::MappingTable::Item item;
+  // Genuine source-port object; legacy operations observe identity only.
+  Core::Portable::ParamInfo aliasInfo{};
+  aliasInfo.type = Core::Portable::ParamInfo::kAlias;
+  Core::Portable::AliasParam alias(aliasInfo);
+  Presonus::MappingTable::Item item(alias);
   for (int task = 1; task <= 5; ++task)
     for (int found = 0; found <= 1; ++found)
       for (int flag = 0; flag <= 1; ++flag) {

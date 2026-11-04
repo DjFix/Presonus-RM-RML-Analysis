@@ -20,7 +20,20 @@ class Control;
 // below do not establish the firmware declaration, layout, or ARM32 ABI.
 class MappingTable {
 public:
-  class Item; // Opaque original identity; no inferred original fields.
+  // Initialized source-port record. Borrowed provider lifetimes exceed the
+  // item. A null alias is a valid native state. This models observed roles,
+  // not original fields or ARM object layout.
+  class Item {
+  public:
+    explicit Item(Core::Portable::AliasParam *alias = nullptr,
+                  Panel::Control *control = nullptr)
+        : alias(alias), control(control) {}
+    Item(Core::Portable::AliasParam &alias, Panel::Control *control = nullptr)
+        : Item(&alias, control) {}
+    static int translateMode(const char *);
+    Core::Portable::AliasParam *alias;
+    Panel::Control *control;
+  };
   MappingTable(const presonus::mapping::Entry *sortedEntries, int count,
                presonus::mapping::ItemOperations &operations);
   Item *findItem(const char *name) const;
@@ -30,6 +43,10 @@ public:
   void setControlEnabled(const char *name, bool state);
   void setControlImmediate(const char *name, bool state);
 
+  void connect(const char *, Core::Portable::Parameter *, const char *, bool);
+  // Independent opt-in for concrete page objects; legacy borrowed gateways stay
+  // in their existing domain. Set before installing pages for the new domain.
+  void useTypedPageControllers() { typedPageControllers_ = true; }
   void setExtendedOperations(presonus::mapping::ExtendedOperations &);
   static void setColorOperations(presonus::mapping::ColorOperations &);
   void setControlBlinkMode(const char *, const char *);
@@ -47,6 +64,7 @@ public:
 
 private:
   presonus::mapping::ExtendedOperations &extended() const;
+  bool typedPageControllers_ = false;
   presonus::mapping::ExtendedOperations *extended_ = nullptr;
   IMainScreenPageController *pages_[128]{};
   int pageCount_ = 0;

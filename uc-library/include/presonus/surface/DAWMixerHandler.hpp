@@ -41,6 +41,8 @@ struct DAWMixerState {
   Presonus::DAWChannelGroup *mainGroup = nullptr;
   Presonus::DAWChannelGroup *inputGroup = nullptr;
   Presonus::DAWChannelGroup *outputGroup = nullptr;
+  // Portable word observed through the borrowed client; only bit zero is used.
+  std::uint32_t clientActivationFlags = 0;
 };
 } // namespace presonus::surface
 namespace Presonus::Surface {
@@ -58,6 +60,8 @@ public:
                   presonus::surface::DAWMixerState &state,
                   Core::Portable::ParamList &automation)
       : dependencies(dependencies), state(state), automation(automation) {}
+  bool canActivate() const;
+  const char *getName() const;
   bool shouldShowStripEncodersAsMeters() const;
   void updatePanEncoderConnection();
   void onChannelsChanged(DAWChannelGroup *);

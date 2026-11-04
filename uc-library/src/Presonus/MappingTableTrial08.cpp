@@ -1,3 +1,4 @@
+#include "presonus/IMainScreenPageController.hpp"
 #include "presonus/MappingTable.hpp"
 #include <algorithm>
 #include <stdexcept>
@@ -39,7 +40,8 @@ void MappingTable::addMainScreenPage(IMainScreenPageController *page) {
 IMainScreenPageController *MappingTable::findPage(const char *name) const {
   for (int i = 0; i < pageCount_; ++i) {
     auto *page = pages_[i];
-    const char *other = extended().pageName(*page);
+    const char *other = typedPageControllers_ ? page->getPageName()
+                                              : extended().pageName(*page);
     if (std::strcmp(name ? name : "", other ? other : "") == 0)
       return page;
   }

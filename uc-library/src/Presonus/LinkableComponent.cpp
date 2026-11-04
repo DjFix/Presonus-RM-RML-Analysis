@@ -40,4 +40,9 @@ void LinkableComponent::setLinkEnabled(bool enabled) {
         child->setLinkEnabled(enabled);
 }
 bool LinkableComponent::isLinked() const { return state_.partner != nullptr; }
+std::uint8_t LinkableComponent::isLinkSlave() const { return state_.slave; }
+LinkableComponent *LinkableComponent::castTo(int id) {
+  return id == 1282304865 || id == 1400259439 || id == 1131375984 ? this
+                                                                  : nullptr;
+}
 } // namespace Presonus

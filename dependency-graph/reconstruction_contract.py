@@ -127,6 +127,8 @@ def validate_request(root, task):
         raise ValueError('Reconstruction requires reviewed declaration/state/lifecycle/provider contract')
     evidence(root, [dict(binding, kind='review_record', scope='Reviewed reconstruction plan, not readiness')])
     review = json.loads((pathlib.Path(root) / binding['path']).read_text())
+    from execution_review import validate as validate_execution_review
+    validate_execution_review(root, task, review)
     result = evaluate(root, task, review, task.get('included_dependency_work', []))
     if not result['dispatch_reconstruction']:
         raise ValueError('Reconstruction planning gate: ' + result['disposition'] + ' ' + str(result.get('missing', [])))

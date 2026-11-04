@@ -33,6 +33,9 @@ public:
   void removeLink();
   void setLinkEnabled(bool);
   bool isLinked() const;
+  // Portable return choices; original declarations and ARM layout unresolved.
+  std::uint8_t isLinkSlave() const;
+  LinkableComponent *castTo(int);
 
 private:
   linkable_port::State &state_;

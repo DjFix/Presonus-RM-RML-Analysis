@@ -1,0 +1,8 @@
+import subprocess,json,sys
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[5]
+symbols={line.split()[-1] for line in subprocess.check_output(['nm','--defined-only',sys.argv[1]],text=True).splitlines() if line.split()}
+for i in range(1,11):
+ d=json.loads((ROOT/f'temp/recovery-work/reconstruction-200-01/large-batch01/packets/large01_w01_{i:02}/request.json').read_text())
+ for t in d['targets']:assert t['mangled'] in symbols,t['mangled']
+print('10 exact original ELF names matched on Linux ELF; layout/ARM ABI not established')

@@ -363,3 +363,81 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   unsolicited progress counts. Keep required work updates and actionable blockers
   brief. Preserve all validation gates, evidence logs, generated checkpoints and
   symbol tracker updates; avoid repeated inspections solely for chat reporting.
+
+## Production delivery priority — explicit user correction, 2026-11-04
+
+These instructions preserve the user's operating intent across context
+compression. They supersede earlier instructions to finish every target of an
+old batch, close the remaining 20 targets before moving on, or finish performance
+measurements before continuing production. All validation gates remain in force.
+
+- Optimize for sustained, reproducible volume of accepted reconstruction per
+  unit of elapsed time. Batch completeness is not a prerequisite for continuing.
+  Use rolling production selections of 200 targets: if 150 pass all applicable
+  gates, admit those 150, record the other 50 as unresolved with concrete reasons,
+  and proceed to the next 200. Never hold accepted work or the next selection
+  hostage to making an earlier batch reach 200/200.
+- Preserve rejected/unresolved work, original identities, evidence and claims.
+  Record the blocker, owner and concrete condition for retry. Do not delete work,
+  silently release live claims, count failures as reconstructed, or repeatedly
+  retry an unchanged blocker. Revisit parked work when its inputs change or its
+  actual priority warrants it; it must not monopolize the production queue.
+- Persist reconstruction remarks as reusable project history, including for
+  accepted results: unresolved declarations, assumptions, bounded validation,
+  observed discrepancies, failed approaches and concrete follow-up questions.
+  Bind each note to the original ELF SHA-256 and mangled identity (and unique
+  work item where available), with evidence/proof links, date, status and a
+  resolution or retry condition. Use the existing operational SQLite history
+  facilities and linked artifacts under `evidence/recovery/`; if the current
+  schema has no suitable note field, retain a linked evidence record rather
+  than blocking production on a schema change. Chat alone is not storage.
+  Before subsequent selection, reconstruction, review or readiness promotion,
+  consult this history and pass relevant remarks into the worker context.
+  Use new evidence to refine earlier results and resolve recorded questions;
+  append the resolution and its proof without erasing the original observation.
+  Notes do not waive validation gates or establish readiness by themselves.
+- Admit completed independent results as they become eligible. Respect actual
+  shared-file/hash dependencies and required canonical integration checks, but
+  do not invent a whole-batch acceptance barrier. Keep the next production
+  selection and ownership plan ready while compatible checks/publication run.
+- Start each production selection from the current operational SQLite catalog,
+  canonical reconstruction statuses, task notes/history and active unique-work
+  claims. Select unreconstructed, available original identities there first;
+  then query Memgraph dependencies to choose related scopes and prioritize
+  restored inputs. A historical ranking database is not the candidate source
+  of truth and its rebuild is not a prerequisite for production selection.
+  Use a derived ranking only when it is current and cheap to calculate or
+  reuse. Ranking is optional: if it is broken, incompatible, stale or expensive
+  to refresh, skip it and continue SQLite -> Memgraph -> scope selection ->
+  prepare/dispatch. Do not repair or rebuild ranking as a production gate or
+  start an infrastructure project merely to make it useful. Preserve the agreed
+  complexity weights and all packet freshness/ownership/validation gates;
+  skipping optional ranking never permits stale dependency context.
+- Prefer related work with more already reconstructed inputs and less missing
+  implementation work, using the agreed complexity weights. Zero-reconstructed-
+  input functions remain eligible for bounded research/reconstruction; missing
+  declarations/state/adaptations belong in an explicitly owned task, not a
+  universal exclusion. Do not repeatedly reconstruct existing canonical C++ or
+  source-provided Core implementations.
+- Graph, SQLite, caches and profiling are helpers for delivering reconstruction.
+  Stop optional benchmarks, expensive measurements and infrastructure work when
+  they delay production. Cheap automatic accounting may continue in the
+  background. Three timing reports, a speed claim or completion of a historical
+  tail are never conditions for launching the next authorized production work.
+- Preserve all existing native/provider, identity/range, namespace/mangling,
+  formatting, compile, behavior, full Linux, role/installed/compile-once,
+  active-source, guarded SQLite admission, tracker and mirror gates. Throughput
+  comes from scheduling and removing wasted work, not lowering acceptance.
+  Do not bypass source freshness, publication or ownership conflicts to create
+  apparent parallelism.
+- Report actual accepted functions over elapsed time when asked. Separate
+  unique functions from ELF identities/ABI variants, ready from declaration-
+  pending, and historical batch targets from helper work. A selected batch of
+  200 is not the entire project; helpers are real delivered work but do not
+  secretly close unrelated historical targets. Avoid making old fractions such
+  as 180/200 the headline measure of production progress.
+- The user's authorization to continue production and take subsequent batches
+  persists. Do not request permission again merely because a prior batch has
+  unresolved entries. After compaction, read this section and the actual live
+  state before planning; continue the delivery stream instead of reopening a
+  finished scaling trial or returning to a small test batch.

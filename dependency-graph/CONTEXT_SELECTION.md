@@ -25,6 +25,15 @@ read-only. `unmapped_policy=research` is allowed only for explicit research mode
 Unresolved source dispatch/missing bodies in reconstruction require an explicit
 `uncertainty_work` assignment; nothing is silently cut to a count limit.
 
+For a connected task that genuinely needs another original C++ scope, use
+`additional_original_scopes`: a list of exact `original_elf_sha256`, `mangled`,
+integer `address`, positive integer `size`, `namespace` and nonempty `reason`.
+Every entry must also be an explicit task target. The namespace is checked against
+the actual demangled original; entries do not authorize other members, ranges,
+ELFs or files. A global C++ free function uses `namespace: "::"` and
+`linkage_scope: "global_cpp"`; this does not admit class members or data.
+TASK.md lists these exceptions. Owned files and all ordinary gates still apply.
+
 Unmapped source targets now use verified ELF context from NATIVE_ACTIVE.json;
 they do not need an empty research escape. Read ELF_CONTEXT.md as part of every
 packet. Each target needs a native/source/pinned-provider body before dispatch.

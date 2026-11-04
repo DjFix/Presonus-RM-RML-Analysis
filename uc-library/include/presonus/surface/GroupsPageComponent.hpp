@@ -2,6 +2,7 @@
 
 #include "core/portable/coreparams.h"
 #include "core/public/corevector.h"
+#include "presonus/reconstruction200/large02_w07.hpp"
 #include <cstdint>
 
 namespace Core::Portable {
@@ -32,11 +33,26 @@ struct GroupsPageDependencies {
 
 namespace Presonus::Surface {
 // Portable contract, original inheritance/layout and unencoded returns pending.
-class GroupsPageComponent {
+class GroupsPageComponent : public MixerPageComponent {
 public:
   GroupsPageComponent(presonus::surface::GroupsPageState &state,
                       presonus::surface::GroupsPageDependencies &dependencies)
       : state(state), dependencies(dependencies) {}
+  ~GroupsPageComponent() override;
+  bool isAutoGroup(Core::Portable::Component *) const;
+  bool isValidGroup(Core::Portable::Component *) const;
+  void select(Core::Portable::Parameter *);
+  Core::Portable::Component *getSelectedSlaveGroup() const;
+  void addRemoveObservers(Presonus::MixerClientComponentBase *, bool);
+  void observeGroup(Core::Portable::Component *);
+  void launchEdit();
+  void doselect();
+  void updateFilter();
+  // Independent replay/source-port inspection; not an original ELF interface.
+  int sourcePortObservedCount() const { return observedParameters.count(); }
+  void updateGroups(Core::Portable::Component *);
+  void setMixerComponent(Presonus::MixerClientComponentBase *) override;
+  void refreshList();
   void addListOffset(int delta);
   int getMaxListOffset() const;
   void setListOffset(int offset);
@@ -44,6 +60,11 @@ public:
   void updateSelection();
 
 private:
+  Core::Vector<Core::Portable::Parameter *> observedParameters;
+  Core::Vector<Core::Portable::Component *> groups[2];
+  int previousCounts[2] = {0, 0};
+  Presonus::ChannelGroupFilter groupFilters[2] = {
+      Presonus::ChannelGroupFilter(39), Presonus::ChannelGroupFilter(32)};
   presonus::surface::GroupsPageState &state;
   presonus::surface::GroupsPageDependencies &dependencies;
 };

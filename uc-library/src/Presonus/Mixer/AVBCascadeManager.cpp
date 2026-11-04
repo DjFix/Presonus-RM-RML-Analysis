@@ -1,5 +1,18 @@
 #include "presonus/mixer/AVBCascadeManager.hpp"
+#include "presonus/uc/NetworkItem.hpp"
 namespace Presonus::Mixer {
+std::uint32_t AVBCascadeManager::getSlaveId() const {
+  if (!selected_ || !selected_->getComponent())
+    return 0;
+  const void *component = selected_->getComponent();
+  for (const auto &entry : componentIds_)
+    if (entry.component == component && entry.borrowedId)
+      return *entry.borrowedId;
+  // Missing source-port state is an explicit integration error, not native
+  // zero.
+  throw std::logic_error("unbound cascade component ID source state");
+}
+
 void AVBCascadeManager::connect(UC::NetworkItem *item) {
   boundary_.select(item, true);
 }

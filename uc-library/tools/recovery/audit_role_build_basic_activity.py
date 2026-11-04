@@ -20,6 +20,43 @@ from adapter import snapshot as registry_snapshot
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def check_production_compile_contracts(lib, build, groups):
+    """Shared strict compile/role contracts, available before expensive CTest."""
+    all_sources=set().union(*groups.values())
+    counts=Counter();actual_groups={key:set() for key in groups};flags_by_source={}
+    for item in json.loads((build/'compile_commands.json').read_text()):
+        flags=item.get('command',' '.join(item.get('arguments',[])))
+        match=re.search(r'CMakeFiles/presonus_(common|cs18|rm)_objects\.dir',flags)
+        if not match:continue
+        source=str(Path(item['file']).resolve().relative_to(lib))
+        counts[source]+=1;actual_groups[match[1]].add(source);flags_by_source[source]=flags
+        assert ('-fno-rtti' in flags) == (source in {'src/Presonus/SLChannel.cpp','src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/Presonus/NOAA/TCardRouterInitialization.cpp','src/Presonus/NOAA/TCardRouterScript.cpp','src/Presonus/DICE/Dice3ManagerServices.cpp','src/portable/dice/CclManagerServices.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Dsp.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/AdditionalFormatters.cpp','src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp','src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/GateMeterInterpolators.cpp','src/Presonus/UC/MessageAttributes.cpp','src/Presonus/Dsp/ParamDescriptorList.cpp','src/Presonus/Dsp/EqSourceProviders.cpp','src/Presonus/UC/MessageAttributesEvent.cpp','src/Presonus/UC/MutableMessageEvent.cpp','src/Presonus/UC/MessageQueue.cpp','src/Presonus/Dsp/FaderInterpolator.cpp','src/Presonus/NOAA/TCardHandlerProperties.cpp','src/Presonus/NOAA/TCardUCNetHandlerIO.cpp','src/Presonus/Dsp/CompressorSourceProviders.cpp','src/Presonus/Dsp/GateSourceProviders.cpp','src/Presonus/Dsp/GEQSourceProviders.cpp','src/Presonus/NOAA/TCardRouterBusRoutes.cpp','src/Presonus/NOAA/TCardRouterGeqInputRoutes.cpp','src/Presonus/NOAA/TCardRouterMixerInputRoutes.cpp','src/Presonus/Dsp/MillisecondsFormatterSingleton.cpp','src/Presonus/UC/Format/OnOff.cpp','src/Presonus/MeterManagerBase.cpp','src/Presonus/StormMixSceneComponent.cpp','src/Presonus/PanControl.cpp','src/Presonus/LinkControl.cpp','src/Presonus/Surface/WifiSetupComponent.cpp','src/Presonus/Surface/CapturePageComponent.cpp','src/Presonus/Panel/GeqUIComponent.cpp','src/Presonus/Panel/PresetComponent.cpp','src/Presonus/Mixer/NetworkSelectComponent.cpp','src/Presonus/Surface/NetworkSetupComponent.cpp','src/Presonus/Panel/RackPanelComponent.cpp','src/Presonus/MeterControl.cpp','src/Presonus/StormMuteGroupComponent.cpp','src/Presonus/Surface/MappingComponent.cpp','src/Presonus/Surface/NetworkListSelection.cpp','src/Presonus/rank20cycle01/rank20c01_w02.cpp','src/Presonus/frontier01/frontier01_w01.cpp','src/Presonus/frontier01/frontier01_w03.cpp','src/Presonus/frontier01/frontier01_w04.cpp','src/Presonus/reconstruction200/large01_w01.cpp','src/Presonus/reconstruction200/large01_w04.cpp','src/Presonus/reconstruction200/large01_w07.cpp','src/Presonus/reconstruction200/large01_w09.cpp','src/Presonus/reconstruction200/large02_w02.cpp','src/Presonus/reconstruction200/large02_w04.cpp','src/Presonus/reconstruction200/large02_w05.cpp','src/Presonus/reconstruction200/large02_w06.cpp','src/Presonus/reconstruction200/large02_w08.cpp','src/Presonus/reconstruction200/large02_w09.cpp'}), source
+        assert '-Ulinux' in flags and '-pthread' in flags
+        assert '-DPRESONUS_HAS_UPSTREAM_CORE=1' in flags and '-DCORE_USE_OPENSSL=1' in flags
+        if source.endswith(('Presonus/UC/Format/OnOff.cpp','Presonus/Dsp/CompressorParameterList.cpp','Presonus/Dsp/GateParameterList.cpp','Presonus/Dsp/GateSourceProviders.cpp','Presonus/Dsp/GEQParameterList.cpp','Presonus/Dsp/GEQSourceProviders.cpp','Presonus/Dsp/MillisecondsFormatterSingleton.cpp','Presonus/Dsp/CompressorSourceProviders.cpp','Presonus/Dsp/EqParameterLists.cpp','Presonus/Dsp/Eq8LimiterParameterLists.cpp','Presonus/Dsp/FilterParameterLists.cpp','Presonus/Dsp/FaderInterpolator.cpp','Presonus/Dsp/EqSourceProviders.cpp','Presonus/Dsp/ParamDescriptorList.cpp','Presonus/Dsp/GateMeterInterpolators.cpp','mixer_dsp/Dsp.cpp','mixer_dsp/FilterControllers.cpp','surface_panel/DbTable.cpp','surface_panel/MeterControl.cpp')):
+            assert '-fno-fast-math' in flags and '-ffp-contract=off' in flags
+            if 'clang' in flags.split()[0]:assert '-ffp-model=strict' in flags
+        if source.endswith(('surface_panel/DbTable.cpp','surface_panel/MeterControl.cpp')):assert '-fno-builtin-powf' in flags
+        if source.endswith('DICE/Dice3Programmer.cpp'):assert '-fno-fast-math' in flags
+    assert {'src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Logarithm.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/Power.cpp','src/Presonus/UC/UDPDiscoveryServices.cpp'} <= groups['common']
+    for name in ('src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/mixer_dsp/Dsp.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Logarithm.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/Power.cpp','src/mixer_dsp/AdditionalFormatters.cpp'):
+        for option in ('-fno-lto','-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-builtin'):
+            assert option in flags_by_source[name], (name,option)
+    assert 'src/mixer_dsp/AdditionalFormatters.cpp' in groups['common'] and 'src/utilities/StringUtils.cpp' in groups['cs18']
+    assert {'src/Presonus/UC/UDPDiscoveryLifecycle.cpp','src/portable/dice/OwnedUartServices.cpp'} <= groups['common']
+    assert {'src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp'} <= groups['cs18']
+    assert 'src/Presonus/Dsp/FaderCurveInterpolator.cpp' in groups['common']
+    assert {'src/Presonus/UC/DicePacketQueueLifetime.cpp','src/Presonus/NOAA/TCardRouterCommands.cpp','src/portable/noaa/RouterLookupImage.cpp'} <= groups['rm']
+    for option in ('-fno-lto','-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-builtin'):
+        assert option in flags_by_source['src/Presonus/Dsp/FaderCurveInterpolator.cpp']
+    for source, flags in flags_by_source.items():
+        private_include = bool(re.search(r'(?:^|\s)-I\s*'+re.escape(str(lib/'src/mixer_dsp'))+r'(?:\s|$)',flags))
+        assert private_include == (source in {'src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/EqSourceProviders.cpp'}), source
+    assert set(counts)==all_sources and set(counts.values())=={1}
+    assert actual_groups==groups
+    return counts
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('repository',type=Path)
@@ -59,37 +96,7 @@ def main():
     for name,digest in integration['files'].items():assert sha(lib/name)==digest,name
     assert sha(repo/integration['test_log'])==integration['test_log_sha256']
     snapshot={name:sha(lib/name) for name in all_sources|{'CMakeLists.txt','cmake/CommonObjects.cmake','cmake/ProductionSourceGroups.cmake','candidates/common-build/consumer-dice-hierarchy/CMakeLists.txt','candidates/common-build/smoke_common.hpp','candidates/common-build/smoke_server.cpp','tests/installed_client_hierarchy_smoke.cpp','tests/dice_fixture_receivers.hpp'}}
-    counts=Counter();actual_groups={key:set() for key in groups};flags_by_source={}
-    for item in json.loads((build/'compile_commands.json').read_text()):
-        flags=item.get('command',' '.join(item.get('arguments',[])))
-        match=re.search(r'CMakeFiles/presonus_(common|cs18|rm)_objects\.dir',flags)
-        if not match:continue
-        source=str(Path(item['file']).resolve().relative_to(lib))
-        counts[source]+=1;actual_groups[match[1]].add(source);flags_by_source[source]=flags
-        assert ('-fno-rtti' in flags) == (source in {'src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/Presonus/NOAA/TCardRouterInitialization.cpp','src/Presonus/NOAA/TCardRouterScript.cpp','src/Presonus/DICE/Dice3ManagerServices.cpp','src/portable/dice/CclManagerServices.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Dsp.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/AdditionalFormatters.cpp','src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp','src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/GateMeterInterpolators.cpp','src/Presonus/UC/MessageAttributes.cpp','src/Presonus/Dsp/ParamDescriptorList.cpp','src/Presonus/Dsp/EqSourceProviders.cpp','src/Presonus/UC/MessageAttributesEvent.cpp','src/Presonus/UC/MutableMessageEvent.cpp','src/Presonus/UC/MessageQueue.cpp','src/Presonus/Dsp/FaderInterpolator.cpp','src/Presonus/NOAA/TCardHandlerProperties.cpp','src/Presonus/NOAA/TCardUCNetHandlerIO.cpp','src/Presonus/Dsp/CompressorSourceProviders.cpp','src/Presonus/Dsp/GateSourceProviders.cpp','src/Presonus/Dsp/GEQSourceProviders.cpp','src/Presonus/NOAA/TCardRouterBusRoutes.cpp','src/Presonus/NOAA/TCardRouterGeqInputRoutes.cpp','src/Presonus/NOAA/TCardRouterMixerInputRoutes.cpp','src/Presonus/Dsp/MillisecondsFormatterSingleton.cpp','src/Presonus/UC/Format/OnOff.cpp','src/Presonus/MeterManagerBase.cpp','src/Presonus/StormMixSceneComponent.cpp','src/Presonus/PanControl.cpp','src/Presonus/LinkControl.cpp','src/Presonus/Surface/WifiSetupComponent.cpp','src/Presonus/Surface/CapturePageComponent.cpp','src/Presonus/Panel/GeqUIComponent.cpp','src/Presonus/Panel/PresetComponent.cpp','src/Presonus/Mixer/NetworkSelectComponent.cpp','src/Presonus/Surface/NetworkSetupComponent.cpp','src/Presonus/Panel/RackPanelComponent.cpp','src/Presonus/MeterControl.cpp','src/Presonus/StormMuteGroupComponent.cpp','src/Presonus/Surface/MappingComponent.cpp','src/Presonus/Surface/NetworkListSelection.cpp','src/Presonus/rank20cycle01/rank20c01_w02.cpp','src/Presonus/frontier01/frontier01_w01.cpp','src/Presonus/frontier01/frontier01_w03.cpp','src/Presonus/frontier01/frontier01_w04.cpp'})
-        assert '-Ulinux' in flags and '-pthread' in flags
-        assert '-DPRESONUS_HAS_UPSTREAM_CORE=1' in flags and '-DCORE_USE_OPENSSL=1' in flags
-        if source.endswith(('Presonus/UC/Format/OnOff.cpp','Presonus/Dsp/CompressorParameterList.cpp','Presonus/Dsp/GateParameterList.cpp','Presonus/Dsp/GateSourceProviders.cpp','Presonus/Dsp/GEQParameterList.cpp','Presonus/Dsp/GEQSourceProviders.cpp','Presonus/Dsp/MillisecondsFormatterSingleton.cpp','Presonus/Dsp/CompressorSourceProviders.cpp','Presonus/Dsp/EqParameterLists.cpp','Presonus/Dsp/Eq8LimiterParameterLists.cpp','Presonus/Dsp/FilterParameterLists.cpp','Presonus/Dsp/FaderInterpolator.cpp','Presonus/Dsp/EqSourceProviders.cpp','Presonus/Dsp/ParamDescriptorList.cpp','Presonus/Dsp/GateMeterInterpolators.cpp','mixer_dsp/Dsp.cpp','mixer_dsp/FilterControllers.cpp','surface_panel/DbTable.cpp','surface_panel/MeterControl.cpp')):
-            assert '-fno-fast-math' in flags and '-ffp-contract=off' in flags
-            if 'clang' in flags.split()[0]:assert '-ffp-model=strict' in flags
-        if source.endswith(('surface_panel/DbTable.cpp','surface_panel/MeterControl.cpp')):assert '-fno-builtin-powf' in flags
-        if source.endswith('DICE/Dice3Programmer.cpp'):assert '-fno-fast-math' in flags
-    assert {'src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Logarithm.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/Power.cpp','src/Presonus/UC/UDPDiscoveryServices.cpp'} <= groups['common']
-    for name in ('src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/mixer_dsp/Dsp.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Logarithm.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/Power.cpp','src/mixer_dsp/AdditionalFormatters.cpp'):
-        for option in ('-fno-lto','-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-builtin'):
-            assert option in flags_by_source[name], (name,option)
-    assert 'src/mixer_dsp/AdditionalFormatters.cpp' in groups['common'] and 'src/utilities/StringUtils.cpp' in groups['cs18']
-    assert {'src/Presonus/UC/UDPDiscoveryLifecycle.cpp','src/portable/dice/OwnedUartServices.cpp'} <= groups['common']
-    assert {'src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp'} <= groups['cs18']
-    assert 'src/Presonus/Dsp/FaderCurveInterpolator.cpp' in groups['common']
-    assert {'src/Presonus/UC/DicePacketQueueLifetime.cpp','src/Presonus/NOAA/TCardRouterCommands.cpp','src/portable/noaa/RouterLookupImage.cpp'} <= groups['rm']
-    for option in ('-fno-lto','-fno-fast-math','-ffp-contract=off','-frounding-math','-fno-builtin'):
-        assert option in flags_by_source['src/Presonus/Dsp/FaderCurveInterpolator.cpp']
-    for source, flags in flags_by_source.items():
-        private_include = bool(re.search(r'(?:^|\s)-I\s*'+re.escape(str(lib/'src/mixer_dsp'))+r'(?:\s|$)',flags))
-        assert private_include == (source in {'src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/EqSourceProviders.cpp'}), source
-    assert set(counts)==all_sources and set(counts.values())=={1}
-    assert actual_groups==groups
+    counts=check_production_compile_contracts(lib,build,groups)
     sdk=build/'upstream-core/sdk'
     sdk_hashes={str(path.relative_to(sdk)):sha(path) for path in sdk.rglob('*') if path.is_file()}
     assert all(name in sdk_hashes for name in ('lib/libcorelib.a','lib/libpresonus_core_allocator.a'))

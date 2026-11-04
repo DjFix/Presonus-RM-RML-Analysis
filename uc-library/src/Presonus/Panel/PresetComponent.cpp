@@ -1,4 +1,5 @@
 #include "presonus/panel/PresetComponent.hpp"
+#include "core/portable/corefile.h"
 #include "core/portable/corepersistence.h"
 #include <cstring>
 
@@ -46,6 +47,12 @@ void PresetComponent::presetStored() const {
 PresetNameCache *PresetComponent::getCache() const {
   services.ensureNameManager();
   return services.lookupCache(services.presetFolder(*this));
+}
+
+bool PresetComponent::isSlotEmpty(unsigned int slot) const {
+  const auto fileName = getFileNameForSlot(slot);
+  return !fileName.isEmpty() &&
+         !Core::Portable::FileUtils::fileExists(fileName);
 }
 
 void PresetComponent::updateEditName() const {
@@ -102,5 +109,92 @@ void PresetComponent::presetRecalled() const {
 
 void PresetComponent::addDelegate(Delegate *delegate) {
   delegates.add(delegate);
+}
+} // namespace Presonus::Panel
+
+#include "presonus/panel/PresetNameCache.hpp"
+#include <cmath>
+#include <memory>
+#include <stdexcept>
+namespace Presonus::Panel {
+PresetComponent::~PresetComponent() {
+  // Native base ensures the manager and looks up the cache before detaching
+  // its observer, then destroys its delegate vector and Core Component.
+  services.ensureNameManager();
+  auto *cache = services.lookupCache(services.presetFolder(*this));
+  if (cache && cacheObserver)
+    cache->sourcePortRemoveObserver(cacheObserver);
+}
+void PresetComponent::sourcePortObserveCache(
+    PresetNameCache::Delegate *observer) {
+  if (cacheObserver)
+    getCache()->sourcePortRemoveObserver(cacheObserver);
+  cacheObserver = observer;
+  if (cacheObserver)
+    getCache()->addObserver(cacheObserver);
+}
+int PresetComponent::getSlotNum() const {
+  auto *selection = getParameterByTag(0);
+  if (!selection)
+    throw std::logic_error("preset slot parameter required");
+  const float value = selection->getValue();
+  if (!std::isfinite(value) || value < -2147483648.f || value >= 2147483648.f)
+    throw std::domain_error("preset slot integer domain");
+  const int slot = static_cast<int>(value);
+  // Existing callback-based source ports must bind the same selected state.
+  if (services.selectedSlot(*this) != slot)
+    throw std::logic_error("inconsistent preset slot binding");
+  return slot;
+}
+void PresetComponent::cacheUpdated(PresetNameCache &, int slot,
+                                   const char *name, const char *category) {
+  if (slot != getSlotNum())
+    return;
+  auto *parameter = getParameterByTag(1);
+  if (!parameter)
+    throw std::logic_error("preset name parameter required");
+  parameter->fromString(name, false);
+  if (auto *p = getParameterByTag(100))
+    p->fromString(category, false);
+  updateEditName();
+}
+void PresetComponent::doPresetSave(
+    const char *name, const char *category,
+    const Core::Portable::Attributes &attributes) const {
+  const int slot = getSlotNum();
+  auto *cache = getCache();
+  const auto filename = cache->buildFileName(static_cast<unsigned>(slot), name,
+                                             category, nullptr, true);
+  const auto previous = getFileNameForSlot(static_cast<unsigned>(slot));
+  if (!previous.isEmpty() && std::strcmp(filename.str(), previous.str()) != 0)
+    Core::Portable::FileUtils::deleteFile(previous.str());
+  std::unique_ptr<Core::Portable::FileIOCompletionHandler> handler(
+      createStorageHandler());
+  if (Core::Portable::ArchiveUtils::saveInBackground(filename.str(), attributes,
+                                                     handler.get()))
+    handler.release();
+  // Original caller updates cache and delegates even when scheduling fails.
+  getCache()->cachePreset(name, category, slot);
+  presetStored();
+}
+} // namespace Presonus::Panel
+
+namespace Presonus::Panel {
+class PresetComponent::StorageCompletionHandler final
+    : public Core::Portable::FileIOCompletionHandler {
+  const PresetComponent &owner;
+
+public:
+  explicit StorageCompletionHandler(const PresetComponent &owner)
+      : owner(owner) {}
+  void onSaveFileCompleted(const char *) override;
+};
+void PresetComponent::StorageCompletionHandler::onSaveFileCompleted(
+    const char *) {
+  owner.presetStored();
+}
+Core::Portable::FileIOCompletionHandler *
+PresetComponent::createStorageHandler() const {
+  return new StorageCompletionHandler(*this);
 }
 } // namespace Presonus::Panel

@@ -2,8 +2,12 @@
 namespace Presonus {
 void MackieControlModel::sendMidiMessage(const unsigned char *data,
                                          unsigned int size) {
-  if (midiSink)
+  if (applicationMidiSinkConfigured) {
+    if (applicationMidiSink)
+      applicationMidiSink->sendMidiMessage(data, size, 0);
+  } else if (midiSink) {
     midiSink(data, size, 0);
+  }
 }
 bool MackieControlModel::setButtonState(int tag, bool state) {
   const Entry *entry = nullptr;

@@ -28,6 +28,32 @@ def rows(c):
 
 
 class RankingTests(unittest.TestCase):
+    def test_execution_requirements_include_tails_without_behavior_credit(self):
+        c = database()
+        c.execute('DELETE FROM requirements')
+        native = sqlite3.connect(':memory:')
+        native.row_factory = sqlite3.Row
+        native.executescript('''CREATE TABLE edges(src,dst,kind,site);
+            CREATE TABLE symbol_resolution(symbol_id,strategy,evidence_json);''')
+        native.executemany('INSERT INTO edges VALUES(?,?,?,?)', [
+            ('na', 'nb', 'ELF_CALLS', 4),
+            ('na', 'nc', 'ELF_TAIL_BRANCH', 8),
+            ('na', 'unmapped', 'ELF_TAIL_BRANCH', 12),
+            ('nb', 'nc', 'ELF_NAME_CORRESPONDENCE', 16)])
+        mapping = {'na': {'a'}, 'nb': {'b'}, 'nc': {'c'}}
+        r.add_execution_requirements(c, native, {'nb': {'instructions': [1]},
+                                               'nc': {'instructions': [1]}}, mapping)
+        behavior = list(c.execute("SELECT * FROM requirements WHERE scope='callable_behavior'"))
+        self.assertEqual({(x['consumer'], x['target']) for x in behavior},
+                         {('a', 'b'), ('a', 'c'), ('a', 'unmapped')})
+        self.assertTrue(all(x['satisfied'] == 0 for x in behavior))
+        contexts = {x['target']: x['satisfied'] for x in c.execute(
+            "SELECT * FROM requirements WHERE scope='callee_context'")}
+        self.assertEqual(contexts, {'b': 1, 'c': 1, 'unmapped': 0})
+        # Replaying the same immutable observations must not duplicate requirements.
+        r.add_execution_requirements(c, native, {}, mapping)
+        self.assertEqual(c.execute('SELECT count(*) FROM requirements').fetchone()[0], 6)
+
     def test_unknown_is_not_zero(self):
         self.assertEqual(r.grade(r.feature(None, 'unknown'), [0, 2, 8]), 4)
         self.assertEqual(r.grade(r.feature(0, 'partial'), [0, 2, 8]), 4)

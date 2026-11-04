@@ -15,6 +15,7 @@ struct PresetsPageState {
   int selected = -1;
   bool mixer = false;
   Core::Portable::Component &parameters;
+  Presonus::IMappingController *mappingController = nullptr;
 };
 // Required app boundaries; no production no-op providers. Pointers and strings
 // returned here are borrowed for the duration of the synchronous operation.
@@ -46,6 +47,7 @@ public:
                        presonus::surface::PresetsPageDependencies &dependencies)
       : state(state), dependencies(dependencies) {}
   const presonus::surface::PresetEntry *getSelectedPreset() const;
+  void setMappingController(Presonus::IMappingController *);
   void onShow(bool);
   int getMaxListOffset() const;
   void textInputFinished(bool);

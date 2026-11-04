@@ -1,0 +1,1 @@
+108 native instruction cases: types -1,0,1,2,3,INT_MAX; indices -1,0,1(null),2,3,INT_MAX; zero, signed extremes and mixed coordinates. Actual pinned CCL RootView dispatch observed through overriding application sink. Original return declaration unresolved. Compile pending only.

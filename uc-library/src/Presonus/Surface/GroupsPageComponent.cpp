@@ -32,14 +32,14 @@ void GroupsPageComponent::setListOffset(int offset) {
     return;
   auto bits = static_cast<std::uint32_t>(bounded);
   state.listOffset = signedBits((bits + (bits >> 31)) & ~std::uint32_t{1});
-  dependencies.refreshList();
+  refreshList();
 }
 void GroupsPageComponent::deSelect() {
   const int count = state.selectionParameters.count();
   for (int i = 0; i < count; ++i)
     state.selectionParameters.at(i)->setIntValue(0, true);
   state.selection = -1;
-  dependencies.doselect();
+  doselect();
 }
 void GroupsPageComponent::updateSelection() {
   Core::Portable::Component *group = nullptr;
@@ -55,7 +55,7 @@ void GroupsPageComponent::updateSelection() {
     }
   }
   if (state.observedGroup != group)
-    dependencies.observeGroup(group);
+    observeGroup(group);
   state.observedGroup = group;
 }
 } // namespace Presonus::Surface

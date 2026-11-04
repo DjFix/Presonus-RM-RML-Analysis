@@ -361,11 +361,11 @@ def locked(root, mode, timings, phase):
             entry['lock_hold_seconds'] = time.perf_counter() - held
 
 
-def acquire_request(root, operator, task, packet, resume):
+def acquire_request(root, operator, task, packet, resume, registry_snapshot=None):
     from dedup_work import claim_task
-    enriched = operator.enrich(task)
+    enriched = operator.enrich(task, registry_snapshot)
     if not resume:
-        return operator.enrich(claim_task(root, enriched, packet))
+        return operator.enrich(claim_task(root, enriched, packet), registry_snapshot)
     from dedup_work import active_index, plan, validate_claim
     c, pointer = active_index(root)
     try:
@@ -373,7 +373,7 @@ def acquire_request(root, operator, task, packet, resume):
         row = c.execute('SELECT * FROM work_claims WHERE work_item_id=? AND state="active"',
                         (binding['work_item_id'],)).fetchone()
         if row is None:
-            return operator.enrich(claim_task(root, enriched, packet))
+            return operator.enrich(claim_task(root, enriched, packet), registry_snapshot)
         if row['owner'] != task['task_id'] or row['packet_path'] != packet:
             raise ContextError('Resume refuses foreign claim')
         binding.update(claim_id=row['id'], claim_owner=row['owner'], claim_packet=packet,
@@ -386,9 +386,52 @@ def acquire_request(root, operator, task, packet, resume):
             if member['catalog_anchor'] not in existing:
                 enriched['targets'].append({'original_elf_sha256': member['elf_sha256'],
                     'mangled': member['original_mangled'], 'anchor': member['catalog_anchor']})
-        return operator.enrich(enriched)
+        return operator.enrich(enriched, registry_snapshot)
     finally:
         c.close()
+
+
+def check_registry_records(operator, requests, message):
+    """One new read transaction per barrier, closed before returning or raising."""
+    with operator.adapter.snapshot(operator.ROOT / 'uc-library') as view:
+        for request in requests:
+            if operator.enrich(request, view)['originals'] != request['originals']:
+                raise ContextError(message)
+
+
+def _build_packet(root, packet, environment, selection, slicing, before_slice, stopped):
+    """Build one packet, checking current selected reads before any AST work."""
+    if stopped.is_set():
+        return False
+    directory = root / packet
+    context = directory / 'context.json'
+    ident = directory.name + '-' + str(time.time_ns())
+    if not context.exists():
+        if any((directory / x).exists() for x in ('TASK.md', 'CONTEXT.md', 'native-context.json')):
+            raise ContextError('Interrupted selection evidence retained; manual repair required: ' + packet)
+        with selection:
+            if stopped.is_set():
+                return False
+            environment.selector('prepare', [packet], 'select-' + ident)
+    if stopped.is_set():
+        return False
+    selected = json.loads(context.read_text())
+    before_slice(packet, selected)
+    packet_state = selected['state']
+    if packet_state == 'selected':
+        slices = directory / 'source-slices.json'
+        if not slices.exists():
+            with slicing:
+                if stopped.is_set():
+                    return False
+                environment.slice(packet, 'slice-' + ident)
+        with selection:
+            if stopped.is_set():
+                return False
+            environment.selector('finalize', [packet], 'finalize-' + ident)
+    elif packet_state != 'dispatch_ready':
+        raise ContextError('Incomplete packet state: ' + packet)
+    return True
 
 
 def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicing_jobs=None,
@@ -410,6 +453,11 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
     groups = manifest.get('groups')
     allow_smaller = manifest.get('allow_smaller') is True
     flexible_total = manifest.get('flexible_total')
+    production_continuation = manifest.get('production_continuation')
+    if production_continuation is not None and (
+            not isinstance(production_continuation, str) or not production_continuation.strip()
+            or not groups or not allow_smaller or flexible_total is not None):
+        raise ContextError('Production continuation requires an explicit scope and bounded grouped mode')
     if flexible_total is not None and (flexible_total != 200 or not groups or allow_smaller):
         raise ContextError('Flexible trial requires200 targets, grouped scopes, and no smaller mode')
     if allow_smaller and not manifest.get('smaller_batch_authorization'):
@@ -447,7 +495,8 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                 check_inputs(root, operator, frozen['inputs'])
             else:
                 from dedup_work import active_index, plan
-                enriched = [operator.enrich(t) for t in tasks]
+                with operator.adapter.snapshot(root / 'uc-library') as planning_view:
+                    enriched = [operator.enrich(t, planning_view) for t in tasks]
                 c, pointer = active_index(root)
                 try:
                     work = [plan(c, t)['work_item_id'] for t in enriched]
@@ -465,28 +514,29 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                     raise ContextError('Task inputs changed during setup')
                 write_new(state_path, frozen)
             requests = []
-            for task, packet in zip(tasks, packets):
-                before = time.perf_counter()
-                directory = root / packet
-                request_path = directory / 'request.json'
-                if request_path.exists():
-                    request = json.loads(request_path.read_text())
-                    expected = acquire_request(root, operator, task, packet, True)
-                    for value in (request, expected):
-                        value.pop('registry_guard', None)
-                    if request != expected:
-                        raise ContextError('Resume request differs from frozen task/claim/records')
-                else:
-                    # Exact owner/path matching permits recovery of the claim/write
-                    # crash window. Never release or acquire another owner's work.
-                    request = acquire_request(root, operator, task, packet, resume)
-                    directory.mkdir(parents=True, exist_ok=True)
-                    write_new(request_path, request)
-                member = directory / 'BATCH_MEMBER.json'
-                if not member.exists():
-                    write_new(member, {'version': 1, 'manifest': str((output / 'BATCH_DISPATCH.json').relative_to(root)), 'state': 'pending'})
-                requests.append(request)
-                timings.append({'phase': 'claim/enrich', 'packet': packet, 'seconds': time.perf_counter() - before})
+            with operator.adapter.snapshot(root / 'uc-library') as setup_view:
+                for task, packet in zip(tasks, packets):
+                    before = time.perf_counter()
+                    directory = root / packet
+                    request_path = directory / 'request.json'
+                    if request_path.exists():
+                        request = json.loads(request_path.read_text())
+                        expected = acquire_request(root, operator, task, packet, True, setup_view)
+                        for value in (request, expected):
+                            value.pop('registry_guard', None)
+                        if request != expected:
+                            raise ContextError('Resume request differs from frozen task/claim/records')
+                    else:
+                        # Exact owner/path matching permits recovery of the claim/write
+                        # crash window. Never release or acquire another owner's work.
+                        request = acquire_request(root, operator, task, packet, resume, setup_view)
+                        directory.mkdir(parents=True, exist_ok=True)
+                        write_new(request_path, request)
+                    member = directory / 'BATCH_MEMBER.json'
+                    if not member.exists():
+                        write_new(member, {'version': 1, 'manifest': str((output / 'BATCH_DISPATCH.json').relative_to(root)), 'state': 'pending'})
+                    requests.append(request)
+                    timings.append({'phase': 'claim/enrich', 'packet': packet, 'seconds': time.perf_counter() - before})
             check_dependency_inclusion(tasks, [q['work_binding']['work_item_id'] for q in requests], groups)
             from context_work_batch import BatchWorkValidator
             setup_validator = BatchWorkValidator(root)
@@ -509,26 +559,29 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
         environment.start()
         with locked(root, fcntl.LOCK_SH, timings, 'builders'):
             check_inputs(root, operator, frozen['inputs'])
+            from early_conflicts import EarlyConflict, SelectedReadGuard
+            by_packet = dict(zip(packets, requests))
+            read_guard = SelectedReadGuard(by_packet,
+                frozen['inputs']['active']['state_sha256'],
+                {p: sha(root/p/'request.json') for p in packets}, groups or None)
+            stopped = threading.Event()
+            failure_lock = threading.Lock()
+            def before_slice(packet, selected):
+                before = time.perf_counter()
+                try:
+                    read_guard.check(packet, selected, by_packet[packet])
+                except EarlyConflict as error:
+                    with failure_lock:
+                        if not stopped.is_set():
+                            stopped.set()
+                            write_new(attempt/'EARLY_CONFLICT.json', error.detail)
+                    raise ContextError('Early selected-read conflict; claims retained: ' + str(error)) from error
+                finally:
+                    timings.append({'phase': 'pre-slice-conflict-check',
+                        'packet': packet, 'seconds': time.perf_counter()-before})
             def build(packet):
-                directory = root / packet
-                context = directory / 'context.json'
-                ident = directory.name + '-' + str(time.time_ns())
-                if not context.exists():
-                    # A previous interrupted write is never treated as a valid packet.
-                    if any((directory / x).exists() for x in ('TASK.md', 'CONTEXT.md', 'native-context.json')):
-                        raise ContextError('Interrupted selection evidence retained; manual repair required: ' + packet)
-                    with selection:
-                        environment.selector('prepare', [packet], 'select-' + ident)
-                packet_state = json.loads(context.read_text())['state']
-                if packet_state == 'selected':
-                    slices = directory / 'source-slices.json'
-                    if not slices.exists():
-                        with slicing:
-                            environment.slice(packet, 'slice-' + ident)
-                    with selection:
-                        environment.selector('finalize', [packet], 'finalize-' + ident)
-                elif packet_state != 'dispatch_ready':
-                    raise ContextError('Incomplete packet state: ' + packet)
+                return _build_packet(root, packet, environment, selection, slicing,
+                                     before_slice, stopped)
             with concurrent.futures.ThreadPoolExecutor(max_workers=limits['limits']['builders']) as pool:
                 futures = [pool.submit(build, p) for p in packets]
                 errors = []
@@ -544,9 +597,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             check_inputs(root, operator, frozen['inputs'])
             seals = {p: sha(root / p / 'context.json') for p in packets}
             entries = [json.loads((root / p / 'context.json').read_text()) for p in packets]
-            for request in requests:
-                if operator.enrich(request)['originals'] != request['originals']:
-                    raise ContextError('Selected registry records changed during preparation')
+            check_registry_records(operator, requests, 'Selected registry records changed during preparation')
             from context_work_batch import BatchWorkValidator
             work_validator = BatchWorkValidator(root)
             for entry, packet in zip(entries, packets):
@@ -554,16 +605,15 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             if groups:
                 from group_dispatch import check_groups
                 count = len(groups[0]['packets'])
-                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count, allow_smaller, flexible_total)
+                check_groups(groups, dict(zip(packets, entries)), dict(zip(packets, requests)), count, allow_smaller, flexible_total,
+                             production_continuation)
             else:
                 check_conflicts(entries, requests)
             timings.append({'phase': 'common_checks', 'seconds': time.perf_counter() - common_start})
             environment.selector('validate', packets, 'validation-' + str(time.time_ns()))
             # External writers are outside flock: recheck after long validation too.
             check_inputs(root, operator, frozen['inputs'])
-            for request in requests:
-                if operator.enrich(request)['originals'] != request['originals']:
-                    raise ContextError('Selected registry records changed before publication')
+            check_registry_records(operator, requests, 'Selected registry records changed before publication')
             work_validator.finish()
             workers = [{'packet': p, 'context_sha256': sha(root / p / 'context.json'),
                         'arguments': {'task_name': r['task_id'], 'fork_turns': 'none',
@@ -599,6 +649,8 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                 payload['maximum_packets_per_worker'] = 25
             if allow_smaller:
                 payload['smaller_batch_authorization'] = manifest['smaller_batch_authorization']
+            if production_continuation:
+                payload['production_continuation'] = production_continuation
             result = output / 'BATCH_DISPATCH.json'
             if result.exists():
                 if not resume:

@@ -1,4 +1,18 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/MixerClientComponentBase.cpp
+  src/Presonus/SLChannel.cpp
+  src/Presonus/UC/EventDispatcherLifetime.cpp
+  src/Presonus/UC/AdapterHandlerLifetime.cpp
+  src/Presonus/UC/ServerRegistrarLifetime.cpp
+  src/Presonus/UC/ServerLifetime.cpp
+  src/Presonus/MuteGroupBase.cpp
+  src/Presonus/ChannelGroupFilter.cpp
+  src/Presonus/reconstruction200/large02_w09.cpp
+  src/Presonus/LinkableComponent.cpp
+  src/Presonus/reconstruction200/large01_w10.cpp
+  src/Presonus/reconstruction200/large01_w03.cpp
+  src/Presonus/reconstruction200/large01_w01.cpp
+  src/Presonus/UC/NetworkItem.cpp
   src/Presonus/frontier01/frontier01_w03.cpp
   src/Presonus/rank20cycle01/rank20c01_w06.cpp
   src/Presonus/Panel/Book.cpp
@@ -158,6 +172,25 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/MappingTableConnect.cpp
+  src/Presonus/MappablePageComponent.cpp
+  src/Presonus/Surface/PageParam.cpp
+  src/Presonus/Surface/MappingControllerParameters.cpp
+  src/Presonus/Surface/SLMixerLifecycle.cpp
+  src/Presonus/Color/MixerColorConverter.cpp
+  src/Presonus/Color/ColorMappingName.cpp
+  src/Presonus/Surface/GroupsPageRecovery.cpp
+  src/Presonus/reconstruction200/large02_w10.cpp
+  src/Presonus/reconstruction200/large02_w08.cpp
+  src/Presonus/reconstruction200/large02_w07.cpp
+  src/Presonus/reconstruction200/large02_w01.cpp
+  src/Presonus/reconstruction200/large01_w09.cpp
+  src/Presonus/reconstruction200/large01_w07.cpp
+  src/Presonus/reconstruction200/large01_w06.cpp
+  src/Presonus/reconstruction200/large01_w05.cpp
+  src/Presonus/reconstruction200/large01_w04.cpp
+  src/Presonus/reconstruction200/large01_w02.cpp
+  src/Presonus/DisplayManagerTouch.cpp
   src/Presonus/frontier01/frontier01_w04.cpp
   src/Presonus/rank20cycle01/rank20c01_w04.cpp
   src/Presonus/rank20cycle01/rank20c01_w02.cpp
@@ -253,6 +286,17 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/FrontPanelUartTest.cpp
+  src/Presonus/Mixer/MixerRouteInputsToNet.cpp
+  src/Presonus/reconstruction200/large02_w06.cpp
+  src/Presonus/reconstruction200/large02_w05.cpp
+  src/Presonus/reconstruction200/large02_w04.cpp
+  src/Presonus/reconstruction200/large02_w03.cpp
+  src/Presonus/reconstruction200/large02_w02.cpp
+  src/Presonus/reconstruction200/large01_w08.cpp
+  src/Presonus/Panel/SceneBook.cpp
+  src/Presonus/frontier02/frontier02_w05.cpp
+  src/Presonus/Panel/FXBook.cpp
   src/Presonus/frontier01/frontier01_w02.cpp
   src/Presonus/frontier01/frontier01_w01.cpp
   src/Presonus/rank20cycle01/rank20c01_w05.cpp
@@ -288,11 +332,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Mixer/FXComponent.cpp
   src/Presonus/StormMixSceneComponent.cpp
   src/Presonus/Panel/PanelComponent.cpp
-  src/Presonus/MuteGroupBase.cpp
   src/Presonus/Panel/MixerLCD.cpp
   src/Presonus/AVB/AvbComponent.cpp
   src/Presonus/Dsp/Controller.cpp
-  src/Presonus/LinkableComponent.cpp
   src/Presonus/UC/DataChannel.cpp
   src/Presonus/Panel/BeastPanelRegistrar.cpp
   src/Presonus/Mixer/FirmwareUpdateCallbacks.cpp
@@ -361,6 +403,37 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/color/IColorConverter.hpp
+  presonus/color/MixerColorConverter.hpp
+  presonus/surface/GroupsPageComponent.hpp
+  presonus/reconstruction200/large02_w10.hpp
+  presonus/reconstruction200/large02_w09.hpp
+  presonus/reconstruction200/large02_w08.hpp
+  presonus/reconstruction200/large02_w07.hpp
+  presonus/reconstruction200/large02_w06.hpp
+  presonus/reconstruction200/large02_w05.hpp
+  presonus/reconstruction200/large02_w04.hpp
+  presonus/reconstruction200/large02_w03.hpp
+  presonus/reconstruction200/large02_w01.hpp
+  presonus/panel/PanelComponent.hpp
+  presonus/mixer/AVBCascadeManager.hpp
+  presonus/avb/AvbComponent.hpp
+  presonus/PanControl.hpp
+  presonus/MuteGroupBase.hpp
+  presonus/ChannelGroupFilter.hpp
+  presonus/reconstruction200/large01_w10.hpp
+  presonus/reconstruction200/large01_w09.hpp
+  presonus/reconstruction200/large01_w08.hpp
+  presonus/reconstruction200/large01_w07.hpp
+  presonus/reconstruction200/large01_w06.hpp
+  presonus/reconstruction200/large01_w05.hpp
+  presonus/reconstruction200/large01_w04.hpp
+  presonus/reconstruction200/large01_w03.hpp
+  presonus/reconstruction200/large01_w02.hpp
+  presonus/reconstruction200/large01_w01.hpp
+  presonus/panel/SceneBook.hpp
+  presonus/panel/FXBook.hpp
+  presonus/uc/NetworkItem.hpp
   presonus/frontier01/frontier01_w01.hpp
   presonus/frontier01/frontier01_w02.hpp
   presonus/frontier01/frontier01_w03.hpp

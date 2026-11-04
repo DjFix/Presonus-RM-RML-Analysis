@@ -1,0 +1,9 @@
+ControlGroup constructor source port, bounded constructor scope only.
+
+All four ELF C1/C2 ranges are separately verified and executed via the saved research producer (20 executions each). Each stores first-int bits, zero count and self storage, ignores second int, leaves backing slot untouched, and makes no external calls. C1/C2 are distinct native ranges, not native aliases. Portable C1/C2 symbols may alias under the host compiler.
+
+The port embeds actual pinned CCL FixedSizeVector and binds its state reference to that owned storage. Borrowed injection remains available. Independent ControlGroupAccess exposes group identity and storage ownership for replay; it is not an original method. Production tag gateway reads the actual Control source-port tag through its existing ControlAccess, with no fabricated Control definition. Empty-state replay never invokes this gateway.
+
+Replay normalizes native memory at +4/+12 to group identity/count and compares those outputs to the compiled port. Native pointer/table values, preserved raw backing bytes and stack writes are retained in fixtures; the source port intentionally does not reproduce their layout. Owned/borrowed lifetime regression is a portable check, not native destructor evidence. Copy/move are unavailable to prevent references escaping their owned state; original copy declarations are unknown. Existing borrowed method implementations remain unchanged.
+
+No vtable, inheritance, full object extent, original field type, virtual target, lifecycle, populated tag lookup, hardware, binary interoperability or ARM ABI verification is claimed. No readiness fragments are supplied; Root owns fresh integration and guarded SQLite admission. Add this test directory under BUILD_TESTING after Python3 discovery; existing production CPP belongs once in common, not separate role implementations.

@@ -37,11 +37,20 @@ public:
     bool enabled = false;
     std::uint8_t dirty = 0;
   };
-  struct PortableBandParams {
+  // Six pointer slots are independently observed. Names and portable host
+  // layout are source-port choices, not original field/ARM-layout claims.
+  struct BandParams {
     Core::Portable::Parameter *gain = nullptr;
     Core::Portable::Parameter *q = nullptr;
     Core::Portable::Parameter *frequency = nullptr;
+    // Original six slots are observed, their field names remain unresolved.
+    Core::Portable::Parameter *slot3 = nullptr, *slot4 = nullptr,
+                              *slot5 = nullptr;
+    bool contains(Core::Portable::Parameter *parameter) const;
+    void zeroParam(Core::Portable::Parameter *parameter);
   };
+  // Compatibility name for the SAME coherent binding, not a second model.
+  using PortableBandParams = BandParams;
   std::vector<PortableBand> &portableBandState() { return portableBands; }
   const std::vector<PortableBand> &portableBandState() const {
     return portableBands;
@@ -81,6 +90,8 @@ public:
     bufferValid = valid;
   }
   bool portableBufferedDraw() const { return bufferedDraw; }
+  // Provisional bool source return; native byte observations cover 0 and 1.
+  bool isBufferedDraw() const;
   bool portableBufferPresent() const { return bufferPresent; }
   bool portableBufferValid() const { return bufferValid; }
   void setBufferedDraw(bool state);

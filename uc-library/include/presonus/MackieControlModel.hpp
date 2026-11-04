@@ -4,6 +4,18 @@
 #include <functional>
 #include <vector>
 namespace Presonus {
+// Intentional partial source-port boundary. Native dispatch proves a borrowed
+// receiver and byte-buffer/length/zero-port register flow, not its original
+// declaration, method name, complete virtual interface, or ABI layout.
+class IMidiSink {
+public:
+  virtual void sendMidiMessage(const unsigned char *, unsigned int,
+                               unsigned int) = 0;
+
+protected:
+  ~IMidiSink() = default;
+};
+class IFaderPanel;
 // Intentional portable source port. Field layout and unencoded original return
 // declarations are unresolved; these callbacks are independent boundary
 // adapters.
@@ -36,6 +48,21 @@ public:
   unsigned connectionState{};
   std::array<char, 3> assignmentData{};
   std::array<char, 11> timecodeData{};
+  // Borrowed application state; independent portable fields, not ARM offsets.
+  IMidiSink *applicationMidiSink{};
+  // Compatibility adapter selection; absent in the original ARM state model.
+  bool applicationMidiSinkConfigured{};
+  IFaderPanel *panel{};
+  const char *versionString{};
+  bool acceptMCUSysex{};
+  void setVersionString(const char *);
+  void setMidiSink(IMidiSink *, int);
+  void setPanel(IFaderPanel *);
+  void setAcceptMCUSysex(bool);
+  int faderTagToIndex(int) const;
+  int encoderTagToIndex(int) const;
+  void turnEncoder(int, int);
+  void moveFader(int, float);
   void addMapping(int, int);
   // Independent source-port bytes corresponding to observed native reads.
   std::array<unsigned char, 8> hostConnectionIdentity{};

@@ -1,0 +1,3 @@
+import argparse,json,subprocess
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--executable',required=True);p.add_argument('--fixtures',required=True);a=p.parse_args();f=json.loads(Path(a.fixtures).read_text());r=subprocess.run(['nm','--defined-only',a.executable],text=True,capture_output=True,check=True);symbols={line.split()[-1] for line in r.stdout.splitlines() if line.strip()};missing=[t['mangled'] for t in f['targets'] if t['mangled'] not in symbols];assert not missing,missing;print(json.dumps(dict(passed=True,exact_original_symbols=len(f['targets']),object_format='ELF Linux; no additional leading underscore')))

@@ -33,6 +33,10 @@ public:
   void rebuild();
   void addCategory(const char *);
   void addObserver(Delegate *);
+  // Independent source-port API, not a recovered original interface.
+  // Removes the first matching borrowed registration through actual CCL
+  // storage.
+  void sourcePortRemoveObserver(Delegate *observer);
   bool getPresetInfo(Core::CStringBuffer<64> &, Core::CStringBuffer<32> &, int);
   Core::Portable::FileName getFileNameForSlot(unsigned, bool);
 

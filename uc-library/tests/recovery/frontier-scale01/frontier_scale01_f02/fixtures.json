@@ -1,0 +1,7412 @@
+{
+  "machine_context": {
+    "machine": "EM_ARM",
+    "class": 32,
+    "little_endian": true,
+    "mode": "ARM (even entries; 4-byte instructions)",
+    "flags": 67108866
+  },
+  "engine": "Unicorn 2.1.4",
+  "oracle": "Original app bytes only; no pseudocode/C++ expected-value oracle",
+  "originals": [
+    {
+      "identity": {
+        "id": "f652b353d55f4aa2760a1a4e3c9d6ebff97e114bf7c4d6869efac88975cb0633",
+        "native_id": "native:eccdfd9038d295e4880e6936905de5a382c5571cde90f82bc7a81cfe19e2a205",
+        "catalog_anchor": "b82a032e4420cfa54026484e7dbe6da8d628f7e115ae5594b2f4fa2dc15469ef",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "original_mangled": "_ZN8Presonus3Dsp10ControllerC2EiPKNS0_19ParamDescriptorListE",
+        "demangled": "Presonus::Dsp::Controller::Controller(int, Presonus::Dsp::ParamDescriptorList const*)",
+        "symbol_kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "section_index": "12",
+        "original_address": 730396,
+        "original_size": 80,
+        "range_id": "a252e7110437dbc3fb56e344baf4ad592093f20b9f5bc94478a55a2d56b6924e",
+        "strategy": "reconstruct",
+        "provider_id": null,
+        "binding_status": "unmatched",
+        "provider_binding": "{\"original_declaration_verified\": false, \"original_arm_abi_verified\": false, \"binary_behavior_verified\": false, \"upstream\": []}",
+        "firmware_version": "RM/RML mixer 13731",
+        "role": "server",
+        "section": ".text",
+        "file_offset": 697628,
+        "range_sha256": "d5f9264563594fe57ab0e1a269ac19b0481500550891848b8584f82d4deeb30a",
+        "range_hex": "0dc0a0e130d82de904b04ce238409fe500c0a0e30050a0e324c080e500c0e0e3004080e508c080e50c2080e5181080e5205080e5045080e5105080e5145080e51c50c0e51d50c0e530a89de800d33500",
+        "literal_u32": 3527424,
+        "range_verified": true,
+        "execution_cases": 30,
+        "covered_instruction_offsets": [
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56,
+          60,
+          64,
+          68,
+          72
+        ]
+      },
+      "runs": [
+        {
+          "int_bits": 0,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730408
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": {
+        "id": "d4e66ae69fc214b15e8c6725d4fbf094d386b00f774a8abafa02e31d13b7198e",
+        "native_id": "native:a9f9c268a13b7b3b182da1195c398af906b8bc4bd162b8c98d8e665fb96a3bba",
+        "catalog_anchor": "d76eb3931e31d1e081e43fa5489707a73d8f25d51f82fba3564c82524294857f",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "original_mangled": "_ZN8Presonus3Dsp10ControllerC1EiPKNS0_19ParamDescriptorListE",
+        "demangled": "Presonus::Dsp::Controller::Controller(int, Presonus::Dsp::ParamDescriptorList const*)",
+        "symbol_kind": "STT_FUNC",
+        "binding": "STB_GLOBAL",
+        "section_index": "12",
+        "original_address": 730476,
+        "original_size": 80,
+        "range_id": "87fa0f3ec5077e4f3215bb67e8527027babb8fc269828b783483340532612dcf",
+        "strategy": "reconstruct",
+        "provider_id": null,
+        "binding_status": "unmatched",
+        "provider_binding": "{\"original_declaration_verified\": false, \"original_arm_abi_verified\": false, \"binary_behavior_verified\": false, \"upstream\": []}",
+        "firmware_version": "RM/RML mixer 13731",
+        "role": "server",
+        "section": ".text",
+        "file_offset": 697708,
+        "range_sha256": "d5f9264563594fe57ab0e1a269ac19b0481500550891848b8584f82d4deeb30a",
+        "range_hex": "0dc0a0e130d82de904b04ce238409fe500c0a0e30050a0e324c080e500c0e0e3004080e508c080e50c2080e5181080e5205080e5045080e5105080e5145080e51c50c0e51d50c0e530a89de800d33500",
+        "literal_u32": 3527424,
+        "range_verified": true,
+        "execution_cases": 30,
+        "covered_instruction_offsets": [
+          0,
+          4,
+          8,
+          12,
+          16,
+          20,
+          24,
+          28,
+          32,
+          36,
+          40,
+          44,
+          48,
+          52,
+          56,
+          60,
+          64,
+          68,
+          72
+        ]
+      },
+      "runs": [
+        {
+          "int_bits": 0,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000000000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 0,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000000000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000001000000000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 1,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000010000000000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 1
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffff7f000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483647,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffff7f0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483647
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff00000000000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff78563412000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff000000000000000000000080000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 2147483648,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000000000800000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 2147483648
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 0,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 0,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff000000000000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 305419896,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 305419896,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffff785634120000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 305419896
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 4294967295,
+          "initial_fill": 0,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffffff000000000000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        },
+        {
+          "int_bits": 4294967295,
+          "pointer_bits": 4294967295,
+          "initial_fill": 165,
+          "object_bytes_hex": "00d3350000000000ffffffffffffffff0000000000000000ffffffff0000a5a50000000000000000",
+          "guard_bytes_unchanged": true,
+          "r0_preserved": true,
+          "callee_saved_restored": true,
+          "sp_restored": true,
+          "instruction_offsets": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72
+          ],
+          "object_writes": [
+            {
+              "offset": 36,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 0,
+              "size": 4,
+              "value": 3527424
+            },
+            {
+              "offset": 8,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 12,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 24,
+              "size": 4,
+              "value": 4294967295
+            },
+            {
+              "offset": 32,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 4,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 16,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 20,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "offset": 28,
+              "size": 1,
+              "value": 0
+            },
+            {
+              "offset": 29,
+              "size": 1,
+              "value": 0
+            }
+          ],
+          "stack_writes": [
+            {
+              "address": 33558504,
+              "size": 4,
+              "value": 1164413355
+            },
+            {
+              "address": 33558508,
+              "size": 4,
+              "value": 2557891634
+            },
+            {
+              "address": 33558512,
+              "size": 4,
+              "value": 0
+            },
+            {
+              "address": 33558516,
+              "size": 4,
+              "value": 33558528
+            },
+            {
+              "address": 33558520,
+              "size": 4,
+              "value": 50331648
+            },
+            {
+              "address": 33558524,
+              "size": 4,
+              "value": 730488
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bound_raw_data": {
+    "native-address:9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07:35d300": {
+      "address": 3527424,
+      "original_size": 256,
+      "preview_bytes": 256,
+      "preview_hex": "bc250b0080440b00102a0b0098260b00b03d0b00b4260b00c4260b0050390b009c3b0b00cc370b0048360b00d8260b0014270b0050270b0064270b0018280b008c280b00ac280b00b8270b00042b0b0064260b009c280b004e38507265736f6e757333447370313653696d706c65436f6e74726f6c6c6572450000008029490058d33500a4d335004e38507265736f6e7573334473703130436f6e74726f6c6c657245008029490088d33500b0d3350080294900bcd33500d8e816004e38507265736f6e757333447370313149436f6e74726f6c6c657245000000000000000000000000f0d3350090450b00c0450b00b029490008d435000000000001000000",
+      "truncated": false,
+      "words_u32": [
+        730556,
+        738432,
+        731664,
+        730776,
+        736688,
+        730804,
+        730820,
+        735568,
+        736156,
+        735180,
+        734792,
+        730840,
+        730900,
+        730960,
+        730980,
+        731160,
+        731276,
+        731308,
+        731064,
+        731908,
+        730724,
+        731292,
+        1917859918,
+        1852797797,
+        1144222581,
+        909209715,
+        1886218579,
+        1866687852,
+        1869771886,
+        1919249516,
+        69,
+        4794752,
+        3527512,
+        3527588,
+        1917859918,
+        1852797797,
+        1144222581,
+        808546419,
+        1953394499,
+        1819045746,
+        4551269,
+        4794752,
+        3527560,
+        3527600,
+        4794752,
+        3527612,
+        1501400,
+        1917859918,
+        1852797797,
+        1144222581,
+        825323635,
+        1852785481,
+        1819243124,
+        1165124972,
+        0,
+        0,
+        0,
+        3527664,
+        738704,
+        738752,
+        4794800,
+        3527688,
+        0,
+        1
+      ],
+      "full_range_sha256": null,
+      "interpretation": "raw data/table words; not original declared type/layout"
+    },
+    "native:b09377177493f839de24884831a260b7a4f27433c13ef6e0ccda863521dd55c8": {
+      "storage": "unknown",
+      "bytes_available": false
+    },
+    "native:f1a8f26a844ecaad75a82ac4141c2eab24b8fb305c68139fb90961bbbe33e878": {
+      "storage": "unknown",
+      "bytes_available": false
+    }
+  },
+  "payload_objects": [
+    {
+      "id": "d4147f87bce5651535ff7a54ecf97d2d031a1d2ab36924a604fa59726c5fb1f1",
+      "size": 96,
+      "content_sha256": "ee814af53f230bb1490bbef74fc282cebe81beae715d62cb560445384ee100d4",
+      "object_path": "temp/recovery-work/flexible25-01/dedup-corrected/objects/ee814af53f230bb1490bbef74fc282cebe81beae715d62cb560445384ee100d4",
+      "verified": true,
+      "hex": "00000000a4d33500bc250b0080440b00102a0b0098260b00b03d0b00b4260b00c4260b0050390b009c3b0b00cc370b0048360b00d8260b0014270b0050270b0064270b0018280b008c280b00ac280b00b8270b00042b0b0064260b009c280b00"
+    }
+  ]
+}

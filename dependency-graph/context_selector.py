@@ -30,8 +30,10 @@ def tools():
            'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py',
            'dependency-graph/context_publication.py','dependency-graph/context_batch.py',
            'dependency-graph/context_resources.py','dependency-graph/context_work_batch.py',
+           'dependency-graph/early_conflicts.py',
            'dependency-graph/context_writer_lock.py','dependency-graph/native_publish.py',
-           'dependency-graph/reconstruction_contract.py','dependency-graph/recovery_frontier.py')
+           'dependency-graph/reconstruction_contract.py','dependency-graph/execution_review.py',
+           'dependency-graph/recovery_frontier.py')
     return {p:sha(ROOT/p) for p in paths}
 
 
@@ -271,11 +273,15 @@ def prepare(session,out,active):
                'Mode: '+task['mode'], 'Owned files: '+json.dumps(task.get('owned_files',[])),
                '', 'Root owns shared CMake/build files, global readiness ledger and admission.',
                'Research launch pause in AGENTS.md remains in force; this packet does not authorize its release.']
+    if task.get('additional_original_scopes'):
+        tasklines += ['', '## Additional exact original scopes', '',
+                      json.dumps(task['additional_original_scopes'], indent=2),
+                      '', 'These scopes apply only to the listed ELF identities and ranges; file ownership remains unchanged.']
     tasklines += ['', '## Unique work and original coverage', '', json.dumps(task['work_binding'],indent=2),
                   '', 'Validate each covered original separately. Shared work is not shared readiness.']
     (out/'TASK.md').write_text('\n'.join(tasklines)+'\n')
     prompt = ('Read /home/rs/projects/opencs/ai-line-analysis/AGENTS.md first. '
-              'Your assigned namespace is '+task['namespace']+'. Read TASK.md, ELF_CONTEXT.md, SOURCE_SLICES.md and CONTEXT.md in '+
+              'Your primary assigned namespace is '+task['namespace']+'; any additional exact original scopes are listed in TASK.md. Read TASK.md, ELF_CONTEXT.md, SOURCE_SLICES.md and CONTEXT.md in '+
               '/home/rs/projects/opencs/ai-line-analysis/'+str(out.relative_to(ROOT))+'. '
               'Respect exact original identities, assigned file ownership and all validation gates. '
               'Missing declarations and source-port state are reconstruction outputs, not a reason to stop by themselves. Recover them from bound instructions, call sites and independent observations inside owned scope. '

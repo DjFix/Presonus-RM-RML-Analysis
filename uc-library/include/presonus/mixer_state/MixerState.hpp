@@ -1,4 +1,5 @@
 #pragma once
+#include "core/portable/corecomponent.h"
 #include <cstdint>
 
 namespace Presonus {
@@ -16,8 +17,19 @@ struct PortableMixerState {
   std::uint32_t geqCountWord = 0;
 };
 
+class SLChannelBase;
+
 class MixerClientComponentBase {
 public:
+  // Independent portable setup; no original constructor/layout credit.
+  // Borrowed groups and cached channel must outlive this source-port instance.
+  MixerClientComponentBase() = default;
+  MixerClientComponentBase(Core::Portable::Component &groups,
+                           SLChannelBase *cached = nullptr)
+      : channelGroups_(&groups), selectedChannel_(cached) {}
+  virtual Core::Portable::Component *getChannelGroup(ChannelType) const;
+  ChannelType getChannelGroupType(const Core::Portable::Component &) const;
+  SLChannelBase *getSelectedChannel() const;
   virtual bool isStereoChannelType(ChannelType type) const;
   // Portable int32 return choice. Original spelling/signedness is unresolved.
   virtual std::int32_t getNumGeqs() const;
@@ -28,6 +40,10 @@ public:
 
 private:
   PortableMixerState state_;
+  // Independent typed composition, not recovered original offsets/ownership.
+  Core::Portable::Component ownedChannelGroups_;
+  Core::Portable::Component *channelGroups_ = &ownedChannelGroups_;
+  mutable SLChannelBase *selectedChannel_ = nullptr;
 };
 
 // Original inheritance is not asserted by this portable declaration.

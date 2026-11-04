@@ -54,6 +54,11 @@ StormMuteGroupComponent::~StormMuteGroupComponent() {
       g && g->state.alternateStatus && !state.groups.contains(g))
     g->state.alternateStatus->removeObserver(this);
 }
+void StormMuteGroupComponent::cleanup() {
+  const int count = state.cleanupParameters.count();
+  for (int i = 0; i < count; ++i)
+    state.cleanupParameters[i]->removeObserver(this);
+}
 Group *StormMuteGroupComponent::group(unsigned int index) const {
   return index <= INT32_MAX &&
                  index < static_cast<unsigned int>(state.groups.count())

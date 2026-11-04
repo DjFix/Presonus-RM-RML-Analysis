@@ -2,11 +2,15 @@
 #include <array>
 #include <cassert>
 #include <cstddef>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 // Source-port-only complete boundary adapters: no definition of SetupProperty.
 class Probe final : public Presonus::Dsp::Controller {
 public:
+  // Original fixtures never exercise process updates; reject an unexpected
+  // call.
+  void doUpdates() override { std::abort(); }
   Probe() : Controller(presonus::dsp::ControllerSourceTag{}) {}
   float getValue(int) const override { return 0; }
   float setValue(int, float value) override { return value; }

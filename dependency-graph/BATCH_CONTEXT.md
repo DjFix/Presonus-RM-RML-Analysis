@@ -15,6 +15,20 @@ allow one to ten groups, each with one to ten packets, including unequal sizes.
 Without that explicit flag the original exact ten groups of five, ten or twenty rule
 remains. Identity, coverage, ownership, claim, source freshness, nonempty packet,
 full validation and the complete atomic publication barrier are unchanged.
+
+For production continuation, a bounded grouped manifest may additionally provide
+a nonempty `production_continuation` reason. This separates unique-work packet
+counts from original-symbol counts. Every covered ELF/name/address/size must
+match the enriched request exactly, with no missing or duplicate originals.
+Multi-original reconstruction requires a current verified
+`shared_portable_implementation` decision; normal unique-work validation still
+checks its generation, membership and claim. Every original retains its separate
+range, symbol and behavior obligations. This mode does not apply to the exact200
+benchmark. Without it, existing trial modes still reject expanded coverage.
+Source, provider, freshness, ownership, common validation and atomic publication
+checks are unchanged. Changing a manifest or producer requires new preparation;
+it does not authorize rewriting a frozen batch or reusing stale authorization.
+
 The standalone group publisher additionally requires `--allow-smaller`.
 Each task retains the ordinary exact ELF/name identity, mode, namespace and file
 ownership contract. Each packet is in `NEW_BATCH/packets/TASK_ID`, with its own

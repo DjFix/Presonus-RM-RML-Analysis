@@ -1,0 +1,4165 @@
+{
+  "producer": "/home/rs/projects/opencs/ai-line-analysis/uc-library/candidates/large02_w06/source-proposal/uc-library/tests/recovery/reconstruction-200-02/large02_w06/oracle.py",
+  "producer_sha256": "2d44212a800aab4391e4388a9781c49059af6a79d36912db70af42b49ae24e44",
+  "unicorn_version": "2.1.4",
+  "scope": "Exact primary app ranges plus explicitly supplied app dependency ranges; remaining external calls are named boundary stubs. No Core firmware execution or dependency readiness propagation.",
+  "cases": [
+    {
+      "case": {
+        "id": "01-0",
+        "method": 1,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 0,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1505556
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1505572
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1505472
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponentD1Ev",
+        "address": 238508,
+        "size": 60,
+        "section": ".text",
+        "file_offset": 205740,
+        "range_sha256": "76a807382e603009be54386beaa9c33da08c931d54268567eb2a0ad516dcc364"
+      }
+    },
+    {
+      "case": {
+        "id": "02-0",
+        "method": 2,
+        "variant": 0
+      },
+      "projection": {
+        "result": 1,
+        "channel_name": "User"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016192,
+            167870172,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016704,
+            167870172,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent12saveUserNameEv",
+        "address": 236980,
+        "size": 128,
+        "section": ".text",
+        "file_offset": 204212,
+        "range_sha256": "f9089a2a003c0319d76ac9ff774602fc8a33c9da8ace898e0d00995ca6c43bcf"
+      }
+    },
+    {
+      "case": {
+        "id": "02-1",
+        "method": 2,
+        "variant": 1
+      },
+      "projection": {
+        "result": 1,
+        "channel_name": ""
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016192,
+            167870172,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016704,
+            167870172,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent12saveUserNameEv",
+        "address": 236980,
+        "size": 128,
+        "section": ".text",
+        "file_offset": 204212,
+        "range_sha256": "f9089a2a003c0319d76ac9ff774602fc8a33c9da8ace898e0d00995ca6c43bcf"
+      }
+    },
+    {
+      "case": {
+        "id": "02-2",
+        "method": 2,
+        "variant": 2
+      },
+      "projection": {
+        "result": 1,
+        "channel_name": "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016192,
+            167870172,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016704,
+            167870172,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent12saveUserNameEv",
+        "address": 236980,
+        "size": 128,
+        "section": ".text",
+        "file_offset": 204212,
+        "range_sha256": "f9089a2a003c0319d76ac9ff774602fc8a33c9da8ace898e0d00995ca6c43bcf"
+      }
+    },
+    {
+      "case": {
+        "id": "03-0",
+        "method": 3,
+        "variant": 0
+      },
+      "projection": {
+        "user_name": "Channel"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::updatePresetName",
+          "address": 538764,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870176,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016704,
+            167870176,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016192,
+            167870176,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent16updatePresetNameEv",
+        "address": 236840,
+        "size": 140,
+        "section": ".text",
+        "file_offset": 204072,
+        "range_sha256": "f765e4db71f062179221cf34c0cef472fe25c7c8b6e28357bac68e2b66dafbc3"
+      }
+    },
+    {
+      "case": {
+        "id": "03-1",
+        "method": 3,
+        "variant": 1
+      },
+      "projection": {
+        "user_name": ""
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::updatePresetName",
+          "address": 538764,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870176,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016704,
+            167870176,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016192,
+            167870176,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent16updatePresetNameEv",
+        "address": 236840,
+        "size": 140,
+        "section": ".text",
+        "file_offset": 204072,
+        "range_sha256": "f765e4db71f062179221cf34c0cef472fe25c7c8b6e28357bac68e2b66dafbc3"
+      }
+    },
+    {
+      "case": {
+        "id": "03-2",
+        "method": 3,
+        "variant": 2
+      },
+      "projection": {
+        "user_name": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::updatePresetName",
+          "address": 538764,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            3,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            151003136,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870176,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016704,
+            167870176,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016192,
+            167870176,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel22ChannelPresetComponent16updatePresetNameEv",
+        "address": 236840,
+        "size": 140,
+        "section": ".text",
+        "file_offset": 204072,
+        "range_sha256": "f765e4db71f062179221cf34c0cef472fe25c7c8b6e28357bac68e2b66dafbc3"
+      }
+    },
+    {
+      "case": {
+        "id": "04-0",
+        "method": 4,
+        "variant": 0
+      },
+      "projection": {
+        "owner_bound": 1,
+        "completion_stored": 1
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponent24StorageCompletionHandler19onSaveFileCompletedEPKc",
+          "address": 541908,
+          "size": 24,
+          "section": ".text",
+          "file_offset": 509140,
+          "range_sha256": "2bf437e365e3e516205aaf02037f388eabe9e58914e42fc6ebf63d99ba706e5a",
+          "executed_instruction_count": 6,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "operator new",
+          "address": 42980,
+          "args": [
+            8,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            3502584
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 65536,
+          "absolute_address": 151060480,
+          "size": 4,
+          "value": 3502584
+        },
+        {
+          "region": "fixture_heap",
+          "address": 65540,
+          "absolute_address": 151060484,
+          "size": 4,
+          "value": 150994944
+        }
+      ],
+      "native_observations": {
+        "allocation_size": 8,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent20createStorageHandlerEv",
+        "address": 538192,
+        "size": 44,
+        "section": ".text",
+        "file_offset": 505424,
+        "range_sha256": "a5823e8363dc2df9573f22d1edc9cc5d76fa34d38dac082b6ead69a1c421a791"
+      }
+    },
+    {
+      "case": {
+        "id": "04-1",
+        "method": 4,
+        "variant": 1
+      },
+      "projection": {
+        "owner_bound": 1,
+        "completion_stored": 1
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponent24StorageCompletionHandler19onSaveFileCompletedEPKc",
+          "address": 541908,
+          "size": 24,
+          "section": ".text",
+          "file_offset": 509140,
+          "range_sha256": "2bf437e365e3e516205aaf02037f388eabe9e58914e42fc6ebf63d99ba706e5a",
+          "executed_instruction_count": 6,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "operator new",
+          "address": 42980,
+          "args": [
+            8,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            3502584
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 65536,
+          "absolute_address": 151060480,
+          "size": 4,
+          "value": 3502584
+        },
+        {
+          "region": "fixture_heap",
+          "address": 65540,
+          "absolute_address": 151060484,
+          "size": 4,
+          "value": 150994944
+        }
+      ],
+      "native_observations": {
+        "allocation_size": 8,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent20createStorageHandlerEv",
+        "address": 538192,
+        "size": 44,
+        "section": ".text",
+        "file_offset": 505424,
+        "range_sha256": "a5823e8363dc2df9573f22d1edc9cc5d76fa34d38dac082b6ead69a1c421a791"
+      }
+    },
+    {
+      "case": {
+        "id": "05-0",
+        "method": 5,
+        "variant": 0
+      },
+      "projection": {
+        "result": 1,
+        "loaded": 1,
+        "recalled": 1,
+        "mode": "ignoreAltMemory"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Component::load",
+          "address": 134221844,
+          "args": [
+            151003136,
+            167870380,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Preset::presetRecalled",
+          "address": 538532,
+          "args": [
+            150994944,
+            167870380,
+            0,
+            151093760
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "loaded": 1,
+        "mode": "ignoreAltMemory",
+        "recalled": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel18GeqPresetComponent6recallERN4Core8Portable10AttributesEb",
+        "address": 239272,
+        "size": 272,
+        "section": ".text",
+        "file_offset": 206504,
+        "range_sha256": "56ac5c8c8fa5c1547584b0edb19e747c7457fe2b38c377a7e26914585c3b519a"
+      }
+    },
+    {
+      "case": {
+        "id": "05-1",
+        "method": 5,
+        "variant": 1
+      },
+      "projection": {
+        "result": 0,
+        "loaded": 0,
+        "recalled": 0,
+        "mode": ""
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151017216,
+            151007232,
+            1,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            0,
+            151007232,
+            1,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel18GeqPresetComponent6recallERN4Core8Portable10AttributesEb",
+        "address": 239272,
+        "size": 272,
+        "section": ".text",
+        "file_offset": 206504,
+        "range_sha256": "56ac5c8c8fa5c1547584b0edb19e747c7457fe2b38c377a7e26914585c3b519a"
+      }
+    },
+    {
+      "case": {
+        "id": "06-0",
+        "method": 6,
+        "variant": 0
+      },
+      "projection": {
+        "result": -2
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151015424,
+            151007232,
+            151015424,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            3224371200,
+            151007232,
+            151015424,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent10getSlotNumEv",
+        "address": 537752,
+        "size": 40,
+        "section": ".text",
+        "file_offset": 504984,
+        "range_sha256": "36c8ab78ccfe899c63a017982791c6ffa84c8800db0be5a3b16afe0affc97027"
+      }
+    },
+    {
+      "case": {
+        "id": "06-1",
+        "method": 6,
+        "variant": 1
+      },
+      "projection": {
+        "result": 0
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151015424,
+            151007232,
+            151015424,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            0,
+            151007232,
+            151015424,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent10getSlotNumEv",
+        "address": 537752,
+        "size": 40,
+        "section": ".text",
+        "file_offset": 504984,
+        "range_sha256": "36c8ab78ccfe899c63a017982791c6ffa84c8800db0be5a3b16afe0affc97027"
+      }
+    },
+    {
+      "case": {
+        "id": "06-2",
+        "method": 6,
+        "variant": 2
+      },
+      "projection": {
+        "result": 3
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151015424,
+            151007232,
+            151015424,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            1081081856,
+            151007232,
+            151015424,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent10getSlotNumEv",
+        "address": 537752,
+        "size": 40,
+        "section": ".text",
+        "file_offset": 504984,
+        "range_sha256": "36c8ab78ccfe899c63a017982791c6ffa84c8800db0be5a3b16afe0affc97027"
+      }
+    },
+    {
+      "case": {
+        "id": "07-0",
+        "method": 7,
+        "variant": 0
+      },
+      "projection": {
+        "category": "",
+        "slot": 1
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent23onPresetCategoryChangedEv",
+          "address": 237676,
+          "size": 268,
+          "section": ".text",
+          "file_offset": 204908,
+          "range_sha256": "705dc27c86d85e32e46a0c6b35428202f955f770f95eac93d77a4c2d7703180b",
+          "executed_instruction_count": 0,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent19onSlotNumberChangedEi",
+          "address": 236776,
+          "size": 64,
+          "section": ".text",
+          "file_offset": 204008,
+          "range_sha256": "b8a8c02275bfa94fbe737538374d78b192eaec41bcfc27aa0ac21a71c724abdf",
+          "executed_instruction_count": 16,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent11getCategoryEi",
+          "address": 236636,
+          "size": 140,
+          "section": ".text",
+          "file_offset": 203868,
+          "range_sha256": "29a721a32d838410802046be26e3b393edacbced7a76e0f2b7f72fb16b421042",
+          "executed_instruction_count": 24,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "Preset::paramChanged",
+          "address": 539060,
+          "args": [
+            150994944,
+            151015424,
+            2,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151015424,
+            151015424,
+            2,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            1065353216,
+            151015424,
+            2,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "PresetNameCache::getPresetInfo boundary",
+          "address": 547756,
+          "args": [
+            151011328,
+            167870336,
+            4799584,
+            1
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016448,
+            4799584,
+            0,
+            151016448
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "static_category",
+          "absolute_address": 4799584,
+          "size": 1,
+          "value": 0
+        }
+      ],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent12paramChangedEPN4Core8Portable9ParameterEi",
+        "address": 237952,
+        "size": 112,
+        "section": ".text",
+        "file_offset": 205184,
+        "range_sha256": "94e86a6f027f4c84e8ca8c033dbcdcabf8258efd233ac997ff4299ce3951d2e9"
+      }
+    },
+    {
+      "case": {
+        "id": "07-1",
+        "method": 7,
+        "variant": 1
+      },
+      "projection": {
+        "category": "Cat",
+        "slot": 0
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent23onPresetCategoryChangedEv",
+          "address": 237676,
+          "size": 268,
+          "section": ".text",
+          "file_offset": 204908,
+          "range_sha256": "705dc27c86d85e32e46a0c6b35428202f955f770f95eac93d77a4c2d7703180b",
+          "executed_instruction_count": 18,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent19onSlotNumberChangedEi",
+          "address": 236776,
+          "size": 64,
+          "section": ".text",
+          "file_offset": 204008,
+          "range_sha256": "b8a8c02275bfa94fbe737538374d78b192eaec41bcfc27aa0ac21a71c724abdf",
+          "executed_instruction_count": 0,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent11getCategoryEi",
+          "address": 236636,
+          "size": 140,
+          "section": ".text",
+          "file_offset": 203868,
+          "range_sha256": "29a721a32d838410802046be26e3b393edacbced7a76e0f2b7f72fb16b421042",
+          "executed_instruction_count": 0,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "Preset::paramChanged",
+          "address": 539060,
+          "args": [
+            150994944,
+            151016448,
+            2,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151017472,
+            151016448,
+            2,
+            151094528
+          ]
+        },
+        {
+          "call": "float compare",
+          "address": 1407296,
+          "args": [
+            0,
+            0,
+            2,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent12paramChangedEPN4Core8Portable9ParameterEi",
+        "address": 237952,
+        "size": 112,
+        "section": ".text",
+        "file_offset": 205184,
+        "range_sha256": "94e86a6f027f4c84e8ca8c033dbcdcabf8258efd233ac997ff4299ce3951d2e9"
+      }
+    },
+    {
+      "case": {
+        "id": "07-2",
+        "method": 7,
+        "variant": 2
+      },
+      "projection": {
+        "category": "Cat",
+        "slot": 1
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent23onPresetCategoryChangedEv",
+          "address": 237676,
+          "size": 268,
+          "section": ".text",
+          "file_offset": 204908,
+          "range_sha256": "705dc27c86d85e32e46a0c6b35428202f955f770f95eac93d77a4c2d7703180b",
+          "executed_instruction_count": 83,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent19onSlotNumberChangedEi",
+          "address": 236776,
+          "size": 64,
+          "section": ".text",
+          "file_offset": 204008,
+          "range_sha256": "b8a8c02275bfa94fbe737538374d78b192eaec41bcfc27aa0ac21a71c724abdf",
+          "executed_instruction_count": 0,
+          "primary_recovery_identity": false
+        },
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent11getCategoryEi",
+          "address": 236636,
+          "size": 140,
+          "section": ".text",
+          "file_offset": 203868,
+          "range_sha256": "29a721a32d838410802046be26e3b393edacbced7a76e0f2b7f72fb16b421042",
+          "executed_instruction_count": 48,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "Preset::paramChanged",
+          "address": 539060,
+          "args": [
+            150994944,
+            151016448,
+            2,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151017472,
+            151016448,
+            2,
+            151094528
+          ]
+        },
+        {
+          "call": "float compare",
+          "address": 1407296,
+          "args": [
+            1081081856,
+            0,
+            2,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016448,
+            167870392,
+            32,
+            151016448
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "PresetNameCache::getPresetInfo boundary",
+          "address": 547756,
+          "args": [
+            151011328,
+            167870256,
+            4799584,
+            0
+          ]
+        },
+        {
+          "call": "strlen",
+          "address": 44696,
+          "args": [
+            4799584,
+            167870256,
+            4799584,
+            0
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167870360,
+            167870392,
+            4799584,
+            0
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "PresetNameCache::getPresetInfo boundary",
+          "address": 547756,
+          "args": [
+            151011328,
+            167870256,
+            4799584,
+            1
+          ]
+        },
+        {
+          "call": "strlen",
+          "address": 44696,
+          "args": [
+            4799584,
+            167870256,
+            4799584,
+            1
+          ]
+        },
+        {
+          "call": "strncpy",
+          "address": 45032,
+          "args": [
+            167870360,
+            4799584,
+            3,
+            1
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167870360,
+            167870392,
+            167870424,
+            167870427
+          ]
+        },
+        {
+          "call": "uint-to-float",
+          "address": 1406060,
+          "args": [
+            1,
+            167870392,
+            167870424,
+            167870427
+          ]
+        },
+        {
+          "call": "Parameter::setValue",
+          "address": 134221824,
+          "args": [
+            151015424,
+            1065353216,
+            1,
+            167870427
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "static_category",
+          "absolute_address": 4799584,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "region": "static_category",
+          "absolute_address": 4799584,
+          "size": 1,
+          "value": 0
+        }
+      ],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent12paramChangedEPN4Core8Portable9ParameterEi",
+        "address": 237952,
+        "size": 112,
+        "section": ".text",
+        "file_offset": 205184,
+        "range_sha256": "94e86a6f027f4c84e8ca8c033dbcdcabf8258efd233ac997ff4299ce3951d2e9"
+      }
+    },
+    {
+      "case": {
+        "id": "08-0",
+        "method": 8,
+        "variant": 0
+      },
+      "projection": {
+        "result": 0
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150999040,
+            13,
+            1,
+            0
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent10getFxIndexEv",
+        "address": 349308,
+        "size": 56,
+        "section": ".text",
+        "file_offset": 316540,
+        "range_sha256": "014afcb18ae23f0bb59f3c544b9ddddc2a05856858cdfba2320ec1de1b6e9007"
+      }
+    },
+    {
+      "case": {
+        "id": "08-1",
+        "method": 8,
+        "variant": 1
+      },
+      "projection": {
+        "result": 0
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150999040,
+            13,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151016960,
+            13,
+            1,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            0,
+            13,
+            1,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent10getFxIndexEv",
+        "address": 349308,
+        "size": 56,
+        "section": ".text",
+        "file_offset": 316540,
+        "range_sha256": "014afcb18ae23f0bb59f3c544b9ddddc2a05856858cdfba2320ec1de1b6e9007"
+      }
+    },
+    {
+      "case": {
+        "id": "08-2",
+        "method": 8,
+        "variant": 2
+      },
+      "projection": {
+        "result": 3
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150999040,
+            13,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::getValue",
+          "address": 134221828,
+          "args": [
+            151016960,
+            13,
+            1,
+            151094528
+          ]
+        },
+        {
+          "call": "float-to-int",
+          "address": 1407320,
+          "args": [
+            1081081856,
+            13,
+            1,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent10getFxIndexEv",
+        "address": 349308,
+        "size": 56,
+        "section": ".text",
+        "file_offset": 316540,
+        "range_sha256": "014afcb18ae23f0bb59f3c544b9ddddc2a05856858cdfba2320ec1de1b6e9007"
+      }
+    },
+    {
+      "case": {
+        "id": "09-0",
+        "method": 9,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 0,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1515516
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1515532
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1515432
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15ScenesComponentD1Ev",
+        "address": 250168,
+        "size": 60,
+        "section": ".text",
+        "file_offset": 217400,
+        "range_sha256": "2cd6d3e235e13cd68e273894cb9baad0e8bf26914ee51b9b6193e3cc042d008e"
+      }
+    },
+    {
+      "case": {
+        "id": "10-0",
+        "method": 10,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 0,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1505828
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1505844
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1505744
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel18GeqPresetComponentD1Ev",
+        "address": 239564,
+        "size": 60,
+        "section": ".text",
+        "file_offset": 206796,
+        "range_sha256": "cc53e73ec6027bb3b7b7b9b410cf5c0a043a41c5065ed0ff66f708ff15514ce5"
+      }
+    },
+    {
+      "case": {
+        "id": "11-0",
+        "method": 11,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 1,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "operator delete",
+          "address": 44048,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1515516
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1515532
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1515432
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1,
+        "deleted": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15ScenesComponentD0Ev",
+        "address": 250228,
+        "size": 68,
+        "section": ".text",
+        "file_offset": 217460,
+        "range_sha256": "32f43f67fd60da0a0a5cedddc275b69a134a12a9349d708f536d902293a64d49"
+      }
+    },
+    {
+      "case": {
+        "id": "12-0",
+        "method": 12,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 1,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "operator delete",
+          "address": 44048,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1505828
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1505844
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1505744
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1,
+        "deleted": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel18GeqPresetComponentD0Ev",
+        "address": 239624,
+        "size": 68,
+        "section": ".text",
+        "file_offset": 206856,
+        "range_sha256": "f28c4508c46ec6f2214150c377d9cd9a40db7b17ef6435958dc3c6d91bf01239"
+      }
+    },
+    {
+      "case": {
+        "id": "13-0",
+        "method": 13,
+        "variant": 0
+      },
+      "projection": {
+        "base_cleanup": 1,
+        "deleted": 1,
+        "cache_observers_remaining": 2
+      },
+      "dependency_ranges": [
+        {
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "role": "server",
+          "mangled": "_ZN8Presonus5Panel15PresetComponentD2Ev",
+          "address": 541512,
+          "size": 396,
+          "section": ".text",
+          "file_offset": 508744,
+          "range_sha256": "8d768fa18a273dabe49a2142e70726ac74b02d7fda75db14d4ba151aaabc4663",
+          "executed_instruction_count": 74,
+          "primary_recovery_identity": false
+        }
+      ],
+      "native_trace": [
+        {
+          "call": "PresetNameManager::lookupCache",
+          "address": 543496,
+          "args": [
+            150999040,
+            150994952,
+            3502064,
+            150999040
+          ]
+        },
+        {
+          "call": "Core::Vector::~Vector source boundary",
+          "address": 542216,
+          "args": [
+            150995120,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "Core::Component::~Component source boundary",
+          "address": 1156412,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        },
+        {
+          "call": "operator delete",
+          "address": 44048,
+          "args": [
+            150994944,
+            151012352,
+            3,
+            2
+          ]
+        }
+      ],
+      "native_writes": [
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 1505556
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 1505572
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 1505472
+        },
+        {
+          "region": "fixture_heap",
+          "address": 4,
+          "absolute_address": 150994948,
+          "size": 4,
+          "value": 3502148
+        },
+        {
+          "region": "fixture_heap",
+          "address": 132,
+          "absolute_address": 150995076,
+          "size": 4,
+          "value": 3502164
+        },
+        {
+          "region": "fixture_heap",
+          "address": 0,
+          "absolute_address": 150994944,
+          "size": 4,
+          "value": 3502064
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17408,
+          "absolute_address": 151012352,
+          "size": 4,
+          "value": 150996992
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17412,
+          "absolute_address": 151012356,
+          "size": 4,
+          "value": 150996996
+        },
+        {
+          "region": "fixture_heap",
+          "address": 17416,
+          "absolute_address": 151012360,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "region": "fixture_heap",
+          "address": 16724,
+          "absolute_address": 151011668,
+          "size": 4,
+          "value": 2
+        }
+      ],
+      "native_observations": {
+        "base_cleanup": 1,
+        "deleted": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponentD0Ev",
+        "address": 238568,
+        "size": 68,
+        "section": ".text",
+        "file_offset": 205800,
+        "range_sha256": "1cc4cb403ef5787376dcb550a84c1a6c4593551125159be4c3e2b1a083b26282"
+      }
+    },
+    {
+      "case": {
+        "id": "14-0",
+        "method": 14,
+        "variant": 0
+      },
+      "projection": {
+        "type": ""
+      },
+      "dependency_ranges": [],
+      "native_trace": [],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent13getPresetTypeEv",
+        "address": 346056,
+        "size": 36,
+        "section": ".text",
+        "file_offset": 313288,
+        "range_sha256": "5495034e9bf5e75f721325e790d548e1129df21b3be5a0401d917ccaa023ef7e"
+      }
+    },
+    {
+      "case": {
+        "id": "14-1",
+        "method": 14,
+        "variant": 1
+      },
+      "projection": {
+        "type": "reverb"
+      },
+      "dependency_ranges": [],
+      "native_trace": [],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent13getPresetTypeEv",
+        "address": 346056,
+        "size": 36,
+        "section": ".text",
+        "file_offset": 313288,
+        "range_sha256": "5495034e9bf5e75f721325e790d548e1129df21b3be5a0401d917ccaa023ef7e"
+      }
+    },
+    {
+      "case": {
+        "id": "14-2",
+        "method": 14,
+        "variant": 2
+      },
+      "projection": {
+        "type": "delay"
+      },
+      "dependency_ranges": [],
+      "native_trace": [],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel17FxPresetComponent13getPresetTypeEv",
+        "address": 346056,
+        "size": 36,
+        "section": ".text",
+        "file_offset": 313288,
+        "range_sha256": "5495034e9bf5e75f721325e790d548e1129df21b3be5a0401d917ccaa023ef7e"
+      }
+    },
+    {
+      "case": {
+        "id": "15-0",
+        "method": 15,
+        "variant": 0
+      },
+      "projection": {
+        "result": 1,
+        "loaded": 1,
+        "recalled": 1,
+        "mode": "ignoreAltMemory"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Mixer::filter",
+          "address": 134221852,
+          "args": [
+            150999040,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "Component::load",
+          "address": 134221844,
+          "args": [
+            151003136,
+            167870372,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Preset::presetRecalled",
+          "address": 538532,
+          "args": [
+            150994944,
+            167870372,
+            0,
+            151093760
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "loaded": 1,
+        "mode": "ignoreAltMemory",
+        "recalled": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent6recallERN4Core8Portable10AttributesEb",
+        "address": 237108,
+        "size": 184,
+        "section": ".text",
+        "file_offset": 204340,
+        "range_sha256": "dbc311cf0853c2f8bc57a137a431cfef208fd2887ce8853fd4f0eb534d0e1ebb"
+      }
+    },
+    {
+      "case": {
+        "id": "15-1",
+        "method": 15,
+        "variant": 1
+      },
+      "projection": {
+        "result": 0,
+        "loaded": 1,
+        "recalled": 0,
+        "mode": "ignoreAltMemory"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Mixer::filter",
+          "address": 134221852,
+          "args": [
+            150999040,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "Component::load",
+          "address": 134221844,
+          "args": [
+            151003136,
+            167870372,
+            0,
+            151093760
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "loaded": 1,
+        "mode": "ignoreAltMemory"
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent6recallERN4Core8Portable10AttributesEb",
+        "address": 237108,
+        "size": 184,
+        "section": ".text",
+        "file_offset": 204340,
+        "range_sha256": "dbc311cf0853c2f8bc57a137a431cfef208fd2887ce8853fd4f0eb534d0e1ebb"
+      }
+    },
+    {
+      "case": {
+        "id": "16-0",
+        "method": 16,
+        "variant": 0
+      },
+      "projection": {
+        "stored": 0,
+        "old_deleted": 0,
+        "result": 0,
+        "scheduled": 0
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15ScenesComponent5storeEv",
+        "address": 249516,
+        "size": 260,
+        "section": ".text",
+        "file_offset": 216748,
+        "range_sha256": "21fbd681a361b5865d91d3dd0184100ab429ce7a6cbf43693b57e639c6bab05a"
+      }
+    },
+    {
+      "case": {
+        "id": "16-1",
+        "method": 16,
+        "variant": 1
+      },
+      "projection": {
+        "stored": 1,
+        "old_deleted": 0,
+        "result": 1,
+        "cache_name": "Edit",
+        "cache_category": "",
+        "cache_slot": 1,
+        "scheduled": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151015936,
+            167870168,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            167870168,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Cache::buildFileName",
+          "address": 546660,
+          "args": [
+            167869912,
+            151011328,
+            1,
+            167870168
+          ]
+        },
+        {
+          "call": "Preset::getFileNameForSlot",
+          "address": 540128,
+          "args": [
+            167869656,
+            150994944,
+            1,
+            167870168
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167869912,
+            167869656,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "Mixer::saveScene",
+          "address": 221096,
+          "args": [
+            150999040,
+            167869912,
+            167870168,
+            1
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            167869912,
+            167870168,
+            1
+          ]
+        },
+        {
+          "call": "Cache::cachePreset",
+          "address": 546772,
+          "args": [
+            151011328,
+            167870168,
+            3518812,
+            1
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            167870168,
+            3518812,
+            1
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "scene": 1,
+        "notify": 1,
+        "cache_name": "Edit",
+        "cache_category": "",
+        "cache_slot": 1,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15ScenesComponent5storeEv",
+        "address": 249516,
+        "size": 260,
+        "section": ".text",
+        "file_offset": 216748,
+        "range_sha256": "21fbd681a361b5865d91d3dd0184100ab429ce7a6cbf43693b57e639c6bab05a"
+      }
+    },
+    {
+      "case": {
+        "id": "16-2",
+        "method": 16,
+        "variant": 2
+      },
+      "projection": {
+        "stored": 1,
+        "old_deleted": 1,
+        "result": 1,
+        "cache_name": "Edit",
+        "cache_category": "",
+        "cache_slot": 1,
+        "scheduled": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            2,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151015936,
+            167870168,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            167870168,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Cache::buildFileName",
+          "address": 546660,
+          "args": [
+            167869912,
+            151011328,
+            1,
+            167870168
+          ]
+        },
+        {
+          "call": "Preset::getFileNameForSlot",
+          "address": 540128,
+          "args": [
+            167869656,
+            150994944,
+            1,
+            167870168
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167869912,
+            167869656,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "FileUtils::deleteFile",
+          "address": 1210776,
+          "args": [
+            167869656,
+            167869656,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "Mixer::saveScene",
+          "address": 221096,
+          "args": [
+            150999040,
+            167869912,
+            167870168,
+            1
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            167869912,
+            167870168,
+            1
+          ]
+        },
+        {
+          "call": "Cache::cachePreset",
+          "address": 546772,
+          "args": [
+            151011328,
+            167870168,
+            3518812,
+            1
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            167870168,
+            3518812,
+            1
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "old_deleted": 1,
+        "old_delete_requested": "02.Old.scene",
+        "scene": 1,
+        "notify": 1,
+        "cache_name": "Edit",
+        "cache_category": "",
+        "cache_slot": 1,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15ScenesComponent5storeEv",
+        "address": 249516,
+        "size": 260,
+        "section": ".text",
+        "file_offset": 216748,
+        "range_sha256": "21fbd681a361b5865d91d3dd0184100ab429ce7a6cbf43693b57e639c6bab05a"
+      }
+    },
+    {
+      "case": {
+        "id": "17-0",
+        "method": 17,
+        "variant": 0
+      },
+      "projection": {
+        "stored": 1,
+        "old_deleted": 0,
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "scheduled": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Cache::buildFileName",
+          "address": 546660,
+          "args": [
+            167870160,
+            151011328,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Preset::getFileNameForSlot",
+          "address": 540128,
+          "args": [
+            167869904,
+            150994944,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167870160,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "FileUtils::deleteFile",
+          "address": 1210776,
+          "args": [
+            167869904,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "Preset::createStorageHandler",
+          "address": 538192,
+          "args": [
+            150994944,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "ArchiveUtils::saveInBackground",
+          "address": 1150664,
+          "args": [
+            167870160,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Cache::cachePreset",
+          "address": 546772,
+          "args": [
+            151011328,
+            151007232,
+            151007488,
+            1
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            1
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "old_deleted": 0,
+        "old_delete_requested": "02.* Empty Location *.channel",
+        "background": 1,
+        "output_file": "02.Edit.Cat.channel",
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent12doPresetSaveEPKcS3_RKN4Core8Portable10AttributesE",
+        "address": 540476,
+        "size": 236,
+        "section": ".text",
+        "file_offset": 507708,
+        "range_sha256": "67ac2ac77a5defc1e08cd41bb7a207876cbab94b427efe4ac9fb58fbc718d827"
+      }
+    },
+    {
+      "case": {
+        "id": "17-1",
+        "method": 17,
+        "variant": 1
+      },
+      "projection": {
+        "stored": 1,
+        "old_deleted": 0,
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "scheduled": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Cache::buildFileName",
+          "address": 546660,
+          "args": [
+            167870160,
+            151011328,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Preset::getFileNameForSlot",
+          "address": 540128,
+          "args": [
+            167869904,
+            150994944,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167870160,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "Preset::createStorageHandler",
+          "address": 538192,
+          "args": [
+            150994944,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "ArchiveUtils::saveInBackground",
+          "address": 1150664,
+          "args": [
+            167870160,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Cache::cachePreset",
+          "address": 546772,
+          "args": [
+            151011328,
+            151007232,
+            151007488,
+            1
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            1
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "background": 1,
+        "output_file": "02.Edit.Cat.channel",
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent12doPresetSaveEPKcS3_RKN4Core8Portable10AttributesE",
+        "address": 540476,
+        "size": 236,
+        "section": ".text",
+        "file_offset": 507708,
+        "range_sha256": "67ac2ac77a5defc1e08cd41bb7a207876cbab94b427efe4ac9fb58fbc718d827"
+      }
+    },
+    {
+      "case": {
+        "id": "17-2",
+        "method": 17,
+        "variant": 2
+      },
+      "projection": {
+        "stored": 1,
+        "old_deleted": 1,
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "scheduled": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            151007744
+          ]
+        },
+        {
+          "call": "Cache::buildFileName",
+          "address": 546660,
+          "args": [
+            167870160,
+            151011328,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Preset::getFileNameForSlot",
+          "address": 540128,
+          "args": [
+            167869904,
+            150994944,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "strcmp",
+          "address": 44912,
+          "args": [
+            167870160,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "FileUtils::deleteFile",
+          "address": 1210776,
+          "args": [
+            167869904,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "Preset::createStorageHandler",
+          "address": 538192,
+          "args": [
+            150994944,
+            167869904,
+            1,
+            48
+          ]
+        },
+        {
+          "call": "ArchiveUtils::saveInBackground",
+          "address": 1150664,
+          "args": [
+            167870160,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Preset::getCache",
+          "address": 539820,
+          "args": [
+            150994944,
+            151007744,
+            151060480,
+            0
+          ]
+        },
+        {
+          "call": "Cache::cachePreset",
+          "address": 546772,
+          "args": [
+            151011328,
+            151007232,
+            151007488,
+            1
+          ]
+        },
+        {
+          "call": "Preset::presetStored",
+          "address": 537792,
+          "args": [
+            150994944,
+            151007232,
+            151007488,
+            1
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "old_deleted": 1,
+        "old_delete_requested": "02.Old.Cat.channel",
+        "background": 1,
+        "output_file": "02.Edit.Cat.channel",
+        "cache_name": "Edit",
+        "cache_category": "Cat",
+        "cache_slot": 1,
+        "stored": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZNK8Presonus5Panel15PresetComponent12doPresetSaveEPKcS3_RKN4Core8Portable10AttributesE",
+        "address": 540476,
+        "size": 236,
+        "section": ".text",
+        "file_offset": 507708,
+        "range_sha256": "67ac2ac77a5defc1e08cd41bb7a207876cbab94b427efe4ac9fb58fbc718d827"
+      }
+    },
+    {
+      "case": {
+        "id": "18-0",
+        "method": 18,
+        "variant": 0
+      },
+      "projection": {
+        "name": "Preset",
+        "category": "Cat",
+        "edit": "Edit"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151011328,
+            9,
+            151007232
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15PresetComponent12cacheUpdatedERNS0_15PresetNameCacheEiPKcS5_",
+        "address": 538640,
+        "size": 124,
+        "section": ".text",
+        "file_offset": 505872,
+        "range_sha256": "4766587f94089d167057abd97221ab156c5767e446ad249cd4143daac09fdad5"
+      }
+    },
+    {
+      "case": {
+        "id": "18-1",
+        "method": 18,
+        "variant": 1
+      },
+      "projection": {
+        "name": "Updated",
+        "category": "NewCat",
+        "edit": "Updated"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151011328,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            1,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151015680,
+            151007232,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            100,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016448,
+            151007488,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::updateEditName",
+          "address": 538332,
+          "args": [
+            150994944,
+            151007488,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15PresetComponent12cacheUpdatedERNS0_15PresetNameCacheEiPKcS5_",
+        "address": 538640,
+        "size": 124,
+        "section": ".text",
+        "file_offset": 505872,
+        "range_sha256": "4766587f94089d167057abd97221ab156c5767e446ad249cd4143daac09fdad5"
+      }
+    },
+    {
+      "case": {
+        "id": "18-2",
+        "method": 18,
+        "variant": 2
+      },
+      "projection": {
+        "name": "Updated",
+        "category": "NewCat",
+        "edit": "Updated"
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Preset::getSlotNum",
+          "address": 537752,
+          "args": [
+            150994944,
+            151011328,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            1,
+            1,
+            151007232
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151015680,
+            151007232,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            100,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::fromString",
+          "address": 134221836,
+          "args": [
+            151016448,
+            151007488,
+            0,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::updateEditName",
+          "address": 538332,
+          "args": [
+            150994944,
+            151007488,
+            0,
+            151094528
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {},
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel15PresetComponent12cacheUpdatedERNS0_15PresetNameCacheEiPKcS5_",
+        "address": 538640,
+        "size": 124,
+        "section": ".text",
+        "file_offset": 505872,
+        "range_sha256": "4766587f94089d167057abd97221ab156c5767e446ad249cd4143daac09fdad5"
+      }
+    },
+    {
+      "case": {
+        "id": "19-0",
+        "method": 19,
+        "variant": 0
+      },
+      "projection": {
+        "result": 1,
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "name": "Edit",
+        "category": "",
+        "username_saved": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Mixer::filter",
+          "address": 134221852,
+          "args": [
+            150999040,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributeAllocator::getDefault",
+          "address": 1187260,
+          "args": [
+            0,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "Attributes::constructor",
+          "address": 1186408,
+          "args": [
+            167870392,
+            151064576,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributesBuilder::constructor",
+          "address": 1145168,
+          "args": [
+            167870360,
+            167870392,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Component::save",
+          "address": 134221848,
+          "args": [
+            151003136,
+            167870312,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870056,
+            0,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            2,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151015936,
+            167870056,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167869800,
+            0,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::doPresetSave",
+          "address": 540476,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            167870392
+          ]
+        },
+        {
+          "call": "ChannelPresetComponent::saveUserName",
+          "address": 134221840,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            151093248
+          ]
+        },
+        {
+          "call": "Vector::~Vector",
+          "address": 192888,
+          "args": [
+            167870364,
+            167870056,
+            167869800,
+            4302824
+          ]
+        },
+        {
+          "call": "Attributes::~Attributes",
+          "address": 1190064,
+          "args": [
+            167870392,
+            167870056,
+            167869800,
+            4302824
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "save_name": "Edit",
+        "save_category": "",
+        "username_saved": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent5storeEv",
+        "address": 238064,
+        "size": 420,
+        "section": ".text",
+        "file_offset": 205296,
+        "range_sha256": "647d2454655df6d4365b95a72109369ffa98152a6b0c7317ac7170cc30410ada"
+      }
+    },
+    {
+      "case": {
+        "id": "19-1",
+        "method": 19,
+        "variant": 1
+      },
+      "projection": {
+        "result": 1,
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "name": "Edit",
+        "category": "Cat",
+        "username_saved": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Mixer::filter",
+          "address": 134221852,
+          "args": [
+            150999040,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributeAllocator::getDefault",
+          "address": 1187260,
+          "args": [
+            0,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "Attributes::constructor",
+          "address": 1186408,
+          "args": [
+            167870392,
+            151064576,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributesBuilder::constructor",
+          "address": 1145168,
+          "args": [
+            167870360,
+            167870392,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Component::save",
+          "address": 134221848,
+          "args": [
+            151003136,
+            167870312,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870056,
+            0,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            2,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151015936,
+            167870056,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167869800,
+            0,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016448,
+            167869800,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::doPresetSave",
+          "address": 540476,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            167870392
+          ]
+        },
+        {
+          "call": "ChannelPresetComponent::saveUserName",
+          "address": 134221840,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            151093248
+          ]
+        },
+        {
+          "call": "Vector::~Vector",
+          "address": 192888,
+          "args": [
+            167870364,
+            167870056,
+            167869800,
+            4302824
+          ]
+        },
+        {
+          "call": "Attributes::~Attributes",
+          "address": 1190064,
+          "args": [
+            167870392,
+            167870056,
+            167869800,
+            4302824
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "save_name": "Edit",
+        "save_category": "Cat",
+        "username_saved": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent5storeEv",
+        "address": 238064,
+        "size": 420,
+        "section": ".text",
+        "file_offset": 205296,
+        "range_sha256": "647d2454655df6d4365b95a72109369ffa98152a6b0c7317ac7170cc30410ada"
+      }
+    },
+    {
+      "case": {
+        "id": "19-2",
+        "method": 19,
+        "variant": 2
+      },
+      "projection": {
+        "result": 1,
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "name": "Edit",
+        "category": "Cat",
+        "username_saved": 1
+      },
+      "dependency_ranges": [],
+      "native_trace": [
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            0
+          ]
+        },
+        {
+          "call": "Mixer::selectedChannel",
+          "address": 193532,
+          "args": [
+            150999040,
+            151007232,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Mixer::filter",
+          "address": 134221852,
+          "args": [
+            150999040,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributeAllocator::getDefault",
+          "address": 1187260,
+          "args": [
+            0,
+            4,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "Attributes::constructor",
+          "address": 1186408,
+          "args": [
+            167870392,
+            151064576,
+            151003136,
+            151093504
+          ]
+        },
+        {
+          "call": "AttributesBuilder::constructor",
+          "address": 1145168,
+          "args": [
+            167870360,
+            167870392,
+            1,
+            151093504
+          ]
+        },
+        {
+          "call": "Component::save",
+          "address": 134221848,
+          "args": [
+            151003136,
+            167870312,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167870056,
+            0,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Component::getParameterByTag",
+          "address": 1154124,
+          "args": [
+            150994944,
+            2,
+            0,
+            151093760
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151015936,
+            167870056,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "CString256::constructor",
+          "address": 48256,
+          "args": [
+            167869800,
+            0,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Parameter::toString",
+          "address": 134221832,
+          "args": [
+            151016448,
+            167869800,
+            256,
+            151094528
+          ]
+        },
+        {
+          "call": "Preset::doPresetSave",
+          "address": 540476,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            167870392
+          ]
+        },
+        {
+          "call": "ChannelPresetComponent::saveUserName",
+          "address": 134221840,
+          "args": [
+            150994944,
+            167870056,
+            167869800,
+            151093248
+          ]
+        },
+        {
+          "call": "Vector::~Vector",
+          "address": 192888,
+          "args": [
+            167870364,
+            167870056,
+            167869800,
+            4302824
+          ]
+        },
+        {
+          "call": "Attributes::~Attributes",
+          "address": 1190064,
+          "args": [
+            167870392,
+            167870056,
+            167869800,
+            4302824
+          ]
+        }
+      ],
+      "native_writes": [],
+      "native_observations": {
+        "saved": 1,
+        "mode": "ignoreAltMemory",
+        "save_name": "Edit",
+        "save_category": "Cat",
+        "username_saved": 1
+      },
+      "range": {
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus5Panel22ChannelPresetComponent5storeEv",
+        "address": 238064,
+        "size": 420,
+        "section": ".text",
+        "file_offset": 205296,
+        "range_sha256": "647d2454655df6d4365b95a72109369ffa98152a6b0c7317ac7170cc30410ada"
+      }
+    }
+  ]
+}

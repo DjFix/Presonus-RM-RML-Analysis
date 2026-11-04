@@ -34,34 +34,71 @@ def prepare_task(task):
     return enrich(task)
 
 
-def enrich(task):
+def _validate_registry_snapshot(snapshot):
+    """Provided view is one live transaction on the currently selected working DB.
+
+    No guard/record/contract cache. Caller closes each setup/barrier view and uses
+    a fresh snapshot at the next barrier; never hold this view through AST.
+    """
+    if not isinstance(snapshot, adapter.RegistrySnapshot):
+        raise ContextError('Provided registry view must be an actual RegistrySnapshot')
+    expected = adapter.resolve_db(ROOT / 'uc-library')
+    connection = snapshot.c
+    if connection is None:
+        raise ContextError('Provided registry view is closed')
+    try:
+        if not connection.in_transaction:
+            raise ContextError('Provided registry view needs a live transaction')
+        databases = {row[1]: row[2] for row in connection.execute('PRAGMA database_list')}
+        if (snapshot.db.resolve() != expected
+                or pathlib.Path(databases.get('main', '')).resolve() != expected):
+            raise ContextError('Provided registry view is foreign or working DB pointer changed')
+        if not isinstance(getattr(snapshot, 'guard', None), str) or len(snapshot.guard) != 64:
+            raise ContextError('Provided registry view lacks its original snapshot guard')
+        adapter.schema.require_current(connection)
+    except ContextError:
+        raise
+    except Exception as error:
+        raise ContextError('Invalid/closed provided registry transaction: ' + str(error)) from error
+
+
+def _enrich_registry(task, snapshot):
+    enriched = dict(task)
+    identities = []
+    for target in task['targets']:
+        elf, mangled = target['original_elf_sha256'], target['mangled']
+        row = snapshot.c.execute('SELECT * FROM records WHERE elf=? AND mangled=?', (elf,mangled)).fetchone()
+        record = json.loads(row['metadata']) if row else None
+        rows = [dict(r) for r in snapshot.c.execute(
+            'SELECT * FROM catalog_symbols WHERE elf=? AND mangled=?', (elf,mangled))]
+        if target.get('anchor'):
+            rows = [r for r in rows if r['anchor'] == target['anchor']]
+        elif record:
+            address = record.get('original_address', record.get('address'))
+            size = record.get('original_size', record.get('size'))
+            rows = [r for r in rows if r['address'] == address and r['size'] == size]
+        elif 'address' in target and 'size' in target:
+            rows = [r for r in rows if r['address'] == target['address'] and r['size'] == target['size']]
+        if len(rows) != 1:
+            raise ContextError('Resolve exact catalog anchor/range; ambiguous or absent original: ' + mangled)
+        original = rows[0]
+        validate_original_scope(task, original)
+        identities.append({'original': original, 'record': record})
+    enriched['originals'] = identities
+    enriched['registry_guard'] = snapshot.guard
+    return enriched
+
+
+def enrich(task, registry_snapshot=None):
     validate_task(task)
     if task.get("reconstruction_contract"):
         validate_reconstruction_plan(task)
-    enriched = dict(task)
-    identities = []
-    with adapter.snapshot(ROOT / 'uc-library') as snapshot:
-        for target in task['targets']:
-            elf, mangled = target['original_elf_sha256'], target['mangled']
-            row = snapshot.c.execute('SELECT * FROM records WHERE elf=? AND mangled=?', (elf,mangled)).fetchone()
-            record = json.loads(row['metadata']) if row else None
-            rows = [dict(r) for r in snapshot.c.execute(
-                'SELECT * FROM catalog_symbols WHERE elf=? AND mangled=?', (elf,mangled))]
-            if target.get('anchor'):
-                rows = [r for r in rows if r['anchor'] == target['anchor']]
-            elif record:
-                address = record.get('original_address', record.get('address'))
-                size = record.get('original_size', record.get('size'))
-                rows = [r for r in rows if r['address'] == address and r['size'] == size]
-            elif 'address' in target and 'size' in target:
-                rows = [r for r in rows if r['address'] == target['address'] and r['size'] == target['size']]
-            if len(rows) != 1:
-                raise ContextError('Resolve exact catalog anchor/range; ambiguous or absent original: ' + mangled)
-            original = rows[0]
-            validate_original_scope(task, original)
-            identities.append({'original': original, 'record': record})
-        enriched['originals'] = identities
-        enriched['registry_guard'] = snapshot.guard
+    if registry_snapshot is None:
+        with adapter.snapshot(ROOT / 'uc-library') as snapshot:
+            enriched = _enrich_registry(task, snapshot)
+    else:
+        _validate_registry_snapshot(registry_snapshot)
+        enriched = _enrich_registry(task, registry_snapshot)
     for path in task.get('owned_files', []):
         inside(ROOT, path)
     return enriched
