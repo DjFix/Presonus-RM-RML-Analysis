@@ -1,0 +1,24 @@
+{
+  "task_id": "rolling200_impl_c22_04",
+  "original": [
+    {
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus4Link9MessengerD0Ev",
+      "address": 551780,
+      "size": 148
+    }
+  ],
+  "reason": "D0 parked: 0xac10 is SHN_UNDEF operator delete PLT; missing original runtime body prevents native allocator observation. Failed baseline expansion retained at temp/recovery-work/rolling200-implementation01/expand-c22-delete01.",
+  "retry_condition": "Provide hash-bound original ARM runtime operator delete/allocator implementation or authorized runtime trace demonstrating actual deallocation; native PLT entry insufficient.",
+  "owner": "/root/rolling200_impl_c22",
+  "status": "parked_unresolved_not_admitted",
+  "utc": "2026-11-05T02:42:24.425942+00:00",
+  "work_item_id": "e8ca5697f239499b9aa6a0845b72111fae7557f8a43a19a1222f578ae6caeace",
+  "claim_id": "21fc7d4632264a33a817fd3bc2d54d4c",
+  "source_note": {
+    "path": "uc-library/candidates/rolling200_impl_c22/PARKED-D0.json",
+    "sha256": "ed2ee872392177ce545934562d700d255d7fdf5528db9af1117b643cb408d80b"
+  },
+  "readiness_effect": "None; claim remains active, no native allocator behavior credit. Revisit only when specified evidence changes.",
+  "resolution": null
+}
