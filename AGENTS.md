@@ -441,3 +441,117 @@ measurements before continuing production. All validation gates remain in force.
   unresolved entries. After compaction, read this section and the actual live
   state before planning; continue the delivery stream instead of reopening a
   finished scaling trial or returning to a small test batch.
+
+## Canonical production source organization
+
+- Organize production headers and implementations by their actual class,
+  subsystem or coherent responsibility. Batch names, worker numbers, trial
+  identifiers, ranking labels and scheduling history must not define public
+  include paths, production source paths or convenience API namespaces.
+- Do not introduce production paths such as frontier01/frontier01_w01.hpp,
+  reconstruction200/large01_w06.hpp or rank20cycle01/rank20c01_w02.hpp.
+  Keep task/worker identifiers in candidates, evidence, scratch and recovery
+  test artifacts where they describe provenance.
+- Before dispatching implementation work, Root assigns canonical owned source
+  and header paths. Check existing declarations and implementations first.
+  Extend the existing canonical class definition rather than introducing
+  another partial definition in a worker-specific header.
+- Preserve original case-sensitive C++ namespaces and symbol identities.
+  Use existing filesystem casing conventions. A partial portable source port
+  must document its limitations inside the canonical class files; uncertainty
+  does not justify a temporary production path.
+- Prefer a header named for its principal class. Related types may share a
+  semantically named header when their relationship warrants it. Do not group
+  unrelated classes solely because one worker reconstructed them together.
+- Resolve parallel ownership through disjoint class/file assignments and
+  dependency scheduling. Do not create duplicate class headers or permanent
+  worker-specific production units to avoid a shared-file conflict.
+  Root owns shared build integration and final source organization.
+- Before integration and admission, review canonical placement, includes,
+  public header lists and the exactly-one production OBJECT partition rule.
+  Compilation, matching symbols and behavioral tests do not substitute for
+  this structural review.
+- Add an automated production-path check to the integration preflight.
+  It must reject new batch/worker/trial-named production paths and production
+  dependencies on candidates or scratch. Keep any existing exceptions in an
+  explicit migration inventory with owner, reason and destination. Do not
+  silently extend the exception list. This inventory does not authorize new
+  exceptions or require delaying unrelated production until migration ends.
+- Normalize existing files in coherent, bounded migrations. Preserve original
+  ELF identities, existing work and historical evidence. Record old/new paths
+  and hashes; do not cosmetically rewrite historical proof provenance.
+  Follow the project trash policy for retired files.
+- A move or split that changes proof-bound files requires fresh affected
+  formatting, compile, symbol and behavior checks, the mandatory Linux
+  integration and role/install/compile-once gates, current proof bindings,
+  guarded registry admission where applicable, tracker and mirror audit.
+  Refresh affected graph context before subsequent dispatch.
+- Commit each validated and admitted coherent migration separately after
+  reviewing the staged diff. Workers do not commit shared integration.
+  Do not rewrite Git history or push without explicit user authorization.
+- Changes to AGENTS.md and other packet-bound instructions must occur at a
+  controlled preparation boundary unless the user explicitly requests an
+  immediate change. Such a change does not authorize bypassing freshness
+  checks or relabeling old packets as current. Preserve live jobs and their
+  evidence; inspect their actual outcome before re-preparing affected work.
+
+## Keep reconstruction agents working until the current selection is finished
+
+Explicit user correction, 2026-11-05. This section supersedes scheduling rules
+that allow stopping after research, completion of only the initially dispatched
+workers, or preparation of an integration draft.
+
+- Keep agents doing actual C++ reconstruction until the entire current selection
+  of 200 original targets has been processed. Use up to ten GPT-6.1-Sol workers
+  in separate physical Git repositories; fill available implementation capacity
+  whenever independent eligible work exists. Root integrates their owned diffs.
+- Research, a contract, a prepared packet, a compiling stub, or an idle worker
+  is not completed reconstruction. A worker owns implementation, independent
+  native/provider observations, executable replay, formatting, compilation,
+  exact-symbol checks and a hash-bound delivery. Root owns final acceptance,
+  integration and admission.
+- When an agent finishes, promptly dispatch the next feasible implementation
+  or return a concrete validation failure to its owner. Keep a prepared queue
+  of exact original identities, canonical file ownership and necessary context.
+  Do not leave agents idle merely because Root is reporting status, reviewing
+  other results, preparing Git publication or waiting on unrelated checks.
+- Overlap independent implementation with integration, validation and graph
+  publication where actual source/hash/ownership dependencies allow it. Prepare
+  fresh packets at the earliest safe boundary. If a provider has already been
+  delivered, integrate or otherwise lawfully provide that dependency promptly;
+  do not repeatedly research it or reconstruct it again.
+- Finish feasible owned state, declarations, lifecycle and source-port adapters.
+  Missing work inside the assigned scope is work to perform, not automatically
+  a blocker. Park only a concrete evidenced impediment or ownership conflict,
+  with exact original identity, owner, evidence and retry condition. Do not
+  classify an unassigned or merely researched target as blocked to close the
+  selection. Revisit dependent targets when a delivered prerequisite resolves
+  their blocker.
+- If implementation capacity cannot be filled, persist the specific reason for
+  each unavailable scope and the next action that will unblock it. Preparation
+  mistakes or delayed Root dispatch are scheduling failures to fix, not a
+  reason to claim that reconstruction has finished.
+- Preserve every existing instruction-freshness, graph-publication, unique-work
+  claim, native/provider, formatting, Linux, symbol/behavior, installed-role,
+  compile-once, active-source, admission, tracker and mirror gate. More parallel
+  work never permits stale packets, duplicate definitions or stolen live claims.
+- The user's latest goal update authorizes continuous production and supersedes
+  the earlier stop-after-current200 instruction. After completing assigned
+  symbols, each worker reviews its staged diff and commits its own completed
+  source/tests/evidence in its isolated local repository, then takes the next
+  feasible bounded assignment. Do not wait for the entire selection, Root
+  publication, or unrelated workers before preparing the next assignment.
+- Worker-local commits are now explicitly authorized; earlier worker prompts
+  saying no commits are superseded for completed owned work. Never commit
+  shared integration files, unrelated changes, scratch, firmware inputs or raw
+  binaries. Preserve proof provenance and give Root the commit hash, exact
+  owned diff and hash-bound delivery. Local commits are not global admission.
+  Workers must not push. Root retains shared integration, all canonical gates,
+  admission and publication under the user's explicit push authorization.
+- Continue rolling selections of 200, retaining concrete blockers and revisiting
+  them when prerequisites change. Current unfinished implementable work remains
+  assigned; starting subsequent selections must not silently abandon it.
+- An immediate user-requested AGENTS.md change invalidates affected packet
+  instruction bindings. Record the old/new instruction hashes, preserve current
+  work and actual job outcomes, and prepare affected subsequent dispatches with
+  the new instructions. Never silently re-seal old packets as current.
