@@ -258,7 +258,11 @@ def prepare(session,out,active):
     for item in task['originals']:
         o=item['original'];r=item['record'] or {}
         lines.append(f"- `{o['elf']}` / `{o['mangled']}`; `{o['demangled']}`; {o['firmware']}; address {o['address']}; size {o['size']}; section {o['section_json']}")
-        if r.get('unresolved'):lines.append('  Unresolved declaration: '+r['unresolved'])
+        if r.get('unresolved'):
+            unresolved_text = r['unresolved']
+            if not isinstance(unresolved_text, str):
+                unresolved_text = json.dumps(unresolved_text, ensure_ascii=False)
+            lines.append('  Unresolved declaration: ' + unresolved_text)
     lines += ['', '## Read first','',*['- `'+p+'`; baseline snapshot `'+state.get('source_snapshots',{}).get(p,p)+'`' for p in sorted(source_paths)],
               '', '## Source functions in call closure','']
     for key in sorted(call_functions):
