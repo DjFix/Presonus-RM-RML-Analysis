@@ -46,6 +46,10 @@ namespace Presonus::Panel {
 // declarations and remain pending original declaration evidence.
 class GeqUIComponent : public Core::Portable::Component {
 public:
+  class Delegate;
+  // Borrowed delegate; no interface or original return declaration established.
+  void setDelegate(Delegate *);
+  Delegate *portableDelegate() const { return delegate_; }
   explicit GeqUIComponent(presonus::gequi_port::Dependencies &dependencies)
       : dependencies(dependencies) {}
   void updateStereoLink(Mixer::ChannelComponent *, bool);
@@ -76,6 +80,7 @@ public:
   int selectedBand() const { return currentBand; }
 
 private:
+  Delegate *delegate_ = nullptr;
   Mixer::GEQComponent *geqAt(int index) const;
   presonus::gequi_port::Dependencies &dependencies;
   const presonus::gequi_port::ChannelSelection *channelSelection = nullptr;

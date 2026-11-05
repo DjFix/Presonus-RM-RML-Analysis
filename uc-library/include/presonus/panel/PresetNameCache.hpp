@@ -11,6 +11,14 @@ namespace Presonus::Panel {
 class PresetNameCache {
 public:
   struct Delegate;
+  // Source-port state: named original scope; no original layout claim.
+  struct CacheInfo {
+    CacheInfo();
+    Core::CString64 name;
+    Core::CString32 category;
+  };
+  // Original return spelling is unresolved; int is the portable contract.
+  int getCapacity() const;
   // Independent observer boundary; Delegate is intentionally opaque.
   struct ObserverSink {
     virtual ~ObserverSink() = default;
@@ -43,14 +51,12 @@ public:
 private:
   friend class PresetNameManager;
   friend struct presonus::panel::PresetCacheAccess;
-  struct Entry {
-    Core::CString64 name;
-    Core::CString32 category;
-  };
+  using Entry = CacheInfo;
   Core::CString64 type;
   Core::Portable::FileName folder;
   bool dirty = true;
   int protectedSlots;
+  int capacity;
   Core::Vector<Delegate *> observers;
   Core::Vector<Entry> entries;
   Core::Vector<Core::CString32> categories;

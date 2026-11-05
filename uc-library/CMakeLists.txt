@@ -1841,6 +1841,11 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/dsp/ControllerInfo.hpp
+  presonus/panel/Element.hpp
+  presonus/MappableMixer.hpp
+  presonus/link/Messenger.hpp
+  presonus/panel/SharedMemoryComm.hpp
   presonus/MixerClientComponentBase.hpp
   presonus/SLChannel.hpp
   presonus/IMainScreenPageController.hpp
@@ -2261,3 +2266,5 @@ if(BUILD_TESTING)
   add_subdirectory(tests/recovery/stabilized01_mapping)
   add_subdirectory(tests/recovery/stabilized01_uart)
 endif()
+
+include(cmake/Rolling200Implementation01.cmake)

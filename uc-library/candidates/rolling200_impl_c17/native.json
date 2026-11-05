@@ -1,0 +1,103 @@
+{
+  "elf": "evidence/recovery/2026-10-28/vm-migration/legacy-uc-recovery/inputs/mixer-13731.elf",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "address": 542452,
+      "size": 20,
+      "file_offset": 509684,
+      "section": {
+        "index": 12,
+        "name": ".text",
+        "address": 45344,
+        "size": 1365568,
+        "file_offset": 12576,
+        "flags": 6,
+        "type": "SHT_PROGBITS"
+      },
+      "sha256": "d04dfb06b6d1f10b5a7fb1c516cab9f7853a5919c2fd77fd32ced5f87c682339"
+    },
+    {
+      "address": 543940,
+      "size": 56,
+      "file_offset": 511172,
+      "section": {
+        "index": 12,
+        "name": ".text",
+        "address": 45344,
+        "size": 1365568,
+        "file_offset": 12576,
+        "flags": 6,
+        "type": "SHT_PROGBITS"
+      },
+      "sha256": "fc54146e361b8969c8c29845fb81010f771a592e73d8f15481a12e3cf931c583"
+    },
+    {
+      "address": 543996,
+      "size": 56,
+      "file_offset": 511228,
+      "section": {
+        "index": 12,
+        "name": ".text",
+        "address": 45344,
+        "size": 1365568,
+        "file_offset": 12576,
+        "flags": 6,
+        "type": "SHT_PROGBITS"
+      },
+      "sha256": "6663a370e8f7ef154c2c4b48b3827ab73bc6f6972bc7ebcc5271de3f1e8f4eef"
+    }
+  ],
+  "capacity_u32": [
+    0,
+    1,
+    2,
+    16,
+    127,
+    255,
+    1024,
+    2147483647,
+    2147483648,
+    4294967295
+  ],
+  "constructors": [
+    {
+      "entry": 543940,
+      "calls": [
+        {
+          "target": 118672,
+          "receiver_offset": 0,
+          "text_pointer": 3502984,
+          "text": "* Empty Location *"
+        },
+        {
+          "target": 122556,
+          "receiver_offset": 64,
+          "text_pointer": 0,
+          "text": null
+        }
+      ],
+      "returned_receiver": true
+    },
+    {
+      "entry": 543996,
+      "calls": [
+        {
+          "target": 118672,
+          "receiver_offset": 0,
+          "text_pointer": 3502984,
+          "text": "* Empty Location *"
+        },
+        {
+          "target": 122556,
+          "receiver_offset": 64,
+          "text_pointer": 0,
+          "text": null
+        }
+      ],
+      "returned_receiver": true
+    }
+  ],
+  "scope": "Real original ARM application instructions executed; Core calls intercepted only to observe actual receiver/input/order, no Core firmware body executed or simulated. Provider effects observed separately through pinned CCL replay.",
+  "alias_observation": "Original C1 and C2 have different addresses and bytes, same observed calls and receiver return; host compiler may alias variants."
+}

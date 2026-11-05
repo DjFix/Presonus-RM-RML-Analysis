@@ -1,4 +1,7 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Panel/Element.cpp
+  src/Presonus/MappableMixer.cpp
+  src/Presonus/Panel/SharedMemoryComm.cpp
   src/Presonus/MixerClientComponentBase.cpp
   src/Presonus/SLChannel.cpp
   src/Presonus/UC/EventDispatcherLifetime.cpp
@@ -328,6 +331,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/ControllerInfo.cpp
+  src/Presonus/Link/Messenger.cpp
   src/Presonus/Panel/FrontPanelUartTest.cpp
   src/Presonus/Mixer/MixerRouteInputsToNet.cpp
   src/Presonus/Panel/ChannelPresetComponent.cpp
@@ -455,6 +460,11 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/dsp/ControllerInfo.hpp
+  presonus/panel/Element.hpp
+  presonus/MappableMixer.hpp
+  presonus/link/Messenger.hpp
+  presonus/panel/SharedMemoryComm.hpp
   presonus/color/IColorConverter.hpp
   presonus/color/MixerColorConverter.hpp
   presonus/surface/GroupsPageComponent.hpp

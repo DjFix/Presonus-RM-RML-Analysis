@@ -5,17 +5,23 @@ namespace Presonus::Panel {
 namespace {
 constexpr const char *emptyMarker = "* Empty Location *";
 }
+PresetNameCache::CacheInfo::CacheInfo()
+    : name(emptyMarker), category(nullptr) {}
+
 PresetNameCache::PresetNameCache(const char *kind,
                                  const Core::Portable::FileName &path,
                                  int slots, int protectedCount,
                                  ObserverSink &callback)
-    : type(kind), folder(path), protectedSlots(protectedCount), sink(callback) {
+    : type(kind), folder(path), protectedSlots(protectedCount), capacity(slots),
+      sink(callback) {
   for (int i = 0; i < slots; ++i) {
     Entry e;
     e.name = emptyMarker;
     entries.add(e);
   }
 }
+int PresetNameCache::getCapacity() const { return capacity; }
+
 bool PresetNameCache::parseFileName(const Core::Portable::FileName &path,
                                     Core::CStringBuffer<64> &name,
                                     Core::CStringBuffer<32> &category,

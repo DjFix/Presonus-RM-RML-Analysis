@@ -1,6 +1,7 @@
 #include "presonus/panel/GeqUIComponent.hpp"
 #include <cstdint>
 namespace Presonus::Panel {
+void GeqUIComponent::setDelegate(Delegate *value) { delegate_ = value; }
 Mixer::GEQComponent *GeqUIComponent::geqAt(int index) const {
   return index >= 0 && index < dependencies.geqCount()
              ? dependencies.geqAt(index)

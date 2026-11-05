@@ -11,6 +11,14 @@ public:
   DECLARE_CORE_CLASS(0x534c4342, SLChannelBase, Core::Portable::Component)
   using Core::Portable::Component::Component;
   virtual Core::Portable::Parameter *getSelectionParameter() const;
+  // These nullable Parameter returns are intentional source-port declarations.
+  // Original ARM bodies return zero without instance access. Their ordinary
+  // return declarations/pointee qualifiers and original vtable layout remain
+  // unresolved; matching method names do not establish ARM ABI compatibility.
+  virtual Core::Portable::Parameter *getLinkParameter() const;
+  virtual Core::Portable::Parameter *getColorParameter() const;
+  virtual Core::Portable::Parameter *getLinkMasterParameter() const;
+  virtual Core::Portable::Parameter *getLinkedSelectionParameter() const;
 };
 
 class SLChannel : public SLChannelBase {

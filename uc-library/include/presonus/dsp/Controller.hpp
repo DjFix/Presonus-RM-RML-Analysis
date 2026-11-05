@@ -21,7 +21,11 @@ struct ControllerSourceState {
   Core::IPropertyHandler *handler = nullptr, *target = nullptr;
 };
 } // namespace presonus::dsp
+namespace Presonus {
+struct StringResult;
+}
 namespace Presonus::Dsp {
+struct ParamInfo;
 struct SetupProperty;
 struct ChannelProperty;
 class Controller {
@@ -57,6 +61,10 @@ public:
   float getNormalized(int) const;
   float setNormalized(int, float);
   float boundValue(int, float) const;
+  // Portable source contracts; original ordinary return declarations pending.
+  virtual void printValue(Presonus::StringResult &, int, float) const;
+  virtual void getParameterInfo(ParamInfo &, int) const;
+  virtual bool scanValue(float &, int, const char *) const;
   // Portable void contract; original return declaration remains unresolved.
   // property must borrow at least 12 readable bytes; +8 is the observed word.
   virtual void setupProcess(const SetupProperty &property);
