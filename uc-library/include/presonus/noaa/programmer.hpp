@@ -117,6 +117,10 @@ public:
   std::int32_t readInfo();
   std::int32_t openPort(const char *path);
   std::int32_t open(const char *path);
+  std::int32_t writeImage();
+  std::int32_t update();
+  std::int32_t eraseAll();
+  std::int32_t unprotect();
 
 private:
   friend struct presonus::noaa::ProgrammerAccess;

@@ -12,6 +12,9 @@ class FxPresetComponent {
 public:
   FxPresetComponent(FXPresetRecallComponent *const *items, int count)
       : recalls(items, count) {}
+  // Portable return choices; original ordinary returns remain unresolved.
+  Core::Portable::Parameter *getRecallParameter(int, int);
+  bool recall(Core::Portable::Attributes &, bool);
   void presetStored(const PresetComponent &, int);
   // Caller-owned source-port state; optional provider yields the observed zero
   // default for a missing FX selection parameter. No original field inference.

@@ -1,4 +1,5 @@
 #pragma once
+#include "presonus/surface/sl_mixer_encoder.hpp"
 #include <array>
 #include <cstdint>
 #include <functional>
@@ -18,6 +19,8 @@ struct State {
   // The caller supplies a readable terminator and valid terminated names.
   const std::array<unsigned char, 44> *controlDescriptions{};
   Presonus::MappingTable *mappingTable{};
+  Core::Portable::Component *normalParameters{};
+  Core::Portable::Component *alternateParameters{};
   std::array<std::uint32_t, 17> accumulation{};
   std::vector<std::string> colorControls;
 };
@@ -40,6 +43,20 @@ public:
   MidiMixerHandler(presonus::surface::midi_port::State &state,
                    presonus::surface::midi_port::Services &services)
       : state_(state), services_(services) {}
+  // Independent portable record. ARM offsets/stride are not asserted.
+  // Borrowed terminated names/colors and a first-byte-empty terminator are
+  // required; selected component and mappingTable must be live.
+  struct MappingItem {
+    char name[32]{};
+    std::int32_t tag{};
+    std::uint8_t alternate{};
+    std::uint8_t disable{};
+    const char *color{};
+  };
+  void updateMapping(const MappingItem *);
+  bool getParamFocusInfo(Presonus::MixerAssignmentHandler::FocusInfo &,
+                         Core::Portable::Parameter *);
+  void connect();
   int countMappings() const;
   const char *getName() const;
   bool canActivate() const;

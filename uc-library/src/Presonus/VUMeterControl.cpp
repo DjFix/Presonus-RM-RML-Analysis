@@ -1,5 +1,8 @@
 #include "presonus/VUMeterControl.hpp"
+#include "core/public/corestringtraits.h"
+#include <cmath>
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 namespace Presonus {
 VUMeterControl::VUMeterControl(const Core::TRect<int> &size)
@@ -50,5 +53,43 @@ void VUMeterControl::setFrame(int frame) {
   if (frame != previousValue_)
     dirty_ = true;
   previousValue_ = frame;
+}
+void VUMeterControl::setAttributes(
+    const Core::Portable::Attributes &attributes) {
+  PotControl::setAttributes(attributes);
+  const Core::EnumInfo meterOptions[] = {{"reverse", 0x400000}, {nullptr, 0}};
+  options |=
+      Core::Portable::ViewAttributes::getOptions(attributes, meterOptions);
+  const char *table = attributes.getString("dbtable");
+  if (!table)
+    return;
+  thresholds_.resize(0);
+  // Actual CCL tokenizer owns the full string. The native unused 127-byte copy
+  // is intentionally omitted; global strtok concurrency is not reproduced.
+  Core::CStringTokenizer tokenizer(table, ",");
+  while (const char *token = tokenizer.next()) {
+    if (!*token)
+      break;
+    float decibels = 0.f;
+    std::sscanf(token, "%f", &decibels);
+    std::uint32_t bits = 0x3f7fffff;
+    float threshold;
+    std::memcpy(&threshold, &bits, sizeof(threshold));
+    if (!(decibels < -144.f))
+      threshold = 1.f - ::powf(10.f, decibels * 0.05f);
+    thresholds_.add(threshold);
+  }
+}
+
+void VUMeterControl::onIdle() {
+  Core::Portable::Control::onIdle();
+  if (!timer_.isLongEnoughYet())
+    return;
+  if (dirty_) {
+    invalidate();
+    dirty_ = false;
+  }
+  timer_.reset();
+  timer_.beginAction(-1.f);
 }
 } // namespace Presonus

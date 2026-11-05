@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <atomic>
 #include <cstdint>
 #include <optional>
 namespace Core {
@@ -22,6 +23,10 @@ struct CardHandlerState {
   const Core::Property *geqProperty = nullptr;
   // Original bytes at offsets8..40, independent of native Property layout.
   const std::array<unsigned char, 33> *geqPayload = nullptr;
+  // Borrowed source-port count; producer release-stores and consumer
+  // acquire-loads. Not a claim about original +0xa4 type, ordering or native
+  // object layout.
+  std::atomic<std::uint32_t> *pendingEventCount = nullptr;
 };
 struct CardHandlerSetupTag {};
 inline constexpr CardHandlerSetupTag cardHandlerSetupTag{};

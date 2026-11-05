@@ -25,6 +25,8 @@ public:
   int threadEntry() override = 0;
   void getProperty(Core::Property &) override;
   bool accepts(const SysexPacket &) override;
+  // Portable void contract; original ordinary return declaration unresolved.
+  void purgeEvents();
   unsigned long long getAlternateMac();
   unsigned int sendGEQBulkProperty(const Core::Property &);
 

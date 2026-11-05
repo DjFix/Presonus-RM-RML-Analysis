@@ -9,6 +9,10 @@ public:
   explicit VUMeterControl(const Core::TRect<int> &size);
   ~VUMeterControl() override;
   void setFrame(int frame) override;
+  void setAttributes(const Core::Portable::Attributes &attributes) override;
+  void onIdle() override;
+  int portableThresholdCount() const { return thresholds_.count(); }
+  float portableThreshold(int index) const { return thresholds_[index]; }
   void changeFrames() override;
   void portableBindThresholds(const float *values, int count) {
     thresholds_.empty();
@@ -23,6 +27,12 @@ public:
     dirty_ = dirty;
   }
   bool portableDirty() const { return dirty_; }
+  void portableBindTimer(const presonus::timing::DelayTimerState &state) {
+    presonus::timing::DelayTimerAccess::set(timer_, state);
+  }
+  presonus::timing::DelayTimerState portableTimer() const {
+    return presonus::timing::DelayTimerAccess::get(timer_);
+  }
 
 private:
   Core::Vector<float> thresholds_;

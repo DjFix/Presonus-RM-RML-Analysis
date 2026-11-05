@@ -415,6 +415,8 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/CompressorParameterList.cpp
   src/Presonus/NOAA/TCardUCNetHandlerIO.cpp
   src/Presonus/NOAA/TCardHandlerProperties.cpp
+  src/Presonus/NOAA/TCardHandlerEvents.cpp
+  src/Presonus/NOAA/TCardFPGAUpdater.cpp
   src/Presonus/NOAA/TCardRouterRoutes.cpp
   src/Presonus/NOAA/TCardReceive.cpp
   src/Presonus/NOAA/TCardStart.cpp
@@ -590,6 +592,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/mixer/DecayTimeFormatter.hpp
   presonus/noaa/diagnostics.hpp
   presonus/noaa/programmer.hpp
+  presonus/noaa/TCardFPGAUpdater.hpp
   presonus/uc/midi_connection.hpp
   presonus/uc/connection_interfaces.hpp
   presonus/mixer_dsp/GateParameterList.hpp

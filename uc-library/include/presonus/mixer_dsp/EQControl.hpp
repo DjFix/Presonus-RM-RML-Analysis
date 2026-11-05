@@ -1,8 +1,12 @@
 #pragma once
 #include "core/portable/coreparams.h"
+#include "core/portable/gui/corecontrols.h"
+#include "core/portable/gui/coregraphics.h"
+#include "core/portable/gui/coreview.h"
 #include "core/public/coreinterpolator.h"
 #include "core/public/corevector.h"
 #include <cstdint>
+#include <memory>
 #include <vector>
 namespace presonus::dsp {
 // Independent partial-object construction; not an original constructor.
@@ -26,7 +30,7 @@ namespace Presonus {
 // virtual table and lifecycle are not represented by this portable class.
 class EQControl {
 public:
-  explicit EQControl(presonus::dsp::EQControlBiquadPortTag) {}
+  explicit EQControl(presonus::dsp::EQControlBiquadPortTag) : observer(*this) {}
   // Original ordinary return declaration is unresolved; int is provisional.
   // Supported equivalence domain: index >= 0. Original negative indexing is
   // unchecked and deliberately receives no supported behavior claim.
@@ -36,6 +40,7 @@ public:
     bool on = false;
     bool enabled = false;
     std::uint8_t dirty = 0;
+    float frequency = 0.f;
   };
   // Six pointer slots are independently observed. Names and portable host
   // layout are source-port choices, not original field/ARM-layout claims.
@@ -79,6 +84,40 @@ public:
     yPixels = &y;
   }
   int freqToX(float frequency) const;
+  int toXGridPixel(float frequency) const;
+  int toYGridPixel(float gain) const;
+  // Provisional ordinary returns. Type is explicitly bound independently of
+  // gain: native type slot0, gain slot1, Q slot2, frequency slot3 are observed
+  // by separate getter ranges. Legacy BandParams clearing is unchanged.
+  int getType(int index) const;
+  bool getBandEnabled(int index) const;
+  void bindPortableTypeParameters(
+      const std::vector<Core::Portable::Parameter *> &parameters) {
+    typeParameters = parameters;
+  }
+  void bindPortableView(Core::Portable::View &view) { portableView = &view; }
+  void bindPortablePrimaryParameter(Core::Portable::Parameter *parameter) {
+    primaryParameter = parameter;
+  }
+  int getBandForPoint(const Core::TPoint<int> &point) const;
+  bool onTouchInput(const Core::Portable::TouchEvent &event);
+  // Source-port storage and actual CCL rendering; native array/object layout
+  // and allocator failure/exception behavior are not reproduced.
+  void initBands();
+  // Explicit source-port observer adapter, not original GUI inheritance.
+  void bindPortableControl(Core::Portable::Control &control) {
+    observerControl = &control;
+  }
+  Core::Portable::IParamObserver *portableObserver() { return &observer; }
+  void paramChanged(Core::Portable::Parameter *parameter, int message);
+  void drawCurve(const Core::Portable::DrawEvent &event,
+                 const Core::Color &color, bool mode);
+  std::vector<float> &portableAmplitudeCurve() { return amplitudeCurve; }
+  std::vector<int> &portablePixelCurve() { return pixelCurve; }
+  const std::vector<std::vector<float>> &portableBandCurves() const {
+    return bandCurves;
+  }
+  const Core::Portable::Bitmap *portableBitmap() const { return bitmap.get(); }
   int gainToY(float gain) const;
   bool isAnyBandOn() const;
   void
@@ -97,6 +136,25 @@ public:
   void setBufferedDraw(bool state);
 
 private:
+  // Source-port borrowed bindings, not original fields or inheritance.
+  struct Observer : Core::Portable::ParamObserverBase {
+    EQControl &owner;
+    explicit Observer(EQControl &owner) : owner(owner) {}
+    void paramChanged(Core::Portable::Parameter *p, int message) override {
+      owner.paramChanged(p, message);
+    }
+  } observer;
+  Core::Portable::Control *observerControl = nullptr;
+  std::vector<std::vector<float>> bandCurves;
+  std::vector<float> amplitudeCurve;
+  std::vector<int> pixelCurve;
+  std::unique_ptr<Core::Portable::Bitmap> bitmap;
+  Core::Portable::View *portableView = nullptr;
+  Core::Portable::Parameter *primaryParameter = nullptr;
+  std::vector<Core::Portable::Parameter *> typeParameters;
+  struct SortedBand {
+    int index = 0, x = 0, left = -1, right = -1;
+  };
   std::vector<PortableBand> portableBands;
   std::vector<PortableBandParams> portableParams;
   Core::Vector<BackgroundPainter *> backgroundPainters;

@@ -2003,6 +2003,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/mixer/DecayTimeFormatter.hpp
   presonus/noaa/diagnostics.hpp
   presonus/noaa/programmer.hpp
+  presonus/noaa/TCardFPGAUpdater.hpp
   presonus/uc/midi_connection.hpp
   presonus/uc/connection_interfaces.hpp
   presonus/mixer_dsp/GateParameterList.hpp
@@ -2268,3 +2269,4 @@ if(BUILD_TESTING)
 endif()
 
 include(cmake/Rolling200Implementation01.cmake)
+include(cmake/Rolling200Implementation02.cmake)

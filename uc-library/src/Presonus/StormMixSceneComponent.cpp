@@ -1,5 +1,12 @@
 #include "presonus/StormMixSceneComponent.hpp"
 namespace Presonus {
+void StormMixSceneComponent::setDelegate(Delegate *value) {
+  originalDelegate = value;
+}
+void StormMixSceneComponent::presetRecalled(const Panel::PresetComponent &,
+                                            int) {
+  setAllMixButtons(false);
+}
 bool StormMixSceneComponent::isStoreOn() const {
   auto *p = getParameterByTag(0);
   return p && p->getValue() > 0.f;

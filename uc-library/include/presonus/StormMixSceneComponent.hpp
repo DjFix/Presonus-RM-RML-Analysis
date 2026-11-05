@@ -5,7 +5,10 @@
 
 namespace Presonus {
 class StormMixSceneComponent;
+namespace Panel {
+class PresetComponent;
 }
+} // namespace Presonus
 namespace presonus::scene_port {
 // Independent source-port boundaries. These are not recovered original classes,
 // delegate declarations, ownership rules or ARM object layouts.
@@ -33,6 +36,10 @@ class StormMixSceneComponent : public Core::Portable::Component {
 public:
   explicit StormMixSceneComponent(presonus::scene_port::Recall &recall)
       : recallBoundary(recall) {}
+  class Delegate; // Original nested identity; declaration/layout unresolved.
+  void setDelegate(Delegate *);
+  void presetRecalled(const Panel::PresetComponent &, int);
+  Delegate *sourcePortDelegate() const { return originalDelegate; }
   bool isStoreOn() const;
   void enterStoreState(bool state);
   void setAllMixButtons(bool state);
@@ -58,6 +65,8 @@ public:
   std::uint32_t recalledIndex() const { return selectedIndex; }
 
 private:
+  Delegate *originalDelegate =
+      nullptr; // Borrowed; distinct from port delegate.
   presonus::scene_port::Recall &recallBoundary;
   presonus::scene_port::StoreDelegate *delegate = nullptr;
   Presonus::DelayTimer **timers = nullptr;

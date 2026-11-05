@@ -3,6 +3,9 @@
 namespace Presonus::DICE {
 class SysexPacket;
 }
+namespace Presonus::NOAA {
+class SysexPacket;
+}
 namespace presonus::avb {
 struct ReceiveContext;
 }
@@ -24,6 +27,8 @@ public:
 
   // Candidate void declaration: original receive return remains unresolved.
   virtual void receive(const DICE::SysexPacket &packet);
+  // Independent value adapter; original NOAA return declaration is unresolved.
+  virtual void receive(const NOAA::SysexPacket &packet);
 
   // Portable pointer return choices; exact original return spelling unresolved.
   AvbListener *findListener(unsigned char identifier);

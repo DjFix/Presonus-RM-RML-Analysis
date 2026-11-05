@@ -1,12 +1,22 @@
 #include "presonus/avb/protocol.hpp"
 #include "presonus/avb/receive_services.hpp"
 #include "presonus/dice/sysex.hpp"
+#include "presonus/noaa/sysex_packet.hpp"
 
 #include <algorithm>
 #include <array>
 #include <cassert>
 
 namespace Presonus::AVB {
+void AvbManagerBase::receive(const NOAA::SysexPacket &packet) {
+  // Copy values between independent portable packet types, never native
+  // layouts.
+  DICE::SysexPacket value;
+  value.bytes = packet.bytes;
+  value.length = packet.length;
+  AvbManagerBase::receive(value);
+}
+
 void AvbManagerBase::receive(const DICE::SysexPacket &packet) {
   assert(receiveContext_ != nullptr);
   auto &context = *receiveContext_;

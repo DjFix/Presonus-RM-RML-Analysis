@@ -2,6 +2,14 @@
 #include "PresetParameterAccess.hpp"
 
 namespace Presonus::Panel {
+Core::Portable::Parameter *FxPresetComponent::getRecallParameter(int index,
+                                                                 int tag) {
+  auto *child = recalls.at(index);
+  return child ? child->getParameterByTag(tag) : nullptr;
+}
+bool FxPresetComponent::recall(Core::Portable::Attributes &, bool) {
+  return false;
+}
 void FxPresetComponent::presetStored(const PresetComponent &, int) {
   auto *const *items = recalls.getItems();
   const int count = recalls.count();
