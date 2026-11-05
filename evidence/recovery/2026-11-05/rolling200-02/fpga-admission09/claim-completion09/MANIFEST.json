@@ -1,0 +1,38 @@
+{
+  "owner": "rolling200_02_fpga_d0_audit_01",
+  "reason": "Existing canonical FPGA D0 audited and admitted declaration-pending after exact native range/local acceptance/fullLinux508/role/install/compile-once/source bindings/guarded registry/tracker/mirror. No new implementation or ready promotion.",
+  "evidence_refs": [
+    {
+      "path": "uc-library/validation/rolling200-fpga09/pending-proof.json",
+      "sha256": "645d35bea0c95b45a81de1947ed80c52aea366dd652ba7b941f4dc21f8853801"
+    },
+    {
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fpga-admission09/MIRROR01.json",
+      "sha256": "178e801a41fe4fee4b05d9c464cd8f9e96cf66e759181893503d9c5d94b1078b"
+    },
+    {
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fpga-admission09/RECONSTRUCTION_REMARKS01.json",
+      "sha256": "3f797c3f22459c2109a7f4272d988556b8afffbeaaa43d6e0e00e83a18e39424"
+    },
+    {
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fpga-admission09/admission01.log",
+      "sha256": "61186722899e04056a273faa65c8181ca94d2066320571eb913ea7f03bbf222a"
+    }
+  ],
+  "common_checks": {
+    "compiled_mangling_checked": true,
+    "canonical_linux_ctest": 508,
+    "local_acceptance": true,
+    "portable_ready": false,
+    "registry_guard": "525110a8e931033925c03e820fc9e47fab6b3693cc368c38b10c105b5ab10516"
+  },
+  "individual_checks": {
+    "f93749ae126e50189f80f9df1117a27df1c115fff39d41f07b3d53d1c7b90db7": {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD0Ev",
+      "range_sha256": "309152f685cbb2f6347a2cf9e2ee9370ca8860370619a1be48a2276e8cd91273",
+      "compiled_mangling_checked": true,
+      "behavioral_domain": "Each exact original D0/D1/D2 range verified independently. Existing nonnull singleton, normal-return path; guest unregister and standard delete boundaries captured independently. No original Core, allocator, constructor, device, update, erase, syscall or exception instructions executed. Boundary live-state models call identity/order only; host real deallocation is separately proven by executable C++ replay. Host C++ domain: actual CCL-backed live receiver removal before exactly-once real free; lazy/existing singleton and unrelated receiver preservation; actual D1/D2 placement calls without free."
+    }
+  }
+}
