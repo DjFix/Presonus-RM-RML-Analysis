@@ -1,5 +1,6 @@
 #include "presonus/panel/FxPresetComponent.hpp"
 #include "PresetParameterAccess.hpp"
+#include "presonus/panel/FrontPanelComponent.hpp"
 #include <stdexcept>
 
 namespace Presonus::Panel {
@@ -20,6 +21,29 @@ FxPresetComponent::FxPresetComponent(
   observed = parameter;
   if (observed)
     observed->addObserver(preset.get());
+}
+FxPresetComponent::FxPresetComponent(FrontPanelComponent &front,
+                                     Presonus::Mixer::MixerComponentBase &mixer)
+    : preset(
+          std::make_unique<PresetComponent>("fx", "My Fx", "reverbnum", mixer)),
+      ownedRecalls(
+          std::make_unique<Core::Vector<FXPresetRecallComponent *>>(0, 5)),
+      recalls(nullptr, 0) {
+  // The native front-panel Component is mapped explicitly to this existing
+  // portable real CCL component; composition is not original ARM inheritance.
+  fxParameters = &front.portableState().component;
+  auto *parameter = fxParameters->getParameterByTag(13);
+  observed = parameter;
+  if (observed)
+    observed->addObserver(preset.get());
+  try {
+    preset->bindFxDelegate(
+        *this, reinterpret_cast<PresetComponent::Delegate *>(&delegateToken));
+  } catch (...) {
+    if (observed)
+      observed->removeObserver(preset.get());
+    throw;
+  }
 }
 FxPresetComponent::~FxPresetComponent() {
   if (observed)
@@ -43,6 +67,9 @@ void FxPresetComponent::presetStored(const PresetComponent &, int) {
   const int count = recalls.count();
   for (int i = 0; i < count; ++i)
     items[i]->updateFxName();
+}
+void FxPresetComponent::presetRecalled(const PresetComponent &, int) {
+  // RM13731 exact body at0x56d30 consists only of frame setup/return.
 }
 int FxPresetComponent::getFxIndex() const {
   if (!fxParameters)

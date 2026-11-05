@@ -7,7 +7,13 @@
 #include <vector>
 namespace Presonus {
 class MappingTable;
-}
+class MackieControlComponent;
+namespace Panel {
+class ControlRegistrar;
+class SwitchControl;
+class EncoderControl;
+} // namespace Panel
+} // namespace Presonus
 namespace presonus::surface::midi_port {
 // Independent source-port state; no original layout or ownership claim.
 struct State {
@@ -26,6 +32,13 @@ struct State {
   // Borrowed actual CCL provider for the original local Component boundary.
   // Independent source-port binding, not the original this+0xc layout.
   Core::Portable::Component *localParameters{};
+  // Explicit independent borrowed dispatch setup. These are actual concrete
+  // providers, never casts from normalParameters/alternateParameters. All must
+  // outlive dispatch; model release callbacks must invoke real model
+  // operations.
+  Presonus::MackieControlComponent *normalMackie{};
+  Presonus::MackieControlComponent *alternateMackie{};
+  Presonus::IMappingController *controller{};
 };
 struct Services {
   virtual ~Services() = default;
@@ -60,6 +73,17 @@ public:
   bool getParamFocusInfo(Presonus::MixerAssignmentHandler::FocusInfo &,
                          Core::Portable::Parameter *);
   void connect();
+  // Provisional void returns: original ordinary return declarations unresolved.
+  // Missing concrete bindings throw at the guarded provider boundary, outside
+  // the native valid-receiver domain. Enabled switch dispatch needs a live
+  // control; enabled encoder dispatch needs live localParameters. No original
+  // constructor credit.
+  void disconnect();
+  void setController(Presonus::IMappingController *);
+  void switchChanged(const Presonus::Panel::ControlRegistrar &, int, int, bool,
+                     Presonus::Panel::SwitchControl *);
+  void encoderChanged(const Presonus::Panel::ControlRegistrar &, int, int,
+                      Presonus::Panel::EncoderControl *);
   int countMappings() const;
   const char *getName() const;
   bool canActivate() const;

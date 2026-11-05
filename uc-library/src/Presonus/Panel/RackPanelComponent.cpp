@@ -3,6 +3,41 @@
 #include "core/system/coretime.h"
 #include "presonus/mixer/MixerComponentBase.hpp"
 namespace Presonus::Panel {
+namespace {
+using Core::Portable::ParamInfo;
+const char *offOn[] = {"Off", "On"};
+// Intentional host ParamInfo adaptation of exact five native 84-byte records.
+const ParamInfo rackParameters[] = {
+    {2, 1, "meters_48v", 0.f, 1.f, 0.f, 0.f, 1.f, 0, nullptr, nullptr, offOn,
+     "Meters-48V toggle", nullptr},
+    {2, 2, "powerled_red", 0.f, 1.f, 0.f, 0.f, 1.f, 0, nullptr, nullptr, offOn,
+     "Power LED red", nullptr},
+    {2, 3, "powerled_blue", 0.f, 1.f, 0.f, 0.f, 1.f, 0, nullptr, nullptr, offOn,
+     "Power LED blue", nullptr},
+    {2, 4, "phones_cue", 0.f, 1.f, 0.f, 0.f, 1.f, 0, nullptr, nullptr, offOn,
+     "Phones monitor Cue", nullptr},
+    {2, 5, "phones_main", 0.f, 1.f, 0.f, 0.f, 1.f, 0, nullptr, nullptr, offOn,
+     "Phones monitor Cue", nullptr},
+};
+} // namespace
+RackPanelComponent::RackPanelComponent(Presonus::Mixer::MixerComponentBase &m,
+                                       PanelRegistrar &r)
+    : PanelComponent(static_cast<presonus::panel_port::PanelCore &>(*this), m,
+                     r),
+      meterLEDs(meterControls), clipLEDs(clipControls),
+      phantomLEDs(phantomControls) {
+  mixer = &m;
+  // Keep each real CCL parameter owned until ParamList accepts it. The
+  // upstream bulk add allocates the parameter before its vector can grow;
+  // this source-port guard also unwinds that allocation if growth throws.
+  for (const auto &info : rackParameters) {
+    auto parameter = std::make_unique<Core::Portable::ListParam>(info);
+    paramList.add(parameter.get());
+    parameter.release();
+  }
+}
+RackPanelComponent::~RackPanelComponent() = default;
+
 void RackPanelComponent::clientsChanged() { updatePanelStatus(); }
 void RackPanelComponent::checkPermissionsPWReset() {
   if (permissionFlags & 0x18u)
@@ -47,7 +82,7 @@ bool RackPanelComponent::checkMonitorRestore(
   return true;
 }
 void RackPanelComponent::monitorSource(int source, bool enabled) {
-  auto &parameters = deps.monitorParameters();
+  auto &parameters = dependencies().monitorParameters();
   int tag;
   if (source == 4)
     tag = 24;
@@ -68,24 +103,24 @@ void RackPanelComponent::updatePanelStatus() {
     blue = 1.f;
     blinkMode = 2;
   } else if (panelStatus == 3) {
-    if (deps.numClients() == 0)
+    if (dependencies().numClients() == 0)
       blue = 1.f;
     else
       red = 1.f;
   }
-  auto *redLED =
-      static_cast<LEDControl *>(deps.group(0).byTag(100)->castTo(0x4c656443));
-  auto *blueLED =
-      static_cast<LEDControl *>(deps.group(0).byTag(101)->castTo(0x4c656443));
+  auto *redLED = static_cast<LEDControl *>(
+      dependencies().group(0).byTag(100)->castTo(0x4c656443));
+  auto *blueLED = static_cast<LEDControl *>(
+      dependencies().group(0).byTag(101)->castTo(0x4c656443));
   // As in the original, the required status LEDs and parameters must exist.
-  deps.blink(*redLED, blinkMode);
-  deps.blink(*blueLED, blinkMode);
+  dependencies().blink(*redLED, blinkMode);
+  dependencies().blink(*blueLED, blinkMode);
   getParameterByTag(2)->setValue(blue, false);
   getParameterByTag(3)->setValue(red, false);
 }
 void RackPanelComponent::attachMeterLEDs() {
   Core::DebugPrintf("RackPanelComponent::attachMeterLEDs ()\n");
-  const auto &channels = deps.channels();
+  const auto &channels = dependencies().channels();
   for (std::size_t i = 0; i < meterLEDs.size(); ++i) {
     auto *parameter = channels.at(i).parameters->getParameterByTag(0x138);
     meterLEDs[i]->setParameter(parameter, 0);
@@ -96,8 +131,8 @@ void RackPanelComponent::attachMeterLEDs() {
         channels.at(i).parameters->getParameterByTag(0x137), 0);
 }
 void RackPanelComponent::attach48vControls() {
-  auto &group = deps.group(3);
-  for (const auto &channel : deps.channels()) {
+  auto &group = dependencies().group(3);
+  for (const auto &channel : dependencies().channels()) {
     if (group.byTag(channel.tag)) {
       auto *parameter = channel.parameters->getParameterByTag(0x133);
       group.byTag(channel.tag)->setParameter(parameter, 0);
@@ -105,13 +140,13 @@ void RackPanelComponent::attach48vControls() {
   }
 }
 void RackPanelComponent::cleanup() {
-  deps.removeDelegate(*this);
+  dependencies().removeDelegate(*this);
   if (observedParameter)
     observedParameter->removeObserver(this);
 }
 void RackPanelComponent::attach48vLEDs() {
   Core::DebugPrintf("RackPanelComponent::attach48vLEDs ()\n");
-  const auto &channels = deps.channels();
+  const auto &channels = dependencies().channels();
   for (std::size_t i = 0; i < phantomLEDs.size(); ++i)
     phantomLEDs[i]->setParameter(
         channels.at(i).parameters->getParameterByTag(0x133), 0);
@@ -126,14 +161,14 @@ void RackPanelComponent::detachLEDs() {
     control->setParameter(nullptr, 0);
 }
 void RackPanelComponent::setupMonitorRadioButton(int tag) {
-  monitorRadioParameter = deps.group(0).byTag(tag)->getParameter();
+  monitorRadioParameter = dependencies().group(0).byTag(tag)->getParameter();
   savedMonitorValue = monitorRadioParameter->getValue();
   if (monitorRadioParameter)
     monitorRadioParameter->setValue(0.f, false);
 }
 void RackPanelComponent::attachDigipots() {
-  auto &group = deps.group(1);
-  for (const auto &channel : deps.channels()) {
+  auto &group = dependencies().group(1);
+  for (const auto &channel : dependencies().channels()) {
     if (auto *control = group.byTag(channel.tag)) {
       control->setParameter(channel.parameters->getParameterByTag(0x13b), 0);
       channel.parameters->getParameterByTag(0x13a)->changed();

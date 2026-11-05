@@ -49,7 +49,9 @@ const Core::Portable::ParamInfo hpfParamInfo[] = {
 } // namespace
 EQControl::PortableConstructorState::PortableConstructorState(
     const Core::Rect &rectangle)
-    : control(rectangle, nullptr), hpfInfo(hpfParamInfo) {
+    : control(rectangle, nullptr), hpfInfo(hpfParamInfo),
+      hpfParameterOwner(std::make_unique<Core::Portable::ParamList>()),
+      hpfParameters(*hpfParameterOwner) {
   // CCL's TViewBase initializes options to zero (including focus).
   control.wantsTouch(true);
   hpfParameters.add(hpfInfo, 3, false);
@@ -66,6 +68,40 @@ EQControl::EQControl(const Core::TRect<int> &rectangle)
   // constructor-initialized zero; these are not frequency-provider range(0,1).
   curveMinimum = 0.f;
   curveMaximum = 0.f;
+}
+
+EQControl::~EQControl() {
+  // The authoritative type binding is independent of the compatibility slot3.
+  // Preserve each registration and repeated parameter in native helper order.
+  for (unsigned i = 0; i < portableParams.size(); ++i) {
+    auto parameters = portableParams[i];
+    parameters.slot3 = i < typeParameters.size() ? typeParameters[i] : nullptr;
+    parameters.removeObserver(this);
+  }
+  std::vector<float>().swap(amplitudeCurve);
+  std::vector<int>().swap(pixelCurve);
+  // Native array destruction walks bands backwards, freeing each curve before
+  // releasing its shared image. Images never acquire deletion ownership.
+  for (auto i = std::max(bandCurves.size(), bandImages.size()); i > 0; --i) {
+    if (i <= bandCurves.size())
+      std::vector<float>().swap(bandCurves[i - 1]);
+    if (i <= bandImages.size())
+      bandImages[i - 1] = nullptr;
+  }
+  std::vector<std::vector<float>>().swap(bandCurves);
+  std::vector<Core::Portable::BitmapReference>().swap(bandImages);
+  bitmap.reset(); // actual CCL virtual deleting destructor
+  // ParamList owns its Parameters. Detach EQ before real kDestroyed signals;
+  // keep the observer adapter and owned Control alive during these callbacks.
+  if (constructorState)
+    constructorState->hpfParameterOwner.reset();
+  backgroundPainters.removeAll(); // borrowed painters are never deleted
+  std::vector<PortableBandParams>().swap(portableParams);
+  backgroundBitmap = nullptr; // native +0x64 precedes +0x60
+  defaultBitmap = nullptr;
+  // Explicitly destroy owned providers and Control while observer is alive.
+  // Tagged partial objects have no owned state and leave borrowed owners alone.
+  constructorState.reset();
 }
 
 void EQControl::markBandDirty(int index) {

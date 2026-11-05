@@ -56,6 +56,8 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/UC/Format/OnOff.cp
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Dsp/CompressorParameterList.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -frounding-math -fno-builtin)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Dsp/CompressorSourceProviders.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -frounding-math -fno-builtin -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/NOAA/TCardRouterBusRoutes.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+# Permissions now derives from the actual CCL-backed ServerComponent provider.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/PermissionsComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/NOAA/TCardUCNetHandlerIO.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/NOAA/TCardHandlerProperties.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Dsp/FaderInterpolator.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off -frounding-math -fno-builtin -fno-rtti)
@@ -2019,6 +2021,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/client_typed_origins.hpp
   presonus/noaa/card_handler.hpp
   presonus/noaa/card_handler_state.hpp
+  presonus/noaa/card_handler_events.hpp
   presonus/uc/client_event_values.hpp
   presonus/mixer_dsp/FaderInterpolator.hpp
   presonus/dsp/audio_hal.hpp

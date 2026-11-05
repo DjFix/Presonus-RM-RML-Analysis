@@ -1,0 +1,689 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_eq_lifecycle_03",
+  "namespace": "Presonus::EQControl",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus9EQControlD2Ev",
+      "address": 444668,
+      "size": 548,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "dependency",
+      "path": "AGENTS.md",
+      "sha256": "08353c85fd2fee8a6b97a75b8bc799ba5b44377a3c56979ed06fc8c5eff1e74d"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-band/native.json",
+      "sha256": "8b50b71fc1d7d1f0a4cbf5dff4daad450e6b62f5e6125890f6aba4d650d7d944"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/compile.log",
+      "sha256": "a374d469809548fddeb04114284e0f4d23739cc9160de10876da56301401908e"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/format.log",
+      "sha256": "7806d187bf9a40cc93b9b2a47c2be4225407db5cf226ca118928b839c80ea1c9"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/native.json",
+      "sha256": "59e3e71f8a6b5efd20e261759ff8ab7247c021122bd92b6d95120788fe62bd79"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/native.log",
+      "sha256": "737c38dd10722bfbcf17ddb928c882c5fcc96586a18154db7679fbc0d863aa87"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/proof.json",
+      "sha256": "781b29d673014dc8f7200dcfd0494aaf07e37c4df30a5cef9dc8bd9f1e3bdec6"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/regression.log",
+      "sha256": "27000f15f0928a1d62179546bfe1a0e6e30a3765038b43b69751115010a54ef3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/replay.log",
+      "sha256": "8a944f663028618f2c926b68f40c3fba9ed92e7d87e72a53f2d3ee23a1a499fa"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/symbols.log",
+      "sha256": "3660ee78beab13b0b84e5a65857d5de3ee3891626843db1c84f7533376bc68c9"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-lifecycle-data/expand-1793912795459528920.json",
+      "sha256": "6ce75d4bd749ec2b685e2425d1a98fc71fe843e650bcc19aafdb82a497169f7b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-lifecycle-data/expand-1793912795459528920.log",
+      "sha256": "b371ce98d5c55b42fda682de34bcbc88dfe58c2fb9a21f7ff431a8ea8cb1ec34"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-lifecycle-data/expansion-request.json",
+      "sha256": "26f580baac62d3278c595ea58df2c526fa60440db8690a8ce6bc8bd0dc9cdb45"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-lifecycle-data/expansion.json",
+      "sha256": "3a891c8ec835ffc3bc33e1e840705a297f59065393d60e79b329b5d57a058691"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-lifecycle-data/operation-timings-1793912798877036557.json",
+      "sha256": "a8f1f81c1fe1011f3debe72794c66a56f074772674c46c649a6f4c1d5f256f87"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/ELF_CONTEXT.md",
+      "sha256": "2e18a4eadaddd299542bdd6b1b1c0c27b01dbc33662173dc1ef446f4b3aec8d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/expand-1793912791224068505.json",
+      "sha256": "02487b07ba10a0f3b098211171a7ef4772e22ed41c4dcb67c7423694af1b8bf8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/expand-1793912791224068505.log",
+      "sha256": "7d2d32f3857c3ccf8fa42111f0ad72a6843894902553ff235b2ca8b4594855b0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/expansion-request.json",
+      "sha256": "7de330e679f403b554744e233f8e21564a7fb971d65d6aeffe6c0032dead3a25"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/expansion.json",
+      "sha256": "f2eb7fb86212557f343f9a1d2e9d8c4d67a2ff3a7e48437660de7162e71d482d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/native-context.json",
+      "sha256": "29dd051da25a53944a1c14163027e12128b57fef873fc3bf13703b8e42375602"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/expand09-eq-remove-observer/operation-timings-1793912795458459673.json",
+      "sha256": "fd659ad08046ceb94f2bee1ad9b43a740554dcad0b40f7de23ac991ed519966a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/CONTEXT.md",
+      "sha256": "55866ae5ceb8b462546bd75898151a46e4ed4c1f1cc6bfa0c3276647c3dfe5d8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/ELF_CONTEXT.md",
+      "sha256": "86b3bccec9c21cd9474849a545c6d19812f04de7e49e9191379bfb9d0d46a9bd"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/SOURCE_SLICES.md",
+      "sha256": "a5c4f5f246f02c6772e9878954d948ad0f9c8075139e24574386393a612299d2"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/TASK.md",
+      "sha256": "e9040144f4afb93fb4b64e73fffa0e636271310352a4cb1d3375317c8ea9cf51"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/context.json",
+      "sha256": "8077d3d18a6e4a5398b8feb3a63b988909853a6853de291380bcc9ffd05ae9e3"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/native-context.json",
+      "sha256": "72edcbf75c64fac1eb736e436a8f24d738d23d65034691b98fd41e05682e6ed0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_01/request.json",
+      "sha256": "63d47fd1ac30245b37295841c514b3335d8d682c74a90440275d6bedfd899a1f"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/CONTEXT.md",
+      "sha256": "88596df98b56738adf9d5a54b8ddec1b561a8a85e8fd9709824da5ec65c816a4"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/ELF_CONTEXT.md",
+      "sha256": "4e55a51f54776e3598bf24cb76f41f6998a8e2c8f39c4b52cfa3b87329f073e8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/SOURCE_SLICES.md",
+      "sha256": "310f550434ac11d1c2444b0d97d9ca0e85aecb52e590ad2916d3346131df42bf"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/TASK.md",
+      "sha256": "4b6547c9b363e3a4361fe74f209e94721ef6c0795d261e317acc571d2a501aa8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/context.json",
+      "sha256": "520fcc94251d4ae9b440c6ba36bcd988af8281513dc503d45d9512cccf46d23e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/native-context.json",
+      "sha256": "30257c8a6766aa447624c669e6b35778ee38851213be10322a55bef4c97aa314"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_02/request.json",
+      "sha256": "6346a781bae3e689ab855f14ba5efa502aef5dc29dc645cf4e913dfd2b21276d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/CONTEXT.md",
+      "sha256": "52da59deb106bd8d8481caae58c676275ebf00c00b6dbb1202c351a08935eaa8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/ELF_CONTEXT.md",
+      "sha256": "d83bec15f2d848848716f7edfaad40d15734aaec38262fae892aa83d3811ad04"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/SOURCE_SLICES.md",
+      "sha256": "a5c4f5f246f02c6772e9878954d948ad0f9c8075139e24574386393a612299d2"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/TASK.md",
+      "sha256": "f36fc79cf32d3df373fa450585b744d8979ddf4c07e70158f3013b9af9e25927"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/context.json",
+      "sha256": "960e20e36b2c2190de80c14df9886824ae19b414e87d2eb3b90d2744aa577362"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/native-context.json",
+      "sha256": "62f0cbfc61e2fc7ef72c5037498147f067731943228d58bfe80836bfe94182ee"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-eq_lifecycle08/packets/rolling200_02_eq_lifecycle_03/request.json",
+      "sha256": "9b3f3c07cb43448f4054cb7f91263d81eab69dab0875e82b9b52da9464844284"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.cpp",
+      "sha256": "c05c63ea50d66288f11a9b1daf26bb4b2559042a27831f27785b09b192bc796f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.h",
+      "sha256": "59f7e8af9fd892e0e206c5e73748b0f5d7a03ce3019e6ce7fa532368c5cb18e7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.h",
+      "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.cpp",
+      "sha256": "7e7f1102b3d45cdb779b6fbbce78490342d15f8a161713d7965e8a0f8bc8d0ec"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.h",
+      "sha256": "d5f06493cffe691b7fa3ab6d5ffa53ee8c3b4391c62e7f530a9c211cb02e2fcb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.cpp",
+      "sha256": "a2d1bdf79b00c12d87ab01072bde099b20691fa7bed5de7988071f2e7748eaa7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.h",
+      "sha256": "ab6167c58ad2847ae0b0ecd7a60390d36a65b6b044e8d883b3d2940a60aa5eca"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.cpp",
+      "sha256": "c447790dd9c3e01bc26b034b299fd70c463d0567b0d9b20b767b884db0143423"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.h",
+      "sha256": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_eq_lifecycle_03/NOTES.json",
+      "sha256": "f80cc468425e3edfa594ef27b66cd93e45c72ae7c3f4cbc7d349e8f6f8d52a4c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dsp/biquad_calc.hpp",
+      "sha256": "6be0cc48b32d8157b5583bb1e06191470fa5c11974c1090959c0a3b67386db70"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer_dsp/EQControl.hpp",
+      "sha256": "2f23a2e67007fc4bd343e02fb501a9d2617c347356619eceb9e2f8ebf796c389"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/mixer_dsp/EqSourceProviders.hpp",
+      "sha256": "fb87fd1e671c3aabad67d82dc662354cc14aaf4863201c0f6866231cb4d5ccd1"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/DSP/BiquadIncremental.cpp",
+      "sha256": "6bd49c15617c967234e63aebe54f378a3dca004143d37ba7e312aace7ab5c2cc"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/DSP/BiquadMethods.cpp",
+      "sha256": "3f7d2d44f73db768491f1cedcf1e924929398e88d08069cddf75389b3510583f"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/DSP/BiquadSine.cpp",
+      "sha256": "5cd8fb57009920d6bb3ffc9d9e86ab88e707397c72886412cc7a50e6217bde30"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp",
+      "sha256": "8ba4957e700d9a36feacae38995a131f11b2d3e4da65a0426d9ecdf75eb774f8"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/EQControl.cpp",
+      "sha256": "c89acfc03b0c845d5e5ec2c754e0a1ddbae44f32f8d1f9a7bee5be5ab661fc6d"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/EQControlBandParams.cpp",
+      "sha256": "2cd55648516c20cf67e82550e800e92c222182e0c7c61845359e1d39929dbc48"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/EQControlBiquad.cpp",
+      "sha256": "e7e5736d1ad2838357f99d7c84b5681381ae1774e9611ec6fb10cc879ce50b01"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/mixer_dsp/Logarithm.cpp",
+      "sha256": "6e5410ce7c69db30d9bf09ca334e29c067a77b9f0420a1460cdb2eba9f63e9ea"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/graph_trial08_eq_tests.cpp",
+      "sha256": "516a3cae843b51d0c31104d6f0806b2f64fe64aff564b3f69dce205028bdec2b"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/EQBandObserverReplay.cpp",
+      "sha256": "84b228cb9ffb4530eb8b7cb197e1d20bc99bb5a7b324b69251461b31b9b25910"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/EQConstructorsReplay.cpp",
+      "sha256": "f90b4d3efe342d4ec9796b153a8c9df78aa4f83d8852455a7b120a32c43e2d49"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/EQControlLifecycleReplay.cpp",
+      "sha256": "09943cd9f0140e242f7ddd5d544f73f74fea53257e714fdddbdbd21c384855d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/check.py",
+      "sha256": "fb8fd3701328c778ffc9e5f4c154125791ef6a4e5b772da304fe7f2676b0ba55"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/oracle.py",
+      "sha256": "6309dc4c8e69b6cd0c1987ddbeb969557248e52798da6c845ffa239cee145f43"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/regression.py",
+      "sha256": "21c0aab71b9ef2a391e0c3a733bfeece1929797dccf9808a64e576a7e6593b91"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/seal.py",
+      "sha256": "4534531fdd98441d915e15da62782586bb7631b2299ec08fd84a85544b914a6c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/check.py",
+      "sha256": "45bf203e251e9f51ffaf165442384598f6e716ba9e735720bdf00f64e90f8f79"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/fixtures.json",
+      "sha256": "c6faa6d7ec68d3933632ca189c3637355e1b717461c6c1e57da3db4386ef5e61"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/native.py",
+      "sha256": "b038f27e10b5eb653003c77fa654c1f7814c501bb6c010f3e468f42ac7b37e59"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/check.py",
+      "sha256": "da4c0de6febf954dccfe1e2ee2a8f7b244a9c5e2de70014f79420e7a21dc77f7"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/driver.cpp",
+      "sha256": "48adf91f76c30fcb9c8e942bf9c131c02f7a290b3deacd5ec1de63b86eb5bfa2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/fixtures.json",
+      "sha256": "373054d87ff2f376412fd066e9c5cb634bf483dcc42fd946301cc8a310fbd3d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/native.py",
+      "sha256": "b3c5bcac6a67601c00a494e81f4084a346ef85f39b6782b20ef8bc3e06bc41c7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+      "sha256": "659361207c0af9cfc8799e282caed132a65a35b21a49317ecdd9234fab714301"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve-fixtures.json",
+      "sha256": "590046619ff3c71998c981bb1e6c5a100704b1be752c0b014e5dc6184375c597"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve_native.py",
+      "sha256": "ef76605d4a49f795e3d2f75f6211e318ab3c0c10e82667b32df4351e73090a34"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/driver.cpp",
+      "sha256": "d386534cc45cbef31d74a0c3ea27aff316feaab762017701767d3c8d18a33216"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/fixtures.json",
+      "sha256": "856cea4de50cca9c00245bbef0d8a81c24cd541a5aab73c5e46280f7f1c706c1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/generate_curves.py",
+      "sha256": "7071bd1d006a52bad888f8bea88e8dde9a3149607af6423346e45e81cfb9f89e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native-execution.json",
+      "sha256": "904984147f0c00c97616e97a15d377570f81975cc37edabf2194d6a459d9db63"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native.py",
+      "sha256": "0c5220cc885dfa4e95c4f3779744da571a1765e2a71df5b742e187ed7dc27d18"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_boundaries.py",
+      "sha256": "8ba6b5f39da9695e4772b0c900746c64b5987d621bd922a973aef67d77690860"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_curves.py",
+      "sha256": "c2a38cfc3de015389c56ccfec444933fa0069129655ff199619dcfaaa9a7926d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/runtime.py",
+      "sha256": "ef4e8144e10fb303cfe054cb1c7e380376195e1c338171ec1e4c445f9661413a"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+      "sha256": "d306afc142532dce6b4c60708a5bc1b3f6dbdcb26651eb67bbb74995b256bbb0"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/oracle.py",
+      "sha256": "297175ab1a5c239bb69b700213e091ceeeb859b1f06520b57529d36d2a5aa8c1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py",
+      "sha256": "de7fb2b65e81cc960460870793dba15577516e6b8f62a421c2a060f77c54ac26"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/seal.py",
+      "sha256": "2e05665999bd069229d903a46f1e53c6546e6fc9324aa41cc8d847dc1c742990"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/buffered-fixtures.json",
+      "sha256": "c25bce47fc5fa24d2a425d21d8e0c11b1734682ef77a4af22716db246cab3b9d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/check.py",
+      "sha256": "7e8b7806109e07dc2e444239d5cb04f04340910d9068a5c94853492e75a552c7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/fixtures.json",
+      "sha256": "d3a738ed84fa8e75156196e2161ae336083b8ff9acf1c2952e88e6febd953f70"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/getter-fixtures.json",
+      "sha256": "681f81920bec77a38ed4e49b94a561920eec06393efa1fe2acfc0fbbe348cfb6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/oracle.py",
+      "sha256": "0fef33cc9adef5ddd567c61c728e57b9d513428b0f6900f1e92d1f145051a315"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/parser-fixtures.json",
+      "sha256": "79c07ee48f4a7d32bc91a5665e24bca36a0502f5cf60e396799c47d7437eff0e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/provider-fixtures.json",
+      "sha256": "127ab39d02917bddd4820439a172df410360c1aee1e12053138417e654a130d8"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/eq/replay.py",
+      "sha256": "1bacd0a74a0ac8dc99699cc078e6524b81b9699d85b39c35db29211858bcca6c"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/oracle.py"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "validation_domain": "360 independent original ARM lifecycle executions, 120 per exact D0/D1/D2 identity. Counts0/1/3, all-null/distinct/repeated/mixed parameters, empty/amplitude+pixel/per-band+shared/output/all resource masks, both tagged borrowed and owned rectangle construction. Exact removal order including duplicates and authoritative type vector; actual deallocation callsite for D0 only; reverse per-band free/ref snapshots, default/background final unuse, owned bitmap virtual delete. Host real pinned CCL membership and changed() callbacks, ParamList destruction with 540 owned HPF destruction signals, shared BitmapReference counts without deleting borrowed images, owned Control primary-detach and borrowed Control survival. Immutable constructor50, band224, control1038, curve-boundary17 and curve-response46 and historical getter/provider274 regressions.",
+  "limitations": [
+    "Intentional portable C++ source model: original GUI inheritance, original class field declarations, layout, allocator array cookies and ARM ABI interoperability are unresolved/excluded; no hardware validation. Destructor names/signatures and compiler ABI variants are exact; no invented ordinary variant methods or ordinary return declarations.",
+    "Stable valid allocated state and synchronous no-throw provider cleanup; fully bound parameter/type mappings; borrowed parameters, images and control/view/providers survive EQ destruction. Concurrent/reentrant state mutation, provider throws, original EH/ARM unwinding and partial native initialization are outside execution domain. Native EH cleanup is retained in full range evidence but not executed.",
+    "Native oracle executes only original EQ destructor and bound existing app BandParams helper ranges. Real original native provider and allocator call targets are intercepted as explicit boundaries; no Core binary body is executed or reconstructed. Bitmap receiver vtable data and exact D0 symbol target are verified from original ELF; native bitmap deallocation is a virtual-call boundary observation. Host real pinned CCL bitmap destructor/deallocation executes independently.",
+    "Source hpfParameterOwner exposes the same ParamList through a reference; that reference is usable only before destruction begins. Early owner.reset destroys real ParamList at native cleanup phase, then shared refs release, then constructorState.reset destroys interpolators and owned Control while EQ observer is still alive. This phased ownership is an intentional adaptation; borrowed tagged state is never destroyed.",
+    "Native array-container allocator details are not compared with std::vector host container overhead. Compare semantic owning amplitude/pixel/per-band free checkpoints, original observer calls and shared-image state, with host concrete actual frees. Shared refs unuse rather than delete; borrowed BackgroundPainter pointers are removed through real CCL Vector.removeAll without pointee ownership. No recovered BackgroundPainter implementation is claimed.",
+    "Worker-local proof and commit are not canonical full Linux integration/readiness admission. Root must replay full tests, installed-role/compile-once, active-source and SQLite gates, refreshing impacted existing constructor/getter/curve proof hashes. No ready/pending fragment is generated here."
+  ],
+  "build_integration": {
+    "production_partition": "Existing src/Presonus/EQControl.cpp in CS18 OBJECT partition; read-only BandParams helper remains common; no new production CPP",
+    "public_headers": [
+      "include/presonus/mixer_dsp/EQControl.hpp"
+    ],
+    "test_targets": [
+      "EQControlLifecycleReplay"
+    ],
+    "test_sources": [
+      "tests/recovery/EQControlLifecycleReplay.cpp"
+    ],
+    "link_dependencies": [
+      "pinned actual corelib",
+      "presonus_core_allocator",
+      "presonus_private_glibc29",
+      "zlib",
+      "pthread",
+      "dl",
+      "m"
+    ],
+    "link_options": [
+      "--wrap=_ZdlPv",
+      "--wrap=_ZdlPvm",
+      "--wrap=_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+      "replay",
+      "--executable",
+      "<canonical-built-EQControlLifecycleReplay>",
+      "--fixtures",
+      "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/native.json"
+    ],
+    "fixture_sha256": "59e3e71f8a6b5efd20e261759ff8ab7247c021122bd92b6d95120788fe62bd79",
+    "notes": "Real provider/allocator interception test only; production no fake Core classes. Root must refresh existing source-bound proofs affected by canonical header/constructor change, then full Linux/role/install/compile-once and guarded SQLite integration. No shared CMake/registry edit."
+  }
+}

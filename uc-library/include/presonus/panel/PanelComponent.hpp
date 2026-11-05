@@ -3,6 +3,7 @@
 #include "presonus/delay_timer.hpp"
 #include <array>
 #include <cstdint>
+#include <memory>
 #include <stdexcept>
 namespace Presonus::Mixer {
 class MixerComponentBase;
@@ -61,7 +62,7 @@ public:
   void *castControlToLed(void *p) override { return get().castControlToLed(p); }
   void setBlinkMode(void *p, int n) override { get().setBlinkMode(p, n); }
 };
-class PanelCore final : public Core::Portable::Component {
+class PanelCore : public Core::Portable::Component {
 public:
   ~PanelCore() override;
   PanelCore() : Core::Portable::Component("panel") {
@@ -70,7 +71,15 @@ public:
   bool feedbackNeeded() const { return paramList.isFeedbackNeeded(); }
 };
 struct PanelState {
-  PanelCore component;
+  // Owned by default; injected owner must precede and outlive this state.
+  std::unique_ptr<PanelCore> ownedComponent;
+  PanelCore &component;
+  PanelState()
+      : ownedComponent(std::make_unique<PanelCore>()),
+        component(*ownedComponent) {}
+  explicit PanelState(PanelCore &owner) : component(owner) {}
+  PanelState(const PanelState &) = delete;
+  PanelState &operator=(const PanelState &) = delete;
   Presonus::DelayTimer encoderTimer{1.f};
   Presonus::DelayTimer buttonTimer{1.f};
   Presonus::Mixer::MixerComponentBase *mixer = nullptr;
@@ -110,6 +119,15 @@ public:
 
 protected:
   PanelComponent() : services(checkedServices) {}
+  // Independent injection for derived classes whose earlier base owns Core.
+  explicit PanelComponent(presonus::panel_port::PanelCore &owner)
+      : portable(owner), services(checkedServices) {}
+  PanelComponent(presonus::panel_port::PanelCore &owner,
+                 Presonus::Mixer::MixerComponentBase &m, PanelRegistrar &r)
+      : portable(owner), services(checkedServices) {
+    portable.mixer = &m;
+    portable.registrar = &r;
+  }
 
 private:
   presonus::panel_port::PanelState portable;

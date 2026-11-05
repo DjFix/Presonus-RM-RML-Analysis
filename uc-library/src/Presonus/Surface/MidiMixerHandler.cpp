@@ -1,6 +1,91 @@
 #include "presonus/surface/MidiMixerHandler.hpp"
+#include "presonus/MackieControlComponent.hpp"
 #include "presonus/MappingTable.hpp"
+#include "presonus/panel/switch_control.hpp"
+#include <stdexcept>
+namespace {
+void requireMackie(const presonus::surface::midi_port::State &state) {
+  if (!state.normalMackie || !state.alternateMackie)
+    throw std::logic_error(
+        "MidiMixerHandler requires explicit borrowed Mackie providers");
+}
+} // namespace
 namespace Presonus::Surface {
+void MidiMixerHandler::disconnect() {
+  requireMackie(state_);
+  auto *model = state_.normalMackie->getModel();
+  if (model) {
+    if (!model->buttonRelease || !model->faderRelease)
+      throw std::logic_error("Mackie release operations must be wired");
+    model->releaseAllButtons();
+  }
+  // Resolve the alternate binding after normal releases, preserving mutation.
+  requireMackie(state_);
+  model = state_.alternateMackie->getModel();
+  if (model) {
+    if (!model->buttonRelease || !model->faderRelease)
+      throw std::logic_error("Mackie release operations must be wired");
+    model->releaseAllButtons();
+  }
+  setControlsEnabled(true);
+  resetColors();
+  state_.accumulation.fill(0);
+}
+void MidiMixerHandler::setController(Presonus::IMappingController *controller) {
+  state_.controller = controller;
+  if (!controller)
+    disconnect();
+}
+void MidiMixerHandler::switchChanged(const Presonus::Panel::ControlRegistrar &,
+                                     int, int, bool pressed,
+                                     Presonus::Panel::SwitchControl *control) {
+  if (!state_.controller)
+    return;
+  auto *parameter = control->getParameter();
+  if (!parameter)
+    return;
+  auto *original = parameter->getOriginal();
+  if (!original)
+    return;
+  const int tag = original->getTag();
+  const bool alternate = original->isUserFlag1();
+  requireMackie(state_);
+  auto *model =
+      (alternate ? state_.alternateMackie : state_.normalMackie)->getModel();
+  if (model)
+    model->setButtonState(tag, pressed);
+}
+void MidiMixerHandler::encoderChanged(const Presonus::Panel::ControlRegistrar &,
+                                      int index, int delta,
+                                      Presonus::Panel::EncoderControl *) {
+  if (!state_.controller || static_cast<unsigned>(index) > 16)
+    return;
+  if (!state_.localParameters)
+    throw std::logic_error(
+        "MidiMixerHandler requires borrowed local parameters");
+  requireMackie(state_);
+  auto *parameter = state_.localParameters->getParameterByTag(1);
+  // Original boolean __aeabi_fcmpeq result selects 5 for exact +/-0,
+  // 15 for unequal (including NaN); a missing parameter retains 5.
+  const int divisor = parameter && parameter->getValue() != 0.0f ? 15 : 5;
+  const auto bits =
+      state_.accumulation[index] + static_cast<std::uint32_t>(delta);
+  const std::int64_t sum = bits & 0x80000000u
+                               ? static_cast<std::int64_t>(bits) - 0x100000000LL
+                               : bits;
+  const int quotient = static_cast<int>(sum / divisor);
+  state_.accumulation[index] = static_cast<std::uint32_t>(
+      sum - static_cast<std::int64_t>(quotient) * divisor);
+  if (!quotient)
+    return;
+  if (index <= 7)
+    state_.normalMackie->getModel()->turnEncoder(0x4300 + index, -quotient);
+  else if (index <= 15)
+    state_.alternateMackie->getModel()->turnEncoder(0x42f8 + index, -quotient);
+  else
+    state_.normalMackie->getModel()->turnScrubwheel(quotient);
+}
+
 void MidiMixerHandler::paramChanged(Core::Portable::Parameter *parameter, int) {
   const int tag = parameter->getTag();
   if (tag == 0) {

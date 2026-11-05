@@ -6,6 +6,9 @@
 #include <cstdint>
 #include <functional>
 #include <utility>
+namespace presonus::panel {
+class PresetApplicationServices;
+}
 namespace Presonus::Mixer {
 class ChannelComponent;
 class PermissionsComponent;
@@ -14,6 +17,10 @@ class PermissionsComponent;
 class MixerComponentBase {
 public:
   class Delegate;
+  // Required borrowed application binding for preset construction. The same
+  // real service instance must outlive constructed preset components.
+  presonus::panel::PresetApplicationServices *presetApplicationServices =
+      nullptr;
   // Independent portable state; no original layout or ownership claim.
   Core::Vector<Delegate *> delegates;
   void removeDelegate(Delegate &delegate);

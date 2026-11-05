@@ -12,6 +12,7 @@ class TCardRouter;
 struct NOAAStatusProperty;
 } // namespace Presonus::NOAA
 namespace presonus::noaa {
+class CardHandlerEventQueue;
 // Explicit projections of native payload reads. Names identify observed
 // offsets, not recovered original field declarations or native object layout.
 struct DeferredRouteProjection {
@@ -47,6 +48,8 @@ struct CardHandlerState {
   // +0x64. A source-port threadEntry consumes this with acquire ordering.
   // Not an original field declaration, native layout or ordering claim.
   std::atomic<bool> stopRequested{false};
+  // Independent optional FIFO; bind before thread start and join before unbind.
+  CardHandlerEventQueue *eventQueue = nullptr;
 };
 struct CardHandlerSetupTag {};
 inline constexpr CardHandlerSetupTag cardHandlerSetupTag{};

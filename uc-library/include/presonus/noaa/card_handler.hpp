@@ -25,7 +25,10 @@ public:
   // state. Source-port void override, not an independently recovered return
   // type.
   void release() override;
-  int threadEntry() override = 0;
+  // Source-port int override; native unencoded return declaration unresolved.
+  // Calls across Handler instances sharing the static idle deadline must be
+  // serialized by the caller. Borrowed state/queue must outlive the thread.
+  int threadEntry() override;
   void getProperty(Core::Property &) override;
   bool accepts(const SysexPacket &) override;
   // Portable void contract; original ordinary return declaration unresolved.

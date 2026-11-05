@@ -6,10 +6,6 @@ namespace presonus::panel_port {
 PanelCore::~PanelCore() = default;
 }
 
-#include "core/portable/coreattributes.h"
-#include "presonus/panel/FrontPanelComponent.hpp"
-#include "presonus/panel/PanelComponent.hpp"
-
 namespace Presonus::Panel {
 PanelComponent::PanelComponent(Presonus::Mixer::MixerComponentBase &mixer,
                                PanelRegistrar &registrar)

@@ -1,12 +1,56 @@
 #include "presonus/panel/PresetComponent.hpp"
 #include "core/portable/corefile.h"
 #include "core/portable/corepersistence.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/panel/FxPresetComponent.hpp"
 #include <cstring>
+#include <memory>
+#include <stdexcept>
 
 namespace Presonus::Panel {
 PresetComponent::PresetComponent(
     presonus::panel::PresetApplicationServices &services)
     : services(services) {}
+
+namespace {
+presonus::panel::PresetApplicationServices &
+requiredServices(Presonus::Mixer::MixerComponentBase &mixer) {
+  if (!mixer.presetApplicationServices)
+    throw std::logic_error("preset application services binding required");
+  return *mixer.presetApplicationServices;
+}
+BEGIN_PARAMINFO(presetParameters)
+PARAM_INT_(0, "slot_num", 0, 98, 0, "", "", 0, 0, "Slot Number", nullptr),
+    PARAM_STRING_(1, "slot_name", 0, "Slot Name", nullptr),
+    PARAM_STRING_(2, "loaded_name", 0, "Editable Name", nullptr),
+    PARAM_STRING_(3, "user_name", 0, "User Name", nullptr) END_PARAMINFO
+} // namespace
+PresetComponent::PresetComponent(const char *name, const char *display,
+                                 const char *formatterName,
+                                 Presonus::Mixer::MixerComponentBase &mixer)
+    : Core::Portable::Component(name), services(requiredServices(mixer)),
+      displayName(display), delegates(0, 5) {
+  // App-side ownership guard: upstream ParamList::add(ParamInfo) creates a raw
+  // parameter before vector growth, and leaks it if host allocation throws.
+  // Use actual CCL types/ownership while making that transfer exception safe.
+  for (const auto &info : presetParameters) {
+    std::unique_ptr<Core::Portable::Parameter> parameter;
+    if (info.type == Core::Portable::ParamInfo::kString)
+      parameter = std::make_unique<Core::Portable::StringParam>(info);
+    else
+      parameter = std::make_unique<Core::Portable::NumericParam>(info);
+    paramList.add(parameter.get());
+    parameter.release();
+  }
+  if (auto *slot = getParameterByTag(0))
+    slot->setFormatter(Core::FormatterRegistry::find(formatterName));
+  if (auto *parameter = getParameterByTag(2))
+    if (auto *text =
+            Core::Portable::core_cast<Core::Portable::StringParam>(parameter)) {
+      text->setDefaultText(displayName);
+      text->resetValue(false);
+    }
+}
 
 void PresetComponent::paramChanged(Core::Portable::Parameter *parameter,
                                    int message) {
@@ -40,8 +84,7 @@ void PresetComponent::presetStored() const {
   const int count = delegates.count();
   for (int i = 0; i < count; ++i)
     if (auto *delegate = items[i])
-      services.notifyDelegate(delegate, *this, services.selectedSlot(*this),
-                              true);
+      notifyDelegate(delegate, services.selectedSlot(*this), true);
 }
 
 PresetNameCache *PresetComponent::getCache() const {
@@ -103,8 +146,27 @@ void PresetComponent::presetRecalled() const {
   const int count = delegates.count();
   for (int i = 0; i < count; ++i)
     if (auto *delegate = items[i])
-      services.notifyDelegate(delegate, *this, services.selectedSlot(*this),
-                              false);
+      notifyDelegate(delegate, services.selectedSlot(*this), false);
+}
+
+void PresetComponent::bindFxDelegate(FxPresetComponent &fx,
+                                     Delegate *identity) {
+  if (fxDelegate || !identity)
+    throw std::logic_error("invalid composed FX delegate binding");
+  addDelegate(identity);
+  fxDelegate = &fx;
+  fxDelegateIdentity = identity;
+}
+void PresetComponent::notifyDelegate(Delegate *delegate, int slot,
+                                     bool stored) const {
+  if (delegate == fxDelegateIdentity && fxDelegate) {
+    if (stored)
+      fxDelegate->presetStored(*this, slot);
+    else
+      fxDelegate->presetRecalled(*this, slot);
+    return;
+  }
+  services.notifyDelegate(delegate, *this, slot, stored);
 }
 
 void PresetComponent::addDelegate(Delegate *delegate) {

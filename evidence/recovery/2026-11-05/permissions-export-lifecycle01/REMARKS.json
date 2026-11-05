@@ -1,0 +1,102 @@
+{
+  "notes": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponent12exportClientEv",
+      "work_item_id": "294b3bfe39a589c1963a2514ddf7d5494d6c0f1bd3a6169bfd9cd3d89c31c86f",
+      "date": "2026-11-05",
+      "status": "local_validation_complete_global_admission_pending",
+      "observations": [
+        "Portable source port only; original return type, member layout, ARM32 ABI and hardware interoperability unresolved. exportClient provisional unsigned char* remains declaration-pending.",
+        "Only deterministic first 12 exported bytes and output identity compared. Native suffix bytes 12..74 vary with entry stack; source port intentionally zeroes all 63, not native-equivalent.",
+        "Core firmware bodies never executed. Native named CCL/libc dependencies use explicit semantic boundary hooks; compiled replay uses actual pinned CCL5.0.0 and host C++/libc.",
+        "Normal nonthrowing destructor domain only. Original EH cleanup at ServerComponent and __cxa_end_cleanup excluded; not a second normal base destruction.",
+        "Native-equivalence selected domain requires null or portableOwnSelected-owned snapshot. Legacy constructor still borrows arbitrary external snapshots and is independently checked not to delete them.",
+        "Original PermissionsComponent and ClientSubscription constructors not recovered or credited; independent owned setup copies only existing partial app/device/display values. Vector borrows pointees.",
+        "D1/D2 host replay directly executes exact compiled base destructor entry, excludes derived body, then releases raw storage outside observation. D0 deletes through actual CCL virtual base, observing derived destructor and actual host object deallocation.",
+        "Canonical Linux consumer build rejected inline constructor cleanup because unique_ptr<ClientSubscription> requires the complete type. Moved constructor out of line; targeted standalone header consumer now compiles, old revision fails the same reproducer. Final format/compile/exact symbols/1110-case replay and sanitizer replay passed."
+      ],
+      "failed_approaches": [
+        "Initial linked second-label substring length 1 failed native Aux 9/12; corrected to exact native Aux-prefix length 4; final full replay passed."
+      ],
+      "resolution_condition": "Root acceptance, global integration and guarded registry admission; original declaration/ABI/EH questions require independent new evidence.",
+      "evidence": [
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle01/local-proof.json",
+        "uc-library/candidates/permissions_export_lifecycle/01/HANDOFF.json",
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle-headerfix03/validation.json"
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponentD0Ev",
+      "work_item_id": "1cc76c6424506c5732a0ac8dcb8ce79b909eb507d8af50cfefda9e03fb75d453",
+      "date": "2026-11-05",
+      "status": "local_validation_complete_global_admission_pending",
+      "observations": [
+        "Portable source port only; original return type, member layout, ARM32 ABI and hardware interoperability unresolved. exportClient provisional unsigned char* remains declaration-pending.",
+        "Only deterministic first 12 exported bytes and output identity compared. Native suffix bytes 12..74 vary with entry stack; source port intentionally zeroes all 63, not native-equivalent.",
+        "Core firmware bodies never executed. Native named CCL/libc dependencies use explicit semantic boundary hooks; compiled replay uses actual pinned CCL5.0.0 and host C++/libc.",
+        "Normal nonthrowing destructor domain only. Original EH cleanup at ServerComponent and __cxa_end_cleanup excluded; not a second normal base destruction.",
+        "Native-equivalence selected domain requires null or portableOwnSelected-owned snapshot. Legacy constructor still borrows arbitrary external snapshots and is independently checked not to delete them.",
+        "Original PermissionsComponent and ClientSubscription constructors not recovered or credited; independent owned setup copies only existing partial app/device/display values. Vector borrows pointees.",
+        "D1/D2 host replay directly executes exact compiled base destructor entry, excludes derived body, then releases raw storage outside observation. D0 deletes through actual CCL virtual base, observing derived destructor and actual host object deallocation.",
+        "Canonical Linux consumer build rejected inline constructor cleanup because unique_ptr<ClientSubscription> requires the complete type. Moved constructor out of line; targeted standalone header consumer now compiles, old revision fails the same reproducer. Final format/compile/exact symbols/1110-case replay and sanitizer replay passed."
+      ],
+      "failed_approaches": [],
+      "resolution_condition": "Root acceptance, global integration and guarded registry admission; original declaration/ABI/EH questions require independent new evidence.",
+      "evidence": [
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle01/local-proof.json",
+        "uc-library/candidates/permissions_export_lifecycle/04/HANDOFF.json",
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle-headerfix03/validation.json"
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponentD1Ev",
+      "work_item_id": "0ae27d75b4c1131efe7e469aec3e037e25945d5077a4d431e149b25d429e4b68",
+      "date": "2026-11-05",
+      "status": "local_validation_complete_global_admission_pending",
+      "observations": [
+        "Portable source port only; original return type, member layout, ARM32 ABI and hardware interoperability unresolved. exportClient provisional unsigned char* remains declaration-pending.",
+        "Only deterministic first 12 exported bytes and output identity compared. Native suffix bytes 12..74 vary with entry stack; source port intentionally zeroes all 63, not native-equivalent.",
+        "Core firmware bodies never executed. Native named CCL/libc dependencies use explicit semantic boundary hooks; compiled replay uses actual pinned CCL5.0.0 and host C++/libc.",
+        "Normal nonthrowing destructor domain only. Original EH cleanup at ServerComponent and __cxa_end_cleanup excluded; not a second normal base destruction.",
+        "Native-equivalence selected domain requires null or portableOwnSelected-owned snapshot. Legacy constructor still borrows arbitrary external snapshots and is independently checked not to delete them.",
+        "Original PermissionsComponent and ClientSubscription constructors not recovered or credited; independent owned setup copies only existing partial app/device/display values. Vector borrows pointees.",
+        "D1/D2 host replay directly executes exact compiled base destructor entry, excludes derived body, then releases raw storage outside observation. D0 deletes through actual CCL virtual base, observing derived destructor and actual host object deallocation.",
+        "Canonical Linux consumer build rejected inline constructor cleanup because unique_ptr<ClientSubscription> requires the complete type. Moved constructor out of line; targeted standalone header consumer now compiles, old revision fails the same reproducer. Final format/compile/exact symbols/1110-case replay and sanitizer replay passed."
+      ],
+      "failed_approaches": [],
+      "resolution_condition": "Root acceptance, global integration and guarded registry admission; original declaration/ABI/EH questions require independent new evidence.",
+      "evidence": [
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle01/local-proof.json",
+        "uc-library/candidates/permissions_export_lifecycle/05/HANDOFF.json",
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle-headerfix03/validation.json"
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponentD2Ev",
+      "work_item_id": "7b7988892323677dc779e52752e8e1e03ceaffbbbd1968886a413b05de0904e2",
+      "date": "2026-11-05",
+      "status": "local_validation_complete_global_admission_pending",
+      "observations": [
+        "Portable source port only; original return type, member layout, ARM32 ABI and hardware interoperability unresolved. exportClient provisional unsigned char* remains declaration-pending.",
+        "Only deterministic first 12 exported bytes and output identity compared. Native suffix bytes 12..74 vary with entry stack; source port intentionally zeroes all 63, not native-equivalent.",
+        "Core firmware bodies never executed. Native named CCL/libc dependencies use explicit semantic boundary hooks; compiled replay uses actual pinned CCL5.0.0 and host C++/libc.",
+        "Normal nonthrowing destructor domain only. Original EH cleanup at ServerComponent and __cxa_end_cleanup excluded; not a second normal base destruction.",
+        "Native-equivalence selected domain requires null or portableOwnSelected-owned snapshot. Legacy constructor still borrows arbitrary external snapshots and is independently checked not to delete them.",
+        "Original PermissionsComponent and ClientSubscription constructors not recovered or credited; independent owned setup copies only existing partial app/device/display values. Vector borrows pointees.",
+        "D1/D2 host replay directly executes exact compiled base destructor entry, excludes derived body, then releases raw storage outside observation. D0 deletes through actual CCL virtual base, observing derived destructor and actual host object deallocation.",
+        "Canonical Linux consumer build rejected inline constructor cleanup because unique_ptr<ClientSubscription> requires the complete type. Moved constructor out of line; targeted standalone header consumer now compiles, old revision fails the same reproducer. Final format/compile/exact symbols/1110-case replay and sanitizer replay passed."
+      ],
+      "failed_approaches": [],
+      "resolution_condition": "Root acceptance, global integration and guarded registry admission; original declaration/ABI/EH questions require independent new evidence.",
+      "evidence": [
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle01/local-proof.json",
+        "uc-library/candidates/permissions_export_lifecycle/06/HANDOFF.json",
+        "evidence/recovery/2026-11-05/permissions-export-lifecycle-headerfix03/validation.json"
+      ]
+    }
+  ]
+}

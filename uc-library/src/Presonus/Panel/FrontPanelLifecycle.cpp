@@ -501,6 +501,12 @@ namespace presonus::frontpanel_port {
 static void addNativeParameters(Core::Portable::Component &component) {
   using namespace parameter_data;
   component.addParameters(mainParameters, 134);
+  // Intentional source-provider exception-safety adaptation: main134 rounds
+  // the pinned CCL vector to capacity135. Reserve before either diagnostic
+  // parameter is allocated, since bulk add otherwise grows after allocating
+  // the second parameter and does not guard it if vector growth throws.
+  // Six exceeds CCL's default delta5 and reserves current count + 6 slots.
+  component.addParameters(nullptr, 6);
   component.addParameters(diagnosticParameters, 2);
 }
 } // namespace presonus::frontpanel_port

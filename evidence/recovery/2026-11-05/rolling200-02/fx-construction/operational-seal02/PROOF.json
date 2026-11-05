@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "worker": "rolling200_02_fx_construction",
+  "checkout": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos03/fx_construction08",
+  "base_commit": "95e1a9fc26b3d6909f272c1618ad842bb8c878b5",
+  "validation_start_utc": "2026-11-05T21:40:57.779340+00:00",
+  "validation_end_utc": "2026-11-05T21:41:05.896526+00:00",
+  "elf": {
+    "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+  },
+  "identity_ranges": [
+    {
+      "mangled": "_ZN8Presonus5Panel15PresetComponentC2EPKcS3_S3_RNS_5Mixer18MixerComponentBaseE",
+      "address": 539492,
+      "size": 328,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 506724,
+      "sha256": "cc0b8608afad65de6852cc0ca34697e39ea9cdb6d1b75e6ceba348f9f1bfd84e"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel17FxPresetComponentC1ERNS0_19FrontPanelComponentERNS_5Mixer18MixerComponentBaseE",
+      "address": 351164,
+      "size": 248,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 318396,
+      "sha256": "2744073822664c573831712dd0c0c601cde8e9e7221bb094c5d351414d58b2c4"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel17FxPresetComponentC2ERNS0_19FrontPanelComponentERNS_5Mixer18MixerComponentBaseE",
+      "address": 351412,
+      "size": 248,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 318644,
+      "sha256": "161b5ebfdc988fc768c465505ce4cc415c5ebe80a06ee76e4b37bd7f7a8016b1"
+    }
+  ],
+  "source_and_provider_hashes": {
+    "uc-library/include/presonus/panel/FxPresetComponent.hpp": "fa638d2e6e0bf383493061bdbb9a1539620fd193b2c685a4f45af6d8b9d0fed2",
+    "uc-library/src/Presonus/Panel/FxPresetComponent.cpp": "c0edaa633242afed5576979f342e31d6df403c0867fe19b628066e95b048e381",
+    "uc-library/include/presonus/panel/PresetComponent.hpp": "cd10868f394e5bdbee2aecaa89ef93d54ee5ebfcfd605c46f01bf325d82c2eb0",
+    "uc-library/src/Presonus/Panel/PresetComponent.cpp": "d24d1794e9738634c4118eb0952b651f6305268c497a6deba23c6357ae47f99e",
+    "uc-library/include/presonus/mixer/MixerComponentBase.hpp": "5d58de58dbf7d938c70d11dd3088ceb1ae54b4fb55335c5f21c8500d8da60649",
+    "uc-library/tests/recovery/FxPresetConstructionReplay.cpp": "2659398e4d2a4859c614b73f21f2c6c2e2878a1764390d1bebb3e142255f87e2",
+    "uc-library/tests/recovery/fx_preset_construction/fixtures.json": "ca32bc893faa685381c7b32fa60e8c97569e05cf4475a6aff526aa15dd1138cf",
+    "uc-library/src/Presonus/Panel/PresetNameCache.cpp": "501d23de3b03f51ea28adb20d1e639c0e9d3deceb51d3d8cc386645dfb5841b1",
+    "uc-library/src/Presonus/Panel/FXPresetRecallComponent.cpp": "e54468d3b44a88833f4ece0da5c6b829f39c4ca71319ad8c35b6a82b308ba388",
+    "uc-library/src/Presonus/Panel/PresetComponentSlotPaths.cpp": "239924ab0e249193a7d1a974486f0b5ef7607777bf5146f38f89db1878821016",
+    "uc-library/src/Presonus/Panel/FrontPanelLifecycle.cpp": "009edf8d2052d952f0727e315508a138cb64f0dd7fceb811d1f5a095f185860b",
+    "uc-library/src/Presonus/Panel/PanelComponentLifecycle.cpp": "23ed785c82ae52595716e74b02919db4bc85107e07d11425e2795134ed080315",
+    "uc-library/src/Presonus/DelayTimer.cpp": "9936fd62ef1f18d0b42345e6b496d3478a3be823e8cd727efdebf27a827a509f",
+    "uc-library/src/Presonus/Panel/PresetParameterAccess.hpp": "cfb7531c0daee414afef1a30625c8af875c85c63d24cd69130bc569bcd48e1bf",
+    "uc-library/include/presonus/panel/FrontPanelComponent.hpp": "4b7edf8624d7dfce95ef8929a8e53c39ea47c601651f0d3e2b01040fbbd99ff2",
+    "uc-library/include/presonus/panel/PanelComponent.hpp": "da3d75f8cbe9eeb7dde0d2258e15beb8971b8e516a8dde22a08838c8deb94934",
+    "uc-library/include/presonus/panel/PresetNameCache.hpp": "67da8cb4e4be5baa499af25c2908bca8c975058a8db6c3973323801231191b4c",
+    "uc-library/include/presonus/panel/FXPresetRecallComponent.hpp": "1db31f37f407372e4828691376714c6cf16116d6ecb9ab1def07ebf5793ae81f",
+    "uc-library/include/presonus/delay_timer.hpp": "3da2b15d6b56b8f921983ea0c97585736dbaa9d3757da8e708bbf81b2f2c9e55",
+    "third_party/ccl-framework/core/portable/coreparams.h": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd",
+    "third_party/ccl-framework/core/portable/coreparams.cpp": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5",
+    "third_party/ccl-framework/core/portable/coreparaminfo.h": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0",
+    "third_party/ccl-framework/core/portable/corecomponent.h": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb",
+    "third_party/ccl-framework/core/portable/corecomponent.cpp": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6",
+    "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32",
+    "third_party/ccl-framework/core/public/coreformatter.h": "cc9215eeea8262be411ed08b2dcda376a2bc2510d5b0cf49b123be82b583d023",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20",
+    "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so": "28b67af5dddb8eef17b77280db249c50344554c82226705733b1912a30c114a5",
+    "uc-library/tools/recovery/accept_worker.py": "6c7e52651e716739984a1b4a750fc7bf222a47e2726990dfa90b112e31001f35",
+    "uc-library/tests/recovery/FxPresetLifecycleReplay.cpp": "e228ca0a6f808543111681e2b6e78ebb90c9bbc4c0f9862efaf793cf831ae19e",
+    "uc-library/tests/recovery/fx_preset_lifecycle/check.py": "21f39065e42a4ccffbad94c7aae8ffb15ae2e556199edf74cd32a8b643c30dbc",
+    "uc-library/tests/recovery/fx_preset_lifecycle/native.py": "8ea458b06736c0d0245156c2ad1785dd5ccc1ea76a3d831325056c566a79744c",
+    "uc-library/tests/recovery/fx_preset_lifecycle/fixtures.json": "1206b2d75c352d4524f1b47940fe5261cd0c17155502e27e09cffcc9be766a2a",
+    "uc-library/tests/recovery/fx_preset_construction/native.py": "164ff0441f404628b156a9354ebd335984802d2e6b11cdc1100c6a41dc3e0387",
+    "uc-library/tests/recovery/fx_preset_construction/check.py": "a99b18fff7966b4847aaf2dc7ba461703c37080798720e466b7b113f94ac47e1",
+    "uc-library/tests/recovery/fx_preset_construction/make_delivery.py": "62c75e39c1a8c332c914312d52f76134fb5c2a63695b1fcdc892b1d67956a73c"
+  },
+  "executable": {
+    "path": "temp/recovery-work/rolling200-02/fx-construction-local/replay",
+    "sha256": "f52cb3f31aa9cd20a304fe3f03f619d463b7119fce8eda81cc4b866b31a53bd9"
+  },
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_construction/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:40:57.779488+00:00",
+      "seconds": 0.08971367700723931,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/constructor-format.log"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_construction/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:40:57.869222+00:00",
+      "seconds": 2.771805852011312,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/constructor-compile.log"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_construction/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:00.641045+00:00",
+      "seconds": 0.037540819990681484,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/constructor-symbols.log"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_construction/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:00.678607+00:00",
+      "seconds": 1.0220643719949294,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/constructor-replay.log"
+    },
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:01.700689+00:00",
+      "seconds": 0.07104425801662728,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/existing-lifecycle-format.log"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:01.771748+00:00",
+      "seconds": 1.9889360470115207,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/existing-lifecycle-compile.log"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:03.760707+00:00",
+      "seconds": 0.04229453799780458,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/existing-lifecycle-symbols.log"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T21:41:03.803017+00:00",
+      "seconds": 1.2186884499969892,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-05/rolling200-02/fx-construction/operational-seal02/existing-lifecycle-replay.log"
+    }
+  ],
+  "compile_argv": [
+    "/usr/bin/c++",
+    "-std=c++17",
+    "-O0",
+    "-g",
+    "-fno-rtti",
+    "-fno-access-control",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-Wl,--gc-sections",
+    "-Ulinux",
+    "-Wno-multichar",
+    "-Iuc-library/include",
+    "-Ithird_party/ccl-framework",
+    "uc-library/src/Presonus/Panel/FxPresetComponent.cpp",
+    "uc-library/tests/recovery/FxPresetConstructionReplay.cpp",
+    "uc-library/src/Presonus/Panel/PresetComponent.cpp",
+    "uc-library/src/Presonus/Panel/PresetNameCache.cpp",
+    "uc-library/src/Presonus/Panel/FXPresetRecallComponent.cpp",
+    "uc-library/src/Presonus/Panel/PresetComponentSlotPaths.cpp",
+    "uc-library/src/Presonus/Panel/FrontPanelLifecycle.cpp",
+    "uc-library/src/Presonus/Panel/PanelComponentLifecycle.cpp",
+    "uc-library/src/Presonus/DelayTimer.cpp",
+    "-Wl,--start-group",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+    "-Wl,--end-group",
+    "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+    "/usr/lib/x86_64-linux-gnu/libz.so.1",
+    "/usr/lib/x86_64-linux-gnu/libssl.so",
+    "/usr/lib/x86_64-linux-gnu/libcrypto.so",
+    "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+    "-ldl",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+    "-lm",
+    "-pthread",
+    "-o",
+    "temp/recovery-work/rolling200-02/fx-construction-local/replay"
+  ],
+  "native_case_count": 6,
+  "host_case_count": 6,
+  "callback_range": {
+    "mangled": "_ZN8Presonus5Panel17FxPresetComponent14presetRecalledERKNS0_15PresetComponentEi",
+    "address": 355632,
+    "size": 16,
+    "file_offset": 322864,
+    "section": ".text",
+    "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+  },
+  "callback_native_cases": 10,
+  "supersedes_commit": "3c22fb16a29faf7d2ceeccc3b25e14a6d57af153",
+  "existing_lifecycle_case_count": 24,
+  "validation_domain": "Six independent normal native cases: exact Preset base C2 and Fx C1/C2, each null/non-null front selection (base has same normal provider state). Native base C2 executes inside both Fx bodies. Host compares exact decoded 336-byte ParamInfo table fields, real CCL parameter classes/current/default/reset/formatter, name/display, SAME service identity, empty delta5 recalls/current child, stable delegate and optional observer membership/order. Actual C++ failure sweep and deletion prove zero outstanding tracked allocations and detached observer at every throwing allocation point. Ten independently executed full recall callback cases cover two receiver addresses and slots0/1/-1/INT_MIN/INT_MAX with no application memory writes or external calls. Actual base stored/recalled dispatch reaches typed Fx callback; stored updates real child CCL preset/type strings three times, external services notification remains and removed membership suppresses Fx. Fresh 24-case existing D0/D1/D2 native/provider lifecycle replay preserves earlier bounded coverage without new credit.",
+  "limitations": [
+    "Intentional portable composition reuses actual canonical PresetComponent lifecycle. No original inheritance, ARM layout/vtables/calling convention or hardware interoperability claim. Native Fx C1 and C2 call exact base C2; host composition uses actual PresetComponent construction (host C1/C2 alias emitted). Base C1 is not a target or new readiness credit.",
+    "Normal original constructor instruction paths executed offline with all exact ranges checked separately. Core calls use explicit typed boundaries; native Core implementation, ARM exception landing pads/unwinder and allocator are not executed. Native failure-path equivalence is not claimed.",
+    "Real SAME PresetApplicationServices is a mandatory borrowed binding, not a fabricated production provider. Services/front parameter owner outlive Fx. Service internals and opaque external delegates retain explicit source-port boundaries. Composed Fx membership is privately bound to the actual typed Fx receiver before any notification, and never passed unresolved to services. Original delegate adjustment and Fx observer dispatch remain outside this initialization/lifecycle domain.",
+    "Host exception safety is intentional source-port adaptation. Pinned CCL ParamList::add(ParamInfo) leaks its freshly constructed raw parameter if backing vector growth throws. Application constructor uses actual CCL NumericParam/StringParam guarded by unique_ptr until actual ParamList ownership transfer. Vendor untouched; host failure sweep proves cleanup, not native failure equivalence.",
+    "Native display is exact My Fx (lowercase x). Sealed TASK/contract My FX spelling was mistaken. Root confirmed correction; sealed historical packet unchanged. Source follows observed ELF string, not task spelling.",
+    "Test-only -fno-access-control permits reading actual provider parameter metadata/observer membership; no replacement Core class/provider exists. Global operator new/delete interposition is private to standalone test binary. Canonical CTest executable must retain assertions and this test compile option.",
+    "Allocation failure sweep is finite (each throwing new/new[] position through first successful construction) and single threaded. CCL removeObserver retains external parameter observer capacity; test frees that provider-owned reusable storage after membership reaches zero, before outstanding-allocation assertions. Host null-return allocation failures, asynchronous callbacks, concurrent state, file/network/hardware and other provider-internal semantics are excluded. Existing destructor replay is resealed without new destructor reconstruction credit.",
+    "Supplemental exact Fx presetRecalled 16-byte native body has no application writes/calls; full four-instruction range executed for ten argument combinations. Host void is a provisional source-port return declaration; unchanged native r0 does not prove a return type. Other314 context-only byte-equal identities receive no behavior/readiness propagation.",
+    "Root rejected original membership-only delegate proof. Private typed binding now routes stored to actual Fx presetStored/child updateFxName and recalled to authenticated no-side-effect Fx callback; external delegates still reach SAME services. Original observer dispatch remains explicitly excluded.",
+    "No ready/pending admission fragments produced; Root owns canonical full Linux integration, production partition/public headers, installed-role/compile-once, fresh active proof, guarded SQLite dry-run/admission, tracker and mirror gates."
+  ],
+  "formatter_version": "clang-format version 23.1.3",
+  "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "unicorn_version": "2.1.4",
+  "python_version": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "provider_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+  "provider_release": "CCL 5.0.0",
+  "provider_root_history": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+  "readiness_admitted": false,
+  "hardware_validated": false,
+  "original_arm_abi_verified": false,
+  "source_port_behavior_validated": true
+}

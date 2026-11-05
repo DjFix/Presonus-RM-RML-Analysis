@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "date": "2026-11-05",
+  "task": "rolling200_02_handler_runtime08_01",
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus4NOAA12TCardHandler11threadEntryEv",
+  "status": "resolved-by-Root-contract-correction",
+  "original_contract": {
+    "kind": "historical_contract",
+    "path": "temp/recovery-work/rolling200-02/next-implementation08/handler/01.contract.json",
+    "sha256": "3d47ca3ed188340ca78147fa67a30e907d57308d16ff48caf966a6cf66e87378"
+  },
+  "native_evidence": {
+    "kind": "native_context",
+    "path": "temp/recovery-work/rolling200-02/next-implementation08/prepared09-handler_thread08/packets/rolling200_02_handler_runtime08_01/ELF_CONTEXT.md",
+    "sha256": "6966b86d59d31d4039e692b89f27688a09d123a4ca63efe76c819d9bccbb1e07"
+  },
+  "root_decision": {
+    "source": "collaboration message /root to /root/rolling200_02_handler_runtime08, 2026-11-05",
+    "text": "Confirmed scoped correction: retain the native queue lock through dispatch/recycle, since the actual provider supports it and release is unnecessary. Preserve the sealed contract as historical input; append a hash-bound correction note linking this Root decision, native instructions and actual CCL lock evidence, and include it in HANDOFF limitations/remarks. Do not rewrite the original contract or native oracle to conceal the discrepancy. Validate observed lock order in replay."
+  },
+  "instructions": {
+    "lock_main": "0x9f670",
+    "lock_queue": "0x9f67c",
+    "dispatch": "0x9f6c0",
+    "pool_push": "0x9f6fc",
+    "unlock_queue": "0x9f71c",
+    "unlock_main": "0x9f72c"
+  },
+  "provider": {
+    "kind": "provider",
+    "path": "third_party/ccl-framework/core/platform/shared/posix/corethread.posix.cpp",
+    "sha256": "841a4770b0e87cb3a140bf9e779abe770d2bb330fd7d8df22b678124c9854d07"
+  },
+  "reason": "CCL PosixLock uses PTHREAD_MUTEX_RECURSIVE. Producer and consumer consistently take main then queue. Actual deferred dispatch has no queue dependency. No provider requirement justifies releasing queue before dispatch. Keeping both preserves native critical-section scope; unlike the discarded proposal, a future queue-only observer cannot acquire queue during dispatch. No source-level original interleaving or ARM ABI claim.",
+  "retry_condition": "Revisit only if actual provider/deferred queue dependencies change; preserve native trace and this correction."
+}

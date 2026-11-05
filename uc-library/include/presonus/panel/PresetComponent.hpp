@@ -13,8 +13,12 @@ class PresetApplicationServices;
 struct PresetTestAccess;
 } // namespace presonus::panel
 
+namespace Presonus::Mixer {
+class MixerComponentBase;
+}
 namespace Presonus::Panel {
 class PresetNameCache;
+class FxPresetComponent;
 
 // Portable source contract. Original inheritance, fields, return declarations,
 // ownership and ARM ABI remain unresolved. Core uses the pinned source
@@ -26,6 +30,9 @@ public:
 
   explicit PresetComponent(
       presonus::panel::PresetApplicationServices &services);
+  PresetComponent(const char *name, const char *displayName,
+                  const char *formatterName,
+                  Presonus::Mixer::MixerComponentBase &);
   ~PresetComponent() override;
   // Explicit independent registration token, not original subobject layout.
   void sourcePortObserveCache(PresetNameCache::Delegate *);
@@ -53,7 +60,15 @@ public:
 
 private:
   friend struct presonus::panel::PresetTestAccess;
+  friend class FxPresetComponent;
+  // Independent typed binding for the composed Fx registration. The original
+  // Delegate remains opaque, while this membership has an actual receiver.
+  void bindFxDelegate(FxPresetComponent &, Delegate *);
+  void notifyDelegate(Delegate *, int slot, bool stored) const;
+  FxPresetComponent *fxDelegate = nullptr;
+  Delegate *fxDelegateIdentity = nullptr;
   presonus::panel::PresetApplicationServices &services;
+  Core::CString32 displayName; // Independent source-port storage.
   Core::Vector<Delegate *> delegates;
   PresetNameCache::Delegate *cacheObserver = nullptr;
 };

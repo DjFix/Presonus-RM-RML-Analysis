@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/coreparams.h"
+#include "core/portable/gui/corebitmap.h"
 #include "core/portable/gui/corecontrols.h"
 #include "core/portable/gui/coregraphics.h"
 #include "core/portable/gui/coreview.h"
@@ -48,13 +49,15 @@ struct EQControlDrawBoundary {
 } // namespace presonus::dsp
 namespace Presonus {
 // Intentional portable source port. Original GUI inheritance, layout,
-// virtual table and lifecycle are not represented by this portable class.
+// virtual table and ARM lifecycle ABI are not represented by this portable
+// class.
 class EQControl {
 public:
   explicit EQControl(presonus::dsp::EQControlBiquadPortTag) : observer(*this) {}
   // Original encoded constructor interface; composition below is a portable
   // source model, not recovered GUI inheritance or original ARM object layout.
   explicit EQControl(const Core::TRect<int> &rectangle);
+  virtual ~EQControl();
   struct PortableConstructorState {
     explicit PortableConstructorState(const Core::Rect &rectangle);
     // Destruction order: parameters before interpolators before the control.
@@ -64,7 +67,11 @@ public:
     presonus::dsp::EQControlFrequencyInterpolator frequency;
     Core::LinearInterpolator x{0.f, 1.f};
     const Core::Portable::ParamInfo *const hpfInfo;
-    Core::Portable::ParamList hpfParameters;
+    // Separate ownership permits native-phase ParamList cleanup while the
+    // observer and Control are still alive. The reference is valid until
+    // EQControl destruction begins; it is not an original object field.
+    std::unique_ptr<Core::Portable::ParamList> hpfParameterOwner;
+    Core::Portable::ParamList &hpfParameters;
     int handleDiameter = 10;
     Core::Color offlineColor{0, 0, 0, 255};
     // Explicit null borrowed source-port boundaries. Original declarations of
@@ -196,6 +203,23 @@ public:
     return bandCurves;
   }
   const Core::Portable::Bitmap *portableBitmap() const { return bitmap.get(); }
+  // Source-port lifetime bindings: shared images are referenced, never owned.
+  // Borrowed images and parameters must outlive this object. Array cookies,
+  // original fields and ARM layout are deliberately not represented.
+  void
+  bindPortableBandImages(const std::vector<Core::Portable::Bitmap *> &images) {
+    bandImages.resize(images.size());
+    for (unsigned i = 0; i < images.size(); ++i)
+      bandImages[i] = images[i];
+  }
+  void bindPortableImages(Core::Portable::Bitmap *defaultImage,
+                          Core::Portable::Bitmap *backgroundImage) {
+    defaultBitmap = defaultImage;
+    backgroundBitmap = backgroundImage;
+  }
+  void bindPortableOwnedBitmap(std::unique_ptr<Core::Portable::Bitmap> value) {
+    bitmap = std::move(value);
+  }
   int gainToY(float gain) const;
   bool isAnyBandOn() const;
   void
@@ -230,6 +254,8 @@ private:
   std::vector<float> amplitudeCurve;
   std::vector<int> pixelCurve;
   std::unique_ptr<Core::Portable::Bitmap> bitmap;
+  std::vector<Core::Portable::BitmapReference> bandImages;
+  Core::Portable::BitmapReference defaultBitmap, backgroundBitmap;
   Core::Portable::View *portableView = nullptr;
   Core::Portable::Parameter *primaryParameter = nullptr;
   std::vector<Core::Portable::Parameter *> typeParameters;

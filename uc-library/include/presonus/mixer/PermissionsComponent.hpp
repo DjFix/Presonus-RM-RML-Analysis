@@ -1,8 +1,12 @@
 #pragma once
 
 #include "core/portable/coreparams.h"
+#include "core/public/corevector.h"
+#include "presonus/uc/ServerComponent.hpp"
+#include <array>
 #include <cstdint>
 #include <functional>
+#include <memory>
 namespace Presonus {
 class LinkableComponent;
 }
@@ -66,10 +70,23 @@ struct PermissionsBindings {
 
 // Portable source port with original encoded scopes/parameters. void return
 // contracts are intentional source-port choices, not original declarations.
-class PermissionsComponent {
+class PermissionsComponent : public UC::ServerComponent {
 public:
-  explicit PermissionsComponent(PermissionsBindings &bindings)
-      : bindings_(bindings) {}
+  explicit PermissionsComponent(PermissionsBindings &bindings);
+
+  ~PermissionsComponent() override;
+  PermissionsComponent(const PermissionsComponent &) = delete;
+  PermissionsComponent &operator=(const PermissionsComponent &) = delete;
+  // Independent setup, not an original constructor/copyToSelected recovery.
+  // The legacy bindings constructor continues to borrow external snapshots.
+  void portableOwnSelected(const UC::ClientSubscription *values);
+  void portableAppendDevice(const UC::ClientSubscription *device);
+  const UC::ClientSubscription *const *portableDeviceStorage() const {
+    return devices_.getItems();
+  }
+  // Provisional return spelling. Bytes 12..74 are deliberately sanitized;
+  // native copies unspecified entry-stack bytes there. No ARM layout claim.
+  unsigned char *exportClient();
 
   void updateOtherPermissionsStrings();
   void updateMixPermissionsStrings();
@@ -103,5 +120,9 @@ public:
 private:
   void compareDeadlineAt(std::int64_t);
   PermissionsBindings &bindings_;
+  std::array<unsigned char, 75> exported_{};
+  // Reverse member destruction: owned selection, borrowed-pointer array, base.
+  Core::Vector<const UC::ClientSubscription *> devices_;
+  std::unique_ptr<UC::ClientSubscription> selected_;
 };
 } // namespace Presonus::Mixer

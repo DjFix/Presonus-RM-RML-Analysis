@@ -7,9 +7,80 @@
 #include "presonus/LinkableComponent.hpp"
 #include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/uc/ClientSubscription.hpp"
+#include <cstdio>
 #include <cstring>
 
 namespace Presonus::Mixer {
+PermissionsComponent::PermissionsComponent(PermissionsBindings &bindings)
+    : bindings_(bindings) {}
+PermissionsComponent::~PermissionsComponent() {
+  // Only our explicit source-port allocation is owned. Legacy external values
+  // stay borrowed. Clear the public projection before actual member cleanup.
+  if (selected_ && bindings_.selectedSnapshot == selected_.get())
+    bindings_.selectedSnapshot = nullptr;
+}
+void PermissionsComponent::portableOwnSelected(
+    const UC::ClientSubscription *values) {
+  auto replacement =
+      values ? std::make_unique<UC::ClientSubscription>(
+                   UC::ClientSubscription::SourcePortValues{},
+                   values->sourcePortApp(), values->sourcePortDevice(),
+                   values->sourcePortDisplay())
+             : nullptr;
+  selected_ = std::move(replacement);
+  bindings_.selectedSnapshot = selected_.get();
+}
+void PermissionsComponent::portableAppendDevice(
+    const UC::ClientSubscription *device) {
+  devices_.add(device);
+}
+unsigned char *PermissionsComponent::exportClient() {
+  // Native initializes only the first 12 bytes before copying 75. Sanitizing
+  // the uninitialized suffix is an intentional source-port adaptation.
+  exported_.fill(0);
+  Core::CStringBuffer<128> mix;
+  getMixString(mix);
+  if (std::strcmp(mix.str(), "None") != 0 && !mix.isEmpty()) {
+    if (std::strcmp(mix.str(), "FOH") == 0)
+      exported_[0] = 1;
+    else {
+      exported_[0] = 2;
+      if (std::strcmp(mix.str(), "All Auxes") == 0) {
+        for (int i = 3; i < 7; ++i)
+          exported_[i] = 255;
+      } else if (std::strstr(mix.str(), "Aux ") == mix.str()) {
+        mix.subString(mix, 4);
+        Core::CStringBuffer<128> second;
+        if (const auto *slash = std::strstr(mix.str(), "/")) {
+          const auto index = static_cast<int>(slash - mix.str());
+          mix.subString(second, index + 1);
+          if (index < mix.length())
+            mix.getBuffer()[index] = 0;
+          second.subString(second, 4);
+        }
+        auto add = [&](const char *text) {
+          long long number = 0;
+          if (std::sscanf(text, "%lld", &number) == 1 && number >= 1 &&
+              number <= 32) {
+            auto bit = static_cast<unsigned>(number - 1);
+            exported_[3 + bit / 8] |=
+                static_cast<unsigned char>(1u << (bit % 8));
+          }
+        };
+        add(mix.str());
+        add(second.str());
+      }
+    }
+  }
+  Core::CStringBuffer<128> other;
+  getOtherString(other);
+  if (std::strcmp(other.str(), "Ch Rename") == 0)
+    exported_[1] = 1;
+  else if (std::strcmp(other.str(), "Wheel Only") == 0)
+    exported_[2] = 1;
+  return exported_.data();
+}
+
 void PermissionsComponent::updateOtherPermissionsStrings() {
   auto &list = *bindings_.otherList;
   list.removeAll();

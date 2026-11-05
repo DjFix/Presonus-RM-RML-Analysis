@@ -9,6 +9,7 @@ namespace presonus::panel {
 struct FxPresetTestAccess;
 }
 namespace Presonus::Panel {
+class FrontPanelComponent;
 // Borrowed, fixed-extent collection models the observed array/count snapshot.
 // Its lifetime and valid nonnull elements are caller preconditions, not an
 // inference of original ownership or container declaration.
@@ -23,6 +24,8 @@ public:
   FxPresetComponent(presonus::panel::PresetApplicationServices &services,
                     Core::Portable::Parameter *observed,
                     FXPresetRecallComponent *const *items, int count);
+  FxPresetComponent(FrontPanelComponent &,
+                    Presonus::Mixer::MixerComponentBase &);
   virtual ~FxPresetComponent();
   FxPresetComponent(const FxPresetComponent &) = delete;
   FxPresetComponent &operator=(const FxPresetComponent &) = delete;
@@ -31,6 +34,9 @@ public:
   Core::Portable::Parameter *getRecallParameter(int, int);
   bool recall(Core::Portable::Attributes &, bool);
   void presetStored(const PresetComponent &, int);
+  // Exact native body has no application side effects. Void is a source-port
+  // return choice; unchanged native r0 does not establish a return declaration.
+  void presetRecalled(const PresetComponent &, int);
   // Caller-owned source-port state; optional provider yields the observed zero
   // default for a missing FX selection parameter. No original field inference.
   Core::Portable::Component *fxParameters = nullptr;
@@ -47,5 +53,8 @@ private:
   std::unique_ptr<Core::Vector<FXPresetRecallComponent *>> ownedRecalls;
   Core::Portable::Parameter *observed = nullptr;
   Core::ConstVector<FXPresetRecallComponent *> recalls;
+  // Stable opaque membership token, never dereferenced as an original Delegate.
+  unsigned char delegateToken = 0;
+  FXPresetRecallComponent *currentChild = nullptr;
 };
 } // namespace Presonus::Panel

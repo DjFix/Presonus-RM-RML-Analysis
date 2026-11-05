@@ -421,6 +421,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/NOAA/TCardLifecycle.cpp
   src/Presonus/NOAA/TCardSerial.cpp
   src/Presonus/NOAA/TCardHandlerEvents.cpp
+  src/Presonus/NOAA/TCardHandlerEventQueue.cpp
   src/Presonus/NOAA/TCardFPGAUpdater.cpp
   src/Presonus/NOAA/TCardRouterRoutes.cpp
   src/Presonus/NOAA/TCardReceive.cpp
@@ -612,6 +613,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/client_typed_origins.hpp
   presonus/noaa/card_handler.hpp
   presonus/noaa/card_handler_state.hpp
+  presonus/noaa/card_handler_events.hpp
   presonus/uc/client_event_values.hpp
   presonus/mixer_dsp/FaderInterpolator.hpp
   presonus/dsp/audio_hal.hpp

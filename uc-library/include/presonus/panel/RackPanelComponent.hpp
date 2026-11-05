@@ -1,10 +1,13 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/public/corevector.h"
 #include "presonus/delay_timer.hpp"
+#include "presonus/panel/PanelComponent.hpp"
 #include "presonus/panel/control.hpp"
 #include "presonus/surface_panel/ControlGroup.hpp"
 #include "presonus/surface_panel/LEDState.hpp"
 #include <cstdint>
+#include <new>
 #include <vector>
 
 namespace Presonus::Mixer {
@@ -32,15 +35,54 @@ struct Dependencies {
     led.setBlinkMode(static_cast<Presonus::Panel::LEDControl::BlinkMode>(mode));
   }
 };
+// Single authoritative CCL vector with a compatibility view for the older
+// independent adapter API. It never duplicates pointer/container ownership.
+class ControlVectorView {
+public:
+  explicit ControlVectorView(Core::Vector<Presonus::Panel::Control *> &v)
+      : values(v) {}
+  void push_back(Presonus::Panel::Control *p) {
+    if (!values.add(p))
+      throw std::bad_alloc();
+  }
+  void clear() { values.removeAll(); }
+  std::size_t size() const { return static_cast<std::size_t>(values.count()); }
+  Presonus::Panel::Control *operator[](std::size_t i) const {
+    return values.at(static_cast<int>(i));
+  }
+  auto begin() const { return values.begin(); }
+  auto end() const { return values.end(); }
+  Core::Vector<Presonus::Panel::Control *> &storage() { return values; }
+
+private:
+  Core::Vector<Presonus::Panel::Control *> &values;
+};
 } // namespace presonus::rackpanel_port
 namespace Presonus::Panel {
 // Portable source representation. Ordinary returns, storage and inheritance
 // are chosen source-port declarations, pending original declaration evidence.
 // No ARM layout, vtable or binary interoperability claim is made.
-class RackPanelComponent : public Core::Portable::Component {
+class PanelTask;
+class RackPanelComponent : public presonus::panel_port::PanelCore,
+                           public PanelComponent {
+private:
+  Core::Vector<Control *> meterControls{0, 5}, clipControls{0, 5},
+      phantomControls{0, 5};
+
 public:
+  // Independent source model: vectors own pointer arrays, never the pointees.
+  Core::Vector<PanelTask *> tasks{0, 5};
+  Presonus::DelayTimer monitorTimer{1.f}, cueTimer{1.f}, statusTimer{1.f},
+      resetTimer{1.f};
   explicit RackPanelComponent(presonus::rackpanel_port::Dependencies &deps)
-      : deps(deps) {}
+      : PanelComponent(static_cast<presonus::panel_port::PanelCore &>(*this)),
+        meterLEDs(meterControls), clipLEDs(clipControls),
+        phantomLEDs(phantomControls), deps(&deps) {}
+  RackPanelComponent(Presonus::Mixer::MixerComponentBase &, PanelRegistrar &);
+  ~RackPanelComponent() override;
+  void bindDependencies(presonus::rackpanel_port::Dependencies &d) {
+    deps = &d;
+  }
   bool checkMonitorRestore(Presonus::DelayTimer &) const;
   void monitorSource(int, bool);
   void updatePanelStatus();
@@ -56,7 +98,7 @@ public:
   void setupMonitorRadioButton(int);
   void attachDigipots();
   // Independent source-port state/configuration, not recovered ELF methods.
-  std::vector<Control *> meterLEDs, clipLEDs, phantomLEDs;
+  presonus::rackpanel_port::ControlVectorView meterLEDs, clipLEDs, phantomLEDs;
   int panelStatus = 0;
   // Borrowed bindings. Share the startup timestamp across panel instances as
   // the embedding application shares the original process startup timestamp.
@@ -71,6 +113,11 @@ public:
   Core::Portable::Parameter *observedParameter = nullptr;
 
 private:
-  presonus::rackpanel_port::Dependencies &deps;
+  presonus::rackpanel_port::Dependencies *deps = nullptr;
+  presonus::rackpanel_port::Dependencies &dependencies() const {
+    if (!deps)
+      throw std::logic_error("RackPanel dependencies are not bound");
+    return *deps;
+  }
 };
 } // namespace Presonus::Panel
