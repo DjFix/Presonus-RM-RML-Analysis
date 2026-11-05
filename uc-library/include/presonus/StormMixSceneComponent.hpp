@@ -43,6 +43,9 @@ public:
   explicit StormMixSceneComponent(presonus::scene_port::Recall &recall)
       : recallBoundary(recall) {}
   class Delegate; // Original nested identity; declaration/layout unresolved.
+  // Provisional void source-port return; original return declaration
+  // unresolved.
+  void init();
   void setDelegate(Delegate *);
   void presetRecalled(const Panel::PresetComponent &, int);
   Delegate *sourcePortDelegate() const { return originalDelegate; }

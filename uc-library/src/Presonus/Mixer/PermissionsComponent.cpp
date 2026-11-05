@@ -4,11 +4,116 @@
 #include "core/portable/corepersistence.h"
 #include "core/portable/corestorage.h"
 #include "core/system/coretime.h"
+#include "presonus/LinkableComponent.hpp"
 #include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/uc/ClientSubscription.hpp"
 #include <cstring>
 
 namespace Presonus::Mixer {
+void PermissionsComponent::updateOtherPermissionsStrings() {
+  auto &list = *bindings_.otherList;
+  list.removeAll();
+  const auto app = getSelectedDeviceApp();
+  if (app == 1 || app == 2) {
+    list.appendString("None");
+    list.appendString(app == 1 ? "Wheel Only" : "Ch Rename");
+  } else {
+    list.appendString("");
+  }
+  list.setValue(0.f, false);
+}
+
+void PermissionsComponent::updateMixPermissionsStrings() {
+  auto *list = bindings_.mixList;
+  if (!list)
+    return;
+  const auto oldMax = list->getMax();
+  list->removeAll();
+  const auto app = getSelectedDeviceApp();
+  if (app == 0) {
+    list->appendString("");
+    list->setValue(0.f, false);
+    return;
+  }
+  if (app == 2)
+    list->appendString("None");
+  if (app == 1 || app == 2) {
+    list->appendString(app == 1 ? "None" : "FOH");
+    list->appendString("All Auxes");
+  }
+  // Native captures the initial count but bounds-checks the current vector on
+  // each iteration. Linked entries consume two positions, including a missing
+  // following slot. Numeric identity comes from the projected channel, not i.
+  const auto count = bindings_.mixer->mixChannels.count();
+  for (int i = 0; i < count; ++i) {
+    if (i >= bindings_.mixer->mixChannels.count())
+      continue;
+    auto *channel = bindings_.mixer->mixChannels[i];
+    if (!channel)
+      continue;
+    const auto aux = bindings_.auxView(channel);
+    Core::CStringBuffer<128> text;
+    const auto first = aux.number + 1u;
+    if (aux.link->isLinked()) {
+      text.appendFormat("%s%d%s%d", "Aux ", static_cast<std::int32_t>(first),
+                        "/", static_cast<std::int32_t>(first + 1u));
+      ++i;
+    } else {
+      text.appendFormat("%s%d", "Aux ", static_cast<std::int32_t>(first));
+    }
+    list->appendString(text.str());
+  }
+  if (oldMax != list->getMax())
+    bindings_.dirty = 1;
+  list->setValue(0.f, false);
+}
+
+void PermissionsComponent::loadSelectedDevice() {
+  if (getSelectedDeviceApp() == 0)
+    return;
+  bindings_.loading = 1;
+  updateMixPermissionsStrings();
+  syncMixStrings();
+  updateOtherPermissionsStrings();
+  Core::Portable::Attributes attributes(
+      Core::Portable::AttributeAllocator::getDefault());
+  Core::Portable::FileName filename;
+  getSelectedFileName(filename);
+  if (filename.isEmpty() ||
+      !Core::Portable::ArchiveUtils::loadFromFile(attributes, filename.str())) {
+    if (!bindings_.defaultPermissions) {
+      bindings_.loading = 0;
+      return;
+    }
+    const auto app = getSelectedDeviceApp();
+    if (app == 1) {
+      bindings_.mixList->fromString("All Auxes", false);
+      bindings_.otherList->fromString("None", false);
+    } else if (app == 2) {
+      bindings_.mixList->fromString("FOH", false);
+      bindings_.otherList->fromString("Ch Rename", false);
+    }
+    syncMixStrings();
+  } else {
+    auto *savedMix = bindings_.accessCodeParameters->getParameterByTag(2);
+    savedMix->resetValue(false);
+    Core::Portable::InputStorage storage(attributes);
+    bindings_.accessCodeParameters->load(storage);
+    Core::CStringBuffer<128> text;
+    savedMix->toString(text.getBuffer(), 128);
+    const int max = static_cast<int>(bindings_.mixList->getMax());
+    for (int i = 0; i <= max; ++i) {
+      Core::CStringBuffer<128> entry;
+      bindings_.mixList->getStringForValue(entry.getBuffer(), 128, i);
+      if (std::strcmp(entry.str(), text.str()) == 0) {
+        bindings_.mixList->setValue(static_cast<float>(i), false);
+        break;
+      }
+    }
+  }
+  bindings_.loading = 0;
+}
+
 int PermissionsComponent::getAppType(
     const UC::ClientSubscription &client) const {
   const char *app = client.sourcePortApp().str();
@@ -60,7 +165,7 @@ const UC::ClientSubscription *PermissionsComponent::getSelectedDevice() const {
 }
 void PermissionsComponent::syncMixStrings() {
   auto *parameter = bindings_.accessCodeParameters->getParameterByTag(2);
-  if (parameter && bindings_.mix->getValue() != 0.f) {
+  if (parameter && bindings_.mix->getValue() >= 0.f) {
     Core::CStringBuffer<128> text;
     bindings_.mix->toString(text.getBuffer(), 128);
     parameter->fromString(text.str(), false);

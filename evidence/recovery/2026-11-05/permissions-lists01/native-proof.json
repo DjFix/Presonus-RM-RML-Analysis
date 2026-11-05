@@ -1,0 +1,97 @@
+{
+  "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponent29updateOtherPermissionsStringsEv",
+      "address": 331728,
+      "size": 184,
+      "section": ".text",
+      "file_offset": 298960,
+      "sha256": "a39c433f6856ff419c08b4c2a4c658bb448c8a4f812448fd1f24966e36cdb7ec"
+    },
+    {
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponent27updateMixPermissionsStringsEv",
+      "address": 331912,
+      "size": 552,
+      "section": ".text",
+      "file_offset": 299144,
+      "sha256": "532ba7122b3ef9f69def065db822dfccdc63faca2bc0b55e40d6e7532e7d72a9"
+    },
+    {
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponent18loadSelectedDeviceEv",
+      "address": 332464,
+      "size": 732,
+      "section": ".text",
+      "file_offset": 299696,
+      "sha256": "9241e1745e410548d7cba16519673b8891118bb963badd2a4551ac73de1c870c"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent20getSelectedDeviceAppEv",
+      "address": 331688,
+      "size": 40,
+      "section": ".text",
+      "file_offset": 298920,
+      "sha256": "9b322c8c71c7241c68c3ca5b8da89762c6a341d17736dca2f27778657f8be4da"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent10getAppTypeERKNS_2UC18ClientSubscriptionE",
+      "address": 331540,
+      "size": 148,
+      "section": ".text",
+      "file_offset": 298772,
+      "sha256": "b179265aa39c817f8cd74a7b56ebe5aa76b60207310571ed28971360e6b60b27"
+    },
+    {
+      "mangled": "_ZNK8Presonus17LinkableComponent8isLinkedEv",
+      "address": 533440,
+      "size": 28,
+      "section": ".text",
+      "file_offset": 500672,
+      "sha256": "ffbd31d06860bac1bd4715e6b766488412b4fe339647e126dc23520d5ff8d151"
+    },
+    {
+      "mangled": "_ZN8Presonus5Mixer20PermissionsComponent14syncMixStringsEv",
+      "address": 330516,
+      "size": 152,
+      "section": ".text",
+      "file_offset": 297748,
+      "sha256": "8e5f5a79ccd5e2773027cf5d1d908851987fa75bb56b2318257ee019f4960ef0"
+    }
+  ],
+  "cases": 1482,
+  "producer_sha256": "243fb0c25873422d0d4b9b424ba865236b166c50a0183b0e228fb03c19819403",
+  "unicorn": "2.1.4",
+  "boundaries": {
+    "1176624": "getString",
+    "1178016": "remove",
+    "1174744": "append",
+    "106804": "stringCtor",
+    "76532": "format",
+    "1407200": "floatEqual",
+    "1407272": "floatGreaterEqual",
+    "1407320": "floatToInt",
+    "1406068": "intToFloat",
+    "44312": "strstr",
+    "44912": "strcmp",
+    "1154124": "getTag",
+    "1187260": "allocator",
+    "1186408": "attributesCtor",
+    "1190064": "attributesDtor",
+    "1219492": "filenameCtor",
+    "330900": "selectedFilename",
+    "1146792": "archiveLoad",
+    "1141304": "debug",
+    "19923004": "max",
+    "19923012": "value",
+    "19923032": "set",
+    "19923036": "reset",
+    "19923056": "toString",
+    "19923060": "fromString",
+    "19923456": "treeLoad"
+  },
+  "domain": "Exact original list/load app bodies plus classifier, link and sync helpers; Core/libc/AEABI boundaries explicitly modeled from provider/source contracts. No original Core instructions, constructors, host syscalls or devices.",
+  "write_guard": "Native stores restricted to stack and SELF+0x98/+0x108; all boundary stores stack; whole private object/input region compared.",
+  "fixture_sha256": "b848e049fdef72170485440d6c378fef868ba6ad28dd7221da7957401fc6d603",
+  "trace_sha256": "41239c3569504daa06ec57b5c396bb4e4d3ff041955611380920c2465e62090d"
+}

@@ -1,6 +1,39 @@
 #include "presonus/surface/MidiMixerHandler.hpp"
 #include "presonus/MappingTable.hpp"
 namespace Presonus::Surface {
+void MidiMixerHandler::paramChanged(Core::Portable::Parameter *parameter, int) {
+  const int tag = parameter->getTag();
+  if (tag == 0) {
+    updateRecordReadyMappings();
+    return;
+  }
+  if (tag != 4 && tag != 5 && tag != 0xa007)
+    return;
+  // Upstream typed casting replaces the original compiler RTTI boundary.
+  auto *stringParameter = Core::Portable::StringParam::cast(parameter);
+  if (!stringParameter)
+    return;
+  auto *mode = state_.localParameters->getParameterByTag(5);
+  const char *last = ":";
+  const char *separator = ":";
+  if (mode && mode->getValue() != 0.0f) {
+    last = "\'";
+    separator = ".";
+  }
+  // A second live lookup is observable if the first getValue mutates state.
+  mode = state_.localParameters->getParameterByTag(5);
+  if (mode && mode->getValue() != 0.0f) {
+    last = "\'";
+    separator = ":";
+  }
+  auto *output = state_.localParameters->getParameterByTag(2);
+  Core::CString256 text = stringParameter->getText();
+  text.insert(3, separator);
+  text.insert(6, separator);
+  text.insert(9, last);
+  output->fromString(text.str(), false);
+}
+
 void MidiMixerHandler::updateMapping(const MappingItem *items) {
   auto *normal = state_.normalParameters;
   auto *alternate = state_.alternateParameters;

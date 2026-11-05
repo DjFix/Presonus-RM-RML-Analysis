@@ -27,6 +27,7 @@ public:
   void setRightSideParam(Parameter *parameter);
   void setStereoPanParam(Parameter *parameter);
   // Ordinary draw return declarations remain provisional source-port choices.
+  void draw(const Core::Portable::DrawEvent &) override;
   void drawValueMark(const Core::Portable::DrawEvent &);
   void drawImagePanner(const Core::Portable::DrawEvent &);
   bool isStereo() const;

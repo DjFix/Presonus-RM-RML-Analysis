@@ -2274,3 +2274,5 @@ include(cmake/Rolling200Implementation02.cmake)
 include(cmake/Rolling200Closeout02.cmake)
 
 include(cmake/ComponentReadonlyReplays.cmake)
+
+include(cmake/ProductionRecoveryReplays.cmake)

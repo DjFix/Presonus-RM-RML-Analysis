@@ -16,6 +16,10 @@ struct UCNetHandlerState {
   unsigned char observedByte8;
   std::uint32_t observedWord60;
   std::int64_t observedTicks70;
+  // Separate native queue at +0x34; incoming receive queue is at +0xc.
+  // Required for idleIO handshake; caller binds a distinct live queue.
+  Presonus::UC::DicePacketQueue *outgoing = nullptr;
+  std::uint64_t observedTicks68 = 0;
 };
 struct UCNetHandlerSetupTag {};
 inline constexpr UCNetHandlerSetupTag ucNetHandlerSetupTag{};

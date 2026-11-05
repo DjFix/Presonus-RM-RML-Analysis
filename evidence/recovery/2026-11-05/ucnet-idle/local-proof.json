@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_ucnet_idle_01",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-ucnet-idle01/packets/rolling200_02_ucnet_idle_01/context.json",
+  "packet_sha256": "ea745661a0739ec681bd23feac64aa11210f79e6a4716eb6cc0b1eb921dd0504",
+  "native": {
+    "versions": {
+      "unicorn": "2.1.4",
+      "pyelftools": "0.33"
+    },
+    "literals": {
+      "0x35ab70": {
+        "file_offset": 3484528,
+        "bytes": "f040f7",
+        "sha256": "7c282f9838944db894ace6e9953e8502cd41c01d7bff66dd5276ff7fff56ee44"
+      },
+      "0x35ab73": {
+        "file_offset": 3484531,
+        "bytes": "f040f7",
+        "sha256": "7c282f9838944db894ace6e9953e8502cd41c01d7bff66dd5276ff7fff56ee44"
+      }
+    },
+    "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "address": 665452,
+    "size": 752,
+    "section": ".text",
+    "file_offset": 632684,
+    "range_sha256": "22f70171c6f9b60507e7cd4a5329ea644603332d1f0e5cc248565e40271a3c94",
+    "pc_count": 2369,
+    "writes": 682,
+    "unexpected": [],
+    "boundaries": {
+      "empty": 27,
+      "memcpy": 20,
+      "memset": 30,
+      "clock": 69,
+      "divide": 69,
+      "post": 38,
+      "read": 24,
+      "construct": 8,
+      "singleton": 8
+    },
+    "native_allocation_unwind": "excluded: singleton preinitialized in ARM; host lazy lifecycle exercised separately"
+  },
+  "receive_queue_mapping": {
+    "mangled": "_ZN8Presonus4NOAA17TCardUCNetHandler7receiveERKNS0_11SysexPacketE",
+    "address": 663596,
+    "size": 108,
+    "file_offset": 630828,
+    "sha256": "2f1414bbfec1621aa8233edd7f4076fd72b720bf0bf1b1667763b4f75c7f7e38",
+    "evidence": "a2084: add r0,r0,#0xc before writeMIDI; idle a278c: add r8,r0,#0x34 before isEmpty/readMIDI"
+  },
+  "versions": {
+    "formatter": "clang-format version 23.1.3",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "nm": "GNU nm (GNU Binutils for Ubuntu) 2.42",
+    "python": "Python 3.12.3"
+  },
+  "commands": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/noaa/ucnet_handler.hpp",
+        "uc-library/include/presonus/noaa/ucnet_handler_state.hpp",
+        "uc-library/src/Presonus/NOAA/TCardUCNetHandlerIO.cpp",
+        "uc-library/tests/recovery/TCardUCNetIdleReplay.cpp"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T14:12:34.229284+00:00",
+      "elapsed_seconds": 0.03957468699081801,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-05/ucnet-idle/00-format.log"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_ucnet_idle_01/build.py"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T14:12:34.268889+00:00",
+      "elapsed_seconds": 1.7718796370027121,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-05/ucnet-idle/01-compile.log"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_ucnet_idle_01/symbols.py"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T14:12:36.040784+00:00",
+      "elapsed_seconds": 0.025014500992256217,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-05/ucnet-idle/02-symbols.log"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_ucnet_idle_01/replay.py",
+        "temp/recovery-work/ucnet-idle-local/replay",
+        "evidence/recovery/2026-11-05/ucnet-idle/fixtures.json",
+        "72bc36d5a8f2eda477336ae9270373c07fa7f7f7ad0a06dc9e8cde8afbc1369d"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T14:12:36.065817+00:00",
+      "elapsed_seconds": 0.037407096999231726,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-05/ucnet-idle/03-replay.log"
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "temp/recovery-work/ucnet-idle-local/existing-handler-replay",
+        "uc-library/validation/noaa-ucnet-handler/stdin.txt"
+      ],
+      "timeout_seconds": 120,
+      "start_utc": "2026-11-05T14:12:36.103239+00:00",
+      "elapsed_seconds": 5.300345795010799,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-05/ucnet-idle/04-regression.log"
+    }
+  ],
+  "source_sha256": {
+    "uc-library/include/presonus/noaa/ucnet_handler.hpp": "a54c2ee0ba3ff1aea20ac83335c641a30237a3193bb77af8cdcc7bd6d044c2e7",
+    "uc-library/include/presonus/noaa/ucnet_handler_state.hpp": "3841e369582900f00bcd99a6e5c504264919369aa55353d94baf90bda7d83955",
+    "uc-library/src/Presonus/NOAA/TCardUCNetHandlerIO.cpp": "61d1caa579bce8f0867fe921f5b505d33b00c9a159a63ceaf8c3eecec55a3587",
+    "uc-library/tests/recovery/TCardUCNetIdleReplay.cpp": "defa0e1d54b9718e08a914072273c26ac4d2dcc8b224962c48d92b59a5e543b5"
+  },
+  "fixture_sha256": "72bc36d5a8f2eda477336ae9270373c07fa7f7f7ad0a06dc9e8cde8afbc1369d",
+  "fixture_cases": 33,
+  "oracle_producer": {
+    "path": "uc-library/candidates/rolling200_02_ucnet_idle_01/native.py",
+    "sha256": "9421103e7cfcdee1630d27a7f1ce44dcd1d1b418b8703df6c5ece4e7c0ad1c42"
+  },
+  "replay_producer": {
+    "path": "uc-library/candidates/rolling200_02_ucnet_idle_01/replay.py",
+    "sha256": "77df038f044359df1944f5c0d2110524487834e005d78121a4924816357eac7c"
+  },
+  "limitations": [
+    "Provisional void return; original ordinary declaration unresolved, deliver compiled declaration-pending, not ready.",
+    "Independent borrowed portable state and typed queues, no original C1/C2 recovery, ARM layout, calling convention, hardware or binary interoperability claim.",
+    "Native singleton preinitialized. Native allocation, constructor/Deletable registration, failure/unwind paths excluded. Host actual pinned CCL lazy Singleton/Deletable creation and automatic registered destruction executed with offline SPI/GPIO.",
+    "ARM external boundaries are named controlled models: queue empty/readMIDI, memset/memcpy, signed divide, clock, post, packet constructor and singleton lookup. Oracle executes exact target instructions only; modeled queue data is valid frame domain. Constructor boundary models two clock reads; no claim to native provider closure execution.",
+    "Host uses actual queue, SysexPacket, SPI post, CclResponseServices, packet clock gateway and pinned CCL Singleton. Hardware IO is captured at SpiServiceIO and InputPinIO; descriptor -1 with offline transfer accepted, receive data uniformly f8. Device update/erase/programming and incoming SPI response assembly not exercised.",
+    "Default appended outgoing=nullptr preserves existing aggregate initialization. Handshake requires an explicitly bound distinct outgoing queue; invalid binding throws before clock/provider access, an intentional portable precondition guard. Serialized use and valid dependency lifetimes required."
+  ],
+  "readiness": "compiled-declaration-pending; no ready/pending fragment or SQLite mutation produced; Root retains fresh integration/admission",
+  "ccl_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31"
+}

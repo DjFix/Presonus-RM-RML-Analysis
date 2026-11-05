@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "repository": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/permissions_lists",
+  "baseline": "d548724a88fbb82e34f7a43b1c56081c6afda7c9",
+  "session": "/root/rolling200_02_permissions_lists03",
+  "sealed_utc": "2026-11-05T14:20:51.962818+00:00",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/format-final.log",
+        "sha256": "0663b85d7f22b90e6ea2fe516d972a5c15a7a24ec897a0ddf47bfd33df6015f0"
+      }
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/compile-final.log",
+        "sha256": "bd365a3dd5a776cbb2bcea79582ae8f0c6d7117425962a39f5a9889b20a55110"
+      }
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/symbols-final.log",
+        "sha256": "b60001153674f8c3dad6bb462e7988cd7ad700305b47e494e64414b1fdce4dc5"
+      }
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "native"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/native-final.log",
+        "sha256": "8c9edfdba032d32da3f65b2abb59f8d6582ddb08cdd3fae33d82abc04359fdc4"
+      }
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/replay-final.log",
+        "sha256": "169542a2f328a893bd4b89728101f92a7582ea110b06bd4760f0737606609b63"
+      }
+    },
+    {
+      "kind": "sanitizers",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_lists/checks.py",
+        "sanitizers"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-05/permissions-lists01/sanitizers-final.log",
+        "sha256": "5be69ee822c844a4b4ed15b245e35e9b7b99514e7072878fc1fe2d3cb5abd29d"
+      }
+    }
+  ],
+  "source_hashes": {
+    "uc-library/include/presonus/mixer/PermissionsComponent.hpp": "f008d20579083d5080a3b750c9f54e0dd748cd3e2335a89904de1db2732a85b4",
+    "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp": "4e63060c81a1b407250ed2622199fe109a4fe75a2c6eeb76f413f3d532b3b8ff",
+    "uc-library/tests/recovery/PermissionsListsReplay.cpp": "cf38889cfabbed2fe6bf28a0bf07b7c5db97892e67bd6d228ca5de37979e845d"
+  },
+  "native_proof": {
+    "kind": "proof",
+    "path": "evidence/recovery/2026-11-05/permissions-lists01/native-proof.json",
+    "sha256": "4ff3d87ce3d9b3b0225bf04352845c3390873b563fb06b9b3c338d8ed3d6277d"
+  },
+  "domain": {
+    "cases": 1482,
+    "counts": {
+      "1": 392,
+      "2": 399,
+      "3": 686,
+      "4": 5
+    },
+    "description": "Seven app/selection forms including classifier precedence/case, four initial list sizes, dirty retention, null optional mix list, empty/missing/linked/unlinked aux channels with non-positional and uint32 wrap identities; archive success/failure/defaults, exact saved-text matching and other parameter restore; compare all list strings, max/value, saved text, loading/dirty state and ordered observer events. Five additional existing sync predicate edge cases."
+  },
+  "limitations": [
+    "All three void return declarations are provisional source-port choices. Original return types, construction, inheritance, ownership, layout, ARM calling convention and hardware interoperability remain unestablished; declaration-pending only, no local readiness admission.",
+    "Original app target/classifier/link/sync ARM instructions execute in Unicorn private memory. All Core/libc/AEABI/file/parameter/storage calls are explicit semantic boundaries. No original Core implementation executes. PC guards include only hash-bound exact app ranges and named boundary addresses; native stores restricted to stack and loading/dirty bytes; input region guard checked per case.",
+    "Pinned CCL 5.0.0 implementations provide actual compiled ListParam, NumericParam, StringParam, Component, Attributes, storage and file archives. Provider boundary models are independent of reconstructed C++; observer event agreement includes pinned-provider source behavior and is not proof of historical Core binary equivalence.",
+    "mixList/otherList must alias mix/other for list/load calls; optional null mixList is covered only in updateMixPermissionsStrings. Other list and load tag2 parameter are required nonnull. Binding tree, vector, callback projection and link objects are borrowed for each synchronous call. No concurrent mutation, reentrant observer mutation, invalid collection state, >INT_MAX vector sizes or archive exceptions are covered.",
+    "Aux projection reads the existing mixer.mixChannels vector and returns actual canonical LinkableComponent objects plus explicit uint32 numeric identity. It assumes neither ChannelComponent inheritance nor native field layout. Replay uses nondereferenced opaque channel identity tokens and actual LinkableComponent::isLinked; no callback link boolean. Nonnull channels require a nonnull projected link.",
+    "File boundary in native execution supplies selected fixture filename and source-provider archive result/data; compiled replay uses real canonical getSelectedFileName/getFileName/MixerComponentBase::getDataDir and real CCL archive fixtures. Empty, missing, malformed, successful, missing-key and unmatched persisted values are covered; compressed archives and permission failures are excluded.",
+    "Native CCL boundary-model development corrected parameter restoration event ordering to actual parameter-list order and NumericParam float text to upstream %.02f; failures and prior fixture revision are preserved. Final independent native fixtures were regenerated before final compiled replay. No recovered C++ generates expected values.",
+    "Existing syncMixStrings was corrected from !=0 to >=0 after exact __aeabi_fcmpge symbol/instruction confirmation. This is an existing-result correction and earns no new current200 target credit. Native/provider -1, -0, +0, +1 and NaN cases cover the corrected predicate; prior source/proofs remain historical and Root must reseal all affected old records.",
+    "Local link uses physical pinned provider archives, existing RM archive for canonical getDataDir and section garbage collection. Full Linux/role/install/compile-once/mirror/integration and guarded SQLite admission remain Root-owned. No global CMake, registry, tracker or instruction changes were made by this worker.",
+    "REA MCP tools are unavailable; evidence uses existing pyelftools/Unicorn, Linux compiler/nm and official provider source. No REA evidence IDs or setup success is claimed. Sanitizer excludes vptr because the library is compiled without RTTI; ASan and other UBSan checks cover owned replay/source only, with uninstrumented pinned provider archives."
+  ],
+  "provider": {
+    "kind": "proof",
+    "path": "evidence/recovery/2026-11-05/permissions-lists01/provider-dependencies.json",
+    "sha256": "c1766de2ae3caf12591d3e47725b12f5d1e6ad02e41f006674d6d296ad94f613"
+  },
+  "format_before_source_hashes": true,
+  "formatter_version": [
+    "[\"uc-library/.venv/bin/clang-format\", \"--version\"]",
+    "[\"uc-library/.venv/bin/clang-format\", \"--style=file\", \"--fallback-style=LLVM\", \"--dry-run\", \"--Werror\", \"uc-library/include/presonus/mixer/PermissionsComponent.hpp\", \"uc-library/src/Presonus/Mixer/PermissionsComponent.cpp\", \"uc-library/tests/recovery/PermissionsListsReplay.cpp\"]"
+  ],
+  "readiness_admitted": false,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_validated": false,
+  "sync_correction": {
+    "kind": "proof",
+    "path": "evidence/recovery/2026-11-05/permissions-lists01/sync-correction.json",
+    "sha256": "27ae7a397a467f3daf2f2923d965a7cf994432f4f8f6e206e3ec826a3f61cc13"
+  }
+}

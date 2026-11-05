@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_pan_draw_01",
+  "namespace": "Presonus::PanControl",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus10PanControl4drawERKN4Core8Portable9DrawEventE",
+      "demangled": "Presonus::PanControl::draw(Core::Portable::DrawEvent const&)",
+      "address": 430008,
+      "size": 648,
+      "section": ".text",
+      "section_index": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/PanControl.hpp",
+      "sha256": "f2159cda19cbdba736bc6c4632d077f37525dd553900c7ba278e1a740f5d92e6"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/PanControl.cpp",
+      "sha256": "403b4e2fce49cde7757f5295e4058698179fc2687a3584b07cc9f03c936f5601"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/PanDrawReplay.cpp",
+      "sha256": "72cd08f0f4c9c3d794090fd7052c9f81e307a8ba6f42f50eb8af6516d020f1a8"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/rolling200_02_pan_draw_01/fixtures.json",
+      "sha256": "d41516d9bd08efdb152dabdac191f4c6a0460cc96933a6f1733a70734ebc12e6"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+      "sha256": "fab95428f0e6380bc8cca94e24b90eed5d51d81bb4f29611684f9110b1e191a0"
+    },
+    {
+      "kind": "oracle",
+      "path": "uc-library/candidates/rolling200_02_pan_draw_01/native.py",
+      "sha256": "68398c8cbf5eb17b47d86c60acf70421daae88ba01a9baae7bef51ff5837c3f4"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/proof.json",
+      "sha256": "12000bd8a1fa1212e1bbedce659f94847db7d466d6572abb4609699a27972ad4"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/compile.log",
+      "sha256": "5487b48eec13e3c02dcfc305af271232dd18a2d1297fcf2bac8d9354b243533b"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/cpp-observations.txt",
+      "sha256": "8f0833d2c47f38a93a7d340d361ef7f4643523e88d5d2cf7b4746d6a897f85bd"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/native.log",
+      "sha256": "500fd0075e22adf3873244c37ec181ba51a5fec1a59f85646e014db2c20fc580"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/native-pc-audit.json",
+      "sha256": "8aca55092dbca4004b110971f99ff8efb38da800178604f7f13dbe3ce0979277"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/format.log",
+      "sha256": "a4f32fb187c5ca48dd87dd345405af77fb57842f5d68189632a77a96cc47850c"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/symbols.log",
+      "sha256": "3ded5aed97fe7e63d01d2da52eda7ba66b870f4856fbed341ed9067d9c545412"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/pan-draw/replay.log",
+      "sha256": "92c966adcad575d54b77e3359635d26c5c0ba2e0c0121b49f741bfca13416fc6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/context.json",
+      "sha256": "76bb42d69fa8b1fac9168280420c31ae76fa4d873c51eabfbc46635144c2f54a"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/request.json",
+      "sha256": "8ba7c973a5f1e592d2c8dfce5c9bad2a2aeb63c0f68c36b7d5e932e323b9cd53"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/TASK.md",
+      "sha256": "d930fa568db4ded54677b12236eb948bcbce5e79925a1361d0ab6ea37a2dfdbb"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/ELF_CONTEXT.md",
+      "sha256": "e299b1913be9bef95f59930cb09636aa166bc22a55260a3551b6352e2813d08c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/SOURCE_SLICES.md",
+      "sha256": "81fadd84e27719483003c0e50ba9a65630d9f6f8a9c1346a9fe2d1edd2d8ff23"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/CONTEXT.md",
+      "sha256": "da0894261ecac7226ab308669e5b50d05920a7d18aa3573944a3a26cecfa5e72"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-pan-draw01/packets/rolling200_02_pan_draw_01/native-context.json",
+      "sha256": "8f9a7e067bdfd4288ec93575afaf4c8c8af1f1406401607e84409972ba918a48"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-stage04-01/packets/rolling200_02_impl_w05_01/native-context.json",
+      "sha256": "1bd9a5243806d7ce36486057d64528a14190c5dc58e96262685bcaacaa4d40ac"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-stage04-01/packets/rolling200_02_impl_w05_02/native-context.json",
+      "sha256": "c7801065666e6cd93ca0b646e9c9ba34f09831a027ce4f0bab76b1d5c5bb1cd1"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w05_01-isLinked01/native-context.json",
+      "sha256": "3983afb7d15a0c27750351381b5a8db40ab7c77ef4d6218174e4c30380e1de32"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w05_01-computeLinkedPanValue01/native-context.json",
+      "sha256": "4a443509f1a99c949a7fc1bc6690feb006b6a7c5d17c14257f78ebc363381557"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w05_02-isStereo01/native-context.json",
+      "sha256": "76085f896172d1271778572901f4682d409cd1dff16457f61fc3ad1e023fc8ea"
+    },
+    {
+      "kind": "native_binding",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w05_02-isRightSideOfLink01/native-context.json",
+      "sha256": "5f325476a731cb741a84c79c3b408b2c539fd507e5dda8c6afbffb49409345f5"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/PanControlBindings.cpp",
+      "sha256": "c3b92121ee0bb21993a757ae84616452f8bb436b9054259c5675f88771f031bd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.h",
+      "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.cpp",
+      "sha256": "fea5d5aac502ed767bcf38d6a042b179a706f638b1539b7134ed73788fb6441e"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.cpp",
+      "sha256": "a2d1bdf79b00c12d87ab01072bde099b20691fa7bed5de7988071f2e7748eaa7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.h",
+      "sha256": "d5f06493cffe691b7fa3ab6d5ffa53ee8c3b4391c62e7f530a9c211cb02e2fcb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/gui/corecolor.h",
+      "sha256": "bde1a05f098448b42041d5d66f79753dae4383ec09266d2dba6217a82d643b54"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-pan-draw01/VTABLE_BINDING.json",
+      "sha256": "7a87487586ba6c7d7a1fcd2ba194046fc99d2cd73d6b4ca20f6c1cef972525a2"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-pan-draw01/HISTORY.json",
+      "sha256": "4fbc9190493d088aef0f48bb7091cf9bbee701f4636647bdcc345c1d1f042a2c"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+        "native"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "660 cases: enabled/missing primary, disabled view, image/no-image, stereo/link/explicit side, optional auxiliary parameter, focus flags, finite normalized values 0/.25/.49/.5/.51/.75/1, widths 0/1/2/100/101, heights 0/1/20, mark widths 0/1/3/120. Ordered graphic rectangles/bitmap/line geometry and colors, background/focus dispatch and actual pinned provider expansion; native non-stack borrowed-memory preservation. Native helpers run exact independently hash-verified ranges; unknown PCs fail closed.",
+  "limitations": [
+    "Ordinary original return declaration unresolved; void override is portable CCL source choice.",
+    "No original class layout, ARM ABI, binary interoperability or hardware proof.",
+    "Borrowed live Parameter/Bitmap objects; normalized finite inputs in [0,1], dimensions [0,101] x [0,20], bounded mark widths [0,120].",
+    "Background/focus native providers modeled as boundaries then actual CCL source used independently; original Core implementation never decompiled/executed.",
+    "Other application helpers execute their bound original ranges; no channel/group fallback used because explicit side parameter supplied.",
+    "Native soft-float/compiler runtime modeled using explicit IEEE float32 conversions; no exceptional floats or overflow.",
+    "Local proof is not readiness admission; Root owns canonical integration and guarded registry transition."
+  ],
+  "build_integration": {
+    "production_partition": "PRESONUS_cs18_SOURCES: existing src/Presonus/PanControl.cpp; retain exactly one OBJECT partition, no new production CPP",
+    "public_headers": [
+      "presonus/PanControl.hpp"
+    ],
+    "test_targets": [
+      {
+        "name": "pan_draw_replay",
+        "source": "uc-library/tests/recovery/PanDrawReplay.cpp",
+        "link_dependencies": [
+          "presonus_core",
+          "corelib",
+          "presonus_core_allocator",
+          "png16",
+          "z",
+          "pthread",
+          "dl"
+        ],
+        "ctest_argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/candidates/rolling200_02_pan_draw_01/check.py",
+          "replay",
+          "<canonical built PanDrawReplay executable>",
+          "uc-library/candidates/rolling200_02_pan_draw_01/fixtures.json"
+        ],
+        "fixture_binding": "d41516d9bd08efdb152dabdac191f4c6a0460cc96933a6f1733a70734ebc12e6"
+      }
+    ],
+    "source_organization": "Extend existing canonical PanControl class and CPP only. Root owns global integration/ready-pending fragments and required guarded admission dry-run."
+  }
+}

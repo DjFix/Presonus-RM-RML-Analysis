@@ -1,0 +1,573 @@
+diff --git a/uc-library/include/presonus/noaa/card.hpp b/uc-library/include/presonus/noaa/card.hpp
+index 51195f5a2..0b58b98e3 100644
+--- a/uc-library/include/presonus/noaa/card.hpp
++++ b/uc-library/include/presonus/noaa/card.hpp
+@@ -15,6 +15,16 @@ class FirmwareBundle;
+ namespace presonus::noaa {
+ // Independent explicit state, not an ARM object representation. Original field
+ // declarations/ownership remain unresolved. All access is caller-serialized.
++class CclCardResponseRuntime final : public presonus::dice::IdlePump {
++public:
++  CclCardResponseRuntime() : response_(*this) {}
++  void onIdle(bool force) override;
++  presonus::dice::ResponseServices &response() { return response_; }
++
++private:
++  presonus::dice::CclResponseServices response_;
++};
++struct CardLifecycleAccess;
+ struct CardState {
+   std::uint32_t observedWord14;
+   std::uint32_t observedWord40;
+@@ -46,6 +56,8 @@ struct CardState {
+   // port projection separate from the unchanged opaque2c copy. No zero
+   // fallback.
+   std::optional<std::uint32_t> expectedSerial;
++  // Observed initialization only; original declaration and meaning unresolved.
++  std::uint32_t observedWord10{};
+ };
+ struct CardSetupTag {};
+ inline constexpr CardSetupTag cardSetupTag{};
+@@ -56,6 +68,7 @@ struct NOAAStatusProperty;
+ // use ARM offset12; native layout/offsets are intentionally not claimed.
+ class TCard : public SysexReceiver, public Presonus::IDeviceDFU {
+ public:
++  TCard();
+   // Independent required setup; does not replace original C1/C2. Services,
+   // opaque references and state outlive calls; providers must be injected
+   // before first SPI singleton use when testing. Production can access actual
+@@ -66,8 +79,8 @@ public:
+       : state_(state), diagnostics_(diagnostics) {
+     setPortableResponseServices(response);
+   }
+-  // Independent modern cleanup only, not recovered original D1/D0 behavior.
+-  virtual ~TCard() = default;
++  // Portable owned cleanup; compiler emits each native ABI variant.
++  virtual ~TCard();
+   void receive(const SysexPacket &) override;
+   bool accepts(const SysexPacket &) override;
+   // Original table points to the existing SysexReceiver::post implementation.
+@@ -86,9 +99,15 @@ public:
+   void printStatus();
+   unsigned int generateAlternateMac(unsigned int serial);
+   unsigned char isDesktopConnected();
++  // Provisional return spelling: original declaration remains unresolved.
++  unsigned char programSerialReset();
+   const char *getCardCString();
+ 
+ private:
++  friend struct presonus::noaa::CardLifecycleAccess;
++  std::optional<presonus::noaa::CclCardResponseRuntime> ownedRuntime_;
++  std::optional<presonus::noaa::CardState> ownedState_;
++  bool registered_ = false;
+   presonus::noaa::CardState &state_;
+   presonus::noaa::SpiServiceIO &diagnostics_;
+ };
+diff --git a/uc-library/src/Presonus/NOAA/TCardLifecycle.cpp b/uc-library/src/Presonus/NOAA/TCardLifecycle.cpp
+new file mode 100644
+index 000000000..7326f7043
+--- /dev/null
++++ b/uc-library/src/Presonus/NOAA/TCardLifecycle.cpp
+@@ -0,0 +1,26 @@
++#include "presonus/noaa/card.hpp"
++#include <limits>
++namespace presonus::noaa {
++void CclCardResponseRuntime::onIdle(bool force) {
++  Presonus::NOAA::TCardSPI::instance().onIdle(force);
++}
++} // namespace presonus::noaa
++namespace Presonus::NOAA {
++TCard::TCard()
++    : ownedRuntime_(std::in_place), ownedState_(std::in_place),
++      state_(*ownedState_),
++      diagnostics_(presonus::noaa::spiServiceConstructionIO()) {
++  // Logical state, never an ARM byte-layout model. Value initialization zeros
++  // owned application fields; original unspecified bytes have no host analogue.
++  state_.observedWord10 = state_.observedWord14 =
++      std::numeric_limits<std::uint32_t>::max();
++  setPortableResponseServices(ownedRuntime_->response());
++  TCardSPI::instance().registerReceiver(this);
++  registered_ = true;
++}
++TCard::~TCard() {
++  if (registered_)
++    // Retain original lazy singleton behavior even after an external reset.
++    TCardSPI::instance().unRegisterReceiver(this);
++}
++} // namespace Presonus::NOAA
+diff --git a/uc-library/src/Presonus/NOAA/TCardSerial.cpp b/uc-library/src/Presonus/NOAA/TCardSerial.cpp
+new file mode 100644
+index 000000000..fc7addfdb
+--- /dev/null
++++ b/uc-library/src/Presonus/NOAA/TCardSerial.cpp
+@@ -0,0 +1,24 @@
++#include "core/system/coredebug.h"
++#include "core/system/corethread.h"
++#include "presonus/dice/codec.hpp"
++#include "presonus/noaa/card.hpp"
++#include <stdexcept>
++namespace Presonus::NOAA {
++unsigned char TCard::programSerialReset() {
++  if (!state_.expectedSerial)
++    throw std::logic_error("TCard serial binding required");
++  const auto serial = *state_.expectedSerial;
++  unsigned char bytes[] = {0xf0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xf7};
++  const auto alternate =
++      state_.observedWord14 == 1 || state_.observedWord14 == 2;
++  ::pack32(alternate ? generateAlternateMac(serial) : serial, bytes + 2);
++  ::pack32(serial, bytes + 7);
++  bytes[12] = static_cast<unsigned char>(state_.observedWord30);
++  SysexPacket packet(bytes, sizeof(bytes));
++  post(packet);
++  Core::DebugPrintf("programming serial reset\n", int(state_.observedWord3c),
++                    int(state_.observedWord30));
++  Core::Threads::CurrentThread::sleep(4000);
++  return waitAck(500);
++}
++} // namespace Presonus::NOAA
+diff --git a/uc-library/tests/noaa_tcard_lifecycle_tests.cpp b/uc-library/tests/noaa_tcard_lifecycle_tests.cpp
+new file mode 100644
+index 000000000..90bb64476
+--- /dev/null
++++ b/uc-library/tests/noaa_tcard_lifecycle_tests.cpp
+@@ -0,0 +1,248 @@
++#include "presonus/noaa/card.hpp"
++#include <cassert>
++#include <cstdlib>
++#include <fstream>
++#include <iostream>
++#include <new>
++#include <string>
++#include <type_traits>
++using namespace Presonus::NOAA;
++using namespace presonus::noaa;
++namespace presonus::noaa {
++struct CardLifecycleAccess {
++  static CardState &state(TCard &card) { return card.state_; }
++  static bool owned(TCard &card) {
++    return card.ownedRuntime_ && card.ownedState_ && card.registered_;
++  }
++};
++} // namespace presonus::noaa
++static unsigned registrations, unregistrations, rootDeletes;
++static void *root;
++static bool failSpiAllocation;
++static std::string expectedImage;
++static unsigned checkedNativeProjections;
++static void checkProjection(TCard &card, bool seed, unsigned byte = 0) {
++  auto &s = CardLifecycleAccess::state(card);
++  // Explicit logical projection only. Native padding/vptr/base storage never
++  // becomes a host layout claim. Every numeric application word is compared.
++  std::pair<unsigned, std::uint32_t *> words[] = {
++      {0x10, &s.observedWord10}, {0x14, &s.observedWord14},
++      {0x18, &s.observedWord18}, {0x1c, &s.observedWord1c},
++      {0x20, &s.observedWord20}, {0x24, &s.observedWord24},
++      {0x28, &s.observedWord28}, {0x30, &s.observedWord30},
++      {0x34, &s.observedWord34}, {0x38, &s.observedWord38},
++      {0x3c, &s.observedWord3c}, {0x40, &s.observedWord40},
++      {0x44, &s.observedWord44}, {0x4c, &s.observedWord4c},
++      {0x50, &s.observedWord50}, {0x54, &s.observedWord54},
++      {0x58, &s.observedWord58}};
++  for (auto [offset, value] : words) {
++    if (seed)
++      *value = byte * 0x01010101u;
++    else {
++      std::uint32_t native = 0;
++      for (unsigned i = 0; i < 4; ++i)
++        native |=
++            std::stoul(expectedImage.substr(2 * (offset + i), 2), nullptr, 16)
++            << (8 * i);
++      assert(*value == native);
++    }
++  }
++  if (seed)
++    s.observedByte48 = byte;
++  else {
++    assert(s.observedByte48 ==
++           std::stoul(expectedImage.substr(2 * 0x48, 2), nullptr, 16));
++    ++checkedNativeProjections;
++  }
++}
++
++extern "C" void *__real__Znwm(std::size_t);
++extern "C" void *__wrap__Znwm(std::size_t n) {
++  if (failSpiAllocation && n == sizeof(TCardSPI))
++    throw std::bad_alloc();
++  return __real__Znwm(n);
++}
++extern "C" void __real__ZdlPv(void *);
++extern "C" void __wrap__ZdlPv(void *p) {
++  if (p == root) {
++    ++rootDeletes;
++    root = nullptr;
++  }
++  __real__ZdlPv(p);
++}
++extern "C" void __real__ZdlPvm(void *, std::size_t);
++extern "C" void __wrap__ZdlPvm(void *p, std::size_t n) {
++  if (p == root) {
++    ++rootDeletes;
++    root = nullptr;
++  }
++  __real__ZdlPvm(p, n);
++}
++extern "C" void
++__real__ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE(
++    TCardSPI *, ISysexReceiver *);
++extern "C" void
++__wrap__ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE(
++    TCardSPI *spi, ISysexReceiver *receiver) {
++  ++registrations;
++  __real__ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE(
++      spi, receiver);
++  auto &v = SpiServiceAccess::state(*spi).receivers;
++  assert(v.contains(receiver));
++}
++extern "C" void
++__real__ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE(
++    TCardSPI *, ISysexReceiver *);
++extern "C" void
++__wrap__ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE(
++    TCardSPI *spi, ISysexReceiver *receiver) {
++  ++unregistrations;
++  if (!expectedImage.empty())
++    checkProjection(*dynamic_cast<TCard *>(receiver), false);
++  __real__ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE(
++      spi, receiver);
++  assert(!SpiServiceAccess::state(*spi).receivers.contains(receiver));
++}
++struct Pins final : presonus::surface_panel_port::InputPinIO {
++  std::FILE *open(const char *, const char *) override { return nullptr; }
++  void log(const char *) override {}
++  int printPin(std::FILE *, const char *, int) override { std::abort(); }
++  int close(std::FILE *) override { std::abort(); }
++  void formatPath(char *, std::size_t, const char *, int) override {
++    std::abort();
++  }
++  std::size_t write(const void *, std::size_t, std::size_t,
++                    std::FILE *) override {
++    std::abort();
++  }
++  int buffering(std::FILE *, char *, int, std::size_t) override {
++    std::abort();
++  }
++  void rewind(std::FILE *) override { std::abort(); }
++  int flush(std::FILE *) override { std::abort(); }
++  int get(std::FILE *) override { std::abort(); }
++  void notify(Presonus::Panel::PinStateObserver *, int, int) override {
++    std::abort();
++  }
++};
++struct IO final : SpiServiceIO {
++  int open(const char *, int) override { std::abort(); }
++  int maxSpeed(int, std::uint32_t) override { std::abort(); }
++  int transfer(int, const SpiTransfer &) override { std::abort(); }
++  int close(int) override { std::abort(); }
++  int errorNumber() override { std::abort(); }
++  std::int64_t rawTicks() override { std::abort(); }
++  void diagnostic(bool, const char *, int, bool) override { std::abort(); }
++};
++struct Pump final : presonus::dice::IdlePump {
++  void onIdle(bool) override { std::abort(); }
++};
++struct Concrete final : TCard {
++  using TCard::TCard;
++  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
++    std::abort();
++  }
++};
++extern "C" void cardD0(TCard *) asm("_ZN8Presonus4NOAA5TCardD0Ev");
++extern "C" void cardD1(TCard *) asm("_ZN8Presonus4NOAA5TCardD1Ev");
++extern "C" void cardD2(TCard *) asm("_ZN8Presonus4NOAA5TCardD2Ev");
++static void defaults(TCard &c) {
++  auto &s = CardLifecycleAccess::state(c);
++  assert(CardLifecycleAccess::owned(c));
++  assert(s.observedWord10 == 0xffffffffu && s.observedWord14 == 0xffffffffu);
++  assert(!s.observedWord18 && !s.observedWord1c && !s.observedWord20 &&
++         !s.observedWord24 && !s.observedWord28);
++  assert(!s.observedWord30 && !s.observedWord34 && !s.observedWord38 &&
++         !s.observedWord3c);
++  assert(!s.observedWord40 && !s.observedWord44 && !s.observedByte48 &&
++         !s.observedWord4c && !s.observedWord50 && !s.observedWord54 &&
++         !s.observedWord58);
++  assert(!s.opaque2c.value && !s.opaque5c.value && !s.expectedSerial);
++  assert(c.portableState().command == 0 && c.portableState().status == 0 &&
++         c.portableState().infoWords[0] == 0);
++  c.portableState().command = 1;
++  assert(c.waitAck(500) == 1); // actual bound CCL clock and response provider
++}
++int main(int argc, char **argv) {
++  assert(argc == 2);
++  static_assert(std::is_abstract_v<TCard>);
++  static Pins pins;
++  static IO io;
++  presonus::surface_panel_port::setInputPinConstructionIO(&pins);
++  setSpiServiceConstructionIO(&io); // both captured before first lazy singleton
++  std::ifstream in(argv[1]);
++  assert(in);
++  std::string variant, image, events;
++  unsigned lazy, seed, deletes, cases = 0;
++  while (in >> variant >> lazy >> seed >> deletes >> image >> events) {
++    SpiPacketState borrowed({}, 0, 0, 0);
++    TCardSPI spi(borrowed);
++    SpiServiceAccess::singleton(lazy ? nullptr : &spi);
++    unsigned r = registrations, u = unregistrations, d = rootDeletes;
++    auto *c = new Concrete;
++    root = c;
++    defaults(*c);
++    expectedImage = image;
++    if (variant == "C1" || variant == "C2")
++      checkProjection(*c, false);
++    else
++      checkProjection(*c, true, seed);
++    assert(registrations == r + 1);
++    auto *before = SpiServiceAccess::singleton();
++    assert(before);
++    if (variant == "C1" || variant == "C2") {
++      // Concrete derived construction exercises base construction; both exact
++      // original constructor variants are independently run by native oracle.
++      delete c;
++    } else {
++      // Repeat destructor lazy branch after original singleton reset.
++      if (lazy)
++        SpiServiceAccess::singleton(nullptr);
++      if (variant == "D0")
++        cardD0(c);
++      else {
++        if (variant == "D1")
++          cardD1(c);
++        else
++          cardD2(c);
++        assert(rootDeletes == d);
++        root = nullptr;
++        ::operator delete(c);
++      }
++    }
++    assert(unregistrations == u + 1);
++    assert(
++        rootDeletes ==
++        d + ((variant == "D0" || variant == "C1" || variant == "C2") ? 1 : 0));
++    SpiServiceAccess::singleton(nullptr);
++    expectedImage.clear();
++    ++cases;
++  }
++  assert(checkedNativeProjections == cases + 12);
++  // Borrowed state is neither registered nor released by compatibility setup.
++  Pump pump;
++  presonus::dice::CclResponseServices response(pump);
++  CardState state{};
++  state.observedWord14 = 17;
++  unsigned r = registrations, u = unregistrations;
++  {
++    Concrete c(cardSetupTag, state, response, io);
++    assert(!CardLifecycleAccess::owned(c));
++    assert(!c.isMounted());
++  }
++  assert(registrations == r && unregistrations == u &&
++         state.observedWord14 == 17);
++  // Real host allocation failure unwinds owned members before registration.
++  failSpiAllocation = true;
++  bool caught = false;
++  try {
++    Concrete c;
++  } catch (const std::bad_alloc &) {
++    caught = true;
++  }
++  failSpiAllocation = false;
++  assert(caught && registrations == r && !SpiServiceAccess::singleton());
++  std::cout << cases
++            << " native fixture rows; actual CCL vectors, lazy recreation, "
++               "host D0 freeing, borrowed and allocation failure passed\n";
++}
+diff --git a/uc-library/tests/noaa_tcard_serial_tests.cpp b/uc-library/tests/noaa_tcard_serial_tests.cpp
+new file mode 100644
+index 000000000..e3fd53cc4
+--- /dev/null
++++ b/uc-library/tests/noaa_tcard_serial_tests.cpp
+@@ -0,0 +1,186 @@
++#include "presonus/noaa/card.hpp"
++#include <algorithm>
++#include <cassert>
++#include <cstdarg>
++#include <cstdlib>
++#include <fstream>
++#include <iostream>
++#include <stdexcept>
++#include <string>
++using namespace Presonus::NOAA;
++using namespace presonus::noaa;
++static std::int64_t tick, timestamp;
++static unsigned clocks, ack, transfers, waits, timeouts;
++static std::string expectedBytes, trace;
++static SysexReceiver *receiver;
++static bool provider;
++static std::string hex(const unsigned char *p, unsigned n) {
++  constexpr char digits[] = "0123456789abcdef";
++  std::string out;
++  for (unsigned i = 0; i < n; ++i) {
++    out += digits[p[i] >> 4];
++    out += digits[p[i] & 15];
++  }
++  return out;
++}
++extern "C" std::int64_t __wrap__ZN8presonus4dice19packetClockRawTicksEv() {
++  assert(clocks < 2);
++  trace += "clock;";
++  return tick + std::int64_t(clocks++) * 1000003;
++}
++extern "C" void __wrap__ZN4Core11DebugPrintfEPKcz(const char *format, ...) {
++  const std::string f = format;
++  if (f == "programming serial reset\n")
++    trace += "debug;";
++  else if (f == "Generated alternate AVB MAC %d from %d\n")
++    trace += "alternate_debug;";
++  else if (f == "ack timeout\n")
++    ++timeouts;
++  else
++    std::abort();
++}
++extern "C" void
++__wrap__ZN4Core8Platform13CurrentThread5sleepEj(unsigned milliseconds) {
++  if (milliseconds == 4000)
++    trace += "sleep4000;";
++  else
++    assert(provider && milliseconds == 1); // finite wait import; no real sleep
++}
++extern "C" unsigned char
++__real__ZN8Presonus4NOAA13SysexReceiver7waitAckEx(SysexReceiver *, long long);
++extern "C" unsigned char
++__wrap__ZN8Presonus4NOAA13SysexReceiver7waitAckEx(SysexReceiver *self,
++                                                  long long timeout) {
++  assert(self == receiver && timeout == 500);
++  trace += "wait500;";
++  ++waits;
++  return provider
++             ? __real__ZN8Presonus4NOAA13SysexReceiver7waitAckEx(self, timeout)
++             : ack;
++}
++struct Pump final : presonus::dice::IdlePump {
++  void onIdle(bool force) override {
++    assert(provider);
++    if (ack) {
++      const unsigned char bytes[] = {0xf0, static_cast<unsigned char>(ack), 0,
++                                     0xf7};
++      // Deliver through the genuine response parser. Application acceptance is
++      // a separate, already tested boundary; no hardware response is implied.
++      SysexPacket p;
++      std::copy_n(bytes, 4, p.bytes.begin());
++      p.length = 4;
++      receiver->SysexReceiver::receive(p);
++    } else
++      (void)force;
++  }
++};
++struct Pins final : presonus::surface_panel_port::InputPinIO {
++  std::FILE *open(const char *, const char *) override { return nullptr; }
++  void log(const char *) override {}
++  int printPin(std::FILE *, const char *, int) override { std::abort(); }
++  int close(std::FILE *) override { std::abort(); }
++  void formatPath(char *, std::size_t, const char *, int) override {
++    std::abort();
++  }
++  std::size_t write(const void *, std::size_t, std::size_t,
++                    std::FILE *) override {
++    std::abort();
++  }
++  int buffering(std::FILE *, char *, int, std::size_t) override {
++    std::abort();
++  }
++  void rewind(std::FILE *) override { std::abort(); }
++  int flush(std::FILE *) override { std::abort(); }
++  int get(std::FILE *) override { std::abort(); }
++  void notify(Presonus::Panel::PinStateObserver *, int, int) override {
++    std::abort();
++  }
++};
++struct IO final : SpiServiceIO {
++  int open(const char *, int) override { std::abort(); }
++  int maxSpeed(int, std::uint32_t) override { std::abort(); }
++  int close(int) override { std::abort(); }
++  int errorNumber() override { std::abort(); }
++  std::int64_t rawTicks() override { return 4500000; }
++  void diagnostic(bool, const char *, int, bool) override { std::abort(); }
++  int transfer(int fd, const SpiTransfer &t) override {
++    assert(fd == 71 && t.length == 14 && hex(t.tx, t.length) == expectedBytes);
++    ++transfers;
++    t.rx[0] = 0xf8;
++    return 1;
++  }
++};
++struct Concrete final : TCard {
++  using TCard::TCard;
++  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
++    std::abort();
++  }
++  void post(SysexPacket &p) override {
++    assert(clocks == 2 && p.length == 14 &&
++           hex(p.bytes.data(), 14) == expectedBytes);
++    assert(p.portableMetadata().constructedQuotient == timestamp);
++    assert(
++        (p.portableMetadata().headerWords == std::array<std::uint32_t, 2>{}));
++    assert(
++        (p.portableMetadata().trailingWords == std::array<std::uint32_t, 4>{}));
++    for (unsigned i = 14; i < 255; ++i)
++      assert(p.bytes[i] == 0x45);
++    trace += "post;";
++    SysexReceiver::post(p); // genuine production packet, lock and SPI providers
++  }
++};
++int main(int argc, char **argv) {
++  assert(argc == 2);
++  std::ifstream in(argv[1]);
++  assert(in);
++  Pump pump;
++  presonus::dice::CclResponseServices response(pump);
++  IO io;
++  static Pins pins;
++  presonus::surface_panel_port::setInputPinConstructionIO(&pins);
++  setSpiServiceConstructionIO(&io);
++  SpiPacketState spiState({}, 0, 0, 0);
++  TCardSPI spi(spiState);
++  SpiServiceAccess::bind(spi, io, 71, {}, 0);
++  SpiServiceAccess::singleton(&spi);
++  CardState state{};
++  Concrete card(cardSetupTag, state, response, io);
++  receiver = &card;
++  unsigned type, serial, word30, cases = 0;
++  std::string events;
++  while (in >> type >> serial >> word30 >> tick >> ack >> expectedBytes >>
++         timestamp >> events) {
++    state.observedWord14 = type;
++    state.expectedSerial = serial;
++    state.observedWord30 = word30;
++    for (bool actual : {false, true}) {
++      provider = actual;
++      clocks = 0;
++      trace.clear();
++      card.portableState().command = 71;
++      auto before = transfers;
++      unsigned t = timeouts;
++      assert(card.programSerialReset() == ack);
++      assert(trace == events + ";" && clocks == 2 && transfers == before + 1);
++      assert(timeouts == t + (actual && ack == 0 ? 1 : 0));
++      assert(state.observedWord14 == type && state.expectedSerial == serial &&
++             state.observedWord30 == word30);
++      ++cases;
++    }
++  }
++  // Explicit source-port precondition; opaque references never become serials.
++  state.expectedSerial.reset();
++  clocks = 0;
++  bool rejected = false;
++  try {
++    card.programSerialReset();
++  } catch (const std::logic_error &) {
++    rejected = true;
++  }
++  assert(rejected && clocks == 0);
++  SpiServiceAccess::singleton(nullptr);
++  std::cout
++      << cases
++      << " serial replays; all native packets/metadata/order/byte returns; "
++         "actual SPI and CCL response parser/clock/timeout exercised\n";
++}

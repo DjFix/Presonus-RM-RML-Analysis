@@ -1,9 +1,13 @@
 #pragma once
 #include "presonus/panel/FXPresetRecallComponent.hpp"
 #include "presonus/panel/PresetComponent.hpp"
+#include <memory>
 
 // Partial portable source class. Original declarations, layout and ARM ABI
 // remain limited to the existing evidence; this migration adds no ABI claim.
+namespace presonus::panel {
+struct FxPresetTestAccess;
+}
 namespace Presonus::Panel {
 // Borrowed, fixed-extent collection models the observed array/count snapshot.
 // Its lifetime and valid nonnull elements are caller preconditions, not an
@@ -12,6 +16,17 @@ class FxPresetComponent {
 public:
   FxPresetComponent(FXPresetRecallComponent *const *items, int count)
       : recalls(items, count) {}
+  // Owning lifecycle mode is an explicit source adaptation using composition,
+  // not a claim about the original inheritance or ARM object layout. Services,
+  // parameter and child objects must outlive this object. Child pointers remain
+  // borrowed; only their CCL vector storage is owned.
+  FxPresetComponent(presonus::panel::PresetApplicationServices &services,
+                    Core::Portable::Parameter *observed,
+                    FXPresetRecallComponent *const *items, int count);
+  virtual ~FxPresetComponent();
+  FxPresetComponent(const FxPresetComponent &) = delete;
+  FxPresetComponent &operator=(const FxPresetComponent &) = delete;
+  PresetComponent *sourcePortPreset() const { return preset.get(); }
   // Portable return choices; original ordinary returns remain unresolved.
   Core::Portable::Parameter *getRecallParameter(int, int);
   bool recall(Core::Portable::Attributes &, bool);
@@ -25,6 +40,12 @@ public:
   const char *getPresetType() const;
 
 private:
+  friend struct presonus::panel::FxPresetTestAccess;
+  // The legacy borrowed-array mode has no registration, vector allocation or
+  // PresetComponent provider, and therefore a deliberately smaller lifecycle.
+  std::unique_ptr<PresetComponent> preset;
+  std::unique_ptr<Core::Vector<FXPresetRecallComponent *>> ownedRecalls;
+  Core::Portable::Parameter *observed = nullptr;
   Core::ConstVector<FXPresetRecallComponent *> recalls;
 };
 } // namespace Presonus::Panel

@@ -7,7 +7,67 @@
 #include <stdexcept>
 #include <strings.h>
 
+namespace presonus::dsp {
+EQControlFrequencyInterpolator::EQControlFrequencyInterpolator()
+    : Core::Interpolator(0.f, 1.f) {}
+void EQControlFrequencyInterpolator::setRange(float minimum, float maximum,
+                                              float midpoint) {
+  configured = false;
+  if (minimum == 0.f && maximum == 1.f &&
+      (midpoint == 0.f || midpoint == 1.f)) {
+    Core::Interpolator::setRange(minimum, maximum, midpoint);
+    return;
+  }
+  positiveRange.setRange(minimum, maximum, midpoint);
+  Core::Interpolator::setRange(minimum, maximum, midpoint);
+  configured = true;
+}
+float EQControlFrequencyInterpolator::normalizedToRange(float value) const {
+  if (!configured)
+    throw std::domain_error(
+        "EQControl frequency bootstrap requires a supported positive range");
+  return positiveRange.normalizedToRange(value);
+}
+float EQControlFrequencyInterpolator::rangeToNormalized(float value) const {
+  if (!configured)
+    throw std::domain_error(
+        "EQControl frequency bootstrap requires a supported positive range");
+  return positiveRange.rangeToNormalized(value);
+}
+} // namespace presonus::dsp
 namespace Presonus {
+namespace {
+// Source initializers decoded from the hash-bound original HPF table. Host
+// pointers and layout belong to the pinned CCL release, never copied ARM bytes.
+const Core::Portable::ParamInfo hpfParamInfo[] = {
+    {Core::Portable::ParamInfo::kFloat, 0, "hpfQ", .7f, .7f, .7f, .7f, .002f, 0,
+     "", "skew", nullptr, nullptr, nullptr},
+    {Core::Portable::ParamInfo::kFloat, 1, "hpfGain", 0.f, 0.f, 0.f, 0.f, .002f,
+     0, "gain", "linear", nullptr, nullptr, nullptr},
+    {Core::Portable::ParamInfo::kInt, 2, "hpfType", 0.f, 0.f, 0.f, 0.f, 1.f, 0,
+     "", "", nullptr, nullptr, nullptr}};
+} // namespace
+EQControl::PortableConstructorState::PortableConstructorState(
+    const Core::Rect &rectangle)
+    : control(rectangle, nullptr), hpfInfo(hpfParamInfo) {
+  // CCL's TViewBase initializes options to zero (including focus).
+  control.wantsTouch(true);
+  hpfParameters.add(hpfInfo, 3, false);
+}
+EQControl::EQControl(const Core::TRect<int> &rectangle)
+    : constructorState(std::make_unique<PortableConstructorState>(rectangle)),
+      observer(*this) {
+  portableView = &constructorState->control;
+  observerControl = &constructorState->control;
+  bindPortableInterpolators(constructorState->frequency, constructorState->x,
+                            constructorState->gain, constructorState->y);
+  // The partial-object tag intentionally retains its historical 20..20000
+  // defaults. Original getCurve reads independent offsets0x88/0x8c, both
+  // constructor-initialized zero; these are not frequency-provider range(0,1).
+  curveMinimum = 0.f;
+  curveMaximum = 0.f;
+}
+
 void EQControl::markBandDirty(int index) {
   if (index >= 0 && index < static_cast<int>(portableBands.size()))
     portableBands[static_cast<unsigned>(index)].dirty = true;

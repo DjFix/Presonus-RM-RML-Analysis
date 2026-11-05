@@ -1,7 +1,35 @@
 #include "presonus/panel/FxPresetComponent.hpp"
 #include "PresetParameterAccess.hpp"
+#include <stdexcept>
 
 namespace Presonus::Panel {
+FxPresetComponent::FxPresetComponent(
+    presonus::panel::PresetApplicationServices &services,
+    Core::Portable::Parameter *parameter, FXPresetRecallComponent *const *items,
+    int count)
+    : preset(std::make_unique<PresetComponent>(services)),
+      ownedRecalls(std::make_unique<Core::Vector<FXPresetRecallComponent *>>()),
+      recalls(nullptr, 0) {
+  if (count < 0 || (count && !items))
+    throw std::invalid_argument("invalid FX recall collection");
+  for (int i = 0; i < count; ++i)
+    if (!ownedRecalls->add(items[i]))
+      throw std::bad_alloc();
+  recalls = Core::ConstVector<FXPresetRecallComponent *>(
+      ownedRecalls->getItems(), ownedRecalls->count());
+  observed = parameter;
+  if (observed)
+    observed->addObserver(preset.get());
+}
+FxPresetComponent::~FxPresetComponent() {
+  if (observed)
+    observed->removeObserver(preset.get());
+  ownedRecalls.reset();
+  // Executes the canonical PresetComponent destructor and pinned Core cleanup.
+  // This provider is not separately admitted as original destructor behavior.
+  preset.reset();
+}
+
 Core::Portable::Parameter *FxPresetComponent::getRecallParameter(int index,
                                                                  int tag) {
   auto *child = recalls.at(index);

@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "date": "2026-11-05T16:44:13.110422+00:00",
+  "status": "native-backed patch proposal only; canonical unchanged; no readiness modification",
+  "identity": {
+    "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "mangled": "_ZN8Presonus5Mixer20PermissionsComponent14syncMixStringsEv",
+    "firmware": "RM/RML mixer13731",
+    "address": 330516,
+    "size": 152,
+    "section": ".text",
+    "file_offset": 297748,
+    "range_sha256": "8e5f5a79ccd5e2773027cf5d1d908851987fa75bb56b2318257ee019f4960ef0"
+  },
+  "cause": "Legacy closeout native producer intercepts exact __aeabi_fcmpge at0x157928 but computes !=. Original app0x50b64 calls that address, tests returned r0 at0x50b68, and returns on zero at0x50b6c. Correct predicate is >=0 with unordered comparison false. Integrated C++ >=0 is supported; do not revert it to satisfy old fixture.",
+  "independent_native_validation": {
+    "comparison_proof": "compare-runtime-proof.json",
+    "original_compiler_runtime_symbols": [
+      "__aeabi_fcmpge",
+      "__aeabi_cfrcmple",
+      "__aeabi_cfcmple",
+      "__cmpsf2"
+    ],
+    "cases": 12,
+    "domain": "signed zeros, positive/negative1, infinities, signed quiet NaNs, positive/negative subnormals, largest signed finite float",
+    "Core_binary_execution": false,
+    "syscalls_or_hardware": false,
+    "runtime_scope": "Private Unicorn memory, exact original compiler-runtime ranges and code/write allowlists. Actual native return verifies explicit model; new reconstructed C++ never supplies expected values."
+  },
+  "regeneration": {
+    "producer": "executed-native.py",
+    "fixture": "native-fixtures.json",
+    "cases": 91,
+    "existing_helper_cases": 6,
+    "changed_cases": [
+      {
+        "case": 66,
+        "task": "w03_02",
+        "input": {
+          "present": true,
+          "value": 0.0,
+          "text": "0.00"
+        },
+        "previous_output": {
+          "text": "initial"
+        },
+        "new_native_observed_output": {
+          "events": [
+            [
+              "from",
+              "0.00",
+              0
+            ]
+          ],
+          "text": "0.00"
+        },
+        "output_changed": true,
+        "reason": "Correct __aeabi_fcmpge explicit boundary model; trace name corrected in all reached comparison cases."
+      },
+      {
+        "case": 67,
+        "task": "w03_02",
+        "input": {
+          "present": true,
+          "value": -0.0,
+          "text": "0.00"
+        },
+        "previous_output": {
+          "text": "initial"
+        },
+        "new_native_observed_output": {
+          "events": [
+            [
+              "from",
+              "0.00",
+              0
+            ]
+          ],
+          "text": "0.00"
+        },
+        "output_changed": true,
+        "reason": "Correct __aeabi_fcmpge explicit boundary model; trace name corrected in all reached comparison cases."
+      },
+      {
+        "case": 68,
+        "task": "w03_02",
+        "input": {
+          "present": true,
+          "value": 1.0,
+          "text": "1.00"
+        },
+        "previous_output": {
+          "events": [
+            [
+              "from",
+              "1.00",
+              0
+            ]
+          ],
+          "text": "1.00"
+        },
+        "new_native_observed_output": {
+          "events": [
+            [
+              "from",
+              "1.00",
+              0
+            ]
+          ],
+          "text": "1.00"
+        },
+        "output_changed": false,
+        "reason": "Correct __aeabi_fcmpge explicit boundary model; trace name corrected in all reached comparison cases."
+      },
+      {
+        "case": 69,
+        "task": "w03_02",
+        "input": {
+          "present": true,
+          "value": -1.0,
+          "text": "-1.00"
+        },
+        "previous_output": {
+          "events": [
+            [
+              "from",
+              "-1.00",
+              0
+            ]
+          ],
+          "text": "-1.00"
+        },
+        "new_native_observed_output": {
+          "text": "initial"
+        },
+        "output_changed": true,
+        "reason": "Correct __aeabi_fcmpge explicit boundary model; trace name corrected in all reached comparison cases."
+      }
+    ],
+    "unchanged_other_case_count": 87,
+    "helper_cases_identical": true,
+    "producer_identity": "Regenerated fixtures bind executed-native.py exact hash. This owned producer differs from canonical by two semantic-boundary lines and explicit ROOT/OUT sandbox redirection; do not attribute its run to unchanged canonical native.py."
+  },
+  "compiled_replay": {
+    "proof": "compiled-sync-replay.json",
+    "existing_binary": "temp/core-upstream/root-integration-01/permissions_storm_component_replay",
+    "cases": 8,
+    "result": "All existing sync cases match corrected native outputs, including cases66/67/69. No rebuild and no full91/full508 replay claimed here."
+  },
+  "patch_proposal": "native.py.patch: correct runtime name and comparison only; no C++ source or replay checker expected-value manipulation required.",
+  "limitations": "This diagnosis fixes the model of a compiler runtime call. Other Core/parameter calls remain declared explicit provider boundaries; compiled provider replay is distinct. Existing91 fixture domain finite only;12 runtime cases extend only the comparison boundary, not full application/provider behavior."
+}

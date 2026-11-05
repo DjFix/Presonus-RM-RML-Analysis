@@ -5,10 +5,31 @@
 #include "core/portable/gui/coreview.h"
 #include "core/public/coreinterpolator.h"
 #include "core/public/corevector.h"
+#include "presonus/mixer_dsp/EqSourceProviders.hpp"
+#include <array>
 #include <cstdint>
 #include <memory>
 #include <vector>
 namespace presonus::dsp {
+// Independent app-side provider adaptation. Pinned CCL 5.0.0 has no
+// Core::LogInterpolator. The observed (0,1) bootstrap stores real CCL range
+// state but cannot convert until setRange selects an existing supported
+// positive EQ domain. A failed range transition leaves the last range values
+// visible but disables conversion until a supported setRange succeeds. Reset to
+// (0,1) disables conversion. This is not legacy Core conversion or ARM
+// behavior.
+class EQControlFrequencyInterpolator final : public Core::Interpolator {
+public:
+  EQControlFrequencyInterpolator();
+  void setRange(float minimum, float maximum, float midpoint = 0.f) override;
+  float normalizedToRange(float value) const override;
+  float rangeToNormalized(float value) const override;
+  bool sourceRangeSupported() const { return configured; }
+
+private:
+  EqLogSourceInterpolator positiveRange;
+  bool configured = false;
+};
 // Independent partial-object construction; not an original constructor.
 struct EQControlBiquadPortTag {};
 } // namespace presonus::dsp
@@ -31,6 +52,30 @@ namespace Presonus {
 class EQControl {
 public:
   explicit EQControl(presonus::dsp::EQControlBiquadPortTag) : observer(*this) {}
+  // Original encoded constructor interface; composition below is a portable
+  // source model, not recovered GUI inheritance or original ARM object layout.
+  explicit EQControl(const Core::TRect<int> &rectangle);
+  struct PortableConstructorState {
+    explicit PortableConstructorState(const Core::Rect &rectangle);
+    // Destruction order: parameters before interpolators before the control.
+    // This RAII support establishes no original destructor readiness.
+    Core::Portable::Control control;
+    Core::LinearInterpolator gain{0.f, 1.f}, y{0.f, 1.f};
+    presonus::dsp::EQControlFrequencyInterpolator frequency;
+    Core::LinearInterpolator x{0.f, 1.f};
+    const Core::Portable::ParamInfo *const hpfInfo;
+    Core::Portable::ParamList hpfParameters;
+    int handleDiameter = 10;
+    Core::Color offlineColor{0, 0, 0, 255};
+    // Explicit null borrowed source-port boundaries. Original declarations of
+    // these three native slots remain unresolved; no layout/type claim.
+    std::array<const void *, 3> borrowedBindings{};
+  };
+  const PortableConstructorState *portableConstructorState() const {
+    return constructorState.get();
+  }
+  float portableCurveMinimum() const { return curveMinimum; }
+  float portableCurveMaximum() const { return curveMaximum; }
   // Original ordinary return declaration is unresolved; int is provisional.
   // Supported equivalence domain: index >= 0. Original negative indexing is
   // unchecked and deliberately receives no supported behavior claim.
@@ -56,6 +101,13 @@ public:
                               *slot5 = nullptr;
     bool contains(Core::Portable::Parameter *parameter) const;
     void zeroParam(Core::Portable::Parameter *parameter);
+    // Observer/setBand semantic mapping: native slots 0..5 map to
+    // slot3 (type), gain, q, frequency, slot4 (enabled), slot5.
+    // Legacy contains/zeroParam retain their positional compatibility behavior.
+    // This mapping is a source-port conversion, never an ARM object layout.
+    // Ordinary void return declarations remain provisional.
+    void addObserver(EQControl *owner);
+    void removeObserver(EQControl *owner);
   };
   // Compatibility name for the SAME coherent binding, not a second model.
   using PortableBandParams = BandParams;
@@ -68,6 +120,11 @@ public:
   std::vector<PortableBandParams> &portableParameterState() {
     return portableParams;
   }
+  // Requires parameter/type/curve bindings covering portableBands. Borrowed
+  // parameters outlive the synchronous operation; no concurrent/reentrant
+  // resize. Original ordinary return declaration unresolved; void is
+  // provisional.
+  void setBand(int index, BandParams parameters);
   void markBandDirty(int index);
   int parseType(Core::ConstString name);
   float getFrequency(int index) const;
@@ -157,6 +214,9 @@ public:
   void setBufferedDraw(bool state);
 
 private:
+  // Owned composition only for the rectangle constructor. The tagged partial
+  // object retains its existing borrowed-provider behavior and defaults.
+  std::unique_ptr<PortableConstructorState> constructorState;
   // Source-port borrowed bindings, not original fields or inheritance.
   struct Observer : Core::Portable::ParamObserverBase {
     EQControl &owner;

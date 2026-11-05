@@ -111,6 +111,10 @@ public:
   // pending.
   void loadSettings(); // requires a live midiHandler and tag7 ListParam
   void storeSelected(const char *, int, int);
+  // Original pointer overload identities; provisional source-port returns.
+  // isStoredItem requires a live item when the saved string is nonempty.
+  void storeSelected(const char *, UC::NetworkItem *, int);
+  bool isStoredItem(const char *, UC::NetworkItem *) const;
   bool isStoredItem(const char *, int) const;
   Core::Portable::Parameter *getSelectedMixerParam();
   int getTargetType()

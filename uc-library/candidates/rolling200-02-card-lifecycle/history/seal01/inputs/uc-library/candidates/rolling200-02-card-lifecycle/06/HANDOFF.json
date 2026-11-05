@@ -1,0 +1,1048 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_card_lifecycle_06",
+  "namespace": "Presonus::NOAA::TCard",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus4NOAA5TCardD2Ev",
+      "demangled": "Presonus::NOAA::TCard::~TCard()",
+      "address": 644256,
+      "size": 148,
+      "section": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/card.hpp",
+      "sha256": "c541aa766aa7e3a0f55b3d1c59da05c546cd0a0a243bdaaded08684c6fdc93d8"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardLifecycle.cpp",
+      "sha256": "3f68c744e530297c3a9eef7c1094100247023eb58d6869393413969f6e91a09d"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardSerial.cpp",
+      "sha256": "f17afa7233ff707a0fe3dbf808672f93ce9f61b06d19ff1577648306cc13e9da"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/noaa_tcard_lifecycle_tests.cpp",
+      "sha256": "24cc9b96a5135267153f4f19e0f919d95d874967d98962b5264481cbb95253dd"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/noaa_tcard_serial_tests.cpp",
+      "sha256": "c5bf4da47b94fa21525cae3ed07adc5fa30f6bb1035132a70efbdcdc1a2495f1"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/provider_observe.cpp",
+      "sha256": "57f617d58998d56008f688a0f213b6512bc4fa16b8af71cafd9c73822bbfc643"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+      "sha256": "c21bff02359824e01d8037655227b891ce01aba2fa5f8c62bca8856a56e5e84b"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/oracle.py",
+      "sha256": "27b6b9a3049f292ad0575b01e9b55ee6bfce10f668c336117d20bdc67d5feada"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/serial_oracle.py",
+      "sha256": "9b56071434f6eaada8f9890ced3560e343c6d3286320faee1cd0be41e2c183e8"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/exception_oracle.py",
+      "sha256": "bbede27da01dbe7e04efc9f86f8dcd4d09739b5465ed6611067ad239d31da8e4"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-card-lifecycle/seal.py",
+      "sha256": "6d1aac573d6ba7794a4f888f986355f54c720affad79c2c4e3b846abe10ef572"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/lifecycle-fixtures.txt",
+      "sha256": "18da39c307f1a0d5c3a2820adca87659109384f8b7f93eb93a452eb6857a501f"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/serial-fixtures.txt",
+      "sha256": "be5add34f365eee316fb21b40e0230129d80f59c229d38fca57e88c253dc6ad9"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/provider-observations.txt",
+      "sha256": "7fb31365d482e4a2e038c2c76a3f1003e55aad48024d3793ca9595d26b89f17b"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/worker-local-proof.json",
+      "sha256": "cf17d571a392d7dcf4cd5b759ef4a3f04b4538b46dd2ad8576e607aaf95b399c"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/lifecycle-native.json",
+      "sha256": "796239448a63591de3fe6dd473c7872e29bc72eaff7572d87efd1f79c322388f"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/serial-native.json",
+      "sha256": "e9b9f79b207aefd7bf50dde0cc484c4dbee8af9537912b2f9a7010c94f8fb20e"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/constructor-exception-native.json",
+      "sha256": "2a2a6c309d9d36f9b22b7a2478587eea996a3c628b76509cfa68126ca06582a6"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/serial-literal.json",
+      "sha256": "5d8d73cd63f488fc9d29b377ea3df2175540afe56d046d95f257f345fe07c9a8"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/remarks.json",
+      "sha256": "357747bcd3730fd45127ff7f04b083f5f931b1cfde87bb11370ad2e9404b9850"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.h",
+      "sha256": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.cpp",
+      "sha256": "dbc41fad6b777f2989208a38a4d75afb235aeead0c130b935459b9e5b6110e2c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/corethread.h",
+      "sha256": "56335e1e9a23c724a4c4d4640c47563956d8ff9cda434887e8ee470439f2d07c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/sysex_receiver.hpp",
+      "sha256": "9bdd436a4f458202f3e91b5d7b2d662daae7a4bb3512863bf484bc8e9fe730ed"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/spi_packets.hpp",
+      "sha256": "3c3c1bc3a7e037af9834c1aecafdd5785c3b9992841d556339d0b3d6a762ac17"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/SysexReceiver.cpp",
+      "sha256": "bb2a086b2511bd2df3614d55a48b77b2e3f4f1b044adc2a43be8bd61637b9864"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/SysexReceiverWait.cpp",
+      "sha256": "cd9d1374f68b147fa7fd7f5c803271b10e4ebbe31b4d6881a173622b3eaa43ff"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/SysexPacketConstruction.cpp",
+      "sha256": "fc7a7163f25f9694bf134609f642cf380204f32f7288a4f794df4488c34eb07e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSPIService.cpp",
+      "sha256": "b7fd679da7764a66ce77481c0c76db775619185b05b1ddd0767fecd10469d945"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSPIPackets.cpp",
+      "sha256": "3d2a89a73c54919eec88d9bf689a59fab5269dfde041f3c6a7e2782751ea24da"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/portable/dice/CclResponseServices.cpp",
+      "sha256": "5e94972c9f760db3930f6073a9abf9eeef112daf3887605056a05d98a1c3fcb6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/portable/dice/ResponseWait.cpp",
+      "sha256": "54a24bc0c3dbafcc7978d72efbbd89ac589c18edd6b65f2f6c6ea07545a5cdee"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/DICE/Codec.cpp",
+      "sha256": "04031610a5d42d33a490a3e9ddaa3dc07bc220f9965088ed042f2e46b28b9dbf"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "656f140f304a107c08e264963d41f2be38db49929bdbe1030863872752fb82db"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSetup.cpp",
+      "sha256": "673b034ca445ed4957cad2a2c1e3b0acd2a1318143ae71ac44e79088fff4edda"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardStart.cpp",
+      "sha256": "77bf4b14719f080f79b6ff5c4a7249441440db54f2a9b874bce3528b9348e677"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardState.cpp",
+      "sha256": "e1f86cf2d69cfb86b17fafb9a4808684970a04cac4e3dfffbf05ed61acc16b4e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardReceive.cpp",
+      "sha256": "3e476a031c9ee4a0b11571bb633900a085f2d202b3f730c55fd9e7820f9c954f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardDiagnostics.cpp",
+      "sha256": "c4614464467cf244bb2c551fed27eebc269447f5f4a6851b4b01dc47ee6418a2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardStatus.cpp",
+      "sha256": "5eb839ecce9c725541c861cc6834aaf1d4402be7d2f562868b6f201558148374"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardResources.cpp",
+      "sha256": "f41e690cee79969aa7e52a35210eba4aa868dd76133880f4588537615ab9c2f3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardCommands.cpp",
+      "sha256": "104f5adc274ca97f6901de1a3fd84aa13f85e02fb7cd11e5ab6eabf9b53654c9"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardRate.cpp",
+      "sha256": "cec55871073c4ba0b15c574045f65cfd1689c32bef27f037817c633acefc231e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/TASK.md",
+      "sha256": "c6d3b1dd5ec1edb29071f100bec8293f1a6822ac5b3430d4750bd732fc0e1225"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/ELF_CONTEXT.md",
+      "sha256": "580684ccd279531bf1e1d38920ec7c822ab99b43a1bd63f95f651bb745d9342c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/SOURCE_SLICES.md",
+      "sha256": "0c27f3f0dac5c52466db9db82a37e336483dadb136478bbaa0304e2bf76450dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/CONTEXT.md",
+      "sha256": "57f83076f8c264b464c2d04329f4f7f7a188f581d0a9b1391832a615d81b31b9"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/native-context.json",
+      "sha256": "9c954c1fbfd7f649a923be9a893a22a48e6bf21994c7ff5ebfa5c0a2cc3ff917"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/TASK.md",
+      "sha256": "b7beb5d9da3e571d5bf609262c0d08ba0756a329269cb31365e172aff8c8aec6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/ELF_CONTEXT.md",
+      "sha256": "8955057a223adecb3e3560097630f2529510a0be99af9c0cd2652303848070ce"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/SOURCE_SLICES.md",
+      "sha256": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/CONTEXT.md",
+      "sha256": "83487843d52ff91319d416489cf8b63b5a1a6947c99ccb791ae495217cd3392a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/native-context.json",
+      "sha256": "0c754f9db7150132e32907852489c5e49920c2257146834ae8955efc5f652240"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/TASK.md",
+      "sha256": "2f896bade4e74b082ef4dac316095356865257902b4db1c2860ab295626fc115"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/ELF_CONTEXT.md",
+      "sha256": "39f2fea5a4f6c07c0bb605ab62133b084051f14616ada2343303bdd43eb90232"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/SOURCE_SLICES.md",
+      "sha256": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/CONTEXT.md",
+      "sha256": "0859c4923a49a304381f4ce55d9e0150e32df7821a273cf61b04a57e9b905781"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/native-context.json",
+      "sha256": "98279e221a9c8b3cf170a159f83cb551cf9dd1153a5906aba3dedcf4534b7727"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/TASK.md",
+      "sha256": "cead1d732df2dfbfe5851e40ff14b1e4e0878ca3dc9df8eb505d6667cd7d4be1"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/ELF_CONTEXT.md",
+      "sha256": "3d0630bedfad629e87895fdad805dc1852246893aa6bde1e7250b7d08dce8517"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/SOURCE_SLICES.md",
+      "sha256": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/CONTEXT.md",
+      "sha256": "5223df6aa0a5ebaac6a7a2219329b55d3ea59d04e5c66e43978784570d92ff44"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/native-context.json",
+      "sha256": "56f891a7540639c47de41784af220d4181f19c2260f775acd83557f1b4e084d5"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/TASK.md",
+      "sha256": "d71033ff5abe5e6ce713e334582f7f6bbf6430055b747c51668e71886732087c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/ELF_CONTEXT.md",
+      "sha256": "22b56d4f7b62767292f6ea16328cf9976650cab0838f336eceda8c0d70d6e36c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/SOURCE_SLICES.md",
+      "sha256": "ac98a0e8939cc4059041cad9eb12a4915a3b66bf64d273908a0633d75abd186b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/CONTEXT.md",
+      "sha256": "2953c4296b30d5a7cde4f8636a0c586454c4f3ee2cc2063d498a4991e005d30e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/native-context.json",
+      "sha256": "38c7d98a11f88e8f864c3cbdea7d88141ba4ba10831368e9e1a360d114f1dd5d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/TASK.md",
+      "sha256": "c7671b544b8d2da5441eb731402a32bd6fcdefd983c9bca1d32f54d20a63ac26"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/ELF_CONTEXT.md",
+      "sha256": "904de88bb8746329a393e1302399412531f103f76ac51d6c084973bb1a48ea0e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/SOURCE_SLICES.md",
+      "sha256": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/CONTEXT.md",
+      "sha256": "9ad04a7de7dd03e874f8273e339c64ea5737373b7cdc20a4d865ecc4a15a5fb3"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/native-context.json",
+      "sha256": "f1f1c21f3fadaf0140d24ad9edd7db71f94490215d6d25e634e7b12ab07f349e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0xa468c/expansion.json",
+      "sha256": "f6411e3894257c11ebf06b6fb03120dc8b40122dd7ec44407c1e850039e72406"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0xa468c/ELF_CONTEXT.md",
+      "sha256": "62f7796f11229658d18038ade0bd815a30c253235e58b23b6bd0b39998402012"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0xa468c/native-context.json",
+      "sha256": "5fdbea9aa1bb43f6d532f90d02bbc885918c24bf89f7224fb4de075939c4c5eb"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0x9cce4/expansion.json",
+      "sha256": "54aaf2ba07ca78c1a6169265b64bb6199260add70eeddfab8d39116f48e409e3"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0x9cce4/ELF_CONTEXT.md",
+      "sha256": "4b4bec66c29a9802be480768f6e4a10772e2243efc663ac684a2bfe37f9486f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/card-native-helper-expand01/0x9cce4/native-context.json",
+      "sha256": "bf4d7a9c4eb73da168541dad5151399d8cdb56e9f7054c78eb8c073325a4e73a"
+    },
+    {
+      "kind": "input",
+      "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/format/commands.json",
+      "sha256": "6650924fe3f62eb1c54c4be1cfd792594ec34d66b9f5c9755b5d572dd54d3482"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/format/format.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/format/format.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/format/version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/format/version.stdout",
+      "sha256": "b612ba740becdd7e9615e62612c61cdeb064e15aff898827e5f08971732998af"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/TCardLifecycle.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/TCardLifecycle.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/TCardSerial.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/TCardSerial.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/commands.json",
+      "sha256": "6333191c921630fd0965d9a1facb33a16a365700ec725c974921ccef5a448042"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardCommands.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardCommands.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardDiagnostics.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardDiagnostics.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardRate.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardRate.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardReceive.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardReceive.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardResources.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardResources.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardSetup.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardSetup.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardStart.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardStart.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardState.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardState.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardStatus.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/dependency-TCardStatus.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/link-lifecycle.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/link-lifecycle.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/link-serial.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/link-serial.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/noaa_tcard_lifecycle_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/noaa_tcard_lifecycle_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/noaa_tcard_serial_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/compile/noaa_tcard_serial_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/symbols/commands.json",
+      "sha256": "c463576a15d5c0d9c5380400d94cbe03b3a35a02e2f0ea7b047a950e164412e1"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/symbols/symbols-TCardLifecycle.o.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/symbols/symbols-TCardLifecycle.o.stdout",
+      "sha256": "b8b585d1a79f4e33c4ccf64ac736ac2a74c394083d9a6c80fffe30b2514573fe"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/symbols/symbols-TCardSerial.o.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/symbols/symbols-TCardSerial.o.stdout",
+      "sha256": "3eb40c91692a5d81bbcfe344560914504b097a7d0d7e7a8799b34c6228c8fbf2"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/replay/commands.json",
+      "sha256": "4085bea2491d9341e9e46a080c7d8a2f49b082df913f8e3335d6827c0e10064e"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/replay/lifecycle.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/replay/lifecycle.stdout",
+      "sha256": "d864c2d92275b63604ad94f97e677aafe900daf1caa152f64da32f9968875568"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/replay/serial.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/replay/serial.stdout",
+      "sha256": "bbf670aad836e499122e8a658e7e9bf399bb02f321b4242ca142f8b99eb31180"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/commands.json",
+      "sha256": "b788e1d2daf4df536a6171c0cc54f279ddc8744c0e299aa931825d4ac769ceb1"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_command_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_command_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_rate_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_rate_status_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_receive_start_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_receive_start_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_setup_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_setup_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/compile-noaa_tcard_status_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_command_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_command_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_rate_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_rate_status_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_receive_start_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_receive_start_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_setup_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_setup_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/link-noaa_tcard_status_tests.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_command_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_command_tests.stdout",
+      "sha256": "284ce139b4e63a18a7f51149e263ee4bbd244e0fb66c60800cee9736b0c06b12"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_rate_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_rate_status_tests.stdout",
+      "sha256": "5fb6d0d3b6344b2c801aa576043dc1a32e8f3a64aaae1f33eb9e4040175f85eb"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_receive_start_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_receive_start_tests.stdout",
+      "sha256": "8770ebcb8219c40014ae4f25d5501e56e7ec440c90f8d9bd6f218d7d36c28452"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_setup_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_setup_tests.stdout",
+      "sha256": "bd13e171554f3841ca3e64d37d896500020bba43344473c8c78b574bb609250f"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_status_tests.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/regression/noaa_tcard_status_tests.stdout",
+      "sha256": "a002e36b0fc490fb34d9b6ae4a98ee66533e775d1749a0c91e1c75bf319f7b5b"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/providers/commands.json",
+      "sha256": "b9273a2f0c0b96495ce777d46b27c2862fb6a0a1afa3aeeb571a6b91253ba9f6"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/providers/compile-provider.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/providers/compile-provider.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/providers/observe-provider.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/local-validation/providers/observe-provider.stdout",
+      "sha256": "7fb31365d482e4a2e038c2c76a3f1003e55aad48024d3793ca9595d26b89f17b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/context.json",
+      "sha256": "ec06ed5fefffaa4e0224d703d72adb7274771c4009211fb10f97389d32300a25"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/context.json",
+      "sha256": "126c82e09ee8e10abfadc3f90cb8da66118c62d63ea8a965c5527ddc294f9dd5"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/context.json",
+      "sha256": "91822a33e3ff525fca178e06c6ef6e4068098701767e9fc8702b07939ab77bb2"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/context.json",
+      "sha256": "1ca34bc3110c0d7a85dc5456c7d1c72835e12cd5a9b3ae603fee436773cf89f9"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/context.json",
+      "sha256": "45cc7a6bfbb34fbdd2d8622dbf8cb775828c8d3345daa64e6e93bc20ce625a90"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/context.json",
+      "sha256": "18ff3de692abd1a70345eac10fd3e0aa8451b3237570f901bfff6e64ef617ed4"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_01/request.json",
+      "sha256": "f3b4d3cde831fc5950268f1b2ef7d311ddd0e42ea1813bf93ec9f5d56ed02945"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_02/request.json",
+      "sha256": "9e9c7e0316daf453129c65b68c9ba815a8d6f461d52e84185d0286df0718a5cf"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_03/request.json",
+      "sha256": "f50d320d6cf4af8b65dd054da3674de9f786fb90aaf6fa13a70ab01b60d3cecf"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_04/request.json",
+      "sha256": "f2950edc3bad80a9de1fe178218e6b32b99b291715d0436b0b12c2f7f29c5466"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_05/request.json",
+      "sha256": "398497e8f6ce4472505b69540309ef75b6c18ff111b07f505279bddf1574443f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-card-lifecycle02/packets/rolling200_02_card_lifecycle_06/request.json",
+      "sha256": "24be192c42bd018432d951d634df0cd698386eb600b6fbd2becacea3c363c6c7"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "format"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "replay-lifecycle"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "provider",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "providers"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-card-lifecycle/check.py",
+        "regression"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "validation_domain": "30 original lifecycle cases across all5 exact original ranges, existing/lazy SPI and seeds0/a5/ff; all numeric state projections, unchanged unspecified native bytes, actual CCL vectors/registration, independent host D0 real free/D1-D2 no free, lazy recreation, borrowed compatibility, actual allocation failure;2 controlled native constructor cleanup entries",
+  "limitations": [
+    "Caller serialized portable state; native unspecified bytes not assigned host layout",
+    "No actual device, SPI, GPIO, syscall or network operations in native oracle; host SPI/GPIO captured before singleton",
+    "Native Core bodies never executed; actual pinned CCL provider observations imported",
+    "Native D0 calls original unsized delete; host compiler may use actual sized delete, both instrumented and forwarded to real runtime. No binary runtime equivalence",
+    "Host C1/C2 proof uses concrete derived construction; every exact name checked and every native original range independently executed",
+    "Destructor source-port noexcept/host allocation runtime is not original ARM exception compatibility",
+    "Serial precondition requires explicit serial binding; original unencoded return declaration remains pending"
+  ],
+  "build_integration": {
+    "partition": "PRESONUS_rm_SOURCES",
+    "production_cpp": [
+      "uc-library/src/Presonus/NOAA/TCardLifecycle.cpp",
+      "uc-library/src/Presonus/NOAA/TCardSerial.cpp"
+    ],
+    "public_headers": [
+      "uc-library/include/presonus/noaa/card.hpp"
+    ],
+    "compile_once_required": true,
+    "link_dependencies": [
+      "presonus::rm_components",
+      "actual pinned CCL5.0.0 Core",
+      "host compiler allocator/pthread"
+    ],
+    "test_targets": [
+      {
+        "name": "noaa_tcard_lifecycle_replay",
+        "source": "tests/noaa_tcard_lifecycle_tests.cpp",
+        "fixture": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/lifecycle-fixtures.txt",
+        "compile_options": [
+          "-UNDEBUG",
+          "-frtti"
+        ],
+        "link_options": [
+          "-Wl,--wrap=_Znwm",
+          "-Wl,--wrap=_ZdlPv",
+          "-Wl,--wrap=_ZdlPvm",
+          "-Wl,--wrap=_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+          "-Wl,--wrap=_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+        ],
+        "ctest_argv": [
+          "ctest",
+          "--test-dir",
+          "temp/core-upstream/root-integration-01",
+          "--output-on-failure",
+          "-R",
+          "^noaa_tcard_lifecycle_replay$"
+        ]
+      },
+      {
+        "name": "noaa_tcard_serial_replay",
+        "source": "tests/noaa_tcard_serial_tests.cpp",
+        "fixture": "evidence/recovery/2026-11-05/rolling200-02/card-lifecycle/serial-fixtures.txt",
+        "compile_options": [
+          "-UNDEBUG",
+          "-frtti"
+        ],
+        "link_options": [
+          "-Wl,--wrap=_ZN4Core8Platform13CurrentThread5sleepEj",
+          "-Wl,--wrap=_ZN4Core11DebugPrintfEPKcz",
+          "-Wl,--wrap=_ZN8presonus4dice19packetClockRawTicksEv",
+          "-Wl,--wrap=_ZN8Presonus4NOAA13SysexReceiver7waitAckEx"
+        ],
+        "ctest_argv": [
+          "ctest",
+          "--test-dir",
+          "temp/core-upstream/root-integration-01",
+          "--output-on-failure",
+          "-R",
+          "^noaa_tcard_serial_replay$"
+        ]
+      }
+    ],
+    "header_rebuild": "Recompile all current card.hpp consumers; do not combine stale layout objects",
+    "scope": "Local source port only; Root owns full Linux integration, role/installed/compile-once checks and guarded SQLite admission"
+  }
+}

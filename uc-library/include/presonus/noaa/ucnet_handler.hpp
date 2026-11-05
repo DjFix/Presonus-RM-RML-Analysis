@@ -15,6 +15,8 @@ public:
   // by these independent int spellings. A manager must already be initialized.
   int startup(int port);
   int shutdown();
+  // Provisional ordinary return; original declaration remains unresolved.
+  void idleIO();
 
 private:
   presonus::noaa::UCNetHandlerState &state_;

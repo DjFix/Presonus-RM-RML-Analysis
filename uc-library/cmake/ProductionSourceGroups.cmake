@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Dsp/EqSourceProviders.cpp
   src/Presonus/Panel/Element.cpp
   src/Presonus/MappableMixer.cpp
   src/Presonus/Panel/SharedMemoryComm.cpp
@@ -416,6 +417,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/CompressorParameterList.cpp
   src/Presonus/NOAA/TCardUCNetHandlerIO.cpp
   src/Presonus/NOAA/TCardHandlerProperties.cpp
+  src/Presonus/NOAA/TCardHandlerRelease.cpp
+  src/Presonus/NOAA/TCardLifecycle.cpp
+  src/Presonus/NOAA/TCardSerial.cpp
   src/Presonus/NOAA/TCardHandlerEvents.cpp
   src/Presonus/NOAA/TCardFPGAUpdater.cpp
   src/Presonus/NOAA/TCardRouterRoutes.cpp
@@ -429,7 +433,6 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/NOAA/TCardResources.cpp
   src/Presonus/NOAA/TCardStatus.cpp
   src/Presonus/Dsp/EqParameterLists.cpp
-  src/Presonus/Dsp/EqSourceProviders.cpp
   src/Presonus/NOAA/TCardSetup.cpp
   src/Presonus/NOAA/TCardState.cpp
   src/Presonus/Mixer/BeastSetupProperty.cpp

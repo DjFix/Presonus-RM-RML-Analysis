@@ -21,12 +21,18 @@ public:
   }
   ~TCardHandler() override = default;
   void setProperty(const Core::Property &) override = 0;
-  void release() override = 0;
+  // Requires a successfully started thread; join before destroying borrowed
+  // state. Source-port void override, not an independently recovered return
+  // type.
+  void release() override;
   int threadEntry() override = 0;
   void getProperty(Core::Property &) override;
   bool accepts(const SysexPacket &) override;
   // Portable void contract; original ordinary return declaration unresolved.
   void purgeEvents();
+  // Provisional source-port void return; original return declaration
+  // unresolved.
+  void setPropertyDeferred(const Core::Property &);
   unsigned long long getAlternateMac();
   unsigned int sendGEQBulkProperty(const Core::Property &);
 

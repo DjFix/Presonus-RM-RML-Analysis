@@ -1,0 +1,201 @@
+{
+  "ranges": [
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD0Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677416,
+      "size": 148,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644648,
+      "range_sha256": "309152f685cbb2f6347a2cf9e2ee9370ca8860370619a1be48a2276e8cd91273"
+    },
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD1Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677564,
+      "size": 140,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644796,
+      "range_sha256": "b990cc3ac77ea957295c9a72f65db13f8ad64e4075776946d38673366d090b58"
+    },
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD2Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677704,
+      "size": 140,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644936,
+      "range_sha256": "e3e231df11ab87c9cabc4c1d5dae15a27bf0d2b92d1d9a8049c2dfcc1389b852"
+    }
+  ],
+  "cases": [
+    {
+      "variant": "D0",
+      "return_this": true,
+      "registered": false,
+      "live": false,
+      "trace": [
+        "unregister-boundary",
+        "operator-delete-boundary"
+      ],
+      "stopped": true,
+      "writes": [
+        {
+          "address": 33615844,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615848,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615852,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615856,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615860,
+          "size": 4,
+          "value": 33615872
+        },
+        {
+          "address": 33615864,
+          "size": 4,
+          "value": 50331648
+        },
+        {
+          "address": 33615868,
+          "size": 4,
+          "value": 677428
+        },
+        {
+          "address": 16777216,
+          "size": 4,
+          "value": 3519248
+        }
+      ]
+    },
+    {
+      "variant": "D1",
+      "return_this": true,
+      "registered": false,
+      "live": true,
+      "trace": [
+        "unregister-boundary"
+      ],
+      "stopped": true,
+      "writes": [
+        {
+          "address": 33615844,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615848,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615852,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615856,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615860,
+          "size": 4,
+          "value": 33615872
+        },
+        {
+          "address": 33615864,
+          "size": 4,
+          "value": 50331648
+        },
+        {
+          "address": 33615868,
+          "size": 4,
+          "value": 677576
+        },
+        {
+          "address": 16777216,
+          "size": 4,
+          "value": 3519248
+        }
+      ]
+    },
+    {
+      "variant": "D2",
+      "return_this": true,
+      "registered": false,
+      "live": true,
+      "trace": [
+        "unregister-boundary"
+      ],
+      "stopped": true,
+      "writes": [
+        {
+          "address": 33615844,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615848,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615852,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615856,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "address": 33615860,
+          "size": 4,
+          "value": 33615872
+        },
+        {
+          "address": 33615864,
+          "size": 4,
+          "value": 50331648
+        },
+        {
+          "address": 33615868,
+          "size": 4,
+          "value": 677716
+        },
+        {
+          "address": 16777216,
+          "size": 4,
+          "value": 3519248
+        }
+      ]
+    }
+  ],
+  "unicorn_version": "2.1.4",
+  "domain": "Each exact original D0/D1/D2 range verified independently. Existing nonnull singleton, normal-return path; guest unregister and standard delete boundaries captured independently. No original Core, allocator, constructor, device, update, erase, syscall or exception instructions executed. Boundary live-state models call identity/order only; host real deallocation is separately proven by executable C++ replay."
+}

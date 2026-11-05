@@ -2,6 +2,10 @@
 
 #include "core/portable/coreparams.h"
 #include <cstdint>
+#include <functional>
+namespace Presonus {
+class LinkableComponent;
+}
 namespace Presonus::UC {
 class ClientSubscription;
 }
@@ -14,6 +18,15 @@ class Component;
 namespace Presonus::Mixer {
 class PermissionsComponent;
 class MixerComponentBase;
+class ChannelComponent;
+
+// Borrowed projection of one existing mixer mixChannels entry. The embedding
+// application supplies the actual link object and numeric channel identity;
+// this does not assert ChannelComponent inheritance or original ARM fields.
+struct PermissionsAuxView {
+  const LinkableComponent *link = nullptr;
+  std::uint32_t number = 0;
+};
 
 // Independent source-port boundary. These fields are not a recovered ARM
 // layout. App-specific delegates must be supplied by the embedding application;
@@ -28,6 +41,20 @@ struct PermissionsBindings {
   unsigned char dirty = 0;
   std::int64_t deadlineMilliseconds = 0;
   const UC::ClientSubscription *selectedSnapshot = nullptr;
+  // Actual CCL list parameters, borrowed through synchronous notifications.
+  // Must alias mix/other for list/load calls; mixList may be null only for
+  // updateMixPermissionsStrings. Correspondences: native +0x88/+0x8c.
+  // No native object layout is claimed.
+  Core::Portable::ListParam *mixList = nullptr;
+  Core::Portable::ListParam *otherList = nullptr;
+  // Projects mixer->mixChannels; no second channel collection or link flag.
+  // Every nonnull channel must project a nonnull link object. Both the
+  // collection and projected objects must outlive each method call.
+  std::function<PermissionsAuxView(const ChannelComponent *)> auxView;
+  // Native byte +0x85 controls defaults after absent/failed archive load;
+  // +0x98 suppresses feedback during the load. Source-port state only.
+  unsigned char defaultPermissions = 0;
+  unsigned char loading = 0;
   void *context = nullptr;
   void *ownerContext = nullptr;
   void (*getFileName)(void *, const PermissionsComponent &,
@@ -44,6 +71,9 @@ public:
   explicit PermissionsComponent(PermissionsBindings &bindings)
       : bindings_(bindings) {}
 
+  void updateOtherPermissionsStrings();
+  void updateMixPermissionsStrings();
+  void loadSelectedDevice();
   void loadAccessCode();
   void syncMixStrings();
   void onIdle();

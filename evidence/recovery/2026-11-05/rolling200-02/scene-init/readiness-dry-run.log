@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/scene_init/uc-library/tools/merge_readiness.py", line 298, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/scene_init/uc-library/tools/merge_readiness.py", line 127, in main
+    with adapter.snapshot(library,a.registry_db) as current:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/scene_init/uc-library/tools/registry/adapter.py", line 76, in snapshot
+    def snapshot(library,db=None):return RegistrySnapshot(resolve_db(library,db))
+                                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/scene_init/uc-library/tools/registry/adapter.py", line 21, in resolve_db
+    payload=json.loads(pointer.read_text())
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/scene_init/uc-library/validation/registry-sqlite/ACTIVE.json'

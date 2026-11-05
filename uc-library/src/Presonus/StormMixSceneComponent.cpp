@@ -1,6 +1,14 @@
 #include "presonus/StormMixSceneComponent.hpp"
 #include <limits>
 namespace Presonus {
+void StormMixSceneComponent::init() {
+  for (int index = 0; index < 8; ++index)
+    if (auto *parameter = getParameterByTag(index + 10)) {
+      const auto name = createDefaultName(index);
+      parameter->fromString(name, false);
+    }
+}
+
 void StormMixSceneComponent::setDelegate(Delegate *value) {
   originalDelegate = value;
 }

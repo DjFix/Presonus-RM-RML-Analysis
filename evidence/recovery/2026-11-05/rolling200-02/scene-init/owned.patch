@@ -1,0 +1,33 @@
+diff --git a/uc-library/include/presonus/StormMixSceneComponent.hpp b/uc-library/include/presonus/StormMixSceneComponent.hpp
+index 752cf6bf3..284ad8f1c 100644
+--- a/uc-library/include/presonus/StormMixSceneComponent.hpp
++++ b/uc-library/include/presonus/StormMixSceneComponent.hpp
+@@ -43,6 +43,9 @@ public:
+   explicit StormMixSceneComponent(presonus::scene_port::Recall &recall)
+       : recallBoundary(recall) {}
+   class Delegate; // Original nested identity; declaration/layout unresolved.
++  // Provisional void source-port return; original return declaration
++  // unresolved.
++  void init();
+   void setDelegate(Delegate *);
+   void presetRecalled(const Panel::PresetComponent &, int);
+   Delegate *sourcePortDelegate() const { return originalDelegate; }
+diff --git a/uc-library/src/Presonus/StormMixSceneComponent.cpp b/uc-library/src/Presonus/StormMixSceneComponent.cpp
+index 05fc175a3..bf247dcca 100644
+--- a/uc-library/src/Presonus/StormMixSceneComponent.cpp
++++ b/uc-library/src/Presonus/StormMixSceneComponent.cpp
+@@ -1,6 +1,14 @@
+ #include "presonus/StormMixSceneComponent.hpp"
+ #include <limits>
+ namespace Presonus {
++void StormMixSceneComponent::init() {
++  for (int index = 0; index < 8; ++index)
++    if (auto *parameter = getParameterByTag(index + 10)) {
++      const auto name = createDefaultName(index);
++      parameter->fromString(name, false);
++    }
++}
++
+ void StormMixSceneComponent::setDelegate(Delegate *value) {
+   originalDelegate = value;
+ }

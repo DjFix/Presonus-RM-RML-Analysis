@@ -1,0 +1,149 @@
+diff --git a/uc-library/include/presonus/mixer_dsp/EQControl.hpp b/uc-library/include/presonus/mixer_dsp/EQControl.hpp
+index ea181af12..a53796998 100644
+--- a/uc-library/include/presonus/mixer_dsp/EQControl.hpp
++++ b/uc-library/include/presonus/mixer_dsp/EQControl.hpp
+@@ -5,10 +5,31 @@
+ #include "core/portable/gui/coreview.h"
+ #include "core/public/coreinterpolator.h"
+ #include "core/public/corevector.h"
++#include "presonus/mixer_dsp/EqSourceProviders.hpp"
++#include <array>
+ #include <cstdint>
+ #include <memory>
+ #include <vector>
+ namespace presonus::dsp {
++// Independent app-side provider adaptation. Pinned CCL 5.0.0 has no
++// Core::LogInterpolator. The observed (0,1) bootstrap stores real CCL range
++// state but cannot convert until setRange selects an existing supported
++// positive EQ domain. A failed range transition leaves the last range values
++// visible but disables conversion until a supported setRange succeeds. Reset to
++// (0,1) disables conversion. This is not legacy Core conversion or ARM
++// behavior.
++class EQControlFrequencyInterpolator final : public Core::Interpolator {
++public:
++  EQControlFrequencyInterpolator();
++  void setRange(float minimum, float maximum, float midpoint = 0.f) override;
++  float normalizedToRange(float value) const override;
++  float rangeToNormalized(float value) const override;
++  bool sourceRangeSupported() const { return configured; }
++
++private:
++  EqLogSourceInterpolator positiveRange;
++  bool configured = false;
++};
+ // Independent partial-object construction; not an original constructor.
+ struct EQControlBiquadPortTag {};
+ } // namespace presonus::dsp
+@@ -31,6 +52,30 @@ namespace Presonus {
+ class EQControl {
+ public:
+   explicit EQControl(presonus::dsp::EQControlBiquadPortTag) : observer(*this) {}
++  // Original encoded constructor interface; composition below is a portable
++  // source model, not recovered GUI inheritance or original ARM object layout.
++  explicit EQControl(const Core::TRect<int> &rectangle);
++  struct PortableConstructorState {
++    explicit PortableConstructorState(const Core::Rect &rectangle);
++    // Destruction order: parameters before interpolators before the control.
++    // This RAII support establishes no original destructor readiness.
++    Core::Portable::Control control;
++    Core::LinearInterpolator gain{0.f, 1.f}, y{0.f, 1.f};
++    presonus::dsp::EQControlFrequencyInterpolator frequency;
++    Core::LinearInterpolator x{0.f, 1.f};
++    const Core::Portable::ParamInfo *const hpfInfo;
++    Core::Portable::ParamList hpfParameters;
++    int handleDiameter = 10;
++    Core::Color offlineColor{0, 0, 0, 255};
++    // Explicit null borrowed source-port boundaries. Original declarations of
++    // these three native slots remain unresolved; no layout/type claim.
++    std::array<const void *, 3> borrowedBindings{};
++  };
++  const PortableConstructorState *portableConstructorState() const {
++    return constructorState.get();
++  }
++  float portableCurveMinimum() const { return curveMinimum; }
++  float portableCurveMaximum() const { return curveMaximum; }
+   // Original ordinary return declaration is unresolved; int is provisional.
+   // Supported equivalence domain: index >= 0. Original negative indexing is
+   // unchecked and deliberately receives no supported behavior claim.
+@@ -157,6 +202,9 @@ public:
+   void setBufferedDraw(bool state);
+ 
+ private:
++  // Owned composition only for the rectangle constructor. The tagged partial
++  // object retains its existing borrowed-provider behavior and defaults.
++  std::unique_ptr<PortableConstructorState> constructorState;
+   // Source-port borrowed bindings, not original fields or inheritance.
+   struct Observer : Core::Portable::ParamObserverBase {
+     EQControl &owner;
+diff --git a/uc-library/src/Presonus/EQControl.cpp b/uc-library/src/Presonus/EQControl.cpp
+index c89603b66..990e0116a 100644
+--- a/uc-library/src/Presonus/EQControl.cpp
++++ b/uc-library/src/Presonus/EQControl.cpp
+@@ -7,7 +7,67 @@
+ #include <stdexcept>
+ #include <strings.h>
+ 
++namespace presonus::dsp {
++EQControlFrequencyInterpolator::EQControlFrequencyInterpolator()
++    : Core::Interpolator(0.f, 1.f) {}
++void EQControlFrequencyInterpolator::setRange(float minimum, float maximum,
++                                              float midpoint) {
++  configured = false;
++  if (minimum == 0.f && maximum == 1.f &&
++      (midpoint == 0.f || midpoint == 1.f)) {
++    Core::Interpolator::setRange(minimum, maximum, midpoint);
++    return;
++  }
++  positiveRange.setRange(minimum, maximum, midpoint);
++  Core::Interpolator::setRange(minimum, maximum, midpoint);
++  configured = true;
++}
++float EQControlFrequencyInterpolator::normalizedToRange(float value) const {
++  if (!configured)
++    throw std::domain_error(
++        "EQControl frequency bootstrap requires a supported positive range");
++  return positiveRange.normalizedToRange(value);
++}
++float EQControlFrequencyInterpolator::rangeToNormalized(float value) const {
++  if (!configured)
++    throw std::domain_error(
++        "EQControl frequency bootstrap requires a supported positive range");
++  return positiveRange.rangeToNormalized(value);
++}
++} // namespace presonus::dsp
+ namespace Presonus {
++namespace {
++// Source initializers decoded from the hash-bound original HPF table. Host
++// pointers and layout belong to the pinned CCL release, never copied ARM bytes.
++const Core::Portable::ParamInfo hpfParamInfo[] = {
++    {Core::Portable::ParamInfo::kFloat, 0, "hpfQ", .7f, .7f, .7f, .7f, .002f, 0,
++     "", "skew", nullptr, nullptr, nullptr},
++    {Core::Portable::ParamInfo::kFloat, 1, "hpfGain", 0.f, 0.f, 0.f, 0.f, .002f,
++     0, "gain", "linear", nullptr, nullptr, nullptr},
++    {Core::Portable::ParamInfo::kInt, 2, "hpfType", 0.f, 0.f, 0.f, 0.f, 1.f, 0,
++     "", "", nullptr, nullptr, nullptr}};
++} // namespace
++EQControl::PortableConstructorState::PortableConstructorState(
++    const Core::Rect &rectangle)
++    : control(rectangle, nullptr), hpfInfo(hpfParamInfo) {
++  // CCL's TViewBase initializes options to zero (including focus).
++  control.wantsTouch(true);
++  hpfParameters.add(hpfInfo, 3, false);
++}
++EQControl::EQControl(const Core::TRect<int> &rectangle)
++    : constructorState(std::make_unique<PortableConstructorState>(rectangle)),
++      observer(*this) {
++  portableView = &constructorState->control;
++  observerControl = &constructorState->control;
++  bindPortableInterpolators(constructorState->frequency, constructorState->x,
++                            constructorState->gain, constructorState->y);
++  // The partial-object tag intentionally retains its historical 20..20000
++  // defaults. Original getCurve reads independent offsets0x88/0x8c, both
++  // constructor-initialized zero; these are not frequency-provider range(0,1).
++  curveMinimum = 0.f;
++  curveMaximum = 0.f;
++}
++
+ void EQControl::markBandDirty(int index) {
+   if (index >= 0 && index < static_cast<int>(portableBands.size()))
+     portableBands[static_cast<unsigned>(index)].dirty = true;

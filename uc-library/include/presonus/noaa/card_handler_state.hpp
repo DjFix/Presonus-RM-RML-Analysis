@@ -8,9 +8,22 @@ struct Property;
 }
 namespace Presonus::NOAA {
 class TCard;
+class TCardRouter;
 struct NOAAStatusProperty;
 } // namespace Presonus::NOAA
 namespace presonus::noaa {
+// Explicit projections of native payload reads. Names identify observed
+// offsets, not recovered original field declarations or native object layout.
+struct DeferredRouteProjection {
+  const Core::Property *property;
+  std::uint32_t word08;
+  std::int32_t count10, count18, count1c, count20;
+};
+struct DeferredRateProjection {
+  const Core::Property *property;
+  float value08;
+  std::int32_t link1c;
+};
 // Independent borrowed bindings; no original Handler layout/ownership claim.
 // Caller serializes access and keeps every bound object alive through calls.
 struct CardHandlerState {
@@ -27,6 +40,13 @@ struct CardHandlerState {
   // acquire-loads. Not a claim about original +0xa4 type, ordering or native
   // object layout.
   std::atomic<std::uint32_t> *pendingEventCount = nullptr;
+  Presonus::NOAA::TCardRouter *router = nullptr;
+  const DeferredRouteProjection *deferredRoutes = nullptr;
+  const DeferredRateProjection *deferredRate = nullptr;
+  // Independent stop publication, corresponding only to observed native byte
+  // +0x64. A source-port threadEntry consumes this with acquire ordering.
+  // Not an original field declaration, native layout or ordering claim.
+  std::atomic<bool> stopRequested{false};
 };
 struct CardHandlerSetupTag {};
 inline constexpr CardHandlerSetupTag cardHandlerSetupTag{};

@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "kind": "existing-result-validation-only",
+  "utc": "2026-11-05T15:25:27.078082+00:00",
+  "host": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "checks": [
+    {
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--version"
+      ],
+      "start_utc": "2026-11-05T15:25:25.746716+00:00",
+      "seconds": 0.027505653008120134,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/formatter-version.log",
+      "log_sha256": "b612ba740becdd7e9615e62612c61cdeb064e15aff898827e5f08971732998af"
+    },
+    {
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/tests/recovery/FPGADeletingDestructorReplay.cpp",
+        "uc-library/src/Presonus/NOAA/TCardFPGAUpdater.cpp",
+        "uc-library/include/presonus/noaa/TCardFPGAUpdater.hpp"
+      ],
+      "start_utc": "2026-11-05T15:25:25.774362+00:00",
+      "seconds": 0.03392956100287847,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/format.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "c++",
+        "--version"
+      ],
+      "start_utc": "2026-11-05T15:25:25.808424+00:00",
+      "seconds": 0.0012802840064978227,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/compiler-version.log",
+      "log_sha256": "88b7c4b67564a146863224148116065fee418539f0a408f3636a68f3bde51805"
+    },
+    {
+      "argv": [
+        "c++",
+        "-std=c++17",
+        "-O2",
+        "-Iuc-library/include",
+        "-Ithird_party/ccl-framework",
+        "-MMD",
+        "-MF",
+        "temp/recovery-work/fpga-d0-audit/unit0.d",
+        "-c",
+        "uc-library/src/Presonus/NOAA/TCardFPGAUpdater.cpp",
+        "-o",
+        "temp/recovery-work/fpga-d0-audit/unit0.o"
+      ],
+      "start_utc": "2026-11-05T15:25:25.809828+00:00",
+      "seconds": 0.17884897500334773,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/compile0.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "c++",
+        "-std=c++17",
+        "-O2",
+        "-Iuc-library/include",
+        "-Ithird_party/ccl-framework",
+        "-MMD",
+        "-MF",
+        "temp/recovery-work/fpga-d0-audit/unit1.d",
+        "-c",
+        "uc-library/tests/recovery/FPGADeletingDestructorReplay.cpp",
+        "-o",
+        "temp/recovery-work/fpga-d0-audit/unit1.o"
+      ],
+      "start_utc": "2026-11-05T15:25:25.988843+00:00",
+      "seconds": 0.16471534299489576,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/compile1.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "c++",
+        "temp/recovery-work/fpga-d0-audit/unit0.o",
+        "temp/recovery-work/fpga-d0-audit/unit1.o",
+        "-Wl,--start-group",
+        "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-Wl,--end-group",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "-lz",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "-pthread",
+        "-ldl",
+        "-lm",
+        "-Wl,-rpath,/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos02/fpga_d0_audit/temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu",
+        "-o",
+        "temp/recovery-work/fpga-d0-audit/replay"
+      ],
+      "start_utc": "2026-11-05T15:25:26.153835+00:00",
+      "seconds": 0.07039893600449432,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/link.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "nm",
+        "--defined-only",
+        "temp/recovery-work/fpga-d0-audit/unit0.o"
+      ],
+      "start_utc": "2026-11-05T15:25:26.224409+00:00",
+      "seconds": 0.001849772990681231,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/source-symbols.log",
+      "log_sha256": "af025062157c94a34a5bcbb07d4f8bc816ad78f72145ad384991ed0ccd104f30"
+    },
+    {
+      "argv": [
+        "nm",
+        "--defined-only",
+        "temp/recovery-work/fpga-d0-audit/replay"
+      ],
+      "start_utc": "2026-11-05T15:25:26.226408+00:00",
+      "seconds": 0.002124588005244732,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/executable-symbols.log",
+      "log_sha256": "de50056f313fee9b9cf33a8dc830d177c34e4159c2dab2f5e6501bba4d95ab0c"
+    },
+    {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_fpga_d0_audit/native.py"
+      ],
+      "start_utc": "2026-11-05T15:25:26.228689+00:00",
+      "seconds": 0.8465754790086066,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/native.log",
+      "log_sha256": "7517b6f891637e22dd8da4c3b79b6ddfdcab39147b0bc21a6b3647ca8f866ce7"
+    },
+    {
+      "argv": [
+        "temp/recovery-work/fpga-d0-audit/replay"
+      ],
+      "start_utc": "2026-11-05T15:25:27.075425+00:00",
+      "seconds": 0.0018086650088662282,
+      "returncode": 0,
+      "log": "temp/recovery-work/fpga-d0-audit/20261105T152525.746629Z/replay.log",
+      "log_sha256": "1abe76b81f3a04de5f404c83c76caa2efefc951950554f17476497d964b6d069"
+    }
+  ],
+  "inputs": {
+    "temp/core-upstream/root-integration-01/libpresonus_uc.a": "656f140f304a107c08e264963d41f2be38db49929bdbe1030863872752fb82db",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "temp/recovery-work/fpga-d0-audit/replay": "28ed4591ba36aeaf4bf9459c62682fbd0d0fe160641f9a2e19bd9bb0c65d4342",
+    "third_party/ccl-framework/core/platform/corefeatures.h": "0ab03cb55c5dd05e418d321b91be07ea0f8dd488358db70c2fc5d2903a9ff96d",
+    "third_party/ccl-framework/core/platform/linux/corethread.linux.h": "c92758a2e2cc7859d9cdc11d9f7425847e068279e68bbb6d7880d8d9bcfe1d64",
+    "third_party/ccl-framework/core/platform/shared/coreplatformthread.h": "00ee77535c805a0f915a4fb985923678d32001ad76f7e76f96430487573cc94d",
+    "third_party/ccl-framework/core/platform/shared/corerecursivereadwritelock.h": "98b17bba04996a4cb6c3c160a5b628defcd14c9b2a81d0ecae6ba057df540a21",
+    "third_party/ccl-framework/core/platform/shared/posix/corethread.posix.h": "251dc7e63935eb4674d626e224c2cee393d0fb59e0efb0f800ef0852f7bbdc93",
+    "third_party/ccl-framework/core/portable/coresingleton.cpp": "dbc41fad6b777f2989208a38a4d75afb235aeead0c130b935459b9e5b6110e2c",
+    "third_party/ccl-framework/core/portable/coresingleton.h": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe",
+    "third_party/ccl-framework/core/public/corebasicmacros.h": "9b879c0b7d7c02ba55e881c2cc768f04f60aa2e8d6d2834cf4afe43e6ca5d0ce",
+    "third_party/ccl-framework/core/public/corebuffer.h": "2dbfa18dea304df10fd9f9494889b9f2ccd2a438c592eb1bbb495ebafe84026e",
+    "third_party/ccl-framework/core/public/coreclassmacros.h": "f67174739f108e57b6fdf4fe0a64a7c9df2a38b69841a97bb6ad8b762652ac77",
+    "third_party/ccl-framework/core/public/coreclibrary.h": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc",
+    "third_party/ccl-framework/core/public/corecontainer.h": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a",
+    "third_party/ccl-framework/core/public/coremacros.h": "d2827dfd0182e53757411849b4e582e5a2d4926814a0d21720472432a0ef7829",
+    "third_party/ccl-framework/core/public/coremalloc.h": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff",
+    "third_party/ccl-framework/core/public/coreplatform.h": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1",
+    "third_party/ccl-framework/core/public/corestringbuffer.h": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c",
+    "third_party/ccl-framework/core/public/corestringtraits.h": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f",
+    "third_party/ccl-framework/core/public/corethreading.h": "892a1d43d652ea0c9a44abb21d07a5a9ec029b872ba9ab6d30c19eb9a38269e9",
+    "third_party/ccl-framework/core/public/coretypes.h": "42caf0a821eb374df5fe0e8b14b3ea1fa368ce06c025710b47abb5a71f247a68",
+    "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32",
+    "third_party/ccl-framework/core/system/coredebug.h": "44ec3ca5599f30d3b74fea5e3716b21dab79cd14a6a2d5f7e25b39952f970005",
+    "third_party/ccl-framework/core/system/corethread.h": "56335e1e9a23c724a4c4d4640c47563956d8ff9cda434887e8ee470439f2d07c",
+    "uc-library/candidates/rolling200_02_fpga_d0_audit/check.py": "570f44203fb2ed3919d1e0edbf9f86373fa1b1c580c6ac0015ee6227342efa83",
+    "uc-library/candidates/rolling200_02_fpga_d0_audit/fixtures.json": "8ac3269578858cd8d429de02fe66227cef755cad0c5679faf9fa629724e5f2d3",
+    "uc-library/candidates/rolling200_02_fpga_d0_audit/native.py": "588944a81e31ca99f1d1d47d65154c260e4cb0a964d43c33dafd5106afcbdec8",
+    "uc-library/include/presonus/dice/packet_services.hpp": "cf3e9129780ef49c137ebb8d7e904ca1e3ab1d1aa0b45a1288622143c695b079",
+    "uc-library/include/presonus/dice/response_services.hpp": "674454d7477b96a0a1a48292993257d699a7f4a0866be4b8fbc84e8537be9a5a",
+    "uc-library/include/presonus/noaa/TCardFPGAUpdater.hpp": "c0edf46d4fedda80bae00e659ec7ea7d41da9910fa7083513d178fec84edfede",
+    "uc-library/include/presonus/noaa/spi_packets.hpp": "3c3c1bc3a7e037af9834c1aecafdd5785c3b9992841d556339d0b3d6a762ac17",
+    "uc-library/include/presonus/noaa/spi_service.hpp": "cfa862ed9b7bb1fd8c963db048d9952ecf7951310fc271d6390f51a7849a1195",
+    "uc-library/include/presonus/noaa/sysex_packet.hpp": "e894d535ad8b8036bdcf7a220904ee928066b012d2436faf5acbf62919dfc9ec",
+    "uc-library/include/presonus/noaa/sysex_receiver.hpp": "9bdd436a4f458202f3e91b5d7b2d662daae7a4bb3512863bf484bc8e9fe730ed",
+    "uc-library/include/presonus/surface_panel/InputPin.hpp": "d41cc24621555d9b3929cb58489a1fadce7aaa5f7debf095966729417ee51296",
+    "uc-library/include/presonus/uc/firmware_update_listener.hpp": "581a549facc0e7d02ddf94d0327c10f81daeb79b2e437e420d39ef4e5cb37056",
+    "uc-library/src/Presonus/NOAA/SysexReceiver.cpp": "bb2a086b2511bd2df3614d55a48b77b2e3f4f1b044adc2a43be8bd61637b9864",
+    "uc-library/src/Presonus/NOAA/TCardFPGAUpdater.cpp": "ded303237140c274f359db5ff6a7d8404927287bbe21edc686cc18d36551a6ea",
+    "uc-library/src/Presonus/NOAA/TCardSPIPackets.cpp": "3d2a89a73c54919eec88d9bf689a59fab5269dfde041f3c6a7e2782751ea24da",
+    "uc-library/src/Presonus/NOAA/TCardSPIService.cpp": "b7fd679da7764a66ce77481c0c76db775619185b05b1ddd0767fecd10469d945",
+    "uc-library/src/Presonus/Panel/input_pin_lifetime.cpp": "75690af082f0e8df6821cd2b5dc678c5e95aab52c2243b1176aaff645208e12a",
+    "uc-library/src/surface_panel/InputPin.cpp": "6a9481755f20038c99bedd373470cdcfb4a827cb7e0898e06b9366220af40b02",
+    "uc-library/tests/recovery/FPGADeletingDestructorReplay.cpp": "8583a81f3e12b6fa3fbaeaee5263d4f3e4e3bab536d1db5d37f02b9489921f5f"
+  },
+  "ranges": [
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD0Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677416,
+      "size": 148,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644648,
+      "range_sha256": "309152f685cbb2f6347a2cf9e2ee9370ca8860370619a1be48a2276e8cd91273"
+    },
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD1Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677564,
+      "size": 140,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644796,
+      "range_sha256": "b990cc3ac77ea957295c9a72f65db13f8ad64e4075776946d38673366d090b58"
+    },
+    {
+      "original_mangled": "_ZN8Presonus4NOAA16TCardFPGAUpdaterD2Ev",
+      "demangled": "Presonus::NOAA::TCardFPGAUpdater::~TCardFPGAUpdater()",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware_version": "RM/RML mixer 13731",
+      "address": 677704,
+      "size": 140,
+      "section_index": 12,
+      "section": ".text",
+      "file_offset": 644936,
+      "range_sha256": "e3e231df11ab87c9cabc4c1d5dae15a27bf0d2b92d1d9a8049c2dfcc1389b852"
+    }
+  ],
+  "native_cases": 3,
+  "host_cases": [
+    "D0 after lazy captured singleton creation",
+    "D0 existing singleton preserves unrelated receiver",
+    "D1 placement unregister without free",
+    "D2 placement unregister without free"
+  ],
+  "native_domain": "Each exact original D0/D1/D2 range verified independently. Existing nonnull singleton, normal-return path; guest unregister and standard delete boundaries captured independently. No original Core, allocator, constructor, device, update, erase, syscall or exception instructions executed. Boundary live-state models call identity/order only; host real deallocation is separately proven by executable C++ replay.",
+  "host_deallocation": "Compiler-emitted original-name D0 calls intercepted sized/unsized operator delete; watched pointer removal from actual CCL receiver vector asserted before forwarding to real libc free. Exactly one release, checked again after returning from actual free.",
+  "formatting_verified": true,
+  "compilation_and_replay_passed": true,
+  "namespace_and_mangling_verified": true,
+  "core_provider": "Pinned unchanged CCL 5.0.0 e8cbdea4a4a20e15111f5a690798a259c0374b31; source/header dependencies and linked archive hashes recorded",
+  "core_binary_bodies_executed": false,
+  "hardware_verified": false,
+  "original_arm_abi_verified": false,
+  "original_declaration_verified": false,
+  "exclusions": [
+    "Native lazy singleton branch, allocator implementation, allocation failure and exception cleanup excluded.",
+    "No update, erase, programming, transport, hardware, host syscall passthrough or network execution.",
+    "Source-port layout, member declarations and ordinary original returns remain unresolved. No ARM ABI/layout claim."
+  ],
+  "remarks": [
+    {
+      "status": "resolved",
+      "observation": "Initial replay manually destroyed CCL-owned singleton and hit duplicate shutdown cleanup; fixed test ownership by leaving actual CCL DeletableList responsible and making capture lifetimes static.",
+      "retry_condition": "Only revisit if singleton provider ownership changes"
+    },
+    {
+      "status": "resolved",
+      "observation": "Initial link -lpng unavailable; use existing versioned physical library and exact recorded argv.",
+      "retry_condition": "Only revisit if environment library changes"
+    }
+  ]
+}

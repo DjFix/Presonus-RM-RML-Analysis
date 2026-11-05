@@ -15,6 +15,16 @@ class FirmwareBundle;
 namespace presonus::noaa {
 // Independent explicit state, not an ARM object representation. Original field
 // declarations/ownership remain unresolved. All access is caller-serialized.
+class CclCardResponseRuntime final : public presonus::dice::IdlePump {
+public:
+  CclCardResponseRuntime() : response_(*this) {}
+  void onIdle(bool force) override;
+  presonus::dice::ResponseServices &response() { return response_; }
+
+private:
+  presonus::dice::CclResponseServices response_;
+};
+struct CardLifecycleAccess;
 struct CardState {
   std::uint32_t observedWord14;
   std::uint32_t observedWord40;
@@ -46,6 +56,8 @@ struct CardState {
   // port projection separate from the unchanged opaque2c copy. No zero
   // fallback.
   std::optional<std::uint32_t> expectedSerial;
+  // Observed initialization only; original declaration and meaning unresolved.
+  std::uint32_t observedWord10{};
 };
 struct CardSetupTag {};
 inline constexpr CardSetupTag cardSetupTag{};
@@ -56,6 +68,7 @@ struct NOAAStatusProperty;
 // use ARM offset12; native layout/offsets are intentionally not claimed.
 class TCard : public SysexReceiver, public Presonus::IDeviceDFU {
 public:
+  TCard();
   // Independent required setup; does not replace original C1/C2. Services,
   // opaque references and state outlive calls; providers must be injected
   // before first SPI singleton use when testing. Production can access actual
@@ -66,8 +79,13 @@ public:
       : state_(state), diagnostics_(diagnostics) {
     setPortableResponseServices(response);
   }
-  // Independent modern cleanup only, not recovered original D1/D0 behavior.
-  virtual ~TCard() = default;
+  // Portable owned cleanup; compiler emits each native ABI variant.
+  virtual ~TCard();
+  // Independent source-port binding API, not an original ELF interface.
+  // Bind required typed serial/HAL/resource dependencies before publication;
+  // borrowed references and providers must outlive every call/callback.
+  presonus::noaa::CardState &portableCardState() { return state_; }
+  const presonus::noaa::CardState &portableCardState() const { return state_; }
   void receive(const SysexPacket &) override;
   bool accepts(const SysexPacket &) override;
   // Original table points to the existing SysexReceiver::post implementation.
@@ -86,9 +104,15 @@ public:
   void printStatus();
   unsigned int generateAlternateMac(unsigned int serial);
   unsigned char isDesktopConnected();
+  // Provisional return spelling: original declaration remains unresolved.
+  unsigned char programSerialReset();
   const char *getCardCString();
 
 private:
+  friend struct presonus::noaa::CardLifecycleAccess;
+  std::optional<presonus::noaa::CclCardResponseRuntime> ownedRuntime_;
+  std::optional<presonus::noaa::CardState> ownedState_;
+  bool registered_ = false;
   presonus::noaa::CardState &state_;
   presonus::noaa::SpiServiceIO &diagnostics_;
 };

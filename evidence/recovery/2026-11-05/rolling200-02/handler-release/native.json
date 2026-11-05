@@ -1,0 +1,141 @@
+{
+  "original": {
+    "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "mangled": "_ZN8Presonus4NOAA12TCardHandler7releaseEv",
+    "address": 653320,
+    "size": 136,
+    "section": 12,
+    "file_offset": 620552,
+    "range_sha256": "62aaf35ab478be70f9798e2c1cf3edbb092be081d15e942ac6aff29ea6bdbcf5"
+  },
+  "cases": [
+    {
+      "present": false,
+      "initial_native_stop_byte": 0,
+      "events": [
+        "spi.release;",
+        "stop=1;",
+        "terminate;"
+      ],
+      "provider_boundaries": [
+        "operator new(456)",
+        "TCardSPI constructor boundary",
+        "CCL Deletable::addInstance boundary",
+        "actual SPI release provider boundary",
+        "CCL legacy terminate boundary"
+      ],
+      "private_writes": [
+        {
+          "pc": 653412,
+          "address": 1610616832,
+          "size": 4,
+          "value": 3516168
+        },
+        {
+          "pc": 653412,
+          "address": 1610616836,
+          "size": 4,
+          "value": 3516188
+        },
+        {
+          "pc": 653416,
+          "address": 4805480,
+          "size": 4,
+          "value": 1610616832
+        },
+        {
+          "pc": 653372,
+          "address": 1610612836,
+          "size": 1,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "present": false,
+      "initial_native_stop_byte": 127,
+      "events": [
+        "spi.release;",
+        "stop=1;",
+        "terminate;"
+      ],
+      "provider_boundaries": [
+        "operator new(456)",
+        "TCardSPI constructor boundary",
+        "CCL Deletable::addInstance boundary",
+        "actual SPI release provider boundary",
+        "CCL legacy terminate boundary"
+      ],
+      "private_writes": [
+        {
+          "pc": 653412,
+          "address": 1610616832,
+          "size": 4,
+          "value": 3516168
+        },
+        {
+          "pc": 653412,
+          "address": 1610616836,
+          "size": 4,
+          "value": 3516188
+        },
+        {
+          "pc": 653416,
+          "address": 4805480,
+          "size": 4,
+          "value": 1610616832
+        },
+        {
+          "pc": 653372,
+          "address": 1610612836,
+          "size": 1,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "present": true,
+      "initial_native_stop_byte": 0,
+      "events": [
+        "spi.release;",
+        "stop=1;",
+        "terminate;"
+      ],
+      "provider_boundaries": [
+        "actual SPI release provider boundary",
+        "CCL legacy terminate boundary"
+      ],
+      "private_writes": [
+        {
+          "pc": 653372,
+          "address": 1610612836,
+          "size": 1,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "present": true,
+      "initial_native_stop_byte": 127,
+      "events": [
+        "spi.release;",
+        "stop=1;",
+        "terminate;"
+      ],
+      "provider_boundaries": [
+        "actual SPI release provider boundary",
+        "CCL legacy terminate boundary"
+      ],
+      "private_writes": [
+        {
+          "pc": 653372,
+          "address": 1610612836,
+          "size": 1,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "native_core_executed": false,
+  "provider_boundary_model": "Constructor/allocation/registration and release/terminate hooks only; app instructions execute under guarded PC/private-write whitelist; no syscalls"
+}

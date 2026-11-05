@@ -2,6 +2,7 @@
 #include "core/portable/corepersistence.h"
 #include "core/system/coredebug.h"
 #include "presonus/surface/MidiMixerHandler.hpp"
+#include "presonus/uc/NetworkItem.hpp"
 #include <cstring>
 namespace presonus::surface {
 int SurfaceNetworkProvider::localAddresses(Core::Sockets::IPAddress *list,
@@ -202,6 +203,26 @@ void NetworkSetupComponent::loadSettings() {
     break;
   }
   syncListParam(7, state_.daws, nullptr);
+}
+void NetworkSetupComponent::storeSelected(const char *key,
+                                          UC::NetworkItem *item, int flags) {
+  if (!(flags & 2))
+    return;
+  Core::CStringBuffer<64> text;
+  if (item)
+    text = item->portableIdentity();
+  auto &settings = state_.settings ? *state_.settings
+                                   : Core::Portable::SettingFile::instance();
+  settings.getSection(state_.settingsSection).set(key, text);
+  settings.setDirty();
+}
+bool NetworkSetupComponent::isStoredItem(const char *key,
+                                         UC::NetworkItem *item) const {
+  auto &settings = state_.settings ? *state_.settings
+                                   : Core::Portable::SettingFile::instance();
+  Core::CStringBuffer<64> saved(
+      settings.getSection(state_.settingsSection).getString(key));
+  return saved[0] && std::strcmp(item->portableIdentity(), saved) == 0;
 }
 void NetworkSetupComponent::storeSelected(const char *key, int index,
                                           int flags) {

@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_fx_lifecycle_02",
+  "namespace": "Presonus::Panel::FxPresetComponent",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus5Panel17FxPresetComponentD1Ev",
+      "demangled": "Presonus::Panel::FxPresetComponent::~FxPresetComponent()",
+      "address": 350892,
+      "size": 136,
+      "section": "12"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/panel/FxPresetComponent.hpp",
+      "sha256": "60233768068cd7e011c257bac967308c7766a514a06f00cdf1f39686f73fa87b"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Panel/FxPresetComponent.cpp",
+      "sha256": "9ad03b73319aa43ea0b854048a9f9e7c0f15ed6d9683cc31d4616a5ecb93a746"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/FxPresetLifecycleReplay.cpp",
+      "sha256": "e228ca0a6f808543111681e2b6e78ebb90c9bbc4c0f9862efaf793cf831ae19e"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/fx_preset_lifecycle/fixtures.json",
+      "sha256": "1206b2d75c352d4524f1b47940fe5261cd0c17155502e27e09cffcc9be766a2a"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+      "sha256": "21f39065e42a4ccffbad94c7aae8ffb15ae2e556199edf74cd32a8b643c30dbc"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/fx_preset_lifecycle/native.py",
+      "sha256": "8ea458b06736c0d0245156c2ad1785dd5ccc1ea76a3d831325056c566a79744c"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/fx_preset_lifecycle/make_delivery.py",
+      "sha256": "f7509f12f3175f96af9619de56c899a0aa13bc4c6306b8f37c84cc5cdfcf1fb6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/panel/PresetComponent.hpp",
+      "sha256": "220c51032dc4561ca76eb88dc4ce02804c757c83c87bb351946e1924cf7c7ca3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/panel/PresetNameCache.hpp",
+      "sha256": "67da8cb4e4be5baa499af25c2908bca8c975058a8db6c3973323801231191b4c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/panel/FXPresetRecallComponent.hpp",
+      "sha256": "1db31f37f407372e4828691376714c6cf16116d6ecb9ab1def07ebf5793ae81f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PresetComponent.cpp",
+      "sha256": "ad0094ffaa60b2ead6853f109a4e7108b638d1dcb0f2f497a5e5a20d74291884"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PresetNameCache.cpp",
+      "sha256": "501d23de3b03f51ea28adb20d1e639c0e9d3deceb51d3d8cc386645dfb5841b1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/FXPresetRecallComponent.cpp",
+      "sha256": "e54468d3b44a88833f4ece0da5c6b829f39c4ca71319ad8c35b6a82b308ba388"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PresetComponentSlotPaths.cpp",
+      "sha256": "239924ab0e249193a7d1a974486f0b5ef7607777bf5146f38f89db1878821016"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PresetParameterAccess.hpp",
+      "sha256": "cfb7531c0daee414afef1a30625c8af875c85c63d24cd69130bc569bcd48e1bf"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.cpp",
+      "sha256": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+      "sha256": "28b67af5dddb8eef17b77280db249c50344554c82226705733b1912a30c114a5"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tools/recovery/accept_worker.py",
+      "sha256": "6c7e52651e716739984a1b4a750fc7bf222a47e2726990dfa90b112e31001f35"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/context.json",
+      "sha256": "3ff2bb6a24e91d3501dd5ff3040a12ba99d64128e442e5b4ae14feeb232000f3"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/request.json",
+      "sha256": "f812ec5d8b689bf7d6f60cb1e03d282bc4c75e8ce6de4ca959e90a34d4eaf00b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/native-context.json",
+      "sha256": "c5eed7d6f853d55a076c08fa3ff97e84c3639c8473d6df8c768bb698e895c1dc"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/ELF_CONTEXT.md",
+      "sha256": "65c4354945985e75f7ef586d56f689711104c93a3a6cdb8563e9bfac82a36873"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/TASK.md",
+      "sha256": "d01535b9554e339014164c5a4e259d6dfaecaa268cc67a9ec3d4d919d786b451"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/SOURCE_SLICES.md",
+      "sha256": "e7377ce608181ace92a8233ddbe775ef0c3b4f7cb32e8a8ddfb07d293fa7d234"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-fx-lifecycle03/packets/rolling200_02_fx_lifecycle_02/CONTEXT.md",
+      "sha256": "58945946b76adfdaa7a56f04e07e7d6522f806f7b4fa8f2d7f086b14f078863b"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-fx-lifecycle03-revision02/rolling200_02_fx_lifecycle_02.contract.json",
+      "sha256": "2577a902fcf09c2e4f24c5fcb7ebb9b4b80e420df8a4828768603756562aba91"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/PROOF.json",
+      "sha256": "7ef62d2098aa1d2cc23fe2b9e28024efcde06bf7f34fb485f7f2152987ef50be"
+    },
+    {
+      "kind": "remarks",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/REMARKS.json",
+      "sha256": "340dc3b062e9bf3badbe427151807ec9f04ee42357a6c401f0dd6617272e5391"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/format.log",
+      "sha256": "e400ecba7456afb499e9a2958014ff3f2102366ef773d921b9cfd621ae9ab89e"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/compile.log",
+      "sha256": "f1692764c6386a73a8a91aa82af295ef265becbc32a1c9cd0371c77e0801bafd"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/symbols.log",
+      "sha256": "33ae71743e078f57e9ffa5dfd875a2c208d856d88682455017935f2f5845293f"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/fx-lifecycle/replay.log",
+      "sha256": "0dcc51bce137fa47e661a71bd13f1e45b8e9183ac4b3d3474e64c006394e93b6"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "24 independently executed native target cases: each D0/D1/D2 \u00d7 null/non-null optional parameter \u00d7 empty/three borrowed nonnull child-pointer vector \u00d7 absent/present source-port cache registration. Host replay compares V/B/[D] provider order; actual CCL membership before/after; actual vector array and vector object deallocation before actual base cleanup; actual base cache deregistration and object deallocation; actual D0 free versus explicit D1/D2 destruction without object free; duplicate borrowed child survival. Prior getRecallParameter, presetStored/updateFxName, getFxIndex missing-selection, recall(false), and preset-type behaviors are exercised as source-port regressions, not new original method admissions.",
+  "limitations": [
+    "Portable lifecycle source port using explicit composition, not original inheritance/layout/ARM32 binary compatibility. Host D1/D2 alias; all three native full byte ranges are checked independently and their normal paths executed.",
+    "Native Core removeObserver/vector and application PresetComponent calls are bounded external providers; no native Core body is executed. Native operator delete is observed at its actual call boundary; original allocator implementation is not executed.",
+    "Host runs actual pinned CCL membership/vector destruction and canonical PresetComponent destructor, including actual cache-observer removal and Core Component destruction. PresetApplicationServices and opaque cache delegate token are explicit test boundaries. Base destructor has no separate original readiness admission.",
+    "Owned lifecycle registration receiver is the actual owned PresetComponent observer. Parameter notifications, original Fx observer dispatch and original receiver adjustment equivalence are outside this destruction-only source-port domain.",
+    "Legacy borrowed-array constructor intentionally has no observer registration, vector storage ownership or base provider. New owning constructor does not own borrowed children/parameter/services. Copying is disabled to preserve single lifecycle ownership.",
+    "Exception/unwind landing pads, allocation failure, invalid input, concurrent callbacks, full native base lifecycle, hardware and network behavior remain untested. All cleanup providers must outlive the component; throwing cleanup callbacks are unsupported.",
+    "Native vtable writes are recorded and guarded, but host source composition intentionally does not reproduce ARM vtable fields. Host semantic comparison excludes the literal native pointer/vtable values and compares provider order plus actual allocation/membership invariants.",
+    "Native count/cache fields are provider boundary inputs, not inferred original declarations. Array free and cache membership are separately checked through actual source providers; these are not claims about original Core binary behavior."
+  ],
+  "build_integration": {
+    "production_partition": "existing PRESONUS_rm_SOURCES only; FxPresetComponent.cpp already listed once",
+    "production_cpp": "uc-library/src/Presonus/Panel/FxPresetComponent.cpp",
+    "public_headers": [
+      "uc-library/include/presonus/panel/FxPresetComponent.hpp"
+    ],
+    "test_target": "fx_preset_lifecycle_replay",
+    "test_source": "uc-library/tests/recovery/FxPresetLifecycleReplay.cpp",
+    "link_dependencies": [
+      "presonus_uc",
+      "presonus_core"
+    ],
+    "ctest_name": "fx_preset_lifecycle_provider_differential",
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/fx_preset_lifecycle/check.py",
+      "replay",
+      "--executable",
+      "$<TARGET_FILE:fx_preset_lifecycle_replay>",
+      "--fixtures",
+      "uc-library/tests/recovery/fx_preset_lifecycle/fixtures.json"
+    ],
+    "fixture_bindings": {
+      "uc-library/tests/recovery/fx_preset_lifecycle/fixtures.json": "1206b2d75c352d4524f1b47940fe5261cd0c17155502e27e09cffcc9be766a2a"
+    },
+    "assertions": "Test executable must retain assertions (no NDEBUG); private global operator delete/delete[] interposition belongs only to standalone test binary.",
+    "worker_scope": "No shared CMake, registry, tracker, global proof or readiness edits. No ready/pending fragments produced; Root owns required guarded dry-run/admission."
+  }
+}

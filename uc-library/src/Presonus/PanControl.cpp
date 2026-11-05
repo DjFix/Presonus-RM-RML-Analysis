@@ -65,6 +65,51 @@ PanControl::panParameters() const {
 void PanControl::setChannelSideResolver(ChannelSideResolver resolver) {
   channelSideResolver_ = std::move(resolver);
 }
+void PanControl::draw(const Core::Portable::DrawEvent &event) {
+  auto *parameter = getParameter();
+  if (!parameter || !parameter->isEnabled() || !isEnabled())
+    return;
+  if (getImage().getBitmap()) {
+    drawImagePanner(event);
+  } else {
+    // Native PanControl and ValueBar vtables both bind this inherited slot to
+    // ValueBar::drawBackground. Use the pinned provider and its real state.
+    drawBackground(event);
+    Core::Rect client;
+    getClientRect(client);
+    float value = parameter->getNormalized();
+    if (parameters_[4] && (isLinked() || isStereo()))
+      value = parameters_[4]->getNormalized();
+    const int width = client.getWidth();
+    const int center = width / 2;
+    int left, right;
+    if (isStereo()) {
+      const int amount =
+          static_cast<int>(static_cast<float>(width) * (value * 0.5f));
+      left = center - amount;
+      right = center + amount;
+    } else {
+      if (isLinked())
+        value = computeLinkedPanValue(value);
+      const int amount =
+          static_cast<int>((value - 0.5f) * static_cast<float>(width));
+      left = right = center;
+      if (value < 0.5f)
+        left += amount;
+      else
+        right += amount;
+    }
+    --left;
+    ++right;
+    if (left < right && client.getHeight() > 0)
+      event.graphics.fillRect(Core::Rect(left, 0, right, client.getHeight()),
+                              getStyle().getTextColor());
+  }
+  drawValueMark(event);
+  if (isFocused())
+    drawFocusFrame(event);
+}
+
 void PanControl::drawValueMark(const Core::Portable::DrawEvent &event) {
   if (valueBarWidth_ <= 0)
     return;

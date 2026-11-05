@@ -23,6 +23,9 @@ struct State {
   Core::Portable::Component *alternateParameters{};
   std::array<std::uint32_t, 17> accumulation{};
   std::vector<std::string> colorControls;
+  // Borrowed actual CCL provider for the original local Component boundary.
+  // Independent source-port binding, not the original this+0xc layout.
+  Core::Portable::Component *localParameters{};
 };
 struct Services {
   virtual ~Services() = default;
@@ -68,6 +71,9 @@ public:
   void resetAccumulation();
   void updateRecordReadyMappings();
   void onIdle();
+  // Provisional void return; original unencoded return declaration unresolved.
+  // Formatting requires live localParameters and its tag-2 output parameter.
+  void paramChanged(Core::Portable::Parameter *, int);
 
 private:
   presonus::surface::midi_port::State &state_;

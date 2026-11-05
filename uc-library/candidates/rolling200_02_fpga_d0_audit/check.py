@@ -1,0 +1,35 @@
+"""Validation-only audit; no production, ledger or shared build mutations."""
+import datetime,hashlib,json,platform,subprocess,sys,time
+from pathlib import Path
+B=Path('uc-library/candidates/rolling200_02_fpga_d0_audit');W=Path('temp/recovery-work/fpga-d0-audit');W.mkdir(parents=True,exist_ok=True)
+LOG=W/datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ');LOG.mkdir()
+TEST='uc-library/tests/recovery/FPGADeletingDestructorReplay.cpp';SOURCE='uc-library/src/Presonus/NOAA/TCardFPGAUpdater.cpp';HEADER='uc-library/include/presonus/noaa/TCardFPGAUpdater.hpp'
+SDK='temp/core-upstream/root-integration-01/upstream-core/sdk';ARCHIVES=['temp/core-upstream/root-integration-01/libpresonus_uc.a',SDK+'/lib/libcorelib.a',SDK+'/lib/libpresonus_core_allocator.a','temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a']
+FLAGS=['-std=c++17','-O2','-Iuc-library/include','-Ithird_party/ccl-framework'];EXE=str(W/'replay');checks=[]
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def run(argv,name):
+ t=time.monotonic();start=datetime.datetime.now(datetime.timezone.utc).isoformat();p=subprocess.run(argv,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);log=LOG/(name+'.log');log.write_text(p.stdout);c=dict(argv=argv,start_utc=start,seconds=time.monotonic()-t,returncode=p.returncode,log=str(log),log_sha256=sha(log));checks.append(c);(LOG/(name+'.command.json')).write_text(json.dumps(c,indent=2)+'\n');print(p.stdout[-3000:],end='');assert p.returncode==0,(name,p.returncode);return p.stdout
+mode=sys.argv[1] if len(sys.argv)>1 else 'all'
+if mode in ['all','format']:
+ run(['uc-library/.venv/bin/clang-format','--version'],'formatter-version');run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',TEST,SOURCE,HEADER],'format')
+if mode in ['all','compile']:
+ run(['c++','--version'],'compiler-version')
+ for i,s in enumerate([SOURCE,TEST]):run(['c++',*FLAGS,'-MMD','-MF',str(W/f'unit{i}.d'),'-c',s,'-o',str(W/f'unit{i}.o')],f'compile{i}')
+ run(['c++',str(W/'unit0.o'),str(W/'unit1.o'),'-Wl,--start-group',*ARCHIVES,'-Wl,--end-group','/usr/lib/x86_64-linux-gnu/libpng16.so.16','-lz','-lssl','-lcrypto','temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so','-pthread','-ldl','-lm','-Wl,-rpath,'+str(Path('temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu').resolve()),'-o',EXE],'link')
+if mode in ['all','symbols']:
+ out=run(['nm','--defined-only',str(W/'unit0.o')],'source-symbols');names={l.split()[-1] for l in out.splitlines() if l.split()}
+ for variant in ['D0','D1','D2']:assert '_ZN8Presonus4NOAA16TCardFPGAUpdater'+variant+'Ev' in names
+ out=run(['nm','--defined-only',EXE],'executable-symbols')
+ for variant in ['D0','D1','D2']:assert '_ZN8Presonus4NOAA16TCardFPGAUpdater'+variant+'Ev' in out
+if mode in ['all','native']:run(['uc-library/.venv/bin/python',str(B/'native.py')],'native')
+if mode in ['all','replay']:run([EXE],'replay')
+if mode=='all':
+ deps=set([SOURCE,HEADER,TEST,str(B/'native.py'),str(B/'check.py'),str(B/'fixtures.json'),EXE,*ARCHIVES])
+ for i in range(2):
+  text=(W/f'unit{i}.d').read_text().replace('\\\n',' ');deps.update(x for x in text.split(':',1)[1].split() if Path(x).is_file() and not x.startswith('/usr/'))
+ for p in ['uc-library/src/Presonus/NOAA/TCardSPIPackets.cpp','uc-library/src/Presonus/NOAA/TCardSPIService.cpp','uc-library/src/Presonus/NOAA/SysexReceiver.cpp','uc-library/src/Presonus/Panel/input_pin_lifetime.cpp','uc-library/src/surface_panel/InputPin.cpp','third_party/ccl-framework/core/portable/coresingleton.cpp','third_party/ccl-framework/core/public/corevector.h','third_party/ccl-framework/core/system/corethread.h']:
+  deps.add(p)
+ native=json.loads((B/'fixtures.json').read_text());proof=dict(version=1,kind='existing-result-validation-only',utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),host=platform.platform(),checks=checks,inputs={p:sha(p) for p in sorted(deps)},ranges=native['ranges'],native_cases=3,host_cases=['D0 after lazy captured singleton creation','D0 existing singleton preserves unrelated receiver','D1 placement unregister without free','D2 placement unregister without free'],native_domain=native['domain'],host_deallocation='Compiler-emitted original-name D0 calls intercepted sized/unsized operator delete; watched pointer removal from actual CCL receiver vector asserted before forwarding to real libc free. Exactly one release, checked again after returning from actual free.',formatting_verified=True,compilation_and_replay_passed=True,namespace_and_mangling_verified=True,core_provider='Pinned unchanged CCL 5.0.0 e8cbdea4a4a20e15111f5a690798a259c0374b31; source/header dependencies and linked archive hashes recorded',core_binary_bodies_executed=False,hardware_verified=False,original_arm_abi_verified=False,original_declaration_verified=False,exclusions=['Native lazy singleton branch, allocator implementation, allocation failure and exception cleanup excluded.','No update, erase, programming, transport, hardware, host syscall passthrough or network execution.','Source-port layout, member declarations and ordinary original returns remain unresolved. No ARM ABI/layout claim.'],remarks=[dict(status='resolved',observation='Initial replay manually destroyed CCL-owned singleton and hit duplicate shutdown cleanup; fixed test ownership by leaving actual CCL DeletableList responsible and making capture lifetimes static.',retry_condition='Only revisit if singleton provider ownership changes'),dict(status='resolved',observation='Initial link -lpng unavailable; use existing versioned physical library and exact recorded argv.',retry_condition='Only revisit if environment library changes')])
+ (B/'proof.json').write_text(json.dumps(proof,indent=2)+'\n')
+ audit=dict(version=1,kind='AUDIT',mode='review_existing_result',new_reconstruction_implementation=False,reconstruction_handoff=False,production_files_modified=False,original=native['ranges'][0],regression_originals=native['ranges'][1:],unique_work_item='aad0096c38a71b47d9c6ad2640bee4bf3275bf3fe906988259e698e634952953',proof=str(B/'proof.json'),proof_sha256=sha(B/'proof.json'),files=proof['inputs'],checks=checks,validation_domain=proof['native_domain']+' Host C++ domain: actual CCL-backed live receiver removal before exactly-once real free; lazy/existing singleton and unrelated receiver preservation; actual D1/D2 placement calls without free.',limitations=proof['exclusions'],integration_recipe=dict(test_source=TEST,link_targets=['presonus_uc'],test_name='noaa_fpga_deleting_destructor_replay',argv=[EXE],local_replay_argv=['uc-library/.venv/bin/python',str(B/'check.py'),'all'],root_gates='Root reviews audit; owns global CMake, canonical full Linux integration/role/installed/compile-once, source proof freshness, guarded registry admission, tracker and mirror checks. This audit grants no automatic readiness.'),history=proof['remarks'])
+ (B/'AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n');print('Sealed validation-only AUDIT.json; no reconstruction HANDOFF')
