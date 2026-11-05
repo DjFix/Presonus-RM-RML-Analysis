@@ -463,6 +463,7 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/uc/ClientSubscription.hpp
   presonus/dsp/ControllerInfo.hpp
   presonus/panel/Element.hpp
   presonus/MappableMixer.hpp

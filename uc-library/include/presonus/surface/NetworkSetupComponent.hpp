@@ -5,10 +5,16 @@
 #include "presonus/delay_timer.hpp"
 namespace Presonus {
 class WIFIManager;
+namespace Surface {
+class MidiMixerHandler;
+}
 namespace UC {
 class NetworkItem;
 }
 } // namespace Presonus
+namespace Core::Portable {
+class SettingFile;
+}
 namespace presonus::surface {
 // Independent application boundaries. Opaque app objects and original returns,
 // fields and inheritance are deliberately not declared from ELF mangling.
@@ -62,6 +68,11 @@ struct SurfaceNetworkState {
   int selectedMidiMapping = -1;
   Core::Portable::ListViewModel *model = nullptr;
   bool adaptorConfigPending = false;
+  // Independent borrowed source-port inputs, not recovered native fields.
+  // nullptr settings selects the real CCL singleton; section must remain live.
+  Core::Portable::SettingFile *settings = nullptr;
+  const char *settingsSection = "networksetup";
+  Presonus::Surface::MidiMixerHandler *midiHandler = nullptr;
 };
 } // namespace presonus::surface
 namespace Presonus::Surface {
@@ -96,6 +107,15 @@ public:
   void onNetworkItemRemoved(UC::NetworkItem *);
   void setupNetworkInfo();
   bool isSlaveItem(const UC::NetworkItem *) const;
+  // Explicit source-port returns. Original ordinary declarations remain
+  // pending.
+  void loadSettings(); // requires a live midiHandler and tag7 ListParam
+  void storeSelected(const char *, int, int);
+  bool isStoredItem(const char *, int) const;
+  Core::Portable::Parameter *getSelectedMixerParam();
+  int getTargetType()
+      const; // requires tag30 and finite int-representable value
+  int getWiredNetworkAssignMode() const;
 
 private:
   presonus::surface::SurfaceNetworkState &state_;

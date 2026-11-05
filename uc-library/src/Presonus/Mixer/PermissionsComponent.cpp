@@ -5,8 +5,56 @@
 #include "core/portable/corestorage.h"
 #include "core/system/coretime.h"
 #include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/uc/ClientSubscription.hpp"
+#include <cstring>
 
 namespace Presonus::Mixer {
+int PermissionsComponent::getAppType(
+    const UC::ClientSubscription &client) const {
+  const char *app = client.sourcePortApp().str();
+  if (std::strstr(app, "qmix"))
+    return 1;
+  if (std::strstr(app, "ucapp") || std::strstr(app, "ucremoteapp"))
+    return 2;
+  return 0;
+}
+int PermissionsComponent::getSelectedDeviceApp() const {
+  return bindings_.selectedSnapshot ? getAppType(*bindings_.selectedSnapshot)
+                                    : 0;
+}
+int PermissionsComponent::getSelectedDeviceType() const {
+  if (!bindings_.selectedSnapshot)
+    return 0;
+  const char *device = bindings_.selectedSnapshot->sourcePortDevice().str();
+  if (std::strstr(device, "iPhone"))
+    return 1;
+  if (std::strstr(device, "iPod"))
+    return 2;
+  if (std::strstr(device, "iPad"))
+    return 3;
+  return 0;
+}
+Core::CStringBuffer<64> PermissionsComponent::createClientInfo(
+    const UC::ClientSubscription *client) const {
+  Core::CStringBuffer<64> result;
+  // Copy the entire observed display value, preserving bytes past its NUL.
+  std::memcpy(result.getBuffer(), client->sourcePortDisplay().str(), 64);
+  if (std::strlen(result.str()) > 16)
+    result.getBuffer()[16] = 0;
+  std::strncat(result.getBuffer(), ": ", 2);
+  result.getBuffer()[63] = 0;
+  const char *device = client->sourcePortDevice().str();
+  const auto length = std::strlen(device);
+  if (length > 0) {
+    const auto available = 63 - std::strlen(result.str());
+    if (available > 0) {
+      std::strncat(result.getBuffer(), device,
+                   length < available ? length : available);
+      result.getBuffer()[63] = 0;
+    }
+  }
+  return result;
+}
 const UC::ClientSubscription *PermissionsComponent::getSelectedDevice() const {
   return bindings_.selectedSnapshot;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/public/corestringbuffer.h"
 #include "presonus/delay_timer.hpp"
 #include <cstdint>
 
@@ -34,6 +35,11 @@ namespace Presonus {
 // unencoded return declarations are selected port contracts, not original ABI.
 class StormMixSceneComponent : public Core::Portable::Component {
 public:
+  // Provisional source-port aggregate return and static pointer declaration.
+  // Native string output is observed; original return/constness/ARM layout are
+  // not established. The original constructor/lifecycle is outside this port.
+  Core::CStringBuffer<32> createDefaultName(int index) const;
+  static const char *kDefaultName;
   explicit StormMixSceneComponent(presonus::scene_port::Recall &recall)
       : recallBoundary(recall) {}
   class Delegate; // Original nested identity; declaration/layout unresolved.

@@ -1,6 +1,43 @@
 #include "presonus/panel/RackPanelComponent.hpp"
 #include "core/system/coredebug.h"
+#include "core/system/coretime.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
 namespace Presonus::Panel {
+void RackPanelComponent::clientsChanged() { updatePanelStatus(); }
+void RackPanelComponent::checkPermissionsPWReset() {
+  if (permissionFlags & 0x18u)
+    return;
+  // Intentional source adaptation: CCL milliseconds replace original signed
+  // nanoseconds divided by 1000000. The comparison retains ARM subtraction's
+  // wrapping bit pattern and signed high-word decision without signed overflow.
+  const auto milliseconds = Core::SystemClock::getMilliseconds();
+  const auto elapsed =
+      static_cast<std::uint64_t>(milliseconds) - *permissionStartupMilliseconds;
+  if ((elapsed >> 63) != 0 || elapsed < 1000)
+    return;
+  permissionFlags |= 0x10u;
+  if ((permissionFlags & 5u) == 5u)
+    mixer->resetPermissionsPW();
+}
+void RackPanelComponent::forceCascadeGlobalParamUpdate() {
+  auto &parameters = *mixer->cascadeParameters;
+  for (int tag : {7, 8, 9, 10, 11, 12, 13, 15, 14, 19, 28, 20})
+    parameters.getParameterByTag(tag)->changed();
+}
+void RackPanelComponent::help() {
+  Core::DebugPrintf("\n******************************\n");
+  Core::DebugPrintf("tests available:\n");
+  Core::DebugPrintf("    ./mixer erase\n");
+  Core::DebugPrintf("    ./mixer dsp <script path>\n");
+  Core::DebugPrintf("    ./mixer uart\n");
+  Core::DebugPrintf("    ./mixer spi\n");
+  Core::DebugPrintf("    ./mixer midi\n");
+  Core::DebugPrintf("    ./mixer burnin\n");
+  Core::DebugPrintf("    ./mixer ledon\n");
+  Core::DebugPrintf("    ./mixer ledoff\n");
+  Core::DebugPrintf("******************************\n\n");
+}
+
 bool RackPanelComponent::checkMonitorRestore(
     Presonus::DelayTimer &timer) const {
   if (!timer.isLongEnoughYet())

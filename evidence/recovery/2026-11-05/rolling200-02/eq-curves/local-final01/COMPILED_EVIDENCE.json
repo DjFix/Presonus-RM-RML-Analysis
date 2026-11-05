@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-05T12:07:59.267443+00:00",
+  "binary": "temp/recovery-work/rolling200-02/eq-curves/driver",
+  "binary_sha256": "5ade5371aa6742096458b4393e3db299f9dcd41b9b2b9eade1e029d7f8c0a53c",
+  "compiled_symbols": {
+    "_ZN8Presonus9EQControl11setNumBandsEi": {
+      "present": true,
+      "object_format": "Linux host ELF; no leading object-format underscore decoration",
+      "ordinary_return_declaration_verified": false,
+      "original_ARM_ABI_verified": false
+    },
+    "_ZN8Presonus9EQControl7setSizeERKN4Core5TRectIiEE": {
+      "present": true,
+      "object_format": "Linux host ELF; no leading object-format underscore decoration",
+      "ordinary_return_declaration_verified": false,
+      "original_ARM_ABI_verified": false
+    },
+    "_ZNK8Presonus9EQControl8getCurveEPfii": {
+      "present": true,
+      "object_format": "Linux host ELF; no leading object-format underscore decoration",
+      "ordinary_return_declaration_verified": false,
+      "original_ARM_ABI_verified": false
+    },
+    "_ZN8Presonus9EQControl13rebuildCurvesEv": {
+      "present": true,
+      "object_format": "Linux host ELF; no leading object-format underscore decoration",
+      "ordinary_return_declaration_verified": false,
+      "original_ARM_ABI_verified": false
+    },
+    "_ZN8Presonus9EQControl6onIdleEv": {
+      "present": true,
+      "object_format": "Linux host ELF; no leading object-format underscore decoration",
+      "ordinary_return_declaration_verified": false,
+      "original_ARM_ABI_verified": false
+    }
+  },
+  "nm_argv": [
+    "nm",
+    "--defined-only",
+    "temp/recovery-work/rolling200-02/eq-curves/driver"
+  ],
+  "nm_output": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/compiled-symbols.txt",
+  "nm_output_sha256": "beffdde02650a61b2312f60795c131ce147cc603421d48b0ef157babdf4c3a6d",
+  "producer": "uc-library/candidates/rolling200_02_eq_curves/add_compiled_evidence.py",
+  "producer_sha256": "bf437a16eabe4eb39601c1b504880413b55c58e051f6be7f0698877264740ae7",
+  "original_proof": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/LOCAL_PROOF.json",
+  "original_proof_sha256": "aa0a974fb17a6f471a0e954157e4bb89bed79ba0c8aac66a67845ef9ee165b8f",
+  "existing_EQ_dependency_replay": {
+    "cases": 1038,
+    "passed": true,
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/rolling200-02/eq-control/check.py",
+      "replay"
+    ]
+  },
+  "numerical_replay": {
+    "passed": true,
+    "cases": 46,
+    "maximum_absolute_error": 1.4496168662176227e-05,
+    "worst": [
+      25,
+      1,
+      -2.433284317e-05,
+      -9.836674507823773e-06
+    ],
+    "tolerance": "2e-4 absolute + 2e-5 relative for float responses; integer/flags/pixels exact; bounded corpus only"
+  }
+}

@@ -59,6 +59,11 @@ public:
   void setListOffset(int offset);
   void deSelect();
   void updateSelection();
+  // Portable source contracts; ordinary original returns remain unencoded.
+  void selectGroup(Core::Portable::Component *);
+  void paramChanged(Core::Portable::Parameter *, int) override;
+  void onObserveredParamChange(Core::Portable::Parameter *, int);
+  void addGroup(Core::Portable::Component *);
 
 private:
   Core::Vector<Core::Portable::Parameter *> observedParameters;

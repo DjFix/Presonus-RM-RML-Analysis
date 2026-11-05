@@ -1,0 +1,73 @@
+{
+  "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent10getAppTypeERKNS_2UC18ClientSubscriptionE",
+      "address": 331540,
+      "size": 148,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 298772,
+      "sha256": "b179265aa39c817f8cd74a7b56ebe5aa76b60207310571ed28971360e6b60b27"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent16createClientInfoEPKNS_2UC18ClientSubscriptionE",
+      "address": 335596,
+      "size": 192,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 302828,
+      "sha256": "5ef8aa07f2bec17b44d6f40215a70d7e28f0b3320765dee09c205c44b1ddffcf"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent20getSelectedDeviceAppEv",
+      "address": 331688,
+      "size": 40,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 298920,
+      "sha256": "9b322c8c71c7241c68c3ca5b8da89762c6a341d17736dca2f27778657f8be4da"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent21getSelectedDeviceTypeEv",
+      "address": 333244,
+      "size": 160,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 300476,
+      "sha256": "7ea9b61456c28bf3cb428267dcfcb741428bdfbb7086b3bab35539ff1e89926e"
+    }
+  ],
+  "counts": {
+    "app": 180,
+    "selectedApp": 181,
+    "device": 187,
+    "info": 642
+  },
+  "unicorn_version": "2.1.4",
+  "producer_sha256": "97e923db240789f4d9407e717536ba2fed2b8b157ae6e305b94121be132f6f7f",
+  "fixture_sha256": "a2ba83d37f4eabc109e2af9f15845c64442552e1ed9ac53f23f6b6a75af7bca7",
+  "trace_sha256": "d4fdac894122227b05513ca217798af2f27d1762556183e8ef3a60db429c6101",
+  "mode": "Original ARM instructions with named libc boundary models; no original libc/Core instructions executed",
+  "application_pc_allowlist": {
+    "app": [
+      331540,
+      331676
+    ],
+    "info": [
+      335596,
+      335784
+    ],
+    "selectedApp": [
+      331688,
+      331728
+    ],
+    "device": [
+      333244,
+      333392
+    ]
+  },
+  "memory_assumptions": "Private synthetic memory; NUL-terminated 64-byte app/device/display ranges; borrowed selected pointer at native +0xf8; no original construction or ownership.",
+  "write_scope": "Only stack and 64-byte info output; input and guards checked after every case"
+}

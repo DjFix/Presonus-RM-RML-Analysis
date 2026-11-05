@@ -79,6 +79,11 @@ namespace Presonus {
 // returns and independent state storage do not establish original ARM ABI.
 class StormMuteGroupComponent : public Core::Portable::Component {
 public:
+  // Provisional source-port aggregate return and static pointer declaration.
+  // Native string output is observed; original return/constness/ARM layout are
+  // not established. The original constructor/lifecycle is outside this port.
+  Core::CStringBuffer<32> createDefaultName(int index) const;
+  static const char *kDefaultName;
   explicit StormMuteGroupComponent(presonus::storm_mute_port::State &state)
       : state(state) {}
   ~StormMuteGroupComponent();

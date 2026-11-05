@@ -1,0 +1,868 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_impl_w02_03",
+  "namespace": "Presonus::Surface::GroupsPageComponent",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus7Surface19GroupsPageComponent23onObserveredParamChangeEPN4Core8Portable9ParameterEi",
+      "address": 602088,
+      "size": 432,
+      "section": ".text",
+      "section_index": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/format.json",
+      "sha256": "4532d3a1e0fdaf3bffac9eb616475429369f34865c4089842943d9f723c5f280"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/format.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/format.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/version.json",
+      "sha256": "0ea704f507ef3fff0caac1640c4816ae31669200057ed9f1d867662b297a8967"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.061828Z/version.stdout",
+      "sha256": "b612ba740becdd7e9615e62612c61cdeb064e15aff898827e5f08971732998af"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile0.json",
+      "sha256": "a7f62cf14720d417b537015eb64982cc16f819cabd63f778156789ed89e1f8c8"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile0.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile1.json",
+      "sha256": "a5a791c0f751db1feb94d91aba71b4bdadeb7dde9a32dd7d86364b231707f95d"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compile1.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compiler.json",
+      "sha256": "0f8ea1824e21a096c6c6acbb92ea164830d6de4a830a8c69d8aabb449d51ea5b"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compiler.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/compiler.stdout",
+      "sha256": "88b7c4b67564a146863224148116065fee418539f0a408f3636a68f3bde51805"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/link.json",
+      "sha256": "49228342f2a7fd53939ed05f0724907417abe32fdd8defb664758730b7ef294a"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/link.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/link.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/replay-compile.json",
+      "sha256": "e4181c98de82fcb0cb953fc3eb30735bb96583e4e8e2a7a919fe32ec28fc154a"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/replay-compile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120828.166542Z/replay-compile.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.567123Z/symbols.json",
+      "sha256": "d82188879413ef9fd7b6f80ecb581a62eba6d799e2c5199952b8f31184304093"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.567123Z/symbols.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.567123Z/symbols.stdout",
+      "sha256": "bbd8593bdf57d32c33e7a66877567e43a622ea44b91ba4f61dce5693855ad539"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.602843Z/replay.json",
+      "sha256": "2b5c6ff5ed4e15326dccd1393b9931c6d98c97ed05a360c76fa7f8bce8173c27"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.602843Z/replay.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/checks/20261105T120829.602843Z/replay.stdout",
+      "sha256": "5c4825f05d855c236ee9f2956cc2c47a459002fc00f5f4f447681b1c99056d2d"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/inputs.txt",
+      "sha256": "10e55ee045dd56ea83c708f1ba27cd1905954caeab31b1980f47976c536d9da4"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/missing-tag600-comparison.json",
+      "sha256": "14aac5ee29c48b8716740e9689ab4ef445b95b6235850673ee2bdf6c7f59f27c"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/missing-tag600-native-witness.json",
+      "sha256": "87fc27588d787adcae76eaab1d2b7952a090eb0d19541ae8e0f6d3f7a66a1814"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/native.json",
+      "sha256": "34c6a21c0ea0337829b94a7e14e54a97b3ff7e353f6f2da4f605604fa9ade952"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/proof.json",
+      "sha256": "4f9cd5d3f94af723577892bccd21aea4b4f1f8938db1ef3e98d3c779e45912e2"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/remarks.json",
+      "sha256": "758862e686c1c59a8b1976313a936008a60642c30aae93774e3ffdcfc3949977"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/replay.json",
+      "sha256": "566a5207145b9be1613e4360ebd50d9c015a6394d04890c58b768a99e0b19f3b"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/symbols.json",
+      "sha256": "17a94187ad514c54e191bbbfed44cf2f6516ca7094d4105dfca8cfbf70e111f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/witness-current-portable.stderr",
+      "sha256": "4d6c0d1196f150efc87a08ef476f21720eaee5489897da3737f2f9a62f61cf22"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/witness-current-portable.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "f021901bae2637e635b974f5faf0fbe22cec5a1812861ec44ad04387e05b1f94"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/isValidGroup-linked/ELF_CONTEXT.md",
+      "sha256": "3d6b66be10099685c5791f9d3204dde1ec2320239930d44b72b0d2d07c0fe33a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/isValidGroup-linked/LINEAGE.json",
+      "sha256": "2301753dd004de33bed99bc868c5c1a015387f7e3557f33dc5741a2b0ec1eebc"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/isValidGroup-linked/native-context.json",
+      "sha256": "d6d0257f88d167487f18f59024d1f541533650cec878a192a3ec2ef1ab207525"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/updateGroups/ELF_CONTEXT.md",
+      "sha256": "1495573f63a83953b3dedd86c4546fbeb9f1e4ca50a1a5869352dfa95963224a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/updateGroups/expansion.json",
+      "sha256": "4b78cf89d81b57769d7f8e45f3fdb032a49296df6da64e228f6cb7319d0cd235"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/groups-native-expansion01/updateGroups/native-context.json",
+      "sha256": "9883587a712f2fddf3cf2462d5b7b938d635dbdce2360084f72711f397ff6a38"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/CONTEXT.md",
+      "sha256": "a0c0c3464e80fb5d80bd086d9a5bd97ac1bc8e59118588e456a67c7e960e684e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/ELF_CONTEXT.md",
+      "sha256": "7c9d4fc9784f34d244a7ba1c99ff32a83bba54fde3f6488f72a9f9dc0cc03c7a"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/SOURCE_SLICES.md",
+      "sha256": "9e613f199a1d16938d4dd7742132818cba4d4415e4f82a2d11c393c1d8f3c189"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/TASK.md",
+      "sha256": "36f170189aa1702707cd1cc947032a2d082b12651bf925de088ee77be1368572"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/context.json",
+      "sha256": "28e301dc9615a0ee3ee34ce8cfac8c16a262080d3bac3424126bee262f9ffbec"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/native-context.json",
+      "sha256": "5c19f2a47e1ef6a9a026037b3810b7cd8f8d5f4f763b48bb4d33b54508a2508f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-isolated-groups_page02/packets/rolling200_02_impl_w02_03/request.json",
+      "sha256": "8d3034931587821ef8998318674577a1a1ba7589acfe0c338d8e6a1a1a08ed3f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponentflags.h",
+      "sha256": "ec762b9af8f44333c7c7c6e0dd4b1225691fc9233eadf10d95ec89c65850640c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.h",
+      "sha256": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coretypeinfo.h",
+      "sha256": "2c5c4ac61b372f490ad071f6a610f5dbbfe9946b3ac38b25d210a97d637261dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corebasicmacros.h",
+      "sha256": "9b879c0b7d7c02ba55e881c2cc768f04f60aa2e8d6d2834cf4afe43e6ca5d0ce"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclassmacros.h",
+      "sha256": "f67174739f108e57b6fdf4fe0a64a7c9df2a38b69841a97bb6ad8b762652ac77"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclibrary.h",
+      "sha256": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corecontainer.h",
+      "sha256": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreformatter.h",
+      "sha256": "cc9215eeea8262be411ed08b2dcda376a2bc2510d5b0cf49b123be82b583d023"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.h",
+      "sha256": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremacros.h",
+      "sha256": "d2827dfd0182e53757411849b4e582e5a2d4926814a0d21720472432a0ef7829"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremalloc.h",
+      "sha256": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreplatform.h",
+      "sha256": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreprimitives.h",
+      "sha256": "7587ed00af9010e37d6a76f0e004bfe919e7d71958d831bb533beabd46daa429"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringtraits.h",
+      "sha256": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coretypes.h",
+      "sha256": "42caf0a821eb374df5fe0e8b14b3ea1fa368ce06c025710b47abb5a71f247a68"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreuid.h",
+      "sha256": "aac2bbacbb5cc1663753e377b851f8d7fed0ccfb7e977dbc02bf5cb2750ad667"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/gui/corecolor.h",
+      "sha256": "bde1a05f098448b42041d5d66f79753dae4383ec09266d2dba6217a82d643b54"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-groups-page/check.py",
+      "sha256": "b622b59888907cb5f200ee1906d3f4681a9c7e8ed482243a96587208f2b0f614"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/oracle.py",
+      "sha256": "1cef0bae27b67a416edec4de31bcdcb37104e76351ca3a9af455277c5431c1cc"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/candidates/rolling200-02-groups-page/replay.cpp",
+      "sha256": "28a8744b6d0aab5b16306e85942a0ed33f600cf164fc8a853b8b72b6cf7cc2a8"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/seal.py",
+      "sha256": "04e68c319a22d8596f3136f1330d83d2202bf09595e4737e80b93b9a1714a25b"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/witness.py",
+      "sha256": "e37879509a63f3c930f886498942c2e1fceaacdee82e1bafd76328f4363ee90c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/ChannelGroupFilter.hpp",
+      "sha256": "93564b61cf574e39b48b4dbd72a5271be2daf0ad8cbed2f8231186ef2a980856"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/PageComponent.hpp",
+      "sha256": "015f07bd520b604a7ae636588af36a8275eb48783404434ebdecb529fdefe2e8"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/color/IColorConverter.hpp",
+      "sha256": "9246b45055c511e46fdda60178a2f32c53dc31ccfb017bae925c5baa30ecfbc0"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/delay_timer.hpp",
+      "sha256": "3da2b15d6b56b8f921983ea0c97585736dbaa9d3757da8e708bbf81b2f2c9e55"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/mixer_state/MixerState.hpp",
+      "sha256": "65b58c348ed5a4721f1bde1af2596d064e3b81a79ec62f0c8ae914ef0d9ab4b6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/panel/key_input_provider.hpp",
+      "sha256": "3af10ca3b42989dcf3f87abfa939181eccb40fe8c72852c0e6ace0a876a9dbdb"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/surface/GroupsPageComponent.hpp",
+      "sha256": "1fe835b1ff2e77ed8e6811c6246854d372e408223e6a2e5a56dff8b0c0468499"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface/MixerPageComponent.hpp",
+      "sha256": "7cc041410c262b65677aac0dff3bfbe3fb6741f2fe08eea61c2d45f4c33961a9"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface/SubAssignPageComponent.hpp",
+      "sha256": "7fdaaa949f4da398ccb2bf4a38aeab1ccb1811ee08cb89dbdf1eb95e92e022f5"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface/sl_mixer_encoder.hpp",
+      "sha256": "d67780433a2d96fbcdebd0e17e6e69afc176b0341112dafa2a34c49b61c9c26d"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Surface/GroupsPageComponent.cpp",
+      "sha256": "ccc83a332fa2a866fa617b4b28129bb61a1d3bd541bdbc82205ffab9a72b03d7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Surface/GroupsPageRecovery.cpp",
+      "sha256": "b313eb0d767cfadc3c49a2270d4ecc6731533d1b07b53d49ce0bf666f846aacc"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/format.json",
+      "sha256": "fd039a312cadc5eb67b2f263e3215331535d0ae96e4b5188c95111fcd7b3d3f5"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/format.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/format.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/version.json",
+      "sha256": "124a0f84989ac6e2097012272417b047e8539ee3ead4decb5cd267bf429ccf63"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.803038Z/version.stdout",
+      "sha256": "b612ba740becdd7e9615e62612c61cdeb064e15aff898827e5f08971732998af"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageComponent.json",
+      "sha256": "a20ec655e2c8185fe2df8e96dc8dc73fb71f1640a7b0db51dfaf0cc5528aae58"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageComponent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageComponent.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageRecovery.json",
+      "sha256": "11e471447185fdc4bcb9381e2c6896a98187a860ba51b8cc5526b7f4b94b4c39"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageRecovery.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/GroupsPageRecovery.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageComponent.json",
+      "sha256": "b8ec605cd61b9d0ddb641d21446791430d33704ba12c64841b11f37a9859f0fd"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageComponent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageComponent.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageRecovery.json",
+      "sha256": "8337972d62490954455c81741df561ae7fcfa877d6ebef15dd62c13b34d90124"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageRecovery.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/archive-GroupsPageRecovery.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/compiler.json",
+      "sha256": "0576a78f495de25e8a40345c66859c7297298984557285bd71d4cae23553c772"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/compiler.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/compiler.stdout",
+      "sha256": "88b7c4b67564a146863224148116065fee418539f0a408f3636a68f3bde51805"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/link.json",
+      "sha256": "fc6a0545bb278bf05daed4fa056d9c318231b914978cd08138bd8fd9f9e89a4d"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/link.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121446.896177Z/link.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/executable-symbols.json",
+      "sha256": "74ad52d2c58d624003a06a72fa703e6433d3c35c48c41cd998a58fcdaaf586f7"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/executable-symbols.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/executable-symbols.stdout",
+      "sha256": "8392677cd923d9c37d091e6361f7c1b3219de4eec1492f8d4183f3c01dc21eac"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageComponent.json",
+      "sha256": "e6ea48fc874c38630f7f93e2dac1fa5d4c89bf20b9c81c84d730f4ab540ce65b"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageComponent.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageComponent.stdout",
+      "sha256": "d2765f9b18da2bafb5c19a44de093b2a557ba11e2948010480d5e71e5bf6e578"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageRecovery.json",
+      "sha256": "0aa996d15208d529a1baee95e6b60c8267e392b08620af14a13750f452f20c79"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageRecovery.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.612536Z/undefined-GroupsPageRecovery.stdout",
+      "sha256": "d3f82c585368579a8588f2ccffe386d5835a22329a6c43e07aa34aef5288922e"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.652763Z/canonical-replay.json",
+      "sha256": "432fb9decb6ba739d4448e9374b5c82c899c06824fe589466c23c37032f5bbd8"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.652763Z/canonical-replay.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/checks/20261105T121448.652763Z/canonical-replay.stdout",
+      "sha256": "069531f2bb74a514b12f96088a647e8d7ef5d227e79d9e767a7fcd0bbbfa97d4"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/local-archive.json",
+      "sha256": "38055d06d1de17ba3b15316ea510edfa879cabbe9103916ac859a3463a5782f0"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/proof.json",
+      "sha256": "d526452a48f8e6924eb61efecaa73dac67753842f882f7e72202783675fd230e"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/revision02/replay.json",
+      "sha256": "59a77cf7cdedb847a73472fda749332c91490403d7e2e4a50740be6dc64fcdb6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/revision02/CanonicalIntegration.cmake",
+      "sha256": "8723947e696da69068a377dfa1537f225a71cc449f7270dcbcf775a3a620afbd"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/candidates/rolling200-02-groups-page/revision02/canonical_replay.cpp",
+      "sha256": "d31296ce745f708744c9475a9cc34b5b40cb2b64d370b81021dec498cf19edf9"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200-02-groups-page/revision02/canonical_verify.py",
+      "sha256": "b1f06e185ca28a283409484bec331c8b8189390db8b51c9b1837732e59b7b38d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/revision02/local_check.py",
+      "sha256": "065c8d140c4c18f807c5b851276b758c253ff3dfb2f611b89ef7c7549abaf72f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200-02-groups-page/revision02/seal_revision.py",
+      "sha256": "c13d3aedfc9957e127d13af848c7066785d6fdfb06bc995012af59c1980fd6c9"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "canonical_format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/revision02/local_check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "canonical_compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/revision02/local_check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "canonical_symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/revision02/local_check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "canonical_replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200-02-groups-page/revision02/local_check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "Real CCL trees/controllers; message3 vs others; tag603 positive/nonpositive/NaN, both/missing containers and children, optional tag603, controller Component/noncomponent/null cast; mapping absent/tag6 absent/present; tag600 visible/hidden; tags645/646/685/686. Included selectGroup shares canonical ownership. Original RTTI layout and hardware excluded. Tested bounded cases and exact compared observations are in replay.json; negative missing-tag600 case is separately preserved with original-invalid-domain correction.",
+  "limitations": [
+    "Portable source port only. Ordinary original returns remain unresolved/unencoded; source choices are void. Original inheritance, storage layout, ownership, calling convention, ARM32 binary interoperability and hardware behavior are not established.",
+    "Native execution runs each assigned original body with documented synthetic memory and captured external calls. No Core binary body executes. Actual CCL 5.0.0 objects and current application providers execute in the source replay; native boundary captures are test-only, not production providers.",
+    "Comparison covers direct application-call entry ordering, selectGroup selection before doselect, own paramChanged tag1009 result, observer group603/mapping6 values, and bit-exact addGroup numeric values/bounded names. It excludes full nested original-provider traces, callback reentrancy, concurrency, exceptions and allocator failures.",
+    "Every child traversed by updateGroups requires a tag600 parameter. Original helper faults at0x92918 for a missing tag600; portable ASan caller chain agrees. Initial requested safe full-tree case was unsupported by original behavior; Root approved appended domain correction. No null-safe helper behavior was invented.",
+    "Real ParamList cannot normally contain null entries; nullable source/destination getter results are bounded by missing-tag600 source and source/destination count mismatches. NaN value propagation and string type4 skip are covered; exotic custom parameter classes are excluded.",
+    "Local validation refreshed two existing members in a scratch copy of baseline CS18 role archive. This is not canonical CMake/full Linux/compile-once proof. Root must rebuild existing OBJECT partitions and link adapter solely through the role target.",
+    "Canonical replay validates 1507 nonempty state observations from 1895 cases. Remaining388 cases retain original instrumented local proof only; no unavailable traces are counted as canonical state validation.",
+    "No production instrumentation flags or CPP duplication are required. Canonical driver defines no __cyg_profile callbacks; local symbol checks reject references in refreshed production members and definitions in its executable."
+  ],
+  "build_integration": {
+    "production_partition": "UNCHANGED existing GroupsPageComponent.cpp and GroupsPageRecovery.cpp OBJECT memberships; do not add CPP bodies to test target.",
+    "public_headers": [
+      "uc-library/include/presonus/surface/GroupsPageComponent.hpp"
+    ],
+    "test_sources": [
+      "uc-library/candidates/rolling200-02-groups-page/revision02/canonical_replay.cpp"
+    ],
+    "test_targets": [
+      "rolling200_02_groups_page_canonical"
+    ],
+    "cmake_adapter": "uc-library/candidates/rolling200-02-groups-page/revision02/CanonicalIntegration.cmake",
+    "link_dependencies": [
+      "presonus_cs18_components (transitive PresonusCore::Provider)"
+    ],
+    "compile_features": [
+      "cxx_std_17"
+    ],
+    "compile_options": [
+      "-fno-rtti",
+      "-fno-instrument-functions",
+      "-fno-fast-math",
+      "-ffp-contract=off"
+    ],
+    "link_options": [],
+    "production_compile_options_added": [],
+    "canonical_build_argv": [
+      "uc-library/.venv/bin/cmake",
+      "--build",
+      "temp/core-upstream/root-integration-01",
+      "--target",
+      "rolling200_02_groups_page_canonical",
+      "-j2"
+    ],
+    "canonical_ctest_argv": [
+      "uc-library/.venv/bin/ctest",
+      "--test-dir",
+      "temp/core-upstream/root-integration-01",
+      "--output-on-failure",
+      "-R",
+      "^rolling200_02_groups_page_canonical$"
+    ],
+    "canonical_replay_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/rolling200-02-groups-page/revision02/canonical_verify.py",
+      "--executable",
+      "temp/core-upstream/root-integration-01/rolling200_02_groups_page_canonical",
+      "--fixtures",
+      "evidence/recovery/2026-11-05/rolling200-02/groups-page/native.json",
+      "--fixture-sha256",
+      "34c6a21c0ea0337829b94a7e14e54a97b3ff7e353f6f2da4f605604fa9ade952",
+      "--inputs",
+      "evidence/recovery/2026-11-05/rolling200-02/groups-page/inputs.txt",
+      "--inputs-sha256",
+      "10e55ee045dd56ea83c708f1ba27cd1905954caeab31b1980f47976c536d9da4"
+    ],
+    "fixture_bindings": [
+      {
+        "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/native.json",
+        "sha256": "34c6a21c0ea0337829b94a7e14e54a97b3ff7e353f6f2da4f605604fa9ade952"
+      },
+      {
+        "path": "evidence/recovery/2026-11-05/rolling200-02/groups-page/inputs.txt",
+        "sha256": "10e55ee045dd56ea83c708f1ba27cd1905954caeab31b1980f47976c536d9da4"
+      }
+    ],
+    "scope": [
+      "Local validation refreshed two existing members in a scratch copy of baseline CS18 role archive. This is not canonical CMake/full Linux/compile-once proof. Root must rebuild existing OBJECT partitions and link adapter solely through the role target.",
+      "Canonical replay validates 1507 nonempty state observations from 1895 cases. Remaining388 cases retain original instrumented local proof only; no unavailable traces are counted as canonical state validation.",
+      "No production instrumentation flags or CPP duplication are required. Canonical driver defines no __cyg_profile callbacks; local symbol checks reject references in refreshed production members and definitions in its executable."
+    ]
+  },
+  "source_hashes_sealed_after_all_four_methods": true
+}

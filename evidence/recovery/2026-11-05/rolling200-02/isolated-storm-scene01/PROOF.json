@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "passed": true,
+  "utc": "2026-11-05T11:45:23.286188+00:00",
+  "worker": "/root/isolated_storm_scene",
+  "checkout": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos01/storm_scene",
+  "git_branch": "codex/rolling200-02-storm_scene",
+  "baseline": "7fc9f706110c21b3c80ece4baa87c5fb82dff0dd",
+  "source_hashes": {
+    "uc-library/include/presonus/StormMixSceneComponent.hpp": "df1772a51846935a930274dfc765bb7c0041917f0baa827a401d0fc157ed648d",
+    "uc-library/src/Presonus/StormMixSceneComponent.cpp": "08fe3b074baf7e181eab078b983e3af76a3421d776863dc43212c25bfc7f02b7"
+  },
+  "original_elf": {
+    "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+  },
+  "range_checks": [
+    {
+      "section": ".text",
+      "address": 471568,
+      "size": 64,
+      "file_offset": 438800,
+      "sha256": "a4685df65b258a26b06989344195de989e9f6cbc71c7efa511a377121101c317",
+      "hex": "0dc0a0e130d82de928309fe50050a0e1001093e504b04ce20240a0e122abfeeb0500a0e1012084e20c109fe58e19ffeb0500a0e130a89de8248b450048933300"
+    }
+  ],
+  "data_checks": {
+    "default_pointer": {
+      "section": ".data",
+      "address": 4557604,
+      "size": 4,
+      "file_offset": 4492068,
+      "sha256": "0c150effd2a7d817a80dd54534a9fdb6e8f6037008c5d37e558254528c5760cb",
+      "hex": "90901500"
+    },
+    "default_string": {
+      "section": ".rodata",
+      "address": 1413264,
+      "size": 10,
+      "file_offset": 1380496,
+      "sha256": "3b1d83f4469a55b7f8bce6fa9a300d6be00c2bacaa810430c02c1ad7f7a82ddb",
+      "hex": "4d6978205363656e6500"
+    },
+    "format_string": {
+      "section": ".rodata",
+      "address": 3380040,
+      "size": 4,
+      "file_offset": 3347272,
+      "sha256": "108868912a1514cf9ee5d3867f5405fd2d49d33fd7099b6321e8856d123ba9af",
+      "hex": "20256900"
+    }
+  },
+  "oracle": {
+    "producer": "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/native.py",
+    "sha256": "fc975836aa9f5e9c0d7cedeb5a7015d0cfb937bd5e56bb604afbaf24beb35c4f",
+    "versions": {
+      "python": "3.12.3",
+      "unicorn": "2.1.4",
+      "pyelftools": "0.33"
+    },
+    "fixture": "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/FIXTURES.json",
+    "fixture_sha256": "e4cab9890fb171421e3bd2fe0b087a3bfa668d468d71817328d19bd2e3f02d05",
+    "cases": 81,
+    "execution_boundary": "Exact app PCs 0x73210..0x73244 inclusive; only 0x1debc constructor and 0x3987c appendFormat intercepted, checked LR; no original Core bodies executed."
+  },
+  "compiled_replay": {
+    "producer": "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/replay.py",
+    "sha256": "9411ff8358579e5906ec768f86cb48f22b00182100f0071f4209f77820608d02",
+    "fixture_cases": 81,
+    "executable": "temp/recovery-work/rolling200-02/storm-scene-local01/replay",
+    "original_symbol": "_ZNK8Presonus22StormMixSceneComponent17createDefaultNameEi",
+    "decoration": "ELF Linux, none"
+  },
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/replay.py",
+        "--executable",
+        "temp/recovery-work/rolling200-02/storm-scene-local01/replay",
+        "--fixtures",
+        "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/FIXTURES.json",
+        "--out",
+        "temp/recovery-work/rolling200-02/storm-scene-local01/REPLAY.json"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "logs": [
+    "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/format-commands.json",
+    "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/compile-commands.json",
+    "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/symbols-commands.json",
+    "evidence/recovery/2026-11-05/rolling200-02/isolated-storm-scene01/REPLAY.json"
+  ],
+  "limitations": [
+    "Only selected application instructions execute; two CCL entries are intercepted using pinned-provider semantics. Provider bodies are not original native observations.",
+    "Partial class source-port layout/construction and return type remain provisional. No receiver field needed by selected method."
+  ]
+}

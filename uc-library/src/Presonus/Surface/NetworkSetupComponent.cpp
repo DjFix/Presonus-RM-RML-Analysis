@@ -1,5 +1,8 @@
 #include "presonus/surface/NetworkSetupComponent.hpp"
+#include "core/portable/corepersistence.h"
 #include "core/system/coredebug.h"
+#include "presonus/surface/MidiMixerHandler.hpp"
+#include <cstring>
 namespace presonus::surface {
 int SurfaceNetworkProvider::localAddresses(Core::Sockets::IPAddress *list,
                                            int capacity) const {
@@ -185,5 +188,50 @@ void NetworkSetupComponent::setupNetworkInfo() {
   } else
     text = "Not Connected";
   state_.parameters.getParameterByTag(29)->fromString(text, false);
+}
+void NetworkSetupComponent::loadSettings() {
+  for (int i = 0; i < state_.midiHandler->countMappings(); ++i) {
+    if (!isStoredItem("selectedDAW", i))
+      continue;
+    state_.selectedMidiMapping = i;
+    state_.parameters.getParameterByTag(7)->setValue(
+        static_cast<float>(i) + 1.f, true);
+    state_.midiHandler->setActiveMapping(i);
+    if (auto *p = state_.parameters.getParameterByTag(17))
+      p->setValue(1.f, false);
+    break;
+  }
+  syncListParam(7, state_.daws, nullptr);
+}
+void NetworkSetupComponent::storeSelected(const char *key, int index,
+                                          int flags) {
+  if (!(flags & 2))
+    return;
+  Core::CStringBuffer<64> text;
+  text.appendFormat("MIDI-%d", index);
+  auto &settings = state_.settings ? *state_.settings
+                                   : Core::Portable::SettingFile::instance();
+  settings.getSection(state_.settingsSection).set(key, text);
+  settings.setDirty();
+}
+bool NetworkSetupComponent::isStoredItem(const char *key, int index) const {
+  auto &settings = state_.settings ? *state_.settings
+                                   : Core::Portable::SettingFile::instance();
+  Core::CStringBuffer<64> saved(
+      settings.getSection(state_.settingsSection).getString(key));
+  Core::CStringBuffer<64> text;
+  text.appendFormat("MIDI-%d", index);
+  return saved[0] && std::strcmp(text, saved) == 0;
+}
+Core::Portable::Parameter *NetworkSetupComponent::getSelectedMixerParam() {
+  return state_.parameters.getParameterByTag(0);
+}
+int NetworkSetupComponent::getTargetType() const {
+  return static_cast<int>(
+             state_.parameters.getParameterByTag(30)->getValue()) != 0;
+}
+int NetworkSetupComponent::getWiredNetworkAssignMode() const {
+  auto *p = state_.parameters.getParameterByTag(24);
+  return p ? static_cast<int>(p->getValue()) : 0;
 }
 } // namespace Presonus::Surface

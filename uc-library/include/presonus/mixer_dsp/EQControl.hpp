@@ -41,6 +41,9 @@ public:
     bool enabled = false;
     std::uint8_t dirty = 0;
     float frequency = 0.f;
+    float gain = 0.f;
+    int x = 0, y = 0;
+    bool forceCurve = false;
   };
   // Six pointer slots are independently observed. Names and portable host
   // layout are source-port choices, not original field/ARM-layout claims.
@@ -104,6 +107,21 @@ public:
   // Source-port storage and actual CCL rendering; native array/object layout
   // and allocator failure/exception behavior are not reproduced.
   void initBands();
+  // Provisional ordinary returns; these are portable source interfaces, not
+  // recovered original declarations or GUI/ARM object layout.
+  void setNumBands(int count);
+  void setSize(const Core::TRect<int> &rectangle);
+  bool getCurve(float *destination, int index, int samples) const;
+  void rebuildCurves();
+  void onIdle();
+  void bindPortableCurveRange(float minimum, float maximum) {
+    curveMinimum = minimum;
+    curveMaximum = maximum;
+  }
+  // Explicit portable clock state for restoration and deterministic replay.
+  std::int64_t &portableLastCurveTime() { return lastCurveTime; }
+  int portableRequestedBandCount() const { return requestedBandCount; }
+
   // Explicit source-port observer adapter, not original GUI inheritance.
   void bindPortableControl(Core::Portable::Control &control) {
     observerControl = &control;
@@ -114,6 +132,9 @@ public:
                  const Core::Color &color, bool mode);
   std::vector<float> &portableAmplitudeCurve() { return amplitudeCurve; }
   std::vector<int> &portablePixelCurve() { return pixelCurve; }
+  std::vector<std::vector<float>> &portableBandCurveStorage() {
+    return bandCurves;
+  }
   const std::vector<std::vector<float>> &portableBandCurves() const {
     return bandCurves;
   }
@@ -163,6 +184,9 @@ private:
   const Core::LinearInterpolator *gainNormalizer = nullptr;
   const Core::LinearInterpolator *yPixels = nullptr;
   presonus::dsp::EQControlDrawBoundary *drawBoundary = nullptr;
+  int requestedBandCount = 0;
+  float curveMinimum = 20.f, curveMaximum = 20000.f;
+  std::int64_t lastCurveTime = 0;
   bool bufferedDraw = false;
   bool bufferPresent = false;
   bool bufferValid = false;

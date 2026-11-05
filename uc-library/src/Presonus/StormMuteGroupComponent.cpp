@@ -251,3 +251,19 @@ void StormMuteGroupComponent::deactivate(unsigned int index) const {
   g->implementation.updateStatus();
 }
 } // namespace Presonus
+
+namespace Presonus {
+// Initial bytes read from the original ELF static default-name pointer.
+// Pointer const qualification remains an intentional source-port declaration.
+const char *StormMuteGroupComponent::kDefaultName = "Mute Group";
+Core::CStringBuffer<32>
+StormMuteGroupComponent::createDefaultName(int index) const {
+  Core::CStringBuffer<32> name(kDefaultName);
+  // Native ARM addition wraps at 32 bits; avoid signed-overflow undefined
+  // behavior for INT_MAX while preserving the canonical Linux int32 result.
+  const auto number =
+      static_cast<std::int32_t>(static_cast<std::uint32_t>(index) + 1u);
+  name.appendFormat(" %i", number);
+  return name;
+}
+} // namespace Presonus

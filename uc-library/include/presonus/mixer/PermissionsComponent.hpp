@@ -60,6 +60,13 @@ public:
   void auxLinkingChanged();
   void setFullPermissions(bool enabled);
   void resetPermissionsPW();
+  // Provisional source-port returns; original return spellings remain pending.
+  int getAppType(const UC::ClientSubscription &) const;
+  int getSelectedDeviceApp() const;
+  int getSelectedDeviceType() const;
+  // Requires a nonnull subscription with NUL-terminated 64-byte values.
+  Core::CStringBuffer<64>
+  createClientInfo(const UC::ClientSubscription *) const;
   void saveAccessCode() const;
   void getAccessCodeFileName(Core::Portable::FileName &) const;
 

@@ -4,7 +4,12 @@
 #include "presonus/panel/control.hpp"
 #include "presonus/surface_panel/ControlGroup.hpp"
 #include "presonus/surface_panel/LEDState.hpp"
+#include <cstdint>
 #include <vector>
+
+namespace Presonus::Mixer {
+class MixerComponentBase;
+}
 
 namespace Presonus::Panel {
 class RackPanelComponent;
@@ -39,6 +44,10 @@ public:
   bool checkMonitorRestore(Presonus::DelayTimer &) const;
   void monitorSource(int, bool);
   void updatePanelStatus();
+  void clientsChanged();
+  void checkPermissionsPWReset();
+  void forceCascadeGlobalParamUpdate();
+  void help();
   void attachMeterLEDs();
   void attach48vControls();
   void cleanup();
@@ -49,6 +58,14 @@ public:
   // Independent source-port state/configuration, not recovered ELF methods.
   std::vector<Control *> meterLEDs, clipLEDs, phantomLEDs;
   int panelStatus = 0;
+  // Borrowed bindings. Share the startup timestamp across panel instances as
+  // the embedding application shares the original process startup timestamp.
+  // The mixer and timestamp must remain alive during synchronous callbacks.
+  // The timestamp is required on an unblocked reset check; the mixer and all
+  // twelve cascade parameters are required for a forced cascade update.
+  Presonus::Mixer::MixerComponentBase *mixer = nullptr;
+  std::uint32_t permissionFlags = 0;
+  std::uint64_t *permissionStartupMilliseconds = nullptr;
   float savedMonitorValue = 0;
   Core::Portable::Parameter *monitorRadioParameter = nullptr;
   Core::Portable::Parameter *observedParameter = nullptr;

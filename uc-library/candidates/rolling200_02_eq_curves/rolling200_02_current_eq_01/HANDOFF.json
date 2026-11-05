@@ -1,0 +1,455 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_current_eq_01",
+  "namespace": "Presonus::EQControl",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-eq01/packets/rolling200_02_current_eq_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus9EQControl11setNumBandsEi",
+      "address": 450400,
+      "size": 24,
+      "section": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer_dsp/EQControl.hpp",
+      "sha256": "65ca152b577c4b83d89dd4afba93f62789fdf104dc60c1b7c94ea928cf234063"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/EQControl.cpp",
+      "sha256": "0d0ab49cf1d7f957d90af57b2a2d7e13dc0ca3ace252fde77c760676c61b3904"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve-fixtures.json",
+      "sha256": "590046619ff3c71998c981bb1e6c5a100704b1be752c0b014e5dc6184375c597"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/generate_curves.py",
+      "sha256": "7071bd1d006a52bad888f8bea88e8dde9a3149607af6423346e45e81cfb9f89e"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/runtime.py",
+      "sha256": "ef4e8144e10fb303cfe054cb1c7e380376195e1c338171ec1e4c445f9661413a"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/driver.cpp",
+      "sha256": "d386534cc45cbef31d74a0c3ea27aff316feaab762017701767d3c8d18a33216"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native-execution.json",
+      "sha256": "904984147f0c00c97616e97a15d377570f81975cc37edabf2194d6a459d9db63"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native.py",
+      "sha256": "0c5220cc885dfa4e95c4f3779744da571a1765e2a71df5b742e187ed7dc27d18"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/fixtures.json",
+      "sha256": "856cea4de50cca9c00245bbef0d8a81c24cd541a5aab73c5e46280f7f1c706c1"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_curves.py",
+      "sha256": "c2a38cfc3de015389c56ccfec444933fa0069129655ff199619dcfaaa9a7926d"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve_native.py",
+      "sha256": "ef76605d4a49f795e3d2f75f6211e318ab3c0c10e82667b32df4351e73090a34"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+      "sha256": "659361207c0af9cfc8799e282caed132a65a35b21a49317ecdd9234fab714301"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/REMARKS.json",
+      "sha256": "8143d580045f80004cb5f2beedabef817d9053e3e8bf7d96b45163d76d5636cd"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/symbols.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/curves.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/format.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/symbols.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/compile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/replay.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/curves.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/LOCAL_PROOF.json",
+      "sha256": "aa0a974fb17a6f471a0e954157e4bb89bed79ba0c8aac66a67845ef9ee165b8f"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/native.stdout",
+      "sha256": "f7bf95b8e14c52f48c2c51dd617034b834ad67c23b31178285a10a828fa71e87"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/compile.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/format.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/replay.stdout",
+      "sha256": "4aa35d75240bc0d6c7ce2a6440ed153d91651def822a034cfa68ae1059fdd38f"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/native.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_eq_curves/seal.py",
+      "sha256": "41c7f84bafa48f0ac12b518e74bad00cf6931da6b870c5780eec4413396371cb"
+    },
+    {
+      "kind": "diff",
+      "path": "uc-library/candidates/rolling200_02_eq_curves/OWNED.diff",
+      "sha256": "b4d7108527f4749c3cff8585870296d21362a339e9461b565016536f0ac0b6bc"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dsp/biquad_calc.hpp",
+      "sha256": "6be0cc48b32d8157b5583bb1e06191470fa5c11974c1090959c0a3b67386db70"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/BiquadMethods.cpp",
+      "sha256": "3f7d2d44f73db768491f1cedcf1e924929398e88d08069cddf75389b3510583f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/BiquadIncremental.cpp",
+      "sha256": "6bd49c15617c967234e63aebe54f378a3dca004143d37ba7e312aace7ab5c2cc"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/CalculationCore.hpp",
+      "sha256": "17c224f1d205f47f64ba7acd1e99718b3852e99f8bdd214a4dad2c7d33116f34"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/IncrementalCore.hpp",
+      "sha256": "0989328c0b7606b4a78d8eed71de791b529f55f6af71bcbfc954f83441c99a08"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/BiquadSine.cpp",
+      "sha256": "5cd8fb57009920d6bb3ffc9d9e86ab88e707397c72886412cc7a50e6217bde30"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/DSP/BiquadSine.hpp",
+      "sha256": "4e547c593c2582909cb7b728060596e7247842f19db516027df7bae01ad719d0"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/EQControlBandParams.cpp",
+      "sha256": "8c342920d2666fb1d99d5f79abd461f11904c88d61b9b20af869a36571305f4c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/native.py",
+      "sha256": "b3c5bcac6a67601c00a494e81f4084a346ef85f39b6782b20ef8bc3e06bc41c7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/fixtures.json",
+      "sha256": "373054d87ff2f376412fd066e9c5cb634bf483dcc42fd946301cc8a310fbd3d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coretime.h",
+      "sha256": "112daede39c5e3fdf85a2a813afa729fbfeef05eb07dd831fccb1c1e401ebea1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coretime.posix.h",
+      "sha256": "f58e058d5bcf234615fc2a7dad635bc6688fee34d253e419352f9cc5696c0555"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/lib/libm-2.9.so",
+      "sha256": "5f651c4af3c87b0e65b4d8294117dedc29864cf711f4c9536e9d7a0de4efdb7a"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/lib/ld-2.9.so",
+      "sha256": "2f9c215d1ff20fd3ac9417eacfcd288a0bbf5cedb14117b7a5f92f69a17c3b67"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/setup/native-context.json",
+      "sha256": "a58b7e71419553a1a5e3e3ba2fdbae4708c82ae5df70fb25bb0a4e8b2a129a77"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/params/native-context.json",
+      "sha256": "3928b89e3764eecae8732d70fc5fa6e24ccc8ad69cfd6f3304ee36e04bd2a4b7"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/getQ/native-context.json",
+      "sha256": "9d75a0c3a0b261d804eee178f834ff5ee211389a1dc025d16b9781847dd63af2"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/getType/native-context.json",
+      "sha256": "1646a710aa5cb3ebf0d3881424e2e501cd20eb37491bde69be0e8a16341bc6c7"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/getGain/native-context.json",
+      "sha256": "04730a2283dd6226ae721b4079e52d2acbabb1e4db7a6d280338ab2cfdccbee9"
+    },
+    {
+      "kind": "native_context",
+      "path": "temp/recovery-work/rolling200-02/eq-native-expansion01/getFrequency/native-context.json",
+      "sha256": "5b04712a921f76e36862883e85cbbf36836f658b606437d7dc0817c6c2295703"
+    },
+    {
+      "kind": "historical_native_context",
+      "path": "temp/recovery-work/rolling200-02/flush-reuse-packet01/native-context.json",
+      "sha256": "7d1522efab99991d78191120a964717f27dc917d02fffc915a2202de4fc10595"
+    },
+    {
+      "kind": "historical_native_context",
+      "path": "temp/recovery-work/rolling200-02/flush-reuse-packet01/context.json",
+      "sha256": "516a076f08184c797597d10c4997ff4d7fcf196a64b0981600e7b2d3fb8d107e"
+    },
+    {
+      "kind": "historical_native_context",
+      "path": "temp/recovery-work/rolling200-02/flush-reuse-packet01/request.json",
+      "sha256": "7b8725d34446db73be18fe6894afbab2e999d9f7ccb9e7bb2e7e21d7e7689604"
+    },
+    {
+      "kind": "historical_native_context",
+      "path": "temp/recovery-work/rolling200-02/flush-reuse-packet01/ELF_CONTEXT.md",
+      "sha256": "4e7f8b76f536a57135a4b8f51b8954e4d49091e6d7038d2cae09d13e6acd3f00"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-eq01/packets/rolling200_02_current_eq_01/context.json",
+      "sha256": "7d56e73fd4477bbb5ffcc6a30d5c89491e940858c7bb775f8760bba512a53931"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-eq01/packets/rolling200_02_current_eq_01/request.json",
+      "sha256": "058c15e69a605a53539b12b29760e539bd9de8a11930210ca948220845ba097f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-eq01/packets/rolling200_02_current_eq_01/native-context.json",
+      "sha256": "c16da38b083b08eedcda127be1b8c42a715b2c10e2e9cd999badcfa99c2b22c9"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-eq01/rolling200_02_current_eq_01.contract.json",
+      "sha256": "c10625785dd939f72446d35d616f764b20ce33d6e61248f3cd3d41ed29e9862d"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/COMPILED_EVIDENCE.json",
+      "sha256": "be085740cd62135d46d5425591236b1345cd7ba012f8183796640efce1fa30a5"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/compiled-symbols.txt",
+      "sha256": "beffdde02650a61b2312f60795c131ce147cc603421d48b0ef157babdf4c3a6d"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/existing-EQ-regression.stdout",
+      "sha256": "a7860546f07ec7823a70a7b8824cb6e712c71a914c53253d935ddecd561972ca"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/existing-EQ-regression.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_eq_curves/add_compiled_evidence.py",
+      "sha256": "bf437a16eabe4eb39601c1b504880413b55c58e051f6be7f0698877264740ae7"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_boundaries.py",
+      "sha256": "8ba6b5f39da9695e4772b0c900746c64b5987d621bd922a973aef67d77690860"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-curves/local-final01/AFFECTED_FUNCTIONS.json",
+      "sha256": "fc73a2d0aea1fc3f064c8e1bef241b6fad202749785bb186b71ab8f2b168c170"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+        "curves"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": {
+    "method": "_ZN8Presonus9EQControl11setNumBandsEi",
+    "setter_idle_cases": 17,
+    "curve_rebuild_cases": 46,
+    "scope": "Counts0,1,3; equal/different/nonpositive view rect; guard exits; filter types0..3/default7; finite gains/frequencies/Q; sample counts0,1,8,64 and negative no-write branch; dirty/clean and three-band mixtures, buffer modes, enabled/forced/threshold cases. Actual onIdle with controlled real CCL clock and dirty canonical band, timing32/33/34, unchanged/backward, 64-bit crossing."
+  },
+  "limitations": [
+    "All five ordinary return declarations remain provisional. Matching Linux ELF mangling is not original ARM layout/calling-convention/binary interoperability or hardware verification.",
+    "Source-port borrowed CCL View/Control/Parameter bindings and semantic BandParams conversion preserve current canonical model; original GUI inheritance/ownership/fields remain unresolved.",
+    "setNumBands portable negative-count allocation behavior excluded; native signed store retained via requested count but negative count is not a validated allocation domain. Allocation failure/exceptions, unbound providers and malformed destinations are outside measured domain.",
+    "getCurve finite corpus only; negative type indexing, NaN/Inf/overflow, FP exception flags and arbitrary object mutation excluded. Integer/flag/pixel observations exact; response tolerance 2e-4 absolute + 2e-5 relative. Max measured absolute response discrepancy 1.4496168662176227e-05.",
+    "Native mode map [3,8,9,6], default6 produces local order1. Five scale-switch cells are preserved from instruction/table review but not reachable by supported type selectors and not falsely claimed dynamically covered.",
+    "Core body execution excluded from native oracle; parameter/interpolator/view effects captured at explicit boundaries and replayed through real pinned CCL separately. Exact role libm and original compiler-runtime execute with injected software FENV capability word zero, not boot/HWCAP evidence.",
+    "Actual portable onIdle entry uses real CCL POSIX clock API with test-only link wrapping of clock_gettime. Tests cover dirty-band transition and timestamp at elapsed32/33/34, unchanged/backward time and 64-bit crossing. Native onIdle separately observes Control/time/divide/rebuild entry boundaries; integrated native rebuild proof is separate.",
+    "No ready/pending readiness fragments or global admission claim supplied; Root retains full Linux, role/install/compile-once, active-source, guarded SQLite, trackers/mirror and CMake integration."
+  ],
+  "build_integration": {
+    "production_partition": "existing CS18 EQControl.cpp unit, no new production CPP or shared CMake edits",
+    "public_headers": [
+      "uc-library/include/presonus/mixer_dsp/EQControl.hpp"
+    ],
+    "test_sources": [
+      "uc-library/tests/recovery/rolling200-02/eq-curves/driver.cpp"
+    ],
+    "test_targets": [
+      "proposed presonus_eq_curves_replay executable using driver.cpp; root owns CMake"
+    ],
+    "link_dependencies": [
+      "existing DSP BiquadMethods/BiquadIncremental/BiquadSine, EQControlBandParams, pinned actual CCL corelib + allocator, libpng/z/pthread/dl/m, test-only --wrap=clock_gettime"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/rolling200-02/eq-curves/replay_curves.py",
+      "$CANONICAL_BUILT_EXECUTABLE",
+      "uc-library/tests/recovery/rolling200-02/eq-curves/curve-fixtures.json"
+    ],
+    "additional_ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/rolling200-02/eq-curves/replay_boundaries.py",
+      "$CANONICAL_BUILT_EXECUTABLE",
+      "uc-library/tests/recovery/rolling200-02/eq-curves/fixtures.json"
+    ],
+    "root_global_gates_required": true
+  }
+}

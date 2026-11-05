@@ -1,0 +1,587 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_permissions_readonly_03",
+  "namespace": "Presonus::Mixer::PermissionsComponent",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent20getSelectedDeviceAppEv",
+      "demangled": "Presonus::Mixer::PermissionsComponent::getSelectedDeviceApp() const",
+      "address": 331688,
+      "size": 40,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 298920,
+      "range_sha256": "9b322c8c71c7241c68c3ca5b8da89762c6a341d17736dca2f27778657f8be4da"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/uc/ClientSubscription.hpp",
+      "sha256": "87504643593a98f9f0273c3c070aeb0f43b6a76e2e8fcb32b426be1cdafdd51c"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+      "sha256": "4caa7cfb18f5d4fbe4af9c8c0edaeb32f4f682f26d9f9b15c7c00c174a11f311"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp",
+      "sha256": "655212dd3fcbf20beb8cb8aa2ed5508e4ddf4e1fce50383b3b90bb762997af46"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/PermissionsReadonlyReplay.cpp",
+      "sha256": "1f7837ab071995a36474551c7e9540e8a638a89079a5e60314ffac3a30609ff8"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+      "sha256": "617829a95429249b22665f8153f03b3eb896a3f11a4702e9ead64399bc749e59"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_permissions_readonly/native_oracle.py",
+      "sha256": "97e923db240789f4d9407e717536ba2fed2b8b157ae6e305b94121be132f6f7f"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_permissions_readonly/seal.py",
+      "sha256": "5082a531683a8f3c1fbd894ac65aa09bec9f23fe3a6bc38626162f041b7e90e9"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/00-format.log",
+      "sha256": "c7064745019c3e571b615712db43ed1713ec544a53cd923dc735ca899ed4e5ac"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/01-compile.log",
+      "sha256": "df6ceca72ef12ab8a30d9fed748046a1a24c0e042e4e1ae13ad968644522fd3a"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/02-symbols.log",
+      "sha256": "d6901d04bdb394ebf61bad93905e4f393b88c04e19ab716d033cb0c70e5ed6b7"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/03-native.log",
+      "sha256": "f5f4a52351a020912f25c3eddf4cbc22bda10ca9f427ad8b3fd951e5047bf041"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/04-replay.log",
+      "sha256": "1af8e325648a0abde07f81377ed88b40c195dea10da4dbb4473bb1df8fa677a7"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/05-sanitizers.log",
+      "sha256": "64218206c3a7fc6af38ceec1e389fc8b77d6a3b501b4421f3bc4c9f5bdf1e567"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/dependencies.d",
+      "sha256": "3c89290814a37691a5bc5e9f6d82ea8f283d4dc072d4d35d69a622fd326f7120"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/local-proof.json",
+      "sha256": "cd16cbdf4c786fff5758d0fa85a355090edc7d0c2b9f7c593bf6c0f388219b14"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/native-fixture.txt",
+      "sha256": "a2ba83d37f4eabc109e2af9f15845c64442552e1ed9ac53f23f6b6a75af7bca7"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/native-proof.json",
+      "sha256": "2a0f143a1e162323d22cd8b391927d75f83d25e1ee633556e958404c9ca1cc5d"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/native-traces.jsonl",
+      "sha256": "d4fdac894122227b05513ca217798af2f27d1762556183e8ef3a60db429c6101"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/provider-dependencies.json",
+      "sha256": "f4326858130a63a35919835493c96433f4a248cebd48b7f4c84b59d1a67bca2a"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/remarks.json",
+      "sha256": "70eede04d818ebbe7d88c751363d2d9e43420776c923cdd2efd3ea5940e898cc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/corefeatures.h",
+      "sha256": "0ab03cb55c5dd05e418d321b91be07ea0f8dd488358db70c2fc5d2903a9ff96d"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformfilesystem.h",
+      "sha256": "6a35438f4473790ada0ca4ea3ce2b308c737a9e3720a7a29425dd72eeb26ef12"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformtime.h",
+      "sha256": "919a7a83e5312182c613142e8a2d5ad26dfdcad0c09365b3caf658c2cbd113f2"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/corefilesystem.posix.h",
+      "sha256": "26a2ee1c641b46701a07fda2b3cd4a14ae008bb3afa0a1845035ebd08c8d255b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coretime.posix.h",
+      "sha256": "f58e058d5bcf234615fc2a7dad635bc6688fee34d253e419352f9cc5696c0555"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreattributes.h",
+      "sha256": "7070be8a1fccb67814b25b77db3fc0c14283c009a59c2a4060cfe23ded517e96"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponentflags.h",
+      "sha256": "ec762b9af8f44333c7c7c6e0dd4b1225691fc9233eadf10d95ec89c65850640c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefile.h",
+      "sha256": "605f7fbda2de3fe1bc92e340b5d634bdfa7d9b65d3509893df20be7c8a638c1f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefilename.h",
+      "sha256": "6bc8cc5332c21bd7716dd3903a2a83cba6e5857255cea3c19f5e2877b4203004"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corepersistence.h",
+      "sha256": "d07c5e6d3ef3f3755193db8e309b9509840e226251d0d3f92822fe0666ad1a33"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.h",
+      "sha256": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corestorage.h",
+      "sha256": "82936b8a63f2fe9563810cc8299bcb5b22efaa914a518945c6e016b6dcdac901"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coretypeinfo.h",
+      "sha256": "2c5c4ac61b372f490ad071f6a610f5dbbfe9946b3ac38b25d210a97d637261dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corebasicmacros.h",
+      "sha256": "9b879c0b7d7c02ba55e881c2cc768f04f60aa2e8d6d2834cf4afe43e6ca5d0ce"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corebuffer.h",
+      "sha256": "2dbfa18dea304df10fd9f9494889b9f2ccd2a438c592eb1bbb495ebafe84026e"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclassmacros.h",
+      "sha256": "f67174739f108e57b6fdf4fe0a64a7c9df2a38b69841a97bb6ad8b762652ac77"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclibrary.h",
+      "sha256": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corecontainer.h",
+      "sha256": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreformatter.h",
+      "sha256": "cc9215eeea8262be411ed08b2dcda376a2bc2510d5b0cf49b123be82b583d023"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.h",
+      "sha256": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreintrusivelist.h",
+      "sha256": "5e14ca4c99dbb03c15d560fbb3739515a2caf8faa10567e4f7952371b402aae3"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corelinkedlist.h",
+      "sha256": "31eb6bef4fe35fb8e6050f224923b8458733ace303a7c56dc464f1f38ef92cf2"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremacros.h",
+      "sha256": "d2827dfd0182e53757411849b4e582e5a2d4926814a0d21720472432a0ef7829"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremalloc.h",
+      "sha256": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corememstream.h",
+      "sha256": "9fb472fb366b589369f9a7adf0646001599767f63df3236de683d53bc79ab414"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreplatform.h",
+      "sha256": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreproperty.h",
+      "sha256": "5c66c9d3de7afaf716f298a3fbd0f76265f459fd9dae76a6cd7fc5a752365377"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestream.h",
+      "sha256": "6d1728b889ebf8428a510a78e30fd0f0e44bee063cf4cb7b325109f3213b774d"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringtraits.h",
+      "sha256": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corethreading.h",
+      "sha256": "892a1d43d652ea0c9a44abb21d07a5a9ec029b872ba9ab6d30c19eb9a38269e9"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coretypes.h",
+      "sha256": "42caf0a821eb374df5fe0e8b14b3ea1fa368ce06c025710b47abb5a71f247a68"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreuid.h",
+      "sha256": "aac2bbacbb5cc1663753e377b851f8d7fed0ccfb7e977dbc02bf5cb2750ad667"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coretime.h",
+      "sha256": "112daede39c5e3fdf85a2a813afa729fbfeef05eb07dd831fccb1c1e401ebea1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/text/coreattributehandler.h",
+      "sha256": "f89302cc58e295cd92c389f934c15e77614a822a25f2bad1ed9eb73f3ab4e56c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+      "sha256": "0908044558a8e9e9459354caed057eaad2fae97cdbecbe8fe1439d5e29707e8d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/context.json",
+      "sha256": "068cc74750c503448afc86278b444df7c4e5d85a184cc3576a128466bd828cb0"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/request.json",
+      "sha256": "1e4643490c65588c1db76eecea4f8e0cac960152087a6707e218a8b062606218"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/TASK.md",
+      "sha256": "204f718fea0e9ba30619fa7634feb9ef9e5042215975d047d7db398130271197"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/CONTEXT.md",
+      "sha256": "bafe0cf663ba4c2c9d622c67c0a10df436621786f07ab14652a8dd238cd7e9e6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/ELF_CONTEXT.md",
+      "sha256": "18ddc6b394ee45ce156076565f3e784a444f4ca76f1db03eef071efec018af03"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_01/native-context.json",
+      "sha256": "d0c7da095b9a6b000359e0bc210cecd1217336777ef7421337c7620874d8196c"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-permissions-readonly04-01/rolling200_02_permissions_readonly_01.contract.json",
+      "sha256": "138e9625eab6ef30be7bb0dcfedfd328271387025c7a310025b7966fc250e108"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/context.json",
+      "sha256": "bf22f0fbe736b19cf1ec70af6bbc41dba94e8ab46a808a84683e06d52cdcebe2"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/request.json",
+      "sha256": "673ef009d245f305d5a0c8107a240e19823660634dbd69a68215408332b6e7cc"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/TASK.md",
+      "sha256": "656fd15280b6de4f79c44d6a2f5c46099f78451aa664fc8eed0223ff474ea00b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/CONTEXT.md",
+      "sha256": "265a5604c0413cbc35cb841688757c9160682de44e184a4be700afdb5c17ed42"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/ELF_CONTEXT.md",
+      "sha256": "aa123240968207b90abbf61dda4ba6b94ff0b081121f6ac892928a664e61e310"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_02/native-context.json",
+      "sha256": "b92f7fde642288aecbe04106801e65554feb718a612f72a6b8bd14c069e89bf3"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-permissions-readonly04-01/rolling200_02_permissions_readonly_02.contract.json",
+      "sha256": "ef48207c010020bc627c6f559cd8001de4ec14b25a9bfd820ef1c0b79fcc379c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/context.json",
+      "sha256": "8a54601b7f35c777d269c3653ad652372178e328f9156162b8149c82a01920cd"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/request.json",
+      "sha256": "353d893bb798d7cdba69b02333701475787c3068113639ca8b19a8c80dd0ddf2"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/TASK.md",
+      "sha256": "f14b5d22f2105fbb61bad57559957abf8ec367f06b57370684e64250923e6e2e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/CONTEXT.md",
+      "sha256": "c28f51684c1de82d0ef7da423aa6ca600666d3dd314e23ddd1a12518efa9bfdf"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/ELF_CONTEXT.md",
+      "sha256": "d09e9b0e7bcdba5b37d52f6843e428eaca02c757d2a3851bb7aec4862af91a4d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_03/native-context.json",
+      "sha256": "c1b7656362bd619dcbc8d3de4457bfaa9812a66eff10a47bfcdc4fb8f3f8b10b"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-permissions-readonly04-01/rolling200_02_permissions_readonly_03.contract.json",
+      "sha256": "13842a470cbe45bb8c3114249e66e04345a14b6e7e59109e8e8aeb9608ca4f59"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/context.json",
+      "sha256": "7ced25cfa1ebe53ecff3dd654c1ef1433fd070d50a9b207f03d53489ebb4861c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/request.json",
+      "sha256": "9e23bac988b0519079638378e1e9715eb05ea5c8f104e535baff3ee5e5b10a2f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/TASK.md",
+      "sha256": "feccee68936f297f492d87b20976ae6e5b7fe81f038761301572a3015c6f0443"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/CONTEXT.md",
+      "sha256": "03274ebd4b68b6f35d266c6dc67a6f21158c19bd9075798aadba179105b65e7e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/ELF_CONTEXT.md",
+      "sha256": "596def06f84dcb9af9a7b25221eee20860515295962c8c3633d690ec2a8b290c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-current-permissions-readonly04-01/packets/rolling200_02_permissions_readonly_04/native-context.json",
+      "sha256": "38fa5fb12fbefca93e28e09a8df8bfd7633328f7a545b614cd167145788ee6ff"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/current-permissions-readonly04-01/rolling200_02_permissions_readonly_04.contract.json",
+      "sha256": "6c660018f657838a07209cb50a51085ae31ae697ba759fc72b5787578482dbc3"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "native"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "sanitizers",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+        "sanitizers"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": {
+    "native_cases": {
+      "app": 180,
+      "selectedApp": 181,
+      "device": 187,
+      "info": 642
+    },
+    "description": "All app/device literal offsets fitting NUL-terminated64-byte buffers; absence, case variants, overlap/precedence; null selected; every display length0..63 with ten device lengths and high-byte samples; compare full64-byte aggregate output including untouched tails, guards and unchanged inputs. Native app PC/write allowlists enforced."
+  },
+  "limitations": [
+    "Original return spellings remain unresolved: int classifications and Core::CStringBuffer<64> aggregate return are intentional provisional source-port choices.",
+    "ClientSubscription is a tagged partial source-port value with independent CCL buffers, not original construction, fields/layout, inheritance, virtual interface, ownership or ARM ABI.",
+    "Only four exact original ARM getter bodies execute; named libc boundaries are recorded semantic intercept models. No original libc/CCL/hardware execution is claimed. REA tools were unavailable; results are pyelftools/Unicorn observations, not REA Evidence.",
+    "Domain requires nonnull createClientInfo input, NUL termination within each 64-byte buffer, safe private memory and no concurrent mutation. Null createClientInfo and malformed strings are excluded.",
+    "Local link discards unrelated existing methods with --gc-sections; full Linux integration, existing-method replays, role/install/compile-once checks and readiness remain Root-owned.",
+    "Optional sanitizer check excludes vptr: initial generic UBSan link retained RTTI references from unrelated discarded methods. Getters have no virtual call boundary; AddressSanitizer and other UndefinedBehaviorSanitizer checks passed."
+  ],
+  "build_integration": {
+    "production_partition": "Existing PermissionsComponent.cpp remains in its current exactly-one common OBJECT partition; no new production CPP.",
+    "public_headers": [
+      "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+      "uc-library/include/presonus/uc/ClientSubscription.hpp"
+    ],
+    "test_target": "permissions_readonly_replay",
+    "test_source": "uc-library/tests/recovery/PermissionsReadonlyReplay.cpp",
+    "link_dependencies": "Actual canonical production library and pinned CCL provider. Local bounded check uses actual full-TU object with section garbage collection and libc; no Core test provider.",
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/candidates/rolling200_02_permissions_readonly/checks.py",
+      "replay",
+      "--executable",
+      "<canonical permissions_readonly_replay executable>",
+      "--fixture",
+      "evidence/recovery/2026-11-05/permissions-readonly01/native-fixture.txt"
+    ],
+    "fixture_binding": {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/permissions-readonly01/native-fixture.txt",
+      "sha256": "a2ba83d37f4eabc109e2af9f15845c64442552e1ed9ac53f23f6b6a75af7bca7"
+    },
+    "source_placement_review": "Canonical existing class files plus principal-class ClientSubscription header; no worker/batch production paths.",
+    "root_required": "Full Linux integration, existing-method behavior replays, role/install/compile-once, active-source proof, guarded SQLite dry-run/admission, tracker/mirror. Worker supplies no readiness fragment or global edits."
+  }
+}

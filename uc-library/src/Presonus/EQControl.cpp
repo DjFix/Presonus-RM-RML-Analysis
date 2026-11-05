@@ -1,4 +1,9 @@
 #include "presonus/mixer_dsp/EQControl.hpp"
+#include "core/system/coretime.h"
+#include "presonus/dsp/biquad_calc.hpp"
+#include <algorithm>
+#include <cmath>
+#include <cstring>
 #include <stdexcept>
 #include <strings.h>
 
@@ -236,5 +241,173 @@ void EQControl::paramChanged(Core::Portable::Parameter *parameter,
     }
   }
   observerControl->Core::Portable::Control::paramChanged(parameter, message);
+}
+void EQControl::setNumBands(int count) {
+  requestedBandCount = count;
+  // Native negative allocation behavior is excluded. Retain the requested
+  // signed count and represent its empty iteration domain without allocation.
+  portableBands.resize(static_cast<unsigned>(std::max(count, 0)));
+  initBands();
+}
+void EQControl::setSize(const Core::TRect<int> &rectangle) {
+  if (!portableView)
+    throw std::logic_error("EQControl view provider must be bound");
+  portableView->setSize(rectangle);
+  initBands();
+}
+bool EQControl::getCurve(float *destination, int index, int samples) const {
+  if (index < 0 || index >= static_cast<int>(portableBands.size()) ||
+      index >= static_cast<int>(typeParameters.size()) ||
+      !typeParameters[static_cast<unsigned>(index)] || curveMinimum == 0.f ||
+      curveMaximum == 0.f || samples == 0)
+    return false;
+  const float q = getQ(index);
+  if (q == 0.f)
+    return false;
+  if (samples > 0 && !destination)
+    throw std::invalid_argument("EQControl curve destination must be valid");
+  const int type = getType(index);
+  // Negative type indexing is unchecked in the original; exclude it explicitly.
+  if (type < 0)
+    throw std::out_of_range("EQControl negative filter type is unsupported");
+  const int modes[] = {3, 8, 9, 6};
+  const int mode = type <= 3 ? modes[type] : 6;
+  presonus::dsp::BiquadState<float> seed{};
+  seed.mode = 6;
+  seed.word54 = 1;
+  seed.frequency = 1000.f;
+  seed.q = 0.7f;
+  seed.coefficients[0] = 1.f;
+  DSP::BiquadCalc<float, false> calculator(presonus::dsp::BiquadSeedTag{},
+                                           seed);
+  calculator.setup(32, 88200.);
+  calculator.setParams(mode, getFrequency(index), q, getGain(index));
+  const auto &state = calculator.portableState();
+  const auto &c = state.coefficients;
+  const float b1 = c[2] / c[0], b2 = c[4] / c[0];
+  const float a1 = -c[1], a2 = -c[3];
+  const float step = static_cast<float>(
+      std::pow(static_cast<double>(curveMaximum / curveMinimum),
+               static_cast<double>(1.f / static_cast<float>(samples))));
+  float scale = 1.f;
+  switch (state.word54) {
+  case 2:
+  case 4:
+    scale = 2.f;
+    break;
+  case 3:
+  case 5:
+    scale = 3.f;
+    break;
+  case 6:
+    scale = 4.f;
+    break;
+  }
+  // Native two-iteration reciprocal-root estimate, retaining binary32 staging.
+  const auto magnitude = [](float squared) {
+    if (squared == 0.f)
+      return 0.f;
+    std::uint32_t bits;
+    std::memcpy(&bits, &squared, sizeof bits);
+    bits = 0x5f3759dfu - (bits >> 1);
+    float inverse;
+    std::memcpy(&inverse, &bits, sizeof inverse);
+    const float half = squared * 0.5f;
+    inverse = inverse * (1.5f - inverse * (half * inverse));
+    inverse = inverse * (1.5f - inverse * (half * inverse));
+    return squared * inverse;
+  };
+  float frequency = curveMinimum;
+  for (int x = 0; x < samples; ++x) {
+    const float angle = static_cast<float>(
+        (static_cast<double>(frequency) + static_cast<double>(frequency)) *
+        static_cast<double>(state.piOverRate));
+    const float cosine = std::cos(angle), sine = std::sin(angle);
+    const float real2 = cosine * cosine - sine * sine;
+    const float imaginary2 = sine * (cosine + cosine);
+    const float numeratorReal = b2 + (real2 + b1 * cosine);
+    const float numeratorImaginary = imaginary2 + b1 * sine;
+    const float denominatorReal = a2 + (real2 + a1 * cosine);
+    const float denominatorImaginary = imaginary2 + a1 * sine;
+    const float numerator = magnitude(numeratorReal * numeratorReal +
+                                      numeratorImaginary * numeratorImaginary);
+    const float denominator =
+        magnitude(denominatorReal * denominatorReal +
+                  denominatorImaginary * denominatorImaginary);
+    const float ratio = (c[0] * numerator) / denominator;
+    const float decibels =
+        ratio < 0x1.0efe7ep-24f ? -144.f : std::log10(ratio) * 20.f;
+    destination[x] = scale * decibels;
+    frequency = frequency * step;
+  }
+  return true;
+}
+void EQControl::rebuildCurves() {
+  if (!portableView)
+    throw std::logic_error("EQControl view provider must be bound");
+  Core::Rect rectangle;
+  portableView->getClientRect(rectangle);
+  const int width = rectangle.getWidth();
+  if (width <= 0 || portableBands.empty())
+    return;
+  if (bandCurves.size() < portableBands.size() ||
+      amplitudeCurve.size() < static_cast<unsigned>(width) ||
+      (!bufferedDraw && pixelCurve.size() < static_cast<unsigned>(width)))
+    throw std::logic_error("EQControl curve storage must cover view and bands");
+  bool changed = false;
+  for (unsigned i = 0; i < portableBands.size(); ++i) {
+    auto &band = portableBands[i];
+    if (!band.dirty)
+      continue;
+    auto &curve = bandCurves[i];
+    if (curve.size() < static_cast<unsigned>(width))
+      throw std::logic_error("EQControl band curve must cover view width");
+    band.on = getBandEnabled(static_cast<int>(i));
+    band.gain = getGain(static_cast<int>(i));
+    band.frequency = getFrequency(static_cast<int>(i));
+    getCurve(curve.data(), static_cast<int>(i), width);
+    // Original tests the allocated pointer, not getCurve's result.
+    band.enabled = curve.data() != nullptr;
+    band.dirty = 0;
+    band.x = freqToX(band.frequency);
+    band.y = gainToY(band.gain);
+    changed = true;
+  }
+  if (!changed)
+    return;
+  std::fill_n(amplitudeCurve.begin(), width, 0.f);
+  if (!bufferedDraw)
+    std::fill_n(pixelCurve.begin(), width, 0);
+  for (int x = 0; x < width; ++x) {
+    float &sample = amplitudeCurve[static_cast<unsigned>(x)];
+    for (unsigned i = 0; i < portableBands.size(); ++i) {
+      const auto &band = portableBands[i];
+      if (band.enabled && band.on &&
+          (band.forceCurve || std::fabs(band.gain) > 0.05f))
+        sample = sample + bandCurves[i][static_cast<unsigned>(x)];
+    }
+    if (!bufferedDraw)
+      pixelCurve[static_cast<unsigned>(x)] = gainToY(sample);
+  }
+  bufferValid = true;
+  portableView->invalidate();
+}
+void EQControl::onIdle() {
+  if (!observerControl)
+    throw std::logic_error("EQControl control provider must be bound");
+  observerControl->Core::Portable::Control::onIdle();
+  // CCL POSIX getTime is nanoseconds, matching the native 1000000 divisor.
+  // This is an intentional binding to the pinned clock API, not legacy Core.
+  const std::int64_t now = Core::SystemClock::getTime() / 1000000;
+  const auto elapsed = static_cast<std::uint64_t>(now) -
+                       static_cast<std::uint64_t>(lastCurveTime);
+  // Preserve ARM high-word signed comparison, including low-word borrow,
+  // without invoking signed overflow in C++.
+  const auto high = static_cast<std::uint32_t>(elapsed >> 32);
+  if ((high != 0 && high < 0x80000000u) ||
+      (high == 0 && static_cast<std::uint32_t>(elapsed) > 33u)) {
+    rebuildCurves();
+    lastCurveTime = now;
+  }
 }
 } // namespace Presonus

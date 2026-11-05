@@ -1,4 +1,5 @@
 #include "presonus/StormMixSceneComponent.hpp"
+#include <limits>
 namespace Presonus {
 void StormMixSceneComponent::setDelegate(Delegate *value) {
   originalDelegate = value;
@@ -57,5 +58,22 @@ void StormMixSceneComponent::onIdle() {
       }
     }
   }
+}
+} // namespace Presonus
+
+namespace Presonus {
+// Initial bytes read from the original ELF static default-name pointer.
+// Pointer const qualification remains an intentional source-port declaration.
+const char *StormMixSceneComponent::kDefaultName = "Mix Scene";
+Core::CStringBuffer<32>
+StormMixSceneComponent::createDefaultName(int index) const {
+  Core::CStringBuffer<32> name(kDefaultName);
+  // Native ARM addition wraps at 32 bits; avoid signed-overflow undefined
+  // behavior for INT_MAX while preserving the canonical Linux int32 result.
+  const auto number = index == std::numeric_limits<int>::max()
+                          ? std::numeric_limits<int>::min()
+                          : index + 1;
+  name.appendFormat(" %i", number);
+  return name;
 }
 } // namespace Presonus

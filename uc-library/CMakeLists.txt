@@ -1952,6 +1952,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/MeterManagerBase.hpp
   presonus/LinkControl.hpp
   presonus/mixer/PermissionsComponent.hpp
+  presonus/uc/ClientSubscription.hpp
   presonus/PanControl.hpp
   presonus/uc/DataChannel.hpp
   presonus/MackieControlModel.hpp
@@ -2271,3 +2272,5 @@ endif()
 include(cmake/Rolling200Implementation01.cmake)
 include(cmake/Rolling200Implementation02.cmake)
 include(cmake/Rolling200Closeout02.cmake)
+
+include(cmake/ComponentReadonlyReplays.cmake)
