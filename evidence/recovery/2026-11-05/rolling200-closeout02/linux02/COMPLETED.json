@@ -1,0 +1,183 @@
+{
+  "passed": true,
+  "platform": "linux",
+  "test_suites": 484,
+  "previous_suites_preserved": 484,
+  "producer": {
+    "path": "uc-library/tools/recovery/validate_linux_integration.py",
+    "sha256": "0c12f8c263325cae9a7b78f66f2456ecf74d9b14e6a6bb5103f6c989cf879ac1"
+  },
+  "commands": [
+    {
+      "label": "configure",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/cmake",
+        "-S",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library",
+        "-B",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01"
+      ],
+      "start_utc": "2026-11-05T10:13:32.105702+00:00",
+      "wall_seconds": 1.8747399660060182,
+      "coordinator_cpu_seconds": 0.000479008000000003,
+      "subprocess_tree_cpu_seconds": 1.875845,
+      "returncode": 0
+    },
+    {
+      "label": "capture",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python",
+        "-B",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/tools/capture_integration_inputs.py",
+        "--library",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library",
+        "--additional-list",
+        "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-05/rolling200-closeout02/linux02/additional-effective.json",
+        "--expected-suites",
+        "484",
+        "--output",
+        "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-05/rolling200-closeout02/linux02/inputs.json"
+      ],
+      "start_utc": "2026-11-05T10:13:35.672127+00:00",
+      "wall_seconds": 2.1626514390081866,
+      "coordinator_cpu_seconds": 0.0005054769999999209,
+      "subprocess_tree_cpu_seconds": 2.1618949999999995,
+      "returncode": 0
+    },
+    {
+      "label": "build",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/cmake",
+        "--build",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+        "--parallel",
+        "8"
+      ],
+      "start_utc": "2026-11-05T10:13:37.835243+00:00",
+      "wall_seconds": 21.90680093600531,
+      "coordinator_cpu_seconds": 0.0005445020000003353,
+      "subprocess_tree_cpu_seconds": 69.06890299999999,
+      "returncode": 0
+    },
+    {
+      "label": "inventory",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/ctest",
+        "--test-dir",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+        "--show-only=json-v1"
+      ],
+      "start_utc": "2026-11-05T10:13:59.742351+00:00",
+      "wall_seconds": 0.1513004309963435,
+      "coordinator_cpu_seconds": 0.0003513189999999611,
+      "subprocess_tree_cpu_seconds": 0.15096600000000393,
+      "returncode": 0
+    },
+    {
+      "label": "tests",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/ctest",
+        "--test-dir",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+        "--output-on-failure",
+        "--parallel",
+        "8"
+      ],
+      "start_utc": "2026-11-05T10:13:59.896092+00:00",
+      "wall_seconds": 128.57112742000027,
+      "coordinator_cpu_seconds": 0.0003919549999999994,
+      "subprocess_tree_cpu_seconds": 468.45643300000006,
+      "returncode": 0
+    },
+    {
+      "label": "seal",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python",
+        "-B",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/tools/seal_integration.py",
+        "--library",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library",
+        "--repository",
+        "/home/rs/projects/opencs/ai-line-analysis",
+        "--evidence",
+        "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-05/rolling200-closeout02/linux02",
+        "--platform",
+        "linux",
+        "--baseline",
+        "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-05/rolling200-closeout02/linux02/inputs.json",
+        "--output",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/validation/integration.json"
+      ],
+      "start_utc": "2026-11-05T10:16:08.976616+00:00",
+      "wall_seconds": 1.886614143004408,
+      "coordinator_cpu_seconds": 0.00046246799999982713,
+      "subprocess_tree_cpu_seconds": 1.886006999999978,
+      "returncode": 0
+    },
+    {
+      "label": "install",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/cmake",
+        "--install",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+        "--prefix",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/rolling200-closeout02-install02"
+      ],
+      "start_utc": "2026-11-05T10:16:10.864165+00:00",
+      "wall_seconds": 0.21528523199958727,
+      "coordinator_cpu_seconds": 0.00038075400000003867,
+      "subprocess_tree_cpu_seconds": 0.21485699999993813,
+      "returncode": 0
+    },
+    {
+      "label": "role-audit",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python",
+        "-B",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/tools/recovery/audit_role_build_basic_activity.py",
+        "/home/rs/projects/opencs/ai-line-analysis",
+        "--build",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+        "--prefix",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/rolling200-closeout02-install02"
+      ],
+      "start_utc": "2026-11-05T10:16:11.079912+00:00",
+      "wall_seconds": 6.441628230008064,
+      "coordinator_cpu_seconds": 0.0004245659999999596,
+      "subprocess_tree_cpu_seconds": 7.106791000000015,
+      "returncode": 0
+    },
+    {
+      "label": "installed-audit",
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python",
+        "-B",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library/tools/audit_install.py",
+        "--library",
+        "/home/rs/projects/opencs/ai-line-analysis/uc-library",
+        "--prefix",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/rolling200-closeout02-install02",
+        "--nm",
+        "/usr/bin/nm",
+        "--output",
+        "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-05/rolling200-closeout02/linux02/installed-audit.json",
+        "--provider-sdk",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01/upstream-core/sdk"
+      ],
+      "start_utc": "2026-11-05T10:16:17.522155+00:00",
+      "wall_seconds": 2.9012141819985118,
+      "coordinator_cpu_seconds": 0.00038639500000003935,
+      "subprocess_tree_cpu_seconds": 2.9018499999999676,
+      "returncode": 0
+    }
+  ],
+  "start_utc": "2026-11-05T10:13:31.579655+00:00",
+  "end_utc": "2026-11-05T10:16:20.925309+00:00",
+  "readiness_admitted": false,
+  "preflight": {
+    "path": "evidence/recovery/2026-11-05/rolling200-closeout02/linux02/preflight.json",
+    "sha256": "38fb337e1b64444241a8057789768976850b7ffb135572cfb5e8a15673b9fd67",
+    "source_snapshot_sha256": "577b37ded3503b15963a088261d06d08326fb78c64adedebf075befbc1924b8d"
+  },
+  "scope": "Fresh full Linux build/tests/integration/installed-role and compile-once checks; no readiness admission or classification."
+}

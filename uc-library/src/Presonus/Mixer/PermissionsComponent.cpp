@@ -1,14 +1,100 @@
 #include "presonus/mixer/PermissionsComponent.hpp"
+#include "core/portable/corecomponent.h"
 #include "core/portable/corefile.h"
 #include "core/portable/corepersistence.h"
+#include "core/portable/corestorage.h"
+#include "core/system/coretime.h"
 #include "presonus/mixer/MixerComponentBase.hpp"
 
 namespace Presonus::Mixer {
+const UC::ClientSubscription *PermissionsComponent::getSelectedDevice() const {
+  return bindings_.selectedSnapshot;
+}
+void PermissionsComponent::syncMixStrings() {
+  auto *parameter = bindings_.accessCodeParameters->getParameterByTag(2);
+  if (parameter && bindings_.mix->getValue() != 0.f) {
+    Core::CStringBuffer<128> text;
+    bindings_.mix->toString(text.getBuffer(), 128);
+    parameter->fromString(text.str(), false);
+  }
+}
+void PermissionsComponent::portableIdleAt(std::int64_t scheduleMilliseconds,
+                                          std::int64_t comparisonMilliseconds) {
+  if (bindings_.dirty) {
+    bindings_.dirty = 0;
+    bindings_.mix->changed();
+    bindings_.other->changed();
+    // Unsigned addition preserves native two-word wrap without signed UB.
+    bindings_.deadlineMilliseconds = static_cast<std::int64_t>(
+        static_cast<std::uint64_t>(scheduleMilliseconds) + 3000u);
+  }
+  compareDeadlineAt(comparisonMilliseconds);
+}
+void PermissionsComponent::compareDeadlineAt(
+    std::int64_t comparisonMilliseconds) {
+  if (bindings_.deadlineMilliseconds != 0 &&
+      bindings_.deadlineMilliseconds > comparisonMilliseconds) {
+    bindings_.deadlineMilliseconds = 0;
+    bindings_.mix->rangeChanged();
+    bindings_.other->rangeChanged();
+  }
+}
+void PermissionsComponent::onIdle() {
+  if (bindings_.dirty) {
+    bindings_.dirty = 0;
+    bindings_.mix->changed();
+    bindings_.other->changed();
+    bindings_.deadlineMilliseconds = static_cast<std::int64_t>(
+        static_cast<std::uint64_t>(Core::SystemClock::getMilliseconds()) +
+        3000u);
+  }
+  if (bindings_.deadlineMilliseconds)
+    compareDeadlineAt(Core::SystemClock::getMilliseconds());
+}
+void PermissionsComponent::getFileName(
+    Core::Portable::FileName &fileName,
+    const Core::CStringBuffer<64> &name) const {
+  fileName = "";
+  if (name.isEmpty())
+    return;
+  fileName = bindings_.mixer->getDataDir("permissions");
+  fileName.descend(name.str());
+  fileName.append(".perms");
+}
+void PermissionsComponent::loadAccessCode() {
+  auto *parameter = bindings_.accessCodeParameters->getParameterByTag(4);
+  if (!parameter)
+    return;
+  auto *code = Core::Portable::StringParam::cast(parameter);
+  Core::Portable::Attributes attributes(
+      Core::Portable::AttributeAllocator::getDefault());
+  Core::Portable::FileName filename;
+  getAccessCodeFileName(filename);
+  if (Core::Portable::ArchiveUtils::loadFromFile(attributes, filename.str())) {
+    if (auto *value = attributes.lookup(parameter->getName())) {
+      parameter->fromString(value->getString(), false);
+      if (!code->getText().isEmpty())
+        return;
+    }
+  }
+  parameter->resetValue(false);
+}
+void PermissionsComponent::saveSelectedDevice() const {
+  if (!bindings_.selectedSnapshot)
+    return;
+  Core::Portable::Attributes attributes(
+      Core::Portable::AttributeAllocator::getDefault());
+  Core::Portable::AttributesBuilder builder(attributes);
+  Core::Portable::OutputStorage storage(builder);
+  bindings_.accessCodeParameters->save(storage);
+  Core::Portable::FileName filename;
+  getSelectedFileName(filename);
+  Core::Portable::ArchiveUtils::saveInBackground(filename.str(), attributes);
+}
 void PermissionsComponent::getSelectedFileName(
     Core::Portable::FileName &fileName) const {
   if (bindings_.selectedName)
-    bindings_.getFileName(bindings_.context, *this, fileName,
-                          *bindings_.selectedName);
+    getFileName(fileName, *bindings_.selectedName);
 }
 
 void PermissionsComponent::getMixString(

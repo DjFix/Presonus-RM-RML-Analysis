@@ -26,6 +26,9 @@ public:
   void setChannelNumberParam(Parameter *parameter);
   void setRightSideParam(Parameter *parameter);
   void setStereoPanParam(Parameter *parameter);
+  // Ordinary draw return declarations remain provisional source-port choices.
+  void drawValueMark(const Core::Portable::DrawEvent &);
+  void drawImagePanner(const Core::Portable::DrawEvent &);
   bool isStereo() const;
   bool isLinked() const;
   float computeLinkedPanValue(float value) const;

@@ -1,0 +1,393 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_impl_w03_04",
+  "namespace": "Presonus::Mixer::PermissionsComponent",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-closeout09-01/packets/rolling200_02_impl_w03_04/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZNK8Presonus5Mixer20PermissionsComponent11getFileNameERN4Core8Portable8FileNameERKNS2_13CStringBufferILi64EEE",
+      "demangled": "Presonus::Mixer::PermissionsComponent::getFileName(Core::Portable::FileName&, Core::CStringBuffer<64> const&) const",
+      "address": 330668,
+      "size": 232,
+      "section": ".text",
+      "section_index": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/StormMuteGroupComponent.hpp",
+      "sha256": "790c79ed97678b161d7616c64d8efa00d3fdd2da58d7fbdf8cfc221eab1bae9e"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/StormMuteGroupComponent.cpp",
+      "sha256": "8e6d5a63ce4a1f402ef95ccfe84bae75a5e61195087f508ec2ed170757783af3"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+      "sha256": "346d7353f601f4530bc63830196b195f815548de0c26bbeaa2138cdb8502e034"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp",
+      "sha256": "8b7faa1eacec1c932650be30c11e6aa3912f81eba57aef101f7e6f9271c99c17"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/PermissionsComponentReplay.cpp",
+      "sha256": "6e62153d32b6276658e06654f996cd19ddeb08a5eea151fbd946426017157d45"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/rolling200_02_closeout09_owner01/native-fixtures.json",
+      "sha256": "020dc8fc1e4807cf55c86fafaec080241b7d3a86a4c752692880fc67966640f7"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/candidates/rolling200_02_closeout09_owner01/existing-helper-fixtures.json",
+      "sha256": "206f0988d73c25f421f4c80482f250827d0bd0e91cece447486cfa0b0972cd0a"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+      "sha256": "187a07ac95fabb62739ebb90f6772d0f134803d0118110bcdfaafdea6cfe8fa1"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_closeout09_owner01/native.py",
+      "sha256": "882329793758d1cb13881c0187c0be81e99e37bc17209ac7eaae9b97e46dd723"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_closeout09_owner01/seal.py",
+      "sha256": "a2f0feda953ce103c3785de0440c27d96ce4306c0903efc9bdce5913805f7dcd"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/rolling200_02_impl_w03_04/proof.json",
+      "sha256": "8367af258cd130fb69d92ab25244e04a76fd371177bf00b8298e1f9bb376eb5c"
+    },
+    {
+      "kind": "remarks",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/rolling200_02_impl_w03_04/remarks.json",
+      "sha256": "e906ea459c353e9394a719e45735779bd10e1b5eb010fb21309ab12445889724"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-closeout09-01/packets/rolling200_02_impl_w03_04/context.json",
+      "sha256": "71b0c756bcd73928451faf43d5b731d8a29bac3d6d3987ea5857175e9a570a7c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-closeout09-01/packets/rolling200_02_impl_w03_04/native-context.json",
+      "sha256": "81515ddf1ba68c882db70796d6dfe7730c4f13927b2884f753119abdc0c9c815"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-closeout09-01/packets/rolling200_02_impl_w03_04/request.json",
+      "sha256": "823844fc8f23d8b43e1e0e8fe51cd0e9c9a1e4e82b91f7a48999bbedd4d59537"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/MuteGroupBase.hpp",
+      "sha256": "a3cc37f24b3292b059de4aadbaa3d9481a2dfe40ea8c5def113f9babc978a3c0"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/MuteGroupBase.cpp",
+      "sha256": "6395a9d37604935ed77c539b89f0542210719d1252a1c0671df255e387656fcf"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+      "sha256": "0908044558a8e9e9459354caed057eaad2fae97cdbecbe8fe1439d5e29707e8d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Mixer/MixerComponentBase.cpp",
+      "sha256": "fcaadde57cff124ca39eba52c787f2c7f191e2155b1b51ae552acc36fc0d1412"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.cpp",
+      "sha256": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreattributes.h",
+      "sha256": "7070be8a1fccb67814b25b77db3fc0c14283c009a59c2a4060cfe23ded517e96"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreattributes.cpp",
+      "sha256": "98dae6e293cc7120d41497f3a4ec8310eb320235ef1dfae1758db5afb59d932a"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corepersistence.h",
+      "sha256": "d07c5e6d3ef3f3755193db8e309b9509840e226251d0d3f92822fe0666ad1a33"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corepersistence.cpp",
+      "sha256": "6964b54bc0c884a89ec527d79031b0b610f52f65fe4e092f1c5ec7597d902f67"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefilename.h",
+      "sha256": "6bc8cc5332c21bd7716dd3903a2a83cba6e5857255cea3c19f5e2877b4203004"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefilename.cpp",
+      "sha256": "33b395cec42e092af480872edaef6d5c7effe438aa4a8cccca0d68a81844d0ea"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefile.h",
+      "sha256": "605f7fbda2de3fe1bc92e340b5d634bdfa7d9b65d3509893df20be7c8a638c1f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corefile.cpp",
+      "sha256": "16df2719211eafbcd8feab72d3e6d7979899a505e7e2738922a4a281f4b6b5d7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corestorage.h",
+      "sha256": "82936b8a63f2fe9563810cc8299bcb5b22efaa914a518945c6e016b6dcdac901"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coretime.h",
+      "sha256": "112daede39c5e3fdf85a2a813afa729fbfeef05eb07dd831fccb1c1e401ebea1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coretime.posix.h",
+      "sha256": "f58e058d5bcf234615fc2a7dad635bc6688fee34d253e419352f9cc5696c0555"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformtime.h",
+      "sha256": "919a7a83e5312182c613142e8a2d5ad26dfdcad0c09365b3caf658c2cbd113f2"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/check-symbols.json",
+      "sha256": "7350848742b80810abcc70a533b4e5b336659331a2ca9dd2a7124446937d0ec3"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/check-compile.json",
+      "sha256": "680c182b47f612789a8a5e2173af20eb78e1bb1c6ebb61d5d0ffbd06c50291f1"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/check-replay.json",
+      "sha256": "56d02a9a256d6bc69a0d91b997dcab631245c0b86edf519aafd914747a9b0fc5"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/check-replay_helpers.json",
+      "sha256": "0204e08b2d9d1a8f74848038c20f689fcc3074a599bc4dd24259280cc99d6390"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/check-format.json",
+      "sha256": "0e2b205a56ff540405ea17d620f6ae34000004415c48a95baff518a40f796363"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/portable-observations.json",
+      "sha256": "6e2247790931287886b6c42267996b76d5a2e236b19cade7d2194e3c201c477d"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/helper-portable-observations.json",
+      "sha256": "431ae1cf85cf2632dd9a165ac355a5b579547182850b0b6364385b48ac8a07b4"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/logs/symbols.txt",
+      "sha256": "2fc7a0a7b1cc3fdaa390f1822422f2d37c7dd8161e88077d92a0ac1d03b50cb3"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/PROVENANCE.json",
+      "sha256": "f72a0132dc04f630f6d39ce65d16283ee5ceac682a86746dbe7d2ac142bee01a"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/AFFECTED_EXISTING.json",
+      "sha256": "ba5b4d14a23563f17ca0959b5a5cb2a85b14c885cc876bdb05b600a624739650"
+    },
+    {
+      "kind": "evidence",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/BUILD_INTEGRATION.json",
+      "sha256": "1902c3ac61a0ad8f2782c89bc6add3153bd0bf050269d8f313cd1929374f52d1"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/expand-closeout09-w03_04-getDataDir01/native-context.json",
+      "sha256": "3e66c81a3df5d7863a6d802166fce90b8c5f81bb7a4434c6bc3d1531b56b84e6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/expand-closeout09-w03_06-getSelectedFileName01/native-context.json",
+      "sha256": "5324396933a5afc65b5560c2df1d847f18a969ba30d21e470b78a3874e0794fd"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/expand-closeout09-w03_01-getAccessCodeFileName01/native-context.json",
+      "sha256": "4f039979b6447a6dfe95a6afd18004b0b40bd7ff1721e62ec1bbb271b9f0d2a1"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/EXISTING_HELPER_PROOF.json",
+      "sha256": "d021255079b8edd4be7ec4a67100178f34b2d3ca9fd718ca5bf63bcd342d07b7"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/closeout09-owner01/final02/ACTUAL_IDLE_REPAIR.json",
+      "sha256": "f87c6827eccc6cb384b4a06fba2f0e91d50c86beb0cbc9c2140e9e89b00aae01"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+        "replay_helpers"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "Four actual FileName/getDataDir cases: empty name clears without directory provider calls, short name,63-byte name with trailing root separator,235-byte data root forcing255-byte truncation.",
+  "limitations": [
+    "All ordinary original return declarations remain unresolved: all nine compiled results are declaration-pending source ports. Mangling does not establish original return types, layout, ARM32 ABI, inheritance, runtime or hardware interoperability.",
+    "No Core binary instructions execute. Explicit Core/runtime/provider interception captures bounded application control flow; real pinned CCL is executed independently in portable replay. Provider-internal effects are source-port observations, not original Core equivalence.",
+    "Native application memory writes and all permitted executed PCs are recorded. Provider API writes are reported through explicit events/state/filename observations rather than Unicorn instruction memory-write hook. Unknown execution PCs raise.",
+    "Captured native directory/provider trace entries and save archive flags are retained in fixtures but not asserted as exact portable trace equivalence; portable replay checks actual filename bytes and archive parameter content. No original file serialization byte equivalence is claimed.",
+    "Normal paths only: native exception/unwind and allocation failure are not exercised. C++ cleanup uses actual provider RAII; no independently validated native unwind equivalence is claimed.",
+    "Actual onIdle differential replay intercepts libc clock_gettime only in the scoped test call, delegates real clock outside that scope, and preserves pinned CCL conversion. Native GetAbsoluteTime divided by1000000 adapts to actual SystemClock::getMilliseconds. Nine sampled converted quotients match; original clock units remain unproven. NaNs, malformed objects, invalid groups and unsupported provider failures are excluded."
+  ],
+  "build_integration": {
+    "partition": "Existing production source groups retained; both production CPPs already have exactly one partition. Root verifies current partition before admission.",
+    "production_sources": [
+      "uc-library/src/Presonus/StormMuteGroupComponent.cpp",
+      "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp"
+    ],
+    "public_headers": [
+      "uc-library/include/presonus/StormMuteGroupComponent.hpp",
+      "uc-library/include/presonus/mixer/PermissionsComponent.hpp"
+    ],
+    "test_sources": [
+      "uc-library/tests/recovery/PermissionsComponentReplay.cpp"
+    ],
+    "target": "permissions_storm_component_replay",
+    "compile_options": [
+      "-fno-rtti"
+    ],
+    "link_options": [
+      "-Wl,--wrap=clock_gettime"
+    ],
+    "link_libraries": [
+      "presonus_rm_components"
+    ],
+    "canonical_ctest": [
+      {
+        "name": "permissions_storm_native_replay",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+          "replay",
+          "$<TARGET_FILE:permissions_storm_component_replay>"
+        ],
+        "fixture": "uc-library/candidates/rolling200_02_closeout09_owner01/native-fixtures.json"
+      },
+      {
+        "name": "permissions_selected_filename_existing_replay",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/candidates/rolling200_02_closeout09_owner01/check.py",
+          "replay_helpers",
+          "$<TARGET_FILE:permissions_storm_component_replay>"
+        ],
+        "fixture": "uc-library/candidates/rolling200_02_closeout09_owner01/existing-helper-fixtures.json"
+      }
+    ],
+    "existing_regression_sources": [
+      "uc-library/tests/graph_trial05_permissions_tests.cpp target0 six callback-based cases require explicit Root adapter to separately labelled existing-helper proof; targets1..4 remain unchanged",
+      "uc-library/tests/recovery/trial08/mixerbase/finalfive/tests.cpp method7 resetPermissionsPW/saveAccessCode uses actual provider and remains compatible",
+      "uc-library/tests/graph_trial07_mutegroup_tests.cpp and graph_trial04_mutegroup_tests.cpp share Storm class source hash; existing methods are semantically unchanged"
+    ]
+  }
+}

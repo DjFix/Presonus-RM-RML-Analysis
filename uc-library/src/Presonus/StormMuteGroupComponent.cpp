@@ -44,6 +44,34 @@ void Timer::reset() const {
 } // namespace presonus::storm_mute_port
 namespace Presonus {
 using presonus::storm_mute_port::Group;
+void StormMuteGroupComponent::setDelegate(Delegate *delegate) {
+  state.delegate = delegate;
+}
+namespace {
+void requireInitializedGroups(const presonus::storm_mute_port::State &state) {
+  if (state.groups.count() != 8 || !state.allGroup ||
+      state.groups.contains(state.allGroup))
+    throw std::logic_error("mute-group split-storage correspondence requires "
+                           "eight regular groups and a separate all-group");
+  for (int i = 0; i < state.groups.count(); ++i)
+    if (!state.groups[i])
+      throw std::logic_error(
+          "null regular mute group outside initialized domain");
+}
+} // namespace
+unsigned int StormMuteGroupComponent::getSwitchTag(unsigned int index) {
+  requireInitializedGroups(state);
+  return index == static_cast<unsigned int>(state.groups.count()) ? 0u
+                                                                  : index + 2u;
+}
+bool StormMuteGroupComponent::isParamInAnyMuteGroup(
+    Core::Portable::Parameter *parameter) {
+  requireInitializedGroups(state);
+  for (int i = 0; i < state.groups.count(); ++i)
+    if (state.groups[i]->state.members.contains(parameter))
+      return true;
+  return state.allGroup->state.members.contains(parameter);
+}
 StormMuteGroupComponent::~StormMuteGroupComponent() {
   // Source-port lifecycle: detach borrowed provider observers before
   // destruction.

@@ -1,0 +1,222 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_impl_w02_06",
+  "namespace": "Presonus::LinkControl",
+  "packet_manifest": "temp/recovery-work/rolling200-02/implementation-plan01/packets-stage04-01/packets/rolling200_02_impl_w02_06/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus11LinkControl4drawERKN4Core8Portable9DrawEventE",
+      "demangled": "Presonus::LinkControl::draw(Core::Portable::DrawEvent const&)",
+      "address": 416864,
+      "size": 176,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/LinkControl.hpp",
+      "sha256": "504fd0a14d3e1bb136ebdcaa5fc88262581ff3750b392c2f9d809ee6b87dffbd"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/LinkControl.cpp",
+      "sha256": "4da3e73325759de30b0fe64d5d386a7448e0a826b31867e6bb7d2c575cf75935"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/candidates/rolling200_02_impl_w02_06/replay.cpp",
+      "sha256": "5f7352f282262a1f5264ac340868bb6825662449ef94ff73394317281f9e8132"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/candidates/rolling200_02_impl_w02_06/check.py",
+      "sha256": "efad197955249db8c87d572ab57c461fe0e6093cdd5cf784d10a31e5d627d97d"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_impl_w02_06/native.py",
+      "sha256": "8f1b93684ae585330663d48c7713ad34443b4571e8582ee51c94e535b14f6668"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/candidates/rolling200_02_impl_w02_06/seal.py",
+      "sha256": "4a74be952800f1a20eef527e288d94a4641a9c150cbf31514518ec4290f578d1"
+    },
+    {
+      "kind": "fixture",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/fixtures.txt",
+      "sha256": "c3e817f610d49f639a8f384f0b02a4bc0f4ce9e13d5adf4dd2f1635d49de23f6"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/native-proof.json",
+      "sha256": "56b840d0f834dc7b14178b90bba10fdcf76e137a55f15be0f9f3267d7fcb7b78"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/native-cases.json",
+      "sha256": "fd9d0ca6a5cd61477532b789644aa6241b07b6b91e7c86f450d36101b6baa097"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/packets-stage04-01/packets/rolling200_02_impl_w02_06/context.json",
+      "sha256": "36eb355c50df855bef3e3ce43e7d37d1a31ee90a0557a591f2d69b4c81d10ea1"
+    },
+    {
+      "kind": "contract",
+      "path": "temp/recovery-work/rolling200-02/implementation-plan01/contracts/rolling200_02_impl_w02_06.json",
+      "sha256": "bf7756c4f4472836c283e8ae0bfa84ad3f8bc2e4fc701d77f55832d3a53028e6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.h",
+      "sha256": "d5f06493cffe691b7fa3ab6d5ffa53ee8c3b4391c62e7f530a9c211cb02e2fcb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.h",
+      "sha256": "59f7e8af9fd892e0e206c5e73748b0f5d7a03ce3019e6ce7fa532368c5cb18e7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.h",
+      "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.cpp",
+      "sha256": "a2d1bdf79b00c12d87ab01072bde099b20691fa7bed5de7988071f2e7748eaa7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.cpp",
+      "sha256": "c05c63ea50d66288f11a9b1daf26bb4b2559042a27831f27785b09b192bc796f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w02_06-isLinked01/ELF_CONTEXT.md",
+      "sha256": "06136f4cb0f4722fbe323f07128330cff86020e89e121a96915614c55e6fc6f5"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w02_06-isLinked01/expansion.json",
+      "sha256": "77aa065e22748f3faa5f9b297c40acc7526ae93eea07e383d3883f20d5009497"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w02_06-isRightSideOfLink01/ELF_CONTEXT.md",
+      "sha256": "9832a31b4b594c89578c47cc229d4f73d2f4f853f1511a13b4b428e776046a8f"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/expand-stage04-w02_06-isRightSideOfLink01/expansion.json",
+      "sha256": "80e71ad7a0cb3f555e36abbd2454be906e8479d67563095525c865eb5ed15265"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/PROOF.json",
+      "sha256": "82ede514312072984db02328ff97c5078750a26feb55bc08598fdecd44e7e46e"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/LinkControl.hpp",
+        "uc-library/src/Presonus/LinkControl.cpp",
+        "uc-library/candidates/rolling200_02_impl_w02_06/replay.cpp"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_impl_w02_06/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_impl_w02_06/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/candidates/rolling200_02_impl_w02_06/check.py",
+        "replay",
+        "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/fixtures.txt"
+      ],
+      "timeout_seconds": 120
+    }
+  ],
+  "validation_domain": "108 cases: null/zero/nonzero linked and side parameters, each image absent/present, three rectangles and origins. Native call count, image identity, first two coordinate point, full source rectangle, read-only object/event memory. CCL executable uses real NumericParam, BitmapReference, Bitmap, DrawEvent and recording abstract Graphics; mode=null adaptation checked.",
+  "limitations": "Original target and two hash-bound app helpers executed. Provider/runtime boundaries intercepted, never executed. Initialized synthetic native state does not establish original field types/layout, ARM ABI or hardware. Source uses real CCL parameter and bitmap objects, recording abstract Graphics boundary. Ordinary return unresolved; source-port void and modern null mode intentional.",
+  "build_integration": {
+    "partition": "CS18 existing exclusive LinkControl.cpp production OBJECT partition; no new source",
+    "public_headers": [
+      "uc-library/include/presonus/LinkControl.hpp"
+    ],
+    "test_targets": [
+      "link_control_draw_native_replay"
+    ],
+    "test_source": "uc-library/candidates/rolling200_02_impl_w02_06/replay.cpp",
+    "link_dependencies": [
+      "presonus_uc",
+      "corelib",
+      "presonus_core_allocator",
+      "presonus_private_glibc29",
+      "png",
+      "z",
+      "ssl",
+      "crypto",
+      "dns_sd",
+      "pthread",
+      "dl",
+      "m"
+    ],
+    "ctest_argv": [
+      "${canonical_test_executable}",
+      "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/fixtures.txt"
+    ],
+    "fixture": "evidence/recovery/2026-11-05/rolling200-02/stage04-w03/fixtures.txt",
+    "fixture_sha256": "c3e817f610d49f639a8f384f0b02a4bc0f4ce9e13d5adf4dd2f1635d49de23f6",
+    "required_root_gates": "Canonical Linux integration, role/install/compile-once audit, active-source proof reseal, SQLite guarded pending admission and tracker/mirror. No declaration promotion claimed."
+  }
+}

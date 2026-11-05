@@ -404,6 +404,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/NOAA/TCardRouterInitialization.cpp
   src/Presonus/NOAA/TCardProgrammerLifecycle.cpp
   src/Presonus/NOAA/TCardProgrammerTransport.cpp
+  src/Presonus/NOAA/TCardProgrammerUpdate.cpp
   src/Presonus/NOAA/TCardRouterMixerInputRoutes.cpp
   src/Presonus/Dsp/GEQSourceProviders.cpp
   src/Presonus/Dsp/GEQParameterList.cpp

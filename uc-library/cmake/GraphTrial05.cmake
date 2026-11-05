@@ -82,7 +82,11 @@ if(BUILD_TESTING)
   add_executable(graph_trial05_permissions_tests tests/graph_trial05_permissions_tests.cpp)
   target_link_libraries(graph_trial05_permissions_tests PRIVATE stdc++ presonus::rm_components)
   target_compile_options(graph_trial05_permissions_tests PRIVATE -fno-rtti -fno-lto -UNDEBUG -fno-fast-math -ffp-contract=off)
-  add_test(NAME graph_trial05_permissions_replay COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python ${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-05-permissions/check.py replay --executable $<TARGET_FILE:graph_trial05_permissions_tests> --fixtures ${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-05-permissions/native-fixtures.json)
+  add_test(NAME graph_trial05_permissions_replay COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling200-02/permissions_legacy_bridge.py
+    $<TARGET_FILE:graph_trial05_permissions_tests>
+    ${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-05-permissions/native-fixtures.json
+    ${CMAKE_CURRENT_SOURCE_DIR}/candidates/rolling200_02_closeout09_owner01/existing-helper-fixtures.json)
   set_tests_properties(graph_trial05_permissions_replay PROPERTIES WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/..")
   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/candidates/graph-live-trial-05-pan/native.json" trial05_fixture_sha)
   if(NOT trial05_fixture_sha STREQUAL "0803fa2e68aa112fd4d4b67cb74cdcffda50f209a176f2da94b4a549c18c39d5")

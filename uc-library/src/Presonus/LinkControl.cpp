@@ -1,5 +1,16 @@
 #include "presonus/LinkControl.hpp"
 namespace Presonus {
+// Source-port void override and modern null BitmapMode; original return and ABI
+// remain unresolved. Event origin is intentionally not added to updateRect.
+void LinkControl::draw(const Core::Portable::DrawEvent &e) {
+  if (!isLinked() || !rightImage.getBitmap() || !leftImage.getBitmap())
+    return;
+  auto *image =
+      isRightSideOfLink() ? rightImage.getBitmap() : leftImage.getBitmap();
+  e.graphics.drawBitmap(e.updateRect.getLeftTop(), *image, e.updateRect,
+                        nullptr);
+}
+
 bool LinkControl::isLinked() const {
   auto *p = getParameter();
   return p && p->getValue() != 0.f;

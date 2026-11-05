@@ -6,6 +6,7 @@ namespace Presonus {
 class LinkControl : public Core::Portable::Control {
 public:
   using Control::Control;
+  void draw(const Core::Portable::DrawEvent &e) override;
   bool isLinked() const;
   bool isRightSideOfLink() const;
   void setRightSideParam(Core::Portable::Parameter *p);

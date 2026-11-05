@@ -1,4 +1,5 @@
 #include "core/portable/corefilename.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/mixer/PermissionsComponent.hpp"
 #include <cstdlib>
 #include <cstring>
@@ -76,7 +77,7 @@ void changed(void *ctx, PermissionsComponent &self) {
 }
 } // namespace
 int main(int argc, char **argv) {
-  if (argc != 8)
+  if (argc != 8 && argc != 9)
     return 2;
   const int target = std::atoi(argv[1]);
   Capture capture;
@@ -87,6 +88,12 @@ int main(int argc, char **argv) {
   other.Core::Portable::StringParam::fromString(argv[4], false);
   Core::CStringBuffer<64> name(argv[3]);
   PermissionsBindings bindings;
+  Presonus::Mixer::MixerComponentBase mixer;
+  if (target == 0 && argc == 9) {
+    mixer.applicationDataRoot = argv[8];
+    mixer.deviceDataFolder = "device";
+    bindings.mixer = &mixer;
+  }
   bindings.mix = &mix;
   bindings.other = &other;
   bindings.selectedName = std::atoi(argv[2]) ? &name : nullptr;
@@ -126,7 +133,10 @@ int main(int argc, char **argv) {
   default:
     return 3;
   }
-  std::cout << "{\"trace\":[";
+  std::cout << '{';
+  if (target == 0)
+    std::cout << "\"filename\":" << quote(fileName.str()) << ',';
+  std::cout << "\"trace\":[";
   for (std::size_t i = 0; i < capture.trace.size(); ++i)
     std::cout << (i ? "," : "") << capture.trace[i];
   std::cout << "],\"output_hex\":\"";

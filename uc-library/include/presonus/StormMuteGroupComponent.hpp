@@ -63,6 +63,8 @@ struct State {
   Core::Vector<Group *> groups;
   Group *allGroup = nullptr;
   Observer *observer = nullptr;
+  void *delegate =
+      nullptr; // Opaque borrowed original Delegate, no interface/layout claim.
   Core::Vector<Core::Portable::Parameter *> loose;
   Core::Vector<Core::Portable::Parameter *> delayed;
   Core::Vector<Core::Portable::Parameter *> mixerMutes;
@@ -80,6 +82,10 @@ public:
   explicit StormMuteGroupComponent(presonus::storm_mute_port::State &state)
       : state(state) {}
   ~StormMuteGroupComponent();
+  class Delegate;
+  void setDelegate(Delegate *);
+  unsigned int getSwitchTag(unsigned int);
+  bool isParamInAnyMuteGroup(Core::Portable::Parameter *);
   void cleanup();
   bool recallMutes(unsigned int, bool);
   void onObserveredParamChanged(Core::Portable::Parameter *, int);

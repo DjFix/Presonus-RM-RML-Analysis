@@ -1,6 +1,10 @@
 #pragma once
 
 #include "core/portable/coreparams.h"
+#include <cstdint>
+namespace Presonus::UC {
+class ClientSubscription;
+}
 
 namespace Core::Portable {
 class FileName;
@@ -22,6 +26,8 @@ struct PermissionsBindings {
   MixerComponentBase *mixer = nullptr;
   unsigned char restricted = 0;
   unsigned char dirty = 0;
+  std::int64_t deadlineMilliseconds = 0;
+  const UC::ClientSubscription *selectedSnapshot = nullptr;
   void *context = nullptr;
   void *ownerContext = nullptr;
   void (*getFileName)(void *, const PermissionsComponent &,
@@ -38,6 +44,16 @@ public:
   explicit PermissionsComponent(PermissionsBindings &bindings)
       : bindings_(bindings) {}
 
+  void loadAccessCode();
+  void syncMixStrings();
+  void onIdle();
+  // Deterministic source-port clock boundary; original native units unresolved.
+  void portableIdleAt(std::int64_t scheduleMilliseconds,
+                      std::int64_t comparisonMilliseconds);
+  void getFileName(Core::Portable::FileName &,
+                   const Core::CStringBuffer<64> &) const;
+  const UC::ClientSubscription *getSelectedDevice() const;
+  void saveSelectedDevice() const;
   void getSelectedFileName(Core::Portable::FileName &fileName) const;
   void getMixString(Core::CStringBuffer<128> &string) const;
   void getOtherString(Core::CStringBuffer<128> &string) const;
@@ -48,6 +64,7 @@ public:
   void getAccessCodeFileName(Core::Portable::FileName &) const;
 
 private:
+  void compareDeadlineAt(std::int64_t);
   PermissionsBindings &bindings_;
 };
 } // namespace Presonus::Mixer
