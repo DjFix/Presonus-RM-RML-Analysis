@@ -45,6 +45,11 @@ def arguments(row):
             continue
         if value in ('-o', '-MF', '-MT', '-MQ'):
             skip = True
+        # GCC's negative instrumentation switch is not accepted by libclang.
+        # AST parsing emits no instrumented object; retain it in the original
+        # row/context identity and in the independently executed GCC command.
+        elif value == '-fno-instrument-functions':
+            continue
         elif value not in ('-c', '-MD', '-MMD', row['file']):
             result.append(value)
     return result
