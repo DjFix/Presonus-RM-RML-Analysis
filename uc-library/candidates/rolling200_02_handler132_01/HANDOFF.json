@@ -1,0 +1,665 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_handler132_01",
+  "namespace": "Presonus::NOAA",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus4NOAA12TCardHandler11setPropertyERKN4Core8PropertyE",
+      "address": 650804,
+      "size": 1936,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "correction-provenance",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler132-nortti265/CORRECTION_PROVENANCE.json",
+      "sha256": "9b56b5079373a319b45d0b4aa280ff896d7c769aee241f10260dd1df0ce26960"
+    },
+    {
+      "kind": "nortti-proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler132-nortti265/NO_RTTI.json",
+      "sha256": "294d2d9a8b58c6925faf70fb0cc40a28a3428f1b961bd4d1c3a4914475ca5079"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp",
+      "sha256": "9ac4055eb8b4a6d04a1d2e6ece5a86171e356656a842edbfd75e7af013c7d6de"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+      "sha256": "558631468835bc03be072bfa83612d819fe17736126c1264659e7343805be0f4"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp",
+      "sha256": "54fc881d40163b3bce65a027e64d553c7b09d9efdd3085d075f803684ca069c5"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardHandlerEvents.cpp",
+      "sha256": "7e20920c585e3c2b936937fde287a8d88e136241f65f67eeecab2887a2b09e4b"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardHandlerRelease.cpp",
+      "sha256": "252bd115c0dccc171aa0c5364b8f73e20d0ee3ec287b78959ff6c583f43ebaf8"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/card_handler.hpp",
+      "sha256": "98e938fc746f60152d7c45c8823ed554f8575330cbdb70b7f832cee3fa9d5993"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/card_handler_state.hpp",
+      "sha256": "c24bd790f06847cae2fc9db96daa8c01f72adc8993397f44e0eab55b84aaff24"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/card_handler_events.hpp",
+      "sha256": "5597fcc4f83b6290655369473553648a3a3b85b8caa2aa78a66392f80a9715f4"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "sha256": "e4b466a9879a0be19c2a7bb754a3bcba0b5ee850b97067b88fc6878b42afb607"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+      "sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+      "sha256": "b586691f182a5074b39c0e994419915d82f6bea3ad4924f84b2695cb7ae16ae8"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/card_handler_lifecycle_properties/native.py",
+      "sha256": "a45e474ff2616fdb627c3040a5f005f7a66bdb6288e79d6acb8622d66d809c35"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/card_handler_lifecycle_properties/seal.py",
+      "sha256": "e06e46034a97d193afd157371daba9dc2bacf885ef3c6010daeeb8814915315f"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler132-nortti265/PROOF.json",
+      "sha256": "bc06d2321d511bf4c0adc62fa8906642cffb6b361427d1816e322da96a8900c1"
+    },
+    {
+      "kind": "remarks",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler132-nortti265/NOTES.json",
+      "sha256": "0ea8f9561b60cdd451567887813a8b44e6ec7771fbee248d22fb5aa47b597a25"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/corefeatures.h",
+      "sha256": "0ab03cb55c5dd05e418d321b91be07ea0f8dd488358db70c2fc5d2903a9ff96d"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/linux/corethread.linux.h",
+      "sha256": "c92758a2e2cc7859d9cdc11d9f7425847e068279e68bbb6d7880d8d9bcfe1d64"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformatomicstack.h",
+      "sha256": "9f307c96d54bd1a5b39a0a0db02b3c62df2ec18ce10039dc43b9eb080598e210"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformthread.h",
+      "sha256": "00ee77535c805a0f915a4fb985923678d32001ad76f7e76f96430487573cc94d"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/coreplatformtime.h",
+      "sha256": "919a7a83e5312182c613142e8a2d5ad26dfdcad0c09365b3caf658c2cbd113f2"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/corerecursivereadwritelock.h",
+      "sha256": "98b17bba04996a4cb6c3c160a5b628defcd14c9b2a81d0ecae6ba057df540a21"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coreatomic.posix.h",
+      "sha256": "8ed9a5d01d8cadb89d20439501c609f4c049006b7db7b8a66c34e37e0bcdd1fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coreatomicstack.posix.h",
+      "sha256": "506bd3503f317fe3ce39f475b0fbb33cee0b397238638d7f465d16fcfacee7e2"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/corethread.posix.cpp",
+      "sha256": "841a4770b0e87cb3a140bf9e779abe770d2bb330fd7d8df22b678124c9854d07"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/corethread.posix.h",
+      "sha256": "251dc7e63935eb4674d626e224c2cee393d0fb59e0efb0f800ef0852f7bbdc93"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coretime.posix.h",
+      "sha256": "f58e058d5bcf234615fc2a7dad635bc6688fee34d253e419352f9cc5696c0555"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.h",
+      "sha256": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corebasicmacros.h",
+      "sha256": "9b879c0b7d7c02ba55e881c2cc768f04f60aa2e8d6d2834cf4afe43e6ca5d0ce"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corebuffer.h",
+      "sha256": "2dbfa18dea304df10fd9f9494889b9f2ccd2a438c592eb1bbb495ebafe84026e"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclassmacros.h",
+      "sha256": "f67174739f108e57b6fdf4fe0a64a7c9df2a38b69841a97bb6ad8b762652ac77"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreclibrary.h",
+      "sha256": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corecontainer.h",
+      "sha256": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corelinkedlist.h",
+      "sha256": "31eb6bef4fe35fb8e6050f224923b8458733ace303a7c56dc464f1f38ef92cf2"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremacros.h",
+      "sha256": "d2827dfd0182e53757411849b4e582e5a2d4926814a0d21720472432a0ef7829"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coremalloc.h",
+      "sha256": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreplatform.h",
+      "sha256": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreproperty.h",
+      "sha256": "5c66c9d3de7afaf716f298a3fbd0f76265f459fd9dae76a6cd7fc5a752365377"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringtraits.h",
+      "sha256": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corethreading.h",
+      "sha256": "892a1d43d652ea0c9a44abb21d07a5a9ec029b872ba9ab6d30c19eb9a38269e9"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coretypes.h",
+      "sha256": "42caf0a821eb374df5fe0e8b14b3ea1fa368ce06c025710b47abb5a71f247a68"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coreatomic.h",
+      "sha256": "e28350396c618ce886fd8458b5295adee0ae3d1ec0fd9b776b304190127ea7bf"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coreatomicstack.cpp",
+      "sha256": "041190255c8c26f5e3a31c53ab1bbf8419544f95ccc3e037161defe66ab9afe4"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coreatomicstack.h",
+      "sha256": "f3ae8465f97990ab8c4572cccbd1dfb029df3934b1e4133c5864e70ce1b1a0fa"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/corethread.h",
+      "sha256": "56335e1e9a23c724a4c4d4640c47563956d8ff9cda434887e8ee470439f2d07c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coretime.h",
+      "sha256": "112daede39c5e3fdf85a2a813afa729fbfeef05eb07dd831fccb1c1e401ebea1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/application/ResourceLibrary.hpp",
+      "sha256": "74259cd16beab17e29c88e699191c0a483f8e5b11aa905660534e81873aa3603"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/device_dfu.hpp",
+      "sha256": "86562b78c5d25383f8e72806c8ed32022911641b473393388c63dc37f31d0c5f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dice/packet_services.hpp",
+      "sha256": "cf3e9129780ef49c137ebb8d7e904ca1e3ab1d1aa0b45a1288622143c695b079"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dice/response_services.hpp",
+      "sha256": "674454d7477b96a0a1a48292993257d699a7f4a0866be4b8fbc84e8537be9a5a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dsp/audio_hal.hpp",
+      "sha256": "746dc2d3bac97b6d0b119e0925d3fa713ad6f9050f9fd8cea18434e7b0ce7724"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/card.hpp",
+      "sha256": "9fc0b715e1675b01733652488bf8bbbcd41bcf358843ae11b268b4bded0a0df3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/router.hpp",
+      "sha256": "ebf26dc8a559fa7fb83e2ac9663614786d9ddd86bc42e352edd9cb2e5de9df2e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/router_slot_tables.hpp",
+      "sha256": "bb3165c8f2c586b0669f12df5aad7a313f521cd3351085f58bf4d68e9626734a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/setup_property.hpp",
+      "sha256": "e3106803617dfe30c8ff5c5538b4b720d1dd9e0e7a58bc678a006869fd7c576c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/spi_packets.hpp",
+      "sha256": "3c3c1bc3a7e037af9834c1aecafdd5785c3b9992841d556339d0b3d6a762ac17"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/spi_service.hpp",
+      "sha256": "cfa862ed9b7bb1fd8c963db048d9952ecf7951310fc271d6390f51a7849a1195"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/status_property.hpp",
+      "sha256": "e7749d4fdcccb3419003261e31224767442aaa083cc257da3954206d114efd69"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/sysex_packet.hpp",
+      "sha256": "e894d535ad8b8036bdcf7a220904ee928066b012d2436faf5acbf62919dfc9ec"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/sysex_receiver.hpp",
+      "sha256": "9bdd436a4f458202f3e91b5d7b2d662daae7a4bb3512863bf484bc8e9fe730ed"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface_panel/InputPin.hpp",
+      "sha256": "d41cc24621555d9b3929cb58489a1fadce7aaa5f7debf095966729417ee51296"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface_panel/OutputPin.hpp",
+      "sha256": "c3ae87275053a854cee2634eac2f2dc4b158defcb17b4f0bd10cf500fd1bf8e8"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/firmware_update_listener.hpp",
+      "sha256": "581a549facc0e7d02ddf94d0327c10f81daeb79b2e437e420d39ef4e5cb37056"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardFirmware.cpp",
+      "sha256": "5b4a199b844879b7e94695866efe67a0106687cabb5c76bcc38b10e8225115ea"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardLifecycle.cpp",
+      "sha256": "3f68c744e530297c3a9eef7c1094100247023eb58d6869393413969f6e91a09d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardRouterLifecycle.cpp",
+      "sha256": "7fc460e85ece71048d5012547bc5e17997dac124e49ccb1540d7ab8a5494be6e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSPIService.cpp",
+      "sha256": "b7fd679da7764a66ce77481c0c76db775619185b05b1ddd0767fecd10469d945"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSerial.cpp",
+      "sha256": "f17afa7233ff707a0fe3dbf808672f93ce9f61b06d19ff1577648306cc13e9da"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "AGENTS.md",
+      "sha256": "3f3da24d1bf6c9cacf3fc6dbba7fb57033e55b6e8d95bbf65502b56d4cf3d7ac"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/PROVIDER_RESOLVED132.json",
+      "sha256": "a0c2d2ddc1a9c6f03362c90b32913f70811a768a9527d5342e2b069981dd7715"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/handler-release/replay.py",
+      "sha256": "5eaeee8a70eae5ccc7c7c90f497c4348773287a49215e992dadb86579a092743"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/handler-release/fixture.txt",
+      "sha256": "9b326e4476335cd0b62c629fe514d3b83d6d6e2113d456e988a0e65f01ae65c6"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/265e8e1d1bd31ca13fc735c2ce67fd0c6e9096a042ea11ab84eb06d9104a2a77/uc-library/candidates/rolling200_02_resolve_handler/07/EVIDENCE.json",
+      "sha256": "265e8e1d1bd31ca13fc735c2ce67fd0c6e9096a042ea11ab84eb06d9104a2a77"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/531902230b17ce8936ae0f948a7c08033bd528a06055d773e475f9bbd1d93b01/uc-library/candidates/rolling200_02_resolve_handler/04/EVIDENCE.json",
+      "sha256": "531902230b17ce8936ae0f948a7c08033bd528a06055d773e475f9bbd1d93b01"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/54051eaa43a35968dafdf175602eaf62922ca84810da330146c027affc02e7b4/uc-library/candidates/rolling200_02_resolve_handler/05/EVIDENCE.json",
+      "sha256": "54051eaa43a35968dafdf175602eaf62922ca84810da330146c027affc02e7b4"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/ab1052283d0a7f4a02f17c8c4af2c7d2bb6a46093192408172861c0d41e354f0/uc-library/candidates/rolling200_02_resolve_handler/01/EVIDENCE.json",
+      "sha256": "ab1052283d0a7f4a02f17c8c4af2c7d2bb6a46093192408172861c0d41e354f0"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/b1399af7a6db2ac0e56772fefee94f8e6e763f8cd75c3d68c4ff1934e0b86aa1/uc-library/candidates/rolling200_02_resolve_handler/06/EVIDENCE.json",
+      "sha256": "b1399af7a6db2ac0e56772fefee94f8e6e763f8cd75c3d68c4ff1934e0b86aa1"
+    },
+    {
+      "kind": "historical-review",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/handler-next123/prior-research132/ca82c17ed0656aedcccf66fce4c2fe51c8ede6ace6877eacf51cba9d3ac5d3c6/uc-library/candidates/rolling200_02_resolve_handler/08/EVIDENCE.json",
+      "sha256": "ca82c17ed0656aedcccf66fce4c2fe51c8ede6ace6877eacf51cba9d3ac5d3c6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/context.json",
+      "sha256": "713ae27688e6de919e0cb155992b1ac0baba693219427c312a742d3d15e4b3ac"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/request.json",
+      "sha256": "28f4fd3554dbd6eea8f3ebb6e63d3150f84a28820a333fef29362744352e2fb9"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/native-context.json",
+      "sha256": "87227ecef375185658e68e9f9bd2a2cfa7477bed0e82b4280ad0a3329d8d01cd"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/TASK.md",
+      "sha256": "837e34939e184302a720a920851661931b43434a72d584ffd1e8301f129b1ae0"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/ELF_CONTEXT.md",
+      "sha256": "90b41b4b352718a66ed7b7d4bd89eeb2e34c3b90d9d8fd7f2d6a8ba5dd798aa6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/SOURCE_SLICES.md",
+      "sha256": "0c27f3f0dac5c52466db9db82a37e336483dadb136478bbaa0304e2bf76450dc"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation132/prepared132/packets/rolling200_02_handler132_01/CONTEXT.md",
+      "sha256": "deed5c6c8dde2a0799daed661933fb8ee982a09b7ad01c5b80bb5a2d5a2be570"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "native"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "format"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "regressions",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "regressions"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "ctest",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "ctest"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "validation_domain": "All27 literal immediate IDs across99 native/real-provider comparisons; Card modes0/1/2/other; word, byte and bool argument projections; setup/start and serial/erase/update/script branch order and lock scopes. Actual C1/C2/D0/D1/D2 success lifecycle, registration and singleton equality; original D0 operator-delete invocation and actual host D0 frees distinguished from D1/D2 retained root storage. Twenty constructor allocation/provider failure landing-continuation comparisons preserve failed-storage deletion and completed provider retention. All pool boundaries8/16/17/32/33/512, starvation sleep4, mixed FIFO, complete payload lifetime copies, safe stopped exhaustion, deterministic link-allocation cleanup and undersized rejection. Existing consumer replays are separate domains.",
+  "limitations": [
+    "Portable C++ source port with exact encoded symbol identities; original unencoded ordinary return declarations, full object/member layout, calling convention/ARM ABI and hardware behavior are unverified.",
+    "Upstream Core comes solely from official CCL5.0.0 e8cbdea4a4a20e15111f5a690798a259c0374b31. Actual modern Thread/Lock/LinkedList/AtomicStackLocked/Singleton implementations are used; no Core firmware body executes or is reconstructed.",
+    "Native oracle executes six exact ELF ranges, private application memory, and explicit rejecting provider boundaries. Constructor failure cases inject exception identity and enter reviewed application landing continuations; the original EHABI language-unwinder selection/dispatch does not execute. C++ exceptions use the actual host runtime.",
+    "Native completed dependency retention and failed-storage delete are preserved. Portable owned pool storage is reclaimed on failure/destruction. Additional modern queue/pool allocations and provider-owned runtime storage have no original native field/cardinality claim.",
+    "Native destructor always terminates; modern POSIX unstarted-thread termination is invalid, so owned start flag guards it and started destruction joins. Borrowed callers retain their documented start/join/lifetime obligation. Raw original failure-retained dependencies remain registered as observed; the failure replay observes them before explicit test-owned cleanup.",
+    "Finite pools64/64/64 belong to each portable queue; original static global-pool contention across Handler instances is unverified. The capacities are an explicit source-port selection. Invalid semantic sizes (<8/>512), undersized immediate payloads and absent/mismatched live projections fail closed. Native stop-while-starved null memcpy is replaced with a safe return. Untyped arbitrary host Property payload images are never copied.",
+    "Native byte-valued bool arguments are compared by bool truth (host C++ canonicalizes bool); native full word/int and low-byte argument projections remain separately checked. Original byte/pointer/layout ABI is unclaimed.",
+    "Successful provider calls forward real Card/Router/CCL bodies. Constructor-failure tests explicitly inject exceptions before selected provider bodies and preserve the observed app-level cleanup/retention; these injected cases are a separate boundary domain. SPI/GPIO/serial/file/network/ioctl host boundaries are rejecting/offline before construction; observer/listener/HAL test doubles capture external boundaries and do not synthesize Card update success or device responses. Real Card numeric firmware returns2008 and0 are observed. No actual device programming, erase, flashing, serial/network I/O or host-syscall forwarding from guest code occurs.",
+    "Full canonical Linux CTest, installed-role/compile-once audits, active-source admission, trackers and registry publication remain Root-owned. This delivery contains no readiness fragments or registry mutations."
+  ],
+  "build_integration": {
+    "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+    "new_cpp": [
+      "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+    ],
+    "modified_cpp": [
+      "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+      "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+    ],
+    "public_headers": [
+      "uc-library/include/presonus/noaa/card_handler.hpp",
+      "uc-library/include/presonus/noaa/card_handler_state.hpp",
+      "uc-library/include/presonus/noaa/card_handler_events.hpp"
+    ],
+    "test_targets": [
+      "noaa_tcard_handler_lifecycle_properties_replay"
+    ],
+    "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+    "link_dependencies": [
+      "presonus::rm_components",
+      "pinned CCL corelib",
+      "presonus_core_allocator",
+      "existing Linux private provider"
+    ],
+    "link_wraps": [
+      "_ZN4Core8Platform11PosixThread11setPriorityEi",
+      "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+      "_ZN4Core8Platform13CurrentThread5sleepEj",
+      "_ZN4Core8Platform9PosixLock4lockEv",
+      "_ZN4Core8Platform9PosixLock6unlockEv",
+      "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+      "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+      "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+      "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+      "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+      "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+      "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+      "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+      "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+      "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+      "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+      "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+      "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+      "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+      "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+      "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+      "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+      "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+      "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+      "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+      "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+      "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+      "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+      "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+      "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+      "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+      "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+      "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+      "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+      "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+      "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+      "_ZN8Presonus4NOAA5TCard5startEb",
+      "_ZN8Presonus4NOAA5TCardC1Ev",
+      "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+      "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+      "_ZdlPv",
+      "_ZdlPvm",
+      "_Znwm",
+      "abort",
+      "close",
+      "fopen",
+      "ioctl",
+      "open",
+      "read",
+      "socket",
+      "tcflush",
+      "tcgetattr",
+      "tcsetattr",
+      "write"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+      "replay",
+      "--executable",
+      "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+      "--fixtures",
+      "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+      "--fixture-sha256",
+      "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+    ],
+    "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+    "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+  }
+}

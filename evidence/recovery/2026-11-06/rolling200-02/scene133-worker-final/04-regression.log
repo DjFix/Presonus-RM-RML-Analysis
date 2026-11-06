@@ -1,0 +1,17 @@
+["/usr/bin/c++", "-std=c++17", "-fno-rtti", "-Wno-multichar", "-Ulinux", "-pthread", "-DCORE_USE_OPENSSL=1", "-Iuc-library/include", "-isystem", "third_party/ccl-framework", "-isystem", "temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5", "uc-library/src/Presonus/Mixer/ChannelComponent.cpp", "uc-library/tests/graph_trial07_channel_tests.cpp", "-o", "temp/recovery-work/rolling200-02/scene133/channel-regression", "-Wl,-rpath,/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/scene133/temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu", "-Wl,--start-group", "temp/core-upstream/root-integration-01/libpresonus_rm_components.a", "temp/core-upstream/root-integration-01/libpresonus_uc.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "-Wl,--end-group", "-lpng16", "-lz", "-lssl", "-lcrypto", "-Ltemp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu", "-ldns_sd", "-ldl", "-lm"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/trial07/channel/replay.py", "--executable", "temp/recovery-work/rolling200-02/scene133/channel-regression", "--fixtures", "uc-library/tests/recovery/trial07/channel/native-fixtures.json"]
+{"status": "passed", "cases": 524, "method": null, "domain": "Native target state/return/app trace differential; CCL source-provider getters excluded for lookup-created parameters; host powf boundary shared; all output words exact."}
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/filter_group_configured/check.py", "compile"]
+["/usr/bin/c++", "-std=c++17", "-fno-rtti", "-Wno-multichar", "-Ulinux", "-pthread", "-DCORE_USE_OPENSSL=1", "-Iuc-library/include", "-isystem", "third_party/ccl-framework", "-isystem", "temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5", "uc-library/src/Presonus/Mixer/FilterGroupComponent.cpp", "uc-library/tests/recovery/FilterGroupConfiguredReplay.cpp", "-o", "temp/recovery-work/rolling200-02/filter-group126/replay", "-Wl,-rpath,/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/scene133/temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu", "-Wl,--start-group", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "-Wl,--end-group", "-lpng16", "-lz", "-lssl", "-lcrypto", "-Ltemp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu", "-ldns_sd", "-ldl", "-lm"]
+
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/filter_group_configured/check.py", "symbols"]
+["/usr/bin/nm", "--defined-only", "temp/recovery-work/rolling200-02/filter-group126/replay"]
+_ZN8Presonus5Mixer20FilterGroupComponent12isConfiguredEv
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/filter_group_configured/check.py", "replay"]
+["temp/recovery-work/rolling200-02/filter-group126/replay"]
+real CCL owned derived StringParam: live update and one destruction
+9216 exact application ARM/provider cases, live actual type query, no state mutation, CCL ownership
+

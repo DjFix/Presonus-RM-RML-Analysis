@@ -1,0 +1,5426 @@
+{
+  "elf": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "address": 472064,
+      "size": 240,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 439296,
+      "bytes_sha256": "490803d5e2944e2c8df963069da5ea7ca719e77eb844a1445a1d512a6d2a4210"
+    },
+    {
+      "address": 472304,
+      "size": 316,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 439536,
+      "bytes_sha256": "5fb457778c2b0bcfb73d8eb49069d19fb53dc41c10994407c8b1d99095243590"
+    }
+  ],
+  "cases": [
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "-1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "-1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/cold",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "allocate-manager",
+        "construct-manager",
+        "register-deletable",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          16785408,
+          4,
+          1497736
+        ],
+        [
+          4803596,
+          4,
+          16785408
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "0",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "0",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/missing",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ],
+      "application_writes": [
+        [
+          4803068,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/02.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/-2147483648.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ],
+      "application_writes": [
+        [
+          4803068,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ],
+      "application_writes": [
+        [
+          4803068,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+        "scene",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ],
+      "application_writes": [
+        [
+          4803068,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/normal/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ],
+      "application_writes": [
+        [
+          4803071,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/02.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/-2147483648.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ],
+      "application_writes": [
+        [
+          4803071,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "2",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ],
+      "application_writes": [
+        [
+          4803071,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "2",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ],
+      "application_writes": [
+        [
+          4803071,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/singleton/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/02.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/-2147483648.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+        "scene",
+        "2",
+        "directory"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/01.mixscene.scene/sub/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ],
+      "application_writes": [
+        [
+          4803069,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/02.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/-2147483648.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ],
+      "application_writes": [
+        [
+          4803069,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ],
+      "application_writes": [
+        [
+          4803069,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+        "scene",
+        "0",
+        "file"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ],
+      "application_writes": [
+        [
+          4803069,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/blocked/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ],
+      "application_writes": [
+        [
+          4803075,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/02.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/-2147483648.mixscene.scene",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ],
+      "application_writes": [
+        [
+          4803075,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ],
+      "application_writes": [
+        [
+          4803075,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ],
+      "application_writes": [
+        [
+          4803075,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/absent/parent/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          4803008,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/01.mixscene.scene",
+        "/01.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/02.mixscene.scene",
+        "/02.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "/02.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "/02.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/-2147483648.mixscene.scene",
+        "/-2147483648.mixscene.scene",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "/-2147483648.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          4803008,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          4803008,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:/undo"
+      ],
+      "application_writes": [
+        [
+          4803008,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "/01.mixscene.scene"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "/01.mixscene.scene"
+          ],
+          "result": "01.mixscene.scene"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo",
+        "1"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ],
+      "application_writes": [
+        [
+          4803061,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          ],
+          "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ],
+      "application_writes": [
+        [
+          4803065,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          ],
+          "result": "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:0",
+        "lookup:scene",
+        "build:0",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:1",
+        "lookup:scene",
+        "build:1",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "1",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:scene",
+        "build:2147483647",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "2147483647",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ],
+      "application_writes": [
+        [
+          4803065,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          ],
+          "result": "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ],
+      "application_writes": [
+        [
+          4803065,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          ],
+          "result": "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "scene",
+        "0",
+        "none"
+      ],
+      "expected": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "build:0",
+        "mkdir:temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ],
+      "application_writes": [
+        [
+          4803065,
+          1,
+          0
+        ]
+      ],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "build",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "scene",
+            "0",
+            "mixscene"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          ],
+          "result": "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b",
+            "undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo",
+            "mixscene.undo"
+          ],
+          "result": "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "temp/recovery-work/rolling200-03/storm-paths164/files/a/b/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "0",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483648",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "",
+        "",
+        "",
+        "0"
+      ],
+      "trace": [
+        "lookup:scene",
+        "lookup:scene",
+        "lookup:different"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        }
+      ],
+      "mkdir_paths": []
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "2147483649",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "filename",
+        "1",
+        "4294967295",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    },
+    {
+      "argv": [
+        "undo",
+        "1",
+        "1",
+        "temp/recovery-work/rolling200-03/storm-paths164/files/wrong-type",
+        "other",
+        "0",
+        "directory"
+      ],
+      "expected": [
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "/undo/mixscene.undo",
+        "0"
+      ],
+      "trace": [
+        "guard-acquire",
+        "guard-release",
+        "lookup:scene",
+        "mkdir:/undo"
+      ],
+      "application_writes": [],
+      "provider_operations": [
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "construct",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "name",
+          "arguments": [
+            ""
+          ],
+          "result": ""
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "",
+            "undo"
+          ],
+          "result": "/undo"
+        },
+        {
+          "operation": "descend",
+          "arguments": [
+            "/undo",
+            "mixscene.undo"
+          ],
+          "result": "/undo/mixscene.undo"
+        }
+      ],
+      "mkdir_paths": [
+        "/undo"
+      ]
+    }
+  ],
+  "cleanup": [
+    {
+      "entry": 472268,
+      "trace": [
+        [
+          "0xac10",
+          16785408
+        ],
+        [
+          "rethrow",
+          16779264
+        ]
+      ]
+    },
+    {
+      "entry": 472584,
+      "trace": [
+        [
+          "0xaa18",
+          4803004
+        ],
+        [
+          "rethrow",
+          16779264
+        ]
+      ]
+    }
+  ],
+  "boundaries": "Only two original app ranges execute. Source-built CCL FileName and accepted cache run independently via provider mode, never reconstructed helpers, at declared native call boundaries. Manager constructor, allocation, Deletable registration, cxa guards, memcpy/strlen/strstr are bounded observations. Directory calls run actual source provider confined by Landlock; ignored return not captured as deterministic fixture. No original unwinder, Core firmware, device IO, syscall passthrough or original ABI claim."
+}

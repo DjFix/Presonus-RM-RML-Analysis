@@ -49,8 +49,12 @@ struct MasterBindings {
 namespace Presonus::Mixer {
 // Encoded original method identities, with independent explicit bindings.
 // Original ordinary returns, inheritance, layout and ARM ABI remain unresolved.
-class MasterSectionComponent {
+// Intentional real CCL base/type-query adaptation; original RTTI is recorded
+// separately. Existing borrowed application bindings remain authoritative.
+class MasterSectionComponent : public Core::Portable::Component {
 public:
+  DECLARE_CORE_CLASS(0x177e18, MasterSectionComponent,
+                     Core::Portable::Component)
   explicit MasterSectionComponent(
       presonus::mixer_port::MasterBindings &bindings)
       : b(bindings) {}

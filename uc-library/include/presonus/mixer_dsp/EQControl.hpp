@@ -7,6 +7,7 @@
 #include "core/portable/gui/coreviewcontroller.h"
 #include "core/public/coreinterpolator.h"
 #include "core/public/corevector.h"
+#include "presonus/IBackgroundGridProvider.hpp"
 #include "presonus/mixer_dsp/EqSourceProviders.hpp"
 #include <array>
 #include <cstdint>
@@ -55,7 +56,7 @@ namespace Presonus {
 // Intentional portable source port. Original GUI inheritance, layout,
 // virtual table and ARM lifecycle ABI are not represented by this portable
 // class.
-class EQControl {
+class EQControl : public IBackgroundGridProvider {
 public:
   explicit EQControl(presonus::dsp::EQControlBiquadPortTag) : observer(*this) {}
   // Original encoded constructor interface; composition below is a portable
@@ -172,8 +173,8 @@ public:
     yPixels = &y;
   }
   int freqToX(float frequency) const;
-  int toXGridPixel(float frequency) const;
-  int toYGridPixel(float gain) const;
+  int toXGridPixel(float frequency) const override;
+  int toYGridPixel(float gain) const override;
   // Provisional ordinary returns. Type is explicitly bound independently of
   // gain: native type slot0, gain slot1, Q slot2, frequency slot3 are observed
   // by separate getter ranges. Legacy BandParams clearing is unchanged.

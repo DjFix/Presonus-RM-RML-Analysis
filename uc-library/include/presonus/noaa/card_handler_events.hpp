@@ -1,5 +1,6 @@
 #pragma once
 #include "core/public/coreproperty.h"
+#include "core/system/corethread.h"
 #include "presonus/noaa/card_handler_state.hpp"
 #include <memory>
 namespace Presonus::NOAA {
@@ -11,6 +12,8 @@ namespace presonus::noaa {
 struct CardHandlerEvent {
   Core::Property property;
   int semanticBytes;
+  std::optional<ImmediatePropertyProjection> immediate;
+  std::optional<CardHandlerPayloadProjection> payload;
   std::optional<DeferredRateProjection> rate;
   std::optional<DeferredRouteProjection> routes;
   std::optional<std::array<unsigned char, 33>> geq;
@@ -20,8 +23,8 @@ struct CardHandlerEvent {
 // Source-port FIFO and finite pools. Capacities are explicitly supplied by the
 // caller, not inferred historical pool sizes. CCL list owns links only; pool
 // slots own snapshots, and the queue owns pool storage. No copying native
-// pointers, no arbitrary Property-to-derived cast, and no original setProperty
-// implementation is claimed. Caller joins consumer before destroying/unbinding.
+// pointers or arbitrary Property-to-derived casts. Original pool layout/ABI is
+// unclaimed. Caller joins the consumer before destroying/unbinding.
 class CardHandlerEventQueue {
 public:
   CardHandlerEventQueue(unsigned small, unsigned medium, unsigned large);
@@ -36,6 +39,8 @@ public:
   void unbind(CardHandlerState &);
   std::uint32_t pending() const;
   unsigned queuedNodes() const;
+  Core::Threads::Lock &mainLock();
+  Core::Threads::Lock &queueLock();
   // Removes at most one link, main lock then queue lock. Dispatch/recycle
   // retain both locks as observed natively (Root-scoped correction to sealed
   // contract). On exceptions scope cleanup clears/recycles the consumed event

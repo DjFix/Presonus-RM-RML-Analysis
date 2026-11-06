@@ -1,0 +1,385 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_rack_burnin135_01",
+  "namespace": "Presonus::Panel",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation135/prepared135/packets/rolling200_02_rack_burnin135_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus5Panel18RackPanelComponent20doFactoryBurnInCheckEv",
+      "address": 511792,
+      "size": 308,
+      "section": "12"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+      "sha256": "617cf4fd41b975b10c2308efd90e0066d6bc698620ada40fd15a3424a93c67cb"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+      "sha256": "3b5b4746b405f546b2c3641906d18051826d722f980869bc8cc2824685e109c3"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/surface_panel/ControlHelpers.hpp",
+      "sha256": "fa114024530b957753b3865077b043bafeb0af59757c058319681a1a6c36ec3e"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+      "sha256": "18d9189abe3747393e1caa79e2c54ac7acb8d5c0b2e36d58918a20908ec92a11"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+      "sha256": "e4e5156284cf35716ab71e6e9d8a58e292e0b033e97b5bb2fbe408dec5ae35ae"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+      "sha256": "72302a71a6d65e502837af1bbedcd39dfe41f84ed47ccf1816a78ee5bd626df6"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/RackPanelBurnInReplay.cpp",
+      "sha256": "26c5ef56bb8a25629298b0a07c5456fe5baae2da373ebad3c55131a190fdd896"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/rack_burnin/fixtures.json",
+      "sha256": "cb830e7c345fd99dbef6b447dc98b60f289981b2d06af80537107b772087c665"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/rack_burnin/check.py",
+      "sha256": "b497df92ec445c29604d3271d04ebee59c84c45ef81068cb90eb512ac4b97145"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rack_burnin/native.py",
+      "sha256": "1a2f74912282aa12852aef73a32ad28e2dd7b8d819109f3994d0781adfd9274d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rack_burnin/seal.py",
+      "sha256": "74c6c5642fc121a1ce2b03936080eb57b4e3d360b902cf7155267711bdd00fd3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+      "sha256": "e14c05908d85a3ba711e92f061388cd39c20ba7f66b1965d7ce8a80fe199b47c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PanelRegistrar.cpp",
+      "sha256": "5fb973d0df94b3f83f7d4f43879b7e8101de1c11fbbb9a815dc3a69efa82c8fa"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/protocol_comm.cpp",
+      "sha256": "a4bedb2f4b2f4eb56742fc2c09d9fb8feb60169574d36d791e05f949385ef968"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/uart_protocol.cpp",
+      "sha256": "fb32923c4e3aa44673110bfefcb679b4e2c80a4246b1e6d86a01036b7328c40a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PanelTask.cpp",
+      "sha256": "013703ce6a1c00abc9c23e14fbc8f836b5ff531649a5c2dc0343d9a3fe01a746"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/LEDNotifyTask.cpp",
+      "sha256": "5b71bcf05463c31ee4148525ba750643ddba394b5ff85899a650eb2298739ea3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/PanelComponentLifecycle.cpp",
+      "sha256": "d62174b238a70dee9e84cc40d54cce64706c0023a365643d83d5ccfafc7eed5f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/control.cpp",
+      "sha256": "0d45529ff5274d159af31ad162be384beb2a53927127a3dec9edd1004b0dbf49"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/param_edit_handler.cpp",
+      "sha256": "478b8a72edbff4d58377cee92602ddc4c0aef07086cbca63f3e35dc3c4d109f2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/DelayTimer.cpp",
+      "sha256": "9936fd62ef1f18d0b42345e6b496d3478a3be823e8cd727efdebf27a827a509f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/DICE/PacketClockGateway.cpp",
+      "sha256": "a44a01a71a9ac8be0abf8d886a0075b57ca6eea6405dedb3982ad50606ec15a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coretime.h",
+      "sha256": "112daede39c5e3fdf85a2a813afa729fbfeef05eb07dd831fccb1c1e401ebea1"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/platform/shared/posix/coretime.posix.h",
+      "sha256": "f58e058d5bcf234615fc2a7dad635bc6688fee34d253e419352f9cc5696c0555"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/coredebug.cpp",
+      "sha256": "987acbb161a262477e33a359fbfb534191ea917c51f4258c292ac1a40e6f527d"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rack_network_tasks/check.py",
+      "sha256": "f992352607ba0b9a99a51b6b377e0afe993e41448b4589f8a555569366ac8d14"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rack_network_tasks/fixtures.json",
+      "sha256": "db84a4e783dd8e880ab236d4e200eb83c996e2ee8c5062c6e9622e31f6cc6588"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_rack_lifecycle/check.py",
+      "sha256": "916bc58034409b0d30371419730c2bf8896ee8cc21c26fb0abb1e1fb8c4dc7df"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_rack_lifecycle/native.py",
+      "sha256": "0905108d946c8e3e23d8dc3abb14cd149456a9340be8e27ae99b09e682f4952f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_rack_lifecycle/fixtures.json",
+      "sha256": "41b52b162b6534af1be46da8c27d668d4110fe197ff08e8c08424611c6e06a43"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-03/provider-supplements189/uart189/ELF_CONTEXT.md",
+      "sha256": "647d035aede2bf4cdef4067392001222e3455cfa2dedcb510a7c2d02668d22ce"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-03/provider-supplements189/uart189/TRANSPORT189.json",
+      "sha256": "9a1baf42b0142225f5fdc9917fbf0a114440a90d7d83e54079bf23332c99a66e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-03/provider-supplements189/uart189/native-context.json",
+      "sha256": "1b928c1ccdd5d037c47b20cb47a3814a09e1f98a1af196eb9991f7f9c1ece4ab"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/proof.json",
+      "sha256": "d3004c1cb56e709f4c99272b8b44dc5208bfe073f3b43d6d2643619cb983f3cb"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/commands.json",
+      "sha256": "6cea03e3a54fec2e76236e824b3eda6eff0d31882598a3634cd5c7cdc3b64170"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/native-audit.json",
+      "sha256": "e3ab5a21c60bbaf53ad4e9f453b540ed47858267116483c3ddd6e66788cb90fa"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/remarks.json",
+      "sha256": "eaaa22f23f245b6c3a49720f38e1e9bc87432ecd4f2364847fe438bbb5b7ccde"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/format.log",
+      "sha256": "6d657afdc1369741fbbc3f9b4f851f339b9a9c126e08c485a94613a68f15cc9d"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/compile.log",
+      "sha256": "d3e31ea38305f6ae49662a58e547bb141a3f6b3892c2a1ff34a3b8be3b5c15cf"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/symbols.log",
+      "sha256": "99412ae653c22e93b9902ba37c59e641329f5b14ea4b5361c0a356183b755576"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/native.log",
+      "sha256": "c2fcb882cf2c4f30cc9710c671c40f7d2812cbe4522ca80fab4cd8d455a63f5e"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/replay.log",
+      "sha256": "add69849842604a54d2ce2930df7818f8e2179957aba3b5757a825c993e88d3a"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/rack-burnin135/regressions.log",
+      "sha256": "bb627e9d38a37ca5cfc7b7bd30de829726475c517b1d7af3bf042db54da1c7d9"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation135/prepared135/packets/rolling200_02_rack_burnin135_01/context.json",
+      "sha256": "c84f509cc184480575f59c20047939c3fe2b920bd04f1a732fed2f33fc9d317c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation135/prepared135/packets/rolling200_02_rack_burnin135_01/native-context.json",
+      "sha256": "79fab2d618defb81e76b67be96b5716d6785ff6ae6723c4444dd07f41d6b2b0d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation135/prepared135/packets/rolling200_02_rack_burnin135_01/request.json",
+      "sha256": "009e4d20ca433653af6b36f4602bf3883a51b345248419ddfa7aaa2ab393c9b5"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "format"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "native"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "regressions",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "regressions"
+      ],
+      "timeout_seconds": 300
+    }
+  ],
+  "validation_domain": "Seven portable methods / eleven original ELF identities. Exact four-byte LED, meter and scan messages; both bools; virtual base/derived dispatch; null primary; disabled/enabled secondary; primary mutation of message and enabled state before secondary. Burn-in signed nanosecond division and strict >500ms deadline, final resampling, held-count 4 and >6 consecutive polls, process-shared latch/counter/timestamp across two receivers, active clearing and immediate relatch/double-send; onIdle exact burn-in/permissions/network/task call order. 814 independent ARM frames and actual C++/CCL/protocol wire replay; explicit binding failures, source-port exception timing, actual permission gating, task lifetime/removal and existing provider regressions.",
+  "limitations": "Portable source port only. All seven ordinary original return declarations, original inheritance/fields/layout and ARM32 calling convention remain unresolved; no original ABI or hardware interoperability claim. Abstract native getPort is implemented only as an independent explicit borrowed-port binding for existing standalone consumers; PanelRegistrar uses its existing actual getPort provider. Original clock/debug/division/getPort/port boundaries and existing permissions/network/idleTasks are intercepted in the ARM oracle; actual pinned CCL/application/protocol providers and existing regressions execute separately. Synthetic native memory is not an original class layout declaration. Single-threaded caller domain; counter wrap expressed explicitly but >2^31 consecutive-poll exhaustion not replayed. Native invalid enabled/null-secondary dereference and exceptions are outside native equivalence; portable failures are explicit, tested adaptations. No hardware, device opening, network, serial, ioctl, flashing or native syscall passthrough.",
+  "build_integration": {
+    "production_partitions": {
+      "common": [
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+      ],
+      "rm": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+      ]
+    },
+    "public_headers": [
+      "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+      "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+      "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+    ],
+    "test_target": "rack_panel_burnin_replay",
+    "test_sources": [
+      "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+    ],
+    "instrumented_test_translation_units": [
+      "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+      "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+      "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+      "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+      "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+    ],
+    "compile_options": [
+      "-finstrument-functions (only instrumented test TUs)",
+      "-fno-rtti",
+      "-ffunction-sections",
+      "-fdata-sections"
+    ],
+    "link_dependencies": [
+      "canonical application archive",
+      "pinned CCL corelib and allocator",
+      "pthread",
+      "dl",
+      "z"
+    ],
+    "link_options": [
+      "--gc-sections",
+      "--wrap=clock_gettime",
+      "--wrap=_ZN4Core11DebugPrintfEPKcz"
+    ],
+    "ctest_replay_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/rack_burnin/check.py",
+      "replay",
+      "<canonical-built-rack_panel_burnin_replay>",
+      "uc-library/tests/recovery/rack_burnin/fixtures.json"
+    ],
+    "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+  }
+}

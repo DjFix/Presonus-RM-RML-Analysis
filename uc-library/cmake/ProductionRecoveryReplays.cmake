@@ -471,3 +471,131 @@ if(BUILD_TESTING)
     replay "$<TARGET_FILE:FocusHelperInputReplay>"
     uc-library/tests/recovery/focus_helper_input/fixtures.json)
 endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(MappingStringsReplay tests/recovery/MappingStringsReplay.cpp cs18)
+  recovery11_test(MappingStringsReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/mapping_strings/check.py" replay --executable "$<TARGET_FILE:MappingStringsReplay>" --fixtures uc-library/tests/recovery/mapping_strings/fixtures.json)
+  recovery11_executable(MappingItemReplay tests/recovery/MappingItemReplay.cpp cs18)
+  target_link_options(MappingItemReplay PRIVATE "LINKER:--wrap=_ZN8Presonus5Panel10LEDControl12setBlinkModeENS1_9BlinkModeE" "LINKER:--wrap=_ZN8Presonus5Panel10LEDControl14setInverseModeEb")
+  recovery11_test(MappingItemReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/mapping_item/check.py" replay --driver "$<TARGET_FILE:MappingItemReplay>")
+  recovery11_executable(SurfaceMappingPredicateReplay tests/recovery/SurfaceMappingPredicateReplay.cpp cs18)
+  target_link_options(SurfaceMappingPredicateReplay PRIVATE "LINKER:--wrap=strstr" "LINKER:--wrap=strcmp")
+  recovery11_test(SurfaceMappingPredicateReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/surface_mapping_predicate/check.py" replay "$<TARGET_FILE:SurfaceMappingPredicateReplay>" uc-library/tests/recovery/surface_mapping_predicate/fixtures.json)
+  recovery11_executable(ControllerInterfaceReplay tests/recovery/ControllerInterfaceReplay.cpp rm)
+  target_compile_options(ControllerInterfaceReplay PRIVATE -frtti)
+  recovery11_test(ControllerInterfaceReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/controller_interface/check.py" replay uc-library/tests/recovery/controller_interface/fixtures.json "$<TARGET_FILE:ControllerInterfaceReplay>")
+  recovery11_executable(StormMuteActivationReplay tests/recovery/StormMuteActivationReplay.cpp rm)
+  target_link_options(StormMuteActivationReplay PRIVATE "LINKER:--wrap=_ZN4Core8Portable10AttributesD1Ev" "LINKER:--wrap=_ZN4Core8Portable10AttributesD2Ev" "LINKER:--wrap=_ZN4Core8Portable12ArchiveUtils12loadFromFileERNS0_10AttributesEPKcNS0_8Archiver6FormatEPNS0_18FileStorageContextEib")
+  recovery11_test(StormMuteActivationReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/storm_mute_activation/check.py" replay "$<TARGET_FILE:StormMuteActivationReplay>")
+  recovery11_executable(StormMixScenePathsReplay tests/recovery/StormMixScenePathsReplay.cpp rm)
+  target_link_options(StormMixScenePathsReplay PRIVATE "LINKER:--wrap=mkdir")
+  recovery11_test(StormMixScenePathsReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/storm_scene_paths/check.py" replay --executable "$<TARGET_FILE:StormMixScenePathsReplay>" --fixtures uc-library/tests/recovery/storm_scene_paths/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(CardUCNetLifecycleReplay tests/recovery/CardUCNetLifecycleReplay.cpp rm)
+  target_link_options(CardUCNetLifecycleReplay PRIVATE
+    "LINKER:--wrap=_Znwm" "LINKER:--wrap=_ZdlPv" "LINKER:--wrap=_ZdlPvm"
+    "LINKER:--wrap=_ZN8Presonus2UC11PacketQueueD2Ev"
+    "LINKER:--wrap=_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE")
+  recovery11_test(CardUCNetLifecycleReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/card_ucnet_lifecycle/check.py"
+    replay "$<TARGET_FILE:CardUCNetLifecycleReplay>"
+    uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  # Test-only call-entry observations; production objects remain compiled once
+  # in their assigned partitions and never receive instrumentation flags.
+  add_library(rack_burnin_observation_objects OBJECT
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/src/Presonus/Panel/RackPanelComponent.cpp"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/src/Presonus/Panel/PanelRegistrar.cpp")
+  target_link_libraries(rack_burnin_observation_objects PRIVATE presonus::rm_components)
+  target_compile_features(rack_burnin_observation_objects PRIVATE cxx_std_17)
+  target_compile_options(rack_burnin_observation_objects PRIVATE -O0 -fno-rtti -fno-lto -finstrument-functions -ffunction-sections -fdata-sections -Wno-multichar)
+  recovery11_executable(RackPanelBurnInReplay tests/recovery/RackPanelBurnInReplay.cpp rm)
+  target_sources(RackPanelBurnInReplay PRIVATE $<TARGET_OBJECTS:rack_burnin_observation_objects>)
+  target_link_options(RackPanelBurnInReplay PRIVATE "LINKER:--gc-sections" "LINKER:--wrap=clock_gettime" "LINKER:--wrap=_ZN4Core11DebugPrintfEPKcz")
+  recovery11_test(RackPanelBurnInReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/rack_burnin/check.py" replay "$<TARGET_FILE:RackPanelBurnInReplay>" uc-library/tests/recovery/rack_burnin/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(SceneFilterReplay tests/recovery/SceneFilterReplay.cpp rm)
+  recovery11_test(SceneFilterReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/scene_filter/check.py" replay --executable "$<TARGET_FILE:SceneFilterReplay>" --fixtures uc-library/tests/recovery/scene_filter/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(GridPainterReplay tests/recovery/GridPainterReplay.cpp cs18)
+  target_compile_options(GridPainterReplay PRIVATE -fno-fast-math -ffp-contract=off)
+  recovery11_test(GridPainterReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/grid_painter/check.py" replay "$<TARGET_FILE:GridPainterReplay>")
+  recovery11_executable(DAWTimeMapsConstructionReplay tests/recovery/DAWTimeMapsConstructionReplay.cpp cs18)
+  recovery11_test(DAWTimeMapsConstructionReplay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/daw_map_construction/check.py" replay --executable "$<TARGET_FILE:DAWTimeMapsConstructionReplay>")
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(noaa_tcard_handler_lifecycle_properties_replay tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp rm)
+  target_link_options(noaa_tcard_handler_lifecycle_properties_replay PRIVATE
+    "LINKER:--wrap=_ZN4Core8Platform11PosixThread11setPriorityEi"
+    "LINKER:--wrap=_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE"
+    "LINKER:--wrap=_ZN4Core8Platform13CurrentThread5sleepEj"
+    "LINKER:--wrap=_ZN4Core8Platform9PosixLock4lockEv"
+    "LINKER:--wrap=_ZN4Core8Platform9PosixLock6unlockEv"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouterC1Ev"
+    "LINKER:--wrap=_ZN8Presonus4NOAA11TCardRouterD1Ev"
+    "LINKER:--wrap=_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv"
+    "LINKER:--wrap=_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard13eraseFirmwareEv"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard14setClockSourceEi"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard18programSerialResetEv"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCard5startEb"
+    "LINKER:--wrap=_ZN8Presonus4NOAA5TCardC1Ev"
+    "LINKER:--wrap=_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE"
+    "LINKER:--wrap=_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+    "LINKER:--wrap=_ZdlPv"
+    "LINKER:--wrap=_ZdlPvm"
+    "LINKER:--wrap=_Znwm"
+    "LINKER:--wrap=abort"
+    "LINKER:--wrap=close"
+    "LINKER:--wrap=fopen"
+    "LINKER:--wrap=ioctl"
+    "LINKER:--wrap=open"
+    "LINKER:--wrap=read"
+    "LINKER:--wrap=socket"
+    "LINKER:--wrap=tcflush"
+    "LINKER:--wrap=tcgetattr"
+    "LINKER:--wrap=tcsetattr"
+    "LINKER:--wrap=write"
+  )
+  recovery11_test(noaa_tcard_handler_lifecycle_properties_replay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/card_handler_lifecycle_properties/check.py"
+    replay --executable "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>"
+    --fixtures uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json
+    --fixture-sha256 6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6)
+endif()

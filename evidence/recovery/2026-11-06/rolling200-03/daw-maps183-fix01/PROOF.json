@@ -1,0 +1,922 @@
+{
+  "version": 1,
+  "date": "2026-11-06T07:49:43.141287+00:00",
+  "checkout": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183",
+  "compiler_version": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "python_version": "Python 3.12.3\n",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC2Ev",
+      "address": 491124,
+      "size": 68,
+      "section": ".text"
+    },
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus11DAWTimeInfo8TempoMapC1Ev",
+      "address": 490564,
+      "size": 68,
+      "section": ".text"
+    },
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC1Ev",
+      "address": 491056,
+      "size": 68,
+      "section": ".text"
+    },
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus11DAWTimeInfo8TempoMapC2Ev",
+      "address": 490632,
+      "size": 68,
+      "section": ".text"
+    }
+  ],
+  "native_ranges": [
+    {
+      "mangled": "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC2Ev",
+      "address": 491124,
+      "size": 68,
+      "section": ".text",
+      "file_offset": 458356,
+      "sha256": "28ad84d3c735b15392e82192ccd05fe44a9812f9e719b89ffb6f12778a2ac745"
+    },
+    {
+      "mangled": "_ZN8Presonus11DAWTimeInfo8TempoMapC1Ev",
+      "address": 490564,
+      "size": 68,
+      "section": ".text",
+      "file_offset": 457796,
+      "sha256": "082dd675cf4200b2e79c80162226e1c41e66be1dcadc0d2d96caf22bc3333d2b"
+    },
+    {
+      "mangled": "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC1Ev",
+      "address": 491056,
+      "size": 68,
+      "section": ".text",
+      "file_offset": 458288,
+      "sha256": "86d0413938f0709fd41690b03f5f81f14abbe3ad70aa304840e875131eeb393c"
+    },
+    {
+      "mangled": "_ZN8Presonus11DAWTimeInfo8TempoMapC2Ev",
+      "address": 490632,
+      "size": 68,
+      "section": ".text",
+      "file_offset": 457864,
+      "sha256": "f9317f8947db3f6167e350c9dcc5c0e5fa75c16aa8483d1ff34aa3dc3323cbd5"
+    }
+  ],
+  "oracle_producer": {
+    "path": "uc-library/tests/recovery/daw_map_construction/native.py",
+    "sha256": "0997a8d74c2d5bd3a912a30302ad2085ded0737e45c67088e162de527bf8815b",
+    "unicorn": "2.1.4"
+  },
+  "provider": {
+    "commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "policy": "unchanged actual pinned source, no Core firmware execution",
+    "source_hashes": {
+      "third_party/ccl-framework/core/public/coreclibrary.h": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc",
+      "third_party/ccl-framework/core/public/corecontainer.h": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a",
+      "third_party/ccl-framework/core/public/coremalloc.h": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff",
+      "third_party/ccl-framework/core/public/coreplatform.h": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1",
+      "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    }
+  },
+  "source_hashes": {
+    "uc-library/include/presonus/DAWTimeInfo.hpp": "1d5c9e1c0bf2561f0ee619c3a309a92de9b1f26577ab137c3ef34b863fed4f7e",
+    "uc-library/src/Presonus/DAWTimeMapsConstruction.cpp": "558c9f2350fb0402ddd0fa6defcd19077f37e27bdcac4aa8c357d72583c0448c",
+    "uc-library/src/Presonus/DAWTimeMaps.cpp": "2dab8e329b4c6d41e579d5a38bb96bac523c3e61ed0c60f502f734839906e43c"
+  },
+  "input_hashes": {
+    "AGENTS.md": "3f3da24d1bf6c9cacf3fc6dbba7fb57033e55b6e8d95bbf65502b56d4cf3d7ac",
+    "docs/core-framework-lineage.md": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4",
+    "docs/worker-handoff.md": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3",
+    "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a": "15216b4f80f72845b7b027692557496789d425761caa44aa8a1730aafc614ab9",
+    "temp/core-upstream/root-integration-01/libpresonus_uc.a": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "third_party/ccl-framework/core/public/coreclibrary.h": "be34ea81e1ef1f42c0f66df7584757089e75f1e41df835db2075a21c629f26bc",
+    "third_party/ccl-framework/core/public/corecontainer.h": "e0c4482b13494aa0aa1d0a1713276bb42c7cdeb2609df7ab73b1a5be395e280a",
+    "third_party/ccl-framework/core/public/coremalloc.h": "619ed30f6e89ed3bb27c9179819864a7069a123e9c96ad5b950f5494729f14ff",
+    "third_party/ccl-framework/core/public/coreplatform.h": "c0c45a8fcce4d694ff6b440a64769c30dcf0a8592c5e24a27d48dc7ac5e854d1",
+    "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32",
+    "uc-library/include/presonus/DAWTimeInfo.hpp": "1d5c9e1c0bf2561f0ee619c3a309a92de9b1f26577ab137c3ef34b863fed4f7e",
+    "uc-library/src/Presonus/DAWTimeMaps.cpp": "2dab8e329b4c6d41e579d5a38bb96bac523c3e61ed0c60f502f734839906e43c",
+    "uc-library/src/Presonus/DAWTimeMapsConstruction.cpp": "558c9f2350fb0402ddd0fa6defcd19077f37e27bdcac4aa8c357d72583c0448c",
+    "uc-library/tests/graph_trial08_timeinfo_tests.cpp": "a8c61098081b13b5e4ab88cc15eb6620e161d065cebf5993a70e8c7aa33bfa58",
+    "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp": "99ee267451905abd3723938f8fd5f5985094aecaa7536f7c6c138584537ec1b3",
+    "uc-library/tests/recovery/daw_map_construction/check.py": "a11d4392c680664a4549b9025fd2ff2ca568bd19a6c12b6c1e3f31103dd7b24e",
+    "uc-library/tests/recovery/daw_map_construction/fixtures.json": "b3314750553365126cdb6650aa39806453ab065a8b45ddded7e5aa2a2dd99c43",
+    "uc-library/tests/recovery/daw_map_construction/native.py": "0997a8d74c2d5bd3a912a30302ad2085ded0737e45c67088e162de527bf8815b",
+    "uc-library/tests/recovery/daw_map_construction/seal.py": "7ebd286cfa6b96697d1ca37d496ec235e55af30f49c0ebed30627160c65e9919",
+    "uc-library/tests/recovery/ranked09/maps/driver.cpp": "bc115ae900ee9274ede0fe1244c8d02a66f341a51caa577b7d0ec360b5082af8",
+    "uc-library/tests/recovery/ranked09/maps/fixtures.json": "6b9a437f42efffa28ac251cb344a7a5d32f8958a81b256428159d26aaafe8c95",
+    "uc-library/tests/recovery/ranked09/maps/replay.py": "4ef0cd75dc5eb814ff18e35bf7c8cde9b0b85b96199f2035643071b48f2903a2",
+    "uc-library/tests/recovery/reconstruction-200-01/large01_w05/driver.cpp": "b53261d94aececbf86b3206f75c448b70e01d8122327fe7b745aef11a4d24a41",
+    "uc-library/tests/recovery/reconstruction-200-01/large01_w05/fixtures.json": "4ff20cc8167fb5738cc77caf4bc07ba6bbd36298756faa6a0be9525bc966eb2f",
+    "uc-library/tests/recovery/reconstruction-200-01/large01_w05/replay.py": "27ad43fa7070b13b52bf813403049e2234904e6e1df6c5400665c43bb1925075",
+    "uc-library/tests/recovery/trial08/timeinfo/native-fixtures.json": "a7cac03b800f992c9c767e88f31b20154c03cbd23d9e7d454fa7d66c8e25e9df",
+    "uc-library/tests/recovery/trial08/timeinfo/replay.py": "52ce74a2fc24505380b55c6045373956a6fea90680b872e36efb32e2a02e2bd7"
+  },
+  "commands": {
+    "DIAGNOSIS": {
+      "status": "root-cause-confirmed",
+      "cause": "stale DAWTimeMaps.cpp object compiled against previous DAWTimeInfo.hpp layout",
+      "originals": [
+        "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC1Ev",
+        "_ZN8Presonus11DAWTimeInfo16TimeSignatureMapC2Ev",
+        "_ZN8Presonus11DAWTimeInfo8TempoMapC1Ev",
+        "_ZN8Presonus11DAWTimeInfo8TempoMapC2Ev"
+      ],
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "fault": {
+        "executable_offset": "0x6b8c",
+        "function": "anonymous search, called by main line76 initial empty map lookup"
+      },
+      "stale_object": {
+        "sha256": "41489d149d864befe4eacf39224f650d8dbde3efb425022b7470798022d82509",
+        "records_offset": 0,
+        "count_offset": 8
+      },
+      "fresh_object": {
+        "sha256": "6ddf30a2a0fcd727d9fcd016dd3998d06bc8dc6ae42ce2d7a0cd3c68c41d8010",
+        "records_offset": 16,
+        "count_offset": 24
+      },
+      "construction_objects_identical_sha256": "67a58f93d14bc41906ad7bf346b39baf1ff4701f3d96cebd4cddf0dfe339aebc",
+      "isolation": "canonical immutable driver/constructor/archive retained; replace only stale maps object with newly compiled current-header object: 12/12 passes",
+      "required_action": "Root rebuild all DAWTimeInfo.hpp-dependent translation units and canonical gates; local optimized and actual-role-link coverage added",
+      "source_behavior_changed": false,
+      "diagnostic_snapshot": "temp/recovery-work/rolling200-03/daw-failure-snapshot204",
+      "diagnostic_only": "original binary firmware body/readiness scope unchanged; no canonical edits or provider patches"
+    },
+    "compile-borrowed-maps": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "uc-library/tests/recovery/ranked09/maps/driver.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.o",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/borrowed-maps"
+      ],
+      "start_utc": "2026-11-06T07:49:41.611054+00:00",
+      "duration_seconds": 0.441277379024541,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "compile-events-regression": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "uc-library/tests/recovery/reconstruction-200-01/large01_w05/driver.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.o",
+        "-Wl,--start-group",
+        "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+        "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-Wl,--end-group",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/events-regression"
+      ],
+      "start_utc": "2026-11-06T07:49:42.092949+00:00",
+      "duration_seconds": 0.5565436329925433,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "compile-maps": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O3",
+        "-DNDEBUG",
+        "-DCORE_USE_OPENSSL=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-MD",
+        "-MF",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.d",
+        "-c",
+        "uc-library/src/Presonus/DAWTimeMaps.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.o"
+      ],
+      "start_utc": "2026-11-06T07:49:39.672527+00:00",
+      "duration_seconds": 0.18449936600518413,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "compile-production": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O3",
+        "-DNDEBUG",
+        "-DCORE_USE_OPENSSL=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-MD",
+        "-MF",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.d",
+        "-c",
+        "uc-library/src/Presonus/DAWTimeMapsConstruction.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o"
+      ],
+      "start_utc": "2026-11-06T07:49:39.198517+00:00",
+      "duration_seconds": 0.47361094600637443,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "compile-replay": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-std=c++20",
+        "-O0",
+        "-UNDEBUG",
+        "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.o",
+        "-Wl,--start-group",
+        "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-Wl,--end-group",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-lm",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay"
+      ],
+      "start_utc": "2026-11-06T07:49:39.857423+00:00",
+      "duration_seconds": 0.5481649000139441,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "compile-timeinfo-regression": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "uc-library/tests/graph_trial08_timeinfo_tests.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps.o",
+        "-Wl,--start-group",
+        "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+        "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-Wl,--end-group",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/timeinfo-regression"
+      ],
+      "start_utc": "2026-11-06T07:49:42.703524+00:00",
+      "duration_seconds": 0.366593795013614,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "exact-compile-0": {
+      "argv": [
+        "/usr/bin/c++",
+        "-DCORE_USE_OPENSSL=1",
+        "-DNDEBUG=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-I/home/rs/projects/opencs/ai-line-analysis/uc-library/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/libpng16",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/avahi-compat-libdns_sd",
+        "-O3",
+        "-DNDEBUG",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-pthread",
+        "-Ulinux",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-0.o",
+        "-c",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/uc-library/src/Presonus/DAWTimeMapsConstruction.cpp"
+      ],
+      "start_utc": "2026-11-06T07:45:20.918012+00:00",
+      "duration_seconds": 0.5128780520171858,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "exact-compile-1": {
+      "argv": [
+        "/usr/bin/c++",
+        "-DCORE_USE_OPENSSL=1",
+        "-DNDEBUG=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-I/home/rs/projects/opencs/ai-line-analysis/uc-library/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/libpng16",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/avahi-compat-libdns_sd",
+        "-O3",
+        "-DNDEBUG",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-pthread",
+        "-Ulinux",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-1.o",
+        "-c",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/uc-library/src/Presonus/DAWTimeMaps.cpp"
+      ],
+      "start_utc": "2026-11-06T07:45:21.431795+00:00",
+      "duration_seconds": 0.20079367799917236,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "exact-compile-2": {
+      "argv": [
+        "/usr/bin/c++",
+        "-DCORE_USE_OPENSSL=1",
+        "-DNDEBUG=1",
+        "-DPRESONUS_HAS_UPSTREAM_CORE=1",
+        "-I/home/rs/projects/opencs/ai-line-analysis/uc-library/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/root-integration-01/upstream-core/sdk/include/presonus-core-5",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/libpng16",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include",
+        "-isystem",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/core-upstream/external-dev/usr/include/avahi-compat-libdns_sd",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-UNDEBUG",
+        "-fno-lto",
+        "-Ulinux",
+        "-O0",
+        "-g",
+        "-fno-rtti",
+        "-Wno-multichar",
+        "-pthread",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-2.o",
+        "-c",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp"
+      ],
+      "start_utc": "2026-11-06T07:45:21.633258+00:00",
+      "duration_seconds": 0.570478659006767,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "exact-link": {
+      "argv": [
+        "/usr/bin/c++",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-0.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-1.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-2.o",
+        "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-lm",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-exact"
+      ],
+      "start_utc": "2026-11-06T07:45:22.204041+00:00",
+      "duration_seconds": 0.06441372001427226,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "exact-run": {
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-exact"
+      ],
+      "start_utc": "2026-11-06T07:45:22.268748+00:00",
+      "duration_seconds": 0.0017604699824005365,
+      "returncode": 0,
+      "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+      "stderr": ""
+    },
+    "format": {
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/DAWTimeInfo.hpp",
+        "uc-library/src/Presonus/DAWTimeMapsConstruction.cpp",
+        "uc-library/src/Presonus/DAWTimeMaps.cpp",
+        "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp"
+      ],
+      "start_utc": "2026-11-06T07:49:39.119440+00:00",
+      "duration_seconds": 0.042398402001708746,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "formatter-version": {
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--version"
+      ],
+      "start_utc": "2026-11-06T07:49:39.094128+00:00",
+      "duration_seconds": 0.02514565401361324,
+      "returncode": 0,
+      "stdout": "clang-format version 23.1.3\n",
+      "stderr": ""
+    },
+    "native-oracle": {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/native.py",
+        "--out",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/fixtures-fresh.json"
+      ],
+      "start_utc": "2026-11-06T07:49:40.482274+00:00",
+      "duration_seconds": 1.052139179984806,
+      "returncode": 0,
+      "stdout": "48 native boundary observations; 4 separately verified ranges\n",
+      "stderr": ""
+    },
+    "nm": {
+      "argv": [
+        "/usr/bin/nm",
+        "--defined-only",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production.o"
+      ],
+      "start_utc": "2026-11-06T07:49:40.442597+00:00",
+      "duration_seconds": 0.0019078550103586167,
+      "returncode": 0,
+      "stdout": "0000000000000000 r .LC0\n0000000000000000 r .LC10\n000000000000000a r .LC11\n0000000000000008 r .LC2\n0000000000000000 r .LC5\n0000000000000010 r .LC6\n0000000000000000 r .LC9\n0000000000000000 V DW.ref.__gxx_personality_v0\n0000000000000000 u _ZN4Core11ConstVectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEE5errorE\n0000000000000000 u _ZN4Core11ConstVectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEE5errorE\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEE6resizeEi\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEED0Ev\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEED1Ev\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEED2Ev\n0000000000000000 n _ZN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEED5Ev\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEE6resizeEi\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEED0Ev\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEED1Ev\n0000000000000000 W _ZN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEED2Ev\n0000000000000000 n _ZN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEED5Ev\n0000000000000440 T _ZN8Presonus11DAWTimeInfo16TimeSignatureMap17replaceOwnedItemsEPKNS1_4ItemEi\n000000000000002c t _ZN8Presonus11DAWTimeInfo16TimeSignatureMap17replaceOwnedItemsEPKNS1_4ItemEi.cold\n0000000000000000 T _ZN8Presonus11DAWTimeInfo16TimeSignatureMapC1Ev\n0000000000000000 T _ZN8Presonus11DAWTimeInfo16TimeSignatureMapC2Ev\n0000000000000000 t _ZN8Presonus11DAWTimeInfo16TimeSignatureMapC2Ev.cold\n00000000000006e0 T _ZN8Presonus11DAWTimeInfo8TempoMap17replaceOwnedItemsEPKNS1_4ItemEi\n0000000000000114 t _ZN8Presonus11DAWTimeInfo8TempoMap17replaceOwnedItemsEPKNS1_4ItemEi.cold\n00000000000002a0 T _ZN8Presonus11DAWTimeInfo8TempoMapC1Ev\n00000000000002a0 T _ZN8Presonus11DAWTimeInfo8TempoMapC2Ev\n0000000000000016 t _ZN8Presonus11DAWTimeInfo8TempoMapC2Ev.cold\n00000000000003e0 T _ZNK8Presonus11DAWTimeInfo16TimeSignatureMap13ownedCapacityEv\n0000000000000420 T _ZNK8Presonus11DAWTimeInfo16TimeSignatureMap15allocationDeltaEv\n0000000000000400 T _ZNK8Presonus11DAWTimeInfo8TempoMap13ownedCapacityEv\n0000000000000430 T _ZNK8Presonus11DAWTimeInfo8TempoMap15allocationDeltaEv\n0000000000000000 W _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv\n0000000000000000 W _ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED0Ev\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED1Ev\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED2Ev\n0000000000000000 n _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED5Ev\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE14_M_get_deleterERKSt9type_info\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED0Ev\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED1Ev\n0000000000000000 W _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED2Ev\n0000000000000000 n _ZNSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EED5Ev\n0000000000000000 W _ZNSt6vectorIhSaIhEE17_M_default_appendEm\n0000000000000000 V _ZTIN4Core11ConstVectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEEE\n0000000000000000 V _ZTIN4Core11ConstVectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEEE\n0000000000000000 V _ZTIN4Core13MutableVectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemENS_6VectorIS4_EEEE\n0000000000000000 V _ZTIN4Core13MutableVectorIN8Presonus11DAWTimeInfo8TempoMap4ItemENS_6VectorIS4_EEEE\n0000000000000000 V _ZTIN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEEE\n0000000000000000 V _ZTIN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEEE\n0000000000000000 V _ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTISt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTISt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTSN4Core11ConstVectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEEE\n0000000000000000 V _ZTSN4Core11ConstVectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEEE\n0000000000000000 V _ZTSN4Core13MutableVectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemENS_6VectorIS4_EEEE\n0000000000000000 V _ZTSN4Core13MutableVectorIN8Presonus11DAWTimeInfo8TempoMap4ItemENS_6VectorIS4_EEEE\n0000000000000000 V _ZTSN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEEE\n0000000000000000 V _ZTSN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEEE\n0000000000000000 V _ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTSSt19_Sp_make_shared_tag\n0000000000000000 V _ZTSSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTSSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTVN4Core6VectorIN8Presonus11DAWTimeInfo16TimeSignatureMap4ItemEEE\n0000000000000000 V _ZTVN4Core6VectorIN8Presonus11DAWTimeInfo8TempoMap4ItemEEE\n0000000000000000 V _ZTVSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo16TimeSignatureMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 V _ZTVSt23_Sp_counted_ptr_inplaceIN8Presonus11DAWTimeInfo8TempoMap12OwnedStorageESaIvELN9__gnu_cxx12_Lock_policyE2EE\n0000000000000000 u _ZZNSt19_Sp_make_shared_tag5_S_tiEvE5__tag\n",
+      "stderr": ""
+    },
+    "provider-map-replay": {
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay"
+      ],
+      "start_utc": "2026-11-06T07:49:41.572513+00:00",
+      "duration_seconds": 0.0019373530230950564,
+      "returncode": 0,
+      "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+      "stderr": ""
+    },
+    "regression-borrowed-maps": {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/ranked09/maps/replay.py",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/borrowed-maps",
+        "uc-library/tests/recovery/ranked09/maps/fixtures.json"
+      ],
+      "start_utc": "2026-11-06T07:49:42.052580+00:00",
+      "duration_seconds": 0.04015894597978331,
+      "returncode": 0,
+      "stdout": "378 original ARM/C++ cases match; records unchanged; no original nonstack writes\n",
+      "stderr": ""
+    },
+    "regression-events": {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/reconstruction-200-01/large01_w05/replay.py",
+        "--executable",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/events-regression",
+        "--fixtures",
+        "uc-library/tests/recovery/reconstruction-200-01/large01_w05/fixtures.json"
+      ],
+      "start_utc": "2026-11-06T07:49:42.649765+00:00",
+      "duration_seconds": 0.053597873979015276,
+      "returncode": 0,
+      "stdout": "PASS 557 original ARM/source-port comparisons; complete 112-byte event buffers, getter identity, map records, binary64 tempo, D1 opaque base-dispatch identity reset in live borrowed state\n",
+      "stderr": ""
+    },
+    "regression-timeinfo": {
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/trial08/timeinfo/replay.py",
+        "--executable",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/timeinfo-regression",
+        "--fixtures",
+        "uc-library/tests/recovery/trial08/timeinfo/native-fixtures.json"
+      ],
+      "start_utc": "2026-11-06T07:49:43.070377+00:00",
+      "duration_seconds": 0.03717802700703032,
+      "returncode": 0,
+      "stdout": "20 original ARM / C++ cases matched: explicit state bytes, context boundary counts, appended event counts; narrow null/empty/unchanged branches only\n",
+      "stderr": ""
+    },
+    "reproduce-maps-o3-compile": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O3",
+        "-DNDEBUG",
+        "-g",
+        "-c",
+        "uc-library/src/Presonus/DAWTimeMaps.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps-o3.o"
+      ],
+      "start_utc": "2026-11-06T07:44:13.854724+00:00",
+      "duration_seconds": 0.20865672000218183,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "reproduce-o3-compile": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O3",
+        "-DNDEBUG",
+        "-g",
+        "-c",
+        "uc-library/src/Presonus/DAWTimeMapsConstruction.cpp",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production-o3.o"
+      ],
+      "start_utc": "2026-11-06T07:44:13.233955+00:00",
+      "duration_seconds": 0.6204549810208846,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "reproduce-o3-link": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O0",
+        "-UNDEBUG",
+        "-g",
+        "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production-o3.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps-o3.o",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-o3"
+      ],
+      "start_utc": "2026-11-06T07:44:14.063770+00:00",
+      "duration_seconds": 0.45391797699267045,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "reproduce-o3-role-link": {
+      "argv": [
+        "/usr/bin/c++",
+        "-std=c++17",
+        "-fno-lto",
+        "-fno-rtti",
+        "-Ulinux",
+        "-Wno-multichar",
+        "-Iuc-library/include",
+        "-isystem",
+        "third_party/ccl-framework",
+        "-O0",
+        "-UNDEBUG",
+        "-g",
+        "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/production-o3.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/maps-o3.o",
+        "-Wl,--start-group",
+        "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+        "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-Wl,--end-group",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-o3-linked"
+      ],
+      "start_utc": "2026-11-06T07:44:41.288718+00:00",
+      "duration_seconds": 0.48944139599916525,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "reproduce-o3-role-run": {
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-o3-linked"
+      ],
+      "start_utc": "2026-11-06T07:44:41.778493+00:00",
+      "duration_seconds": 0.0020459469815250486,
+      "returncode": 0,
+      "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+      "stderr": ""
+    },
+    "reproduce-o3-run": {
+      "argv": [
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/replay-o3"
+      ],
+      "start_utc": "2026-11-06T07:44:14.517992+00:00",
+      "duration_seconds": 0.0019837470026686788,
+      "returncode": 0,
+      "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+      "stderr": ""
+    },
+    "snapshot-MANIFEST": {
+      "utc": "2026-11-06T07:46:22.123567+00:00",
+      "scope": "Immutable diagnostic snapshot after full build finished exit0; not worker baseline/archive substitution",
+      "files": [
+        {
+          "path": "DAWTimeMapsConstructionReplay",
+          "sha256": "2094c8728aac05f8023b1b1ba07ab4dc43246a148e4831699c56acb4bc38b8e8"
+        },
+        {
+          "path": "CMakeFiles/presonus_cs18_objects.dir/src/Presonus/DAWTimeMapsConstruction.cpp.o",
+          "sha256": "67a58f93d14bc41906ad7bf346b39baf1ff4701f3d96cebd4cddf0dfe339aebc"
+        },
+        {
+          "path": "CMakeFiles/presonus_cs18_objects.dir/src/Presonus/DAWTimeMaps.cpp.o",
+          "sha256": "41489d149d864befe4eacf39224f650d8dbde3efb425022b7470798022d82509"
+        },
+        {
+          "path": "CMakeFiles/DAWTimeMapsConstructionReplay.dir/tests/recovery/DAWTimeMapsConstructionReplay.cpp.o",
+          "sha256": "33d78aafe1650fe1c63eeea07be4f9dad287c981517332f1c5cde969e2d6f1a2"
+        },
+        {
+          "path": "libpresonus_cs18_components.a",
+          "sha256": "318388320d65969e882ab59556c1751cd3d365b4b09186d562b0f2d22a7a2ed2"
+        },
+        {
+          "path": "upstream-core/sdk/lib/libpresonus_core_allocator.a",
+          "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+        }
+      ]
+    },
+    "snapshot-backtrace": [
+      {
+        "attempt": 0,
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "attempt": 1,
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "attempt": 2,
+        "returncode": 139,
+        "stdout": "",
+        "stderr": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/crash_trace.so(+0x11d1)[0x7d9a41d641d1]\n/lib/x86_64-linux-gnu/libc.so.6(+0x45330)[0x7d9a41645330]\ntemp/recovery-work/rolling200-03/daw-failure-snapshot204/DAWTimeMapsConstructionReplay(+0x6b8c)[0x645dfe728b8c]\ntemp/recovery-work/rolling200-03/daw-failure-snapshot204/DAWTimeMapsConstructionReplay(+0x2bf9)[0x645dfe724bf9]\n/lib/x86_64-linux-gnu/libc.so.6(+0x2a1ca)[0x7d9a4162a1ca]\n/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x8b)[0x7d9a4162a28b]\ntemp/recovery-work/rolling200-03/daw-failure-snapshot204/DAWTimeMapsConstructionReplay(+0x2565)[0x645dfe724565]\n"
+      }
+    ],
+    "snapshot-executions": [
+      {
+        "attempt": 0,
+        "returncode": -11,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "attempt": 1,
+        "returncode": -11,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "attempt": 2,
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "attempt": 3,
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "attempt": 4,
+        "returncode": -11,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "snapshot-refreshed-maps-link": {
+      "argv": [
+        "/usr/bin/c++",
+        "temp/recovery-work/rolling200-03/daw-failure-snapshot204/CMakeFiles/DAWTimeMapsConstructionReplay.dir/tests/recovery/DAWTimeMapsConstructionReplay.cpp.o",
+        "temp/recovery-work/rolling200-03/daw-failure-snapshot204/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/DAWTimeMapsConstruction.cpp.o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/exact-1.o",
+        "temp/recovery-work/rolling200-03/daw-failure-snapshot204/libpresonus_cs18_components.a",
+        "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+        "temp/recovery-work/rolling200-03/daw-failure-snapshot204/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+        "-pthread",
+        "-ldl",
+        "/usr/lib/x86_64-linux-gnu/libpng16.so.16",
+        "/usr/lib/x86_64-linux-gnu/libz.so.1",
+        "-lssl",
+        "-lcrypto",
+        "temp/core-upstream/external-dev/usr/lib/x86_64-linux-gnu/libdns_sd.so",
+        "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+        "-lm",
+        "-o",
+        "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/daw_maps183/temp/recovery-work/daw_maps183-local/snapshot-refreshed-maps"
+      ],
+      "start_utc": "2026-11-06T07:48:45.167912+00:00",
+      "duration_seconds": 0.0570468170044478,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "snapshot-refreshed-maps-runs": [
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "PASS 382 provider/owned-map cases; array allocations=43 frees=43; no live arrays\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "validation_domain": "4 independently range-checked C1/C2 originals; 48 ARM application executions at four memory patterns and true/false/exception-stop resize boundaries. Actual pinned CCL initial capacities/deltas 16/64, zero logical count, growth/clear/destructor and allocation failures. 382 owned-map/provider cases at 0,1,15,16,17,63,64,65,129 sorted items; existing map searches, bar lookup, seconds conversion, immutable copies/rvalues/assignments, transactional replacement and cleanup. Existing 378 borrowed-map, 557 map/event/getter and 20 narrow timeinfo ARM regressions pass.",
+  "limitations": [
+    "Portable source port, not ARM32 ABI/layout or original map inheritance recovery. Typed Item fields and owned immutable storage/record encodings are intentional source-port declarations; unencoded original map return declarations remain unresolved.",
+    "Native Core resize is intercepted before any Core instruction; true/false are controlled boundary returns, not actual native provider allocation. Exception case stops at boundary; native unwind/cleanup is not executed or claimed. Pinned CCL provider real array failure/cleanup is separately executed.",
+    "Default original constructor allocation sizes are observed r1 requests 16/64; actual source-provider capacities/deltas are preferred policy. Source provider uses throwing host new; no claim of native allocator failure equivalence.",
+    "Borrowed APIs retain caller lifetime/readability requirements. Sorted finite item lists required for replacement and existing search assumptions; malformed pointers, unsorted records, concurrent mutation and extreme allocations are excluded.",
+    "No original map destructor target, hardware, native Core implementation, actual device I/O, system-call passthrough or the eight retained DAW lifecycle/format/factory targets are delivered. Global full Linux/integration/installed-role/compile-once/registry admission remains Root-owned."
+  ],
+  "compiled_aliasing": "Linux C1/C2 pair symbols share compiler-selected entry addresses; originals are four distinct ranges independently hashed and executed. Matching symbol names do not prove ABI/layout.",
+  "ready": false
+}

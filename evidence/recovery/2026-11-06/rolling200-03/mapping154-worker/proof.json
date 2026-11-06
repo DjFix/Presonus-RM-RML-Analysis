@@ -1,0 +1,291 @@
+{
+  "version": 1,
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "firmware": "CS18AI surface 13840",
+  "role": "client",
+  "ranges": [
+    {
+      "address": 478436,
+      "size": 120,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 445668,
+      "bytes_sha256": "90ae6c2c316d7e2aedbee7cd8fee57fb1327edd33f12b510180752b463b71998"
+    },
+    {
+      "address": 487548,
+      "size": 464,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 454780,
+      "bytes_sha256": "f0bb89cc727143b520653dcd2d5b6e259df8cb683d31f144884bab16fb9aecfb"
+    }
+  ],
+  "palette_initializer": {
+    "address": 480064,
+    "size": 1588,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 447296,
+    "bytes_sha256": "26c08fc16ef543e91c48e4b1aeee45b26d8d3f612e87beab146446e4ac7bf217"
+  },
+  "versions": {
+    "formatter": "clang-format version 23.1.3",
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "nm": "GNU nm (GNU Binutils for Ubuntu) 2.42\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty.",
+    "Core_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "unicorn": "2.1.4",
+    "pyelftools": "0.33"
+  },
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "format"
+      ],
+      "started": "2026-11-06T06:57:55.503406+00:00",
+      "finished": "2026-11-06T06:57:55.592010+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/format.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "compile"
+      ],
+      "started": "2026-11-06T06:57:55.592095+00:00",
+      "finished": "2026-11-06T06:57:56.280987+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/compile.log",
+        "sha256": "2e80cb3e8dd1995848eb387a7ed27821696b03156b2ba102cfcc32ed1fc2b4a4"
+      }
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "symbols"
+      ],
+      "started": "2026-11-06T06:57:56.281075+00:00",
+      "finished": "2026-11-06T06:57:56.316471+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/symbols.log",
+        "sha256": "50b82fca0a438c4431a42a85b9e03b9e4ee47904dc6c5785bf04c467eb8bc60e"
+      }
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "native"
+      ],
+      "started": "2026-11-06T06:57:56.316536+00:00",
+      "finished": "2026-11-06T06:57:56.696794+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/native.log",
+        "sha256": "bd0aeba00d6a17323452ab4961a5bbfa86229884c0c8d235e3b61fbd8967d58c"
+      }
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "replay"
+      ],
+      "started": "2026-11-06T06:57:56.696865+00:00",
+      "finished": "2026-11-06T06:57:57.103182+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/replay.log",
+        "sha256": "997571b284472556536b5e3a6e20fda38c4ea54d81331de89d8607797ed00dea"
+      }
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "regression"
+      ],
+      "started": "2026-11-06T06:57:57.103284+00:00",
+      "finished": "2026-11-06T06:57:58.103335+00:00",
+      "exit_code": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-03/mapping154-worker/regression.log",
+        "sha256": "58d3768aa352cd07d4d1a372128a1eb837ac532f19b39d2b08fd5d6906b4dd28"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/ColorMapping.hpp",
+      "sha256": "3a0a9326be7637e240c8e4e34e0cedd936ecdccb24438b6aaa11eedd3b949d4d"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/MappingTable.hpp",
+      "sha256": "c4c4d8d2af0801bdfad6b563fbd9c386fb5361f0adfdeb6168385441f59a3a8a"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/ColorMapping.cpp",
+      "sha256": "9ecb3a7ba073a03608f5176ef469613a9630d83773c76e34a06945eafebbc558"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/MappingTablePageName.cpp",
+      "sha256": "a97042e026459493ea3db5b55564795f70900f4b89978701322ae15d6241a9b7"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/MappingStringsReplay.cpp",
+      "sha256": "75fc4e146426f4f0fe4103762efc138771ed0f0b0c4e1b065d542f20b3369676"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/mapping_strings/native.py",
+      "sha256": "bd17da73cf41e2ff8024ec7958416243c8b9eb282af58dee51dc66b0ae2f9e7b"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/mapping_strings/check.py",
+      "sha256": "33d18ed45f057ab91d32cc1fa4dd000b561001185b26cb1898db27b8d767a73a"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/mapping_strings/seal.py",
+      "sha256": "96f316ad7942c2325122f2c0b6153b5f5b993b6254f862805819dde65be6f7f4"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/mapping_strings/fixtures.json",
+      "sha256": "e811618d41653d0b5ea28814a847daac1bc017f3d5d6efa095dbcb974637a815"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-03/mapping154/expansion177/SUPPLEMENT_TRANSPORT177.json",
+      "sha256": "aa34d4fc2b2205f65bac19c38030daf7b8b46dbe741e0a5787fcf130b4c7ddd8"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-03/mapping154/expansion177/expansion.json",
+      "sha256": "befa732fd55383c59e5ef30aa4081de9a5d781f11243fd3f296e50f961ce4b06"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/reconstruction-200-01/expansions02/palette-initializer01/ROOT_EVIDENCE.json",
+      "sha256": "672a3d1ce0e396ef35dac1f4b6d96e6c24dd82eda1d0c7bdfbe74d10bbce0160"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringtraits.h",
+      "sha256": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface_panel/LEDState.hpp",
+      "sha256": "e334d47799b989bcf0bebb61fd8ea32b33203d81acd8aabc206f0db5c95ebd3a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/reconstruction-200-01/large01_w06/oracle.py",
+      "sha256": "36e5fbd15a8f1e6eda6131fd4391895836e1bdf4c5a6bb5f4d859a518a7739dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/reconstruction-200-01/expansions02/palette-initializer01/native-context.json",
+      "sha256": "ce251fe89b3ccae32a9f4a08f43a134faa17a74dccc3b6ec4e8947d4f15ef905"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/MappingTable.cpp",
+      "sha256": "9fb58882d46e45366f7c5b42dd0ba49afe25901db16f50ec5078ab776562da12"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/graph_trial08_mappingtable_tests.cpp",
+      "sha256": "df408e8f42ba78313d7b605f6cb6e1cdde970c15c64a8b62d71c9ea214af3777"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/mappingtable/replay.py",
+      "sha256": "b3d799fa2d7946b174ae0183c755aab469fb509014ce93a3603b42cc2665e0fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial08/mappingtable/fixtures.json",
+      "sha256": "d5c73cdca0e91222d621a7e98c9a7a9d0498f17a4f810c762345d947b2b24d35"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    }
+  ],
+  "validation_domain": "306 original ARM cases: 17 palette names and 8 mismatches, six fallback bit patterns each; page null, prefix mismatch/missing dot, empty segments, multiple dots, 31-byte boundaries and long segments, repeated cold/warm calls. All 32 bytes of both outputs compared; failure preserves outputs. Repeated provider process sequence plus 17 existing nearest-color palette regressions and 40 existing borrowed MappingTable native cases.",
+  "limitations": [
+    "Portable source model; original ordinary return declarations remain unresolved (RGBLedColors and bool intentionally chosen from register observations); mangling does not encode them. Static declarations match explicit entry register use, but no original header establishes membership independently.",
+    "No original class layout, ARM32 calling convention interoperability, hardware or concurrency verification. Native libc/guard boundaries modeled; no Core firmware code executed. Real pinned CCL headers supply ConstString/CStringBuffer on Linux.",
+    "Domain: disjoint output/input buffers and NUL-terminated ASCII <=4095 bytes. Aliased buffers, allocation failures, races and invalid pointers excluded. Guard state tested cold then warm natively; source static initialization uses C++ runtime.",
+    "Five other MappingTable lifecycle/disconnect methods remain separate work. Global Linux/full CTest/role/install/compile-once/readiness gates belong to Root; no readiness promotion claimed."
+  ],
+  "native_executions": 306,
+  "portable_executions": 629,
+  "source_review": "Sole existing canonical class definitions extended; production names follow subsystem; existing palette reused without alteration; borrowed MappingTable state/dependency interfaces unchanged.",
+  "remarks": [
+    {
+      "date": "2026-11-06",
+      "status": "declaration-pending",
+      "identity": 478436,
+      "note": "Portable source model; original ordinary return declarations remain unresolved (RGBLedColors and bool intentionally chosen from register observations); mangling does not encode them. Static declarations match explicit entry register use, but no original header establishes membership independently.",
+      "retry_condition": "Original declaration evidence or source header establishes unencoded return/static declaration; preserve bounded behavior proof."
+    },
+    {
+      "date": "2026-11-06",
+      "status": "declaration-pending",
+      "identity": 487548,
+      "note": "Portable source model; original ordinary return declarations remain unresolved (RGBLedColors and bool intentionally chosen from register observations); mangling does not encode them. Static declarations match explicit entry register use, but no original header establishes membership independently.",
+      "retry_condition": "Original declaration evidence or source header establishes unencoded return/static declaration; preserve bounded behavior proof."
+    }
+  ]
+}

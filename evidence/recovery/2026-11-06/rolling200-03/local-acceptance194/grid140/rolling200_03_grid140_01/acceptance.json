@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_grid140_01",
+  "handoff_sha256": "d67c9d52a86a102913ef3bcc9f9dd1e9027a894c1432b8537b0565ac49e02f43",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:24:23.186775+00:00",
+      "returncode": 0,
+      "seconds": 0.11405466799624264
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:24:23.300845+00:00",
+      "returncode": 0,
+      "seconds": 3.721819057012908
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:24:27.022678+00:00",
+      "returncode": 0,
+      "seconds": 0.1641588769853115
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:24:27.186855+00:00",
+      "returncode": 0,
+      "seconds": 1.4161405060149264
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:24:28.603013+00:00",
+      "returncode": 0,
+      "seconds": 112.83470549600315
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 118.29517673299415
+}

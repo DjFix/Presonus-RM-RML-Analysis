@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "notes": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZNK8Presonus22StormMixSceneComponent11getFileNameEj",
+      "work_item_id": "fc7d5f6f88179f8ae42bc38ecb3a6d3dca64d1db03bda9f09844c1f18de0d40c",
+      "date": "2026-11-06T07:12:26.585339+00:00",
+      "status": "complete-method-port; locally-validated; original-declaration-pending",
+      "observations": [
+        "Portable source port only: original ordinary return declarations, fields, inheritance, ownership and ARM ABI remain unresolved. By-value CCL FileName is provisional; exact method mangling does not establish ABI. Original constructors and storeUndo remain separate work.",
+        "Only application target ranges execute natively. Source-provider calls (CCL FileName, actual accepted PresetNameCache), string/memory functions, cxa guards, manager ctor/allocation/Deletable registration and mkdir are explicit boundaries. No Core binary recovery, hardware IO or native host syscall passthrough.",
+        "Actual source-provider mkdir runs under Linux Landlock denying filesystem writes outside assigned project scratch. Missing cache/empty folder yields /undo/mixscene.undo and actual mkdir failure; production deliberately preserves this original behavior and ignores failure. Fixture output binds requested mkdir paths; ignored return can differ when a directory already exists, so no deterministic return claim is made. Full deployed filesystem and permission behavior is unverified.",
+        "Empty static FileName construction uses the C++ guard; path population is outside the guard exactly as native. Concurrent population, external mutation of global FileName delimiter and dangling borrowed manager/cache/Recall inputs are excluded. Static caching persists across instances and can preserve an early missing-cache failure. No original exception personality/unwinder execution claim; cleanup-pad entry and host real C++ unwinding are separate scopes.",
+        "Existing actual PresetNameManager and PresetNameCache source contracts remain intentionally portable. Borrowed configurePresetNames is an independent port API, nullptr selects real Singleton/Deletable lifetime. Component name and manager/cache remain authoritative; cache slot capacity is not an index gate for buildFileName.",
+        "Local complete-method validation is not canonical integration or readiness admission. Root owns shared CMake OBJECT assignment, public header review, full Linux CTest/role/install/compile-once/active-source/mirror checks and guarded SQLite admission. No ready/pending fragments are produced."
+      ],
+      "evidence": "evidence/recovery/2026-11-06/rolling200-03/storm-paths164/final03/proof.json",
+      "retry_condition": "Root canonical integration and guarded admission; independently establish original return declaration/layout/ARM ABI to broaden status. Preserve early cached missing-cache path and first-substring ancestor truncation. storeUndo is not completed here."
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZNK8Presonus22StormMixSceneComponent15getUndoFileNameEv",
+      "work_item_id": "9e91f0b9f40b8b108cf344a8380328c732ef8921097c34a4814a1734a71407da",
+      "date": "2026-11-06T07:12:26.585437+00:00",
+      "status": "complete-method-port; locally-validated; original-declaration-pending",
+      "observations": [
+        "Portable source port only: original ordinary return declarations, fields, inheritance, ownership and ARM ABI remain unresolved. By-value CCL FileName is provisional; exact method mangling does not establish ABI. Original constructors and storeUndo remain separate work.",
+        "Only application target ranges execute natively. Source-provider calls (CCL FileName, actual accepted PresetNameCache), string/memory functions, cxa guards, manager ctor/allocation/Deletable registration and mkdir are explicit boundaries. No Core binary recovery, hardware IO or native host syscall passthrough.",
+        "Actual source-provider mkdir runs under Linux Landlock denying filesystem writes outside assigned project scratch. Missing cache/empty folder yields /undo/mixscene.undo and actual mkdir failure; production deliberately preserves this original behavior and ignores failure. Fixture output binds requested mkdir paths; ignored return can differ when a directory already exists, so no deterministic return claim is made. Full deployed filesystem and permission behavior is unverified.",
+        "Empty static FileName construction uses the C++ guard; path population is outside the guard exactly as native. Concurrent population, external mutation of global FileName delimiter and dangling borrowed manager/cache/Recall inputs are excluded. Static caching persists across instances and can preserve an early missing-cache failure. No original exception personality/unwinder execution claim; cleanup-pad entry and host real C++ unwinding are separate scopes.",
+        "Existing actual PresetNameManager and PresetNameCache source contracts remain intentionally portable. Borrowed configurePresetNames is an independent port API, nullptr selects real Singleton/Deletable lifetime. Component name and manager/cache remain authoritative; cache slot capacity is not an index gate for buildFileName.",
+        "Local complete-method validation is not canonical integration or readiness admission. Root owns shared CMake OBJECT assignment, public header review, full Linux CTest/role/install/compile-once/active-source/mirror checks and guarded SQLite admission. No ready/pending fragments are produced."
+      ],
+      "evidence": "evidence/recovery/2026-11-06/rolling200-03/storm-paths164/final03/proof.json",
+      "retry_condition": "Root canonical integration and guarded admission; independently establish original return declaration/layout/ARM ABI to broaden status. Preserve early cached missing-cache path and first-substring ancestor truncation. storeUndo is not completed here."
+    }
+  ],
+  "execution_note": "VM bwrap cannot create loopback. Commands executed with narrowly justified escalation only in assigned isolated repository. No canonical/shared source edits. During initial fixture generation, tool returned an ongoing session without printed output; inspected live process, stopped only duplicate own generator, preserved completed original output. No observed semantic replay failures. First seal did not independently prove reconstructed mkdir attempts when native provider had already created directories. Strengthened test with an always-delegating mkdir observer and unique fresh host directory, retaining first evidence and exact prior producer bytes under attempt01-inputs. Strengthened replay passed; its old scene regression link failed because mkdir wrapper link option leaked into the historical executable without that test observer. Removed this owned test-only flag for the historical smoke build; retained failure logs and exact producers under final02. No production changes were needed."
+}

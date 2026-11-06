@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_storm_activation172_01",
+  "handoff_sha256": "396fc3fe0266487844aee04db84010ebae1b4f06de91cf3b47cb0c3fe4d10e19",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:22:05.343048+00:00",
+      "returncode": 0,
+      "seconds": 0.16422189000877552
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:22:05.507291+00:00",
+      "returncode": 0,
+      "seconds": 2.76933761901455
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:22:08.276638+00:00",
+      "returncode": 0,
+      "seconds": 0.9153877689968795
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:22:09.192043+00:00",
+      "returncode": 0,
+      "seconds": 1.0160022659983952
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:22:10.208063+00:00",
+      "returncode": 0,
+      "seconds": 0.06403305398998782
+    },
+    {
+      "kind": "legacy",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "legacy"
+      ],
+      "start_utc": "2026-11-06T07:22:10.272114+00:00",
+      "returncode": 0,
+      "seconds": 1.4668302570062224
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 6.422810995019972
+}

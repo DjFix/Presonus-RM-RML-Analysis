@@ -5,6 +5,7 @@
 #include "presonus/MuteGroupBase.hpp"
 #include "presonus/delay_timer.hpp"
 #include "presonus/uc/message_attributes.hpp"
+#include <memory>
 
 namespace Presonus::Mixer {
 class MixerComponentBase;
@@ -19,10 +20,22 @@ namespace presonus::storm_mute_port {
 // Independent application bindings, not recovered original layouts, RTTI or
 // delegate interfaces. All objects/arrays are borrowed and must remain stable.
 struct Group {
+  // Compatibility construction owns one base object; borrowed construction
+  // refers to the actual subtype and its authoritative state. Borrowed objects
+  // must outlive this adapter and every Storm consumer.
+private:
+  std::unique_ptr<Presonus::MuteGroupBase> owned;
+
+public:
   explicit Group(mute_group_port::State &state)
-      : state(state), implementation(state) {}
+      : owned(new Presonus::MuteGroupBase(state)), state(state),
+        implementation(*owned) {}
+  explicit Group(Presonus::MuteGroupBase &object)
+      : state(object.portableState()), implementation(object) {}
+  Group(const Group &) = delete;
+  Group &operator=(const Group &) = delete;
   mute_group_port::State &state;
-  Presonus::MuteGroupBase implementation;
+  Presonus::MuteGroupBase &implementation;
   bool file = false;
   bool all = false;
   bool busy = false;
@@ -70,6 +83,9 @@ struct State {
   Core::Vector<Core::Portable::Parameter *> cleanupParameters;
   Core::Vector<Group *> groups;
   Group *allGroup = nullptr;
+  // Explicit portable binding for ConstVector error sentinel; initially null.
+  // Separate from allGroup, with the same borrowed lifetime contract.
+  Presonus::MuteGroupBase *activationError = nullptr;
   Observer *observer = nullptr;
   void *delegate =
       nullptr; // Opaque borrowed original Delegate, no interface/layout claim.
@@ -138,6 +154,7 @@ public:
   void notify(const UC::MessageAttributes &);
   void onIdle() override;
   void setAll(bool) const;
+  void activate(unsigned int) const;
   void deactivate(unsigned int) const;
   // Actual provider observer entry point; original paramChanged target outside
   // this batch is not claimed reconstructed by this source-port forwarding.

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_controller173_02",
+  "handoff_sha256": "35b3ac66db23b5127e14cee99db18396c5d100f48118614cccfad2d13f808c90",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:22:10.634175+00:00",
+      "returncode": 0,
+      "seconds": 0.11409702699165791
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:22:10.748284+00:00",
+      "returncode": 0,
+      "seconds": 1.4666426509793382
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:22:12.214940+00:00",
+      "returncode": 0,
+      "seconds": 0.06401261000428349
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:22:12.278957+00:00",
+      "returncode": 0,
+      "seconds": 1.9175496789976023
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:22:14.196527+00:00",
+      "returncode": 0,
+      "seconds": 0.06400740399840288
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 3.6464127889776137
+}

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_mapping159_01",
+  "handoff_sha256": "0994f47ed1576e3eed9b4b27a62918d1473b403e5a94f751cc5935fa6e934f91",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:34:50.976059+00:00",
+      "returncode": 0,
+      "seconds": 0.11407520901411772
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:34:51.090147+00:00",
+      "returncode": 0,
+      "seconds": 1.1658824580081273
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:34:52.256041+00:00",
+      "returncode": 0,
+      "seconds": 0.11397334499633871
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:34:52.370030+00:00",
+      "returncode": 0,
+      "seconds": 1.6667170019936748
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:34:54.036779+00:00",
+      "returncode": 0,
+      "seconds": 0.06395808301749639
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 3.1280459729896393
+}

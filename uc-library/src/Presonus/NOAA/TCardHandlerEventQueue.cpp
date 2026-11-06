@@ -58,32 +58,48 @@ CardHandlerEventQueue::CardHandlerEventQueue(unsigned s, unsigned m, unsigned l)
         return std::make_unique<Impl>(s, m, l);
       }()) {}
 CardHandlerEventQueue::~CardHandlerEventQueue() = default;
+Core::Threads::Lock &CardHandlerEventQueue::queueLock() {
+  return impl_->queueLock;
+}
+Core::Threads::Lock &CardHandlerEventQueue::mainLock() {
+  return impl_->mainLock;
+}
 bool CardHandlerEventQueue::enqueue(const CardHandlerEvent &event) {
   auto index = Impl::classify(event.semanticBytes);
-  Core::Threads::ScopedLock main(impl_->mainLock);
-  Core::Threads::ScopedLock queue(impl_->queueLock);
-  auto *slot = static_cast<Impl::Slot *>(impl_->pool(index).free.pop());
-  if (!slot)
-    return false;
-  slot->pool = index;
+  Impl::Slot *slot;
+  {
+    Core::Threads::ScopedLock queue(impl_->queueLock);
+    slot = static_cast<Impl::Slot *>(impl_->pool(index).free.pop());
+    if (!slot)
+      return false;
+    slot->pool = index;
+  }
   try {
+    // Preserve the producer's unlock/copy/relock phase order. The leased slot
+    // is private until append; consumer operations retain main then queue.
     slot->event.emplace(event);
+    if (slot->event->payload)
+      slot->event->payload->property = nullptr;
+    if (slot->event->immediate)
+      slot->event->immediate->property = nullptr;
     if (slot->event->rate)
       slot->event->rate->property = nullptr;
     if (slot->event->routes)
       slot->event->routes->property = nullptr;
+    Core::Threads::ScopedLock queue(impl_->queueLock);
     impl_->fifo.append(slot);
+    impl_->count.fetch_add(1, std::memory_order_release);
+    impl_->nodes.fetch_add(1, std::memory_order_release);
   } catch (...) {
+    // Existing portable pool-reclamation adaptation, not a native EH claim.
     slot->event.reset();
+    Core::Threads::ScopedLock queue(impl_->queueLock);
     impl_->pool(index).free.push(slot);
     throw;
   }
-  impl_->count.fetch_add(1, std::memory_order_release);
-  impl_->nodes.fetch_add(1, std::memory_order_release);
   return true;
 }
 void CardHandlerEventQueue::enqueueNull() {
-  Core::Threads::ScopedLock main(impl_->mainLock);
   Core::Threads::ScopedLock queue(impl_->queueLock);
   impl_->fifo.append(nullptr);
   impl_->nodes.fetch_add(1, std::memory_order_release);
@@ -126,11 +142,15 @@ void CardHandlerEventQueue::consumeOne(Presonus::NOAA::TCardHandler &handler,
     Impl &impl;
     Impl::Slot *slot;
     CardHandlerState &state;
+    const ImmediatePropertyProjection *immediate;
+    const CardHandlerPayloadProjection *rawPayload;
     const DeferredRateProjection *rate;
     const DeferredRouteProjection *routes;
     const Core::Property *geq;
     const std::array<unsigned char, 33> *payload;
     ~Cleanup() {
+      state.immediate = immediate;
+      state.payload = rawPayload;
       state.deferredRate = rate;
       state.deferredRoutes = routes;
       state.geqProperty = geq;
@@ -140,11 +160,19 @@ void CardHandlerEventQueue::consumeOne(Presonus::NOAA::TCardHandler &handler,
   } cleanup{*impl_,
             slot,
             state,
+            state.immediate,
+            state.payload,
             state.deferredRate,
             state.deferredRoutes,
             state.geqProperty,
             state.geqPayload};
   auto &event = *slot->event;
+  if (event.payload)
+    event.payload->property = &event.property;
+  state.payload = event.payload ? &*event.payload : nullptr;
+  if (event.immediate)
+    event.immediate->property = &event.property;
+  state.immediate = event.immediate ? &*event.immediate : nullptr;
   if (event.rate)
     event.rate->property = &event.property;
   if (event.routes)

@@ -57,6 +57,12 @@ public:
   }
   const Mixer::MixerComponentBase *portableMixer() const { return mixer; }
   int portableMemberCount() const { return state.members.count(); }
+  // Portable void declaration; original ordinary return remains unresolved.
+  virtual void activate();
+  presonus::mute_group_port::State &portableState() { return state; }
+  const presonus::mute_group_port::State &portableState() const {
+    return state;
+  }
   void updateActive();
   void updateStatus();
   bool groupDirty() const;

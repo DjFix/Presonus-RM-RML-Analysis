@@ -1,4 +1,6 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Panel/ControlRegistrarCommands.cpp
+  src/Presonus/MuteGroupActivation.cpp
   src/Presonus/Mixer/FxPresetFilter.cpp
   src/Presonus/Mixer/GEQPresetFilter.cpp
   src/Presonus/Mixer/ChannelParamTagFilter.cpp
@@ -39,7 +41,6 @@ set(PRESONUS_common_SOURCES
   src/Presonus/McuVpotControl.cpp
   src/Presonus/MappingTableHardwareParameter.cpp
   src/Presonus/Panel/PanelComponentTests.cpp
-  src/Presonus/GridPainter.cpp
   src/Presonus/Panel/Book.cpp
   src/Presonus/Panel/ControlRegistrarAccess.cpp
   src/Presonus/UARTPowerGainSender.cpp
@@ -197,6 +198,13 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/GridPainter.cpp
+  src/Presonus/GridPainterLifecycle.cpp
+  src/Presonus/GridPainterRendering.cpp
+  src/Presonus/DAWTimeMapsConstruction.cpp
+  src/Presonus/MappingTablePageName.cpp
+  src/Presonus/MappingTableItem.cpp
+  src/Presonus/Surface/SurfaceRootMappingPredicate.cpp
   src/Presonus/BackgroundPainter.cpp
   src/Presonus/MappingTableConnect.cpp
   src/Presonus/MappablePageComponent.cpp
@@ -344,6 +352,13 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Mixer/SceneFilter.cpp
+  src/Presonus/Panel/RackPanelBurnIn.cpp
+  src/Presonus/Panel/PanelRegistrarDualMessage.cpp
+  src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp
+  src/Presonus/Dsp/ControllerInterface.cpp
+  src/Presonus/StormMuteActivation.cpp
+  src/Presonus/StormMixScenePaths.cpp
   src/Presonus/Panel/PanelRegistrarReset.cpp
   src/Presonus/NOAA/TCardFirmware.cpp
   src/Presonus/Panel/ParamEnablementHandler.cpp
@@ -437,6 +452,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/CompressorSourceProviders.cpp
   src/Presonus/Dsp/CompressorParameterList.cpp
   src/Presonus/NOAA/TCardUCNetHandlerIO.cpp
+  src/Presonus/NOAA/TCardHandlerLifecycle.cpp
   src/Presonus/NOAA/TCardHandlerProperties.cpp
   src/Presonus/NOAA/TCardHandlerRelease.cpp
   src/Presonus/NOAA/TCardLifecycle.cpp
@@ -503,6 +519,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/panel/LEDNotifyTask.hpp
   presonus/surface/RadioToggleButton.hpp
   presonus/uc/ClientSubscription.hpp
+  presonus/dsp/IController.hpp
   presonus/dsp/ControllerInfo.hpp
   presonus/panel/Element.hpp
   presonus/MappableMixer.hpp
@@ -577,6 +594,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/MackieControlUnit.hpp
   presonus/surface/DAWLoadDocumentPage.hpp
   presonus/mixer/FilterGroupManager.hpp
+  presonus/IBackgroundGridProvider.hpp
   presonus/GridPainter.hpp
   presonus/surface/sl_mixer_encoder.hpp
   presonus/surface/IDisplayPort.hpp
@@ -601,6 +619,7 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/panel/PresetNameCache.hpp
   presonus/dsp/SLReverbController.hpp
   presonus/panel/FrontPanelComponent.hpp
+  presonus/mixer/SceneFilter.hpp
   presonus/mixer/ChannelComponent.hpp
   presonus/StormMuteGroupComponent.hpp
   presonus/mixer/NetworkSetupComponent.hpp

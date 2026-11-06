@@ -1,0 +1,68 @@
+{
+  "utc": "2026-11-06T05:32:09.102989+00:00",
+  "targets": [
+    {
+      "anchor": "5836330436aac854076c7d2b8384f1399bb22d0fa5172730527ec46092a9021e",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus4NOAA17TCardUCNetHandlerD0Ev",
+      "demangled": "Presonus::NOAA::TCardUCNetHandler::~TCardUCNetHandler()",
+      "address": 665012,
+      "size": 224,
+      "section_json": "12",
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "policy": "application-or-other"
+    },
+    {
+      "anchor": "4eb21e6e714f7c3b207966555b2958087c4027f5b37bc42285a81151f7d52e53",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus4NOAA17TCardUCNetHandlerD1Ev",
+      "demangled": "Presonus::NOAA::TCardUCNetHandler::~TCardUCNetHandler()",
+      "address": 665236,
+      "size": 216,
+      "section_json": "12",
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "policy": "application-or-other"
+    },
+    {
+      "anchor": "53327ffb8d554312632b8af1944259b255355ab13d1e9bab25d3e3d9f5706497",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus4NOAA17TCardUCNetHandlerD2Ev",
+      "demangled": "Presonus::NOAA::TCardUCNetHandler::~TCardUCNetHandler()",
+      "address": 664312,
+      "size": 216,
+      "section_json": "12",
+      "kind": "STT_FUNC",
+      "binding": "STB_GLOBAL",
+      "policy": "application-or-other"
+    }
+  ],
+  "finding": "No dependency on TCardHandler destructor or Handler132. Original RTTI base is ISysexReceiver; destructors unregister from actual TCardSPI singleton, delete native this+0x5c DiceEndPoint, destroy outgoing then incoming PacketQueue; D0 additionally deletes self. Original constructor allocates DiceEndPoint at0xa24f4, calls actual ctor0x103698 and stores result to this+0x5c at0xa2508. Existing source-port IDataChannel pointer does not establish ownership of that endpoint.",
+  "actual_providers": {
+    "uc-library/include/presonus/noaa/ucnet_handler.hpp": "a54c2ee0ba3ff1aea20ac83335c641a30237a3193bb77af8cdcc7bd6d044c2e7",
+    "uc-library/include/presonus/noaa/ucnet_handler_state.hpp": "3841e369582900f00bcd99a6e5c504264919369aa55353d94baf90bda7d83955",
+    "uc-library/src/Presonus/NOAA/TCardSPIService.cpp": "b7fd679da7764a66ce77481c0c76db775619185b05b1ddd0767fecd10469d945",
+    "uc-library/src/Presonus/NOAA/TCardSPIPackets.cpp": "3d2a89a73c54919eec88d9bf689a59fab5269dfde041f3c6a7e2782751ea24da",
+    "uc-library/include/presonus/uc/DiceEndPoint.hpp": "46651b298b4b52977eb4a50ec4b7c87e4f3acfd4f273d6a267491509e7b01ecc",
+    "uc-library/src/Presonus/UC/DiceEndPoint.cpp": "5b94a56c074ecb21e7995253cdc04394f5e8879efa5d8bb916ea305d15a8f376",
+    "uc-library/include/presonus/uc/DicePacketQueue.hpp": "03fe628b2474884730f97bb075f3e1858e6ab91b4235f06a95523602a3ce34cc"
+  },
+  "full_implementation_requirements": [
+    "Implement all3 D0/D1/D2 with independent range/cleanup/deallocation traces, no manually appended delete events",
+    "Extend sole canonical class with explicit owned lifecycle source-port setup and owned two queues/actual DiceEndPoint; preserve existing borrowed setup tag and never destroy externally owned borrowed queues",
+    "Unregister receiver via actual TCardSPI singleton, including original lazy default construction path; use existing fail-closed construction IO override in tests before singleton construction, no physical GPIO/device access",
+    "Preserve endpoint-before-outgoing-before-incoming cleanup including observed exceptions; native exceptional path does not justify invented matching events",
+    "Do not recover or credit original C1/C2 merely because their constructor evidence establishes receiver identity; retain their independent claims",
+    "Existing startup/shutdown/idleIO/receive/accepts regressions and singleton receiver tests required; original returns/layout/full ABI remain unresolved"
+  ],
+  "next": "Build complete three-original reconstruction contracts using exact constructor evidence, actual providers and preserved old review_w09 history; verify terminal old claims then guarded transfer/fresh prepare; do not wait for unrelated Handler132 source delivery",
+  "readiness_changed": false,
+  "claims_changed": false
+}

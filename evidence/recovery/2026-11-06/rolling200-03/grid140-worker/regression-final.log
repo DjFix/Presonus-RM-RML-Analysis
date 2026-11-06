@@ -1,0 +1,20 @@
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/grid_painter/check.py", "regression"]
+["/usr/bin/c++", "-std=c++20", "-O0", "-fno-rtti", "-Wno-multichar", "-ffunction-sections", "-fdata-sections", "-fno-fast-math", "-ffp-contract=off", "-Iuc-library/include", "-Iuc-library/src/mixer_dsp", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/GridPainter.cpp", "uc-library/src/Presonus/GridPainterLifecycle.cpp", "uc-library/src/Presonus/GridPainterRendering.cpp", "uc-library/src/Presonus/BackgroundPainter.cpp", "uc-library/src/Presonus/EQControl.cpp", "uc-library/tests/recovery/rank20cycle01/rank20c01_w06/driver.cpp", "temp/core-upstream/root-integration-01/libpresonus_uc.a", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-Wl,--gc-sections", "/usr/lib/x86_64-linux-gnu/libpng16.so.16", "-lz", "-lpthread", "-ldl", "-lm", "-o", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140/temp/recovery-work/grid140/orientation"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rank20cycle01/rank20c01_w06/replay.py", "--executable", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140/temp/recovery-work/grid140/orientation", "--fixtures", "uc-library/tests/recovery/rank20cycle01/rank20c01_w06/fixtures.json"]
+18 portable executions matched independent original ARM boundary fixtures; Grid two-axis state changes and unaffected axis checked; other methods preserve object/Item state at tested boundaries
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/eq_draw/check.py", "compile"]
+["/usr/bin/c++", "-std=c++20", "-O0", "-fno-rtti", "-Wno-multichar", "-ffunction-sections", "-fdata-sections", "-fno-fast-math", "-ffp-contract=off", "-Iuc-library/include", "-Iuc-library/src/mixer_dsp", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/EQControl.cpp", "uc-library/src/Presonus/BackgroundPainter.cpp", "uc-library/src/Presonus/EQControlBandParams.cpp", "uc-library/tests/recovery/EQControlDrawReplay.cpp", "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp", "uc-library/src/mixer_dsp/Logarithm.cpp", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-Wl,--gc-sections", "/usr/lib/x86_64-linux-gnu/libpng16.so.16", "-lz", "-lpthread", "-ldl", "-lm", "-o", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140/temp/recovery-work/rolling200-02/eq-draw92/replay"]
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/eq_draw/check.py", "symbols"]
+["/usr/bin/nm", "--defined-only", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140/temp/recovery-work/rolling200-02/eq-draw92/replay"]
+_ZN8Presonus9EQControl4drawERKN4Core8Portable9DrawEventE
+_ZN8Presonus17BackgroundPainter5paintERKN4Core5TRectIiEERKNS1_8Portable9DrawEventERKNS6_5StyleE
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/eq_draw/check.py", "native"]
+352 fresh exact app ARM cases; no guest provider instructions
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/eq_draw/check.py", "replay"]
+["/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140/temp/recovery-work/rolling200-02/eq-draw92/replay"]
+352 native trace/dirty comparisons; real CCL RGBA clipping/background pixels, owned-black pixels and external event curve routing
+

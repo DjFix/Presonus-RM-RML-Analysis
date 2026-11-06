@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_ucnet148_01",
+  "handoff_sha256": "c4d5d5989c7f46d4e794a44f243ef1562a786a8d8242bf00005aaf2ffce4dee3",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:24:39.664244+00:00",
+      "returncode": 0,
+      "seconds": 0.1141264550096821
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:24:39.778379+00:00",
+      "returncode": 0,
+      "seconds": 2.2678466780052986
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:24:42.046237+00:00",
+      "returncode": 0,
+      "seconds": 0.06387657800223678
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:24:42.110123+00:00",
+      "returncode": 0,
+      "seconds": 1.6170774339989293
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:24:43.727228+00:00",
+      "returncode": 0,
+      "seconds": 0.16437483800109476
+    },
+    {
+      "kind": "optimized",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "optimized"
+      ],
+      "start_utc": "2026-11-06T07:24:43.891614+00:00",
+      "returncode": 0,
+      "seconds": 2.7193338939978275
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T07:24:46.610960+00:00",
+      "returncode": 0,
+      "seconds": 9.681150624994189
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 16.7880579099874
+}

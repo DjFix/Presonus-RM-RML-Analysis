@@ -73,6 +73,8 @@ struct PermissionsBindings {
 // contracts are intentional source-port choices, not original declarations.
 class PermissionsComponent : public UC::ServerComponent {
 public:
+  // Independent CCL type-query adaptation, not original RTTI/layout.
+  DECLARE_CORE_CLASS(0x31960c, PermissionsComponent, UC::ServerComponent)
   explicit PermissionsComponent(PermissionsBindings &bindings);
 
   ~PermissionsComponent() override;

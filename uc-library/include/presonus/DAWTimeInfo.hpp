@@ -2,6 +2,7 @@
 
 #include <array>
 #include <cstdint>
+#include <memory>
 
 namespace Core::Portable {
 class Parameter;
@@ -26,6 +27,22 @@ public:
   // describe readable records; these are not original ARM class layouts.
   class TimeSignatureMap {
   public:
+    // Typed portable items; not recovered original declarations or ARM layout.
+    struct Item {
+      double ppq = 0;
+      std::int32_t numerator = 4, denominator = 4, bar = 0;
+    };
+    TimeSignatureMap();
+    // Copies (including rvalues) share immutable storage and retain their
+    // views.
+    TimeSignatureMap(const TimeSignatureMap &) = default;
+    TimeSignatureMap &operator=(const TimeSignatureMap &) = default;
+    // Independent transactional source-port construction support. Input must
+    // contain sorted records required by the existing search algorithms.
+    void replaceOwnedItems(const Item *, int count);
+    int ownedCapacity() const noexcept;
+    int allocationDelta() const noexcept;
+    int itemCount() const noexcept { return count_; }
     TimeSignatureMap(const std::uint8_t *records, int count) noexcept
         : records_(records), count_(count) {}
     // Pointer-valued native behavior; original return declaration unresolved.
@@ -33,19 +50,38 @@ public:
     const std::uint8_t *findItemByBar(int) const;
 
   private:
-    const std::uint8_t *records_;
-    int count_;
+    struct OwnedStorage;
+    std::shared_ptr<const OwnedStorage> owned_;
+    const std::uint8_t *records_ = nullptr;
+    int count_ = 0;
   };
   class TempoMap {
   public:
+    // Typed portable items; not recovered original declarations or ARM layout.
+    struct Item {
+      double ppq = 0, secondsPerPpq = 0.5, seconds = 0;
+    };
+    TempoMap();
+    // Copies (including rvalues) share immutable storage and retain their
+    // views.
+    TempoMap(const TempoMap &) = default;
+    TempoMap &operator=(const TempoMap &) = default;
+    // Independent transactional source-port construction support. Input must
+    // contain sorted records required by the existing search algorithms.
+    void replaceOwnedItems(const Item *, int count);
+    int ownedCapacity() const noexcept;
+    int allocationDelta() const noexcept;
+    int itemCount() const noexcept { return count_; }
     TempoMap(const std::uint8_t *records, int count) noexcept
         : records_(records), count_(count) {}
     const std::uint8_t *findItem(double) const;
     double secondsToPpq(double) const;
 
   private:
-    const std::uint8_t *records_;
-    int count_;
+    struct OwnedStorage;
+    std::shared_ptr<const OwnedStorage> owned_;
+    const std::uint8_t *records_ = nullptr;
+    int count_ = 0;
   };
 
   // unsigned int preserves the full zero-extended ARM r0 observation; the

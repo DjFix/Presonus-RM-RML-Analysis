@@ -8,12 +8,16 @@
 namespace Presonus::Mixer {
 // Partial source-port facades. Composition is intentional: no original complete
 // inheritance, field layout, ownership or unencoded return declaration claim.
-class FXBusComponent {
+// Intentional partial CCL hierarchy, preserving composed send provider.
+class FXBusComponent : public ChannelComponent {
 public:
+  DECLARE_CORE_CLASS(0x1765bc, FXBusComponent, ChannelComponent)
   FXBusComponent(OutputComponent &output,
                  presonus::send_output_port::SendState &state,
                  std::vector<presonus::send_output_port::SendState *> &children)
-      : send_(output, state, children), state_(state), children_(children) {}
+      : ChannelComponent(ChannelComponent::SourcePortConstruction{},
+                         state.output.channel),
+        send_(output, state, children), state_(state), children_(children) {}
   void paramChanged(Core::Portable::Parameter *, int);
 
 private:

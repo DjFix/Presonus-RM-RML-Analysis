@@ -1,0 +1,17 @@
+{
+  "rule": "Original ownership and existing provider partitions override worker partition suggestions. Exactly one OBJECT owner each.",
+  "common": [
+    "MuteGroupActivation.cpp: shared base used by common FileMuteGroup"
+  ],
+  "cs18": [
+    "MappingTablePageName.cpp",
+    "MappingTableItem.cpp",
+    "Surface/SurfaceRootMappingPredicate.cpp"
+  ],
+  "rm": [
+    "Dsp/ControllerInterface.cpp: targets server and existing Controller.cpp rm",
+    "StormMuteActivation.cpp: target server and existing StormMuteGroupComponent.cpp rm",
+    "StormMixScenePaths.cpp: two server originals"
+  ],
+  "limits": "Source role audit and installed-role/compile-once gates still required; no readiness change"
+}

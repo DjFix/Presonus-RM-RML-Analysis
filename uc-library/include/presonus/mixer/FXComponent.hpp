@@ -27,8 +27,11 @@ namespace Presonus::Mixer {
 // Portable source port with original encoded method identities. State is an
 // explicit adaptation; original return declarations and class layout
 // unresolved.
-class FXComponent {
+// Intentional real CCL base/type-query adaptation; original RTTI is recorded
+// separately. Existing borrowed application bindings remain authoritative.
+class FXComponent : public Core::Portable::Component {
 public:
+  DECLARE_CORE_CLASS(0x16fd2c, FXComponent, Core::Portable::Component)
   explicit FXComponent(presonus::mixer_fx::State &state) : state_(state) {}
   void setFxDirty();
   Core::Portable::ParamValue mapValues(Core::Portable::Parameter *parameter);

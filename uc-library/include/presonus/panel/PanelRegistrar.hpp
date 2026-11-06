@@ -5,19 +5,22 @@ namespace presonus::panel_binding {
 // Independent borrowed port state, no original registrar layout claim.
 struct PanelRegistrarPortState {
   Presonus::IPanelPort *port = nullptr;
+  bool secondaryEnabled = false;
+  Presonus::IPanelPort *secondaryPort = nullptr;
 };
 } // namespace presonus::panel_binding
 namespace Presonus::Panel {
 // Partial source-port declaration in the original namespace. Original
 // lifecycle, inheritance, return declarations and ARM layout remain unresolved.
-class PanelRegistrar {
+class PanelRegistrar : public ControlRegistrar {
 public:
   explicit PanelRegistrar(
       presonus::panel_binding::PanelRegistrarPortState &state)
       : state_(state) {}
   void resetBoard(int mode, int board);
   const char *getPanelPortName();
-  Presonus::IPanelPort *getPort() const;
+  Presonus::IPanelPort *getPort() const override;
+  void writeDualMsg(Uart_Msg_Type &) override;
   int mapGroupIdToControlType(ControlRegistrar::ControlType) const;
 
 private:

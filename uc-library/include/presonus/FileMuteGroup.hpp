@@ -24,7 +24,7 @@ public:
   void paramChanged(Core::Portable::Parameter *parameter, int message) override;
   // void is a source-port declaration; original return spelling is unresolved.
   // Uses the borrowed mixer saveServices.parameters tree; no ARM layout claim.
-  void activate();
+  void activate() override;
   void cacheMutes(const Core::Portable::Attributes &attributes);
   void portableSetReactivation(bool value) { reactivate_ = value; }
   bool portableReactivation() const { return reactivate_; }

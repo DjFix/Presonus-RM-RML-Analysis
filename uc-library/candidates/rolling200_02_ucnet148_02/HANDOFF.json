@@ -1,0 +1,553 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_ucnet148_02",
+  "namespace": "Presonus",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/context.json",
+  "originals": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus4NOAA17TCardUCNetHandlerD1Ev",
+      "demangled": "Presonus::NOAA::TCardUCNetHandler::~TCardUCNetHandler()",
+      "address": 665236,
+      "size": 216,
+      "section": ".text",
+      "section_index": 12
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp",
+      "sha256": "066bb8f453ea4aa858139cb3f076ca851f0f83c1ef9dbc70349f662fefffa0d5"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/ucnet_handler.hpp",
+      "sha256": "73dd28853a3b50427a398731f32c38fe49513456da24c5b191911ed5a9bb5569"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/noaa/ucnet_handler_state.hpp",
+      "sha256": "39ec369c57508e6435f45c7c92655535bf25c2c497cffbb2c9e28c8034a1e74e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardUCNetHandlerIO.cpp",
+      "sha256": "61d1caa579bce8f0867fe921f5b505d33b00c9a159a63ceaf8c3eecec55a3587"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/UC/DiceEndPoint.cpp",
+      "sha256": "5b94a56c074ecb21e7995253cdc04394f5e8879efa5d8bb916ea305d15a8f376"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/UC/DataChannel.cpp",
+      "sha256": "760a4d278fd1fc13d4b0f5495f2741f2cfff21dfadc6ce1316041d664f67adee"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/UC/DicePacketQueue.cpp",
+      "sha256": "3a0f46ce0569fc2f0071cb80c657167ec3b9a00a7281d8365bcd7f20a3759530"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/UC/DicePacketQueueLifetime.cpp",
+      "sha256": "fa3966753f30c050ce7fb11c8d3ebbc1029b8e7e7ab01ca3811872ae7f6b4c90"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/UC/PacketQueueOperations.cpp",
+      "sha256": "a9b075bceb3a465afc370b3f9fb69a67f69da68383f75b361815d4ce9b88b964"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSPIService.cpp",
+      "sha256": "b7fd679da7764a66ce77481c0c76db775619185b05b1ddd0767fecd10469d945"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/NOAA/TCardSPIPackets.cpp",
+      "sha256": "3d2a89a73c54919eec88d9bf689a59fab5269dfde041f3c6a7e2782751ea24da"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Panel/input_pin_lifetime.cpp",
+      "sha256": "75690af082f0e8df6821cd2b5dc678c5e95aab52c2243b1176aaff645208e12a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/surface_panel/InputPin.cpp",
+      "sha256": "6a9481755f20038c99bedd373470cdcfb4a827cb7e0898e06b9366220af40b02"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/spi_packets.hpp",
+      "sha256": "3c3c1bc3a7e037af9834c1aecafdd5785c3b9992841d556339d0b3d6a762ac17"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/noaa/spi_service.hpp",
+      "sha256": "cfa862ed9b7bb1fd8c963db048d9952ecf7951310fc271d6390f51a7849a1195"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/DiceEndPoint.hpp",
+      "sha256": "46651b298b4b52977eb4a50ec4b7c87e4f3acfd4f273d6a267491509e7b01ecc"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/DataChannel.hpp",
+      "sha256": "ce4caac53dedcc81370e200d49784bc2f274ba029d1ef2451c994d3451bac540"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/DicePacketQueue.hpp",
+      "sha256": "03fe628b2474884730f97bb075f3e1858e6ab91b4235f06a95523602a3ce34cc"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/connection_interfaces.hpp",
+      "sha256": "5de15066941d1e0c2809680145fc799659aba739e7f775c9d88469014c928e96"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.cpp",
+      "sha256": "dbc41fad6b777f2989208a38a4d75afb235aeead0c130b935459b9e5b6110e2c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coresingleton.h",
+      "sha256": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreintrusivelist.h",
+      "sha256": "5e14ca4c99dbb03c15d560fbb3739515a2caf8faa10567e4f7952371b402aae3"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/system/corethread.h",
+      "sha256": "56335e1e9a23c724a4c4d4640c47563956d8ff9cda434887e8ee470439f2d07c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/noaa_ucnet_handler_tests.cpp",
+      "sha256": "86cee6acd26082480d3f2e2c3875e9072d028f0a1f3f3ee8d766568cbb2c19cf"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/TCardUCNetIdleReplay.cpp",
+      "sha256": "defa0e1d54b9718e08a914072273c26ac4d2dcc8b224962c48d92b59a5e543b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/validation/noaa-ucnet-handler/stdin.txt",
+      "sha256": "ae1cfe8b13bc31213e073600638a8fa62f9418a0b6130d131bf7d4ae823d028f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_ucnet_idle_01/replay.py",
+      "sha256": "77df038f044359df1944f5c0d2110524487834e005d78121a4924816357eac7c"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/ucnet-idle/fixtures.json",
+      "sha256": "72bc36d5a8f2eda477336ae9270373c07fa7f7f7ad0a06dc9e8cde8afbc1369d"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/CardUCNetLifecycleReplay.cpp",
+      "sha256": "a55be9dbd3b7ff6fd440483779bf7af58099f6bca04eb8a9558949958f634689"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json",
+      "sha256": "d7935033ec07aa53dec75970f1a0013fc07d0ac8a392f329e74acfaf1ce4775d"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+      "sha256": "665f37d43d9c8b7ca949e18a3f177ef34e47e9f942fce69d9270d7e09d6d198a"
+    },
+    {
+      "kind": "oracle",
+      "path": "uc-library/tests/recovery/card_ucnet_lifecycle/native.py",
+      "sha256": "07685a3e3d049024b452083b48327c1710c359e2e8287fe32b8820c533034708"
+    },
+    {
+      "kind": "producer",
+      "path": "uc-library/tests/recovery/card_ucnet_lifecycle/seal.py",
+      "sha256": "166ef0e6c96431f872e0004555894e1cd9bee737f683ef843a2fd6853e02be3a"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/proof.json",
+      "sha256": "4512c70dacdb972f10c9377be2d039a28509b9b31bbd7c28d2d8129b4ddb8f05"
+    },
+    {
+      "kind": "history",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/remarks.json",
+      "sha256": "fef40463155c96a4445d85d4d95c0fff367a13f97718f9f07118fc719d9c0714"
+    },
+    {
+      "kind": "context",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet-lifecycle147/native-context.json",
+      "sha256": "c29a0b5ca00f4980e42de86f98621506cfe97d45cc71d6401dc95b2eda91eb26"
+    },
+    {
+      "kind": "context",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet-lifecycle147/constructor-context/native-context.json",
+      "sha256": "c5d7799b02475e8525d171580d0f836e1ba368894add91b8b4d4614ad417c984"
+    },
+    {
+      "kind": "context",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet-lifecycle147/ENDPOINT_SLOT148.json",
+      "sha256": "93e062111d43205ea1f48e9e7488a1912e1cb777bd158c25ecd90bd462317ae6"
+    },
+    {
+      "kind": "context",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet-lifecycle147/IMPLEMENTATION_SCOPE147.json",
+      "sha256": "475449ccf0246e2078c892d0610de697a62de252f8143c6496817b2f4cfc6d29"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/ELF_CONTEXT.md",
+      "sha256": "7723ec74efa0dd049b94e8b09a8fb63458e8dfa7a329554c5786a0802a6d2704"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/TRANSPORT182.json",
+      "sha256": "6dd7174e4bdd8ef1a139f9b862d9f8b59cc74a6f115202b6cc9008272742b14b"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/expand-1793948488383791249.json",
+      "sha256": "d3479b0ba11044fbde116fa1dd1a8853b394a8bf52e84782769f5ab9df7f414a"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/expand-1793948488383791249.log",
+      "sha256": "4ab6071eb78ef2edc13a44677493c31cee6a093a8d055baf1a161015a844ace0"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/expansion-request.json",
+      "sha256": "dc13555992ed6e770d628cc30c2e490ff67ef78d3a72cb8db0fdbd6e162e0a2a"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/expansion.json",
+      "sha256": "a595980f23b9bddcb352c0424eeefc783525c84067a11cf972762ed8fef75898"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/native-context.json",
+      "sha256": "59b9766da7f099cf9c114c641822542c9165c07b09c1a9f7ba4c363f2a6e54a8"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-spi/operation-timings-1793948492931842869.json",
+      "sha256": "6241bc079e34a05a3aa1fd8108b9958d529c8e5a8415d82bd2841010c6eca5ea"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/ELF_CONTEXT.md",
+      "sha256": "9a3ced11f3297dbb38188c2a44b5ded6f4ca637cc41c6309861249e511f94b86"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/TRANSPORT182.json",
+      "sha256": "b14d3eab9b02190fd67c0bf19f197629c7a8f2c8dda87894cc9795f84dc324b6"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/expand-1793948483730555737.json",
+      "sha256": "b942454fa1103708e10f2abccba45301ee15396b7ed53e6825f35ef8e73f9564"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/expand-1793948483730555737.log",
+      "sha256": "f833b921b3f371141b2e3403fbe76f89155f796b4f4fb9c6f769696ffacde29f"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/expansion-request.json",
+      "sha256": "0eb9d72b30f7e692a2a76125ff42c89afd0c4070286b65132053b5ad6ec52de9"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/expansion.json",
+      "sha256": "c0eb5d85abc9d2a4426fa9931604c76add534e0ef0adf1053cd1e662ece0a604"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/native-context.json",
+      "sha256": "61a0ca3ccd292f748d51eef7eeabb1ecfedd57b293c2b7e1cdb3a0612eb08056"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-unregister/operation-timings-1793948488382510401.json",
+      "sha256": "b529108d55a989b085ea25b08899337899a8ac354cfc8c1ad08e18401c46cb8f"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/ELF_CONTEXT.md",
+      "sha256": "f234a46291e6edd895a5ca7c5fa22beb4be4acebd319a9cb5c5e5ad79911d23e"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/TRANSPORT182.json",
+      "sha256": "8e43d39bd6628742ad724dae6605cd5dd48d8ec6ac00cd1414501d994b9684f7"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/expand-1793948479076896853.json",
+      "sha256": "ac3f63810d9414d3644feab6249a1c79aff3bef08beec4054bd4304881920230"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/expand-1793948479076896853.log",
+      "sha256": "552f4cc5c8814d82985bfc4b2b9d5f7ede54cdfb4b7cd1fb09ee001bb926d8cd"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/expansion-request.json",
+      "sha256": "993bc2570cd0aa0b346241b23cf1711353aeb43fb2a72daeddee49fae6a394bb"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/expansion.json",
+      "sha256": "a2402c154a58187bdde5dcc374e20e8bdae8b568750b135537b8dac893b45706"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/native-context.json",
+      "sha256": "3bbc9e8da6b5d54d86c04ea822c5679a6033c8e0cf0f777759a8aaac4ef92417"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/expansion182-queue/operation-timings-1793948483729564163.json",
+      "sha256": "96577ae3b1aca6d2002d25b4662b6e06d55b33e695020bc42666acd100d3659e"
+    },
+    {
+      "kind": "context",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/FIXTURE_TRANSPORT184.json",
+      "sha256": "32b08a1119bc7c3de3445e6b8faa5ae6bf94e7150be79cd6e66ee0e8f344e199"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/format.log",
+      "sha256": "d262b1db60363e7ad0c035d81a5483d090731a63da668c7011d733c5263145e0"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/compile.log",
+      "sha256": "fea9807591c8015a74d94ea1fe117da21e93626f053eb1c18fe93768bd301748"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/symbols.log",
+      "sha256": "0c1e1aed769a45dfa0355dfddefbb540b8ec9c9f0604be6abe1fc7ae7db49e84"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/native.log",
+      "sha256": "2168c89d2984f7f2e59e8385e32deee4f22e3473b799397f18882d5b021f96d2"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/replay.log",
+      "sha256": "f186803493c28d317a6c8e3d86e74442fc64857344c86b55c093cf642d1668c1"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/optimized.log",
+      "sha256": "7432c1eaba3dc7688eb6b4c68b6d4b6bb90c0b79041c59980128c632b25f50f7"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-02/ucnet148/regression.log",
+      "sha256": "0d108d04ba4121798ee8e30be6fb9e7fcb4307aaf3b2e5839272932fba7fe804"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/context.json",
+      "sha256": "b488a9c78b80a566efb25a6d23b3719de5335fd2572583e071ba2a5359582a0e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/request.json",
+      "sha256": "7d6c9d870c509b8a859bc4f198bec273f4dcbbf4d2ca4c7a088efd74c60a7c8a"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/native-context.json",
+      "sha256": "14efad5dd8a8c61c740fd09c125cee27caa9221918b421d7ff1d97ae09bcd6dc"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/TASK.md",
+      "sha256": "6341f4a09b26cf81d62bff7567003599c3e9c9a2f0f168cccf6a2972497244f9"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/ELF_CONTEXT.md",
+      "sha256": "b7878045122e56cc1efa6d2d16b744bca43a750a251b4d12ee596f671469719b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/SOURCE_SLICES.md",
+      "sha256": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation148/prepared148/packets/rolling200_02_ucnet148_02/CONTEXT.md",
+      "sha256": "028773bd5210b3bb3649236d65c715035ff4f067ba2a1f23e62d528c8280613c"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "format"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "native"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "optimized",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "optimized"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "regression"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "validation_domain": {
+    "normal_native_and_source_cases": 54,
+    "normal_domain": "D0/D1/D2 separately; null/live exact DiceEndPoint,0/1/3 nonreusable packets per queue, lazy/existing singleton, registered/unregistered receiver. Observed actual unregister, endpoint deallocation, outgoing queue+packet frees, incoming queue+packet frees, and D0 actual self deletion. Native instruction digests and writes bound per case.",
+    "exception_domain": "9 native forced cleanup probes;9 real host C++ unwind executions, failing singleton allocation or first/second InputPin allocation. Actual failed SPI storage deletion, retained endpoint, queue cleanup order, propagated bad_alloc, and explicit host D0 self-free difference. Native unwind itself remains unexecuted.",
+    "borrowed_cases": 3,
+    "adapter_cases": 1,
+    "regressions": "131345 existing startup/shutdown/accepts/receive cases with actual CCL clock and queue providers;33 idleIO native fixture cases including actual singleton receiver teardown. Optimized production TUs with O0 test driver repeat lifecycle and failure replays.",
+    "safety": "Existing offline SPI and InputPin construction IO installed before first singleton access in every lifecycle/provider process; any unallowed IO method aborts."
+  },
+  "limitations": [
+    "Portable source implementation, not ARM32 ABI, original field layout, binary interoperability, hardware or original C1/C2 recovery. Three exact destructor names are retained. Native D0/D1/D2 have different actual ranges and are independently checked/executed; host D1/D2 aliasing is explicit.",
+    "Owned tagged setup composes actual DicePacketQueue, DiceEndPoint and CCL providers. It is independent setup, not the original default constructor. Both queues must be live, distinct and serialized. No original constructor identity is credited.",
+    "Borrowed tagged compatibility mode does not destroy borrowed queues/channel and does not lazily create SPI on destruction. It only unregisters from an existing singleton; this mode is separately tested and excluded from original equivalence.",
+    "Original target instructions execute fully on normal paths. Exact endpoint AP+0x20 is bound to original DiceEndPoint D0, whose actual instructions reach the exact ELF _ZdlPv PLT relocation. Guest deletion removes/unmaps live allocations only at observed native delete calls. Native allocator internals are not executed; actual host endpoint/packet/self deletes are separately observed.",
+    "SPI singleton, unregister and PacketQueue destructor are named actual current-source providers servicing native call boundaries. Original Core instructions are never recovered or executed. CCL 5.0.0 commit/root identity is verified from fetched history, and its source/archives are hash-bound. Provider source behavior is not automatically original native provider or ARM ABI verification.",
+    "Nine explicit native forced cleanup-landing probes are not real native C++ unwinding: instruction execution resumes at selected target landing code after an independently observed source-provider allocation failure. No native EH personality/unwinder execution claim. Exact protected-call/landing association requires separately bound EH metadata; absent association remains unresolved.",
+    "Owned destructor noexcept(false) preserves tested application failure behavior: failed lazy SPI allocation/construction retains the endpoint, frees failed SPI storage where constructed, destroys outgoing then incoming packets/queues and propagates. Host GCC deleting destructor additionally deallocates self on throw; original target landing does not. This host ABI difference is excluded from native equivalence. Endpoint and orphan-pin harness cleanup occurs after function trace with capture disabled.",
+    "Current SPI provider retains its first raw InputPin when second pin allocation fails. Actual offline counters assert one retained open file after the function and zero after post-trace harness cleanup. Existing provider source is preserved; this observation is a linked follow-up for SPI constructor auditing.",
+    "Current DataChannel port is not IDataChannel. UCNetEndpointChannel is an explicitly independent adapter forwarding real endpoint read/write/readability/writability and actual queue byte totals. Queue-capacity granularity=200 and false error status are intentional source-port choices, not recovered original semantics. Adapter smoke coverage is separate from destructor equivalence.",
+    "Pinned provider queues and endpoint destructors are nonthrowing. Throwing endpoint/queue providers, unRegisterReceiver lock failures, invalid/dangling state and concurrent singleton mutation are not supplied host provider domains. Native cleanup landing probes do not establish those providers original declarations or host exception behavior.",
+    "No canonical readiness admission or global Linux/full CTest, installed-role, compile-once, archive, tracker or mirror acceptance is claimed by worker. Root retains all global gates. No hardware, GPIO, device network access, flashing, guest syscall or host syscall passthrough occurred."
+  ],
+  "build_integration": {
+    "production_partition": "RM OBJECT, exactly once: src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp. Existing IO and queue/endpoint/SPI providers retain their existing partitions. Root owns integration review.",
+    "public_headers": [
+      "presonus/noaa/ucnet_handler.hpp",
+      "presonus/noaa/ucnet_handler_state.hpp"
+    ],
+    "test_target": "card_ucnet_lifecycle_replay: tests/recovery/CardUCNetLifecycleReplay.cpp, -O0 -UNDEBUG -fno-rtti, link presonus::rm_components and pinned real CCL; no duplicate production bodies.",
+    "link_dependencies": [
+      "presonus::rm_components",
+      "actual CCL corelib and allocator",
+      "pthread",
+      "dl"
+    ],
+    "link_wrap_symbols": [
+      "_Znwm",
+      "_ZdlPv",
+      "_ZdlPvm",
+      "_ZN8Presonus2UC11PacketQueueD2Ev",
+      "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+    ],
+    "CTest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+      "replay",
+      "$<TARGET_FILE:card_ucnet_lifecycle_replay>",
+      "uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json"
+    ],
+    "fixture_sha256": "d7935033ec07aa53dec75970f1a0013fc07d0ac8a392f329e74acfaf1ce4775d",
+    "root_gates": "Full Linux/CTest, source organization, active-source proof, exactly-one OBJECT partition, installed-role/compile-once/archive audit, guarded SQLite dry-run/admission, tracker and mirror audit. Worker delivers no ready/pending fragment."
+  }
+}

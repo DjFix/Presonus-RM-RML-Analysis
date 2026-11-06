@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_mapping154_01",
+  "handoff_sha256": "fcad5b2a8dfa055017a66a2a6ddde86bef4893f5297d61f16376bb065d473473",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:01:05.531309+00:00",
+      "returncode": 0,
+      "seconds": 0.11406897299457341
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:01:05.645386+00:00",
+      "returncode": 0,
+      "seconds": 0.7152304259943776
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:01:06.360632+00:00",
+      "returncode": 0,
+      "seconds": 0.06396151799708605
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:01:06.424603+00:00",
+      "returncode": 0,
+      "seconds": 0.41446260499651544
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:01:06.839084+00:00",
+      "returncode": 0,
+      "seconds": 0.4145572369743604
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T07:01:07.253655+00:00",
+      "returncode": 0,
+      "seconds": 1.0154527919949032
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 2.7647140359913465
+}

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_rack_burnin135_05",
+  "handoff_sha256": "cc17ae93b0fdc46bba49cdf059a4288b843360c48b9b4cdf7c5ffaebb426041b",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:31:32.067771+00:00",
+      "returncode": 0,
+      "seconds": 0.11434039799496531
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:31:32.182123+00:00",
+      "returncode": 0,
+      "seconds": 3.671813894994557
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:31:35.853950+00:00",
+      "returncode": 0,
+      "seconds": 0.06398502801312134
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:31:35.917950+00:00",
+      "returncode": 0,
+      "seconds": 2.919978074001847
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:31:38.837947+00:00",
+      "returncode": 0,
+      "seconds": 5.524463032983476
+    },
+    {
+      "kind": "regressions",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "regressions"
+      ],
+      "start_utc": "2026-11-06T07:31:44.362427+00:00",
+      "returncode": 0,
+      "seconds": 32.77662848000182
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 45.098442424990935
+}

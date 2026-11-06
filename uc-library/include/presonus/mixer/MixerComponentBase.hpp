@@ -19,6 +19,17 @@ class PermissionsComponent;
 // not recovered ARM layout or independently established original declarations.
 class MixerComponentBase {
 public:
+  // One distinct borrowed real settings provider for native mixer+0x2dc.
+  // Never implicitly aliases saveServices.parameters. Settings, cached params,
+  // channel collection and its parameter identities must outlive SceneFilter.
+  Core::Portable::Component *sceneSettings = nullptr;
+  // Intentional port state for native +0x364; not an original field claim.
+  bool sceneRecallBlocksTag14 = false;
+  // Borrow the authoritative channel collection corresponding to native
+  // mixer+0x11c Vector storage (+0x120 items / +0x124 count). The original
+  // collection's friendly name is unresolved; never assume inputChannels.
+  // Null explicitly denotes an empty collection in this source port.
+  const Core::Vector<ChannelComponent *> *sceneChannels = nullptr;
   class Delegate;
   // Required borrowed application binding for preset construction. The same
   // real service instance must outlive constructed preset components.

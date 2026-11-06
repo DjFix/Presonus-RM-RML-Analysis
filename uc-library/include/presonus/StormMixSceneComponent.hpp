@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/portable/corefilename.h"
 #include "core/public/corestringbuffer.h"
 #include "presonus/delay_timer.hpp"
 #include <cstdint>
@@ -8,7 +9,8 @@ namespace Presonus {
 class StormMixSceneComponent;
 namespace Panel {
 class PresetComponent;
-}
+class PresetNameManager;
+} // namespace Panel
 } // namespace Presonus
 namespace presonus::scene_port {
 // Independent source-port boundaries. These are not recovered original classes,
@@ -46,6 +48,14 @@ public:
   // Provisional void source-port return; original return declaration
   // unresolved.
   void init();
+  // Provisional by-value FileName return: native aggregate output is observed,
+  // but original return declaration, class layout and ARM ABI are unresolved.
+  Core::Portable::FileName getFileName(unsigned int index) const;
+  Core::Portable::FileName getUndoFileName() const;
+  // Borrowed actual manager; nullptr selects the real CCL singleton.
+  void configurePresetNames(Panel::PresetNameManager *value) {
+    presetNames = value;
+  }
   void setDelegate(Delegate *);
   void presetRecalled(const Panel::PresetComponent &, int);
   Delegate *sourcePortDelegate() const { return originalDelegate; }
@@ -74,6 +84,7 @@ public:
   std::uint32_t recalledIndex() const { return selectedIndex; }
 
 private:
+  Panel::PresetNameManager *presetNames = nullptr;
   Delegate *originalDelegate =
       nullptr; // Borrowed; distinct from port delegate.
   presonus::scene_port::Recall &recallBoundary;

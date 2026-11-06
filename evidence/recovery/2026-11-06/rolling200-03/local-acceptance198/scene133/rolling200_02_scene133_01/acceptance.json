@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_scene133_01",
+  "handoff_sha256": "b5863e3dca9bba7e88e3d2424d1f68266cbda40d6263c939ea4224419bb9d4a7",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/clang-format",
+        "--style=file",
+        "--fallback-style=LLVM",
+        "--dry-run",
+        "--Werror",
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp",
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "start_utc": "2026-11-06T07:31:45.399469+00:00",
+      "returncode": 0,
+      "seconds": 0.11420939199160784
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:31:45.513711+00:00",
+      "returncode": 0,
+      "seconds": 3.5214644470252097
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:31:49.035193+00:00",
+      "returncode": 0,
+      "seconds": 0.06408801398356445
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:31:49.099298+00:00",
+      "returncode": 0,
+      "seconds": 2.217452343989862
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "regressions"
+      ],
+      "start_utc": "2026-11-06T07:31:51.316767+00:00",
+      "returncode": 0,
+      "seconds": 6.275499523995677
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/native.py"
+      ],
+      "start_utc": "2026-11-06T07:31:57.592282+00:00",
+      "returncode": 0,
+      "seconds": 23.303209167002933
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 35.53275644601672
+}

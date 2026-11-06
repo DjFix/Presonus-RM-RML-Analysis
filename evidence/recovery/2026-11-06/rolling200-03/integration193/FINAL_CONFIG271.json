@@ -1,0 +1,2204 @@
+{
+  "new_count": 51,
+  "expected_suites": 556,
+  "production_units": 499,
+  "affected_counts": {
+    "ready": 483,
+    "pending": 802
+  },
+  "canonical_tests": {
+    "rolling200_03_mapping154_01": {
+      "production_partition": "CS18: existing ColorMapping.cpp and MappingTable.cpp are CS18; add MappingTablePageName.cpp exactly once to CS18 OBJECT list. Target native identity is client surface only.",
+      "public_headers": [
+        "uc-library/include/presonus/ColorMapping.hpp",
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_target": "mapping_strings_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/MappingStringsReplay.cpp"
+      ],
+      "link_dependencies": [
+        "production CS18 archive; actual pinned Core CCL headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "replay",
+        "--executable",
+        "CANONICAL_BUILT_MAPPING_STRINGS_REPLAY",
+        "--fixtures",
+        "uc-library/tests/recovery/mapping_strings/fixtures.json"
+      ],
+      "fixture": {
+        "kind": "fixture",
+        "path": "uc-library/tests/recovery/mapping_strings/fixtures.json",
+        "sha256": "e811618d41653d0b5ea28814a847daac1bc017f3d5d6efa095dbcb974637a815"
+      }
+    },
+    "rolling200_03_mapping154_02": {
+      "production_partition": "CS18: existing ColorMapping.cpp and MappingTable.cpp are CS18; add MappingTablePageName.cpp exactly once to CS18 OBJECT list. Target native identity is client surface only.",
+      "public_headers": [
+        "uc-library/include/presonus/ColorMapping.hpp",
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_target": "mapping_strings_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/MappingStringsReplay.cpp"
+      ],
+      "link_dependencies": [
+        "production CS18 archive; actual pinned Core CCL headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_strings/check.py",
+        "replay",
+        "--executable",
+        "CANONICAL_BUILT_MAPPING_STRINGS_REPLAY",
+        "--fixtures",
+        "uc-library/tests/recovery/mapping_strings/fixtures.json"
+      ],
+      "fixture": {
+        "kind": "fixture",
+        "path": "uc-library/tests/recovery/mapping_strings/fixtures.json",
+        "sha256": "e811618d41653d0b5ea28814a847daac1bc017f3d5d6efa095dbcb974637a815"
+      }
+    },
+    "rolling200_03_mapping157_01": {
+      "partition": "CS18 (all four targets client surface; Root verifies partition and global role audits)",
+      "production_cpp": [
+        "uc-library/src/Presonus/MappingTableItem.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_source": "uc-library/tests/recovery/MappingItemReplay.cpp",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "replay"
+      ],
+      "canonical_replay_note": "check.py replay accepts optional --driver PATH for canonical CTest executable; wrap the two LED setter symbols shown in check.py and use real provider sources/library. Root owns shared CMake.",
+      "link_dependencies": [
+        "presonus_uc",
+        "corelib",
+        "pthread",
+        "dl",
+        "rt"
+      ],
+      "fixtures": "uc-library/tests/recovery/mapping_item/fixtures.json",
+      "header_integration": "Root must merge Mapping154 changes and reseal affected hashes/replay current-source gates."
+    },
+    "rolling200_03_mapping157_02": {
+      "partition": "CS18 (all four targets client surface; Root verifies partition and global role audits)",
+      "production_cpp": [
+        "uc-library/src/Presonus/MappingTableItem.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_source": "uc-library/tests/recovery/MappingItemReplay.cpp",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "replay"
+      ],
+      "canonical_replay_note": "check.py replay accepts optional --driver PATH for canonical CTest executable; wrap the two LED setter symbols shown in check.py and use real provider sources/library. Root owns shared CMake.",
+      "link_dependencies": [
+        "presonus_uc",
+        "corelib",
+        "pthread",
+        "dl",
+        "rt"
+      ],
+      "fixtures": "uc-library/tests/recovery/mapping_item/fixtures.json",
+      "header_integration": "Root must merge Mapping154 changes and reseal affected hashes/replay current-source gates."
+    },
+    "rolling200_03_mapping157_03": {
+      "partition": "CS18 (all four targets client surface; Root verifies partition and global role audits)",
+      "production_cpp": [
+        "uc-library/src/Presonus/MappingTableItem.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_source": "uc-library/tests/recovery/MappingItemReplay.cpp",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "replay"
+      ],
+      "canonical_replay_note": "check.py replay accepts optional --driver PATH for canonical CTest executable; wrap the two LED setter symbols shown in check.py and use real provider sources/library. Root owns shared CMake.",
+      "link_dependencies": [
+        "presonus_uc",
+        "corelib",
+        "pthread",
+        "dl",
+        "rt"
+      ],
+      "fixtures": "uc-library/tests/recovery/mapping_item/fixtures.json",
+      "header_integration": "Root must merge Mapping154 changes and reseal affected hashes/replay current-source gates."
+    },
+    "rolling200_03_mapping157_04": {
+      "partition": "CS18 (all four targets client surface; Root verifies partition and global role audits)",
+      "production_cpp": [
+        "uc-library/src/Presonus/MappingTableItem.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/MappingTable.hpp"
+      ],
+      "test_source": "uc-library/tests/recovery/MappingItemReplay.cpp",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "replay"
+      ],
+      "canonical_replay_note": "check.py replay accepts optional --driver PATH for canonical CTest executable; wrap the two LED setter symbols shown in check.py and use real provider sources/library. Root owns shared CMake.",
+      "link_dependencies": [
+        "presonus_uc",
+        "corelib",
+        "pthread",
+        "dl",
+        "rt"
+      ],
+      "fixtures": "uc-library/tests/recovery/mapping_item/fixtures.json",
+      "header_integration": "Root must merge Mapping154 changes and reseal affected hashes/replay current-source gates."
+    },
+    "rolling200_03_mapping159_01": {
+      "production_partition": "CS18 OBJECT (client-only original symbol)",
+      "sources": [
+        "uc-library/src/Presonus/Surface/SurfaceRootMappingPredicate.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_targets": [
+        "surface_mapping_predicate_replay"
+      ],
+      "link_dependencies": [
+        "existing ControlHelpers.cpp production object; pinned CCL headers; libc"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SurfaceMappingPredicateReplay.cpp"
+      ],
+      "link_options": [
+        "-Wl,--wrap=strstr",
+        "-Wl,--wrap=strcmp"
+      ],
+      "compile_options": [],
+      "optimization_validation": {
+        "production": "-O3",
+        "driver": "-O0",
+        "production_override_required": false
+      },
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/surface_mapping_predicate/check.py",
+        "replay",
+        "<canonical-built-executable>",
+        "uc-library/tests/recovery/surface_mapping_predicate/fixtures.json"
+      ]
+    },
+    "rolling200_03_controller173_01": {
+      "production_partition": "common: add src/Presonus/Dsp/ControllerInterface.cpp exactly once",
+      "public_headers": [
+        "include/presonus/dsp/IController.hpp",
+        "include/presonus/dsp/Controller.hpp"
+      ],
+      "test_target": "controller_interface_replay: tests/recovery/ControllerInterfaceReplay.cpp linked to presonus_uc and pinned Core provider",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "replay",
+        "uc-library/tests/recovery/controller_interface/fixtures.json",
+        "<TARGET_FILE:controller_interface_replay>"
+      ],
+      "fixture": "uc-library/tests/recovery/controller_interface/fixtures.json",
+      "link_dependencies": [
+        "presonus_uc",
+        "actual pinned CCL corelib/allocator"
+      ],
+      "root_required": "Recompile all Controller-dependent TUs, rebind affected active-source proofs, full Linux CTest and role/installed/compile-once audits before guarded readiness admission. No worker admission."
+    },
+    "rolling200_03_controller173_02": {
+      "production_partition": "common: add src/Presonus/Dsp/ControllerInterface.cpp exactly once",
+      "public_headers": [
+        "include/presonus/dsp/IController.hpp",
+        "include/presonus/dsp/Controller.hpp"
+      ],
+      "test_target": "controller_interface_replay: tests/recovery/ControllerInterfaceReplay.cpp linked to presonus_uc and pinned Core provider",
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/controller_interface/check.py",
+        "replay",
+        "uc-library/tests/recovery/controller_interface/fixtures.json",
+        "<TARGET_FILE:controller_interface_replay>"
+      ],
+      "fixture": "uc-library/tests/recovery/controller_interface/fixtures.json",
+      "link_dependencies": [
+        "presonus_uc",
+        "actual pinned CCL corelib/allocator"
+      ],
+      "root_required": "Recompile all Controller-dependent TUs, rebind affected active-source proofs, full Linux CTest and role/installed/compile-once audits before guarded readiness admission. No worker admission."
+    },
+    "rolling200_02_storm_activation172_01": {
+      "production_partition": "common exactly once: src/Presonus/MuteGroupActivation.cpp and src/Presonus/StormMuteActivation.cpp; existing StormMuteGroupComponent.cpp unchanged; Root integrates",
+      "public_headers": [
+        "include/presonus/MuteGroupBase.hpp",
+        "include/presonus/FileMuteGroup.hpp",
+        "include/presonus/StormMuteGroupComponent.hpp"
+      ],
+      "test_targets": [
+        "StormMuteActivationReplay"
+      ],
+      "test_sources": [
+        "tests/recovery/StormMuteActivationReplay.cpp"
+      ],
+      "link_dependencies": [
+        "real pinned corelib",
+        "presonus_core_allocator",
+        "presonus_uc",
+        "png",
+        "zlib",
+        "pthread",
+        "dl",
+        "m"
+      ],
+      "link_options": [
+        "-Wl,--wrap=_ZN4Core8Portable10AttributesD1Ev",
+        "-Wl,--wrap=_ZN4Core8Portable10AttributesD2Ev",
+        "-Wl,--wrap=_ZN4Core8Portable12ArchiveUtils12loadFromFileERNS0_10AttributesEPKcNS0_8Archiver6FormatEPNS0_18FileStorageContextEib"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "replay",
+        "<canonical-built-StormMuteActivationReplay>"
+      ],
+      "fixture_binding": "uc-library/tests/recovery/storm_mute_activation/fixtures.json",
+      "fixture_sha256": "072f1a136e5430de1dea78c1a4d74d8449e0abea7091a9619e6f97a27a342917",
+      "separate_native_check": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "native"
+      ]
+    },
+    "rolling200_02_storm_activation172_02": {
+      "production_partition": "common exactly once: src/Presonus/MuteGroupActivation.cpp and src/Presonus/StormMuteActivation.cpp; existing StormMuteGroupComponent.cpp unchanged; Root integrates",
+      "public_headers": [
+        "include/presonus/MuteGroupBase.hpp",
+        "include/presonus/FileMuteGroup.hpp",
+        "include/presonus/StormMuteGroupComponent.hpp"
+      ],
+      "test_targets": [
+        "StormMuteActivationReplay"
+      ],
+      "test_sources": [
+        "tests/recovery/StormMuteActivationReplay.cpp"
+      ],
+      "link_dependencies": [
+        "real pinned corelib",
+        "presonus_core_allocator",
+        "presonus_uc",
+        "png",
+        "zlib",
+        "pthread",
+        "dl",
+        "m"
+      ],
+      "link_options": [
+        "-Wl,--wrap=_ZN4Core8Portable10AttributesD1Ev",
+        "-Wl,--wrap=_ZN4Core8Portable10AttributesD2Ev",
+        "-Wl,--wrap=_ZN4Core8Portable12ArchiveUtils12loadFromFileERNS0_10AttributesEPKcNS0_8Archiver6FormatEPNS0_18FileStorageContextEib"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "replay",
+        "<canonical-built-StormMuteActivationReplay>"
+      ],
+      "fixture_binding": "uc-library/tests/recovery/storm_mute_activation/fixtures.json",
+      "fixture_sha256": "072f1a136e5430de1dea78c1a4d74d8449e0abea7091a9619e6f97a27a342917",
+      "separate_native_check": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_mute_activation/check.py",
+        "native"
+      ]
+    },
+    "rolling200_03_storm_paths164_01": {
+      "production_partition": "Root assign src/Presonus/StormMixScenePaths.cpp exactly once from original server ownership; existing StormMixSceneComponent.cpp is unchanged and keeps its partition. Review graph/dependency evidence before final classification.",
+      "public_headers": [
+        "include/presonus/StormMixSceneComponent.hpp"
+      ],
+      "test_targets": [
+        "StormMixScenePathsReplay"
+      ],
+      "test_sources": [
+        "tests/recovery/StormMixScenePathsReplay.cpp"
+      ],
+      "link_dependencies": [
+        "presonus_rm_components",
+        "corelib",
+        "presonus_core_allocator"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_scene_paths/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-StormMixScenePathsReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/storm_scene_paths/fixtures.json"
+      ],
+      "fixture_sha256": "91165df8667f37696045f9637a54f8d80f44d38fa58013489d211e238a30fe2f",
+      "notes": "No shared CMake edits. Linux Landlock test confinement is mandatory and fails closed when unavailable. Test-only new[] fault injection must remain confined to this executable. Root refreshes any prior proofs bound to canonical shared class header."
+    },
+    "rolling200_03_storm_paths164_02": {
+      "production_partition": "Root assign src/Presonus/StormMixScenePaths.cpp exactly once from original server ownership; existing StormMixSceneComponent.cpp is unchanged and keeps its partition. Review graph/dependency evidence before final classification.",
+      "public_headers": [
+        "include/presonus/StormMixSceneComponent.hpp"
+      ],
+      "test_targets": [
+        "StormMixScenePathsReplay"
+      ],
+      "test_sources": [
+        "tests/recovery/StormMixScenePathsReplay.cpp"
+      ],
+      "link_dependencies": [
+        "presonus_rm_components",
+        "corelib",
+        "presonus_core_allocator"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storm_scene_paths/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-StormMixScenePathsReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/storm_scene_paths/fixtures.json"
+      ],
+      "fixture_sha256": "91165df8667f37696045f9637a54f8d80f44d38fa58013489d211e238a30fe2f",
+      "notes": "No shared CMake edits. Linux Landlock test confinement is mandatory and fails closed when unavailable. Test-only new[] fault injection must remain confined to this executable. Root refreshes any prior proofs bound to canonical shared class header."
+    },
+    "rolling200_02_ucnet148_01": {
+      "production_partition": "RM OBJECT, exactly once: src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp. Existing IO and queue/endpoint/SPI providers retain their existing partitions. Root owns integration review.",
+      "public_headers": [
+        "presonus/noaa/ucnet_handler.hpp",
+        "presonus/noaa/ucnet_handler_state.hpp"
+      ],
+      "test_target": "card_ucnet_lifecycle_replay: tests/recovery/CardUCNetLifecycleReplay.cpp, -O0 -UNDEBUG -fno-rtti, link presonus::rm_components and pinned real CCL; no duplicate production bodies.",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "actual CCL corelib and allocator",
+        "pthread",
+        "dl"
+      ],
+      "link_wrap_symbols": [
+        "_Znwm",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_ZN8Presonus2UC11PacketQueueD2Ev",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+      ],
+      "CTest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "replay",
+        "$<TARGET_FILE:card_ucnet_lifecycle_replay>",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json"
+      ],
+      "fixture_sha256": "d7935033ec07aa53dec75970f1a0013fc07d0ac8a392f329e74acfaf1ce4775d",
+      "root_gates": "Full Linux/CTest, source organization, active-source proof, exactly-one OBJECT partition, installed-role/compile-once/archive audit, guarded SQLite dry-run/admission, tracker and mirror audit. Worker delivers no ready/pending fragment."
+    },
+    "rolling200_02_ucnet148_02": {
+      "production_partition": "RM OBJECT, exactly once: src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp. Existing IO and queue/endpoint/SPI providers retain their existing partitions. Root owns integration review.",
+      "public_headers": [
+        "presonus/noaa/ucnet_handler.hpp",
+        "presonus/noaa/ucnet_handler_state.hpp"
+      ],
+      "test_target": "card_ucnet_lifecycle_replay: tests/recovery/CardUCNetLifecycleReplay.cpp, -O0 -UNDEBUG -fno-rtti, link presonus::rm_components and pinned real CCL; no duplicate production bodies.",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "actual CCL corelib and allocator",
+        "pthread",
+        "dl"
+      ],
+      "link_wrap_symbols": [
+        "_Znwm",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_ZN8Presonus2UC11PacketQueueD2Ev",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+      ],
+      "CTest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "replay",
+        "$<TARGET_FILE:card_ucnet_lifecycle_replay>",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json"
+      ],
+      "fixture_sha256": "d7935033ec07aa53dec75970f1a0013fc07d0ac8a392f329e74acfaf1ce4775d",
+      "root_gates": "Full Linux/CTest, source organization, active-source proof, exactly-one OBJECT partition, installed-role/compile-once/archive audit, guarded SQLite dry-run/admission, tracker and mirror audit. Worker delivers no ready/pending fragment."
+    },
+    "rolling200_02_ucnet148_03": {
+      "production_partition": "RM OBJECT, exactly once: src/Presonus/NOAA/TCardUCNetHandlerLifecycle.cpp. Existing IO and queue/endpoint/SPI providers retain their existing partitions. Root owns integration review.",
+      "public_headers": [
+        "presonus/noaa/ucnet_handler.hpp",
+        "presonus/noaa/ucnet_handler_state.hpp"
+      ],
+      "test_target": "card_ucnet_lifecycle_replay: tests/recovery/CardUCNetLifecycleReplay.cpp, -O0 -UNDEBUG -fno-rtti, link presonus::rm_components and pinned real CCL; no duplicate production bodies.",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "actual CCL corelib and allocator",
+        "pthread",
+        "dl"
+      ],
+      "link_wrap_symbols": [
+        "_Znwm",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_ZN8Presonus2UC11PacketQueueD2Ev",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE"
+      ],
+      "CTest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/check.py",
+        "replay",
+        "$<TARGET_FILE:card_ucnet_lifecycle_replay>",
+        "uc-library/tests/recovery/card_ucnet_lifecycle/fixtures.json"
+      ],
+      "fixture_sha256": "d7935033ec07aa53dec75970f1a0013fc07d0ac8a392f329e74acfaf1ce4775d",
+      "root_gates": "Full Linux/CTest, source organization, active-source proof, exactly-one OBJECT partition, installed-role/compile-once/archive audit, guarded SQLite dry-run/admission, tracker and mirror audit. Worker delivers no ready/pending fragment."
+    },
+    "rolling200_02_rack_burnin135_01": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_02": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_03": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_04": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_05": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_06": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_rack_burnin135_07": {
+      "production_partitions": {
+        "common": [
+          "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp"
+        ],
+        "rm": [
+          "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+          "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp"
+        ]
+      },
+      "public_headers": [
+        "uc-library/include/presonus/panel/RackPanelComponent.hpp",
+        "uc-library/include/presonus/panel/PanelRegistrar.hpp",
+        "uc-library/include/presonus/surface_panel/ControlHelpers.hpp"
+      ],
+      "test_target": "rack_panel_burnin_replay",
+      "test_sources": [
+        "uc-library/tests/recovery/RackPanelBurnInReplay.cpp"
+      ],
+      "instrumented_test_translation_units": [
+        "uc-library/src/Presonus/Panel/RackPanelBurnIn.cpp",
+        "uc-library/src/Presonus/Panel/ControlRegistrarCommands.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrarDualMessage.cpp",
+        "uc-library/src/Presonus/Panel/RackPanelComponent.cpp",
+        "uc-library/src/Presonus/Panel/PanelRegistrar.cpp"
+      ],
+      "compile_options": [
+        "-finstrument-functions (only instrumented test TUs)",
+        "-fno-rtti",
+        "-ffunction-sections",
+        "-fdata-sections"
+      ],
+      "link_dependencies": [
+        "canonical application archive",
+        "pinned CCL corelib and allocator",
+        "pthread",
+        "dl",
+        "z"
+      ],
+      "link_options": [
+        "--gc-sections",
+        "--wrap=clock_gettime",
+        "--wrap=_ZN4Core11DebugPrintfEPKcz"
+      ],
+      "ctest_replay_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/rack_burnin/check.py",
+        "replay",
+        "<canonical-built-rack_panel_burnin_replay>",
+        "uc-library/tests/recovery/rack_burnin/fixtures.json"
+      ],
+      "notes": "Root adds exactly one production OBJECT partition per new CPP. The test-only instrumented current canonical TUs override matching archive members; do not instrument the replay TU itself. Canonical full Linux CTest/installed-role/compile-once/active-source/admission remain Root-owned. onIdle overrides the real upstream Component virtual and retains the actual permission-reset provider in standalone regression links; group application and CCL archives as in check.py."
+    },
+    "rolling200_02_scene133_01": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_02": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_03": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_04": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_05": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_06": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_02_scene133_07": {
+      "production_sources": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp",
+        "uc-library/src/Presonus/Mixer/ChannelComponent.cpp",
+        "uc-library/src/Presonus/Mixer/SceneFilter.cpp"
+      ],
+      "partition": "Root must classify exactly once; original targets here are RM server 13731",
+      "public_headers": [
+        "uc-library/include/presonus/mixer/ChannelComponent.hpp",
+        "uc-library/include/presonus/mixer/CompressorComponent.hpp",
+        "uc-library/include/presonus/mixer/EQComponent.hpp",
+        "uc-library/include/presonus/mixer/FXBusComponent.hpp",
+        "uc-library/include/presonus/mixer/FXComponent.hpp",
+        "uc-library/include/presonus/mixer/FilterGroupComponent.hpp",
+        "uc-library/include/presonus/mixer/GEQComponent.hpp",
+        "uc-library/include/presonus/mixer/GateComponent.hpp",
+        "uc-library/include/presonus/mixer/HPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LPFilterComponent.hpp",
+        "uc-library/include/presonus/mixer/LimiterComponent.hpp",
+        "uc-library/include/presonus/mixer/MasterSectionComponent.hpp",
+        "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+        "uc-library/include/presonus/mixer/MonoBusComponent.hpp",
+        "uc-library/include/presonus/mixer/NetworkSelectComponent.hpp",
+        "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+        "uc-library/include/presonus/mixer/SceneFilter.hpp",
+        "uc-library/include/presonus/mixer/StereoLineComponent.hpp",
+        "uc-library/include/presonus/mixer/TalkbackInputComponent.hpp"
+      ],
+      "test_sources": [
+        "uc-library/tests/recovery/SceneFilterReplay.cpp"
+      ],
+      "link_dependencies": [
+        "actual pinned CCL corelib",
+        "actual app FilterGroupComponent",
+        "current canonical app type/vtable providers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/scene_filter/check.py",
+        "replay",
+        "--executable",
+        "<canonical-built-SceneFilterReplay>",
+        "--fixtures",
+        "uc-library/tests/recovery/scene_filter/fixtures.json"
+      ],
+      "fixture": "uc-library/tests/recovery/scene_filter/fixtures.json"
+    },
+    "rolling200_03_grid140_01": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_02": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_03": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_04": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_05": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_06": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_grid140_07": {
+      "production_partition": "Propose CS18 OBJECT ownership for new GridPainterLifecycle.cpp and GridPainterRendering.cpp from all seven original client identities; Root must review existing common GridPainter.cpp orientation ownership and its new virtual dependency on CS18 BackgroundPainter. Do not leave RM with unresolved common vtable references or duplicate any source. Keep shared/mixed units common if original/native dependency evidence establishes sharing; otherwise reclassify the coherent client class. Root runs role and installed/compile-once audits.",
+      "public_headers": [
+        "presonus/GridPainter.hpp",
+        "presonus/IBackgroundGridProvider.hpp",
+        "presonus/mixer_dsp/EQControl.hpp"
+      ],
+      "test_target": "GridPainterReplay built from uc-library/tests/recovery/GridPainterReplay.cpp with current canonical production sources; do not link stale EQControl objects after changing its provider base.",
+      "link_dependencies": [
+        "actual pinned CCL Core",
+        "actual EQControl and existing DSP adapters",
+        "PNG/zlib",
+        "private glibc29 provider where configured"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay",
+        "<canonical GridPainterReplay executable>"
+      ],
+      "fixture": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "provider_only_pixel_argv": [
+        "<canonical GridPainterReplay executable>",
+        "--raster"
+      ],
+      "native_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "root_retains": "Shared CMake/registry/tracker, full Linux integration, namespace/symbol/active-source, installed-role/compile-once/mirror audits and guarded readiness dry-run/admission. No admission is claimed by these handoffs."
+    },
+    "rolling200_03_daw_maps183_01": {
+      "production_partition": "cs18",
+      "production_sources": [
+        "src/Presonus/DAWTimeMapsConstruction.cpp"
+      ],
+      "existing_sources": [
+        "src/Presonus/DAWTimeMaps.cpp"
+      ],
+      "public_headers": [
+        "presonus/DAWTimeInfo.hpp"
+      ],
+      "target": "recovery_daw_map_construction",
+      "test_source": "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+      "link_dependencies": [
+        "presonus::cs18_components",
+        "actual pinned Core::Vector template headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:recovery_daw_map_construction>"
+      ],
+      "fixture_bindings": [
+        "uc-library/tests/recovery/daw_map_construction/fixtures.json"
+      ],
+      "notes": "Root adds production CPP exactly once to cs18 OBJECT partition; no shared CMake edited. Immutable copies preserve views; borrowed APIs/search algorithms retained. Root supplies canonical archive link and full gates."
+    },
+    "rolling200_03_daw_maps183_02": {
+      "production_partition": "cs18",
+      "production_sources": [
+        "src/Presonus/DAWTimeMapsConstruction.cpp"
+      ],
+      "existing_sources": [
+        "src/Presonus/DAWTimeMaps.cpp"
+      ],
+      "public_headers": [
+        "presonus/DAWTimeInfo.hpp"
+      ],
+      "target": "recovery_daw_map_construction",
+      "test_source": "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+      "link_dependencies": [
+        "presonus::cs18_components",
+        "actual pinned Core::Vector template headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:recovery_daw_map_construction>"
+      ],
+      "fixture_bindings": [
+        "uc-library/tests/recovery/daw_map_construction/fixtures.json"
+      ],
+      "notes": "Root adds production CPP exactly once to cs18 OBJECT partition; no shared CMake edited. Immutable copies preserve views; borrowed APIs/search algorithms retained. Root supplies canonical archive link and full gates."
+    },
+    "rolling200_03_daw_maps183_03": {
+      "production_partition": "cs18",
+      "production_sources": [
+        "src/Presonus/DAWTimeMapsConstruction.cpp"
+      ],
+      "existing_sources": [
+        "src/Presonus/DAWTimeMaps.cpp"
+      ],
+      "public_headers": [
+        "presonus/DAWTimeInfo.hpp"
+      ],
+      "target": "recovery_daw_map_construction",
+      "test_source": "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+      "link_dependencies": [
+        "presonus::cs18_components",
+        "actual pinned Core::Vector template headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:recovery_daw_map_construction>"
+      ],
+      "fixture_bindings": [
+        "uc-library/tests/recovery/daw_map_construction/fixtures.json"
+      ],
+      "notes": "Root adds production CPP exactly once to cs18 OBJECT partition; no shared CMake edited. Immutable copies preserve views; borrowed APIs/search algorithms retained. Root supplies canonical archive link and full gates."
+    },
+    "rolling200_03_daw_maps183_04": {
+      "production_partition": "cs18",
+      "production_sources": [
+        "src/Presonus/DAWTimeMapsConstruction.cpp"
+      ],
+      "existing_sources": [
+        "src/Presonus/DAWTimeMaps.cpp"
+      ],
+      "public_headers": [
+        "presonus/DAWTimeInfo.hpp"
+      ],
+      "target": "recovery_daw_map_construction",
+      "test_source": "uc-library/tests/recovery/DAWTimeMapsConstructionReplay.cpp",
+      "link_dependencies": [
+        "presonus::cs18_components",
+        "actual pinned Core::Vector template headers"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:recovery_daw_map_construction>"
+      ],
+      "fixture_bindings": [
+        "uc-library/tests/recovery/daw_map_construction/fixtures.json"
+      ],
+      "notes": "Root adds production CPP exactly once to cs18 OBJECT partition; no shared CMake edited. Immutable copies preserve views; borrowed APIs/search algorithms retained. Root supplies canonical archive link and full gates."
+    },
+    "rolling200_02_handler132_01": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    },
+    "rolling200_02_handler132_02": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    },
+    "rolling200_02_handler132_03": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    },
+    "rolling200_02_handler132_04": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    },
+    "rolling200_02_handler132_05": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    },
+    "rolling200_02_handler132_06": {
+      "production_partition": "RM (original server identities; Root verifies exactly-one OBJECT partition)",
+      "new_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerLifecycle.cpp"
+      ],
+      "modified_cpp": [
+        "uc-library/src/Presonus/NOAA/TCardHandlerProperties.cpp",
+        "uc-library/src/Presonus/NOAA/TCardHandlerEventQueue.cpp"
+      ],
+      "public_headers": [
+        "uc-library/include/presonus/noaa/card_handler.hpp",
+        "uc-library/include/presonus/noaa/card_handler_state.hpp",
+        "uc-library/include/presonus/noaa/card_handler_events.hpp"
+      ],
+      "test_targets": [
+        "noaa_tcard_handler_lifecycle_properties_replay"
+      ],
+      "test_source": "uc-library/tests/recovery/CardHandlerLifecyclePropertiesReplay.cpp",
+      "link_dependencies": [
+        "presonus::rm_components",
+        "pinned CCL corelib",
+        "presonus_core_allocator",
+        "existing Linux private provider"
+      ],
+      "link_wraps": [
+        "_ZN4Core8Platform11PosixThread11setPriorityEi",
+        "_ZN4Core8Platform11PosixThread5startERKNS0_10ThreadInfoE",
+        "_ZN4Core8Platform13CurrentThread5sleepEj",
+        "_ZN4Core8Platform9PosixLock4lockEv",
+        "_ZN4Core8Platform9PosixLock6unlockEv",
+        "_ZN8Presonus4NOAA11TCardRouter11routeScriptEPKc",
+        "_ZN8Presonus4NOAA11TCardRouter13setAVS48RouteEhhih",
+        "_ZN8Presonus4NOAA11TCardRouter13setSPDIFRouteEhhi",
+        "_ZN8Presonus4NOAA11TCardRouter15setGEQToFWRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter18setDspToAvbTxRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter18setMixerInputRouteEhib",
+        "_ZN8Presonus4NOAA11TCardRouter19set2TrackInputRouteEhh",
+        "_ZN8Presonus4NOAA11TCardRouter19setGEQTDMSlotInsertEjjj",
+        "_ZN8Presonus4NOAA11TCardRouter20setAvbToLinkBusRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setDspToDanteTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setInputToAvbTxRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter20setLinkBusToAvbRouteEiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setAvbToDacBypassRouteEiiiib",
+        "_ZN8Presonus4NOAA11TCardRouter22setInputToDanteTxRouteEiiiii",
+        "_ZN8Presonus4NOAA11TCardRouter22setMixerMuteInputRouteEhi",
+        "_ZN8Presonus4NOAA11TCardRouter23setAvbStageBoxMainRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter23setTalkbackToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setAvbTapeLRToAvbTxRouteEiii",
+        "_ZN8Presonus4NOAA11TCardRouter24setMixerCustomInputRouteEhhii",
+        "_ZN8Presonus4NOAA11TCardRouter26setAvbToSlaveFwRecordRouteEiiib",
+        "_ZN8Presonus4NOAA11TCardRouter32setAvbTapeRxToDigitalReturnRouteEiib",
+        "_ZN8Presonus4NOAA11TCardRouter4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA11TCardRouterC1Ev",
+        "_ZN8Presonus4NOAA11TCardRouterD1Ev",
+        "_ZN8Presonus4NOAA12TCardHandler11purgeEventsEv",
+        "_ZN8Presonus4NOAA12TCardHandler19setPropertyDeferredERKN4Core8PropertyE",
+        "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+        "_ZN8Presonus4NOAA5TCard14setClockSourceEi",
+        "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+        "_ZN8Presonus4NOAA5TCard18programSerialResetEv",
+        "_ZN8Presonus4NOAA5TCard4openERKNS0_17NOAASetupPropertyE",
+        "_ZN8Presonus4NOAA5TCard5startEb",
+        "_ZN8Presonus4NOAA5TCardC1Ev",
+        "_ZN8Presonus4NOAA8TCardSPI16registerReceiverEPNS0_14ISysexReceiverE",
+        "_ZN8Presonus4NOAA8TCardSPI18unRegisterReceiverEPNS0_14ISysexReceiverE",
+        "_ZdlPv",
+        "_ZdlPvm",
+        "_Znwm",
+        "abort",
+        "close",
+        "fopen",
+        "ioctl",
+        "open",
+        "read",
+        "socket",
+        "tcflush",
+        "tcgetattr",
+        "tcsetattr",
+        "write"
+      ],
+      "ctest_argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/check.py",
+        "replay",
+        "--executable",
+        "$<TARGET_FILE:noaa_tcard_handler_lifecycle_properties_replay>",
+        "--fixtures",
+        "uc-library/tests/recovery/card_handler_lifecycle_properties/fixtures.json",
+        "--fixture-sha256",
+        "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6"
+      ],
+      "fixture_sha256": "6b3d4ecc4ffc567c8c6274ab8304a22fbe2f09b0e6441a7129e590a34bb2b8f6",
+      "additional_regressions": "check.py regressions compiles/runs existing Handler+deferred+five thread modes+release/Card lifecycle/Card serial/Router lifecycle consumers; exact argv retained in PROOF command receipts"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_mapping157_04",
+  "handoff_sha256": "e92fc38a505a4fe5e02137096a651d9d9773389abe6f2df082d171a30a5d1667",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:16:05.290128+00:00",
+      "returncode": 0,
+      "seconds": 0.11395363698829897
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:16:05.404091+00:00",
+      "returncode": 0,
+      "seconds": 0.9656131239898968
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:16:06.369719+00:00",
+      "returncode": 0,
+      "seconds": 0.06392593399505131
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:16:06.433653+00:00",
+      "returncode": 0,
+      "seconds": 0.5147533419949468
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mapping_item/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T07:16:06.948424+00:00",
+      "returncode": 0,
+      "seconds": 4.32190935901599
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 6.007823894004105
+}

@@ -9,12 +9,29 @@ struct Property;
 namespace Presonus::NOAA {
 class TCard;
 class TCardRouter;
+struct NOAASetupProperty;
 struct NOAAStatusProperty;
 } // namespace Presonus::NOAA
+namespace Presonus::UC {
+class IFirmwareUpdateListener;
+}
 namespace presonus::noaa {
 class CardHandlerEventQueue;
+// Explicit values for native reads at +8..24. Identity binds a live property;
+// this is not its representation or an original declaration.
+struct ImmediatePropertyProjection {
+  const Core::Property *property;
+  std::array<std::uint32_t, 5> words{};
+};
 // Explicit projections of native payload reads. Names identify observed
 // offsets, not recovered original field declarations or native object layout.
+// Explicit serialized application payload, independent from host Property
+// layout. The owner supplies exactly semanticBytes-8 observed payload bytes.
+struct CardHandlerPayloadProjection {
+  const Core::Property *property;
+  std::array<unsigned char, 504> bytes{};
+  unsigned count = 0;
+};
 struct DeferredRouteProjection {
   const Core::Property *property;
   std::uint32_t word08;
@@ -50,6 +67,18 @@ struct CardHandlerState {
   std::atomic<bool> stopRequested{false};
   // Independent optional FIFO; bind before thread start and join before unbind.
   CardHandlerEventQueue *eventQueue = nullptr;
+  const ImmediatePropertyProjection *immediate = nullptr;
+  const CardHandlerPayloadProjection *payload = nullptr;
+  const Presonus::NOAA::NOAASetupProperty *setup = nullptr;
+  const Core::Property *scriptProperty = nullptr;
+  const char *script = nullptr;
+  // A typed pointer is bound independently from the observed native integer.
+  const Core::Property *updateProperty = nullptr;
+  Presonus::UC::IFirmwareUpdateListener *updateListener = nullptr;
+  int updateMode = 0;
+  // Observed native constructor writes only; meanings/declarations unresolved.
+  // These independent numeric projections do not establish native fields/ABI.
+  unsigned char observedByte65 = 0, observedByte66 = 0;
 };
 struct CardHandlerSetupTag {};
 inline constexpr CardHandlerSetupTag cardHandlerSetupTag{};

@@ -1,0 +1,787 @@
+{
+  "version": 1,
+  "utc": "2026-11-06T07:12:48.663677+00:00",
+  "worker_session_id": "01a1af9b-57e0-7872-91d0-59464cfdb60b",
+  "worker_task": "/root/rolling200_03_grid140",
+  "repository": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/grid140",
+  "base_commit": "3a5d52a2677966b0b6e2e6a662bc0e3b5588965b",
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "formatter": "clang-format version 23.1.3",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "python": "3.12.3",
+  "upstream_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus11GridPainter13setGridValuesENS0_4AxisEPKfi",
+      "address": 438488,
+      "size": 172,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 405720,
+      "bytes_sha256": "e1130e037907ddd93f723caa44f3fc63d0517083569bd09871540a98bbe67133"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainter5paintERKN4Core5TRectIiEERKNS1_8Portable9DrawEventERKNS6_5StyleE",
+      "address": 448408,
+      "size": 664,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 415640,
+      "bytes_sha256": "1fc22c26c4aa76049186192cc15eababd8cd8ad2322dd4648188f074ddf0943e"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainter9paintGridERKN4Core5TRectIiEES5_RKNS1_8Portable9DrawEventERKNS6_5StyleE",
+      "address": 446732,
+      "size": 1676,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 413964,
+      "bytes_sha256": "c8d6c9406f19bc40bd9eeaa7625eb81f347075eaa09f42953cc400d13b9b547a"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainterC1ERNS_23IBackgroundGridProviderE",
+      "address": 449120,
+      "size": 192,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 416352,
+      "bytes_sha256": "f8e4f7a6a61c276adab8163de70238018d5d8cf92ef162fd8caaaf8579b7381c"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainterC2ERNS_23IBackgroundGridProviderE",
+      "address": 449312,
+      "size": 192,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 416544,
+      "bytes_sha256": "fe065ca56c567999a6cd14de8bba92d0085eea72eb7af7bc5320c203a452cd41"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainterD1Ev",
+      "address": 438660,
+      "size": 116,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 405892,
+      "bytes_sha256": "049a9c6e4400c07e1e2fcc7386991781b040d22f7d653a8f8650b1f040f55053"
+    },
+    {
+      "mangled": "_ZN8Presonus11GridPainterD2Ev",
+      "address": 438776,
+      "size": 116,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 406008,
+      "bytes_sha256": "00a69419869c092d0bae7b6dca14f6d28a5154023f56b684dca676dc9871a095"
+    }
+  ],
+  "expanded_background": "temp/recovery-work/rolling200-03/grid140/expansion180",
+  "superseded_context_request": "expansion179 contained paint root, not requested BackgroundPainter;180 supplies actual body; no original packet was changed",
+  "native_render_cases": 4120,
+  "native_variant_cases": 6,
+  "native_vector_cases": 16,
+  "native_provider_observations": [
+    [
+      16
+    ],
+    [
+      -12,
+      -12,
+      60,
+      22
+    ],
+    [
+      0,
+      -12,
+      60,
+      8
+    ],
+    [
+      6,
+      -1,
+      51,
+      8
+    ],
+    [
+      12,
+      10,
+      42,
+      16
+    ],
+    [
+      24,
+      32,
+      24,
+      16
+    ],
+    [
+      32,
+      46,
+      12,
+      16
+    ],
+    [
+      36,
+      54,
+      6,
+      16
+    ],
+    [
+      42,
+      65,
+      -2,
+      16
+    ],
+    [
+      48,
+      76,
+      -11,
+      16
+    ],
+    [
+      60,
+      76,
+      -11,
+      16
+    ]
+  ],
+  "domain": "Exact original application instructions for setGridValues, paint, full1676-byte paintGrid, C1/C2 and D1/D2; expanded64-byte BackgroundPainter fallback. Two axes including nonzero/negative/max selectors, negative/zero/positive counts, growth/copy and unchanged cache. Both grid loops, out-of-bounds/inverted clips, all label modes and invalid modes, formatter/null fallback, real font/null font, labels on/off, saturation/alpha, nonzero rectangle origins, cache reuse/value changes and dimension replacement. Exact native call order/geometry plus actual pinned CCL provider raster checksums. Original variants separately range-verified; actual bitmap lifecycle measured after scope destruction. Original orientation and EQControl draw regressions replayed.",
+  "limitations": [
+    "Intentional portable source composition and safe virtual provider destructor; original inheritance, fields, vtable/layout, ordinary method return declarations and ARM ABI are not recovered. No hardware validation.",
+    "Original C1/C2 and D1/D2 are distinct native addresses/ranges. Host compiler may alias variants; every original range is independently SHA-256 checked and executed. No GridPainter D0 target is claimed.",
+    "Core bodies never execute in guest and are never reconstructed. Native oracle intercepts Core/CRT/libgcc at explicitly named provider boundaries. Actual CCL implementations and existing EQControl are compiled/replayed independently on Linux.",
+    "Successful allocation, synchronous nonaliasing readable finite float inputs, valid formatters writing null-terminated strings within32 bytes, bounded nonoverflowing rectangles and positive cached dimensions only. Allocation/exception cleanup paths and NaN/infinite or out-of-int-range labels are untested. Invalid cache setup receives explicit source-port exceptions instead of unsafe native dereference.",
+    "Modern RGBA cache intentionally replaces native RGB565: modern ColorBitmapRenderer rejects mismatched source/destination formats. Trace geometry/order and provider-based RGBA raster checksums are validated; original RGB565 pixel quantization is not claimed. RGB565 renderer is available upstream; this adaptation is for modern RGBA destination compatibility, not provider absence.",
+    "External font tests use actual pinned tuffy16 descriptor/PNG. Cache renderer default font is null in tested provider configuration. Other fonts, arbitrary formatter output and non-null global default cache-font configuration remain untested.",
+    "Provider coordinate results and text widths originate in an isolated --providers path using actual CCL font and existing EQControl; raster expectations originate in original ARM events executed through actual CCL, never GridPainter source-derived expected calls.",
+    "Pixel checks use FNV-1a32 checksums of all RGBA pixels as a regression check, alongside exact event trace comparisons. They are not cryptographic byte-equivalence or ARM/hardware evidence.",
+    "Native vector resize boundary models successful capacity sufficient for fixtures; original and host allocator capacity/layout are not compared. Native constructor/vector/destructor side effects and actual CCL RAII/bitmap-memory return-to-baseline are separate observations.",
+    "Borrowed AxisState compatibility constructor intentionally has no provider; rendering nonempty vectors requires the original encoded provider constructor. Provider must outlive the painter."
+  ],
+  "contract_discrepancies": [
+    {
+      "identities": [
+        "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "_ZN8Presonus11GridPainter13setGridValuesENS0_4AxisEPKfi"
+      ],
+      "observation": "Original172-byte setGridValues writes only selected vector, never cache flag/pointer. Native traces keep cache unchanged; implementation deliberately does not invalidate cache. Root explicitly directed native semantics on2026-11-06.",
+      "status": "resolved native behavior preserved",
+      "retry": "New independent original evidence only"
+    },
+    {
+      "identity": "_ZN8Presonus11GridPainter9paintGridERKN4Core5TRectIiEES5_RKNS1_8Portable9DrawEventERKNS6_5StyleE",
+      "observation": "Original Y line branch at0x6d4a4 is bge followed by bgt, producing y>=top OR y<=bottom. Original Y label overlap uses event.updateRect; X uses supplied clip. Preserved and inverted/outside cases replayed.",
+      "status": "resolved observed behavior preserved"
+    }
+  ],
+  "checks": [
+    {
+      "mode": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:10:36.219131+00:00",
+      "seconds": 0.08307872799923643,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/format-final.log"
+    },
+    {
+      "mode": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:10:36.302246+00:00",
+      "seconds": 3.817172732000472,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/compile-final.log"
+    },
+    {
+      "mode": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:10:40.119452+00:00",
+      "seconds": 0.1674318529840093,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/symbols-final.log"
+    },
+    {
+      "mode": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:10:40.286915+00:00",
+      "seconds": 1.488208227994619,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/replay-final.log"
+    },
+    {
+      "mode": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T07:10:41.775160+00:00",
+      "seconds": 12.690513405977981,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/regression-final.log"
+    },
+    {
+      "mode": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/grid_painter/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T07:10:54.465702+00:00",
+      "seconds": 113.65718634499353,
+      "returncode": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/native-final.log"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/GridPainter.hpp",
+      "sha256": "d9141992fc9f7380d39babac8bd79aaf97d496f11b2248363471d58b1df66294"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/IBackgroundGridProvider.hpp",
+      "sha256": "93aa04c932c97c7067d50c79ce1d038fbaf69b2dee428814fec8c40b3ec53e67"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer_dsp/EQControl.hpp",
+      "sha256": "2306d1fb284bb8c06bb9b5dfd3595ce96cb9ef322ed906baa06adaaf9863f445"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/GridPainter.cpp",
+      "sha256": "721b75c7d0d09dec94b23f79723982235e897894f9499a17424595605ebdd9c1"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/GridPainterLifecycle.cpp",
+      "sha256": "b9e494a161ee5c0c3ec3f7c8ef88e72a64dcac004977f5b2b7015fdc4412f264"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/GridPainterRendering.cpp",
+      "sha256": "2ff9ed1b5c86dd199d306678e7e68b29e250f8488d44a6f15038b353cbadada9"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/GridPainterReplay.cpp",
+      "sha256": "c108ae26e02eac2593c4cb89bd14e522825fa8906e4e70debfcfebf81ec0522b"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/grid_painter/check.py",
+      "sha256": "c22b6fcba039d6c0e93d139a57d1e17af09900a7dd5b612dc907f8f3666e339e"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/grid_painter/native.py",
+      "sha256": "3a994073fd43bee1695006f6021a95554d5d64c74b9ddd6ae88e18db89d20800"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/grid_painter/seal.py",
+      "sha256": "39ee16da31ab59d8459ca32cd398eaef9de7b735b026d1415977fe68a89f68e2"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/grid_painter/fixtures.json",
+      "sha256": "68d816097aebbe9ea0590012414952d7635a0d4cc60acf79b9b718b82ab40113"
+    },
+    {
+      "kind": "dependency",
+      "path": "AGENTS.md",
+      "sha256": "3f3da24d1bf6c9cacf3fc6dbba7fb57033e55b6e8d95bbf65502b56d4cf3d7ac"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/BackgroundPainter.cpp",
+      "sha256": "2b6f98a9b7c25ff33cf764333576a3c37b01e843c4384552c52258bd673764f2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/BackgroundPainter.hpp",
+      "sha256": "77807765d2afc3ee365b56c0fbdee726a3212fbd6246394e88a65eb8bdf7e4f1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/EQControl.cpp",
+      "sha256": "b92483b224498f19ca9facd962b15189fb59469fd2483d6484b6712a17a265d0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreformatter.h",
+      "sha256": "cc9215eeea8262be411ed08b2dcda376a2bc2510d5b0cf49b123be82b583d023"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreformatter.cpp",
+      "sha256": "8e85d826329c2e479b9ba36755f94970081369ad5c93346ae400cdc25bf397b7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringbuffer.h",
+      "sha256": "46de7c2332457b082b9078b75b32ddb8ca35ce01d063fb9b330ffaa7e7acd55c"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corestringtraits.h",
+      "sha256": "887b7de884ad52608e4fa3a74c45102b6fbcac863a8b9db4f54618bc2534275f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/gui/corecolor.h",
+      "sha256": "bde1a05f098448b42041d5d66f79753dae4383ec09266d2dba6217a82d643b54"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corefont.h",
+      "sha256": "f366b7fca978e3a429305b5e056fbfd5e672af6444616dc043fa59423295955b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corefont.cpp",
+      "sha256": "d8dc28724391ec3e0f3faffb50ea50bccf1228fa83b7461693f25395693331bc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.h",
+      "sha256": "d5f06493cffe691b7fa3ab6d5ffa53ee8c3b4391c62e7f530a9c211cb02e2fcb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coregraphics.cpp",
+      "sha256": "7e7f1102b3d45cdb779b6fbbce78490342d15f8a161713d7965e8a0f8bc8d0ec"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.h",
+      "sha256": "59f7e8af9fd892e0e206c5e73748b0f5d7a03ce3019e6ce7fa532368c5cb18e7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.cpp",
+      "sha256": "c05c63ea50d66288f11a9b1daf26bb4b2559042a27831f27785b09b192bc796f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.cpp",
+      "sha256": "fea5d5aac502ed767bcf38d6a042b179a706f638b1539b7134ed73788fb6441e"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/extras/fonts/tuffy16.fnt",
+      "sha256": "9021f395966c5a55aa4ca26a47b316bb74822629b86ae2ded46bc182db25c978"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/extras/fonts/tuffy16.png",
+      "sha256": "80f7d46af2d6e1780eb1d6db291ad9cefe969f1734ad0159c08104e83941c424"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "d42cda0a5d84ae60175e5a81978d74d33a3633f80c739f26c7658a485b89081a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/context.json",
+      "sha256": "eb2f5689f99f8d2bef90ef6c12b2fbc14c3dcb77e756100e5a26d826e19e4b11"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/request.json",
+      "sha256": "21c55a3c376c9abac58d8336da90db63f926defe3f983beff2b024dff9ac4749"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/native-context.json",
+      "sha256": "c08bca9290aa66f2cb22ff9c3c0bb47b91a5189d6b6b90a3e7686ed37b24453b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/TASK.md",
+      "sha256": "bb810d27653e980a1b1ebe7e6ecad4790b3160b1ac4114d46bc5936e570e0f3e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/CONTEXT.md",
+      "sha256": "a7ac7b87051c16e1de797687733afaefe59e751a048776d2a88d1879f6f75b99"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/SOURCE_SLICES.md",
+      "sha256": "32214e11e997a06a7d7175f6ee6b0032b0a8c0632ca3d719cc4b89c64051a155"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_01/ELF_CONTEXT.md",
+      "sha256": "10500e2b069a28b0f9cd6645f603333fb67cfedff5abdaf7609513bdd9a8f7b8"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/context.json",
+      "sha256": "69188c122fde203c9ae8966811491aa18b528a26eed7383e59eab7cc83036bdc"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/request.json",
+      "sha256": "8dba0f2780d6f50ad6ff7e2332ee77e23ec58fcd67ca22b0dd5a0dd74e5d2440"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/native-context.json",
+      "sha256": "4257b1bb235fc9951baa5482103ffc628c0f50191a7b58a7c4b8ecb8bf2f4699"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/TASK.md",
+      "sha256": "85710e70b01e4c59314274d8e98c1a5cb314240798448d2600811e59f0f54086"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/CONTEXT.md",
+      "sha256": "965ef9c1f1b3e166bf933d3abbc849d0c4e8842092f59fb1f28058cb8769faf7"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/SOURCE_SLICES.md",
+      "sha256": "71b64552229258cdf672e041161afc26e97f000d55ebf05761e28a57cb6bc40d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_02/ELF_CONTEXT.md",
+      "sha256": "978cc670d900529be60e69e589d651844a06a40b61ea68869a30e6f8bbbe7ca0"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/context.json",
+      "sha256": "717c6ed2c410fd44eb73d83f9e40235b49d3f6ee02ca5d4a9217facef958bb2c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/request.json",
+      "sha256": "41e0771735c189ce9d509766253635b68ead78906b90f8ca4a5cf42f3dbba5ba"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/native-context.json",
+      "sha256": "06b68de5d0796dab4a4805f74b29d4d8064205781e2f52d6c3848071909ba37b"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/TASK.md",
+      "sha256": "53b17e76cb370dce3ec817237a47710023c4d4a80674c04e2311fc326a15d230"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/CONTEXT.md",
+      "sha256": "e179fbb11a541956644af7b5055582da9246cf6839b9bc942f2d1be5ebb947e7"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/SOURCE_SLICES.md",
+      "sha256": "d305d86a64ce86bff9ba4300909bbda86cb893369d78b632b6fb42d957790c2d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_03/ELF_CONTEXT.md",
+      "sha256": "e072f4ac4f581a11ead4c5f38b76feb80c16d847a4f44a6eeedea51adb31e4bd"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/context.json",
+      "sha256": "0f1904ed6926a1128e4ae1bce71b583dd60a1f388131714dfca3045bc546cba6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/request.json",
+      "sha256": "5f94cd78b42f4b56d0c309714b090fc7fe582c39737500bd73e467f2a0158436"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/native-context.json",
+      "sha256": "2373c6a17284a9b318d1e0a3fd6e2f7aab08c9f418af30b53a8559ad3f067aca"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/TASK.md",
+      "sha256": "34b3b5888d00525d165a78855c1f04f356304fbfb3bfe36ce46fadd336587729"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/CONTEXT.md",
+      "sha256": "3f5b33ef651f3fbc926e3863ef41258b18b4d8b84f35d24477fd47ebf512f1b8"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/SOURCE_SLICES.md",
+      "sha256": "32214e11e997a06a7d7175f6ee6b0032b0a8c0632ca3d719cc4b89c64051a155"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_04/ELF_CONTEXT.md",
+      "sha256": "9b06d5ce1c2791618acff9d136285e2e46d2a6fdb4f0142475584e507cfbc6d5"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/context.json",
+      "sha256": "6387a7120a1919fe02e1d707182c8dc273092f5f2c3e39cef63ec67adf035b1a"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/request.json",
+      "sha256": "a50e839ce127e391f3075279317c40486282819243454ec3bb47f61cfb50956f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/native-context.json",
+      "sha256": "7adeac8890f1b1ce87de978ce40475d90ac979bc23419eb8afa00c97b832416f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/TASK.md",
+      "sha256": "a679805cff3f09a661f6c03a312ff8f5f37a69ce6841cd93dca877959b8c4fa9"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/CONTEXT.md",
+      "sha256": "c0ceb82032f77221e7d5f4151a37724d3a7ade22f106f84d3941e45b02c78926"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/SOURCE_SLICES.md",
+      "sha256": "32214e11e997a06a7d7175f6ee6b0032b0a8c0632ca3d719cc4b89c64051a155"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_05/ELF_CONTEXT.md",
+      "sha256": "182a422949c4cd58f6a1b49612e9c15cbb066d48f8615c25118517f8595de43e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/context.json",
+      "sha256": "f710e05733d307fa90166baaec4addf5d74e8b3dc93b430fc61821294dba43cd"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/request.json",
+      "sha256": "5be7a9b2c851bbfa1bd24c571988ce5685e7efddad999112feb4536347d0c28c"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/native-context.json",
+      "sha256": "37646d7326e0574a1977b0faadfbaae5309f105963506372ed87c827f7dd450e"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/TASK.md",
+      "sha256": "53ab758b56fb121d66e21977e213e56fdb2893e28f238e1e6e90a3c7d5f57799"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/CONTEXT.md",
+      "sha256": "9b3f805d664a174c0267b97aceeedff5031b8594f9fb02ee4166f480b2d345e6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_06/ELF_CONTEXT.md",
+      "sha256": "5d0714b7cb85deef39d04b16afa12e8f49fb65bc7eaaa3311c1c80b092320585"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/context.json",
+      "sha256": "39b3895dd71fa9b0906603a58c17fdf3b353885c340b0050f381f68337b4d099"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/request.json",
+      "sha256": "16ece65d0ff79c5dacab4dfb807ee112a0d966234ff2c11e0e6cb496746666eb"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/native-context.json",
+      "sha256": "66e1ad49bb790ebb9a6c41d380d69e310511dd8285c5a1b5b0abe05dc7a8cf58"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/TASK.md",
+      "sha256": "2182696d99a77fc8e49ff4a262e11c4db878f4f6c5b18fb8ed0c56447464f154"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/CONTEXT.md",
+      "sha256": "a41f0eda29bca73d7386e54d137abb139ef514241c76106fe071ae9f7b6719f5"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-03/grid140/prepared140/packets/rolling200_03_grid140_07/ELF_CONTEXT.md",
+      "sha256": "cffaa3688afaee235b085d7acaae1248a36214523b1b5f83d01f2c88fa5d6699"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion179/native-context.json",
+      "sha256": "4257b1bb235fc9951baa5482103ffc628c0f50191a7b58a7c4b8ecb8bf2f4699"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion179/ELF_CONTEXT.md",
+      "sha256": "978cc670d900529be60e69e589d651844a06a40b61ea68869a30e6f8bbbe7ca0"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion179/expansion.json",
+      "sha256": "0de4938a0e62ac7c3fee8fa3a24a325a39bc235fed641375b947d3cf24cd7a18"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion179/TRANSPORT179.json",
+      "sha256": "44d03228803d3cf3a548c983d045f01e7a0c00c254ca8beae744c75cdcd0153c"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion180/native-context.json",
+      "sha256": "cbff64746e72f5b6525cf0187368cf0997102053c8cbeb729f18f8ade1606314"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion180/ELF_CONTEXT.md",
+      "sha256": "24521239f70ca69de14b931b732a082113f8325acf465a92c6df8b6d08b40906"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion180/expansion.json",
+      "sha256": "5c097cd0d7ce55c542a84e1e5e155abb224d3890e748f66326dc1e957c9fd19f"
+    },
+    {
+      "kind": "context_expansion",
+      "path": "temp/recovery-work/rolling200-03/grid140/expansion180/TRANSPORT180.json",
+      "sha256": "46c7b418675a18e33dbbef28c91621dd3d7db6d9a084bac59fcc5ee727cd2ea4"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/format-final.log",
+      "sha256": "f84eabd870f73fc8a387d70e70e451e557f7981b6565d96c628612ff2de95878"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/compile-final.log",
+      "sha256": "fd875be18769a50c28fd19cc9aabae414aac5b5da95cdfb911299598f0771bfd"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/symbols-final.log",
+      "sha256": "a22a17b9a32dc1f51dfebd70f30949aba3081b1c32a665d0d42f5b707faae4b9"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/replay-final.log",
+      "sha256": "7498277773386d6ce51ebfbb3d8eae4f49b8eeaf7ddae087ed7c791946dd775a"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/regression-final.log",
+      "sha256": "e96408d310f424d49a1088f0e42ff356a7013f10c9685596c5a9c2f26a2ed056"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/native-final.log",
+      "sha256": "5742b06767c99f007b87840dd3a0e8340ceca6d10679d7083d24c9f94c80ddd7"
+    },
+    {
+      "kind": "remarks",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/remarks.json",
+      "sha256": "7b88eb9d35aedc84978ab1c8179d35cfcec1249c5e6125feed2962a7128ab370"
+    },
+    {
+      "kind": "remarks",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/development-observations.json",
+      "sha256": "29999f51459fd5edf734ad0ac81cc93b8d411a65acf0d5fc1b652cbe176d1edf"
+    },
+    {
+      "kind": "historical_evidence",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/regressions.log",
+      "sha256": "56b6984aefc931845da96b27fab21554d6e1ac4a8e7ce2bb50acfbfaba89fb7f"
+    },
+    {
+      "kind": "historical_evidence",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/historical-regressions-producer.py",
+      "sha256": "b09eac6305df91941cc0d2e33749a043a99eceab69cebd5bd1a83f67537702c3"
+    },
+    {
+      "kind": "log",
+      "path": "evidence/recovery/2026-11-06/rolling200-03/grid140-worker/native-generation.log",
+      "sha256": "d2fc90d8b7adb0456fe6a34177e61b88548f0925b9a964c99de4978df177fc1b"
+    }
+  ],
+  "readiness_admitted": false,
+  "hardware_verified": false,
+  "ordinary_returns_verified": false,
+  "arm_abi_verified": false
+}

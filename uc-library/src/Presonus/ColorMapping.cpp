@@ -1,5 +1,6 @@
 #include "presonus/ColorMapping.hpp"
 #include <algorithm>
+#include <cstring>
 namespace Presonus {
 float ColorMapping::getDiff(const Item &a, const Item &b) {
   float lo = std::min(a.hue, b.hue), hi = std::max(a.hue, b.hue);
@@ -110,3 +111,13 @@ const std::array<Presonus::ColorMapping::Item, 17> &palette() {
   return entries;
 }
 } // namespace
+
+namespace Presonus {
+RGBLedColors ColorMapping::enumFromString(const Core::ConstString &name,
+                                          RGBLedColors fallback) {
+  for (const auto &item : palette())
+    if (std::strcmp(name.str(), item.name ? item.name : "") == 0)
+      return static_cast<RGBLedColors>(item.enumeration);
+  return fallback;
+}
+} // namespace Presonus

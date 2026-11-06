@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_daw_maps183_01",
+  "handoff_sha256": "ba69af4f14ffeb7918838ad8f031aa960eb9cb2e7dbaad9c361bb278e98f390a",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T07:53:06.618513+00:00",
+      "returncode": 0,
+      "seconds": 0.1141862950171344
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T07:53:06.732708+00:00",
+      "returncode": 0,
+      "seconds": 1.2662901490111835
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T07:53:07.999013+00:00",
+      "returncode": 0,
+      "seconds": 0.06381878699176013
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "oracle"
+      ],
+      "start_utc": "2026-11-06T07:53:08.062848+00:00",
+      "returncode": 0,
+      "seconds": 1.166458491992671
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T07:53:09.229324+00:00",
+      "returncode": 0,
+      "seconds": 0.06396447800216265
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/daw_map_construction/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T07:53:09.293299+00:00",
+      "returncode": 0,
+      "seconds": 1.6667790460051037
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 4.3738887069921475
+}

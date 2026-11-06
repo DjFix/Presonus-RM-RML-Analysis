@@ -11,6 +11,7 @@
 #include <array>
 #include <cstdint>
 #include <memory>
+#include <stdexcept>
 #include <string>
 #include <vector>
 struct Touchscreen_Type;
@@ -30,6 +31,24 @@ public:
   explicit ControlRegistrar(
       presonus::panel_binding::RegistrarGroupRegistry &state)
       : groupRegistry_(&state) {}
+  // Source-port virtual binding, not the original abstract vtable/layout.
+  // Standalone count/at clients remain constructible; operational messaging
+  // requires an explicit borrowed port binding. An explicitly bound null port
+  // retains the original conditional no-send behavior.
+  virtual ~ControlRegistrar() = default;
+  void bindPort(Presonus::IPanelPort *port) {
+    port_ = port;
+    portBound_ = true;
+  }
+  virtual Presonus::IPanelPort *getPort() const {
+    if (!portBound_)
+      throw std::logic_error("ControlRegistrar port is not bound");
+    return port_;
+  }
+  virtual void writeDualMsg(Uart_Msg_Type &);
+  virtual void setAllLeds(bool);
+  virtual void setAllMeters(bool);
+  virtual void scanSurface();
   // Original return spellings are unencoded; these are portable declarations.
   int count() const;
   ControlGroup *at(int index) const;
@@ -39,6 +58,8 @@ public:
   enum ControlType : int {};
 
 private:
+  Presonus::IPanelPort *port_ = nullptr;
+  bool portBound_ = false;
   presonus::panel_binding::RegistrarGroupRegistry *groupRegistry_ = nullptr;
 };
 class SevenSegControl {
@@ -212,6 +233,8 @@ public:
   void paramChangedLcdBrightness(Core::Portable::Parameter *);
   // Observed 0/1 predicate result; original return spelling unresolved.
   bool isTransportControl(const char *controlName);
+  // Portable bool declaration; original return spelling remains unresolved.
+  bool isMappableControl(const char *controlName);
 
 private:
   PanelRegistrar *registrar_ = nullptr;

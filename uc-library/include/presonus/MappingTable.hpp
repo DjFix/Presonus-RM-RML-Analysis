@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/coreparams.h"
+#include "core/public/corestringbuffer.h"
 #include "core/public/corevector.h"
 #include "core/public/gui/corecolor.h"
 #include <cstring>
@@ -30,12 +31,21 @@ public:
         : alias(alias), control(control) {}
     Item(Core::Portable::AliasParam &alias, Panel::Control *control = nullptr)
         : Item(&alias, control) {}
+    Item(const char *name, Core::Portable::AliasParam *alias);
+    void setBlinkMode(const char *);
+    void setInverseMode(bool);
     static int translateMode(const char *);
     Core::Portable::AliasParam *alias;
     Panel::Control *control;
+    // Source-port state; no original object layout or ownership assertion.
+    Core::CStringBuffer<32> name;
+    Core::CStringBuffer<32> defaultColor;
   };
   MappingTable(const presonus::mapping::Entry *sortedEntries, int count,
                presonus::mapping::ItemOperations &operations);
+  // Source-port return/static declaration; original layout and ABI unresolved.
+  static bool extractPageName(const char *, Core::CStringBuffer<32> &,
+                              Core::CStringBuffer<32> &);
   Item *findItem(const char *name) const;
   Core::Portable::Parameter *getHardwareParameter(const char *name) const;
   void setControlFullOff(const char *name);

@@ -42,6 +42,9 @@ namespace Presonus::Mixer {
 // declarations remain unresolved for the original ARM binary.
 class NetworkSelectComponent : public Core::Portable::Component {
 public:
+  // Independent CCL type-query adaptation, not original RTTI/layout.
+  DECLARE_CORE_CLASS(0x31b8b0, NetworkSelectComponent,
+                     Core::Portable::Component)
   explicit NetworkSelectComponent(presonus::network_select::NetworkServices &s)
       : services(s) {}
   void idleScanning();

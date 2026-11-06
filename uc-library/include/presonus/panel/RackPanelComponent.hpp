@@ -95,6 +95,11 @@ public:
   void assignDynamicIP();
   void checkNetworkReset();
   void idleTasks();
+  void doFactoryBurnInCheck();
+  void onIdle();
+  // Independent observed held-control count (native +0x1d0), not ARM layout.
+  // Active and registrar remain exclusively in portableState().
+  std::uint32_t burnInHeldCount = 0;
   // Borrowed real CCL network parameter tree, corresponding to native mixer
   // +0x2e0. This is an independent binding, not an original field/layout claim.
   Core::Portable::Component *networkParameters = nullptr;
