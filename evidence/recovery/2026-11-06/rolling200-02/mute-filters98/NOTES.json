@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-06T01:46:59.392728+00:00",
+  "status": "local validated compiled-declaration-pending; Root admission pending",
+  "remarks": [
+    "Portable source port only: original return declarations, inheritance, layout, ARM ABI and hardware remain unresolved. bool overrides actual pinned CCL interface; matching ELF names do not verify original return.",
+    "Native test object/vtable/string memory is explicit oracle-only boundary modeling. strcmp, virtual getValue and __aeabi_fcmpeq are intercepted before provider execution; all target instructions run from full hash-verified original ranges. No guest Core or hardware/system calls.",
+    "CCL ParamInfo embeds a fixed char name array, so native null-name fallback is deliberately projected to empty CCL name. Production uses actual provider representation, not ARM offsets. Component/Parameter type IDs observed equal native literals.",
+    "Valid borrowed Parameter object required for Para; other types and null Para never dereference. Parameter override returns supplied IEEE float including signed zero, infinities, quiet NaNs and subnormals. No invalid pointers, signaling NaN traps, concurrency or allocator failure claim.",
+    "Existing MuteGroupBase state/lifecycle unchanged; base activate and FileMuteGroup/Storm targets remain separately owned. Root canonical integration and guarded admission remain pending."
+  ],
+  "retry_condition": "Original return/inheritance declaration evidence plus canonical integration gates for promotion",
+  "originals": [
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase6Filter10shouldLoadEiPKcPv",
+      "address": 486220,
+      "size": 112,
+      "section": ".text",
+      "file_offset": 453452,
+      "sha256": "cdfcff399afef0fb7f724bd40c52acc95fc05735fa54ebfac9db40da8e1db8c9"
+    },
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase6Filter10shouldSaveEiPKcPv",
+      "address": 486060,
+      "size": 160,
+      "section": ".text",
+      "file_offset": 453292,
+      "sha256": "4d280341f6df646bac4e5bebe4e8c7f88b5e2fea113f600fda47f31c266a59e1"
+    }
+  ]
+}

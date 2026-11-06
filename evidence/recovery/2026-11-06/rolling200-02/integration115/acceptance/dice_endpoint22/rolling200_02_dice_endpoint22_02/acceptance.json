@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_dice_endpoint22_02",
+  "handoff_sha256": "6f4a1117de86e6bf146b77a3b22d334dc15b5733554df0d9386502a99184735e",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T01:53:37.275087+00:00",
+      "returncode": 0,
+      "seconds": 0.11397869800566696
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T01:53:37.389070+00:00",
+      "returncode": 0,
+      "seconds": 1.016052924998803
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T01:53:38.405143+00:00",
+      "returncode": 0,
+      "seconds": 0.06400774899520911
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T01:53:38.469164+00:00",
+      "returncode": 0,
+      "seconds": 2.418647084996337
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T01:53:40.887827+00:00",
+      "returncode": 0,
+      "seconds": 0.11404001800110564
+    },
+    {
+      "kind": "sanitizer",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "sanitizer"
+      ],
+      "start_utc": "2026-11-06T01:53:41.001896+00:00",
+      "returncode": 0,
+      "seconds": 1.3663557169784326
+    },
+    {
+      "kind": "optimized",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "optimized"
+      ],
+      "start_utc": "2026-11-06T01:53:42.368263+00:00",
+      "returncode": 0,
+      "seconds": 1.6166757559985854
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/dice_endpoint/check.py",
+        "regression"
+      ],
+      "start_utc": "2026-11-06T01:53:43.984954+00:00",
+      "returncode": 0,
+      "seconds": 2.6184608740149997
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 9.35520365400589
+}

@@ -1,0 +1,53 @@
+{
+  "utc": "2026-11-06T01:39:41.451636+00:00",
+  "status": "prepared, not executed",
+  "argv": [
+    "/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python",
+    "/home/rs/projects/opencs/ai-line-analysis/uc-library/tools/recovery/validate_linux_integration.py",
+    "--library",
+    "/home/rs/projects/opencs/ai-line-analysis/uc-library",
+    "--repository",
+    "/home/rs/projects/opencs/ai-line-analysis",
+    "--build",
+    "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01",
+    "--evidence",
+    "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-06/rolling200-02/integration96-linux01",
+    "--expected-suites",
+    "529",
+    "--jobs",
+    "6",
+    "--install-prefix",
+    "/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/install-integration96-01"
+  ],
+  "expected_suites": 529,
+  "prior_suites": 527,
+  "source_paths": [
+    "uc-library/include/presonus/mixer/MixerComponentBase.hpp",
+    "uc-library/include/presonus/mixer/PermissionsComponent.hpp",
+    "uc-library/include/presonus/uc/ClientSubscription.hpp",
+    "uc-library/include/presonus/uc/DataChannel.hpp",
+    "uc-library/include/presonus/uc/DiceEndPoint.hpp",
+    "uc-library/src/Presonus/Mixer/MixerComponentBase.cpp",
+    "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp",
+    "uc-library/src/Presonus/UC/ClientSubscription.cpp",
+    "uc-library/src/Presonus/UC/DataChannel.cpp",
+    "uc-library/src/Presonus/UC/DiceEndPoint.cpp",
+    "uc-library/tests/recovery/DiceEndPointReplay.cpp",
+    "uc-library/tests/recovery/PermissionsSelectionReplay.cpp"
+  ],
+  "plan_sha256": "2c6ed74f658bae51936eb25b235bfcaa88b341299d401c0d46de64c2e30cf27e",
+  "required_before_launch": [
+    "Verified safe source boundary and successful integration96 COPY.json",
+    "Formatter applied and checked before source hashes",
+    "Existing proof historical inputs retained",
+    "No other canonical writer or integration build running"
+  ],
+  "required_after_success": [
+    "Native/provider proof references and exact original symbol checks for new identities",
+    "Fresh source bindings and compatibility proof for affected existing identities",
+    "Guarded SQLite dry-run then admission with unchanged guard",
+    "Persistent original-identity remarks; tracker and mirror audit",
+    "Review staged diff; coherent local commit"
+  ],
+  "admission_performed": false
+}

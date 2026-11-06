@@ -1,0 +1,525 @@
+{
+  "cpp_compiled": true,
+  "mangling_namespace_checked": true,
+  "cpp_differential_passed": true,
+  "arm_differential_passed": true,
+  "portable_ready": false,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_verified": false,
+  "compile_once": true,
+  "canonical_test_suites": 336,
+  "canonical_integration_sha256": "044ef574cb3ed9e393f95841f3fae3ddb67bb11bf1d072d4248128da9120706d",
+  "role_audit": {
+    "passed": true,
+    "proof": "validation/role-build-audit/runs/20261101T011421.842709Z/validation.json",
+    "sha256": "3f0e04c8c5540d7b5a3630dca5517ec354e40f0f5e4c457f3bb957c46b45d8c5",
+    "units": 293,
+    "groups": {
+      "common": 155,
+      "cs18": 66,
+      "rm": 72
+    },
+    "mangles": {
+      "presonus_uc": 582,
+      "presonus_cs18_components": 512,
+      "presonus_rm_components": 540
+    }
+  },
+  "archives": {
+    "presonus_uc": {
+      "sha256": "48704f774c4953f62ed06fa157161bc2feef2a7c2308c772a2f5b4a3cf9b295f",
+      "symbols": [
+        "_ZN8Presonus2UC11DataChannel4readEPvi",
+        "_ZN8Presonus2UC11DataChannel5writeEPKvi",
+        "_ZN8Presonus2UC11DataChannel10isReadableEi",
+        "_ZN8Presonus2UC11DataChannel10isWritableEi",
+        "_ZN8Presonus2UC11DataChannel16detectEventStartEPKviPi",
+        "_ZN8Presonus18MackieControlModel15sendMidiMessageEPKhj",
+        "_ZN8Presonus18MackieControlModel14setButtonStateEib",
+        "_ZN8Presonus18MackieControlModel17releaseAllButtonsEv",
+        "_ZN8Presonus18MackieControlModel9resetLedsEv",
+        "_ZN8Presonus18MackieControlModel10touchFaderEib",
+        "_ZNK8Presonus12MappingTable8findItemEPKc",
+        "_ZN8Presonus12MappingTable17setControlFullOffEPKc",
+        "_ZN8Presonus12MappingTable21setControlInverseModeEPKcb",
+        "_ZN8Presonus12MappingTable17setControlEnabledEPKcb",
+        "_ZN8Presonus12MappingTable19setControlImmediateEPKcb",
+        "_ZN8Presonus17LinkableComponent11linkAsSlaveERS0_",
+        "_ZN8Presonus17LinkableComponent7setLinkERS0_b",
+        "_ZN8Presonus17LinkableComponent10removeLinkEv",
+        "_ZN8Presonus17LinkableComponent14setLinkEnabledEb",
+        "_ZNK8Presonus17LinkableComponent8isLinkedEv",
+        "_ZNK8Presonus3Dsp10Controller13getNormalizedEi",
+        "_ZN8Presonus3Dsp10Controller13setNormalizedEif",
+        "_ZNK8Presonus3Dsp10Controller22normalizedValueToRangeEif",
+        "_ZNK8Presonus3Dsp10Controller22rangeToNormalizedValueEif",
+        "_ZNK8Presonus3Dsp10Controller10boundValueEif",
+        "_ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib",
+        "_ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib",
+        "_ZNK8Presonus5Panel8MixerLCD8previousEv",
+        "_ZNK8Presonus5Panel8MixerLCD4nextEv",
+        "_ZNK8Presonus5Panel8MixerLCD2upEv",
+        "_ZNK8Presonus5Panel8MixerLCD4downEv",
+        "_ZNK8Presonus5Panel8MixerLCD5storeEv",
+        "_ZN8Presonus13MuteGroupBase12updateActiveEv",
+        "_ZN8Presonus13MuteGroupBase12updateStatusEv",
+        "_ZNK8Presonus13MuteGroupBase10groupDirtyEv",
+        "_ZNK8Presonus13MuteGroupBase11validStatusEPN4Core8Portable9ParameterE",
+        "_ZN8Presonus13MuteGroupBase10deactivateEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler11resetColorsEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler14getMappingNameEi",
+        "_ZN8Presonus7Surface16MidiMixerHandler17resetAccumulationEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler25updateRecordReadyMappingsEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler6onIdleEv",
+        "_ZNK8Presonus5Panel14PanelComponent11detachGroupERKNS0_12ControlGroupE",
+        "_ZNK8Presonus5Panel14PanelComponent9detachAllEv",
+        "_ZNK8Presonus5Panel14PanelComponent14detachSwitchesEv",
+        "_ZN8Presonus5Panel14PanelComponent11activateAllEv",
+        "_ZN8Presonus5Panel14PanelComponent8blinkLedEiib"
+      ],
+      "objects": {
+        "AvbComponent.cpp.o": "85ddab60a58fbe214ebe3128138715bce5bda6024ee70aaa714d418f7712aa01",
+        "Controller.cpp.o": "4b8b8195fbdbd3471ed959b284bdf7f54900d99abb602300869e50169f704780",
+        "LinkableComponent.cpp.o": "ecee843f41f57c63e7375766cba7b4dc734fecb6a6ed6a5db3722fe5692a71e0",
+        "MackieControlModel.cpp.o": "d8b79e26696cd42f472edd449862faa3d43a06040b07057a59ba015911e2bd87",
+        "MappingTable.cpp.o": "162e5ff5c40e5f96868c4cb9a2b61712da0db9f6314d6bbef446964ee569db40",
+        "MuteGroupBase.cpp.o": "58d32f37f626fe7fe6cac9e1cd5c1f8b3806a4eb087dff6c283f5acf3b0dd465",
+        "MixerLCD.cpp.o": "f4bf53765e3daa070574b0e6e03e8879d524b15b6a7987cca61c3a94324b606f",
+        "PanelComponent.cpp.o": "75d7f8172d95ef7c9c1a4a8930c2928abd7fadeb50957b1593b59fe3c4990ae8",
+        "MidiMixerHandler.cpp.o": "a5851d63fc214f4fa5f68088bfc7a40ec591fd543e273a1ee8d49e3cc72740f7",
+        "DataChannel.cpp.o": "a2ce070744e8cd3f5c5a1e6a43a9e6d3c0181728fc9e9673253ea1ee952329d9"
+      }
+    },
+    "presonus_cs18_components": {
+      "sha256": "f3bac85b7c390e0bd6ff3cacdb71f0529f5d036149b5cc562e9965fb90475203",
+      "symbols": [
+        "_ZN8Presonus18MackieControlModel15sendMidiMessageEPKhj",
+        "_ZN8Presonus18MackieControlModel14setButtonStateEib",
+        "_ZN8Presonus18MackieControlModel17releaseAllButtonsEv",
+        "_ZN8Presonus18MackieControlModel9resetLedsEv",
+        "_ZN8Presonus18MackieControlModel10touchFaderEib",
+        "_ZNK8Presonus12MappingTable8findItemEPKc",
+        "_ZN8Presonus12MappingTable17setControlFullOffEPKc",
+        "_ZN8Presonus12MappingTable21setControlInverseModeEPKcb",
+        "_ZN8Presonus12MappingTable17setControlEnabledEPKcb",
+        "_ZN8Presonus12MappingTable19setControlImmediateEPKcb",
+        "_ZN8Presonus7Surface16MidiMixerHandler11resetColorsEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler14getMappingNameEi",
+        "_ZN8Presonus7Surface16MidiMixerHandler17resetAccumulationEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler25updateRecordReadyMappingsEv",
+        "_ZN8Presonus7Surface16MidiMixerHandler6onIdleEv"
+      ],
+      "objects": {
+        "MackieControlModel.cpp.o": "d8b79e26696cd42f472edd449862faa3d43a06040b07057a59ba015911e2bd87",
+        "MappingTable.cpp.o": "162e5ff5c40e5f96868c4cb9a2b61712da0db9f6314d6bbef446964ee569db40",
+        "MidiMixerHandler.cpp.o": "a5851d63fc214f4fa5f68088bfc7a40ec591fd543e273a1ee8d49e3cc72740f7"
+      }
+    },
+    "presonus_rm_components": {
+      "sha256": "b95c56686f70753c9665689466dc41a5a754a28e29f3344aa66817aff0ad0585",
+      "symbols": [
+        "_ZN8Presonus2UC11DataChannel4readEPvi",
+        "_ZN8Presonus2UC11DataChannel5writeEPKvi",
+        "_ZN8Presonus2UC11DataChannel10isReadableEi",
+        "_ZN8Presonus2UC11DataChannel10isWritableEi",
+        "_ZN8Presonus2UC11DataChannel16detectEventStartEPKviPi",
+        "_ZN8Presonus17LinkableComponent11linkAsSlaveERS0_",
+        "_ZN8Presonus17LinkableComponent7setLinkERS0_b",
+        "_ZN8Presonus17LinkableComponent10removeLinkEv",
+        "_ZN8Presonus17LinkableComponent14setLinkEnabledEb",
+        "_ZNK8Presonus17LinkableComponent8isLinkedEv",
+        "_ZNK8Presonus3Dsp10Controller13getNormalizedEi",
+        "_ZN8Presonus3Dsp10Controller13setNormalizedEif",
+        "_ZNK8Presonus3Dsp10Controller22normalizedValueToRangeEif",
+        "_ZNK8Presonus3Dsp10Controller22rangeToNormalizedValueEif",
+        "_ZNK8Presonus3Dsp10Controller10boundValueEif",
+        "_ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib",
+        "_ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb",
+        "_ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib",
+        "_ZNK8Presonus5Panel8MixerLCD8previousEv",
+        "_ZNK8Presonus5Panel8MixerLCD4nextEv",
+        "_ZNK8Presonus5Panel8MixerLCD2upEv",
+        "_ZNK8Presonus5Panel8MixerLCD4downEv",
+        "_ZNK8Presonus5Panel8MixerLCD5storeEv",
+        "_ZN8Presonus13MuteGroupBase12updateActiveEv",
+        "_ZN8Presonus13MuteGroupBase12updateStatusEv",
+        "_ZNK8Presonus13MuteGroupBase10groupDirtyEv",
+        "_ZNK8Presonus13MuteGroupBase11validStatusEPN4Core8Portable9ParameterE",
+        "_ZN8Presonus13MuteGroupBase10deactivateEv",
+        "_ZNK8Presonus5Panel14PanelComponent11detachGroupERKNS0_12ControlGroupE",
+        "_ZNK8Presonus5Panel14PanelComponent9detachAllEv",
+        "_ZNK8Presonus5Panel14PanelComponent14detachSwitchesEv",
+        "_ZN8Presonus5Panel14PanelComponent11activateAllEv",
+        "_ZN8Presonus5Panel14PanelComponent8blinkLedEiib"
+      ],
+      "objects": {
+        "AvbComponent.cpp.o": "85ddab60a58fbe214ebe3128138715bce5bda6024ee70aaa714d418f7712aa01",
+        "Controller.cpp.o": "4b8b8195fbdbd3471ed959b284bdf7f54900d99abb602300869e50169f704780",
+        "LinkableComponent.cpp.o": "ecee843f41f57c63e7375766cba7b4dc734fecb6a6ed6a5db3722fe5692a71e0",
+        "MuteGroupBase.cpp.o": "58d32f37f626fe7fe6cac9e1cd5c1f8b3806a4eb087dff6c283f5acf3b0dd465",
+        "MixerLCD.cpp.o": "f4bf53765e3daa070574b0e6e03e8879d524b15b6a7987cca61c3a94324b606f",
+        "PanelComponent.cpp.o": "75d7f8172d95ef7c9c1a4a8930c2928abd7fadeb50957b1593b59fe3c4990ae8",
+        "DataChannel.cpp.o": "a2ce070744e8cd3f5c5a1e6a43a9e6d3c0181728fc9e9673253ea1ee952329d9"
+      }
+    }
+  },
+  "functions": [
+    {
+      "mangled": "_ZN8Presonus2UC11DataChannel4readEPvi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "744 fixtures: read/write forwarding each 66 cases over signed length extremes and 11 queue-return patterns; readable/writable each 66 with signed 4096 threshold and low-byte XOR; event header 480 cases over lengths, signatures, LE16 values and optional output writes. Native queue trace checked at intercepted boundary. Stack writes excluded from portable comparison. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-datachannel/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_datachannel_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus2UC11DataChannel5writeEPKvi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "744 fixtures: read/write forwarding each 66 cases over signed length extremes and 11 queue-return patterns; readable/writable each 66 with signed 4096 threshold and low-byte XOR; event header 480 cases over lengths, signatures, LE16 values and optional output writes. Native queue trace checked at intercepted boundary. Stack writes excluded from portable comparison. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-datachannel/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_datachannel_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus2UC11DataChannel10isReadableEi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "744 fixtures: read/write forwarding each 66 cases over signed length extremes and 11 queue-return patterns; readable/writable each 66 with signed 4096 threshold and low-byte XOR; event header 480 cases over lengths, signatures, LE16 values and optional output writes. Native queue trace checked at intercepted boundary. Stack writes excluded from portable comparison. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-datachannel/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_datachannel_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus2UC11DataChannel10isWritableEi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "744 fixtures: read/write forwarding each 66 cases over signed length extremes and 11 queue-return patterns; readable/writable each 66 with signed 4096 threshold and low-byte XOR; event header 480 cases over lengths, signatures, LE16 values and optional output writes. Native queue trace checked at intercepted boundary. Stack writes excluded from portable comparison. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-datachannel/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_datachannel_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus2UC11DataChannel16detectEventStartEPKviPi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "744 fixtures: read/write forwarding each 66 cases over signed length extremes and 11 queue-return patterns; readable/writable each 66 with signed 4096 threshold and low-byte XOR; event header 480 cases over lengths, signatures, LE16 values and optional output writes. Native queue trace checked at intercepted boundary. Stack writes excluded from portable comparison. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-datachannel/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_datachannel_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel15sendMidiMessageEPKhj",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mackie/packet-1/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mackie_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel14setButtonStateEib",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mackie/packet-2/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mackie_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel17releaseAllButtonsEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mackie/packet-3/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mackie_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel9resetLedsEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mackie/packet-4/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mackie_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel10touchFaderEib",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "458 independent ARM instruction executions and matching C++ replays across five methods. Send present/absent sink; mapped/missing/negative entries; state transitions; 0/1/4 entries; omit-master flags; fader clamping and wrapped int extremes; cached touch states 0/1/2. State arrays and callback trace compared. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mackie/packet-5/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mackie_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus12MappingTable8findItemEPKc",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mapping/trial04_mapping_1/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mapping_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus12MappingTable17setControlFullOffEPKc",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mapping/trial04_mapping_2/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mapping_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus12MappingTable21setControlInverseModeEPKcb",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mapping/trial04_mapping_3/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mapping_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus12MappingTable17setControlEnabledEPKcb",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mapping/trial04_mapping_4/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mapping_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus12MappingTable19setControlImmediateEPKcb",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "20 target-body boundary cases: each of five methods with lookup miss/hit and boolean false/true; found identity and exactly one matching service dispatch or no dispatch. Real ARM and portable runs recorded separately. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mapping/trial04_mapping_5/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mapping_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus17LinkableComponent11linkAsSlaveERS0_",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "96 cases: same/different/self partner; dirty slave bytes 0,1,2,127,255; compare partner/slave and all other state. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-linkable/trial04_linkable_1/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_linkable_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus17LinkableComponent7setLinkERS0_b",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "96 cases: same/different partner, inverse false/true; observe exact master or peer set dispatch and argument order; external dependency stubbed. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-linkable/trial04_linkable_2/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_linkable_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus17LinkableComponent10removeLinkEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "96 cases: null/non-null/self partner; clear-before-callback observed in all-node snapshots; child null/query fail/query success; ordered partner and child removal; slave clears only on linked path. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-linkable/trial04_linkable_3/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_linkable_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus17LinkableComponent14setLinkEnabledEb",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "96 cases: enable/disable, empty/populated arrays, null and failed queries, nested and duplicate acyclic children; state write before query snapshots and exact query tag/order. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-linkable/trial04_linkable_4/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_linkable_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus17LinkableComponent8isLinkedEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "96 cases: null/non-null/self partner; exact native r0 0/1 compared to portable Boolean; state unchanged. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-linkable/trial04_linkable_5/HANDOFF.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_linkable_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus3Dsp10Controller13getNormalizedEi",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "16 original ARM and portable C++ executions. Virtual callback order, exact signed int tag and float-bit transfer with negative/zero/large tags, signed zeros and NaN payloads; fixed dynamic dispatch. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-dsp/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_dsp_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10Controller13setNormalizedEif",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "16 original ARM and portable C++ executions. Virtual callback order, exact signed int tag and float-bit transfer with negative/zero/large tags, signed zeros and NaN payloads; fixed dynamic dispatch. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-dsp/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_dsp_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus3Dsp10Controller22normalizedValueToRangeEif",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "208 original ARM and portable C++ executions. Indexed/tag descriptor lookup (first/middle/last/missing), absent list, null indexed entry, empty list, Core error sentinel, warmed and cold fallback; converter absent/present; negative/finite/infinite/NaN/signed-zero values. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-dsp/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_dsp_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus3Dsp10Controller22rangeToNormalizedValueEif",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "208 original ARM and portable C++ executions. Indexed/tag descriptor lookup (first/middle/last/missing), absent list, null indexed entry, empty list, Core error sentinel, warmed and cold fallback; converter absent/present; negative/finite/infinite/NaN/signed-zero values. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-dsp/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_dsp_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus3Dsp10Controller10boundValueEif",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "238 original ARM and portable C++ executions. Indexed/tag descriptor lookup (first/middle/last/missing), absent list, null indexed entry, empty list, Core error sentinel, warmed and cold fallback; converter absent/present; negative/finite/infinite/NaN/signed-zero values. Reversed, NaN and signed-zero bounds included; compare ordering and output bits verified. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-dsp/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_dsp_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3AVB12AvbComponent11addListenerENS1_12ListenerTypeExbib",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-avb/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_avb_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3AVB12AvbComponent18addCSInputListenerExb",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-avb/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_avb_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3AVB12AvbComponent21addMixerInputListenerExb",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-avb/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_avb_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3AVB12AvbComponent18addCascadeListenerExb",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-avb/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_avb_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus3AVB12AvbComponent21addConsoleBusListenerExbib",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Observed native ordered calls, initialized routing packet fields and final four listener slots under 720 branch-covering cases, synthetic native object memory and required non-null manager results; original member instructions executed including nested targeted methods. Native pointer writes retained in fixtures; portable intermediate pointer writes are not independently instrumented. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-avb/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_avb_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel8MixerLCD8previousEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Four instrumented virtual callee return markers per command, valid borrowed book receiver; exact virtual slot and receiver dispatch compared to portable C++ trace. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-lcd/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_lcd_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel8MixerLCD4nextEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Four instrumented virtual callee return markers per command, valid borrowed book receiver; exact virtual slot and receiver dispatch compared to portable C++ trace. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-lcd/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_lcd_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel8MixerLCD2upEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Four instrumented virtual callee return markers per command, valid borrowed book receiver; exact virtual slot and receiver dispatch compared to portable C++ trace. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-lcd/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_lcd_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel8MixerLCD4downEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Four instrumented virtual callee return markers per command, valid borrowed book receiver; exact virtual slot and receiver dispatch compared to portable C++ trace. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-lcd/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_lcd_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel8MixerLCD5storeEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Four instrumented virtual callee return markers per command, valid borrowed book receiver; exact virtual slot and receiver dispatch compared to portable C++ trace. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-lcd/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_lcd_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus13MuteGroupBase12updateActiveEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mutegroup/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mutegroup_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus13MuteGroupBase12updateStatusEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mutegroup/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mutegroup_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase10groupDirtyEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mutegroup/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mutegroup_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase11validStatusEPN4Core8Portable9ParameterE",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mutegroup/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mutegroup_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus13MuteGroupBase10deactivateEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "900 original ARM executions and portable replays (180 per method): active 0/1; statuses -1/0/1; maximum 0/2; member vectors [], [0], [1], [0,1], [1,1]. Independent native range execution; external slot/provider boundaries and side effects recorded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-mutegroup/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_mutegroup_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface16MidiMixerHandler11resetColorsEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "18 direct original ARM fixture to C++ comparisons for identical bounded inputs: returned mapping-name string,17 accumulation words, ordered color-control calls, ordered idle receiver identities, record/vpot mapping boundary identity; external dependency implementations excluded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-midi/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_midi_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface16MidiMixerHandler14getMappingNameEi",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "18 direct original ARM fixture to C++ comparisons for identical bounded inputs: returned mapping-name string,17 accumulation words, ordered color-control calls, ordered idle receiver identities, record/vpot mapping boundary identity; external dependency implementations excluded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-midi/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_midi_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface16MidiMixerHandler17resetAccumulationEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "18 direct original ARM fixture to C++ comparisons for identical bounded inputs: returned mapping-name string,17 accumulation words, ordered color-control calls, ordered idle receiver identities, record/vpot mapping boundary identity; external dependency implementations excluded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-midi/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_midi_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface16MidiMixerHandler25updateRecordReadyMappingsEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "18 direct original ARM fixture to C++ comparisons for identical bounded inputs: returned mapping-name string,17 accumulation words, ordered color-control calls, ordered idle receiver identities, record/vpot mapping boundary identity; external dependency implementations excluded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-midi/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_midi_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface16MidiMixerHandler6onIdleEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "validation_domain": "18 direct original ARM fixture to C++ comparisons for identical bounded inputs: returned mapping-name string,17 accumulation words, ordered color-control calls, ordered idle receiver identities, record/vpot mapping boundary identity; external dependency implementations excluded. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-midi/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_midi_5-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel14PanelComponent11detachGroupERKNS0_12ControlGroupE",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-panel/HANDOFF-1.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_panel_1-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel14PanelComponent9detachAllEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-panel/HANDOFF-2.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_panel_2-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel14PanelComponent14detachSwitchesEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-panel/HANDOFF-3.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_panel_3-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel14PanelComponent11activateAllEv",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-panel/HANDOFF-4.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_panel_4-attempt-01/acceptance.json"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel14PanelComponent8blinkLedEiib",
+      "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "validation_domain": "Counts -1,0,1,3,12; alternating null controls; group tags same unsigned values; blink false/true; null byTag and failed/successful cast; ordered traces, zero slot10 arguments and blink modes. Native stack restoration checked. Boundary functions are stubs; normalized traces omit irrelevant clobbered argument registers. Fresh Linux canonical executable replay passed in 336/336 CTest; exact role archives, installed headers/consumers and compile-once objects checked. Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim.",
+      "worker_handoff": "uc-library/candidates/graph-live-trial-04-panel/HANDOFF-5.json",
+      "local_acceptance": "temp/recovery-work/graph-live-trial-04/acceptance/trial04_panel_5-attempt-01/acceptance.json"
+    }
+  ],
+  "limitations": "Bounded target-body differential source ports only. External app services and unencoded declarations/layout remain unresolved. MuteGroup compares finite state/outputs with provider-slot assumptions; LCD instrumented getBook/commands; no dependency, original ABI or hardware equivalence claim."
+}

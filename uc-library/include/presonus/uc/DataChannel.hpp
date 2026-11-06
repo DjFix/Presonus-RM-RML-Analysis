@@ -26,7 +26,10 @@ public:
   DataChannel(presonus::uc::DataChannelQueueBoundary incoming,
               presonus::uc::DataChannelQueueBoundary outgoing)
       : incoming_(incoming), outgoing_(outgoing) {}
-  std::uint32_t read(void *, int);
+  // Non-owning source-port lifecycle. Virtual dispatch is required by the
+  // endpoint test; this changes host layout and makes no ARM ABI claim.
+  virtual ~DataChannel();
+  virtual std::uint32_t read(void *, int);
   std::uint32_t write(const void *, int);
   std::uint32_t isReadable(int);
   std::uint32_t isWritable(int);

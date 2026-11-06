@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "repository": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/permissions_selection19",
+  "baseline": "13c6cf5303f330db4c359986439577d611b65c85",
+  "session": "/root/rolling200_02_permissions_selection19",
+  "sealed_utc": "2026-11-06T00:08:57.769113+00:00",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/format-final.log",
+        "sha256": "2d5c9569137c2003882a9ab6f68953e7acc62b5ccfff7735bb8b0c66f25b3f46"
+      }
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/compile-final.log",
+        "sha256": "ec6b9358b4d7d0a49c1c62e89177e1b29cf58aa5dc96107307bb155c120a5ff5"
+      }
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/symbols-final.log",
+        "sha256": "9fe5662187f170bab992d04a53d419a32de9fc6b91ebf916c8ca6f9883b365d5"
+      }
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "native"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/native-final.log",
+        "sha256": "e98a8e9ee400b518c194499c9c0f0eedb134d8e3d971044ca795932229e77c8f"
+      }
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/replay-final.log",
+        "sha256": "d40e1ebfb89f0428f95b6263a9c7f2e340a1ffc3a339ec1e1fcfc7250b598424"
+      }
+    },
+    {
+      "kind": "sanitizers",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "sanitizers"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/sanitizers-final.log",
+        "sha256": "37bb7a204e5b9bc0a23e2cde516c8a27db5d1162de470082ea03ff49cd1b33a5"
+      }
+    },
+    {
+      "kind": "regressions",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "regressions"
+      ],
+      "timeout_seconds": 120,
+      "returncode": 0,
+      "log": {
+        "kind": "log",
+        "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/regressions-final.log",
+        "sha256": "a557f240b56b279bd7cc6d9a3258652117e4a660f03c561c02237284cf39f158"
+      }
+    }
+  ],
+  "source_hashes": {
+    "uc-library/include/presonus/mixer/PermissionsComponent.hpp": "eeb4cff919d2556cff52f6f1c608d215ce7669b7fec440b004ce70d86861748c",
+    "uc-library/src/Presonus/Mixer/PermissionsComponent.cpp": "3bbb3bdabec70beebadc9f8eb33ffd86c97aae0cc5d29002041f528687a6a65a",
+    "uc-library/include/presonus/mixer/MixerComponentBase.hpp": "c4b7399886ad39dd20e19c9b97bf18b382c8335d2c25fa67e5a7b7e4b4a49446",
+    "uc-library/src/Presonus/Mixer/MixerComponentBase.cpp": "44c88e3b3162fee95afe94aef635240090a06b4f2875b09bfe8d6a1be5ec9b8a",
+    "uc-library/include/presonus/uc/ClientSubscription.hpp": "edafe8c567fecd794a2eaef2fc1114b077bf11ae92d62bff782c804311a00db9",
+    "uc-library/src/Presonus/UC/ClientSubscription.cpp": "db1ff7a63f8b214733369b323e127cfb52ccaf50fd4f8c5bc6f08ef73bbb2c69",
+    "uc-library/tests/recovery/PermissionsSelectionReplay.cpp": "2526f0862b4eca5df184c784452cd70177013d1df0749745c92415cdcda9e746"
+  },
+  "native_proof": {
+    "kind": "proof",
+    "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/native-proof.json",
+    "sha256": "0ff389fac487e88930f4eb7dfdb55d5b0cc89789f33c7d627cfb67688c77b8bb"
+  },
+  "provider": {
+    "kind": "proof",
+    "path": "evidence/recovery/2026-11-06/rolling200-02/permissions-selection19/provider-dependencies.json",
+    "sha256": "538ea2faeb52ff3680c6daed6f414d31acbbf61ddae498862f9c3ad463f8a0d0"
+  },
+  "validation_domain": {
+    "cases": 159,
+    "counts": {
+      "ctor": 10,
+      "get": 8,
+      "copy": 6,
+      "set": 6,
+      "update": 60,
+      "init": 69
+    },
+    "description": "Per-ELF sentinel constructors and scalar extremes; signed collection boundaries/null slots; replacement from absent/owned snapshot, empty/63-byte strings and observed allocator order; six client populations, saved identity null/empty/matching/duplicate/unmatched, old list lengths 0/3, exact final strings/value/filtered identifiers and ordered observer messages; actual StringParam default/load archive outcomes and nonstring/null tags.",
+    "additional_source_port_invariant": true,
+    "regressions": {
+      "readonly": 1190,
+      "lists": 1482,
+      "export_lifecycle": 1110
+    }
+  },
+  "limitations": [
+    "Portable application source port only. Constructor parameter identity is encoded; other original returns, original class layout/inheritance/ownership, ARM calling convention and hardware interoperability remain unresolved. getClient uses a provisional const ClientSubscription* return. No readiness admission.",
+    "Both original RM and CS18 C1 identities have separate ELF SHA/range/section mappings, private-memory native executions and exact host symbol checks. Same source body does not transfer readiness. Compiler also emits C2 but no additional original C2 identity is admitted or claimed.",
+    "Native constructor stores identifier, zeroes words +8/+12/+20 and byte +16, constructs six empty CString64 heads; +4 and all 63-byte tails are explicitly verified unchanged under sentinel-prefilled native memory. Portable fields are named only by observed offsets; no initialized native +4 field was invented. Real CCL placement construction independently preserves six string tails.",
+    "setSelectedClient/copyToSelected require nonnull nonalias terminated source buffers. Actual prior source-port snapshot deallocation precedes actual allocation; both native traces and host allocator instrumentation observe order. Null/alias inputs, allocation failures, exceptions, concurrent/reentrant mutation and oversized collections are excluded. Alias is defensively rejected in the source port. Legacy external snapshots remain borrowed.",
+    "copyToSelected copies five strings in observed native +18,+98,+d8,+58,+118 order; initializes new scalar state through actual constructor and leaves sixth string empty. Unspecified tails are not copied by these setters. Existing SourcePortValues preserves full three-buffer values for prior getter regression domains. portableOwnSelected copies the entire extended source-port state so saved identity/lifetime remain consistent.",
+    "Client collection is an actual CCL Vector with explicit source-port bindClients; binding updates legacy public clientCount and numClients/getClient enforce the bound invariant. Old unbound independent numClients count remains usable; getClient requires a bound nonempty collection. Null slots and signed negative/out-of-range indices are covered. This is an intentional source binding, not original field/layout recovery.",
+    "updateDevices uses actual pinned ListParam, recognized app filtering, last eligible selection when saved identity is empty, last equal identity otherwise, default index zero if unmatched, no-devices label, setValue(false), changed then rangeChanged. Constructor/filter/display/archive/type/parameter and AEABI native boundaries are named models, not executions of original Core; no original Core body is decompiled or executed. Existing independent native getter/list regression fixtures validate classifier/display/provider choices separately.",
+    "init substitutes actual ParamInfo::kString discriminator for historical RTTI because pinned CCL is built without RTTI. With a consistent genuine StringParam object it sets default12345 then runs canonical loadAccessCode and updateDevices. Real CCL file archives cover absent, empty and persisted access code. Numeric/null tags are covered with missing matching stored keys; forged inconsistent parameter types and archive exceptions are excluded.",
+    "Native application ranges run under Unicorn with explicit PC allowlist; stores are restricted to private mapped object/stack memory and all call/write traces retained. Core/libc/AEABI boundaries are explicit semantic models; this proves the stated bounded application domain and actual compiled provider agreement, not historical Core equivalence or original ARM ABI.",
+    "Provider is official pinned CCL 5.0.0 root commit, checked from fetched local Git history and file blobs. Physical local SDK/static archives supply actual CCL implementations; no fake Core providers. Sanitizer excludes vptr due no RTTI and provider archives are uninstrumented. No REA MCP tools are available; existing pyelftools/Unicorn/compiler/nm evidence is used without claiming REA IDs.",
+    "Development failures are preserved: initial oracle fixed-width string read crossed stack mapping; replay parser needed to preserve real DebugPrintf lines; deep absolute archive fixture path exceeded bounded FileName capacity, corrected to short project-relative directories and explicit directory creation. Expected fixture values were not changed to match recovered C++; final independent native output was reproduced byte-for-byte.",
+    "Root owns global CMake, source partitions/public lists, full Linux/role/install/compile-once/active-source/mirror checks, merge_readiness dry-run, SQLite admission and tracker/history persistence. Local check success is not global acceptance. Diagnostic updateDevices DebugPrintf messages are excluded from the portable observable domain; final parameter notifications are preserved."
+  ],
+  "format_before_source_hashes": true,
+  "formatter_version": "[\"uc-library/.venv/bin/clang-format\", \"--version\"]\n[\"uc-library/.venv/bin/clang-format\", \"--style=file\", \"--fallback-style=LLVM\", \"--dry-run\", \"--Werror\", \"uc-library/include/presonus/mixer/PermissionsComponent.hpp\", \"uc-library/src/Presonus/Mixer/PermissionsComponent.cpp\", \"uc-library/include/presonus/mixer/MixerComponentBase.hpp\", \"uc-library/src/Presonus/Mixer/MixerComponentBase.cpp\", \"uc-library/include/presonus/uc/ClientSubscription.hpp\", \"uc-library/src/Presonus/UC/ClientSubscription.cpp\", \"uc-library/tests/recovery/PermissionsSelectionReplay.cpp\"]\n",
+  "readiness_admitted": false,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_validated": false
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/coreparams.h"
+#include "core/portable/corestorage.h"
 #include "core/public/corevector.h"
 
 namespace Presonus::Mixer {
@@ -33,6 +34,17 @@ namespace Presonus {
 // adaptation.
 class MuteGroupBase {
 public:
+  // Source-port provider contract; original inheritance/layout/return
+  // declaration are not established by the ELF. CCL owns the real parameter
+  // representation.
+  class Filter : public Core::Portable::IStorageFilter {
+  public:
+    void *castTo(TypeID typeId) override {
+      return typeId == Core::Portable::IStorageFilter::kTypeID ? this : nullptr;
+    }
+    bool shouldLoad(int typeId, const char *name, void *object) const override;
+    bool shouldSave(int typeId, const char *name, void *object) const override;
+  };
   explicit MuteGroupBase(presonus::mute_group_port::State &state)
       : state(state) {}
   explicit MuteGroupBase(Mixer::MixerComponentBase &mixer);

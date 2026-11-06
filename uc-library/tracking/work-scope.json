@@ -1,0 +1,32 @@
+{
+  "user_instruction": "Use the earliest official public Core source as a pinned third_party Git submodule; prefer its implementations and skip manual recovery of matching APIs; recover remaining app-specific functions.",
+  "prior_instruction": "так, стоп с Core",
+  "deferred_original_namespaces": ["Core"],
+  "deferred_status": "deferred-by-user; incomplete",
+  "apply_to": ["manual binary-based Core reconstruction", "new per-function Core pseudocode extraction"],
+  "preserve_existing_outputs": true,
+  "continue": ["Presonus::UC", "Presonus::DICE", "remaining mixer and surface functions", "upstream Core source integration and API matching"],
+  "source_policy": {
+    "requested": true,
+    "prefer_upstream_implementation": true,
+    "upstream": "https://github.com/cclsoftware/ccl-framework",
+    "submodule": "third_party/ccl-framework",
+    "selected_commit": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "selection_status": "verified earliest official Git root/tag ccl-5.0.0, dated 2026-01-12",
+    "submodule_status": "registered and pinned; sparse core/build checkout verified; API matching in progress",
+    "matching_status": "frozen ARM compiler-mangled source baseline; Linux corelib build passed; per-method linkage/behavior separate",
+    "native_linux_corelib": {
+      "build_passed": true,
+      "archive_sha256": "0b958004e35637fcb3ec8225c3b073e5187d6a86335675af03dbf8fe8a9d2be7",
+      "proof_repository_relative": "evidence/recovery/2026-10-26/core-upstream/linux-systemdeps-03/validation.json",
+      "original_arm_abi_verified": false,
+      "binary_behavior_verified": false
+    },
+    "source_exclusions_fragment": "validation/core-upstream/source-map/manual-recovery-exclusions.fragment.json",
+    "source_exclusions_sha256": "9cc7ea14330fcb7a259723ca60289588d97bdb744afa0bf5af840070356a813b",
+    "source_files_manifest": "validation/core-upstream/pass-2-bodies/source-files.json",
+    "source_files_manifest_sha256": "f1538ae049c80271b38da64f368b4f6f885e451c031786584c9e8b7cd9e661ef",
+    "binary_behavior_verified_by_source_match": false
+  },
+  "boundary": "Manual Core-owned binary recovery stays deferred, including templates and thunks, while upstream source integration and API matching proceed. A Presonus-owned method is not deferred merely because its parameter types refer to Core. Source-provided APIs and intentional source-port adaptations are tracked separately from binary-behavior-verified methods."
+}

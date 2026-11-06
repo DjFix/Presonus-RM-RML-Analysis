@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_storage_filters88_04",
+  "handoff_sha256": "fb094d1eec1705db4af14a0cdd1982a87f0f7de038f1321d90ab0d2cd0d4f0c8",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storage_filters/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T01:54:39.864062+00:00",
+      "returncode": 0,
+      "seconds": 0.11405166200711392
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storage_filters/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T01:54:39.978122+00:00",
+      "returncode": 0,
+      "seconds": 1.0660912230086979
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storage_filters/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T01:54:41.044225+00:00",
+      "returncode": 0,
+      "seconds": 0.11399805400287732
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/storage_filters/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T01:54:41.158237+00:00",
+      "returncode": 0,
+      "seconds": 21.804818795004394
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 23.12951965999673
+}

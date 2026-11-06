@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "cwd": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/mute_filters98",
+  "base_commit": "6c6bbb7a09708a4acae05884cbc2e34726e6baff",
+  "session_id": "01a1ae85-ec13-7620-aed9-a5b829e32bd1",
+  "versions": {
+    "clang-format": "clang-format version 23.1.3",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "nm": "GNU nm (GNU Binutils for Ubuntu) 2.42\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty.",
+    "ccl": "e8cbdea4a4a20e15111f5a690798a259c0374b31",
+    "oracle": "2.1.4 0.33"
+  },
+  "commands": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mute_group_filter/check.py",
+        "format"
+      ],
+      "timeout_seconds": 240,
+      "returncode": 0,
+      "seconds": 0.06253266334533691,
+      "log": "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/format.log",
+      "sha256": "0ee0d71fc9a809c34f59b82b1d680c7bc6434a2d98710a0a626e392c6c7c57bf"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mute_group_filter/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 240,
+      "returncode": 0,
+      "seconds": 0.4828379154205322,
+      "log": "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/compile.log",
+      "sha256": "470c48ab427a11c47c77f1007fd3660bdf81783f1fa49c47079329832a491617"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mute_group_filter/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 240,
+      "returncode": 0,
+      "seconds": 0.03523755073547363,
+      "log": "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/symbols.log",
+      "sha256": "236ae4b98e7e347d43d2a21fa0fbe5e2b56d2cf9fb423dc4c1ec2a8d3f3f1597"
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mute_group_filter/check.py",
+        "native"
+      ],
+      "timeout_seconds": 240,
+      "returncode": 0,
+      "seconds": 13.206544876098633,
+      "log": "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/native.log",
+      "sha256": "fe08ba93273cd2ac37237232c17e7821bf5239aefd9ea192ae504734ac04280e"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/mute_group_filter/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 240,
+      "returncode": 0,
+      "seconds": 0.056832313537597656,
+      "log": "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/replay.log",
+      "sha256": "8594981f79af22edc0fb41fb2c79c7aa8cb0c74af9e50e9877ac590f4988ecbb"
+    }
+  ],
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase6Filter10shouldLoadEiPKcPv",
+      "address": 486220,
+      "size": 112,
+      "section": ".text",
+      "file_offset": 453452,
+      "sha256": "cdfcff399afef0fb7f724bd40c52acc95fc05735fa54ebfac9db40da8e1db8c9"
+    },
+    {
+      "mangled": "_ZNK8Presonus13MuteGroupBase6Filter10shouldSaveEiPKcPv",
+      "address": 486060,
+      "size": 160,
+      "section": ".text",
+      "file_offset": 453292,
+      "sha256": "4d280341f6df646bac4e5bebe4e8c7f88b5e2fea113f600fda47f31c266a59e1"
+    }
+  ],
+  "source_sha256": {
+    "AGENTS.md": "3f3da24d1bf6c9cacf3fc6dbba7fb57033e55b6e8d95bbf65502b56d4cf3d7ac",
+    "docs/core-framework-lineage.md": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4",
+    "docs/worker-handoff.md": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/NOTES.json": "455efc2f7feebf633d5d1ff25f630051a18cf39e9304da68c3670fb185ca7e64",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/compile.log": "470c48ab427a11c47c77f1007fd3660bdf81783f1fa49c47079329832a491617",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/format.log": "0ee0d71fc9a809c34f59b82b1d680c7bc6434a2d98710a0a626e392c6c7c57bf",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/native.log": "fe08ba93273cd2ac37237232c17e7821bf5239aefd9ea192ae504734ac04280e",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/replay.log": "8594981f79af22edc0fb41fb2c79c7aa8cb0c74af9e50e9877ac590f4988ecbb",
+    "evidence/recovery/2026-11-06/rolling200-02/mute-filters98/symbols.log": "236ae4b98e7e347d43d2a21fa0fbe5e2b56d2cf9fb423dc4c1ec2a8d3f3f1597",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/BATCH_MEMBER.json": "c24967e93b30742ffe07f5674038589457ea17c8295fe14613feb422d7a21e7e",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/CONTEXT.md": "afd6a3bbfd363b17b49d1caa18112dcdeaaa92ba6578e6643152e9d70f922f5f",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/ELF_CONTEXT.md": "17b1e033092a5ca6e74f5c1e02a962619d083b8e1e3364274231ce16dc0ae670",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/SOURCE_SLICES.md": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/SUBAGENT_PROMPT.md": "24b142919a50c1a9bf85876cbe0dcb3c7404e3c4a76f053b8bf6eefeed07e9a4",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/TASK.md": "ac408589dcdc4dc998f928f8db86ace476dc21ca6cb3f68b1286d04bb7333021",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/context.json": "43f0d9b01a1d82b84194adfebf4bca0de08ff253cad29e14bca2393532d78d45",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/native-context.json": "280c2fd65d93e79588c5b52009351afb35dcc7f7b787903286ba287b2ec7e013",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/request.json": "5f3aa6845c550bc93eaa08b81b89a73c150f7c1cda9fd6164b096045c99fa59a",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_01/source-slices.json": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/BATCH_MEMBER.json": "f80612630b94ccbf4a357f2b371f91495cd4b826e06b8ca8958b324facc03523",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/CONTEXT.md": "4cc8f796ea95b25ca6dcf0778f40dae2442105710b459a7d03bf0f08c90723c9",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/ELF_CONTEXT.md": "c65dccfbe3fa6eb2252afe312333087d2ead964442202bfccd8506124b0a44ab",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/SOURCE_SLICES.md": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/SUBAGENT_PROMPT.md": "8c87986c472b0a6e1bfd176ab9c4e63f1813c8e2ce02e4e1c52acf24151841f8",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/TASK.md": "bfa4997384e8f467289a67bb24f7ddb9d72c963ab04913780e4ea355ae381599",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/context.json": "bf9aae03c6d3de46353933bdaa0443372b420dccf561859aca6530c09eeb6de3",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/native-context.json": "47e783f07d4683d613c72101cd4edefc0aa44eda670a66efaec3a14416cfd34d",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/request.json": "8b4c3da78dc88a22ccd85dd472e29bc808d0f1a13e0875a868fe1bdc44a5ef41",
+    "temp/recovery-work/rolling200-02/next-implementation98/prepared-mute-filters98/packets/rolling200_02_mute_filters98_02/source-slices.json": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a",
+    "third_party/ccl-framework/core/portable/corecomponent.h": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb",
+    "third_party/ccl-framework/core/portable/coreparaminfo.h": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0",
+    "third_party/ccl-framework/core/portable/coreparams.cpp": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5",
+    "third_party/ccl-framework/core/portable/coreparams.h": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd",
+    "third_party/ccl-framework/core/portable/corestorage.h": "82936b8a63f2fe9563810cc8299bcb5b22efaa914a518945c6e016b6dcdac901",
+    "third_party/ccl-framework/core/portable/coretypeinfo.h": "2c5c4ac61b372f490ad071f6a610f5dbbfe9946b3ac38b25d210a97d637261dc",
+    "uc-library/include/presonus/MuteGroupBase.hpp": "0187b5edfe68a73162c7f0f29eb2b4e8b32ad538456772570a0b074e87a07753",
+    "uc-library/src/Presonus/MuteGroupFilter.cpp": "5f3da8b02f4949e46b3be1dc0ea106ad14054360bea5be01db8657061ea5fb8b",
+    "uc-library/tests/recovery/MuteGroupFilterReplay.cpp": "c4a2c9c140f8ed56d06187e4c708bab47545bc4a8cac82ae4a038bc64f66283f",
+    "uc-library/tests/recovery/mute_group_filter/check.py": "b8ae9790f9f3c9582befe5a7903f749822d72054c9d47fccce51e2b2a174fa20",
+    "uc-library/tests/recovery/mute_group_filter/fixtures.json": "07bb258109fded905eca58bc2a8ae79e5f26cd4dedf0daa8d075b378f51ea287",
+    "uc-library/tests/recovery/mute_group_filter/native.py": "123f6c1b12fd9fb54eeee0537d7429f51e1d47bc5a5c117fa7934d0b4289fc7b",
+    "uc-library/tests/recovery/mute_group_filter/seal.py": "62413c1fc2f135c6b218fb1fe366f633d47413530b53bf0b51cdae7213ff2946"
+  },
+  "validation_domain": "2240 exact original ARM executions and actual pinned CCL differential cases: both methods; Comp/Para/0/-1 type IDs; null/present object; mute/Mute/empty/muted/space-prefix/prefix/null-native-name; +/-zero, +/-one, +/-infinity, +/-quiet-NaN and +/-subnormal; null/non-null ignored name argument. Capture original calls/PCs/stack stores and verify virtual getValue short-circuit counts.",
+  "limitations": [
+    "Portable source port only: original return declarations, inheritance, layout, ARM ABI and hardware remain unresolved. bool overrides actual pinned CCL interface; matching ELF names do not verify original return.",
+    "Native test object/vtable/string memory is explicit oracle-only boundary modeling. strcmp, virtual getValue and __aeabi_fcmpeq are intercepted before provider execution; all target instructions run from full hash-verified original ranges. No guest Core or hardware/system calls.",
+    "CCL ParamInfo embeds a fixed char name array, so native null-name fallback is deliberately projected to empty CCL name. Production uses actual provider representation, not ARM offsets. Component/Parameter type IDs observed equal native literals.",
+    "Valid borrowed Parameter object required for Para; other types and null Para never dereference. Parameter override returns supplied IEEE float including signed zero, infinities, quiet NaNs and subnormals. No invalid pointers, signaling NaN traps, concurrency or allocator failure claim.",
+    "Existing MuteGroupBase state/lifecycle unchanged; base activate and FileMuteGroup/Storm targets remain separately owned. Root canonical integration and guarded admission remain pending."
+  ],
+  "formatting_verified": true,
+  "compiled": true,
+  "mangling_verified": true,
+  "namespace_signature_verified": true,
+  "native_behavior_verified": true,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_verified": false
+}

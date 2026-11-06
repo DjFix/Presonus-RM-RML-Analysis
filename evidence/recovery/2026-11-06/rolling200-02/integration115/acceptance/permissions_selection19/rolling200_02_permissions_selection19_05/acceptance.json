@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_permissions_selection19_05",
+  "handoff_sha256": "63dce5117ded6c5f1483cef75cf91728407a5f2ca86501c2596c9ad81eaa092b",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T00:14:18.974080+00:00",
+      "returncode": 0,
+      "seconds": 0.16510880101122893
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T00:14:19.139200+00:00",
+      "returncode": 0,
+      "seconds": 2.6253942719777115
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T00:14:21.764612+00:00",
+      "returncode": 0,
+      "seconds": 0.06420380697818473
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T00:14:21.828832+00:00",
+      "returncode": 0,
+      "seconds": 3.635315814986825
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T00:14:25.464165+00:00",
+      "returncode": 0,
+      "seconds": 1.8270046380057465
+    },
+    {
+      "kind": "sanitizers",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "sanitizers"
+      ],
+      "start_utc": "2026-11-06T00:14:27.291186+00:00",
+      "returncode": 0,
+      "seconds": 10.150106773013249
+    },
+    {
+      "kind": "regressions",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/permissions_selection/check.py",
+        "regressions"
+      ],
+      "start_utc": "2026-11-06T00:14:37.441319+00:00",
+      "returncode": 0,
+      "seconds": 48.31975513801444
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 66.8542388069909
+}

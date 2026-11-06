@@ -49,6 +49,7 @@ struct PermissionsBindings {
   // Must alias mix/other for list/load calls; mixList may be null only for
   // updateMixPermissionsStrings. Correspondences: native +0x88/+0x8c.
   // No native object layout is claimed.
+  Core::Portable::ListParam *deviceList = nullptr;
   Core::Portable::ListParam *mixList = nullptr;
   Core::Portable::ListParam *otherList = nullptr;
   // Projects mixer->mixChannels; no second channel collection or link flag.
@@ -84,10 +85,17 @@ public:
   const UC::ClientSubscription *const *portableDeviceStorage() const {
     return devices_.getItems();
   }
+  int portableDeviceCount() const { return devices_.count(); }
   // Provisional return spelling. Bytes 12..74 are deliberately sanitized;
   // native copies unspecified entry-stack bytes there. No ARM layout claim.
   unsigned char *exportClient();
 
+  // Nonnull, nonalias input; allocation failure and concurrent/reentrant
+  // mutation are excluded from the native-equivalent bounded domain.
+  void setSelectedClient(const UC::ClientSubscription *client);
+  void copyToSelected(const UC::ClientSubscription &client);
+  void init();
+  void updateDevices();
   void updateOtherPermissionsStrings();
   void updateMixPermissionsStrings();
   void loadSelectedDevice();

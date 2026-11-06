@@ -12,7 +12,27 @@ namespace Presonus::Mixer {
 std::uint32_t MixerComponentBase::getSelectedChannel() const {
   return selectedChannel;
 }
-std::uint32_t MixerComponentBase::numClients() const { return clientCount; }
+void MixerComponentBase::validateClients() const {
+  if (clientsBound_ &&
+      clientCount != static_cast<std::uint32_t>(clients_.count()))
+    throw std::logic_error("inconsistent client collection/count binding");
+}
+void MixerComponentBase::bindClients(
+    const Core::Vector<const UC::ClientSubscription *> &clients) {
+  clients_ = clients;
+  clientCount = static_cast<std::uint32_t>(clients_.count());
+  clientsBound_ = true;
+}
+std::uint32_t MixerComponentBase::numClients() const {
+  validateClients();
+  return clientCount;
+}
+const UC::ClientSubscription *MixerComponentBase::getClient(int index) const {
+  validateClients();
+  if (!clientsBound_ && clientCount != 0)
+    throw std::logic_error("client collection must be bound");
+  return index < 0 || index >= clients_.count() ? nullptr : clients_.at(index);
+}
 std::uint32_t MixerComponentBase::numHWMicLineIn() const {
   if (inputChannelNamingBound)
     validateInputChannelBinding();

@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-06T00:12:12.560844+00:00",
+  "initial_failure": "sanitizer-first-failure.log",
+  "observation": "GCC12 undefined sanitizer inserts an explicit movq $0,(this) at destructor end, after the base table write. Original ordinary host build retains real base table; native original D1 table write remains separately required. Instrumented lifecycle assertion must require zero on this explicitly defined sanitizer build; queue survival, both explicit constructor calls and real D0 deallocation remain mandatory. No production source changed for this test correction.",
+  "disassembly": [
+    {
+      "argv": [
+        "objdump",
+        "-d",
+        "temp/recovery-work/dice-endpoint22-local/replay-ubsan",
+        "--disassemble=_ZN8Presonus2UC11DataChannelD1Ev"
+      ],
+      "output": "evidence/recovery/2026-11-06/rolling200-02/dice-endpoint22/_ZN8Presonus2UC11DataChannelD1Ev-ubsan-disassembly.txt",
+      "sha256": "4dc29840d1fcc9ef6a225438949521c9e594d7f1cec4e5e681862de09daffe4e"
+    },
+    {
+      "argv": [
+        "objdump",
+        "-d",
+        "temp/recovery-work/dice-endpoint22-local/replay-ubsan",
+        "--disassemble=_ZN8Presonus2UC12DiceEndPointD1Ev"
+      ],
+      "output": "evidence/recovery/2026-11-06/rolling200-02/dice-endpoint22/_ZN8Presonus2UC12DiceEndPointD1Ev-ubsan-disassembly.txt",
+      "sha256": "b30c887ea2359d084899efda2ffc2058eae797c87d2ca675801510c1e0e52d49"
+    }
+  ]
+}

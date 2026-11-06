@@ -1843,6 +1843,13 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/mixer/FxPresetFilter.hpp
+  presonus/mixer/GEQPresetFilter.hpp
+  presonus/mixer/ChannelParamTagFilter.hpp
+  presonus/mixer/SmaartStoreFilter.hpp
+  presonus/mixer/ChannelParameterController.hpp
+  presonus/mixer/StorageFilterForwarding.hpp
+  presonus/AltMemoryFilter.hpp
   presonus/panel/PanelTask.hpp
   presonus/panel/LEDNotifyTask.hpp
   presonus/surface/RadioToggleButton.hpp
@@ -1960,6 +1967,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/ClientSubscription.hpp
   presonus/PanControl.hpp
   presonus/uc/DataChannel.hpp
+  presonus/uc/DiceEndPoint.hpp
   presonus/MackieControlModel.hpp
   presonus/MappingTable.hpp
   presonus/LinkableComponent.hpp

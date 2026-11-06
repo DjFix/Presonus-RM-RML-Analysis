@@ -29,6 +29,8 @@ DataChannel::DataChannel(PacketQueue &incoming, PacketQueue &outgoing)
     : DataChannel({&incoming, readQueue, writeQueue, queueEmpty, queueBytes},
                   {&outgoing, readQueue, writeQueue, queueEmpty, queueBytes}) {}
 
+DataChannel::~DataChannel() = default;
+
 std::uint32_t DataChannel::read(void *buffer, int size) {
   return incoming_.read(incoming_.context, buffer, size);
 }

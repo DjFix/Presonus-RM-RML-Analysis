@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/portable/corestorage.h"
 #include "presonus/MuteGroupBase.hpp"
 #include "presonus/delay_timer.hpp"
 #include "presonus/uc/message_attributes.hpp"
@@ -79,6 +80,23 @@ namespace Presonus {
 // returns and independent state storage do not establish original ARM ABI.
 class StormMuteGroupComponent : public Core::Portable::Component {
 public:
+  // Source-port construction borrows the existing loose/safe-list state.
+  // Original filter layout and constructor identity are not claimed.
+  class SafeMuteFilter : public Core::Portable::IStorageFilter {
+  public:
+    explicit SafeMuteFilter(presonus::storm_mute_port::State &state)
+        : safeList(state.loose) {}
+    void *castTo(TypeID id) override {
+      return id == Core::Portable::IStorageFilter::kTypeID
+                 ? static_cast<Core::Portable::IStorageFilter *>(this)
+                 : nullptr;
+    }
+    bool shouldLoad(int typeId, const char *name, void *object) const override;
+    bool shouldSave(int typeId, const char *name, void *object) const override;
+
+  private:
+    Core::Vector<Core::Portable::Parameter *> &safeList;
+  };
   // Provisional source-port aggregate return and static pointer declaration.
   // Native string output is observed; original return/constness/ARM layout are
   // not established. The original constructor/lifecycle is outside this port.

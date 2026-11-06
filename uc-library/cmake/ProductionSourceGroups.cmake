@@ -1,4 +1,11 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Mixer/FxPresetFilter.cpp
+  src/Presonus/Mixer/GEQPresetFilter.cpp
+  src/Presonus/Mixer/ChannelParamTagFilter.cpp
+  src/Presonus/Mixer/SmaartStoreFilter.cpp
+  src/Presonus/Mixer/ChannelParameterController.cpp
+  src/Presonus/AltMemoryFilter.cpp
+  src/Presonus/UC/ClientSubscription.cpp
   src/Presonus/Dsp/EqSourceProviders.cpp
   src/Presonus/Panel/Element.cpp
   src/Presonus/MappableMixer.cpp
@@ -10,6 +17,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/UC/ServerRegistrarLifetime.cpp
   src/Presonus/UC/ServerLifetime.cpp
   src/Presonus/MuteGroupBase.cpp
+  src/Presonus/MuteGroupFilter.cpp
   src/Presonus/ChannelGroupFilter.cpp
   src/Presonus/VUMeterControl.cpp
   src/Presonus/LinkableComponent.cpp
@@ -335,6 +343,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/StormSafeMuteFilter.cpp
   src/Presonus/Dsp/ControllerInfo.cpp
   src/Presonus/Link/Messenger.cpp
   src/Presonus/Panel/FrontPanelUartTest.cpp
@@ -399,6 +408,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/AVB/AvbComponent.cpp
   src/Presonus/Dsp/Controller.cpp
   src/Presonus/UC/DataChannel.cpp
+  src/Presonus/UC/DiceEndPoint.cpp
   src/Presonus/Panel/BeastPanelRegistrar.cpp
   src/Presonus/Mixer/FirmwareUpdateCallbacks.cpp
   src/Presonus/NOAA/TCardProgrammerProtocol.cpp
@@ -472,6 +482,13 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/mixer/FxPresetFilter.hpp
+  presonus/mixer/GEQPresetFilter.hpp
+  presonus/mixer/ChannelParamTagFilter.hpp
+  presonus/mixer/SmaartStoreFilter.hpp
+  presonus/mixer/ChannelParameterController.hpp
+  presonus/mixer/StorageFilterForwarding.hpp
+  presonus/AltMemoryFilter.hpp
   presonus/panel/PanelTask.hpp
   presonus/panel/LEDNotifyTask.hpp
   presonus/surface/RadioToggleButton.hpp

@@ -9,6 +9,9 @@
 namespace presonus::panel {
 class PresetApplicationServices;
 }
+namespace Presonus::UC {
+class ClientSubscription;
+}
 namespace Presonus::Mixer {
 class ChannelComponent;
 class PermissionsComponent;
@@ -40,6 +43,18 @@ public:
   bool tryingToQuit = false;
   std::uint32_t getSelectedChannel() const;
   std::uint32_t numClients() const;
+  const UC::ClientSubscription *getClient(int index) const;
+  // Explicitly bind the legacy independent count API to one real collection.
+  // Borrowed entries (including null slots) outlive calls. Once bound, callers
+  // must preserve clientCount == clients_.count(); mismatches fail explicitly.
+  void bindClients(const Core::Vector<const UC::ClientSubscription *> &clients);
+
+private:
+  Core::Vector<const UC::ClientSubscription *> clients_;
+  bool clientsBound_ = false;
+  void validateClients() const;
+
+public:
   std::uint32_t numHWMicLineIn() const;
   const char *getCompanyName() const;
   std::uint32_t getSpectrumSendSlot() const;

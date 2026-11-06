@@ -3,12 +3,14 @@
 #include "core/portable/corefile.h"
 #include "core/portable/corepersistence.h"
 #include "core/portable/corestorage.h"
+#include "core/system/coredebug.h"
 #include "core/system/coretime.h"
 #include "presonus/LinkableComponent.hpp"
 #include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/uc/ClientSubscription.hpp"
 #include <cstdio>
 #include <cstring>
+#include <stdexcept>
 
 namespace Presonus::Mixer {
 PermissionsComponent::PermissionsComponent(PermissionsBindings &bindings)
@@ -22,11 +24,7 @@ PermissionsComponent::~PermissionsComponent() {
 void PermissionsComponent::portableOwnSelected(
     const UC::ClientSubscription *values) {
   auto replacement =
-      values ? std::make_unique<UC::ClientSubscription>(
-                   UC::ClientSubscription::SourcePortValues{},
-                   values->sourcePortApp(), values->sourcePortDevice(),
-                   values->sourcePortDisplay())
-             : nullptr;
+      values ? std::make_unique<UC::ClientSubscription>(*values) : nullptr;
   selected_ = std::move(replacement);
   bindings_.selectedSnapshot = selected_.get();
 }
@@ -81,6 +79,68 @@ unsigned char *PermissionsComponent::exportClient() {
   return exported_.data();
 }
 
+void PermissionsComponent::setSelectedClient(
+    const UC::ClientSubscription *client) {
+  copyToSelected(*client);
+}
+void PermissionsComponent::copyToSelected(
+    const UC::ClientSubscription &client) {
+  // Native deletes first. Only independently owned source-port snapshots are
+  // deleted here; legacy borrowed snapshots remain borrowed.
+  if (&client == selected_.get())
+    throw std::invalid_argument("selected snapshot aliases copy source");
+  bindings_.selectedSnapshot = nullptr;
+  selected_.reset();
+  selected_ =
+      std::make_unique<UC::ClientSubscription>(client.sourcePortIdentifier());
+  bindings_.selectedSnapshot = selected_.get();
+  selected_->sourcePortSetName(client.sourcePortName());
+  selected_->sourcePortSetDevice(client.sourcePortDevice());
+  selected_->sourcePortSetIdentity(client.sourcePortIdentity());
+  selected_->sourcePortSetApp(client.sourcePortApp());
+  selected_->sourcePortSetDisplay(client.sourcePortDisplay());
+  Core::DebugPrintf("Permissions set to client %s (%s)\n",
+                    client.sourcePortName().str(),
+                    client.sourcePortDisplay().str());
+}
+void PermissionsComponent::init() {
+  auto *parameter = bindings_.accessCodeParameters->getParameterByTag(4);
+  // Pinned Core is built without RTTI. Its real type discriminator supplies
+  // the StringParam check instead of firmware __dynamic_cast.
+  if (parameter && parameter->getType() == Core::Portable::ParamInfo::kString)
+    static_cast<Core::Portable::StringParam *>(parameter)->setDefaultText(
+        "12345");
+  loadAccessCode();
+  updateDevices();
+}
+void PermissionsComponent::updateDevices() {
+  Core::CStringBuffer<64> identity;
+  if (bindings_.selectedSnapshot)
+    identity = bindings_.selectedSnapshot->sourcePortIdentity();
+  const auto count = static_cast<std::int32_t>(bindings_.mixer->numClients());
+  devices_.removeAll();
+  auto &list = *bindings_.deviceList;
+  list.removeAll();
+  list.setValue(0.f, false);
+  int selection = 0;
+  for (std::int32_t i = 0; i < count; ++i) {
+    const auto *client = bindings_.mixer->getClient(i);
+    if (!client || !getAppType(*client))
+      continue;
+    if (!devices_.add(client))
+      throw std::bad_alloc();
+    const auto text = createClientInfo(client);
+    list.appendString(text.str());
+    if (identity.isEmpty() ||
+        std::strcmp(client->sourcePortIdentity().str(), identity.str()) == 0)
+      selection = devices_.count() - 1;
+  }
+  if (devices_.isEmpty())
+    list.appendString("< No Connected Devices >");
+  list.setValue(static_cast<float>(selection), false);
+  list.changed();
+  list.rangeChanged();
+}
 void PermissionsComponent::updateOtherPermissionsStrings() {
   auto &list = *bindings_.otherList;
   list.removeAll();

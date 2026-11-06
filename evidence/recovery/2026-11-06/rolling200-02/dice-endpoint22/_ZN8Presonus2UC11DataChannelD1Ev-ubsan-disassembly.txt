@@ -1,0 +1,61 @@
+
+temp/recovery-work/dice-endpoint22-local/replay-ubsan:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .plt.got:
+
+Disassembly of section .plt.sec:
+
+Disassembly of section .text:
+
+0000000000010e1e <_ZN8Presonus2UC11DataChannelD1Ev>:
+   10e1e:	f3 0f 1e fa          	endbr64
+   10e22:	55                   	push   %rbp
+   10e23:	48 89 e5             	mov    %rsp,%rbp
+   10e26:	48 83 ec 10          	sub    $0x10,%rsp
+   10e2a:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   10e2e:	48 8d 05 b3 69 01 00 	lea    0x169b3(%rip),%rax        # 277e8 <_ZTVN8Presonus2UC11DataChannelE>
+   10e35:	48 8d 50 10          	lea    0x10(%rax),%rdx
+   10e39:	48 83 f8 f0          	cmp    $0xfffffffffffffff0,%rax
+   10e3d:	72 19                	jb     10e58 <_ZN8Presonus2UC11DataChannelD1Ev+0x3a>
+   10e3f:	48 8d 05 a2 69 01 00 	lea    0x169a2(%rip),%rax        # 277e8 <_ZTVN8Presonus2UC11DataChannelE>
+   10e46:	48 89 c6             	mov    %rax,%rsi
+   10e49:	48 8d 05 f0 7c 01 00 	lea    0x17cf0(%rip),%rax        # 28b40 <__dso_handle+0xb40>
+   10e50:	48 89 c7             	mov    %rax,%rdi
+   10e53:	e8 f8 eb ff ff       	call   fa50 <__ubsan_handle_pointer_overflow_abort@plt>
+   10e58:	48 8d 15 99 69 01 00 	lea    0x16999(%rip),%rdx        # 277f8 <_ZTVN8Presonus2UC11DataChannelE+0x10>
+   10e5f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   10e63:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+   10e68:	74 0b                	je     10e75 <_ZN8Presonus2UC11DataChannelD1Ev+0x57>
+   10e6a:	48 89 c1             	mov    %rax,%rcx
+   10e6d:	83 e1 07             	and    $0x7,%ecx
+   10e70:	48 85 c9             	test   %rcx,%rcx
+   10e73:	74 12                	je     10e87 <_ZN8Presonus2UC11DataChannelD1Ev+0x69>
+   10e75:	48 89 c6             	mov    %rax,%rsi
+   10e78:	48 8d 05 e1 7c 01 00 	lea    0x17ce1(%rip),%rax        # 28b60 <__dso_handle+0xb60>
+   10e7f:	48 89 c7             	mov    %rax,%rdi
+   10e82:	e8 09 e7 ff ff       	call   f590 <__ubsan_handle_type_mismatch_v1_abort@plt>
+   10e87:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   10e8b:	48 89 10             	mov    %rdx,(%rax)
+   10e8e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   10e92:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+   10e97:	74 0b                	je     10ea4 <_ZN8Presonus2UC11DataChannelD1Ev+0x86>
+   10e99:	48 89 c2             	mov    %rax,%rdx
+   10e9c:	83 e2 07             	and    $0x7,%edx
+   10e9f:	48 85 d2             	test   %rdx,%rdx
+   10ea2:	74 12                	je     10eb6 <_ZN8Presonus2UC11DataChannelD1Ev+0x98>
+   10ea4:	48 89 c6             	mov    %rax,%rsi
+   10ea7:	48 8d 05 d2 7c 01 00 	lea    0x17cd2(%rip),%rax        # 28b80 <__dso_handle+0xb80>
+   10eae:	48 89 c7             	mov    %rax,%rdi
+   10eb1:	e8 da e6 ff ff       	call   f590 <__ubsan_handle_type_mismatch_v1_abort@plt>
+   10eb6:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   10eba:	48 c7 00 00 00 00 00 	movq   $0x0,(%rax)
+   10ec1:	90                   	nop
+   10ec2:	c9                   	leave
+   10ec3:	c3                   	ret
+
+Disassembly of section .fini:
