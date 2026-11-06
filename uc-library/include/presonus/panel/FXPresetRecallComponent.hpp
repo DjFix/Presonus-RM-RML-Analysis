@@ -32,6 +32,7 @@ public:
       Core::Portable::Parameter &typeName,
       Core::Portable::Parameter &presetName, Core::Portable::Parameter &type,
       const char *category, int effectSlot);
+  const char *sourcePortCategory() const { return category.str(); }
   void onIdle() override;
   int getSlotNum() const;
   void cacheUpdated(PresetNameCache &, int, const char *, const char *);

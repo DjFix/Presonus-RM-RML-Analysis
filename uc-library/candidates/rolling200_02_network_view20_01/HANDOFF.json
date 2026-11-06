@@ -1,0 +1,774 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_network_view20_01",
+  "namespace": "Presonus::Surface::NetworkSetupComponent",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus7Surface21NetworkSetupComponent10createViewEPKc",
+      "address": 653204,
+      "size": 188,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "dependency",
+      "path": "AGENTS.md",
+      "sha256": "08353c85fd2fee8a6b97a75b8bc799ba5b44377a3c56979ed06fc8c5eff1e74d"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view-plan20/PARAMETER_SLOTS20.json",
+      "sha256": "c46d6c313146e53ea6404b113a6f35a0dc6281f10aadc1745f1592bd20322f70"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view-plan20/ROOT_NATIVE_CONTEXT.json",
+      "sha256": "48e8aa61742bf98058493e6534b08563d04f9f1f45e0369a656e67b274676b41"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view-plan20/ROOT_REVIEW20.json",
+      "sha256": "ce03cdf9a11001af2436a457bdc8f84072914efa16c3e9eeceb63165a4f2f3c3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view-plan20/helpers/ROOT_NATIVE_CONTEXT.json",
+      "sha256": "493dfef6b93e26af85fe0d8b01b2001eadd0a139334542f4b1dac4e4d9615eab"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/NOTES.json",
+      "sha256": "c6d734ba38e65a734ba049b916082329c2b4dd9cba83dee3f645e4f626732f38"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/compile.log",
+      "sha256": "6b052a7933e7b24a12bbdc51e3a8a9ec3f9d041d9608f1ec166e3c3dc6876fcf"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/format.log",
+      "sha256": "e4c3e0ee180c263d7d8110931c2f1c6fc12af0a17e0f12a990bf8603849ecc97"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/native.log",
+      "sha256": "1087a1d8c275d558931c1a0cf154c4cb2891ce8402c8958208dcf142001966d5"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/proof.json",
+      "sha256": "a476a0c36b337fba03e9271b8bd1ee6fca64d74f7ea70e709cf2207184bd9198"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/regression.log",
+      "sha256": "be213f96c2c9f7737f4dec6f72ef4c70b81d45062f407c00e6e1cad9fe30eb32"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/replay.log",
+      "sha256": "be1d36f68f919496486d6b1776f88f3e32457c12757777580babb8a227740d18"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/network-view20-local/symbols.log",
+      "sha256": "dbd980d913afb85b904cf21eca2e12785c55f88c4624db63bf99f1bae4f7560e"
+    },
+    {
+      "kind": "dependency",
+      "path": "rootfs/CS18_v13840/home/root/surface",
+      "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_cs18_components.a",
+      "sha256": "0b0e4cc4c0665fbc172dd5f5fb59c45694a2ce170ad2766c950103efc94c567e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/libpresonus_uc.a",
+      "sha256": "3180c9ad3c1559aa0a7978fe6eb8b8fee4338f209667ae50a0488adbbd1bebff"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/ELF_CONTEXT.md",
+      "sha256": "c87d3e4c673a05f85a37256e3dffa186b30a011b29ab3e4465d0d4fc04d7fd9b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/expand-1793921943186199975.json",
+      "sha256": "5c56df14cca890feffb7c87e7764f7d7be2b3b5aa952cd024a813f048e1d782c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/expand-1793921943186199975.log",
+      "sha256": "5d0d4c08118d491e2ae07ec7e46e23c9fa3cf2425ee7f644ce9fb4cf1cb38f05"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/expansion-request.json",
+      "sha256": "7dfcfcd126b6e9f37c6fc3832352f51ddc481c07df54cf1eb9f4751faa821452"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/expansion.json",
+      "sha256": "ea92e29599ef3660adfc82c6fd56ece31a465722ebc0927f0de2e8e4da884815"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/native-context.json",
+      "sha256": "72305ab587420196031bbd8989a4a8f4be14ae46f33c4217214b29645ec6d5ac"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-fcmpeq-44/operation-timings-1793921947388977971.json",
+      "sha256": "6501f8fc182dc046c842b674b23ae4aadb7b860effcaf1959e5bc528303937d3"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/ELF_CONTEXT.md",
+      "sha256": "bead4e2b7862405b2e28dfc0991d081ec2143210d5fa9f5b618cad3a18277743"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/expand-1793921937897711325.json",
+      "sha256": "b09caad4aff941e134b00a5af4c1f20e865c652cffeeb7280e5c81c332bc93ba"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/expand-1793921937897711325.log",
+      "sha256": "2a9900114ecd8bd9f065aaba78e491c5f66340c992c73aa8307691933632a288"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/expansion-request.json",
+      "sha256": "dc64c9087b8e9e1318514a00fe6fca4853df51ba61f3639f77220d695021f703"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/expansion.json",
+      "sha256": "7c8f30bd3c0b90a39d15dba627862212f0b113a2fbc4a1a54dbe400f25f812c7"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/native-context.json",
+      "sha256": "1e6437bba7b5baab92dfe0755d2f8e477656ed7fe4a54e885eb4a13ce559785b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/expand-i2f-44/operation-timings-1793921942090509478.json",
+      "sha256": "1d7ca1f85f7bbbb177604fd298efdbbaff6f5b8bea5f8534faabe2b3e46e8dc3"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/BATCH_MEMBER.json",
+      "sha256": "0103a36c2cddf09cfc52705f8d8e06a53cdbfb91db37b3255bce1bf83b80b867"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/CONTEXT.md",
+      "sha256": "5f26ae24ce7e0429bb501c18d78e57eef909b00f1dc3a2e2b304f6318f6264d9"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/ELF_CONTEXT.md",
+      "sha256": "d0df4c671677a495b626616ebe060b15ce638cfe819e4fbaaa614f3ff69eb41f"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/SUBAGENT_PROMPT.md",
+      "sha256": "0920532c89235423fb0581d5ca8b27e2a4d60af26d2050967e3785d03bb41e90"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/TASK.md",
+      "sha256": "9c90c3fbdfe17c7b5c5797b3f5ce2a733d20387574a4f23fa65b2029c674e35f"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/context.json",
+      "sha256": "35b990a48c175b3c203cf900d625995d2bfc2224ee5e9e5bc66b7457ca8b465d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/native-context.json",
+      "sha256": "93b083138d1b21d481f3f4938cd65b4b1bb00afa62f047124db48396e996e780"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/request.json",
+      "sha256": "1ebc9500be20bbbda28fa8c69d2955e6c6035e20d2da64ed1f74de962141621b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_01/source-slices.json",
+      "sha256": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/BATCH_MEMBER.json",
+      "sha256": "5fc501163f1b0d65165e4fb228fb544dbead35d74c7fd1e646cb8654023f943b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/CONTEXT.md",
+      "sha256": "ee93c1d512327ed80a78b11dfaf8778f33f25e9d75ddf7f8506379e46dfdef28"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/ELF_CONTEXT.md",
+      "sha256": "e3cd33343de2e89a095f99de85957cf1eb286e4030a945b17df2feba2568351f"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/SUBAGENT_PROMPT.md",
+      "sha256": "13955d0303d930e941be2e0d7cd550d5ab7126319cc256d712d9b8d7bb406c7d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/TASK.md",
+      "sha256": "a03eaef3028cad968617a1d0e87ed60c144646554279978a7da97a09dd2e852d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/context.json",
+      "sha256": "8fc4cf2c99798ef9a93be7d06b2549602bcd845c378fe91ff9ba8e5712932563"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/native-context.json",
+      "sha256": "9288764d68ae578bdbaaf50547d3f207f61dacc820aae541523c2d82cd5c1e14"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/request.json",
+      "sha256": "2e17e47d961ff1b2b4feb87d8614585b48c1859cd4ac06241d927c63e91b3224"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_02/source-slices.json",
+      "sha256": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/BATCH_MEMBER.json",
+      "sha256": "4217eeaaafedd9ad6c2c5a7767184d6fc046b508cb51a943e2c6cb969c4d631e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/CONTEXT.md",
+      "sha256": "fe45849ea73e20cc3af2272430921b1d738afcd2e5790e4a156d2d8fad05d00f"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/ELF_CONTEXT.md",
+      "sha256": "2da3c68c76e1e28faf60eb8d6e19f1b6ce148277a30b02f29dba378b1cad7c25"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/SUBAGENT_PROMPT.md",
+      "sha256": "d6f88d9d988e831279be4fb3e8dad195881395ce5586c888c4ef7187370eaefd"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/TASK.md",
+      "sha256": "de19081183d1258f640e7ce7d19c14fe83bcebb886617c34a947b549e249e11a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/context.json",
+      "sha256": "3270e50a96bdaff77f5d33be07490c196025e0ec2f3704582e153bd15fbddaff"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/native-context.json",
+      "sha256": "ef7f62b1dcf81bfb47cd7536a2ba92bb813a5a4f1946df8dafc4465e49307d74"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/request.json",
+      "sha256": "719d0b34eb8141b6f87b53074f125c29280bfbee59f96bd75f5d778b9b92c5cf"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_03/source-slices.json",
+      "sha256": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/BATCH_MEMBER.json",
+      "sha256": "0edfb22dc29906adffc6ac89f4b274e521193bf0677ab77e4b836c8120f3a947"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/CONTEXT.md",
+      "sha256": "e5c925302af344e33aa05c597529cac5123d9d2cb2b684b0448070242698020e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/ELF_CONTEXT.md",
+      "sha256": "d1003228603aa65c6be5825f5e835405a3446819cd25cf500d80e6e17a3be63a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/SUBAGENT_PROMPT.md",
+      "sha256": "7661d909eac39ecd99fa2d153dcd2f46042f495649288645fe6820e4c23aa490"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/TASK.md",
+      "sha256": "0eb4c7a91e1b10ed4e79f0b0f589805491f04e6a7ed801a72b4bc73c0c23e31e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/context.json",
+      "sha256": "c2706256172128a3a4534d0a940b33228718cdd0802adf406fd7aee2986850ad"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/native-context.json",
+      "sha256": "03cb5cc643da50cfd0056c2cd24f141119a3cff9188fd5ea46c91a73484f5df4"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/request.json",
+      "sha256": "5d503f6559256bdffc5aa6353c6f6143a0566360cb4357015ced7478615a5234"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_04/source-slices.json",
+      "sha256": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/BATCH_MEMBER.json",
+      "sha256": "e91d0b7d573c6bb948d42186d2edf93c09219c1ef117d28f02685e76f63bd4b6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/CONTEXT.md",
+      "sha256": "649643a585cf2cc9c44cd1db974925edc72c0b894ddd4e791f74df76979bdbd2"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/ELF_CONTEXT.md",
+      "sha256": "3e723f122dc41247239ef938f0c5f6c589fba6aa64ab907e880bf617b760a0d2"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/SOURCE_SLICES.md",
+      "sha256": "7c238c13bec822762e590d3bcdadc7f74dbe205cd5a378cf5a5da3699219eaf6"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/SUBAGENT_PROMPT.md",
+      "sha256": "e212b9e424f670bbf24325e7d6be7bba7b5c5176f114ed58f28f2855d872bc96"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/TASK.md",
+      "sha256": "40faa5a69ba925d226d5cf31c3721294ec43ea2f244de10e5fb1eebf1189ca32"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/context.json",
+      "sha256": "ca6fc25faf052b0fdb76cfcaee09fdcaaab6fc9aab540e4cb78c3869b3bd9d25"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/native-context.json",
+      "sha256": "0650ef527a099005b512d9031e39e313d42a27fcaf12be9fb77031ff742d3798"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/request.json",
+      "sha256": "56875fcbae41c8309d3ae96d562aca0b7e7adb750c1e85d4cafb8d647068187b"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/prepared-network-view20/packets/rolling200_02_network_view20_05/source-slices.json",
+      "sha256": "c498152ab335cbef16f7f71ee4c66e9b679758c5df26165d90cc63e125f2387a"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/runtime-closure48/ELF_CONTEXT.md",
+      "sha256": "36c152b2345041bb04df79fbe1965ba0f8b4382c56031d6c77de5f5307fb8682"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/runtime-closure48/PROVENANCE.json",
+      "sha256": "d19b383f67afdfe511f62e384c57569739cfea191e5ed3f5dc18cc1f554e1326"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/runtime-closure48/ROOT_NATIVE_CONTEXT.json",
+      "sha256": "70e93e038c0e3b7f4d28ade08662418435f90a7dd4145b43af0130d82ff55604"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation20/runtime-closure48/native-context.json",
+      "sha256": "70e93e038c0e3b7f4d28ade08662418435f90a7dd4145b43af0130d82ff55604"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.cpp",
+      "sha256": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coretypeinfo.h",
+      "sha256": "2c5c4ac61b372f490ad071f6a610f5dbbfe9946b3ac38b25d210a97d637261dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.cpp",
+      "sha256": "c05c63ea50d66288f11a9b1daf26bb4b2559042a27831f27785b09b192bc796f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.h",
+      "sha256": "59f7e8af9fd892e0e206c5e73748b0f5d7a03ce3019e6ce7fa532368c5cb18e7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.h",
+      "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corelistview.cpp",
+      "sha256": "2cc54a5ea8a2442da5cc7268c73a6ee28e1129e6e444f1abc7b8df189a0fd57b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corelistview.h",
+      "sha256": "c90da91738a7d356626faf79845870dc47f0b19e6ff972170aa0f6bd3e2a9d15"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.cpp",
+      "sha256": "a2d1bdf79b00c12d87ab01072bde099b20691fa7bed5de7988071f2e7748eaa7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.h",
+      "sha256": "ab6167c58ad2847ae0b0ecd7a60390d36a65b6b044e8d883b3d2940a60aa5eca"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewcontroller.h",
+      "sha256": "2366aaa9034ee251af3711a3f273b9fed43adb95f92229ddced14fb10fb1223f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/corevector.h",
+      "sha256": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/network-setup-settings/fixtures.json",
+      "sha256": "250ab112d8eb27528a9e45b8d5a375a45543c8487078262128ca41cac2867c1b"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/network-setup-settings/replay.py",
+      "sha256": "83dc2462c7493be79ac8cdc479270436d5b4b6829b81502559181ba8bddb74a4"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/candidates/rolling200_02_review_w05/REVIEW.json",
+      "sha256": "c6898f10bdd8ed60962fbb682582241444d4017ceb2a109d548976f9f0b1fb33"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/delay_timer.hpp",
+      "sha256": "3da2b15d6b56b8f921983ea0c97585736dbaa9d3757da8e708bbf81b2f2c9e55"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/surface/MidiMixerHandler.hpp",
+      "sha256": "3c70941ea2f9422fafcac7975d2efe82ac1854c86a56e16bda82f6ed3a39fdf6"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/surface/NetworkSetupComponent.hpp",
+      "sha256": "82ab4ec17c1c5d689c9e14cb5768a77690c9f40d4daca5d028403cd200ea1d94"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/surface/RadioToggleButton.hpp",
+      "sha256": "76bb627ac72dfb8aaf227bb404f9c7b043541c2bc4fccc1900fe0d958e7a4d47"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/uc/NetworkItem.hpp",
+      "sha256": "8994cd6d97e0f271e68626dc9d1e3c0135c10a0cce02377f685a8d5ca758d956"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Surface/MidiMixerState.cpp",
+      "sha256": "e14bf7232d69d306614ff304a8acc6c1bcbd98b8ef7dff3d0d6d4e370738def2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Surface/NetworkListSelection.cpp",
+      "sha256": "88089bbb6eab318998ac3d5f82638e9741716d7f988f66518fe964953c024b9f"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Surface/NetworkSetupComponent.cpp",
+      "sha256": "1e37e96ea2b1000210009012dfd6662552a9026e6a196be72aed5b53921f6599"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Surface/RadioToggleButton.cpp",
+      "sha256": "9766e3e688112bb2be1905eeeb87397e1feb7119c1b333311a4435412438cf92"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/graph_trial07_surfacenet_tests.cpp",
+      "sha256": "46d2ddd16a124db09ce659e9482cb69f9f39dc9ee48d7b7a901bfb156cae7d63"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/NetworkSetupSettingsReplay.cpp",
+      "sha256": "2f45f91a0442164e30ff0d2f36989cd22cd7b0c08a6426f08d26af9ce0d9c362"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/NetworkSetupViewReplay.cpp",
+      "sha256": "3a94b2b4e123f1bf9e7fc365b6d46466a678519b1af7be9ef9034f1d582277d0"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/network_setup_view/check.py",
+      "sha256": "2351b35bfad097ebfc2c0a2dee77ebe81e2ac4440267aa7ec3dcc5bcf884d4ed"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/network_setup_view/fixtures.json",
+      "sha256": "d1af8ba769e4e0d2728bdb2b2f0da4d3997658af55f1d7c6e05ce79d38a5d4aa"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/network_setup_view/native.py",
+      "sha256": "e070ae7669de52c9d46a6e02ffd0fbb13dd4f8eec1497bd82ee0732a0e7164f5"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/network_setup_view/seal.py",
+      "sha256": "ca81dd16b15aa70aa870f4c7d1ab5c93d21475c23bec8c51b972c2e0be9970b7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/ranked09/handlers/driver.cpp",
+      "sha256": "ad0880684ced344555d08f37ef2a72dcc6cf683ba16ec4786f139698e12d860f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/ranked09/handlers/fixtures.json",
+      "sha256": "090ab98a95828bab9c12105de17f2be2f88c28d13824a913bfd3af1232fd1bbf"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/ranked09/handlers/replay.py",
+      "sha256": "9b91f8e600b15a77c5db38df1a3abf654a3286a112cc1c2d770812079cce56b3"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial07/surfacenet/fixtures.json",
+      "sha256": "7daaa51d1d1a7e1805b7b4c994c7c90673cefa9f3f782ad688d50af897847a6c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/trial07/surfacenet/replay.py",
+      "sha256": "78670c152229e1403a96932e0ecebfcab5784dc9e518e254ffb323c45f42f6f7"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "format"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "native"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_setup_view/check.py",
+        "regression"
+      ],
+      "timeout_seconds": 180
+    }
+  ],
+  "validation_domain": "1281 original ARM executions: createView9 name/null cases; getObjectForView72 name/type/cached-state combinations; push1176 parameter-present/null, both down states, seven signed integer radio values including INT_MIN/INT_MAX and binary32 rounding boundary, three off values, fourteen bit-pattern current values including signed zero, fractions, subnormals, infinities and signaling/quiet NaNs; D0 and D1 each12 exact native variant executions across null/distinct/shared image+icon and parameter presence. Original libgcc i2f/fcmpeq and transitive arithmetic bodies execute, never modeled results. Host actual pinned CCL edit-call order and raw set bits, icon/image use counts before Control observer detach, D0 real deallocation and D1 nondeallocation; actual nested model, repeated reuse, owned vs borrowed lifetime and true owned model free; actual CCL view-controller TypeInfo/child dispatch/parameter lookup, model changed notifications and selection scrolling. Host-only allocation-failure state checks. Existing immutable network98, settings133 and selection/handlers1008 regression executions.",
+  "limitations": [
+    "Portable source port, not ARM32 ABI compatibility: original GUI inheritance, object field declarations, layout, ordinary return declarations and hardware interoperability remain unresolved. createView returns View*, getObjectForView returns void* and push returns void only as explicit CCL-backed source-port declarations. Destructor variant signatures are established; compiled host D1/D2 aliasing does not claim original D2 coverage.",
+    "Historical ComponentViewController<PageComponent> fallback is intentionally adapted to actual pinned ComponentViewController<NetworkSetupComponent>. Real Component lookupChild/lookupParameter/findParameter/TypeInfo execute. NetworkSetup uses its existing Component base and composed borrowed parameter owner; no recovered PageComponent or Core implementation is invented.",
+    "Native oracle intercepts original CCL constructor/Control destructor, existing app setupListModel, historical controller fallback and libc/operator new/delete entries as explicit boundaries. No Core binary instruction executes. Native D0 genuinely reaches operator delete(this); allocator internals are excluded. Independently observed actual host delete validates source deallocation; a synthetic delete event is never appended.",
+    "Native successful allocation, stable valid initialized state and synchronous/no-throw providers are the differential domain. Native EH/unwinding, constructor throws and allocator failure are excluded from ARM execution; host allocation failure is separately tested. Concurrent/reentrant parameter substitution or provider exceptions are excluded.",
+    "Actual nested ListModel records its borrowed owner and inherits real CCL model storage/lifecycle; existing setSelected/isItemSelected are reused. No additional native ListModel event-handler reconstruction is claimed. Views must detach before owner/model destruction. Newly allocated models are uniquely owned by this port, externally supplied model pointers remain borrowed. This ownership is intentional source-port state, not native field/layout proof.",
+    "Real pinned RadioButton derives actual Button/Control. Default destructor releases actual icon/image references then detaches actual parameter observer; host tests observe final refcounts and counts at detach, not each inline unuse instruction individually. Exact native D0/D1 byte ranges and inline reference writes are separately executed. No behavior claim for native Core destructor internals.",
+    "Worker-local proof only. No ready/pending fragment, SQLite mutation, shared integration edit, canonical full Linux build, installed-role/compile-once or final admission is performed by the worker. Root must refresh affected existing source-bound proofs and run global gates. Ordinary methods retain declaration-pending status until independent original return declaration evidence exists."
+  ],
+  "build_integration": {
+    "production_partition": "Existing NetworkSetupComponent.cpp remains CS18 OBJECT partition; add src/Presonus/Surface/RadioToggleButton.cpp exactly once to CS18 OBJECT partition based on CS18-only original symbols. Existing shared NetworkListSelection.cpp unchanged.",
+    "public_headers": [
+      "include/presonus/surface/NetworkSetupComponent.hpp",
+      "include/presonus/surface/RadioToggleButton.hpp"
+    ],
+    "test_targets": [
+      "NetworkSetupViewReplay"
+    ],
+    "test_sources": [
+      "tests/recovery/NetworkSetupViewReplay.cpp"
+    ],
+    "compile_options": [
+      "-fno-rtti",
+      "-fno-lto"
+    ],
+    "link_dependencies": [
+      "presonus_cs18_components",
+      "presonus_uc",
+      "actual pinned corelib",
+      "presonus_core_allocator",
+      "presonus_private_glibc29",
+      "PNG",
+      "zlib",
+      "pthread",
+      "dl",
+      "m"
+    ],
+    "link_options": [
+      "--wrap=_Znwm",
+      "--wrap=_ZdlPv",
+      "--wrap=_ZdlPvm",
+      "--wrap=_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/network_setup_view/check.py",
+      "replay",
+      "<canonical-built-NetworkSetupViewReplay>",
+      "uc-library/tests/recovery/network_setup_view/fixtures.json"
+    ],
+    "fixture_sha256": "d1af8ba769e4e0d2728bdb2b2f0da4d3997658af55f1d7c6e05ce79d38a5d4aa",
+    "notes": "Root owns shared build, full Linux CTest, role/install/compile-once audits, source proof refresh, guarded SQLite dry-run/admission and tracker. No ready/pending fragment is provided; D0/D1 have exact destructor declaration evidence while ordinary methods remain return-declaration pending."
+  }
+}

@@ -1,0 +1,73 @@
+"""Worker-local proof and three exact packet handoffs; never admit readiness."""
+import datetime,hashlib,json,pathlib,subprocess,os,time,runpy
+ROOT=pathlib.Path(__file__).resolve().parents[4]
+HERE=pathlib.Path('uc-library/tests/recovery/midi_mixer_lifecycle')
+EVIDENCE=pathlib.Path('evidence/recovery/2026-11-05/rolling200-02/midi-lifecycle16')
+PACKETS=pathlib.Path('temp/recovery-work/rolling200-02/next-implementation16/prepared-midi-lifecycle16/packets')
+PY='uc-library/.venv/bin/python';FORMAT='uc-library/.venv/bin/clang-format'
+PRODUCTION=['uc-library/include/presonus/surface/MidiMixerHandler.hpp','uc-library/include/presonus/surface_panel/ControlHelpers.hpp','uc-library/src/Presonus/Surface/MidiMixerLifecycle.cpp','uc-library/src/Presonus/Surface/PanelRegistrarMidiDispatch.cpp']
+CPP=PRODUCTION+['uc-library/tests/recovery/MidiMixerLifecycleReplay.cpp']
+def sha(p):return hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
+def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+checks=[{'kind':'native','argv':[PY,str(HERE/'native.py'),'--verify'],'timeout_seconds':120},{'kind':'format','argv':[FORMAT,'--style=file','--fallback-style=LLVM','--dry-run','--Werror']+CPP,'timeout_seconds':120}]+[{'kind':k,'argv':[PY,str(HERE/'check.py'),k],'timeout_seconds':240 if k=='regression' else 120} for k in ['compile','symbols','replay','guards','regression']]
+( ROOT/EVIDENCE).mkdir(parents=True,exist_ok=True)
+logs=[]
+for c in checks:
+ started=now();t=time.monotonic();r=subprocess.run(c['argv'],cwd=ROOT,text=True,capture_output=True,env={**os.environ,'TMPDIR':str(ROOT/'temp/recovery-work/rolling200-02/midi-lifecycle16')},timeout=c['timeout_seconds']);log=EVIDENCE/(c['kind']+'.log');(ROOT/log).write_text(r.stdout+r.stderr)
+ logs.append({**c,'started':started,'finished':now(),'duration_seconds':time.monotonic()-t,'exit_code':r.returncode,'log':str(log),'log_sha256':sha(log)})
+ print(c['kind'],r.returncode,flush=True);assert r.returncode==0,r.stdout+r.stderr
+versions={}
+for k,argv in [('format',[FORMAT,'--version']),('compiler',['/usr/bin/c++','--version']),('symbols',['/usr/bin/nm','--version']),('unicorn',[PY,'-c','import unicorn;print(unicorn.__version__)']),('pyelftools',[PY,'-c','import elftools;print(elftools.__version__)']),('ccl-root-history',['git','-C','third_party/ccl-framework','log','--reverse','--format=%H %P']),('ccl-head',['git','-C','third_party/ccl-framework','rev-parse','HEAD'])]:versions[k]=subprocess.check_output(argv,cwd=ROOT,text=True).strip()
+assert versions['ccl-root-history'].splitlines()[0].strip()=='e8cbdea4a4a20e15111f5a690798a259c0374b31'
+assert versions['ccl-head']=='e8cbdea4a4a20e15111f5a690798a259c0374b31'
+provider_files=['core/portable/corecomponent.h','core/portable/corecomponent.cpp','core/portable/coreparams.h','core/portable/coreparams.cpp','core/portable/coreparaminfo.h','core/portable/coretypeinfo.h','core/public/corevector.h','core/public/corestringbuffer.h']
+provider=[]
+for f in provider_files:
+ path='third_party/ccl-framework/'+f
+ raw=subprocess.check_output(['git','-C','third_party/ccl-framework','show','HEAD:'+f],cwd=ROOT)
+ assert hashlib.sha256(raw).hexdigest()==sha(path)
+ provider.append({'path':path,'sha256':sha(path),'git_blob':subprocess.check_output(['git','-C','third_party/ccl-framework','rev-parse','HEAD:'+f],cwd=ROOT,text=True).strip(),'commit':versions['ccl-head'],'scope':'pinned source provider; not original binary behavior/ARM layout'})
+native=json.loads((ROOT/HERE/'fixtures.json').read_text())
+limits=[
+ 'Portable source port only. Destructor identities/signatures are established as destructors, not ordinary methods with unresolved return declarations. Original constructor, inheritance, vtable layout, data members, ARM calling convention, exception specification and binary interoperability are not recovered. Host virtual destructor emits D0/D1/D2; host D1/D2 alias, while original D1 and D2 have distinct addresses and separately verified ranges.',
+ 'Only restricted exact original application instructions execute in Unicorn with synthetic valid object memory. Core methods are named observation boundaries independently supplied by actual pinned CCL in portable replay. D0 reaches the exact operator delete PLT target with this and releases a modeled arena; that release does not prove original allocator internals. Host D0 forwards to actual host operator delete. Original ARM allocator implementation and hardware are excluded.',
+ 'Original destructor EH landing pads and unwinding are not executed. Concurrent mutation, reentrant registration changes, allocation-failure injection, corrupt native objects/counts and failing cleanup are excluded. Registrar adapter has a partial source-port switch/encoder interface only; it is not a recovered complete ControlRegistrar::Delegate inheritance implementation.',
+ 'initializeOwnedParameters is an explicit independent ownership setup, not an original constructor reconstruction. Borrowed-only historical constructor remains compatible. State, Services, normal/alternate parameter components, normal/alternate concrete Mackie components, controller and registrar must remain live; normal tag0xa007 must retain identity while bound. State is exclusive for the owned binding, required local callback parameters must exist, and original state offsets are not claimed.',
+ 'Registrar removes only first matching entry, including duplicate/null behavior, preserving order and CCL null error element. Extra registrations must be removed before a handler dies or before dispatching again; test cases explicitly clear leftover dangling duplicates before subsequent callbacks. Normal live usage installs one entry. Callback iteration mutation/reentry is excluded.',
+ 'ParamObserverBase bridge invokes existing paramChanged on real CCL notifications. Its kDestroyed removal safeguard is an independent source-port addition outside the original borrowed-provider lifetime domain, not original paramChanged recovery credit. Local pointer restoration is also an explicit source-port adaptation.',
+ 'CCL Component actually owns and deletes its local children/parameter list. External normal/alternate/registrar objects are borrowed. Test-only Controller methods fail on unexpected calls; MIDI sink only records actual bytes, never accesses hardware. No production fake Core provider or callback-only lifecycle store.',
+ 'Regression rebuild uses the isolated hash-bound baseline libpresonus_uc archive for untouched supporting definitions. Shared CMake, full Linux CTest, source freshness/integration, per-role installed/archive compile-once audits, guarded SQLite admission, tracker and mirror are Root-owned; no readiness admission or active-source fragment is claimed.'
+]
+domain='60 original instruction cases,20 per D0/D1/D2: normal tag0xa007 absent/present; registry empty, absent target, first/middle/last, duplicate targets, nulls and preserved order; all original memory writes recorded and old last slot cleared to ELF NOBITS error zero.90 actual CCL replay cases include observer installed/missing, real parameter notification formatting, exact lookup/remove/cleanup/delete order, registry before observer removal and at actual CCL cleanup, owned child and parameter destruction, actual switch/encoder MIDI before destruction (including null entry), no callbacks after removal, borrowed providers still live, restored local pointer, forwarded real host D0 delete and negative D1/D2 delete checks.Three owned-initialization guards. Historical865 dispatch+3 guards,342 mapping/control cases,12 helper/idle cases (actual log is authoritative) and1102 paramChanged cases rebuilt against current lifecycle.'
+files=set(CPP)
+files.update(str(p.relative_to(ROOT)) for p in (ROOT/HERE).glob('*') if p.is_file())
+files.update(str(p.relative_to(ROOT)) for p in (ROOT/EVIDENCE).glob('*') if p.is_file() and p.name not in ['proof.json','owned.diff','NOTES.json','DELIVERY.json'])
+check=runpy.run_path(str(ROOT/HERE/'check.py'));files.update(check['SOURCES']);files.update(p['path'] for p in provider)
+files.update(['AGENTS.md','docs/worker-handoff.md','docs/core-framework-lineage.md','rootfs/CS18_v13840/home/root/surface','uc-library/include/presonus/MackieControlComponent.hpp','uc-library/include/presonus/MackieControlModel.hpp','uc-library/include/presonus/panel/control.hpp','uc-library/include/presonus/panel/switch_control.hpp','uc-library/src/Presonus/Panel/control.cpp','uc-library/src/Presonus/Panel/SwitchControl.cpp','uc-library/tests/recovery/MidiMixerHandlerDispatchReplay.cpp','uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py','evidence/recovery/2026-11-05/rolling200-02/midi-dispatch/native.json','uc-library/tests/recovery/rolling200-stage03-w01/driver.cpp','uc-library/tests/recovery/rolling200-stage03-w01/replay.py','uc-library/tests/recovery/rolling200-stage03-w01/fixtures.json','uc-library/tests/recovery/MidiMixerParamReplay.cpp','uc-library/candidates/rolling200_02_midi_param_01/check.py','uc-library/candidates/rolling200_02_midi_param_01/native.py','uc-library/candidates/rolling200_02_midi_param_01/native.json','uc-library/tests/graph_trial04_midi_tests.cpp','uc-library/candidates/graph-live-trial-04-midi/check.py','uc-library/candidates/graph-live-trial-04-midi/native-observations.json','uc-library/src/Presonus/StormMixSceneComponent.cpp','uc-library/src/Presonus/Panel/FxPresetComponent.cpp','uc-library/src/Presonus/MappingTable.cpp','uc-library/src/Presonus/MappingTableConnect.cpp'])
+files.update(check['LINK'][:3])
+imports=json.loads((ROOT/EVIDENCE/'regression-inputs.json').read_text());files.update(x['path'] for x in imports['files'])
+for n in [5,6,7]:
+ packet=PACKETS/f'rolling200_02_midi_lifecycle16_{n:02}'
+ for f in ['context.json','native-context.json','request.json','TASK.md','ELF_CONTEXT.md','SOURCE_SLICES.md','CONTEXT.md']:files.add(str(packet/f))
+ files.add(f'temp/recovery-work/rolling200-02/next-implementation16/rolling200_02_midi_lifecycle16_{n:02}.contract.json')
+proof_path=EVIDENCE/'proof.json'
+proof={'version':1,'created':now(),'cwd':str(ROOT),'base_commit':'e523fcda45e4c17eb2e2bb5e8b6c5d0b02689cef','scope':'worker-local Linux bounded source-port reconstruction, not global admission','versions':versions,'ranges':native['ranges'],'native_d1_d2_alias':False,'compiled_d1_d2_alias':True,'commands':logs,'pinned_source_provider':provider,'source_sha256':{f:sha(f) for f in sorted(files)},'validation_domain':domain,'limitations':limits,'formatting_verified':True,'compiled':True,'mangling_verified':True,'namespace_signature_verified':True,'native_target_behavior_verified':True,'provider_behavior_verified':True,'original_full_class_declaration_verified':False,'original_arm_abi_verified':False,'hardware_verified':False}
+(ROOT/proof_path).write_text(json.dumps(proof,indent=2)+'\n');files.add(str(proof_path))
+notes=[]
+for n in [5,6,7]:
+ packet=PACKETS/f'rolling200_02_midi_lifecycle16_{n:02}';req=json.loads((ROOT/packet/'request.json').read_text());o=req['originals'][0]['original'];out=pathlib.Path('uc-library/candidates')/req['task_id'];(ROOT/out).mkdir(parents=True,exist_ok=True)
+ notes.append({'date':now(),'original_elf_sha256':o['elf'],'mangled':o['mangled'],'work_item_id':req['work_binding']['work_item_id'],'status':'implemented, formatted, exact compiled symbols and bounded original/provider replay passed; Root acceptance/integration/admission pending','owner':'rolling200_02_midi_lifecycle16','proof':str(proof_path),'remarks':limits,'resolution':'Earlier lifecycle/operational registrar provider blocker resolved by genuine owned CCL Component, actual observer bridge and live registrar switch/encoder adapter. Constructor provenance remains intentionally unrecovered.','retry_condition':'Use new native/provider evidence for excluded exception, callback mutation and lifetime domains. Root must replay global gates for portable readiness; do not infer original ARM layout/hardware from these results.'})
+notes_path=EVIDENCE/'NOTES.json';(ROOT/notes_path).write_text(json.dumps(notes,indent=2)+'\n');files.add(str(notes_path))
+for n in [5,6,7]:
+ packet=PACKETS/f'rolling200_02_midi_lifecycle16_{n:02}';req=json.loads((ROOT/packet/'request.json').read_text());o=req['originals'][0]['original'];out=pathlib.Path('uc-library/candidates')/req['task_id']
+ def kind(f):
+  if f in PRODUCTION:return 'source'
+  if f=='uc-library/tests/recovery/MidiMixerLifecycleReplay.cpp':return 'test'
+  if f==str(HERE/'fixtures.json'):return 'fixture'
+  if f==str(HERE/'check.py'):return 'replay'
+  if f==str(proof_path):return 'proof'
+  if f==str(packet/'context.json'):return 'packet'
+  return 'dependency'
+ handoff={'version':1,'task_id':req['task_id'],'namespace':req['namespace'],'packet_manifest':str(packet/'context.json'),'originals':[{'elf_sha256':o['elf'],'firmware':o['firmware'],'role':o['role'],'mangled':o['mangled'],'demangled':o['demangled'],'address':o['address'],'size':o['size'],'section':'.text','section_index':12}],'artifacts':[{'kind':kind(f),'path':f,'sha256':sha(f)} for f in sorted(files)],'checks':checks,'validation_domain':domain,'limitations':limits,'build_integration':{'production_partition':'common; add exactly once both new CPPs to existing common OBJECT partition; shared original class headers retained','production_sources':PRODUCTION[2:],'public_headers':['include/presonus/surface/MidiMixerHandler.hpp','include/presonus/surface_panel/ControlHelpers.hpp'],'test_targets':['MidiMixerLifecycleReplay'],'link_dependencies':['presonus_uc for existing canonical model/control boundaries','corelib at pinned CCL5.0.0','presonus_core_allocator','zlib','pthread'],'compile_options':check['PREFIX'][1:],'link_options':['--wrap='+n for n in check['WRAPS']],'ctest_argv':[PY,str(HERE/'check.py'),'replay','--executable','<canonical-built-MidiMixerLifecycleReplay>','--fixtures',str(HERE/'fixtures.json')],'guard_argv':[PY,str(HERE/'check.py'),'guards','--executable','<canonical-built-MidiMixerLifecycleReplay>'],'fixture_sha256':sha(HERE/'fixtures.json'),'notes':'Recompile header dependents. Metadata only; no shared CMake/ledger changes or readiness fragments. Destructor special-member identities need no guessed ordinary return type; original constructor/inheritance/layout stay excluded.'}}
+ (ROOT/out/'HANDOFF.json').write_text(json.dumps(handoff,indent=2)+'\n')
+print('Three packet HANDOFF v1 records sealed with final shared source hashes.',flush=True)

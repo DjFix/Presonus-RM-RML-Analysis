@@ -1843,6 +1843,9 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/panel/PanelTask.hpp
+  presonus/panel/LEDNotifyTask.hpp
+  presonus/surface/RadioToggleButton.hpp
   presonus/dsp/ControllerInfo.hpp
   presonus/panel/Element.hpp
   presonus/MappableMixer.hpp

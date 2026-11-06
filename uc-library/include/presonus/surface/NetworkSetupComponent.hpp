@@ -2,7 +2,9 @@
 #include "core/network/corenetwork.h"
 #include "core/portable/corecomponent.h"
 #include "core/portable/gui/corelistview.h"
+#include "core/portable/gui/coreviewcontroller.h"
 #include "presonus/delay_timer.hpp"
+#include <memory>
 namespace Presonus {
 class WIFIManager;
 namespace Surface {
@@ -78,14 +80,25 @@ struct SurfaceNetworkState {
 namespace Presonus::Surface {
 // Intentional portable composition using upstream Component implementation.
 // No original object layout/inheritance/ordinary-return or ARM ABI claim.
-class NetworkSetupComponent : public Core::Portable::Component {
+class NetworkSetupComponent
+    : public Core::Portable::Component,
+      public Core::Portable::ComponentViewController<NetworkSetupComponent> {
 public:
   explicit NetworkSetupComponent(presonus::surface::SurfaceNetworkState &state)
       : state_(state) {}
+  ~NetworkSetupComponent() override;
+  // Actual CCL mixin replaces the historical PageComponent template. These
+  // return types and multiple inheritance describe this source port only.
+  void *castTo(Core::Portable::ITypedObject::TypeID id) override;
+  Core::Portable::Parameter *findParameter(const char *) const override;
+  Core::Portable::View *createView(const char *) override;
+  void *getObjectForView(const char *, const char *) override;
   // Portable provider-backed nested model. Original inheritance/state/returns
   // remain unresolved. selectedItem is non-owning userData identity.
   class ListModel : public Core::Portable::ListViewModel {
   public:
+    explicit ListModel(NetworkSetupComponent *owner = nullptr)
+        : owner_(owner) {}
     // Source-port adaptation: CCL scrolling must query our selection state.
     bool isSelectionHandler() const override { return true; }
     bool isItemSelected(int) const override;
@@ -93,6 +106,7 @@ public:
     void setSelectedItem(void *item) { selectedItem_ = item; }
 
   private:
+    NetworkSetupComponent *owner_; // borrowed, native owner association
     void *selectedItem_ = nullptr;
   };
   void syncListParam(int, const Core::Vector<UC::NetworkItem *> &,
@@ -123,5 +137,6 @@ public:
 
 private:
   presonus::surface::SurfaceNetworkState &state_;
+  std::unique_ptr<ListModel> ownedModel_; // only models allocated by this port
 };
 } // namespace Presonus::Surface

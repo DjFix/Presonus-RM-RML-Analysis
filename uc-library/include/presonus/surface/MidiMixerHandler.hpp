@@ -3,6 +3,7 @@
 #include <array>
 #include <cstdint>
 #include <functional>
+#include <memory>
 #include <string>
 #include <vector>
 namespace Presonus {
@@ -53,12 +54,28 @@ struct Services {
 };
 } // namespace presonus::surface::midi_port
 namespace Presonus::Surface {
+class PanelRegistrar;
 class MidiMixerHandler {
 public:
   // Intentional portable constructor and return choices, declarations pending.
   MidiMixerHandler(presonus::surface::midi_port::State &state,
                    presonus::surface::midi_port::Services &services)
-      : state_(state), services_(services) {}
+      : state_(state), services_(services), observer_(*this) {}
+  // Host virtual destruction provides D0/D1/D2 identities. This portable class
+  // and observer composition do not reproduce original inheritance/ARM layout.
+  virtual ~MidiMixerHandler();
+  MidiMixerHandler(const MidiMixerHandler &) = delete;
+  MidiMixerHandler &operator=(const MidiMixerHandler &) = delete;
+  // Explicit source-port setup, not reconstruction of an original constructor.
+  // Transfer a genuine local CCL component; its children/parameters are owned
+  // by CCL. Normal/alternate providers and registrar remain borrowed and must
+  // outlive this handler. Normal tag 0xa007 must keep its identity while bound.
+  // Local tags required by encoder/parameter callbacks must be supplied.
+  // Do not rebind this state or mutate registration during callback dispatch.
+  // On teardown, restore the previous borrowed localParameters binding.
+  void
+  initializeOwnedParameters(std::unique_ptr<Core::Portable::Component> local,
+                            PanelRegistrar &registrar);
   // Independent portable record. ARM offsets/stride are not asserted.
   // Borrowed terminated names/colors and a first-byte-empty terminator are
   // required; selected component and mappingTable must be live.
@@ -100,7 +117,19 @@ public:
   void paramChanged(Core::Portable::Parameter *, int);
 
 private:
+  class Observer final : public Core::Portable::ParamObserverBase {
+  public:
+    explicit Observer(MidiMixerHandler &owner) : owner_(owner) {}
+    void paramChanged(Core::Portable::Parameter *, int) override;
+
+  private:
+    MidiMixerHandler &owner_;
+  };
   presonus::surface::midi_port::State &state_;
   presonus::surface::midi_port::Services &services_;
+  Observer observer_;
+  PanelRegistrar *registrar_ = nullptr;
+  Core::Portable::Component *previousLocal_ = nullptr;
+  std::unique_ptr<Core::Portable::Component> ownedLocal_;
 };
 } // namespace Presonus::Surface

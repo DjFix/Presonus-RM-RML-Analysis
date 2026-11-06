@@ -3,6 +3,7 @@
 #include "core/public/corevector.h"
 #include "presonus/delay_timer.hpp"
 #include "presonus/panel/PanelComponent.hpp"
+#include "presonus/panel/PanelTask.hpp"
 #include "presonus/panel/control.hpp"
 #include "presonus/surface_panel/ControlGroup.hpp"
 #include "presonus/surface_panel/LEDState.hpp"
@@ -90,6 +91,13 @@ public:
   void checkPermissionsPWReset();
   void forceCascadeGlobalParamUpdate();
   void help();
+  void assignStaticIP();
+  void assignDynamicIP();
+  void checkNetworkReset();
+  void idleTasks();
+  // Borrowed real CCL network parameter tree, corresponding to native mixer
+  // +0x2e0. This is an independent binding, not an original field/layout claim.
+  Core::Portable::Component *networkParameters = nullptr;
   void attachMeterLEDs();
   void attach48vControls();
   void cleanup();
@@ -103,8 +111,9 @@ public:
   // Borrowed bindings. Share the startup timestamp across panel instances as
   // the embedding application shares the original process startup timestamp.
   // The mixer and timestamp must remain alive during synchronous callbacks.
-  // The timestamp is required on an unblocked reset check; the mixer and all
-  // twelve cascade parameters are required for a forced cascade update.
+  // The timestamp is required on an unblocked permissions/network reset check;
+  // the mixer and all twelve cascade parameters are required for a forced
+  // cascade update.
   Presonus::Mixer::MixerComponentBase *mixer = nullptr;
   std::uint32_t permissionFlags = 0;
   std::uint64_t *permissionStartupMilliseconds = nullptr;
@@ -113,6 +122,12 @@ public:
   Core::Portable::Parameter *observedParameter = nullptr;
 
 private:
+  // Independent lifetime management for tasks created by this source port.
+  // tasks remains the only scheduling vector. Native idleTasks never deletes
+  // pointees; retain created tasks until Rack destruction, including completed
+  // tasks. External tasks remain borrowed and must outlive their scheduling.
+  std::vector<std::unique_ptr<PanelTask>> notificationStorage;
+  void assignIP(bool useStatic);
   presonus::rackpanel_port::Dependencies *deps = nullptr;
   presonus::rackpanel_port::Dependencies &dependencies() const {
     if (!deps)

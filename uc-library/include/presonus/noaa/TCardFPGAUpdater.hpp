@@ -29,8 +29,10 @@ public:
   void receive(const SysexPacket &) override;
   void printProgress(const char *);
   void printProgressErr(const char *);
-  // Declaration-only pending methods. Definitions are preserved outside
-  // production while native execution approval and behavioral validation pend.
+  // Portable coordinator definitions; ordinary original return declarations
+  // remain unresolved. Partial image words use a zero-initialized seeded tail;
+  // negative image read lengths fail closed instead of native out-of-bounds
+  // access.
   bool waitFirmwareCommand(unsigned char *, int, const char *, long long);
   int update();
   // Independent setup/access; these names are not original recovered APIs.

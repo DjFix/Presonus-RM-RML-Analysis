@@ -2,6 +2,7 @@
 #include "core/portable/corepersistence.h"
 #include "core/system/coredebug.h"
 #include "presonus/surface/MidiMixerHandler.hpp"
+#include "presonus/surface/RadioToggleButton.hpp"
 #include "presonus/uc/NetworkItem.hpp"
 #include <cstring>
 namespace presonus::surface {
@@ -15,6 +16,41 @@ bool SurfaceNetworkProvider::parseAddress(Core::Sockets::SocketAddress &address,
 }
 } // namespace presonus::surface
 namespace Presonus::Surface {
+NetworkSetupComponent::~NetworkSetupComponent() {
+  if (ownedModel_ && state_.model == ownedModel_.get())
+    state_.model = nullptr;
+}
+void *NetworkSetupComponent::castTo(Core::Portable::ITypedObject::TypeID id) {
+  if (id == Core::Portable::ViewController::kTypeID)
+    return static_cast<Core::Portable::ViewController *>(this);
+  return Core::Portable::Component::castTo(id);
+}
+Core::Portable::Parameter *
+NetworkSetupComponent::findParameter(const char *name) const {
+  if (auto *p = Core::Portable::Component::findParameter(name))
+    return p;
+  return state_.parameters.findParameter(name);
+}
+Core::Portable::View *NetworkSetupComponent::createView(const char *type) {
+  if (std::strcmp(type ? type : "", "RadioToggleButton") == 0)
+    return new RadioToggleButton;
+  return Core::Portable::ComponentViewController<
+      NetworkSetupComponent>::createView(type);
+}
+void *NetworkSetupComponent::getObjectForView(const char *name,
+                                              const char *type) {
+  if (std::strcmp(type ? type : "", "ListModel") == 0 &&
+      std::strcmp(name ? name : "", "networkList") == 0) {
+    if (!state_.model) {
+      ownedModel_ = std::make_unique<ListModel>(this);
+      state_.model = ownedModel_.get();
+      setupListModel();
+    }
+    return state_.model;
+  }
+  return Core::Portable::ComponentViewController<
+      NetworkSetupComponent>::getObjectForView(name, type);
+}
 void NetworkSetupComponent::ListModel::setSelected(UC::NetworkItem *item) {
   const int count = views.count();
   setSelectedItem(item);

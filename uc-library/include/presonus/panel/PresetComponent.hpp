@@ -19,11 +19,13 @@ class MixerComponentBase;
 namespace Presonus::Panel {
 class PresetNameCache;
 class FxPresetComponent;
+class PresetNameManager;
 
 // Portable source contract. Original inheritance, fields, return declarations,
 // ownership and ARM ABI remain unresolved. Core uses the pinned source
 // provider.
-class PresetComponent : public Core::Portable::Component {
+class PresetComponent : public Core::Portable::Component,
+                        private PresetNameCache::Receiver {
 public:
   class StorageCompletionHandler;
   struct Delegate; // Original callback object stays opaque.
@@ -34,6 +36,11 @@ public:
                   const char *formatterName,
                   Presonus::Mixer::MixerComponentBase &);
   ~PresetComponent() override;
+  void init();
+  // Borrowed concrete manager and its caches must outlive this component.
+  void sourcePortBindManager(PresetNameManager &manager) {
+    nameManager = &manager;
+  }
   // Explicit independent registration token, not original subobject layout.
   void sourcePortObserveCache(PresetNameCache::Delegate *);
   // Ordinary return spellings are source-port contracts, not ELF declarations.
@@ -61,6 +68,13 @@ public:
 private:
   friend struct presonus::panel::PresetTestAccess;
   friend class FxPresetComponent;
+  const char *sourcePortFolder() const;
+  void registerCache(PresetNameCache *);
+  void cacheChanged(PresetNameCache &, int, const char *,
+                    const char *) override;
+  void cacheRebuilt(PresetNameCache &) override;
+  PresetNameManager *nameManager = nullptr;
+  Core::Vector<PresetNameCache *> registeredCaches;
   // Independent typed binding for the composed Fx registration. The original
   // Delegate remains opaque, while this membership has an actual receiver.
   void bindFxDelegate(FxPresetComponent &, Delegate *);

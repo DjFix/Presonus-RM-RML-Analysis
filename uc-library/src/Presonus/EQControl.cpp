@@ -22,6 +22,17 @@ void EQControlFrequencyInterpolator::setRange(float minimum, float maximum,
   Core::Interpolator::setRange(minimum, maximum, midpoint);
   configured = true;
 }
+void EQControlFrequencyInterpolator::setDisplayRange(float minimum,
+                                                     float maximum) {
+  configured = false;
+  Core::Interpolator::setRange(minimum, maximum, 1.f);
+  try {
+    positiveRange.setRange(minimum, maximum, 0.f);
+    configured = true;
+  } catch (const std::invalid_argument &) {
+    // Native setup stores bounds even when no supported conversion is known.
+  }
+}
 float EQControlFrequencyInterpolator::normalizedToRange(float value) const {
   if (!configured)
     throw std::domain_error(
@@ -70,6 +81,99 @@ EQControl::EQControl(const Core::TRect<int> &rectangle)
   curveMaximum = 0.f;
 }
 
+void EQControl::setAttributes(const Core::Portable::Attributes &attributes) {
+  if (!constructorState || !viewController)
+    throw std::logic_error("EQControl attribute setup requires owned state and "
+                           "a real ViewController");
+  using namespace Core::Portable;
+  auto &state = *constructorState;
+  auto lookup = [&](const char *name) {
+    return static_cast<Parameter *>(
+        viewController->getObjectForView(name, kParamType));
+  };
+  int count = static_cast<int>(attributes.getInt("numBands"));
+  const char *hpfName = attributes.getString("hpf");
+  Parameter *hpf = hpfName && *hpfName ? lookup(hpfName) : nullptr;
+  if (hpf)
+    ++count;
+  if (count != 0)
+    setNumBands(count);
+  // Actual pinned provider. Native virtual size dispatch is represented by
+  // the explicit initBands phase after the composed View changes its size.
+  state.control.View::setAttributes(attributes);
+  initBands();
+  setBufferedDraw(attributes.getInt("bufferedDraw") != 0);
+  int band = 0;
+  if (const auto *queue = attributes.getQueue("bands")) {
+    for (int entry = 0;
+         entry < queue->getValues().count() && band < requestedBandCount;
+         ++entry) {
+      const auto *record = queue->getValues().at(entry)->getAttributes();
+      if (!record)
+        continue;
+      BandParams parameters;
+      parameters.slot3 = lookup(record->getString("type"));
+      parameters.gain = lookup(record->getString("gain"));
+      parameters.q = lookup(record->getString("q"));
+      parameters.frequency = lookup(record->getString("freq"));
+      parameters.slot4 = lookup(record->getString("active"));
+      parameters.slot5 = lookup(record->getString("selected"));
+      bandImages[static_cast<unsigned>(band)] =
+          ViewAttributes::getBitmap(*record, "handle");
+      if (auto *image = bandImages[static_cast<unsigned>(band)].getBitmap())
+        state.handleDiameter = image->getHeight() / image->getFrameCount();
+      // Native stores the six slots before passing their copy to setBand.
+      // Therefore the accepted helper removes/adds the incoming bindings.
+      portableParams[static_cast<unsigned>(band)] = parameters;
+      typeParameters[static_cast<unsigned>(band)] = parameters.slot3;
+      setBand(band++, parameters);
+    }
+  }
+  if (hpf) {
+    BandParams parameters;
+    parameters.slot3 = state.hpfParameters.byTag(2);
+    parameters.gain = state.hpfParameters.byTag(1);
+    parameters.q = state.hpfParameters.byTag(0);
+    parameters.frequency = hpf;
+    parameters.slot4 = hpf;
+    // Native writes forceCurve before the bounds-checked setBand. Inputs that
+    // fill all configured slots and also request HPF overrun native storage;
+    // that unsafe configuration is excluded from this source port.
+    if (band >= static_cast<int>(portableBands.size()))
+      throw std::out_of_range("EQControl HPF requires an unfilled band slot");
+    portableBands[static_cast<unsigned>(band)].forceCurve = true;
+    portableParams[static_cast<unsigned>(band)] = parameters;
+    typeParameters[static_cast<unsigned>(band)] = parameters.slot3;
+    setBand(band, parameters);
+  }
+
+  if (const auto *range = attributes.getAttributes("displayRange")) {
+    curveMinimum = static_cast<float>(range->getInt("minFreq"));
+    curveMaximum = static_cast<float>(range->getInt("maxFreq"));
+    displayMinimumLevel = static_cast<float>(range->getInt("minLevel"));
+    displayMaximumLevel = static_cast<float>(range->getInt("maxLevel"));
+  }
+  defaultBitmap = ViewAttributes::getBitmap(attributes, "image");
+  Core::Rect rectangle(state.control.getSize());
+  if ((rectangle.getWidth() <= 0 || rectangle.getHeight() <= 0) &&
+      ViewAttributes::autoSizeToBitmap(rectangle, defaultBitmap.getBitmap()))
+    setSize(rectangle);
+  backgroundBitmap = ViewAttributes::getBitmap(attributes, "handle");
+  if (auto *image = backgroundBitmap.getBitmap())
+    state.handleDiameter = image->getHeight() / image->getFrameCount();
+  else
+    state.handleDiameter =
+        static_cast<int>(attributes.getInt("handleDiameter"));
+  state.offlineColor = ViewAttributes::getColor(
+      attributes, "offLineColor", state.control.getStyle().getForeColor());
+  state.gain.setRange(displayMinimumLevel, displayMaximumLevel, 1.f);
+  state.frequency.setDisplayRange(curveMinimum, curveMaximum);
+  state.y.setRange(
+      -2.f, static_cast<float>(state.control.getSize().getHeight() + 2), 1.f);
+  state.x.setRange(0.f, static_cast<float>(state.control.getSize().getWidth()),
+                   1.f);
+}
+
 EQControl::~EQControl() {
   // The authoritative type binding is independent of the compatibility slot3.
   // Preserve each registration and repeated parameter in native helper order.
@@ -115,16 +219,21 @@ bool EQControl::isAnyBandOn() const {
   return false;
 }
 void EQControl::setBufferedDraw(bool state) {
-  if (!drawBoundary)
+  if (!constructorState && !drawBoundary)
     throw std::logic_error("EQControl draw boundary must be bound");
   bufferedDraw = state;
   if (!state) {
-    if (bufferPresent)
+    if (constructorState)
+      bitmap.reset();
+    else if (bufferPresent)
       drawBoundary->releaseBuffer();
     bufferValid = false;
     bufferPresent = false;
   }
-  drawBoundary->initBands(*this);
+  if (constructorState)
+    initBands();
+  else
+    drawBoundary->initBands(*this);
 }
 float EQControl::getFrequency(int index) const {
   if (index < 0 || index >= static_cast<int>(portableParams.size()))
@@ -263,6 +372,9 @@ void EQControl::initBands() {
     band.dirty = 1;
   }
   portableParams.resize(portableBands.size());
+  typeParameters.resize(portableBands.size());
+  bandImages =
+      std::vector<Core::Portable::BitmapReference>(portableBands.size());
   amplitudeCurve.assign(static_cast<unsigned>(width), 0.f);
   if (bufferedDraw) {
     pixelCurve.clear();

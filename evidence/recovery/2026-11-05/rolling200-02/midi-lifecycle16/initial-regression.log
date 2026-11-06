@@ -1,0 +1,34 @@
+["/usr/bin/c++", "-std=c++20", "-O0", "-fno-rtti", "-ffunction-sections", "-fdata-sections", "-Wno-multichar", "-Iuc-library/include", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/Surface/MidiMixerLifecycle.cpp", "uc-library/src/Presonus/Surface/PanelRegistrarMidiDispatch.cpp", "uc-library/src/Presonus/Surface/MidiMixerHandler.cpp", "uc-library/src/Presonus/Surface/MidiMixerControls.cpp", "uc-library/src/Presonus/MackieControlComponentModel.cpp", "uc-library/src/Presonus/MackieControlModel.cpp", "uc-library/src/Presonus/MackieControlModelMappings.cpp", "uc-library/src/Presonus/MackieControlComponent.cpp", "uc-library/tests/recovery/MidiMixerHandlerDispatchReplay.cpp", "temp/core-upstream/root-integration-01/libpresonus_uc.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-lz", "-lpthread", "-Wl,--gc-sections", "-Wl,--wrap=_ZN8Presonus22MackieControlComponent8getModelEv", "-Wl,--wrap=_ZN8Presonus18MackieControlModel17releaseAllButtonsEv", "-Wl,--wrap=_ZN8Presonus18MackieControlModel14setButtonStateEib", "-Wl,--wrap=_ZN8Presonus18MackieControlModel11turnEncoderEii", "-Wl,--wrap=_ZN8Presonus18MackieControlModel14turnScrubwheelEi", "-Wl,--wrap=_ZN8Presonus7Surface16MidiMixerHandler18setControlsEnabledEb", "-Wl,--wrap=_ZNK8Presonus5Panel7Control12getParameterEv", "-Wl,--wrap=_ZNK4Core8Portable9Component17getParameterByTagEi", "-o", "temp/recovery-work/rolling200-02/midi-lifecycle16/dispatch"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py", "symbols", "--executable", "temp/recovery-work/rolling200-02/midi-lifecycle16/dispatch"]
+["/usr/bin/nm", "--defined-only", "temp/recovery-work/rolling200-02/midi-lifecycle16/dispatch"]
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py", line 43, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py", line 26, in main
+    req=json.loads((ROOT/'temp/recovery-work/rolling200-02/next-implementation10/prepared-midi10/packets'/f'rolling200_02_midi_dispatch10_{n:02}'/'request.json').read_text());name=req['targets'][0]['mangled'];assert name in names,name;print(name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/temp/recovery-work/rolling200-02/next-implementation10/prepared-midi10/packets/rolling200_02_midi_dispatch10_01/request.json'
+
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/midi_mixer_lifecycle/check.py", line 51, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/midi_mixer_lifecycle/check.py", line 43, in main
+    elif a.mode=='regression':regression()
+                              ^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/midi_mixer_lifecycle/check.py", line 24, in regression
+    print(run(['uc-library/.venv/bin/python','uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py',mode,'--executable',str(OUT/'dispatch')]))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/midi_lifecycle16/uc-library/tests/recovery/midi_mixer_lifecycle/check.py", line 15, in run
+    if r.returncode:print(r.stdout+r.stderr,flush=True);r.check_returncode()
+                                                        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['uc-library/.venv/bin/python', 'uc-library/tests/recovery/rolling200-02/midi-dispatch/check.py', 'symbols', '--executable', 'temp/recovery-work/rolling200-02/midi-lifecycle16/dispatch']' returned non-zero exit status 1.

@@ -10,6 +10,7 @@ public:
       : caches(items, count) {}
   PresetNameCache *getCache(int index) const;
   void rebuildAllCaches() const;
+  PresetNameCache *lookupCache(const char *) const;
 
 private:
   Core::ConstVector<PresetNameCache *> caches;

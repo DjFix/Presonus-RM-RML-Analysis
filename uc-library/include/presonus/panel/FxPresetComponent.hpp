@@ -42,6 +42,10 @@ public:
   Core::Portable::Component *fxParameters = nullptr;
   Core::CString256 presetType;
   bool presetTypeBound = false;
+  // Selection notifications require sourcePortPreset()->sourcePortBindManager
+  // with a concrete borrowed manager that outlives this object. Legacy borrowed
+  // array/service modes retain their previous narrower API boundaries.
+  void paramChanged(Core::Portable::Parameter *, int);
   int getFxIndex() const;
   const char *getPresetType() const;
 

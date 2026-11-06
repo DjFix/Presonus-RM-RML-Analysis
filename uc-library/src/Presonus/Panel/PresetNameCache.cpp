@@ -1,6 +1,7 @@
 #include "presonus/panel/PresetNameCache.hpp"
 #include <cstdio>
 #include <cstring>
+#include <new>
 namespace Presonus::Panel {
 namespace {
 constexpr const char *emptyMarker = "* Empty Location *";
@@ -113,7 +114,10 @@ void PresetNameCache::cachePreset(const char *name, const char *category,
     entry.category.empty();
   }
   for (int i = 0, count = observers.count(); i < count; ++i)
-    sink.changed(observers[i], *this, slot, name, category);
+    if (auto *receiver = receiverFor(observers[i]))
+      receiver->cacheChanged(*this, slot, name, category);
+    else
+      sink.changed(observers[i], *this, slot, name, category);
 }
 void PresetNameCache::rebuild() {
   if (!dirty)
@@ -130,7 +134,10 @@ void PresetNameCache::rebuild() {
     cachePreset(name, category, slot);
   }
   for (int i = 0, count = observers.count(); i < count; ++i)
-    sink.rebuilt(observers[i], *this);
+    if (auto *receiver = receiverFor(observers[i]))
+      receiver->cacheRebuilt(*this);
+    else
+      sink.rebuilt(observers[i], *this);
 }
 void PresetNameCache::addCategory(const char *category) {
   categories.add(Core::CString32(category));
@@ -161,5 +168,32 @@ Core::Portable::FileName PresetNameCache::getFileNameForSlot(unsigned slot,
 namespace Presonus::Panel {
 void PresetNameCache::sourcePortRemoveObserver(Delegate *observer) {
   observers.remove(observer);
+}
+} // namespace Presonus::Panel
+
+namespace Presonus::Panel {
+PresetNameCache::Receiver *
+PresetNameCache::receiverFor(Delegate *identity) const {
+  for (int i = 0; i < receivers.count(); ++i)
+    if (receivers[i].identity == identity)
+      return receivers[i].receiver;
+  return nullptr;
+}
+void PresetNameCache::sourcePortBindReceiver(Delegate *identity,
+                                             Receiver *receiver) {
+  for (int i = 0; i < receivers.count(); ++i)
+    if (receivers[i].identity == identity) {
+      receivers[i].receiver = receiver;
+      return;
+    }
+  if (!receivers.add({identity, receiver}))
+    throw std::bad_alloc();
+}
+void PresetNameCache::sourcePortUnbindReceiver(Delegate *identity) {
+  for (int i = 0; i < receivers.count(); ++i)
+    if (receivers[i].identity == identity) {
+      receivers.removeAt(i);
+      return;
+    }
 }
 } // namespace Presonus::Panel

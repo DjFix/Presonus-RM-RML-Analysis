@@ -255,6 +255,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/Surface/DAWMixerHandler.cpp
   src/Presonus/MeterControl.cpp
   src/Presonus/Surface/NetworkSetupComponent.cpp
+  src/Presonus/Surface/RadioToggleButton.cpp
   src/Presonus/Surface/CapturePageComponent.cpp
   src/Presonus/Surface/GroupsEditPageComponent.cpp
   src/Presonus/Surface/PresetsPageComponent.cpp
@@ -265,6 +266,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/Surface/DawFxPageComponent.cpp
   src/Presonus/PageComponent.cpp
   src/Presonus/Surface/MidiMixerHandler.cpp
+  src/Presonus/Surface/MidiMixerLifecycle.cpp
+  src/Presonus/Surface/PanelRegistrarMidiDispatch.cpp
   src/Presonus/MappingTable.cpp
   src/Presonus/MackieControlModel.cpp
   src/Presonus/PCM4104/Pcm4104Spi.cpp
@@ -378,6 +381,8 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/SLReverbController.cpp
   src/Presonus/Panel/PresetNameCache.cpp
   src/Presonus/Panel/RackPanelComponent.cpp
+  src/Presonus/Panel/PanelTask.cpp
+  src/Presonus/Panel/LEDNotifyTask.cpp
   src/Presonus/Mixer/MasterSectionComponent.cpp
   src/Presonus/Mixer/InputComponent.cpp
   src/Presonus/Mixer/NetworkSelectComponent.cpp
@@ -467,6 +472,9 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/panel/PanelTask.hpp
+  presonus/panel/LEDNotifyTask.hpp
+  presonus/surface/RadioToggleButton.hpp
   presonus/uc/ClientSubscription.hpp
   presonus/dsp/ControllerInfo.hpp
   presonus/panel/Element.hpp

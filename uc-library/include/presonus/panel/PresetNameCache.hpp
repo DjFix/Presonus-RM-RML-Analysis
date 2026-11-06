@@ -26,6 +26,15 @@ public:
                          const char *) = 0;
     virtual void rebuilt(Delegate *, PresetNameCache &) = 0;
   };
+  // Typed source-port receivers coexist with opaque legacy registrations.
+  struct Receiver {
+    virtual ~Receiver() = default;
+    virtual void cacheChanged(PresetNameCache &, int, const char *,
+                              const char *) = 0;
+    virtual void cacheRebuilt(PresetNameCache &) = 0;
+  };
+  void sourcePortBindReceiver(Delegate *, Receiver *);
+  void sourcePortUnbindReceiver(Delegate *);
   PresetNameCache(const char *type, const Core::Portable::FileName &folder,
                   int slots, int protectedSlots, ObserverSink &sink);
   bool parseFileName(const Core::Portable::FileName &,
@@ -60,6 +69,12 @@ private:
   Core::Vector<Delegate *> observers;
   Core::Vector<Entry> entries;
   Core::Vector<Core::CString32> categories;
+  struct Binding {
+    Delegate *identity;
+    Receiver *receiver;
+  };
+  Core::Vector<Binding> receivers;
+  Receiver *receiverFor(Delegate *) const;
   ObserverSink &sink;
 };
 } // namespace Presonus::Panel

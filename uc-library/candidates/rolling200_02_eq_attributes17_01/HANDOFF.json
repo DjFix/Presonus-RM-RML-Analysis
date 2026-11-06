@@ -1,0 +1,566 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_eq_attributes17_01",
+  "namespace": "Presonus::EQControl",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/context.json",
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus9EQControl13setAttributesERKN4Core8Portable10AttributesE",
+      "address": 450424,
+      "size": 1788,
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "dependency",
+      "path": "AGENTS.md",
+      "sha256": "08353c85fd2fee8a6b97a75b8bc799ba5b44377a3c56979ed06fc8c5eff1e74d"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/core-framework-lineage.md",
+      "sha256": "533554574b25a46470d71beaf1a34be586a0595a7d1b4de89946fecca1762ba4"
+    },
+    {
+      "kind": "dependency",
+      "path": "docs/worker-handoff.md",
+      "sha256": "3f6952b6afa1a67a56a28ddc122c2b9655c837fd86cc4b1c02e64cb494059ab3"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/NOTES.json",
+      "sha256": "c0fe8244e65c37cc080e902ef36865c6084ec4c4d3b3db5ecd37c9fc3427934b"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/compile.log",
+      "sha256": "4b49ff5d21ea495d0765879f1fb32734e0005641a880363765554e6efc89ba78"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/fixture-transfer.json",
+      "sha256": "b35ed1481b8f64547dfc9a31243013be535050f614d5afc94d93837bd22ad5b8"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/format.log",
+      "sha256": "1cda3e897c6581cadc7b8a4cddcd1cb9c167dcb0f7cc3d5526c90b7f545ae0d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/native.log",
+      "sha256": "b1bcce77d98c8e2febbd20d421af7a468a9e4fdee192f6c8977139af173f0851"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/proof.json",
+      "sha256": "f82e5731542f7903fbd71796bb9b99e47ff583dbe4c07b5f4f45bb70dce139ff"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/rea-doctor.json",
+      "sha256": "8e6fdc2cd00cb76be847f21e9132cc96a8a4892e960ca2610d66de5504773e87"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/regression-development.log",
+      "sha256": "0f60c3574903dac09e1a71a9c20c38841648127882d9aa2a2b7cd0f74dab5781"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/regression-development02.log",
+      "sha256": "955db341d6aef0cc2c2027abab92f93d913748b52a3f3213fb3a3b3985f56608"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/regression.log",
+      "sha256": "1bd26f4e3daf095909f895a327cc25973d9f894914b6f511605358126fc83a5f"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/replay.log",
+      "sha256": "32f403d50d48fbef544d7c2bfc06f394aed8edfd195d0aff84535f4a60ee5716"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-attributes17/symbols.log",
+      "sha256": "6a3fdb5649dae6907ffc2989f1dc43f6256e45afbdd52d59b2a30d1c8a73ee3f"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-band/native.json",
+      "sha256": "8b50b71fc1d7d1f0a4cbf5dff4daad450e6b62f5e6125890f6aba4d650d7d944"
+    },
+    {
+      "kind": "dependency",
+      "path": "evidence/recovery/2026-11-05/rolling200-02/eq-lifecycle/native.json",
+      "sha256": "59e3e71f8a6b5efd20e261759ff8ab7247c021122bd92b6d95120788fe62bd79"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a",
+      "sha256": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/BATCH_MEMBER.json",
+      "sha256": "e236525b7cca238f2e11ad477f9519c3b188c98a51dcedac3502d50235ed336c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/CONTEXT.md",
+      "sha256": "619d2d74bc52d67a3ef8dd6a54e4ce8fb4552fbbc52f06cbf7ce0684121c199c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/ELF_CONTEXT.md",
+      "sha256": "ad5da4c65873174cf34141455f54a110a779ae32af69ab39e0c60f51b44d4a69"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/SOURCE_SLICES.md",
+      "sha256": "06e0b28cd5a2da30a8617289df0c3258c01afec655cca842bb3e43dde05eb44e"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/SUBAGENT_PROMPT.md",
+      "sha256": "c85b5defca1351d9e33ffaca077490b157450e69fb6af4fe295f7795cc4a8aad"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/TASK.md",
+      "sha256": "9b530480ca742fa61d08f613c651ad1978ef21074ebc85504607773b55598621"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/context.json",
+      "sha256": "3894796caf2a77f57480552a06baa9a1b4ff0b7738b190a4fab6f9c2f9a5b201"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/native-context.json",
+      "sha256": "d5cc2b9fb934193bd1b0922ac37db9e82942c8d928c58ca3aa29e36fddf9178d"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/request.json",
+      "sha256": "2cd05d3618fdf586ffd6dfbb77ee9fe12070a7446fbc664635cd64b4a54b441c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/recovery-work/rolling200-02/next-implementation17/prepared-eq-attributes17/packets/rolling200_02_eq_attributes17_01/source-slices.json",
+      "sha256": "9b919fc6c02773a1165c2a26c0de59cc1d5cbe4f6f8725346b986d57ab422d28"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreattributes.cpp",
+      "sha256": "98dae6e293cc7120d41497f3a4ec8310eb320235ef1dfae1758db5afb59d932a"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreattributes.h",
+      "sha256": "7070be8a1fccb67814b25b77db3fc0c14283c009a59c2a4060cfe23ded517e96"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.cpp",
+      "sha256": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.cpp",
+      "sha256": "c05c63ea50d66288f11a9b1daf26bb4b2559042a27831f27785b09b192bc796f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corebitmap.h",
+      "sha256": "59f7e8af9fd892e0e206c5e73748b0f5d7a03ce3019e6ce7fa532368c5cb18e7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.cpp",
+      "sha256": "9d473c187408d7bbc1bd99c127207b073b1331bb72f40a56f6b57c48ccb6dd0b"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/corecontrols.h",
+      "sha256": "79b2f223d2eecdc5787bd01a4c91c0ee80af3598467fbd0cb617010e702515fb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.cpp",
+      "sha256": "a2d1bdf79b00c12d87ab01072bde099b20691fa7bed5de7988071f2e7748eaa7"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreview.h",
+      "sha256": "ab6167c58ad2847ae0b0ecd7a60390d36a65b6b044e8d883b3d2940a60aa5eca"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewcontroller.h",
+      "sha256": "2366aaa9034ee251af3711a3f273b9fed43adb95f92229ddced14fb10fb1223f"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/gui/coreviewshared.h",
+      "sha256": "019137efd018010b8f8a15d85d39257620cdb3a86a2b18c0558f5c0617809793"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.cpp",
+      "sha256": "c447790dd9c3e01bc26b034b299fd70c463d0567b0d9b20b767b884db0143423"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/public/coreinterpolator.h",
+      "sha256": "df53a9ef512006a619b46831a7026380154a0589032290748737b8b2f030a202"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/dsp/biquad_calc.hpp",
+      "sha256": "6be0cc48b32d8157b5583bb1e06191470fa5c11974c1090959c0a3b67386db70"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer_dsp/EQControl.hpp",
+      "sha256": "1ecee49dce48e09f8f05dcae84f01214372a8195c9f39c204ddabd829dc42559"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/include/presonus/mixer_dsp/EqSourceProviders.hpp",
+      "sha256": "fb87fd1e671c3aabad67d82dc662354cc14aaf4863201c0f6866231cb4d5ccd1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp",
+      "sha256": "8ba4957e700d9a36feacae38995a131f11b2d3e4da65a0426d9ecdf75eb774f8"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/EQControl.cpp",
+      "sha256": "7e10bdbea56f52f990ba473ef272e07bf62ed84d288391402ae40498563b540e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/EQControlBandParams.cpp",
+      "sha256": "2cd55648516c20cf67e82550e800e92c222182e0c7c61845359e1d39929dbc48"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/Presonus/EQControlBiquad.cpp",
+      "sha256": "e7e5736d1ad2838357f99d7c84b5681381ae1774e9611ec6fb10cc879ce50b01"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/src/mixer_dsp/Logarithm.cpp",
+      "sha256": "6e5410ce7c69db30d9bf09ca334e29c067a77b9f0420a1460cdb2eba9f63e9ea"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/EQBandObserverReplay.cpp",
+      "sha256": "84b228cb9ffb4530eb8b7cb197e1d20bc99bb5a7b324b69251461b31b9b25910"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/EQConstructorsReplay.cpp",
+      "sha256": "f90b4d3efe342d4ec9796b153a8c9df78aa4f83d8852455a7b120a32c43e2d49"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/EQControlAttributesReplay.cpp",
+      "sha256": "7d188cc8c0d4b449dca6e65d98fcb7b65ce4b42937d0cb060c2b20ce1a847d28"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/EQControlLifecycleReplay.cpp",
+      "sha256": "09943cd9f0140e242f7ddd5d544f73f74fea53257e714fdddbdbd21c384855d6"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/eq_attributes/check.py",
+      "sha256": "47553ea6ed325d901c1ead0c0120d04964a3fbe5c55961dc8ff3ac90eddf788e"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/eq_attributes/fixtures.json",
+      "sha256": "d46a71da1e12b28ff7f95b7ce1bc25c35ae9e5f1523dffc36c04ce114d64b54a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/eq_attributes/native.py",
+      "sha256": "b5e9ecc529b539d8d8ca14a875458c85d2ca0a00083766b9e225fccae434be2f"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/eq_attributes/seal.py",
+      "sha256": "9a2c7f03b8bd6e3c1fa2432115f61b76d38b8e0a883d3dfff499e33d6814e152"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/check.py",
+      "sha256": "fb8fd3701328c778ffc9e5f4c154125791ef6a4e5b772da304fe7f2676b0ba55"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/oracle.py",
+      "sha256": "6309dc4c8e69b6cd0c1987ddbeb969557248e52798da6c845ffa239cee145f43"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/regression.py",
+      "sha256": "21c0aab71b9ef2a391e0c3a733bfeece1929797dccf9808a64e576a7e6593b91"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-band/seal.py",
+      "sha256": "4534531fdd98441d915e15da62782586bb7631b2299ec08fd84a85544b914a6c"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/check.py",
+      "sha256": "45bf203e251e9f51ffaf165442384598f6e716ba9e735720bdf00f64e90f8f79"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/fixtures.json",
+      "sha256": "c6faa6d7ec68d3933632ca189c3637355e1b717461c6c1e57da3db4386ef5e61"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-constructors/native.py",
+      "sha256": "b038f27e10b5eb653003c77fa654c1f7814c501bb6c010f3e468f42ac7b37e59"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/check.py",
+      "sha256": "da4c0de6febf954dccfe1e2ee2a8f7b244a9c5e2de70014f79420e7a21dc77f7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/driver.cpp",
+      "sha256": "48adf91f76c30fcb9c8e942bf9c131c02f7a290b3deacd5ec1de63b86eb5bfa2"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/fixtures.json",
+      "sha256": "373054d87ff2f376412fd066e9c5cb634bf483dcc42fd946301cc8a310fbd3d6"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-control/native.py",
+      "sha256": "b3c5bcac6a67601c00a494e81f4084a346ef85f39b6782b20ef8bc3e06bc41c7"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/check.py",
+      "sha256": "659361207c0af9cfc8799e282caed132a65a35b21a49317ecdd9234fab714301"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve-fixtures.json",
+      "sha256": "590046619ff3c71998c981bb1e6c5a100704b1be752c0b014e5dc6184375c597"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/curve_native.py",
+      "sha256": "ef76605d4a49f795e3d2f75f6211e318ab3c0c10e82667b32df4351e73090a34"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/driver.cpp",
+      "sha256": "d386534cc45cbef31d74a0c3ea27aff316feaab762017701767d3c8d18a33216"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/fixtures.json",
+      "sha256": "856cea4de50cca9c00245bbef0d8a81c24cd541a5aab73c5e46280f7f1c706c1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/generate_curves.py",
+      "sha256": "7071bd1d006a52bad888f8bea88e8dde9a3149607af6423346e45e81cfb9f89e"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native-execution.json",
+      "sha256": "904984147f0c00c97616e97a15d377570f81975cc37edabf2194d6a459d9db63"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/native.py",
+      "sha256": "0c5220cc885dfa4e95c4f3779744da571a1765e2a71df5b742e187ed7dc27d18"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_boundaries.py",
+      "sha256": "8ba6b5f39da9695e4772b0c900746c64b5987d621bd922a973aef67d77690860"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/replay_curves.py",
+      "sha256": "c2a38cfc3de015389c56ccfec444933fa0069129655ff199619dcfaaa9a7926d"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-curves/runtime.py",
+      "sha256": "ef4e8144e10fb303cfe054cb1c7e380376195e1c338171ec1e4c445f9661413a"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py",
+      "sha256": "d306afc142532dce6b4c60708a5bc1b3f6dbdcb26651eb67bbb74995b256bbb0"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/oracle.py",
+      "sha256": "297175ab1a5c239bb69b700213e091ceeeb859b1f06520b57529d36d2a5aa8c1"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py",
+      "sha256": "de7fb2b65e81cc960460870793dba15577516e6b8f62a421c2a060f77c54ac26"
+    },
+    {
+      "kind": "dependency",
+      "path": "uc-library/tests/recovery/rolling200-02/eq-lifecycle/seal.py",
+      "sha256": "2e05665999bd069229d903a46f1e53c6546e6fc9324aa41cc8d847dc1c742990"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "native"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/eq_attributes/check.py",
+        "regression"
+      ],
+      "timeout_seconds": 240
+    }
+  ],
+  "validation_domain": "36 independent original-ARM attribute scenarios / 54 exact target calls (18 repeated setups): band counts0/2/3; empty, ordinary and mixed queues; six lookup names/order and missing q/selected; missing/found HPF and owned tags2/1/0; pre-store setBand phase and forceCurve; per-band/default/global handle references and frame diameter; absent/full/partial display ranges; style default and explicit offLineColor; positive/empty view and bitmap autosize; buffered/unbuffered toggles and image replacement. Real CCL Component parameter lookup, View style/size, BitmapManager/BitmapReference lifetime, interpolator endpoints and linear clipping. Existing unchanged constructor50, band/observer224, getter/control/curve/lifecycle regressions separately replayed.",
+  "limitations": [
+    "Intentional portable source port using real pinned CCL5.0.0 composition. Original class inheritance, fields, object/vtable layout, native controller writer at this+0x5c, ARM ABI and hardware remain unresolved/unverified. Controller injection is explicit typed borrowed source-port API; no reinterpretation of borrowedBindings.",
+    "Original ordinary setAttributes return declaration remains unresolved; void is provisional. Mangling, call side effects and upstream View return do not independently establish original app declaration. Remains compiled-declaration-pending, not ready promotion.",
+    "Native oracle runs exact hash/range-verified app target instructions only. Attributes/View/Bitmap/ParamList/math and accepted app initBands/setBufferedDraw/setBand boundaries are intercepted before execution; no Core binary decompilation or Core instruction execution. Existing accepted helper/constructor/curve/lifecycle fixtures validate those dependencies separately; this is compositional source-port evidence, not complete ARM integration.",
+    "Owned rectangular construction only for setAttributes. Tagged partial-object borrowed APIs retain compatibility. Actual CCL View::setAttributes operates the composed Control; explicit initBands represents native virtual setSize dispatch. No draw or BackgroundPainter approximation added.",
+    "EQ frequency adapter records native bounds/mid1 through actual CCL Interpolator state. Conversion remains restricted to existing independently validated positive EqLogSourceInterpolator domains (provider mid0 internally); absent/partial/unsupported bounds are stored but conversions throw. Native invalid logarithm behavior is unclaimed.",
+    "Output bitmap remains actual CCL RGBA adaptation, not original RGB565 pixels/renderer. Oracle intercepts storage allocation helpers; real source provider allocation/replacement/release is tested without asserting original allocator/failure behavior.",
+    "Native pre-stores incoming parameter slots before setBand removes/adds observers; prior replaced bindings may remain registered in native. Replay repeats stable bindings and bitmap changes only. Replacing parameter sets or shrinking registered bands requires parameter-owner lifetime/reentrancy review before broad use; no general callback/lifetime equivalence claim.",
+    "HPF after a queue filling all configured slots would write beyond native band storage. Source rejects this out-of-range configuration. Native negative/overflow counts, invalid frameCount0, OOM/EH, concurrent/reentrant changes and device/hardware paths excluded."
+  ],
+  "build_integration": {
+    "production_partition": "Existing canonical src/Presonus/EQControl.cpp CS18 OBJECT partition; no new CPP bodies",
+    "public_headers": [
+      "include/presonus/mixer_dsp/EQControl.hpp"
+    ],
+    "test_targets": [
+      "EQControlAttributesReplay"
+    ],
+    "test_sources": [
+      "tests/recovery/EQControlAttributesReplay.cpp"
+    ],
+    "link_dependencies": [
+      "pinned actual corelib",
+      "presonus_core_allocator",
+      "presonus_private_glibc29",
+      "png",
+      "zlib",
+      "pthread",
+      "dl",
+      "m"
+    ],
+    "link_options": [
+      "--wrap=_ZN4Core8Portable15StaticSingletonINS0_13BitmapManagerEE8instanceEv",
+      "--wrap=_ZN8Presonus9EQControl7setBandEiNS0_10BandParamsE"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/eq_attributes/check.py",
+      "replay",
+      "<canonical-built-EQControlAttributesReplay>",
+      "uc-library/tests/recovery/eq_attributes/fixtures.json"
+    ],
+    "fixture_sha256": "d46a71da1e12b28ff7f95b7ce1bc25c35ae9e5f1523dffc36c04ce114d64b54a",
+    "notes": "Test-only wrapper supplies real BitmapManager subclass exposing resource registration, real provider lookups remain unchanged; test-only setBand wrapper captures and invokes the accepted real helper. Root retains shared CMake, canonical source organization, full Linux, installed-role/compile-once, affected proof resealing and guarded SQLite pending admission. No ready promotion without original return declaration."
+  }
+}

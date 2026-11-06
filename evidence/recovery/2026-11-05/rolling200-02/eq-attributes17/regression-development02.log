@@ -1,0 +1,16 @@
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py", "compile"]
+["/usr/bin/c++", "-std=c++20", "-O0", "-fno-rtti", "-fno-lto", "-ffunction-sections", "-fdata-sections", "-Wno-multichar", "-Iuc-library/include", "-Iuc-library/src/mixer_dsp", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/EQControl.cpp", "uc-library/src/Presonus/EQControlBiquad.cpp", "uc-library/src/Presonus/EQControlBandParams.cpp", "uc-library/tests/recovery/EQControlLifecycleReplay.cpp", "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp", "uc-library/src/mixer_dsp/Logarithm.cpp", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-Wl,--gc-sections", "-Wl,--wrap=_ZdlPv", "-Wl,--wrap=_ZdlPvm", "-Wl,--wrap=_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE", "-lz", "-lpthread", "-ldl", "-lm", "-o", "temp/recovery-work/rolling200-02/eq-lifecycle/replay"]
+
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py", "symbols"]
+["/usr/bin/nm", "--defined-only", "temp/recovery-work/rolling200-02/eq-lifecycle/replay"]
+0000000000007e88 T _ZN8Presonus9EQControlD0Ev
+00000000000079cc T _ZN8Presonus9EQControlD1Ev
+00000000000079cc T _ZN8Presonus9EQControlD2Ev
+All exact original variants; native D1/D2 distinct ranges, host D1/D2 aliases independently invoked; host ELF no decoration. No ARM ABI claim.
+
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-lifecycle/check.py", "replay"]
+["temp/recovery-work/rolling200-02/eq-lifecycle/replay"]
+360 exact original variant executions vs actual CCL source lifecycle; repeated/null observers, array frees, reverse curves/images, virtual bitmap deletion, owned HPF parameter signals, borrowed Control survival and actual object free
+

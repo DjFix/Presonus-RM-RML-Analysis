@@ -21,6 +21,7 @@ namespace presonus::panel_binding {
 struct RegistrarGroupRegistry;
 }
 namespace Presonus::Panel {
+class EncoderControl;
 class ControlGroup;
 class ControlRegistrar {
 public:
@@ -78,7 +79,8 @@ struct PanelRegistrarCommandState {
 } // namespace presonus::surface
 namespace Presonus::Surface {
 class MainScreenComponent;
-}
+class MidiMixerHandler;
+} // namespace Presonus::Surface
 namespace presonus::surface {
 // Unrecovered application service boundaries; no fabricated class definition.
 // Explicit borrowed typed-reference attestations; no MainScreen definition,
@@ -119,6 +121,20 @@ struct RootServices {
 namespace Presonus::Surface {
 class PanelRegistrar {
 public:
+  // Operational, independent MIDI source-port registration. Genuine CCL
+  // vector preserves insertion order, duplicates and null entries. Removing
+  // a pointer removes only its first occurrence; no ownership is transferred.
+  // A handler bound through initializeOwnedParameters must have one live entry
+  // at destruction. Remove extra registrations before destroying the handler.
+  bool addMidiHandler(MidiMixerHandler *);
+  bool removeMidiHandler(MidiMixerHandler *);
+  int countMidiHandlers() const;
+  MidiMixerHandler *getMidiHandler(int) const;
+  void dispatchMidiSwitch(const Presonus::Panel::ControlRegistrar &, int, int,
+                          bool, Presonus::Panel::SwitchControl *);
+  void dispatchMidiEncoder(const Presonus::Panel::ControlRegistrar &, int, int,
+                           Presonus::Panel::EncoderControl *);
+
   // Independent constructors; original AppMode lifecycle remains unrecovered.
   PanelRegistrar() = default;
   explicit PanelRegistrar(presonus::surface::PanelRegistrarCommandState &state)
@@ -172,6 +188,7 @@ public:
       Presonus::Panel::ControlRegistrar::ControlType group) const;
 
 private:
+  Core::Vector<MidiMixerHandler *> midiHandlers_;
   presonus::surface::RegistrarTestState *tests_ = nullptr;
   presonus::surface::PanelRegistrarCommandState *commandState_ = nullptr;
   const Core::Portable::ParamList *parameters_ = nullptr;

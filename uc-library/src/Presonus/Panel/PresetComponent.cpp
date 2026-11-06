@@ -3,6 +3,7 @@
 #include "core/portable/corepersistence.h"
 #include "presonus/mixer/MixerComponentBase.hpp"
 #include "presonus/panel/FxPresetComponent.hpp"
+#include "presonus/panel/PresetNameManager.hpp"
 #include <cstring>
 #include <memory>
 #include <stdexcept>
@@ -71,8 +72,12 @@ void PresetComponent::updatePresetName() const {
   Core::CString32 category;
   services.ensureNameManager();
   const int slot = services.selectedSlot(*this);
-  const char *folder = services.presetFolder(*this);
-  services.presetInfo(presetName, category, slot, folder);
+  const char *folder = sourcePortFolder();
+  if (nameManager) {
+    if (auto *cache = nameManager->lookupCache(folder))
+      cache->getPresetInfo(presetName, category, slot);
+  } else
+    services.presetInfo(presetName, category, slot, folder);
   name->fromString(presetName, false);
   if (auto *categoryParameter = getParameterByTag(100))
     categoryParameter->fromString(category, false);
@@ -89,7 +94,8 @@ void PresetComponent::presetStored() const {
 
 PresetNameCache *PresetComponent::getCache() const {
   services.ensureNameManager();
-  return services.lookupCache(services.presetFolder(*this));
+  return nameManager ? nameManager->lookupCache(sourcePortFolder())
+                     : services.lookupCache(sourcePortFolder());
 }
 
 bool PresetComponent::isSlotEmpty(unsigned int slot) const {
@@ -183,9 +189,17 @@ PresetComponent::~PresetComponent() {
   // Native base ensures the manager and looks up the cache before detaching
   // its observer, then destroys its delegate vector and Core Component.
   services.ensureNameManager();
-  auto *cache = services.lookupCache(services.presetFolder(*this));
+  auto *cache = nameManager ? nameManager->lookupCache(sourcePortFolder())
+                            : services.lookupCache(sourcePortFolder());
   if (cache && cacheObserver)
     cache->sourcePortRemoveObserver(cacheObserver);
+  for (int i = 0; i < registeredCaches.count(); ++i) {
+    auto *registered = registeredCaches[i];
+    registered->sourcePortRemoveObserver(
+        reinterpret_cast<PresetNameCache::Delegate *>(this));
+    registered->sourcePortUnbindReceiver(
+        reinterpret_cast<PresetNameCache::Delegate *>(this));
+  }
 }
 void PresetComponent::sourcePortObserveCache(
     PresetNameCache::Delegate *observer) {
@@ -259,4 +273,29 @@ Core::Portable::FileIOCompletionHandler *
 PresetComponent::createStorageHandler() const {
   return new StorageCompletionHandler(*this);
 }
+} // namespace Presonus::Panel
+
+namespace Presonus::Panel {
+const char *PresetComponent::sourcePortFolder() const {
+  return fxDelegate && nameManager ? fxDelegate->getPresetType()
+                                   : services.presetFolder(*this);
+}
+void PresetComponent::registerCache(PresetNameCache *cache) {
+  if (!cache)
+    return;
+  auto *identity = reinterpret_cast<PresetNameCache::Delegate *>(this);
+  if (!registeredCaches.contains(cache) && !registeredCaches.add(cache))
+    throw std::bad_alloc();
+  cache->sourcePortBindReceiver(identity, this);
+  cache->addObserver(identity);
+}
+void PresetComponent::init() {
+  registerCache(getCache());
+  updatePresetName();
+}
+void PresetComponent::cacheChanged(PresetNameCache &cache, int slot,
+                                   const char *name, const char *category) {
+  cacheUpdated(cache, slot, name, category);
+}
+void PresetComponent::cacheRebuilt(PresetNameCache &) { updatePresetName(); }
 } // namespace Presonus::Panel

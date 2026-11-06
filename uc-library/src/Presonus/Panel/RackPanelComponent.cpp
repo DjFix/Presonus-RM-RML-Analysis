@@ -1,7 +1,9 @@
 #include "presonus/panel/RackPanelComponent.hpp"
 #include "core/system/coredebug.h"
 #include "core/system/coretime.h"
+#include "presonus/dice/packet_services.hpp"
 #include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/panel/LEDNotifyTask.hpp"
 namespace Presonus::Panel {
 namespace {
 using Core::Portable::ParamInfo;
@@ -174,5 +176,61 @@ void RackPanelComponent::attachDigipots() {
       channel.parameters->getParameterByTag(0x13a)->changed();
     }
   }
+}
+void RackPanelComponent::assignIP(bool useStatic) {
+  if (networkParameters) {
+    if (auto *parameter = networkParameters->getParameterByTag(12))
+      parameter->setValue(useStatic ? 1.f : 0.f, false);
+    if (auto *parameter = networkParameters->getParameterByTag(17))
+      parameter->setValue(1.f, true);
+  }
+  detachLEDs();
+  auto *parameter = getParameterByTag(1);
+  auto task = std::make_unique<LEDNotifyTask>(parameter, 500, 0);
+  task->start = static_cast<std::uint64_t>(
+      (presonus::dice::packetClockRawTicks() / 1000000));
+  auto &controls = useStatic ? clipControls : meterControls;
+  const int count = controls.count();
+  for (int i = 0; i < count; ++i) {
+    auto *control = controls.at(i);
+    control->setParameter(nullptr, 0);
+    control->broadcastValue(1);
+  }
+  // Preserve append-after-controls order. Ownership storage is independent of
+  // the original borrowed scheduling interface and does not model ARM layout.
+  auto *scheduled = task.get();
+  notificationStorage.push_back(std::move(task));
+  if (!tasks.add(scheduled))
+    throw std::bad_alloc();
+}
+void RackPanelComponent::assignStaticIP() { assignIP(true); }
+void RackPanelComponent::assignDynamicIP() { assignIP(false); }
+void RackPanelComponent::checkNetworkReset() {
+  if (permissionFlags & 0x18u)
+    return;
+  const auto elapsed = static_cast<std::uint64_t>(
+                           (presonus::dice::packetClockRawTicks() / 1000000)) -
+                       *permissionStartupMilliseconds;
+  if ((elapsed >> 63) != 0 || elapsed < 1000)
+    return;
+  permissionFlags |= 0x10u;
+  if ((permissionFlags & 7u) == 2u)
+    assignDynamicIP();
+  // Re-read flags after the synchronous parameter/control callbacks.
+  if ((permissionFlags & 7u) == 4u)
+    assignStaticIP();
+}
+void RackPanelComponent::idleTasks() {
+  Core::Vector<PanelTask *> completed(0, 5);
+  const int initialCount = tasks.count();
+  for (int i = 0; i < initialCount; ++i) {
+    auto *task = tasks.at(i);
+    if (task->idle() && !completed.add(task))
+      throw std::bad_alloc();
+  }
+  // Remove first matching pointer only, after all initial callbacks. This also
+  // preserves duplicate-pointer and callback-append behavior. No task deletion.
+  for (auto *task : completed)
+    tasks.remove(task);
 }
 } // namespace Presonus::Panel

@@ -4,6 +4,7 @@
 #include "core/portable/gui/corecontrols.h"
 #include "core/portable/gui/coregraphics.h"
 #include "core/portable/gui/coreview.h"
+#include "core/portable/gui/coreviewcontroller.h"
 #include "core/public/coreinterpolator.h"
 #include "core/public/corevector.h"
 #include "presonus/mixer_dsp/EqSourceProviders.hpp"
@@ -26,6 +27,9 @@ public:
   float normalizedToRange(float value) const override;
   float rangeToNormalized(float value) const override;
   bool sourceRangeSupported() const { return configured; }
+  // Source-port setup stores arbitrary native display bounds; conversion stays
+  // restricted to the independently validated positive provider domains.
+  void setDisplayRange(float minimum, float maximum);
 
 private:
   EqLogSourceInterpolator positiveRange;
@@ -80,6 +84,23 @@ public:
   };
   const PortableConstructorState *portableConstructorState() const {
     return constructorState.get();
+  }
+  // Explicit borrowed source-port injection, not recovery of the original
+  // writer to native this+0x5c. The real controller must outlive setup.
+  void bindPortableViewController(Core::Portable::ViewController &controller) {
+    viewController = &controller;
+  }
+  // Original ordinary return declaration remains unresolved; void provisional.
+  // Requires the rectangle constructor's owned providers and a real controller.
+  void setAttributes(const Core::Portable::Attributes &attributes);
+  const Core::Portable::Bitmap *portableBandImage(unsigned index) const {
+    return index < bandImages.size() ? bandImages[index].getBitmap() : nullptr;
+  }
+  const Core::Portable::Bitmap *portableDefaultImage() const {
+    return defaultBitmap.getBitmap();
+  }
+  const Core::Portable::Bitmap *portableBackgroundImage() const {
+    return backgroundBitmap.getBitmap();
   }
   float portableCurveMinimum() const { return curveMinimum; }
   float portableCurveMaximum() const { return curveMaximum; }
@@ -256,6 +277,7 @@ private:
   std::unique_ptr<Core::Portable::Bitmap> bitmap;
   std::vector<Core::Portable::BitmapReference> bandImages;
   Core::Portable::BitmapReference defaultBitmap, backgroundBitmap;
+  Core::Portable::ViewController *viewController = nullptr;
   Core::Portable::View *portableView = nullptr;
   Core::Portable::Parameter *primaryParameter = nullptr;
   std::vector<Core::Portable::Parameter *> typeParameters;
@@ -272,6 +294,7 @@ private:
   presonus::dsp::EQControlDrawBoundary *drawBoundary = nullptr;
   int requestedBandCount = 0;
   float curveMinimum = 20.f, curveMaximum = 20000.f;
+  float displayMinimumLevel = 0.f, displayMaximumLevel = 0.f;
   std::int64_t lastCurveTime = 0;
   bool bufferedDraw = false;
   bool bufferPresent = false;
