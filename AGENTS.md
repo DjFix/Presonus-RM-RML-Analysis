@@ -572,3 +572,32 @@ workers, or preparation of an integration draft.
 - A timeout is not a failure or authorization to restart. Preserve the live
   publisher, claims, logs and resumable state. Keep all context freshness and
   instruction-hash checks; this cadence does not waive any validation gate.
+
+## Work during publication — mandatory scheduling rule
+
+Explicit user correction, 2026-11-06. Apply this rule after every continuation
+or context compaction, together with the publisher polling cadence above.
+
+- A running graph publication blocks only operations that actually depend on
+  its fresh context or conflict with captured source/file ownership. It is not
+  a reason to stop all reconstruction coordination or leave eligible workers
+  idle. Respect the five-minute polling interval while doing other work.
+- Before choosing to wait, take the next available independent action: dispatch
+  an already valid sealed assignment in its isolated repository; return an
+  actionable acceptance failure to its owner; review a delivered implementation
+  and its exact native/provider evidence; prepare a complete implementation
+  contract and canonical ownership for missing dependencies; prepare isolated
+  repositories, integration diffs or required acceptance inputs. Do the action,
+  not merely list it in chat. Preserve all freshness and ownership gates.
+- Keep a compact durable queue with each scope's owner, actual next executable
+  action, dependencies and exact blocking condition. After compaction consult
+  that queue and actual results, not chat promises. A planned task, prepared
+  packet or status report is not a reconstructed function.
+- Choose pure waiting only after checking that no independent useful action is
+  currently available. Record concrete reasons for the unavailable scopes;
+  "publish is running" alone is insufficient. Do not manufacture busywork,
+  repeat completed research/tests, start optional infrastructure work, or bypass
+  validation gates to avoid waiting.
+- Preserve the distinction between waiting for a particular job and stopping
+  production. Resume the first newly eligible action promptly; do not turn a
+  status question, Git publication or publisher check into a scheduling barrier.
