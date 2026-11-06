@@ -610,3 +610,35 @@ or context compaction, together with the publisher polling cadence above.
 - Preserve the distinction between waiting for a particular job and stopping
   production. Resume the first newly eligible action promptly; do not turn a
   status question, Git publication or publisher check into a scheduling barrier.
+
+## Git artifact boundary — explicit user correction, 2026-11-06
+
+- Version production source, maintained build/validation tools, executable tests,
+  necessary bounded replay fixtures and concise human documentation. Keep full
+  validation proofs, admission fragments, source-hash/registry snapshots, worker
+  HANDOFFs, logs, machine coverage and one-run coordinator scripts local in their
+  existing evidence/validation/temp locations. Local evidence remains required
+  for validation and provenance; Git exclusion never waives an admission gate.
+- Before every commit run `python3 tools/check_git_artifacts.py --tracked` against the staged
+  index and review its diff. Install the tracked hook in each new checkout with
+  `git config --local core.hooksPath .githooks`. The current checkout uses it.
+  Do not bypass the hook with `--no-verify` or turn it off to commit a report.
+- The recurrence was caused by coordinator staging scripts recursively collecting
+  evidence and invoking `git add -f`, despite existing ignore rules. Never use
+  recursive force-add for evidence/validation/candidates or regard a size below
+  GitHub's warning threshold as proof that a file belongs in Git. Old scratch
+  staging scripts must not be replayed without applying this boundary.
+- `tools/git-artifact-policy.json` enumerates legacy test-input exceptions only.
+  New replay inputs belong under `uc-library/tests/`; adding an exception requires
+  a concrete test consumer and review, not a desire to publish a service report.
+  New/modified staged blobs above 20 MiB are rejected for explicit review.
+- For local-only cleanup use index-only removal and verify that local paths and
+  byte hashes remain unchanged. Do not move, delete, rewrite proofs, normalize
+  historical provenance or rewrite Git history as part of such cleanup.
+- Keep old executed sealing scripts immutable with their original local proofs.
+  Their names identify runs, not separate persistent coordinators. Reusable
+  validation code belongs in maintained tools; a new run needs fresh input/proof
+  bindings, not a copied historical output tree committed as source.
+- This instruction update is authorized while reconstruction is paused. Record
+  the old/new instruction hashes and reconcile affected packets on explicit
+  resume; do not reseal packets or restart reconstruction during housekeeping.

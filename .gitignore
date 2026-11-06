@@ -48,3 +48,15 @@ Testing/
 /uc-library/candidates/**/pending.json
 /uc-library/candidates/**/pending.fragment.json
 /uc-library/candidates/**/ready.fragment.json
+
+# Reports stay local even if a producer places them outside the usual folders.
+**/FINAL_SOURCE_DRIFT*.json
+**/SOURCE_DRIFT_PRECHECK*.json
+**/HANDOFF_INPUTS*.json
+**/STAGED_REVIEW*.json
+**/COMMIT_INPUT_PLAN*.json
+# Existing replay inputs in these historical locations are enumerated in
+# tools/git-artifact-policy.json; do not use broad force-add to override ignores.
+/uc-library/candidates/**/*.json
+/uc-library/candidates/**/*.jsonl
+/uc-library/tracking/coverage.json
