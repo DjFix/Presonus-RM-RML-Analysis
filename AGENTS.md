@@ -558,6 +558,15 @@ workers, or preparation of an integration draft.
 
 ## Publisher polling cadence — explicit user correction, 2026-11-06
 
+- Use a periodic task for publisher waiting/checks, at a five-minute cadence.
+  Reuse the existing task; persist its actual ID, schedule and verified state.
+  A timestamp file or a manual check after five minutes is not a periodic task.
+  Do not substitute chat continuation loops, sleep loops or manual deadline
+  checks for the agreed scheduler. If scheduler tools are unavailable, report
+  that concrete limitation once; do not claim a task was created or silently
+  fall back to manual polling. Continue independent authorized work.
+  The task must stay quiet on unchanged state and notify on completion, failure
+  or a change requiring action; disable it when its watched job is terminal.
 - Poll a running graph publisher no more often than once every five minutes
   (300 seconds). Persist the last observation and next permitted poll time so
   this interval survives goal continuations and context compaction.
