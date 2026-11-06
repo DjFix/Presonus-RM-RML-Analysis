@@ -555,3 +555,20 @@ workers, or preparation of an integration draft.
   instruction bindings. Record the old/new instruction hashes, preserve current
   work and actual job outcomes, and prepare affected subsequent dispatches with
   the new instructions. Never silently re-seal old packets as current.
+
+## Publisher polling cadence — explicit user correction, 2026-11-06
+
+- Poll a running graph publisher no more often than once every five minutes
+  (300 seconds). Persist the last observation and next permitted poll time so
+  this interval survives goal continuations and context compaction.
+- This limit includes process/container checks, log or resource-counter reads,
+  session polling, and checking preparation receipts or sealed packet files
+  merely to infer whether the same publication has finished. Do not replace
+  one publisher poll with several indirect checks or minute-long wait loops.
+- Between permitted polls, perform independent useful work. Do not repeatedly
+  inspect an unchanged waiting job or send routine unchanged-status messages.
+  A genuine unsolicited completion/failure notification may be handled when
+  received; an explicit user request for current status may be answered then.
+- A timeout is not a failure or authorization to restart. Preserve the live
+  publisher, claims, logs and resumable state. Keep all context freshness and
+  instruction-hash checks; this cadence does not waive any validation gate.
