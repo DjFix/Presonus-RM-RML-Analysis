@@ -25,6 +25,11 @@ struct OutputPinIO {
   virtual void logSet(const char *format, int result, int error) = 0;
 };
 struct OutputPinAccess;
+// Independent thread-local construction boundary. The override must outlive
+// every object constructed under it. Save/restore the returned previous value;
+// null restores the actual libc provider. Existing objects retain their IO.
+OutputPinIO *setOutputPinConstructionIO(OutputPinIO *io);
+OutputPinIO &outputPinConstructionIO();
 } // namespace presonus::surface_panel_port
 namespace Presonus::Panel {
 // Partial preconfigured source port; no historical lifecycle/object ABI.

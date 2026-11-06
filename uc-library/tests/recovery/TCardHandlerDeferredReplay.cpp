@@ -73,7 +73,8 @@ static void capture(SysexPacket &p) {
 }
 struct Card final : TCard {
   Card(CardState &s, Response &r, IO &i) : TCard(cardSetupTag, s, r, i) {}
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
   void post(SysexPacket &p) override { capture(p); }

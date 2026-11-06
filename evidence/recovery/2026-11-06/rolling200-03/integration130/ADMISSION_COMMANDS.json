@@ -1,0 +1,66 @@
+[
+  {
+    "label": "admission01",
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tools/merge_readiness.py",
+      "--library",
+      "uc-library",
+      "--fragment",
+      "validation/rolling200-integrated130-r1/existing-ready.ready.fragment.json",
+      "--pending",
+      "validation/rolling200-integrated130-r1/existing.pending.fragment.json",
+      "--pending",
+      "validation/rolling200-integrated130-r1/new.pending.fragment.json"
+    ],
+    "returncode": 0,
+    "end_utc": "2026-11-06T04:57:33.464148+00:00"
+  },
+  {
+    "label": "tracker130",
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tools/generate_symbol_tracking.py",
+      "--library",
+      "uc-library",
+      "--repository",
+      ".",
+      "--timing",
+      "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-06/rolling200-03/integration130/tracker-timing130.json"
+    ],
+    "returncode": 0,
+    "end_utc": "2026-11-06T04:58:54.488156+00:00"
+  },
+  {
+    "label": "mirror130",
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tools/recovery/audit_recovery_checkpoint.py",
+      "--repository",
+      ".",
+      "--ready",
+      "1063",
+      "--pending",
+      "2104",
+      "--mangles",
+      "589",
+      "--suites",
+      "544",
+      "--phase",
+      "rolling200-integrated130",
+      "--output",
+      "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-06/rolling200-03/integration130/MIRROR01.json"
+    ],
+    "returncode": 0,
+    "end_utc": "2026-11-06T04:59:16.982902+00:00"
+  },
+  {
+    "label": "notes130",
+    "argv": [
+      "uc-library/.venv/bin/python",
+      "/home/rs/projects/opencs/ai-line-analysis/evidence/recovery/2026-11-06/rolling200-03/integration130/persist_notes130.py"
+    ],
+    "returncode": 0,
+    "end_utc": "2026-11-06T04:59:26.538625+00:00"
+  }
+]

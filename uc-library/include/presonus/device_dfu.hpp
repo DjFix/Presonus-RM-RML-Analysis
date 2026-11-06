@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 namespace Presonus::UC {
 class IFirmwareUpdateListener;
 }
@@ -9,7 +10,7 @@ class IDeviceDFU {
 public:
   virtual bool isMounted() = 0;
   virtual bool isFirmwareCompatible(int) = 0;
-  virtual bool updateFirmware(UC::IFirmwareUpdateListener *, int) = 0;
+  virtual std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) = 0;
 
 protected:
   ~IDeviceDFU() = default;

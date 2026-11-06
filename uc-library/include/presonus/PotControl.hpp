@@ -11,6 +11,10 @@ public:
   ~PotControl() override;
   void setAttributes(const Core::Portable::Attributes &a) override;
   void draw(const Core::Portable::DrawEvent &e) override;
+  void paramChanged(Core::Portable::Parameter *parameter, int message) override;
+  bool onGestureInput(const Core::Portable::GestureEvent &event) override;
+  void getHandledGestures(Core::FixedSizeVector<int, 8> &gestures,
+                          const Core::TPoint<int> &where) override;
   virtual void changeFrames();
   virtual void setFrame(int frame);
 

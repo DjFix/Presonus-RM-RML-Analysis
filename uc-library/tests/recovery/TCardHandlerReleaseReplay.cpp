@@ -69,7 +69,8 @@ struct GPIO final : presonus::surface_panel_port::InputPinIO {
 struct Card final : Presonus::NOAA::TCard {
   Card(presonus::noaa::CardState &s, Response &r, IO &i)
       : TCard(presonus::noaa::cardSetupTag, s, r, i) {}
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
 };

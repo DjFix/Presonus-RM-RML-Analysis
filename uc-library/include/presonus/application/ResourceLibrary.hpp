@@ -5,7 +5,8 @@
 
 namespace presonus::application {
 struct ResourceAccess;
-}
+struct FirmwareBundleView;
+} // namespace presonus::application
 namespace Presonus {
 class ResourceLibrary;
 // Source-port metadata/storage; original layout and access remain unknown.
@@ -20,6 +21,7 @@ public:
 private:
   friend class ResourceLibrary;
   friend struct presonus::application::ResourceAccess;
+  friend struct presonus::application::FirmwareBundleView;
   Core::CStringBuffer<64> name_;
   unsigned int version_;
   const unsigned char *image_;
@@ -44,3 +46,15 @@ private:
   Core::Vector<FirmwareBundle *> bundles_;
 };
 } // namespace Presonus
+
+namespace presonus::application {
+// Independent typed source-port access; these values are not ARM offsets.
+struct FirmwareBundleView {
+  unsigned int version;
+  const unsigned char *image;
+  int size;
+  static FirmwareBundleView read(const Presonus::FirmwareBundle &bundle) {
+    return {bundle.version_, bundle.image_, bundle.image_size_};
+  }
+};
+} // namespace presonus::application

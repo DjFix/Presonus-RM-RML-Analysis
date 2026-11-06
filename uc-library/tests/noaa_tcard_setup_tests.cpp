@@ -126,11 +126,12 @@ struct Fixture final : TCard {
   using TCard::TCard;
   void receive(const SysexPacket &) override { std::abort(); }
   bool isFirmwareCompatible(int) override { std::abort(); }
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
 };
-static_assert(std::is_abstract_v<TCard>);
+static_assert(!std::is_abstract_v<TCard>);
 static void afterCleanup() {
   assert(SpiServiceAccess::singleton() == nullptr);
   assert(pins().opens == pins().closes);

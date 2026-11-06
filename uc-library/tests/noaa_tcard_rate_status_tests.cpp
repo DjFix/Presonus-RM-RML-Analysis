@@ -87,7 +87,7 @@ __wrap__ZN8Presonus4NOAA13SysexReceiver7waitAckEx(SysexReceiver *self,
 struct Fixture final : TCard {
   using TCard::TCard;
   void receive(const SysexPacket &) override { std::abort(); }
-  bool updateFirmware(UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) override {
     std::abort();
   }
   void post(SysexPacket &packet) override {
@@ -138,7 +138,7 @@ struct IO final : SpiServiceIO {
   }
   void diagnostic(bool, const char *, int, bool) override { std::abort(); }
 };
-static_assert(std::is_abstract_v<TCard>);
+static_assert(!std::is_abstract_v<TCard>);
 int main(int argc, char **argv) {
   assert(argc == 2);
   std::ifstream input(argv[1]);

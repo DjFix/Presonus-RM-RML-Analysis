@@ -1,0 +1,52 @@
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/eq_attributes/check.py", "regression"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py"]
+["/usr/bin/c++", "-std=c++17", "-fno-rtti", "-Wno-multichar", "-ffunction-sections", "-fdata-sections", "-fno-lto", "-fno-fast-math", "-ffp-contract=off", "-frounding-math", "-fno-builtin", "-Iuc-library/src/mixer_dsp", "-Iuc-library/include", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/EQControl.cpp", "uc-library/src/Presonus/EQControlBandParams.cpp", "uc-library/tests/recovery/EQConstructorsReplay.cpp", "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp", "uc-library/src/mixer_dsp/Logarithm.cpp", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "-Iuc-library/src/mixer_dsp", "-ffp-contract=off", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-Wl,--gc-sections", "/usr/lib/x86_64-linux-gnu/libpng16.so.16", "-lz", "-lpthread", "-ldl", "-lm", "-o", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/temp/recovery-work/rolling200-02/eq-lifecycle/eq-constructors-regression"]
+50 explicit C1/C2 source executions match original app-store observations and independent actual pinned CCL provider replay; 150 actual parameter destructions
+["/usr/bin/c++", "-std=c++20", "-O0", "-fno-rtti", "-ffunction-sections", "-fdata-sections", "-Wno-multichar", "-Iuc-library/include", "-Ithird_party/ccl-framework", "uc-library/src/Presonus/EQControl.cpp", "uc-library/src/Presonus/EQControlBiquad.cpp", "uc-library/src/Presonus/EQControlBandParams.cpp", "uc-library/tests/recovery/EQBandObserverReplay.cpp", "-Iuc-library/src/mixer_dsp", "-ffp-contract=off", "uc-library/src/Presonus/Dsp/EqSourceProviders.cpp", "uc-library/src/mixer_dsp/Logarithm.cpp", "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a", "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a", "-lz", "-Wl,--gc-sections", "-Wl,--wrap=_ZN4Core8Portable9Parameter11addObserverEPNS0_14IParamObserverE", "-Wl,--wrap=_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE", "-o", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/temp/recovery-work/rolling200-02/eq-lifecycle/eq-band-regression"]
+["uc-library/.venv/bin/python", "uc-library/tests/recovery/rolling200-02/eq-band/check.py", "replay", "--executable", "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/temp/recovery-work/rolling200-02/eq-lifecycle/eq-band-regression"]
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/rolling200-02/eq-band/check.py", line 50, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/rolling200-02/eq-band/check.py", line 43, in main
+    cases=json.loads((ROOT/a.fixtures).read_text())['cases']
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/evidence/recovery/2026-11-05/rolling200-02/eq-band/native.json'
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py", line 20, in <module>
+    elif group=='eq-band':run([PY,base/'check.py','replay','--executable',argv[-1]])
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py", line 9, in run
+    print(p.stdout,end='');print(p.stderr,end='',file=sys.stderr);p.check_returncode();return p
+                                                                  ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['uc-library/.venv/bin/python', 'uc-library/tests/recovery/rolling200-02/eq-band/check.py', 'replay', '--executable', '/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/temp/recovery-work/rolling200-02/eq-lifecycle/eq-band-regression']' returned non-zero exit status 1.
+
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/eq_attributes/check.py", line 33, in <module>
+    print(run(['uc-library/.venv/bin/python','uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py']).stdout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/eq_attributes/check.py", line 13, in run
+    if p.returncode:print(p.stdout+p.stderr);p.check_returncode()
+                                             ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['uc-library/.venv/bin/python', 'uc-library/tests/recovery/rolling200-02/eq-lifecycle/regression.py']' returned non-zero exit status 1.
+
+Traceback (most recent call last):
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/eq_draw/check.py", line 30, in <module>
+    for argv in [['uc-library/.venv/bin/python','uc-library/tests/recovery/eq_attributes/check.py','regression'],*[['uc-library/.venv/bin/python','uc-library/tests/recovery/eq_attributes/check.py',m] for m in ['compile','symbols','native','replay']]]:print(run(argv).stdout)
+                                                                                                                                                                                                                                                                 ^^^^^^^^^
+  File "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-02/agent-repos04/eq_draw92/uc-library/tests/recovery/eq_draw/check.py", line 10, in run
+    if p.returncode:print(p.stdout+p.stderr);p.check_returncode()
+                                             ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 502, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command '['uc-library/.venv/bin/python', 'uc-library/tests/recovery/eq_attributes/check.py', 'regression']' returned non-zero exit status 1.

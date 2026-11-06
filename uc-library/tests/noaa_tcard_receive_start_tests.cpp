@@ -295,7 +295,7 @@ extern "C" bool __wrap__ZN8Presonus4NOAA13SysexReceiver15waitResponseSetERjx(
 static unsigned lastCommand;
 struct Fixture final : TCard {
   using TCard::TCard;
-  bool updateFirmware(UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) override {
     std::abort();
   }
   void post(SysexPacket &p) override {

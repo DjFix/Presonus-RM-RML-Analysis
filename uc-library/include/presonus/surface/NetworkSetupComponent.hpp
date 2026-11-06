@@ -102,6 +102,10 @@ public:
     // Source-port adaptation: CCL scrolling must query our selection state.
     bool isSelectionHandler() const override { return true; }
     bool isItemSelected(int) const override;
+    // Ordinary wheel return is provisional; CCL has no model wheel override.
+    // Stable attached collection and synchronous callbacks are required.
+    void onWheelInput(const Core::Portable::WheelEvent &);
+    void selectListItem(int, bool, Core::Portable::ListView *, int) override;
     void setSelected(UC::NetworkItem *);
     void setSelectedItem(void *item) { selectedItem_ = item; }
 

@@ -80,7 +80,7 @@ static std::string image(const NOAAStatusProperty &property) {
 struct Fixture final : TCard {
   using TCard::TCard;
   void receive(const SysexPacket &) override { std::abort(); }
-  bool updateFirmware(UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) override {
     std::abort();
   }
   bool isMounted() override {
@@ -110,7 +110,7 @@ struct IO final : SpiServiceIO {
   std::int64_t rawTicks() override { std::abort(); }
   void diagnostic(bool, const char *, int, bool) override { std::abort(); }
 };
-static_assert(std::is_abstract_v<TCard>);
+static_assert(!std::is_abstract_v<TCard>);
 int main(int argc, char **argv) {
   assert(argc == 2);
   std::ifstream input(argv[1]);

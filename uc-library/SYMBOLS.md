@@ -29,8 +29,8 @@ New **manual Core-owned binary reconstruction and extraction are deferred** and 
 
 | Binary | Defined functions | Bytes verified | Pseudocode exported | Upstream API matches (bodies) | Portable reconstructions ready | Compiled; declaration pending | Original functions fully verified | Tables |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| CS18AI surface 13840 | 7,843 | 7,843 | 6,818 | 1,566 (1,467 bodies) | 518 | 958 | 0 | [functions](tracking/client-functions.md), [data](tracking/client-data.md) |
-| RM/RML mixer 13731 | 7,126 | 7,126 | 6,058 | 945 (890 bodies) | 545 | 1108 | 0 | [functions](tracking/server-functions.md), [data](tracking/server-data.md) |
+| CS18AI surface 13840 | 7,843 | 7,843 | 6,818 | 1,566 (1,467 bodies) | 518 | 969 | 0 | [functions](tracking/client-functions.md), [data](tracking/client-data.md) |
+| RM/RML mixer 13731 | 7,126 | 7,126 | 6,058 | 945 (890 bodies) | 545 | 1135 | 0 | [functions](tracking/server-functions.md), [data](tracking/server-data.md) |
 
 ## Partial portable C++ evidence
 

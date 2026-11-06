@@ -94,7 +94,8 @@ public:
   void getStatusProperty(NOAAStatusProperty &);
   Presonus::FirmwareBundle *getArmFirmwareBundle();
   Presonus::FirmwareBundle *getFpgaFirmwareBundle();
-  bool updateFirmware(UC::IFirmwareUpdateListener *, int) override = 0;
+  std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) override;
+  std::int32_t eraseFirmware();
   int open(const NOAASetupProperty &);
   bool start(bool force);
   unsigned char doCommand(unsigned char command, const char *notice);

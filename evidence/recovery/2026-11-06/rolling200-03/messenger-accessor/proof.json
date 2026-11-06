@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "created": "2026-11-06T04:08:22.805468+00:00",
+  "cwd": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling200-03/agent-repos01/messenger01",
+  "base_commit": "8c13ac41cc6a48dfec1d12d29ca665ab02ba027e",
+  "versions": {
+    "formatter": "clang-format version 23.1.3",
+    "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "nm": "GNU nm (GNU Binutils for Ubuntu) 2.42\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) any later version.\nThis program has absolutely no warranty.",
+    "unicorn": "2.1.4",
+    "elftools": "0.33",
+    "ccl-history": "e8cbdea4a4a20e15111f5a690798a259c0374b31"
+  },
+  "original": {
+    "anchor": "be2680cfc25061756301de7bd85f195d7b80f6d514eb660e113374764d681d3e",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "role": "server",
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus4Link12getMessengerEv",
+    "demangled": "Presonus::Link::getMessenger()",
+    "address": 551276,
+    "size": 116,
+    "section_json": "12",
+    "kind": "STT_FUNC",
+    "binding": "STB_GLOBAL",
+    "policy": "application-or-other"
+  },
+  "range": {
+    "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "address": 551276,
+    "size": 116,
+    "file_offset": 518508,
+    "section": ".text",
+    "range_sha256": "858d00882e7abd2efb4205784e4147f932bd6f829e594d7ef6280563da81d94d"
+  },
+  "validation_domain": "Exact 116-byte original ARM app-body oracle, four bounded cases: null singleton allocation/construction/published singleton and adjusted Deletable registration, existing identity with zero calls, constructor failure landing-pad delete/resume with no singleton/registration, allocation-unwind boundary. Portable actual Messenger and pinned CCL Singleton/Deletable/PosixLock in three isolated processes: normal, injected allocation failure, injected member-provider construction failure; successful retry, 303 user-side successful calls plus three registration-time identity probes, exactly one actual member lock construction/registration per process, preserved release state, actual provider-owned process-exit deletion and singleton clearing. Unchanged existing Messenger replay: ten native cases plus real recursive lock/lifecycle/release regression.",
+  "limitations": [
+    "Portable source port; provisional Messenger* return. Ordinary original pointer/reference/const declaration remains unresolved, so declaration pending. No original object layout, ARM ABI, hardware or thread-safety claim.",
+    "Native oracle executes only exact original app function. Allocator, Messenger constructor, Deletable registration, delete and external unwind are explicit emulation boundaries; no Core binary implementation is executed. Constructor-failure hook transfers to native local landing pad; full exception unwinder/LSDA dispatch is not executed.",
+    "Portable wrappers forward real provider behavior for normal execution. Failure injection throws at operator-new or the actual Messenger member PosixLock constructor boundary; it does not claim pthread mutex initialization normally throws. No replacement Messenger class/provider registry. Real CCL provider handles lifecycle. Allocation failure inside provider registration, concurrency, recursive construction and use after process-exit destruction are excluded.",
+    "Existing accepted Messenger source model is reused without reconstruction credit. Native +4 Deletable base adjustment is not imported into host class layout. Actual CCL TInstance and host base conversion are used. getDSPManager remains separate unresolved work.",
+    "Root retains shared integration, full canonical Linux tests, role/installed/compile-once audits, fresh source-proof refresh, guarded SQLite admission, tracker and graph publication. Local delivery does not promote readiness."
+  ],
+  "commands": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "format"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:17.363312+00:00",
+      "end": "2026-11-06T04:08:17.427034+00:00",
+      "seconds": 0.0637234809983056,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/format.log",
+      "log_sha256": "fbdc4cd4c4110ea5cf6d27549615599b74b3a3a319f2c3194d3fb4cb9cf5c3f2"
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:17.427124+00:00",
+      "end": "2026-11-06T04:08:17.629074+00:00",
+      "seconds": 0.2019620470236987,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/compile.log",
+      "log_sha256": "fee3640bf6d0df204ef54b2f0b048367a6a2d85d5a10159c352d507c93a64863"
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:17.629155+00:00",
+      "end": "2026-11-06T04:08:17.663072+00:00",
+      "seconds": 0.03393286300706677,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/symbols.log",
+      "log_sha256": "4934f63f8aa7e6128cc1ff678425fb05e6e3011bed7cafb395f8de25a2acb541"
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "native"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:17.663178+00:00",
+      "end": "2026-11-06T04:08:18.497003+00:00",
+      "seconds": 0.8338334930012934,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/native.log",
+      "log_sha256": "8d092f8eb5314f296834747c236b307ff077e0f3ca08784d0fb4ebd5a46fcdbe"
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:18.497086+00:00",
+      "end": "2026-11-06T04:08:18.534957+00:00",
+      "seconds": 0.03788615402299911,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/replay.log",
+      "log_sha256": "29e6b19c076d57e25c2a5c14995694b25f4abdc9a6fe8486ecb8e4ad09ff1220"
+    },
+    {
+      "kind": "regression",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/link_messenger_accessor/check.py",
+        "regression"
+      ],
+      "timeout_seconds": 120,
+      "start": "2026-11-06T04:08:18.535081+00:00",
+      "end": "2026-11-06T04:08:22.712180+00:00",
+      "seconds": 4.177106948976871,
+      "exit_code": 0,
+      "log": "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/regression.log",
+      "log_sha256": "52329e4e32c1e8e6889aedb1852b7e7fb4ab7109ac13372f775d336ac346d355"
+    }
+  ],
+  "compiled_symbols": "0000000000006010 V DW.ref._ZTISt9bad_alloc\n0000000000006018 V DW.ref._ZTIi\n0000000000006008 V DW.ref.__gxx_personality_v0\n0000000000005ca8 d _DYNAMIC\n0000000000005eb8 d _GLOBAL_OFFSET_TABLE_\n00000000000029cc t _GLOBAL__sub_I__ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE11theInstanceE\n0000000000002f7d t _GLOBAL__sub_I___wrap__Znwm\n0000000000002460 t _GLOBAL__sub_I_coredebug.cpp\n000000000000298b t _Z41__static_initialization_and_destruction_0v\n0000000000002f3c t _Z41__static_initialization_and_destruction_0v\n0000000000006040 u _ZGVN4Core11ConstVectorINS_8Platform22RecursiveReadWriteLockINS1_18PosixReadWriteLockENS1_9PosixLockEE9LockStatsEE5errorE\n00000000000060a0 u _ZGVZN4Core8Platform5Debug5printEPKcE7theLock\n0000000000006078 b _ZGVZN4Core8Portable15StaticSingletonINS0_13DeletableListEE8instanceEvE11theInstance\n0000000000002a4a t _ZN12_GLOBAL__N_110finalCheckEv\n0000000000006050 b _ZN12_GLOBAL__N_110registeredE\n0000000000006054 b _ZN12_GLOBAL__N_111allocationsE\n0000000000006048 b _ZN12_GLOBAL__N_111constructedE\n0000000000006068 b _ZN12_GLOBAL__N_113messengerLockE\n0000000000002a3d t _ZN12_GLOBAL__N_114SingletonWatch4peekEv\n000000000000605c b _ZN12_GLOBAL__N_114failAllocationE\n000000000000605d b _ZN12_GLOBAL__N_116failConstructionE\n0000000000006058 b _ZN12_GLOBAL__N_17deletesE\n0000000000006060 b _ZN12_GLOBAL__N_19allocatedE\n000000000000604c b _ZN12_GLOBAL__N_19destroyedE\n0000000000006030 u _ZN4Core11ConstVectorINS_8Platform22RecursiveReadWriteLockINS1_18PosixReadWriteLockENS1_9PosixLockEE9LockStatsEE5errorE\n0000000000006070 u _ZN4Core11ConstVectorIPNS_8Portable9DeletableEE5errorE\n00000000000034a0 t _ZN4Core11DebugPrintfEPKcz\n0000000000002405 t _ZN4Core11DebugPrintfEPKcz.cold\n0000000000003180 W _ZN4Core6VectorIPNS_8Portable9DeletableEED0Ev\n0000000000003150 W _ZN4Core6VectorIPNS_8Portable9DeletableEED1Ev\n0000000000003150 W _ZN4Core6VectorIPNS_8Portable9DeletableEED2Ev\n0000000000002614 W _ZN4Core7Threads4LockC1Ev\n0000000000002614 W _ZN4Core7Threads4LockC2Ev\n0000000000002634 t _ZN4Core7Threads4LockD1Ev\n0000000000002634 W _ZN4Core7Threads4LockD2Ev\n00000000000028f6 W _ZN4Core8Platform22RecursiveReadWriteLockINS0_18PosixReadWriteLockENS0_9PosixLockEE9LockStatsC1EPKS4_ii\n00000000000028f6 W _ZN4Core8Platform22RecursiveReadWriteLockINS0_18PosixReadWriteLockENS0_9PosixLockEE9LockStatsC2EPKS4_ii\n0000000000002fe0 t _ZN4Core8Platform9PosixLock4lockEv\n0000000000003010 t _ZN4Core8Platform9PosixLock6unlockEv\n0000000000002ff0 T _ZN4Core8Platform9PosixLock7tryLockEv\n0000000000003020 t _ZN4Core8Platform9PosixLockC1Ev\n0000000000003020 T _ZN4Core8Platform9PosixLockC2Ev\n0000000000002fb0 T _ZN4Core8Platform9PosixLockD0Ev\n0000000000002f90 t _ZN4Core8Platform9PosixLockD1Ev\n0000000000002f90 T _ZN4Core8Platform9PosixLockD2Ev\n00000000000031c0 W _ZN4Core8Portable13DeletableListD0Ev\n0000000000003090 W _ZN4Core8Portable13DeletableListD1Ev\n0000000000003090 W _ZN4Core8Portable13DeletableListD2Ev\n0000000000003280 t _ZN4Core8Portable9Deletable11addInstanceEPS1_\n0000000000002400 t _ZN4Core8Portable9Deletable11addInstanceEPS1_.cold\n00000000000025c8 W _ZN4Core8Portable9DeletableC1Ev\n00000000000025c8 W _ZN4Core8Portable9DeletableC2Ev\n0000000000002598 W _ZN4Core8Portable9DeletableD0Ev\n000000000000257a t _ZN4Core8Portable9DeletableD1Ev\n000000000000257a t _ZN4Core8Portable9DeletableD2Ev\n0000000000006028 B _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE11theInstanceE\n000000000000286f W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEv\n00000000000025e6 W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEEC1Ev\n00000000000025e6 W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEEC2Ev\n0000000000002812 W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEED0Ev\n00000000000027cc W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEED1Ev\n00000000000027cc W _ZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEED2Ev\n00000000000027bd T _ZN8Presonus4Link12getMessengerEv\n00000000000027a6 T _ZN8Presonus4Link9Messenger7releaseEv\n0000000000002654 T _ZN8Presonus4Link9MessengerC1Ev\n0000000000002654 T _ZN8Presonus4Link9MessengerC2Ev\n0000000000002776 T _ZN8Presonus4Link9MessengerD0Ev\n0000000000002738 T _ZN8Presonus4Link9MessengerD1Ev\n0000000000002738 T _ZN8Presonus4Link9MessengerD2Ev\n00000000000029dc W _ZNK8Presonus4Link9Messenger16releaseRequestedEv\n0000000000002a10 W _ZNSt9bad_allocC1Ev\n0000000000002a10 W _ZNSt9bad_allocC2Ev\n00000000000029f2 W _ZNSt9exceptionC1Ev\n00000000000029f2 W _ZNSt9exceptionC2Ev\n0000000000005c80 V _ZTISt9bad_alloc\n0000000000005c98 V _ZTISt9exception\n0000000000005c20 V _ZTIi@CXXABI_1.3\n0000000000004130 V _ZTSSt9bad_alloc\n0000000000004140 V _ZTSSt9exception\n0000000000005bd8 V _ZTVN4Core6VectorIPNS_8Portable9DeletableEEE\n0000000000005ba0 V _ZTVN4Core8Platform9PosixLockE\n0000000000005bf8 V _ZTVN4Core8Portable13DeletableListE\n0000000000005b80 V _ZTVN4Core8Portable9DeletableE\n0000000000005b60 V _ZTVN4Core8Portable9SingletonIN8Presonus4Link9MessengerEEE\n0000000000005b40 V _ZTVN8Presonus4Link9MessengerE\n0000000000005c30 V _ZTVSt9bad_alloc@GLIBCXX_3.4\n0000000000005c58 V _ZTVSt9exception@GLIBCXX_3.4\n0000000000005b20 V _ZTVZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvE9TInstance\n00000000000060c0 u _ZZN4Core8Platform5Debug5printEPKcE7theLock\n0000000000006080 b _ZZN4Core8Portable15StaticSingletonINS0_13DeletableListEE8instanceEvE11theInstance\n0000000000002842 W _ZZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvEN9TInstanceC1Ev\n0000000000002842 W _ZZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvEN9TInstanceC2Ev\n000000000000295c W _ZZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvEN9TInstanceD0Ev\n000000000000292e W _ZZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvEN9TInstanceD1Ev\n000000000000292e W _ZZN4Core8Portable9SingletonIN8Presonus4Link9MessengerEE8instanceEvEN9TInstanceD2Ev\n0000000000004a24 r __FRAME_END__\n0000000000004150 r __GNU_EH_FRAME_HDR\n0000000000006020 D __TMC_END__\n000000000000038c r __abi_tag\n0000000000006020 B __bss_start\n0000000000002530 t __do_global_dtors_aux\n0000000000005b18 d __do_global_dtors_aux_fini_array_entry\n0000000000006000 D __dso_handle\n0000000000005af8 d __frame_dummy_init_array_entry\n0000000000002b8e T __wrap__ZN4Core8Platform9PosixLockC1Ev\n0000000000002c24 T __wrap__ZN4Core8Platform9PosixLockD1Ev\n0000000000002c5f T __wrap__ZN4Core8Portable9Deletable11addInstanceEPS1_\n0000000000002b48 T __wrap__ZdlPvm\n0000000000002ab9 T __wrap__Znwm\n0000000000006020 D _edata\n00000000000060f0 B _end\n0000000000003674 T _fini\n0000000000002000 T _init\n0000000000002490 T _start\n0000000000003660 t atexit\n0000000000006020 b completed.0\n00000000000024c0 t deregister_tm_clones\n0000000000002570 t frame_dummy\n0000000000002cbc T main\n00000000000024f0 t register_tm_clones\n",
+  "compiled_executable_sha256": "50bef8be2ad34c55c1af17f0af14fbd95beae8d209df9b472ba0df0f92186aa5",
+  "formatting_verified": true,
+  "compiled": true,
+  "mangling_verified": true,
+  "native_behavior_verified": true,
+  "original_declaration_verified": false,
+  "original_arm_abi_verified": false,
+  "hardware_verified": false,
+  "source_sha256": {
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/NOTES.json": "368e1ddc136ac2c11dfdf9ed28207c662ba44e91f516ce14bdfbb3520485f434",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/compile.log": "fee3640bf6d0df204ef54b2f0b048367a6a2d85d5a10159c352d507c93a64863",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/format.log": "fbdc4cd4c4110ea5cf6d27549615599b74b3a3a319f2c3194d3fb4cb9cf5c3f2",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/native.log": "8d092f8eb5314f296834747c236b307ff077e0f3ca08784d0fb4ebd5a46fcdbe",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/regression-input-copy.json": "6d226cab452429be1de2338042d0999ff947f96115703417cc8c343376c5d5ab",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/regression.log": "52329e4e32c1e8e6889aedb1852b7e7fb4ab7109ac13372f775d336ac346d355",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/replay.log": "29e6b19c076d57e25c2a5c14995694b25f4abdc9a6fe8486ecb8e4ad09ff1220",
+    "evidence/recovery/2026-11-06/rolling200-03/messenger-accessor/symbols.log": "4934f63f8aa7e6128cc1ff678425fb05e6e3011bed7cafb395f8de25a2acb541",
+    "temp/core-upstream/root-integration-01/private-glibc29-provider/libpresonus_private_glibc29.a": "e14acfad9b5246950768780a5bd372e58cc208be6dd290c29a11e9949356ab20",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c",
+    "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/CONTEXT.md": "9c317a0c3f5b0c271b396487ba5192b3fd91b745382e03956bed6db246be4602",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/ELF_CONTEXT.md": "5832d68909bab9665ecee25bdf025987e8f028ec1371387d80ac0d22d722b0fc",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/SOURCE_SLICES.md": "25d5f4e18293cc0aaf06ae75a933d863ee1f9e0b379e80d80e4430840f604f53",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/TASK.md": "e67e5b80df521b3d2e237cff25a95b24173e039d32195c2ecadfbd8f76fa33a5",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/context.json": "f917eec30d995f5a0fa1f46c92691dfeb87ee611a9e3005e3e8e0b0a2250f344",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/native-context.json": "d01fe9c351247f6fbec11303b8a83e6982c1a55733a03b08f8032e85fc26f346",
+    "temp/recovery-work/rolling200-03/messenger01/prepared01/packets/rolling200_03_messenger01_01/request.json": "a77e6d67cc16a9eefe7468260385dd19bb6918c5aa52a99c961e00b3e12eaa7d",
+    "temp/recovery-work/rolling200-03/messenger01/rolling200_03_messenger01_01.contract.json": "01cc64d9efe4670a3caf16f535ecb83860cf23e8f12602fd30c6f908662b8bd0",
+    "temp/recovery-work/rolling200-implementation01/packets-batch04/packets/rolling200_impl_c22_01/request.json": "79a675763a2476bb9b91c4c53aa1466b6a9c531c2741e8c02fe93f9559a9f79a",
+    "temp/recovery-work/rolling200-implementation01/packets-batch04/packets/rolling200_impl_c22_02/request.json": "4a4f64645220bf28b5a7c9a73ca24d90d2eebb50e33310c46dfaac43bbe3ca8b",
+    "temp/recovery-work/rolling200-implementation01/packets-batch04/packets/rolling200_impl_c22_03/request.json": "e4c40cc0ebcd6ba9c47d90f2d7e1ad931cd7fe25555564990f2f05449278263d",
+    "temp/recovery-work/rolling200-implementation01/packets-batch04/packets/rolling200_impl_c22_04/request.json": "f909c5c4b4de14443e9f475fa25a64818d79baf4680284e806ca6f9c919431dc",
+    "temp/recovery-work/rolling200-implementation01/packets-batch04/packets/rolling200_impl_c22_05/request.json": "adc560a356163debddc8d7687ebf70f59b51983bb716cf559a6cb3a056eacb00",
+    "third_party/ccl-framework/core/platform/shared/posix/corethread.posix.cpp": "841a4770b0e87cb3a140bf9e779abe770d2bb330fd7d8df22b678124c9854d07",
+    "third_party/ccl-framework/core/portable/coresingleton.cpp": "dbc41fad6b777f2989208a38a4d75afb235aeead0c130b935459b9e5b6110e2c",
+    "third_party/ccl-framework/core/portable/coresingleton.h": "2dfdb591516c9b3eb0c124a33a32bd7eb220f2f58a9c42a0e43ddeec454783fe",
+    "third_party/ccl-framework/core/public/corevector.h": "49634ef286112cfa48357391a3cdddbee86e76cfe5e820b6b74c6ec913aeed32",
+    "third_party/ccl-framework/core/system/corethread.h": "56335e1e9a23c724a4c4d4640c47563956d8ff9cda434887e8ee470439f2d07c",
+    "uc-library/candidates/rolling200_impl_c22/check.py": "6073dcba3a1e47e6158c28b7141a45a68c52f5b392cb23bae2ea87528e218b28",
+    "uc-library/candidates/rolling200_impl_c22/native.json": "c8cf965bf06d7a27b7ab6861ce2b94f38965909ba36b10e7d4a26223f456178b",
+    "uc-library/candidates/rolling200_impl_c22/native.py": "134d8e00891c4698762e113c2e0536fb2c87c63ef99b19a43a7ae4b8645ba782",
+    "uc-library/candidates/rolling200_impl_c22/replay.cpp": "a8b08c6949f26c09b46397e2f165b29315981b306dedee6f33ff0d6d7d01504f",
+    "uc-library/include/presonus/link/Messenger.hpp": "7b5767c02db8c69413651cf8f875968d6ea84ddf26d8b1b3fbefd99690d06714",
+    "uc-library/src/Presonus/Link/Messenger.cpp": "2e20f15b390148697a73d7bf19508fcbd858bba1cc51e65de4958ab875c71f9a",
+    "uc-library/tests/recovery/LinkMessengerAccessorReplay.cpp": "ebff8dee06d50f37b129fce70f2529202771f271bff001b805301029a46e2f3e",
+    "uc-library/tests/recovery/link_messenger_accessor/check.py": "857b4100772ee0fd1c1db23b9d6915eafded06e8cf38400e034d21be5fb00c3f",
+    "uc-library/tests/recovery/link_messenger_accessor/fixtures.json": "d0c86af3d4c1e9fec1fbaa730bc1f1e4d859b476fd49cdea3e20c49efbc111a6",
+    "uc-library/tests/recovery/link_messenger_accessor/native.py": "686688ea69b8526a576c226ab230936ca0a4e381991a2ee20ce451d323bc8f11",
+    "uc-library/tests/recovery/link_messenger_accessor/seal.py": "9db3cdddc6ad7bf75aa67a9f62fcb8fc9d7ea4bc1db297a65849212fb82ef146"
+  }
+}

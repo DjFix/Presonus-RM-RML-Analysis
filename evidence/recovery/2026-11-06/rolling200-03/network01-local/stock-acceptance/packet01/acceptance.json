@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_network01_01",
+  "handoff_sha256": "caa3f6bddd08361542ef46bde4bb2710925969538bf5bc3ae61f535f0e959cfe",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_list_input/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T04:13:27.541129+00:00",
+      "returncode": 0,
+      "seconds": 0.11415938200661913
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_list_input/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T04:13:27.655305+00:00",
+      "returncode": 0,
+      "seconds": 1.6175091309996787
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_list_input/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T04:13:29.272832+00:00",
+      "returncode": 0,
+      "seconds": 0.06402282099588774
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_list_input/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T04:13:29.336889+00:00",
+      "returncode": 0,
+      "seconds": 0.06394573001307435
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/network_list_input/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T04:13:29.400838+00:00",
+      "returncode": 0,
+      "seconds": 2.268296974012628
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 4.161253335973015
+}

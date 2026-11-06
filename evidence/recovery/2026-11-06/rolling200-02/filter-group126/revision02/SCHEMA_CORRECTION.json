@@ -1,0 +1,9 @@
+{
+  "trigger": "Root stock acceptance of prior HANDOFF raised ValueError Missing artifact kind: test before any command execution.",
+  "cause": "Worker sealer assigned generic evidence to all non-production files and marked test CPP as source; local command success was incorrectly treated as schema compliance.",
+  "correction": "Explicit source/test/fixture/replay/proof classification in sealer; unchanged stock accept_worker.py executes final handoff before delivery.",
+  "prohibited_fallback": "Do not weaken validator or use successful direct replay as evidence of handoff acceptance.",
+  "required_evidence": "stock-acceptance01/acceptance.json local_acceptance_passed true and unchanged final handoff digest.",
+  "historical_provenance": "../history-schema01/PROVENANCE.json archives exact previous producer, handoff and proof hashes; all previous original evidence retained.",
+  "source_changes": "No production source or test behavior changed."
+}

@@ -121,7 +121,8 @@ struct IO final : SpiServiceIO {
 };
 struct Concrete final : TCard {
   using TCard::TCard;
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
   void post(SysexPacket &p) override {

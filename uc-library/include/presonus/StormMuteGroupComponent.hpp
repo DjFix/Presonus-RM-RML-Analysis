@@ -1,10 +1,17 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/portable/corefilename.h"
 #include "core/portable/corestorage.h"
 #include "presonus/MuteGroupBase.hpp"
 #include "presonus/delay_timer.hpp"
 #include "presonus/uc/message_attributes.hpp"
 
+namespace Presonus::Mixer {
+class MixerComponentBase;
+}
+namespace Presonus::Panel {
+class PresetNameManager;
+}
 namespace Presonus {
 class StormMuteGroupComponent;
 }
@@ -71,6 +78,11 @@ struct State {
   Core::Vector<Core::Portable::Parameter *> mixerMutes;
   Core::Vector<Timer> storeTimers;
   Timer releaseTimer;
+  // Borrowed actual application tree and cache manager; source-port bindings,
+  // not recovered original fields or ARM layout. Null manager uses CCL
+  // singleton.
+  Presonus::Mixer::MixerComponentBase *mixer = nullptr;
+  Presonus::Panel::PresetNameManager *presetNames = nullptr;
   bool enabled = true;
   bool recalling = false;
 };
@@ -110,6 +122,13 @@ public:
   unsigned int getSwitchTag(unsigned int);
   bool isParamInAnyMuteGroup(Core::Portable::Parameter *);
   void cleanup();
+  // Source-port FileName/void return declarations follow observed uses;
+  // original ordinary return spellings and ARM aggregate ABI stay unresolved.
+  Core::Portable::FileName getFileName(unsigned int) const;
+  Core::Portable::FileName getSafeListFileName() const;
+  void storeSafeList();
+  void onAllMutesChange(bool);
+  void startup();
   bool recallMutes(unsigned int, bool);
   void onObserveredParamChanged(Core::Portable::Parameter *, int);
   void onCascadeStateChange(bool);

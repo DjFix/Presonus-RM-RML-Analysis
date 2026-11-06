@@ -1,0 +1,83 @@
+{
+  "utc": "2026-11-06T04:18:42.061814+00:00",
+  "base": "7a0638c11a9f65a7d577f66fbcfb9bd65bb01b50",
+  "commit": "23c73ab11a34a11f614f6aeb9924974c94dadaf6",
+  "patch_sha256": "a2f86e8789958362f5ffe79c4580a2ea4e334d2987b2e28143a7eb4331fd1b3a",
+  "acceptance": {
+    "version": 1,
+    "task_id": "rolling200_02_file_activation119",
+    "handoff_sha256": "ab417c88cddc4df7536aedc487d9254d3f1c3869803b4d32d7455642344f5ea5",
+    "checks": [
+      {
+        "kind": "format",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "format"
+        ],
+        "start_utc": "2026-11-06T04:17:58.587225+00:00",
+        "returncode": 0,
+        "seconds": 0.11409074600669555
+      },
+      {
+        "kind": "compile",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "compile"
+        ],
+        "start_utc": "2026-11-06T04:17:58.701317+00:00",
+        "returncode": 0,
+        "seconds": 1.5166661420080345
+      },
+      {
+        "kind": "symbols",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "symbols"
+        ],
+        "start_utc": "2026-11-06T04:18:00.218003+00:00",
+        "returncode": 0,
+        "seconds": 0.06413042699568905
+      },
+      {
+        "kind": "native",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "native"
+        ],
+        "start_utc": "2026-11-06T04:18:00.282143+00:00",
+        "returncode": 0,
+        "seconds": 0.6151724340161309
+      },
+      {
+        "kind": "replay",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "replay"
+        ],
+        "start_utc": "2026-11-06T04:18:00.897335+00:00",
+        "returncode": 0,
+        "seconds": 0.06395046500256285
+      },
+      {
+        "kind": "legacy",
+        "argv": [
+          "uc-library/.venv/bin/python",
+          "uc-library/tests/recovery/file_mute_activation/check.py",
+          "legacy"
+        ],
+        "start_utc": "2026-11-06T04:18:00.961303+00:00",
+        "returncode": 0,
+        "seconds": 1.4163114159891848
+      }
+    ],
+    "local_acceptance_passed": true,
+    "readiness_admitted": false,
+    "seconds": 3.8182760189811233
+  },
+  "state": "imported; canonical integration/admission pending"
+}

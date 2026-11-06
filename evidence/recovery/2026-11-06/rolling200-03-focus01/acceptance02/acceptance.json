@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "task_id": "rolling200_03_focus01_02",
+  "handoff_sha256": "4ad00e6ab6569b419d9edf61e38bfa882d10aea9b07a33ca4797dc6022e5142d",
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/focus_helper_input/check.py",
+        "format"
+      ],
+      "start_utc": "2026-11-06T04:24:07.761779+00:00",
+      "returncode": 0,
+      "seconds": 0.11432004001107998
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/focus_helper_input/check.py",
+        "compile"
+      ],
+      "start_utc": "2026-11-06T04:24:07.876120+00:00",
+      "returncode": 0,
+      "seconds": 1.1167346310103312
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/focus_helper_input/check.py",
+        "symbols"
+      ],
+      "start_utc": "2026-11-06T04:24:08.992870+00:00",
+      "returncode": 0,
+      "seconds": 0.9157342220132705
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/focus_helper_input/check.py",
+        "native"
+      ],
+      "start_utc": "2026-11-06T04:24:09.908627+00:00",
+      "returncode": 0,
+      "seconds": 3.921723050996661
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/focus_helper_input/check.py",
+        "replay"
+      ],
+      "start_utc": "2026-11-06T04:24:13.830365+00:00",
+      "returncode": 0,
+      "seconds": 0.06397985899820924
+    }
+  ],
+  "local_acceptance_passed": true,
+  "readiness_admitted": false,
+  "seconds": 6.1644116310053505
+}

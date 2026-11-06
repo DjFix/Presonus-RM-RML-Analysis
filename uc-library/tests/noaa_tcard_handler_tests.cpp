@@ -58,7 +58,8 @@ struct IO final : SpiServiceIO {
 };
 struct Card final : TCard {
   Card(CardState &s, Response &r, IO &i) : TCard(cardSetupTag, s, r, i) {}
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
 };

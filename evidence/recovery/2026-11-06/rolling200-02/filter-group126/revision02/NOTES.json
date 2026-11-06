@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "notes": [
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "mangled": "_ZN8Presonus5Mixer20FilterGroupComponent12isConfiguredEv",
+      "work_item_id": "78ba2cc410c4315651f755d46d5bff66edeb3586b75058222d4853f507ed7686",
+      "date": "2026-11-06T04:10:38.941664+00:00",
+      "status": "implemented; local-validated; declaration-pending",
+      "observations": [
+        "Portable source port. Original return declaration remains unresolved; provisional bool. Component inheritance and SourcePortConstruction are explicit source integration choices, not recovered original inheritance/constructor/layout. No original ARM ABI or hardware claim.",
+        "Original app reads one byte at successful StringParam+0x2c. Mapping to actual pinned StringParam::getText().isEmpty() is an intentional source adaptation: provider text is CString256, getText returns text, CStringTraits::isEmpty tests str()[0]. This does not establish original offset field semantics or provider binary equivalence.",
+        "Native Core lookup and dynamic_cast boundaries are fixture-controlled, validate exact arguments, and do not execute firmware Core. Valid stable parameter ownership only; allocation failure, dangling pointers, concurrent/reentrant mutation excluded. Provider uses actual CCL ownership and runtime class query, not descriptor enum as a replacement. Non-ASCII byte tests establish first-byte behavior only, not text encoding support.",
+        "Only isConfigured target implemented. Other FilterGroup methods, original constructors, SceneFilter::shouldSave and getFilter receive no credit. Root retains full Linux/global integration, role/installed/compile-once, source freshness and guarded registry admission. No readiness fragment emitted locally."
+      ],
+      "evidence": "evidence/recovery/2026-11-06/rolling200-02/filter-group126/revision02/proof.json",
+      "retry_condition": "Root canonical integration/admission; independent original declaration/layout evidence for any stronger claim"
+    }
+  ],
+  "context_requests": [
+    "Requested exact original application ctor/tag600 writer evidence to supplement intentional source mapping; any response retained in TEXT_MAPPING.json."
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "configure01",
+    "argv": [
+      "uc-library/.venv/bin/cmake",
+      "-S",
+      "uc-library",
+      "-B",
+      "temp/core-upstream/root-integration-01"
+    ],
+    "returncode": 0,
+    "utc": "2026-11-06T04:32:13.124468+00:00"
+  },
+  {
+    "name": "build01",
+    "argv": [
+      "uc-library/.venv/bin/cmake",
+      "--build",
+      "temp/core-upstream/root-integration-01",
+      "-j",
+      "4"
+    ],
+    "returncode": 2,
+    "utc": "2026-11-06T04:32:46.342464+00:00"
+  }
+]

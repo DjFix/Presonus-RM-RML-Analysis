@@ -1,5 +1,9 @@
 #include "presonus/StormMuteGroupComponent.hpp"
+#include "core/portable/corepersistence.h"
 #include "core/system/coredebug.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/panel/PresetNameCache.hpp"
+#include "presonus/panel/PresetNameManager.hpp"
 #include <cstdint>
 #include <cstring>
 #include <stdexcept>
@@ -265,5 +269,79 @@ StormMuteGroupComponent::createDefaultName(int index) const {
       static_cast<std::int32_t>(static_cast<std::uint32_t>(index) + 1u);
   name.appendFormat(" %i", number);
   return name;
+}
+} // namespace Presonus
+
+namespace Presonus {
+Core::Portable::FileName
+StormMuteGroupComponent::getFileName(unsigned int slot) const {
+  auto &manager = state.presetNames ? *state.presetNames
+                                    : Panel::PresetNameManager::instance();
+  if (auto *cache = manager.lookupCache(getName()))
+    return cache->buildFileName(slot, "mutegroup", "", nullptr, true);
+  return Core::Portable::FileName("");
+}
+Core::Portable::FileName StormMuteGroupComponent::getSafeListFileName() const {
+  // The original caches a process-wide path, including across component
+  // objects.
+  static Core::Portable::FileName s_path;
+  if (s_path.isEmpty()) {
+    s_path = getFileName(0);
+    Core::Portable::FileName name;
+    s_path.getName(name);
+    if (const char *match = std::strstr(s_path.str(), name.str())) {
+      const auto index = match - s_path.str() - 1;
+      if (index >= 0 && index < s_path.length())
+        s_path.truncate(static_cast<int>(index));
+    }
+    Core::Portable::FileUtils::makeDirectory(s_path.str());
+    s_path.descend("safeMutes.state");
+  }
+  return s_path;
+}
+void StormMuteGroupComponent::storeSafeList() {
+  using namespace Core::Portable;
+  if (!state.mixer || !state.mixer->saveServices.parameters)
+    throw std::logic_error(
+        "safe-list requires the actual mixer parameter tree");
+  Attributes attributes(AttributeAllocator::getDefault());
+  AttributesBuilder builder(attributes, true);
+  SafeMuteFilter filter(state);
+  OutputStorage storage(builder, &filter);
+  if (state.mixer->saveServices.parameters->save(storage))
+    ArchiveUtils::saveInBackground(getSafeListFileName().str(), attributes,
+                                   nullptr, Archiver::kJSON,
+                                   FileStorageContext::kCopy, 0);
+}
+void StormMuteGroupComponent::onAllMutesChange(bool value) {
+  if (state.enabled && value)
+    storeSafeList();
+}
+void StormMuteGroupComponent::startup() {
+  using namespace Core::Portable;
+  state.loose.empty();
+  // Tag zero is required by the initialized native application domain.
+  auto *allMutes = getParameterByTag(0);
+  if (!allMutes)
+    throw std::logic_error("safe-list startup requires tag zero");
+  if (!(allMutes->getValue() > 0.f)) {
+    state.enabled = true;
+    for (int i = 0, count = state.mixerMutes.count(); i < count; ++i)
+      state.mixerMutes[i]->changed();
+    return;
+  }
+  if (!state.mixer || !state.mixer->saveServices.parameters)
+    throw std::logic_error(
+        "safe-list requires the actual mixer parameter tree");
+  {
+    Attributes attributes(AttributeAllocator::getDefault());
+    if (ArchiveUtils::loadFromFile(attributes, getSafeListFileName().str(),
+                                   Archiver::kJSON, nullptr, 0, false)) {
+      SafeMuteFilter filter(state);
+      InputStorage storage(attributes, &filter);
+      state.mixer->saveServices.parameters->load(storage);
+    }
+  } // Destroy attributes before enabling, including during exception unwind.
+  state.enabled = true;
 }
 } // namespace Presonus

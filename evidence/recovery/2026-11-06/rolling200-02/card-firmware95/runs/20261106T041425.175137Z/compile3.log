@@ -1,0 +1,51 @@
+In file included from third_party/ccl-framework/core/portable/corecomponent.h:22,
+                 from uc-library/include/presonus/surface_panel/ControlHelpers.hpp:2,
+                 from uc-library/include/presonus/panel/PanelRegistrar.hpp:3,
+                 from uc-library/tests/recovery/CardFirmwareReplay.cpp:4:
+third_party/ccl-framework/core/portable/coreparams.h:85:52: warning: multi-character character constant [-Wmultichar]
+   85 |         DECLARE_CORE_CLASS_ ('IPaO', IParamObserver)
+      |                                                    ^
+third_party/ccl-framework/core/portable/coreparams.h:97:58: warning: multi-character character constant [-Wmultichar]
+   97 |         DECLARE_CORE_CLASS_ ('IPMC', IParamMenuCustomizer)
+      |                                                          ^
+third_party/ccl-framework/core/portable/coreparams.h:123:59: warning: multi-character character constant [-Wmultichar]
+  123 |         DECLARE_CORE_CLASS ('Para', Parameter, TypedObject)
+      |                                                           ^
+third_party/ccl-framework/core/portable/coreparams.h:259:60: warning: multi-character character constant [-Wmultichar]
+  259 |         DECLARE_CORE_CLASS ('NPar', NumericParam, Parameter)
+      |                                                            ^
+third_party/ccl-framework/core/portable/coreparams.h:317:60: warning: multi-character character constant [-Wmultichar]
+  317 |         DECLARE_CORE_CLASS ('LPar', ListParam, NumericParam)
+      |                                                            ^
+third_party/ccl-framework/core/portable/coreparams.h:395:59: warning: multi-character character constant [-Wmultichar]
+  395 |         DECLARE_CORE_CLASS ('SPar', StringParam, Parameter)
+      |                                                           ^
+third_party/ccl-framework/core/portable/coreparams.h:443:58: warning: multi-character character constant [-Wmultichar]
+  443 |         DECLARE_CORE_CLASS ('CPar', ColorParam, Parameter)
+      |                                                          ^
+third_party/ccl-framework/core/portable/coreparams.h:495:45: warning: multi-character character constant [-Wmultichar]
+  495 |         BEGIN_CORE_CLASS ('APar', AliasParam)
+      |                                             ^
+third_party/ccl-framework/core/portable/corecomponent.h:93:44: warning: multi-character character constant [-Wmultichar]
+   93 |         BEGIN_CORE_CLASS ('Comp', Component)
+      |                                            ^
+uc-library/tests/recovery/CardFirmwareReplay.cpp:156:33: error: invalid use of incomplete type ‘class Presonus::UC::IFirmwareUpdateListener’
+  156 | struct Listener : Presonus::UC::IFirmwareUpdateListener {
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from uc-library/include/presonus/noaa/card.hpp:2,
+                 from uc-library/tests/recovery/CardFirmwareReplay.cpp:3:
+uc-library/include/presonus/device_dfu.hpp:4:7: note: forward declaration of ‘class Presonus::UC::IFirmwareUpdateListener’
+    4 | class IFirmwareUpdateListener;
+      |       ^~~~~~~~~~~~~~~~~~~~~~~
+uc-library/tests/recovery/CardFirmwareReplay.cpp:158:8: error: ‘void {anonymous}::Listener::onProgress(const char*, float)’ marked ‘override’, but does not override
+  158 |   void onProgress(const char *s, float) override {
+      |        ^~~~~~~~~~
+uc-library/tests/recovery/CardFirmwareReplay.cpp: In function ‘int main(int, char**)’:
+uc-library/tests/recovery/CardFirmwareReplay.cpp:315:45: error: cannot convert ‘{anonymous}::Listener*’ to ‘Presonus::UC::IFirmwareUpdateListener*’
+  315 |                          std::stoi(argv[9]) ? &listener : nullptr, mode);
+      |                          ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+      |                                             |
+      |                                             {anonymous}::Listener*
+uc-library/include/presonus/noaa/card.hpp:97:31: note:   initializing argument 1 of ‘virtual int32_t Presonus::NOAA::TCard::updateFirmware(Presonus::UC::IFirmwareUpdateListener*, int)’
+   97 |   std::int32_t updateFirmware(UC::IFirmwareUpdateListener *, int) override;
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,86 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "address": 551276,
+  "size": 116,
+  "file_offset": 518508,
+  "section": ".text",
+  "range_sha256": "858d00882e7abd2efb4205784e4147f932bd6f829e594d7ef6280563da81d94d",
+  "singleton_cell": 4803644,
+  "cases": [
+    {
+      "mode": "first",
+      "events": [
+        [
+          "allocate",
+          44
+        ],
+        [
+          "construct",
+          2097152
+        ],
+        [
+          "register",
+          2097156,
+          2097152,
+          3504896,
+          3504936
+        ]
+      ],
+      "terminal": [
+        "return"
+      ],
+      "returned": 2097152,
+      "singleton": 2097152
+    },
+    {
+      "mode": "existing",
+      "events": [],
+      "terminal": [
+        "return"
+      ],
+      "returned": 2097152,
+      "singleton": 2097152
+    },
+    {
+      "mode": "constructor-failure",
+      "events": [
+        [
+          "allocate",
+          44
+        ],
+        [
+          "construct",
+          2097152
+        ],
+        [
+          "delete",
+          2097152
+        ],
+        [
+          "resume-unwind",
+          11259375
+        ]
+      ],
+      "terminal": [
+        "unwind"
+      ],
+      "returned": 11259375,
+      "singleton": 0
+    },
+    {
+      "mode": "allocation-failure",
+      "events": [
+        [
+          "allocate",
+          44
+        ]
+      ],
+      "terminal": [
+        "allocator-unwind-boundary"
+      ],
+      "returned": 44,
+      "singleton": 0
+    }
+  ],
+  "limitations": "Constructor throw transfers explicitly to native landing pad; external unwinder and Core bodies are boundaries, not executed. Allocation failure stops at allocator unwind boundary."
+}

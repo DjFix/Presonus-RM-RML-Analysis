@@ -1,4 +1,6 @@
 #include "presonus/FileMuteGroup.hpp"
+#include "core/portable/corepersistence.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <stdexcept>
 
 namespace Presonus {
@@ -21,6 +23,19 @@ void FileMuteGroup::paramChanged(Core::Portable::Parameter *parameter,
     parameter->setValue(1.f, false);
     reactivate_ = false;
   }
+}
+void FileMuteGroup::activate() {
+  if (!mixer || !mixer->saveServices.parameters)
+    throw std::logic_error("mute parameter tree is not bound");
+  Core::Portable::DefaultAllocatedAttributes attributes;
+  if (!Core::Portable::ArchiveUtils::loadFromFile(
+          attributes, filename_, Core::Portable::Archiver::kJSON, nullptr, 0,
+          false))
+    return;
+  Filter filter;
+  Core::Portable::InputStorage storage(attributes, &filter);
+  if (mixer->saveServices.parameters->load(storage))
+    cacheMutes(attributes);
 }
 void FileMuteGroup::cacheMutes(const Core::Portable::Attributes &attributes) {
   if (!mixerData)

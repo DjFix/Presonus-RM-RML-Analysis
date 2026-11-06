@@ -11,6 +11,11 @@ public:
                     Core::Portable::Parameter *parameter, int value);
   void setAttributes(const Core::Portable::Attributes &a) override;
 
+  void paramChanged(Core::Portable::Parameter *p, int message) override;
+  void restoreFocus();
+  void draw(const Core::Portable::DrawEvent &e) override;
+  void onIdle() override;
+
   // Independent portable observations. viewName_ borrows Attributes storage;
   // the hosting application must preserve that storage while using the pointer.
   const char *portableViewName() const { return viewName_; }

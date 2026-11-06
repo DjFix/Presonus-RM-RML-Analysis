@@ -22,6 +22,46 @@ PotControl::~PotControl() {
   image_.assign(nullptr);
 }
 
+void PotControl::paramChanged(Core::Portable::Parameter *p, int message) {
+  Core::Portable::Control::paramChanged(p, message);
+  if (message == 3 && p == parameter)
+    changeFrames();
+}
+
+void PotControl::getHandledGestures(Core::FixedSizeVector<int, 8> &gestures,
+                                    const Core::TPoint<int> &) {
+  if (options & 0x200000) {
+    gestures.add(Core::kGestureSingleTap | Core::kGesturePriorityNormal);
+    gestures.add(Core::kGestureDoubleTap | Core::kGesturePriorityNormal);
+  }
+}
+
+bool PotControl::onGestureInput(const Core::Portable::GestureEvent &event) {
+  using namespace Core;
+  using namespace Core::Portable;
+  if (options & 0x200000) {
+    if ((event.type & kGestureStatesMask) == kGesturePossible) {
+      if (auto *root = getRootView())
+        root->setFocusView(this);
+      return true;
+    }
+    if ((event.type & kGestureTypeMask) == kGestureDoubleTap &&
+        getParameter()) {
+      auto *root = getRootView();
+      auto *textParameter = getParameter();
+      auto *prompt = getParameter()->getName();
+      // Source port: the original five-argument call used mode 1. The pinned
+      // provider adds capitalization, supplied here as its explicit default.
+      // Its null-root assertion and release-build no-op are preserved.
+      TextInput::start(root, textParameter, prompt, nullptr,
+                       static_cast<Skin::KeyboardLayout::Mode>(1),
+                       Skin::KeyboardCapitalization::kFirst);
+      return true;
+    }
+  }
+  return View::onGestureInput(event);
+}
+
 void PotControl::setFrame(int frame) {
   const bool changed = frame != previousValue_;
   previousValue_ = frame;

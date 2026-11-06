@@ -1,0 +1,4448 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus4NOAA5TCard13eraseFirmwareEv",
+      "address": 648584,
+      "size": 400,
+      "file_offset": 615816,
+      "section": ".text",
+      "range_sha256": "b32699510a8b384cd0270b6be680de5c7648015a0ca50a57ee8fd9f91936de82",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server"
+    },
+    {
+      "mangled": "_ZN8Presonus4NOAA5TCard14updateFirmwareEPNS_2UC23IFirmwareUpdateListenerEi",
+      "address": 647672,
+      "size": 912,
+      "file_offset": 614904,
+      "section": ".text",
+      "range_sha256": "d9253b8e47b6f48728a5a32717d228bfacd283eeb5d4dc7087b09656d0b28d10",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel14PanelRegistrar10resetBoardEii",
+      "address": 342428,
+      "size": 456,
+      "file_offset": 309660,
+      "section": ".text",
+      "range_sha256": "ce3facdd9a180cc9a2a29bc0257f27fa2e07c643e37b940533e1f73f2c5ceb31",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server"
+    },
+    {
+      "mangled": "_ZL7resetCSiib",
+      "address": 340176,
+      "size": 296,
+      "file_offset": 307408,
+      "section": ".text",
+      "range_sha256": "705931a6518ee01199d2b32749ef2c50cd2c1487853b089116451b88761ce41c",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server"
+    }
+  ],
+  "cases": [
+    {
+      "name": "erase_0",
+      "kind": "erase",
+      "fail_open": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            false,
+            0
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "erase"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "programmer_destroy"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 1,
+          "647672": 0,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "erase_1",
+      "kind": "erase",
+      "fail_open": 1,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2008,
+        "trace": [
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            false,
+            0
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 1,
+          "647672": 0,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "erase_2",
+      "kind": "erase",
+      "fail_open": 2,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2008,
+        "trace": [
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            false,
+            0
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 1,
+          "647672": 0,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-2147483648_1_1",
+      "kind": "update",
+      "mode": -2147483648,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-2147483648_0_1",
+      "kind": "update",
+      "mode": -2147483648,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-2147483648_1_0",
+      "kind": "update",
+      "mode": -2147483648,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-2147483648_0_0",
+      "kind": "update",
+      "mode": -2147483648,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-1_1_1",
+      "kind": "update",
+      "mode": -1,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-1_0_1",
+      "kind": "update",
+      "mode": -1,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-1_1_0",
+      "kind": "update",
+      "mode": -1,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_-1_0_0",
+      "kind": "update",
+      "mode": -1,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_0_1_1",
+      "kind": "update",
+      "mode": 0,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_0_0_1",
+      "kind": "update",
+      "mode": 0,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_0_1_0",
+      "kind": "update",
+      "mode": 0,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_0_0_0",
+      "kind": "update",
+      "mode": 0,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_1_1_1",
+      "kind": "update",
+      "mode": 1,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_1_0_1",
+      "kind": "update",
+      "mode": 1,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_1_1_0",
+      "kind": "update",
+      "mode": 1,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            1
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_1_0_0",
+      "kind": "update",
+      "mode": 1,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "fpga_construct",
+            1
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 0,
+          "36": 0,
+          "40": 0,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ],
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2_1_1",
+      "kind": "update",
+      "mode": 2,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2_0_1",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2_1_0",
+      "kind": "update",
+      "mode": 2,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2_0_0",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_3_1_1",
+      "kind": "update",
+      "mode": 3,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_3_0_1",
+      "kind": "update",
+      "mode": 3,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_3_1_0",
+      "kind": "update",
+      "mode": 3,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            1
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_3_0_0",
+      "kind": "update",
+      "mode": 3,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            1
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 0,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_4_1_1",
+      "kind": "update",
+      "mode": 4,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_4_0_1",
+      "kind": "update",
+      "mode": 4,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_4_1_0",
+      "kind": "update",
+      "mode": 4,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_4_0_0",
+      "kind": "update",
+      "mode": 4,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2147483647_1_1",
+      "kind": "update",
+      "mode": 2147483647,
+      "arm": 1,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2147483647_0_1",
+      "kind": "update",
+      "mode": 2147483647,
+      "arm": 0,
+      "fpga": 1,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2147483647_1_0",
+      "kind": "update",
+      "mode": 2147483647,
+      "arm": 1,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_2147483647_0_0",
+      "kind": "update",
+      "mode": 2147483647,
+      "arm": 0,
+      "fpga": 0,
+      "listener": 1,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_open_1",
+      "kind": "update",
+      "mode": 1,
+      "arm": 0,
+      "fpga": 0,
+      "fail_open": 1,
+      "expected": {
+        "return_value": 2008,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "update_open_2",
+      "kind": "update",
+      "mode": 1,
+      "arm": 0,
+      "fpga": 0,
+      "fail_open": 2,
+      "expected": {
+        "return_value": 2008,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 0,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "fpga_error_2000",
+      "kind": "update",
+      "mode": 3,
+      "fpga": 0,
+      "fpga_result": 2000,
+      "expected": {
+        "return_value": 2000,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            0
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "fpga_error_2003",
+      "kind": "update",
+      "mode": 3,
+      "fpga": 0,
+      "fpga_result": 2003,
+      "expected": {
+        "return_value": 2003,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            0
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "fpga_error_-1",
+      "kind": "update",
+      "mode": 3,
+      "fpga": 0,
+      "fpga_result": -1,
+      "expected": {
+        "return_value": -1,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            0
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "fpga_error_127",
+      "kind": "update",
+      "mode": 3,
+      "fpga": 0,
+      "fpga_result": 127,
+      "expected": {
+        "return_value": 127,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "fpga_construct",
+            0
+          ],
+          [
+            "fpga_update"
+          ],
+          [
+            "fpga_destroy"
+          ]
+        ],
+        "state": {
+          "24": 0,
+          "32": 1,
+          "36": 0,
+          "40": 0,
+          "68": 0
+        },
+        "writes": [
+          [
+            40,
+            4,
+            0
+          ],
+          [
+            24,
+            4,
+            0
+          ],
+          [
+            36,
+            4,
+            0
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_0_1_0",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 0,
+      "compatible": 1,
+      "listener": 0,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2009,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "mounted"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_0_1_1",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 0,
+      "compatible": 1,
+      "listener": 1,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2009,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_1_0_0",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 1,
+      "compatible": 0,
+      "listener": 0,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2009,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_1_0_1",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 1,
+      "compatible": 0,
+      "listener": 1,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 2009,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_1_1_0",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 1,
+      "compatible": 1,
+      "listener": 0,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            0,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "restart_1_1_1",
+      "kind": "update",
+      "mode": 2,
+      "arm": 0,
+      "mounted": 1,
+      "compatible": 1,
+      "listener": 1,
+      "start": 0,
+      "ignored_result": -99,
+      "expected": {
+        "return_value": 0,
+        "trace": [
+          [
+            "bundle",
+            "arm"
+          ],
+          [
+            "bundle",
+            "fpga"
+          ],
+          [
+            "reset",
+            2,
+            1
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_construct",
+            1,
+            true,
+            4
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "unprotect"
+          ],
+          [
+            "sleep",
+            100
+          ],
+          [
+            "reset",
+            2,
+            2
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_open",
+            "/dev/ttyS0"
+          ],
+          [
+            "programmer_update"
+          ],
+          [
+            "programmer_close"
+          ],
+          [
+            "reset",
+            2,
+            0
+          ],
+          [
+            "sleep",
+            200
+          ],
+          [
+            "programmer_destroy"
+          ],
+          [
+            "sleep",
+            700
+          ],
+          [
+            "progress",
+            "restarting card",
+            1064514355
+          ],
+          [
+            "start",
+            1
+          ],
+          [
+            "progress",
+            "finished",
+            1065353216
+          ],
+          [
+            "mounted"
+          ],
+          [
+            "compatible",
+            1
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 0,
+          "36": 19,
+          "40": 1,
+          "68": 1
+        },
+        "writes": [
+          [
+            68,
+            4,
+            1
+          ]
+        ],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 1,
+          "342428": 0,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_-1_-1",
+      "kind": "reset",
+      "mode": -1,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_-1_0",
+      "kind": "reset",
+      "mode": -1,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_-1_1",
+      "kind": "reset",
+      "mode": -1,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_-1_2",
+      "kind": "reset",
+      "mode": -1,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_0_-1",
+      "kind": "reset",
+      "mode": 0,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            108
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_0_0",
+      "kind": "reset",
+      "mode": 0,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "input",
+            108
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "input_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_0_1",
+      "kind": "reset",
+      "mode": 0,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            108
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_0_2",
+      "kind": "reset",
+      "mode": 0,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            108
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_1_-1",
+      "kind": "reset",
+      "mode": 1,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            102
+          ],
+          [
+            "set",
+            102,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            110
+          ],
+          [
+            "set",
+            102,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            110
+          ],
+          [
+            "output_destroy",
+            102
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_1_0",
+      "kind": "reset",
+      "mode": 1,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            102
+          ],
+          [
+            "set",
+            102,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "input",
+            110
+          ],
+          [
+            "set",
+            102,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            102,
+            1
+          ],
+          [
+            "input_destroy",
+            110
+          ],
+          [
+            "output_destroy",
+            102
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_1_1",
+      "kind": "reset",
+      "mode": 1,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            102
+          ],
+          [
+            "set",
+            102,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            110
+          ],
+          [
+            "set",
+            102,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            110
+          ],
+          [
+            "output_destroy",
+            102
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_1_2",
+      "kind": "reset",
+      "mode": 1,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            102
+          ],
+          [
+            "set",
+            102,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            110
+          ],
+          [
+            "set",
+            102,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            110
+          ],
+          [
+            "output_destroy",
+            102
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "reset_2_-1",
+      "kind": "reset",
+      "mode": 2,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            32
+          ],
+          [
+            "output",
+            139
+          ],
+          [
+            "output",
+            21
+          ],
+          [
+            "set",
+            32,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            21,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            139,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            32,
+            1
+          ],
+          [
+            "output_destroy",
+            21
+          ],
+          [
+            "output_destroy",
+            139
+          ],
+          [
+            "output_destroy",
+            32
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2_0",
+      "kind": "reset",
+      "mode": 2,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            32
+          ],
+          [
+            "output",
+            139
+          ],
+          [
+            "output",
+            21
+          ],
+          [
+            "set",
+            32,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            21,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            139,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            32,
+            1
+          ],
+          [
+            "output_destroy",
+            21
+          ],
+          [
+            "output_destroy",
+            139
+          ],
+          [
+            "output_destroy",
+            32
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2_1",
+      "kind": "reset",
+      "mode": 2,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            32
+          ],
+          [
+            "output",
+            139
+          ],
+          [
+            "output",
+            21
+          ],
+          [
+            "set",
+            32,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            21,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            139,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            32,
+            1
+          ],
+          [
+            "output_destroy",
+            21
+          ],
+          [
+            "output_destroy",
+            139
+          ],
+          [
+            "output_destroy",
+            32
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2_2",
+      "kind": "reset",
+      "mode": 2,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "output",
+            32
+          ],
+          [
+            "output",
+            139
+          ],
+          [
+            "output",
+            21
+          ],
+          [
+            "set",
+            32,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            21,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            139,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            32,
+            1
+          ],
+          [
+            "output_destroy",
+            21
+          ],
+          [
+            "output_destroy",
+            139
+          ],
+          [
+            "output_destroy",
+            32
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_3_-1",
+      "kind": "reset",
+      "mode": 3,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_3_0",
+      "kind": "reset",
+      "mode": 3,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_3_1",
+      "kind": "reset",
+      "mode": 3,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_3_2",
+      "kind": "reset",
+      "mode": 3,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2147483647_-1",
+      "kind": "reset",
+      "mode": 2147483647,
+      "board": -1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2147483647_0",
+      "kind": "reset",
+      "mode": 2147483647,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2147483647_1",
+      "kind": "reset",
+      "mode": 2147483647,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "reset_2147483647_2",
+      "kind": "reset",
+      "mode": 2147483647,
+      "board": 2,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "lock"
+          ],
+          [
+            "unlock"
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 1,
+          "340176": 0
+        }
+      }
+    },
+    {
+      "name": "cs_0",
+      "kind": "cs",
+      "first": 103,
+      "second": 108,
+      "board": 0,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "input",
+            108
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "input_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 0,
+          "340176": 1
+        }
+      }
+    },
+    {
+      "name": "cs_1",
+      "kind": "cs",
+      "first": 103,
+      "second": 108,
+      "board": 1,
+      "expected": {
+        "return_value": null,
+        "trace": [
+          [
+            "output",
+            103
+          ],
+          [
+            "set",
+            103,
+            0
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output",
+            108
+          ],
+          [
+            "set",
+            103,
+            1
+          ],
+          [
+            "sleep",
+            20
+          ],
+          [
+            "output_destroy",
+            108
+          ],
+          [
+            "output_destroy",
+            103
+          ]
+        ],
+        "state": {
+          "24": 17,
+          "32": 1,
+          "36": 19,
+          "40": 1,
+          "68": 0
+        },
+        "writes": [],
+        "instruction_counts": {
+          "648584": 0,
+          "647672": 0,
+          "342428": 0,
+          "340176": 1
+        }
+      }
+    }
+  ],
+  "isolation": "Unicorn private memory; every external app/Core/provider boundary explicit; interrupts, unmapped memory and other PCs reject; no guest syscall passthrough"
+}

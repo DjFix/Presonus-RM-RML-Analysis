@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "task_id": "rolling200_02_channel_filters25_02",
+  "namespace": "Presonus::Mixer",
+  "packet_manifest": "temp/recovery-work/rolling200-02/next-implementation118/prepared118/packets/rolling200_02_channel_filters25_02/context.json",
+  "originals": [
+    {
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZNK8Presonus5Mixer19ChannelPresetFilter10shouldSaveEiPKcPv",
+      "address": 328400,
+      "size": 260,
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "section": ".text"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "source",
+      "path": "uc-library/src/Presonus/Mixer/ChannelPresetFilter.cpp",
+      "sha256": "9462137818a0534c0f104b93a81378ed5006ab69877e2248543abae18378037a"
+    },
+    {
+      "kind": "source",
+      "path": "uc-library/include/presonus/mixer/ChannelPresetFilter.hpp",
+      "sha256": "87dcb302be75d995cbdf0d89ddbb38a8f85caedb5e4c873d0db6ea549637bd96"
+    },
+    {
+      "kind": "test",
+      "path": "uc-library/tests/recovery/ChannelStorageFiltersReplay.cpp",
+      "sha256": "46b74050deda6faee3a615a8c0e748d40e54273b5d9aec7287ccb571233012d9"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/channel_storage_filters/check.py",
+      "sha256": "9dfcb962b5870cb46835b8ea4635b734c6428b836a31c77029102ed44534251f"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/channel_storage_filters/native.py",
+      "sha256": "e5da6a7cc4689a1aee70230e6ee87d24292fe62d86e76a24f42aa3d8fd06cd43"
+    },
+    {
+      "kind": "replay",
+      "path": "uc-library/tests/recovery/channel_storage_filters/seal.py",
+      "sha256": "a6af80b65a8aa71372f786156d1329afdcec50640b35f38bab5cfd1616ece9be"
+    },
+    {
+      "kind": "fixture",
+      "path": "uc-library/tests/recovery/channel_storage_filters/fixtures.json",
+      "sha256": "07ca47cfacbf72825822b1ded7d547abefd56ea83a52c0a51cae25cf0155fadd"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/proof.json",
+      "sha256": "a021cf15dfc803ff29655e33fd530b45d85b146cabaa9c8d8b158d2666049532"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/format.log",
+      "sha256": "6e57d604a1f40e9befca96901e22a69ecffd350a4fdaf00a6bbd977946ee4e10"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/compile.log",
+      "sha256": "5b87830d6fad3547a1057432ed76ea408a928fae80be3049b08e8c72e5a06d99"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/symbols.log",
+      "sha256": "e4f8913a5f3a13865f98f2b789581d7fa4be417c5784a4029b3f94c084b664b4"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/native.log",
+      "sha256": "097f5f32366e16907f380d294fd9e67979eba2a8dedcdaa703b64f8d4226b7fd"
+    },
+    {
+      "kind": "proof",
+      "path": "evidence/recovery/2026-11-06/channel-preset82/replay.log",
+      "sha256": "1e741d10fc1756850b113e20a4065245088a78ccf2bdcc751377e39706ddd4be"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corestorage.h",
+      "sha256": "82936b8a63f2fe9563810cc8299bcb5b22efaa914a518945c6e016b6dcdac901"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coretypeinfo.h",
+      "sha256": "2c5c4ac61b372f490ad071f6a610f5dbbfe9946b3ac38b25d210a97d637261dc"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.h",
+      "sha256": "3c9507761a27b802d8221eaead5450aa612b85caa9d77b7ac4eb2a4d74aa24cb"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/corecomponent.cpp",
+      "sha256": "79fc17cf36a2946eac7293284ce693072a1875844736e4f1d70c48e6757ce7f6"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.h",
+      "sha256": "50784dfb1ff6f3a4ce7134560d8a042b850971f96ebac6476be16326ed2c93cd"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparams.cpp",
+      "sha256": "d7986b98e2de685b206e0b26303e2dbcfafa56d7290345ac6fa9516bc79502b5"
+    },
+    {
+      "kind": "dependency",
+      "path": "third_party/ccl-framework/core/portable/coreparaminfo.h",
+      "sha256": "5465baf63065883e6f63d446609ef2feeea513853246c1f04c887be1d25f30f0"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a",
+      "sha256": "3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c"
+    },
+    {
+      "kind": "dependency",
+      "path": "temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a",
+      "sha256": "69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation118/prepared118/packets/rolling200_02_channel_filters25_02/context.json",
+      "sha256": "8f5d2a8f6860e53d13244dca7f40e83c1df14d19058be7e4f248a958c5740b58"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation118/prepared118/packets/rolling200_02_channel_filters25_02/request.json",
+      "sha256": "660281213d53993fb6368c448fe2ee006ca9aea820d9832c23bbf977eb8db967"
+    },
+    {
+      "kind": "packet",
+      "path": "temp/recovery-work/rolling200-02/next-implementation118/prepared118/packets/rolling200_02_channel_filters25_02/ELF_CONTEXT.md",
+      "sha256": "b2a20968d7476208ad8d72e3b5bd0ff24136ec434abacd5232e41f8c85e16704"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "format",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/channel_storage_filters/check.py",
+        "format"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "kind": "compile",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/channel_storage_filters/check.py",
+        "compile"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "kind": "symbols",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/channel_storage_filters/check.py",
+        "symbols"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "kind": "native",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/channel_storage_filters/check.py",
+        "native"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "kind": "replay",
+      "argv": [
+        "uc-library/.venv/bin/python",
+        "uc-library/tests/recovery/channel_storage_filters/check.py",
+        "replay"
+      ],
+      "timeout_seconds": 300
+    }
+  ],
+  "validation_domain": "2520 cases: 2400 load combinations across Comp/Para/other types, 10 names including null, all 8 control-presence masks and 10 IEEE-754 bit patterns; 120 save combinations across type, target equality, null/real parameter, no/noncomponent/real named Component controller. Real provider identity and parameter edit notification checked. Native value call selection and return outputs compared with host.",
+  "limitations": [
+    "Portable CCL source port; original ordinary return declarations, class layout, ARM ABI and hardware compatibility remain unverified.",
+    "Original shouldLoad at 0x503e8 compares literal Comp 0x436f6d70 loaded at 0x503dc, not Para as earlier task prose states. Exact original hash and range are retained.",
+    "Original provider/string/dynamic_cast boundaries are intercepted in ARM observations; native __aeabi_fcmpgt and its comparison subcalls execute original instructions. CCL provider behavior is separately executed in host tests, never claimed as original binary behavior.",
+    "Target and three real Parameter controls are borrowed and must outlive the filter. Para save objects must be actual Parameter instances. No ownership or original field-layout claim.",
+    "Native synthetic controller/cast results test application decision logic. Production host replay uses actual CCL Component controllers and actual noncomponent IParamObserver; controller identity and real notification lifecycle are checked.",
+    "ChannelParamTag and other shared shouldSave work excluded. Root retains full integration and guarded admission."
+  ],
+  "build_integration": {
+    "production_partition": "common",
+    "sources": [
+      "uc-library/src/Presonus/Mixer/ChannelPresetFilter.cpp"
+    ],
+    "public_headers": [
+      "uc-library/include/presonus/mixer/ChannelPresetFilter.hpp"
+    ],
+    "test_sources": [
+      "uc-library/tests/recovery/ChannelStorageFiltersReplay.cpp"
+    ],
+    "test_target": "channel_storage_filters_replay",
+    "link_dependencies": [
+      "pinned CCL corelib",
+      "presonus_core_allocator"
+    ],
+    "ctest_argv": [
+      "uc-library/.venv/bin/python",
+      "uc-library/tests/recovery/channel_storage_filters/check.py",
+      "replay",
+      "<canonical-built-channel_storage_filters_replay>",
+      "uc-library/tests/recovery/channel_storage_filters/fixtures.json"
+    ],
+    "fixture_binding": {
+      "path": "uc-library/tests/recovery/channel_storage_filters/fixtures.json",
+      "sha256": "07ca47cfacbf72825822b1ded7d547abefd56ea83a52c0a51cae25cf0155fadd"
+    }
+  }
+}

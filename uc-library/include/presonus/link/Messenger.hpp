@@ -21,4 +21,7 @@ private:
   bool releaseRequested_ = false;
   Core::Threads::Lock lock_; // replaces legacy CoreLock via actual pinned CCL
 };
+// Provisional pointer return for the portable port; native ordinary return
+// declaration (pointer versus reference/qualification) remains unresolved.
+Messenger *getMessenger();
 } // namespace Presonus::Link

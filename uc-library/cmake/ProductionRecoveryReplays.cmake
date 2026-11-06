@@ -93,8 +93,8 @@ if(BUILD_TESTING)
   accepted08_input("uc-library/candidates/rolling200_02_ucnet_idle_01/replay.py" "77df038f044359df1944f5c0d2110524487834e005d78121a4924816357eac7c")
   accepted08_input("uc-library/candidates/rolling200_02_ucnet_idle_01/seal.py" "7abbd3b0cdcdb53c4b82806b23c02551379d361e756149496e2d6b697d85cb4c")
   accepted08_input("uc-library/candidates/rolling200_02_ucnet_idle_01/symbols.py" "3377d23364144a689a4e4cb0d6dcdf063c153734cf7e231461ec9ebef015ed48")
-  accepted08_input("uc-library/tests/noaa_tcard_lifecycle_tests.cpp" "24cc9b96a5135267153f4f19e0f919d95d874967d98962b5264481cbb95253dd")
-  accepted08_input("uc-library/tests/noaa_tcard_serial_tests.cpp" "63bcbe6f01d8518b1918086144955ce433988a881e4fc9e4513ed980f95119bb")
+  accepted08_input("uc-library/tests/noaa_tcard_lifecycle_tests.cpp" "90682ecc5aaa3cce76535a0a91b594d7ae32e518496b4b36e58df7f51c96b2ba")
+  accepted08_input("uc-library/tests/noaa_tcard_serial_tests.cpp" "8f035c9b79fac32dc226413ead88fbddee56476231977190d01e9f5b43e21c34")
   accepted08_input("uc-library/tests/recovery/EQBandObserverReplay.cpp" "84b228cb9ffb4530eb8b7cb197e1d20bc99bb5a7b324b69251461b31b9b25910")
   accepted08_input("uc-library/tests/recovery/EQConstructorsReplay.cpp" "f90b4d3efe342d4ec9796b153a8c9df78aa4f83d8852455a7b120a32c43e2d49")
   accepted08_input("uc-library/tests/recovery/FxPresetLifecycleReplay.cpp" "e228ca0a6f808543111681e2b6e78ebb90c9bbc4c0f9862efaf793cf831ae19e")
@@ -103,8 +103,8 @@ if(BUILD_TESTING)
   accepted08_input("uc-library/tests/recovery/PanDrawReplay.cpp" "72cd08f0f4c9c3d794090fd7052c9f81e307a8ba6f42f50eb8af6516d020f1a8")
   accepted08_input("uc-library/tests/recovery/PermissionsListsReplay.cpp" "cf38889cfabbed2fe6bf28a0bf07b7c5db97892e67bd6d228ca5de37979e845d")
   accepted08_input("uc-library/tests/recovery/StormSceneInitReplay.cpp" "a6c90e7fbc622ab82cc19d26267b0230975c38e9596ec1d28f3f033d835f6ac2")
-  accepted08_input("uc-library/tests/recovery/TCardHandlerDeferredReplay.cpp" "5ebc03eb0ac3f6aec36d565057556d47887fa5d3072116b43158cf3ca792f6d4")
-  accepted08_input("uc-library/tests/recovery/TCardHandlerReleaseReplay.cpp" "afcc38feae594e34715ef89af39a7efea6c4faa44f6f9cc598b46aca3b6c0cac")
+  accepted08_input("uc-library/tests/recovery/TCardHandlerDeferredReplay.cpp" "22296f3ae6f1282bdfac90e2724bfb142fea6f28eae4ac04f4b116eaca8d54ce")
+  accepted08_input("uc-library/tests/recovery/TCardHandlerReleaseReplay.cpp" "8542c44a356ca886cb37433c5aa9ae97899414eee3eaffcc8bfdb7f1760c8931")
   accepted08_input("uc-library/tests/recovery/TCardUCNetIdleReplay.cpp" "defa0e1d54b9718e08a914072273c26ac4d2dcc8b224962c48d92b59a5e543b5")
   accepted08_input("uc-library/tests/recovery/fx_preset_lifecycle/check.py" "21f39065e42a4ccffbad94c7aae8ffb15ae2e556199edf74cd32a8b643c30dbc")
   accepted08_input("uc-library/tests/recovery/fx_preset_lifecycle/fixtures.json" "1206b2d75c352d4524f1b47940fe5261cd0c17155502e27e09cffcc9be766a2a")
@@ -347,4 +347,127 @@ if(BUILD_TESTING)
   recovery11_test(storage_filters_replay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/storage_filters/check.py" replay --executable "$<TARGET_FILE:storage_filters_replay>" --fixtures uc-library/tests/recovery/storage_filters/fixtures.json)
   recovery11_executable(safe_mute_filter_replay tests/recovery/SafeMuteFilterReplay.cpp rm)
   recovery11_test(safe_mute_filter_replay "${_recovery11_python}" "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/safe_mute_filter/check.py" replay --executable "$<TARGET_FILE:safe_mute_filter_replay>" --fixtures uc-library/tests/recovery/safe_mute_filter/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(LinkMessengerAccessorReplay tests/recovery/LinkMessengerAccessorReplay.cpp rm)
+  target_compile_options(LinkMessengerAccessorReplay PRIVATE -ffunction-sections -fdata-sections)
+  target_link_options(LinkMessengerAccessorReplay PRIVATE
+    "LINKER:--gc-sections"
+    "LINKER:--wrap=_Znwm"
+    "LINKER:--wrap=_ZdlPv"
+    "LINKER:--wrap=_ZdlPvm"
+    "LINKER:--wrap=_ZN4Core8Platform9PosixLockC1Ev"
+    "LINKER:--wrap=_ZN4Core8Platform9PosixLockD1Ev"
+    "LINKER:--wrap=_ZN4Core8Portable9Deletable11addInstanceEPS1_")
+  recovery11_test(LinkMessengerAccessorReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/link_messenger_accessor/check.py"
+    replay --executable "$<TARGET_FILE:LinkMessengerAccessorReplay>"
+    --fixtures uc-library/tests/recovery/link_messenger_accessor/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(FileMuteActivationReplay tests/recovery/FileMuteActivationReplay.cpp rm)
+  target_compile_options(FileMuteActivationReplay PRIVATE -ffunction-sections -fdata-sections)
+  target_link_options(FileMuteActivationReplay PRIVATE "LINKER:--gc-sections"
+    "LINKER:--wrap=_ZN4Core8Portable12ArchiveUtils12loadFromFileERNS0_10AttributesEPKcNS0_8Archiver6FormatEPNS0_18FileStorageContextEib"
+    "LINKER:--wrap=_ZN4Core8Portable10AttributesD1Ev"
+    "LINKER:--wrap=_ZN4Core8Portable10AttributesD2Ev")
+  recovery11_test(FileMuteActivationReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/file_mute_activation/check.py"
+    replay "$<TARGET_FILE:FileMuteActivationReplay>")
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(filter_group_configured_replay tests/recovery/FilterGroupConfiguredReplay.cpp rm)
+  recovery11_test(filter_group_configured_replay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/filter_group_configured/check.py"
+    replay --executable "$<TARGET_FILE:filter_group_configured_replay>"
+    --fixtures uc-library/tests/recovery/filter_group_configured/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(NetworkListInputReplay tests/recovery/NetworkListInputReplay.cpp cs18)
+  target_compile_options(NetworkListInputReplay PRIVATE -ffunction-sections -fdata-sections)
+  target_link_options(NetworkListInputReplay PRIVATE "LINKER:--gc-sections"
+    "LINKER:--wrap=_ZNK8Presonus7Surface21NetworkSetupComponent13getTargetTypeEv"
+    "LINKER:--wrap=_ZN8Presonus7Surface21NetworkSetupComponent11selectMixerEPNS_2UC11NetworkItemEi"
+    "LINKER:--wrap=_ZN8Presonus7Surface21NetworkSetupComponent9selectDAWEPNS_2UC11NetworkItemEi")
+  recovery11_test(NetworkListInputReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/network_list_input/check.py"
+    replay "$<TARGET_FILE:NetworkListInputReplay>")
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(PotControlInputReplay tests/recovery/PotControlInputReplay.cpp cs18)
+  target_compile_options(PotControlInputReplay PRIVATE -ffunction-sections -fdata-sections -fno-fast-math)
+  target_link_options(PotControlInputReplay PRIVATE "LINKER:--gc-sections")
+  recovery11_test(PotControlInputReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/pot_control_input/check.py"
+    replay "$<TARGET_FILE:PotControlInputReplay>"
+    uc-library/tests/recovery/pot_control_input/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(channel_storage_filters_replay tests/recovery/ChannelStorageFiltersReplay.cpp rm)
+  target_compile_options(channel_storage_filters_replay PRIVATE -fno-fast-math)
+  recovery11_test(channel_storage_filters_replay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/channel_storage_filters/check.py"
+    replay "$<TARGET_FILE:channel_storage_filters_replay>"
+    uc-library/tests/recovery/channel_storage_filters/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(EQControlDrawReplay tests/recovery/EQControlDrawReplay.cpp cs18)
+  target_compile_options(EQControlDrawReplay PRIVATE -fno-fast-math -ffp-contract=off -ffunction-sections -fdata-sections)
+  target_link_options(EQControlDrawReplay PRIVATE "LINKER:--gc-sections")
+  recovery11_test(EQControlDrawReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/eq_draw/check.py"
+    replay "$<TARGET_FILE:EQControlDrawReplay>"
+    uc-library/tests/recovery/eq_draw/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(ParamEnablementReplay tests/recovery/ParamEnablementReplay.cpp rm)
+  target_compile_options(ParamEnablementReplay PRIVATE -fno-fast-math)
+  recovery11_test(ParamEnablementReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/param_enablement/check.py"
+    replay "$<TARGET_FILE:ParamEnablementReplay>"
+    uc-library/tests/recovery/param_enablement/fixtures.json)
+  recovery11_executable(alias_component_bindings_replay tests/recovery/AliasComponentBindingsReplay.cpp rm)
+  recovery11_test(alias_component_bindings_replay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/alias_component_bindings/check.py"
+    replay --executable "$<TARGET_FILE:alias_component_bindings_replay>")
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(card_firmware_replay tests/recovery/CardFirmwareReplay.cpp rm)
+  target_link_options(card_firmware_replay PRIVATE
+    "LINKER:--wrap=open" "LINKER:--wrap=close"
+    "LINKER:--wrap=write" "LINKER:--wrap=read"
+    "LINKER:--wrap=tcgetattr" "LINKER:--wrap=tcsetattr"
+    "LINKER:--wrap=tcflush" "LINKER:--wrap=ioctl"
+    "LINKER:--wrap=socket" "LINKER:--wrap=fopen"
+    "LINKER:--wrap=clock_gettime"
+    "LINKER:--wrap=_ZN4Core8Platform13CurrentThread5sleepEj")
+  recovery11_test(card_firmware_replay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/card_firmware/check.py"
+    replay --executable "$<TARGET_FILE:card_firmware_replay>"
+    --fixtures uc-library/tests/recovery/card_firmware/fixtures.json
+    --fixture-sha256 a55633229964a3d029177363aa8028cce57ff0204cab726a60fdb89fe21604ad)
+  recovery11_executable(StormSafeListReplay tests/recovery/StormSafeListReplay.cpp rm)
+  recovery11_test(StormSafeListReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/storm_safe_list/check.py"
+    replay --executable "$<TARGET_FILE:StormSafeListReplay>"
+    --fixtures uc-library/tests/recovery/storm_safe_list/fixtures.json)
+endif()
+
+if(BUILD_TESTING)
+  recovery11_executable(FocusHelperInputReplay tests/recovery/FocusHelperInputReplay.cpp cs18)
+  target_compile_options(FocusHelperInputReplay PRIVATE -UNDEBUG -fno-fast-math -ffunction-sections -fdata-sections)
+  target_link_options(FocusHelperInputReplay PRIVATE "LINKER:--gc-sections")
+  recovery11_test(FocusHelperInputReplay "${_recovery11_python}"
+    "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/focus_helper_input/check.py"
+    replay "$<TARGET_FILE:FocusHelperInputReplay>"
+    uc-library/tests/recovery/focus_helper_input/fixtures.json)
 endif()

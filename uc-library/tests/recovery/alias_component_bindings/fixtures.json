@@ -1,0 +1,1021 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus14AliasComponent11setOriginalEPN4Core8Portable9ComponentE",
+      "address": 235804,
+      "size": 356,
+      "section": ".text",
+      "file_offset": 203036,
+      "sha256": "1fd8fe4f16187ba454828f50bd5e4006d777afea7baa950182023ebf68b7ee65"
+    },
+    {
+      "mangled": "_ZN8Presonus14AliasComponent12paramChangedEPN4Core8Portable9ParameterEi",
+      "address": 236168,
+      "size": 20,
+      "section": ".text",
+      "file_offset": 203400,
+      "sha256": "bcfabddebf28b341643e7ac7147a3325caee150ac55cc487147cedc2b8e037a4"
+    },
+    {
+      "mangled": "_ZN8Presonus14AliasComponentC1EPKcRN4Core8Portable9ComponentE",
+      "address": 236460,
+      "size": 88,
+      "section": ".text",
+      "file_offset": 203692,
+      "sha256": "ef91893c298af3f608132fd179774eec69ad2596011c63bf2a09ad1e00bf7346"
+    },
+    {
+      "mangled": "_ZN8Presonus14AliasComponentC2EPKcRN4Core8Portable9ComponentE",
+      "address": 236548,
+      "size": 88,
+      "section": ".text",
+      "file_offset": 203780,
+      "sha256": "ec764cfff688cec811b5d145a1ef39cceefeb535eb0c2b1dc719dd86ffcf0407"
+    },
+    {
+      "mangled": "_ZNK8Presonus14AliasComponent11getOriginalEv",
+      "address": 235784,
+      "size": 20,
+      "section": ".text",
+      "file_offset": 203016,
+      "sha256": "d30ed9465e71de11419229e40f9e6a053879f940dc132e84bcf91c5e8ac1956e"
+    }
+  ],
+  "cases": [
+    {
+      "mode": "null",
+      "snapshot": [],
+      "original_nonnull": false,
+      "getter_matches": true,
+      "trace": [],
+      "writes": [
+        [
+          132,
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "empty",
+      "snapshot": [],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          false,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "bind",
+      "snapshot": [
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "same",
+      "snapshot": [
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          true,
+          2
+        ],
+        [
+          "at",
+          true,
+          1
+        ],
+        [
+          "remove",
+          91
+        ],
+        [
+          "delete",
+          91
+        ],
+        [
+          "at",
+          true,
+          0
+        ],
+        [
+          "remove",
+          90
+        ],
+        [
+          "delete",
+          90
+        ],
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "replace",
+      "snapshot": [
+        {
+          "tag": 31,
+          "name": "Other",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          true,
+          2
+        ],
+        [
+          "at",
+          true,
+          1
+        ],
+        [
+          "remove",
+          91
+        ],
+        [
+          "delete",
+          91
+        ],
+        [
+          "at",
+          true,
+          0
+        ],
+        [
+          "remove",
+          90
+        ],
+        [
+          "delete",
+          90
+        ],
+        [
+          "count",
+          false,
+          1
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          31,
+          "Other",
+          1
+        ],
+        [
+          "add",
+          31
+        ],
+        [
+          "bind",
+          31
+        ],
+        [
+          "enabled",
+          31,
+          0
+        ],
+        [
+          "enable",
+          31,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16789504
+        ]
+      ]
+    },
+    {
+      "mode": "clear",
+      "snapshot": [],
+      "original_nonnull": false,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          true,
+          2
+        ],
+        [
+          "at",
+          true,
+          1
+        ],
+        [
+          "remove",
+          91
+        ],
+        [
+          "delete",
+          91
+        ],
+        [
+          "at",
+          true,
+          0
+        ],
+        [
+          "remove",
+          90
+        ],
+        [
+          "delete",
+          90
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "preserve",
+      "snapshot": [
+        {
+          "tag": 99,
+          "name": "Keep",
+          "enabled": false
+        },
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "sparse",
+      "snapshot": [
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          false,
+          3
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "at",
+          false,
+          2
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "C1",
+      "snapshot": [
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "component_constructor",
+          "alias"
+        ],
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          1505328
+        ],
+        [
+          4,
+          4,
+          1505380
+        ],
+        [
+          132,
+          4,
+          0
+        ],
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "C2",
+      "snapshot": [
+        {
+          "tag": 7,
+          "name": "Level",
+          "enabled": true
+        },
+        {
+          "tag": -2,
+          "name": "Mute",
+          "enabled": false
+        }
+      ],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "component_constructor",
+          "alias"
+        ],
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          7,
+          "Level",
+          1
+        ],
+        [
+          "add",
+          7
+        ],
+        [
+          "bind",
+          7
+        ],
+        [
+          "enabled",
+          7,
+          1
+        ],
+        [
+          "enable",
+          7,
+          1
+        ],
+        [
+          "at",
+          false,
+          1
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "construct_alias",
+          -2,
+          "Mute",
+          1
+        ],
+        [
+          "add",
+          -2
+        ],
+        [
+          "bind",
+          -2
+        ],
+        [
+          "enabled",
+          -2,
+          0
+        ],
+        [
+          "enable",
+          -2,
+          0
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          1505328
+        ],
+        [
+          4,
+          4,
+          1505380
+        ],
+        [
+          132,
+          4,
+          0
+        ],
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    },
+    {
+      "mode": "changed",
+      "snapshot": [],
+      "original_nonnull": false,
+      "getter_matches": true,
+      "trace": [
+        [
+          "component_paramChanged",
+          16785408,
+          2
+        ]
+      ],
+      "writes": []
+    },
+    {
+      "mode": "C1_unwind",
+      "snapshot": [],
+      "original_nonnull": false,
+      "getter_matches": true,
+      "trace": [
+        [
+          "component_constructor",
+          "alias"
+        ],
+        [
+          "injected_exception",
+          "setOriginal"
+        ],
+        [
+          "component_destructor",
+          true
+        ],
+        [
+          "resume_cleanup",
+          4660
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          1505328
+        ],
+        [
+          4,
+          4,
+          1505380
+        ],
+        [
+          132,
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "C2_unwind",
+      "snapshot": [],
+      "original_nonnull": false,
+      "getter_matches": true,
+      "trace": [
+        [
+          "component_constructor",
+          "alias"
+        ],
+        [
+          "injected_exception",
+          "setOriginal"
+        ],
+        [
+          "component_destructor",
+          true
+        ],
+        [
+          "resume_cleanup",
+          4660
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          1505328
+        ],
+        [
+          4,
+          4,
+          1505380
+        ],
+        [
+          132,
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "mode": "alias_ctor_unwind",
+      "snapshot": [],
+      "original_nonnull": true,
+      "getter_matches": true,
+      "trace": [
+        [
+          "count",
+          false,
+          2
+        ],
+        [
+          "at",
+          false,
+          0
+        ],
+        [
+          "allocate",
+          52
+        ],
+        [
+          "injected_exception",
+          "AliasParam_constructor"
+        ],
+        [
+          "delete_unconstructed_alias",
+          true
+        ],
+        [
+          "resume_cleanup",
+          4660
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          16785408
+        ]
+      ]
+    }
+  ],
+  "unicorn_version": "2.1.4",
+  "limitations": [
+    "Only app instructions execute; Core/libc interfaces modeled and traced, not native provider behavior.",
+    "Cleanup landing pads entered through explicit interface exception injection; no original exception personality execution; host allocation-failure checks separate.",
+    "No ARM ABI, original layout, original return declaration, or hardware claim."
+  ]
+}

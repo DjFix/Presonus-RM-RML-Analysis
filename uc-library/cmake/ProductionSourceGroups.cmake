@@ -197,6 +197,7 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/BackgroundPainter.cpp
   src/Presonus/MappingTableConnect.cpp
   src/Presonus/MappablePageComponent.cpp
   src/Presonus/Surface/PageParam.cpp
@@ -343,6 +344,11 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/PanelRegistrarReset.cpp
+  src/Presonus/NOAA/TCardFirmware.cpp
+  src/Presonus/Panel/ParamEnablementHandler.cpp
+  src/Presonus/Mixer/ChannelPresetFilter.cpp
+  src/Presonus/Mixer/FilterGroupComponent.cpp
   src/Presonus/StormSafeMuteFilter.cpp
   src/Presonus/Dsp/ControllerInfo.cpp
   src/Presonus/Link/Messenger.cpp
@@ -482,6 +488,10 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/panel/ParamEnablementHandler.hpp
+  presonus/BackgroundPainter.hpp
+  presonus/mixer/ChannelPresetFilter.hpp
+  presonus/mixer/FilterGroupComponent.hpp
   presonus/mixer/FxPresetFilter.hpp
   presonus/mixer/GEQPresetFilter.hpp
   presonus/mixer/ChannelParamTagFilter.hpp

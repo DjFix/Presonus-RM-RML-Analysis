@@ -213,6 +213,13 @@ public:
   }
   Core::Portable::IParamObserver *portableObserver() { return &observer; }
   void paramChanged(Core::Portable::Parameter *parameter, int message);
+  // Original ordinary return declaration is unresolved; void is provisional.
+  // Rendering uses actual CCL providers with portable state, not ARM layout.
+  void draw(const Core::Portable::DrawEvent &event);
+  void bindPortableHandleStyle(int diameter, const Core::Color &offline) {
+    portableHandleDiameter = diameter;
+    portableOfflineColor = offline;
+  }
   void drawCurve(const Core::Portable::DrawEvent &event,
                  const Core::Color &color, bool mode);
   std::vector<float> &portableAmplitudeCurve() { return amplitudeCurve; }
@@ -292,6 +299,8 @@ private:
   const Core::LinearInterpolator *gainNormalizer = nullptr;
   const Core::LinearInterpolator *yPixels = nullptr;
   presonus::dsp::EQControlDrawBoundary *drawBoundary = nullptr;
+  int portableHandleDiameter = 10;
+  Core::Color portableOfflineColor{0, 0, 0, 255};
   int requestedBandCount = 0;
   float curveMinimum = 20.f, curveMaximum = 20000.f;
   float displayMinimumLevel = 0.f, displayMaximumLevel = 0.f;

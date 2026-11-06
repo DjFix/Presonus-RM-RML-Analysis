@@ -139,7 +139,8 @@ struct Pump final : presonus::dice::IdlePump {
 };
 struct Concrete final : TCard {
   using TCard::TCard;
-  bool updateFirmware(Presonus::UC::IFirmwareUpdateListener *, int) override {
+  std::int32_t updateFirmware(Presonus::UC::IFirmwareUpdateListener *,
+                              int) override {
     std::abort();
   }
 };
@@ -165,7 +166,7 @@ static void defaults(TCard &c) {
 }
 int main(int argc, char **argv) {
   assert(argc == 2);
-  static_assert(std::is_abstract_v<TCard>);
+  static_assert(!std::is_abstract_v<TCard>);
   static Pins pins;
   static IO io;
   presonus::surface_panel_port::setInputPinConstructionIO(&pins);

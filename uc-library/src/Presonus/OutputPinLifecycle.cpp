@@ -30,12 +30,21 @@ public:
   }
 };
 LibcOutputPinIO actualLibc;
+thread_local OutputPinIO *constructionIO = nullptr;
 } // namespace
+OutputPinIO *setOutputPinConstructionIO(OutputPinIO *io) {
+  auto *previous = constructionIO;
+  constructionIO = io;
+  return previous;
+}
+OutputPinIO &outputPinConstructionIO() {
+  return constructionIO ? *constructionIO : actualLibc;
+}
 } // namespace presonus::surface_panel_port
 namespace Presonus::Panel {
 OutputPin::OutputPin(int pin)
-    : io_(&presonus::surface_panel_port::actualLibc), pin_(pin), file_(nullptr),
-      state_(-1) {
+    : io_(&presonus::surface_panel_port::outputPinConstructionIO()), pin_(pin),
+      file_(nullptr), state_(-1) {
   if (pin >= 0)
     setup(pin);
 }

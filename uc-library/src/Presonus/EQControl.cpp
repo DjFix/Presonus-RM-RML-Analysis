@@ -1,5 +1,6 @@
 #include "presonus/mixer_dsp/EQControl.hpp"
 #include "core/system/coretime.h"
+#include "presonus/BackgroundPainter.hpp"
 #include "presonus/dsp/biquad_calc.hpp"
 #include <algorithm>
 #include <cmath>
@@ -385,6 +386,80 @@ void EQControl::initBands() {
     bufferValid = true;
   } else {
     pixelCurve.assign(static_cast<unsigned>(width), 0);
+  }
+}
+void EQControl::draw(const Core::Portable::DrawEvent &event) {
+  using namespace Core::Portable;
+  if (!portableView)
+    throw std::logic_error("EQControl draw requires a real View");
+  const auto &style = portableView->getStyle();
+  if (backgroundPainters.count()) {
+    for (int i = 0; i < backgroundPainters.count(); ++i)
+      backgroundPainters[i]->paint(portableView->getSize(), event, style);
+  } else if (auto *background = backgroundBitmap.getBitmap()) {
+    BitmapPainter::draw(event.graphics, Core::Point(), *background, 0);
+  }
+  const bool active = primaryParameter && primaryParameter->getValue() > 0.f;
+  const auto &color = active             ? style.getForeColor()
+                      : constructorState ? constructorState->offlineColor
+                                         : portableOfflineColor;
+  if (bufferedDraw) {
+    if (!bitmap)
+      return;
+    if (bufferValid) {
+      bufferValid = false;
+      Core::Rect client;
+      portableView->getClientRect(client);
+      // Owned storage is RGBA in this intentional portable source port.
+      ColorBitmapRenderer renderer(*bitmap);
+      renderer.fillRect(client, Colors::kBlack);
+      // Original routes this call to the ORIGINAL event, not bitmap renderer.
+      drawCurve(event, color, active);
+    }
+    BitmapPainter::draw(event.graphics, Core::Point(), *bitmap, 0);
+  } else {
+    drawCurve(event, color, active);
+  }
+  if (portableParams.size() < portableBands.size())
+    throw std::logic_error(
+        "EQControl draw parameter bindings must cover bands");
+  for (unsigned i = 0; i < portableBands.size(); ++i) {
+    const auto &band = portableBands[i];
+    auto *selected = portableParams[i].slot5;
+    if (!band.enabled || !selected)
+      continue;
+    auto *image = i < bandImages.size() ? bandImages[i].getBitmap() : nullptr;
+    if (!image)
+      image = defaultBitmap.getBitmap();
+    const int frames = image && image->getFrameCount() == 4 ? 4 : 1;
+    const int diameter = constructorState ? constructorState->handleDiameter
+                                          : portableHandleDiameter;
+    const int width = image ? image->getWidth() : diameter;
+    const int height = image ? image->getHeight() / frames : diameter;
+    Core::Point position(band.x - width / 2, band.y - height / 2);
+    const int sourceHeight = image && image->getFrameCount() > 1
+                                 ? image->getHeight() / image->getFrameCount()
+                                 : height;
+    Core::Rect destination(position.x, position.y, position.x + width,
+                           position.y + sourceHeight);
+    Core::Rect intersection(destination);
+    if (!intersection.bound(event.updateRect) || intersection.isEmpty())
+      continue;
+    if (image) {
+      const int state = frames == 4
+                            ? (getBandEnabled(static_cast<int>(i)) ? 1 : 0) +
+                                  (selected->getValue() > 0.f ? 2 : 0)
+                            : 0;
+      // Native centers unsupported counts using full height, then derives the
+      // source slice from the bitmap's actual frame count (state remains zero).
+      Core::Rect source(0, state * sourceHeight, width,
+                        (state + 1) * sourceHeight);
+      event.graphics.drawBitmap(position, *image, source);
+    } else {
+      // Native tests overlap then passes the full square. The actual renderer's
+      // event clip handles pixel clipping; do not alter native call arguments.
+      event.graphics.fillRect(destination, color);
+    }
   }
 }
 void EQControl::drawCurve(const Core::Portable::DrawEvent &event,
