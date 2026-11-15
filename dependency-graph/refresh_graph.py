@@ -26,7 +26,7 @@ PRODUCERS = ('test_build_invalidation.py', 'refresh_graph.py', 'refresh_facts.py
              'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py', 'publication_events.py', 'context_resources.py',
              'native_candidate_gate.py', 'native_candidate_ownership.py',
              'native_candidate_lifecycle.py', 'compact_facts.py', 'incremental_delta.py',
-             'incremental_stage.py', 'deferred_sqlite.py', 'publication_budget.py', 'reuse_observations.py', 'verified_build_reconfiguration.py', 'unchanged_observations.py')
+             'incremental_stage.py', 'stage_timing.py', 'stage_normalization.py', 'deferred_sqlite.py', 'publication_budget.py', 'reuse_observations.py', 'verified_build_reconfiguration.py', 'unchanged_observations.py')
 
 
 def run(argv, out, label):

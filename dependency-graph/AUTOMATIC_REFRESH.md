@@ -79,3 +79,27 @@ See CONTEXT_SELECTION.md for commands. Refresh source/compiler logs, producer
 snapshots and receipts remain under `temp/recovery-work/dependency-graph/refresh/`.
 Sealed validation evidence is under
 `evidence/recovery/2026-10-31/dependency-graph/stage-04/`.
+
+### Staging timing and read-only comparison
+
+New staging attempts emit `stage-timings.json` next to `stage-changes.json`.
+The wall/CPU totals distinguish capture equivalence, fact generation, per-owner
+SQLite replacement, build fact collection/replacement, delta finalization,
+input hashes, retained-capture checks and native sealing. These are disjoint
+calls inside staging, not the total publisher duration; outer commit and server
+publication remain separate. Failed calls are included in the timing receipt.
+
+`measure_refresh_stages.py` replays computations on an existing capture in a
+read-only SQLite transaction, without compiler execution or Memgraph writes.
+Use the publisher container and the same resource profile for both runs.
+`--normalizer reference --reference-source PATH` selects the original normalizer
+and the `build_facts` function from a trusted project-local archived producer.
+`--compare BEFORE/RESULT.json` rejects different workloads or output hashes.
+`--profile` enables cProfile; omit it on both sides for wall-time comparisons.
+The reference-source option executes repository code and is not a sandbox.
+
+The staging normalizer is intentionally separate from the extraction producer:
+its equivalence is checked against `code_identity.normalize_ast`, while compiler
+capture producer hashes remain unchanged. See
+[the measurement report](../docs/refresh-staging-performance-20261116.md) for
+scope, measured timings and local receipt locations.

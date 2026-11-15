@@ -21,8 +21,26 @@ BUILD = ROOT / 'temp/core-upstream/root-integration-01'
 BUILD_KINDS = ('compiler_input', 'compiles', 'link_input', 'HAS_TEST_TU', 'RUNS', 'USES_FIXTURE')
 
 
+class BuildPaths:
+    """Resolve shared build paths once; reject retargeting before returning facts."""
+    def __init__(self):
+        self.paths = {}
+
+    def resolve(self, value):
+        path = pathlib.Path(value)
+        if path not in self.paths:
+            self.paths[path] = path.resolve()
+        return self.paths[path]
+
+    def verify(self):
+        for path, expected in self.paths.items():
+            if path.resolve() != expected:
+                raise ContextError('Build path changed during fact collection: ' + str(path))
+
+
 def build_facts(c, out):
     nodes = {}; edges = set(); inputs = {}
+    paths = BuildPaths()
     def node(key, kind, label, meta=None):
         nodes[key] = {'kind': kind, 'label': label, 'metadata': meta or {}}
         return key
@@ -36,7 +54,7 @@ def build_facts(c, out):
             previous_kinds[key] = next(iter(kinds), None)
         return previous_kinds[key]
     def file(path):
-        path = pathlib.Path(path).resolve()
+        path = paths.resolve(path)
         label = str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path)
         key = 'file:' + label
         return key if key in nodes else node(key, prior_file_kind(key) or 'file', label)
@@ -96,6 +114,7 @@ def build_facts(c, out):
                     raise ContextError('Conflicting current/prior file identity: ' + key)
                 fid = node(key, kind, label, {'sha256': digest})
                 edges.add((tid, fid, 'USES_FIXTURE', 'explicit existing file argument in CTest command'))
+    paths.verify()
     return nodes, edges, inputs
 
 
@@ -206,6 +225,8 @@ def stage(c, out, budget=None):
 
 def _stage_compact(c, out, delta, plan, selected, budget):
     from incremental_stage import IncrementalStage
+    from stage_timing import StageTimings
+    timing = StageTimings()
     catalog = clean_catalog(c, plan)
     existing_catalog = c.execute('SELECT value FROM meta WHERE key="catalog_snapshot"').fetchone()
     lookup_catalog = catalog or (catalog_snapshot(json.loads(existing_catalog[0])) if existing_catalog else None)
@@ -242,18 +263,18 @@ def _stage_compact(c, out, delta, plan, selected, budget):
             dest = out / 'observations' / owner.replace(':', '-')
             ast, gcc = dest / 'ast.json', dest / '0000.json'
             previous = c.execute('SELECT payload FROM units WHERE owner=?', (owner,)).fetchone()
-            if not catalog and equivalence.check(owner, row, json.loads(previous[0]) if previous else None, ast, gcc):
+            if not catalog and timing.call("capture_equivalence", equivalence.check, owner, row, json.loads(previous[0]) if previous else None, ast, gcc):
                 diagnostic['processed_units'] += 1
                 progress('retained', owner)
                 continue
             progress('generate_facts', owner)
             if catalog_lookup is None:
-                nodes, edges = facts(ROOT, owner, row, ast, gcc)
+                nodes, edges = timing.call("generate_facts", facts, ROOT, owner, row, ast, gcc)
             else:
-                nodes, edges = facts(ROOT, owner, row, ast, gcc, catalog_lookup=catalog_lookup)
+                nodes, edges = timing.call("generate_facts", facts, ROOT, owner, row, ast, gcc, catalog_lookup=catalog_lookup)
             captured = json.loads(ast.read_text())
             progress('replace_unit', owner)
-            update.replace_unit(owner, row, nodes, edges, captured['input_sha256'],
+            timing.call("replace_unit", update.replace_unit, owner, row, nodes, edges, captured['input_sha256'],
                                 ast, gcc, captured['external_inputs'])
             diagnostic['processed_units'] += 1
             progress('replaced', owner)
@@ -263,15 +284,15 @@ def _stage_compact(c, out, delta, plan, selected, budget):
                      for row in catalog[2]}
             update.replace_facts('@catalog', nodes, [])
         progress('build_facts', '@build')
-        nodes, edges, inputs = build_facts(c, out)
+        nodes, edges, inputs = timing.call("build_facts", build_facts, c, out)
         if catalog:
             c.execute('INSERT OR REPLACE INTO meta VALUES(?,?)',
                       ('catalog_snapshot', json.dumps(dict(path=str(catalog[0]), sha256=catalog[1]), sort_keys=True)))
         if lookup_catalog:
             inputs[str(lookup_catalog[0])] = lookup_catalog[1]
-        update.replace_facts('@build', nodes, edges)
+        timing.call('replace_build_facts', update.replace_facts, '@build', nodes, edges)
         progress('finish_delta', '@delta')
-        counts = update.finish(delta)
+        counts = timing.call("finish_delta", update.finish, delta)
         delta.execute('INSERT INTO settings VALUES(?,?)', ('replace_legacy_build', int(legacy)))
         if catalog:
             delta.execute('INSERT INTO settings VALUES(?,?)', ('source_baseline_mode', CLEAN_BASELINE))
@@ -293,15 +314,15 @@ def _stage_compact(c, out, delta, plan, selected, budget):
             path = ROOT / relative
             if path.suffix == '.cmake' or path.name == 'CMakeLists.txt': inputs[str(path)] = sha(path)
         for path, digest in inputs.items():
-            if not pathlib.Path(path).is_file() or sha(path) != digest:
+            if not pathlib.Path(path).is_file() or timing.call("input_hash_checks", sha, path) != digest:
                 raise ContextError('Inputs changed before publication: ' + path)
-        equivalence.verify_retained()
+        timing.call("verify_retained", equivalence.verify_retained)
         for relative, digest in plan.get('producer_sha256', {}).items():
             if sha(ROOT / relative) != digest:
                 raise ContextError('Producer changed before publication: ' + relative)
         from native_candidate_gate import seal_guard
         from native_candidate_ownership import pack_guard
-        candidate_guard = pack_guard(seal_guard(ROOT, c, delta))
+        candidate_guard = timing.call("candidate_seal", lambda: pack_guard(seal_guard(ROOT, c, delta)))
         guard_json = json.dumps(candidate_guard, sort_keys=True)
         (out / 'unchanged-observations.json').write_text(json.dumps(equivalence.receipt, indent=2) + '\n')
         report = {'native_candidate_guard': candidate_guard,
@@ -347,6 +368,7 @@ def _stage_compact(c, out, delta, plan, selected, budget):
         (out / 'stage-failure.json').write_text(json.dumps(failure, indent=2) + '\n')
         raise
     finally:
+        timing.save(out / "stage-timings.json")
         progress_log.close()
         (out / 'unchanged-observations.json').write_text(json.dumps(equivalence.receipt, indent=2) + '\n')
 

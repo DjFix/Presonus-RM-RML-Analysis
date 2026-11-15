@@ -74,7 +74,7 @@ class CompactRefreshStageTests(unittest.TestCase):
         replacement = patch.object(refresh_publish, 'facts', side_effect=self.extractor_facts)
         replacement.start()
         self.addCleanup(replacement.stop)
-        replacement = patch('native_candidate_gate.seal_guard', return_value={'fixture': True})
+        replacement = patch('native_candidate_gate.seal_guard', return_value={'version': 1, 'sources': [], 'fixture': True})
         self.seal = replacement.start()
         self.addCleanup(replacement.stop)
         self.counter = 0
@@ -149,6 +149,12 @@ class CompactRefreshStageTests(unittest.TestCase):
         self.assertEqual(json.loads((out / 'stage-changes.json').read_text())['counts']['new_edges'], 0)
         self.assertTrue(json.loads((out / 'refresh-report.json').read_text())['source_graph_refresh'])
         self.seal.assert_called_once()
+        timing = json.loads((out / 'stage-timings.json').read_text())
+        self.assertTrue({'capture_equivalence','generate_facts','replace_unit','build_facts',
+                         'replace_build_facts','finish_delta','input_hash_checks','verify_retained',
+                         'candidate_seal'} <= timing['phases'].keys())
+        self.assertEqual(timing['phases']['replace_unit']['calls'], 2)
+        self.assertGreaterEqual(timing['other_seconds'], 0)
 
     def test_one_owner_change_retains_shared_edge_owned_by_other_unit(self):
         self.edges['a'] = {('shared', 'external', 'READS', 'replacement evidence')}

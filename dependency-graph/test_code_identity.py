@@ -50,6 +50,27 @@ class IdentityTests(unittest.TestCase):
         site=json.loads(b['edges'][0][3]);site['line']=4;b['edges'][0][3]=json.dumps(site,sort_keys=True)
         self.assertNotEqual(normalize_ast(ROOT,self.row(),a)[0]['edges'],normalize_ast(ROOT,self.row(),b)[0]['edges'])
 
+    def test_normalization_retains_deep_output_isolation(self):
+        original = self.ast('tu:old')
+        original['diagnostics'] = [{'items': ['unchanged']}]
+        before = copy.deepcopy(original)
+        normalized, _ = normalize_ast(ROOT, self.row(), original)
+        normalized['diagnostics'][0]['items'].append('new')
+        normalized['unresolved'][0]['site']['line'] = 99
+        next(iter(normalized['nodes'].values()))['metadata']['new'] = ['value']
+        self.assertEqual(original, before)
+
+    def test_repeated_provenance_and_indirect_mapping_are_not_stale(self):
+        original = self.ast('tu:old')
+        old_target = original['edges'][0][1]
+        evidence = json.dumps({'target': old_target, 'tu': 'tu:old'})
+        original['edges'].extend([['function:f', old_target, 'USES', evidence]] * 100)
+        normalized, mapping = normalize_ast(ROOT, self.row(), original)
+        edge = next(edge for edge in normalized['edges'] if edge[2] == 'USES')
+        self.assertEqual(json.loads(edge[3]), {'target': mapping[old_target], 'tu': mapping['tu:old']})
+        self.assertEqual(len(normalized['edges']), 2)
+        self.assertEqual(normalize_ast(ROOT, self.row(), normalized)[0], normalized)
+
     def test_hash_collision_does_not_alias_clang_cursors(self):
         class Cursor:
             hash=7

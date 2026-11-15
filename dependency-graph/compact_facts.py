@@ -462,11 +462,15 @@ class CompactFacts:
             text('compact_owners', 'owner_id', owner)
         values, logical, provenance, observations = {}, {}, {}, set()
         for key, node in nodes.items():
+            label, metadata = node['label'], node['metadata']
+            if any(not isinstance(value, str) for value in (key, node['kind'], label)) or not isinstance(metadata, dict):
+                raise ValueError('Node identity/kind/label must be strings and metadata an object')
+            # Preview already compared exact old/new values under the caller's
+            # transaction. Unchanged memberships prove these interned rows exist.
+            if key not in changed_nodes:
+                continue
             text('compact_node_keys', 'node_id', key)
             kind = text('compact_kinds', 'kind_id', node['kind'])
-            label, metadata = node['label'], node['metadata']
-            if not isinstance(label, str) or not isinstance(metadata, dict):
-                raise ValueError('Node label must be a string and metadata an object')
             raw = json.dumps(metadata, sort_keys=True)
             value_key = (kind, label, raw)
             if value_key not in values:
@@ -480,6 +484,10 @@ class CompactFacts:
                     insert('compact_node_values', 48 + len(label.encode('utf-8')) + len(raw.encode('utf-8')))
                 values[value_key] = found
         for src, dst, kind_name, evidence in edges:
+            if any(not isinstance(value, str) for value in (src, dst, kind_name, evidence)):
+                raise ValueError('Edge identities, kind and evidence must be strings')
+            if (src, dst, kind_name, evidence) not in changed_edges:
+                continue
             src_id = text('compact_node_keys', 'node_id', src)
             dst_id = text('compact_node_keys', 'node_id', dst)
             kind_id = text('compact_kinds', 'kind_id', kind_name)

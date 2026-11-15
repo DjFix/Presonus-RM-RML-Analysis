@@ -8,13 +8,15 @@ import json
 from pathlib import Path
 import shlex
 
-from code_identity import VERSION, normalize_ast
+from code_identity import VERSION, context_descriptor
+from stage_normalization import normalize_ast
 
 
 class ObservationEquivalence:
     def __init__(self, root):
         self.root = Path(root).resolve()
         self.cache = {}
+        self._comparison = None
         self.receipt = {'version': 1, 'eligible': [], 'rejected': [],
                         'scope': 'fresh compiler equivalence retaining old immutable fact/capture identities'}
 
@@ -81,12 +83,28 @@ class ObservationEquivalence:
                                                 (gcc, 'ast_sha256', bindings['ast_sha256'])):
             if field in container and container[field] != expected_hash:
                 raise ValueError('Additional capture pair binding differs')
-        normalized, _ = normalize_ast(self.root, row, ast)
-        normalized.pop('seconds', None)
-        normalized.pop('gcc_sha256', None)
+        # Both pairs still pass every capture/input/command check above. Only
+        # duplicate deterministic normalization is shared within this check().
+        raw = dict(ast)
+        raw.pop('seconds', None)
+        raw.pop('gcc_sha256', None)
         if recovery:
-            normalized['recovery'] = {key: value for key, value in recovery.items()
-                                      if key not in ('gcc_validation', 'sha256')}
+            raw['recovery'] = {key: value for key, value in recovery.items()
+                               if key not in ('gcc_validation', 'sha256')}
+        cached = self._comparison.get('normalized') if self._comparison is not None else None
+        if (cached is not None and cached[0] == row and cached[1] == raw
+                and cached[3] == context_descriptor(self.root, row)):
+            normalized = cached[2]
+        else:
+            normalized, _ = normalize_ast(self.root, row, ast)
+            normalized.pop('seconds', None)
+            normalized.pop('gcc_sha256', None)
+            if recovery:
+                normalized['recovery'] = raw['recovery']
+            if self._comparison is not None:
+                descriptor = next(node['metadata']['compile_command'] for node in normalized['nodes'].values()
+                                  if node['kind'] == 'TranslationUnit')
+                self._comparison['normalized'] = (row, raw, normalized, descriptor)
         semantic_gcc = {key: value for key, value in gcc.items()
                         if key not in ('argv', 'seconds', 'dump', 'scratch', 'dump_sha256', 'ast_sha256')}
         if self.sha(ast_path) != bindings['ast_sha256'] or self.sha(gcc_path) != bindings['gcc_sha256']:
@@ -103,6 +121,7 @@ class ObservationEquivalence:
                         raise ValueError('Equivalent capture changed before publication: ' + capture[key])
 
     def check(self, owner, row, previous, ast_path, gcc_path):
+        self._comparison = {}
         try:
             if not previous or previous.get('command') != row:
                 raise ValueError('New owner or changed compile command')
@@ -122,3 +141,6 @@ class ObservationEquivalence:
         except (KeyError, ValueError, TypeError, OSError) as exc:
             self.receipt['rejected'].append({'owner': owner, 'reason': str(exc)})
             return False
+        finally:
+            # No cache survives this pair, failure, or a later owner/command.
+            self._comparison = None

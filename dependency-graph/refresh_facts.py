@@ -8,8 +8,9 @@ import functools
 import hashlib
 
 from context_runtime import sha
-from code_identity import VERSION, context_id, normalize_ast, digest
+from code_identity import VERSION, context_id, digest
 from compact_facts import CompactFacts, create_schema
+from stage_normalization import normalize_ast
 
 
 def connect(path):
