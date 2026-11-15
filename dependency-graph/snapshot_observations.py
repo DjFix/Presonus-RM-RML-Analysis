@@ -14,7 +14,48 @@ def pinned(root,reference,cache):
     if key not in cache:
         require(sha(p)==reference['sha256'],'Compiler provenance hash mismatch');cache[key]=(stamp,json.loads(p.read_text()));require(fingerprint(p)==stamp,'Compiler provenance changed while reading')
     require(cache[key][0]==stamp,'Compiler provenance changed during capture');return cache[key][1]
+
+def validate_direct(root,relative,digest,record,cache,current=False,payload_hash=True):
+    """Registered direct capture; hashes are observed now, not historical seals."""
+    match=PATTERN.fullmatch(relative);require(match is not None,'Invalid direct compiler observation')
+    state=pinned(root,record['state'],cache)
+    value=state['files'].get(relative)
+    require((value.get('sha256') if isinstance(value,dict) else value)==digest,'Direct observation differs from registered state')
+    report_ref=record['report'];require(state['reports'].get(report_ref['path'])==report_ref['sha256'],'Direct report binding differs')
+    report=pinned(root,report_ref,cache)
+    source=root/pathlib.Path(relative).parents[2]
+    require(source.resolve()==source and source.is_dir(),'Unsafe direct capture directory')
+    metadata={name:pinned(root,ref,cache) for name,ref in record['capture_metadata'].items()}
+    require(set(metadata)=={'plan.json','units.json','extract.json'},'Incomplete direct capture metadata')
+    for name,ref in record['capture_metadata'].items():
+        require(root/ref['path']==source/name,'Direct metadata origin differs')
+    require(record['receipt']==record['capture_metadata']['extract.json'],'Direct extraction receipt differs')
+    plan=metadata['plan.json'];extracted=metadata['extract.json']
+    require(plan['producer_sha256']==report['producer_sha256'],'Direct capture producer bindings differ')
+    require(type(extracted.get('returncode')) is int and extracted['returncode']==0,'Direct extraction did not complete')
+    tokens=[token for arg in extracted['argv'] for token in shlex.split(arg)]
+    require(tokens[-2:]==[str(root/'dependency-graph/refresh_extract.py'),str(source)],'Direct extraction command/output differs')
+    owner=record['owner'];require(_owner(owner)==match[1],'Direct capture owner differs')
+    rows=[row for ident,row in metadata['units.json'] if ident==owner]
+    require(len(rows)==1,'Direct compile owner missing or ambiguous')
+    leaf=regular(root,relative)
+    for name,field in (('ast.json','ast_sha256'),('0000.json','gcc_sha256')):
+        key=str((source/'observations'/match[1]/name).relative_to(root));bound=state['files'].get(key)
+        expected=bound.get('sha256') if isinstance(bound,dict) else bound
+        require(expected==record[field],'Direct compiler pair differs from registered state')
+    if current:
+        key=('direct-capture',source,owner)
+        if key not in cache:cache[key]=_capture(root,source,owner,rows[0],plan)[1]
+        for name in ('ast_sha256','gcc_sha256'):
+            require(cache[key][name]==record[name],'Direct verified compiler pair changed')
+    if payload_hash:require(sha(leaf)==digest,'Direct compiler observation payload changed')
+    if isinstance(value,dict) and 'fingerprint' in value:
+        require(fingerprint(leaf)==value['fingerprint'],'Direct compiler observation fingerprint changed')
+    return leaf
+
 def validate_record(root,relative,digest,record,cache,current=False,payload_hash=True):
+    if record.get('kind')=='registered_capture':
+        return validate_direct(root,relative,digest,record,cache,current,payload_hash)
     match=PATTERN.fullmatch(relative);require(match is not None,'Not restricted compiler AST/GCC payload')
     state=pinned(root,record['state'],cache);state_value=state['files'].get(relative);require((state_value.get('sha256') if isinstance(state_value,dict) else state_value)==digest,'Observation absent/different in hash-bound registered state')
     report_reference=record['report'];require(state['reports'].get(report_reference['path'])==report_reference['sha256'],'Registered report binding differs');report=pinned(root,report_reference,cache);p=report['observation_provenance'];receipt_reference=record['receipt'];require(pathlib.Path(p['reuse_receipt'])==root/receipt_reference['path'] and p['sha256']==receipt_reference['sha256'],'Report reuse receipt binding differs');receipt=pinned(root,receipt_reference,cache)
@@ -54,7 +95,23 @@ def candidate(root,relative,digest,files,cache):
     report_path=str(pathlib.Path(relative).parents[2]/'refresh-report.json')
     if report_path not in state['reports']:return None
     report_ref={'path':report_path,'sha256':state['reports'][report_path]};report=pinned(root,report_ref,cache)
-    if not report.get('observation_provenance',{}).get('reuse_receipt'):return None
+    if not report.get('observation_provenance',{}).get('reuse_receipt'):
+        source=root/pathlib.Path(relative).parents[2];match=PATTERN.fullmatch(relative)
+        metadata={name:{'path':str((source/name).relative_to(root)),'sha256':sha(regular(root,source/name))}
+                  for name in ('plan.json','units.json','extract.json')}
+        units=pinned(root,metadata['units.json'],cache)
+        owners=[owner for owner,row in units if _owner(owner)==match[1]]
+        require(len(owners)==1,'Direct compiler owner missing or ambiguous')
+        pair={}
+        for name,field in (('ast.json','ast_sha256'),('0000.json','gcc_sha256')):
+            key=str((source/'observations'/match[1]/name).relative_to(root));value=state['files'].get(key)
+            require(value is not None,'Direct compiler pair absent from registered state')
+            pair[field]=value.get('sha256') if isinstance(value,dict) else value
+        record={'kind':'registered_capture','state':state_ref,'report':report_ref,
+                'receipt':metadata['extract.json'],'capture_metadata':metadata,'owner':owners[0],**pair,
+                'scope':'Fresh verification of registered completed capture; metadata hashes observed now; no historical seal or readiness claim'}
+        leaf=validate_direct(root,relative,digest,record,cache,current=True)
+        return leaf,record
     receipt_path=pathlib.Path(report['observation_provenance']['reuse_receipt']);receipt_ref={'path':str(receipt_path.relative_to(root)),'sha256':report['observation_provenance']['sha256']};receipt=pinned(root,receipt_ref,cache);match=PATTERN.fullmatch(relative);owners=[x['owner'] for x in receipt['eligible'] if _owner(x['owner'])==match[1]]
     if not owners:return None
     require(len(owners)==1,'Duplicate eligible compiler owner');record={'state':state_ref,'report':report_ref,'receipt':receipt_ref,'owner':owners[0],'scope':'Completed original compiler capture only; immutable evidence reference, no current graph/native/readiness credit'};leaf=validate_record(root,relative,digest,record,cache,current=True);return leaf,record

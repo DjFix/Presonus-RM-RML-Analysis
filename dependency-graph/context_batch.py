@@ -21,6 +21,8 @@ from context_resources import choose_limits
 from memgraph_endpoint import DEFAULT_DOCKER_NETWORK, memgraph_network, memgraph_uri, validate_network
 
 
+DEFAULT_SNAPSHOT_COPY_BYTES = 1024**3
+
 def write_new(path, value):
     with path.open('x') as stream:
         stream.write(json.dumps(value, indent=2) + '\n')
@@ -321,7 +323,7 @@ def snapshot_payloads(root, destination, files, external, reuse_snapshot, budget
     return fingerprints, references, provenance if prior else None, total
 
 
-def freeze_snapshot(root, output, frozen, requests, reuse_snapshot=None, copy_budget_bytes=64 * 1024 * 1024):
+def freeze_snapshot(root, output, frozen, requests, reuse_snapshot=None, copy_budget_bytes=DEFAULT_SNAPSHOT_COPY_BYTES):
     """Copy checked generation inputs; no hard links to mutable workspace bytes."""
     manifest_path = output / 'SNAPSHOT.json'
     destination = output / 'snapshot'
@@ -518,7 +520,22 @@ class Environment:
         args = ['batch-run', '--out', str(directory.relative_to(self.root))]
         argv = (['docker', 'exec', self.names['runner'], 'python3', str(script), *args]
                 if action == 'validate' else self.builder_argv('runner', script, args))
-        self.command(argv, tag)
+        try:
+            self.command(argv, tag)
+        except ContextError:
+            # A packet-local failure may coexist with verified independent results.
+            # Missing/failed common barriers remain fatal; never infer completion
+            # from context.json alone after an interrupted process.
+            receipts = list(directory.glob('batch-run-results-*.json'))
+            if action not in ('prepare', 'finalize') or len(receipts) != 1:
+                raise
+            result = json.loads(receipts[0].read_text())
+            if (result.get('action') != action or result.get('common_exit_seconds') is None
+                    or [r['packet'] for r in result.get('receipts', [])] != packets
+                    or all(r['success'] for r in result['receipts'])):
+                raise
+            return [r for r in result['receipts'] if not r['success']]
+        return []
 
     def slice(self, packet, tag):
         self.command(self.builder_argv('analysis', self.root / 'dependency-graph/context_slices.py', [str(self.root / packet)]), tag)
@@ -637,11 +654,63 @@ def _build_packet(root, packet, environment, selection, slicing, before_slice, s
 
 
 
+
+def build_packets(root, packets, environment, before_slice, slicing_jobs):
+    """Two real batch selector calls; retain successful stages for explicit resume.
+
+    Selection resolves all reads before any AST work. Independent slices finish
+    even if another fails. No publication or dispatch is authorized here.
+    """
+    pending = []
+    for packet in packets:
+        directory = root / packet
+        if not (directory / 'context.json').exists():
+            if any((directory / name).exists() for name in
+                   ('TASK.md', 'CONTEXT.md', 'native-context.json')):
+                raise ContextError('Interrupted selection evidence retained: ' + packet)
+            pending.append(packet)
+    errors = []
+    if pending:
+        errors.extend(environment.selector('prepare', pending, 'select-batch-' + str(time.time_ns())) or [])
+    failed_selection = {item['packet'] for item in errors}
+    selected = []
+    for packet in packets:
+        if packet in failed_selection:
+            continue
+        context = json.loads((root / packet / 'context.json').read_text())
+        try:
+            before_slice(packet, context)
+        except ContextError as error:
+            errors.append({'packet': packet, 'error': str(error)})
+            continue
+        if context['state'] == 'selected':
+            selected.append(packet)
+        elif context['state'] != 'dispatch_ready':
+            raise ContextError('Incomplete packet state: ' + packet)
+    def slice_one(packet):
+        if not (root / packet / 'source-slices.json').exists():
+            environment.slice(packet, 'slice-' + pathlib.Path(packet).name + '-' + str(time.time_ns()))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=slicing_jobs) as pool:
+        futures = {pool.submit(slice_one, packet): packet for packet in selected}
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                future.result()
+            except Exception as error:
+                errors.append({'packet': futures[future], 'error': str(error)})
+    failed = {item['packet'] for item in errors}
+    finished = [packet for packet in selected if packet not in failed]
+    if finished:
+        errors.extend(environment.selector('finalize', finished, 'finalize-batch-' + str(time.time_ns())) or [])
+    if errors:
+        raise ContextError('Packet failures retained; independent packets finalized: ' + json.dumps(errors))
+
+
 def _with_review_validation(function):
     @functools.wraps(function)
     def wrapped(operator, *args, **kwargs):
         from execution_review import batch_validation
-        with batch_validation(operator.ROOT):
+        from context_runtime import input_hash_session
+        with batch_validation(operator.ROOT), input_hash_session(operator.ROOT):
             return function(operator, *args, **kwargs)
     return wrapped
 
@@ -649,7 +718,7 @@ def _with_review_validation(function):
 @_with_review_validation
 def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicing_jobs=None,
         resume=False, runner_factory=Environment, resource_options=None, reuse_snapshot=None,
-        copy_budget_bytes=64 * 1024 * 1024):
+        copy_budget_bytes=DEFAULT_SNAPSHOT_COPY_BYTES):
     root = operator.ROOT
     output = inside(root, out_path)
     if not output.is_relative_to(root / 'temp/recovery-work'):
@@ -795,19 +864,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                 finally:
                     timings.append({'phase': 'pre-slice-conflict-check',
                         'packet': packet, 'seconds': time.perf_counter()-before})
-            def build(packet):
-                return _build_packet(root, packet, environment, selection, slicing,
-                                     before_slice, stopped)
-            with concurrent.futures.ThreadPoolExecutor(max_workers=limits['limits']['builders']) as pool:
-                futures = [pool.submit(build, p) for p in packets]
-                errors = []
-                for future in futures:
-                    try:
-                        future.result()
-                    except Exception as exc:
-                        errors.append(str(exc))
-                if errors:
-                    raise ContextError('Batch builders failed; no launch authorization: ' + json.dumps(errors))
+            build_packets(root, packets, environment, before_slice, limits['limits']['slicing'])
         with locked(root, fcntl.LOCK_EX, timings, 'publication'):
             common_start = time.perf_counter()
             check_inputs(root, operator, frozen['inputs'])
@@ -858,6 +915,8 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                         raise ContextError('External compiler input changed before publication: ' + path)
             from execution_review import check_batch_validation
             check_batch_validation()
+            from context_runtime import check_input_hash_session
+            check_input_hash_session()
             publish_start = time.perf_counter()
             payload = {'version': 1, 'generation': frozen['inputs']['active']['state_sha256'],
                        'workers': workers, 'mode': 'sealed_before_first_worker_write',

@@ -1,5 +1,8 @@
 """Shared filesystem/task guards for subagent context packets."""
 import hashlib
+import contextlib
+import contextvars
+import sqlite3
 import json
 import os
 import pathlib
@@ -10,9 +13,68 @@ class ContextError(ValueError):
     pass
 
 
-def sha(path):
+_INPUT_HASHES = contextvars.ContextVar('context_input_hashes', default=None)
+
+
+def _digest(path):
     with pathlib.Path(path).open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def sha(path):
+    cache = _INPUT_HASHES.get()
+    path = pathlib.Path(path)
+    if cache is None or path.resolve() not in cache['allowed']:
+        return _digest(path)
+    canonical = path.resolve()
+    stamp = fingerprint(canonical)
+    previous = cache['verified'].get(canonical)
+    if previous is not None:
+        if stamp != previous[0]:
+            raise ContextError('Immutable batch input changed: ' + str(path))
+        cache['hits'] += 1
+        return previous[1]
+    digest = _digest(canonical)
+    if fingerprint(canonical) != stamp:
+        raise ContextError('Immutable batch input changed during hashing: ' + str(path))
+    cache['verified'][canonical] = (stamp, digest)
+    return digest
+
+
+@contextlib.contextmanager
+def input_hash_session(root):
+    """Reuse immutable native input hashes only, never claims or readiness.
+
+    Each use checks inode/size/mtime/ctime. Exit rehashes every used input and
+    checks the pointers too. No persistent cache or user staleness override.
+    """
+    pointer_path = root / 'dependency-graph/NATIVE_ACTIVE.json'
+    if not pointer_path.exists():
+        yield None
+        return
+    raw = pointer_path.read_bytes()
+    pointer = json.loads(raw)
+    allowed = {inside(root, pointer[name]) for name in ('database', 'report')}
+    database = inside(root, pointer['database'])
+    with contextlib.closing(sqlite3.connect(database.as_uri() + '?mode=ro', uri=True)) as connection:
+        allowed.update(inside(root, row[0]) for row in connection.execute('SELECT path FROM inputs'))
+    cache = {'allowed': allowed, 'verified': {}, 'hits': 0}
+    token = _INPUT_HASHES.set(cache)
+    try:
+        yield cache
+        if pointer_path.read_bytes() != raw:
+            raise ContextError('Native pointer changed during batch')
+        check_input_hash_session()
+    finally:
+        _INPUT_HASHES.reset(token)
+
+
+def check_input_hash_session():
+    cache = _INPUT_HASHES.get()
+    if cache is not None:
+        for path, (stamp, digest) in cache['verified'].items():
+            if fingerprint(path) != stamp or _digest(path) != digest or fingerprint(path) != stamp:
+                raise ContextError('Immutable batch input changed at final barrier: ' + str(path))
 
 
 def fingerprint(path):

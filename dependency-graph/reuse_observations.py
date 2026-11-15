@@ -46,25 +46,52 @@ _PURE_SHA = ast.dump(ast.parse('''def sha(path):
         return hashlib.file_digest(stream, 'sha256').hexdigest()
 ''').body[0], include_attributes=False)
 
+# Audited hashing-only path. Compiler processes never enter input_hash_session:
+# its ContextVar starts at None, so sha reaches only the pure digest helper.
+# Exact helper/initializer syntax plus inert-module checks preserve the existing
+# whole-module producer hash. Any changed behavior takes the full import closure.
+_SCOPED_HASH_LEAVES = {node.name: ast.dump(node, include_attributes=False)
+    for node in ast.parse("def _digest(path):\n    with pathlib.Path(path).open('rb') as stream:\n        return hashlib.file_digest(stream, 'sha256').hexdigest()\n\ndef sha(path):\n    cache = _INPUT_HASHES.get()\n    path = pathlib.Path(path)\n    if cache is None or path.resolve() not in cache['allowed']:\n        return _digest(path)\n    canonical = path.resolve()\n    stamp = fingerprint(canonical)\n    previous = cache['verified'].get(canonical)\n    if previous is not None:\n        if stamp != previous[0]:\n            raise ContextError('Immutable batch input changed: ' + str(path))\n        cache['hits'] += 1\n        return previous[1]\n    digest = _digest(canonical)\n    if fingerprint(canonical) != stamp:\n        raise ContextError('Immutable batch input changed during hashing: ' + str(path))\n    cache['verified'][canonical] = (stamp, digest)\n    return digest\n\ndef fingerprint(path):\n    s = pathlib.Path(path).stat()\n    return [s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns]").body}
+_SCOPED_HASH_INITIALIZER = ast.dump(ast.parse(
+    "_INPUT_HASHES = contextvars.ContextVar('context_input_hashes', default=None)"
+).body[0], include_attributes=False)
+
 def _safe_sha_leaf(tree):
     found = [x for x in tree.body if isinstance(x, ast.FunctionDef) and x.name == 'sha']
-    if len(found) != 1 or ast.dump(found[0], include_attributes=False) != _PURE_SHA:
+    if len(found) != 1:
+        return False
+    scoped = ast.dump(found[0], include_attributes=False) == _SCOPED_HASH_LEAVES['sha']
+    if scoped:
+        for name, expected in _SCOPED_HASH_LEAVES.items():
+            matches = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == name]
+            if len(matches) != 1 or ast.dump(matches[0], include_attributes=False) != expected:
+                return False
+        initializers = [node for node in tree.body if isinstance(node, ast.Assign)
+                        and any(isinstance(target, ast.Name) and target.id == '_INPUT_HASHES' for target in node.targets)]
+        if len(initializers) != 1 or ast.dump(initializers[0], include_attributes=False) != _SCOPED_HASH_INITIALIZER:
+            return False
+    elif ast.dump(found[0], include_attributes=False) != _PURE_SHA:
         return False
     # Only imports, inert function definitions, docstrings and the simple error
     # class initialize this exact module. Any new executable initialization,
     # decorators/default calls or aliasing falls back to the full import scan.
     for node in tree.body:
         if isinstance(node, (ast.Import, ast.ImportFrom)):
-            if any(alias.asname == 'sha' or (alias.asname is None and alias.name == 'sha')
-                   for alias in node.names):
+            protected = {'sha', '_digest', 'fingerprint', '_INPUT_HASHES'} if scoped else {'sha'}
+            if any((alias.asname or alias.name) in protected for alias in node.names):
                 return False
         elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             defaults = list(node.args.defaults) + [x for x in node.args.kw_defaults if x]
             arguments = node.args.posonlyargs + node.args.args + node.args.kwonlyargs
             arguments += [x for x in (node.args.vararg, node.args.kwarg) if x]
-            if (node.decorator_list or node.returns or any(x.annotation for x in arguments)
+            safe_contextmanager = (scoped and node.name == 'input_hash_session'
+                and len(node.decorator_list) == 1 and ast.dump(node.decorator_list[0], include_attributes=False)
+                == ast.dump(ast.parse('contextlib.contextmanager', mode='eval').body, include_attributes=False))
+            if ((node.decorator_list and not safe_contextmanager) or node.returns or any(x.annotation for x in arguments)
                     or any(not isinstance(x, ast.Constant) for x in defaults)):
                 return False
+        elif scoped and isinstance(node, ast.Assign) and ast.dump(node, include_attributes=False) == _SCOPED_HASH_INITIALIZER:
+            continue
         elif isinstance(node, ast.ClassDef):
             if node.name != 'ContextError' or node.keywords or node.decorator_list or len(node.bases) != 1 or not isinstance(node.bases[0], ast.Name) or node.bases[0].id != 'ValueError':
                 return False

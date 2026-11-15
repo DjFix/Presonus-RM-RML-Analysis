@@ -196,3 +196,47 @@ assigned bounded owned work. An unreviewed context candidate is not permission
 to reconstruct. Reviews and evidence are frozen with the batch inputs, and the
 contract producer is included in tool hashes. No validation/readiness gate is
 removed, and historical packets/proofs are not rewritten.
+
+## Shared checks during preparation
+
+Selection and finalization now each submit the whole pending packet list to one
+selector process. The process checks the complete generation and tools on entry
+and exit; each packet still checks its own bytes, selected inputs, exact original
+identity and live unique-work claim. The existing `BatchWorkValidator` also runs
+for prepare/finalize, including its final claim/decision checks. Standalone
+commands retain their full guards. No successful exit is reported if the final
+barrier fails.
+
+Native database/report/input hashes may be reused only inside one invocation.
+Every cache hit checks device/inode/size/mtime/ctime; final barriers rehash all
+used immutable inputs. Mutable registry/claim databases are never hash-cached.
+There is no persistent cache, freshness override or readiness-proof reuse.
+
+All selected-read ownership checks precede AST work. AST jobs remain bounded and
+parallel. Packet-local selection/finalization failures are retained only after a
+successful common barrier; an incomplete/failed barrier is fatal. Failed packets
+do not cancel independent slices; successful packets are finalized and retained,
+while the failed batch cannot publish dispatch.
+Explicit resume validates the frozen inputs and claims, then processes only
+missing stages. Partial selection evidence is retained for inspection rather
+than silently overwritten.
+
+`measure_context_preparation.py` measures the real coordinator, including setup,
+claims, snapshot, selectors, slicing and final publication. It does not spawn
+workers or copy databases. Supply `--tasks` for an unchanged reviewed manifest,
+or explicitly choose `--select-audit` for a read-only 10x10 context workload.
+The latter uses current SQLite catalog/status/history, filters live claims and
+retained reservations, excludes compiled records/Core, and chooses ten scopes
+with ten distinct original symbols each. Its small-symbol sampling and audit
+mode are recorded; it is not a claim that 100 reconstruction contracts have been
+reviewed. Claims and packet evidence remain available after measurement.
+
+```sh
+uc-library/.venv/bin/python dependency-graph/measure_context_preparation.py \
+  --out temp/recovery-work/NEW_PREPARATION_MEASUREMENT --select-audit \
+  --reuse-snapshot temp/recovery-work/EXISTING_VERIFIED_BATCH
+```
+
+Report graph refresh, selection, preparation and infrastructure development
+separately. Historical 20-symbol and new 100-symbol measurements have different
+workloads/modes; do not present their ratio as a controlled performance result.

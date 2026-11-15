@@ -121,6 +121,7 @@ def selector_command(root, out, action):
 
 
 def main():
+    from context_batch import DEFAULT_SNAPSHOT_COPY_BYTES
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('action', choices=('register', 'prepare', 'validate', 'dispatch', 'expand', 'batch-dispatch', 'batch-prepare'))
     p.add_argument('--tasks')
@@ -129,7 +130,7 @@ def main():
     p.add_argument('--slicing-jobs', type=int)
     p.add_argument('--resume', action='store_true')
     p.add_argument('--reuse-snapshot', help='Prior direct-copy batch directory')
-    p.add_argument('--snapshot-copy-budget-bytes', type=int, default=64 * 1024 * 1024)
+    p.add_argument('--snapshot-copy-budget-bytes', type=int, default=DEFAULT_SNAPSHOT_COPY_BYTES)
     p.add_argument('--memgraph-cap', type=int, default=4)
     p.add_argument('--selection-memory-mib', type=int, default=512)
     p.add_argument('--slicing-memory-mib', type=int, default=1536)

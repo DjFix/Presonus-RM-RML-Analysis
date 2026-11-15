@@ -177,8 +177,9 @@ def validate_packet(session,out,active,require_ready=True,baseline=False,common=
     return packet
 
 
-def prepare(session,out,active):
-    state = guard(ROOT,active); graph_marker(session,active)
+def prepare(session,out,active,common=None):
+    state = common['state'] if common is not None else guard(ROOT,active)
+    graph_marker(session,active)
     task = json.loads((out/'request.json').read_text())
     roots = set(); unresolved = []; reading = set(); callers = set(); tests = set(); fixtures = set()
     proof_ids = set(); reasons = {}; mapping_unknown = []
@@ -336,17 +337,19 @@ def prepare(session,out,active):
         found=session.run('MATCH(t:TranslationUnit)-[:DEFINES_FUNCTION]->(:Artifact {id:$id}) '
                           'RETURN t.label AS path ORDER BY path LIMIT 1',id=function).single()
         if found:packet['slice_translation_units'].append(found['path'])
-    guard(ROOT,active);graph_marker(session,active)
+    if common is None:
+        guard(ROOT,active)
+    graph_marker(session,active)
     (out/'context.json').write_text(json.dumps(packet,indent=2)+'\n')
-    validate_packet(session,out,active,require_ready=False)
+    validate_packet(session,out,active,require_ready=False,common=common)
     print(json.dumps({'prepared':True,'source_files':len(source_paths),'context_nodes':len(packet['context_nodes']),
                       'source_functions':len(call_functions),'native_bodies':len(native['bodies']),
                       'native_relations':len(native['edges']),'unknowns':len(packet['unknowns'])}))
 
 
 
-def finalize(session, out, active):
-    packet=validate_packet(session,out,active,require_ready=False)
+def finalize(session, out, active,common=None):
+    packet=validate_packet(session,out,active,require_ready=False,common=common)
     if packet['state']!='selected':raise ContextError('Already finalized')
     slices=json.loads((out/'source-slices.json').read_text())
     task=json.loads((out/'request.json').read_text())
@@ -360,7 +363,7 @@ def finalize(session, out, active):
     packet['packet_sha256'].update({p:sha(out/p) for p in ('SOURCE_SLICES.md','source-slices.json')})
     packet['state']='dispatch_ready'
     (out/'context.json').write_text(json.dumps(packet,indent=2)+'\n')
-    validate_packet(session,out,active)
+    validate_packet(session,out,active,common=common)
     print(json.dumps({'finalized':True,'source_lines':slices['source_lines']}))
 
 
@@ -412,7 +415,7 @@ class TimedSession:
     def __getattr__(self, name):
         return getattr(self.session,name)
 
-def main():
+def _main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('action',choices=('register','prepare','finalize','validate','dispatch','expand','batch-validate','batch-run'))
     p.add_argument('--out',required=True)
@@ -430,10 +433,17 @@ def main():
                 paths = specification if isinstance(specification, list) else specification['packets']
                 if action not in ('prepare','finalize','validate') or not paths or len(set(paths)) != len(paths):
                     raise ContextError('Invalid batch operation or duplicate packets')
+                # Cheap structural failures precede generation/native scans.
+                if action == 'prepare':
+                    from context_runtime import validate_task
+                    for path in paths:
+                        validate_task(json.loads((inside(ROOT,path)/'request.json').read_text()))
+                common_started = time.perf_counter()
                 common = {'state': guard(ROOT, active), 'tools': tools()}
-                if action == 'validate':
-                    from context_work_batch import BatchWorkValidator
-                    common['work'] = BatchWorkValidator(ROOT)
+                from context_work_batch import BatchWorkValidator
+                common['work'] = BatchWorkValidator(ROOT)
+                common_entry_seconds = time.perf_counter() - common_started
+                common_exit_seconds = None
                 receipts = []
                 receipt_path = out/('batch-run-results-'+str(time.time_ns())+'.json')
                 try:
@@ -442,27 +452,35 @@ def main():
                         started = time.perf_counter()
                         previous_metrics = dict(session.metrics)
                         try:
-                            if action == 'prepare': prepare(session,packet_out,active)
-                            elif action == 'finalize': finalize(session,packet_out,active)
+                            if action == 'prepare': prepare(session,packet_out,active,common=common)
+                            elif action == 'finalize': finalize(session,packet_out,active,common=common)
                             else: validate_packet(session,packet_out,active,common=common)
                         except Exception as error:
                             receipts.append({'packet':path,'seconds':time.perf_counter()-started,'success':False,'error':str(error)})
-                            raise
+                            if action == 'validate':
+                                raise
+                            continue
                         receipts.append({'packet':path,'seconds':time.perf_counter()-started,'success':True,
                                          **{key:session.metrics[key]-previous_metrics[key] for key in previous_metrics}})
+                    common_started = time.perf_counter()
                     if json.loads(ACTIVE.read_text()) != active:
                         raise ContextError('Active generation changed during batch')
                     guard(ROOT,active); graph_marker(session,active)
                     if action == 'validate':
                         from context_publication import verify_packet_files
                         verify_packet_files(ROOT,paths)
-                        common['work'].finish()
+                    common['work'].finish()
+                    from context_runtime import check_input_hash_session
+                    check_input_hash_session()
                     if tools() != common['tools']:
                         raise ContextError('Tools changed during batch')
+                    common_exit_seconds = time.perf_counter() - common_started
                 finally:
                     if common.get('work') is not None:
                         common['work'].close()
-                    receipt_path.write_text(json.dumps({'action':action,'receipts':receipts,**session.metrics},indent=2)+'\n')
+                    receipt_path.write_text(json.dumps({'action':action,'receipts':receipts,'common_entry_seconds':common_entry_seconds,'common_exit_seconds':common_exit_seconds,'full_generation_checks':2 if common_exit_seconds is not None else 1,**session.metrics},indent=2)+'\n')
+                if any(not item['success'] for item in receipts):
+                    raise ContextError('Independent packet failures retained; common barrier passed: ' + str(receipt_path))
                 print(json.dumps({'batch_valid':True,'packets':len(paths),'receipts':str(receipt_path.relative_to(ROOT))}))
             elif a.action=='prepare':prepare(session,out,active)
             elif a.action=='finalize':
@@ -521,6 +539,12 @@ def main():
                 print(json.dumps({'expanded':True,'nodes':len(nodes)}))
         print(json.dumps({'graph_metrics':session.metrics}))
     driver.close()
+
+
+def main():
+    from context_runtime import input_hash_session
+    with input_hash_session(ROOT):
+        return _main()
 
 
 if __name__=='__main__':

@@ -772,3 +772,13 @@ or context compaction, together with the publisher polling cadence above.
   increased budgets do not authorize copies of historical databases. A live job
   retains its original limits: inspect its outcome before retrying saved capture
   under the new profile, without repeated compiler extraction.
+
+- Preparation snapshots use the same raised finite profile: 1 GiB physical-copy
+  budget through the library, production CLI and measurement CLI. The 2026-11-15
+  recurrence was failure to propagate the earlier all-limits correction to this
+  separate 64 MiB default. Before a new preparation, verify effective defaults
+  across all entry points; a per-run override alone is not a completed fix.
+  Keep explicit smaller overrides and verified large-file references; do not
+  replace them with database copies. Regression tests must exercise all three
+  entry points. Finish live frozen work before changing its bound instructions
+  or tools, and mark its packets historical after those bindings change.
