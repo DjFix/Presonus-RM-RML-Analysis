@@ -1,0 +1,237 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus5Mixer19StormMixerComponentD0Ev",
+  "range": {
+    "address": 470220,
+    "size": 84,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 437452,
+    "sha256": "98027dc86def50b3081504de51eb1cc6ab71c4446c58e891767ed2f873b6fb41"
+  },
+  "cases": [
+    {
+      "count": 1,
+      "bridge_arguments": [
+        "--boundary",
+        "d0",
+        "1"
+      ],
+      "boundary_commands": [
+        "B",
+        "F",
+        "E"
+      ],
+      "trace": [
+        "actual-source-base-destructor",
+        "actual-unsized-delete"
+      ],
+      "boundary_responses": [
+        "BASE 1",
+        "FREE 1"
+      ],
+      "result": "RESULT 1 1 1 1 1",
+      "sites": [
+        470220,
+        470224,
+        470228,
+        470232,
+        470236,
+        470240,
+        470244,
+        470248,
+        470252,
+        470256,
+        470260,
+        470264,
+        470268,
+        470272,
+        470276,
+        470280,
+        470284,
+        470288,
+        470292,
+        470296
+      ],
+      "object_writes": [
+        [
+          4,
+          4,
+          3340872
+        ],
+        [
+          136,
+          4,
+          3340888
+        ],
+        [
+          260,
+          4,
+          3340952
+        ],
+        [
+          1116,
+          4,
+          3340972
+        ],
+        [
+          0,
+          4,
+          3340648
+        ]
+      ],
+      "terminal_pc": 32505856,
+      "terminal_sp": 9433088,
+      "return_object_preserved": true
+    },
+    {
+      "count": 3,
+      "bridge_arguments": [
+        "--boundary",
+        "d0",
+        "3"
+      ],
+      "boundary_commands": [
+        "B",
+        "F",
+        "E"
+      ],
+      "trace": [
+        "actual-source-base-destructor",
+        "actual-unsized-delete"
+      ],
+      "boundary_responses": [
+        "BASE 1",
+        "FREE 1"
+      ],
+      "result": "RESULT 1 1 1 1 1",
+      "sites": [
+        470220,
+        470224,
+        470228,
+        470232,
+        470236,
+        470240,
+        470244,
+        470248,
+        470252,
+        470256,
+        470260,
+        470264,
+        470268,
+        470272,
+        470276,
+        470280,
+        470284,
+        470288,
+        470292,
+        470296
+      ],
+      "object_writes": [
+        [
+          4,
+          4,
+          3340872
+        ],
+        [
+          136,
+          4,
+          3340888
+        ],
+        [
+          260,
+          4,
+          3340952
+        ],
+        [
+          1116,
+          4,
+          3340972
+        ],
+        [
+          0,
+          4,
+          3340648
+        ]
+      ],
+      "terminal_pc": 32505856,
+      "terminal_sp": 9433088,
+      "return_object_preserved": true
+    },
+    {
+      "count": 17,
+      "bridge_arguments": [
+        "--boundary",
+        "d0",
+        "17"
+      ],
+      "boundary_commands": [
+        "B",
+        "F",
+        "E"
+      ],
+      "trace": [
+        "actual-source-base-destructor",
+        "actual-unsized-delete"
+      ],
+      "boundary_responses": [
+        "BASE 1",
+        "FREE 1"
+      ],
+      "result": "RESULT 1 1 1 1 1",
+      "sites": [
+        470220,
+        470224,
+        470228,
+        470232,
+        470236,
+        470240,
+        470244,
+        470248,
+        470252,
+        470256,
+        470260,
+        470264,
+        470268,
+        470272,
+        470276,
+        470280,
+        470284,
+        470288,
+        470292,
+        470296
+      ],
+      "object_writes": [
+        [
+          4,
+          4,
+          3340872
+        ],
+        [
+          136,
+          4,
+          3340888
+        ],
+        [
+          260,
+          4,
+          3340952
+        ],
+        [
+          1116,
+          4,
+          3340972
+        ],
+        [
+          0,
+          4,
+          3340648
+        ]
+      ],
+      "terminal_pc": 32505856,
+      "terminal_sp": 9433088,
+      "return_object_preserved": true
+    }
+  ],
+  "boundary": "Original ARM target only. At original base call invoke real qualified canonical MixerComponent destructor in live host subprocess; at original unsized delete call invoke genuine global delete there. ARM object dispatch writes stay in emulator. No original base/Core execution or original layout/ARM ABI claim. Host base borrows nonempty real Core vectors and application service resources containing CCL parameters/owned child; child cleanup occurs only at external owner destruction."
+}

@@ -34,7 +34,11 @@ DOMAIN={
 'predicate':'219 exact original executions: type keys0,Parameter::kTypeID,-1 and near miss; null/real actual NumericParameter, plus invalid unused object/name on nonParameter keys; controllers absent/wrong actual Component/real ChannelComponent secondary IParamObserver view; tags INT_MIN,-1,0,217,218,219,220,221,222,223,224,INT_MAX. Actual controller/tag/core_cast source providers independently observed; original app executes full unsigned subtraction/mask, no objectstate writes. Partial stateless source-port construction only, not full IStorageFilter interface.',
 'init':'18 exact original executions: signed description INT_MIN,INT_MIN+1,-1000,-1,0,1,42,INT_MAX-1,INT_MAX; sceneSettings tag0 absent/present actual StringParam with previous contents. Bound Registrar state differs from Mixer scalar/other registries. Actual CString64.appendFormat exact %d runs before actual scene tag0 lookup; present setter fromString(false), exact bytes/NUL and real observer messages compared. No Python formatting or app output used as oracle; explicit initialized Registrar input, stable live real providers.'}
 def main():
- a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',choices=['format','compile','symbols','replay'],default='replay');a.add_argument('--exe',type=Path);a.add_argument('--object',type=Path);a.add_argument('--integration',type=Path);a.add_argument('--out',type=Path);args=a.parse_args();os.chdir(ROOT);OUT.mkdir(parents=True,exist_ok=True)
+ global TRANS,TRANS_SHA
+ a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',choices=['format','compile','symbols','replay'],default='replay');a.add_argument('--exe',type=Path);a.add_argument('--object',type=Path);a.add_argument('--integration',type=Path);a.add_argument('--out',type=Path);a.add_argument('--transitive-supplement',type=Path);a.add_argument('--transitive-supplement-sha256');args=a.parse_args();os.chdir(ROOT);OUT.mkdir(parents=True,exist_ok=True)
+ assert bool(args.transitive_supplement)==bool(args.transitive_supplement_sha256),'Explicit transitive supplement path/hash pair required'
+ if args.transitive_supplement:
+  TRANS=args.transitive_supplement;TRANS_SHA=args.transitive_supplement_sha256
  libs=supplement();target='PanelComponent' if KEY=='init' else 'FrontPanelComponent';obj=args.object or OUT/(target+'.o');exe=(args.exe or OUT/'replay').resolve();replay=TEST/'Replay.cpp'
  fmt=['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*OWNED,replay]
  if args.mode=='format':run(fmt);print('format passed');return

@@ -134,6 +134,10 @@ struct FocusState {
   Core::Vector<Presonus::AssignmentHandler *> *handlers = nullptr;
 };
 struct RootServices {
+  // Borrowed real CCL ports; independent storage, not original member layout.
+  Core::Portable::Component *rootParameters = nullptr;
+  Core::Portable::IParamObserver *observer = nullptr;
+  bool touchscreenActive = false;
   FocusState *focus = nullptr;
   Core::Portable::Component *children = nullptr;
   std::vector<MainScreenReference> mainScreens;
@@ -219,6 +223,9 @@ public:
   SurfaceRootComponent() = default;
   explicit SurfaceRootComponent(PanelRegistrar &registrar)
       : registrar_(&registrar) {}
+  // Portable void declarations; original return declarations remain unresolved.
+  void terminateTestTouchscreen();
+  void manageUtilPageObserver(bool);
   int bumpFaderSpeed(int);
   void bindServices(presonus::surface::RootServices &value) {
     services_ = &value;

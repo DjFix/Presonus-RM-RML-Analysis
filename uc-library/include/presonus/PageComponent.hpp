@@ -27,6 +27,14 @@ public:
                 const char *formName = nullptr)
       : formName_(formName), owner_(owner), bindings_(bindings) {}
   const char *getFormName() const;
+  int getPageTag() const;
+  // Independent source-port bindings for observed native +0x8c and +0x89.
+  // The byte is deliberately unnamed: its original meaning is unresolved.
+  void bindObservedPageState(int tag, unsigned char byte89) {
+    observedTag_ = tag;
+    observedByte89_ = byte89;
+  }
+  unsigned char observedByte89() const { return observedByte89_; }
   void *castTo(int classId);
   bool isVisible() const;
   void *getMainScreen() const;
@@ -34,6 +42,8 @@ public:
   bool isEditingText() const;
 
 private:
+  int observedTag_ = 0;
+  unsigned char observedByte89_ = 0;
   Core::CString32 formName_;
   void *owner_;
   const presonus::page::Bindings &bindings_;

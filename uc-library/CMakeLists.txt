@@ -204,6 +204,13 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/panel/GambitPanelComponent.hpp
+  presonus/panel/WolverinePanelComponent.hpp
+  presonus/mixer/BeastMixerComponent.hpp
+  presonus/mixer/StormMixerComponent.hpp
+  presonus/mixer/MonoMainComponent.hpp
+  presonus/mixer/TapeInputComponent.hpp
+  presonus/mixer/GroupChangeObserver.hpp
   presonus/surface/PageHeaderComponent.hpp
   presonus/surface/MonitorPageComponent.hpp
   presonus/surface/GatePageComponent.hpp
@@ -709,3 +716,5 @@ include(cmake/tests/NextFlowMainLCDReplays.cmake)
 include(cmake/tests/Base6Replays.cmake)
 
 include(cmake/tests/PhaseBFinalReplays.cmake)
+
+include(cmake/tests/Trial10x2Replays.cmake)

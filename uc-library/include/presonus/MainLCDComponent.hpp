@@ -58,6 +58,8 @@ public:
   void pushBackPage(PageComponent *page);
   PageComponent *popBackPage();
   PageComponent *getCurrentPage() const;
+  int getCurrentPageTag() const;
+  void setupBackPage();
   bool isEditingText() const;
   void onDestroyed(const LcdView &view);
   void setLcdView(LcdView *view);

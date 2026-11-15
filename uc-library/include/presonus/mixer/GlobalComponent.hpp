@@ -14,6 +14,8 @@ namespace Presonus::Mixer {
 class GlobalComponent : public Core::Portable::Component {
 public:
   using Core::Portable::Component::Component;
+  GlobalComponent() = default;
+  explicit GlobalComponent(MixerComponentBase &mixer);
   ~GlobalComponent() override;
   // Borrowed actual numeric providers; no original ARM field layout claim.
   void bindHighDefParameters(Core::Portable::NumericParam *source,

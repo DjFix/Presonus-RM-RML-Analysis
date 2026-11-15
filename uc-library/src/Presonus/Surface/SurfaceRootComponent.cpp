@@ -81,3 +81,80 @@ MainScreenComponent *SurfaceRootComponent::getMainScreenComponent() const {
   return nullptr;
 }
 } // namespace Presonus::Surface
+
+#include "core/system/coredebug.h"
+#include <limits>
+namespace Presonus::Surface {
+void SurfaceRootComponent::terminateTestTouchscreen() {
+  if (!services_)
+    throw std::logic_error("root services required");
+  services_->touchscreenActive = false;
+  if (!services_->children)
+    throw std::logic_error("live children required");
+  auto *screen = getMainScreenComponent();
+  Core::Portable::Component *component = nullptr;
+  for (const auto &reference : services_->mainScreens)
+    if (screen && reference.reference == screen &&
+        reference.component == services_->children->findChild("mainscreen")) {
+      component = reference.component;
+      break;
+    }
+  if (!component || !services_->rootParameters || !services_->observer)
+    throw std::logic_error("live root/screen parameters and observer required");
+  auto *exit = component->getParameterByTag(38);
+  if (!exit)
+    throw std::logic_error("screen tag 38 required");
+  exit->removeObserver(services_->observer);
+  auto *touch = services_->rootParameters->getParameterByTag(903);
+  if (!touch)
+    throw std::logic_error("root tag 903 required");
+  touch->removeObserver(services_->observer);
+  if (registrar_)
+    registrar_->runTest(static_cast<PanelRegistrar::TestMode>(111), false);
+}
+void SurfaceRootComponent::manageUtilPageObserver(bool enabled) {
+  // Process-shared, just as the original function-local static. Single-threaded
+  // application domain. Explicit wrap preserves ARM ADD/SUB without C++ UB.
+  static std::int32_t activeTestCount = 0;
+  const auto previous = activeTestCount;
+  if (enabled) {
+    activeTestCount = previous == std::numeric_limits<std::int32_t>::max()
+                          ? std::numeric_limits<std::int32_t>::min()
+                          : previous + 1;
+    if (previous > 0)
+      return;
+  } else {
+    activeTestCount = previous == std::numeric_limits<std::int32_t>::min()
+                          ? std::numeric_limits<std::int32_t>::max()
+                          : previous - 1;
+    if (activeTestCount > 0)
+      return;
+    if (activeTestCount < 0) {
+      Core::DebugPrintf("SurfaceRootComponent::manageUtilPageObserver "
+                        "activeTestCount is negative!\n");
+      activeTestCount = 0;
+    }
+  }
+  if (!services_ || !services_->observer)
+    throw std::logic_error("live root services and observer required");
+  if (!services_->children)
+    throw std::logic_error("live children required");
+  auto *screen = getMainScreenComponent();
+  Core::Portable::Component *component = nullptr;
+  for (const auto &reference : services_->mainScreens)
+    if (screen && reference.reference == screen &&
+        reference.component == services_->children->findChild("mainscreen")) {
+      component = reference.component;
+      break;
+    }
+  if (!component)
+    throw std::logic_error("live main screen component required");
+  auto *parameter = component->getParameterByTag(2);
+  if (!parameter)
+    throw std::logic_error("screen tag 2 required");
+  if (enabled)
+    parameter->addObserver(services_->observer);
+  else
+    parameter->removeObserver(services_->observer);
+}
+} // namespace Presonus::Surface

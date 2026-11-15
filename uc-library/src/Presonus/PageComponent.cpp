@@ -1,6 +1,7 @@
 #include "presonus/PageComponent.hpp"
 
 namespace Presonus {
+int PageComponent::getPageTag() const { return observedTag_; }
 const char *PageComponent::getFormName() const { return formName_.str(); }
 void *PageComponent::castTo(int classId) {
   return classId == 1348560741 || classId == 1131375984 ? this : nullptr;

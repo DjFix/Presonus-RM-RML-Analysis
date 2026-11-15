@@ -367,6 +367,13 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/GambitPanelComponent.cpp
+  src/Presonus/Panel/WolverinePanelComponent.cpp
+  src/Presonus/Mixer/BeastMixerComponent.cpp
+  src/Presonus/Mixer/StormMixerComponent.cpp
+  src/Presonus/Mixer/MonoMainComponent.cpp
+  src/Presonus/Mixer/TapeInputComponent.cpp
+  src/Presonus/Mixer/GroupChangeObserver.cpp
   src/Presonus/Panel/AlertBook.cpp
   src/Presonus/Panel/PanelParameterTables.cpp
   src/Presonus/Dsp/OMAPTargetHandler.cpp
@@ -545,6 +552,13 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/panel/GambitPanelComponent.hpp
+  presonus/panel/WolverinePanelComponent.hpp
+  presonus/mixer/BeastMixerComponent.hpp
+  presonus/mixer/StormMixerComponent.hpp
+  presonus/mixer/MonoMainComponent.hpp
+  presonus/mixer/TapeInputComponent.hpp
+  presonus/mixer/GroupChangeObserver.hpp
   presonus/surface/ChannelInfoPageComponent.hpp
   presonus/surface/MixSettingsPageComponent.hpp
   presonus/panel/AlertBook.hpp
@@ -880,3 +894,15 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FXHomePage
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FxPresetsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/TBRoutingPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/MicLineComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/GambitPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation -fno-rtti -fno-lto)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/WolverinePanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation -fno-rtti -fno-lto)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/BeastMixerComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/StormMixerComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -O0 -fno-sized-deallocation)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/MonoMainComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/TapeInputComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)

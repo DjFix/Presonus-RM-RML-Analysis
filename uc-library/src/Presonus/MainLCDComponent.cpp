@@ -1,5 +1,6 @@
 #include "presonus/MainLCDComponent.hpp"
 #include "core/portable/gui/corecontrols.h"
+#include "presonus/PageComponent.hpp"
 #include <stdexcept>
 namespace Presonus {
 MainLCDComponent::MainLCDComponent()
@@ -18,6 +19,20 @@ bool MainLCDComponent::hasBackPage() const {
 }
 PageComponent *MainLCDComponent::getCurrentPage() const {
   return state.next ? state.next : state.current;
+}
+int MainLCDComponent::getCurrentPageTag() const {
+  const PageComponent *page = getCurrentPage();
+  return page ? page->getPageTag() : -1;
+}
+void MainLCDComponent::setupBackPage() {
+  if (!state.current || !state.next)
+    return;
+  if (state.next->observedByte89() == 0) {
+    state.back = nullptr;
+    return;
+  }
+  if (state.current->getPageTag() != -1000)
+    pushBackPage(state.current);
 }
 bool MainLCDComponent::isEditingText() const {
   return state.lcd && Core::Portable::TextInput::isEditing(

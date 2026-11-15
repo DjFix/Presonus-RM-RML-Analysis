@@ -136,13 +136,13 @@ def reviewed_row_allowance(path):
     if not isinstance(byte_limits, dict):
         raise ContextError('Reviewed byte limits must be an object')
     if byte_limits:
-        ceilings = {'journal_bytes': 448 * 1024**2, 'sqlite_write_bytes': 768 * 1024**2,
-                    'transfer_bytes': 640 * 1024**2}
+        ceilings = {'journal_bytes': 1024**3, 'sqlite_write_bytes': 4 * 1024**3,
+                    'transfer_bytes': 1024**3}
         if not isinstance(byte_limits, dict) or set(byte_limits) - ceilings.keys():
             raise ContextError('Only bounded journal/write/transfer rescan exceptions are supported')
         if any(type(value) is not int or not 0 < value <= ceilings[key]
                for key, value in byte_limits.items()):
-            raise ContextError('Reviewed byte limits exceed finite sub-gigabyte ceilings')
+            raise ContextError('Reviewed byte limits exceed finite configured ceilings')
         resource = review.get('resource_evidence', {})
         resource_path = (ROOT / resource.get('path', '')).resolve()
         if (not resource_path.is_relative_to(ROOT) or not resource_path.is_file()

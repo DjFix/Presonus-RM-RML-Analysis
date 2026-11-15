@@ -149,20 +149,19 @@ still supported by another unit. The legacy `node_facts`/`edge_facts` interfaces
 are read-only views. Legacy storage requires explicit migration, never an
 implicit conversion during preparation.
 
-Routine limits are 64 MiB journal, 256 MiB process disk writes, 100,000 charged
-rows and 64 MiB serialized request envelopes. Preflight and SQLite progress/
+Routine limits are 1 GiB journal, 4 GiB process disk writes, 10,000,000 charged
+rows and 1 GiB serialized request envelopes (user-authorized 2026-11-15). Preflight and SQLite progress/
 precommit guards reject excess work; they do not silently select a full rebuild.
 Receipts distinguish estimated cost, measured process IO and serialized JSON
 requests (not Bolt wire traffic or server disk IO). SQLite deferred flushing and
 progress sampling mean the physical-write ceiling is not an exact hard cap.
 An unchanged generation skips extraction and publication altogether.
 
-For a reviewed compiler rescan whose compact owner memberships legitimately
-exceed 100,000 rows, `--row-budget-review PATH` accepts a repository-local JSON
+For a compiler rescan requiring an explicit measured profile, `--row-budget-review PATH` accepts a repository-local JSON
 record containing `rows`, a concrete `reason`, and `evidence: {path, sha256}`.
 The evidence must be a measured input forecast. This explicit operation changes
-only its finite global row ceiling; the global 64 MiB journal, 256 MiB process
-writes and 64 MiB transfer ceilings remain unchanged. Automatic preparation
+only its finite global row ceiling; the global 1 GiB journal, 4 GiB process
+writes and 1 GiB transfer ceilings remain unchanged. Automatic preparation
 never inherits the exception. The plan retains the complete review and hashes;
 cumulative row work is still charged, never reset between owners. This is not
 a full rebuild or permission to copy historical databases.
@@ -170,8 +169,8 @@ a full rebuild or permission to copy historical databases.
 An accumulated rescan may additionally supply `byte_limits` for `journal_bytes`,
 `sqlite_write_bytes` and `transfer_bytes`, with separate hash-bound
 `resource_evidence` from a measured attempt and its complete delta plan.
-Explicit ceilings are at most 384 MiB journal, 768 MiB process writes and
-256 MiB transfer. This requires the same explicit rescan
+Explicit ceilings are at most 1 GiB journal, 4 GiB process writes and
+1 GiB transfer. Historical explicit profiles retain their recorded lower limits. This requires the same explicit rescan
 review (also named `--publication-budget-review`) and does not change automatic
 defaults. Staging uses a bounded 256 MiB SQLite page-cache target to avoid repeated
 dirty-page spills; the same cumulative IO and sidecar guards remain active.

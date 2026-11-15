@@ -114,7 +114,9 @@ class BudgetTests(unittest.TestCase):
         receipt = budget.receipt()
         self.assertEqual(receipt['observed']['rows_charged'], 1)
         self.assertTrue(receipt['uncertainty'])
-        self.assertTrue(all(value < 1024**3 for value in receipt['limits'].values()))
+        self.assertEqual(receipt['limits'], dict(journal_bytes=1024**3,
+                                                sqlite_write_bytes=4 * 1024**3,
+                                                rows=10_000_000, transfer_bytes=1024**3))
         connection.close()
 
     def test_journal_actual_size_and_missing_file(self):

@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "status": "reconstruction_admitted_postadmission_audited",
+  "start_utc": "2026-11-15T11:38:08.417000+00:00",
+  "end_utc": "2026-11-15T15:01:38.620779+00:00",
+  "whole_elapsed_seconds": 12210.203779,
+  "commit_time_excluded": true,
+  "delivered": {
+    "unique_method_signatures": 12,
+    "original_elf_identities": 20,
+    "new_ready": 0,
+    "new_compiled_declaration_pending": 20,
+    "workers": 10,
+    "peak_concurrent_workers": 9
+  },
+  "nonoverlapping_wall_windows": [
+    {
+      "phase": "Selection, graph refresh, packet preparation and worker setup before first dispatch",
+      "seconds": 8392.783906
+    },
+    {
+      "phase": "First worker start through last worker end; Root acceptance/repairs overlap this window",
+      "seconds": 1870.799094
+    },
+    {
+      "phase": "After last worker: remaining integration, repairs, canonical verification, admission and postadmission",
+      "seconds": 1946.620779
+    }
+  ],
+  "nested_measurements": {
+    "worker_active_union_seconds": 1804.7299149036407,
+    "worker_wall_sum_seconds": 6292.020901679993,
+    "successful_local_acceptance_active_union_seconds": 42.35,
+    "successful_linux_all_gates_seconds": 338.228,
+    "successful_full_ctest_seconds": 279.33,
+    "successful_graph_retry_seconds": 1117.148207420949,
+    "graph_recompiled_units_on_success": 0,
+    "graph_reused_captures": 1222
+  },
+  "verification": {
+    "linux_tests_passed": 719,
+    "publication_budget_tests_passed": 27,
+    "formatter": "clang-format version 23.1.3",
+    "final_formatter_paths": 41,
+    "formatter_source_changes": 0,
+    "ready_total": 1072,
+    "pending_total": 2311,
+    "stale_entries_removed": 0,
+    "existing_compatibility_records_refreshed": 296,
+    "claims_completed": 20,
+    "history_notes_appended": 20
+  },
+  "limitations": [
+    "Compiled source ports with bounded native/provider observations; original declarations/layout/ARM ABI/hardware not fully verified.",
+    "Ten workers participated; selected read/write dependency scheduled Global after Root, so peak concurrency was nine.",
+    "Wall elapsed includes failed preparation/publication, producer repairs, usage interruptions and review; overlapping subtotals must not be summed.",
+    "No matched before/after workload, so no database speedup claim.",
+    "Some exact per-worker token boundary counters unavailable; no fabricated token total."
+  ],
+  "improvements": [
+    {
+      "priority": 1,
+      "proposal": "Remove preparation overhead first: validate budgets, frozen producers, complete task metadata and dependency conflicts before expensive graph/packet work.",
+      "evidence": "Before first worker: 8392.784 seconds."
+    },
+    {
+      "priority": 2,
+      "proposal": "Standardize worker canonical replay/proof contracts and explicit current dependency bindings; validate supplied canonical executable mode before shared integration.",
+      "evidence": "Nine full-suite failures came from historical dependency hashes; worker proof schema/producer repairs were required."
+    },
+    {
+      "priority": 3,
+      "proposal": "Run compile-contract, scoped changed-header compatibility and formatting-coverage preflight before the full Linux suite; retain full final verification.",
+      "evidence": "RTTI integration mismatch, exact compile allowlist mismatch, nine stale-binding tests and missing formatting seal caused avoidable retries."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/recovery/2026-11-15/trial10x2/linux-r4/COMPLETED.json",
+      "sha256": "2774fcff725e18374bd05f06d624441efc55115c2622e55ffb62bedd182eec5d"
+    },
+    {
+      "path": "uc-library/validation/trial10x2-20261115-canonical-pending-r2/COMPLETED.json",
+      "sha256": "6414f92073e3182028b85422cf5511b15bba4c8d4e93bfa6726c82ff4b3b65a5"
+    },
+    {
+      "path": "uc-library/validation/trial10x2-existing-r4/COMPLETED.json",
+      "sha256": "8a29934bc6b5d6d90438f88169d6c367672d436400b969d6a316e41d229487eb"
+    },
+    {
+      "path": "temp/recovery-work/trial10x2-20261115/admission-live.json",
+      "sha256": "63c75458f60c7fe61bcbe9e73237d972a9e30b645e94b247f29d40e01575b02f"
+    },
+    {
+      "path": "temp/recovery-work/trial10x2-20261115/postadmission-run01/COMPLETED.json",
+      "sha256": "220e42039d902f137f67e52786d3ccbb568b3bd01bfdc0baba35d71a4db276bf"
+    },
+    {
+      "path": "temp/recovery-work/trial10x2-20261115/root-review/timing-final/UPDATED.json",
+      "sha256": "038981af97bf8c0daa7ead23be04a015a56693b3813f50fda61ea990ac3f95f7"
+    }
+  ]
+}
