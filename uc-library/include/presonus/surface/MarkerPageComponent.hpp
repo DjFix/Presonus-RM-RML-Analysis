@@ -10,6 +10,8 @@ public:
     const std::int32_t *markerCount{};
   };
   ~MarkerPageComponent();
+  // Portable bool choice; original unencoded return declaration unresolved.
+  bool isLocateMode() const;
   int getMaxMarkerListOffset(TrackAccessor &) const;
 };
 } // namespace Presonus::Surface

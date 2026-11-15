@@ -121,3 +121,72 @@ void FrontPanelComponent::lockStateChanged() {
   updateMixerLocks();
 }
 } // namespace Presonus::Panel
+
+#include "presonus/mixer/ChannelComponent.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/panel/switch_control.hpp"
+namespace Presonus::Panel {
+void FrontPanelComponent::bindFaderViews(
+    Presonus::Mixer::MixerComponentBase &mixer,
+    const Core::Vector<Presonus::Mixer::ChannelComponent *> &bank,
+    const Core::Vector<Presonus::Mixer::ChannelComponent *> &main) {
+  if (portableState().mixer != &mixer)
+    throw std::logic_error("Fader views require the bound Panel mixer");
+  if (&bank == &main)
+    throw std::logic_error("Fader views require distinct CCL vectors");
+  state.faderBank = &bank;
+  state.mainFader = &main;
+}
+void FrontPanelComponent::faderPositionChanged(int index, float value) {
+  auto &mixer = *portableState().mixer;
+  Presonus::Mixer::ChannelComponent *channel = nullptr;
+  if (index == 36) {
+    if (state.mainFader && state.mainFader->count())
+      channel = state.mainFader->at(0);
+  } else if (index <= 31) {
+    if (index < mixer.inputChannels.count() && mixer.inputChannels.count())
+      channel = mixer.inputChannels.at(index);
+  } else if (state.faderBank && state.faderBank->count()) {
+    channel = state.faderBank->at(index - 32);
+  }
+  if (channel)
+    if (auto *p = channel->portableState().locatePosition)
+      p->setValue(value, true);
+}
+void FrontPanelComponent::attachMeterTypeLed(Control *control, int match) {
+  if (!control)
+    return;
+  // Intentional source-port adaptation of the original SwitchControl RTTI
+  // selection to the existing supported type-ID API; no host RTTI/ABI claim.
+  auto *sw = static_cast<SwitchControl *>(control->castTo(0x53776943));
+  if (!sw)
+    return;
+  sw->setmatchvalue(match);
+  const auto setter = &Control::setParameter;
+  auto *p = portableState().component.getParameterByTag(12);
+  (sw->*setter)(p, 0);
+}
+void FrontPanelComponent::attachMeterSwitch(Control *control, int tag) {
+  if (!control)
+    return;
+  // Intentional source-port adaptation of the original SwitchControl RTTI
+  // selection to the existing supported type-ID API; no host RTTI/ABI claim.
+  auto *sw = static_cast<SwitchControl *>(control->castTo(0x53776943));
+  if (!sw)
+    return;
+  const auto setter = &Control::setParameter;
+  auto *p = portableState().component.getParameterByTag(tag);
+  (sw->*setter)(p, 0);
+}
+bool FrontPanelComponent::CopyPasteFilter::shouldSave(int type, const char *,
+                                                      void *object) const {
+  if (type != Core::Portable::Parameter::kTypeID || !object)
+    return true;
+  auto *p = static_cast<Core::Portable::Parameter *>(object);
+  if (!Core::Portable::core_cast<Presonus::Mixer::ChannelComponent>(
+          p->getController()))
+    return true;
+  const auto offset = static_cast<std::uint32_t>(p->getTag()) - 218u;
+  return offset <= 5 && ((1u << offset) & 0x3du) != 0;
+}
+} // namespace Presonus::Panel

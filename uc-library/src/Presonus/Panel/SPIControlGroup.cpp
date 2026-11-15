@@ -34,6 +34,10 @@ SPIControlGroup::SPIControlGroup(
     throw std::invalid_argument(
         "SPI idle payload exceeds bounded 64-bit domain");
 }
+int SPIControlGroup::broadcast(Control *) {
+  dirty = true;
+  return 1;
+}
 void SPIControlGroup::onIdle() {
   if (!dirty || descriptor < 0)
     return;

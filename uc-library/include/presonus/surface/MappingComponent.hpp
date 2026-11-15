@@ -49,7 +49,7 @@ public:
   void onIdle() override;
   int getModifiers() const override;
   int getRadioValue(int, int) const override;
-  int getBankScrollingOffset() const override = 0;
+  int getBankScrollingOffset() const override;
   Core::Portable::Parameter *getParamByTag(int) const override;
   Core::Portable::Parameter *getMainScreenParamByTag(int) const override;
   // Independent initialized source-state binding. Borrowed actual CCL object,

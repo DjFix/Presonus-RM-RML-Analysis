@@ -1,6 +1,10 @@
 #include "presonus/surface/WifiSetupComponent.hpp"
 #include <cstdio>
 namespace Presonus::Surface {
+void WifiSetupComponent::onIdle() {
+  Core::Portable::Component::onIdle();
+  checkNetworkScanning();
+}
 void WifiSetupComponent::connect() {
   if (state.selected < 0)
     return;

@@ -3,11 +3,84 @@
 ARM indirect sites are review candidates, not inferred call targets. Root must
 classify local control flow versus actual providers with bound evidence.
 """
+import contextlib
+import contextvars
 import hashlib
 import json
 import re
 import sqlite3
+import sys
 from pathlib import Path
+
+
+# This scope caches only verified immutable file bytes and native identity lookup,
+# never contract dispositions, live registry records, claims or decisions.
+_BATCH = contextvars.ContextVar('execution_review_batch', default=None)
+
+
+class _BatchValidation:
+    def __init__(self, root):
+        tools = str(Path(__file__).resolve().parents[1] / 'uc-library/tools')
+        if tools not in sys.path:
+            sys.path.insert(0, tools)
+        from merge_readiness import ValidationCache
+        self.root = Path(root).resolve()
+        self.cache = ValidationCache()
+        self.native = None
+        self.identities = None
+
+    def check(self):
+        try:
+            self.cache.unchanged()
+        except (AssertionError, OSError) as error:
+            raise ValueError('Batch execution evidence changed: ' + str(error)) from error
+
+    def digest(self, path):
+        self.check()
+        try:
+            result = self.cache.sha(path)
+        except (AssertionError, OSError) as error:
+            raise ValueError('Batch execution evidence changed: ' + str(error)) from error
+        self.check()
+        return result
+
+
+@contextlib.contextmanager
+def batch_validation(root):
+    """One preparation's byte checks, with path/stat guards on use and exit."""
+    session = _BatchValidation(root)
+    token = _BATCH.set(session)
+    try:
+        yield session
+        session.check()
+    finally:
+        _BATCH.reset(token)
+
+
+def checked_digest(root, path):
+    session = _BATCH.get()
+    if session is None:
+        digest = hashlib.sha256()
+        with Path(path).open('rb') as stream:
+            for block in iter(lambda: stream.read(1024 * 1024), b''):
+                digest.update(block)
+        return digest.hexdigest()
+    if Path(root).resolve() != session.root:
+        raise ValueError('Batch execution evidence repository changed')
+    return session.digest(path)
+
+
+def check_batch_validation():
+    session = _BATCH.get()
+    if session is not None:
+        session.check()
+
+
+def _node_identities(connection):
+    resolved = {}
+    for row in connection.execute("SELECT id,json_extract(metadata,'$.elf_sha256'),json_extract(metadata,'$.mangled'),json_extract(metadata,'$.address'),json_extract(metadata,'$.size') FROM nodes"):
+        resolved.setdefault(tuple(row)[1:], []).append(row[0])
+    return resolved
 
 
 def indirect_candidate(instruction):
@@ -24,16 +97,11 @@ def indirect_candidate(instruction):
             and not operands.startswith(('sp', 'r13')))
 
 
-def collect(connection, targets):
+def collect(connection, targets, identities=None):
     observations = {}
-    identities = {(t['original_elf_sha256'], t['mangled'], t['address'], t['size']) for t in targets}
-    resolved = {key: [] for key in identities}
-    for row in connection.execute("SELECT id,json_extract(metadata,'$.elf_sha256'),json_extract(metadata,'$.mangled'),json_extract(metadata,'$.address'),json_extract(metadata,'$.size') FROM nodes"):
-        key = tuple(row)[1:]
-        if key in resolved:
-            resolved[key].append(row[0])
+    resolved = _node_identities(connection) if identities is None else identities
     for target in targets:
-        matches = resolved[(target['original_elf_sha256'], target['mangled'], target['address'], target['size'])]
+        matches = resolved.get((target['original_elf_sha256'], target['mangled'], target['address'], target['size']), [])
         if len(matches) != 1:
             raise ValueError('Exact native target/range required for execution review')
         source = matches[0]
@@ -62,11 +130,22 @@ def validate(root, task, review):
     database = (root / active['database']).resolve()
     if not database.is_relative_to(root.resolve()):
         raise ValueError('Native database outside repository')
-    if binding.get('native_sha256') != active['sha256'] or hashlib.sha256(database.read_bytes()).hexdigest() != active['sha256']:
+    if binding.get('native_sha256') != active['sha256'] or checked_digest(root, root / active['database']) != active['sha256']:
         raise ValueError('Execution review native generation changed')
     with sqlite3.connect('file:' + str(database) + '?mode=ro', uri=True) as connection:
         connection.row_factory = sqlite3.Row
-        observed = collect(connection, task['targets'])
+        session = _BATCH.get()
+        if session is not None:
+            session.check()
+            if session.native is not None and session.native != active:
+                raise ValueError('Execution review native generation changed within batch')
+            if session.identities is None:
+                session.identities = _node_identities(connection)
+                session.native = active
+            observed = collect(connection, task['targets'], session.identities)
+            session.check()
+        else:
+            observed = collect(connection, task['targets'])
     entries = binding.get('observations', [])
     indexed = {entry['key']: entry for entry in entries}
     if len(indexed) != len(entries) or set(indexed) != set(observed):

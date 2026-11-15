@@ -1,5 +1,13 @@
 #include "presonus/panel/PanelComponent.hpp"
 namespace Presonus::Panel {
+void PanelComponent::onIdle() {
+  portable.component.Core::Portable::Component::onIdle();
+}
+void PanelComponent::paramChanged(Core::Portable::Parameter *parameter,
+                                  int message) {
+  portable.component.Core::Portable::Component::paramChanged(parameter,
+                                                             message);
+}
 void PanelComponent::detachGroup(const ControlGroup &group) const {
   const int count = services.controlCount(group);
   for (int i = 0; i < count; ++i)
@@ -20,6 +28,7 @@ void PanelComponent::detachSwitches() const {
       detachGroup(group);
   }
 }
+void PanelComponent::start() { activateAll(); }
 void PanelComponent::activateAll() { services.componentSlot38(); }
 void PanelComponent::blinkLed(int group, int tag, bool blink) {
   void *control = services.byTag(services.findGroup(group), tag);
@@ -27,5 +36,18 @@ void PanelComponent::blinkLed(int group, int tag, bool blink) {
     return;
   if (void *led = services.castControlToLed(control))
     services.setBlinkMode(led, blink ? 2 : 0);
+}
+} // namespace Presonus::Panel
+
+#include "core/public/corestringbuffer.h"
+#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/panel/PanelRegistrar.hpp"
+namespace Presonus::Panel {
+void PanelComponent::init() {
+  Core::CString64 description;
+  description.appendFormat("%d",
+                           portable.registrar->sourcePortDescriptionNumber());
+  if (auto *p = portable.mixer->sceneSettings->getParameterByTag(0))
+    p->fromString(description, false);
 }
 } // namespace Presonus::Panel

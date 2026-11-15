@@ -7,6 +7,16 @@
 namespace Presonus::Surface {
 // Original scopes and encoded parameter identities. Return spellings, storage
 // and provider boundaries are an intentional portable source contract.
+int MappingComponent::getBankScrollingOffset() const {
+  const int bank = getRadioValue(0, 3);
+  if (bank < 0)
+    return 0;
+  // The normal provider returns -1 or 0..3. Preserve ARM32 LSL modulo
+  // semantics for virtual overrides too, without signed overflow or shifts.
+  const auto bits = static_cast<std::uint32_t>(bank) << 4U;
+  return bits <= 0x7fffffffU ? static_cast<int>(bits)
+                             : -1 - static_cast<int>(0xffffffffU - bits);
+}
 void MappingComponent::onSelectedChannelChanged() {
   if (selectedHandler_)
     selectedHandler_->selectedChanged();

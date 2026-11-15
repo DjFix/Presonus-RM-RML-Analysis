@@ -1,4 +1,8 @@
 #pragma once
+#include "core/portable/coreattributes.h"
+#include "core/portable/corecomponent.h"
+#include "core/portable/corestorage.h"
+#include "core/system/corethread.h"
 #include <cstddef>
 #include <cstdint>
 
@@ -19,6 +23,13 @@ struct State {
   std::uint8_t enabled = 0;
   LinkableComponent *const *children = nullptr;
   std::size_t count = 0;
+  // Actual pinned provider composition. This is portable state, not original
+  // inheritance/layout. One process-wide storage lock mirrors the observed
+  // shared lock identity; existing borrowed application boundaries stay intact.
+  Core::Portable::Attributes alternate{
+      Core::Portable::AttributeAllocator::getDefault()};
+  Core::Portable::Component component{"LinkableComponent"};
+  inline static Core::Threads::Lock alternateLock;
 };
 } // namespace linkable_port
 // Portable source model. Fields, inheritance and return declarations of the
@@ -28,6 +39,11 @@ public:
   LinkableComponent(linkable_port::State &state,
                     linkable_port::Boundary &boundary)
       : state_(state), boundary_(boundary) {}
+  // Original ordinary returns remain declaration-pending.
+  void toggleAltMemory();
+  void copyToAltMemory(Core::Portable::Attributes &source);
+  void loadAltMemory(const Core::Portable::InputStorage &storage);
+  bool save(Core::Portable::OutputStorage &storage) const;
   void linkAsSlave(LinkableComponent &);
   void setLink(LinkableComponent &, bool);
   void removeLink();

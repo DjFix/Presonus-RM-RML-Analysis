@@ -1,0 +1,1291 @@
+{
+  "task_id": "rolling10_next100_fatled_deactivate",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "range": {
+    "address": 442212,
+    "size": 52,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 409444,
+    "bytes_sha256": "10cc46ebcca6ed9ab9b316a2a893a37e84ca0e229177b9acb755dedbc978d89c",
+    "storage": "file",
+    "instructions": [
+      {
+        "address": 442212,
+        "bytes": "0dc0a0e1",
+        "mnemonic": "mov",
+        "operands": "ip, sp"
+      },
+      {
+        "address": 442216,
+        "bytes": "00d82de9",
+        "mnemonic": "push",
+        "operands": "{fp, ip, lr, pc}"
+      },
+      {
+        "address": 442220,
+        "bytes": "1c3190e5",
+        "mnemonic": "ldr",
+        "operands": "r3, [r0, #0x11c]"
+      },
+      {
+        "address": 442224,
+        "bytes": "04b04ce2",
+        "mnemonic": "sub",
+        "operands": "fp, ip, #4"
+      },
+      {
+        "address": 442228,
+        "bytes": "000053e3",
+        "mnemonic": "cmp",
+        "operands": "r3, #0"
+      },
+      {
+        "address": 442232,
+        "bytes": "00a89d08",
+        "mnemonic": "ldmeq",
+        "operands": "sp, {fp, sp, pc}"
+      },
+      {
+        "address": 442236,
+        "bytes": "0300a0e1",
+        "mnemonic": "mov",
+        "operands": "r0, r3"
+      },
+      {
+        "address": 442240,
+        "bytes": "0010a0e3",
+        "mnemonic": "mov",
+        "operands": "r1, #0"
+      },
+      {
+        "address": 442244,
+        "bytes": "003093e5",
+        "mnemonic": "ldr",
+        "operands": "r3, [r3]"
+      },
+      {
+        "address": 442248,
+        "bytes": "0020a0e3",
+        "mnemonic": "mov",
+        "operands": "r2, #0"
+      },
+      {
+        "address": 442252,
+        "bytes": "0fe0a0e1",
+        "mnemonic": "mov",
+        "operands": "lr, pc"
+      },
+      {
+        "address": 442256,
+        "bytes": "58f093e5",
+        "mnemonic": "ldr",
+        "operands": "pc, [r3, #0x58]"
+      },
+      {
+        "address": 442260,
+        "bytes": "00a89de8",
+        "mnemonic": "ldm",
+        "operands": "sp, {fp, sp, pc}"
+      }
+    ],
+    "coverage": "static decoded instruction ranges; indirect dispatch explicit"
+  },
+  "vtable": {
+    "mangled": "_ZTVN4Core8Portable12NumericParamE",
+    "address": 4304992,
+    "size": 128,
+    "section": 14,
+    "file_offset": 4272224,
+    "bytes_sha256": "e23afb2051e88ceba917eb243b7f67cc942188e5a8a0bcd62f26a5f0f913b8b1",
+    "slots": {
+      "22": 1175964,
+      "23": 1164760,
+      "29": 1164820
+    },
+    "slot_original_symbol_identities": {
+      "22": [
+        {
+          "address": 1175964,
+          "anchor": "e84d89ad57c53c7621795c148cdbab1eeb00493bcebaba634aedea8da36d62a3",
+          "binding": "STB_GLOBAL",
+          "core_source_boundary": true,
+          "demangled": "Core::Portable::NumericParam::setValue(float, bool)",
+          "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "kind": "STT_FUNC",
+          "mangled": "_ZN4Core8Portable12NumericParam8setValueEfb",
+          "policy": "core-source-provided",
+          "role": "server",
+          "section": 12,
+          "section_json": "12",
+          "size": 436
+        }
+      ],
+      "23": [
+        {
+          "address": 1164760,
+          "anchor": "30b38369b154b5ede6c7436ab4a789a12b806766a295317e401f3a028bb9fc8a",
+          "binding": "STB_GLOBAL",
+          "core_source_boundary": true,
+          "demangled": "Core::Portable::NumericParam::resetValue(bool)",
+          "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "kind": "STT_FUNC",
+          "mangled": "_ZN4Core8Portable12NumericParam10resetValueEb",
+          "policy": "core-source-provided",
+          "role": "server",
+          "section": 12,
+          "section_json": "12",
+          "size": 60
+        }
+      ],
+      "29": [
+        {
+          "address": 1164820,
+          "anchor": "71975b4f6b7b5dbbed462cf941d39476b7fa38dda1fdf397f0d0def33cdd69c8",
+          "binding": "STB_GLOBAL",
+          "core_source_boundary": true,
+          "demangled": "Core::Portable::NumericParam::fromString(char const*, bool)",
+          "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+          "firmware": "RM/RML mixer 13731",
+          "kind": "STT_FUNC",
+          "mangled": "_ZN4Core8Portable12NumericParam10fromStringEPKcb",
+          "policy": "core-source-provided",
+          "role": "server",
+          "section": 12,
+          "section_json": "12",
+          "size": 164
+        }
+      ]
+    }
+  },
+  "emulator_version": "2.1.4",
+  "cases": [
+    {
+      "input": {
+        "present": false,
+        "initial": -2,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": -2,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": -2,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": -2,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0.25,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0.25,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0.25,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 0.25,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 1,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 1,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 1,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 1,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 2,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 2,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 2,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": false,
+        "initial": 2,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": -2,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": -2,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": -2,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": -2,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0.25,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0.25,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0.25,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 0.25,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 1,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 1,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 1,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 1,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 2,
+        "min": 0,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 2,
+        "min": 0,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 2,
+        "min": 0.5,
+        "max": 1
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    },
+    {
+      "input": {
+        "present": true,
+        "initial": 2,
+        "min": 0.5,
+        "max": 2
+      },
+      "trace": [
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ],
+        [
+          "setValue",
+          0,
+          0,
+          0
+        ]
+      ],
+      "writes": [],
+      "visited": [
+        442212,
+        442216,
+        442220,
+        442224,
+        442228,
+        442232,
+        442236,
+        442240,
+        442244,
+        442248,
+        442252,
+        442256,
+        442260
+      ]
+    }
+  ],
+  "boundary_scope": "Null or actual borrowed NumericParam, finite initial values -2,0,.25,1,2 and bounds [0/.5,1/2]; original setter slot22 independently verified; setValue(0,false), no Core binary execution or unknown override.",
+  "core_scope": "Original Core bodies excluded. Captured provider call arguments; actual source-provider replay independently applies those captured arguments."
+}

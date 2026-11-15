@@ -556,6 +556,25 @@ workers, or preparation of an integration draft.
   work and actual job outcomes, and prepare affected subsequent dispatches with
   the new instructions. Never silently re-seal old packets as current.
 
+- Explicit recurrence correction, 2026-11-13: before starting canonical
+  publication or integration, prepare and dispatch a reserve of independent
+  implementation packets to GPT-6.1-Sol workers in separate physical Git
+  repositories. Keep those workers running while Root publishes or validates.
+  Check actual live worker IDs, owned classes/files and sealed packet paths;
+  a planned queue or Root's solo implementation does not satisfy this rule.
+- If that reserve was missed and publication is already live, preserve the job
+  and document the scheduling failure and exact packet barrier. Root may do
+  independent native observations/implementation in an explicitly owned isolated
+  copy as temporary useful work, but must not present it as restored parallel
+  execution. Dispatch eligible remaining groups as soon as their packets seal.
+  Keep canonical publication inputs unchanged and bind early isolated work to
+  fresh context before admission. Never bypass freshness or steal claims.
+- The recurrence was failure to apply the existing subagent scheduling rule:
+  Root started refresh with no runnable reserve, then substituted solo work.
+  Scheduled monitoring and solo fallback are not a replacement for the agreed
+  worker mechanism. After each delivery, prepare the next independent work
+  before the next canonical source change makes that preparation expensive.
+
 ## Publisher polling cadence — explicit user correction, 2026-11-06
 
 - Use a periodic task for publisher waiting/checks, at a five-minute cadence.
@@ -642,3 +661,100 @@ or context compaction, together with the publisher polling cadence above.
 - This instruction update is authorized while reconstruction is paused. Record
   the old/new instruction hashes and reconcile affected packets on explicit
   resume; do not reseal packets or restart reconstruction during housekeeping.
+
+
+## Return to reconstruction after graph relocation — 2026-11-12
+
+- The user explicitly directs: copy/move Memgraph and resume reconstruction;
+  do not make repeated migration comparisons, another snapshot restore, matched
+  kit assembly or extra consumer rehearsals prerequisites for production.
+- This corrects failure to apply the existing production-delivery priority:
+  Root kept adding assurance stages after the graph relocation was already
+  verified. On this trigger, stop optional infrastructure work, retain its
+  actual results, use the available verified graph and dispatch reconstruction.
+  Do not replace this action with another validation plan or approval request.
+- CT126 now owns shadow Memgraph; VM101 owns source, SQLite and workers. Preserve
+  the existing original-identity, current-packet, ownership, implementation,
+  native/provider, Linux build/behavior and guarded readiness-admission gates.
+  The user has explicitly requested reconstruction to start with this graph.
+
+## VM101 derived graph state storage — 2026-11-13
+
+- `dependency-graph/state` is a persistent bind mount from
+  `/srv/pvdata-ai/temp/dependency-graph-state-20261113` on VM101's existing
+  analysis data disk. Keep the canonical path; Memgraph itself remains in CT126.
+- Before a source-index publication after restart, ensure this mount is present.
+  Do not recreate the mutable refresh index on the nearly full system volume:
+  its SQLite rollback journal can exceed that volume's free space. A missing
+  mount is a storage repair condition, not permission to bypass graph freshness.
+- The first failed publication and unchanged prior state remain preserved.
+  Relocation and boot configuration evidence is in
+  `evidence/recovery/2026-11-13/graph-state-storage/RESULT.json`; the old state is
+  in the adjacent `state-before-relocation/`. Do not purge it implicitly.
+
+## VM101 heavy project archives on pvdata — 2026-11-13
+
+- `evidence/`, `.backups/` and `dependency-graph/runs/` reside on the existing
+  `/srv/pvdata-ai` working disk, under `ai-line-analysis/`, with persistent
+  bind mounts preserving their canonical project paths. Retain these mounts
+  across restarts; do not recreate large artifact trees on the system SSD.
+- Before resuming consumers after a storage interruption, verify the bind
+  mounts. Missing mounts require restoring storage, not generating replacement
+  evidence or changing historical paths. Source code and Git remain on SSD.
+- User-authorized relocation preserved the artifacts without purging them.
+  The resumable operator, transfer logs and completion receipt are under
+  `temp/storage-migration-20261113/`; the existing temp bind mount remains
+  on the same pvdata disk.
+
+## Isolate test CMake registration — user correction, 2026-11-13
+
+- Put new test targets, fixtures, replay commands and test registration under
+  `uc-library/cmake/tests/`, using the existing subsystem module. Keep production
+  sources, compile settings, public headers and installation outside this tree.
+  Do not append ordinary test registration to the top-level production CMake.
+- CMake reconfiguration alone must not force compiler-observation extraction for
+  every production TU when only isolated tests change. Compare actual compile
+  commands and captured dependencies after configuration; refresh test/build
+  metadata even when compiler observations are reused. Unknown dependencies,
+  optional includes, new/deleted headers and global configuration remain
+  conservative. Verify realistic generated build inputs as well as source edits.
+
+## Publication redesign and rollback — user correction, 2026-11-13
+
+- Reconstruction and the former publication continuation are paused by explicit user instruction. Finish the publication algorithm/storage redesign before resuming production. Never automatically restart the interrupted prepare12 journal.
+- Use one verified VM101 snapshot as the rollback point for this redesign, including the pvdata working disk. Do not create additional full database generations, repository copies or numbered backup archives as a fallback. Keep compact change records and required source/validation evidence; the external Memgraph CT is outside the VM snapshot.
+- Routine publication must update changed facts only, with compact identities and ownership/provenance separated from wide edge keys. No three full old/prior/new edge copies, no full-index delete/reinsert for a local change, and no automatic full refresh caused solely by test registration.
+- Validate result equivalence, shared-owner removal, interruption/retry and measured disk writes/journal/transfer sizes. An unchanged refresh must produce no graph mutations. Reject an unexpectedly oversized routine update before bulk writes rather than silently escalating to a multi-gigabyte rebuild. Full rebuild is an explicit separate operation.
+
+
+## Rolling implementation selection — user correction, 2026-11-14
+
+- The user authorizes a rolling 10-worker x 10-target reconstruction run. This
+  supersedes the earlier publication pause for this run; freshness and compact
+  publication limits still apply. Do not silently substitute 100 research tasks
+  or a reduced closed batch for the requested implementation flow.
+- The previous run failed to apply the existing production-delivery rule:
+  availability and coarse ownership checks were mistaken for implementation
+  eligibility; blocked targets then shrank the queue without replacement.
+- Before expensive packet preparation, inspect current SQLite status, notes,
+  active claims AND retained reservations, existing canonical implementations,
+  evidence-backed reconstruction contracts, and selected read/write dependencies.
+  Classify candidates as implementation-eligible, research-needed, or parked.
+  Research-needed targets do not occupy implementation slots. Preserve uncertainty
+  and bounded work explicitly; do not fabricate declarations or readiness.
+- When a target blocks, persist its original identity, reason, evidence and concrete
+  retry condition, inspect any live owner before releasing its claim, and select
+  a compatible replacement from the eligible reserve immediately. Do not retry an
+  unchanged blocker or wait for the whole cohort to finish before replacing it.
+- Admit independently completed handoffs as they meet existing gates. Never make
+  completion of all 100 targets a prerequisite. Coordinate actual shared-source
+  dependencies and fresh graph generations; do not dispatch stale packets to
+  manufacture parallelism. Root retains shared build/registry ownership.
+- Before each dispatch record actual implementation slots, eligible reserve,
+  parked targets and read/write-conflict evidence. Verify ALL captured read inputs
+  in reused worker repositories against sealed packets, not only owned files.
+  No unexplained dependency mismatch may be called a current workspace.
+- Preserve phase timings, accepted unique-method and ELF-identity denominators,
+  new ready vs declaration-pending results, failures and infrastructure costs.
+  No further full repository/database copies; reuse immutable packet inputs with
+  a finite new-payload budget and the existing rollback snapshot.

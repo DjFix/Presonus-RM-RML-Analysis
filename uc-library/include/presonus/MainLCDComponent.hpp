@@ -1,16 +1,19 @@
 #pragma once
 #include "core/portable/corecomponent.h"
 #include "core/public/corevector.h"
+#include <cstdint>
 
 namespace Core::Portable {
 class RootView;
-}
+class View;
+} // namespace Core::Portable
 namespace Presonus {
 class MainLCDComponent;
 class PageComponent;
 class LcdView;
 } // namespace Presonus
 namespace presonus::mainlcd_port {
+struct ConstructionAccess;
 // Independent source-port boundary. Implementations must provide the real app
 // operations; these declarations do not recover LcdView/PageComponent layouts.
 struct Application {
@@ -28,6 +31,8 @@ struct State {
   Presonus::PageComponent *current = nullptr;
   Presonus::PageComponent *next = nullptr;
   Presonus::PageComponent *back = nullptr;
+  Core::Vector<Core::Portable::View *> views;
+  Core::Vector<Presonus::PageComponent *> pages;
   // Intentional source-port storage, independent of the original ARM layout.
   Core::FixedSizeVector<Presonus::PageComponent *, 10> backPages;
   // Stack operations opt into actual count-based state; legacy callers retain
@@ -41,9 +46,14 @@ namespace Presonus {
 // verification.
 class MainLCDComponent : public Core::Portable::Component {
 public:
+  MainLCDComponent();
+  // Independent binding API; the borrowed application must outlive use.
+  void bindApplication(presonus::mainlcd_port::Application &value) {
+    application = &value;
+  }
   MainLCDComponent(presonus::mainlcd_port::Application &application,
                    presonus::mainlcd_port::State &state)
-      : application(application), state(state) {}
+      : application(&application), state(state) {}
   bool hasBackPage() const;
   void pushBackPage(PageComponent *page);
   PageComponent *popBackPage();
@@ -58,7 +68,13 @@ public:
   void showStartPage();
 
 private:
-  presonus::mainlcd_port::Application &application;
+  presonus::mainlcd_port::Application &requireApplication() const;
+  presonus::mainlcd_port::State ownedState;
+  presonus::mainlcd_port::Application *application = nullptr;
   presonus::mainlcd_port::State &state;
+  // Explicit provisional observed words; no recovered semantics/layout claim.
+  std::uint32_t observedWord8c = 40;
+  std::uint32_t observedWordF4 = 0;
+  friend struct presonus::mainlcd_port::ConstructionAccess;
 };
 } // namespace Presonus

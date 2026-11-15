@@ -1,4 +1,5 @@
 #pragma once
+#include "core/public/corestringbuffer.h"
 
 namespace presonus::page {
 // Independent borrowed application boundary. This is not a recovered MainLCD
@@ -19,8 +20,13 @@ namespace Presonus {
 // they do not establish the original inheritance, fields or ARM32 ABI.
 class PageComponent {
 public:
-  PageComponent(void *owner, const presonus::page::Bindings &bindings)
-      : owner_(owner), bindings_(bindings) {}
+  // Source-port initialization only: 31-byte form names. Native C1/C2 both
+  // initialize +0x90 with Core::CStringBuffer<32>(second argument). Full class
+  // layout and source-port initialization signature remain unresolved.
+  PageComponent(void *owner, const presonus::page::Bindings &bindings,
+                const char *formName = nullptr)
+      : formName_(formName), owner_(owner), bindings_(bindings) {}
+  const char *getFormName() const;
   void *castTo(int classId);
   bool isVisible() const;
   void *getMainScreen() const;
@@ -28,6 +34,7 @@ public:
   bool isEditingText() const;
 
 private:
+  Core::CString32 formName_;
   void *owner_;
   const presonus::page::Bindings &bindings_;
 };

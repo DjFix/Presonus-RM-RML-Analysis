@@ -30,6 +30,9 @@ public:
   virtual void sendRoutingPacket(const RoutingPacket &) = 0;
 };
 } // namespace presonus::avb
+namespace presonus::avb {
+struct AvbIdleMaintenanceAccess;
+}
 namespace Presonus::AVB {
 // Original encoded method names/parameters; independent portable storage and
 // constructor. Original return declarations, inheritance and ARM layout
@@ -41,6 +44,8 @@ public:
                presonus::avb::ListenerServices &v)
       : state_(s), services_(v) {}
   ~AvbComponent() override;
+  // Source-port void declaration; original ordinary return remains pending.
+  void onIdle() override;
   void configureStaticTalkerStreams();
   void routeLinkSlotsFromAvb();
   void setSpectrumDataTxSource(int, int);
@@ -57,7 +62,22 @@ public:
   void addConsoleBusListener(long long, bool, int, bool);
 
 private:
+  friend struct presonus::avb::AvbIdleMaintenanceAccess;
+  // Independent portable binding for the original per-class process static.
+  static std::int64_t lastMaintenance_;
   presonus::avb::ListenerState &state_;
   presonus::avb::ListenerServices &services_;
 };
 } // namespace Presonus::AVB
+
+namespace presonus::avb {
+// Independent fixture/source-port access, not an original public interface.
+struct AvbIdleMaintenanceAccess {
+  static std::int64_t get() {
+    return Presonus::AVB::AvbComponent::lastMaintenance_;
+  }
+  static void set(std::int64_t value) {
+    Presonus::AVB::AvbComponent::lastMaintenance_ = value;
+  }
+};
+} // namespace presonus::avb

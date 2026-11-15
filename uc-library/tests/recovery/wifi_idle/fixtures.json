@@ -1,0 +1,63 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "mangled": "_ZN8Presonus7Surface18WifiSetupComponent6onIdleEv",
+  "address": 671332,
+  "size": 36,
+  "section": ".text",
+  "section_index": 12,
+  "file_offset": 638564,
+  "range_sha256": "9621c580aa0f96bb87fe473cad89bd81205e7e287b49db95de45154951fffac4",
+  "cases": [
+    {
+      "input": 0,
+      "result": 4194304,
+      "trace": [
+        [
+          "Core::Portable::Component::onIdle"
+        ],
+        [
+          "checkNetworkScanning"
+        ]
+      ],
+      "sites": [
+        671332,
+        671336,
+        671340,
+        671344,
+        671348,
+        671352,
+        671356,
+        671360,
+        671364
+      ],
+      "stack_writes": [
+        [
+          9433068,
+          4,
+          0
+        ],
+        [
+          9433072,
+          4,
+          0
+        ],
+        [
+          9433076,
+          4,
+          9433088
+        ],
+        [
+          9433080,
+          4,
+          15728640
+        ],
+        [
+          9433084,
+          4,
+          671344
+        ]
+      ]
+    }
+  ],
+  "provider_boundary": "virtual getRadioValue supplied signed int32; Wifi Core idle and existing scan intercepted; no Core instructions, hardware or syscalls executed"
+}

@@ -58,6 +58,7 @@ public:
   void onShow(bool);
   void updateDisplayList();
   void checkNetworkScanning();
+  void onIdle() override;
 
 private:
   presonus::surface::WifiSetupState &state;

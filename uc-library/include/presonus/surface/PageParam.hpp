@@ -6,6 +6,7 @@ namespace Presonus::Surface {
 class PageParam {
 public:
   explicit PageParam(const char *initial = "") : text_(initial) {}
+  PageParam(const char *page, const char *parameter);
   void init(const char *, const char *);
   const char *c_str() const { return text_.str(); }
 

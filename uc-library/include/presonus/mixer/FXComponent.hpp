@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "presonus/mixer/DelayComponent.hpp"
 #include <cstdint>
 
 namespace presonus::mixer_fx {
@@ -33,6 +34,8 @@ class FXComponent : public Core::Portable::Component {
 public:
   DECLARE_CORE_CLASS(0x16fd2c, FXComponent, Core::Portable::Component)
   explicit FXComponent(presonus::mixer_fx::State &state) : state_(state) {}
+  // Identity conversion observed in ARM; original static return is unresolved.
+  virtual std::int32_t getEffectTypeInternal(Presonus::EffectType type);
   void setFxDirty();
   Core::Portable::ParamValue mapValues(Core::Portable::Parameter *parameter);
   bool recallFxType();

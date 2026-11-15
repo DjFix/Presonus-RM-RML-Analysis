@@ -9,5 +9,10 @@ namespace Presonus::Surface {
 class StartPageComponent : public Core::Portable::Component {
 public:
   ~StartPageComponent();
+  // Provisional bool declarations; caller must provide actual NumericParam
+  // tags 1000/1001 in the inherited CCL collection. Original layout/ABI
+  // pending.
+  bool isDawMode() const;
+  bool isMidiMode() const;
 };
 } // namespace Presonus::Surface

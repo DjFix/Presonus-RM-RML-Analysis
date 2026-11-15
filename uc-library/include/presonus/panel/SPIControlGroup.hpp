@@ -30,6 +30,9 @@ public:
   SPIControlGroup(const Core::ConstVector<std::uint32_t> &controls,
                   int byteCount, int descriptor,
                   presonus::spi_port::Transfer &transfer);
+  // Source-port int return models observed r0=1; original return declaration
+  // remains unresolved. Control is borrowed and never dereferenced.
+  int broadcast(Control *control);
   void onIdle();
   void markDirty(bool value) { dirty = value; }
   bool isDirty() const { return dirty; }

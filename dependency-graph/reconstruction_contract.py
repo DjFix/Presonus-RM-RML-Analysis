@@ -26,7 +26,8 @@ def evidence(root, refs):
         path = (root / ref['path']).resolve()
         if not path.is_relative_to(root.resolve()) or not path.is_file():
             raise ValueError('Evidence outside repository or absent')
-        if hashlib.sha256(path.read_bytes()).hexdigest() != ref['sha256']:
+        from execution_review import checked_digest
+        if checked_digest(root, root / ref['path']) != ref['sha256']:
             raise ValueError('Stale evidence: ' + ref['path'])
         kind = ref.get('kind')
         if kind not in {'cpp_declaration', 'cpp_implementation', 'provider_source', 'native_observation', 'review_record', 'compiled_symbol_audit'}:

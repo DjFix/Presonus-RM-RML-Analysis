@@ -1,6 +1,10 @@
 #include "presonus/mixer/FXComponent.hpp"
 
 namespace Presonus::Mixer {
+std::int32_t FXComponent::getEffectTypeInternal(Presonus::EffectType type) {
+  return static_cast<std::int32_t>(type);
+}
+
 void FXComponent::setFxDirty() {
   state_.dirty = true;
   state_.app.setControllerDirty();

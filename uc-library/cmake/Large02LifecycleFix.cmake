@@ -6,6 +6,4 @@ foreach(source IN ITEMS
   set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/${source}" APPEND PROPERTY
     COMPILE_OPTIONS -fno-lto -fno-fast-math -ffp-contract=off)
 endforeach()
-if(BUILD_TESTING)
-  add_subdirectory(tests/recovery/large02-lifecycle-fix01)
-endif()
+include(cmake/tests/Large02LifecycleFix.cmake)

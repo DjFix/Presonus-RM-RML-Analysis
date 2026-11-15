@@ -56,6 +56,8 @@ def plan(c,task):
     if len(work)!=1:raise ContextError('One packet must cover one unique work item; split the task')
     job=next(iter(work.values()))
     members=[dict(r) for r in c.execute('SELECT o.* FROM symbol_occurrences o JOIN work_item_members m ON m.occurrence_id=o.id WHERE m.work_item_id=? ORDER BY o.elf_sha256,o.original_address,o.id',(job['id'],))]
+    from dedup_reservations import check as check_reservations
+    check_reservations(c, members)
     did=job['decision_id']; d=c.execute('SELECT * FROM equivalence_decisions WHERE id=?',(did,)).fetchone() if did else None
     if d and c.execute('SELECT max(revision) FROM equivalence_decisions WHERE subject_id=?',(d['subject_id'],)).fetchone()[0]!=d['revision']:
         raise ContextError('Work decision superseded; replan required')

@@ -18,6 +18,13 @@ function(presonus_build_common_objects)
     target_compile_options(presonus_${group}_objects PRIVATE -Wall -Wextra -Wpedantic)
     target_link_libraries(presonus_${group}_objects PRIVATE PresonusCore::Provider)
   endforeach()
+  # New CCL-backed Pages source ports: real provider lacks C++ RTTI.
+  # Preserve strict finite float arithmetic used by native differential domains.
+  set_property(SOURCE
+    "${PRESONUS_LIBRARY_SOURCE}/src/Presonus/Panel/AlertBook.cpp"
+    "${PRESONUS_LIBRARY_SOURCE}/src/Presonus/Surface/MixSettingsPageComponent.cpp"
+    "${PRESONUS_LIBRARY_SOURCE}/src/Presonus/Surface/ChannelInfoPageComponent.cpp"
+    APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti -fno-fast-math -ffp-contract=off)
   set(float_options -fno-fast-math -ffp-contract=off)
   if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     list(APPEND float_options -ffp-model=strict)

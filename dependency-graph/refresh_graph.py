@@ -13,15 +13,20 @@ import time
 from context_runtime import ContextError, guard, inventory, sha
 from code_identity import VERSION, owner_id
 from context_resources import choose_compiler_limits, MIB
+from memgraph_endpoint import memgraph_network
 from refresh_facts import connect, facts, replace, requires_reconfigure, stale_units
+from test_build_invalidation import compiler_invalidation
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BASE = ROOT / 'dependency-graph'
 BUILD = ROOT / 'temp/core-upstream/root-integration-01'
 GROUPS = [('app', BUILD), ('core', BUILD / 'upstream-core/build')]
-PRODUCERS = ('refresh_graph.py', 'refresh_facts.py', 'refresh_extract.py',
+PRODUCERS = ('test_build_invalidation.py', 'refresh_graph.py', 'refresh_facts.py', 'refresh_extract.py',
              'refresh_publish.py', 'full_source_graph.py', 'gcc_source_graph.py',
-             'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py', 'context_resources.py')
+             'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py', 'publication_events.py', 'context_resources.py',
+             'native_candidate_gate.py', 'native_candidate_ownership.py',
+             'native_candidate_lifecycle.py', 'compact_facts.py', 'incremental_delta.py',
+             'incremental_stage.py', 'deferred_sqlite.py', 'publication_budget.py', 'reuse_observations.py', 'verified_build_reconfiguration.py', 'unchanged_observations.py')
 
 
 def run(argv, out, label):
@@ -50,7 +55,7 @@ def docker(script, out, label, analysis=False):
         profile.update(docker_memory=memory, docker_cpus=cpus, task_count=count)
         (out / 'compiler-host-resources.json').write_text(json.dumps(profile, indent=2) + '\n')
     argv = ['docker', 'run', '--name', 'graph-' + label + '-' + str(time.time_ns()),
-            '--network=' + ('none' if analysis else 'dependency-graph-experiment'),
+            '--network=' + ('none' if analysis else memgraph_network(ROOT)),
             '--memory=' + memory, '--cpus=' + str(cpus), '--user', '1000:1000',
             '-v', str(ROOT) + ':' + str(ROOT) + ':ro',
             '-v', str(out) + ':' + str(out) + ':rw',
@@ -111,9 +116,59 @@ def check_existing_identity(path):
             require_identity_version(c)
 
 
-def ensure_fresh(force=False):
+def reviewed_row_allowance(path):
+    """Read an explicit rescan exception; automatic preparation never inherits it."""
+    path = pathlib.Path(path).resolve()
+    if not path.is_relative_to(ROOT) or not path.is_file():
+        raise ContextError('Row-budget review must be a repository-local file')
+    review = json.loads(path.read_text())
+    rows_limit = review.get('rows')
+    if type(rows_limit) is not int or not 100000 < rows_limit <= 10000000:
+        raise ContextError('Reviewed rows must be finite and in 100001..10000000')
+    if not isinstance(review.get('reason'), str) or not review['reason'].strip():
+        raise ContextError('Row-budget review requires a concrete reason')
+    evidence = review.get('evidence', {})
+    evidence_path = (ROOT / evidence.get('path', '')).resolve()
+    if (not evidence_path.is_relative_to(ROOT) or not evidence_path.is_file()
+            or sha(evidence_path) != evidence.get('sha256')):
+        raise ContextError('Row-budget forecast evidence mismatch')
+    byte_limits = review.get('byte_limits', {})
+    if not isinstance(byte_limits, dict):
+        raise ContextError('Reviewed byte limits must be an object')
+    if byte_limits:
+        ceilings = {'journal_bytes': 448 * 1024**2, 'sqlite_write_bytes': 768 * 1024**2,
+                    'transfer_bytes': 640 * 1024**2}
+        if not isinstance(byte_limits, dict) or set(byte_limits) - ceilings.keys():
+            raise ContextError('Only bounded journal/write/transfer rescan exceptions are supported')
+        if any(type(value) is not int or not 0 < value <= ceilings[key]
+               for key, value in byte_limits.items()):
+            raise ContextError('Reviewed byte limits exceed finite sub-gigabyte ceilings')
+        resource = review.get('resource_evidence', {})
+        resource_path = (ROOT / resource.get('path', '')).resolve()
+        if (not resource_path.is_relative_to(ROOT) or not resource_path.is_file()
+                or sha(resource_path) != resource.get('sha256')):
+            raise ContextError('Measured resource evidence mismatch')
+    return {'path': str(path), 'sha256': sha(path), 'review': review}
+
+
+def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
+                 reuse_capture=None, verify_build_plan=None, compiler_rescan=None,
+                 row_budget_review=None):
     """Caller holds context.lock for refresh plus packet selection; no background watcher."""
     index_path = BASE / 'state/refresh-index.sqlite'
+    if row_budget_review is not None and compiler_rescan is None:
+        raise ContextError('Reviewed row allowance requires explicit compiler rescan')
+    if compiler_rescan is not None:
+        if not isinstance(compiler_rescan, str) or not compiler_rescan.strip():
+            raise ContextError('Compiler rescan requires an explicit reason')
+        if full_rebuild or force or verify_build_plan is not None:
+            raise ContextError('Compiler rescan cannot be combined with force, full rebuild, build-only verification')
+    row_review = reviewed_row_allowance(row_budget_review) if row_budget_review is not None else None
+    if full_rebuild and (not isinstance(rebuild_authorization, str) or not rebuild_authorization.strip()):
+        raise ContextError('Full rebuild requires an explicit reason')
+    if force and not full_rebuild:
+        raise ContextError('Forced global refresh requires explicit --full-rebuild REASON')
+    force = force or full_rebuild
     check_existing_identity(index_path)
     baseline = None
     if index_path.exists():
@@ -154,7 +209,7 @@ def ensure_fresh(force=False):
                if not (ROOT / p).is_file() or sha(ROOT / p) != v['sha256']}
     inventory_delta = set(inventory(ROOT)) ^ set(state['source_inventory'])
     changed.update(str(ROOT / p) for p in inventory_delta)
-    configuration = force or requires_reconfigure(changed, inventory_delta)
+    configuration = force or verify_build_plan is not None or requires_reconfigure(changed, inventory_delta)
     if configuration:
         for group, build in GROUPS:
             home = next(line.split('=', 1)[1] for line in (build / 'CMakeCache.txt').read_text().splitlines()
@@ -162,28 +217,96 @@ def ensure_fresh(force=False):
             run([str(ROOT / 'uc-library/.venv/bin/cmake'), '-S', home, '-B', str(build),
                  '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], out, 'configure-' + group)
     wanted = rows()
+    run([str(ROOT / 'uc-library/.venv/bin/ctest'), '--test-dir', str(BUILD), '--show-only=json-v1'],
+        out, 'ctest-inventory')
+    tests = json.loads((out / 'ctest-inventory.log').read_text())['tests']
     c = connect(index_path)
     try:
         # A publication journal is resumable; never bless a partially applied generation.
-        seed(c, out)
-        dirty, removed = stale_units(c, wanted, changed, configuration)
+        if not c.execute('SELECT 1 FROM units LIMIT 1').fetchone():
+            if not full_rebuild:
+                raise ContextError('Empty source index requires an explicit initial rebuild')
+            seed(c, out)
+        invalidate_all, invalidation_reason = compiler_invalidation(
+            ROOT, c, wanted, changed, inventory_delta, configuration, force,
+            builds=[build for _, build in GROUPS], tests=tests)
+        build_proof = None
+        if verify_build_plan is not None:
+            if full_rebuild:
+                raise ContextError('Build-only verification cannot be combined with full rebuild')
+            from verified_build_reconfiguration import verify_build_only
+            original_plan = pathlib.Path(verify_build_plan).resolve()
+            original = json.loads(original_plan.read_text())
+            build_proof = verify_build_only(
+                ROOT, c, wanted, changed, inventory_delta, GROUPS,
+                original['producer_sha256'])
+            build_proof['original_plan'] = str(original_plan)
+            build_proof['original_plan_sha256'] = sha(original_plan)
+            build_proof['configure_receipts'] = {
+                group: sha(out / ('configure-' + group + '.json')) for group, _ in GROUPS}
+            (out / 'build-reconfiguration-proof.json').write_text(json.dumps(build_proof, indent=2) + '\n')
+            invalidate_all = False
+            invalidation_reason = 'explicit exact ALL-unit command/input equivalence after configure'
+        dirty, removed = stale_units(c, wanted, changed, invalidate_all)
         plan = {'identity_version': VERSION, 'previous_active': active, 'changed': sorted(changed), 'affected_units': sorted(dirty),
                 'removed_units': sorted(removed), 'total_units': len(wanted), 'configuration_refresh': configuration,
+                'compiler_invalidation_all': invalidate_all, 'compiler_invalidation_reason': invalidation_reason,
                 'producer_sha256': producer_hashes}
+        if compiler_rescan is not None:
+            # Observation breadth alone never increases publication allowances.
+            plan['compiler_rescan'] = {'authorization': compiler_rescan,
+                                       'scope': 'permit conservative all-unit compiler invalidation'}
+            plan['publication_budget'] = {'mode': 'routine'}
+            if row_review is not None:
+                plan['publication_budget']['limits'] = {
+                    'rows': row_review['review']['rows'], **row_review['review'].get('byte_limits', {})}
+                plan['publication_budget']['row_budget_review'] = row_review
+        if build_proof is not None:
+            plan['build_reconfiguration_proof'] = {
+                'path': str(out / 'build-reconfiguration-proof.json'),
+                'sha256': sha(out / 'build-reconfiguration-proof.json')}
         (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
+        if invalidate_all and not full_rebuild and compiler_rescan is None:
+            raise ContextError('Automatic full rebuild refused before extraction/publication: ' +
+                               invalidation_reason + '; inspect plan ' + str(out / 'plan.json'))
+        if full_rebuild:
+            # Separate, explicit operation; routine preparation never inherits it.
+            plan['publication_budget'] = dict(mode='full_rebuild', authorization=rebuild_authorization,
+                limits=dict(journal_bytes=1024**3, sqlite_write_bytes=8*1024**3,
+                            rows=10_000_000, transfer_bytes=2*1024**3))
+            (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
         selected = [(owner, row) for owner, row in wanted if owner in dirty]
         (out / 'units.json').write_text(json.dumps(selected) + '\n')
-        if selected:
+        reused_captures = 0
+        if selected and reuse_capture is not None:
+            from reuse_observations import reuse_verified, METADATA
+            source = pathlib.Path(reuse_capture).resolve()
+            # These are observed/approved input bindings NOW, not a claim that
+            # the prior extractor recorded hashes which it did not record.
+            bindings = dict(producers=producer_hashes,
+                            source_metadata={name: sha(source / name) for name in METADATA})
+            (out / 'reuse-input-bindings.json').write_text(json.dumps(bindings, indent=2) + '\n')
+            reuse = reuse_verified(ROOT, source, out, selected, bindings)
+            (out / 'observation-reuse.json').write_text(json.dumps(reuse, indent=2) + '\n')
+            if reuse['rejected']:
+                raise ContextError('Capture reuse rejected; no automatic re-extraction: ' +
+                                   str(out / 'observation-reuse.json'))
+            reused_captures = len(reuse['eligible'])
+            plan['observation_provenance'] = {'reuse_receipt': str(out / 'observation-reuse.json'),
+                                             'sha256': sha(out / 'observation-reuse.json'),
+                                             'reused_compiler_captures': reused_captures}
+            (out / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n')
+        elif selected:
             docker([str(BASE / 'refresh_extract.py'), str(out)], out, 'extract', analysis=True)
-        run([str(ROOT / 'uc-library/.venv/bin/ctest'), '--test-dir', str(BUILD), '--show-only=json-v1'],
-            out, 'ctest-inventory')
         # Current build facts and publication report are constructed by the worker,
         # with all prior TU contributors available for exact retraction.
         docker(publisher_script(out), out, 'publish')
         if c.execute('SELECT 1 FROM meta WHERE key="unregistered_baseline"').fetchone():
             raise ContextError('Sources moved during publication; next prepare will reconcile them: ' + str(out))
         elapsed = time.perf_counter() - start
-        result = {'refreshed': True, 'recompiled_units': len(dirty), 'reused_units': len(wanted) - len(dirty),
+        result = {'refreshed': True, 'recompiled_units': len(dirty) - reused_captures,
+                  'reused_compiler_captures': reused_captures, 'reprocessed_fact_units': len(dirty),
+                  'reused_units': len(wanted) - len(dirty),
                   'removed_units': len(removed), 'seconds': elapsed, 'out': str(out.relative_to(ROOT))}
         (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
         print(json.dumps(result), flush=True)
@@ -206,4 +329,19 @@ if __name__ == '__main__':
             docker(publisher_script(output), output,
                    'resume-' + str(time.time_ns()))
         else:
-            ensure_fresh('--force' in sys.argv)
+            import argparse
+            parser = argparse.ArgumentParser()
+            parser.add_argument('--force', action='store_true')
+            parser.add_argument('--full-rebuild', metavar='REASON')
+            parser.add_argument('--compiler-rescan', metavar='REASON',
+                                help='Permit conservative all-TU extraction with unchanged routine publication budgets')
+            parser.add_argument('--reuse-capture', type=pathlib.Path)
+            parser.add_argument('--row-budget-review', '--publication-budget-review', type=pathlib.Path,
+                                help='Explicit hash-bound rescan budget review; never inherited by automatic preparation')
+            parser.add_argument('--verify-build-plan', type=pathlib.Path,
+                                help='Explicit retained extraction plan for exact build-only verification')
+            args = parser.parse_args()
+            ensure_fresh(args.force, full_rebuild=args.full_rebuild is not None,
+                         rebuild_authorization=args.full_rebuild, reuse_capture=args.reuse_capture,
+                         verify_build_plan=args.verify_build_plan, compiler_rescan=args.compiler_rescan,
+                         row_budget_review=args.row_budget_review)

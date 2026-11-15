@@ -1,15 +1,21 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/portable/coreworker.h"
+#include <cstdint>
+#include <memory>
 
 namespace presonus::surface_update {
 struct CallbackSourcePort {};
+struct ConstructionAccess;
 } // namespace presonus::surface_update
 namespace Presonus::Surface {
 // Partial source port: original complete layout, secondary interface and
-// constructor/destructor lifecycle remain unresolved. This construction API is
-// an independent adapter, not an original firmware constructor.
+// destructor lifecycle remain unresolved. The callback overload is an
+// independent adapter; the default constructor ports the bounded original setup
+// only.
 class FirmwareUpdateComponent : public Core::Portable::Component {
 public:
+  FirmwareUpdateComponent();
   FirmwareUpdateComponent(presonus::surface_update::CallbackSourcePort,
                           const Core::Portable::ParamInfo *parameters,
                           int parameterCount,
@@ -22,5 +28,10 @@ public:
 
 private:
   Core::Portable::Parameter *progressParameter;
+  // Independent host ownership, not native +0x90 layout or allocation-size ABI.
+  std::unique_ptr<Core::Portable::BackgroundWorker> worker;
+  // Provisional native +0x94 word; distinct from callback progress binding.
+  std::uint32_t observedTaskWord = 0;
+  friend struct presonus::surface_update::ConstructionAccess;
 };
 } // namespace Presonus::Surface

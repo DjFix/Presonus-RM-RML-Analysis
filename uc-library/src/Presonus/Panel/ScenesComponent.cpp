@@ -5,6 +5,11 @@
 #include <cstring>
 
 namespace Presonus::Panel {
+ScenesComponent::ScenesComponent(FrontPanelComponent &panel,
+                                 Presonus::Mixer::MixerComponentBase &mixer)
+    : PresetComponent("scene", "My Scene", "scenenum", mixer), mixer(mixer),
+      panel(&panel) {}
+
 ScenesComponent::~ScenesComponent() = default;
 bool ScenesComponent::store() {
   const int slot = getSlotNum();

@@ -7,5 +7,7 @@ class FilterGroupManager : public Core::Portable::Component {
 public:
   explicit FilterGroupManager(const char *name);
   ~FilterGroupManager() override;
+  // Provisional void return; real CCL children own authoritative names/params.
+  void resetChannelNames();
 };
 } // namespace Presonus::Mixer

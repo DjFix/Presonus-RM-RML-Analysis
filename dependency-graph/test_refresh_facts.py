@@ -4,6 +4,7 @@ import unittest
 import uuid
 
 from refresh_facts import connect, external_dependencies, merged_node, replace, requires_reconfigure, stale_units
+from compact_facts import CompactFacts
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -50,6 +51,23 @@ class RefreshFactsTests(unittest.TestCase):
         self.assertTrue(requires_reconfigure(['new.hpp'], ['new.hpp']))
         self.assertTrue(requires_reconfigure(['CMakeLists.txt'], []))
         self.assertTrue(requires_reconfigure([], ['new.cpp']))
+
+    def test_node_merge_uses_compact_support_and_preserves_owner_precedence(self):
+        for owner, label, definition in [('z', 'last', False), ('a', 'first', True)]:
+            CompactFacts(self.c).replace_owner(owner, {'same': dict(kind='Function', label=label,
+                metadata={'source_definition': definition, 'value': owner})}, [])
+        query = 'SELECT kind,label,metadata FROM node_facts WHERE id=? ORDER BY owner'
+        plan = [row[3] for row in self.c.execute('EXPLAIN QUERY PLAN ' + query, ('same',))]
+        self.assertTrue(any('compact_node_support' in detail for detail in plan), plan)
+        result = merged_node(self.c, 'same')
+        self.assertEqual(result['label'], 'last')
+        self.assertEqual(json.loads(result['metadata']), {'source_definition': True, 'value': 'z'})
+        self.c.commit()
+        self.c.close()
+        self.c = connect(self.out / 'facts.sqlite')
+        self.assertEqual(merged_node(self.c, 'same'), result)
+        self.assertEqual([row[2] for row in self.c.execute('PRAGMA index_info(compact_node_support)')],
+                         ['node_id', 'owner_id'])
 
     def test_external_includes_retained_without_claiming_source_hashes(self):
         (self.out / 'unit.o.d').write_text('unit.o: source.cpp /usr/include/stdio.h\n')

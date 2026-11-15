@@ -2,6 +2,10 @@
 #include <bit>
 namespace Presonus::Surface {
 MarkerPageComponent::~MarkerPageComponent() = default;
+bool MarkerPageComponent::isLocateMode() const {
+  auto *parameter = getParameterByTag(1007);
+  return parameter && parameter->getValue() > 0.f;
+}
 int MarkerPageComponent::getMaxMarkerListOffset(TrackAccessor &track) const {
   if (!track.markerCount)
     return 0;

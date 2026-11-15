@@ -1,5 +1,8 @@
 #include "presonus/panel/MixerLCD.hpp"
 namespace Presonus::Panel {
+void MixerLCD::setAltKeyParam(Core::Portable::Parameter *parameter) {
+  altKeyParameter_ = parameter;
+}
 void MixerLCD::previous() const { state_.book.command(0x2c); }
 void MixerLCD::next() const { state_.book.command(0x28); }
 void MixerLCD::up() const { state_.book.command(0x20); }

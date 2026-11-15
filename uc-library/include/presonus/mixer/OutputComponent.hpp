@@ -20,6 +20,9 @@ struct Bindings {
   // Existing users of soloUpdate do not require these additional bindings.
   std::function<void(Core::Portable::Parameter *, int)> channelParamChanged;
   std::function<void(int)> channelSectionCoeffChanged;
+  // Nonowning source-port parameter slot. Native constructors obtain tag 400.
+  // No original layout, ownership or static return declaration is asserted.
+  Core::Portable::Parameter *delay{};
 };
 } // namespace presonus::output_port
 namespace Presonus::Mixer {
@@ -31,6 +34,8 @@ public:
   void soloUpdate(Presonus::Dsp::MultiParamProperty &);
   void paramChanged(Core::Portable::Parameter *, int);
   void setSectionCoeffChanged(int);
+  // Explicit portable return type; original unencoded return remains pending.
+  Core::Portable::Parameter *getDelay();
 
 private:
   presonus::output_port::Bindings &bindings_;

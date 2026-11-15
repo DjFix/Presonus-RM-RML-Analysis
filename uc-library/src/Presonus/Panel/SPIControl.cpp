@@ -1,5 +1,13 @@
 #include "presonus/panel/SPIControl.hpp"
+#include "presonus/panel/protocol_comm.hpp"
 
 namespace Presonus::Panel {
 SPIControl::~SPIControl() = default;
+void SPIControl::broadcastValue(int value) {
+  auto &last = presonus::panel::ControlAccess::lastLevel(*this);
+  if (last == value)
+    return;
+  last = value;
+  presonus::panel::ControlAccess::io(*this)->broadcast(this);
+}
 } // namespace Presonus::Panel

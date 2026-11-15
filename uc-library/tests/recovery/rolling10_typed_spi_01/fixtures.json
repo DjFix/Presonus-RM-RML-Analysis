@@ -1,0 +1,132 @@
+{
+  "range": {
+    "mangled": "_ZN8Presonus5Panel10SPIControl14broadcastValueEi",
+    "address": 708560,
+    "size": 60,
+    "section": 12,
+    "file_offset": 675792,
+    "sha256": "6f3d97cb6914e88c7e4b404bcd7207114757fd835889d585ec079b59fa104a26"
+  },
+  "actual_native_provider": {
+    "mangled": "_ZN8Presonus5Panel8IPanelIO9broadcastEPNS0_7ControlE",
+    "address": 614792,
+    "size": 20,
+    "section": 12,
+    "file_offset": 582024,
+    "sha256": "52014dc35dcb0a43c02dfc6dec01fdeeafcc563ba02addaa7295df3a7a57226c"
+  },
+  "cases": [
+    {
+      "before": 0,
+      "value": 0,
+      "io_bound": true,
+      "after": 0,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": 0,
+      "value": 0,
+      "io_bound": false,
+      "after": 0,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": 0,
+      "value": 1,
+      "io_bound": true,
+      "after": 1,
+      "calls": [
+        {
+          "receiver": true,
+          "control": true,
+          "level": 1
+        }
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": 1,
+      "value": 0,
+      "io_bound": true,
+      "after": 0,
+      "calls": [
+        {
+          "receiver": true,
+          "control": true,
+          "level": 0
+        }
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": -1,
+      "value": -1,
+      "io_bound": true,
+      "after": -1,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": -1,
+      "value": -1,
+      "io_bound": false,
+      "after": -1,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": -1,
+      "value": 2147483647,
+      "io_bound": true,
+      "after": 2147483647,
+      "calls": [
+        {
+          "receiver": true,
+          "control": true,
+          "level": 2147483647
+        }
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": 2147483647,
+      "value": -2147483648,
+      "io_bound": true,
+      "after": -2147483648,
+      "calls": [
+        {
+          "receiver": true,
+          "control": true,
+          "level": -2147483648
+        }
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "before": -2147483648,
+      "value": 2147483647,
+      "io_bound": true,
+      "after": 2147483647,
+      "calls": [
+        {
+          "receiver": true,
+          "control": true,
+          "level": 2147483647
+        }
+      ],
+      "returned": true,
+      "stack_restored": true
+    }
+  ],
+  "limitations": "Actual inherited IPanelIO default only; no unknown derived override, no hardware; changed value requires live IO."
+}

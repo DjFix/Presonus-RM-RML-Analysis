@@ -1,0 +1,275 @@
+{
+  "version": 1,
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus5Mixer14DelayComponent16getSelectTypeMapEv",
+  "firmware": "RM/RML mixer 13731",
+  "role": "server",
+  "original_range": {
+    "address": 240540,
+    "size": 24,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 207772,
+    "sha256": "a8ce88d4e3463b57e009394e4d42279c6818c3503072977ce56371ee963cb640"
+  },
+  "cases": [
+    {
+      "input_r1_u32": 0,
+      "output_r0_u32": 1508464,
+      "nonstack_writes": []
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn ARM32",
+    "unicorn_version": "2.1.4",
+    "python_version": "3.12.3",
+    "producer_sha256": "7bcea86b7833df4b90935a5a24eb93e621c65be3fe3a1caf1d6a88001f6034c5",
+    "instruction_limit": 200,
+    "stubs": [],
+    "memory_assumptions": "Exact target bytes, mapped local stack, unmapped receiver0x12340000; no providers/Core/native syscalls/hardware executed."
+  },
+  "table_range": {
+    "address": 1508464,
+    "size": 420,
+    "section": ".rodata",
+    "section_index": 14,
+    "file_offset": 1475696,
+    "sha256": "7e39c5fc1061f00699f7c7b371c24584e250f894a6c4f6dbb636c40c9d130da4"
+  },
+  "rows": [
+    {
+      "family": 0,
+      "index": 0,
+      "effect_type_bits": 1082130432,
+      "value_bits": 1056964608,
+      "name": "delaytime",
+      "original_string_address": 1434292
+    },
+    {
+      "family": 0,
+      "index": 1,
+      "effect_type_bits": 1084227584,
+      "value_bits": 1056964608,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 0,
+      "index": 2,
+      "effect_type_bits": 1086324736,
+      "value_bits": 1056964608,
+      "name": "feedback",
+      "original_string_address": 1434316
+    },
+    {
+      "family": 1,
+      "index": 0,
+      "effect_type_bits": 1082130432,
+      "value_bits": 1056964608,
+      "name": "delaytime",
+      "original_string_address": 1434292
+    },
+    {
+      "family": 1,
+      "index": 1,
+      "effect_type_bits": 1084227584,
+      "value_bits": 1056964608,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 1,
+      "index": 2,
+      "effect_type_bits": 1086324736,
+      "value_bits": 1056964608,
+      "name": "feedback",
+      "original_string_address": 1434316
+    },
+    {
+      "family": 1,
+      "index": 3,
+      "effect_type_bits": 1088421888,
+      "value_bits": 1056964608,
+      "name": "filterfreq",
+      "original_string_address": 1434344
+    },
+    {
+      "family": 1,
+      "index": 4,
+      "effect_type_bits": 1090519040,
+      "value_bits": 1056964608,
+      "name": "filtergain",
+      "original_string_address": 1434356
+    },
+    {
+      "family": 1,
+      "index": 5,
+      "effect_type_bits": 1091567616,
+      "value_bits": 1056964608,
+      "name": "filterq",
+      "original_string_address": 1434368
+    },
+    {
+      "family": 2,
+      "index": 0,
+      "effect_type_bits": 1082130432,
+      "value_bits": 1056964608,
+      "name": "delaytime",
+      "original_string_address": 1434292
+    },
+    {
+      "family": 2,
+      "index": 1,
+      "effect_type_bits": 1092616192,
+      "value_bits": 1056629064,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 2,
+      "index": 2,
+      "effect_type_bits": 1093664768,
+      "value_bits": 1057132380,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 2,
+      "index": 3,
+      "effect_type_bits": 1094713344,
+      "value_bits": 1056964608,
+      "name": "feedback",
+      "original_string_address": 1434316
+    },
+    {
+      "family": 2,
+      "index": 4,
+      "effect_type_bits": 1095761920,
+      "value_bits": 1056964608,
+      "name": "feedback",
+      "original_string_address": 1434316
+    },
+    {
+      "family": 2,
+      "index": 5,
+      "effect_type_bits": 1096810496,
+      "value_bits": 1056964608,
+      "name": "stereospread",
+      "original_string_address": 1434328
+    },
+    {
+      "family": 3,
+      "index": 0,
+      "effect_type_bits": 1082130432,
+      "value_bits": 1056964608,
+      "name": "delaytime",
+      "original_string_address": 1434292
+    },
+    {
+      "family": 3,
+      "index": 1,
+      "effect_type_bits": 1097859072,
+      "value_bits": 1052166324,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 3,
+      "index": 2,
+      "effect_type_bits": 1098907648,
+      "value_bits": 1059162423,
+      "name": "scaledtime",
+      "original_string_address": 1434304
+    },
+    {
+      "family": 3,
+      "index": 3,
+      "effect_type_bits": 1086324736,
+      "value_bits": 1056964608,
+      "name": "feedback",
+      "original_string_address": 1434316
+    },
+    {
+      "family": 3,
+      "index": 4,
+      "effect_type_bits": 1096810496,
+      "value_bits": 1056964608,
+      "name": "stereospread",
+      "original_string_address": 1434328
+    },
+    {
+      "family": -1,
+      "index": -1,
+      "effect_type_bits": 3212836864,
+      "value_bits": 3212836864,
+      "name": "",
+      "original_string_address": 3518812
+    }
+  ],
+  "string_ranges": {
+    "1434292": {
+      "address": 1434292,
+      "size": 10,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401524,
+      "sha256": "21c09b19da5b2c78a7744ab35651b35ab28ae523f9b6142a6d8554fc71bec813"
+    },
+    "1434304": {
+      "address": 1434304,
+      "size": 11,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401536,
+      "sha256": "4d41b1f7081ee15ad4513c2b2a63a790392d6b475b00ad89bcfcb57a9b246d61"
+    },
+    "1434316": {
+      "address": 1434316,
+      "size": 9,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401548,
+      "sha256": "f7ddef155fed6a89589a5f55d8260d0b69629f551880ceaa800cac819fd8fad9"
+    },
+    "1434344": {
+      "address": 1434344,
+      "size": 11,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401576,
+      "sha256": "810b2836998a0f0eb9e2485d9db6d43f77d7201c999136ca7516eb9eb4ee1e00"
+    },
+    "1434356": {
+      "address": 1434356,
+      "size": 11,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401588,
+      "sha256": "287df83c82447c5a1234587839a0c9a23fb83224c055a37fc4e403958f2ea091"
+    },
+    "1434368": {
+      "address": 1434368,
+      "size": 8,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401600,
+      "sha256": "ddf77cad4d44bb5b7f0a8f12b728a8ccda7782664f8304d06983a80276ee20df"
+    },
+    "1434328": {
+      "address": 1434328,
+      "size": 13,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 1401560,
+      "sha256": "73d1790422839846aa25734795597205f6fd73ae2246de766e7dfd73ff01cbc4"
+    },
+    "3518812": {
+      "address": 3518812,
+      "size": 1,
+      "section": ".rodata",
+      "section_index": 14,
+      "file_offset": 3486044,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    }
+  }
+}

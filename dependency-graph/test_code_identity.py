@@ -65,7 +65,7 @@ class IdentityTests(unittest.TestCase):
 
 
 class ProvenanceTests(unittest.TestCase):
-    def test_new_capture_does_not_rewrite_logical_edges_and_history_is_retained(self):
+    def test_new_capture_preserves_named_edges_and_keeps_only_current_observation(self):
         import tempfile
         from unittest.mock import patch
         from refresh_facts import connect, facts, replace
@@ -84,11 +84,18 @@ class ProvenanceTests(unittest.TestCase):
             with patch('refresh_facts.catalogs',return_value={}):
                 a,ae=facts(root,'app:0001',row,first/'ast.json',first/'gcc.json')
                 b,be=facts(root,'app:0999',row,second/'ast.json',second/'gcc.json')
-            self.assertEqual(a,b);self.assertEqual(ae,be)
+            # Named source identities remain stable; opaque GCC sites are bound
+            # to the exact capture and cannot reuse another observation's serials.
+            stable = lambda key: not key.startswith(('compiler:', 'unresolved:gcc:'))
+            self.assertEqual({k:v for k,v in a.items() if stable(k)},
+                             {k:v for k,v in b.items() if stable(k)})
+            self.assertEqual({e for e in ae if stable(e[0]) and stable(e[1])},
+                             {e for e in be if stable(e[0]) and stable(e[1])})
             c=connect(folder/'observations.sqlite')
             for dest,nodes,edges in [(first,a,ae),(second,b,be)]:
                 replace(c,'app:stable',row,nodes,edges,{},dest/'ast.json',dest/'gcc.json')
-            self.assertEqual(c.execute('SELECT count(*) FROM observations').fetchone()[0],2)
+            # Current source observations are not a historical archive.
+            self.assertEqual(c.execute('SELECT count(*) FROM observations').fetchone()[0],1)
             self.assertEqual(c.execute('SELECT count(*) FROM current_observations').fetchone()[0],1)
             self.assertEqual(c.execute('SELECT count(*) FROM edge_facts').fetchone()[0],len(ae))
             c.close()

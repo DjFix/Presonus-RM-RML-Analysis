@@ -3,9 +3,11 @@ import concurrent.futures
 import contextlib
 import copy
 import fcntl
+import functools
 import json
 import os
 import pathlib
+import re
 import shlex
 import shutil
 import sqlite3
@@ -14,9 +16,9 @@ import threading
 import time
 import uuid
 
-from context_runtime import ContextError, fingerprint, guard, inside, sha, validate_task
+from context_runtime import ContextError, fingerprint, guard, inside, sha, validate_task, snapshot_path, snapshot_aliases
 from context_resources import choose_limits
-from memgraph_endpoint import memgraph_uri
+from memgraph_endpoint import DEFAULT_DOCKER_NETWORK, memgraph_network, memgraph_uri, validate_network
 
 
 def write_new(path, value):
@@ -83,6 +85,11 @@ def check_conflicts(entries, requests):
                 raise ContextError('Batch write/read overlap')
 
 
+def snapshot_network(snapshot):
+    """Old sealed manifests mean the original network, never today's route."""
+    return validate_network(snapshot.get('docker_network', DEFAULT_DOCKER_NETWORK))
+
+
 def capture_inputs(root, operator, task_paths):
     active = json.loads((root / 'dependency-graph/ACTIVE.json').read_text())
     guard(root, active)
@@ -90,7 +97,8 @@ def capture_inputs(root, operator, task_paths):
     paths = list((root / 'dependency-graph').glob('*.py'))
     registry_tools = list((root / 'uc-library/tools/registry').glob('*.py'))
     paths += registry_tools
-    paths += [root / 'uc-library/tools/recovery/select_context.py', root / 'AGENTS.md',
+    paths += [root / 'uc-library/tools/recovery/select_context.py',
+              root / 'uc-library/tools/merge_readiness.py', root / 'AGENTS.md',
               root / 'dependency-graph/DEDUP_ACTIVE.json', root / 'dependency-graph/NATIVE_ACTIVE.json', root / 'uc-library/validation/registry-sqlite/ACTIVE.json']
     paths += [root / p for p in ('docs/worker-handoff.md', 'dependency-graph/CONTEXT_SELECTION.md',
                                  'dependency-graph/DEDUPLICATION.md', 'dependency-graph/BATCH_CONTEXT.md')]
@@ -103,13 +111,15 @@ def capture_inputs(root, operator, task_paths):
     for path in task_paths:
         task = json.loads(inside(root, path).read_text())
         paths += [inside(root, p) for p in bound_files(root, task)]
-    return {'active': active, 'registry_tool_inventory': sorted(str(p.relative_to(root)) for p in registry_tools), 'memgraph_uri': memgraph_uri(root), 'endpoint_present': endpoint.exists(), 'instruction_inventory': sorted(str(p.relative_to(root)) for p in (root / 'uc-library').rglob('AGENTS.md')), 'tool_inventory': sorted(str(p.relative_to(root)) for p in (root / 'dependency-graph').glob('*.py')), 'files': {str(p.relative_to(root)): sha(p) for p in paths}}
+    return {'active': active, 'registry_tool_inventory': sorted(str(p.relative_to(root)) for p in registry_tools), 'memgraph_uri': memgraph_uri(root), 'docker_network': memgraph_network(root), 'endpoint_present': endpoint.exists(), 'instruction_inventory': sorted(str(p.relative_to(root)) for p in (root / 'uc-library').rglob('AGENTS.md')), 'tool_inventory': sorted(str(p.relative_to(root)) for p in (root / 'dependency-graph').glob('*.py')), 'files': {str(p.relative_to(root)): sha(p) for p in paths}}
 
 
 def check_inputs(root, operator, frozen):
     endpoint = root / 'dependency-graph/state/memgraph-endpoint.json'
     if endpoint.exists() != frozen['endpoint_present'] or memgraph_uri(root) != frozen['memgraph_uri']:
         raise ContextError('Batch graph endpoint changed')
+    if memgraph_network(root) != snapshot_network(frozen):
+        raise ContextError('Batch graph Docker network changed; existing batch cannot be rerouted')
     if json.loads((root / 'dependency-graph/ACTIVE.json').read_text()) != frozen['active']:
         raise ContextError('Batch graph generation changed')
     if frozen.get('instruction_inventory') != sorted(str(p.relative_to(root)) for p in (root / 'uc-library').rglob('AGENTS.md')):
@@ -132,7 +142,186 @@ SNAPSHOT_ROOTS = ('uc-library/src', 'uc-library/include', 'uc-library/tests', 'u
                   'uc-library/tools/registry')
 
 
-def freeze_snapshot(root, output, frozen, requests):
+def snapshot_reuse_leaves(root, prior, destination):
+    """Verify hash-bound manifest lineage, returning only direct physical leaves."""
+    chain = []
+    seen = set()
+    batch = prior
+    expected_manifest = None
+    while batch is not None:
+        if (batch in seen or batch == destination.parent or batch.resolve() != batch
+                or not batch.is_relative_to(root / 'temp/recovery-work')):
+            raise ContextError('Unsafe/cyclic reuse manifest lineage')
+        seen.add(batch)
+        receipt = batch / 'SNAPSHOT.json'
+        images = batch / 'IMAGES.json'
+        for path in (receipt, images):
+            if path.resolve() != path or not path.is_file() or path.stat().st_nlink != 1:
+                raise ContextError('Unsafe reuse provenance file')
+        before = sha(receipt)
+        if expected_manifest is not None and before != expected_manifest:
+            raise ContextError('Reuse origin manifest hash changed')
+        manifest = json.loads(receipt.read_text())
+        if manifest.get('version') != 1 or manifest.get('images') != json.loads(images.read_text()):
+            raise ContextError('Reuse image/manifest provenance changed')
+        chain.append((batch, receipt, before, images, sha(images), manifest))
+        origin = manifest.get('reuse')
+        if origin:
+            relative = pathlib.Path(origin['batch'])
+            if relative.is_absolute() or '..' in relative.parts:
+                raise ContextError('Unsafe reuse origin path')
+            batch = root / relative
+            expected_manifest = origin['manifest_sha256']
+        else:
+            batch = None
+    resolved = {}
+    compiler_cache = {}
+    verified = {}
+    provenance_checks = []
+    for batch, receipt, before, images, image_sha, manifest in reversed(chain):
+        files = dict(manifest['files'])
+        files.update({'external/' + p.lstrip('/'): d for p, d in manifest.get('external', {}).items()})
+        aliases = snapshot_aliases(files)
+        references = manifest.get('references', {})
+        if set(references) - set(files):
+            raise ContextError('Reference absent from original manifest files')
+        origin_leaves = resolved.get((manifest.get('reuse') or {}).get('batch'), {})
+        leaves = {}
+        for relative, digest in files.items():
+            alias = str(snapshot_path(pathlib.Path('/__snapshot_lexical_root__'), relative))
+            target = snapshot_path(batch / 'snapshot', relative, allow_leaf_symlink=relative in references)
+            if relative in references:
+                record = references[relative]
+                leaf = pathlib.Path(record['target'])
+                expected = origin_leaves.get(alias)
+                if record.get('kind') == 'compiler_observation':
+                    from snapshot_observations import validate_record
+                    expected = (validate_record(root,relative,digest,record['provenance'],compiler_cache),digest)
+                if (expected is None or expected[1] != digest or leaf != expected[0]
+                        or not leaf.is_absolute() or '..' in leaf.parts
+                        or not target.is_symlink() or os.readlink(target) != str(leaf)
+                        or target.resolve() != leaf or fingerprint(leaf) != record['fingerprint']):
+                    raise ContextError('Reuse reference does not match recorded direct origin leaf: ' + relative)
+            else:
+                leaf = target
+            if leaf.resolve() != leaf or not leaf.is_file() or leaf.stat().st_nlink != 1:
+                raise ContextError('Unsafe direct reuse leaf: ' + relative)
+            stamp = fingerprint(leaf)
+            cache_key = (leaf, digest)
+            if cache_key not in verified:
+                if sha(leaf) != digest or fingerprint(leaf) != stamp:
+                    raise ContextError('Corrupt direct reuse leaf: ' + relative)
+                verified[cache_key] = stamp
+            elif verified[cache_key] != stamp:
+                raise ContextError('Direct reuse leaf changed during validation')
+            leaves[alias] = (leaf, digest)
+        if sha(receipt) != before or sha(images) != image_sha:
+            raise ContextError('Reuse provenance changed during validation')
+        provenance_checks.extend([(receipt, before), (images, image_sha)])
+        resolved[str(batch.relative_to(root))] = leaves
+    for (leaf, digest), stamp in verified.items():
+        if fingerprint(leaf) != stamp:
+            raise ContextError('Reuse leaf changed before planning')
+    current = chain[0]
+    return resolved[str(prior.relative_to(root))], current[2], provenance_checks
+
+
+def snapshot_payloads(root, destination, files, external, reuse_snapshot, budget):
+    """Preflight every byte before writes; references target sealed direct copies only."""
+    if isinstance(budget, bool) or not isinstance(budget, int) or budget < 0:
+        raise ContextError('Invalid snapshot physical-copy budget')
+    prior = None
+    references = {}
+    if reuse_snapshot:
+        raw_prior = pathlib.Path(reuse_snapshot)
+        if raw_prior.is_absolute() or '..' in raw_prior.parts or (root / raw_prior).resolve() != root / raw_prior:
+            raise ContextError('Unsafe reuse batch path')
+        prior = inside(root, reuse_snapshot)
+        if prior == destination.parent or not prior.is_relative_to(root / 'temp/recovery-work'):
+            raise ContextError('Reuse must name another recovery batch')
+        old_leaves, before, provenance_checks = snapshot_reuse_leaves(root, prior, destination)
+        provenance = {'batch': str(prior.relative_to(root)), 'manifest_sha256': before}
+    entries = [(p, inside(root, p), d) for p, d in files.items()]
+    entries += [('external/' + p.lstrip('/'), pathlib.Path(p), d) for p, d in external.items()]
+    snapshot_aliases({p:d for p,_,d in entries})
+    plan = []
+    total = 0
+    planned_targets = set()
+    compiler_cache = {}
+    for relative, source, digest in entries:
+        normalized = snapshot_path(destination, relative)
+        alias_key = str(snapshot_path(pathlib.Path('/__snapshot_lexical_root__'), relative))
+        if sha(source) != digest:
+            raise ContextError('Snapshot input changed: ' + relative)
+        size = source.stat().st_size
+        reference = old_leaves[alias_key][0] if prior and old_leaves.get(alias_key, (None, None))[1] == digest else None
+        compiler_record = None
+        if reference is None:
+            from snapshot_observations import candidate
+            eligible = candidate(root,relative,digest,files,compiler_cache)
+            if eligible:
+                reference,compiler_record = eligible
+        if reference and (reference.stat().st_mode & 0o777) != (source.stat().st_mode & 0o777):
+            reference = None
+        if reference:
+            references[relative] = {'target': str(reference), 'fingerprint': fingerprint(reference)}
+            if compiler_record:references[relative].update(kind='compiler_observation',sha256=digest,provenance=compiler_record)
+        else:
+            if normalized not in planned_targets:
+                total += size
+        planned_targets.add(normalized)
+        plan.append((relative, source, digest, reference, size))
+    if total > budget:
+        raise ContextError('Snapshot physical-copy budget exceeded before payload writes: ' + str(total))
+    if prior and any(sha(path) != digest for path, digest in provenance_checks):
+        raise ContextError('Reuse lineage provenance changed before writes')
+    from snapshot_observations import recheck
+    recheck(root,references)
+    # No payload directories, copies or symlinks exist before the complete budget check.
+    destination.mkdir()
+    fingerprints = {}
+    written_targets = set()
+    for relative, source, digest, reference, size in plan:
+        target = snapshot_path(destination, relative, allow_leaf_symlink=bool(reference))
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target in written_targets:
+            if relative in files:
+                fingerprints[relative] = fingerprint(target)
+            continue
+        written_targets.add(target)
+        if reference:
+            if (reference.resolve() != reference or reference.stat().st_nlink != 1
+                    or fingerprint(reference) != references[relative]['fingerprint']
+                    or sha(reference) != digest or (prior and sha(prior / 'SNAPSHOT.json') != before)):
+                raise ContextError('Reuse input changed during capture')
+            target.symlink_to(reference)
+        else:
+            # Bound actual writes too if a non-cooperating writer grows the source.
+            with source.open('rb') as incoming, target.open('xb') as outgoing:
+                remaining = size
+                while remaining:
+                    block = incoming.read(min(1024 * 1024, remaining))
+                    if not block:
+                        raise ContextError('Snapshot input shortened during copy')
+                    outgoing.write(block)
+                    remaining -= len(block)
+                if incoming.read(1):
+                    raise ContextError('Snapshot input grew during copy')
+            target.chmod(source.stat().st_mode & 0o777)
+        value = fingerprint(target)
+        if sha(target) != digest or sha(source) != digest or fingerprint(target) != value:
+            raise ContextError('Snapshot capture changed: ' + relative)
+        if reference and value != references[relative]['fingerprint']:
+            raise ContextError('Reference fingerprint changed during capture')
+        if relative in files:
+            fingerprints[relative] = value
+    if prior and any(sha(path) != digest for path, digest in provenance_checks):
+        raise ContextError('Reuse lineage provenance changed during capture')
+    recheck(root,references)
+    return fingerprints, references, provenance if prior else None, total
+
+
+def freeze_snapshot(root, output, frozen, requests, reuse_snapshot=None, copy_budget_bytes=64 * 1024 * 1024):
     """Copy checked generation inputs; no hard links to mutable workspace bytes."""
     manifest_path = output / 'SNAPSHOT.json'
     destination = output / 'snapshot'
@@ -140,6 +329,8 @@ def freeze_snapshot(root, output, frozen, requests):
         manifest = json.loads(manifest_path.read_text())
         if manifest.get('memgraph_uri') != frozen['memgraph_uri']:
             raise ContextError('Frozen graph endpoint changed')
+        if snapshot_network(manifest) != snapshot_network(frozen):
+            raise ContextError('Frozen graph Docker network changed')
         if manifest.get('images') != json.loads((output / 'IMAGES.json').read_text()):
             raise ContextError('Pinned batch image identities changed')
         for relative, digest in manifest['files'].items():
@@ -152,7 +343,6 @@ def freeze_snapshot(root, output, frozen, requests):
     if destination.exists():
         # Preserve a partial snapshot for diagnosis, then retry into a fresh tree.
         destination.rename(output / ('snapshot-interrupted-' + str(time.time_ns())))
-    destination.mkdir()
     state = guard(root, frozen['active'])
     files = {p: value['sha256'] for p, value in state['files'].items()}
     files.update(frozen['files'])
@@ -185,39 +375,50 @@ def freeze_snapshot(root, output, frozen, requests):
                 if path:
                     relative = 'uc-library/' + path
                     files[relative] = sha(inside(root, relative))
-    guard_fingerprints = {}
-    for relative, digest in files.items():
-        source = inside(root, relative)
-        if sha(source) != digest:
-            raise ContextError('Snapshot input changed: ' + relative)
-        target = destination / relative
-        target.parent.mkdir(parents=True, exist_ok=True)
-        # Reflinks are independent copy-on-write bytes, never a mutable hard link.
-        copied = subprocess.run(['cp', '--reflink=auto', '--', str(source), str(target)], capture_output=True)
-        copied_fingerprint = fingerprint(target) if not copied.returncode else None
-        if (copied.returncode or sha(target) != digest or fingerprint(target) != copied_fingerprint or sha(source) != digest):
-            raise ContextError('Snapshot copy changed or failed: ' + relative)
-        guard_fingerprints[relative] = copied_fingerprint
-    roots = [p for p in SNAPSHOT_ROOTS if (destination / p).is_dir()]
-    mounts = list(roots)
-    mounts += [p for p in files if not any(p == base or p.startswith(base + '/') for base in roots)]
     external = {}
     for base in ('/usr/include/openssl', '/usr/include/x86_64-linux-gnu/openssl'):
         if pathlib.Path(base).is_dir():
-            for source in pathlib.Path(base).rglob('*'):
-                if source.is_file():
-                    target = destination / 'external' / str(source).lstrip('/')
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    digest = sha(source)
-                    shutil.copyfile(source, target)
-                    if sha(target) != digest or sha(source) != digest:
-                        raise ContextError('External compiler input changed: ' + str(source))
-                    external[str(source)] = digest
-    manifest = {'version': 1, 'active': frozen['active'], 'guard_fingerprints': guard_fingerprints, 'memgraph_uri': frozen['memgraph_uri'], 'files': files, 'mounts': mounts, 'external': external,
+            external.update({str(p): sha(p) for p in pathlib.Path(base).rglob('*') if p.is_file()})
+    guard_fingerprints, references, reuse, physical_copy_bytes = snapshot_payloads(
+        root, destination, files, external, reuse_snapshot, copy_budget_bytes)
+    roots = [p for p in SNAPSHOT_ROOTS if (destination / p).is_dir()]
+    mounts = roots + [p for p in files if not any(p == b or p.startswith(b + '/') for b in roots)]
+    manifest = {'version': 1, 'references': references, 'reuse': reuse, 'physical_copy_bytes': physical_copy_bytes, 'active': frozen['active'], 'guard_fingerprints': guard_fingerprints, 'memgraph_uri': frozen['memgraph_uri'], 'docker_network': snapshot_network(frozen), 'files': files, 'mounts': mounts, 'external': external,
                 'images': json.loads((output / 'IMAGES.json').read_text()),
                 'scope': 'Independent immutable copies of every bound generation input, source inventory, instructions and producers'}
     write_new(manifest_path, manifest)
     return manifest
+
+
+def require_prefreeze_artifacts_only(output):
+    """Missing FROZEN permits a fresh setup only before any prepared artifacts.
+
+    Preserve operational handles/inspect receipts and failed-attempt logs. A
+    missing freeze beside requests, snapshots or any unknown state is not safe
+    continuation and must never be repaired by inventing a freeze manifest.
+    """
+    for entry in output.iterdir():
+        if entry.is_symlink():
+            raise ContextError('Missing freeze beside unsafe/partial batch state: ' + str(entry))
+        if entry.is_file() and (entry.name == 'coordinator.lock' or
+                re.fullmatch(r'(?:environment-handles|resume-inspect)-[0-9]+\.json', entry.name)):
+            continue
+        if entry.is_dir() and re.fullmatch(r'attempt-[0-9]+', entry.name):
+            if all(child.is_file() and not child.is_symlink() and child.name == 'FAILED.json'
+                   for child in entry.iterdir()):
+                continue
+        raise ContextError('Missing freeze beside unsafe/partial batch state: ' + str(entry))
+
+
+def previous_container_absent(result, name):
+    """Only Docker's exact missing-object diagnostic for this requested name.
+
+    Docker versions spell Error/No differently. Do not turn arbitrary inspect
+    failures, permission errors, another object, or a live state into absence.
+    """
+    return (result.returncode == 1 and not result.stdout.strip() and
+            re.fullmatch(r'(?:error(?: response from daemon)?:\s*)?no such object:\s*'
+                         + re.escape(name), result.stderr.strip(), re.IGNORECASE) is not None)
 
 
 class Environment:
@@ -266,7 +467,7 @@ class Environment:
         images = self.images
         for kind in ('runner', 'analysis'):
             argv = ['docker', 'run', '-d', '--name', self.names[kind], '--network',
-                    'dependency-graph-experiment' if kind == 'runner' else 'none', '--workdir', str(self.root),
+                    snapshot_network(snapshot) if kind == 'runner' else 'none', '--workdir', str(self.root),
                     '-e', 'DEPENDENCY_GRAPH_ROOT=' + str(self.root),
                     '-e', 'MEMGRAPH_URI=' + snapshot['memgraph_uri'],
                     '-e', 'CONTEXT_SNAPSHOT_MANIFEST=' + str((self.output / 'SNAPSHOT.json').relative_to(self.root)),
@@ -276,8 +477,9 @@ class Environment:
                     '-v', str(self.output) + ':' + str(self.output) + ':rw',
                     '-v', str(self.output / 'snapshot') + ':' + str(self.output / 'snapshot') + ':ro',
                     '-v', str(self.output / 'SNAPSHOT.json') + ':' + str(self.output / 'SNAPSHOT.json') + ':ro']
-            for relative in snapshot['mounts']:
-                argv += ['-v', str(self.output / 'snapshot' / relative) + ':' + str(self.root / relative) + ':ro']
+            from snapshot_runtime import immutable_mounts
+            for source,destination in immutable_mounts(self.root,self.output,snapshot):
+                argv += ['-v', str(source) + ':' + str(destination) + ':ro']
             # Canonical records/claims are always checked live; sparse proof
             # overlays must not hide the operational registry.
             registry = self.root / 'uc-library/validation/registry-sqlite'
@@ -333,7 +535,7 @@ class Environment:
                 write_new(self.output / ('resume-inspect-' + str(time.time_ns()) + '.json'),
                           {'argv': result.args, 'returncode': result.returncode,
                            'stdout': result.stdout, 'stderr': result.stderr})
-                if result.returncode and 'No such object:' in result.stderr:
+                if previous_container_absent(result, name):
                     continue
                 if result.returncode or result.stdout.strip() != 'false':
                     raise ContextError('Previous batch container is live or uninspectable; inspect/resume explicitly: ' + name)
@@ -434,8 +636,20 @@ def _build_packet(root, packet, environment, selection, slicing, before_slice, s
     return True
 
 
+
+def _with_review_validation(function):
+    @functools.wraps(function)
+    def wrapped(operator, *args, **kwargs):
+        from execution_review import batch_validation
+        with batch_validation(operator.ROOT):
+            return function(operator, *args, **kwargs)
+    return wrapped
+
+
+@_with_review_validation
 def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicing_jobs=None,
-        resume=False, runner_factory=Environment, resource_options=None):
+        resume=False, runner_factory=Environment, resource_options=None, reuse_snapshot=None,
+        copy_budget_bytes=64 * 1024 * 1024):
     root = operator.ROOT
     output = inside(root, out_path)
     if not output.is_relative_to(root / 'temp/recovery-work'):
@@ -488,12 +702,14 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             before_hashes = {p: sha(inside(root, p)) for p in task_paths + [tasks_path]}
             if json.loads(source.read_text()) != manifest or any(json.loads(inside(root,p).read_text()) != t for p,t in zip(task_paths,tasks)):
                 raise ContextError('Tasks changed while acquiring setup lock')
-            if resume:
+            if resume and state_path.exists():
                 frozen = json.loads(state_path.read_text())
                 if frozen['manifest_sha256'] != sha(source):
                     raise ContextError('Resume manifest changed')
                 check_inputs(root, operator, frozen['inputs'])
             else:
+                if resume:
+                    require_prefreeze_artifacts_only(output)
                 from dedup_work import active_index, plan
                 with operator.adapter.snapshot(root / 'uc-library') as planning_view:
                     enriched = [operator.enrich(t, planning_view) for t in tasks]
@@ -549,7 +765,7 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
             before = time.perf_counter()
             if isinstance(environment, Environment):
                 environment.pin_images()
-                freeze_snapshot(root, output, frozen['inputs'], requests)
+                freeze_snapshot(root, output, frozen['inputs'], requests, reuse_snapshot, copy_budget_bytes)
             timings.append({'phase': 'immutable_snapshot', 'seconds': time.perf_counter() - before})
         limits = choose_limits(jobs, len(tasks), selection_jobs=selection_jobs, slicing_jobs=slicing_jobs, **(resource_options or {}))
         write_new(attempt / 'resources.json', limits)
@@ -640,6 +856,8 @@ def run(operator, tasks_path, out_path, jobs='auto', selection_jobs=None, slicin
                 for path, digest in snapshot.get('external', {}).items():
                     if sha(path) != digest:
                         raise ContextError('External compiler input changed before publication: ' + path)
+            from execution_review import check_batch_validation
+            check_batch_validation()
             publish_start = time.perf_counter()
             payload = {'version': 1, 'generation': frozen['inputs']['active']['state_sha256'],
                        'workers': workers, 'mode': 'sealed_before_first_worker_write',

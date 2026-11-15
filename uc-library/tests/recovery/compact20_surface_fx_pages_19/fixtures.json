@@ -1,0 +1,385 @@
+{
+  "version": 1,
+  "task_id": "compact20_surface_fx_pages_19",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus7Surface19FXHomePageComponentD0Ev",
+      "address": 638832,
+      "size": 172,
+      "anchor": "39bbe24bec12a63d6413d9445a92c9d49accd1e652abd550f6b7e2d2882f4e63",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "section": 12,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "file_offset": 606064,
+      "section_name": ".text",
+      "range_sha256": "b84d7f503ba0382852916dd29333e5ddfc11bf32151ac5099b44c197ba0f6acc"
+    }
+  ],
+  "cases": [
+    {
+      "kind": "destructor",
+      "observed_count": 0,
+      "mappable_count": 0,
+      "alias_count": 0,
+      "observation": {
+        "expected": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "executed_pcs": [
+          638832,
+          638836,
+          638840,
+          638844,
+          638848,
+          638852,
+          638856,
+          638860,
+          638864,
+          638868,
+          638872,
+          638876,
+          638880,
+          638884,
+          638888,
+          638892,
+          638896,
+          638900,
+          638904,
+          638908,
+          638912,
+          638916,
+          638920,
+          638924,
+          638928,
+          638932,
+          638936,
+          638940
+        ],
+        "external_calls": [
+          {
+            "pc": 381804,
+            "name": "Core::Vector<Core::Portable::AliasParam*>::~Vector()",
+            "arguments": [
+              16777396,
+              1679112,
+              1679040,
+              1713852
+            ]
+          },
+          {
+            "pc": 1160672,
+            "name": "Core::Portable::Component::~Component()",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          },
+          {
+            "pc": 44380,
+            "name": "operator delete(void*)@@GLIBCXX_3.4",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          }
+        ],
+        "object_writes": [
+          [
+            132,
+            4,
+            1679128
+          ],
+          [
+            200,
+            4,
+            1713852
+          ],
+          [
+            4,
+            4,
+            1679112
+          ],
+          [
+            176,
+            4,
+            1679152
+          ],
+          [
+            0,
+            4,
+            1679040
+          ],
+          [
+            4,
+            4,
+            1685508
+          ],
+          [
+            132,
+            4,
+            1677424
+          ],
+          [
+            0,
+            4,
+            1685448
+          ]
+        ],
+        "native_object_delete_call_observed": true,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "destructor",
+      "observed_count": 0,
+      "mappable_count": 0,
+      "alias_count": 1,
+      "observation": {
+        "expected": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "executed_pcs": [
+          638832,
+          638836,
+          638840,
+          638844,
+          638848,
+          638852,
+          638856,
+          638860,
+          638864,
+          638868,
+          638872,
+          638876,
+          638880,
+          638884,
+          638888,
+          638892,
+          638896,
+          638900,
+          638904,
+          638908,
+          638912,
+          638916,
+          638920,
+          638924,
+          638928,
+          638932,
+          638936,
+          638940
+        ],
+        "external_calls": [
+          {
+            "pc": 381804,
+            "name": "Core::Vector<Core::Portable::AliasParam*>::~Vector()",
+            "arguments": [
+              16777396,
+              1679112,
+              1679040,
+              1713852
+            ]
+          },
+          {
+            "pc": 1160672,
+            "name": "Core::Portable::Component::~Component()",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          },
+          {
+            "pc": 44380,
+            "name": "operator delete(void*)@@GLIBCXX_3.4",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          }
+        ],
+        "object_writes": [
+          [
+            132,
+            4,
+            1679128
+          ],
+          [
+            200,
+            4,
+            1713852
+          ],
+          [
+            4,
+            4,
+            1679112
+          ],
+          [
+            176,
+            4,
+            1679152
+          ],
+          [
+            0,
+            4,
+            1679040
+          ],
+          [
+            4,
+            4,
+            1685508
+          ],
+          [
+            132,
+            4,
+            1677424
+          ],
+          [
+            0,
+            4,
+            1685448
+          ]
+        ],
+        "native_object_delete_call_observed": true,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "destructor",
+      "observed_count": 0,
+      "mappable_count": 0,
+      "alias_count": 4,
+      "observation": {
+        "expected": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "executed_pcs": [
+          638832,
+          638836,
+          638840,
+          638844,
+          638848,
+          638852,
+          638856,
+          638860,
+          638864,
+          638868,
+          638872,
+          638876,
+          638880,
+          638884,
+          638888,
+          638892,
+          638896,
+          638900,
+          638904,
+          638908,
+          638912,
+          638916,
+          638920,
+          638924,
+          638928,
+          638932,
+          638936,
+          638940
+        ],
+        "external_calls": [
+          {
+            "pc": 381804,
+            "name": "Core::Vector<Core::Portable::AliasParam*>::~Vector()",
+            "arguments": [
+              16777396,
+              1679112,
+              1679040,
+              1713852
+            ]
+          },
+          {
+            "pc": 1160672,
+            "name": "Core::Portable::Component::~Component()",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          },
+          {
+            "pc": 44380,
+            "name": "operator delete(void*)@@GLIBCXX_3.4",
+            "arguments": [
+              16777216,
+              1677424,
+              1685508,
+              1685448
+            ]
+          }
+        ],
+        "object_writes": [
+          [
+            132,
+            4,
+            1679128
+          ],
+          [
+            200,
+            4,
+            1713852
+          ],
+          [
+            4,
+            4,
+            1679112
+          ],
+          [
+            176,
+            4,
+            1679152
+          ],
+          [
+            0,
+            4,
+            1679040
+          ],
+          [
+            4,
+            4,
+            1685508
+          ],
+          [
+            132,
+            4,
+            1677424
+          ],
+          [
+            0,
+            4,
+            1685448
+          ]
+        ],
+        "native_object_delete_call_observed": true,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    }
+  ],
+  "oracle_source_sha256": "f7f477927a79dc2163f96b9b73cc67eb5d5e5f44d9f9c0019446dfdc394e253b",
+  "unicorn_version": "2.1.4",
+  "isolation": "private mapped memory; allow exact app range and named observed providers only; interrupts/syscalls/invalid accesses reject"
+}

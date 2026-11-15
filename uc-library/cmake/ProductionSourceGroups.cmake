@@ -198,6 +198,20 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/OutputPin.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/ChannelInfoPageComponent.cpp
+  src/Presonus/Surface/MixSettingsPageComponent.cpp
+  src/Presonus/Surface/FatChannelClipboard.cpp
+  src/Presonus/Surface/ScenesPageComponent.cpp
+  src/Presonus/Surface/GatePageComponent.cpp
+  src/Presonus/Surface/PageHeaderComponent.cpp
+  src/Presonus/Surface/CascadeHandler.cpp
+  src/Presonus/Surface/MonitorPageComponent.cpp
+  src/Presonus/Surface/ControlName.cpp
+  src/Presonus/FocusRestorer.cpp
+  src/Presonus/Surface/TBRoutingPageComponent.cpp
+  src/Presonus/Surface/FXHomePageComponent.cpp
+  src/Presonus/Surface/FxPresetsPageComponent.cpp
+  src/Presonus/Surface/FXEditPageComponent.cpp
   src/Presonus/GridPainter.cpp
   src/Presonus/GridPainterLifecycle.cpp
   src/Presonus/GridPainterRendering.cpp
@@ -208,6 +222,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/BackgroundPainter.cpp
   src/Presonus/MappingTableConnect.cpp
   src/Presonus/MappablePageComponent.cpp
+  src/Presonus/ModalPageComponent.cpp
   src/Presonus/Surface/PageParam.cpp
   src/Presonus/Surface/MappingControllerParameters.cpp
   src/Presonus/Surface/SLMixerLifecycle.cpp
@@ -352,6 +367,32 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexReceiverWait.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/AlertBook.cpp
+  src/Presonus/Panel/PanelParameterTables.cpp
+  src/Presonus/Dsp/OMAPTargetHandler.cpp
+  src/Presonus/Panel/BeastFrontPanelComponent.cpp
+  src/Presonus/Mixer/GEQComponent.cpp
+  src/Presonus/Panel/FXMainPage.cpp
+  src/Presonus/Panel/JoinNetworkPage.cpp
+  src/Presonus/Panel/SystemAboutPage.cpp
+  src/Presonus/Panel/RogueFrontPanelComponent.cpp
+  src/Presonus/Panel/FATLEDOverridePage.cpp
+  src/Presonus/Mixer/AutoFilterGroupManager.cpp
+  src/Presonus/Panel/FXPage.cpp
+  src/Presonus/Panel/WolverinePanelRegistrar.cpp
+  src/Presonus/Panel/GEQPage.cpp
+  src/Presonus/Mixer/WolverineRMLApplication.cpp
+  src/Presonus/Mixer/GambitRMLApplication.cpp
+  src/Presonus/Mixer/ControlMapping.cpp
+  src/Presonus/Mixer/ReverbComponent.cpp
+  src/Presonus/Mixer/GambitMixerComponent.cpp
+  src/Presonus/Panel/RoguePanelRegistrar.cpp
+  src/Presonus/Panel/GambitPanelRegistrar.cpp
+  src/Presonus/Panel/StormPanelRegistrar.cpp
+  src/Presonus/Mixer/CascadeLinkHandler.cpp
+  src/Presonus/Mixer/DelayComponent.cpp
+  src/Presonus/Mixer/TalkbackInputComponent.cpp
+  src/Presonus/Mixer/MicLineComponent.cpp
   src/Presonus/Mixer/SceneFilter.cpp
   src/Presonus/Panel/RackPanelBurnIn.cpp
   src/Presonus/Panel/PanelRegistrarDualMessage.cpp
@@ -504,6 +545,38 @@ set(PRESONUS_rm_SOURCES
   src/mixer_dsp/FilterControllers.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/surface/ChannelInfoPageComponent.hpp
+  presonus/surface/MixSettingsPageComponent.hpp
+  presonus/panel/AlertBook.hpp
+  presonus/panel/PanelParameterTables.hpp
+  presonus/surface/FatChannelClipboard.hpp
+  presonus/surface/ScenesPageComponent.hpp
+  presonus/surface_update/FirmwareUpdateComponent.hpp
+  presonus/dsp/OMAPTargetHandler.hpp
+  presonus/surface/PageParam.hpp
+  presonus/surface/PageHeaderComponent.hpp
+  presonus/surface/MonitorPageComponent.hpp
+  presonus/surface/GatePageComponent.hpp
+  presonus/surface/CascadeHandler.hpp
+  presonus/panel/SystemAboutPage.hpp
+  presonus/panel/RogueFrontPanelComponent.hpp
+  presonus/panel/JoinNetworkPage.hpp
+  presonus/panel/FXMainPage.hpp
+  presonus/panel/FATLEDOverridePage.hpp
+  presonus/panel/BeastFrontPanelComponent.hpp
+  presonus/mixer/GEQComponent.hpp
+  presonus/mixer/AutoFilterGroupManager.hpp
+  presonus/LinkableComponent.hpp
+  presonus/panel/FXPage.hpp
+  presonus/panel/WolverinePanelRegistrar.hpp
+  presonus/panel/GEQPage.hpp
+  presonus/mixer/WolverineRMLApplication.hpp
+  presonus/mixer/GambitRMLApplication.hpp
+  presonus/surface/ControlName.hpp
+  presonus/mixer/ControlMapping.hpp
+  presonus/mixer/ReverbComponent.hpp
+  presonus/mixer/GambitMixerComponent.hpp
+  presonus/FocusRestorer.hpp
   presonus/panel/ParamEnablementHandler.hpp
   presonus/BackgroundPainter.hpp
   presonus/mixer/ChannelPresetFilter.hpp
@@ -798,3 +871,12 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/transport_events.hpp
   presonus/uc/typed_factory_codec.hpp
 )
+
+# These ports use the pinned CCL core_cast/type-info provider, not C++ RTTI.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/TalkbackInputComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/TransportHandler.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FXEditPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FXHomePageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FxPresetsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/TBRoutingPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/MicLineComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off)

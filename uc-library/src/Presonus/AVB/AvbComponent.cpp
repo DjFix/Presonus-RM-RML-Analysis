@@ -1,5 +1,6 @@
 #include "presonus/avb/AvbComponent.hpp"
 #include "core/system/coredebug.h"
+#include "presonus/dice/packet_services.hpp"
 #include <cstdio>
 namespace Presonus::AVB {
 void AvbComponent::addListener(ListenerType type, long long id, bool clock,
@@ -78,5 +79,16 @@ void AvbComponent::addConsoleBusListener(long long id, bool clock, int mode,
        !disable && mode == 1});
   services_.sendRoutingPacket({{0x61646272, 28, 58, index, 18, 1}, !disable});
   services_.sendRoutingPacket({{0x61646272, 28, 60, index, 16, 2}, !disable});
+}
+} // namespace Presonus::AVB
+
+namespace Presonus::AVB {
+std::int64_t AvbComponent::lastMaintenance_ = 0;
+void AvbComponent::onIdle() {
+  const std::int64_t now = presonus::dice::packetClockRawTicks() / 1000000;
+  // Bounded source port: lastMaintenance_ + 500 must fit signed64, as
+  // documented by the original split-word comparison domain. No base idle.
+  if (now > lastMaintenance_ + 500)
+    lastMaintenance_ = now;
 }
 } // namespace Presonus::AVB

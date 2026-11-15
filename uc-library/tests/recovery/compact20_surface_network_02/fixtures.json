@@ -1,0 +1,6112 @@
+{
+  "version": 1,
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "ranges": [
+    {
+      "task": 2,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZN8Presonus7Surface22TBRoutingPageComponentD1Ev",
+      "address": 640828,
+      "size": 272,
+      "section": 12,
+      "file_offset": 608060,
+      "range_sha256": "4a5a678155b5bd5be3c33d2a06a263a37345b43afb5bb4e683f68882fdd0a46f"
+    },
+    {
+      "task": 3,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZN8Presonus7Surface22TBRoutingPageComponent14connectChannelEPKN4Core8Portable9ComponentEib",
+      "address": 613816,
+      "size": 176,
+      "section": 12,
+      "file_offset": 581048,
+      "range_sha256": "94fc0663bcbef9e63941488e9a6ec2ba012ee240a16ee86b76c10f49042efc7f"
+    },
+    {
+      "task": 4,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZN8Presonus7Surface22TBRoutingPageComponent19disconnectMappablesEv",
+      "address": 614000,
+      "size": 140,
+      "section": 12,
+      "file_offset": 581232,
+      "range_sha256": "f22c317318a9aee60e2a37bd2611e483bb85e87a31a54384658e50414213e1f0"
+    },
+    {
+      "task": 5,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZN8Presonus7Surface22TBRoutingPageComponentD0Ev",
+      "address": 640368,
+      "size": 280,
+      "section": 12,
+      "file_offset": 607600,
+      "range_sha256": "eefdefccb51eae58b6261be80c819d6515b1a144011f77a779923382b4657d56"
+    },
+    {
+      "task": 11,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZNK8Presonus7Surface22SurfaceOutputComponent11getDacValueEv",
+      "address": 748232,
+      "size": 24,
+      "section": 12,
+      "file_offset": 715464,
+      "range_sha256": "fc833f806be1e26b98b230bfd4a6104fd299108cab0cd511aefe2251e41316c3"
+    },
+    {
+      "task": 12,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "mangled": "_ZNK8Presonus7Surface22SurfaceOutputComponent8getLevelEv",
+      "address": 748256,
+      "size": 28,
+      "section": 12,
+      "file_offset": 715488,
+      "range_sha256": "7a62c061df7b38670b377e620a4d33cdf452c8e9ee97b074feffa9f5984e7189"
+    }
+  ],
+  "cases": [
+    {
+      "task": 11,
+      "argv": [
+        "get",
+        "400",
+        "0"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          400,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 11,
+      "argv": [
+        "get",
+        "400",
+        "1"
+      ],
+      "expected": "400\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          400,
+          1073750016
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 11,
+      "argv": [
+        "get",
+        "400",
+        "2"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          400,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 11,
+      "argv": [
+        "get",
+        "400",
+        "3"
+      ],
+      "expected": "400\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          400,
+          1073750016
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 12,
+      "argv": [
+        "get",
+        "401",
+        "0"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          401,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 12,
+      "argv": [
+        "get",
+        "401",
+        "1"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          401,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 12,
+      "argv": [
+        "get",
+        "401",
+        "2"
+      ],
+      "expected": "401\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          401,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 12,
+      "argv": [
+        "get",
+        "401",
+        "3"
+      ],
+      "expected": "401\n",
+      "native_boundary_trace": [
+        [
+          "Component.getParameterByTag",
+          401,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "0",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-118",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          0,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "0",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "-2147483648",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483766,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483768,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "0",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "0",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "1",
+        "3"
+      ],
+      "expected": "302 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "1",
+        "2",
+        "3"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "0",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "1",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "1",
+        "3"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "2",
+        "0"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "2147483647",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "expected": "0 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          2147483765,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          2147483767,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "1",
+        "1"
+      ],
+      "expected": "302 0\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          1073750016
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          1073750016
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 3,
+      "argv": [
+        "connect",
+        "0",
+        "0",
+        "1",
+        "1",
+        "2"
+      ],
+      "expected": "0 300\n",
+      "native_boundary_trace": [
+        [
+          "ParamList.byTag",
+          118,
+          1073745920
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "Component.getParameterByTag",
+          302,
+          0
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "ParamList.byTag",
+          120,
+          1073746176
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "Component.getParameterByTag",
+          300,
+          1073750272
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          1073750272
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        ""
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "0"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "1"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "2"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "012"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746432,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "111"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746176,
+          1073746176
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746176,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746432,
+          1073746432
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746432,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "20101"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746432,
+          1073746432
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746432,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746944,
+          1073746944
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746944,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 4,
+      "argv": [
+        "disconnect",
+        "1022101"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "dynamic_cast.AliasParam",
+          1073745920,
+          1073745920
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073745920,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746432,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746688,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073746944,
+          1073746944
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073746944,
+          0
+        ],
+        [
+          "dynamic_cast.AliasParam",
+          1073747456,
+          1073747456
+        ],
+        [
+          "AliasParam.setOriginal",
+          1073747456,
+          0
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 2,
+      "argv": [
+        "life",
+        "0"
+      ],
+      "expected": "0\n",
+      "native_boundary_trace": [
+        [
+          "bits_storage",
+          1342177520
+        ],
+        [
+          "mappables_storage",
+          1342177492
+        ],
+        [
+          "inherited_alias_storage",
+          1342177460
+        ],
+        [
+          "component_base",
+          1342177280
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    },
+    {
+      "task": 5,
+      "argv": [
+        "life",
+        "1"
+      ],
+      "expected": "1\n",
+      "native_boundary_trace": [
+        [
+          "bits_storage",
+          1342177520
+        ],
+        [
+          "mappables_storage",
+          1342177492
+        ],
+        [
+          "inherited_alias_storage",
+          1342177460
+        ],
+        [
+          "component_base",
+          1342177280
+        ],
+        [
+          "allocator_unmapped",
+          1342177280
+        ]
+      ],
+      "actual_native_instructions_executed": true
+    }
+  ],
+  "oracle_scope": "Original application instructions; Core/runtime boundaries intercepted, never original Core execution. D0 BL invokes modeled allocator which actually unmaps live emulator memory; real C++ allocator/lifecycle checked separately.",
+  "exclusions": [
+    "exception unwinding",
+    "original return declaration",
+    "original private layout",
+    "ARM ABI interoperability",
+    "concurrently mutated mappables"
+  ],
+  "producer_sha256": "3a2a6f6d780050ac0a6145ba697662bfe10a092c6edabedb350fae984316ae74"
+}

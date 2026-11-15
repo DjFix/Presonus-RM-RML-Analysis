@@ -15,6 +15,17 @@
 #include <vector>
 
 namespace {
+// Test-only boundary for the still-unreconstructed observer methods.
+// getName() must not call either method.
+class NameOnlyTransport final : public Presonus::Surface::TransportHandler {
+public:
+  void *castTo(TypeID) override {
+    throw std::runtime_error("unexpected castTo");
+  }
+  void paramChanged(Core::Portable::Parameter *, int) override {
+    throw std::runtime_error("unexpected paramChanged");
+  }
+};
 void word(std::uint8_t *p, std::uint32_t v, unsigned n = 4) {
   for (unsigned i = 0; i < n; ++i)
     p[i] = v >> (8 * i);
@@ -54,7 +65,7 @@ int main() {
         return 3;
       std::cout << result << '\n';
     } else if (kind == "name") {
-      Presonus::Surface::TransportHandler obj;
+      NameOnlyTransport obj;
       std::cout << obj.getName() << '\n';
     } else if (kind == "destructor") {
       unsigned seed;

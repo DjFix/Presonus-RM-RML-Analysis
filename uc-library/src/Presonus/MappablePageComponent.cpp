@@ -1,5 +1,10 @@
 #include "presonus/MappablePageComponent.hpp"
 namespace Presonus {
+void *MappablePageComponent::castTo(int classId) {
+  return classId == 1835102288 || classId == 1348560741 || classId == 1131375984
+             ? this
+             : nullptr;
+}
 const char *MappablePageComponent::getPageName() const { return getName(); }
 bool MappablePageComponent::connectParameter(const char *name,
                                              Core::Portable::Parameter *p) {

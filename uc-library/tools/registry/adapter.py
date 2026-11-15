@@ -98,7 +98,44 @@ def _entries(document):
 def _key(entry):return entry['original_elf_sha256'],entry['mangled']
 
 
-def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,request_id=None,demotions=(),promotions=(),metadata=None,backup_dir=None,precommit_guard=None,operation_metadata=None,demotion_manifests=None):
+def verified_vm_snapshot(library, receipt_path=None, expected_sha256=None):
+    """Explicit current-operation rollback authorization; never creates a copy.
+
+    Root supplies the trusted receipt digest. This names a prior whole-VM point,
+    not an immediate pre-admission database generation or a CT126 snapshot.
+    """
+    workflow.require((receipt_path is None)==(expected_sha256 is None),
+                     'Snapshot receipt and expected SHA-256 must be supplied together')
+    if receipt_path is None:return None
+    workflow.require(isinstance(expected_sha256,str) and len(expected_sha256)==64,
+                     'Explicit snapshot receipt SHA-256 required')
+    root=pathlib.Path(library).resolve().parent;path=pathlib.Path(receipt_path)
+    path=(root/path).resolve() if not path.is_absolute() else path.resolve()
+    workflow.require(path.is_relative_to(root),'Snapshot receipt must be repository-local')
+    try:
+        raw=path.read_bytes();document=json.loads(raw)
+    except (OSError,ValueError) as exc:raise ValueError('Snapshot rollback receipt unavailable/invalid') from exc
+    workflow.require(hashlib.sha256(raw).hexdigest()==expected_sha256,'Snapshot receipt hash changed')
+    workflow.require(isinstance(document,dict),'Snapshot receipt must be an object')
+    snapshot=document.get('snapshot',{})
+    workflow.require(isinstance(snapshot,dict),'Snapshot identity must be an object')
+    workflow.require(document.get('backup_policy')=='one rollback snapshot; no additional full copies',
+                     'Explicit one-snapshot rollback policy required')
+    workflow.require(snapshot.get('verified') is True and type(snapshot.get('vmid')) is int and snapshot.get('vmid')==101 and
+        snapshot.get('host')=='192.168.50.2' and
+        snapshot.get('name')=='pre-publication-redesign-20261113' and
+        snapshot.get('includes_pvdata_working_disk')=='pvdata/vm-101-disk-5' and
+        type(snapshot.get('disk_snapshot_count')) is int and snapshot.get('disk_snapshot_count')==8 and snapshot.get('ram') is False and
+        snapshot.get('guest_filesystems')=='freeze/snapshot/thaw completed' and
+        snapshot.get('external_CT126_included') is False,
+        'Verified named VM101 snapshot including pvdata is required')
+    return {'mode':'verified_vm_snapshot','receipt':{'path':str(path),'sha256':expected_sha256},
+            'vmid':101,'name':snapshot['name'],'host':snapshot['host'],
+            'scope':'whole VM restored to the prior named snapshot, not immediate DB undo',
+            'external_CT126_included':False,'post_restore_graph_reconciliation_required':True}
+
+
+def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,request_id=None,demotions=(),promotions=(),metadata=None,backup_dir=None,precommit_guard=None,operation_metadata=None,demotion_manifests=None,rollback_snapshot=None,rollback_snapshot_sha256=None):
     """Persist already-gate-validated merger output; caller retains all proof gates.
 
     No implicit deletion, no unguarded demotion, no legacy JSON write. Only
@@ -106,6 +143,9 @@ def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,
     read snapshot first; optimistic guard binds the validated generation.
     """
     workflow.require(isinstance(actor,str) and actor.strip() and isinstance(reason,str) and reason.strip(),'Actor/reason required')
+    rollback=verified_vm_snapshot(library,rollback_snapshot,rollback_snapshot_sha256)
+    workflow.require(not (rollback is not None and backup_dir is not None),'Snapshot rollback and backup_dir are mutually exclusive')
+    backup=None
     db=resolve_db(library,db);new={};status_for={}
     for status,document in (('ready',ready),('pending',pending)):
         for entry in _entries(document):
@@ -139,23 +179,34 @@ def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,
         metadata_changes={status:{'before':old.metadata(status),'after':values} for status,values in metadata.items() if old.metadata(status)!=values}
         if not changed and not metadata_changes:
             if precommit_guard:precommit_guard()
-            return {'changed':0,'metadata_changed':[],'guard':old.guard,'database':str(db),'no_op':True}
-        backup_dir=pathlib.Path(backup_dir) if backup_dir else db.parent/'admission-history'
-        backup_dir.mkdir(parents=True,exist_ok=True)
-        backup=backup_dir/(datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')+'-'+uuid.uuid4().hex+'.sqlite')
-        dest=sqlite3.connect(backup);old.c.backup(dest);dest.close()
-    with reg.connect(backup) as check:
-        workflow.require(check.execute('PRAGMA integrity_check').fetchone()[0]=='ok' and not check.execute('PRAGMA foreign_key_check').fetchall(),'Previous DB backup integrity failed')
-    backup.chmod(0o444)
+            result={'changed':0,'metadata_changed':[],'guard':old.guard,'database':str(db),'no_op':True}
+            if rollback is not None:
+                verified_vm_snapshot(library,rollback_snapshot,rollback_snapshot_sha256)
+                result.update(backup=None,backup_sha256=None,rollback=rollback)
+            return result
+        if rollback is None:
+            backup_dir=pathlib.Path(backup_dir) if backup_dir else db.parent/'admission-history'
+            backup_dir.mkdir(parents=True,exist_ok=True)
+            backup=backup_dir/(datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')+'-'+uuid.uuid4().hex+'.sqlite')
+            dest=sqlite3.connect(backup);old.c.backup(dest);dest.close()
+    if backup is not None:
+        with reg.connect(backup) as check:
+            workflow.require(check.execute('PRAGMA integrity_check').fetchone()[0]=='ok' and not check.execute('PRAGMA foreign_key_check').fetchall(),'Previous DB backup integrity failed')
+        backup.chmod(0o444)
+    backup_text=str(backup) if backup is not None else None
+    backup_sha256=reg.digest(backup) if backup is not None else None
     unit=orm.Unit(db,write=True);c=unit.raw;s=unit.session
     try:
         schema.require_current(c);workflow.require(generation_guard(c)==expected_guard,'Registry changed after backup; repeat preflight')
         if precommit_guard:precommit_guard()
         request_id=request_id or 'merger-'+uuid.uuid4().hex
-        payload={'changed_keys':sorted(changed),'metadata_changes':metadata_changes,'operation_metadata':operation_metadata or {},'demotion_manifests':demotion_manifests or {},'expected_guard':expected_guard,'backup_sha256':reg.digest(backup)}
+        payload={'changed_keys':sorted(changed),'metadata_changes':metadata_changes,'operation_metadata':operation_metadata or {},'demotion_manifests':demotion_manifests or {},'expected_guard':expected_guard,'backup_sha256':backup_sha256}
+        if rollback is not None:payload['rollback']=rollback
         checksum=hashlib.sha256(reg.encode(payload).encode()).hexdigest()
         workflow.require(c.execute('SELECT 1 FROM requests WHERE request_id=?',(request_id,)).fetchone() is None,'Merger request id already used')
-        s.add(orm.Request(request_id=request_id,digest=checksum,result=reg.encode({'changed':len(changed),'backup':str(backup),'metadata_changes':metadata_changes,'operation_metadata':operation_metadata or {},'demotion_manifests':demotion_manifests or {}})));s.flush()
+        request_result={'changed':len(changed),'backup':backup_text,'metadata_changes':metadata_changes,'operation_metadata':operation_metadata or {},'demotion_manifests':demotion_manifests or {}}
+        if rollback is not None:request_result.update(backup_sha256=None,rollback=rollback)
+        s.add(orm.Request(request_id=request_id,digest=checksum,result=reg.encode(request_result)));s.flush()
         for key in changed:
             entry=new[key];status=status_for[key];oldrow=rows.get(key)
             if oldrow:
@@ -168,7 +219,8 @@ def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,
             workflow.replace_record(c,s,rid,entry,status);work.revision+=1;s.flush()
             current=c.execute('SELECT * FROM records WHERE id=?',(rid,)).fetchone()
             after={'classification':status,'record_metadata':json.loads(current['metadata']),'work':workflow.state(c,rid),'source_sets':[dict(r) for r in c.execute('SELECT field,set_id FROM record_sets WHERE record_id=?',(rid,))]}
-            bindings={'demotion':demotions.get(key),'demotion_manifests':demotion_manifests or (operation_metadata or {}).get('demotion_manifests',{}),'operation_request':request_id,'backup':str(backup),'backup_sha256':payload['backup_sha256'],'source_sets':after['source_sets'],'validation':entry.get('validation'),'validation_sha256':entry.get('validation_sha256')}
+            bindings={'demotion':demotions.get(key),'demotion_manifests':demotion_manifests or (operation_metadata or {}).get('demotion_manifests',{}),'operation_request':request_id,'backup':backup_text,'backup_sha256':payload['backup_sha256'],'source_sets':after['source_sets'],'validation':entry.get('validation'),'validation_sha256':entry.get('validation_sha256')}
+            if rollback is not None:bindings['rollback']=rollback
             s.add(orm.Journal(request_id=request_id,record_id=rid,actor=actor,timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat(),reason=demotions.get(key,{}).get('reason',reason),previous_revision=oldwork['revision'],new_revision=work.revision,previous_state=reg.encode(before),new_state=reg.encode(after),bindings=reg.encode(bindings)))
         if metadata:
             for status,values in metadata.items():
@@ -176,7 +228,10 @@ def commit_snapshot(ready,pending,expected_guard,*,library,db=None,actor,reason,
         s.flush()
         if precommit_guard:precommit_guard()
         workflow.require(not c.execute('PRAGMA foreign_key_check').fetchall(),'Admission foreign-key failure')
+        if rollback is not None:verified_vm_snapshot(library,rollback_snapshot,rollback_snapshot_sha256)
         unit.commit()
-        return {'changed':len(changed),'metadata_changed':list(metadata_changes),'guard':generation_guard(c),'database':str(db),'backup':str(backup),'backup_sha256':payload['backup_sha256'],'request_id':request_id}
+        result={'changed':len(changed),'metadata_changed':list(metadata_changes),'guard':generation_guard(c),'database':str(db),'backup':backup_text,'backup_sha256':payload['backup_sha256'],'request_id':request_id}
+        if rollback is not None:result['rollback']=rollback
+        return result
     except Exception:unit.rollback();raise
     finally:unit.close()

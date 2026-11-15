@@ -1,5 +1,56 @@
 #include "presonus/LinkableComponent.hpp"
+#include "core/portable/corepersistence.h"
+#include "presonus/AltMemoryFilter.hpp"
+#include <cstring>
 namespace Presonus {
+void LinkableComponent::toggleAltMemory() {
+  Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
+  Core::Portable::Attributes previous(state_.alternate);
+  state_.alternate.removeAll();
+  AltMemoryFilter filter;
+  {
+    Core::Portable::AttributePoolSuspender suspend;
+    Core::Portable::AttributesBuilder builder(state_.alternate);
+    Core::Portable::OutputStorage storage(builder, &filter);
+    state_.component.save(storage);
+  }
+  if (!previous.isEmpty() && (!state_.partner || !state_.slave)) {
+    Core::Portable::InputStorage storage(previous, &filter);
+    state_.component.load(storage);
+  }
+}
+
+void LinkableComponent::copyToAltMemory(Core::Portable::Attributes &source) {
+  Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
+  Core::Portable::AttributePoolSuspender suspend;
+  state_.alternate.removeAll();
+  state_.alternate.copyFrom(source);
+}
+void LinkableComponent::loadAltMemory(
+    const Core::Portable::InputStorage &storage) {
+  if (std::strcmp(storage.getMode(), "ignoreAltMemory") == 0)
+    return;
+  Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
+  Core::Portable::AttributePoolSuspender suspend;
+  state_.alternate.removeAll();
+  if (const auto *alternate = storage.getAttributes().getAttributes("altmem")) {
+    state_.alternate.copyFrom(*alternate);
+    state_.alternate.makeReal();
+  }
+}
+bool LinkableComponent::save(Core::Portable::OutputStorage &storage) const {
+  bool saved = state_.component.save(storage);
+  if (!saved || std::strcmp(storage.getMode(), "ignoreAltMemory") == 0)
+    return saved;
+  Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
+  if (!state_.alternate.isEmpty()) {
+    Core::Portable::AttributesWriter writer(storage.getWriter());
+    writer.writeObject("altmem", state_.alternate,
+                       Core::Portable::Attribute::kShareID);
+  }
+  return saved;
+}
+
 void LinkableComponent::linkAsSlave(LinkableComponent &partner) {
   if (state_.partner != &partner) {
     state_.slave = 1;

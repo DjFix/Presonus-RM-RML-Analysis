@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "target": {
+    "mangled": "_ZN8Presonus7Surface16TransportHandlerD0Ev",
+    "address": 518720,
+    "size": 88,
+    "anchor": "492cb5122fb10413a31c9532ba2fcce846b4689d00b7e3b42f24411dea5bd215",
+    "firmware": "CS18AI surface 13840",
+    "role": "client",
+    "section": 12,
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+  },
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "file_offset": 485952,
+  "section": ".text",
+  "range_sha256": "9757528f95bb85d038b8f91dfabf8537a4bee16467d68b7d197d5921fb5f7446",
+  "producer_sha256": "1f29baaf2806ff6eef5f0af998aa3024ccc2f8777f9c3ed959e4fd558bbdc651",
+  "unicorn_version": "2.1.4",
+  "cases": [
+    {
+      "old": 0,
+      "new": 0,
+      "trace": [
+        [
+          "ParamList_destroy",
+          3145748
+        ],
+        [
+          "operator_delete",
+          3145728
+        ]
+      ],
+      "paramlist_offset": 20,
+      "deleted": true
+    }
+  ],
+  "limitations": [
+    "Only original application target instructions execute. Core observer/list/component operations intercepted, not Core binary execution.",
+    "Native allocator delete boundary observed at actual original call then mapped storage poisoned; libc allocator semantics assumed.",
+    "Exception unwind paths not executed; no original hardware/layout/ABI claim."
+  ]
+}

@@ -14,3 +14,19 @@ Core::Portable::FileName GlobalComponent::getTempFilePath() {
   return path;
 }
 } // namespace Presonus::Mixer
+
+namespace Presonus::Mixer {
+void GlobalComponent::updateHighDef() {
+  if (!highDefDestination_ || !highDefSource_)
+    return;
+  highDefDestination_->setValue(
+      highDefSource_->getValue() >= 2.0f ? 1.0f : 0.0f, true);
+}
+} // namespace Presonus::Mixer
+
+namespace Presonus::Mixer {
+void GlobalComponent::initalize() {
+  if (highDefSource_ && highDefDestination_)
+    updateHighDef();
+}
+} // namespace Presonus::Mixer

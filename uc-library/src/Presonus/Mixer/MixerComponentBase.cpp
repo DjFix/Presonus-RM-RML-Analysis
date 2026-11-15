@@ -4,11 +4,150 @@
 #include "core/portable/corepersistence.h"
 #include "core/portable/coreworker.h"
 #include "core/public/corestringbuffer.h"
+#include "presonus/mixer/ChannelComponent.hpp"
 #include "presonus/mixer/PermissionsComponent.hpp"
 #include <cstring>
 #include <memory>
+#include <new>
 #include <stdexcept>
 namespace Presonus::Mixer {
+Core::Portable::Component *
+MixerComponentBase::findChild(const char *name) const {
+  if (name && std::strcmp(name, "selch") == 0)
+    return selectedChildParameters;
+  if (!childLookupParameters)
+    throw std::logic_error("actual child graph binding required");
+  return childLookupParameters->Core::Portable::Component::findChild(name);
+}
+bool MixerComponentBase::isSubgroupMerge() const {
+  if (!sceneSettings)
+    return false;
+  auto *parameter = sceneSettings->getParameterByTag(44);
+  return parameter && parameter->getValue() > 0.f;
+}
+void MixerComponentBase::refreshDigitalOutputRoutes() {
+  for (int tag = 1; tag < 12; ++tag)
+    digitalOutputParameters->getParameterByTag(tag)->performEdit();
+}
+int MixerComponentBase::countSolos(int selector) const {
+  if (!sceneChannels)
+    return 0;
+  int count = 0;
+  for (int index = 0; index < sceneChannels->count(); ++index) {
+    auto *channel = sceneChannels->at(index);
+    if (selector >= 0) {
+      if (!channelIdentity)
+        throw std::logic_error("channel identity query binding required");
+      if (channelIdentity(channel).first != selector)
+        continue;
+    }
+    auto *solo = channel->portableState().solo;
+    if (solo && solo->getValue() > 0.f)
+      ++count;
+  }
+  return count;
+}
+void MixerComponentBase::setChannelParams(int tag, float value) {
+  if (!sceneChannels)
+    return;
+  for (int index = 0; index < sceneChannels->count(); ++index) {
+    auto *parameter = sceneChannels->at(index)->getParameterByTag(tag);
+    if (parameter)
+      parameter->setValue(value, true);
+  }
+}
+void MixerComponentBase::getTDMRoutes(int selector, unsigned char &first,
+                                      unsigned char &second,
+                                      unsigned int &count) {
+  // Unsigned arithmetic retains native 32-bit wrapping. Signed comparisons use
+  // the resulting bit pattern; no signed overflow or guessed config enum.
+  auto signedWord = [](std::uint32_t word) {
+    std::int32_t result;
+    std::memcpy(&result, &word, sizeof(result));
+    return result;
+  };
+  count = 4;
+  const auto selectorWord = static_cast<std::uint32_t>(selector);
+  std::uint32_t base = tdmConfigWord + 1U;
+  if (selector < signedWord(base)) {
+    if (selector == 1) {
+      first = 0x38;
+      second = 0x39;
+    } else if (selector == 2) {
+      first = 0x3a;
+      second = 0x3b;
+    } else if (selector == 0) {
+      first = 0x3c;
+      second = 0x3d;
+    }
+    return;
+  }
+  // Existing authoritative Core vector count is nonnegative; never a scalar
+  // mirror for native +0x174. Its lifetime and membership stay stable here.
+  base += static_cast<std::uint32_t>(mixChannels.count() / 2);
+  if (selector < signedWord(base)) {
+    first = static_cast<unsigned char>(selectorWord * 2U + 0x28U);
+    second = static_cast<unsigned char>(static_cast<unsigned int>(first) + 1U);
+    return;
+  }
+  switch (selectorWord - base) {
+  case 0:
+    first = 0x20;
+    second = 0x21;
+    break;
+  case 1:
+    first = 0x22;
+    second = 0x23;
+    break;
+  case 2:
+    first = 0x20;
+    second = 0x21;
+    count = 0;
+    break;
+  case 3:
+    first = 0x22;
+    second = 0x23;
+    count = 0;
+    break;
+  case 4: {
+    const auto route = *routeByteView;
+    first = route == 0xff ? 0x24 : route;
+    second = first;
+    count = 0;
+    break;
+  }
+  case 5:
+    first = 0x26;
+    second = 0x27;
+    count = 0;
+    break;
+  case 6:
+    first = 0x3e;
+    second = 0x3f;
+    break;
+  default:
+    break;
+  }
+}
+
+void MixerComponentBase::addDelegate(Delegate &delegate) {
+  try {
+    if (delegates.count() >= delegates.getCapacity() &&
+        !delegates.resize(delegates.count() + 1))
+      return;
+    delegates.add(&delegate);
+  } catch (const std::bad_alloc &) {
+    // Pinned CCL uses throwing new; adapt its failure to the native no-append
+    // path without claiming original capacity growth or allocator equivalence.
+  }
+}
+bool MixerComponentBase::shouldCollectFaderChanges(int selector) const {
+  return selector == 0 || selector == 6 || selector == 7;
+}
+bool MixerComponentBase::isMaster() {
+  return cascadeParameters->getParameterByTag(5)->getValue() == 1.f;
+}
+
 std::uint32_t MixerComponentBase::getSelectedChannel() const {
   return selectedChannel;
 }

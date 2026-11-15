@@ -113,6 +113,13 @@ public:
   void detachAll() const;
   void detachSwitches() const;
   void activateAll();
+  // Native start tail-calls activateAll; original return remains unencoded.
+  void start();
+  void init();
+  // Composition adaptation: call the real Core base implementation on the
+  // existing owned/injected component; no original inheritance/layout claim.
+  void onIdle();
+  void paramChanged(Core::Portable::Parameter *, int);
   // Chosen source-port return declaration; original ordinary return unresolved.
   int runTests(int, int, char **);
   void blinkLed(int, int, bool);

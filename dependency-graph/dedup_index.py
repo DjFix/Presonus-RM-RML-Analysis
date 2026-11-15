@@ -85,7 +85,7 @@ def build(native, pointer, out, root=ROOT, releases=()):
     import adapter
     with adapter.snapshot(root/'uc-library') as snapshot:
         canonical_cpp_keys=sorted((r['elf'],r['mangled']) for r in snapshot.c.execute('SELECT elf,mangled FROM records'))
-    producer_inputs={name:sha(pathlib.Path(__file__).with_name(name)) for name in ('dedup_index.py','dedup_work.py','dedup_schema.sql')}
+    producer_inputs={name:sha(pathlib.Path(__file__).with_name(name)) for name in ('dedup_index.py','dedup_work.py','dedup_schema.sql','dedup_reservations.py','dedup_migrate.py')}
     release_inputs={str(p.relative_to(root)):sha(p) for p in releases}
     generation = digest(pointer['sha256'], POLICY, producer_inputs,canonical_cpp_keys,release_inputs)
     db = out / 'dedup.sqlite'

@@ -1,0 +1,176 @@
+{
+  "range": {
+    "mangled": "_ZNK8Presonus7Surface19FatChannelClipboard15CopyPasteFilter10shouldSaveEiPKcPv",
+    "address": 649804,
+    "size": 124,
+    "section": 12,
+    "file_offset": 617036,
+    "sha256": "2eac0bd6beeaed3b330ab0edffc44d79b6cfdbb727b8f12e0280cba211200320"
+  },
+  "provider_observations": [
+    {
+      "type": 0,
+      "object": 0,
+      "controller": 0,
+      "channel": 0,
+      "tag": 218
+    },
+    {
+      "type": 1348563553,
+      "object": 0,
+      "controller": 0,
+      "channel": 0,
+      "tag": 218
+    },
+    {
+      "type": 1348563553,
+      "object": 1,
+      "controller": 0,
+      "channel": 0,
+      "tag": 218
+    },
+    {
+      "type": 1348563553,
+      "object": 1,
+      "controller": 1,
+      "channel": 0,
+      "tag": 218
+    },
+    {
+      "type": 1348563553,
+      "object": 1,
+      "controller": 1,
+      "channel": 1,
+      "tag": 218
+    },
+    {
+      "type": 1348563553,
+      "object": 1,
+      "controller": 1,
+      "channel": 1,
+      "tag": 217
+    },
+    {
+      "type": 1348563553,
+      "object": 1,
+      "controller": 1,
+      "channel": 1,
+      "tag": -1
+    }
+  ],
+  "cases": [
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 0,
+        "object": 0,
+        "controller": 0,
+        "channel": 0,
+        "tag": 218
+      },
+      "result": 1,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 0,
+        "controller": 0,
+        "channel": 0,
+        "tag": 218
+      },
+      "result": 1,
+      "calls": [],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 1,
+        "controller": 0,
+        "channel": 0,
+        "tag": 218
+      },
+      "result": 1,
+      "calls": [
+        "getController"
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 1,
+        "controller": 1,
+        "channel": 0,
+        "tag": 218
+      },
+      "result": 1,
+      "calls": [
+        "getController",
+        "actual-source-port-typed-cast-boundary"
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 1,
+        "controller": 1,
+        "channel": 1,
+        "tag": 218
+      },
+      "result": 1,
+      "calls": [
+        "getController",
+        "actual-source-port-typed-cast-boundary"
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 1,
+        "controller": 1,
+        "channel": 1,
+        "tag": 217
+      },
+      "result": 0,
+      "calls": [
+        "getController",
+        "actual-source-port-typed-cast-boundary"
+      ],
+      "returned": true,
+      "stack_restored": true
+    },
+    {
+      "object_unchanged": true,
+      "input": {
+        "type": 1348563553,
+        "object": 1,
+        "controller": 1,
+        "channel": 1,
+        "tag": -1
+      },
+      "result": 0,
+      "calls": [
+        "getController",
+        "actual-source-port-typed-cast-boundary"
+      ],
+      "returned": true,
+      "stack_restored": true
+    }
+  ],
+  "limitations": "Core getController and native dynamic_cast boundaries fed by independent actual CCL/SLChannel typed-source-port observations; original ARM RTTI/runtime not executed."
+}

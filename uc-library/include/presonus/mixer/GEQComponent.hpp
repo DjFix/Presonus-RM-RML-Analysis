@@ -6,6 +6,8 @@ namespace Presonus::Mixer {
 // lifecycle/layout claim.
 class GEQComponent : public Core::Portable::Component {
 public:
+  // Provisional void return; original declaration remains unresolved.
+  void flatten();
   DECLARE_CORE_CLASS(0x171408, GEQComponent, Core::Portable::Component)
   struct SourcePortConstruction {};
   explicit GEQComponent(SourcePortConstruction, const char *name = "")

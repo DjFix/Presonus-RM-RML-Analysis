@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/portable/gui/coreview.h"
 namespace Presonus {
 class IMappingController;
 }
@@ -24,6 +25,8 @@ public:
                      int insertOffset = 0, int sendOffset = 0);
   void setListOffset(int offset);
   void addListOffset(int delta);
+  // Source-port return contract; original return declaration is unresolved.
+  void onWheelInput(const Core::Portable::WheelEvent &event);
   int getMaxListOffset() const;
   int &getListOffset() const;
   bool isSendMode() const;

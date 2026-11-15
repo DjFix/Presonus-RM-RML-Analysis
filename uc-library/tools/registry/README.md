@@ -313,3 +313,27 @@ current readiness queries must use `records` keyed by original ELF SHA plus
 mangled name, rather than infer current proof links from historical raw coverage
 rows. Original catalog identities, ranges, aliases and data rows remain intact.
 ACTIVE records this distinction and the archive location explicitly.
+
+### Explicit VM101 snapshot rollback for the publication redesign
+
+For the current operation, use the already verified
+`pre-publication-redesign-20261113` VM101 snapshot instead of creating another
+full SQLite backup on each admission. Pass both
+`--rollback-vm-snapshot PATH` and `--rollback-vm-snapshot-sha256 EXPECTED_SHA256`
+to `merge_readiness.py`, including its dry-run. Root must supply the trusted
+receipt digest; the adapter validates the named VM, quiesced disks and pvdata
+coverage and rechecks the receipt before commit. The current reviewed
+integration03 configuration contains this binding.
+
+This explicit mode creates no database backup. It records a separate `rollback`
+reference in the request checksum/result and classification journals; `backup`
+and `backup_sha256` are null. All source/proof, optimistic generation,
+transaction, demotion/promotion and foreign-key guards remain active. Ordinary
+callers retain their prior backup mode; they must not be used for this operation
+without the explicit snapshot flags. The current integration03 notes/claims
+operators also record this snapshot reference instead of copying their databases.
+
+Restoration returns the whole VM to the earlier snapshot, including pvdata; it
+is not a per-admission undo. CT126 Memgraph is outside that snapshot and requires
+reconciliation after a restore. This option neither restores a VM nor changes
+readiness evidence or historical provenance.

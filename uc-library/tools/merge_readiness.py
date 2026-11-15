@@ -120,9 +120,13 @@ def main():
     p.add_argument('--demote',type=Path,action='append',default=[],
                    help='Explicit guarded ready-to-pending transition manifest; requires fresh pending proof')
     p.add_argument('--dry-run',action='store_true',help='Validate without changing SQLite; legacy JSON is never written')
+    p.add_argument('--rollback-vm-snapshot',type=Path,help='Explicit verified VM101 rollback receipt; disables this admission DB backup only')
+    p.add_argument('--rollback-vm-snapshot-sha256',help='Trusted expected SHA-256 of the named snapshot receipt')
     a=p.parse_args()
     library=a.library.resolve()
+    rollback=adapter.verified_vm_snapshot(library,a.rollback_vm_snapshot,a.rollback_vm_snapshot_sha256)
     cache=ValidationCache()
+    if rollback is not None:cache.sha(Path(rollback['receipt']['path']))
     read_json=cache.read_json
     with adapter.snapshot(library,a.registry_db) as current:
         previous_ready=current.ready
@@ -288,7 +292,8 @@ def main():
         demotion_manifests=demotion_inputs,
         operation_metadata={'integration_reference':'validation/integration.json',
                             'formatting_sha256':cache.sha(library/'validation/formatting.json')},
-        precommit_guard=cache.unchanged)
+        precommit_guard=cache.unchanged,
+        rollback_snapshot=a.rollback_vm_snapshot,rollback_snapshot_sha256=a.rollback_vm_snapshot_sha256)
     print(json.dumps({'portable_ready_entries':len(records),'unique_mangled_methods':len({k[1] for k in records}),
                       'compiled_declaration_pending_entries':len(compiled),'stale_previous_entries':stale_previous,
                       'demoted_entries':demoted,'promoted_pending_entries':promoted_pending,

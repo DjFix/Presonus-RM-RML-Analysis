@@ -7,6 +7,9 @@ struct PanelRegistrarPortState {
   Presonus::IPanelPort *port = nullptr;
   bool secondaryEnabled = false;
   Presonus::IPanelPort *secondaryPort = nullptr;
+  // Explicit initialized source-port input for the word consumed by %d.
+  // Original field name/declaration/initialization/layout remain unresolved.
+  std::int32_t descriptionNumber = 0;
 };
 } // namespace presonus::panel_binding
 namespace Presonus::Panel {
@@ -17,6 +20,10 @@ public:
   explicit PanelRegistrar(
       presonus::panel_binding::PanelRegistrarPortState &state)
       : state_(state) {}
+  // Independent source-port getter, not an original method identity.
+  std::int32_t sourcePortDescriptionNumber() const {
+    return state_.descriptionNumber;
+  }
   void resetBoard(int mode, int board);
   const char *getPanelPortName();
   Presonus::IPanelPort *getPort() const override;

@@ -1,6 +1,7 @@
 import copy
 import json
 import unittest
+from unittest.mock import patch
 import sqlite3
 import adapter
 import registry as r
@@ -49,5 +50,77 @@ class AdapterTests(unittest.TestCase):
         with self.assertRaises(Exception):self.commit(ready,pending,guard)
         self.assertEqual(before,r.digest(self.db))
         self.assertTrue(list((self.db.parent/'admission-history').glob('*.sqlite')))
+
+    def snapshot_receipt(self):
+        # Synthetic authorization fixture, never an actual VM/firmware claim.
+        path=self.root/'snapshot-rollback.json'
+        path.write_text(json.dumps({'backup_policy':'one rollback snapshot; no additional full copies',
+            'snapshot':{'verified':True,'vmid':101,'host':'192.168.50.2',
+                'name':'pre-publication-redesign-20261113',
+                'includes_pvdata_working_disk':'pvdata/vm-101-disk-5',
+                'disk_snapshot_count':8,'ram':False,'external_CT126_included':False,
+                'guest_filesystems':'freeze/snapshot/thaw completed'}}))
+        return path,{'rollback_snapshot':path,'rollback_snapshot_sha256':r.digest(path)}
+
+    def test_explicit_snapshot_no_copy_and_exact_audit_binding(self):
+        path,options=self.snapshot_receipt();ready,pending,guard=self.read()
+        ready[0]['domain']='Snapshot-backed bounded fixture update'
+        original=sqlite3.connect;opened=[]
+        allowed={str(self.db.resolve()),self.db.resolve().as_uri()+'?mode=ro',self.db.resolve().as_uri()+'?mode=rw'}
+        def no_backup(database,*args,**kw):
+            opened.append(str(database));self.assertIn(str(database),allowed)
+            return original(database,*args,**kw)
+        with patch.object(adapter.sqlite3,'connect',side_effect=no_backup):
+            result=self.commit(ready,pending,guard,request_id='snapshot-change',**options)
+        self.assertTrue(opened);self.assertIsNone(result['backup']);self.assertIsNone(result['backup_sha256'])
+        self.assertFalse((self.db.parent/'admission-history').exists())
+        rollback=result['rollback'];self.assertEqual(rollback['receipt']['sha256'],r.digest(path))
+        self.assertTrue(rollback['post_restore_graph_reconciliation_required'])
+        with r.connect(self.db) as c:
+            request=c.execute("SELECT digest,result FROM requests WHERE request_id='snapshot-change'").fetchone()
+            bindings=json.loads(c.execute('SELECT bindings FROM journal').fetchone()[0])
+        self.assertEqual(json.loads(request['result'])['rollback'],rollback)
+        self.assertEqual(bindings['rollback'],rollback);self.assertIsNone(bindings['backup_sha256'])
+        payload={'changed_keys':[('elf','a')],'metadata_changes':{},'operation_metadata':{},
+                 'demotion_manifests':{},'expected_guard':guard,'backup_sha256':None,'rollback':rollback}
+        self.assertEqual(request['digest'],__import__('hashlib').sha256(r.encode(payload).encode()).hexdigest())
+
+    def test_snapshot_noop_still_checks_source_guard_without_copy(self):
+        _,options=self.snapshot_receipt();ready,pending,guard=self.read();calls=[]
+        result=self.commit(ready,pending,guard,precommit_guard=lambda:calls.append(True),**options)
+        self.assertTrue(result['no_op']);self.assertEqual(calls,[True]);self.assertIsNone(result['backup'])
+        self.assertFalse((self.db.parent/'admission-history').exists())
+
+    def test_snapshot_receipt_failures_and_ambiguous_mode_do_not_write(self):
+        path,options=self.snapshot_receipt();ready,pending,guard=self.read();ready[0]['domain']='new'
+        before=r.digest(self.db)
+        with self.assertRaises(ValueError):self.commit(ready,pending,guard,rollback_snapshot=path)
+        with self.assertRaises(ValueError):self.commit(ready,pending,guard,backup_dir=self.root/'extra',**options)
+        with self.assertRaises(ValueError):self.commit(ready,pending,guard,**dict(options,rollback_snapshot_sha256='0'*64))
+        valid=json.loads(path.read_text())
+        for key,value in [('verified',False),('vmid',125),('name','other-snapshot'),
+                          ('includes_pvdata_working_disk','wrong-disk'),('disk_snapshot_count',1),
+                          ('guest_filesystems','not quiesced'),('external_CT126_included',True)]:
+            document=copy.deepcopy(valid);document['snapshot'][key]=value;path.write_text(json.dumps(document))
+            with self.subTest(key=key),self.assertRaises(ValueError):
+                self.commit(ready,pending,guard,rollback_snapshot=path,rollback_snapshot_sha256=r.digest(path))
+            self.assertEqual(r.digest(self.db),before)
+        self.assertFalse((self.db.parent/'admission-history').exists())
+
+    def test_snapshot_precommit_and_receipt_races_roll_back(self):
+        path,options=self.snapshot_receipt();ready,pending,guard=self.read();ready[0]['domain']='new'
+        before=r.digest(self.db);calls=[]
+        def tamper_after_writes():
+            calls.append(True)
+            if len(calls)==2:path.write_text('receipt changed after row updates')
+        with self.assertRaises(ValueError):self.commit(ready,pending,guard,precommit_guard=tamper_after_writes,**options)
+        self.assertEqual(len(calls),2);self.assertEqual(r.digest(self.db),before)
+        self.assertFalse((self.db.parent/'admission-history').exists())
+
+    def test_snapshot_preserves_existing_admission_and_concurrency_guards(self):
+        _,options=self.snapshot_receipt();ready,pending,guard=self.read()
+        with self.assertRaises(ValueError):self.commit([],pending,guard,**options)
+        with self.assertRaises(ValueError):self.commit(ready,pending,'stale-guard',**options)
+        self.assertFalse((self.db.parent/'admission-history').exists())
 
 if __name__=='__main__':unittest.main()

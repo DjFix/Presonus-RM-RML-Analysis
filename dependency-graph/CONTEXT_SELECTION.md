@@ -136,8 +136,55 @@ For maintenance, trigger the same freshness check explicitly:
 uc-library/.venv/bin/python dependency-graph/refresh_graph.py
 ```
 
-`--force` reconfigures and replays every current compile command. `--resume`
-explicitly retries a pending publication; ordinary preparation also does this.
+Routine refresh rejects a full compiler replay before extraction/publication.
+An intentional full rebuild requires `--full-rebuild 'reason'`; `--force` alone
+is rejected. Full rebuild uses separate finite limits. `--resume` explicitly
+retries a pending publication; ordinary preparation also does this.
+
+The current source index uses compact integer dictionaries, logical edges,
+separate provenance and owner memberships. It keeps current unit observations,
+not duplicate historical payloads. Publication journals contain only net changed
+nodes/edges and orphan candidates; shared ownership prevents removing an edge
+still supported by another unit. The legacy `node_facts`/`edge_facts` interfaces
+are read-only views. Legacy storage requires explicit migration, never an
+implicit conversion during preparation.
+
+Routine limits are 64 MiB journal, 256 MiB process disk writes, 100,000 charged
+rows and 64 MiB serialized request envelopes. Preflight and SQLite progress/
+precommit guards reject excess work; they do not silently select a full rebuild.
+Receipts distinguish estimated cost, measured process IO and serialized JSON
+requests (not Bolt wire traffic or server disk IO). SQLite deferred flushing and
+progress sampling mean the physical-write ceiling is not an exact hard cap.
+An unchanged generation skips extraction and publication altogether.
+
+For a reviewed compiler rescan whose compact owner memberships legitimately
+exceed 100,000 rows, `--row-budget-review PATH` accepts a repository-local JSON
+record containing `rows`, a concrete `reason`, and `evidence: {path, sha256}`.
+The evidence must be a measured input forecast. This explicit operation changes
+only its finite global row ceiling; the global 64 MiB journal, 256 MiB process
+writes and 64 MiB transfer ceilings remain unchanged. Automatic preparation
+never inherits the exception. The plan retains the complete review and hashes;
+cumulative row work is still charged, never reset between owners. This is not
+a full rebuild or permission to copy historical databases.
+
+An accumulated rescan may additionally supply `byte_limits` for `journal_bytes`,
+`sqlite_write_bytes` and `transfer_bytes`, with separate hash-bound
+`resource_evidence` from a measured attempt and its complete delta plan.
+Explicit ceilings are at most 384 MiB journal, 768 MiB process writes and
+256 MiB transfer. This requires the same explicit rescan
+review (also named `--publication-budget-review`) and does not change automatic
+defaults. Staging uses a bounded 256 MiB SQLite page-cache target to avoid repeated
+dirty-page spills; the same cumulative IO and sidecar guards remain active.
+
+Existing production source/header changes mixed with isolated test registration
+still use captured dependencies and exact command comparisons. New production
+paths, unknown configuration, optional includes and incomplete isolation remain
+conservative. After a reviewed relocation of global CMake files, the explicit
+`--verify-build-plan PATH_TO_RETAINED_PLAN` mode can prove ALL current commands,
+all captured input hashes and the extraction producer closure unchanged after
+configuration. A mismatch rejects the operation. A successful proof skips
+compiler replay but still publishes current build/test facts and runs the normal
+freshness, ownership and registration checks. This is not a stale-context override.
 Direct registration is only for an already refreshed/reviewed corpus:
 
 ```sh

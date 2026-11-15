@@ -30,6 +30,27 @@ public:
   // collection's friendly name is unresolved; never assume inputChannels.
   // Null explicitly denotes an empty collection in this source port.
   const Core::Vector<ChannelComponent *> *sceneChannels = nullptr;
+  // Distinct borrowed actual CCL views for the partial composition facade.
+  // +0x310's selected child and the original base child graph remain separate;
+  // no original inheritance/layout is established by these source-port views.
+  Core::Portable::Component *childLookupParameters = nullptr;
+  Core::Portable::Component *selectedChildParameters = nullptr;
+  Core::Portable::Component *findChild(const char *name) const;
+  bool isSubgroupMerge() const;
+  // Native +0x2d8, distinct from sceneSettings and routeInputParameters.
+  // Required valid provider containing actual NumericParam tags 1 through 11.
+  Core::Portable::Component *digitalOutputParameters = nullptr;
+  void refreshDigitalOutputRoutes();
+  int countSolos(int selector) const;
+  void setChannelParams(int tag, float value);
+  // Independent native +0x19c word, pending a recovered typed identity.
+  std::uint32_t tdmConfigWord = 0;
+  // Borrow only the final observed byte of original +0x1fc -> ptrA ->
+  // ptrB+0x234. Storage must remain valid on the route-byte branch; other
+  // branches ignore it.
+  const std::uint8_t *routeByteView = nullptr;
+  void getTDMRoutes(int selector, unsigned char &first, unsigned char &second,
+                    unsigned int &count);
   class Delegate;
   // Required borrowed application binding for preset construction. The same
   // real service instance must outlive constructed preset components.
@@ -37,7 +58,12 @@ public:
       nullptr;
   // Independent portable state; no original layout or ownership claim.
   Core::Vector<Delegate *> delegates;
+  // Borrowed duplicates are retained. Allocation failure leaves the list
+  // unchanged. void is a source-port declaration, not established original
+  // return type.
+  void addDelegate(Delegate &delegate);
   void removeDelegate(Delegate &delegate);
+  bool shouldCollectFaderChanges(int selector) const;
   // Required independent identity query, not recovered Channel fields.
   std::function<std::pair<std::int32_t, std::int32_t>(ChannelComponent *)>
       channelIdentity;
@@ -85,6 +111,7 @@ public:
   Core::CString256 deviceDataFolder;
   Core::Portable::FileName getDataDir(const char *subdir) const;
   bool isSlave();
+  bool isMaster();
   void validateChannelNaming();
   // Borrowed real CCL tree for the portable routing source port. The caller
   // keeps the tree alive through routing and synchronous observer callbacks.

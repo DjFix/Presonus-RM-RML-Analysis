@@ -30,6 +30,43 @@ def inside(root, relative):
     return result
 
 
+def snapshot_path(base, relative, allow_leaf_symlink=False):
+    """Normalize historical lexical paths without permitting symlink traversal."""
+    parts = pathlib.PurePosixPath(relative)
+    if parts.is_absolute():
+        raise ContextError('Absolute snapshot path')
+    stack = []
+    for part in parts.parts:
+        if part == '..':
+            if not stack:
+                raise ContextError('Snapshot path escapes root: ' + relative)
+            # A canceled component must not hide a symlink ancestor.
+            if (base.joinpath(*stack)).is_symlink():
+                raise ContextError('Snapshot symlink ancestor: ' + relative)
+            stack.pop()
+        elif part != '.':
+            stack.append(part)
+    if not stack:
+        raise ContextError('Empty snapshot payload path')
+    target = base.joinpath(*stack)
+    for index in range(1, len(stack) + 1):
+        component = base.joinpath(*stack[:index])
+        if component.is_symlink() and not (allow_leaf_symlink and index == len(stack)):
+            raise ContextError('Snapshot symlink traversal: ' + relative)
+    return target
+
+
+def snapshot_aliases(files):
+    """Preserve manifest keys while rejecting conflicting normalized identities."""
+    aliases = {}
+    for path, digest in files.items():
+        key = str(snapshot_path(pathlib.Path('/__snapshot_lexical_root__'), path))
+        if key in aliases and aliases[key] != digest:
+            raise ContextError('Conflicting snapshot path aliases: ' + path)
+        aliases[key] = digest
+    return aliases
+
+
 def inventory(root):
     suffixes = {'.cpp', '.hpp', '.h', '.c', '.cc', '.cxx', '.inc', '.cmake'}
     paths = []
@@ -157,6 +194,11 @@ def snapshot_guard_inputs(root, active, state):
     copy_root = receipt.parent / 'snapshot'
     if copy_root.is_symlink() or copy_root.resolve() != copy_root or not copy_root.is_dir():
         raise ContextError('Invalid immutable snapshot root')
+    snapshot_aliases(manifest.get('files', {}))
+    references = manifest.get('references', {})
+    if references:
+        from snapshot_runtime import verify_references
+        verify_references(root,receipt,manifest,copy_root)
     fingerprints = manifest.get('guard_fingerprints', {})
     for path, item in state['files'].items():
         if manifest.get('files', {}).get(path) != item['sha256']:
@@ -165,8 +207,8 @@ def snapshot_guard_inputs(root, active, state):
         if (not isinstance(value, list) or len(value) != 5 or
                 any(not isinstance(v, int) or isinstance(v, bool) for v in value)):
             raise ContextError('Invalid snapshot fingerprint: ' + path)
-        candidate = copy_root / path
-        if candidate.is_symlink() or not candidate.resolve().is_relative_to(copy_root):
+        candidate = snapshot_path(copy_root, path, allow_leaf_symlink=path in references)
+        if path not in references and (candidate.is_symlink() or not candidate.resolve().is_relative_to(copy_root)):
             raise ContextError('Snapshot input escapes copied tree: ' + path)
     return copy_root, fingerprints
 
@@ -182,7 +224,7 @@ def guard(root, active):
         file = inside(root, path)
         if snapshot and file.is_file():
             copy_root, copy_fingerprints = snapshot
-            copied = copy_root / path
+            copied = snapshot_path(copy_root, path, allow_leaf_symlink=True)
             if (copied.is_file() and copied.stat().st_nlink == 1 and
                     os.path.samefile(file, copied) and fingerprint(file) == copy_fingerprints[path]):
                 continue

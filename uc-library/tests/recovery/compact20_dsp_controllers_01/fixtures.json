@@ -1,0 +1,232 @@
+{
+  "version": 1,
+  "target": {
+    "mangled": "_ZN8Presonus7Surface16TransportHandler13setAndObserveERPN4Core8Portable9ParameterES5_",
+    "address": 507980,
+    "size": 80,
+    "anchor": "b012d5f4767c4d29e5202f533e069927dbe7ba376ab895d184b88a95e02c86f7",
+    "firmware": "CS18AI surface 13840",
+    "role": "client",
+    "section": 12,
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+  },
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "file_offset": 475212,
+  "section": ".text",
+  "range_sha256": "fc044b209182be94f2888b48220e1ff11fd69e21621162acba5b7d0acbd81a95",
+  "producer_sha256": "1f29baaf2806ff6eef5f0af998aa3024ccc2f8777f9c3ed959e4fd558bbdc651",
+  "unicorn_version": "2.1.4",
+  "cases": [
+    {
+      "old": 0,
+      "new": 0,
+      "trace": [],
+      "slot": 0,
+      "observers": [
+        [
+          11
+        ],
+        [
+          22
+        ]
+      ]
+    },
+    {
+      "old": 0,
+      "new": 1,
+      "trace": [
+        [
+          "add",
+          3149824,
+          3145740
+        ]
+      ],
+      "slot": 1,
+      "observers": [
+        [
+          11,
+          99
+        ],
+        [
+          22
+        ]
+      ]
+    },
+    {
+      "old": 0,
+      "new": 2,
+      "trace": [
+        [
+          "add",
+          3153920,
+          3145740
+        ]
+      ],
+      "slot": 2,
+      "observers": [
+        [
+          11
+        ],
+        [
+          22,
+          99
+        ]
+      ]
+    },
+    {
+      "old": 1,
+      "new": 0,
+      "trace": [
+        [
+          "remove",
+          3149824,
+          3145740
+        ]
+      ],
+      "slot": 0,
+      "observers": [
+        [
+          11,
+          33
+        ],
+        [
+          22
+        ]
+      ]
+    },
+    {
+      "old": 1,
+      "new": 1,
+      "trace": [
+        [
+          "remove",
+          3149824,
+          3145740
+        ],
+        [
+          "add",
+          3149824,
+          3145740
+        ]
+      ],
+      "slot": 1,
+      "observers": [
+        [
+          11,
+          33,
+          99
+        ],
+        [
+          22
+        ]
+      ]
+    },
+    {
+      "old": 1,
+      "new": 2,
+      "trace": [
+        [
+          "remove",
+          3149824,
+          3145740
+        ],
+        [
+          "add",
+          3153920,
+          3145740
+        ]
+      ],
+      "slot": 2,
+      "observers": [
+        [
+          11,
+          33
+        ],
+        [
+          22,
+          99
+        ]
+      ]
+    },
+    {
+      "old": 2,
+      "new": 0,
+      "trace": [
+        [
+          "remove",
+          3153920,
+          3145740
+        ]
+      ],
+      "slot": 0,
+      "observers": [
+        [
+          11
+        ],
+        [
+          22,
+          33
+        ]
+      ]
+    },
+    {
+      "old": 2,
+      "new": 1,
+      "trace": [
+        [
+          "remove",
+          3153920,
+          3145740
+        ],
+        [
+          "add",
+          3149824,
+          3145740
+        ]
+      ],
+      "slot": 1,
+      "observers": [
+        [
+          11,
+          99
+        ],
+        [
+          22,
+          33
+        ]
+      ]
+    },
+    {
+      "old": 2,
+      "new": 2,
+      "trace": [
+        [
+          "remove",
+          3153920,
+          3145740
+        ],
+        [
+          "add",
+          3153920,
+          3145740
+        ]
+      ],
+      "slot": 2,
+      "observers": [
+        [
+          11
+        ],
+        [
+          22,
+          33,
+          99
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Only original application target instructions execute. Core observer/list/component operations intercepted, not Core binary execution.",
+    "Native allocator delete boundary observed at actual original call then mapped storage poisoned; libc allocator semantics assumed.",
+    "Exception unwind paths not executed; no original hardware/layout/ABI claim."
+  ]
+}

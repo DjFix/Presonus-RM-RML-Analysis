@@ -25,9 +25,12 @@ def tools():
            'dependency-graph/refresh_publish.py','dependency-graph/native_graph.py',
            'dependency-graph/native_context.py','dependency-graph/dedup_index.py',
            'dependency-graph/dedup_work.py','dependency-graph/dedup_schema.sql',
+           'dependency-graph/dedup_migrate.py','dependency-graph/dedup_reservations.py',
+           'dependency-graph/native_candidate_gate.py','dependency-graph/native_candidate_lifecycle.py',
+           'dependency-graph/native_candidate_ownership.py',
            'dependency-graph/memgraph_endpoint.py','dependency-graph/code_identity.py',
            'dependency-graph/full_source_graph.py','dependency-graph/gcc_source_graph.py',
-           'dependency-graph/batch_publication.py','dependency-graph/group_dispatch.py',
+           'dependency-graph/batch_publication.py', 'dependency-graph/publication_events.py','dependency-graph/group_dispatch.py',
            'dependency-graph/context_publication.py','dependency-graph/context_batch.py',
            'dependency-graph/context_resources.py','dependency-graph/context_work_batch.py',
            'dependency-graph/early_conflicts.py',
@@ -52,6 +55,18 @@ def register(session, out, reports=None):
         if previous_state.get('automatic_refresh_version'):
             reports = [inside(ROOT, path) for path in previous_state['reports']]
     reports = reports or [BASE/'runs/full-01/full-graph.json', BASE/'runs/core-source-01/full-graph-qualified.json']
+    final = json.loads(reports[-1].read_text())
+    candidate_verification = None
+    if final.get('source_graph_refresh'):
+        from publication_events import require_verified
+        from native_candidate_gate import verify_guard
+        from native_candidate_lifecycle import require_lifecycle
+        delta_path = reports[-1].parent / 'delta.sqlite'
+        require_verified(session, final.get('event_verification', {}), delta_path)
+        require_lifecycle(session, ROOT, delta_path, final.get('native_candidate_guard'),
+                          final.get('native_candidate_lifecycle'))
+        candidate_verification = verify_guard(
+            session, ROOT, delta_path, final.get('native_candidate_guard'))
     prefix = '/home/rs/projects/opencs/ai-line-analysis/'
     expected = {}
     for report in reports:
@@ -82,11 +97,11 @@ def register(session, out, reports=None):
         path = inside(ROOT,relative)
         files[relative] = {'sha256':sha(path),'fingerprint':fingerprint(path)}
     registry = json.loads((ROOT/'uc-library/validation/registry-sqlite/ACTIVE.json').read_text())
-    final = json.loads(reports[-1].read_text())
-    nodes = {r['kind']:r['n'] for r in session.run('MATCH (n:Artifact) RETURN n.kind AS kind,count(n) AS n')}
-    edges = {r['kind']:r['n'] for r in session.run('MATCH (:Artifact)-[r]->(:Artifact) RETURN type(r) AS kind,count(r) AS n')}
-    if nodes != final['node_kinds'] or edges != final['edge_kinds']:
-        raise ContextError('Memgraph does not contain the reviewed full generation')
+    if not final.get('source_graph_refresh'):
+        nodes = {r['kind']:r['n'] for r in session.run('MATCH (n:Artifact) RETURN n.kind AS kind,count(n) AS n')}
+        edges = {r['kind']:r['n'] for r in session.run('MATCH (:Artifact)-[r]->(:Artifact) RETURN type(r) AS kind,count(r) AS n')}
+        if nodes != final['node_kinds'] or edges != final['edge_kinds']:
+            raise ContextError('Memgraph does not contain the reviewed full generation')
     state = {'version':1,'backend':'memgraph','files':files,'source_snapshots':snapshots,'source_inventory':inventory(ROOT),
              'registry_guard':registry['registry_guard'],
              'reports':{str(p.relative_to(ROOT)):sha(p) for p in reports},
@@ -94,6 +109,10 @@ def register(session, out, reports=None):
              'runtime_firmware_graph_complete':False}
     if final.get('source_graph_refresh'):
         state['automatic_refresh_version'] = 1
+        state['validation_scope'] = 'committed_batch_effects'
+        state['event_verification'] = final['event_verification']
+        state['native_candidate_verification'] = candidate_verification
+        state['native_candidate_lifecycle'] = final['native_candidate_lifecycle']
     state_path = BASE/'state'/('generation-'+str(time.time_ns())+'.json')
     state_path.parent.mkdir(parents=True,exist_ok=True)
     state_path.write_text(json.dumps(state,sort_keys=True,indent=2)+'\n')

@@ -7,6 +7,9 @@ DawFxPageComponent::DawFxPageComponent(
     int insertOffset, int sendOffset)
     : mode_(mode), bindings_(bindings), insertOffset_(insertOffset),
       sendOffset_(sendOffset) {}
+void DawFxPageComponent::onWheelInput(const Core::Portable::WheelEvent &event) {
+  addListOffset(event.delta);
+}
 bool DawFxPageComponent::isSendMode() const {
   if (!mode_)
     return false;

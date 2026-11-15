@@ -77,6 +77,10 @@ struct State {
   Core::Vector<Core::Portable::Parameter *> mixSelections;
   Core::Vector<Presonus::Mixer::ChannelComponent *> auxChannels;
   Core::Vector<Presonus::Mixer::ChannelComponent *> fxChannels;
+  // Independent borrowed CCL views for two distinct native collections.
+  // Binding requires the inherited Panel mixer identity and stable lifetimes.
+  const Core::Vector<Presonus::Mixer::ChannelComponent *> *faderBank = nullptr;
+  const Core::Vector<Presonus::Mixer::ChannelComponent *> *mainFader = nullptr;
   int panelMode = 0;
   // Independent opaque constructor observation; original declaration
   // unresolved.
@@ -95,6 +99,7 @@ namespace Presonus::Panel {
 class PresetComponent;
 class GeqUIComponent;
 class ControlRegistrar;
+class Control;
 // Intentional portable representation. Original inheritance, fields, return
 // declarations and ARM ABI are unresolved; only encoded scopes/types are
 // retained.
@@ -129,6 +134,21 @@ public:
   Presonus::Mixer::ChannelComponent *getMixModeChannel();
   int getMeterMode();
   void uartTest();
+  void faderPositionChanged(int, float);
+  void attachMeterTypeLed(Control *, int);
+  void attachMeterSwitch(Control *, int);
+  void
+  bindFaderViews(Presonus::Mixer::MixerComponentBase &,
+                 const Core::Vector<Presonus::Mixer::ChannelComponent *> &,
+                 const Core::Vector<Presonus::Mixer::ChannelComponent *> &);
+  // Partial stateless source-port predicate; no original IStorageFilter base,
+  // constructor, shouldLoad, lifetime or ABI credit.
+  class CopyPasteFilter {
+  public:
+    struct SourcePortConstruction {};
+    explicit CopyPasteFilter(SourcePortConstruction) {}
+    bool shouldSave(int, const char *, void *) const;
+  };
 
 private:
   struct Owned;

@@ -92,6 +92,22 @@ constexpr double gainMap[] = {
 } // namespace
 namespace Presonus::Surface {
 SurfaceInputComponent::~SurfaceInputComponent() = default;
+Core::Portable::Parameter *SurfaceInputComponent::getLevel() const {
+  return getParameterByTag(300);
+}
+Core::Portable::Parameter *SurfaceInputComponent::getPotValue() const {
+  return getParameterByTag(301);
+}
+std::uint32_t SurfaceInputComponent::setLevel(float value) {
+  if (channelMode != 0)
+    return UINT32_MAX;
+  if (!getPotValue())
+    return 0;
+  auto *pot = getPotValue();
+  const auto index = lookupPotSetting(value);
+  pot->setValue(static_cast<float>(index), false);
+  return 0;
+}
 std::uint32_t SurfaceInputComponent::levelAdjustable() {
   return channelMode == 0;
 }

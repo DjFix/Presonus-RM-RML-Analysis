@@ -1,6 +1,9 @@
 #include "presonus/surface_update/CallbackText.hpp"
 #include "presonus/surface_update/FirmwareUpdateComponent.hpp"
 namespace Presonus::Surface {
+FirmwareUpdateComponent::FirmwareUpdateComponent()
+    : Core::Portable::Component("firmwareupdate"), progressParameter(nullptr),
+      worker(std::make_unique<Core::Portable::BackgroundWorker>()) {}
 FirmwareUpdateComponent::FirmwareUpdateComponent(
     presonus::surface_update::CallbackSourcePort,
     const Core::Portable::ParamInfo *parameters, int parameterCount,

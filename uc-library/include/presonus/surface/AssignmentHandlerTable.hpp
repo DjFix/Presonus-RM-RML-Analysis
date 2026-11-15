@@ -11,6 +11,9 @@ public:
   void addHandler(AssignmentHandler *);
   AssignmentHandler *getHandler(int) const;
   void removeHandler(AssignmentHandler *);
+  // Provisional borrowed pointer return; original static declaration
+  // unresolved.
+  AssignmentHandler *findHandler(const char *) const;
 
 private:
   Core::Vector<AssignmentHandler *> &handlers_;

@@ -52,3 +52,9 @@ void OutputComponent::setSectionCoeffChanged(int section) {
     bindings_.sectionOneCoeffChanged = 1;
 }
 } // namespace Presonus::Mixer
+
+namespace Presonus::Mixer {
+Core::Portable::Parameter *OutputComponent::getDelay() {
+  return bindings_.delay;
+}
+} // namespace Presonus::Mixer

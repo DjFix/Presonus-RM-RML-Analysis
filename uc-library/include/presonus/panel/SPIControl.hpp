@@ -8,5 +8,7 @@ class SPIControl : public Control {
 public:
   using Control::Control;
   ~SPIControl() override;
+  // Source-port void return; original unencoded declaration remains pending.
+  void broadcastValue(int value) override;
 };
 } // namespace Presonus::Panel

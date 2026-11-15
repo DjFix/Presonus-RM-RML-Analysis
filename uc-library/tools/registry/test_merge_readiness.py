@@ -76,6 +76,33 @@ class MergerTests(unittest.TestCase):
     def legacy_bytes(self):
         return [(self.lib/'validation'/name).read_bytes() for name in ('ready-functions.json','compiled-functions.json')]
 
+    def snapshot_options(self):
+        path=self.root/'snapshot.json'
+        path.write_text(json.dumps({'backup_policy':'one rollback snapshot; no additional full copies',
+            'snapshot':{'verified':True,'vmid':101,'host':'192.168.50.2',
+                'name':'pre-publication-redesign-20261113','includes_pvdata_working_disk':'pvdata/vm-101-disk-5',
+                'disk_snapshot_count':8,'ram':False,'external_CT126_included':False,
+                'guest_filesystems':'freeze/snapshot/thaw completed'}}))
+        return ['--rollback-vm-snapshot',str(path),'--rollback-vm-snapshot-sha256',reg.digest(path)]
+
+    def test_snapshot_cli_dryrun_then_explicit_admission_without_backup(self):
+        self.two_record_fragment();options=self.snapshot_options();before=reg.digest(self.db)
+        with patch.object(adapter,'commit_snapshot',wraps=adapter.commit_snapshot) as commit:
+            dry=self.run_merger('--fragment','two.json','--dry-run',*options)
+            commit.assert_not_called();self.assertTrue(dry['validated_only'])
+        self.assertEqual(reg.digest(self.db),before)
+        result=self.run_merger('--fragment','two.json',*options)
+        self.assertGreater(result['sqlite_commit']['changed'],0)
+        self.assertEqual(result['sqlite_commit']['rollback']['mode'],'verified_vm_snapshot')
+        self.assertIsNone(result['sqlite_commit']['backup']);self.assertIsNone(result['sqlite_commit']['backup_sha256'])
+        self.assertFalse((self.db.parent/'admission-history').exists())
+
+    def test_snapshot_cli_missing_or_bad_digest_fails_before_commit(self):
+        options=self.snapshot_options();before=reg.digest(self.db)
+        for args in (options[:2],options[:3]+['0'*64]):
+            with self.assertRaises(ValueError):self.run_merger('--dry-run',*args)
+            self.assertEqual(reg.digest(self.db),before)
+
     def test_default_sqlite_noop_preserves_json_and_database(self):
         old = self.legacy_bytes()
         before = reg.digest(self.db)

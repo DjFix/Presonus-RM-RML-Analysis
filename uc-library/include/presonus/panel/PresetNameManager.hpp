@@ -1,4 +1,5 @@
 #pragma once
+#include "core/portable/corefilename.h"
 #include "core/portable/coresingleton.h"
 #include "core/public/corevector.h"
 namespace Presonus::Panel {
@@ -16,6 +17,13 @@ public:
   PresetNameCache *getCache(int index) const;
   void rebuildAllCaches() const;
   PresetNameCache *lookupCache(const char *) const;
+  // Source-port ordinary returns remain provisional; no ARM layout claim.
+  void cachePreset(const char *type, const char *name, const char *category,
+                   int slot);
+  bool getPresetInfo(Core::CStringBuffer<64> &, Core::CStringBuffer<32> &, int,
+                     const char *);
+  Core::Portable::FileName getPresetFilePath(int, const char *, bool);
+  PresetNameCache *lookupCacheForRemoteUrl(const char *);
 
 private:
   Core::Vector<PresetNameCache *> caches;

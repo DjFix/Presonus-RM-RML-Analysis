@@ -7,6 +7,8 @@ namespace Presonus {
 class MappablePageComponent : public Core::Portable::Component,
                               public IMainScreenPageController {
 public:
+  // Borrowed identity query, ordinary original return spelling unresolved.
+  void *castTo(int classId) override;
   explicit MappablePageComponent(const char *name) : Component(name) {}
   const char *getPageName() const override;
   bool connectParameter(const char *, Core::Portable::Parameter *) override;

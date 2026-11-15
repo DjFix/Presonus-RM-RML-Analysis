@@ -1,0 +1,914 @@
+{
+  "version": 1,
+  "task_id": "compact20_surface_fx_pages_04",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus7Surface19FXEditPageComponent19disconnectMappablesEv",
+      "address": 614520,
+      "size": 140,
+      "anchor": "3b69ef5d6cc3efefcdcb21af6441a250c87e30929cda40efbf41133dda00dd70",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "section": 12,
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "file_offset": 581752,
+      "section_name": ".text",
+      "range_sha256": "4ba526d34bd9f88b5b36b965c1c4c32cad36bbf2ab6f587a7adcc2805e622a34"
+    }
+  ],
+  "cases": [
+    {
+      "kind": "disconnect",
+      "types": [],
+      "observation": {
+        "expected": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548
+        ],
+        "external_calls": [],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        0
+      ],
+      "observation": {
+        "expected": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614632,
+          614636
+        ],
+        "external_calls": [],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        1
+      ],
+      "observation": {
+        "expected": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16781312,
+              2118576,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        2
+      ],
+      "observation": {
+        "expected": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785408,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785408,
+              0,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        3
+      ],
+      "observation": {
+        "expected": [
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785664,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785664,
+              0,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        4
+      ],
+      "observation": {
+        "expected": [
+          1,
+          2,
+          1,
+          0,
+          0
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785920,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785920,
+              0,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "observation": {
+        "expected": [
+          3,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16781312,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785408,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785408,
+              0,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785664,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785664,
+              0,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785920,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785920,
+              0,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        2,
+        2,
+        4,
+        0,
+        3
+      ],
+      "observation": {
+        "expected": [
+          4,
+          0,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614628,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785408,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785408,
+              0,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785408,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785408,
+              0,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785920,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785920,
+              0,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16785664,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 1183268,
+            "name": "Core::Portable::AliasParam::setOriginal(Core::Portable::Parameter*)",
+            "arguments": [
+              16785664,
+              0,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    },
+    {
+      "kind": "disconnect",
+      "types": [
+        1,
+        1,
+        0
+      ],
+      "observation": {
+        "expected": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "executed_pcs": [
+          614520,
+          614524,
+          614528,
+          614532,
+          614536,
+          614540,
+          614544,
+          614548,
+          614552,
+          614556,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614612,
+          614616,
+          614620,
+          614624,
+          614632,
+          614636,
+          614640,
+          614644,
+          614560,
+          614564,
+          614568,
+          614572,
+          614576,
+          614580,
+          614584,
+          614588,
+          614592,
+          614596,
+          614600,
+          614604,
+          614608,
+          614632,
+          614636
+        ],
+        "external_calls": [
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16781312,
+              2118576,
+              2118344,
+              0
+            ]
+          },
+          {
+            "pc": 44632,
+            "name": "__dynamic_cast@@CXXABI_1.3",
+            "arguments": [
+              16781312,
+              2118576,
+              2118344,
+              0
+            ]
+          }
+        ],
+        "object_writes": [],
+        "native_object_delete_call_observed": false,
+        "scope": "Application instructions executed; Core/runtime observed as explicit boundary models. No native Core execution or original allocator-internals claim."
+      }
+    }
+  ],
+  "oracle_source_sha256": "f7f477927a79dc2163f96b9b73cc67eb5d5e5f44d9f9c0019446dfdc394e253b",
+  "unicorn_version": "2.1.4",
+  "isolation": "private mapped memory; allow exact app range and named observed providers only; interrupts/syscalls/invalid accesses reject"
+}

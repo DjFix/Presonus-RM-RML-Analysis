@@ -45,6 +45,9 @@ class StormFrontPanelComponent {
 public:
   explicit StormFrontPanelComponent(presonus::stormpanel_port::Dependencies &d)
       : dependencies(d) {}
+  // Provisional void return; original unencoded declaration remains pending.
+  void getTablesForGroup(int group, const int *&first, const int *&second,
+                         int &count) const;
   void cleanup();
   void mixSceneRecalled(const Presonus::StormMixSceneComponent &);
   void mixSceneEnterStoreState(const Presonus::StormMixSceneComponent &);

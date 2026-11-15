@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT / 'dependency-graph'))
 sys.path.insert(0, str(ROOT / 'uc-library/tools/registry'))
 from context_runtime import ContextError, guard, inside, sha, validate_task, validate_original_scope
 from refresh_graph import ensure_fresh
-from memgraph_endpoint import memgraph_uri
+from memgraph_endpoint import memgraph_network, memgraph_uri
 import adapter
 
 
@@ -108,7 +108,7 @@ def selector_command(root, out, action):
     # Reused observations have absolute, repository-contained symlinks. Preserve
     # the host root inside the container rather than changing it to /workspace.
     argv = ['docker','run','--name','recovery-context-'+str(time.time_ns()),
-            '--network','dependency-graph-experiment','--memory=2g','--cpus=2',
+            '--network',memgraph_network(root),'--memory=2g','--cpus=2',
             '--workdir',str(root),'-e','DEPENDENCY_GRAPH_ROOT='+str(root),
             '-e','TMPDIR='+str(out),'-e','SQLITE_TMPDIR='+str(out),
             '-v',str(root)+':'+str(root)+':ro','-v',str(out)+':'+str(out)+':rw',
@@ -128,6 +128,8 @@ def main():
     p.add_argument('--selection-jobs', type=int)
     p.add_argument('--slicing-jobs', type=int)
     p.add_argument('--resume', action='store_true')
+    p.add_argument('--reuse-snapshot', help='Prior direct-copy batch directory')
+    p.add_argument('--snapshot-copy-budget-bytes', type=int, default=64 * 1024 * 1024)
     p.add_argument('--memgraph-cap', type=int, default=4)
     p.add_argument('--selection-memory-mib', type=int, default=512)
     p.add_argument('--slicing-memory-mib', type=int, default=1536)
@@ -148,6 +150,7 @@ def main():
         import context_batch
         print(context_batch.run(sys.modules[__name__], a.tasks, a.out, a.jobs,
                                 a.selection_jobs, a.slicing_jobs, a.resume,
+                                reuse_snapshot=a.reuse_snapshot, copy_budget_bytes=a.snapshot_copy_budget_bytes,
                                 resource_options={'memgraph_cap': a.memgraph_cap,
                                     'selection_memory_mib': a.selection_memory_mib,
                                     'slicing_memory_mib': a.slicing_memory_mib,
