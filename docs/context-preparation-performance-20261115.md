@@ -203,3 +203,62 @@ Receipts under `temp/recovery-work/prepare10x10-20261115/` include:
 The scripts, regression tests and this compact report are versioned. Large
 operational receipts remain local; no generated databases/log trees are added
 to Git.
+
+## Control run, 2026-11-16
+
+The requested control completed on commit `a426eb6a0`: the same 100 original
+ELF identities, the same ten groups and the same graph generation. All 100
+packets passed prepare, finalize and validate; no reconstruction workers were
+launched. The run succeeded on its first attempt without a limit failure.
+
+| Disjoint operation | Previous successful resume | Fresh control |
+| --- | ---: | ---: |
+| Initial setup, claims and immutable snapshot | 183.419 s | 329.105 s |
+| Batch context selection | 270.267 s | 280.468 s |
+| Source slicing and builder orchestration | 21.224 s | 21.030 s |
+| Batch finalization | 167.577 s | 179.938 s |
+| Final batch validation | 138.704 s | 151.037 s |
+| Remaining coordinator/output/cleanup | 25.877 s | 28.939 s |
+| **Total** | **807.068 s (13:27)** | **990.516 s (16:31)** |
+
+This control is 183.448 seconds longer (+22.7%). It does **not** demonstrate
+faster packet preparation. Setup accounts for 145.686 seconds of the difference.
+Within setup, immutable snapshot preparation/verification took 232.758 seconds
+versus 135.447; claim/enrichment took 39.832 versus 40.034 seconds. The fresh
+control's graph freshness check took only 1.909 seconds, with no refresh needed.
+The remaining setup difference is not individually timed; it must not be
+attributed to graph refresh or claiming without further evidence.
+
+Across selection, finalization and validation, query count remained **86,403**,
+and graph query time was **231.474 versus 231.769 seconds**. The six generation
+barriers took 340.337 versus 305.275 seconds. These durations are already included
+in the table and must not be added again.
+
+The runs differ in startup mode and snapshot reuse source: the old successful
+run resumed an interrupted attempt and reused `trial10x2-20261115/prepared01`;
+the control started fresh and reused the previous 100-symbol snapshot. The
+control physically copied only 402,553 bytes (393 KiB), with 7,193 verified
+references and 7,180 bound files; the old run copied 78,553,068 bytes. Less copied
+data did not translate into less verification time. This is one control sample;
+cache state and the different reference chain are not isolated causal findings.
+
+The graph generation did not change, and no compiler extraction or graph mutation
+ran. Therefore this control does **not** exercise or measure the staging/write
+optimizations in `a426eb6a0`; their earlier same-input read-only measurements
+remain separate. A real source change is required to measure the entire refresh
+path. No artificial source edit was introduced merely to force publication.
+
+All 100 audit claims were explicitly released after the coordinator exited zero
+and live worker/process state was checked. Their history and packet artifacts
+remain local, and released packets must not be dispatched. No readiness changed.
+
+Local evidence: `temp/recovery-work/control10x10-20261116/` contains
+`measurement/MEASUREMENT.json`, `measurement/prepared/BATCH_DISPATCH.json`,
+`COMPARISON.json`, `SELECTION_COMPARISON.json`, `GRAPH_COMPARISON.json`,
+`AUDIT_CLAIMS_RELEASED.json` and `RESUME.json`. The exact command was:
+
+```sh
+uc-library/.venv/bin/python dependency-graph/measure_context_preparation.py \
+  --out temp/recovery-work/control10x10-20261116/measurement --select-audit \
+  --reuse-snapshot temp/recovery-work/prepare10x10-20261115/measurement02/prepared
+```
