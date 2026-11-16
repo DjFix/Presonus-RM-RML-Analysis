@@ -29,10 +29,16 @@ public:
   void initalize();
   void bindMixer(MixerComponentBase &mixer) { mixer_ = &mixer; }
   Core::Portable::FileName getTempFilePath();
+  // Independent real CCL view of the constructor-bound mixer save receiver.
+  void bindMixerStorage(Core::Portable::Component &provider) {
+    mixerStorage_ = &provider;
+  }
+  void storeMixerState(Core::Portable::IStorageFilter *);
 
 private:
   Core::Portable::NumericParam *highDefSource_ = nullptr;
   Core::Portable::NumericParam *highDefDestination_ = nullptr;
+  Core::Portable::Component *mixerStorage_ = nullptr;
   MixerComponentBase *mixer_ = nullptr; // borrowed source-port binding
 };
 } // namespace Presonus::Mixer

@@ -1,0 +1,1292 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "range": {
+    "address": 186276,
+    "size": 352,
+    "section": 12,
+    "file_offset": 153508
+  },
+  "producer": {
+    "sha256": "d518f27e767d16e354dfe888781677dfe3e79180a60892e0783b331dab9c3e5b",
+    "unicorn_version": "2.1.4",
+    "oracle": "original app and original ARM soft-float equality helper; exact NumericParam/Mixer primary vtables; get/set/save/load/clear external bodies are explicit deterministic boundary stubs"
+  },
+  "domain": "both mute flags; empty/single/mixed lists; null mute slots; +0/-0/1/fraction/NaN/infinity; empty/populated snapshots; nonnull channels, synchronous nonmutating parameter callbacks; save boundary makes snapshot nonempty and load boundary captures only",
+  "cases": [
+    {
+      "input": {
+        "values": [],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [],
+      "output": {
+        "values": [],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [],
+      "output": {
+        "values": [
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          null
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          0
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          0
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          0
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          0
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          0
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2147483648
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2147483648
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          2147483648
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2147483648
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2147483648
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2143289344
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2143289344
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          2143289344
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2143289344
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          2143289344
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          2143289344
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          2143289344
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          0,
+          1065353216
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          1,
+          0,
+          0
+        ],
+        [
+          "set",
+          2,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          0,
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          0,
+          1065353216
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          0,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          0,
+          1065353216
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          1
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          1,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          2,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          1065353216,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          0,
+          1065353216
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          1
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          1,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          2,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          1065353216,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          null,
+          0
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ],
+        [
+          "set",
+          2,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0,
+          null,
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          null,
+          0
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          null,
+          0
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          null,
+          0
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          2
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          2,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          null,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          null,
+          0
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          2
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          2,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          null,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ],
+        [
+          "set",
+          1,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0,
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          null
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [],
+      "output": {
+        "values": [
+          null,
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          null
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          null
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          null
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          null,
+          null
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          null,
+          null
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ],
+        [
+          "set",
+          1,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0,
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "clear"
+        ]
+      ],
+      "output": {
+        "values": [
+          1056964608,
+          2139095040
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          4286578688,
+          2147483648
+        ],
+        "mute": false,
+        "saved": false
+      },
+      "calls": [
+        [
+          "set",
+          0,
+          0,
+          0
+        ],
+        [
+          "set",
+          1,
+          0,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          0,
+          0
+        ],
+        "saved": false
+      }
+    },
+    {
+      "input": {
+        "values": [
+          4286578688,
+          2147483648
+        ],
+        "mute": false,
+        "saved": true
+      },
+      "calls": [
+        [
+          "restore",
+          1
+        ]
+      ],
+      "output": {
+        "values": [
+          4286578688,
+          2147483648
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          4286578688,
+          2147483648
+        ],
+        "mute": true,
+        "saved": false
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          1,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "saved": true
+      }
+    },
+    {
+      "input": {
+        "values": [
+          4286578688,
+          2147483648
+        ],
+        "mute": true,
+        "saved": true
+      },
+      "calls": [
+        [
+          "get",
+          0
+        ],
+        [
+          "get",
+          1
+        ],
+        [
+          "remember",
+          1
+        ],
+        [
+          "set",
+          0,
+          1065353216,
+          0
+        ],
+        [
+          "set",
+          1,
+          1065353216,
+          0
+        ]
+      ],
+      "output": {
+        "values": [
+          1065353216,
+          1065353216
+        ],
+        "saved": true
+      }
+    }
+  ]
+}

@@ -20,6 +20,20 @@ namespace Presonus::Panel {
 // only.
 class ChannelPresetComponent : public PresetComponent {
 public:
+  explicit ChannelPresetComponent(Presonus::Mixer::MixerComponentBase &mixer);
+  // Independent views for later operations; construction keeps these empty.
+  // The mixer and every bound object must outlive this component.
+  void sourcePortBindChannelView(
+      Core::ConstVector<Core::Portable::Component *> channels,
+      const Core::Portable::IStorageFilter *filter,
+      Core::Portable::Parameter *categoryFollow) {
+    state.channels = channels;
+    state.filter = filter;
+    state.categoryFollow = categoryFollow;
+  }
+  Core::Portable::ListParam *sourcePortCategoryParameter() const {
+    return categoryParameter_;
+  }
   ChannelPresetComponent(presonus::panel::PresetApplicationServices &services,
                          presonus::panel::ChannelPresetState state)
       : PresetComponent(services), state(state) {}
@@ -29,9 +43,13 @@ public:
   void paramChanged(Core::Portable::Parameter *, int) override;
   bool recall(Core::Portable::Attributes &, bool);
   bool store();
+  // Portable void declaration; original return spelling is unencoded.
+  void onPresetCategoryChanged();
 
 private:
   presonus::panel::ChannelPresetState state;
+  // Independent cached real CCL type; no original subobject offset claim.
+  Core::Portable::ListParam *categoryParameter_ = nullptr;
   const char *getCategory(int);
   void categoryChanged();
   void slotChanged(int);

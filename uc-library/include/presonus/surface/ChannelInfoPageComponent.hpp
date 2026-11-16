@@ -6,7 +6,15 @@ namespace Presonus::Surface {
 class ChannelInfoPageComponent : public Core::Portable::Component {
 public:
   using Component::Component;
+  ~ChannelInfoPageComponent() override;
+  // Independent source-port binding: vector owns storage, never pointees.
+  Core::Vector<Core::Portable::AliasParam *> &sourcePortAliases() {
+    return aliases_;
+  }
   void handleLocalSourceSelect(float value);
   void handleExternalSourceSelect();
+
+private:
+  Core::Vector<Core::Portable::AliasParam *> aliases_;
 };
 } // namespace Presonus::Surface

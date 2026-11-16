@@ -5,6 +5,12 @@
 #include <cstdint>
 #include <vector>
 
+namespace Presonus {
+class LinkableComponent;
+}
+namespace Presonus::Mixer {
+class ChannelComponent;
+}
 namespace Presonus::Dsp {
 class MultiParamProperty;
 class MultiParamIntProperty;
@@ -30,6 +36,10 @@ struct GlobalMuteCache {
   Core::Portable::Component *component = nullptr;
   Core::Portable::Parameter *parameter = nullptr;
 };
+struct AuxiliaryLink {
+  Core::Portable::Parameter *linked = nullptr;
+  Presonus::LinkableComponent *component = nullptr;
+};
 struct State {
   Core::Portable::Component *parameters = nullptr;
   Core::Portable::Component *globalComponent = nullptr;
@@ -44,6 +54,15 @@ struct State {
   std::array<int, 6> changed{};
   std::array<float, 13> cachedLevels{};
   std::array<int, 4> cachedIntegers{};
+  // Independent borrowed aux-update bindings, never original object fields.
+  // Real canonical providers and their state must outlive this facade.
+  Presonus::Mixer::ChannelComponent *identity = nullptr;
+  Presonus::LinkableComponent *linkable = nullptr;
+  Core::Portable::Parameter *auxMuteParameter = nullptr;
+  std::vector<AuxiliaryLink> auxiliaryLinks;
+  std::vector<float> auxiliaryCachedLevels;
+  float auxiliaryPanLaw = 0.f;
+  bool useLinkedAuxPan = false;
 };
 // Required app-specific boundaries. Their implementations are not recovered
 // here. Core parameters and lookups are provided by real pinned CCL source.
@@ -69,6 +88,7 @@ public:
                  presonus::input_port::Providers &providers)
       : state(state), providers(providers) {}
   void assignSubsUpdate(Dsp::MultiParamProperty &);
+  void auxLevelUpdate(Dsp::MultiParamProperty &);
   bool isPostFaderAux(int);
   bool isSubgroupModeAux(int);
   void assignLRUpdate(Dsp::MultiParamProperty &);

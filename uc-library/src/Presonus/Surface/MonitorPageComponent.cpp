@@ -1,5 +1,20 @@
 #include "presonus/surface/MonitorPageComponent.hpp"
+#include <cstring>
 namespace Presonus::Surface {
+void MonitorPageComponent::paramChanged(Core::Portable::Parameter *parameter,
+                                        int message) {
+  if (message != Core::Portable::Parameter::kEdit)
+    return;
+  const char *name = parameter->getName();
+  if (name && std::strstr(name, "monitor") == name)
+    radioSelection(parameter, 100, 102);
+  // Re-read metadata after radioSelection, as the native code does.
+  name = parameter->getName();
+  if (name && std::strstr(name, "route") == name)
+    radioSelection(parameter, 103, 121);
+  applyMonitorSelection();
+}
+
 void MonitorPageComponent::applyMonitorSelection() {
   selectionBusy_ = true;
   for (int tag = 101;; ++tag) {

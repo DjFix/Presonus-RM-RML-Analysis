@@ -1,0 +1,302 @@
+{
+  "task": "real10_g06_s03",
+  "variant": "D0",
+  "mangled": "_ZN8Presonus5Mixer22AutoFilterGroupManagerD0Ev",
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "original_range": {
+    "address": 376212,
+    "size": 268,
+    "section": 12,
+    "file_offset": 343444,
+    "sha256": "28c0950d454b868d90c2e1eafae71120639625ed691b84a8bffcfd46f047471c"
+  },
+  "cases": [
+    {
+      "entries": [],
+      "calls": [
+        [
+          "resize_owned",
+          0
+        ],
+        [
+          "owned_vector_dtor"
+        ],
+        [
+          "borrowed_vector_dtor"
+        ],
+        [
+          "component_dtor"
+        ],
+        [
+          "receiver_delete"
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3261104
+        ],
+        [
+          4,
+          4,
+          3261164
+        ],
+        [
+          168,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ]
+    },
+    {
+      "entries": [
+        0
+      ],
+      "calls": [
+        [
+          "resize_owned",
+          0
+        ],
+        [
+          "owned_vector_dtor"
+        ],
+        [
+          "borrowed_vector_dtor"
+        ],
+        [
+          "component_dtor"
+        ],
+        [
+          "receiver_delete"
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3261104
+        ],
+        [
+          4,
+          4,
+          3261164
+        ],
+        [
+          168,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ]
+    },
+    {
+      "entries": [
+        1
+      ],
+      "calls": [
+        [
+          "child_delete",
+          1
+        ],
+        [
+          "resize_owned",
+          0
+        ],
+        [
+          "owned_vector_dtor"
+        ],
+        [
+          "borrowed_vector_dtor"
+        ],
+        [
+          "component_dtor"
+        ],
+        [
+          "receiver_delete"
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3261104
+        ],
+        [
+          4,
+          4,
+          3261164
+        ],
+        [
+          168,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ]
+    },
+    {
+      "entries": [
+        0,
+        2,
+        1
+      ],
+      "calls": [
+        [
+          "child_delete",
+          2
+        ],
+        [
+          "child_delete",
+          1
+        ],
+        [
+          "resize_owned",
+          0
+        ],
+        [
+          "owned_vector_dtor"
+        ],
+        [
+          "borrowed_vector_dtor"
+        ],
+        [
+          "component_dtor"
+        ],
+        [
+          "receiver_delete"
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3261104
+        ],
+        [
+          4,
+          4,
+          3261164
+        ],
+        [
+          168,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ]
+    },
+    {
+      "entries": [
+        3,
+        1,
+        2
+      ],
+      "calls": [
+        [
+          "child_delete",
+          3
+        ],
+        [
+          "child_delete",
+          1
+        ],
+        [
+          "child_delete",
+          2
+        ],
+        [
+          "resize_owned",
+          0
+        ],
+        [
+          "owned_vector_dtor"
+        ],
+        [
+          "borrowed_vector_dtor"
+        ],
+        [
+          "component_dtor"
+        ],
+        [
+          "receiver_delete"
+        ]
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3261104
+        ],
+        [
+          4,
+          4,
+          3261164
+        ],
+        [
+          168,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ]
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn 2.1.4",
+    "producer_sha256": "42fbda9d35b73d79fbb83a9ec9661e6bca32277a971acaf173742abc08ee85ac",
+    "stubs": [
+      "child virtual deleting destructor",
+      "Core resize/vector destructor/Component destructor",
+      "operator delete import for D0"
+    ],
+    "domain": "5 valid unique-owned-entry lists, empty/null/mixed/three children; original order, receiver count reset and vtable writes; no EH/concurrency or child mutation",
+    "limitations": "Core/child/deallocator calls are explicit native test boundaries; real CCL and actual host cleanup/deallocation observed in C++ separately. D1/D2 original ranges distinct, not aliases."
+  }
+}

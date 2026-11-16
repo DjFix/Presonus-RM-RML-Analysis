@@ -49,6 +49,11 @@ void FrontPanelComponent::updateMixerLocks() {
   dependencies.perform(Action::LockMasters, mastersLocked());
   dependencies.perform(Action::UpdateFatChannel, 0);
 }
+bool FrontPanelComponent::fadersLocked() const {
+  static auto *lockFadersParam = state.settings.getParameterByTag(38);
+  const bool locked = lockFadersParam && lockFadersParam->getValue() > 0.f;
+  return mixerLocked() && locked;
+}
 bool FrontPanelComponent::mastersLocked() const {
   static auto *lockMastersParam = state.settings.getParameterByTag(37);
   bool locked = lockMastersParam && lockMastersParam->getValue() > 0;

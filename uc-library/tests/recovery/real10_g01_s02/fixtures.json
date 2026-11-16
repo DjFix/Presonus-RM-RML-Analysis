@@ -1,0 +1,149 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus7Surface24ChannelInfoPageComponentD0Ev",
+      "address": 643472,
+      "size": 172,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 610704,
+      "sha256": "67979046242d4c12e73177ffc92cf3025ca36aa0117aeebd4f27db880e94220a"
+    }
+  ],
+  "native_calls": [
+    [
+      "alias_vector_destructor",
+      180
+    ],
+    [
+      "component_destructor",
+      0
+    ],
+    [
+      "operator_delete",
+      0
+    ]
+  ],
+  "native_receiver_writes": [
+    [
+      132,
+      4,
+      1679128
+    ],
+    [
+      200,
+      4,
+      1713852
+    ],
+    [
+      4,
+      4,
+      1679112
+    ],
+    [
+      176,
+      4,
+      1679152
+    ],
+    [
+      0,
+      4,
+      1679040
+    ],
+    [
+      4,
+      4,
+      1685508
+    ],
+    [
+      132,
+      4,
+      1677424
+    ],
+    [
+      0,
+      4,
+      1685448
+    ]
+  ],
+  "cases": [
+    {
+      "stdin": "0 0 0",
+      "stdout": "1 3 borrowed"
+    },
+    {
+      "stdin": "0 0 1",
+      "stdout": "2 6 3 borrowed"
+    },
+    {
+      "stdin": "0 1 0",
+      "stdout": "2 5 3 borrowed"
+    },
+    {
+      "stdin": "0 1 1",
+      "stdout": "3 5 6 3 borrowed"
+    },
+    {
+      "stdin": "0 2 0",
+      "stdout": "3 5 5 3 borrowed"
+    },
+    {
+      "stdin": "0 2 1",
+      "stdout": "4 5 5 6 3 borrowed"
+    },
+    {
+      "stdin": "1 0 0",
+      "stdout": "2 1 3 borrowed"
+    },
+    {
+      "stdin": "1 0 1",
+      "stdout": "3 1 6 3 borrowed"
+    },
+    {
+      "stdin": "1 1 0",
+      "stdout": "3 1 5 3 borrowed"
+    },
+    {
+      "stdin": "1 1 1",
+      "stdout": "4 1 5 6 3 borrowed"
+    },
+    {
+      "stdin": "1 2 0",
+      "stdout": "4 1 5 5 3 borrowed"
+    },
+    {
+      "stdin": "1 2 1",
+      "stdout": "5 1 5 5 6 3 borrowed"
+    },
+    {
+      "stdin": "17 0 0",
+      "stdout": "2 1 3 borrowed"
+    },
+    {
+      "stdin": "17 0 1",
+      "stdout": "3 1 6 3 borrowed"
+    },
+    {
+      "stdin": "17 1 0",
+      "stdout": "3 1 5 3 borrowed"
+    },
+    {
+      "stdin": "17 1 1",
+      "stdout": "4 1 5 6 3 borrowed"
+    },
+    {
+      "stdin": "17 2 0",
+      "stdout": "4 1 5 5 3 borrowed"
+    },
+    {
+      "stdin": "17 2 1",
+      "stdout": "5 1 5 5 6 3 borrowed"
+    }
+  ],
+  "case_count": 18,
+  "domain": "Valid nonthrowing receivers; empty/1/17 vector entries, 0/1/2 owned children, 0/1 CCL-owned numeric parameter; alias/item pointers borrowed; Groups tagged state owns its items with empty secondary state parameter list.",
+  "native_boundary": "Original app instructions executed in Unicorn; Core vector/component destructor and libc++ delete imports are explicit trace-only boundaries, not executed firmware provider bodies. Provider observations separately execute actual pinned CCL vectors/component/parameter cleanup and allocation release in --provider mode.",
+  "provider": "Independent Provider/ProviderGroup containers compile actual CCL Vector/Component code; actual delete/delete[] call std::free after watched-pointer logging; callbacks originate from actual child/parameter destruction. No reconstructed destructor called in provider mode.",
+  "producer_version": "2.1.4"
+}

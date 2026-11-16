@@ -28,6 +28,9 @@ struct Application {
 };
 struct State {
   Presonus::LcdView *lcd = nullptr;
+  // Independent borrowed link for the native view observer slot (+0x204).
+  // Bind only while the pointed-to slot outlives this component.
+  Presonus::MainLCDComponent **viewObserverSlot = nullptr;
   Presonus::PageComponent *current = nullptr;
   Presonus::PageComponent *next = nullptr;
   Presonus::PageComponent *back = nullptr;
@@ -47,6 +50,7 @@ namespace Presonus {
 class MainLCDComponent : public Core::Portable::Component {
 public:
   MainLCDComponent();
+  ~MainLCDComponent() override;
   // Independent binding API; the borrowed application must outlive use.
   void bindApplication(presonus::mainlcd_port::Application &value) {
     application = &value;
@@ -54,6 +58,8 @@ public:
   MainLCDComponent(presonus::mainlcd_port::Application &application,
                    presonus::mainlcd_port::State &state)
       : application(&application), state(state) {}
+  PageComponent *getPageByTag(int tag) const;
+  void syncPageParams();
   bool hasBackPage() const;
   void pushBackPage(PageComponent *page);
   PageComponent *popBackPage();
@@ -68,6 +74,9 @@ public:
   void showPage(int tag);
   void *castTo(int type) override;
   void showStartPage();
+  // Portable base contract retains the existing required application boundary;
+  // concrete MainScreen overrides this with its verified original default.
+  virtual int getStartPageTag() const;
 
 private:
   presonus::mainlcd_port::Application &requireApplication() const;

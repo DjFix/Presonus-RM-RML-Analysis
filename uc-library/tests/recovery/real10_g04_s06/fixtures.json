@@ -1,0 +1,61 @@
+{
+  "task_id": "real10_g04_s06",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus17TargetedComponentD0Ev",
+  "section": ".text",
+  "file_offset": 504860,
+  "address": 537628,
+  "size": 56,
+  "range_sha256": "88b38a685fe5c9fe1f884878a93ae3a829494d33ac4344dac041ed761f86d47d",
+  "cases": [
+    {
+      "initial_fill": 0,
+      "trace": [
+        {
+          "call": "ccl-component-destructor-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f360000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "call": "operator-delete-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f360000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "returned_receiver": true
+    },
+    {
+      "initial_fill": 85,
+      "trace": [
+        {
+          "call": "ccl-component-destructor-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f360055555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        },
+        {
+          "call": "operator-delete-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f360055555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"
+        }
+      ],
+      "returned_receiver": true
+    },
+    {
+      "initial_fill": 255,
+      "trace": [
+        {
+          "call": "ccl-component-destructor-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f3600ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        {
+          "call": "operator-delete-boundary",
+          "receiver_offset": 0,
+          "state_hex": "286f3600646f3600ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "returned_receiver": true
+    }
+  ],
+  "oracle": "Unicorn executes exact original ARM application range; CCL destructor and allocator are explicit opaque call boundaries, not executed native provider bodies"
+}

@@ -1,0 +1,106 @@
+{
+  "producer_versions": {
+    "python": "3.12.3",
+    "unicorn": "2.1.4",
+    "pyelftools": "0.33"
+  },
+  "task_id": "real10_g04_s07",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus17TargetedComponent6onIdleEv",
+  "section": ".text",
+  "file_offset": 501912,
+  "address": 534680,
+  "size": 80,
+  "range_sha256": "413f35e8cb9475b0c9442cbc3cdc08616031c26b9b21665283bdc1278f74eb04",
+  "helper_ranges": [
+    {
+      "name": "doUpdates",
+      "address": 247996,
+      "file_offset": 215228,
+      "size": 16,
+      "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    },
+    {
+      "name": "postDoUpdates",
+      "address": 248012,
+      "file_offset": 215244,
+      "size": 16,
+      "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    }
+  ],
+  "cases": [
+    {
+      "pending": 0,
+      "mutation": -1,
+      "trace": "C",
+      "final_pending": 0
+    },
+    {
+      "pending": 0,
+      "mutation": 0,
+      "trace": "C",
+      "final_pending": 0
+    },
+    {
+      "pending": 0,
+      "mutation": 1,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 0,
+      "mutation": 255,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 1,
+      "mutation": -1,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 1,
+      "mutation": 0,
+      "trace": "C",
+      "final_pending": 0
+    },
+    {
+      "pending": 1,
+      "mutation": 1,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 1,
+      "mutation": 255,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 255,
+      "mutation": -1,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 255,
+      "mutation": 0,
+      "trace": "C",
+      "final_pending": 0
+    },
+    {
+      "pending": 255,
+      "mutation": 1,
+      "trace": "CDP",
+      "final_pending": 0
+    },
+    {
+      "pending": 255,
+      "mutation": 255,
+      "trace": "CDP",
+      "final_pending": 0
+    }
+  ],
+  "oracle": "Original RM13731 ARM onIdle and both exact 16-byte app helper bodies execute. Receiver uses original Targeted primary table+8. Core onIdle is a controlled child-dispatch/mutation boundary; pinned host provider is independently replayed."
+}

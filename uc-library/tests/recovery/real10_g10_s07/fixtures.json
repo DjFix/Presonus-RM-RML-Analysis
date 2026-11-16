@@ -1,0 +1,23 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "address": 702856,
+  "size": 36,
+  "section": ".text",
+  "offset": 670088,
+  "range_sha256": "eebaf530cd76e75d8e065d504451becdb560548207ca593d95d4f5471425ce2b",
+  "cases": [
+    {
+      "provider_calls": 1,
+      "writes": [],
+      "returned_receiver": true,
+      "adjacent_preserved": true
+    },
+    {
+      "provider_calls": 1,
+      "writes": [],
+      "returned_receiver": true,
+      "adjacent_preserved": true
+    }
+  ],
+  "domain": "Two valid receiver states; exact native D1 calls Core FileStream destructor(receiver+0x114), returns receiver and preserves adjacent sentinel. Core body is an explicit captured boundary. Actual pinned FileStream cleanup and real fclose descriptor invalidation execute separately on empty/owned-file C++ models."
+}

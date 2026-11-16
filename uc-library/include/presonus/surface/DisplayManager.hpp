@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/gui/coreview.h"
+#include "core/public/corevector.h"
 #include "presonus/surface/IDisplayPort.hpp"
 #include <vector>
 namespace presonus::surface_display_port {
@@ -20,6 +21,7 @@ struct TouchInputEvent {
 // claimed.
 class DisplayManager {
 public:
+  virtual ~DisplayManager();
   void flushColorLcdUpdates();
   // Original return unresolved; source-port void choice.
   void screenTouched(const Panel::ControlRegistrar &, TouchInputEvent);
@@ -28,6 +30,11 @@ public:
 
 private:
   static DisplayManager *theInstance;
+  // Independent ownership extension for native destruction observations.
+  // Existing root_/port_/touchViews_ bindings remain borrowed. Original LcdView
+  // declarations/receiver offsets are not claimed by this source port.
+  Core::Vector<Core::Portable::RootView *> ownedViews_;
+  void *ownedCommandStorage_ = nullptr;
   Core::Portable::RootView *root_ = nullptr;
   IDisplayPort *port_ = nullptr;
   bool suspended_ = false;
@@ -37,6 +44,13 @@ private:
 } // namespace Presonus
 namespace presonus::surface_display_port {
 struct DisplayManagerAccess {
+  static bool adoptView(Presonus::DisplayManager &m,
+                        Core::Portable::RootView *p) {
+    return m.ownedViews_.add(p);
+  }
+  static void adoptCommandStorage(Presonus::DisplayManager &m, void *p) {
+    m.ownedCommandStorage_ = p;
+  }
   static void
   bindTouchViews(Presonus::DisplayManager &m,
                  const std::vector<Core::Portable::RootView *> &views) {

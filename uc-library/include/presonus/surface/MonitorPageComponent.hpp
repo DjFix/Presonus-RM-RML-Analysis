@@ -13,6 +13,7 @@ public:
   // call. Finite ordered intervals avoid int32 increment overflow. Unknown
   // provider overrides/reentrant mutation are outside the validated domain.
   void applyMonitorSelection();
+  void paramChanged(Core::Portable::Parameter *parameter, int message);
   bool monitorSelectionInProgress() const { return selectionBusy_; }
   void radioSelection(Core::Portable::Parameter *selected, int first, int last);
 

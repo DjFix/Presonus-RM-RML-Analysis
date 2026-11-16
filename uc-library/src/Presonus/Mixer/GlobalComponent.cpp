@@ -193,3 +193,20 @@ void GlobalComponent::initalize() {
     updateHighDef();
 }
 } // namespace Presonus::Mixer
+
+#include "core/portable/corepersistence.h"
+namespace Presonus::Mixer {
+void GlobalComponent::storeMixerState(Core::Portable::IStorageFilter *filter) {
+  if (!mixerStorage_)
+    throw std::logic_error("Global store requires real mixer storage binding");
+  using namespace Core::Portable;
+  Attributes attributes(AttributeAllocator::getDefault());
+  AttributesBuilder builder(attributes, true);
+  OutputStorage storage(builder, filter);
+  mixerStorage_->save(storage);
+  const auto path = getTempFilePath();
+  ArchiveUtils::saveInBackground(path.str(), attributes, nullptr,
+                                 static_cast<Archiver::Format>(0),
+                                 static_cast<FileStorageContext::Mode>(0), 0);
+}
+} // namespace Presonus::Mixer

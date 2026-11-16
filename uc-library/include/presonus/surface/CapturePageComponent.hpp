@@ -50,7 +50,7 @@ public:
 namespace Presonus::Surface {
 // Portable source contract using real pinned Core. Construction, return types,
 // inheritance and fields are adaptations, not recovered layout or ARM32 ABI.
-class CapturePageComponent : public Core::Portable::ParamObserverBase {
+class CapturePageComponent : public Core::Portable::Component {
 public:
   CapturePageComponent(Core::Portable::Component &parameters,
                        PageComponent &page,
@@ -59,6 +59,10 @@ public:
                        Core::Portable::Parameter *soundcheck = nullptr)
       : parameters_(parameters), page_(page), bindings_(bindings), daw_(daw),
         soundcheck_(soundcheck) {}
+  // Real CCL base cleanup; borrowed DAW, page and binding lifetimes are
+  // preserved. Source-port base choice is not an original class layout
+  // assertion.
+  ~CapturePageComponent() override;
   void onObjectChanged(IDAWComponentObserver::ObjectChangeMessage);
   void setDAWComponent(DAWClientComponent *);
   void syncSoundcheckParam();

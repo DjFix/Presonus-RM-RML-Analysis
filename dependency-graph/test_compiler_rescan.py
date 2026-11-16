@@ -148,10 +148,10 @@ class CompilerRescanTests(unittest.TestCase):
         self.assertEqual(budget.limits.transfer_bytes, BudgetLimits().transfer_bytes)
         with self.assertRaisesRegex(ContextError, 'configured ceilings'):
             self.exercise(compiler_rescan='invalid', reviewed_rows=500000,
-                          reviewed_bytes={'sqlite_write_bytes': 4 * 1024**3 + 1})
+                          reviewed_bytes={'sqlite_write_bytes': 12 * 1024**3 + 1})
 
-    def test_measured_request_envelope_review_has_finite_1gib_ceiling(self):
-        maximum = 1024**3
+    def test_measured_request_envelope_review_has_finite_3gib_ceiling(self):
+        maximum = 3 * 1024**3
         plan = self.exercise(compiler_rescan='measured apply and verification envelopes',
                              reviewed_rows=2000000,
                              reviewed_bytes={'transfer_bytes': maximum})[-1][2]
@@ -175,15 +175,15 @@ class CompilerRescanTests(unittest.TestCase):
         self.assertEqual(budget.limits.journal_bytes, limits['journal_bytes'])
         self.assertEqual(budget.limits.sqlite_write_bytes, limits['sqlite_write_bytes'])
         self.assertEqual(budget.limits.transfer_bytes, limits['transfer_bytes'])
-        self.assertEqual(BudgetLimits().journal_bytes, 1024**3)
-        self.assertEqual(BudgetLimits().sqlite_write_bytes, 4 * 1024**3)
-        self.assertEqual(BudgetLimits().transfer_bytes, 1024**3)
+        self.assertEqual(BudgetLimits().journal_bytes, 3 * 1024**3)
+        self.assertEqual(BudgetLimits().sqlite_write_bytes, 12 * 1024**3)
+        self.assertEqual(BudgetLimits().transfer_bytes, 3 * 1024**3)
         with self.assertRaises(BudgetExceeded):
             budget.preflight(journal_estimate_bytes=limits['journal_bytes'] + 1,
                              sqlite_write_estimate_bytes=0, rows=0, transfer_bytes=0)
-        for excessive in ({'journal_bytes': 1024**3 + 1},
-                          {'sqlite_write_bytes': 4 * 1024**3 + 1},
-                          {'transfer_bytes': 1024**3 + 1}):
+        for excessive in ({'journal_bytes': 3 * 1024**3 + 1},
+                          {'sqlite_write_bytes': 12 * 1024**3 + 1},
+                          {'transfer_bytes': 3 * 1024**3 + 1}):
             with self.subTest(excessive=excessive), self.assertRaisesRegex(ContextError, 'configured ceilings'):
                 self.exercise(compiler_rescan='Out of reviewed bounds',
                               reviewed_rows=1800000, reviewed_bytes=excessive)

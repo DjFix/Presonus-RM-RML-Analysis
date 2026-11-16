@@ -28,6 +28,48 @@ def symbols(obj):
  assert syms['_ZN8Presonus5Mixer19BeastMixerComponentD1Ev']==syms['_ZN8Presonus5Mixer19BeastMixerComponentD2Ev']
  dis=run(['/usr/bin/objdump','-dr',obj]);d0=dis.split('<_ZN8Presonus5Mixer19BeastMixerComponentD0Ev>:')[1].split('\n\n')[0];assert '_ZdlPv' in d0 and '_ZdlPvm' not in d0
  return dict(symbols={k:v for k,v in syms.items() if 'BeastMixerComponentD' in k},d0_disassembly=d0)
+
+def _current_canonical_binding(root, obj, exe, integration, source, providers=()):
+ from pathlib import Path
+ if not integration or Path(integration).resolve() != (root/'uc-library/validation/integration.json').resolve():return None
+ assert obj and exe, 'Canonical replay requires explicit actual object and executable'
+ import importlib.util
+ helper=root/'uc-library/tools/recovery/canonical_compile_bindings.py'
+ spec=importlib.util.spec_from_file_location('actual_canonical_bindings',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+ value=module.bind(root,Path(obj),source,exe_path=Path(exe),required_provider_sources=providers,required_archive_names=('libcorelib.a','libpresonus_core_allocator.a'))
+ unexpected=[p for p in value['files'] if p.startswith('third_party/ccl-framework/') and not p.startswith('third_party/ccl-framework/core/')]
+ assert not unexpected, ('Unexpected non-Core CCL inputs',unexpected)
+ core={p:h for p,h in value['files'].items() if p.startswith('third_party/ccl-framework/core/')}
+ library={p.removeprefix('uc-library/'):h for p,h in value['files'].items() if p.startswith('uc-library/')}
+ assert core and source.removeprefix('uc-library/') in library, 'Actual canonical production/Core closure required'
+ return {'binding':value,'sources':library,'repository_sources':core,'helper_sha256':hashlib.sha256(helper.read_bytes()).hexdigest()}
+
+def _attach_current_canonical(proof, current):
+ if current is None:return
+ proof['actual_canonical_compile_binding']=current['binding']
+ proof['canonical_producer_helper_sha256']=current['helper_sha256']
+ proof['canonical_source_binding_scope']='Current actual Release object/depfile/link/archive inputs; historical frozen dependency expectations retained in original archived producer/proof, not refreshed or relabeled'
+ proof['historical_provider_archives']=proof.get('provider_archives')
+ proof['provider_archives']={v['path']:v['sha256'] for v in current['binding']['link']['archives']}
+ proof['local_compile_defaults']=proof.get('compile_flags')
+ proof['actual_canonical_compile_entries']=[x['compile_entry'] for x in current['binding']['objects']]
+ proof['actual_canonical_sources']=current['sources']
+ proof['actual_canonical_repository_sources']=current['repository_sources']
+ for row in [*proof.get('proposed_readiness',{}).get('ready',[]),*proof.get('proposed_readiness',{}).get('pending',[])]:
+  row.setdefault('sources',{}).update(current['sources'])
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in row['sources'].items():
+   relative=__import__('pathlib').Path(p)
+   assert not relative.is_absolute() and '..' not in relative.parts, ('Invalid library source binding',p)
+   assert hashlib.sha256((repository/'uc-library'/relative).read_bytes()).hexdigest()==h, ('Retained library source binding changed outside actual closure',p)
+  prior=row.setdefault('repository_sources',{})
+  assert all(p.startswith('third_party/ccl-framework/core/') for p in prior), 'Unexpected prior non-Core repository dependency'
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in prior.items():assert hashlib.sha256((repository/p).read_bytes()).hexdigest()==h, ('Prior verified Core implementation changed',p)
+  for p,h in current['repository_sources'].items():
+   assert p not in prior or prior[p]==h, ('Conflicting verified Core source binding',p)
+  prior.update(current['repository_sources'])
+
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('mode',nargs='?',default='replay')
  for n in ['exe','object','integration','out','dependency-proof']:ap.add_argument('--'+n,type=pathlib.Path)
@@ -49,8 +91,16 @@ def main():
  sym=symbols(obj)
  run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',HDR,SRC,TEST])
  deps={};closure_provenance={}
+ canonical_binding=_current_canonical_binding(ROOT,a.object,a.exe,a.integration,SRC,('uc-library/src/Presonus/Mixer/ChannelComponent.cpp',))
  canonical=bool(a.exe or a.object or a.integration)
- if canonical or a.dependency_proof:
+ if canonical_binding is not None:
+  # Validate the supplied historical proof identity without claiming old hashes built current objects.
+  assert a.dependency_proof and a.dependency_proof_sha256
+  dp=a.dependency_proof.resolve();assert sha(dp)==a.dependency_proof_sha256
+  historical=json.loads(dp.read_text());assert historical['task_id']==TASK and historical['functions'][0]['mangled']==REQ['targets'][0]['mangled'] and historical['original_elf_sha256']==REQ['targets'][0]['original_elf_sha256']
+  deps=canonical_binding['binding']['files']
+  closure_provenance={'kind':'actual_canonical_compile_dependencies','binding':canonical_binding['binding'],'historical_dependency_proof':{'path':str(dp),'sha256':sha(dp),'scope':'Retained original identity/history only, not current compile evidence'}}
+ elif canonical or a.dependency_proof:
   assert a.dependency_proof and a.dependency_proof_sha256,'Explicit hash-bound --dependency-proof and --dependency-proof-sha256 required for canonical supplied binaries'
   dp=a.dependency_proof.resolve();assert sha(dp)==a.dependency_proof_sha256,'Historical dependency proof hash mismatch'
   historical=json.loads(dp.read_text());assert historical['task_id']==TASK
@@ -72,16 +122,18 @@ def main():
  required={'third_party/ccl-framework/core/portable/corecomponent.h','third_party/ccl-framework/core/portable/coreparams.h','third_party/ccl-framework/core/public/corevector.h','uc-library/include/presonus/mixer/MixerComponent.hpp','uc-library/include/presonus/mixer/ChannelComponent.hpp',HDR,SRC}
  assert required <= deps.keys(),('Incomplete dependency closure',sorted(required-deps.keys()))
  snap=native.SNAP;captured=json.loads((snap.parent/'SNAPSHOT.json').read_text())['files'];bound=[]
- for name,digest in deps.items():
-  if name in [HDR,SRC,TEST,'uc-library/tests/recovery/trial10x2_beast_d2/Replay.cpp']:continue
-  assert name in captured,(name,'missing frozen transitive input')
-  assert digest==captured[name]==sha(snap/name),(name,'changed frozen transitive input')
-  bound.append(dict(path=name,sha256=digest,frozen_read_path=str(snap/name)))
+ if canonical_binding is None:
+  for name,digest in deps.items():
+   if name in [HDR,SRC,TEST,'uc-library/tests/recovery/trial10x2_beast_d2/Replay.cpp']:continue
+   assert name in captured,(name,'missing frozen transitive input')
+   assert digest==captured[name]==sha(snap/name),(name,'changed frozen transitive input')
+   bound.append(dict(path=name,sha256=digest,frozen_read_path=str(snap/name)))
  sources={p.removeprefix('uc-library/'):sha(ROOT/p) for p in [HDR,SRC]}
  providersources={p:sha(ROOT/p) for p in deps if p.startswith('third_party/')}
  limits=['Partial portable source lifecycle: original constructor, complete fields, inheritance/vptr layout, exception cleanup, ARM ABI and hardware remain unresolved. Tagged constructor is independent and receives live borrowed state/services.','Actual MixerComponent inline destructor owns only references and preserves state/services. It has no Core resource cleanup. Real borrowed Channel/Core parameter survives mixer destruction; harness separately destroys Channel and observes actual parameter kDestroyed, never credited as mixer cleanup.','Exact original ARM app instructions execute; original base body is an explicit real canonical host provider boundary and original delete boundary executes actual host unsized deallocation, not original ARM base/Core instructions. Native vptr stores and object-return identity are recorded, not reproduced as portable fields/ordinary return declaration.','App-service fixture methods abort if unexpectedly invoked; no app service method is invoked by the actual inline base destructor. Native object storage fill only 0/165/255, counts 1/2/7/32, valid lifetime, no allocation failure/concurrency/EH/hardware coverage.','Generated host D1/D2 alias separately identified but only assigned original D2/D0 receive credit. Canonical full integration and guarded readiness are Root owned.']
  t=REQ['targets'][0];entry=dict(original_elf_sha256=t['original_elf_sha256'],mangled=t['mangled'],sources=sources,repository_sources=providersources,domain=fixture['scope'],portable_ready=False,declaration_uncertainties=limits[:1],cpp_compiled=True,mangling_namespace_checked=True)
  proof=dict(version=1,task_id=TASK,functions=[entry],validation_domain=fixture['scope'],limitations=limits,original_elf_sha256=fixture['elf_sha256'],native_ranges=fixture['ranges'],case_count=len(fixture['cases']),arm_differential_passed=True,compiled_mangled_names_matched=True,behavior_comparison_passed=True,formatter_version=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler_version=run(['/usr/bin/c++','--version']).splitlines()[0],compiled_symbols=sym,producer_inputs={str(BASE.relative_to(ROOT)/x):sha(BASE/x) for x in ['Replay.cpp','native.py','check.py','fixtures.json']},source_hashes={p:sha(ROOT/p) for p in [HDR,SRC]},captured_transitive_inputs=deps,dependency_closure_provenance=closure_provenance,fresh_replay_argv=[sys.executable,*sys.argv],canonical_supplied_binaries=canonical,verified_frozen_transitive_inputs=bound,provider_sources=providersources,provider_archives={str(v['frozen_read_path']):v['sha256'] for v in PROVIDER['archives'].values()},provider_supplement={'path':str(SUP),'sha256':sha(SUP),'approval_path':str(APP),'approval_sha256':sha(APP)},fixture={'path':str(BASE.relative_to(ROOT)/'fixtures.json'),'sha256':sha(BASE/'fixtures.json')},executable={'path':str(exe),'sha256':sha(exe)},object={'path':str(obj),'sha256':sha(obj)},proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[entry]),phase_timestamps=dict(replay_start=start,replay_end=datetime.datetime.now(datetime.timezone.utc).isoformat()),producer_session_id=os.environ.get('CODEX_THREAD_ID'))
+ _attach_current_canonical(proof,canonical_binding)
  if a.integration:assert a.integration.is_file();proof['integration']={'path':str(a.integration),'sha256':sha(a.integration)};proof['proposed_readiness']['canonical_binding_pending']=False
  out=a.out or ROOT/'uc-library/candidates'/TASK/'worker-proof.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(proof,indent=2)+'\n');print(len(fixture['cases']),'exact native/provider/product lifecycle comparisons passed; proof',out)
 if __name__=='__main__':main()

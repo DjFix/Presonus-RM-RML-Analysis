@@ -3,6 +3,7 @@ namespace Presonus::Surface {
 using Core::Portable::AliasParam;
 using Core::Portable::Component;
 using Core::Portable::Parameter;
+CapturePageComponent::~CapturePageComponent() = default;
 void CapturePageComponent::onObjectChanged(
     IDAWComponentObserver::ObjectChangeMessage message) {
   if (static_cast<unsigned int>(message) == 2)

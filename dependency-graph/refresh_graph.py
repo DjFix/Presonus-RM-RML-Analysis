@@ -123,8 +123,8 @@ def reviewed_row_allowance(path):
         raise ContextError('Row-budget review must be a repository-local file')
     review = json.loads(path.read_text())
     rows_limit = review.get('rows')
-    if type(rows_limit) is not int or not 100000 < rows_limit <= 10000000:
-        raise ContextError('Reviewed rows must be finite and in 100001..10000000')
+    if type(rows_limit) is not int or not 100000 < rows_limit <= 30000000:
+        raise ContextError('Reviewed rows must be finite and in 100001..30000000')
     if not isinstance(review.get('reason'), str) or not review['reason'].strip():
         raise ContextError('Row-budget review requires a concrete reason')
     evidence = review.get('evidence', {})
@@ -136,8 +136,8 @@ def reviewed_row_allowance(path):
     if not isinstance(byte_limits, dict):
         raise ContextError('Reviewed byte limits must be an object')
     if byte_limits:
-        ceilings = {'journal_bytes': 1024**3, 'sqlite_write_bytes': 4 * 1024**3,
-                    'transfer_bytes': 1024**3}
+        ceilings = {'journal_bytes': 3 * 1024**3, 'sqlite_write_bytes': 12 * 1024**3,
+                    'transfer_bytes': 3 * 1024**3}
         if not isinstance(byte_limits, dict) or set(byte_limits) - ceilings.keys():
             raise ContextError('Only bounded journal/write/transfer rescan exceptions are supported')
         if any(type(value) is not int or not 0 < value <= ceilings[key]

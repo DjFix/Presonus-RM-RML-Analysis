@@ -1,4 +1,6 @@
 #include "presonus/mixer/InputComponent.hpp"
+#include "presonus/LinkableComponent.hpp"
+#include "presonus/mixer/TalkbackInputComponent.hpp"
 #include <cstring>
 #include <stdexcept>
 namespace {
@@ -32,6 +34,90 @@ void Property::append(int tag, std::uint32_t value) {
 }
 } // namespace presonus::input_port
 namespace Presonus::Mixer {
+
+void InputComponent::auxLevelUpdate(Dsp::MultiParamProperty &opaque) {
+  // The facade has no asserted original inheritance. RTTI is observed on the
+  // borrowed real canonical channel identity, including Talkback's real type.
+  if (!state.identity)
+    throw std::invalid_argument(
+        "aux update requires canonical channel identity");
+  const bool talkback = dynamic_cast<TalkbackInputComponent *>(state.identity);
+  auto &property = providers.resolveProperty(&opaque);
+  auto value = [&](int tag) {
+    if (!state.parameters)
+      throw std::invalid_argument("aux update parameter component required");
+    auto *p = state.parameters->getParameterByTag(tag);
+    if (!p)
+      throw std::invalid_argument("required aux update parameter missing");
+    return p->getValue();
+  };
+  auto panValue = [&](int tag) {
+    auto *p = state.parameters->getParameterByTag(tag);
+    return p ? p->getValue() : 0.f;
+  };
+  auto store = [&](std::size_t index, float level) {
+    changed(state.auxiliaryCachedLevels.at(index), level,
+            static_cast<int>(index), property);
+  };
+  auto curve = [](float pan, float law) {
+    const float square = pan * (pan * law);
+    const float linear = pan * (1.f - law);
+    return square + linear;
+  };
+  for (std::size_t index = 0; index < state.auxiliaries.size(); ++index) {
+    const int i = static_cast<int>(index);
+    float level = value(0xe0 + i);
+    if (isPostFaderAux(i))
+      level = level * state.levels[5];
+    if (isSubgroupModeAux(i))
+      level = state.levels[5];
+    if (isGlobalAuxMute() || talkback) {
+      if (!state.auxMuteParameter)
+        throw std::invalid_argument("aux mute parameter required");
+      if (state.auxMuteParameter->getValue() > 0.f)
+        level = 0.f;
+    }
+    auto &link = state.auxiliaryLinks.at(index);
+    if (!link.linked)
+      throw std::invalid_argument("aux link parameter required");
+    if (link.linked->getValue() > 0.f) {
+      if (!link.component)
+        throw std::invalid_argument("canonical aux link provider required");
+      if (link.component->isLinkSlave())
+        continue;
+      const std::size_t even = index & 254u;
+      const int pair = static_cast<int>(even >> 1);
+      float pan = value(isSubgroupModeAux(i) ? 19 : 0xf0 + pair);
+      bool blocked = false;
+      if (!auxAssigned(i))
+        blocked = !(isGlobalAuxMute() && !talkback);
+      if (isSubgroupModeAux(i))
+        blocked = !auxAssigned(i);
+      float left =
+          blocked ? 0.f : curve(1.f - pan, state.auxiliaryPanLaw) * level;
+      float right = blocked ? 0.f : curve(pan, state.auxiliaryPanLaw) * level;
+      if (!state.linkable)
+        throw std::invalid_argument(
+            "canonical receiver link provider required");
+      if (state.linkable->isLinked() && state.useLinkedAuxPan) {
+        pan = panValue(isSubgroupModeAux(i) ? 20 : 0xf8 + pair);
+        pan = (state.channelIndex & 1) ? pan * 0.5f + 0.5f : pan * -0.5f + 0.5f;
+        left = blocked ? 0.f : curve(1.f - pan, state.auxiliaryPanLaw) * level;
+        right = blocked ? 0.f : curve(pan, state.auxiliaryPanLaw) * level;
+      }
+      store(even, left);
+      store(even + 1, right);
+    } else {
+      bool blocked = false;
+      if (!auxAssigned(i))
+        blocked = !(isGlobalAuxMute() && !talkback);
+      if (isSubgroupModeAux(i))
+        blocked = !auxAssigned(i);
+      store(index, blocked ? 0.f : level);
+    }
+  }
+}
+
 void InputComponent::assignSubsUpdate(Dsp::MultiParamProperty &opaque) {
   auto &p = providers.resolveProperty(&opaque);
   for (std::size_t i = 0; i < state.subgroups.size(); ++i) {

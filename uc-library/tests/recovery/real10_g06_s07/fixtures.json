@@ -1,0 +1,268 @@
+{
+  "task": "real10_g06_s07",
+  "mangled": "_ZN8Presonus5Mixer11FXComponent4loadERKN4Core8Portable12InputStorageE",
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "original_range": {
+    "address": 244492,
+    "size": 296,
+    "section": 12,
+    "file_offset": 211724,
+    "sha256": "f9820465fc6422f37d30ab339ee6917fa0d65fb0911d3c7925fe89a4ab421b84"
+  },
+  "cases": [
+    {
+      "filter": 0,
+      "result": 0,
+      "values": [
+        0,
+        1065353216,
+        3212836864
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 0
+    },
+    {
+      "filter": 0,
+      "result": 0,
+      "values": [
+        1069547520,
+        3223322624,
+        1120403456
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 0
+    },
+    {
+      "filter": 0,
+      "result": 1,
+      "values": [
+        0,
+        1065353216,
+        3212836864
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 1
+    },
+    {
+      "filter": 0,
+      "result": 1,
+      "values": [
+        1069547520,
+        3223322624,
+        1120403456
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 1
+    },
+    {
+      "filter": 1,
+      "result": 0,
+      "values": [
+        0,
+        1065353216,
+        3212836864
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 0
+    },
+    {
+      "filter": 1,
+      "result": 0,
+      "values": [
+        1069547520,
+        3223322624,
+        1120403456
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 0
+    },
+    {
+      "filter": 1,
+      "result": 1,
+      "values": [
+        0,
+        1065353216,
+        3212836864
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 1
+    },
+    {
+      "filter": 1,
+      "result": 1,
+      "values": [
+        1069547520,
+        3223322624,
+        1120403456
+      ],
+      "calls": [
+        "debug",
+        "load",
+        "debug",
+        "value0",
+        "value1",
+        "value2",
+        "debug"
+      ],
+      "writes": [
+        [
+          228,
+          1,
+          1
+        ],
+        [
+          228,
+          1,
+          0
+        ]
+      ],
+      "return": 1
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn 2.1.4",
+    "producer_sha256": "e6d6ad11363bd8b32f00885ea818df4cedac742fbcdbfa5b929a067871c614cc",
+    "stubs": "Explicit named Core/app boundaries and virtual save/load/parameter boundaries; original app instructions and FX float-to-double conversion execute. No Core binary implementation recovered.",
+    "domain": "Bounded valid receivers and named borrowed providers; original call order/args, receiver writes, outputs; no EH/concurrency/hardware. ParamLink numeric source only; string follow-up excluded."
+  }
+}

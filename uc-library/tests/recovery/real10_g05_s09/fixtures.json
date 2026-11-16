@@ -1,0 +1,179 @@
+{
+  "task_id": "real10_g05_s09",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "address": 382956,
+  "size": 100,
+  "section": 12,
+  "file_offset": 350188,
+  "range_sha256": "a729c2786bcc2b4e17f4bca4783320094fb750f2bda98c986f5c661833ecb3f7",
+  "producer": "Unicorn original application ARM instructions; named canonical/Core calls intercepted, not executed natively",
+  "cases": [
+    {
+      "index": 0,
+      "alias": 0,
+      "parameter": 0,
+      "name": 0,
+      "calls": [
+        {
+          "boundary": "CoreVector",
+          "args": [
+            8389008,
+            0,
+            3269376
+          ]
+        },
+        {
+          "boundary": "CoreComponent",
+          "args": [
+            8388864,
+            0,
+            3567400
+          ]
+        },
+        {
+          "boundary": "delete",
+          "args": [
+            8388864,
+            0,
+            3567400
+          ]
+        }
+      ],
+      "receiver_writes": [
+        [
+          0,
+          4,
+          3269376
+        ],
+        [
+          4,
+          4,
+          3269436
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ],
+      "return": 8388864
+    },
+    {
+      "index": 1,
+      "alias": 8390656,
+      "parameter": 0,
+      "name": 8391168,
+      "calls": [
+        {
+          "boundary": "CoreVector",
+          "args": [
+            8389008,
+            8390656,
+            3269376
+          ]
+        },
+        {
+          "boundary": "CoreComponent",
+          "args": [
+            8388864,
+            8390656,
+            3567400
+          ]
+        },
+        {
+          "boundary": "delete",
+          "args": [
+            8388864,
+            8390656,
+            3567400
+          ]
+        }
+      ],
+      "receiver_writes": [
+        [
+          0,
+          4,
+          3269376
+        ],
+        [
+          4,
+          4,
+          3269436
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ],
+      "return": 8388864
+    },
+    {
+      "index": 2,
+      "alias": 0,
+      "parameter": 8390912,
+      "name": 8391168,
+      "calls": [
+        {
+          "boundary": "CoreVector",
+          "args": [
+            8389008,
+            0,
+            3269376
+          ]
+        },
+        {
+          "boundary": "CoreComponent",
+          "args": [
+            8388864,
+            0,
+            3567400
+          ]
+        },
+        {
+          "boundary": "delete",
+          "args": [
+            8388864,
+            0,
+            3567400
+          ]
+        }
+      ],
+      "receiver_writes": [
+        [
+          0,
+          4,
+          3269376
+        ],
+        [
+          4,
+          4,
+          3269436
+        ],
+        [
+          0,
+          4,
+          3567400
+        ],
+        [
+          4,
+          4,
+          3567460
+        ]
+      ],
+      "return": 8388864
+    }
+  ],
+  "case_count": 3,
+  "domain": "valid allocated receiver; normal return; explicit named provider boundaries; no EH, hardware or ABI claim"
+}

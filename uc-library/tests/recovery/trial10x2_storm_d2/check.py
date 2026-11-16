@@ -76,12 +76,57 @@ def symbol_check(obj,exe=None):
   result['linked_D0_disassembly']=dis
  return result
 
+
+def _current_canonical_binding(root, obj, exe, integration, source, providers=()):
+ from pathlib import Path
+ if not integration or Path(integration).resolve() != (root/'uc-library/validation/integration.json').resolve():return None
+ assert obj and exe, 'Canonical replay requires explicit actual object and executable'
+ import importlib.util
+ helper=root/'uc-library/tools/recovery/canonical_compile_bindings.py'
+ spec=importlib.util.spec_from_file_location('actual_canonical_bindings',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+ value=module.bind(root,Path(obj),source,exe_path=Path(exe),required_provider_sources=providers,required_archive_names=('libcorelib.a','libpresonus_core_allocator.a'))
+ unexpected=[p for p in value['files'] if p.startswith('third_party/ccl-framework/') and not p.startswith('third_party/ccl-framework/core/')]
+ assert not unexpected, ('Unexpected non-Core CCL inputs',unexpected)
+ core={p:h for p,h in value['files'].items() if p.startswith('third_party/ccl-framework/core/')}
+ library={p.removeprefix('uc-library/'):h for p,h in value['files'].items() if p.startswith('uc-library/')}
+ assert core and source.removeprefix('uc-library/') in library, 'Actual canonical production/Core closure required'
+ return {'binding':value,'sources':library,'repository_sources':core,'helper_sha256':hashlib.sha256(helper.read_bytes()).hexdigest()}
+
+def _attach_current_canonical(proof, current):
+ if current is None:return
+ proof['actual_canonical_compile_binding']=current['binding']
+ proof['canonical_producer_helper_sha256']=current['helper_sha256']
+ proof['canonical_source_binding_scope']='Current actual Release object/depfile/link/archive inputs; historical frozen dependency expectations retained in original archived producer/proof, not refreshed or relabeled'
+ proof['historical_provider_archives']=proof.get('provider_archives')
+ proof['provider_archives']={v['path']:v['sha256'] for v in current['binding']['link']['archives']}
+ proof['local_compile_defaults']=proof.get('compile_flags')
+ proof['actual_canonical_compile_entries']=[x['compile_entry'] for x in current['binding']['objects']]
+ proof['actual_canonical_sources']=current['sources']
+ proof['actual_canonical_repository_sources']=current['repository_sources']
+ for row in [*proof.get('proposed_readiness',{}).get('ready',[]),*proof.get('proposed_readiness',{}).get('pending',[])]:
+  row.setdefault('sources',{}).update(current['sources'])
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in row['sources'].items():
+   relative=__import__('pathlib').Path(p)
+   assert not relative.is_absolute() and '..' not in relative.parts, ('Invalid library source binding',p)
+   assert hashlib.sha256((repository/'uc-library'/relative).read_bytes()).hexdigest()==h, ('Retained library source binding changed outside actual closure',p)
+  prior=row.setdefault('repository_sources',{})
+  assert all(p.startswith('third_party/ccl-framework/core/') for p in prior), 'Unexpected prior non-Core repository dependency'
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in prior.items():assert hashlib.sha256((repository/p).read_bytes()).hexdigest()==h, ('Prior verified Core implementation changed',p)
+  for p,h in current['repository_sources'].items():
+   assert p not in prior or prior[p]==h, ('Conflicting verified Core source binding',p)
+  prior.update(current['repository_sources'])
+
 def main(variant='d2'):
  p=argparse.ArgumentParser();p.add_argument('mode',nargs='?',default='replay');p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out');p.add_argument('--source-bindings',action='append',nargs=2,metavar=('PATH','SHA256'));a=p.parse_args()
  O.mkdir(parents=True,exist_ok=True);started=datetime.datetime.now(datetime.timezone.utc).isoformat();start=time.monotonic()
  owned=SOURCES+[str((T/'Replay.cpp').relative_to(R)),'uc-library/tests/recovery/trial10x2_storm_d0/Replay.cpp']
  if a.mode=='format':run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*owned]);return
- manifest,bindings,seals=providers(a.source_bindings);deps=dependencies(bindings)
+ canonical_binding=_current_canonical_binding(R,a.object,a.exe,a.integration,SOURCES[1],('uc-library/src/Presonus/Mixer/ChannelComponent.cpp',))
+ manifest,bindings,seals=providers(a.source_bindings)
+ if canonical_binding is None:deps=dependencies(bindings)
+ else:deps={p:{'sha256':h,'scope':'actual canonical compiled dependency'} for p,h in canonical_binding['binding']['files'].items()}
  if a.mode=='compile':
   flags=['c++','-std=c++17','-O0','-fno-sized-deallocation','-fno-rtti','-Wno-multichar','-ffunction-sections','-fdata-sections','-Iuc-library/include','-Ithird_party/ccl-framework']
   run([*flags,'-c',SOURCES[1],'-o',O/'production.o']);run([*flags,'-c',T/'Replay.cpp','-o',O/'driver.o'])
@@ -106,6 +151,7 @@ def main(variant='d2'):
  req=json.loads((native.packet(variant)/'request.json').read_text());original=req['targets'][0]
  pending=dict(original_elf_sha256=native.SHA,mangled=original['mangled'],original_address=original['address'],sources=source_hashes,repository_sources=repo_sources,domain=domain,declaration_uncertainties=limitations,portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,canonical_binding_pending=not bool(a.integration))
  proof=dict(version=1,task_id='trial10x2_storm_'+variant,namespace='Presonus::Mixer',checks='passed',cpp_compiled=True,mangling_namespace_checked=True,behavior_validated=True,binary_behavior_verified=False,original_arm_abi_verified=False,hardware_validated=False,original_elf_sha256=native.SHA,mangled_names=[original['mangled']],native_observation=fresh,case_count=3,product_outputs=outputs,sources=source_hashes,repository_sources=repo_sources,transitive_inputs=deps,provider_archives=manifest['archives'],provider_seals=seals,object=dict(path=str(obj),sha256=digest(obj)),executable=dict(path=str(exe),sha256=digest(exe)),compiled_variant_symbols=symbols,validation_domain=domain,limitations=limitations,fixture=dict(path=str(fixture_path.relative_to(R)),sha256=digest(fixture_path)),producer_hashes={str((T/n).relative_to(R)):digest(T/n) for n in ['native.py','check.py','Replay.cpp']},formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],python=sys.version,session_id=os.environ.get('CODEX_THREAD_ID','unavailable'),worker_task='/root/trial10x2_storm',phase_timestamps=dict(start_utc=started,end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),elapsed_seconds=time.monotonic()-start),proposed_readiness=dict(ready=[],pending=[pending]))
+ _attach_current_canonical(proof,canonical_binding)
  if a.integration:
   ip=Path(a.integration);ip=ip if ip.is_absolute() else R/ip;proof['integration']=dict(path=str(ip),sha256=digest(ip))
  if not a.object and not a.exe:

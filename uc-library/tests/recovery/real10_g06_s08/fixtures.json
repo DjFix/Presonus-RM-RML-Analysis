@@ -1,0 +1,284 @@
+{
+  "task": "real10_g06_s08",
+  "variant": "C1",
+  "mangled": "_ZN8Presonus5Mixer9ParamLinkC1EPN4Core8Portable9ParameterEPKcb",
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "original_range": {
+    "address": 119508,
+    "size": 84,
+    "section": 12,
+    "file_offset": 86740,
+    "sha256": "37b61654ce3e42f0fe349fa8af26acd648170b26084948eb645cb466b0410f44"
+  },
+  "cases": [
+    {
+      "present": false,
+      "flag": false,
+      "name": "",
+      "calls": [
+        "base"
+      ],
+      "flag_written": 0,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          0
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": false,
+      "flag": false,
+      "name": "abcdefghijklmnopqrstuvwxyz0123456789LONG",
+      "calls": [
+        "base"
+      ],
+      "flag_written": 0,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          0
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": false,
+      "flag": true,
+      "name": "",
+      "calls": [
+        "base"
+      ],
+      "flag_written": 1,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          1
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": false,
+      "flag": true,
+      "name": "abcdefghijklmnopqrstuvwxyz0123456789LONG",
+      "calls": [
+        "base"
+      ],
+      "flag_written": 1,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          1
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": true,
+      "flag": false,
+      "name": "",
+      "calls": [
+        "base",
+        "addObserver"
+      ],
+      "flag_written": 0,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          0
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": true,
+      "flag": false,
+      "name": "abcdefghijklmnopqrstuvwxyz0123456789LONG",
+      "calls": [
+        "base",
+        "addObserver"
+      ],
+      "flag_written": 0,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          0
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": true,
+      "flag": true,
+      "name": "",
+      "calls": [
+        "base",
+        "addObserver"
+      ],
+      "flag_written": 1,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          1
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    },
+    {
+      "present": true,
+      "flag": true,
+      "name": "abcdefghijklmnopqrstuvwxyz0123456789LONG",
+      "calls": [
+        "base",
+        "addObserver"
+      ],
+      "flag_written": 1,
+      "target": 0,
+      "writes": [
+        [
+          40,
+          4,
+          1433568
+        ],
+        [
+          44,
+          1,
+          1
+        ],
+        [
+          48,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          1433552
+        ]
+      ]
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn 2.1.4",
+    "producer_sha256": "0855fe0edfb420e2155a777c7f86344d89e116121f35170b2b8fd135475b6145",
+    "stubs": [
+      "canonical ControlMapping constructor boundary installs borrowed parameter at observed offset0x24",
+      "CCL Parameter::addObserver boundary"
+    ],
+    "domain": "8 cases null/non-null parameter, both bool values, empty/long name; original call order/args, null target, bool field, vtables and receiver return observed; source-port base truncation/observer allocation tested separately"
+  }
+}

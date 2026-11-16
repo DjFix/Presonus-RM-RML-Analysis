@@ -1,0 +1,142 @@
+{
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZNK8Presonus5Mixer11FXComponent10getTypeNumEv",
+  "original_range": {
+    "address": 240104,
+    "size": 40,
+    "section": 12,
+    "file_offset": 207336,
+    "sha256": "36b69a51d449375f33b373453443cdd33fe47c6b469fb1c6433e3c99bf197cbc"
+  },
+  "cases": [
+    {
+      "input_bits": 3472883712,
+      "result": -2147483648,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 3326142208,
+      "result": -12345,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 3267887104,
+      "result": -100,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 3221217083,
+      "result": -1,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 3212836864,
+      "result": -1,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 3212820087,
+      "result": 0,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 2147483648,
+      "result": 0,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 0,
+      "result": 0,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1065336439,
+      "result": 0,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1065353216,
+      "result": 1,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1073733435,
+      "result": 1,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1107296256,
+      "result": 32,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1124060365,
+      "result": 127,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1199570880,
+      "result": 65535,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    },
+    {
+      "input_bits": 1325400063,
+      "result": 2147483520,
+      "calls": [
+        "parameter.getValue"
+      ],
+      "nonstack_writes": []
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn 2.1.4",
+    "producer_sha256": "da3c3f281a1cfd8a22b7a2fd77f826d1662a08254836541fbf933f4bf4b1cc1f",
+    "stubs": [
+      "Parameter::getValue vtable boundary returns supplied IEEE float bits; native provider body not executed"
+    ],
+    "executed": "Original application and original __aeabi_f2iz body; mapped ELF PT_LOAD regions",
+    "domain": "15 finite binary32 values in signed int32 range, fractions, signs, zero and integer boundaries; no nonstack writes"
+  }
+}

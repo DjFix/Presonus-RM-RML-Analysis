@@ -105,6 +105,9 @@ class Control;
 // retained.
 class FrontPanelComponent : public PanelComponent {
 public:
+  // Independent construction for partial derived source ports; no original ABI.
+  struct SourcePortConstruction {};
+  explicit FrontPanelComponent(SourcePortConstruction);
   FrontPanelComponent(presonus::frontpanel_port::State &,
                       presonus::frontpanel_port::Dependencies &);
   FrontPanelComponent(Presonus::Mixer::MixerComponentBase &, PanelRegistrar &);
@@ -127,6 +130,7 @@ public:
   void lockFaders(bool locked);
   void activateAll();
   bool mixerLocked() const;
+  bool fadersLocked() const;
   void lockStateChanged();
   void linkChanged();
   void notifyStoring(bool);

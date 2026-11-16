@@ -5,7 +5,9 @@
 #include "core/public/corevector.h"
 #include "presonus/PageComponent.hpp"
 #include "presonus/surface/GroupsPageComponent.hpp"
+#include "presonus/surface/MixerPageComponent.hpp"
 #include <cstdint>
+#include <memory>
 
 namespace presonus::surface {
 struct GroupsEditState;
@@ -15,7 +17,7 @@ struct GroupsEditDependencies;
 namespace Presonus::Surface {
 // Portable source contract. Original inheritance, layout and unencoded return
 // declarations remain unresolved; this class is not an ARM object overlay.
-class GroupsEditPageComponent {
+class GroupsEditPageComponent : public MixerPageComponent {
 public:
   struct AssignItem {
     Core::Portable::Component *channel = nullptr;
@@ -27,6 +29,16 @@ public:
       presonus::surface::GroupsEditState &state,
       presonus::surface::GroupsEditDependencies &dependencies)
       : state(state), dependencies(dependencies) {}
+  struct SourcePortConstruction {};
+  // Tagged mode owns its state; the existing reference constructor borrows it.
+  GroupsEditPageComponent(
+      SourcePortConstruction,
+      presonus::surface::GroupsEditDependencies &dependencies);
+  ~GroupsEditPageComponent() override;
+  presonus::surface::GroupsEditState &sourcePortState() { return state; }
+  Core::Vector<Core::Portable::AliasParam *> &sourcePortAliases() {
+    return aliases_;
+  }
   void buildItemsList();
   void paramChanged(Core::Portable::Parameter *parameter, int message);
   void updateFilterAssignments();
@@ -39,6 +51,7 @@ public:
   void onShow(bool visible);
 
 private:
+  std::unique_ptr<presonus::surface::GroupsEditState> ownedState_;
   presonus::surface::GroupsEditState &state;
   presonus::surface::GroupsEditDependencies &dependencies;
 };

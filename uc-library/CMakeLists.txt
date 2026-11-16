@@ -523,6 +523,27 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/surface_panel/InputPin.hpp
   presonus/surface_panel/OutputPin.hpp
   presonus/embedded_dice/mix.hpp
+  presonus/IFaderUnit.hpp
+  presonus/TargetedComponent.hpp
+  presonus/ThroughputTest.hpp
+  presonus/mixer/AliasMapping.hpp
+  presonus/mixer/ChannelDCAComponent.hpp
+  presonus/mixer/DigitalInputComponent.hpp
+  presonus/mixer/MixerComponentBaseDelegate.hpp
+  presonus/mixer/ParamLink.hpp
+  presonus/panel/AlertBook.hpp
+  presonus/panel/Fat24FrontPanelComponent.hpp
+  presonus/surface/AssignEditPageComponent.hpp
+  presonus/surface/CalibrateTouchComponent.hpp
+  presonus/surface/ChannelInfoPageComponent.hpp
+  presonus/surface/ChannelPresetsPageComponent.hpp
+  presonus/surface/FirmwarePageComponent.hpp
+  presonus/surface/GeqPresetsPageComponent.hpp
+  presonus/surface/LockoutPageComponent.hpp
+  presonus/surface/MainScreenComponent.hpp
+  presonus/surface/PreampsPageComponent.hpp
+  presonus/surface/ScenesPageComponent.hpp
+  presonus/surface/StChannelSettingsPageComponent.hpp
 )
 if(PRESONUS_ENABLE_UPSTREAM_CORE)
   list(APPEND PRESONUS_UC_PUBLIC_HEADERS

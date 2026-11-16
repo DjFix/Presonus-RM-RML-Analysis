@@ -13,6 +13,13 @@ std::int32_t wrappedAdd(std::int32_t left, std::int32_t right) {
 } // namespace
 
 namespace Presonus::Surface {
+GroupsEditPageComponent::GroupsEditPageComponent(
+    SourcePortConstruction,
+    presonus::surface::GroupsEditDependencies &dependencies)
+    : ownedState_(std::make_unique<presonus::surface::GroupsEditState>()),
+      state(*ownedState_), dependencies(dependencies) {}
+GroupsEditPageComponent::~GroupsEditPageComponent() = default;
+
 void GroupsEditPageComponent::buildItemsList() {
   if (!state.mixerAvailable)
     return;

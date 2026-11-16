@@ -13,6 +13,48 @@ CCL=['third_party/ccl-framework/core/portable/coreparams.h','third_party/ccl-fra
 SUPPLEMENT=pathlib.Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling10x10-20261114/root-review/provider-supplements/presets-ROOT_ADDENDUM.json')
 APP_SOURCES=['uc-library/src/Presonus/Panel/FrontPanelLifecycle.cpp', 'uc-library/src/Presonus/Panel/PanelComponentLifecycle.cpp', 'uc-library/src/Presonus/Panel/PanelComponent.cpp', 'uc-library/src/Presonus/DelayTimer.cpp', 'uc-library/src/Presonus/DICE/PacketClockGateway.cpp', 'uc-library/src/Presonus/Panel/PresetComponent.cpp', 'uc-library/src/Presonus/Panel/PresetComponentSlotPaths.cpp', 'uc-library/src/Presonus/Panel/PresetNameManager.cpp', 'uc-library/src/Presonus/Panel/PresetNameCache.cpp', 'uc-library/src/Presonus/Panel/FxPresetComponent.cpp', 'uc-library/src/Presonus/Panel/FXPresetRecallComponent.cpp', 'uc-library/src/Presonus/Mixer/MixerComponentBase.cpp']
 def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+
+def _current_canonical_binding(root, obj, exe, integration, source, providers=()):
+ from pathlib import Path
+ if not integration or Path(integration).resolve() != (root/'uc-library/validation/integration.json').resolve():return None
+ assert obj and exe, 'Canonical replay requires explicit actual object and executable'
+ import importlib.util
+ helper=root/'uc-library/tools/recovery/canonical_compile_bindings.py'
+ spec=importlib.util.spec_from_file_location('actual_canonical_bindings',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+ value=module.bind(root,Path(obj),source,exe_path=Path(exe),required_provider_sources=providers,required_archive_names=('libcorelib.a','libpresonus_core_allocator.a'))
+ unexpected=[p for p in value['files'] if p.startswith('third_party/ccl-framework/') and not p.startswith('third_party/ccl-framework/core/')]
+ assert not unexpected, ('Unexpected non-Core CCL inputs',unexpected)
+ core={p:h for p,h in value['files'].items() if p.startswith('third_party/ccl-framework/core/')}
+ library={p.removeprefix('uc-library/'):h for p,h in value['files'].items() if p.startswith('uc-library/')}
+ assert core and source.removeprefix('uc-library/') in library, 'Actual canonical production/Core closure required'
+ return {'binding':value,'sources':library,'repository_sources':core,'helper_sha256':hashlib.sha256(helper.read_bytes()).hexdigest()}
+
+def _attach_current_canonical(proof, current):
+ if current is None:return
+ proof['actual_canonical_compile_binding']=current['binding']
+ proof['canonical_producer_helper_sha256']=current['helper_sha256']
+ proof['canonical_source_binding_scope']='Current actual Release object/depfile/link/archive inputs; historical frozen dependency expectations retained in original archived producer/proof, not refreshed or relabeled'
+ proof['historical_provider_archives']=proof.get('provider_archives')
+ proof['provider_archives']={v['path']:v['sha256'] for v in current['binding']['link']['archives']}
+ proof['local_compile_defaults']=proof.get('compile_flags')
+ proof['actual_canonical_compile_entries']=[x['compile_entry'] for x in current['binding']['objects']]
+ proof['actual_canonical_sources']=current['sources']
+ proof['actual_canonical_repository_sources']=current['repository_sources']
+ for row in [*proof.get('proposed_readiness',{}).get('ready',[]),*proof.get('proposed_readiness',{}).get('pending',[])]:
+  row.setdefault('sources',{}).update(current['sources'])
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in row['sources'].items():
+   relative=__import__('pathlib').Path(p)
+   assert not relative.is_absolute() and '..' not in relative.parts, ('Invalid library source binding',p)
+   assert hashlib.sha256((repository/'uc-library'/relative).read_bytes()).hexdigest()==h, ('Retained library source binding changed outside actual closure',p)
+  prior=row.setdefault('repository_sources',{})
+  assert all(p.startswith('third_party/ccl-framework/core/') for p in prior), 'Unexpected prior non-Core repository dependency'
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in prior.items():assert hashlib.sha256((repository/p).read_bytes()).hexdigest()==h, ('Prior verified Core implementation changed',p)
+  for p,h in current['repository_sources'].items():
+   assert p not in prior or prior[p]==h, ('Conflicting verified Core source binding',p)
+  prior.update(current['repository_sources'])
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('mode',nargs='?',default='all',choices=['all','format','compile','symbols','replay']);p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out');p.add_argument('--provider-supplement');p.add_argument('--provider-supplement-sha256');a=p.parse_args()
  if bool(a.provider_supplement)!=bool(a.provider_supplement_sha256):p.error('--provider-supplement and --provider-supplement-sha256 must be supplied together')
@@ -24,7 +66,9 @@ def main():
  assert sha(ARCHIVES[0])=='3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c'
  assert sha(ARCHIVES[1])=='69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d'
  supplement=json.loads(supplement_path.read_text());assert sha(supplement_path)==supplement_sha256
- for path,info in supplement['read_inputs'].items():assert sha(ROOT/path)==info['sha256'],path
+ canonical_binding=_current_canonical_binding(ROOT,a.object,a.exe,a.integration,SOURCE,APP_SOURCES)
+ if canonical_binding is None:
+  for path,info in supplement['read_inputs'].items():assert sha(ROOT/path)==info['sha256'],path
  if a.mode in ('all','format'):run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',SOURCE,HEADER,TEST+'/Replay.cpp'])
  if a.mode in ('all','compile') and not a.exe:
   run([*FLAGS,'-c',SOURCE,'-o',obj]);run([*FLAGS,TEST+'/Replay.cpp',*APP_SOURCES,obj,'-Wl,--gc-sections','-Wl,--start-group',*ARCHIVES,'-Wl,--end-group','-lpthread','-ldl','-lz','-o',exe])
@@ -44,5 +88,6 @@ def main():
   repository.update({x:sha(ROOT/x) for x in supplement['read_inputs'] if x.startswith('third_party/')})
   target=req['targets'][0];pending=dict(original_elf_sha256=target['original_elf_sha256'],mangled=name,sources=sources,repository_sources=repository,domain=domain,portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,declaration_uncertainties=limits)
   proof=dict(version=1,provider_supplement=dict(path=str(supplement_path),sha256=sha(supplement_path)),task_id=TASK,originals=req['targets'],source_hashes=sources,repository_sources=repository,provider_archives={str(x):sha(x) for x in ARCHIVES},native_ranges=[fixture['range']],literal_arguments=fixture['literal_arguments'],native_case_count=len(fixture['cases']),validation_domain=domain,limitations=limits,checks=checks,formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],unicorn=__import__('unicorn').__version__,object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[pending]),session=dict(provider_thread_id=os.getenv('CODEX_THREAD_ID'),application_session_id=os.getenv('CODEX_SESSION_ID'),phase_start_utc=start,phase_end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
+  _attach_current_canonical(proof,canonical_binding)
   out=pathlib.Path(a.out) if a.out else ROOT/'uc-library/candidates'/TASK/'worker-proof.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(proof,indent=2)+'\n');print(domain)
 if __name__=='__main__':main()

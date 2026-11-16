@@ -1,0 +1,80 @@
+{
+  "task": "real10_g06_s04",
+  "mangled": "_ZN8Presonus5Mixer15GlobalComponent15storeMixerStateEPN4Core8Portable14IStorageFilterE",
+  "original_elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "original_range": {
+    "address": 296780,
+    "size": 240,
+    "section": 12,
+    "file_offset": 264012,
+    "sha256": "ead9d29e8683f10421a24da6398dde373ee49822dda5c82716aa7c9cb466a105"
+  },
+  "cases": [
+    {
+      "filter": 0,
+      "save_result": 0,
+      "calls": [
+        "allocator",
+        "attributes",
+        "builder",
+        "save",
+        "path",
+        "archive",
+        "builder_cleanup",
+        "attributes_cleanup"
+      ],
+      "writes": []
+    },
+    {
+      "filter": 0,
+      "save_result": 1,
+      "calls": [
+        "allocator",
+        "attributes",
+        "builder",
+        "save",
+        "path",
+        "archive",
+        "builder_cleanup",
+        "attributes_cleanup"
+      ],
+      "writes": []
+    },
+    {
+      "filter": 1,
+      "save_result": 0,
+      "calls": [
+        "allocator",
+        "attributes",
+        "builder",
+        "save",
+        "path",
+        "archive",
+        "builder_cleanup",
+        "attributes_cleanup"
+      ],
+      "writes": []
+    },
+    {
+      "filter": 1,
+      "save_result": 1,
+      "calls": [
+        "allocator",
+        "attributes",
+        "builder",
+        "save",
+        "path",
+        "archive",
+        "builder_cleanup",
+        "attributes_cleanup"
+      ],
+      "writes": []
+    }
+  ],
+  "oracle": {
+    "engine": "Unicorn 2.1.4",
+    "producer_sha256": "e6d6ad11363bd8b32f00885ea818df4cedac742fbcdbfa5b929a067871c614cc",
+    "stubs": "Explicit named Core/app boundaries and virtual save/load/parameter boundaries; original app instructions and FX float-to-double conversion execute. No Core binary implementation recovered.",
+    "domain": "Bounded valid receivers and named borrowed providers; original call order/args, receiver writes, outputs; no EH/concurrency/hardware. ParamLink numeric source only; string follow-up excluded."
+  }
+}

@@ -10,4 +10,8 @@ namespace Presonus {
 MeterScaleControl::MeterScaleControl(const Core::Rect &rect)
     : Core::Portable::Control(rect, nullptr) {}
 MeterScaleControl::~MeterScaleControl() = default;
+MeterScaleControl::Ranges::~Ranges() {
+  for (int i = 0; i < values_.count(); ++i)
+    ::operator delete(values_.at(i));
+}
 } // namespace Presonus

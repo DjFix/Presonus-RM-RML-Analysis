@@ -1,5 +1,6 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "presonus/DspComponent.hpp"
 #include "presonus/mixer/DelayComponent.hpp"
 #include <cstdint>
 
@@ -14,6 +15,11 @@ struct AppBoundary {
   virtual void updateTypeName() = 0;
   virtual void handleTypeChange(bool edit) = 0;
 };
+struct LoadState {
+  Presonus::DspComponent &dsp;
+  Core::Portable::Parameter &diagnostic0, &diagnostic1, &diagnostic2;
+  bool loading = false;
+};
 struct State {
   Core::Portable::Component &parameterOwner;
   Core::Portable::Parameter &typeParameter;
@@ -21,6 +27,7 @@ struct State {
   AppBoundary &app;
   bool dirty = false;
   bool recalledTypePending = false;
+  LoadState *load = nullptr; // required borrowed binding for load only
 };
 } // namespace presonus::mixer_fx
 
@@ -36,11 +43,15 @@ public:
   explicit FXComponent(presonus::mixer_fx::State &state) : state_(state) {}
   // Identity conversion observed in ARM; original static return is unresolved.
   virtual std::int32_t getEffectTypeInternal(Presonus::EffectType type);
+  // Provisional signed integer return; ordinary mangling omits it.
+  std::int32_t getTypeNum() const;
   void setFxDirty();
   Core::Portable::ParamValue mapValues(Core::Portable::Parameter *parameter);
   bool recallFxType();
   bool isChildParameter(const Core::Portable::Parameter &parameter) const;
   bool refreshFx(bool edit);
+  // Real CCL base constrains this source-port return to bool.
+  bool load(const Core::Portable::InputStorage &) override;
 
 private:
   presonus::mixer_fx::State &state_;

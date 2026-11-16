@@ -1,5 +1,6 @@
 #include "presonus/surface/ChannelInfoPageComponent.hpp"
 namespace Presonus::Surface {
+ChannelInfoPageComponent::~ChannelInfoPageComponent() = default;
 void ChannelInfoPageComponent::handleLocalSourceSelect(float value) {
   auto *input = findParameter("dig_in");
   auto *option = findParameter("dig_opt");

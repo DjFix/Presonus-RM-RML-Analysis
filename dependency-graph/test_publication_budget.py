@@ -20,6 +20,15 @@ class BudgetTests(unittest.TestCase):
         budget.preflight(journal_estimate_bytes=0, sqlite_write_estimate_bytes=0,
                          rows=0, transfer_bytes=0)
 
+    def test_routine_profile_accepts_measured_199_owner_update_and_stays_bounded(self):
+        budget, _ = self.budget()
+        budget.preflight(journal_estimate_bytes=1101382727,
+                         sqlite_write_estimate_bytes=2010271744,
+                         rows=4361506, transfer_bytes=301800000)
+        with self.assertRaises(BudgetExceeded):
+            budget.preflight(journal_estimate_bytes=3 * 1024**3 + 1,
+                             sqlite_write_estimate_bytes=0, rows=0, transfer_bytes=0)
+
     def test_budget_rejects_before_any_write(self):
         budget, _ = self.budget(limits=BudgetLimits(rows=2))
         with self.assertRaises(BudgetExceeded):
@@ -114,9 +123,9 @@ class BudgetTests(unittest.TestCase):
         receipt = budget.receipt()
         self.assertEqual(receipt['observed']['rows_charged'], 1)
         self.assertTrue(receipt['uncertainty'])
-        self.assertEqual(receipt['limits'], dict(journal_bytes=1024**3,
-                                                sqlite_write_bytes=4 * 1024**3,
-                                                rows=10_000_000, transfer_bytes=1024**3))
+        self.assertEqual(receipt['limits'], dict(journal_bytes=3 * 1024**3,
+                                                sqlite_write_bytes=12 * 1024**3,
+                                                rows=30_000_000, transfer_bytes=3 * 1024**3))
         connection.close()
 
     def test_journal_actual_size_and_missing_file(self):

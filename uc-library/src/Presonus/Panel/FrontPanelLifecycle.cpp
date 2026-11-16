@@ -36,6 +36,9 @@ FrontPanelComponent::FrontPanelComponent(Presonus::Mixer::MixerComponentBase &m,
       state(owned->state), dependencies(checkedDependencies) {
   presonus::frontpanel_port::addNativeParameters(portableState().component);
 }
+FrontPanelComponent::FrontPanelComponent(SourcePortConstruction)
+    : owned(std::make_unique<Owned>(portableState().component)),
+      state(owned->state), dependencies(checkedDependencies) {}
 FrontPanelComponent::~FrontPanelComponent() = default;
 
 // Both selected callers pass false to native updateFatChannel(bool). Its

@@ -1,0 +1,418 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "elf_path": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/reconstruction10x10-20261116/prepared-main/snapshot/rootfs/RML16AI_Rack_13731/home/root/mixer",
+  "range": {
+    "mangled": "_ZN8Presonus5Panel22ChannelPresetComponentC2ERNS_5Mixer18MixerComponentBaseE",
+    "address": 237484,
+    "size": 192,
+    "section": 12,
+    "file_offset": 204716,
+    "sha256": "11cc30e10bf951498ba05372aa2f0d00f25ebb1f30ffcfed7ce1ed115c1ddbf9"
+  },
+  "producer": "Unicorn original ARM exact constructor; explicit Preset/ParamList/lookup/C++ runtime-cast boundary interceptions",
+  "domain": "normal valid parameter, missing parameter, wrong-type cast; actual portable constructor necessarily creates valid ListParam; no original EH, layout or ARM ABI claim",
+  "cases": [
+    {
+      "mode": 0,
+      "observed": {
+        "metadata": {
+          "name": "channel",
+          "display": "My Channels",
+          "formatter": "channelnum",
+          "borrowed_mixer": true,
+          "parameter": {
+            "type": 2,
+            "tag": 100,
+            "name": "category",
+            "min": 0.0,
+            "max": 8.0,
+            "mid": 0.0,
+            "default": 0.0,
+            "delta": 1.0,
+            "flags": 4,
+            "title": "Preset Category",
+            "strings": [
+              "Drum",
+              "Perc",
+              "Guit",
+              "Keys",
+              "Vocal",
+              "String",
+              "Brass",
+              "Wind",
+              "Other"
+            ],
+            "table_sha256": "c2dd68a686b688139b7c1c6c47f9d75e6e51b5e23ea1ea5e7c3f3caed7084f1a",
+            "list_sha256": "b84cb98c2ec6e7330defdf668feaac81f98f79faea593f3dd63285fb71abb976"
+          }
+        },
+        "found": false,
+        "cast": false,
+        "receiver_return": true,
+        "calls": [
+          {
+            "boundary": "PresetComponent constructor",
+            "receiver_is_this": true,
+            "arguments": [
+              1413228,
+              1505432,
+              1433920,
+              16781312
+            ]
+          },
+          {
+            "boundary": "ParamList::add",
+            "receiver_offset": 40,
+            "count": 1,
+            "owns_info": 0
+          },
+          {
+            "boundary": "Component::getParameterByTag",
+            "receiver_is_this": true,
+            "tag": 100
+          }
+        ],
+        "object_writes": [
+          {
+            "offset": 4,
+            "size": 4,
+            "value": 1505556
+          },
+          {
+            "offset": 132,
+            "size": 4,
+            "value": 1505572
+          },
+          {
+            "offset": 0,
+            "size": 4,
+            "value": 1505472
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 0
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "instructions": [
+          237484,
+          237488,
+          237492,
+          237496,
+          237500,
+          237504,
+          237508,
+          237512,
+          237516,
+          237520,
+          539492,
+          237524,
+          237528,
+          237532,
+          237536,
+          237540,
+          237544,
+          237548,
+          237552,
+          237556,
+          237560,
+          237564,
+          237568,
+          1174612,
+          237572,
+          237576,
+          237580,
+          1154124,
+          237584,
+          237588,
+          237592,
+          237612,
+          237616,
+          237620,
+          237624
+        ]
+      }
+    },
+    {
+      "mode": 1,
+      "observed": {
+        "metadata": {
+          "name": "channel",
+          "display": "My Channels",
+          "formatter": "channelnum",
+          "borrowed_mixer": true,
+          "parameter": {
+            "type": 2,
+            "tag": 100,
+            "name": "category",
+            "min": 0.0,
+            "max": 8.0,
+            "mid": 0.0,
+            "default": 0.0,
+            "delta": 1.0,
+            "flags": 4,
+            "title": "Preset Category",
+            "strings": [
+              "Drum",
+              "Perc",
+              "Guit",
+              "Keys",
+              "Vocal",
+              "String",
+              "Brass",
+              "Wind",
+              "Other"
+            ],
+            "table_sha256": "c2dd68a686b688139b7c1c6c47f9d75e6e51b5e23ea1ea5e7c3f3caed7084f1a",
+            "list_sha256": "b84cb98c2ec6e7330defdf668feaac81f98f79faea593f3dd63285fb71abb976"
+          }
+        },
+        "found": true,
+        "cast": false,
+        "receiver_return": true,
+        "calls": [
+          {
+            "boundary": "PresetComponent constructor",
+            "receiver_is_this": true,
+            "arguments": [
+              1413228,
+              1505432,
+              1433920,
+              16781312
+            ]
+          },
+          {
+            "boundary": "ParamList::add",
+            "receiver_offset": 40,
+            "count": 1,
+            "owns_info": 0
+          },
+          {
+            "boundary": "Component::getParameterByTag",
+            "receiver_is_this": true,
+            "tag": 100
+          },
+          {
+            "boundary": "runtime cast",
+            "source": 16785408,
+            "source_type": 4305512,
+            "destination_type": 4305428,
+            "offset": 0
+          }
+        ],
+        "object_writes": [
+          {
+            "offset": 4,
+            "size": 4,
+            "value": 1505556
+          },
+          {
+            "offset": 132,
+            "size": 4,
+            "value": 1505572
+          },
+          {
+            "offset": 0,
+            "size": 4,
+            "value": 1505472
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 0
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 0
+          }
+        ],
+        "instructions": [
+          237484,
+          237488,
+          237492,
+          237496,
+          237500,
+          237504,
+          237508,
+          237512,
+          237516,
+          237520,
+          539492,
+          237524,
+          237528,
+          237532,
+          237536,
+          237540,
+          237544,
+          237548,
+          237552,
+          237556,
+          237560,
+          237564,
+          237568,
+          1174612,
+          237572,
+          237576,
+          237580,
+          1154124,
+          237584,
+          237588,
+          237592,
+          237596,
+          237600,
+          237604,
+          237608,
+          44276,
+          237612,
+          237616,
+          237620,
+          237624
+        ]
+      }
+    },
+    {
+      "mode": 2,
+      "observed": {
+        "metadata": {
+          "name": "channel",
+          "display": "My Channels",
+          "formatter": "channelnum",
+          "borrowed_mixer": true,
+          "parameter": {
+            "type": 2,
+            "tag": 100,
+            "name": "category",
+            "min": 0.0,
+            "max": 8.0,
+            "mid": 0.0,
+            "default": 0.0,
+            "delta": 1.0,
+            "flags": 4,
+            "title": "Preset Category",
+            "strings": [
+              "Drum",
+              "Perc",
+              "Guit",
+              "Keys",
+              "Vocal",
+              "String",
+              "Brass",
+              "Wind",
+              "Other"
+            ],
+            "table_sha256": "c2dd68a686b688139b7c1c6c47f9d75e6e51b5e23ea1ea5e7c3f3caed7084f1a",
+            "list_sha256": "b84cb98c2ec6e7330defdf668feaac81f98f79faea593f3dd63285fb71abb976"
+          }
+        },
+        "found": true,
+        "cast": true,
+        "receiver_return": true,
+        "calls": [
+          {
+            "boundary": "PresetComponent constructor",
+            "receiver_is_this": true,
+            "arguments": [
+              1413228,
+              1505432,
+              1433920,
+              16781312
+            ]
+          },
+          {
+            "boundary": "ParamList::add",
+            "receiver_offset": 40,
+            "count": 1,
+            "owns_info": 0
+          },
+          {
+            "boundary": "Component::getParameterByTag",
+            "receiver_is_this": true,
+            "tag": 100
+          },
+          {
+            "boundary": "runtime cast",
+            "source": 16785408,
+            "source_type": 4305512,
+            "destination_type": 4305428,
+            "offset": 0
+          }
+        ],
+        "object_writes": [
+          {
+            "offset": 4,
+            "size": 4,
+            "value": 1505556
+          },
+          {
+            "offset": 132,
+            "size": 4,
+            "value": 1505572
+          },
+          {
+            "offset": 0,
+            "size": 4,
+            "value": 1505472
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 0
+          },
+          {
+            "offset": 200,
+            "size": 4,
+            "value": 16785408
+          }
+        ],
+        "instructions": [
+          237484,
+          237488,
+          237492,
+          237496,
+          237500,
+          237504,
+          237508,
+          237512,
+          237516,
+          237520,
+          539492,
+          237524,
+          237528,
+          237532,
+          237536,
+          237540,
+          237544,
+          237548,
+          237552,
+          237556,
+          237560,
+          237564,
+          237568,
+          1174612,
+          237572,
+          237576,
+          237580,
+          1154124,
+          237584,
+          237588,
+          237592,
+          237596,
+          237600,
+          237604,
+          237608,
+          44276,
+          237612,
+          237616,
+          237620,
+          237624
+        ]
+      }
+    }
+  ]
+}

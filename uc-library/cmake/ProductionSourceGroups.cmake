@@ -196,6 +196,7 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/LEDState.cpp
   src/surface_panel/MeterControl.cpp
   src/surface_panel/OutputPin.cpp
+  src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
   src/Presonus/Surface/ChannelInfoPageComponent.cpp
@@ -365,6 +366,17 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/DICE/SysexPacketConstruction.cpp
   src/Presonus/DICE/SysexReceiver.cpp
   src/Presonus/DICE/SysexReceiverWait.cpp
+  src/Presonus/IFaderUnit.cpp
+  src/Presonus/Surface/AssignEditPageComponent.cpp
+  src/Presonus/Surface/CalibrateTouchComponent.cpp
+  src/Presonus/Surface/ChannelPresetsPageComponent.cpp
+  src/Presonus/Surface/FirmwarePageComponent.cpp
+  src/Presonus/Surface/GeqPresetsPageComponent.cpp
+  src/Presonus/Surface/LockoutPageComponent.cpp
+  src/Presonus/Surface/MainScreenComponent.cpp
+  src/Presonus/Surface/PreampsPageComponent.cpp
+  src/Presonus/Surface/StChannelSettingsPageComponent.cpp
+  src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
   src/Presonus/Panel/GambitPanelComponent.cpp
@@ -550,6 +562,10 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/NOAA/SysexReceiverWait.cpp
   src/Presonus/UC/DicePacketQueue.cpp
   src/mixer_dsp/FilterControllers.cpp
+  src/Presonus/Mixer/AliasMapping.cpp
+  src/Presonus/Mixer/ChannelDCAComponent.cpp
+  src/Presonus/Mixer/ParamLink.cpp
+  src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
   presonus/panel/GambitPanelComponent.hpp
@@ -884,6 +900,25 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/socket_channel.hpp
   presonus/uc/transport_events.hpp
   presonus/uc/typed_factory_codec.hpp
+  presonus/IFaderUnit.hpp
+  presonus/TargetedComponent.hpp
+  presonus/ThroughputTest.hpp
+  presonus/mixer/AliasMapping.hpp
+  presonus/mixer/ChannelDCAComponent.hpp
+  presonus/mixer/DigitalInputComponent.hpp
+  presonus/mixer/FXComponent.hpp
+  presonus/mixer/MixerComponentBaseDelegate.hpp
+  presonus/mixer/ParamLink.hpp
+  presonus/panel/Fat24FrontPanelComponent.hpp
+  presonus/surface/AssignEditPageComponent.hpp
+  presonus/surface/CalibrateTouchComponent.hpp
+  presonus/surface/ChannelPresetsPageComponent.hpp
+  presonus/surface/FirmwarePageComponent.hpp
+  presonus/surface/GeqPresetsPageComponent.hpp
+  presonus/surface/LockoutPageComponent.hpp
+  presonus/surface/MainScreenComponent.hpp
+  presonus/surface/PreampsPageComponent.hpp
+  presonus/surface/StChannelSettingsPageComponent.hpp
 )
 
 # These ports use the pinned CCL core_cast/type-info provider, not C++ RTTI.
@@ -906,3 +941,78 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/StormMixerCo
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/MonoMainComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
 
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/TapeInputComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/DisplayManagerInstance.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/IFaderUnit.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MainLCDComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/AutoFilterGroupManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/ChannelDCAComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/InputComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -ffp-contract=off)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/ChannelPresetComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/AssignEditPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/CalibrateTouchComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/CapturePageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/ChannelInfoPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/ChannelPresetsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/FirmwarePageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/GeqPresetsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/GroupsEditPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/LockoutPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/MainScreenComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/PreampsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/PresetsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/ScenesPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/StChannelSettingsPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/TargetedComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Root-review: actual worker per-TU RTTI/deallocation behavior options.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/ThroughputTest.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation -fno-rtti)
+
+# Derived portable vtables follow the existing no-RTTI key-destructor providers.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/AutoFilterGroupManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/ChannelDCAComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/Fat24FrontPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/RogueFrontPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)

@@ -1,6 +1,14 @@
 #include "presonus/mixer/AutoFilterGroupManager.hpp"
 #include <new>
 namespace Presonus::Mixer {
+AutoFilterGroupManager::~AutoFilterGroupManager() {
+  const int count = ownedComponents_.count();
+  for (int i = 0; i < count; ++i)
+    if (auto *component = ownedComponents_[i])
+      delete component;
+  ownedComponents_.resize(0);
+}
+
 void AutoFilterGroupManager::addUpdateChannel(ChannelComponent *channel) {
   try {
     if (updateChannels_.count() >= updateChannels_.getCapacity() &&

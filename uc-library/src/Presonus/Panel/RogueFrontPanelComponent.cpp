@@ -26,6 +26,7 @@ static const int gChMuteOutTable[] = {32, 33, 34, 35, 36, 37, 46,    47,
                                       48, 49, 50, 51, 52, 53, 65527, -1};
 } // namespace Presonus::Rogue
 namespace Presonus::Panel {
+RogueFrontPanelComponent::~RogueFrontPanelComponent() = default;
 bool RogueFrontPanelComponent::checkGeqViewRange() {
   if (!viewport_)
     throw std::logic_error("Rogue GEQ viewport binding required");

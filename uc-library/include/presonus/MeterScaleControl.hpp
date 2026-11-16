@@ -1,6 +1,7 @@
 #pragma once
 #include "core/portable/corecomponent.h"
 #include "core/portable/gui/corecontrols.h"
+#include "core/public/corevector.h"
 #include "presonus/delay_timer.hpp"
 #include "presonus/uc/client_implementation.hpp"
 #include "presonus/uc/client_typed_origins.hpp"
@@ -11,6 +12,24 @@ namespace Presonus {
 // cleanup. No original member declarations, inheritance or ARM layout asserted.
 class MeterScaleControl : public Core::Portable::Control {
 public:
+  // Independent raw-allocation ownership model. Native elements are scalar
+  // deleted then the Core vector is destroyed; original element type
+  // unresolved.
+  class Ranges {
+  public:
+    struct SourcePortTag {};
+    struct Range;
+    explicit Ranges(SourcePortTag) {}
+    bool adoptRawAllocation(void *p) {
+      return values_.add(static_cast<Range *>(p));
+    }
+
+  private:
+    Core::Vector<Range *> values_;
+
+  public:
+    ~Ranges();
+  };
   explicit MeterScaleControl(const Core::Rect &);
   ~MeterScaleControl() override;
   void adoptScaleInterpolator(std::unique_ptr<Core::Interpolator> p) {

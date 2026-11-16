@@ -1,0 +1,209 @@
+{
+  "producer": {
+    "path": "uc-library/tests/recovery/real10_g03_s10/native.py",
+    "sha256": "418cc84885253994e29389a2700483b7d0b47e86b90a6e50252805ab2e43ec18",
+    "unicorn_version": "2.1.4",
+    "method": "independent original ARM instruction execution and separately observed source providers"
+  },
+  "case_count": 4,
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "target_range": {
+    "address": 593240,
+    "size": 72,
+    "section": ".text",
+    "section_index": 12,
+    "file_offset": 560472,
+    "bytes_sha256": "daaf8d24509607d69c463b151a039e68b8160a69683061202e465a4de595156a"
+  },
+  "cases": [
+    {
+      "input": [
+        0
+      ],
+      "expected": "0 1",
+      "provider": "0 1",
+      "native_calls": [
+        "Core::Portable::Component::~Component",
+        "operator delete(void*)"
+      ],
+      "native_object_writes": [
+        [
+          4,
+          4,
+          1685508
+        ],
+        [
+          132,
+          4,
+          1677424
+        ],
+        [
+          0,
+          4,
+          1685448
+        ]
+      ],
+      "native_instructions": [
+        593240,
+        593244,
+        593248,
+        593252,
+        593256,
+        593260,
+        593264,
+        593268,
+        593272,
+        593276,
+        593280,
+        593284,
+        593288,
+        593292,
+        593296,
+        593300
+      ],
+      "native_return": "original receiver"
+    },
+    {
+      "input": [
+        1
+      ],
+      "expected": "1 1",
+      "provider": "1 1",
+      "native_calls": [
+        "Core::Portable::Component::~Component",
+        "operator delete(void*)"
+      ],
+      "native_object_writes": [
+        [
+          4,
+          4,
+          1685508
+        ],
+        [
+          132,
+          4,
+          1677424
+        ],
+        [
+          0,
+          4,
+          1685448
+        ]
+      ],
+      "native_instructions": [
+        593240,
+        593244,
+        593248,
+        593252,
+        593256,
+        593260,
+        593264,
+        593268,
+        593272,
+        593276,
+        593280,
+        593284,
+        593288,
+        593292,
+        593296,
+        593300
+      ],
+      "native_return": "original receiver"
+    },
+    {
+      "input": [
+        3
+      ],
+      "expected": "3 1",
+      "provider": "3 1",
+      "native_calls": [
+        "Core::Portable::Component::~Component",
+        "operator delete(void*)"
+      ],
+      "native_object_writes": [
+        [
+          4,
+          4,
+          1685508
+        ],
+        [
+          132,
+          4,
+          1677424
+        ],
+        [
+          0,
+          4,
+          1685448
+        ]
+      ],
+      "native_instructions": [
+        593240,
+        593244,
+        593248,
+        593252,
+        593256,
+        593260,
+        593264,
+        593268,
+        593272,
+        593276,
+        593280,
+        593284,
+        593288,
+        593292,
+        593296,
+        593300
+      ],
+      "native_return": "original receiver"
+    },
+    {
+      "input": [
+        8
+      ],
+      "expected": "8 1",
+      "provider": "8 1",
+      "native_calls": [
+        "Core::Portable::Component::~Component",
+        "operator delete(void*)"
+      ],
+      "native_object_writes": [
+        [
+          4,
+          4,
+          1685508
+        ],
+        [
+          132,
+          4,
+          1677424
+        ],
+        [
+          0,
+          4,
+          1685448
+        ]
+      ],
+      "native_instructions": [
+        593240,
+        593244,
+        593248,
+        593252,
+        593256,
+        593260,
+        593264,
+        593268,
+        593272,
+        593276,
+        593280,
+        593284,
+        593288,
+        593292,
+        593296,
+        593300
+      ],
+      "native_return": "original receiver"
+    }
+  ],
+  "scope": "Valid receiver, 0/1/3/8 actual owned CCL children. Original application executes all instructions; native Core destructor and allocator are boundary stubs only. Actual pinned source provider and product independently destroy children and invoke the wrapped real unsized delete. Vtable writes recorded as ARM layout observations, not portable layout equality. No hardware, exceptions, child arrays, concurrency or ARM ABI claim."
+}

@@ -17,7 +17,7 @@ def run(argv,**kw):
  out=p.stdout.decode();err=p.stderr.decode();COMMANDS.append(dict(argv=argv,returncode=p.returncode,seconds=time.monotonic()-before,stdout=out,stderr=err));print(json.dumps(argv),flush=True)
  assert p.returncode==0,(out,err);return out
 
-def bindings(transition_path=None, transition_sha=None):
+def bindings(transition_path=None, transition_sha=None, canonical_binding=None):
  assert bool(transition_path)==bool(transition_sha),'Both canonical transition arguments required'
  current={};transition=None
  if transition_path:
@@ -47,7 +47,7 @@ def bindings(transition_path=None, transition_sha=None):
   if path.startswith(('uc-library/include/','uc-library/src/','third_party/')):
    assert sha(v['frozen_read_path'])==v['sha256']
    if path in current:assert v['sha256']==current[path]['previous_sha256'] and v['frozen_read_path']==current[path]['previous_frozen_read_path']
-   if (R/path).is_file():assert sha(R/path)==(current[path]['current_sha256'] if path in current else v['sha256']),path
+   if canonical_binding is None and (R/path).is_file():assert sha(R/path)==(current[path]['current_sha256'] if path in current else v['sha256']),path
  return m,approval,transition
 
 def symbols(obj,exe):
@@ -60,12 +60,55 @@ def symbols(obj,exe):
  assert '__wrap__ZdlPv' in exe_dis and '__wrap__ZdlPvm' not in exe_dis
  return txt,dis,exe_dis
 
+
+def _current_canonical_binding(root, obj, exe, integration, source, providers=()):
+ from pathlib import Path
+ if not integration or Path(integration).resolve() != (root/'uc-library/validation/integration.json').resolve():return None
+ assert obj and exe, 'Canonical replay requires explicit actual object and executable'
+ import importlib.util
+ helper=root/'uc-library/tools/recovery/canonical_compile_bindings.py'
+ spec=importlib.util.spec_from_file_location('actual_canonical_bindings',helper);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+ value=module.bind(root,Path(obj),source,exe_path=Path(exe),required_provider_sources=providers,required_archive_names=('libcorelib.a','libpresonus_core_allocator.a'))
+ unexpected=[p for p in value['files'] if p.startswith('third_party/ccl-framework/') and not p.startswith('third_party/ccl-framework/core/')]
+ assert not unexpected, ('Unexpected non-Core CCL inputs',unexpected)
+ core={p:h for p,h in value['files'].items() if p.startswith('third_party/ccl-framework/core/')}
+ library={p.removeprefix('uc-library/'):h for p,h in value['files'].items() if p.startswith('uc-library/')}
+ assert core and source.removeprefix('uc-library/') in library, 'Actual canonical production/Core closure required'
+ return {'binding':value,'sources':library,'repository_sources':core,'helper_sha256':hashlib.sha256(helper.read_bytes()).hexdigest()}
+
+def _attach_current_canonical(proof, current):
+ if current is None:return
+ proof['actual_canonical_compile_binding']=current['binding']
+ proof['canonical_producer_helper_sha256']=current['helper_sha256']
+ proof['canonical_source_binding_scope']='Current actual Release object/depfile/link/archive inputs; historical frozen dependency expectations retained in original archived producer/proof, not refreshed or relabeled'
+ proof['historical_provider_archives']=proof.get('provider_archives')
+ proof['provider_archives']={v['path']:v['sha256'] for v in current['binding']['link']['archives']}
+ proof['local_compile_defaults']=proof.get('compile_flags')
+ proof['actual_canonical_compile_entries']=[x['compile_entry'] for x in current['binding']['objects']]
+ proof['actual_canonical_sources']=current['sources']
+ proof['actual_canonical_repository_sources']=current['repository_sources']
+ for row in [*proof.get('proposed_readiness',{}).get('ready',[]),*proof.get('proposed_readiness',{}).get('pending',[])]:
+  row.setdefault('sources',{}).update(current['sources'])
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in row['sources'].items():
+   relative=__import__('pathlib').Path(p)
+   assert not relative.is_absolute() and '..' not in relative.parts, ('Invalid library source binding',p)
+   assert hashlib.sha256((repository/'uc-library'/relative).read_bytes()).hexdigest()==h, ('Retained library source binding changed outside actual closure',p)
+  prior=row.setdefault('repository_sources',{})
+  assert all(p.startswith('third_party/ccl-framework/core/') for p in prior), 'Unexpected prior non-Core repository dependency'
+  repository=__import__('pathlib').Path(__file__).resolve().parents[4]
+  for p,h in prior.items():assert hashlib.sha256((repository/p).read_bytes()).hexdigest()==h, ('Prior verified Core implementation changed',p)
+  for p,h in current['repository_sources'].items():
+   assert p not in prior or prior[p]==h, ('Conflicting verified Core source binding',p)
+  prior.update(current['repository_sources'])
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('mode',choices=['format','compile','symbols','native','replay','proof']);p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out');p.add_argument('--canonical-transition');p.add_argument('--canonical-transition-sha');a=p.parse_args()
  if a.canonical_transition or a.canonical_transition_sha:assert a.exe and a.object and a.integration,'Transition requires explicit supplied canonical inputs'
  exe=Path(a.exe) if a.exe else O/'replay';obj=Path(a.object) if a.object else O/'production.o'
  if a.mode=='format':print(run(['uc-library/.venv/bin/clang-format','--version']));run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*OWNED]);return
- m,approval,transition=bindings(a.canonical_transition,a.canonical_transition_sha)
+ canonical_binding=_current_canonical_binding(R,a.object,a.exe,a.integration,SOURCE,('uc-library/src/Presonus/Panel/RackPanelComponent.cpp',))
+ m,approval,transition=bindings(a.canonical_transition,a.canonical_transition_sha,canonical_binding)
  if a.mode=='compile':
   assert not a.exe and not a.object,'Compile only owned scratch; explicit canonical inputs are read-only'
   run([*FLAGS,'-MMD','-MF',str(obj)+'.d','-c',SOURCE,'-o',obj]);driver=O/'replay.o';run([*FLAGS,'-MMD','-MF',str(driver)+'.d','-c',T/'Replay.cpp','-o',driver])
@@ -87,27 +130,33 @@ def main():
  # binds current source closure; it does not prove a supplied binary was built
  # from those bytes. Root's canonical integration evidence provides that link.
  dependency_queries=[]
- for source in [SOURCE,str((T/'Replay.cpp').relative_to(R))]:
-  argv=[*FLAGS,'-MM','-MT','current_source_dependencies',source]
-  output=run(argv)
-  dependencies=[]
-  for name in output.replace('\\\n',' ').split(':',1)[1].split():
-   q=Path(name)
-   if q.is_absolute():
-    assert q.is_relative_to(R),'Unexpected external application dependency: '+name
-    name=str(q.relative_to(R))
-   assert (R/name).is_file(),name
-   dependencies.append(name);files.add(name)
-  dependency_queries.append(dict(argv=argv,stdout=output,source=source,dependencies=dependencies))
- read=json.loads((R/'temp/recovery-work/trial10x2-20261115/READ_INPUTS-prepared01-trial10x2_gambit.json').read_text())
- compiled_bindings={k:v for k,v in {**m['read_inputs'],**read,**json.loads(TRANSITIVE.read_text())['read_inputs']}.items() if k in files}
- assert all(f in compiled_bindings or f in OWNED or f in {str((T/n).relative_to(R)) for n in ['native.py','check.py','fixtures.json']} for f in files),'Unbound compiler dependency'
- for path,b in compiled_bindings.items():assert sha(R/path)==b['sha256'] and sha(b['frozen_read_path'])==b['sha256']
+ if canonical_binding is None:
+  for source in [SOURCE,str((T/'Replay.cpp').relative_to(R))]:
+   argv=[*FLAGS,'-MM','-MT','current_source_dependencies',source]
+   output=run(argv)
+   dependencies=[]
+   for name in output.replace('\\\n',' ').split(':',1)[1].split():
+    q=Path(name)
+    if q.is_absolute():
+     assert q.is_relative_to(R),'Unexpected external application dependency: '+name
+     name=str(q.relative_to(R))
+    assert (R/name).is_file(),name
+    dependencies.append(name);files.add(name)
+   dependency_queries.append(dict(argv=argv,stdout=output,source=source,dependencies=dependencies))
+  read=json.loads((R/'temp/recovery-work/trial10x2-20261115/READ_INPUTS-prepared01-trial10x2_gambit.json').read_text())
+  compiled_bindings={k:v for k,v in {**m['read_inputs'],**read,**json.loads(TRANSITIVE.read_text())['read_inputs']}.items() if k in files}
+  assert all(f in compiled_bindings or f in OWNED or f in {str((T/n).relative_to(R)) for n in ['native.py','check.py','fixtures.json']} for f in files),'Unbound compiler dependency'
+  for path,b in compiled_bindings.items():assert sha(R/path)==b['sha256'] and sha(b['frozen_read_path'])==b['sha256']
+ if canonical_binding is not None:
+  files.update(canonical_binding['binding']['files'])
+  compiled_bindings={p:{'sha256':h,'scope':'actual canonical compiled dependency'} for p,h in canonical_binding['binding']['files'].items()}
+  dependency_queries=[{'scope':'actual canonical compile/depfile binding','binding':canonical_binding['binding']}]
  app={f.removeprefix('uc-library/'):sha(R/f) for f in sorted(files) if f.startswith('uc-library/')}
  provider={k:v['sha256'] for k,v in {**m['read_inputs'],**json.loads(TRANSITIVE.read_text())['read_inputs']}.items() if k.startswith('third_party/')}
  domain='Normal independent tagged Gambit source-port objects with actual canonical Rack/Panel/CCL lifecycles: 1,3,17,65 real owned CCL parameters and owned virtual Component children, nonempty CCL borrowed-task vector; every parameter freed exactly once, all children destroyed, borrowed task untouched; D1 keeps self storage, D0 real unsized self delete exactly once. Each exact original range executed separately, native four vptr writes and base/delete call order observed. Actual host source provider runs synchronously at translated native boundaries.'
  limits=['Original complete constructor, derived members/inheritance/layout/vtables/EH and ARM ABI unresolved; independent SourcePortConstruction tag is not an original constructor claim.','Host RackPanelComponent provider and CCL 5.0 source-preferred behavior intentionally replace boundary implementations; no original base binary behavior or native object-construction equivalence claim.','Only valid normal destruction; null, corrupt, concurrent, exception and hardware cases excluded. Unused borrowed dependency service methods abort if touched; no fake cleanup implementation.','Native vptr offsets/values are observed only; portable compiler emits host vptr layout and return convention. D2 emitted host alias receives no new original identity credit.']
  entry=dict(original_elf_sha256=native.SHA,mangled=native.NAME,sources=app,repository_sources=provider,domain=domain,declaration_uncertainties=limits,portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,canonical_binding_pending=True)
  proof=dict(version=1,task_id=TASK,session_id='/root/trial10x2_gambit',utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),compiled=True,cpp_compiled=True,compiled_mangled_names_matched=True,mangling_namespace_checked=True,cpp_differential_passed=True,formatting_verified=True,native_behavior_verified=True,fresh_native_execution=True,original_declaration_verified=False,original_arm_abi_verified=False,hardware_verified=False,portable_ready=False,canonical_binding_pending=True,domain=domain,limitations=limits,sources=app,repository_sources=provider,source_sha256={f:sha(R/f) for f in sorted(files)},ranges=[fresh['range']],native_observations=fresh,canonical_binding_transition=dict(path=a.canonical_transition,sha256=a.canonical_transition_sha,record=transition) if transition else None,provider_manifest=dict(path=str(MANIFEST),sha256=sha(MANIFEST)),compiler_transitive_binding=dict(path=str(TRANSITIVE),sha256=sha(TRANSITIVE),record=json.loads(TRANSITIVE.read_text())),provider_approval=dict(path=str(approval),sha256=sha(approval)),provider_archives=m['archives'],object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),compiled_dependency_bindings=compiled_bindings,native_provider_commands=[[str(exe),'provider',native.VARIANT,str(c['n'])] for c in fresh['cases']],compiled_symbols=syms,d0_object_disassembly=dis,d0_executable_disassembly=exe_dis,formatter_version=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler_version=run(['/usr/bin/c++','--version']).splitlines()[0],unicorn_version=__import__('unicorn').__version__,binary_provenance=dict(mode='supplied_binary_inspection_and_execution' if a.exe or a.object else 'worker_local_binary_inspection_and_execution',current_source_closure_scope='Fresh GCC -MM binds current source inputs only; canonical integration must bind supplied build provenance',worker_compile_history=None if a.exe or a.object else (dict(path=str(O/'compile-commands.json'),sha256=sha(O/'compile-commands.json'),scope='Historical local build commands; not evidence supplied canonical binary was compiled by this replay') if (O/'compile-commands.json').exists() else None)),fresh_dependency_queries=dependency_queries,commands=COMMANDS,tool_inputs={f:sha(f) for f in ['/usr/bin/c++','/usr/bin/nm','/usr/bin/objdump']},integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,proposed_readiness=dict(ready=[],pending=[entry]))
+ _attach_current_canonical(proof,canonical_binding)
  Path(a.out).parent.mkdir(parents=True,exist_ok=True);Path(a.out).write_text(json.dumps(proof,indent=2)+'\n')
 if __name__=='__main__':main()

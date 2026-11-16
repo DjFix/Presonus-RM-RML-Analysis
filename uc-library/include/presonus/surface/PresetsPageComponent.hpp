@@ -2,11 +2,20 @@
 #include "core/portable/corecomponent.h"
 #include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstdint>
+namespace Presonus {
+class MixerClientComponentBase;
+}
 namespace presonus::surface {
 // Independent source-port state, not the original ARM object layout.
 struct PresetEntry {
   std::uint32_t identity;
   Core::CString128 name;
+};
+// Explicit source-port association; all pointers and vector are borrowed.
+struct PresetsMixerBinding {
+  Presonus::MixerClientComponentBase *mixer = nullptr;
+  Core::Vector<Presonus::IMixerComponentObserver *> *observers = nullptr;
+  Presonus::IMixerComponentObserver *pageObserver = nullptr;
 };
 struct PresetsPageState {
   int category = 0;
@@ -16,6 +25,8 @@ struct PresetsPageState {
   bool mixer = false;
   Core::Portable::Component &parameters;
   Presonus::IMappingController *mappingController = nullptr;
+  Presonus::MixerClientComponentBase *mixerComponent = nullptr;
+  Core::Vector<PresetsMixerBinding> *mixerBindings = nullptr;
 };
 // Required app boundaries; no production no-op providers. Pointers and strings
 // returned here are borrowed for the duration of the synchronous operation.
@@ -41,24 +52,35 @@ struct PresetsPageDependencies {
 namespace Presonus::Surface {
 // Partial original scope. Return declarations, bases, lifecycle and layout are
 // unresolved; this explicit source-port constructor claims no original symbol.
-class PresetsPageComponent {
+class PresetsPageComponent : public Core::Portable::Component {
 public:
   PresetsPageComponent(presonus::surface::PresetsPageState &state,
                        presonus::surface::PresetsPageDependencies &dependencies)
       : state(state), dependencies(dependencies) {}
+  ~PresetsPageComponent() override;
+  void setMixerComponent(Presonus::MixerClientComponentBase *);
+  // Independent source-port vector: entries are borrowed, storage is owned.
+  Core::Vector<Core::Portable::AliasParam *> &portableAliases() {
+    return aliases_;
+  }
   const presonus::surface::PresetEntry *getSelectedPreset() const;
   void setMappingController(Presonus::IMappingController *);
   void onShow(bool);
+  void paramChanged(Core::Portable::Parameter *, int) override;
+  // Native 16-byte body has stack setup/return only; intentional extension
+  // hook.
+  virtual void rowSelected();
   int getMaxListOffset() const;
   void textInputFinished(bool);
   void addListOffset(int);
-  void recall();
+  virtual void recall();
   void promptToStore();
   void updatePresets();
-  void remove();
+  virtual void remove();
   void onObjectChanged(Presonus::IMixerComponentObserver::ObjectChangeMessage);
 
 private:
+  Core::Vector<Core::Portable::AliasParam *> aliases_;
   presonus::surface::PresetsPageState &state;
   presonus::surface::PresetsPageDependencies &dependencies;
 };

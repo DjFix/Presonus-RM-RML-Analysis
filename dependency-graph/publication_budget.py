@@ -22,10 +22,10 @@ class AccountingUnavailable(RuntimeError):
 
 @dataclass(frozen=True)
 class BudgetLimits:
-    journal_bytes: int = 1024**3
-    sqlite_write_bytes: int = 4 * 1024**3
-    rows: int = 10_000_000
-    transfer_bytes: int = 1024**3
+    journal_bytes: int = 3 * 1024**3
+    sqlite_write_bytes: int = 12 * 1024**3
+    rows: int = 30_000_000
+    transfer_bytes: int = 3 * 1024**3
 
     def __post_init__(self):
         for name, value in asdict(self).items():

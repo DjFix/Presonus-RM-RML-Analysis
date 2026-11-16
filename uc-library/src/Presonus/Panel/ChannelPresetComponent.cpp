@@ -3,6 +3,7 @@
 #include "core/portable/corepersistence.h"
 #include "presonus/panel/PresetNameCache.hpp"
 #include <cstring>
+#include <memory>
 
 namespace presonus::panel {
 Core::Portable::Component &ChannelPresetState::selected() const {
@@ -14,6 +15,31 @@ Core::Portable::Component &ChannelPresetState::selected() const {
 }
 } // namespace presonus::panel
 namespace Presonus::Panel {
+namespace {
+// Native table 0x16f964 and its string list at 0x454fa4; expressed using the
+// pinned provider's declarations, not copied as ARM-layout structures.
+const char *channelCategories[] = {"Drum",   "Perc",  "Guit", "Keys", "Vocal",
+                                   "String", "Brass", "Wind", "Other"};
+BEGIN_PARAMINFO(channelPresetParameters)
+PARAM_LIST_(100, "category", channelCategories, 0, PARAM_PRIVATE,
+            "Preset Category", nullptr)
+END_PARAMINFO
+} // namespace
+ChannelPresetComponent::ChannelPresetComponent(
+    Presonus::Mixer::MixerComponentBase &mixer)
+    : PresetComponent("channel", "My Channels", "channelnum", mixer),
+      state{mixer, Core::ConstVector<Core::Portable::Component *>(nullptr, 0),
+            nullptr, nullptr} {
+  // An owned parameter is transferred into the actual CCL ParamList. Keep
+  // ownership local until the vector accepts it, matching existing base-port
+  // exception safety rather than leaking on a failed allocation.
+  auto parameter =
+      std::make_unique<Core::Portable::ListParam>(channelPresetParameters[0]);
+  paramList.add(parameter.get());
+  parameter.release();
+  categoryParameter_ = Core::Portable::core_cast<Core::Portable::ListParam>(
+      getParameterByTag(100));
+}
 ChannelPresetComponent::~ChannelPresetComponent() = default;
 bool ChannelPresetComponent::saveUserName() const {
   auto &channel = state.selected();
@@ -77,7 +103,8 @@ void ChannelPresetComponent::slotChanged(int slot) {
   if (const char *text = getCategory(slot))
     required(*this, 100).fromString(text, false);
 }
-void ChannelPresetComponent::categoryChanged() {
+void ChannelPresetComponent::categoryChanged() { onPresetCategoryChanged(); }
+void ChannelPresetComponent::onPresetCategoryChanged() {
   if (!state.categoryFollow || !(state.categoryFollow->getValue() > 0.f))
     return;
   Core::CString32 selected;
