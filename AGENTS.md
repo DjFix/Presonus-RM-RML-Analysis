@@ -762,8 +762,9 @@ or context compaction, together with the publisher polling cadence above.
 ## Publication budget correction — explicit user instruction, 2026-11-15
 
 - The user raised all publication budgets after repeated stops on small limits.
-  Routine defaults are 1 GiB journal, 4 GiB cumulative process disk writes,
-  1 GiB serialized transfer and 10,000,000 charged rows. Explicit review ceilings
+  Since the 2026-11-16 correction, routine defaults are 3 GiB journal,
+  12 GiB cumulative process disk writes, 3 GiB serialized transfer and
+  30,000,000 charged rows. Explicit review ceilings
   must accept these values. Do not restore the old 64/256 MiB or 100,000-row
   defaults on continuation or silently inherit a historical smaller review.
 - The recurrence came from retaining small routine defaults while granting only
