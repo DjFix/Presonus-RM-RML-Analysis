@@ -50,6 +50,25 @@ class MetadataClosure(unittest.TestCase):
         self.assertIn((overlay / 'observations', report_dir / 'observations'), mounts)
         self.assertFalse(any(report.is_relative_to(dst) and src != dst for src, dst in mounts))
 
+    def test_file_mount_alias_leaves_inherited_reference_inode_visible(self):
+        target = self.prior / 'snapshot' / 'original'
+        target.parent.mkdir()
+        target.write_text('immutable bytes')
+        alias = self.root / 'historical-alias'
+        alias.symlink_to(target)
+        source = self.out / 'snapshot' / alias.name
+        source.parent.mkdir()
+        source.write_text(target.read_text())
+        self.snapshot['references']['alias-origin'] = {'target': str(target)}
+        self.snapshot['mounts'] = [alias.name]
+        self.snapshot['files'] = {alias.name: sha(source)}
+        self.assertEqual(immutable_mounts(self.root, self.out, self.snapshot),
+                         [(self.origin, self.origin)])
+        self.assertTrue(os.path.samefile(alias, target))
+        self.snapshot['files'][alias.name] = '0' * 64
+        with self.assertRaisesRegex(ContextError, 'mount alias changed'):
+            immutable_mounts(self.root, self.out, self.snapshot)
+
     def test_changed_metadata_rejected(self):
         (self.root/self.metadata['report']['path']).write_text('changed')
         with self.assertRaises(ContextError):immutable_mounts(self.root,self.out,self.snapshot)

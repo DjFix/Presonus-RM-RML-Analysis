@@ -51,9 +51,11 @@ def immutable_mounts(root,output,snapshot):
     seen = {output.resolve()}
     provenance = {}
     inherited_origins = set()
+    reference_targets = set()
     while manifests:
         current = manifests.pop()
         for record in current.get('references', {}).values():
+            reference_targets.add(pathlib.Path(record['target']))
             if record.get('kind') != 'compiler_observation':
                 continue
             target = pathlib.Path(record['target'])
@@ -109,5 +111,27 @@ def immutable_mounts(root,output,snapshot):
                 for entry in sorted(child.iterdir()):result.append((entry,destination/entry.name))
             else:result.append((child,destination))
     result.extend((origin,origin) for origin in sorted(origins))
-    for source,destination in result:require(source.exists() and destination.exists(),'Read-only evidence mount path missing: '+str(source)+' -> '+str(destination))
-    return result
+    verified_mounts = []
+    for source, destination in result:
+        require(source.exists() and destination.exists(),
+                'Read-only evidence mount path missing: ' + str(source) + ' -> ' + str(destination))
+        resolved = destination.resolve()
+        if destination.is_symlink() and resolved in reference_targets:
+            # Docker follows a destination symlink. Overlaying a fresh copy at
+            # this alias would replace the verified ancestor inode for every
+            # reference using it. Keep its physical target visible read-only
+            # through the runner's repository mount.
+            relative = str(destination.relative_to(root))
+            expected = snapshot.get('files', {}).get(relative)
+            require(resolved.is_relative_to(root) and resolved.is_file()
+                    and resolved.stat().st_nlink == 1 and expected,
+                    'Unsafe immutable reference mount alias: ' + relative)
+            stamp = fingerprint(resolved)
+            require(sha(resolved) == expected and fingerprint(resolved) == stamp,
+                    'Immutable reference mount alias changed: ' + relative)
+            require(not any(other != physical and resolved.is_relative_to(physical.resolve())
+                            for other, physical in result if physical != destination),
+                    'Immutable reference mount target shadowed: ' + relative)
+            continue
+        verified_mounts.append((source, destination))
+    return verified_mounts
