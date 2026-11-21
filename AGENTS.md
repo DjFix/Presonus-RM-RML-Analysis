@@ -67,6 +67,26 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   application bindings are authorized and required. Track source-provided methods separately from validated portable
   reconstructions and unresolved app-specific dependencies.
 
+## libpng and zlib source providers
+
+- Use official upstream source for libpng and zlib, as for Core. Before assigning
+  reconstruction, check whether the original belongs to either library, including
+  internal or static helpers. For a confirmed match, use the pinned implementation
+  and retain the original ELF identity and binding evidence. Never manually
+  reconstruct a vendor body or count its source binding as a recovered application
+  function. Application-owned callers, wrappers and adaptations remain eligible.
+- For CS18AI surface 13840 use libpng 1.6.10 at
+  `third_party/libpng-reference-1.6.10` (commit
+  `4df37bfa4f79dcd742fca6155e26b8d37b591c30`). For both that surface and
+  RM/RML mixer 13731 use zlib 1.2.11 at `third_party/zlib-reference-1.2.11`
+  (commit `cacf7f1d4e3d44d871b605da3b647f07d718623f`).
+  Keep upstream licenses and commit pins. Recheck other firmware versions or
+  binary roles against their own version APIs, constants and symbol inventories.
+  A matching name alone does not establish origin, configuration or ABI.
+- When integrating an application dependency on these libraries, build or link
+  the applicable pinned source provider and verify the resulting binding.
+  Keep missing exports, version-specific differences and adapter work explicit.
+
 ## Share client/server reconstruction where supported
 
 - Before introducing separate client/server source folders, compare exact
