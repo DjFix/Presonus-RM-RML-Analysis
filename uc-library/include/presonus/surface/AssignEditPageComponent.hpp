@@ -9,6 +9,10 @@ public:
   explicit AssignEditPageComponent(SourcePortConstruction)
       : MixerPageComponent() {}
   ~AssignEditPageComponent() override;
+  // Source-port void declarations; original ordinary returns are unresolved.
+  void updateVisibility();
+  void updateAliasTargets();
+  void paramChanged(Core::Portable::Parameter *, int) override;
   Core::Vector<Core::Portable::AliasParam *> &sourcePortAliases() {
     return aliases_;
   }

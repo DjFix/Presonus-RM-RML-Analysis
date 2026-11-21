@@ -204,8 +204,19 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/dsp/DSPManager.hpp
+  presonus/utilities/dfu_diagnostic.hpp
+  presonus/utilities/table_elements.hpp
+  presonus/ColorButton.hpp
+  presonus/IconManager.hpp
+  presonus/surface/SoloPageComponent.hpp
+  presonus/DefaultMeterInterpolator.hpp
+  presonus/LPFControl.hpp
+  presonus/surface/UCMidiInputAdapter.hpp
+  presonus/surface/UCMidiOutputAdapter.hpp
   presonus/panel/GambitPanelComponent.hpp
   presonus/panel/WolverinePanelComponent.hpp
+  presonus/mixer/AudioComponent.hpp
   presonus/mixer/BeastMixerComponent.hpp
   presonus/mixer/StormMixerComponent.hpp
   presonus/mixer/MonoMainComponent.hpp
@@ -222,6 +233,12 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/panel/FATLEDOverridePage.hpp
   presonus/panel/BeastFrontPanelComponent.hpp
   presonus/mixer/GEQComponent.hpp
+  presonus/mixer/MonoBusComponent.hpp
+  presonus/mixer/EQComponent.hpp
+  presonus/mixer/GateComponent.hpp
+  presonus/mixer/HPFilterComponent.hpp
+  presonus/mixer/LPFilterComponent.hpp
+  presonus/mixer/LimiterComponent.hpp
   presonus/mixer/AutoFilterGroupManager.hpp
   presonus/surface/TBRoutingPageComponent.hpp
   presonus/surface/FxPresetsPageComponent.hpp
@@ -378,6 +395,7 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/MappingTable.hpp
   presonus/LinkableComponent.hpp
   presonus/dsp/Controller.hpp
+  presonus/dsp/IController.hpp
   presonus/avb/AvbComponent.hpp
   presonus/panel/MixerLCD.hpp
   presonus/MuteGroupBase.hpp
@@ -739,3 +757,5 @@ include(cmake/tests/Base6Replays.cmake)
 include(cmake/tests/PhaseBFinalReplays.cmake)
 
 include(cmake/tests/Trial10x2Replays.cmake)
+
+include(cmake/tests/Next39Replays.cmake)

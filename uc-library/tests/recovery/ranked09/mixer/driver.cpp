@@ -1,10 +1,20 @@
-#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBaseDelegate.hpp"
 #include "presonus/mixer/OutputComponent.hpp"
+#include <algorithm>
+#include <array>
 #include <cstring>
 #include <iostream>
 #include <string>
-// Test-only opaque identity objects; production needs no Delegate definition.
-class Presonus::Mixer::MixerComponentBase::Delegate {};
+namespace {
+// Address tokens for the list fixture. These cases do not dispatch callbacks.
+class DelegateIdentity final
+    : public Presonus::Mixer::MixerComponentBase::Delegate {
+public:
+  void clientsChanged() override {}
+  void notifyStoring(bool) override {}
+  void faderLocateDirty(Presonus::Mixer::ChannelComponent *) override {}
+};
+} // namespace
 // Test-only opaque token; property state is resolved through the required
 // binding.
 class Presonus::Dsp::MultiParamProperty {};
@@ -94,7 +104,7 @@ int main() {
       return 2;
     std::cin >> count >> target >> sentinel;
     Mixer state;
-    Mixer::Delegate identities[8];
+    std::array<DelegateIdentity, 8> identities;
     int value;
     for (int i = 0; i < count; ++i) {
       std::cin >> value;
@@ -108,7 +118,16 @@ int main() {
     // removal.
     for (int i = 0; i < count; ++i) {
       auto *pointer = state.delegates.getItems()[i];
-      std::cout << ' ' << (pointer ? int(pointer - identities) : -1);
+      if (pointer == nullptr) {
+        std::cout << " -1";
+        continue;
+      }
+      const auto match = std::find_if(
+          identities.begin(), identities.end(),
+          [pointer](const auto &identity) { return pointer == &identity; });
+      if (match == identities.end())
+        throw std::runtime_error("unexpected delegate identity");
+      std::cout << ' ' << (match - identities.begin());
     }
     std::cout << '\n';
   }

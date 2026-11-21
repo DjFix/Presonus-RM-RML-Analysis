@@ -1,0 +1,84 @@
+{
+  "task": "cycle21_g07_s08",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "mangled": "_ZN8Presonus16MainLCDComponent16prenotifyDestroyEPN4Core8Portable13ContainerViewE",
+  "address": 472664,
+  "size": 156,
+  "section": ".text",
+  "file_offset": 439896,
+  "range_sha256": "f1bcd27c56bbf74ef36bb7256b6a16dde07d68ecc3176596b5e8ffcd085e7ac8",
+  "view_virtual_bindings": {
+    "View::asContainer": [
+      2114632,
+      1108196
+    ],
+    "ContainerView::asContainer": [
+      2114480,
+      1109132
+    ]
+  },
+  "cases": [
+    {
+      "nested": false,
+      "owner_present": false,
+      "notifications": [],
+      "visits": [
+        "root"
+      ],
+      "container_queries": [],
+      "owners_cleared": true
+    },
+    {
+      "nested": false,
+      "owner_present": true,
+      "notifications": [
+        "root"
+      ],
+      "visits": [
+        "root"
+      ],
+      "container_queries": [],
+      "owners_cleared": true
+    },
+    {
+      "nested": true,
+      "owner_present": false,
+      "notifications": [
+        "branch",
+        "tip"
+      ],
+      "visits": [
+        "root",
+        "branch",
+        "tip"
+      ],
+      "container_queries": [
+        "leaf",
+        "branch",
+        "tip"
+      ],
+      "owners_cleared": true
+    },
+    {
+      "nested": true,
+      "owner_present": true,
+      "notifications": [
+        "root",
+        "branch",
+        "tip"
+      ],
+      "visits": [
+        "root",
+        "branch",
+        "tip"
+      ],
+      "container_queries": [
+        "leaf",
+        "branch",
+        "tip"
+      ],
+      "owners_cleared": true
+    }
+  ],
+  "oracle": "Original ARM target executes each recursive entry and actual owner clearing stores. Explicit vtable boundaries model get-container and owner notification."
+}

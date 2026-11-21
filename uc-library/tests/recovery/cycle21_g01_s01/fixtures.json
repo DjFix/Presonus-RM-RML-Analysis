@@ -1,0 +1,43 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "section": 12,
+  "address": 195324,
+  "size": 76,
+  "file_offset": 162556,
+  "range_sha256": "cf474405535012ac7de2ff2ff695f554477834b03b75a2df0a11b20467b1c15f",
+  "cases": [
+    {
+      "sequence": "",
+      "option": "a",
+      "events": [],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "a",
+      "option": "a",
+      "events": [
+        "a:a"
+      ],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "aba",
+      "option": "z",
+      "events": [
+        "a:z",
+        "b:z",
+        "a:z"
+      ],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "bca",
+      "option": "a",
+      "events": [
+        "b:a",
+        "a:a"
+      ],
+      "native_nonstack_writes": []
+    }
+  ]
+}

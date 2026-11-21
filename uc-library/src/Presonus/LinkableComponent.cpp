@@ -2,7 +2,26 @@
 #include "core/portable/corepersistence.h"
 #include "presonus/AltMemoryFilter.hpp"
 #include <cstring>
+#include <stdexcept>
+#include <utility>
 namespace Presonus {
+namespace {
+linkable_port::State &requireState(linkable_port::State *state) {
+  if (!state)
+    throw std::invalid_argument(
+        "LinkableComponent requires owned provider state");
+  return *state;
+}
+} // namespace
+
+LinkableComponent::LinkableComponent(
+    std::unique_ptr<linkable_port::State> state,
+    linkable_port::Boundary &boundary)
+    : ownedState_(std::move(state)), state_(requireState(ownedState_.get())),
+      boundary_(boundary) {}
+
+LinkableComponent::~LinkableComponent() = default;
+
 void LinkableComponent::toggleAltMemory() {
   Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
   Core::Portable::Attributes previous(state_.alternate);
@@ -38,6 +57,38 @@ void LinkableComponent::loadAltMemory(
     state_.alternate.makeReal();
   }
 }
+bool LinkableComponent::load(const Core::Portable::InputStorage &storage) {
+  const bool loaded = state_.component.load(storage);
+  if (loaded)
+    loadAltMemory(storage);
+  return loaded;
+}
+
+void LinkableComponent::syncParams(Core::Portable::Parameter &source,
+                                   Core::Portable::Parameter &destination,
+                                   bool edit) {
+  using namespace Core::Portable;
+  switch (source.getType()) {
+  case ParamInfo::kString: {
+    char text[256];
+    text[0] = '\0';
+    source.toString(text, sizeof(text));
+    destination.fromString(text, edit);
+    break;
+  }
+  case ParamInfo::kColor: {
+    auto *sourceColor = ColorParam::cast(&source);
+    auto *destinationColor = ColorParam::cast(&destination);
+    if (sourceColor && destinationColor)
+      destinationColor->setColor(sourceColor->getColor(), edit);
+    break;
+  }
+  default:
+    destination.setValue(source.getValue(), edit);
+    break;
+  }
+}
+
 bool LinkableComponent::save(Core::Portable::OutputStorage &storage) const {
   bool saved = state_.component.save(storage);
   if (!saved || std::strcmp(storage.getMode(), "ignoreAltMemory") == 0)
@@ -57,6 +108,49 @@ void LinkableComponent::linkAsSlave(LinkableComponent &partner) {
     state_.partner = &partner;
   }
 }
+void LinkableComponent::linkAsMaster(LinkableComponent &partner) {
+  if (state_.partner == &partner)
+    return;
+  state_.partner = &partner;
+  state_.slave = 0;
+  partner.linkAsSlave(*this);
+
+  if (state_.enabled) {
+    for (int i = 0; i < state_.component.countParameters(); ++i) {
+      auto *source = state_.component.getParameterAt(i);
+      if (source->isLinkable())
+        if (auto *destination =
+                state_.partner->state_.component.getParameterByTag(
+                    source->getTag()))
+          syncParams(*source, *destination, true);
+    }
+    Core::Threads::ScopedLock lock(&linkable_port::State::alternateLock);
+    partner.copyToAltMemory(state_.alternate);
+  }
+
+  auto *children = state_.children;
+  const auto count = state_.count;
+  for (std::size_t i = 0; i < count; ++i) {
+    if (!children[i])
+      continue;
+    auto *child = boundary_.query(*children[i], 1282304865U);
+    if (!child)
+      continue;
+
+    // The source port keeps borrowed children independently of CCL ownership.
+    // Compare their actual CCL component names as Component::findChild does.
+    const Core::ConstString name(child->state_.component.getName());
+    for (std::size_t j = 0; j < partner.state_.count; ++j) {
+      auto *candidate = partner.state_.children[j];
+      if (candidate && candidate->state_.component.getName() == name) {
+        if (auto *other = partner.boundary_.query(*candidate, 1282304865U))
+          child->linkAsMaster(*other);
+        break;
+      }
+    }
+  }
+}
+
 void LinkableComponent::setLink(LinkableComponent &partner, bool inverse) {
   if (state_.partner == &partner)
     return;

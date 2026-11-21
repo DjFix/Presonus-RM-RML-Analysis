@@ -1,0 +1,51 @@
+{
+  "target": {
+    "address": 636320,
+    "anchor": "51a6a0d002eab104ed98befe23f046d7fcbf1a889894b8a58cfc205adfd05f64",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZNK11IconManager15ChannelCategory11getIconNameEi",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 192
+  },
+  "section": ".text",
+  "file_offset": 603552,
+  "range_sha256": "db4c146f2212778c89756f017e395199ca6a02e8402adaaf506abbffaa4ff069",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "input": -5,
+      "result": ""
+    },
+    {
+      "input": -1,
+      "result": ""
+    },
+    {
+      "input": 0,
+      "result": "snare drum"
+    },
+    {
+      "input": 1,
+      "result": "snaredrum"
+    },
+    {
+      "input": 2,
+      "result": "kick"
+    },
+    {
+      "input": 3,
+      "result": "one.two"
+    },
+    {
+      "input": 4,
+      "result": ""
+    },
+    {
+      "input": 99,
+      "result": ""
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

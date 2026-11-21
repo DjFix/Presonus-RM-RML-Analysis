@@ -1,0 +1,1019 @@
+{
+  "original": {
+    "target": {
+      "address": 641100,
+      "anchor": "ab0c9d8db0de30b2407be5b15e22756c02747ea30fe9a90913751f6a42004513",
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN11IconManager9loadIconsEv",
+      "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "role": "client",
+      "section": 12,
+      "size": 1484
+    },
+    "section": ".text",
+    "file_offset": 608332,
+    "range_sha256": "ccf4c26eecc73693c87f7b38b21c431e892e0849a0dfc8603789a78b578017a3"
+  },
+  "parser_dependency": {
+    "target": {
+      "address": 639176,
+      "anchor": "9d2aca87ae0265183980f2d575a84ac8e5fbb22760fb7e8c26bd23dd2c5ab990",
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN11IconManager15ChannelCategory10parseIconsERKN4Core8Portable8FileNameEb",
+      "role": "client",
+      "section": 12,
+      "size": 656,
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+    },
+    "section": ".text",
+    "file_offset": 606408,
+    "range_sha256": "57090260f5da8ff1d08c04b8983d0b7dc102ec035fb24683e3fa26a7eea1c575"
+  },
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "name": "missing",
+      "path": "missing",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [],
+          "addresses": [],
+          "unattached_unfreed": [
+            0
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "missing"
+        ],
+        [
+          "close",
+          "missing"
+        ],
+        [
+          "open",
+          "missing"
+        ],
+        [
+          "close",
+          "missing"
+        ]
+      ]
+    },
+    {
+      "name": "empty",
+      "path": "empty",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [],
+          "addresses": [],
+          "unattached_unfreed": [
+            0
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "empty"
+        ],
+        [
+          "close",
+          "empty"
+        ],
+        [
+          "open",
+          "empty"
+        ],
+        [
+          "close",
+          "empty"
+        ]
+      ]
+    },
+    {
+      "name": "hidden",
+      "path": "hidden",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [],
+          "addresses": [],
+          "unattached_unfreed": [
+            0
+          ]
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "hidden"
+        ],
+        [
+          "close",
+          "hidden"
+        ],
+        [
+          "open",
+          "hidden"
+        ],
+        [
+          "close",
+          "hidden"
+        ]
+      ]
+    },
+    {
+      "name": "orphans",
+      "path": "orphans",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [
+            {
+              "name": "All",
+              "icons": [
+                "Loose.PNG"
+              ]
+            }
+          ],
+          "addresses": [
+            0
+          ],
+          "unattached_unfreed": []
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "orphans"
+        ],
+        [
+          "close",
+          "orphans"
+        ],
+        [
+          "grow_categories",
+          1
+        ],
+        [
+          "open",
+          "orphans"
+        ],
+        [
+          "orphan",
+          "orphans/Loose.PNG"
+        ],
+        [
+          "close",
+          "orphans"
+        ]
+      ]
+    },
+    {
+      "name": "percent-name",
+      "path": "percent",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [
+            {
+              "name": "All",
+              "icons": [
+                "100%.PNG"
+              ]
+            }
+          ],
+          "addresses": [
+            0
+          ],
+          "unattached_unfreed": []
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "percent"
+        ],
+        [
+          "close",
+          "percent"
+        ],
+        [
+          "grow_categories",
+          1
+        ],
+        [
+          "open",
+          "percent"
+        ],
+        [
+          "orphan",
+          "percent/100%.PNG"
+        ],
+        [
+          "close",
+          "percent"
+        ]
+      ]
+    },
+    {
+      "name": "mixed",
+      "path": "icons",
+      "repeat": 1,
+      "states": [
+        {
+          "categories": [
+            {
+              "name": "All",
+              "icons": [
+                "Snare.PNG",
+                "Kick.PNG",
+                "Level",
+                "Hat.PNG",
+                "Deeper",
+                "Tom.PNG",
+                "Nested",
+                "Drums",
+                "Empty",
+                "Orphan.PNG",
+                "Synth.PNG",
+                "Keys"
+              ]
+            },
+            {
+              "name": "drums",
+              "icons": [
+                "Snare.PNG"
+              ]
+            },
+            {
+              "name": "keys",
+              "icons": [
+                "Synth.PNG"
+              ]
+            }
+          ],
+          "addresses": [
+            0,
+            1,
+            3
+          ],
+          "unattached_unfreed": []
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "icons"
+        ],
+        [
+          "open",
+          "icons/Drums"
+        ],
+        [
+          "open",
+          "icons/Drums/Nested"
+        ],
+        [
+          "open",
+          "icons/Drums/Nested/Deeper"
+        ],
+        [
+          "open",
+          "icons/Drums/Nested/Deeper/Level"
+        ],
+        [
+          "close",
+          "icons/Drums/Nested/Deeper/Level"
+        ],
+        [
+          "close",
+          "icons/Drums/Nested/Deeper"
+        ],
+        [
+          "close",
+          "icons/Drums/Nested"
+        ],
+        [
+          "close",
+          "icons/Drums"
+        ],
+        [
+          "open",
+          "icons/Empty"
+        ],
+        [
+          "close",
+          "icons/Empty"
+        ],
+        [
+          "open",
+          "icons/Keys"
+        ],
+        [
+          "close",
+          "icons/Keys"
+        ],
+        [
+          "close",
+          "icons"
+        ],
+        [
+          "grow_categories",
+          1
+        ],
+        [
+          "open",
+          "icons"
+        ],
+        [
+          "allocate",
+          1
+        ],
+        [
+          "open",
+          "icons/Drums"
+        ],
+        [
+          "close",
+          "icons/Drums"
+        ],
+        [
+          "allocate",
+          2
+        ],
+        [
+          "open",
+          "icons/Empty"
+        ],
+        [
+          "close",
+          "icons/Empty"
+        ],
+        [
+          "destroy_icon_vector",
+          2
+        ],
+        [
+          "delete",
+          2
+        ],
+        [
+          "orphan",
+          "icons/Orphan.PNG"
+        ],
+        [
+          "allocate",
+          3
+        ],
+        [
+          "open",
+          "icons/Keys"
+        ],
+        [
+          "close",
+          "icons/Keys"
+        ],
+        [
+          "close",
+          "icons"
+        ]
+      ]
+    },
+    {
+      "name": "growth-repeat",
+      "path": "growth",
+      "repeat": 2,
+      "states": [
+        {
+          "categories": [
+            {
+              "name": "All",
+              "icons": [
+                "Icon0.PNG",
+                "Cat0",
+                "Icon1.PNG",
+                "Cat1",
+                "Icon2.PNG",
+                "Cat2",
+                "Icon3.PNG",
+                "Cat3",
+                "Icon4.PNG",
+                "Cat4",
+                "Icon5.PNG",
+                "Cat5",
+                "Icon6.PNG",
+                "Cat6"
+              ]
+            },
+            {
+              "name": "cat0",
+              "icons": [
+                "Icon0.PNG"
+              ]
+            },
+            {
+              "name": "cat1",
+              "icons": [
+                "Icon1.PNG"
+              ]
+            },
+            {
+              "name": "cat2",
+              "icons": [
+                "Icon2.PNG"
+              ]
+            },
+            {
+              "name": "cat3",
+              "icons": [
+                "Icon3.PNG"
+              ]
+            },
+            {
+              "name": "cat4",
+              "icons": [
+                "Icon4.PNG"
+              ]
+            },
+            {
+              "name": "cat5",
+              "icons": [
+                "Icon5.PNG"
+              ]
+            },
+            {
+              "name": "cat6",
+              "icons": [
+                "Icon6.PNG"
+              ]
+            }
+          ],
+          "addresses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "unattached_unfreed": []
+        },
+        {
+          "categories": [
+            {
+              "name": "All",
+              "icons": [
+                "Icon0.PNG",
+                "Cat0",
+                "Icon1.PNG",
+                "Cat1",
+                "Icon2.PNG",
+                "Cat2",
+                "Icon3.PNG",
+                "Cat3",
+                "Icon4.PNG",
+                "Cat4",
+                "Icon5.PNG",
+                "Cat5",
+                "Icon6.PNG",
+                "Cat6"
+              ]
+            },
+            {
+              "name": "cat0",
+              "icons": [
+                "Icon0.PNG"
+              ]
+            },
+            {
+              "name": "cat1",
+              "icons": [
+                "Icon1.PNG"
+              ]
+            },
+            {
+              "name": "cat2",
+              "icons": [
+                "Icon2.PNG"
+              ]
+            },
+            {
+              "name": "cat3",
+              "icons": [
+                "Icon3.PNG"
+              ]
+            },
+            {
+              "name": "cat4",
+              "icons": [
+                "Icon4.PNG"
+              ]
+            },
+            {
+              "name": "cat5",
+              "icons": [
+                "Icon5.PNG"
+              ]
+            },
+            {
+              "name": "cat6",
+              "icons": [
+                "Icon6.PNG"
+              ]
+            },
+            {
+              "name": "All",
+              "icons": [
+                "Icon0.PNG",
+                "Cat0",
+                "Icon1.PNG",
+                "Cat1",
+                "Icon2.PNG",
+                "Cat2",
+                "Icon3.PNG",
+                "Cat3",
+                "Icon4.PNG",
+                "Cat4",
+                "Icon5.PNG",
+                "Cat5",
+                "Icon6.PNG",
+                "Cat6"
+              ]
+            },
+            {
+              "name": "cat0",
+              "icons": [
+                "Icon0.PNG"
+              ]
+            },
+            {
+              "name": "cat1",
+              "icons": [
+                "Icon1.PNG"
+              ]
+            },
+            {
+              "name": "cat2",
+              "icons": [
+                "Icon2.PNG"
+              ]
+            },
+            {
+              "name": "cat3",
+              "icons": [
+                "Icon3.PNG"
+              ]
+            },
+            {
+              "name": "cat4",
+              "icons": [
+                "Icon4.PNG"
+              ]
+            },
+            {
+              "name": "cat5",
+              "icons": [
+                "Icon5.PNG"
+              ]
+            },
+            {
+              "name": "cat6",
+              "icons": [
+                "Icon6.PNG"
+              ]
+            }
+          ],
+          "addresses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "unattached_unfreed": []
+        }
+      ],
+      "trace": [
+        [
+          "allocate",
+          0
+        ],
+        [
+          "open",
+          "growth"
+        ],
+        [
+          "open",
+          "growth/Cat0"
+        ],
+        [
+          "close",
+          "growth/Cat0"
+        ],
+        [
+          "open",
+          "growth/Cat1"
+        ],
+        [
+          "close",
+          "growth/Cat1"
+        ],
+        [
+          "open",
+          "growth/Cat2"
+        ],
+        [
+          "close",
+          "growth/Cat2"
+        ],
+        [
+          "open",
+          "growth/Cat3"
+        ],
+        [
+          "close",
+          "growth/Cat3"
+        ],
+        [
+          "open",
+          "growth/Cat4"
+        ],
+        [
+          "close",
+          "growth/Cat4"
+        ],
+        [
+          "open",
+          "growth/Cat5"
+        ],
+        [
+          "close",
+          "growth/Cat5"
+        ],
+        [
+          "open",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth"
+        ],
+        [
+          "grow_categories",
+          1
+        ],
+        [
+          "open",
+          "growth"
+        ],
+        [
+          "allocate",
+          1
+        ],
+        [
+          "open",
+          "growth/Cat0"
+        ],
+        [
+          "close",
+          "growth/Cat0"
+        ],
+        [
+          "allocate",
+          2
+        ],
+        [
+          "open",
+          "growth/Cat1"
+        ],
+        [
+          "close",
+          "growth/Cat1"
+        ],
+        [
+          "allocate",
+          3
+        ],
+        [
+          "open",
+          "growth/Cat2"
+        ],
+        [
+          "close",
+          "growth/Cat2"
+        ],
+        [
+          "allocate",
+          4
+        ],
+        [
+          "open",
+          "growth/Cat3"
+        ],
+        [
+          "close",
+          "growth/Cat3"
+        ],
+        [
+          "allocate",
+          5
+        ],
+        [
+          "open",
+          "growth/Cat4"
+        ],
+        [
+          "close",
+          "growth/Cat4"
+        ],
+        [
+          "grow_categories",
+          6
+        ],
+        [
+          "allocate",
+          6
+        ],
+        [
+          "open",
+          "growth/Cat5"
+        ],
+        [
+          "close",
+          "growth/Cat5"
+        ],
+        [
+          "allocate",
+          7
+        ],
+        [
+          "open",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth"
+        ],
+        [
+          "allocate",
+          8
+        ],
+        [
+          "open",
+          "growth"
+        ],
+        [
+          "open",
+          "growth/Cat0"
+        ],
+        [
+          "close",
+          "growth/Cat0"
+        ],
+        [
+          "open",
+          "growth/Cat1"
+        ],
+        [
+          "close",
+          "growth/Cat1"
+        ],
+        [
+          "open",
+          "growth/Cat2"
+        ],
+        [
+          "close",
+          "growth/Cat2"
+        ],
+        [
+          "open",
+          "growth/Cat3"
+        ],
+        [
+          "close",
+          "growth/Cat3"
+        ],
+        [
+          "open",
+          "growth/Cat4"
+        ],
+        [
+          "close",
+          "growth/Cat4"
+        ],
+        [
+          "open",
+          "growth/Cat5"
+        ],
+        [
+          "close",
+          "growth/Cat5"
+        ],
+        [
+          "open",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth"
+        ],
+        [
+          "open",
+          "growth"
+        ],
+        [
+          "allocate",
+          9
+        ],
+        [
+          "open",
+          "growth/Cat0"
+        ],
+        [
+          "close",
+          "growth/Cat0"
+        ],
+        [
+          "allocate",
+          10
+        ],
+        [
+          "open",
+          "growth/Cat1"
+        ],
+        [
+          "close",
+          "growth/Cat1"
+        ],
+        [
+          "grow_categories",
+          11
+        ],
+        [
+          "allocate",
+          11
+        ],
+        [
+          "open",
+          "growth/Cat2"
+        ],
+        [
+          "close",
+          "growth/Cat2"
+        ],
+        [
+          "allocate",
+          12
+        ],
+        [
+          "open",
+          "growth/Cat3"
+        ],
+        [
+          "close",
+          "growth/Cat3"
+        ],
+        [
+          "allocate",
+          13
+        ],
+        [
+          "open",
+          "growth/Cat4"
+        ],
+        [
+          "close",
+          "growth/Cat4"
+        ],
+        [
+          "allocate",
+          14
+        ],
+        [
+          "open",
+          "growth/Cat5"
+        ],
+        [
+          "close",
+          "growth/Cat5"
+        ],
+        [
+          "allocate",
+          15
+        ],
+        [
+          "open",
+          "growth/Cat6"
+        ],
+        [
+          "close",
+          "growth/Cat6"
+        ],
+        [
+          "grow_categories",
+          16
+        ],
+        [
+          "close",
+          "growth"
+        ]
+      ]
+    }
+  ],
+  "failed_manager_growth": {
+    "state": {
+      "categories": [],
+      "addresses": [],
+      "unattached_unfreed": [
+        0
+      ]
+    },
+    "trace": [
+      [
+        "allocate",
+        0
+      ],
+      [
+        "open",
+        "orphans"
+      ],
+      [
+        "close",
+        "orphans"
+      ],
+      [
+        "grow_categories",
+        1
+      ],
+      [
+        "open",
+        "orphans"
+      ],
+      [
+        "orphan",
+        "orphans/Loose.PNG"
+      ],
+      [
+        "close",
+        "orphans"
+      ]
+    ]
+  },
+  "boundaries": "Native loader and parser instructions execute directly. CCL, libc, logging and allocation transitions use explicit controlled hooks."
+}

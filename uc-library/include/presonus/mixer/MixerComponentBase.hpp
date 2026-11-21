@@ -2,6 +2,7 @@
 #include "core/portable/corecomponent.h"
 #include "core/portable/corefilename.h"
 #include "core/portable/corestorage.h"
+#include "core/public/coreproperty.h"
 #include "core/public/corevector.h"
 #include <cstdint>
 #include <functional>
@@ -12,9 +13,16 @@ class PresetApplicationServices;
 namespace Presonus::UC {
 class ClientSubscription;
 }
+namespace Presonus::NOAA {
+class TCardHandler;
+struct NOAAStatusProperty;
+} // namespace Presonus::NOAA
 namespace Presonus::Mixer {
 class ChannelComponent;
+class MasterSectionComponent;
+class MixerComponent;
 class PermissionsComponent;
+class RackMixerComponent;
 // Portable state model. Fields and return declarations are source-port choices,
 // not recovered ARM layout or independently established original declarations.
 class MixerComponentBase {
@@ -43,6 +51,49 @@ public:
   void refreshDigitalOutputRoutes();
   int countSolos(int selector) const;
   void setChannelParams(int tag, float value);
+  // Separate authoritative views for native +0x134 and +0x148. In the
+  // portable source port a null view denotes an empty collection.
+  const Core::Vector<ChannelComponent *> *sipSoloChannels = nullptr;
+  const Core::Vector<ChannelComponent *> *tapeInputChannels = nullptr;
+  // Borrowed required recipient for both solo-clear operations.
+  MasterSectionComponent *soloMasterSection = nullptr;
+  void clearSolos();
+  void clearSIPSolos();
+  // Portable bindings for native restore-mutes receiver and borrowed
+  // Attributes at +0x384. The snapshot flag models native byte +0x366.
+  MixerComponent *sipMuteRestorer = nullptr;
+  Core::Portable::Attributes *sipMuteSnapshot = nullptr;
+  bool sipMuteSnapshotPending = false;
+  void activateSIP(bool active);
+  void refreshSip();
+  // Portable projections of the original route receiver and rack override.
+  // Bind only the rack provider whose base is this source-port mixer.
+  NOAA::TCardHandler *digitalRouteHandler = nullptr;
+  // Borrow the existing NOAA stat projection bound to digitalRouteHandler.
+  // Calls use its live metadata only. Serialize calls with other status users.
+  NOAA::NOAAStatusProperty *serialStatus = nullptr;
+  // Portable void declaration; original return declaration remains unresolved.
+  void getMixerSerialInfo(int &, int &);
+  // Portable bool for the observed 0/1 result; original declaration pending.
+  bool hasDanteInputRoutes();
+  RackMixerComponent *rackDigitalRoutes = nullptr;
+  bool digitalOutputRouteDirty = false;
+  void routeDigitalOutput(int output, int selection);
+  // This property models the exact Setu payload for this producer, distinct
+  // from the narrower portable DSP setup interface. Word names document
+  // observations only; the original C++ static return type remains unresolved.
+  struct MixerSetupProperty : Core::Property {
+    MixerSetupProperty() : Core::Property(0x53657475, 40) {}
+    float sampleRate = 0.f;
+    std::uint32_t word0c = 0, word10 = 44, word14 = 24, word18 = 0;
+    std::int32_t tag43 = 0, tag5 = 0, tag44 = 0;
+  };
+  MixerSetupProperty getSetupProperty() const;
+  // The original returns the matching channel pointer before RTTI adjustment.
+  ChannelComponent *getTapeIn() const;
+  // Actual CCL parent supplies the native +0x210 child-list role.
+  Core::Portable::Component *resetComponentParent = nullptr;
+  void checkResetComponents(const Core::Portable::IStorageFilter &filter);
   // Independent native +0x19c word, pending a recovered typed identity.
   std::uint32_t tdmConfigWord = 0;
   // Borrow only the final observed byte of original +0x1fc -> ptrA ->
@@ -63,6 +114,7 @@ public:
   // return type.
   void addDelegate(Delegate &delegate);
   void removeDelegate(Delegate &delegate);
+  void faderLocateDirty(ChannelComponent *channel);
   bool shouldCollectFaderChanges(int selector) const;
   // Required independent identity query, not recovered Channel fields.
   std::function<std::pair<std::int32_t, std::int32_t>(ChannelComponent *)>

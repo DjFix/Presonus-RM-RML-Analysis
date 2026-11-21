@@ -1,5 +1,5 @@
 import argparse,hashlib,json,pathlib,subprocess,datetime,os,time
-p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--object',required=True);p.add_argument('--integration',required=True);p.add_argument('--out',required=True);p.add_argument('--compat-text-exe');p.add_argument('--compat-stack-exe');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--object',required=True);p.add_argument('--integration',required=True);p.add_argument('--out',required=True);p.add_argument('--compat-text-exe');p.add_argument('--compat-stack-exe');p.add_argument('--current-source-transition');p.add_argument('--current-source-transition-sha256');a=p.parse_args()
 phase_started=datetime.datetime.now(datetime.timezone.utc).isoformat();phase_clock=time.monotonic()
 TASK=pathlib.Path(__file__).parent.name
 BASE='uc-library/tests/recovery/'+TASK
@@ -19,7 +19,26 @@ paths+=['uc-library/src/Presonus/MainLCDPageStack.cpp','uc-library/include/preso
 supplement_path=pathlib.Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling10x10-20261114/root-review/provider-supplements/mainlcd-compatibility/ROOT_ADDENDUM.json')
 assert H(supplement_path)=='610a5ed5d89b9875e03785f4aa290d15e0ca29a7432a06211d2a874750a014b9'
 supplement=json.loads(supplement_path.read_text());assert H(pathlib.Path('/home/rs/projects/opencs/ai-line-analysis')/supplement['plan'])==supplement['plan_sha256']
-for name,entry in supplement['read_inputs'].items():assert H(name)==entry['sha256'] and H(entry['frozen_read_path'])==entry['sha256']
+successor={}
+if a.current_source_transition or a.current_source_transition_sha256:
+ assert a.current_source_transition and a.current_source_transition_sha256
+ assert H(a.current_source_transition)==a.current_source_transition_sha256
+ successor=json.loads(pathlib.Path(a.current_source_transition).read_text())
+ assert successor['version']==1 and successor['previous_producer']['sha256']==H(supplement_path)
+ assert pathlib.Path(successor['previous_producer']['path']).resolve()==supplement_path
+ assert TASK+'_replay' in successor['tests']
+current_sources=successor.get('current_sources',{})
+assert set(current_sources)<=set(supplement['read_inputs'])
+for name,entry in supplement['read_inputs'].items():
+ assert H(entry['frozen_read_path'])==entry['sha256'],name
+ current=current_sources.get(name)
+ if current:
+  assert current['previous_sha256']==entry['sha256']
+  assert H(current['previous_frozen_read_path'])==entry['sha256']
+  assert H(current['current_frozen_read_path'])==current['current_sha256']
+  assert H(name)==current['current_sha256'],name
+ else:
+  assert H(name)==entry['sha256'],name
 if a.integration!='local':assert a.compat_text_exe and a.compat_stack_exe,'Canonical proof requires current canonical compatibility executables'
 text_exe=a.compat_text_exe or 'temp/recovery-work/mainlcd-phasea/text-compat'
 stack_exe=a.compat_stack_exe or 'temp/recovery-work/mainlcd-phasea/stack-compat'
@@ -46,4 +65,5 @@ proof['compatibility']={'text_api_cases':80,'stack_alias_cases':60,'commands':co
 proof['phase_accounting']={'proof_start_utc':phase_started,'proof_elapsed_seconds':time.monotonic()-phase_clock,'proof_end_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Native/provider/format/symbol/portable proof; compiler timings recorded separately by maintained acceptance.'}
 proof['native_provider_scope']='Native Core constructors/vector methods not executed; actual separate source-provider observations feed bounded native interfaces.'
 proof['runtime']={'path':'/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33','sha256':H('/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33')}
+if successor:proof['current_source_transition']={'path':a.current_source_transition,'sha256':a.current_source_transition_sha256}
 pathlib.Path(a.out).write_text(json.dumps(proof,indent=2)+'\n')

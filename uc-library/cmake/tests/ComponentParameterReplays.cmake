@@ -50,6 +50,98 @@ if(BUILD_TESTING)
   target_link_options(mixer_master_replay PRIVATE -Wl,--gc-sections)
   add_test(NAME mixer_master_replay COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python ${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/mixer_master/check.py replay $<TARGET_FILE:mixer_master_replay> ${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/mixer_master/fixtures.json)
   set_tests_properties(mixer_master_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  foreach(base_record IN ITEMS
+    "cycle21_g01_s01|8d946da53be63ef7d692e38b6b6de9a73d2dec170f1280457644bc51e06006a9|"
+    "cycle21_g01_s02|9e1b5ef6b27b3c09aea4705ee82b52eb209d0f9a61ef16b75e1226fbef07dc4d|"
+    "cycle21_g01_s03|b6c959f982ee34ce46bb22957b0dea1b74f01c005f21c8b6c95e5b1fe0bd227b|-fno-rtti"
+    "cycle21_g01_s04|bf9ce3229a81d450fea58ac54b35dfee9448c32aa642302c3c5ab7249eff52d2|-fno-rtti"
+    "cycle21_g01_s05|c5c80c9514f5bc6dbb515f6bd67887b0fed0767f4f7465f919a9fb1807d8c16c|-fno-rtti"
+  )
+    string(REPLACE "|" ";" base_fields "${base_record}")
+    list(GET base_fields 0 base_task)
+    list(GET base_fields 1 base_expected_sha)
+    set(base_target "${base_task}_replay")
+    set(base_dir "tests/recovery/${base_task}")
+    set(base_fixture "${CMAKE_CURRENT_SOURCE_DIR}/${base_dir}/fixtures.json")
+    file(SHA256 "${base_fixture}" base_actual_sha)
+    if(NOT base_actual_sha STREQUAL base_expected_sha)
+      message(FATAL_ERROR "${base_task} fixture hash mismatch")
+    endif()
+    add_executable("${base_target}" "${base_dir}/Replay.cpp")
+    target_compile_features("${base_target}" PRIVATE cxx_std_17)
+    target_compile_options("${base_target}" PRIVATE -UNDEBUG)
+    list(LENGTH base_fields base_field_count)
+    if(base_field_count EQUAL 3)
+      list(GET base_fields 2 base_flag)
+      if(NOT base_flag STREQUAL "")
+        target_compile_options("${base_target}" PRIVATE "${base_flag}")
+      endif()
+    endif()
+    target_link_libraries("${base_target}" PRIVATE stdc++ presonus::rm_components)
+    target_link_options("${base_target}" PRIVATE -Wl,--gc-sections)
+    add_test(NAME "${base_target}" COMMAND
+      "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s01/check.py"
+      replay "$<TARGET_FILE:${base_target}>" "${base_fixture}")
+    set_tests_properties("${base_target}" PROPERTIES
+      WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  endforeach()
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/fixtures.json" base_tail_fixture_sha)
+  if(NOT base_tail_fixture_sha STREQUAL "a6df916d156f331a2302696501672f826ebc538c17aa04945058a8b9306ec8f4")
+    message(FATAL_ERROR "cycle21_g01_s06 fixture hash mismatch")
+  endif()
+  add_executable(cycle21_g01_s06_replay tests/recovery/cycle21_g01_s06/Replay.cpp)
+  target_compile_features(cycle21_g01_s06_replay PRIVATE cxx_std_17)
+  target_compile_options(cycle21_g01_s06_replay PRIVATE -UNDEBUG -fno-rtti)
+  target_link_libraries(cycle21_g01_s06_replay PRIVATE stdc++ presonus::rm_components)
+  target_link_options(cycle21_g01_s06_replay PRIVATE -Wl,--gc-sections)
+  add_test(NAME cycle21_g01_s06_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/check.py"
+    replay 6 "$<TARGET_FILE:cycle21_g01_s06_replay>" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/fixtures.json")
+  set_tests_properties(cycle21_g01_s06_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s08/fixtures.json" base_tail_fixture_sha)
+  if(NOT base_tail_fixture_sha STREQUAL "430ae3dc13a0023ac882ca893afc78f6beac75941c4e87edad792e0ab07b7355")
+    message(FATAL_ERROR "cycle21_g01_s08 fixture hash mismatch")
+  endif()
+  add_executable(cycle21_g01_s08_replay tests/recovery/cycle21_g01_s08/Replay.cpp)
+  target_compile_features(cycle21_g01_s08_replay PRIVATE cxx_std_17)
+  target_compile_options(cycle21_g01_s08_replay PRIVATE -UNDEBUG -fno-rtti)
+  target_link_libraries(cycle21_g01_s08_replay PRIVATE stdc++ presonus::rm_components)
+  target_link_options(cycle21_g01_s08_replay PRIVATE -Wl,--gc-sections)
+  add_test(NAME cycle21_g01_s08_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/check.py"
+    replay 8 "$<TARGET_FILE:cycle21_g01_s08_replay>" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s08/fixtures.json")
+  set_tests_properties(cycle21_g01_s08_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s09/fixtures.json" base_tail_fixture_sha)
+  if(NOT base_tail_fixture_sha STREQUAL "f3031df73a67b7524fa5f2c331a418358fa6427af5475940c71f1ddd7170bc40")
+    message(FATAL_ERROR "cycle21_g01_s09 fixture hash mismatch")
+  endif()
+  add_executable(cycle21_g01_s09_replay tests/recovery/cycle21_g01_s09/Replay.cpp)
+  target_compile_features(cycle21_g01_s09_replay PRIVATE cxx_std_17)
+  target_compile_options(cycle21_g01_s09_replay PRIVATE -UNDEBUG -fno-rtti)
+  target_link_libraries(cycle21_g01_s09_replay PRIVATE stdc++ presonus::rm_components)
+  target_link_options(cycle21_g01_s09_replay PRIVATE -Wl,--gc-sections)
+  add_test(NAME cycle21_g01_s09_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/check.py"
+    replay 9 "$<TARGET_FILE:cycle21_g01_s09_replay>" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s09/fixtures.json")
+  set_tests_properties(cycle21_g01_s09_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s10/fixtures.json" base_tail_fixture_sha)
+  if(NOT base_tail_fixture_sha STREQUAL "03a83327b6e5cefd97d3bad5a0ee51d51a0b62f8956d16b8600a745088b0105f")
+    message(FATAL_ERROR "cycle21_g01_s10 fixture hash mismatch")
+  endif()
+  add_executable(cycle21_g01_s10_replay tests/recovery/cycle21_g01_s06/Replay.cpp)
+  target_compile_features(cycle21_g01_s10_replay PRIVATE cxx_std_17)
+  target_compile_options(cycle21_g01_s10_replay PRIVATE -UNDEBUG -fno-rtti)
+  target_link_libraries(cycle21_g01_s10_replay PRIVATE stdc++ presonus::rm_components)
+  target_link_options(cycle21_g01_s10_replay PRIVATE -Wl,--gc-sections)
+  add_test(NAME cycle21_g01_s10_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s06/check.py"
+    replay 10 "$<TARGET_FILE:cycle21_g01_s10_replay>" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g01_s10/fixtures.json")
+  set_tests_properties(cycle21_g01_s10_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
 endif()
 
 include(${CMAKE_CURRENT_LIST_DIR}/ComponentAccessors.cmake)
@@ -59,3 +151,40 @@ include(${CMAKE_CURRENT_LIST_DIR}/ComponentStateReplays.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/PanelRegistryReplays.cmake)
 
 include(${CMAKE_CURRENT_LIST_DIR}/ComponentLifecycleReplays.cmake)
+
+if(BUILD_TESTING)
+  file(MAKE_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/cycle21-post25")
+  add_executable(GeqPresetsParameterForwardReplay "tests/recovery/cycle21_g03_s01/Replay.cpp")
+  target_compile_features(GeqPresetsParameterForwardReplay PRIVATE "cxx_std_17")
+  target_compile_options(GeqPresetsParameterForwardReplay PRIVATE "-UNDEBUG" "-fno-rtti")
+  target_link_libraries(GeqPresetsParameterForwardReplay PRIVATE "stdc++" "presonus::cs18_components")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g03_s01/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "e187e9de675f556c1ef712292c50b78936057763e6255cfe00e2486cfeb14afe")
+    message(FATAL_ERROR "cycle21_g03_s01_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g03_s01_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g03_s01/check.py" "--exe" "$<TARGET_FILE:GeqPresetsParameterForwardReplay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/GeqPresetsPageComponent.cpp.o" "--fixture" "uc-library/tests/recovery/cycle21_g03_s01/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g03_s01.json")
+  set_tests_properties(cycle21_g03_s01_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  add_executable(GeqPresetsTargetUrlReplay "tests/recovery/cycle21_g03_s03/Replay.cpp")
+  target_compile_features(GeqPresetsTargetUrlReplay PRIVATE "cxx_std_17")
+  target_compile_options(GeqPresetsTargetUrlReplay PRIVATE "-UNDEBUG" "-fno-rtti")
+  target_link_libraries(GeqPresetsTargetUrlReplay PRIVATE "stdc++" "presonus::cs18_components")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g03_s03/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "31b7762f6939b590c7458295728a38b53f4d8d32701a496b0e478ad55736fdca")
+    message(FATAL_ERROR "cycle21_g03_s03_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g03_s03_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g03_s03/check.py" "--exe" "$<TARGET_FILE:GeqPresetsTargetUrlReplay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/GeqPresetsPageComponent.cpp.o" "--fixture" "uc-library/tests/recovery/cycle21_g03_s03/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g03_s03.json")
+  set_tests_properties(cycle21_g03_s03_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  add_executable(AssignmentHandlerInitializeReplay "tests/recovery/cycle21_g03_s10/Replay.cpp")
+  target_compile_features(AssignmentHandlerInitializeReplay PRIVATE "cxx_std_17")
+  target_compile_options(AssignmentHandlerInitializeReplay PRIVATE "-UNDEBUG")
+  target_link_libraries(AssignmentHandlerInitializeReplay PRIVATE "stdc++" "presonus::cs18_components")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g03_s10/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "4a14efacd4ae83b893e6ef6437f3351912b2c83520a3498be3d46e0871e87072")
+    message(FATAL_ERROR "cycle21_g03_s10_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g03_s10_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g03_s10/check.py" "--exe" "$<TARGET_FILE:AssignmentHandlerInitializeReplay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/AssignmentHandlerTable.cpp.o" "--fixture" "uc-library/tests/recovery/cycle21_g03_s10/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g03_s10.json")
+  set_tests_properties(cycle21_g03_s10_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+endif()

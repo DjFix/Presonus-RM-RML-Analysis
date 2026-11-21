@@ -1,0 +1,140 @@
+{
+  "target": {
+    "address": 639976,
+    "anchor": "b6a3566cea02100cc0ea95406d393ef6fa24dcb40ee3b9a735c6e6382218c62b",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZNK11IconManager11getCategoryEi",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 204
+  },
+  "section": ".text",
+  "file_offset": 607208,
+  "range_sha256": "ef26da07bc337fa719d2a39315398f95b070b69220bdf37c857d8ca715cecd39",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "available": [],
+      "input": -1,
+      "result": null,
+      "trace": []
+    },
+    {
+      "available": [],
+      "input": 0,
+      "result": "fallback",
+      "trace": [
+        [
+          "guard_acquire"
+        ],
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          ""
+        ],
+        [
+          "close",
+          ""
+        ],
+        [
+          "guard_release"
+        ],
+        [
+          "register_d1",
+          "fallback"
+        ]
+      ]
+    },
+    {
+      "available": [],
+      "input": 1,
+      "result": "fallback",
+      "trace": []
+    },
+    {
+      "available": [],
+      "input": 2,
+      "result": "fallback",
+      "trace": []
+    },
+    {
+      "available": [],
+      "input": 300,
+      "result": "fallback",
+      "trace": []
+    },
+    {
+      "available": [
+        "drums",
+        "keys"
+      ],
+      "input": -1,
+      "result": null,
+      "trace": []
+    },
+    {
+      "available": [
+        "drums",
+        "keys"
+      ],
+      "input": 0,
+      "result": "first",
+      "trace": []
+    },
+    {
+      "available": [
+        "drums",
+        "keys"
+      ],
+      "input": 1,
+      "result": "second",
+      "trace": []
+    },
+    {
+      "available": [
+        "drums",
+        "keys"
+      ],
+      "input": 2,
+      "result": "fallback",
+      "trace": [
+        [
+          "guard_acquire"
+        ],
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          ""
+        ],
+        [
+          "close",
+          ""
+        ],
+        [
+          "guard_release"
+        ],
+        [
+          "register_d1",
+          "fallback"
+        ]
+      ]
+    },
+    {
+      "available": [
+        "drums",
+        "keys"
+      ],
+      "input": 300,
+      "result": "fallback",
+      "trace": []
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

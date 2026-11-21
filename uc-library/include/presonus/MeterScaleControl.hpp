@@ -35,11 +35,17 @@ public:
   void adoptScaleInterpolator(std::unique_ptr<Core::Interpolator> p) {
     scale_ = std::move(p);
   }
+  // Independent setup for the observed native tick sequence.
+  void setPortableScaleTicks(std::vector<int> ticks) {
+    ticks_ = std::move(ticks);
+  }
+  void draw(const Core::Portable::DrawEvent &) override;
   bool hasScaleInterpolator() const { return bool(scale_); }
   int scaleState() const { return scaleState_; }
 
 private:
   std::unique_ptr<Core::Interpolator> scale_;
   int scaleState_ = 0;
+  std::vector<int> ticks_;
 };
 } // namespace Presonus

@@ -14,6 +14,12 @@ bool MappablePageComponent::connectParameter(const char *name,
   alias->setOriginal(p);
   return true;
 }
+void MappablePageComponent::addAlias(int tag, const char *name) {
+  auto *parameter = paramList.addAlias(tag < 0 ? paramList.count() : tag, name);
+  if (auto *alias = Core::Portable::AliasParam::cast(parameter))
+    aliases_.add(alias);
+}
+
 void MappablePageComponent::disconnectMappables() {
   for (int i = 0; i < aliases_.count(); ++i)
     aliases_[i]->setOriginal(nullptr);

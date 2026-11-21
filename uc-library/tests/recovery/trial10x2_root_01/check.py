@@ -1,7 +1,7 @@
 import argparse,pathlib,hashlib,json,subprocess,time,datetime,os
 TASK=pathlib.Path(__file__).parent.name;BASE='uc-library/tests/recovery/'+TASK;ROOT=pathlib.Path('/home/rs/projects/opencs/ai-line-analysis');SUP=ROOT/'temp/recovery-work/trial10x2-20261115/root-review/provider-supplement'
 H=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
-p=argparse.ArgumentParser();p.add_argument('--build',action='store_true');p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out',required=True);a=p.parse_args();started=time.monotonic();commands=[]
+p=argparse.ArgumentParser();p.add_argument('--build',action='store_true');p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out',required=True);p.add_argument('--current-source-transition');p.add_argument('--current-source-transition-sha256');a=p.parse_args();started=time.monotonic();commands=[]
 sup=json.load(open(SUP/'PROVIDERS.json'));reg=json.load(open(SUP/'ROOT_REGISTRAR_SOURCES.json'));assert H(SUP/'PROVIDERS.json')=='0e4fc25d3383ae8609932b7e25c4d28bac3ee92b9435c11e8d63b61cd29f0c18';assert H(SUP/'ROOT_REGISTRAR_SOURCES.json')=='9211cc936a68b9331e1c515f9b80953e74353880d726effcb6211bc25eee8bbe'
 providers={}
 for x in sup['archives'].values(): assert H(x['frozen_read_path'])==x['sha256'];providers[x['frozen_read_path']]=x['sha256']
@@ -59,9 +59,29 @@ providerpaths=['third_party/ccl-framework/core/portable/corecomponent.h','third_
 # Actual application providers keep their exact current hashes in uc-library sources.
 build=json.load(open(work/'build.json' if a.integration=='local' else pathlib.Path('uc-library/candidates')/TASK/'worker-proof.json'))
 transitive=build.get('transitive_bindings',build.get('transitive_source_bindings',{}))
+successor={}
+if a.current_source_transition or a.current_source_transition_sha256:
+ assert a.current_source_transition and a.current_source_transition_sha256 and a.integration!='local'
+ assert H(a.current_source_transition)==a.current_source_transition_sha256
+ successor=json.loads(pathlib.Path(a.current_source_transition).read_text())
+ assert successor['version']==1 and TASK in successor['tests']
+ prior=successor['previous_worker_proofs'][TASK]
+ assert pathlib.Path(prior['path'])==pathlib.Path('uc-library/candidates')/TASK/'worker-proof.json'
+ assert H(prior['path'])==prior['sha256']
+ current_reg=successor['registrar_bindings']
+ assert pathlib.Path(current_reg['path']).resolve()==SUP/'ROOT_REGISTRAR_SOURCES.json'
+ assert H(current_reg['path'])==current_reg['sha256']
+current_sources=successor.get('current_sources',{})
+assert set(current_sources)<=set(transitive)
 repo_sources={x:H(x) for x in providerpaths}
 for name,digest in {**{x:d['sha256'] for x,d in reg['read_inputs'].items()},**{x:d['sha256'] for x,d in transitive.items()}}.items():
  if name.startswith('uc-library/'):
+  current=current_sources.get(name)
+  if current:
+   assert current['previous_sha256']==digest
+   assert H(current['previous_frozen_read_path'])==digest
+   assert H(current['current_frozen_read_path'])==current['current_sha256']
+   digest=current['current_sha256']
   assert H(name)==digest,name
   sources[name.removeprefix('uc-library/')]=digest
  elif name.startswith('third_party/ccl-framework/core/'):
@@ -74,4 +94,5 @@ limitations=['Original return declaration unresolved; portable void is intention
 records=[dict(original_elf_sha256=x['original_elf_sha256'],mangled=x['mangled'],original_address=x['address'],sources=sources,repository_sources=repo_sources,domain=domain,portable_ready=False,declaration_uncertainties=limitations[:2],cpp_compiled=True,mangling_namespace_checked=True,original_function_verified=False,hardware_verified=False) for x in req['targets']]
 proof=dict(transitive_source_bindings=build.get('transitive_bindings',build.get('transitive_source_bindings',{})),build_commands=build.get('commands') if a.integration=='local' else build['build_commands'],version=1,task_id=TASK,phase='local' if a.integration=='local' else 'canonical',session_id=os.getenv('CODEX_THREAD_ID'),utc_end=datetime.datetime.now(datetime.timezone.utc).isoformat(),elapsed_seconds=time.monotonic()-started,sources=sources,repository_sources=repo_sources,domain=domain,cpp_differential_passed=True,compiled_original_mangled_names_matched=True,mangling_namespace_checked=True,functions=[dict(x,cpp_differential_passed=True,range_verified=True,native_cases=len(fixture['cases'])) for x in records],fixture={'path':BASE+'/fixtures.json','sha256':H(BASE+'/fixtures.json')},producer_sha256=H(__file__),oracle_producer_sha256=H(BASE+'/native.py'),native_range={k:v for k,v in fixture.items() if k not in ['cases']},executable={'path':a.exe,'sha256':H(a.exe)},objects={a.object:H(a.object)},format={'version':run(['uc-library/.venv/bin/clang-format','--version']).strip(),'sources':{x:H(x) for x in paths}},archives=providers,provider_observations=provider,provider_supplement={'path':str(SUP/'PROVIDERS.json'),'sha256':H(SUP/'PROVIDERS.json'),'registrar_sources':str(SUP/'ROOT_REGISTRAR_SOURCES.json'),'registrar_sha256':H(SUP/'ROOT_REGISTRAR_SOURCES.json')},proposed_readiness={'canonical_binding_pending':True,'ready':[],'pending':records},limitations=limitations,commands=commands,observations=observations)
 if a.integration!='local':proof['integration']={'path':a.integration,'sha256':H(a.integration)}
+if successor:proof['current_source_transition']={'path':a.current_source_transition,'sha256':a.current_source_transition_sha256}
 pathlib.Path(a.out).write_text(json.dumps(proof,indent=2)+'\n');print(TASK,'passed',len(fixture['cases']),'native/provider/product cases')

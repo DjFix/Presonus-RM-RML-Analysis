@@ -1,7 +1,9 @@
 #pragma once
 #include "core/portable/corecomponent.h"
+#include "core/public/corevector.h"
 #include "presonus/DspComponent.hpp"
 #include "presonus/mixer/DelayComponent.hpp"
+#include <array>
 #include <cstdint>
 
 namespace presonus::mixer_fx {
@@ -20,6 +22,10 @@ struct LoadState {
   Core::Portable::Parameter &diagnostic0, &diagnostic1, &diagnostic2;
   bool loading = false;
 };
+struct InterpolatorState {
+  std::array<Core::Portable::Parameter *, 6> parameters{};
+  Core::Vector<Core::Portable::Parameter *> deferred;
+};
 struct State {
   Core::Portable::Component &parameterOwner;
   Core::Portable::Parameter &typeParameter;
@@ -28,6 +34,8 @@ struct State {
   bool dirty = false;
   bool recalledTypePending = false;
   LoadState *load = nullptr; // required borrowed binding for load only
+  Core::Portable::Parameter *displayedTypeParameter = nullptr;
+  InterpolatorState *interpolation = nullptr;
 };
 } // namespace presonus::mixer_fx
 
@@ -46,6 +54,8 @@ public:
   // Provisional signed integer return; ordinary mangling omits it.
   std::int32_t getTypeNum() const;
   void setFxDirty();
+  void updateFxTypeName();
+  void setInterpolator(int parameterIndex, int effectType);
   Core::Portable::ParamValue mapValues(Core::Portable::Parameter *parameter);
   bool recallFxType();
   bool isChildParameter(const Core::Portable::Parameter &parameter) const;

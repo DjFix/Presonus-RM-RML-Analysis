@@ -1,0 +1,60 @@
+{
+  "elf": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/reconstruction10x10-20261121/packeting/wave03040607-compatible24-batch01/snapshot/rootfs/CS18_v13840/home/root/surface",
+  "target": {
+    "address": 592824,
+    "anchor": "49b4147902c139201225cd8ba67825f1a32041a7ab43026dda7181f222870f42",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN10LPFControlD0Ev",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 68
+  },
+  "section": ".text",
+  "file_offset": 560056,
+  "range_sha256": "be809432752ea289d6d40f2ffcc9d940486f86ded37769a6429d9b42f1785b56",
+  "cases": [
+    {
+      "connected": false,
+      "trace": [
+        {
+          "event": "original Control destructor boundary",
+          "vptrs": [
+            2107128,
+            2107240,
+            2107268
+          ]
+        },
+        {
+          "event": "original delete import unmaps closed arena page",
+          "receiver": 50331648
+        }
+      ],
+      "observed": [
+        12
+      ]
+    },
+    {
+      "connected": true,
+      "trace": [
+        {
+          "event": "original Control destructor boundary",
+          "vptrs": [
+            2107128,
+            2107240,
+            2107268
+          ]
+        },
+        {
+          "event": "original delete import unmaps closed arena page",
+          "receiver": 50331648
+        }
+      ],
+      "observed": [
+        12
+      ]
+    }
+  ],
+  "allocator_boundary": "Original delete import reached; emulated allocator unmaps receiver.",
+  "core_boundary": "Observe original call to exact pinned provider without running legacy Core body; actual CCL cleanup is verified separately on host."
+}

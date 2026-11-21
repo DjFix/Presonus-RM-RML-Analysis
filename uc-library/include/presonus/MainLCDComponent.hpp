@@ -4,6 +4,7 @@
 #include <cstdint>
 
 namespace Core::Portable {
+class ContainerView;
 class RootView;
 class View;
 } // namespace Core::Portable
@@ -61,6 +62,7 @@ public:
   PageComponent *getPageByTag(int tag) const;
   void syncPageParams();
   bool hasBackPage() const;
+  static void prenotifyDestroy(Core::Portable::ContainerView *container);
   void pushBackPage(PageComponent *page);
   PageComponent *popBackPage();
   PageComponent *getCurrentPage() const;

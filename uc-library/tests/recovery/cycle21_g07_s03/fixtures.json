@@ -1,0 +1,71 @@
+{
+  "task": "cycle21_g07_s03",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "section": ".text",
+  "file_offset": 607888,
+  "address": 640656,
+  "size": 164,
+  "mangled": "_ZN8Presonus7Surface17SoloPageComponentD1Ev",
+  "range_sha256": "0c8804a34c3fb2374ce8f7f1ddd8bd23cfcdea5f69e97596a128c0364d4d41dd",
+  "cases": [
+    {
+      "calls": [
+        [
+          "alias vector",
+          640720
+        ],
+        [
+          "component",
+          640752
+        ]
+      ],
+      "writes": [
+        [
+          132,
+          4,
+          1679128
+        ],
+        [
+          200,
+          4,
+          1713852
+        ],
+        [
+          4,
+          4,
+          1679112
+        ],
+        [
+          176,
+          4,
+          1679152
+        ],
+        [
+          0,
+          4,
+          1679040
+        ],
+        [
+          4,
+          4,
+          1685508
+        ],
+        [
+          132,
+          4,
+          1677424
+        ],
+        [
+          0,
+          4,
+          1685448
+        ]
+      ],
+      "vector_storage_released": true,
+      "child_destroyed": true,
+      "receiver_released": false,
+      "borrowed_preserved": true
+    }
+  ],
+  "oracle": "Original ARM application instructions. Core destructor and allocator bodies are explicit modeled boundaries. Delete reaches its exact ELF PLT target and unmaps the tracked allocation at that invocation; host replay observes real delete."
+}

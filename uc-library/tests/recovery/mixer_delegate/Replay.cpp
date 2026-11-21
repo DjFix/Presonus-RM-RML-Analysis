@@ -1,16 +1,21 @@
-#include "presonus/mixer/MixerComponentBase.hpp"
+#include "presonus/mixer/MixerComponentBaseDelegate.hpp"
+#include <algorithm>
+#include <array>
 #include <cassert>
 #include <cstdlib>
 #include <iostream>
 #include <new>
-// Test-only identity tokens: production only borrows opaque Delegate addresses.
-// No original Delegate layout or virtual behavior is modeled.
-namespace Presonus::Mixer {
-class MixerComponentBase::Delegate {};
-} // namespace Presonus::Mixer
 namespace {
+// Address tokens for the list fixture. These cases do not dispatch callbacks.
+class DelegateIdentity final
+    : public Presonus::Mixer::MixerComponentBase::Delegate {
+public:
+  void clientsChanged() override {}
+  void notifyStoring(bool) override {}
+  void faderLocateDirty(Presonus::Mixer::ChannelComponent *) override {}
+};
 bool failNext = false;
-}
+} // namespace
 void *operator new[](std::size_t n) {
   if (failNext) {
     failNext = false;
@@ -27,7 +32,8 @@ int main() {
   int n, capacity, fail, duplicate;
   while (std::cin >> n >> capacity >> fail >> duplicate) {
     MixerComponentBase owner;
-    MixerComponentBase::Delegate tokens[3], extra;
+    std::array<DelegateIdentity, 3> tokens;
+    DelegateIdentity extra;
     owner.delegates.setDelta(1);
     assert(owner.delegates.resize(capacity));
     for (int i = 0; i < n; ++i)
@@ -38,7 +44,15 @@ int main() {
     std::cout << owner.delegates.count();
     for (int i = 0; i < owner.delegates.count(); ++i) {
       auto *p = owner.delegates.at(i);
-      std::cout << ' ' << (p == &extra ? 99 : int(p - tokens));
+      if (p == &extra) {
+        std::cout << " 99";
+        continue;
+      }
+      const auto match =
+          std::find_if(tokens.begin(), tokens.end(),
+                       [p](const auto &token) { return p == &token; });
+      assert(match != tokens.end());
+      std::cout << ' ' << (match - tokens.begin());
     }
     std::cout << '\n';
     if (owner.delegates.count()) {

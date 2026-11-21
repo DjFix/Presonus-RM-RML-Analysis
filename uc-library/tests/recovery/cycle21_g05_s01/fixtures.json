@@ -1,0 +1,44 @@
+{
+  "target": {
+    "address": 636072,
+    "anchor": "0e97a43f9c33868b681fd1d4d8d4a3b23e030b96113724a9c91fde992af66ec2",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN11IconManager15ChannelCategoryD1Ev",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 36
+  },
+  "section": ".text",
+  "file_offset": 603304,
+  "range_sha256": "22c251c3e1a4bbaee2d9b0eec46dd654cef120bfa95cbb19ca9532b8c4b96d8f",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "input": [],
+      "trace": [
+        [
+          "destroy_vector",
+          256,
+          0
+        ]
+      ],
+      "post_count": 0
+    },
+    {
+      "input": [
+        "Snare Drum.PNG",
+        "Kick.wav"
+      ],
+      "trace": [
+        [
+          "destroy_vector",
+          256,
+          2
+        ]
+      ],
+      "post_count": 0
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

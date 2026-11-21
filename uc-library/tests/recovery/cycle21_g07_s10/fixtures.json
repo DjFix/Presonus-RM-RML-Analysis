@@ -1,0 +1,77 @@
+{
+  "task": "cycle21_g07_s10",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN16MixerSceneLoader4loadERN4Core8Portable10AttributesE",
+  "section": ".text",
+  "address": 364752,
+  "size": 372,
+  "file_offset": 331984,
+  "range_sha256": "37cfe95e75096463619d38dd6b457485c179e5507802438c097c917da22aa097",
+  "cases": [
+    {
+      "compressed": false,
+      "input_hex": "7b226e616d65223a227363656e65222c226e756d626572223a31377d",
+      "trace": [
+        "rewind",
+        "JSON archive",
+        "attributes load"
+      ],
+      "status": true,
+      "attributes": {
+        "name": "scene",
+        "number": 17
+      }
+    },
+    {
+      "compressed": false,
+      "input_hex": "5f",
+      "trace": [
+        "rewind",
+        "JSON archive",
+        "attributes load"
+      ],
+      "status": false,
+      "attributes": null
+    },
+    {
+      "compressed": true,
+      "input_hex": "789cab56ca4bcc4d55b2522a4e4ecd4b55d251ca2bcd4d4a2d52b23234af050084cb0905",
+      "trace": [
+        "memory stream",
+        "inflate init",
+        "input buffer",
+        "input length",
+        "inflate write",
+        "inflate destroy",
+        "rewind",
+        "JSON archive",
+        "attributes load",
+        "buffer destroy"
+      ],
+      "status": true,
+      "attributes": {
+        "name": "scene",
+        "number": 17
+      }
+    },
+    {
+      "compressed": true,
+      "input_hex": "789c8b070000600060",
+      "trace": [
+        "memory stream",
+        "inflate init",
+        "input buffer",
+        "input length",
+        "inflate write",
+        "inflate destroy",
+        "rewind",
+        "JSON archive",
+        "attributes load",
+        "buffer destroy"
+      ],
+      "status": false,
+      "attributes": null
+    }
+  ],
+  "oracle": "Original ARM app code executed with explicitly controlled provider boundaries. Python zlib and JSON supply independent boundary outcomes. Actual pinned CCL providers run in the Linux replay."
+}

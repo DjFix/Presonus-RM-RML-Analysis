@@ -2,9 +2,29 @@
 #include "core/public/corestringbuffer.h"
 #include <cmath>
 #include <cstdint>
+#include <cstdio>
 #include <limits>
 #include <stdexcept>
 namespace Presonus::Surface {
+MappingComponent::MappingComponent()
+    : Core::Portable::Component(""), constructorAttributes_(std::in_place),
+      holdTimer_(3.f), blinkTimer_(2.f) {
+  Core::Portable::ParamInfo info{};
+  info.type = Core::Portable::ParamInfo::kInt;
+  info.minValue = 1.f;
+  info.maxValue = 16.f;
+  info.defaultValue = 1.f;
+  info.deltaValue = 1.f;
+  info.flags = Core::Portable::ParamInfo::kPrivate |
+               Core::Portable::ParamInfo::kReadOnly;
+  for (int number = 1; number <= 16; ++number) {
+    info.tag = 9999 + number;
+    std::snprintf(info.name, sizeof(info.name), "number%d", number);
+    if (auto *parameter = paramList.add(info, true))
+      parameter->setValue(static_cast<float>(number), false);
+  }
+}
+
 // Original scopes and encoded parameter identities. Return spellings, storage
 // and provider boundaries are an intentional portable source contract.
 int MappingComponent::getBankScrollingOffset() const {

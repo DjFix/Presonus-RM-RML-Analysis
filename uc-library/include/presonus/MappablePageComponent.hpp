@@ -13,6 +13,8 @@ public:
   const char *getPageName() const override;
   bool connectParameter(const char *, Core::Portable::Parameter *) override;
   void disconnectMappables() override;
+  // Provisional void return. A negative tag uses the current parameter count.
+  void addAlias(int tag, const char *name);
   // Independent setup: CCL ParamList owns parameters; vector borrows aliases.
   Core::Portable::AliasParam &addMappable(int tag, const char *name) {
     auto *p = static_cast<Core::Portable::AliasParam *>(

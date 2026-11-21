@@ -120,7 +120,7 @@ if(BUILD_TESTING)
   target_link_libraries(rolling10_reserve25_names_01 PRIVATE stdc++ presonus_cs18_components)
   target_compile_options(rolling10_reserve25_names_01 PRIVATE -fno-lto -UNDEBUG -ffunction-sections -fdata-sections -fno-rtti)
   target_link_options(rolling10_reserve25_names_01 PRIVATE -Wl,--gc-sections)
-  add_test(NAME rolling10_reserve25_names_01 COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_reserve25_names_01/check.py" "--exe" "$<TARGET_FILE:rolling10_reserve25_names_01>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/CascadeHandler.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_reserve25_names_01.json" "--source-transition" "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-15/trial10x2/names-source-transition01/SOURCE_TRANSITION.json" "--source-transition-sha256" "edafc5e35de5e4feda02e96f8fd6bb6c9692b38f17ffe2e3a5d1a5c7ca7a485a")
+  add_test(NAME rolling10_reserve25_names_01 COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_reserve25_names_01/check.py" "--exe" "$<TARGET_FILE:rolling10_reserve25_names_01>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/CascadeHandler.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_reserve25_names_01.json" "--source-transition" "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-21/reconstruction10x10/tail12-final01-supplements/NAMES_SOURCE_TRANSITION.json" "--source-transition-sha256" "d8a81fad7f04b2b22c9d888a4bf8d9664658b1dc6783a363525e226e47b69275")
   set_tests_properties(rolling10_reserve25_names_01 PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_reserve25_names_02/fixtures.json" fixture_sha)
   if(NOT fixture_sha STREQUAL "fce877638527c49a9e19a4851c1cbb2711eb81c3b7b37e1b7090ac832b1c33c6")
@@ -130,7 +130,7 @@ if(BUILD_TESTING)
   target_link_libraries(rolling10_reserve25_names_02 PRIVATE stdc++ presonus_cs18_components)
   target_compile_options(rolling10_reserve25_names_02 PRIVATE -fno-lto -UNDEBUG -ffunction-sections -fdata-sections -fno-rtti)
   target_link_options(rolling10_reserve25_names_02 PRIVATE -Wl,--gc-sections)
-  add_test(NAME rolling10_reserve25_names_02 COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_reserve25_names_02/check.py" "--exe" "$<TARGET_FILE:rolling10_reserve25_names_02>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/CascadeHandler.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_reserve25_names_02.json" "--source-transition" "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-15/trial10x2/names-source-transition01/SOURCE_TRANSITION.json" "--source-transition-sha256" "edafc5e35de5e4feda02e96f8fd6bb6c9692b38f17ffe2e3a5d1a5c7ca7a485a")
+  add_test(NAME rolling10_reserve25_names_02 COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_reserve25_names_02/check.py" "--exe" "$<TARGET_FILE:rolling10_reserve25_names_02>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/CascadeHandler.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_reserve25_names_02.json" "--source-transition" "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-21/reconstruction10x10/tail12-final01-supplements/NAMES_SOURCE_TRANSITION.json" "--source-transition-sha256" "d8a81fad7f04b2b22c9d888a4bf8d9664658b1dc6783a363525e226e47b69275")
   set_tests_properties(rolling10_reserve25_names_02 PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_next100_pageheader_disconnect/fixtures.json" fixture_sha)
   if(NOT fixture_sha STREQUAL "4c2c933e611f1c39d36ae890bd320a27d076a2b97f758e632f291da96a6d61c4")
@@ -140,7 +140,7 @@ if(BUILD_TESTING)
   target_link_libraries(rolling10_next100_pageheader_disconnect PRIVATE stdc++ presonus_cs18_components)
   target_compile_options(rolling10_next100_pageheader_disconnect PRIVATE -fno-lto -UNDEBUG -ffunction-sections -fdata-sections -fno-rtti)
   target_link_options(rolling10_next100_pageheader_disconnect PRIVATE -Wl,--gc-sections)
-  add_test(NAME rolling10_next100_pageheader_disconnect COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_next100_pageheader_disconnect/check.py" "--exe" "$<TARGET_FILE:rolling10_next100_pageheader_disconnect>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/PageHeaderComponent.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_next100_pageheader_disconnect.json")
+  add_test(NAME rolling10_next100_pageheader_disconnect COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_next100_pageheader_disconnect/check.py" "--exe" "$<TARGET_FILE:rolling10_next100_pageheader_disconnect>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/PageHeaderComponent.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_next100_pageheader_disconnect.json" "--source-transition" "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-21/reconstruction10x10/scoped30-historical-replay-transitions/PAGEHEADER_SOURCE_TRANSITION.json" "--source-transition-sha256" "212d5e608df41053e327aae1b134abd41c0c776a916008819f2a986af408cd4f")
   set_tests_properties(rolling10_next100_pageheader_disconnect PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
   file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_typed_start_daw/fixtures.json" fixture_sha)
   if(NOT fixture_sha STREQUAL "c909532c52092a2706c094b4d6c4ae8f1363f241a810e603df373ff35590b573")
@@ -259,4 +259,86 @@ if(BUILD_TESTING)
   target_link_options(rolling10_typed_spi_01_replay PRIVATE -Wl,--gc-sections)
   add_test(NAME rolling10_typed_spi_01_replay COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/rolling10_typed_spi_01/check.py" "--exe" "$<TARGET_FILE:rolling10_typed_spi_01_replay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_rm_objects.dir/src/Presonus/Panel/SPIControl.cpp.o" "--integration" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/local-integration.json" "--out" "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/generation06-next25/rolling10_typed_spi_01.json")
   set_tests_properties(rolling10_typed_spi_01_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  add_executable(ComponentLifecycleReplay tests/recovery/cycle21_g09_s01/Replay.cpp)
+  target_compile_features(ComponentLifecycleReplay PRIVATE cxx_std_20)
+  target_compile_options(ComponentLifecycleReplay PRIVATE -fno-lto -UNDEBUG -Wno-multichar -frtti)
+  target_link_libraries(ComponentLifecycleReplay PRIVATE presonus::rm_components)
+  foreach(lifecycle_record IN ITEMS
+    "1|cycle21_g09_s01|tests/recovery/cycle21_g09_s01/fixtures.json|eebaffb4799f8e6b5080f585babac165e5e8b9489f0cdc01140fba79a30cd44b"
+    "2|cycle21_g09_s02|tests/recovery/cycle21_g09_s02/fixtures.json|facd91c3a9f7c1602c243e53f4198629924813c93065b33f2a35dd1fd1cb3018"
+    "3|cycle21_g09_s03|tests/recovery/cycle21_g09_s03/fixtures.json|de9573bfc2b2262a1a3214d688d9ade8fb9050d7f33894be88d6794840e05885"
+    "4|cycle21_g09_s04|tests/recovery/cycle21_g09_s04/fixtures.json|70404f519f66c8faf8fc8253688f6ca817b4ba681f658ffcdd3090f94726a6a2"
+    "5|cycle21_g09_s05|tests/recovery/cycle21_g09_s05/fixtures.json|7dd27b1b7f96eea0fd4995c3bf337521f44f38c26a2f0c33a3f1477b0ea693ff"
+    "6|cycle21_g09_s06|tests/recovery/cycle21_g09_s06/fixtures.json|1bbd87249d0004cb41d683b4199777af49455d6d7389472e1d31219b7a32e43c"
+    "7|cycle21_g09_s07|tests/recovery/cycle21_g09_s07/fixtures.json|b098f6023856a08c0f2f701046ac0cf6be35f5ff072a757aadcf242608b37d4d"
+    "8|cycle21_g09_s08|tests/recovery/cycle21_g09_s08/fixtures.json|26a2992714479c11f694704fb533595573af9700adc8bfb27063d4e78e5b161e"
+    "9|cycle21_g09_s09|tests/recovery/cycle21_g09_s09/fixtures.json|b2a53991d873f1b00af188b593bc5e1d85f7af7a303be8e0dfecad52d3ca95ee"
+    "10|cycle21_g09_s10|tests/recovery/cycle21_g09_s10/fixtures.json|e0bd9d5355cf18c84cd0b327e12aff031497a9a6c7bfc1dda12d96238ba7b9cd"
+  )
+    string(REPLACE "|" ";" lifecycle_fields "${lifecycle_record}")
+    list(GET lifecycle_fields 0 lifecycle_slot)
+    list(GET lifecycle_fields 1 lifecycle_name)
+    list(GET lifecycle_fields 2 lifecycle_fixture)
+    list(GET lifecycle_fields 3 lifecycle_expected_sha)
+    file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/${lifecycle_fixture}" lifecycle_actual_sha)
+    if(NOT lifecycle_actual_sha STREQUAL lifecycle_expected_sha)
+      message(FATAL_ERROR "ComponentLifecycleReplay fixture hash mismatch: ${lifecycle_fixture}")
+    endif()
+    if(lifecycle_slot LESS_EQUAL 3)
+      set(lifecycle_object "presonus_common_objects.dir/src/Presonus/LinkableComponent.cpp.o")
+    elseif(lifecycle_slot LESS_EQUAL 6)
+      set(lifecycle_object "presonus_rm_objects.dir/src/Presonus/DspComponent.cpp.o")
+    else()
+      set(lifecycle_object "presonus_rm_objects.dir/src/Presonus/Mixer/AudioComponent.cpp.o")
+    endif()
+    set(lifecycle_test "ComponentLifecycleReplay_${lifecycle_name}")
+    add_test(NAME "${lifecycle_test}" COMMAND
+      "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python"
+      "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g09_s01/check.py"
+      canonical --slot "${lifecycle_slot}" --fixture "uc-library/${lifecycle_fixture}"
+      --exe "$<TARGET_FILE:ComponentLifecycleReplay>"
+      --object "${CMAKE_BINARY_DIR}/CMakeFiles/${lifecycle_object}"
+      --integration - --out -)
+    set_tests_properties("${lifecycle_test}" PROPERTIES
+      WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  endforeach()
+endif()
+
+if(BUILD_TESTING)
+  file(MAKE_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/cycle21-post25")
+  add_executable(cycle21_g07_s03_replay "tests/recovery/cycle21_g07_s03/Replay.cpp")
+  target_compile_features(cycle21_g07_s03_replay PRIVATE "cxx_std_17")
+  target_compile_options(cycle21_g07_s03_replay PRIVATE "-UNDEBUG" "-fno-rtti")
+  target_link_libraries(cycle21_g07_s03_replay PRIVATE "stdc++" "presonus::cs18_components")
+  target_link_options(cycle21_g07_s03_replay PRIVATE "-Wl,--wrap=_Znam,--wrap=_ZdaPv,--wrap=_ZdlPv,--wrap=_ZdlPvm")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g07_s03/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "c9290b99e3445db73364d7a34413523cb7f9617a09926acacc996030f48bf164")
+    message(FATAL_ERROR "cycle21_g07_s03_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g07_s03_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g07_s03/check.py" "--exe" "$<TARGET_FILE:cycle21_g07_s03_replay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/SoloPageComponent.cpp.o" "--fixtures" "uc-library/tests/recovery/cycle21_g07_s03/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g07_s03.json")
+  set_tests_properties(cycle21_g07_s03_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  add_executable(cycle21_g07_s04_replay "tests/recovery/cycle21_g07_s03/Replay.cpp")
+  target_compile_features(cycle21_g07_s04_replay PRIVATE "cxx_std_17")
+  target_compile_options(cycle21_g07_s04_replay PRIVATE "-UNDEBUG" "-fno-rtti")
+  target_link_libraries(cycle21_g07_s04_replay PRIVATE "stdc++" "presonus::cs18_components")
+  target_link_options(cycle21_g07_s04_replay PRIVATE "-Wl,--wrap=_Znam,--wrap=_ZdaPv,--wrap=_ZdlPv,--wrap=_ZdlPvm")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g07_s04/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "f0710f69207c29e4899a26d0a079cb9d5fb8276a40b6fc732508bdad39d8c5e7")
+    message(FATAL_ERROR "cycle21_g07_s04_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g07_s04_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g07_s03/check.py" "--exe" "$<TARGET_FILE:cycle21_g07_s04_replay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/Presonus/Surface/SoloPageComponent.cpp.o" "--fixtures" "uc-library/tests/recovery/cycle21_g07_s04/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g07_s04.json")
+  set_tests_properties(cycle21_g07_s04_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
+  add_executable(cycle21_g07_s10_replay "tests/recovery/cycle21_g07_s10/Replay.cpp")
+  target_compile_features(cycle21_g07_s10_replay PRIVATE "cxx_std_17")
+  target_compile_options(cycle21_g07_s10_replay PRIVATE "-UNDEBUG" "-fno-rtti")
+  target_link_libraries(cycle21_g07_s10_replay PRIVATE "stdc++" "presonus::rm_components")
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/cycle21_g07_s10/fixtures.json" cycle21_fixture_sha)
+  if(NOT cycle21_fixture_sha STREQUAL "2c7ba918d1db0622198661a0f5fc1c8306453ae51eb0d2bba0868c21cc3819a0")
+    message(FATAL_ERROR "cycle21_g07_s10_replay fixture hash mismatch")
+  endif()
+  add_test(NAME cycle21_g07_s10_replay COMMAND
+    "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "${CMAKE_CURRENT_SOURCE_DIR}/tests/recovery/cycle21_g07_s10/check.py" "--exe" "$<TARGET_FILE:cycle21_g07_s10_replay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_rm_objects.dir/src/Presonus/MixerSceneLoader.cpp.o" "--fixtures" "uc-library/tests/recovery/cycle21_g07_s10/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21-post25/cycle21_g07_s10.json")
+  set_tests_properties(cycle21_g07_s10_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
 endif()

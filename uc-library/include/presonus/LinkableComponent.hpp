@@ -5,6 +5,7 @@
 #include "core/system/corethread.h"
 #include <cstddef>
 #include <cstdint>
+#include <memory>
 
 namespace Presonus {
 class LinkableComponent;
@@ -26,9 +27,9 @@ struct State {
   // Actual pinned provider composition. This is portable state, not original
   // inheritance/layout. One process-wide storage lock mirrors the observed
   // shared lock identity; existing borrowed application boundaries stay intact.
+  Core::Portable::Component component{"LinkableComponent"};
   Core::Portable::Attributes alternate{
       Core::Portable::AttributeAllocator::getDefault()};
-  Core::Portable::Component component{"LinkableComponent"};
   inline static Core::Threads::Lock alternateLock;
 };
 } // namespace linkable_port
@@ -39,12 +40,24 @@ public:
   LinkableComponent(linkable_port::State &state,
                     linkable_port::Boundary &boundary)
       : state_(state), boundary_(boundary) {}
+  // Opt-in portable lifecycle for a live provider state transferred by the
+  // caller.
+  LinkableComponent(std::unique_ptr<linkable_port::State> state,
+                    linkable_port::Boundary &boundary);
+  virtual ~LinkableComponent();
   // Original ordinary returns remain declaration-pending.
   void toggleAltMemory();
   void copyToAltMemory(Core::Portable::Attributes &source);
   void loadAltMemory(const Core::Portable::InputStorage &storage);
+  bool load(const Core::Portable::InputStorage &storage);
+  // Provisional void return. The ARM routine uses no instance state.
+  void syncParams(Core::Portable::Parameter &source,
+                  Core::Portable::Parameter &destination, bool edit);
   bool save(Core::Portable::OutputStorage &storage) const;
   void linkAsSlave(LinkableComponent &);
+  // Source port for stable, acyclic borrowed child graphs with unique sibling
+  // names. The native recursion stops at an already-paired receiver.
+  void linkAsMaster(LinkableComponent &);
   void setLink(LinkableComponent &, bool);
   void removeLink();
   void setLinkEnabled(bool);
@@ -54,6 +67,7 @@ public:
   LinkableComponent *castTo(int);
 
 private:
+  std::unique_ptr<linkable_port::State> ownedState_;
   linkable_port::State &state_;
   linkable_port::Boundary &boundary_;
 };

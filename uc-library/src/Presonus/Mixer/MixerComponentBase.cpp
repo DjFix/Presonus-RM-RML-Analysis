@@ -4,13 +4,60 @@
 #include "core/portable/corepersistence.h"
 #include "core/portable/coreworker.h"
 #include "core/public/corestringbuffer.h"
+#include "core/system/coredebug.h"
 #include "presonus/mixer/ChannelComponent.hpp"
+#include "presonus/mixer/MasterSectionComponent.hpp"
+#include "presonus/mixer/MixerComponent.hpp"
+#include "presonus/mixer/MixerComponentBaseDelegate.hpp"
 #include "presonus/mixer/PermissionsComponent.hpp"
+#include "presonus/mixer/RackMixerComponent.hpp"
+#include "presonus/mixer/TapeInputComponent.hpp"
+#include "presonus/noaa/card_handler.hpp"
+#include "presonus/noaa/status_property.hpp"
+#include <cmath>
 #include <cstring>
+#include <limits>
 #include <memory>
 #include <new>
 #include <stdexcept>
 namespace Presonus::Mixer {
+namespace {
+// The provider validates the borrowed status object's identity. Preserve its
+// prior payload across each query, including provider exceptions.
+struct RestoreStatusPayload {
+  NOAA::NOAAStatusProperty &target;
+  std::array<unsigned char, 52> saved;
+  ~RestoreStatusPayload() { target.payload = saved; }
+};
+} // namespace
+
+bool MixerComponentBase::hasDanteInputRoutes() {
+  if (!digitalRouteHandler || !serialStatus)
+    throw std::logic_error("live NOAA handler and status projection required");
+  RestoreStatusPayload restore{*serialStatus, serialStatus->payload};
+  serialStatus->payload.fill(0);
+  digitalRouteHandler->getProperty(*serialStatus);
+  std::uint32_t mode;
+  std::memcpy(&mode, serialStatus->payload.data(), sizeof(mode));
+  return mode == 2;
+}
+void MixerComponentBase::getMixerSerialInfo(int &first, int &second) {
+  first = 0;
+  second = 0;
+  if (!digitalRouteHandler)
+    return;
+  if (!serialStatus)
+    throw std::logic_error("live NOAA status projection required");
+  RestoreStatusPayload restore{*serialStatus, serialStatus->payload};
+  serialStatus->payload.fill(0);
+  digitalRouteHandler->getProperty(*serialStatus);
+  std::int32_t word20;
+  std::int32_t word18;
+  std::memcpy(&word20, serialStatus->payload.data() + 0x18, sizeof(word20));
+  std::memcpy(&word18, serialStatus->payload.data() + 0x10, sizeof(word18));
+  first = word20;
+  second = word18;
+}
 Core::Portable::Component *
 MixerComponentBase::findChild(const char *name) const {
   if (name && std::strcmp(name, "selch") == 0)
@@ -54,6 +101,162 @@ void MixerComponentBase::setChannelParams(int tag, float value) {
     auto *parameter = sceneChannels->at(index)->getParameterByTag(tag);
     if (parameter)
       parameter->setValue(value, true);
+  }
+}
+namespace {
+void clearChannelSolos(const Core::Vector<ChannelComponent *> *channels,
+                       MasterSectionComponent *masterSection) {
+  if (!masterSection)
+    throw std::logic_error("master section binding required");
+  if (channels) {
+    const int count = channels->count();
+    for (int index = 0; index < count; ++index)
+      if (auto *solo = channels->at(index)->portableState().solo)
+        solo->setValue(0.f, false);
+  }
+  masterSection->localSoloChanged();
+}
+} // namespace
+
+void MixerComponentBase::clearSolos() {
+  clearChannelSolos(sceneChannels, soloMasterSection);
+}
+void MixerComponentBase::clearSIPSolos() {
+  clearChannelSolos(sipSoloChannels, soloMasterSection);
+}
+void MixerComponentBase::activateSIP(bool active) {
+  Core::DebugPrintf("MixerComponentBase::activateSIP isActive = %d\n",
+                    static_cast<int>(active));
+  sceneRecallBlocksTag14 = false;
+  if (active) {
+    sipMuteSnapshotPending = false;
+    if (sipSoloChannels) {
+      const int count = sipSoloChannels->count();
+      for (int i = 0; i < count; ++i)
+        sipSoloChannels->at(i)->portableState().solo->setValue(0.f, false);
+    }
+    sceneRecallBlocksTag14 = true;
+  } else if (sipMuteSnapshotPending) {
+    if (!sipMuteRestorer || !sipMuteSnapshot)
+      throw std::logic_error(
+          "SIP mute snapshot and receiver bindings required");
+    sipMuteSnapshotPending = false;
+    sipMuteRestorer->restoreMutes(*sipMuteSnapshot, Filter{2});
+  }
+}
+void MixerComponentBase::refreshSip() {
+  if (!sceneRecallBlocksTag14)
+    return;
+  if (!soloMasterSection)
+    throw std::logic_error("master section binding required");
+  activateSIP(true);
+  soloMasterSection->localSoloChanged();
+}
+void MixerComponentBase::routeDigitalOutput(int output, int selection) {
+  if (!digitalRouteHandler)
+    throw std::logic_error("digital route handler binding required");
+  unsigned char left = 0, right = 0;
+  unsigned int count = 0;
+  if (rackDigitalRoutes)
+    rackDigitalRoutes->getTDMRoutes(selection, left, right, count);
+  else
+    getTDMRoutes(selection, left, right, count);
+
+  auto &handler = *digitalRouteHandler;
+  auto &state = handler.portableHandlerState();
+  auto submit = [&](int type, int size,
+                    const std::array<std::uint32_t, 5> &words) {
+    Core::Property property(type, size);
+    const presonus::noaa::ImmediatePropertyProjection projection{&property,
+                                                                 words};
+    const auto *previous = state.immediate;
+    state.immediate = &projection;
+    try {
+      handler.setProperty(property);
+    } catch (...) {
+      state.immediate = previous;
+      throw;
+    }
+    state.immediate = previous;
+  };
+  if (output == 11) {
+    submit(0x73706466, 16, {left | (std::uint32_t(right) << 8), count});
+    return;
+  }
+
+  const auto sipCount = sipSoloChannels ? sipSoloChannels->count() : 0;
+  const auto destination = (static_cast<std::uint32_t>(output) - 1U) * 2U +
+                           static_cast<std::uint32_t>(sipCount);
+  submit(0x61767372, 24, {destination, left, count, 0});
+  submit(0x61767372, 24, {destination + 1U, right, count, 0});
+  if (auto *enabled = sceneSettings->getParameterByTag(23))
+    if (enabled->getValue() > 0.f)
+      digitalOutputRouteDirty = true;
+}
+
+namespace {
+std::int32_t truncateSetupValue(float value) {
+  if (std::isnan(value))
+    return 0;
+  if (value >= 2147483648.f)
+    return std::numeric_limits<std::int32_t>::max();
+  if (value <= -2147483648.f)
+    return std::numeric_limits<std::int32_t>::min();
+  return static_cast<std::int32_t>(value);
+}
+} // namespace
+
+MixerComponentBase::MixerSetupProperty
+MixerComponentBase::getSetupProperty() const {
+  MixerSetupProperty setup;
+  auto *rate = sceneSettings->getParameterByTag(20);
+  switch (rate ? truncateSetupValue(rate->getValue()) : 1) {
+  case 1:
+    setup.sampleRate = 48000.f;
+    setup.word0c = 32;
+    break;
+  case 2:
+    setup.sampleRate = 88200.f;
+    setup.word0c = 64;
+    break;
+  case 3:
+    setup.sampleRate = 96000.f;
+    setup.word0c = 64;
+    break;
+  default:
+    setup.sampleRate = 44100.f;
+    setup.word0c = 32;
+    break;
+  }
+  const float first = sceneSettings->getParameterByTag(43)->getValue();
+  const float second = sceneSettings->getParameterByTag(5)->getValue();
+  const float third = sceneSettings->getParameterByTag(44)->getValue();
+  setup.tag43 = truncateSetupValue(first);
+  setup.tag5 = truncateSetupValue(second);
+  setup.tag44 = truncateSetupValue(third);
+  return setup;
+}
+ChannelComponent *MixerComponentBase::getTapeIn() const {
+  if (!tapeInputChannels)
+    return nullptr;
+  const int count = tapeInputChannels->count();
+  for (int index = 0; index < count; ++index) {
+    auto *channel = tapeInputChannels->at(index);
+    if (dynamic_cast<TapeInputComponent *>(channel))
+      return channel;
+  }
+  return nullptr;
+}
+void MixerComponentBase::checkResetComponents(
+    const Core::Portable::IStorageFilter &filter) {
+  if (!resetComponentParent)
+    return;
+  const int count = resetComponentParent->countChildren();
+  for (int index = 0; index < count; ++index) {
+    auto *child = resetComponentParent->getChild(index);
+    if (filter.shouldLoad(Core::Portable::Component::kTypeID, child->getName(),
+                          child))
+      child->Core::Portable::Component::resetToDefaults(true, false, nullptr);
   }
 }
 void MixerComponentBase::getTDMRoutes(int selector, unsigned char &first,
@@ -140,6 +343,11 @@ void MixerComponentBase::addDelegate(Delegate &delegate) {
     // Pinned CCL uses throwing new; adapt its failure to the native no-append
     // path without claiming original capacity growth or allocator equivalence.
   }
+}
+void MixerComponentBase::faderLocateDirty(ChannelComponent *channel) {
+  const int count = delegates.count();
+  for (int index = 0; index < count; ++index)
+    delegates.at(index)->faderLocateDirty(channel);
 }
 bool MixerComponentBase::shouldCollectFaderChanges(int selector) const {
   return selector == 0 || selector == 6 || selector == 7;

@@ -1,0 +1,132 @@
+{
+  "task": "cycle21_g07_r07",
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "mangled": "_ZN8Presonus5Mixer17HPFilterComponentD0Ev",
+  "address": 254120,
+  "size": 56,
+  "section": ".text",
+  "file_offset": 221352,
+  "range_sha256": "6960535783118fa15c924e2948bc8c153698fd73b7f2dbe04f8a18ac55f6aee1",
+  "dependency_ranges": [
+    {
+      "mangled": "_ZN8Presonus5Mixer14AudioComponentD2Ev",
+      "address": 250624,
+      "size": 88,
+      "section": ".text",
+      "file_offset": 217856,
+      "range_sha256": "f8c7f7389ebf9d0d1c8c0f28e1e3b47d6156aae0e12714831d0370e3a93abf6b"
+    },
+    {
+      "mangled": "_ZN8Presonus12DspComponentD2Ev",
+      "address": 536880,
+      "size": 104,
+      "section": ".text",
+      "file_offset": 504112,
+      "range_sha256": "62e6b0ffeca2c0fe8996e2816576896112eb56a6424499477abd3f0e34445ece"
+    }
+  ],
+  "cases": [
+    {
+      "entry": 254120,
+      "controller_present": true,
+      "receiver_released": true,
+      "events": [
+        {
+          "operation": "_ZN8Presonus5Mixer17HPFilterComponentD0Ev",
+          "address": 254120,
+          "caller_return": 50348040
+        },
+        {
+          "operation": "_ZN8Presonus5Mixer14AudioComponentD2Ev",
+          "address": 250624,
+          "caller_return": 254156
+        },
+        {
+          "operation": "property release",
+          "address": 50348032,
+          "caller_return": 250672
+        },
+        {
+          "operation": "_ZN8Presonus12DspComponentD2Ev",
+          "address": 536880,
+          "caller_return": 250680
+        },
+        {
+          "operation": "controller release",
+          "address": 50348036,
+          "caller_return": 536936
+        },
+        {
+          "operation": "Dsp base cleanup boundary",
+          "address": 536572,
+          "caller_return": 536952
+        },
+        {
+          "operation": "operator delete",
+          "address": 44048,
+          "caller_return": 254164
+        }
+      ]
+    },
+    {
+      "entry": 250624,
+      "controller_present": true,
+      "receiver_released": false,
+      "events": [
+        {
+          "operation": "_ZN8Presonus5Mixer14AudioComponentD2Ev",
+          "address": 250624,
+          "caller_return": 50348040
+        },
+        {
+          "operation": "property release",
+          "address": 50348032,
+          "caller_return": 250672
+        },
+        {
+          "operation": "_ZN8Presonus12DspComponentD2Ev",
+          "address": 536880,
+          "caller_return": 250680
+        },
+        {
+          "operation": "controller release",
+          "address": 50348036,
+          "caller_return": 536936
+        },
+        {
+          "operation": "Dsp base cleanup boundary",
+          "address": 536572,
+          "caller_return": 536952
+        }
+      ]
+    },
+    {
+      "entry": 250624,
+      "controller_present": false,
+      "receiver_released": false,
+      "events": [
+        {
+          "operation": "_ZN8Presonus5Mixer14AudioComponentD2Ev",
+          "address": 250624,
+          "caller_return": 50348040
+        },
+        {
+          "operation": "property release",
+          "address": 50348032,
+          "caller_return": 250672
+        },
+        {
+          "operation": "_ZN8Presonus12DspComponentD2Ev",
+          "address": 536880,
+          "caller_return": 250680
+        },
+        {
+          "operation": "Dsp base cleanup boundary",
+          "address": 536572,
+          "caller_return": 536952
+        }
+      ]
+    }
+  ],
+  "oracle": "Original outer D0, Audio D2 and Dsp D2 instructions execute. Release methods and Dsp deep base cleanup are explicit controlled boundaries. The exact original delete PLT boundary releases the receive mapping."
+}

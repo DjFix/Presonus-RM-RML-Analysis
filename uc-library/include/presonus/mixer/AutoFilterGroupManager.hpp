@@ -1,6 +1,9 @@
 #pragma once
 #include "core/public/corevector.h"
 #include "presonus/uc/ServerComponent.hpp"
+#include <array>
+#include <utility>
+#include <vector>
 namespace Presonus::Mixer {
 class ChannelComponent;
 // Partial source port. No original inheritance, layout, constructor or return
@@ -12,6 +15,18 @@ public:
                                   int delta = 5)
       : updateChannels_(capacity, delta) {}
   ~AutoFilterGroupManager() override;
+  struct AutoGroupingState {
+    // Borrowed category groups in the original preset category order.
+    std::array<Core::Portable::Component *, 9> groups{};
+    // The original constructor's first encoded integer supplies the ordinal.
+    std::vector<std::pair<ChannelComponent *, int>> channelOrdinals;
+  };
+  void bindAutoGrouping(const AutoGroupingState &state) {
+    autoGrouping_ = &state;
+  }
+  // Portable void declarations. The original unencoded declaration is pending.
+  void updateAutoGroup(ChannelComponent *);
+  void onIdle() override;
   // Independent portable owner collection corresponding to native +0xa0.
   // Entries in updateChannels_ remain borrowed and are never deleted.
   Core::Vector<Core::Portable::Component *> &portableOwnedComponents() {
@@ -25,6 +40,7 @@ public:
   }
 
 private:
+  const AutoGroupingState *autoGrouping_ = nullptr;
   Core::Vector<ChannelComponent *> updateChannels_;
   Core::Vector<Core::Portable::Component *> ownedComponents_;
 };

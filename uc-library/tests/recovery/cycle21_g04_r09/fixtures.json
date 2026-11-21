@@ -1,0 +1,95 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "range_sha256": "5f0eed2cafdc7c9793a603f45937ab0aee347efe7f5b9c88875c39855c5fa132",
+  "section": ".text",
+  "address": 248892,
+  "size": 104,
+  "offset": 216124,
+  "mangled": "_ZN8Presonus5Mixer12GEQComponentD0Ev",
+  "dsp_target": {
+    "mangled": "_ZN8Presonus12DspComponentD2Ev",
+    "address": 536880
+  },
+  "plt_bindings": {
+    "_ZdlPv": {
+      "entry": 44048,
+      "index": 91,
+      "got": 4536376,
+      "plt_sha256": "a07345cb45a0a1810dc3eaa4b96fe370e87d039a8f1306431ed34072673d0605"
+    },
+    "__cxa_end_cleanup": {
+      "entry": 44240,
+      "index": 107,
+      "got": 4536440,
+      "plt_sha256": "a4e228e858bd6edfd330303c3226ba36debabf06e42e7620f2c589e48b7284f6"
+    }
+  },
+  "cases": [
+    {
+      "mode": "null",
+      "calls": [
+        [
+          "dsp_cleanup",
+          11272192
+        ],
+        [
+          "unsized_delete_unmapped",
+          11272192
+        ]
+      ],
+      "provider_events": [
+        3
+      ],
+      "deallocated": true,
+      "guest_receiver": 11272192
+    },
+    {
+      "mode": "present",
+      "calls": [
+        [
+          "property_release",
+          11542528
+        ],
+        [
+          "dsp_cleanup",
+          11272192
+        ],
+        [
+          "unsized_delete_unmapped",
+          11272192
+        ]
+      ],
+      "provider_events": [
+        1,
+        2,
+        3
+      ],
+      "deallocated": true,
+      "guest_receiver": 11272192
+    },
+    {
+      "mode": "modeled-unwind",
+      "calls": [
+        [
+          "property_release",
+          11542528
+        ],
+        [
+          "dsp_cleanup",
+          11272192
+        ],
+        [
+          "end_cleanup",
+          11554816
+        ]
+      ],
+      "provider_events": [
+        1,
+        2,
+        3
+      ],
+      "deallocated": false,
+      "guest_receiver": 11272192
+    }
+  ]
+}

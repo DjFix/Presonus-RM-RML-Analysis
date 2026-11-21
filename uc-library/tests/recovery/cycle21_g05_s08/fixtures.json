@@ -1,0 +1,59 @@
+{
+  "target": {
+    "address": 643644,
+    "anchor": "ebc1df545e10ed88f4e7d06b97871e6e7479b878aba10e6ba1269ce90eed389b",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZNK11IconManager18suggestChannelNameEPKcRN8Presonus13SLChannelBaseERN4Core13CStringBufferILi256EEE",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 684
+  },
+  "section": ".text",
+  "file_offset": 610876,
+  "range_sha256": "a90f5a6b187251522c3dcf4f9373cda0037d022a6d26a139ac3ed05b260ca7d5",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "input": null,
+      "result": ""
+    },
+    {
+      "input": "",
+      "result": ""
+    },
+    {
+      "input": "drums",
+      "result": "drums"
+    },
+    {
+      "input": "drums/snaredrum",
+      "result": "Snare Drum"
+    },
+    {
+      "input": "drums/kick",
+      "result": "Kick"
+    },
+    {
+      "input": "drums/absent",
+      "result": "drums/absent"
+    },
+    {
+      "input": "keys/piano",
+      "result": "keys/piano"
+    },
+    {
+      "input": "Drums/kick",
+      "result": "Drums/kick"
+    },
+    {
+      "input": "absent/path",
+      "result": "absent/path"
+    },
+    {
+      "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "result": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

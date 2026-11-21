@@ -9,6 +9,9 @@ struct PageObserverAccess;
 struct SLMappingAccess;
 struct SLMappingState;
 } // namespace presonus::surface
+namespace Core::Portable {
+struct WheelEvent;
+}
 namespace Presonus {
 class PageComponent;
 // Original twelve-pure-slot interface, no virtual destructor slots. Ordinary
@@ -90,6 +93,7 @@ public:
   void addObserver(IObserver *);
   void removeObserver(IObserver *);
   int getEqEncoderMode() const;
+  void paramChanged(Core::Portable::Parameter *, int);
 
 private:
   Core::Portable::ParamList encoderParameters_;
@@ -99,6 +103,10 @@ private:
 class GeqPageComponent {
 public:
   int getMaxListOffset();
+  void updateBands();
+  void addListOffset(int);
+  void onWheelInput(const Core::Portable::WheelEvent &);
+  void paramChanged(Core::Portable::Parameter *, int);
   class IObserver {
   public:
     virtual void onGeqScrollOffsetChanged() = 0;
@@ -113,6 +121,11 @@ public:
 private:
   Core::Vector<IObserver *> observers_;
   int listOffset_ = 0;
+  int notifiedOffset_ = 0;
+  // Borrowed page visibility and Core component tree; owned local parameters.
+  const Presonus::PageComponent *page_ = nullptr;
+  Core::Portable::Component parameters_;
+  Core::Portable::ParamList bandParameters_;
   friend struct presonus::surface::PageObserverAccess;
 };
 class SLMixerHandler : public MixerAssignmentHandler,
@@ -267,6 +280,19 @@ struct SLMixerEncoderAccess {
 namespace presonus::surface {
 // Independent source-port setup/inspection API, not recovered ELF methods.
 struct PageObserverAccess {
+  static void bindGeqPage(Presonus::Surface::GeqPageComponent &v,
+                          const Presonus::PageComponent &page) {
+    v.page_ = &page;
+  }
+  static auto &geqComponent(Presonus::Surface::GeqPageComponent &v) {
+    return v.parameters_;
+  }
+  static auto &bandParameters(Presonus::Surface::GeqPageComponent &v) {
+    return v.bandParameters_;
+  }
+  static int notifiedOffset(const Presonus::Surface::GeqPageComponent &v) {
+    return v.notifiedOffset_;
+  }
   static auto &encoderParameters(Presonus::Surface::EQPageComponent &v) {
     return v.encoderParameters_;
   }

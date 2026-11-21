@@ -15,6 +15,9 @@
 #include <string>
 #include <vector>
 struct Touchscreen_Type;
+namespace Core::Portable {
+class SettingFile;
+}
 
 // Portable class declarations for the evidenced methods only. These do
 // not reproduce original inheritance, object storage, vtables or ARM32 layouts.
@@ -100,6 +103,8 @@ struct PanelRegistrarCommandState {
 } // namespace presonus::surface
 namespace Presonus::Surface {
 class MainScreenComponent;
+class MappingComponent;
+class NetworkSetupComponent;
 class MidiMixerHandler;
 } // namespace Presonus::Surface
 namespace presonus::surface {
@@ -141,6 +146,14 @@ struct RootServices {
   FocusState *focus = nullptr;
   Core::Portable::Component *children = nullptr;
   std::vector<MainScreenReference> mainScreens;
+  // Borrowed canonical children eligible for the corresponding typed lookup.
+  // The portable CCL provider is built without C++ RTTI. Bindings must outlive
+  // the lookups. The actual CCL child pointer is checked against each binding.
+  std::vector<Presonus::Surface::MappingComponent *> mappingComponents;
+  std::vector<Presonus::Surface::NetworkSetupComponent *>
+      networkSetupComponents;
+  // Borrowed application settings and the existing root CCL parameter tree.
+  Core::Portable::SettingFile *settings = nullptr;
 };
 } // namespace presonus::surface
 namespace Presonus::Surface {
@@ -236,6 +249,27 @@ public:
   void switchChanged(const Presonus::Panel::ControlRegistrar &, int, int, bool,
                      Presonus::Panel::SwitchControl *);
   MainScreenComponent *getMainScreenComponent() const;
+  MappingComponent *getMappingComponent() const;
+  NetworkSetupComponent *getNetworkSetupComponent() const;
+  // Portable callback declarations. Original return declarations are unknown.
+  void paramChangedScribbleStripImageTest(bool);
+  void paramChangedLaunchTestTouchscreen(bool);
+  void stopAllTests();
+  void paramChangedLaunchMardiGras(bool);
+  void paramChangedExitUtilPage(Core::Portable::Parameter *);
+  void paramChangedExitAudioUtilitiesPage();
+  void paramChangedExitDiagnositcsPage(Core::Portable::Parameter *);
+  void paramChangedLaunchAudioUtilities();
+  void paramChangedLaunchFaderUtilities(bool);
+  void paramChangedQuitTestTouchscreen();
+  void paramChangedLaunchCalibrateTouchPage(bool);
+  void paramChangedExitTestTouchscreenPage(Core::Portable::Parameter *);
+  void paramChangedExitFaderUtilitiesPage(Core::Portable::Parameter *);
+  void paramChangedExitCalibrateTouchPage(Core::Portable::Parameter *);
+  void paramChangedCalibrationTarget(Core::Portable::Parameter *);
+  void paramChangedDiagnositcsPage();
+  void onMainScreenParamChanged(Core::Portable::Parameter *);
+  void storeSettings() const;
   int bumpFaderTouchSensitivity(int);
   void paramChangedLcdBrightness(Core::Portable::Parameter *);
   // Observed 0/1 predicate result; original return spelling unresolved.
@@ -244,6 +278,9 @@ public:
   bool isMappableControl(const char *controlName);
 
 private:
+  Core::Portable::Parameter &mainScreenParameter(int tag) const;
+  Core::Portable::IParamObserver *pageObserver() const;
+  Core::Portable::Parameter &rootParameter(int tag) const;
   PanelRegistrar *registrar_ = nullptr;
   presonus::surface::RootServices *services_ = nullptr;
 };

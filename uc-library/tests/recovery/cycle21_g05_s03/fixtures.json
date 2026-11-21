@@ -1,0 +1,189 @@
+{
+  "target": {
+    "address": 639832,
+    "anchor": "aee363cc52b4d0e5f458c7bb1a9bfe2b16d2a98094e02e79774d5d8aa0646109",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN11IconManager15ChannelCategoryC1ERKN4Core8Portable8FileNameEb",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 144
+  },
+  "section": ".text",
+  "file_offset": 607064,
+  "range_sha256": "5c4f633b411004458fc3dc9a3789781285f40a06ffe0b2ce48cd87123876eeff",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "path": "v/DRUMS",
+      "recurse": false,
+      "names": [
+        "Snare Drum.PNG",
+        "SnareDrum.PNG",
+        "Kick.wav"
+      ],
+      "category": "drums",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/DRUMS"
+        ],
+        [
+          "resize",
+          1
+        ],
+        [
+          "close",
+          "v/DRUMS"
+        ]
+      ]
+    },
+    {
+      "path": "v/DRUMS",
+      "recurse": true,
+      "names": [
+        "Snare Drum.PNG",
+        "SnareDrum.PNG",
+        "Hat.PNG",
+        "Deep",
+        "Cymbal.PNG",
+        "Level2",
+        "Tom.PNG",
+        "Nested",
+        "Kick.wav"
+      ],
+      "category": "drums",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/DRUMS"
+        ],
+        [
+          "resize",
+          1
+        ],
+        [
+          "open",
+          "v/DRUMS/Nested"
+        ],
+        [
+          "open",
+          "v/DRUMS/Nested/Level2"
+        ],
+        [
+          "open",
+          "v/DRUMS/Nested/Level2/Deep"
+        ],
+        [
+          "close",
+          "v/DRUMS/Nested/Level2/Deep"
+        ],
+        [
+          "close",
+          "v/DRUMS/Nested/Level2"
+        ],
+        [
+          "resize",
+          6
+        ],
+        [
+          "close",
+          "v/DRUMS/Nested"
+        ],
+        [
+          "close",
+          "v/DRUMS"
+        ]
+      ]
+    },
+    {
+      "path": "v/keys",
+      "recurse": false,
+      "names": [],
+      "category": "keys",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/keys"
+        ],
+        [
+          "close",
+          "v/keys"
+        ]
+      ]
+    },
+    {
+      "path": "v/keys",
+      "recurse": true,
+      "names": [],
+      "category": "keys",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/keys"
+        ],
+        [
+          "close",
+          "v/keys"
+        ]
+      ]
+    },
+    {
+      "path": "v/missing",
+      "recurse": false,
+      "names": [],
+      "category": "missing",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/missing"
+        ],
+        [
+          "close",
+          "v/missing"
+        ]
+      ]
+    },
+    {
+      "path": "v/missing",
+      "recurse": true,
+      "names": [],
+      "category": "missing",
+      "trace": [
+        [
+          "resize",
+          0
+        ],
+        [
+          "open",
+          "v/missing"
+        ],
+        [
+          "close",
+          "v/missing"
+        ]
+      ]
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

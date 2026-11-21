@@ -1,6 +1,9 @@
 #pragma once
+#include "core/portable/coreattributes.h"
 #include "core/portable/corecomponent.h"
 #include "presonus/surface/sl_mixer_encoder.hpp"
+#include <array>
+#include <optional>
 namespace presonus::mapping {
 // Independent source-port boundaries for app-specific providers. These are not
 // original fields, types, virtual tables, or a replacement Core implementation.
@@ -70,6 +73,7 @@ public:
   void onFootswitchModeChanged(int);
 
 protected:
+  MappingComponent();
   explicit MappingComponent(presonus::surface::MappingRouteInit)
       : Core::Portable::Component("portable mapping input routes") {}
   ~MappingComponent() override = default;
@@ -85,6 +89,10 @@ private:
   presonus::mapping::Handler *displayHandler_ = nullptr;
   presonus::mapping::Handler *secondaryHandler_ = nullptr;
   presonus::mapping::Handler *dawHandler_ = nullptr;
+  // The no-argument path constructs three separate default-allocator lists.
+  // Their original member names and application roles remain unresolved.
+  std::optional<std::array<Core::Portable::DefaultAllocatedAttributes, 3>>
+      constructorAttributes_;
   Presonus::DelayTimer holdTimer_{1.f};
   Presonus::DelayTimer blinkTimer_{1.f};
   bool blinkState_ = false;
@@ -115,6 +123,16 @@ struct Access {
     v.displayHandler_ = display;
     v.secondaryHandler_ = secondary;
     v.dawHandler_ = daw;
+  }
+  static const auto &
+  constructorAttributes(const Presonus::Surface::MappingComponent &v) {
+    return v.constructorAttributes_;
+  }
+  static bool providersUnbound(const Presonus::Surface::MappingComponent &v) {
+    return !v.mainScreenParameters_ && !v.normalFootswitchHandler_ &&
+           !v.alternateFootswitchHandler_ && !v.encoderHandler_ &&
+           !v.bindings_ && !v.selectedHandler_ && !v.displayHandler_ &&
+           !v.secondaryHandler_ && !v.dawHandler_;
   }
   static bool &fadersLockedToMainMix(Presonus::Surface::MappingComponent &v) {
     return v.fadersLockedToMainMix_;

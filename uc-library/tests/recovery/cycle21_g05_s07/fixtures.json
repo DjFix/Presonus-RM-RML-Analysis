@@ -1,0 +1,51 @@
+{
+  "target": {
+    "address": 636640,
+    "anchor": "ae49b2b658f21f0e1d948321d6655226a5f8b440b397172ddd337dacdb05ad68",
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZNK11IconManager20getCategoryForIconIdEN4Core13CStringBufferILi256EEE",
+    "original_elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "role": "client",
+    "section": 12,
+    "size": 148
+  },
+  "section": ".text",
+  "file_offset": 603872,
+  "range_sha256": "620561cd5148e84427ef9b4ca8c5a73ad792392ba4e7f2d60a1496f52ceccaed",
+  "unicorn": "2.1.4",
+  "cases": [
+    {
+      "input": "",
+      "result": null
+    },
+    {
+      "input": "drums",
+      "result": "first"
+    },
+    {
+      "input": "drums/snaredrum",
+      "result": "first"
+    },
+    {
+      "input": "drums/kick",
+      "result": "first"
+    },
+    {
+      "input": "drums/absent",
+      "result": "first"
+    },
+    {
+      "input": "keys/piano",
+      "result": "second"
+    },
+    {
+      "input": "Drums/kick",
+      "result": null
+    },
+    {
+      "input": "absent/path",
+      "result": null
+    }
+  ],
+  "boundary_model": "Application ARM instructions are executed directly. Pinned Core and libc calls, StringUtils and C++ guard functions use controlled hooks in the native harness. Linux replay invokes actual pinned source providers."
+}

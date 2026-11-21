@@ -1,0 +1,405 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "range_sha256": "214016847c6c73b7e7b6b782edd8914aa32d5e7fca2795fc154373f0bd449fe2",
+  "section": ".text",
+  "address": 739992,
+  "size": 140,
+  "offset": 707224,
+  "slots": [
+    {
+      "table": "_ZTVN4Core8Portable12NumericParamE",
+      "slot": 68,
+      "word_address": 2118132,
+      "value": 1172620,
+      "mangled": "_ZNK4Core8Portable12NumericParam8getValueEv"
+    },
+    {
+      "table": "_ZTVN8Presonus7Surface19ScenesPageComponentE",
+      "slot": 84,
+      "word_address": 2002908,
+      "value": 738152,
+      "mangled": "_ZN8Presonus7Surface20PresetsPageComponent6recallEv"
+    }
+  ],
+  "cases": [
+    {
+      "args": [
+        1,
+        3,
+        0,
+        1,
+        1
+      ],
+      "expected": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ],
+        [
+          "strcmp",
+          "fsw_load",
+          "fsw_load"
+        ],
+        [
+          "getValue",
+          1
+        ],
+        [
+          "float_gt",
+          1,
+          0
+        ],
+        [
+          "presets_recall",
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        3,
+        0,
+        0,
+        1
+      ],
+      "expected": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ],
+        [
+          "strcmp",
+          "fsw_load",
+          "fsw_load"
+        ],
+        [
+          "getValue",
+          0
+        ],
+        [
+          "float_gt",
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        3,
+        0,
+        -1,
+        1
+      ],
+      "expected": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ],
+        [
+          "strcmp",
+          "fsw_load",
+          "fsw_load"
+        ],
+        [
+          "getValue",
+          -1
+        ],
+        [
+          "float_gt",
+          -1,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        3,
+        0,
+        1,
+        0
+      ],
+      "expected": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        1,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ],
+        [
+          "strcmp",
+          "fsw_load",
+          "fsw_load"
+        ],
+        [
+          "getValue",
+          1
+        ],
+        [
+          "float_gt",
+          1,
+          0
+        ],
+        [
+          "presets_recall",
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        0,
+        3,
+        0,
+        1,
+        1
+      ],
+      "expected": [
+        2,
+        1,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        2,
+        0,
+        1,
+        1
+      ],
+      "expected": [
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      "expected": [
+        2,
+        1,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ],
+        [
+          "strcmp",
+          "other",
+          "fsw_load"
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          2,
+          0,
+          0,
+          1
+        ],
+        [
+          "isVisible",
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        0,
+        2,
+        2,
+        0,
+        1
+      ],
+      "expected": [
+        -1,
+        0,
+        1,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          2,
+          -1,
+          0,
+          1
+        ],
+        [
+          "isVisible",
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "expected": [
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "events": [
+        [
+          "preset_paramChanged",
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          "isVisible",
+          1
+        ]
+      ]
+    }
+  ]
+}

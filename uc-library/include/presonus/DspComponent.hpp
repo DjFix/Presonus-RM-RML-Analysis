@@ -11,6 +11,7 @@ class IController;
 namespace dspcomponent_port {
 // Independent app state translated from reviewed constructor writes. No native
 // offsets, original field declarations or inheritance are asserted.
+struct AdoptController {};
 struct LifecycleState {
   bool serverFlag = false;
   bool baseFlag = true;
@@ -38,6 +39,11 @@ struct Boundary {
 class DspComponent {
 public:
   DspComponent(const char *, Dsp::IController *);
+  DspComponent(const char *, Dsp::IController *,
+               dspcomponent_port::AdoptController);
+  DspComponent(const DspComponent &) = delete;
+  DspComponent &operator=(const DspComponent &) = delete;
+  virtual ~DspComponent();
   Dsp::IController *getController();
   void construct();
   bool isDspParameter(Core::Portable::Parameter *) const;
@@ -71,5 +77,6 @@ private:
   std::array<Core::Portable::Parameter *, 10> readouts_{};
   unsigned count_ = 0;
   bool forwarding_ = false;
+  bool ownsController_ = false;
 };
 } // namespace Presonus

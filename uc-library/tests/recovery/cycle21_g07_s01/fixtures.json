@@ -1,0 +1,103 @@
+{
+  "task": "cycle21_g07_s01",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "mangled": "_ZN8Presonus7Surface17SoloPageComponent10clearSolosEv",
+  "address": 613144,
+  "size": 188,
+  "section": ".text",
+  "file_offset": 580376,
+  "range_sha256": "5527e7b39c1a36cf26a282e08ab2a1714acb996750ced5143b7dcad5a6f9cb6e",
+  "co_owned_range": null,
+  "dispatch_slots": {
+    "mixer_getChannelGroup": [
+      1680176,
+      382764
+    ],
+    "numeric_getValue": [
+      2118132,
+      1172620
+    ],
+    "numeric_resetValue": [
+      2118156,
+      1172948
+    ]
+  },
+  "cases": [
+    {
+      "mode": 0,
+      "message": null,
+      "tag": 0,
+      "value_bits": 0,
+      "trace": [
+        [
+          "clear",
+          0
+        ]
+      ],
+      "comparator_instructions": 0
+    },
+    {
+      "mode": 1,
+      "message": null,
+      "tag": 0,
+      "value_bits": 0,
+      "trace": [
+        [
+          "clear",
+          0
+        ],
+        [
+          "group",
+          0
+        ],
+        [
+          "group",
+          4
+        ]
+      ],
+      "comparator_instructions": 0
+    },
+    {
+      "mode": 2,
+      "message": null,
+      "tag": 0,
+      "value_bits": 0,
+      "trace": [
+        [
+          "clear",
+          0
+        ],
+        [
+          "group",
+          0
+        ],
+        [
+          "lookup",
+          1
+        ],
+        [
+          "line",
+          1
+        ],
+        [
+          "lookup",
+          2
+        ],
+        [
+          "group",
+          4
+        ],
+        [
+          "lookup",
+          3
+        ],
+        [
+          "aux",
+          1
+        ]
+      ],
+      "comparator_instructions": 0
+    }
+  ],
+  "oracle": "Exact original ARM application ranges and ARM __aeabi_fcmpgt execute. Provider boundary results are controlled; linked native vtable words and actual receiver/call ordering are checked. Host uses real CCL providers."
+}

@@ -199,6 +199,13 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/ColorButton.cpp
+  src/IconManager.cpp
+  src/Presonus/Surface/SoloPageComponent.cpp
+  src/DefaultMeterInterpolator.cpp
+  src/LPFControl.cpp
+  src/Presonus/Surface/UCMidiInputAdapter.cpp
+  src/Presonus/Surface/UCMidiOutputAdapter.cpp
   src/Presonus/Surface/ChannelInfoPageComponent.cpp
   src/Presonus/Surface/MixSettingsPageComponent.cpp
   src/Presonus/Surface/FatChannelClipboard.cpp
@@ -379,8 +386,12 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/DSPManager.cpp
+  src/utilities/DfuDiagnostic.cpp
+  src/utilities/TableElements.cpp
   src/Presonus/Panel/GambitPanelComponent.cpp
   src/Presonus/Panel/WolverinePanelComponent.cpp
+  src/Presonus/Mixer/AudioComponent.cpp
   src/Presonus/Mixer/BeastMixerComponent.cpp
   src/Presonus/Mixer/StormMixerComponent.cpp
   src/Presonus/Mixer/MonoMainComponent.cpp
@@ -391,6 +402,12 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/OMAPTargetHandler.cpp
   src/Presonus/Panel/BeastFrontPanelComponent.cpp
   src/Presonus/Mixer/GEQComponent.cpp
+  src/Presonus/Mixer/MonoBusComponent.cpp
+  src/Presonus/Mixer/EQComponent.cpp
+  src/Presonus/Mixer/GateComponent.cpp
+  src/Presonus/Mixer/HPFilterComponent.cpp
+  src/Presonus/Mixer/LPFilterComponent.cpp
+  src/Presonus/Mixer/LimiterComponent.cpp
   src/Presonus/Panel/FXMainPage.cpp
   src/Presonus/Panel/JoinNetworkPage.cpp
   src/Presonus/Panel/SystemAboutPage.cpp
@@ -568,8 +585,19 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/dsp/DSPManager.hpp
+  presonus/utilities/dfu_diagnostic.hpp
+  presonus/utilities/table_elements.hpp
+  presonus/ColorButton.hpp
+  presonus/IconManager.hpp
+  presonus/surface/SoloPageComponent.hpp
+  presonus/DefaultMeterInterpolator.hpp
+  presonus/LPFControl.hpp
+  presonus/surface/UCMidiInputAdapter.hpp
+  presonus/surface/UCMidiOutputAdapter.hpp
   presonus/panel/GambitPanelComponent.hpp
   presonus/panel/WolverinePanelComponent.hpp
+  presonus/mixer/AudioComponent.hpp
   presonus/mixer/BeastMixerComponent.hpp
   presonus/mixer/StormMixerComponent.hpp
   presonus/mixer/MonoMainComponent.hpp
@@ -595,6 +623,12 @@ set(PRESONUS_PUBLIC_HEADERS
   presonus/panel/FATLEDOverridePage.hpp
   presonus/panel/BeastFrontPanelComponent.hpp
   presonus/mixer/GEQComponent.hpp
+  presonus/mixer/MonoBusComponent.hpp
+  presonus/mixer/EQComponent.hpp
+  presonus/mixer/GateComponent.hpp
+  presonus/mixer/HPFilterComponent.hpp
+  presonus/mixer/LPFilterComponent.hpp
+  presonus/mixer/LimiterComponent.hpp
   presonus/mixer/AutoFilterGroupManager.hpp
   presonus/LinkableComponent.hpp
   presonus/panel/FXPage.hpp
@@ -1016,3 +1050,25 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/AutoFilterGr
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/ChannelDCAComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/Fat24FrontPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/RogueFrontPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+# Native deleting destructors for both source ports invoke operator delete(void*).
+set_property(SOURCE
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/LinkableComponent.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/DspComponent.cpp"
+  APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/DefaultMeterInterpolator.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/LPFControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/ColorButton.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/IconManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/SoloPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+# Keep the scoped production compile options of these recovered CCL classes.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/EQComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/FXComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/GEQComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/GateComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/HPFilterComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/LPFilterComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/LimiterComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/ScenesPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)

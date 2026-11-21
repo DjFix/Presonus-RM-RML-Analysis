@@ -12,6 +12,8 @@ foreach(variant IN ITEMS c1 c2)
     --compat-text-exe "$<TARGET_FILE:graph_trial08_mainlcd_tests>"
     --compat-stack-exe "$<TARGET_FILE:ranked09_lcd_tests>"
     --integration local
+    --current-source-transition "${PRESONUS_REPOSITORY_ROOT}/evidence/recovery/2026-11-21/reconstruction10x10/next884-historical-guard-repairs/MAINLCD_CURRENT_SOURCE_TRANSITION.json"
+    --current-source-transition-sha256 "c333fc6580522ec9d410429aad7d51054179b8fc64ff8c40fa9d9f140feaa50c"
     --out "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/remaining14/${task}.json")
   set_tests_properties(${task}_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}" TIMEOUT 120)
 endforeach()

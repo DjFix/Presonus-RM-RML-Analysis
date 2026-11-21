@@ -21,12 +21,18 @@ if a.source_transition or a.source_transition_sha256:
  assert binding['historical_proof']==str(historical_proof)
  assert hashlib.sha256(historical_proof.read_bytes()).hexdigest()==binding['historical_proof_sha256']
  assert hashlib.sha256(Path(binding['historical_checker']).read_bytes()).hexdigest()==binding['historical_checker_sha256']
- assert len(transition['source_transitions'])==1
- change=transition['source_transitions'][0]
- assert change['path']=='include/presonus/surface_panel/ControlHelpers.hpp'
- assert entry['sources'][change['path']]==change['previous_sha256']
- assert hashlib.sha256((Path('uc-library')/change['path']).read_bytes()).hexdigest()==change['current_sha256']
- entry['sources'][change['path']]=change['current_sha256']
+ changes=transition['source_transitions']
+ allowed={'include/presonus/surface_panel/ControlHelpers.hpp','include/presonus/surface/sl_mixer_encoder.hpp'}
+ assert len(changes)==len({change['path'] for change in changes})
+ assert {'include/presonus/surface_panel/ControlHelpers.hpp'} <= {change['path'] for change in changes} <= allowed
+ for change in changes:
+  assert entry['sources'][change['path']]==change['previous_sha256']
+  if change.get('previous_frozen_read_path'):
+   assert hashlib.sha256(Path(change['previous_frozen_read_path']).read_bytes()).hexdigest()==change['previous_sha256']
+  if change.get('current_frozen_read_path'):
+   assert hashlib.sha256(Path(change['current_frozen_read_path']).read_bytes()).hexdigest()==change['current_sha256']
+  assert hashlib.sha256((Path('uc-library')/change['path']).read_bytes()).hexdigest()==change['current_sha256']
+  entry['sources'][change['path']]=change['current_sha256']
  transition_receipt={'path':str(transition_path),'sha256':a.source_transition_sha256,'binding':binding,'changes':transition['source_transitions'],'scope':transition['scope']}
 for path,digest in entry['sources'].items():assert hashlib.sha256((Path('uc-library')/path).read_bytes()).hexdigest()==digest
 current_readiness=copy.deepcopy(template['proposed_readiness']);current_readiness['pending']=[entry]

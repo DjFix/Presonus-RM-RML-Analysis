@@ -24,6 +24,12 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
+    'src/Presonus/Mixer/FXComponent.cpp',
+    'src/Presonus/Surface/SoloPageComponent.cpp',
+    'src/IconManager.cpp',
+    'src/ColorButton.cpp',
+    'src/DefaultMeterInterpolator.cpp',
+    'src/LPFControl.cpp',
     'src/Presonus/Mixer/AutoFilterGroupManager.cpp',
     'src/Presonus/Mixer/ChannelDCAComponent.cpp',
     'src/Presonus/Panel/Fat24FrontPanelComponent.cpp',
@@ -43,6 +49,18 @@ PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
     'src/Presonus/ThroughputTest.cpp',
 })
 NO_SIZED_DEALLOCATION_SOURCES = frozenset({
+    'src/Presonus/Surface/ScenesPageComponent.cpp',
+    'src/Presonus/Mixer/EQComponent.cpp',
+    'src/Presonus/Mixer/GEQComponent.cpp',
+    'src/Presonus/Mixer/GateComponent.cpp',
+    'src/Presonus/Mixer/HPFilterComponent.cpp',
+    'src/Presonus/Mixer/LPFilterComponent.cpp',
+    'src/Presonus/Mixer/LimiterComponent.cpp',
+    'src/Presonus/Surface/SoloPageComponent.cpp',
+    'src/DefaultMeterInterpolator.cpp',
+    'src/LPFControl.cpp',
+    'src/Presonus/DspComponent.cpp',
+    'src/Presonus/LinkableComponent.cpp',
     'src/Presonus/DisplayManagerInstance.cpp',
     'src/Presonus/IFaderUnit.cpp',
     'src/Presonus/MainLCDComponent.cpp',

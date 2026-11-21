@@ -1,0 +1,81 @@
+{
+  "task": "cycle21_g07_r09",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "mangled": "_ZN8Presonus7Surface19ScenesPageComponentD0Ev",
+  "address": 746392,
+  "size": 280,
+  "section": ".text",
+  "file_offset": 713624,
+  "range_sha256": "e95411f901e78813bf7a16ccef0a802ed2712bc53d2a6c2966a58c78bd95425c",
+  "dependency_ranges": [
+    {
+      "mangled": "_ZN4Core6VectorIPNS_8Portable9ParameterEED1Ev",
+      "address": 398268,
+      "size": 48,
+      "section": ".text",
+      "file_offset": 365500,
+      "range_sha256": "c14aea955fd29c85e28ad044322fcffc27a549eced291eaf926cf74e2fd30f94"
+    },
+    {
+      "mangled": "_ZN4Core6VectorIPNS_8Portable10AliasParamEED1Ev",
+      "address": 381804,
+      "size": 48,
+      "section": ".text",
+      "file_offset": 349036,
+      "range_sha256": "aec8579f99ee96d677285ec04a1dffb25c51b5676af2b0bbdba1466832c89cab"
+    },
+    {
+      "mangled": "_ZN4Core8Portable9ComponentD2Ev",
+      "address": 1160672,
+      "size": 372,
+      "section": ".text",
+      "file_offset": 1127904,
+      "range_sha256": "7f8eead6380705e1afce15e6a0259c34531097fe2de4fca5f9a364d2f40912f2"
+    },
+    {
+      "mangled": "_ZN8Presonus7Surface20PresetsPageComponentD2Ev",
+      "address": 746200,
+      "size": 184,
+      "section": ".text",
+      "file_offset": 713432,
+      "range_sha256": "9be277bce511def46a5c7c43dadd5607187da0ed1a9bb52fec4346e1243cf5fe"
+    }
+  ],
+  "cases": [
+    {
+      "trace": [
+        {
+          "operation": "extra vector",
+          "address": 398268,
+          "receiver_offset": 236,
+          "return_site": 746472
+        },
+        {
+          "operation": "alias vector",
+          "address": 381804,
+          "receiver_offset": 180,
+          "return_site": 746540
+        },
+        {
+          "operation": "component child cleanup",
+          "address": 1160672,
+          "receiver_offset": 0,
+          "return_site": 746572
+        },
+        {
+          "operation": "operator delete",
+          "address": 44380,
+          "receiver_offset": 0,
+          "return_site": 746580
+        }
+      ],
+      "receiver_released": true,
+      "borrowed_entries_survived": true
+    }
+  ],
+  "unwind_excluded": {
+    "call_site": 746596,
+    "presets_d2": 746200
+  },
+  "oracle": "Original Scenes D0 ARM instructions execute to the exact ELF PLT call. Core and allocator effects use explicit modeled heap boundaries that unmap live tracked storage at actual calls. Host replay observes real providers and allocator. No unwind execution."
+}

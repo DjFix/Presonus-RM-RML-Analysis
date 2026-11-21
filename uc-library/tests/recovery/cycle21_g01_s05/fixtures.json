@@ -1,0 +1,49 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "section": 12,
+  "address": 203468,
+  "size": 148,
+  "file_offset": 170700,
+  "range_sha256": "8157393f38073abb7acf6b5c621e27db1d0bbc8418f085e934ac14dde4ce8c8d",
+  "cases": [
+    {
+      "sequence": "",
+      "option": "",
+      "events": [],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "abc",
+      "option": "ac",
+      "events": [
+        "f0:a",
+        "r0:1:0",
+        "f1:b",
+        "f2:c",
+        "r2:1:0"
+      ],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "abc",
+      "option": "",
+      "events": [
+        "f0:a",
+        "f1:b",
+        "f2:c"
+      ],
+      "native_nonstack_writes": []
+    },
+    {
+      "sequence": "ab",
+      "option": "ab",
+      "events": [
+        "f0:a",
+        "r0:1:0",
+        "f1:b",
+        "r1:1:0"
+      ],
+      "native_nonstack_writes": []
+    }
+  ]
+}

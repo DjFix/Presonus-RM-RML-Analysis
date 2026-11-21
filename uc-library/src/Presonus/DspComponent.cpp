@@ -1,4 +1,5 @@
 #include "presonus/DspComponent.hpp"
+#include "presonus/dsp/IController.hpp"
 #include <algorithm>
 #include <stdexcept>
 namespace Presonus {
@@ -6,6 +7,19 @@ DspComponent::DspComponent(const char *name, Dsp::IController *controller)
     : coreComponent_(name),
       linkAttributes_(Core::Portable::AttributeAllocator::getDefault()),
       name_(name), controller_(controller) {}
+DspComponent::DspComponent(const char *name, Dsp::IController *controller,
+                           dspcomponent_port::AdoptController)
+    : DspComponent(name, controller) {
+  ownsController_ = true;
+}
+DspComponent::~DspComponent() {
+  if (ownsController_) {
+    if (controller_)
+      controller_->release();
+    controller_ = nullptr;
+  }
+}
+
 dspcomponent_port::Boundary &DspComponent::boundary() const {
   if (!boundary_)
     throw std::logic_error("DspComponent requires an application boundary");
