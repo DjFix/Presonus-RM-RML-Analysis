@@ -112,6 +112,7 @@ def immutable_mounts(root,output,snapshot):
             else:result.append((child,destination))
     result.extend((origin,origin) for origin in sorted(origins))
     verified_mounts = []
+    preserved_aliases = {}
     for source, destination in result:
         require(source.exists() and destination.exists(),
                 'Read-only evidence mount path missing: ' + str(source) + ' -> ' + str(destination))
@@ -129,9 +130,14 @@ def immutable_mounts(root,output,snapshot):
             stamp = fingerprint(resolved)
             require(sha(resolved) == expected and fingerprint(resolved) == stamp,
                     'Immutable reference mount alias changed: ' + relative)
-            require(not any(other != physical and resolved.is_relative_to(physical.resolve())
-                            for other, physical in result if physical != destination),
-                    'Immutable reference mount target shadowed: ' + relative)
+            preserved_aliases[relative] = resolved
             continue
         verified_mounts.append((source, destination))
+    # Only emitted mounts can shadow a physical leaf. Several historical
+    # destinations can independently resolve to the same verified leaf.
+    overlays = [destination.resolve() for source, destination in verified_mounts
+                if source != destination]
+    for relative, target in preserved_aliases.items():
+        require(not any(target.is_relative_to(destination) for destination in overlays),
+                'Immutable reference mount target shadowed: ' + relative)
     return verified_mounts

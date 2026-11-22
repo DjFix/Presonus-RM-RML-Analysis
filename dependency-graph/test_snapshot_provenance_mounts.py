@@ -65,6 +65,25 @@ class MetadataClosure(unittest.TestCase):
         self.assertEqual(immutable_mounts(self.root, self.out, self.snapshot),
                          [(self.origin, self.origin)])
         self.assertTrue(os.path.samefile(alias, target))
+        second = self.root / 'another-alias'
+        second.symlink_to(target)
+        second_copy = source.with_name(second.name)
+        second_copy.write_text(source.read_text())
+        self.snapshot['mounts'].append(second.name)
+        self.snapshot['files'][second.name] = sha(second_copy)
+        self.assertEqual(immutable_mounts(self.root, self.out, self.snapshot),
+                         [(self.origin, self.origin)])
+
+        # A bind which is actually emitted must still cause a failure.
+        target_relative = str(target.relative_to(self.root))
+        overlay = self.out / 'snapshot' / target_relative
+        overlay.parent.mkdir(parents=True)
+        overlay.write_text(target.read_text())
+        self.snapshot['mounts'].append(target_relative)
+        with self.assertRaisesRegex(ContextError, 'mount target shadowed'):
+            immutable_mounts(self.root, self.out, self.snapshot)
+        self.snapshot['mounts'].remove(target_relative)
+
         self.snapshot['files'][alias.name] = '0' * 64
         with self.assertRaisesRegex(ContextError, 'mount alias changed'):
             immutable_mounts(self.root, self.out, self.snapshot)
