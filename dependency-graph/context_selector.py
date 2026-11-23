@@ -27,7 +27,7 @@ def tools():
            'dependency-graph/dedup_work.py','dependency-graph/dedup_schema.sql',
            'dependency-graph/dedup_migrate.py','dependency-graph/dedup_reservations.py',
            'dependency-graph/native_candidate_gate.py','dependency-graph/native_candidate_lifecycle.py',
-           'dependency-graph/native_candidate_ownership.py',
+           'dependency-graph/native_candidate_ownership.py', 'dependency-graph/native_candidate_guard_v3.py',
            'dependency-graph/memgraph_endpoint.py','dependency-graph/code_identity.py',
            'dependency-graph/full_source_graph.py','dependency-graph/gcc_source_graph.py',
            'dependency-graph/batch_publication.py', 'dependency-graph/publication_events.py','dependency-graph/group_dispatch.py',

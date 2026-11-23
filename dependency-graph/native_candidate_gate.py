@@ -104,7 +104,7 @@ def matching_native_nodes(db, names):
     return native
 
 
-def seal_guard(root, source_db, delta_db):
+def seal_guard(root, source_db, delta_db, *, bounded=False):
     """Return a seal; caller stores its exact JSON in delta settings and report."""
     root = pathlib.Path(root).resolve()
     db, pointer = open_native(root)  # Missing pointer and stale inputs fail closed.
@@ -112,6 +112,7 @@ def seal_guard(root, source_db, delta_db):
         inputs = [dict(row) for row in db.execute('SELECT path,sha256 FROM inputs ORDER BY path')]
         affected = sorted(row[0] for row in delta_db.execute('SELECT id FROM changed_nodes'))
         sources = []
+        owner_lists = {} if bounded else None
         for key in affected:
             node = merged_node(source_db, key)
             if node is None or node['kind'] != 'Function':
@@ -123,6 +124,9 @@ def seal_guard(root, source_db, delta_db):
             node['metadata'] = json.loads(node['metadata'])
             node['mangled'] = node['metadata'].get('mangled')
             node['path'] = node['metadata'].get('path') or node['metadata'].get('source')
+            if owner_lists is not None:
+                # A sealed owner list stays read-only throughout graph verification.
+                owners = owner_lists.setdefault(tuple(owners), owners)
             sources.append({'properties': node, 'owners': owners})
         names = {canonical(node['properties']['mangled']): node['properties']['mangled']
                  for node in sources if node['properties']['mangled'] is not None}

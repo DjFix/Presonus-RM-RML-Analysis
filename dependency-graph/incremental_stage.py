@@ -24,8 +24,12 @@ def delta_reserve(connection, node_keys, plan):
     """
     database = next((row[2] for row in connection.execute('PRAGMA database_list')
                      if row[1] == 'main'), '')
-    node_keys = tuple(node_keys)
-    short_keys = all(len(key.encode('utf-8')) <= 768 for key in node_keys)
+    lengths = (len(key.encode('utf-8')) for key in node_keys)
+    index_key_bytes = 0
+    short_keys = True
+    for length in lengths:
+        index_key_bytes += length
+        short_keys &= length <= 768
     fresh_db = bool(connection.in_transaction and database
                  and connection.execute('PRAGMA main.journal_mode').fetchone()[0] == 'delete'
                  and connection.execute('PRAGMA main.page_size').fetchone()[0] == 4096
@@ -33,7 +37,7 @@ def delta_reserve(connection, node_keys, plan):
                  and not connection.execute('SELECT 1 FROM main.sqlite_schema LIMIT 1').fetchone()
                  and Path(database).is_file() and Path(database).stat().st_size == 0)
     fresh = fresh_db and short_keys
-    index_keys = sum(len(key.encode('utf-8')) for key in node_keys) if fresh else 0
+    index_keys = index_key_bytes if fresh else 0
     # changed_nodes(id TEXT PRIMARY KEY) stores a second copy of each full ID
     # in sqlite_autoindex_changed_nodes_1. Other delta indexes have integer keys;
     # retain the existing per-row/page/index reserve for them unchanged.
@@ -47,12 +51,20 @@ def delta_reserve(connection, node_keys, plan):
 
 
 class IncrementalStage:
-    def __init__(self, c, budget):
+    def __init__(self, c, budget, *, bounded=False):
         self.c = c
         self.budget = budget
         self.store = CompactFacts(c)
-        self.net = NetChanges()
-        self.prune_candidates = PruneCandidates()
+        self.bounded = bounded
+        if bounded:
+            from bounded_net_changes import BoundedNetChanges
+            from compact_identity_bitmap import IdentityBitmap
+            self.prune_candidates = PruneCandidates(
+                nodes=IdentityBitmap(), values=IdentityBitmap(), observations=IdentityBitmap())
+            self.net = BoundedNetChanges(c, self.prune_candidates)
+        else:
+            self.prune_candidates = PruneCandidates()
+            self.net = NetChanges()
         self.costs = []
         self.finished = False
         self.failure = None
@@ -61,6 +73,10 @@ class IncrementalStage:
         self.totals = dict(changed_nodes=0, changed_edges=0, observation_updates=0,
                            encoded_changed_bytes=0, journal_estimate_bytes=0,
                            sqlite_write_estimate_bytes=0, rows=0, transfer_estimate_bytes=0)
+
+    def close(self):
+        if self.bounded:
+            self.net.close()
 
     def _active(self):
         if self.finished:
@@ -134,7 +150,8 @@ class IncrementalStage:
         edges = set(map(tuple, edges))
         cost = self._preview(owner, nodes, edges, observation, remove)
         before_rows = self.c.total_changes
-        changes = self.store.replace_owner(owner, nodes, edges, merged=True, savepoint=False)
+        changes = self.store.replace_owner(owner, nodes, edges,
+                                           merged='touched' if self.bounded else True, savepoint=False)
         if remove:
             self.c.execute('DELETE FROM unit_observations WHERE owner=?', (owner,))
         elif observation is not None and cost['observation_updates']:
@@ -146,9 +163,40 @@ class IncrementalStage:
         if cost['actual_storage_mutation_rows'] != cost['rows']:
             self.c.rollback()
             raise ValueError('Storage row plan changed for ' + owner)
-        self.net.add_merged(changes)
-        self.prune_candidates.add(changes.prune)
+        if self.bounded:
+            self.prune_candidates.add(changes)
+        else:
+            self.net.add_merged(changes)
+            self.prune_candidates.add(changes.prune)
         return changes
+
+    def rekey_owner(self, old, new):
+        self._active()
+        if not self.bounded or old == new or self.c.execute(
+                'SELECT 1 FROM compact_owners WHERE value=? UNION ALL SELECT 1 FROM unit_observations WHERE owner=?',
+                (new, new)).fetchone():
+            raise ValueError('Rekey requires an unused new identity in bounded staging')
+        identity, = self.c.execute('SELECT owner_id FROM compact_owners WHERE value=?', (old,)).fetchone()
+        old_observation, payload = self.c.execute(
+            'SELECT observation_id,payload FROM unit_observations WHERE owner=?', (old,)).fetchone()
+        # Common memberships survive the rename, but all old nodes must be
+        # checked for changed owner-lexical merge precedence.
+        self.prune_candidates.nodes.update(row[0] for row in self.c.execute(
+            'SELECT node_id FROM compact_node_memberships WHERE owner_id=?', (identity,)))
+        payload_bytes = encoded((old, new, old_observation, payload))
+        cost = dict(owner=old, new_owner=new, observation_updates=1, changed_nodes=0, changed_edges=0,
+                    encoded_changed_bytes=payload_bytes, journal_estimate_bytes=2 * payload_bytes + 8192,
+                    sqlite_write_estimate_bytes=4 * payload_bytes + 16384, rows=2, transfer_estimate_bytes=0)
+        self._reserve(cost)
+        before = self.c.total_changes
+        self.c.execute('UPDATE compact_owners SET value=? WHERE owner_id=? AND value=?', (new, identity, old))
+        self.c.execute('DELETE FROM unit_observations WHERE owner=?', (old,))
+        exposed = self.c.total_changes - before
+        if exposed != cost['rows']:
+            raise ValueError(f'Owner rekey row plan changed: {old}')
+        self.actual_storage_rows += exposed
+        cost['actual_storage_mutation_rows'] = exposed
+        return old_observation
 
     def replace_facts(self, owner, nodes, edges):
         return self._replace(owner, nodes, edges)
@@ -213,7 +261,9 @@ class IncrementalStage:
                                sqlite_write_estimate_bytes=payload_bytes * 4 + rows * 256,
                                rows=rows, transfer_estimate_bytes=0))
         try:
-            self.pruned = self.store.prune_unreferenced(self.prune_candidates, reserve_prune)
+            self.pruned = self.store.prune_unreferenced(
+                self.prune_candidates, reserve_prune, max_batch=1024 if self.bounded else None)
+
         except BaseException:
             self.c.rollback()
             delta_db.rollback()

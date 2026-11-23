@@ -7,6 +7,7 @@ import json
 import pathlib
 import sqlite3
 from native_candidate_ownership import pack_guard, unpack_guard
+from native_candidate_guard_v3 import CODECS as BOUNDED_GUARD_CODECS
 from collections import Counter
 from context_runtime import ContextError, sha
 from native_candidate_ownership import (BASIS, OWNER, canonical, checkpoint_id, claims_ownership,
@@ -119,6 +120,7 @@ def require_lifecycle(session, root, delta_path, seal, receipt):
 def reconcile(session, root, delta_path, seal, stop_after_commit=False):
     from native_candidate_gate import verify_guard_inputs
     root = pathlib.Path(root).resolve()
+    packed = seal if isinstance(seal, dict) and seal.get('guard_codec') in BOUNDED_GUARD_CODECS else None
     seal = unpack_guard(seal)
     verify_guard_inputs(session, root, delta_path, seal)
     delta_sha = sha(delta_path)
@@ -193,7 +195,7 @@ def reconcile(session, root, delta_path, seal, stop_after_commit=False):
             after = sorted(after, key=canonical)
             p = {'id': identity, 'contract_version': 1, 'owner': OWNER, 'state': 'committed',
                  'source_delta_sha256': delta_sha, 'seal_sha256': seal['seal_sha256'], 'native_generation': generation,
-                 'seal_json': canonical(pack_guard(seal)), 'before_json': canonical(before), 'after_json': canonical(after),
+                 'seal_json': canonical(packed if packed is not None else pack_guard(seal)), 'before_json': canonical(before), 'after_json': canonical(after),
                  'orphan_before_json': canonical(orphan_before), 'orphan_after_json': canonical(orphan_after),
                  'journal_sha256': digest({'before': before, 'after': after, 'orphan_before': orphan_before, 'orphan_after': orphan_after})}
             tx.run('CREATE(p:NativeCandidateCheckpoint) SET p=$props', props=p).consume()

@@ -85,30 +85,7 @@ class NetChanges:
         journal cursors. prior_edges is an empty compatibility view, not a copy.
         The caller owns transaction/commit and the publication budget.
         """
-        statements = '''
-        CREATE TABLE delta_strings(id INTEGER PRIMARY KEY,value TEXT NOT NULL);
-        CREATE TABLE delta_edges(id INTEGER PRIMARY KEY,operation INTEGER NOT NULL,
-          src INTEGER NOT NULL,dst INTEGER NOT NULL,kind INTEGER NOT NULL,evidence INTEGER NOT NULL);
-        CREATE INDEX delta_edge_operations ON delta_edges(operation,id);
-        CREATE TABLE settings(key TEXT PRIMARY KEY,value);
-        CREATE TABLE changed_nodes(id TEXT PRIMARY KEY);
-        CREATE TABLE nodes(id TEXT,kind TEXT,label TEXT,metadata TEXT);
-        CREATE TABLE orphan_nodes(id TEXT);
-        CREATE VIEW old_edges AS SELECT e.id AS rowid,s.value AS src,d.value AS dst,
-          k.value AS kind,p.value AS evidence FROM delta_edges e
-          JOIN delta_strings s ON s.id=e.src JOIN delta_strings d ON d.id=e.dst
-          JOIN delta_strings k ON k.id=e.kind JOIN delta_strings p ON p.id=e.evidence
-          WHERE e.operation=-1;
-        CREATE VIEW new_edges AS SELECT e.id AS rowid,s.value AS src,d.value AS dst,
-          k.value AS kind,p.value AS evidence FROM delta_edges e
-          JOIN delta_strings s ON s.id=e.src JOIN delta_strings d ON d.id=e.dst
-          JOIN delta_strings k ON k.id=e.kind JOIN delta_strings p ON p.id=e.evidence
-          WHERE e.operation=1;
-        CREATE VIEW prior_edges AS SELECT src,dst,kind,evidence FROM old_edges WHERE 0;
-        '''
-        for statement in statements.split(';'):
-            if statement.strip():
-                db.execute(statement)
+        create_delta_schema(db)
         # Ownership changes remain visible to native-candidate validation even
         # when the merged graph property itself is unchanged.
         db.executemany('INSERT INTO changed_nodes VALUES(?)', ((key,) for key in sorted(self.nodes)))
@@ -134,3 +111,30 @@ class NetChanges:
         db.execute('INSERT INTO settings VALUES(?,?)', ('delta_storage_version', 2))
         return {name: db.execute('SELECT count(*) FROM ' + name).fetchone()[0]
                 for name in ('nodes', 'old_edges', 'new_edges', 'orphan_nodes')}
+
+
+def create_delta_schema(db):
+    statements = '''
+    CREATE TABLE delta_strings(id INTEGER PRIMARY KEY,value TEXT NOT NULL);
+    CREATE TABLE delta_edges(id INTEGER PRIMARY KEY,operation INTEGER NOT NULL,
+      src INTEGER NOT NULL,dst INTEGER NOT NULL,kind INTEGER NOT NULL,evidence INTEGER NOT NULL);
+    CREATE INDEX delta_edge_operations ON delta_edges(operation,id);
+    CREATE TABLE settings(key TEXT PRIMARY KEY,value);
+    CREATE TABLE changed_nodes(id TEXT PRIMARY KEY);
+    CREATE TABLE nodes(id TEXT,kind TEXT,label TEXT,metadata TEXT);
+    CREATE TABLE orphan_nodes(id TEXT);
+    CREATE VIEW old_edges AS SELECT e.id AS rowid,s.value AS src,d.value AS dst,
+      k.value AS kind,p.value AS evidence FROM delta_edges e
+      JOIN delta_strings s ON s.id=e.src JOIN delta_strings d ON d.id=e.dst
+      JOIN delta_strings k ON k.id=e.kind JOIN delta_strings p ON p.id=e.evidence
+      WHERE e.operation=-1;
+    CREATE VIEW new_edges AS SELECT e.id AS rowid,s.value AS src,d.value AS dst,
+      k.value AS kind,p.value AS evidence FROM delta_edges e
+      JOIN delta_strings s ON s.id=e.src JOIN delta_strings d ON d.id=e.dst
+      JOIN delta_strings k ON k.id=e.kind JOIN delta_strings p ON p.id=e.evidence
+      WHERE e.operation=1;
+    CREATE VIEW prior_edges AS SELECT src,dst,kind,evidence FROM old_edges WHERE 0;
+    '''
+    for statement in statements.split(';'):
+        if statement.strip():
+            db.execute(statement)

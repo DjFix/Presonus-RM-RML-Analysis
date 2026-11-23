@@ -597,6 +597,11 @@ workers, or preparation of an integration draft.
 
 ## Publisher polling cadence — explicit user correction, 2026-11-06
 
+- Launch graph publication and publication resume without a Docker RAM cap.
+  Verify the generated publisher argv omits --memory and, for a fresh
+  container, verify HostConfig.Memory is zero and cgroup v2 memory.max is max.
+  Check the live cgroup after changing a running job; a successful Docker
+  update alone does not establish the effective limit.
 - Use a periodic task for publisher waiting/checks, at a five-minute cadence.
   Reuse the existing task; persist its actual ID, schedule and verified state.
   A timestamp file or a manual check after five minutes is not a periodic task.

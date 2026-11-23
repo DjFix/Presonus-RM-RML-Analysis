@@ -24,9 +24,9 @@ GROUPS = [('app', BUILD), ('core', BUILD / 'upstream-core/build')]
 PRODUCERS = ('test_build_invalidation.py', 'refresh_graph.py', 'refresh_facts.py', 'refresh_extract.py',
              'refresh_publish.py', 'full_source_graph.py', 'gcc_source_graph.py',
              'context_selector.py', 'context_runtime.py', 'memgraph_endpoint.py', 'code_identity.py', 'batch_publication.py', 'publication_events.py', 'context_resources.py',
-             'native_candidate_gate.py', 'native_candidate_ownership.py',
+             'native_candidate_gate.py', 'native_candidate_ownership.py', 'native_candidate_guard_v3.py',
              'native_candidate_lifecycle.py', 'compact_facts.py', 'incremental_delta.py',
-             'incremental_stage.py', 'stage_timing.py', 'stage_normalization.py', 'deferred_sqlite.py', 'publication_budget.py', 'reuse_observations.py', 'verified_build_reconfiguration.py', 'unchanged_observations.py')
+             'incremental_stage.py', 'bounded_net_changes.py', 'compact_identity_bitmap.py', 'owner_rekey_plan.py', 'stage_timing.py', 'stage_normalization.py', 'deferred_sqlite.py', 'publication_budget.py', 'reuse_observations.py', 'verified_build_reconfiguration.py', 'unchanged_observations.py')
 
 
 def run(argv, out, label):
@@ -40,7 +40,8 @@ def run(argv, out, label):
 
 
 def docker(script, out, label, analysis=False):
-    memory, cpus = '4g', 2
+    memory_args = []
+    cpus = 2
     if analysis:
         count = len(json.loads((out / 'units.json').read_text()))
         profile = choose_compiler_limits(max(1, count))
@@ -52,11 +53,12 @@ def docker(script, out, label, analysis=False):
         else:
             budget = 4 * 1024 * MIB
         memory = str(max(512, budget // MIB)) + 'm'
+        memory_args = ['--memory=' + memory]
         profile.update(docker_memory=memory, docker_cpus=cpus, task_count=count)
         (out / 'compiler-host-resources.json').write_text(json.dumps(profile, indent=2) + '\n')
     argv = ['docker', 'run', '--name', 'graph-' + label + '-' + str(time.time_ns()),
             '--network=' + ('none' if analysis else memgraph_network(ROOT)),
-            '--memory=' + memory, '--cpus=' + str(cpus), '--user', '1000:1000',
+            *memory_args, '--cpus=' + str(cpus), '--user', '1000:1000',
             '-v', str(ROOT) + ':' + str(ROOT) + ':ro',
             '-v', str(out) + ':' + str(out) + ':rw',
             '-v', str(BASE / 'state') + ':' + str(BASE / 'state') + ':rw',
@@ -116,15 +118,26 @@ def check_existing_identity(path):
             require_identity_version(c)
 
 
-def reviewed_row_allowance(path):
+def reviewed_row_allowance(path, bounded_rekey_pairs=None):
     """Read an explicit rescan exception; automatic preparation never inherits it."""
     path = pathlib.Path(path).resolve()
     if not path.is_relative_to(ROOT) or not path.is_file():
         raise ContextError('Row-budget review must be a repository-local file')
     review = json.loads(path.read_text())
     rows_limit = review.get('rows')
-    if type(rows_limit) is not int or not 100000 < rows_limit <= 30000000:
-        raise ContextError('Reviewed rows must be finite and in 100001..30000000')
+    maintenance = bounded_rekey_pairs is not None
+    max_rows = 64_000_000 if maintenance else 30_000_000
+    if type(rows_limit) is not int or not 100000 < rows_limit <= max_rows:
+        raise ContextError(f'Reviewed rows must be finite and in 100001..{max_rows}')
+    if maintenance and (review.get('scope') != 'bounded_owner_rekey_recovery'
+                        or review.get('expected_pairs') != bounded_rekey_pairs):
+        raise ContextError('Bounded owner reconciliation requires a separately bound finite budget review')
+    estimate = review.get('journal_estimate_limit')
+    if estimate is not None and (not maintenance or type(estimate) is not int
+                                 or not 10 * 1024**3 <= estimate <= 20 * 1024**3):
+        raise ContextError('Separate estimate reserve is available only within finite scoped recovery bounds')
+    if 'maintenance_guard' in review and (not maintenance or review['maintenance_guard'] is not True):
+        raise ContextError('Expanded native guard requires the scoped rekey review')
     if not isinstance(review.get('reason'), str) or not review['reason'].strip():
         raise ContextError('Row-budget review requires a concrete reason')
     evidence = review.get('evidence', {})
@@ -136,8 +149,10 @@ def reviewed_row_allowance(path):
     if not isinstance(byte_limits, dict):
         raise ContextError('Reviewed byte limits must be an object')
     if byte_limits:
-        ceilings = {'journal_bytes': 3 * 1024**3, 'sqlite_write_bytes': 12 * 1024**3,
-                    'transfer_bytes': 3 * 1024**3}
+        gib = 1024**3
+        ceilings = {'journal_bytes': (10 if maintenance else 3) * gib,
+                    'sqlite_write_bytes': (40 if maintenance else 12) * gib,
+                    'transfer_bytes': (20 if maintenance else 3) * gib}
         if not isinstance(byte_limits, dict) or set(byte_limits) - ceilings.keys():
             raise ContextError('Only bounded journal/write/transfer rescan exceptions are supported')
         if any(type(value) is not int or not 0 < value <= ceilings[key]
@@ -153,9 +168,13 @@ def reviewed_row_allowance(path):
 
 def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
                  reuse_capture=None, verify_build_plan=None, compiler_rescan=None,
-                 row_budget_review=None):
+                 row_budget_review=None, bounded_rekey_pairs=None):
     """Caller holds context.lock for refresh plus packet selection; no background watcher."""
     index_path = BASE / 'state/refresh-index.sqlite'
+    if bounded_rekey_pairs is not None and (
+            compiler_rescan is None or reuse_capture is None or type(bounded_rekey_pairs) is not int
+            or bounded_rekey_pairs <= 0):
+        raise ContextError('Bounded owner reconciliation requires explicit compiler rescan and verified capture reuse')
     if row_budget_review is not None and compiler_rescan is None:
         raise ContextError('Reviewed row allowance requires explicit compiler rescan')
     if compiler_rescan is not None:
@@ -163,7 +182,10 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
             raise ContextError('Compiler rescan requires an explicit reason')
         if full_rebuild or force or verify_build_plan is not None:
             raise ContextError('Compiler rescan cannot be combined with force, full rebuild, build-only verification')
-    row_review = reviewed_row_allowance(row_budget_review) if row_budget_review is not None else None
+    if bounded_rekey_pairs is not None and row_budget_review is None:
+        raise ContextError('Bounded owner reconciliation needs reviewed finite limits')
+    row_review = reviewed_row_allowance(row_budget_review, bounded_rekey_pairs) if row_budget_review is not None else None
+    maintenance = row_review['review'] if bounded_rekey_pairs is not None else None
     if full_rebuild and (not isinstance(rebuild_authorization, str) or not rebuild_authorization.strip()):
         raise ContextError('Full rebuild requires an explicit reason')
     if force and not full_rebuild:
@@ -176,6 +198,8 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
         require_identity_version(recovery)
         pending = recovery.execute('SELECT value FROM meta WHERE key="pending"').fetchone()
         recovery.close()
+        if pending and maintenance:
+            raise ContextError('Scoped rekey recovery requires an empty prior publication journal')
         if pending:
             output = pathlib.Path(pending[0])
             docker(publisher_script(output), output, 'resume-' + str(time.time_ns()))
@@ -184,6 +208,16 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
         recovery.close()
         if row: baseline = json.loads((pathlib.Path(row[0]) / 'refresh-report.json').read_text())
     active = json.loads((BASE / 'ACTIVE.json').read_text())
+    if maintenance:
+        source = pathlib.Path(reuse_capture).resolve()
+        proof = ROOT / 'uc-library/validation/integration.json'
+        approved_capture = maintenance['capture_plan']
+        if (baseline or active['state_sha256'] != maintenance['prior_state_sha256']
+                or approved_capture != {'path': str((source / 'plan.json').relative_to(ROOT)),
+                                        'sha256': sha(source / 'plan.json')}
+                or sha(proof) != maintenance['canonical_proof_sha256']
+                or shutil.disk_usage(BASE / 'state').free < maintenance['min_free_storage_bytes']):
+            raise ContextError('Scoped rekey baseline, capture, proof or storage reserve has changed')
     try:
         if baseline: raise ContextError('Reconcile an interrupted generation against current source')
         state = guard(ROOT, active)
@@ -217,6 +251,9 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
             run([str(ROOT / 'uc-library/.venv/bin/cmake'), '-S', home, '-B', str(build),
                  '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], out, 'configure-' + group)
     wanted = rows()
+    if maintenance and (len(wanted) != maintenance['expected_units']
+                        or sha(dict(GROUPS)['app'] / 'compile_commands.json') != maintenance['compile_db_sha256']):
+        raise ContextError('Scoped recovery compile database or configured unit count differs')
     run([str(ROOT / 'uc-library/.venv/bin/ctest'), '--test-dir', str(BUILD), '--show-only=json-v1'],
         out, 'ctest-inventory')
     tests = json.loads((out / 'ctest-inventory.log').read_text())['tests']
@@ -261,6 +298,14 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
                 plan['publication_budget']['limits'] = {
                     'rows': row_review['review']['rows'], **row_review['review'].get('byte_limits', {})}
                 plan['publication_budget']['row_budget_review'] = row_review
+                if maintenance and maintenance.get('journal_estimate_limit') is not None:
+                    plan['publication_budget']['journal_estimate_limit'] = maintenance['journal_estimate_limit']
+        if bounded_rekey_pairs is not None:
+            plan['bounded_owner_reconciliation'] = {
+                'expected_pairs': bounded_rekey_pairs,
+                'min_free_storage_bytes': maintenance['min_free_storage_bytes'],
+                'maintenance_guard': maintenance.get('maintenance_guard', False),
+            }
         if build_proof is not None:
             plan['build_reconfiguration_proof'] = {
                 'path': str(out / 'build-reconfiguration-proof.json'),
@@ -336,6 +381,8 @@ if __name__ == '__main__':
             parser.add_argument('--compiler-rescan', metavar='REASON',
                                 help='Permit conservative all-TU extraction with unchanged routine publication budgets')
             parser.add_argument('--reuse-capture', type=pathlib.Path)
+            parser.add_argument('--bounded-rekey-pairs', type=int,
+                                help='Explicit exact old/new owner pairs for an observed reconfiguration recovery')
             parser.add_argument('--row-budget-review', '--publication-budget-review', type=pathlib.Path,
                                 help='Explicit hash-bound rescan budget review; never inherited by automatic preparation')
             parser.add_argument('--verify-build-plan', type=pathlib.Path,
@@ -344,4 +391,4 @@ if __name__ == '__main__':
             ensure_fresh(args.force, full_rebuild=args.full_rebuild is not None,
                          rebuild_authorization=args.full_rebuild, reuse_capture=args.reuse_capture,
                          verify_build_plan=args.verify_build_plan, compiler_rescan=args.compiler_rescan,
-                         row_budget_review=args.row_budget_review)
+                         row_budget_review=args.row_budget_review, bounded_rekey_pairs=args.bounded_rekey_pairs)

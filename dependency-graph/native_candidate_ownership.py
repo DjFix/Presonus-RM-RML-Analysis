@@ -4,6 +4,7 @@ import zlib
 import hashlib
 import json
 from context_runtime import ContextError
+import native_candidate_guard_v3 as guard_v3
 
 OWNER = 'source-native-lifecycle:v1'
 BASIS = 'encoded name only; not ABI proof'
@@ -27,7 +28,7 @@ def canonical_matches(text, value):
     if '"guard_codec"' in text:
         try:
             envelope = json.loads(text)
-            if type(envelope) is dict and envelope.get('guard_codec') in ('owner-lists-zlib-base64-v1', 'owner-atoms-zlib-base64-v2'):
+            if type(envelope) is dict and envelope.get('guard_codec') in ('owner-lists-zlib-base64-v1', 'owner-atoms-zlib-base64-v2', *guard_v3.CODECS):
                 from itertools import zip_longest
                 encoder = json.JSONEncoder(sort_keys=True, separators=(',', ':'), ensure_ascii=False)
                 sentinel = object()
@@ -124,7 +125,14 @@ def _guard_bytes(value):
     return canonical(value).encode()
 
 
-def pack_guard(seal):
+def pack_guard(seal, *, bounded=False, maintenance=False):
+    """Use the chunked transport only for an explicitly bounded writer."""
+    if maintenance and not bounded:
+        raise ContextError('Maintenance native guard requires bounded publication')
+    return guard_v3.pack(seal, maintenance=maintenance) if bounded else pack_guard_v2(seal)
+
+
+def pack_guard_v2(seal):
     if type(seal) is not dict or seal.get('version') != 1:
         raise ContextError('Invalid logical guard')
     body = dict(seal)
@@ -157,6 +165,8 @@ def pack_guard(seal):
 
 
 def _unpack_guard(value):
+    if type(value) is dict and value.get('guard_codec') in guard_v3.CODECS:
+        return guard_v3.unpack(value)
     if type(value) is dict and value.get('version') == 1 and 'guard_codec' not in value:
         return value  # Legacy logical validation remains the caller's responsibility.
     fields = {'guard_codec', 'logical_sha256', 'logical_bytes', 'payload_bytes', 'payload_sha256', 'data'}
@@ -211,6 +221,10 @@ def _unpack_guard(value):
             raise ContextError('Guard expansion exceeds declared logical size')
     if expanded_bytes != value['logical_bytes']:
         raise ContextError('Guard expanded logical size mismatch')
+    # Treat decoded sealing evidence as read-only; identical owner lists are
+    # immutable in the verifier and need only one actual Python list.
+    if atom_codec:
+        pool = [[atoms[index] for index in row] for row in pool]
     sources = []
     for source in seal['sources']:
         if type(source) is not dict or set(source) != {'properties', 'owners_ref'}:
@@ -218,10 +232,9 @@ def _unpack_guard(value):
         ref = source['owners_ref']
         if type(ref) is not int or not 0 <= ref < len(pool):
             raise ContextError('Invalid guard owner reference')
-        sources.append({'properties': source['properties'], 'owners': [atoms[index] for index in pool[ref]] if atom_codec else list(pool[ref])})
+        sources.append({'properties': source['properties'], 'owners': pool[ref]})
     seal['sources'] = sources
-    logical = _guard_bytes(seal)
-    if len(logical) != value['logical_bytes'] or hashlib.sha256(logical).hexdigest() != value['logical_sha256']:
+    if guard_v3.sized_digest(seal, value['logical_bytes']) != (value['logical_bytes'], value['logical_sha256']):
         raise ContextError('Guard logical digest mismatch')
     return seal
 

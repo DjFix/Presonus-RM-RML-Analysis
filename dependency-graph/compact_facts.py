@@ -580,6 +580,8 @@ class CompactFacts:
         edges = list(edges)
         found = self.db.execute('SELECT owner_id FROM compact_owners WHERE value=?', (owner,)).fetchone()
         if not found and not nodes and not edges:
+            if merged == 'touched':
+                return PruneCandidates()
             return MergedChangeSet({}, {}, PruneCandidates()) if merged else ChangeSet({}, {})
         owner_id = found[0] if found else self._owner(owner)
         old_nodes = dict(self.db.execute('SELECT node_id,value_id FROM compact_node_memberships WHERE owner_id=?', (owner_id,)))
@@ -602,13 +604,13 @@ class CompactFacts:
         new_edges = {self._observation(edge) for edge in edges}
         changed_nodes = {key for key in old_nodes.keys() | new_nodes.keys() if old_nodes.get(key) != new_nodes.get(key)}
         changed_edges = old_edges ^ new_edges
-        if merged:
+        if merged is True:
             for key in changed_nodes:
                 if key not in keys:
                     keys[key] = self.db.execute('SELECT value FROM compact_node_keys WHERE node_id=?', (key,)).fetchone()[0]
             before_nodes = {key: self._merged_node_support(key, keys[key]) for key in changed_nodes}
             before_edges = {key: self._edge_exists(key) for key in changed_edges}
-        else:
+        elif not merged:
             before_nodes = {key: self._node_support(key) for key in changed_nodes}
             before_edges = {key: self._edge_support(key) for key in changed_edges}
         for key in sorted(changed_nodes):
@@ -630,6 +632,8 @@ class CompactFacts:
                     touched.values.add(old_nodes[key])
                 if key in new_nodes:
                     touched.values.add(new_nodes[key])
+            if merged == 'touched':
+                return touched
             node_changes = {keys[key]: MergedNodeChange(
                 key, before_nodes[key], self._merged_node_support(key, keys[key]))
                 for key in changed_nodes}
@@ -648,7 +652,7 @@ class CompactFacts:
         return ChangeSet(node_changes, {key: self._edge_change(key, before_edges[key], self._edge_support(key))
                                         for key in sorted(changed_edges)})
 
-    def prune_unreferenced(self, changes, before_mutation=None):
+    def prune_unreferenced(self, changes, before_mutation=None, *, max_batch=None):
         """Prune only entities touched by supplied ChangeSets after delta use.
 
         This never commits. Consume change snapshots first: a deleted internal
@@ -660,8 +664,13 @@ class CompactFacts:
             self.db.execute('BEGIN')
         if isinstance(changes, (ChangeSet, MergedChangeSet, PruneCandidates)):
             changes = [changes]
-        candidates = {name: set() for name in ('owners', 'values', 'nodes', 'observations',
-                                               'edges', 'provenance', 'kinds', 'atoms')}
+        numeric_names = ('values', 'nodes', 'observations', 'edges', 'provenance', 'kinds', 'atoms')
+        if max_batch:
+            from compact_identity_bitmap import IdentityBitmap
+            candidates = {name: IdentityBitmap() for name in numeric_names}
+        else:
+            candidates = {name: set() for name in numeric_names}
+        candidates['owners'] = set()
         for change in changes:
             touched = change.prune if isinstance(change, MergedChangeSet) else change
             if isinstance(touched, PruneCandidates):
@@ -705,23 +714,28 @@ class CompactFacts:
         def remove(table, column, values, guard):
             # Previous table removals affect this table's referential guard.
             # Plan eligible IDs now, charge them, then perform those exact rows.
-            planned = [value for value in set(values) if self.db.execute(
-                f'SELECT 1 FROM {table} WHERE {column}=? AND {guard}', (value,)).fetchone()]
-            if before_mutation is not None and planned:
-                # Only rows actually eligible for removal contribute old stored
-                # payload. Shared/unrelated interned values are never charged.
-                payload = sum(sum(len(value.encode('utf-8')) if isinstance(value, str)
-                                  else len(value) if isinstance(value, bytes)
-                                  else 8 if value is not None else 0
-                                  for value in self.db.execute(
-                                      f'SELECT * FROM {table} WHERE {column}=?', (identity,)).fetchone())
-                              for identity in planned)
-                before_mutation(table, len(planned), payload)
-            counts[table] = sum(self.db.execute(
-                f'DELETE FROM {table} WHERE {column}=? AND {guard}', (value,)).rowcount
-                for value in planned)
-            if counts[table] != len(planned):
-                raise ValueError('Prune row plan changed for ' + table)
+            source = iter(values if max_batch else set(values))
+            batches = iter(lambda: list(itertools.islice(source, max_batch)), []) if max_batch else [source]
+            counts[table] = 0
+            for batch in batches:
+                planned = [value for value in batch if self.db.execute(
+                    f'SELECT 1 FROM {table} WHERE {column}=? AND {guard}', (value,)).fetchone()]
+                if before_mutation is not None and planned:
+                    # As in normal staging, charge actual eligible payload and
+                    # require exact planned/deleted row balance for each batch.
+                    payload = sum(sum(len(value.encode('utf-8')) if isinstance(value, str)
+                                      else len(value) if isinstance(value, bytes)
+                                      else 8 if value is not None else 0
+                                      for value in self.db.execute(
+                                          f'SELECT * FROM {table} WHERE {column}=?', (identity,)).fetchone())
+                                  for identity in planned)
+                    before_mutation(table, len(planned), payload)
+                removed = sum(self.db.execute(
+                    f'DELETE FROM {table} WHERE {column}=? AND {guard}', (value,)).rowcount
+                    for value in planned)
+                if removed != len(planned):
+                    raise ValueError('Prune row plan changed for ' + table)
+                counts[table] += removed
         remove('compact_edge_observations', 'observation_id', candidates['observations'],
                'NOT EXISTS(SELECT 1 FROM compact_edge_memberships m WHERE m.observation_id=compact_edge_observations.observation_id)')
         remove('compact_logical_edges', 'edge_id', candidates['edges'],

@@ -46,7 +46,7 @@ def read_proc_write_bytes():
 
 class PublicationBudget:
     def __init__(self, limits=None, *, mode='routine', rebuild_limits=None,
-                 rebuild_authorization=None, io_reader=read_proc_write_bytes):
+                 rebuild_authorization=None, io_reader=read_proc_write_bytes, journal_estimate_limit=None):
         if mode not in ('routine', 'full_rebuild'):
             raise ValueError('Unknown publication mode')
         if mode == 'full_rebuild':
@@ -58,6 +58,11 @@ class PublicationBudget:
         self.limits = limits or BudgetLimits()
         if not isinstance(self.limits, BudgetLimits):
             raise TypeError('limits must be BudgetLimits')
+        if journal_estimate_limit is not None and (
+                mode != 'routine' or type(journal_estimate_limit) is not int
+                or journal_estimate_limit < self.limits.journal_bytes):
+            raise ValueError('Explicit journal estimate reserve must cover the physical limit')
+        self.journal_estimate_limit = journal_estimate_limit
         self.mode = mode
         self.authorization = rebuild_authorization
         self.io_reader = io_reader
@@ -89,11 +94,12 @@ class PublicationBudget:
         if self.failure:
             raise BudgetExceeded(self.failure)
 
-    def _bound(self, name, value):
+    def _bound(self, name, value, limit=None):
         if type(value) is not int or value < 0:
             raise ValueError('Accounting requires a nonnegative integer: ' + name)
-        if value > getattr(self.limits, name):
-            self.failure = '{} budget exceeded: {} > {}'.format(name, value, getattr(self.limits, name))
+        limit = getattr(self.limits, name) if limit is None else limit
+        if value > limit:
+            self.failure = '{} budget exceeded: {} > {}'.format(name, value, limit)
             raise BudgetExceeded(self.failure)
 
     def preflight(self, *, journal_estimate_bytes, sqlite_write_estimate_bytes, rows, transfer_bytes):
@@ -102,7 +108,7 @@ class PublicationBudget:
                          sqlite_write_bytes=sqlite_write_estimate_bytes, rows=rows,
                          transfer_bytes=transfer_bytes)
         for name, value in estimates.items():
-            self._bound(name, value)
+            self._bound(name, value, self.journal_estimate_limit if name == 'journal_bytes' else None)
         self.estimates = estimates
         return dict(estimates)
 

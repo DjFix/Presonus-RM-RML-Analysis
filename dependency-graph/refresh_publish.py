@@ -3,6 +3,7 @@ import json
 import pathlib
 import re
 import shlex
+import shutil
 import sqlite3
 import sys
 import time
@@ -170,7 +171,11 @@ def publication_budget(plan):
             rebuild_limits=BudgetLimits(**config['limits']))
     if config.get('mode', 'routine') != 'routine':
         raise ContextError('Unknown publication budget mode')
-    return PublicationBudget(limits=BudgetLimits(**config.get('limits', {})))
+    estimate = config.get('journal_estimate_limit')
+    if estimate is not None and not plan.get('bounded_owner_reconciliation'):
+        raise ContextError('Separate journal estimate reserve requires scoped bounded recovery')
+    return PublicationBudget(limits=BudgetLimits(**config.get('limits', {})),
+                             journal_estimate_limit=estimate)
 
 
 def stage(c, out, budget=None):
@@ -186,8 +191,7 @@ def stage(c, out, budget=None):
     delta.execute('BEGIN')
     c.execute('BEGIN IMMEDIATE')
     # Keep the bounded dirty working set in memory instead of repeatedly
-    # spilling the same index pages. The publisher has a separate 4 GiB cap;
-    # this changes cache capacity, not durability, atomicity or IO accounting.
+    # spilling the same index pages. This changes cache capacity only.
     from deferred_sqlite import staging_cache_kib
     cache_kib = staging_cache_kib(budget.limits.sqlite_write_bytes)
     c.execute('PRAGMA cache_size=' + str(-cache_kib))
@@ -220,6 +224,8 @@ def stage(c, out, budget=None):
             receipt = budget.receipt()
             receipt['deferred_sqlite'] = getattr(budget, 'deferred_sqlite', None)
             receipt['staging_cache_kib'] = cache_kib
+            if budget.journal_estimate_limit is not None:
+                receipt['journal_estimate_limit'] = budget.journal_estimate_limit
             (out / 'stage-budget.json').write_text(json.dumps(receipt, indent=2) + '\n')
 
 
@@ -238,7 +244,24 @@ def _stage_compact(c, out, delta, plan, selected, budget):
         for row in lookup_catalog[2]:
             catalog_lookup.setdefault(row['mangled'], []).append('catalog:' + row['anchor'])
     legacy = not catalog and not c.execute('SELECT 1 FROM node_facts WHERE owner="@build" LIMIT 1').fetchone()
-    update = IncrementalStage(c, budget)
+    rekey = plan.get('bounded_owner_reconciliation')
+    pairs = {}
+    rekeys = []
+
+    def check_storage():
+        if rekey and shutil.disk_usage(out).free < rekey['min_free_storage_bytes']:
+            raise ContextError('Scoped rekey storage reserve reached before graph publication')
+
+    if rekey:
+        check_storage()
+        from owner_rekey_plan import pair_removed_owners
+        if (not plan.get('observation_provenance')
+                or plan['observation_provenance']['reused_compiler_captures'] != len(selected)):
+            raise ContextError('Bounded reconciliation requires every compiler capture to be verified reused')
+        pairs = pair_removed_owners(c, plan['removed_units'], selected)
+        if len(pairs) != rekey['expected_pairs']:
+            raise ContextError('Bounded reconciliation exact pair count changed')
+    update = IncrementalStage(c, budget, bounded=bool(rekey))
     from unchanged_observations import ObservationEquivalence
     equivalence = ObservationEquivalence(ROOT)
     diagnostic = {'processed_units': 0, 'selected_units': len(selected), 'owner': None, 'phase': 'start'}
@@ -254,11 +277,16 @@ def _stage_compact(c, out, delta, plan, selected, budget):
         progress_log.flush()
 
     try:
+        paired_old = set(pairs.values())
         for owner in plan['removed_units']:
+            if owner in paired_old:
+                continue
             progress('remove_owner', owner)
             update.remove_owner(owner)
             progress('removed', owner)
-        for owner, row in selected:
+        for index, (owner, row) in enumerate(selected):
+            if rekey and index % 128 == 0:
+                check_storage()
             progress('selected_owner', owner)
             dest = out / 'observations' / owner.replace(':', '-')
             ast, gcc = dest / 'ast.json', dest / '0000.json'
@@ -273,6 +301,11 @@ def _stage_compact(c, out, delta, plan, selected, budget):
             else:
                 nodes, edges = timing.call("generate_facts", facts, ROOT, owner, row, ast, gcc, catalog_lookup=catalog_lookup)
             captured = json.loads(ast.read_text())
+            if owner in pairs:
+                progress('rekey_owner', owner)
+                old = pairs[owner]
+                previous_observation = timing.call('rekey_owner', update.rekey_owner, old, owner)
+                rekeys.append(dict(old=old, new=owner, previous_observation=previous_observation))
             progress('replace_unit', owner)
             timing.call("replace_unit", update.replace_unit, owner, row, nodes, edges, captured['input_sha256'],
                                 ast, gcc, captured['external_inputs'])
@@ -292,7 +325,18 @@ def _stage_compact(c, out, delta, plan, selected, budget):
             inputs[str(lookup_catalog[0])] = lookup_catalog[1]
         timing.call('replace_build_facts', update.replace_facts, '@build', nodes, edges)
         progress('finish_delta', '@delta')
+        check_storage()
         counts = timing.call("finish_delta", update.finish, delta)
+        update.close()
+        if rekey:
+            if len(rekeys) != rekey['expected_pairs']:
+                raise ContextError('Bounded owner reconciliation did not use every verified pair')
+            reconciliation = out / 'bounded-owner-reconciliation.json'
+            reconciliation.write_text(json.dumps({
+                'pairs': rekeys, 'paired': len(rekeys), 'unpaired_removed': len(plan['removed_units']) - len(rekeys),
+                'selected_units': len(selected), 'scope': 'Real captured facts with exact compact membership differences; '
+                'merged nodes and exact raw evidence presence compared to pinned WAL baseline.',
+            }, indent=2) + '\n')
         delta.execute('INSERT INTO settings VALUES(?,?)', ('replace_legacy_build', int(legacy)))
         if catalog:
             delta.execute('INSERT INTO settings VALUES(?,?)', ('source_baseline_mode', CLEAN_BASELINE))
@@ -322,7 +366,11 @@ def _stage_compact(c, out, delta, plan, selected, budget):
                 raise ContextError('Producer changed before publication: ' + relative)
         from native_candidate_gate import seal_guard
         from native_candidate_ownership import pack_guard
-        candidate_guard = timing.call("candidate_seal", lambda: pack_guard(seal_guard(ROOT, c, delta)))
+        candidate_guard = timing.call(
+            "candidate_seal",
+            lambda: pack_guard(seal_guard(ROOT, c, delta, bounded=bool(rekey)), bounded=bool(rekey),
+                               maintenance=bool(rekey and rekey.get('maintenance_guard'))),
+        )
         guard_json = json.dumps(candidate_guard, sort_keys=True)
         (out / 'unchanged-observations.json').write_text(json.dumps(equivalence.receipt, indent=2) + '\n')
         report = {'native_candidate_guard': candidate_guard,
@@ -338,6 +386,8 @@ def _stage_compact(c, out, delta, plan, selected, budget):
                   'runtime_or_original_firmware_callgraph_complete': False}
         if catalog:
             report.update(source_baseline_mode=CLEAN_BASELINE, catalog_snapshot=plan['catalog_snapshot'])
+        if rekey:
+            report['bounded_owner_reconciliation'] = {'path': str(reconciliation), 'sha256': sha(reconciliation)}
         report_json = json.dumps(report, indent=2) + '\n'
         # This delta is new in this transaction: append one compact setting,
         # not a rewrite of an existing logical guard. Fail before any persistence.
@@ -351,6 +401,16 @@ def _stage_compact(c, out, delta, plan, selected, budget):
         guard_bytes = len(guard_json.encode())
         report_bytes = len(report_json.encode())
         reserve = guard_bytes + 65536
+        if rekey:
+            # Request forecast already includes source apply and verification.
+            # The additional reserve budgets the separately audited native
+            # lifecycle and registration. It is an estimate (Actual08 added
+            # ~400 MB); actual per-request checks remain in force.
+            transfer_reserve = max(2 * 1024**3, 4 * guard_bytes)
+            update._reserve(dict(owner='@rekey-post-publication-reserve', changed_nodes=0,
+                changed_edges=0, observation_updates=0, encoded_changed_bytes=0,
+                journal_estimate_bytes=0, sqlite_write_estimate_bytes=0, rows=0,
+                transfer_estimate_bytes=transfer_reserve))
         update._reserve(dict(owner='@candidate-guard', changed_nodes=0, changed_edges=0,
             observation_updates=0, encoded_changed_bytes=guard_bytes + report_bytes,
             journal_estimate_bytes=reserve,
@@ -368,6 +428,7 @@ def _stage_compact(c, out, delta, plan, selected, budget):
         (out / 'stage-failure.json').write_text(json.dumps(failure, indent=2) + '\n')
         raise
     finally:
+        update.close()
         timing.save(out / "stage-timings.json")
         progress_log.close()
         (out / 'unchanged-observations.json').write_text(json.dumps(equivalence.receipt, indent=2) + '\n')
@@ -557,6 +618,9 @@ def main(out):
         if actual != plan.get('producer_sha256', {}): raise ContextError('Refresh producer changed before staging')
         stage(c, out, budget=initial_budget)
     request_budget = initial_budget if pending else publication_budget(plan)
+    rekey = plan.get('bounded_owner_reconciliation')
+    if rekey and shutil.disk_usage(out).free < rekey['min_free_storage_bytes']:
+        raise ContextError('Scoped rekey exceeded physical storage reserve before graph publication')
     if not pending:
         c = connect(BASE / 'state/refresh-index.sqlite')
     d = sqlite3.connect(out / 'delta.sqlite'); d.row_factory = sqlite3.Row
