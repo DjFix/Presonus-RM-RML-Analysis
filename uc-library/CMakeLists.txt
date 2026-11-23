@@ -204,6 +204,48 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/mixer/DecayTimeFormatterT6.hpp
+  presonus/mixer/DecayTimeFormatterT7.hpp
+  presonus/mixer/DecayTimeFormatterT8.hpp
+  presonus/mixer/DecayTimeFormatterT9.hpp
+  presonus/mixer/EarlyRefFormatterT2.hpp
+  presonus/mixer/PreDelayFormatterT2.hpp
+  presonus/panel/LCDComponent.hpp
+  presonus/MeterMaid.hpp
+  presonus/mixer/DecayTimeFormatterT1.hpp
+  presonus/mixer/DecayTimeFormatterT2.hpp
+  presonus/mixer/DecayTimeFormatterT3.hpp
+  presonus/mixer/DecayTimeFormatterT4.hpp
+  presonus/mixer/DecayTimeFormatterT5.hpp
+  presonus/mixer/DelayTimeFormatter.hpp
+  presonus/mixer/EarlyRefFormatterT3.hpp
+  presonus/mixer/EarlyRefFormatterT4.hpp
+  presonus/mixer/EarlyRefFormatterT5.hpp
+  presonus/mixer/EarlyRefFormatterT6.hpp
+  presonus/mixer/PreDelayFormatterT3.hpp
+  presonus/mixer/PreDelayFormatterT4.hpp
+  presonus/mixer/PreDelayFormatterT5.hpp
+  presonus/mixer/StereoSpreadFormatter.hpp
+  presonus/panel/AlertPage.hpp
+  presonus/MeterBallistics.hpp
+  presonus/dsp/OMAPTargetHandler.hpp
+  presonus/mixer/ChDelayFormatter.hpp
+  presonus/mixer/ChGainFormatter.hpp
+  presonus/mixer/ChHPFFormatter.hpp
+  presonus/mixer/EarlyRefFormatter.hpp
+  presonus/mixer/FilterFreqFormatter.hpp
+  presonus/mixer/FilterGainFormatter.hpp
+  presonus/mixer/GeqFreqFormatter.hpp
+  presonus/mixer/NumberPrepender.hpp
+  presonus/mixer/PreDelayFormatter.hpp
+  presonus/mixer/SubDelayFormatter.hpp
+  presonus/panel/FillElement.hpp
+  presonus/panel/StaticElement.hpp
+  presonus/panel/FieldElement.hpp
+  presonus/panel/OffscreenElement.hpp
+  presonus/panel/LCDManager.hpp
+  presonus/panel/Page.hpp
+  presonus/panel/TextEntryElement.hpp
   presonus/dsp/DSPManager.hpp
   presonus/utilities/dfu_diagnostic.hpp
   presonus/utilities/table_elements.hpp
@@ -759,3 +801,5 @@ include(cmake/tests/PhaseBFinalReplays.cmake)
 include(cmake/tests/Trial10x2Replays.cmake)
 
 include(cmake/tests/Next39Replays.cmake)
+
+include(cmake/tests/Control10x20Replays.cmake)

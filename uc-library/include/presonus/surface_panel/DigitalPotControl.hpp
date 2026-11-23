@@ -1,5 +1,5 @@
 #pragma once
-#include "core/portable/coreparams.h"
+#include "presonus/panel/control.hpp"
 #include <array>
 #include <cstdint>
 
@@ -20,15 +20,16 @@ struct DigitalPotState {
 } // namespace presonus::panel_binding
 
 namespace Presonus::Panel {
-// Partial source interface, not the original base hierarchy, storage or vtable
-// ABI. Original unencoded return spellings remain declaration-pending.
-class DigitalPotControl {
+// Portable source port with genuine Control cleanup. Layout, vtable ABI and
+// unencoded ordinary return declarations remain unresolved.
+class DigitalPotControl : public Control {
 public:
   explicit DigitalPotControl(presonus::panel_binding::DigitalPotState &state)
-      : state_(state) {}
-  virtual void paramChanged(Core::Portable::Parameter *parameter, int mode);
-  virtual void broadcastValue(int value);
-  virtual void transmit();
+      : Control(state.tag), state_(state) {}
+  ~DigitalPotControl() override;
+  void paramChanged(Core::Portable::Parameter *parameter, int mode) override;
+  void broadcastValue(int value) override;
+  void transmit() override;
 
 private:
   presonus::panel_binding::DigitalPotState &state_;

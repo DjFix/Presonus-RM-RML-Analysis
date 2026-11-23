@@ -1,0 +1,264 @@
+{
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus5Panel16TextEntryElement9setStringEPKc",
+      "address": 128800,
+      "size": 152,
+      "section": ".text",
+      "file_offset": 96032,
+      "body_sha256": "04c036c2618d10fc0aaa173dd0579ef2be43629e68b02374e90ac749c53e4cca",
+      "cases": [
+        {
+          "input": [
+            0,
+            "~"
+          ],
+          "expected": "1 - -",
+          "events": [
+            [
+              "getParam"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "-"
+          ],
+          "expected": "1 - -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "4175782042"
+          ],
+          "expected": "1 4175782042 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "78787878787878787878787878787878787878787878787878787878787878"
+          ],
+          "expected": "1 78787878787878787878787878787878787878787878787878787878787878 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a"
+          ],
+          "expected": "1 7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            "4275732032"
+          ],
+          "expected": "1 b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7 4275732032",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "getParam"
+            ],
+            [
+              "fromString"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            "-"
+          ],
+          "expected": "1 b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "getParam"
+            ],
+            [
+              "fromString"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus5Panel16TextEntryElement9setStringEPKc",
+      "address": 625552,
+      "size": 152,
+      "section": ".text",
+      "file_offset": 592784,
+      "body_sha256": "65a5343206af47f40dac8edee5c756bf86e8af1459831835799af035dd7f6919",
+      "cases": [
+        {
+          "input": [
+            0,
+            "~"
+          ],
+          "expected": "1 - -",
+          "events": [
+            [
+              "getParam"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "-"
+          ],
+          "expected": "1 - -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "4175782042"
+          ],
+          "expected": "1 4175782042 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "78787878787878787878787878787878787878787878787878787878787878"
+          ],
+          "expected": "1 78787878787878787878787878787878787878787878787878787878787878 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            0,
+            "7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a"
+          ],
+          "expected": "1 7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a7a -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "strlen"
+            ],
+            [
+              "strncpy"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            "4275732032"
+          ],
+          "expected": "1 b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7 4275732032",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "getParam"
+            ],
+            [
+              "fromString"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            "-"
+          ],
+          "expected": "1 b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7b7 -",
+          "events": [
+            [
+              "getParam"
+            ],
+            [
+              "getParam"
+            ],
+            [
+              "fromString"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

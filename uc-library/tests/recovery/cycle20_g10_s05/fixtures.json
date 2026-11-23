@@ -1,0 +1,641 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "unicorn": "2.1.4",
+  "ranges": {
+    "predicate": {
+      "address": 337900,
+      "size": 100,
+      "mangled": "_ZNK8Presonus5Panel14PanelComponent9isInGroupEiRKN4Core8Portable9ParameterE",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 305132,
+      "sha256": "74a087da61fd18bb5b8815f59f42845f6766e214aba5b73ba5fc66c3d327365b"
+    },
+    "findGroup": {
+      "address": 582828,
+      "size": 196,
+      "mangled": "_ZNK8Presonus5Panel16ControlRegistrar9findGroupEi",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 550060,
+      "sha256": "313870e121e1db720cb7e259032305d88f0e24cdecc48872d26dd4772d07d8a1"
+    },
+    "at": {
+      "address": 580008,
+      "size": 68,
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup2atEi",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 547240,
+      "sha256": "60f6ac6b7be4a7e3807085132dfe82f7bbdf8f9efbfc39abdfe8a27e28e2e8d0"
+    },
+    "count": {
+      "address": 580360,
+      "size": 20,
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup5countEv",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 547592,
+      "sha256": "3ce6a3b8cab7ecb3bbd97fb0da292576383c9089a9db152059a8ff86ac7c4942"
+    },
+    "getParameter": {
+      "address": 587136,
+      "size": 20,
+      "mangled": "_ZNK8Presonus5Panel7Control12getParameterEv",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 554368,
+      "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    }
+  },
+  "cases": [
+    {
+      "groups": [],
+      "query": 0,
+      "parameter": 0,
+      "sentinel_state": "cold",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 4803732,
+          "observed_count_word": 0
+        }
+      ],
+      "runtime_stubs": [
+        "guard_acquire",
+        "guard_release",
+        "atexit"
+      ],
+      "native_sentinel_writes": [
+        0,
+        8,
+        12,
+        4
+      ],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [],
+      "query": 7,
+      "parameter": 0,
+      "sentinel_state": "warm",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 4803732,
+          "observed_count_word": 0
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          0,
+          []
+        ]
+      ],
+      "query": 0,
+      "parameter": 0,
+      "sentinel_state": "warm",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 0
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 0,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 1,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 1
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599312
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0,
+            null,
+            2
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 2,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 1
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599312
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 2
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599328
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0,
+            null,
+            2
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 1,
+      "sentinel_state": "warm",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 1
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599312
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 2
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599328
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 3
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0
+          ]
+        ],
+        [
+          7,
+          [
+            1
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 1,
+      "sentinel_state": "warm",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 1
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 1
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            1
+          ]
+        ],
+        [
+          7,
+          [
+            0
+          ]
+        ]
+      ],
+      "query": 7,
+      "parameter": 1,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595200,
+          "observed_count_word": 1
+        },
+        {
+          "method": "at",
+          "receiver": 12595200,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599296
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0
+          ]
+        ],
+        [
+          -8,
+          [
+            1
+          ]
+        ],
+        [
+          0,
+          [
+            2
+          ]
+        ]
+      ],
+      "query": -8,
+      "parameter": 1,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595456,
+          "observed_count_word": 1
+        },
+        {
+          "method": "at",
+          "receiver": 12595456,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599552
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          3,
+          [
+            0
+          ]
+        ],
+        [
+          4,
+          [
+            1
+          ]
+        ],
+        [
+          5,
+          [
+            2
+          ]
+        ]
+      ],
+      "query": 5,
+      "parameter": 2,
+      "sentinel_state": "warm",
+      "member": true,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 12595712,
+          "observed_count_word": 1
+        },
+        {
+          "method": "at",
+          "receiver": 12595712,
+          "index": 0
+        },
+        {
+          "method": "getParameter",
+          "receiver": 12599808
+        }
+      ],
+      "runtime_stubs": [],
+      "native_sentinel_writes": [],
+      "input_state_unchanged": true
+    },
+    {
+      "groups": [
+        [
+          7,
+          [
+            0
+          ]
+        ],
+        [
+          8,
+          [
+            1
+          ]
+        ]
+      ],
+      "query": 9,
+      "parameter": 0,
+      "sentinel_state": "cold",
+      "member": false,
+      "app_calls": [
+        {
+          "method": "predicate",
+          "receiver": 12582912
+        },
+        {
+          "method": "findGroup",
+          "receiver": 12587008
+        },
+        {
+          "method": "count",
+          "receiver": 4803732,
+          "observed_count_word": 0
+        }
+      ],
+      "runtime_stubs": [
+        "guard_acquire",
+        "guard_release",
+        "atexit"
+      ],
+      "native_sentinel_writes": [
+        0,
+        8,
+        12,
+        4
+      ],
+      "input_state_unchanged": true
+    }
+  ]
+}

@@ -76,4 +76,137 @@ SLChannelBase *MixerClientComponentBase::getSelectedChannel() const {
   }
   return selectedChannel_;
 }
+
+namespace {
+struct PresetLabel {
+  const char *identifier;
+  const char *typeName;
+  const char *suggestion;
+};
+constexpr PresetLabel presetLabels[] = {
+    {"scene", "Scene", "New Scene"},
+    {"channel", "Channel", "New Channel"},
+    {"geq", "GEQ", "New GEQ"},
+    {"reverb", "Reverb", "New Reverb"},
+    {"delay", "Delay", "New Delay"},
+    {"mixscene", "Mix Scene", "mixscene"},
+    {"mutegroup", "Mute Group", "mutegroup"},
+};
+
+const PresetLabel *findPresetLabel(IPresetHandler::PresetType type) {
+  const auto index = static_cast<unsigned>(type);
+  return index < sizeof(presetLabels) / sizeof(presetLabels[0])
+             ? &presetLabels[index]
+             : nullptr;
+}
+} // namespace
+
+MixerClientComponentBase *MixerClientComponentBase::getMasterMixer() const {
+  return state_.masterMixer;
+}
+
+MixerClientComponentBase *MixerClientComponentBase::getSlaveMixer() const {
+  return state_.slaveMixer;
+}
+
+void MixerClientComponentBase::setMasterMixer(MixerClientComponentBase *mixer) {
+  state_.masterMixer = mixer;
+}
+
+void MixerClientComponentBase::bindGeqs(
+    const Core::ConstVector<Core::Portable::Component *> *geqs) {
+  state_.geqs = geqs;
+  state_.hasGeqConfiguration = geqs != nullptr;
+  state_.geqCountWord = geqs ? static_cast<std::uint32_t>(geqs->count()) : 0U;
+}
+
+Core::Portable::Component *
+MixerClientComponentBase::getMixGeq(int index) const {
+  const auto *geqs = state_.geqs;
+  if (!geqs)
+    return nullptr;
+  // The original ARM add wraps before the signed range test.
+  const auto shifted = static_cast<std::uint32_t>(index) + 2U;
+  std::int32_t slot;
+  std::memcpy(&slot, &shifted, sizeof(slot));
+  if (slot >= geqs->count())
+    return nullptr;
+  return slot >= 0 ? geqs->at(slot) : geqs->getError();
+}
+
+Core::Portable::Component *
+MixerClientComponentBase::getMainGeq(bool last) const {
+  const auto *geqs = state_.geqs;
+  if (!geqs)
+    return nullptr;
+  if (!last)
+    return geqs->isEmpty() ? geqs->getError() : geqs->at(0);
+  const auto count = getNumGeqs();
+  return count > 0 && count <= geqs->count() ? geqs->at(count - 1)
+                                             : geqs->getError();
+}
+
+bool MixerClientComponentBase::isChannelComponent(
+    Core::Portable::Component *component) const {
+  if (!component || !Core::Portable::core_cast<SLChannelBase>(component))
+    return false;
+  const auto *parent = component->getParent();
+  return parent && parent != channelGroups_ &&
+         static_cast<int>(getChannelGroupType(*parent)) >= 0;
+}
+
+IPresetHandler::PresetType
+MixerClientComponentBase::translatePresetType(const char *type) const {
+  if (type) {
+    for (unsigned index = 0;
+         index < sizeof(presetLabels) / sizeof(presetLabels[0]); ++index)
+      if (std::strcmp(type, presetLabels[index].identifier) == 0)
+        return static_cast<IPresetHandler::PresetType>(index);
+  }
+  return IPresetHandler::Scene;
+}
+
+void MixerClientComponentBase::getPresetType(
+    IPresetHandler::PresetType type, Core::CStringBuffer<128> &label) const {
+  const auto *entry = findPresetLabel(type);
+  label = entry ? entry->typeName : "";
+}
+
+void MixerClientComponentBase::getSuggestedPresetName(
+    IPresetHandler::PresetType type, Core::CStringBuffer<128> &label) const {
+  const auto *entry = findPresetLabel(type);
+  label = entry ? entry->suggestion : "";
+}
+int MixerClientComponentBase::getNumPresets(IPresetHandler::PresetType type,
+                                            const char *) const {
+  const auto slot = static_cast<unsigned>(type);
+  if (slot >= state_.presetRosters.size())
+    return 0;
+  const auto *roster = state_.presetRosters[slot];
+  return roster ? roster->count() : 0;
+}
+
+IPresetHandler::Preset *
+MixerClientComponentBase::getPreset(IPresetHandler::PresetType type, int index,
+                                    const char *) const {
+  const auto slot = static_cast<unsigned>(type);
+  if (slot >= state_.presetRosters.size())
+    return nullptr;
+  const auto *roster = state_.presetRosters[slot];
+  if (index >= (roster ? roster->count() : 0))
+    return nullptr;
+  if (index < 0)
+    return PortableMixerState::PresetRoster::getError();
+  return roster->at(index);
+}
+
+void MixerClientComponentBase::getRemotePresetTarget(
+    IPresetHandler::PresetType type, Core::CStringBuffer<256> &target) {
+  if (type == IPresetHandler::Scene)
+    target.empty();
+  else if (type == IPresetHandler::Channel)
+    if (const auto *channel = getSelectedChannel())
+      channel->getComponentPath(target);
+}
+
 } // namespace Presonus

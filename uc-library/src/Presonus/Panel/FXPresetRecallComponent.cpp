@@ -23,6 +23,7 @@ void FXPresetRecallComponent::onIdle() { Core::Portable::Component::onIdle(); }
 int FXPresetRecallComponent::getSlotNum() const {
   return static_cast<int>(slot.getValue());
 }
+void FXPresetRecallComponent::cacheUpdated(PresetNameCache &) {}
 void FXPresetRecallComponent::cacheUpdated(PresetNameCache &, int index,
                                            const char *name, const char *) {
   if (index != getSlotNum())

@@ -53,6 +53,9 @@ public:
   virtual std::int32_t getEffectTypeInternal(Presonus::EffectType type);
   // Provisional signed integer return; ordinary mangling omits it.
   std::int32_t getTypeNum() const;
+  // Native dispatch accepts negative parameters for valid effect types.
+  // The portable bool return is provisional.
+  bool isValidParamForType(Presonus::EffectType type, int parameter);
   void setFxDirty();
   void updateFxTypeName();
   void setInterpolator(int parameterIndex, int effectType);
@@ -62,6 +65,11 @@ public:
   bool refreshFx(bool edit);
   // Real CCL base constrains this source-port return to bool.
   bool load(const Core::Portable::InputStorage &) override;
+
+  // Portable no-effect hook; original return declaration is unresolved.
+  virtual void tap();
+  // Original result bits are all ones; signed return remains provisional.
+  virtual int mapIDs(int selector);
 
 private:
   presonus::mixer_fx::State &state_;

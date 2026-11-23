@@ -89,6 +89,8 @@ public:
       : state(state), providers(providers) {}
   void assignSubsUpdate(Dsp::MultiParamProperty &);
   void auxLevelUpdate(Dsp::MultiParamProperty &);
+  // Portable no-effect callback. Original return declaration is unresolved.
+  virtual void fxLevelUpdate(Dsp::MultiParamProperty &);
   bool isPostFaderAux(int);
   bool isSubgroupModeAux(int);
   void assignLRUpdate(Dsp::MultiParamProperty &);

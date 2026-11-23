@@ -12,6 +12,8 @@ public:
   // Source-port void declarations; original ordinary returns are unresolved.
   void updateVisibility();
   void updateAliasTargets();
+  // Source-port callback; the original return declaration remains unresolved.
+  void onShow(bool);
   void paramChanged(Core::Portable::Parameter *, int) override;
   Core::Vector<Core::Portable::AliasParam *> &sourcePortAliases() {
     return aliases_;

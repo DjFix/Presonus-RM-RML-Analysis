@@ -48,6 +48,8 @@ public:
   Core::Portable::FileIOCompletionHandler *createStorageHandler() const;
   void doPresetSave(const char *, const char *,
                     const Core::Portable::Attributes &) const;
+  // Default UI hook in the portable class.
+  virtual void cacheUpdated(PresetNameCache &);
   void cacheUpdated(PresetNameCache &, int, const char *, const char *);
   void paramChanged(Core::Portable::Parameter *parameter, int message) override;
   virtual void updatePresetName() const;

@@ -9,6 +9,8 @@ class AssignmentHandler;
 // original declarations or ARM layout claims. Non-owning handler pointers.
 class AssignmentHandlerTable {
 public:
+  AssignmentHandlerTable();
+  AssignmentHandlerTable(const AssignmentHandlerTable &other);
   explicit AssignmentHandlerTable(Core::Vector<AssignmentHandler *> &handlers)
       : handlers_(handlers) {}
   void initializeHandlers(Core::Portable::Component *);
@@ -20,6 +22,7 @@ public:
   AssignmentHandler *findHandler(const char *) const;
 
 private:
+  Core::Vector<AssignmentHandler *> ownedHandlers_;
   Core::Vector<AssignmentHandler *> &handlers_;
 };
 } // namespace Presonus

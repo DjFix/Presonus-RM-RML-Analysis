@@ -2,10 +2,12 @@
 
 #include "core/public/coreinterpolator.h"
 
-// Portable lifecycle subset using the pinned SegmentInterpolator family.
-// The original constructor, breakpoints and ARM fields remain unresolved.
+// Portable CCL-backed meter interpolator. Original ARM layout is unresolved.
 class DefaultMeterInterpolator : public Core::SegmentInterpolator {
 public:
   using SegmentInterpolator::SegmentInterpolator;
+  DefaultMeterInterpolator();
   ~DefaultMeterInterpolator() override;
 };
+
+void __initMeterControl();

@@ -20,5 +20,7 @@ public:
   virtual const ReverbSelectTypeMapEntry *getSelectTypeMap();
   // Provisional ordinary return spelling; original ARM result bits are known.
   int mapIDs(int);
+  // Portable no-effect hook; original return declaration is unresolved.
+  virtual void tap();
 };
 } // namespace Presonus::Mixer

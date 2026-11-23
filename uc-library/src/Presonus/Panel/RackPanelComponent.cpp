@@ -40,6 +40,8 @@ RackPanelComponent::RackPanelComponent(Presonus::Mixer::MixerComponentBase &m,
 }
 RackPanelComponent::~RackPanelComponent() = default;
 
+void RackPanelComponent::dismissAlert() {}
+
 void RackPanelComponent::clientsChanged() { updatePanelStatus(); }
 void RackPanelComponent::checkPermissionsPWReset() {
   if (permissionFlags & 0x18u)

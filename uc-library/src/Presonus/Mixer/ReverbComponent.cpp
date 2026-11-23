@@ -41,4 +41,6 @@ int ReverbComponent::mapIDs(int selector) {
                                     -1, 2,  3,  4,  5,  6,  7};
   return index <= 14u ? mapping[index] : -1;
 }
+
+void ReverbComponent::tap() {}
 } // namespace Presonus::Mixer

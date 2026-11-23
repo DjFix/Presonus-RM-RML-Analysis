@@ -10,6 +10,12 @@ void EQPageComponent::removeObserver(IObserver *observer) {
 void GeqPageComponent::removeObserver(IObserver *observer) {
   observers_.remove(observer);
 }
+void GeqPageComponent::onShow(bool) {
+  // The portable receiver delegates visibility to its borrowed Page.
+  notifiedOffset_ = -1;
+  listOffset_ = 0;
+  updateBands();
+}
 void GeqPageComponent::updateBands() {
   if (!page_ || !page_->isVisible())
     return;

@@ -7,5 +7,9 @@ namespace Presonus {
 class ModalPageComponent {
 public:
   void *castTo(int classId);
+
+  // Portable bool models the native result tested by the modal caller.
+  bool onOk();
+  bool onCancel();
 };
 } // namespace Presonus

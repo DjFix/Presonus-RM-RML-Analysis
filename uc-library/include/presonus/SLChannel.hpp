@@ -1,8 +1,12 @@
 #pragma once
 
 #include "core/portable/corecomponent.h"
+#include "core/public/gui/corecolor.h"
 
 namespace Presonus {
+class MixerClientComponentBase;
+class MappableMixer;
+enum ChannelType : int;
 // Source-port inheritance and type ID: intentional CCL5 typed-object
 // adaptation, not a claim about original ARM layout, private declarations or
 // RTTI identity.
@@ -19,6 +23,41 @@ public:
   virtual Core::Portable::Parameter *getColorParameter() const;
   virtual Core::Portable::Parameter *getLinkMasterParameter() const;
   virtual Core::Portable::Parameter *getLinkedSelectionParameter() const;
+  // Independent borrowed input used by the portable color-index query.
+  void bindColorIndexParameter(const Core::Portable::NumericParam *parameter) {
+    colorIndexParameter_ = parameter;
+    writableColorIndexParameter_ = nullptr;
+  }
+  // Separate source-port bindings preserve read-only index callers. Providers
+  // are borrowed and must outlive this channel.
+  void
+  bindWritableColorIndexParameter(Core::Portable::NumericParam &parameter) {
+    colorIndexParameter_ = &parameter;
+    writableColorIndexParameter_ = &parameter;
+  }
+  void bindSourcePortColorMixer(const MappableMixer *mixer) {
+    colorMixer_ = mixer;
+  }
+  void updateColorIndex();
+  void updateColorFromIndex();
+  int getColorIndex() const;
+  Core::Color getColor() const;
+  int getNumber() const;
+  // Independent borrowed source binding. The mixer must outlive this channel.
+  void bindSourcePortMixer(const MixerClientComponentBase *mixer) {
+    sourcePortMixer_ = mixer;
+  }
+  ChannelType getChannelType() const;
+  // The base leaves the supplied vector unchanged. The exact original return
+  // declaration and vtable layout remain unresolved.
+  virtual void
+  getSlowLinkParams(Core::Vector<Core::Portable::Parameter *> &) const;
+
+private:
+  const Core::Portable::NumericParam *colorIndexParameter_ = nullptr;
+  const MixerClientComponentBase *sourcePortMixer_ = nullptr;
+  Core::Portable::NumericParam *writableColorIndexParameter_ = nullptr;
+  const MappableMixer *colorMixer_ = nullptr;
 };
 
 class SLChannel : public SLChannelBase {

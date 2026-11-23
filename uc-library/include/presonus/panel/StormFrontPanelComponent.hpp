@@ -1,4 +1,5 @@
 #pragma once
+#include "presonus/panel/Fat24FrontPanelComponent.hpp"
 #include <cstddef>
 #include <cstdint>
 namespace Presonus {
@@ -39,12 +40,16 @@ struct Dependencies {
 };
 } // namespace presonus::stormpanel_port
 namespace Presonus::Panel {
-// Portable source port. Original ordinary returns, inheritance, ownership and
-// ARM32 layout remain unresolved. Every application service is required.
-class StormFrontPanelComponent {
+// Portable source port with the observed Fat24 teardown chain. The original
+// secondary bases, ARM32 layout and ordinary return declarations remain
+// unresolved.
+class StormFrontPanelComponent : public Fat24FrontPanelComponent {
 public:
   explicit StormFrontPanelComponent(presonus::stormpanel_port::Dependencies &d)
-      : dependencies(d) {}
+      : Fat24FrontPanelComponent(
+            Fat24FrontPanelComponent::SourcePortConstruction{}),
+        dependencies(d) {}
+  ~StormFrontPanelComponent() override;
   // Provisional void return; original unencoded declaration remains pending.
   void getTablesForGroup(int group, const int *&first, const int *&second,
                          int &count) const;

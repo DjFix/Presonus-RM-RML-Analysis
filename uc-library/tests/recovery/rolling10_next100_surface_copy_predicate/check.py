@@ -1,8 +1,32 @@
+from pathlib import Path
 import argparse,hashlib,json,pathlib,subprocess,datetime,os
-p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--object',required=True);p.add_argument('--integration',required=True);p.add_argument('--out',required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--object',required=True);p.add_argument('--integration',required=True);p.add_argument('--out',required=True);p.add_argument('--current-source-transition');p.add_argument('--current-source-transition-sha256');a=p.parse_args()
 TASK=pathlib.Path(__file__).parent.name
 BASE='uc-library/tests/recovery/'+TASK
 H=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+
+def load_current_transition(args):
+ if not (args.current_source_transition or args.current_source_transition_sha256):return {},None
+ assert args.current_source_transition and args.current_source_transition_sha256
+ receipt=Path(args.current_source_transition)
+ assert H(receipt)==args.current_source_transition_sha256
+ data=json.loads(receipt.read_text())
+ assert data['version']==1 and TASK in data['tests']
+ assert set(data['current_sources'])=={'uc-library/src/Presonus/SLChannel.cpp', 'uc-library/include/presonus/SLChannel.hpp'}
+ for ref in data['previous_worker_proofs'].values():
+  assert H(ref['path'])==ref['sha256']
+ return data['current_sources'],dict(path=str(receipt),sha256=args.current_source_transition_sha256)
+
+def current_input(path,historical,changes):
+ if path not in changes:return historical
+ row=changes[path]
+ assert historical==row['previous_sha256']
+ assert H(row['previous_frozen_read_path'])==historical
+ assert H(row['current_frozen_read_path'])==row['current_sha256']
+ return row['current_sha256']
+
+changes,transition=load_current_transition(a)
+assert not changes or a.integration!='local'
 subprocess.run(['uc-library/.venv/bin/python',BASE+'/native.py','--verify','--provider-exe',a.exe],check=True)
 req=json.loads(pathlib.Path('temp/recovery-work/rolling10x10-20261114/prepared-next-flow01/packets',TASK,'request.json').read_text())
 paths=['uc-library/include/presonus/surface/FatChannelClipboard.hpp','uc-library/src/Presonus/Surface/FatChannelClipboard.cpp',BASE+'/Replay.cpp']
@@ -17,8 +41,10 @@ supplement_path=pathlib.Path('/home/rs/projects/opencs/ai-line-analysis/temp/rec
 assert H(supplement_path)=='0dbaed25a5c06966e3e1c4bf90f05dad886406639668df86d8c294dfd5bbaf03'
 supplement=json.loads(supplement_path.read_text())
 assert H(pathlib.Path('/home/rs/projects/opencs/ai-line-analysis')/supplement['plan'])==supplement['plan_sha256']
+assert set(changes)<=set(supplement['read_inputs'])
 for name,entry in supplement['read_inputs'].items():
- assert H(name)==entry['sha256'] and H(entry['frozen_read_path'])==entry['sha256']
+ assert H(entry['frozen_read_path'])==entry['sha256']
+ assert H(name)==current_input(name,entry['sha256'],changes),name
 paths += [name for name in supplement['read_inputs'] if name.startswith('uc-library/') and name not in paths]
 sources={x.removeprefix('uc-library/'):H(x) for x in paths+[BASE+'/native.py',BASE+'/check.py',BASE+'/fixtures.json']}
 providers={name:H(name) for name in supplement['read_inputs'] if name.startswith('third_party/ccl-framework/core/')}
@@ -35,4 +61,5 @@ for archive in provider_metadata['archives']:
  path=provider_root/archive['path'];assert H(path)==archive['sha256'];proof['archives'][archive['path']]=H(path)
 proof['provider_link_provenance']={'path':str(provider_addendum),'sha256':H(provider_addendum),'upstream':provider_metadata['upstream'],'provider_proof':provider_metadata['provider_proof']}
 proof['source_supplement']={'path':str(supplement_path),'sha256':H(supplement_path),'plan':supplement['plan'],'plan_sha256':supplement['plan_sha256']}
+if transition:proof['current_source_transition']=transition
 pathlib.Path(a.out).write_text(json.dumps(proof,indent=2)+'\n')

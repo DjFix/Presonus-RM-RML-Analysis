@@ -2,6 +2,7 @@
 #include <cstring>
 
 namespace Presonus::Panel {
+SevenSegControl::~SevenSegControl() = default;
 std::uint16_t SevenSegControl::convertCharToBmp(char character,
                                                 bool decimalPoint) const {
   constexpr std::uint16_t digits[] = {126, 12,  182, 158, 204,

@@ -2,12 +2,18 @@
 #include "core/portable/corecomponent.h"
 #include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstdint>
+#include <functional>
+#include <optional>
+#include <vector>
 
 namespace Presonus {
 class DAWChannel;
 class DAWChannelGroup;
 class DAWDeviceFolder;
 } // namespace Presonus
+namespace Presonus::Surface {
+class DawFxPageComponent;
+}
 namespace presonus::surface {
 // Independent source-port boundary. These operations do not establish the
 // original DAW classes, interface vtable, ownership, or ARM object layout.
@@ -43,11 +49,16 @@ struct DAWMixerState {
   Presonus::DAWChannelGroup *outputGroup = nullptr;
   // Portable word observed through the borrowed client; only bit zero is used.
   std::uint32_t clientActivationFlags = 0;
+  // Stable ordered roster of borrowed DAW pages. Pages must outlive use of
+  // the roster and the roster must stay unchanged during controller routing.
+  std::vector<std::reference_wrapper<Presonus::Surface::DawFxPageComponent>>
+      dawPages;
 };
 } // namespace presonus::surface
 namespace Presonus::Surface {
-// Original encoded method identities with intentional portable storage and
-// void return contracts. Unencoded original returns and layout remain pending.
+// Original encoded method identities with intentional storage and
+// portable return contracts. Unencoded original returns and layout remain
+// pending.
 class DAWMixerHandler {
 public:
   struct MixTargets {
@@ -60,9 +71,24 @@ public:
                   presonus::surface::DAWMixerState &state,
                   Core::Portable::ParamList &automation)
       : dependencies(dependencies), state(state), automation(automation) {}
+  // The two-argument portable constructor owns its automation list. The
+  // three-argument constructor continues to use the caller's list.
+  DAWMixerHandler(presonus::surface::DAWMixerDependencies &dependencies,
+                  presonus::surface::DAWMixerState &state);
+  virtual ~DAWMixerHandler();
+
+  DAWMixerHandler(const DAWMixerHandler &) = delete;
+  DAWMixerHandler &operator=(const DAWMixerHandler &) = delete;
+
+  Core::Portable::ParamList &automationParameters() { return automation; }
+
+  // Portable int return spellings; original return declarations remain pending.
+  int getSelectedMix() const;
+  int getSelectedMeterMode() const;
   bool canActivate() const;
   const char *getName() const;
   bool shouldShowStripEncodersAsMeters() const;
+  void setController(Presonus::IMappingController *controller);
   void updatePanEncoderConnection();
   void onChannelsChanged(DAWChannelGroup *);
   void getMixTargets(MixTargets &, DAWChannel *, int) const;
@@ -77,6 +103,7 @@ public:
 private:
   presonus::surface::DAWMixerDependencies &dependencies;
   presonus::surface::DAWMixerState &state;
+  std::optional<Core::Portable::ParamList> ownedAutomation;
   Core::Portable::ParamList &automation;
 };
 } // namespace Presonus::Surface

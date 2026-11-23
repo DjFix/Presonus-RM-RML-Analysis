@@ -2,6 +2,14 @@
 #include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstring>
 namespace Presonus {
+AssignmentHandlerTable::AssignmentHandlerTable() : handlers_(ownedHandlers_) {}
+
+AssignmentHandlerTable::AssignmentHandlerTable(
+    const AssignmentHandlerTable &other)
+    : ownedHandlers_(other.ownedHandlers_),
+      handlers_(&other.handlers_ == &other.ownedHandlers_ ? ownedHandlers_
+                                                          : other.handlers_) {}
+
 void AssignmentHandlerTable::initializeHandlers(
     Core::Portable::Component *component) {
   const int count = handlers_.count();

@@ -6,14 +6,18 @@
 #include <vector>
 namespace Presonus::Mixer {
 class ChannelComponent;
-// Partial source port. No original inheritance, layout, constructor or return
-// declaration is established. Entries are borrowed identities, never owned.
+class MixerComponentBase;
+// Partial source port. Original inheritance, layout and unencoded returns
+// remain unverified. The manager owns observers and borrows channels.
 class AutoFilterGroupManager : public Presonus::UC::ServerComponent {
 public:
   struct SourcePortConstruction {};
   explicit AutoFilterGroupManager(SourcePortConstruction, int capacity = 0,
                                   int delta = 5)
       : updateChannels_(capacity, delta) {}
+  // The constructor borrows each local roster channel. Channels and their
+  // observed parameters remain external to this manager.
+  AutoFilterGroupManager(const char *name, MixerComponentBase &mixer);
   ~AutoFilterGroupManager() override;
   struct AutoGroupingState {
     // Borrowed category groups in the original preset category order.

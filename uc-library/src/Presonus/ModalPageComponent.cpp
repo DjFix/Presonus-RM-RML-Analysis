@@ -5,4 +5,8 @@ void *ModalPageComponent::castTo(int classId) {
              ? this
              : nullptr;
 }
+
+bool ModalPageComponent::onOk() { return true; }
+
+bool ModalPageComponent::onCancel() { return true; }
 } // namespace Presonus

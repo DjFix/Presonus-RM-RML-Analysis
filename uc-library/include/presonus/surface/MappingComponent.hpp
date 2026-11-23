@@ -76,7 +76,7 @@ protected:
   MappingComponent();
   explicit MappingComponent(presonus::surface::MappingRouteInit)
       : Core::Portable::Component("portable mapping input routes") {}
-  ~MappingComponent() override = default;
+  ~MappingComponent() override;
 
 private:
   Core::Portable::Component *mainScreenParameters_ = nullptr;
@@ -97,6 +97,7 @@ private:
   Presonus::DelayTimer blinkTimer_{1.f};
   bool blinkState_ = false;
   bool fadersLockedToMainMix_ = false;
+  AssignmentHandler *assignmentHandler_ = nullptr;
   friend struct presonus::mapping::Access;
 };
 } // namespace Presonus::Surface
@@ -115,6 +116,11 @@ struct MappingInputAccess {
 
 namespace presonus::mapping {
 struct Access {
+  // Borrow the live handler through detachment at destruction.
+  static void bindAssignmentHandler(Presonus::Surface::MappingComponent &v,
+                                    Presonus::AssignmentHandler *handler) {
+    v.assignmentHandler_ = handler;
+  }
   static void bind(Presonus::Surface::MappingComponent &v, const Bindings &b,
                    Handler *selected, Handler *display, Handler *secondary,
                    Handler *daw) {
@@ -129,10 +135,10 @@ struct Access {
     return v.constructorAttributes_;
   }
   static bool providersUnbound(const Presonus::Surface::MappingComponent &v) {
-    return !v.mainScreenParameters_ && !v.normalFootswitchHandler_ &&
-           !v.alternateFootswitchHandler_ && !v.encoderHandler_ &&
-           !v.bindings_ && !v.selectedHandler_ && !v.displayHandler_ &&
-           !v.secondaryHandler_ && !v.dawHandler_;
+    return !v.assignmentHandler_ && !v.mainScreenParameters_ &&
+           !v.normalFootswitchHandler_ && !v.alternateFootswitchHandler_ &&
+           !v.encoderHandler_ && !v.bindings_ && !v.selectedHandler_ &&
+           !v.displayHandler_ && !v.secondaryHandler_ && !v.dawHandler_;
   }
   static bool &fadersLockedToMainMix(Presonus::Surface::MappingComponent &v) {
     return v.fadersLockedToMainMix_;

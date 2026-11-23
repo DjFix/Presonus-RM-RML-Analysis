@@ -1,0 +1,116 @@
+{
+  "task_id": "cycle20_g01_s01",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "frozen_path": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/control10x20-after-4fed70d11/packeting/first-lane01-batch/snapshot/rootfs/CS18_v13840/home/root/surface",
+  "firmware": "CS18AI surface 13840",
+  "role": "client",
+  "section": ".text",
+  "section_index": 12,
+  "file_offset": 488812,
+  "address": 521580,
+  "size": 240,
+  "mangled": "_ZN8Presonus7Surface16MappingComponentD1Ev",
+  "range_sha256": "fcc77a0dd7cdd631d6f4d33e72ac66cd13bbec7ebe0dcd44e151ebf0d9aa651b",
+  "emulator": "Unicorn 2.1.4",
+  "boundaries": "External calls observed at their real targets; the delete boundary unmaps receiver storage. No Core body execution.",
+  "cases": [
+    {
+      "bound": false,
+      "trace": [
+        {
+          "name": "timer",
+          "call_address": 73704,
+          "receiver": 50331936,
+          "offset": 288
+        },
+        {
+          "name": "timer",
+          "call_address": 73704,
+          "receiver": 50331904,
+          "offset": 256
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331872,
+          "offset": 224
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331840,
+          "offset": 192
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331808,
+          "offset": 160
+        },
+        {
+          "name": "component",
+          "call_address": 1160672,
+          "receiver": 50331648,
+          "offset": 0
+        }
+      ],
+      "storage_unmapped_by_delete_boundary": false,
+      "vptr": 1699152,
+      "secondary_vptr": 1699252,
+      "timer_vptr": 1699268,
+      "handler_slot": 0
+    },
+    {
+      "bound": true,
+      "trace": [
+        {
+          "name": "detach",
+          "call_address": 51380736,
+          "receiver": 51380224,
+          "controller": 0
+        },
+        {
+          "name": "timer",
+          "call_address": 73704,
+          "receiver": 50331936,
+          "offset": 288
+        },
+        {
+          "name": "timer",
+          "call_address": 73704,
+          "receiver": 50331904,
+          "offset": 256
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331872,
+          "offset": 224
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331840,
+          "offset": 192
+        },
+        {
+          "name": "attributes",
+          "call_address": 1198112,
+          "receiver": 50331808,
+          "offset": 160
+        },
+        {
+          "name": "component",
+          "call_address": 1160672,
+          "receiver": 50331648,
+          "offset": 0
+        }
+      ],
+      "storage_unmapped_by_delete_boundary": false,
+      "vptr": 1699152,
+      "secondary_vptr": 1699252,
+      "timer_vptr": 1699268,
+      "handler_slot": 0
+    }
+  ]
+}

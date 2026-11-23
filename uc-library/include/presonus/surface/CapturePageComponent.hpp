@@ -6,6 +6,7 @@
 
 namespace Presonus {
 class DAWClientComponent;
+class IMappingController;
 // Encoded nested type scope only. Underlying type and enumerator declarations
 // are chosen for this source port; original declarations remain unresolved.
 struct IDAWComponentObserver {
@@ -63,6 +64,8 @@ public:
   // preserved. Source-port base choice is not an original class layout
   // assertion.
   ~CapturePageComponent() override;
+  // Original callback return declaration remains pending; void is portable.
+  virtual void setMappingController(IMappingController *);
   void onObjectChanged(IDAWComponentObserver::ObjectChangeMessage);
   void setDAWComponent(DAWClientComponent *);
   void syncSoundcheckParam();

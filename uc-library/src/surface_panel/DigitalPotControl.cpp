@@ -33,9 +33,13 @@ int legacyParameterInteger(float value) {
 } // namespace
 
 namespace Presonus::Panel {
+DigitalPotControl::~DigitalPotControl() = default;
 void DigitalPotControl::paramChanged(Core::Portable::Parameter *parameter,
                                      int mode) {
-  state_.baseParamChanged(state_.context, parameter, mode);
+  if (state_.baseParamChanged)
+    state_.baseParamChanged(state_.context, parameter, mode);
+  else
+    Control::paramChanged(parameter, mode);
   if (mode == 3)
     broadcastValue(legacyParameterInteger(parameter->getValue()));
 }

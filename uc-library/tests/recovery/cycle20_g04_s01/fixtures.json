@@ -1,0 +1,720 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "unicorn_version": "2.1.4",
+  "ranges": [
+    {
+      "mangled": "_ZN8Presonus5Mixer18FilterGroupManager6notifyERKNS_2UC17MessageAttributesE",
+      "address": 373928,
+      "size": 200,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 341160,
+      "range_sha256": "8dd34983433e30769e9234158c7deff26639e11e387c42215d603d2da258431c"
+    },
+    {
+      "mangled": "_ZN8Presonus2UC15ServerComponent6notifyERKNS0_17MessageAttributesE",
+      "address": 1006516,
+      "size": 16,
+      "section": ".text",
+      "section_index": 12,
+      "file_offset": 973748,
+      "range_sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+    },
+    {
+      "mangled": "_ZN4Core11ConstVectorIPNS_8Portable9ComponentEE5errorE",
+      "address": 4796612,
+      "size": 4,
+      "section": ".bss",
+      "section_index": 24,
+      "storage": "ELF zero-initialized SHT_NOBITS"
+    }
+  ],
+  "cases": [
+    {
+      "input": [
+        null,
+        0,
+        3
+      ],
+      "trace": [
+        [
+          "getID",
+          null
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        "reorderChannels",
+        0,
+        3
+      ],
+      "trace": [
+        [
+          "getID",
+          "reorderChannels"
+        ],
+        [
+          "strcmp",
+          "reorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        "",
+        2,
+        1
+      ],
+      "trace": [
+        [
+          "getID",
+          ""
+        ],
+        [
+          "strcmp",
+          "",
+          "ReorderChannels"
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        0,
+        3
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          0
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          3
+        ],
+        [
+          "removeChild",
+          0
+        ],
+        [
+          "insertChildAt",
+          3,
+          0
+        ],
+        [
+          "resetChannelNames",
+          [
+            1,
+            2,
+            3,
+            0
+          ]
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        1,
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        3,
+        0
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          3
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          0
+        ],
+        [
+          "removeChild",
+          3
+        ],
+        [
+          "insertChildAt",
+          0,
+          3
+        ],
+        [
+          "resetChannelNames",
+          [
+            3,
+            0,
+            1,
+            2
+          ]
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        2,
+        2
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          2
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          2
+        ],
+        [
+          "removeChild",
+          2
+        ],
+        [
+          "insertChildAt",
+          2,
+          2
+        ],
+        [
+          "resetChannelNames",
+          [
+            0,
+            1,
+            2,
+            3
+          ]
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        2,
+        1
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          2
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          1
+        ],
+        [
+          "removeChild",
+          2
+        ],
+        [
+          "insertChildAt",
+          1,
+          2
+        ],
+        [
+          "resetChannelNames",
+          [
+            0,
+            2,
+            1,
+            3
+          ]
+        ],
+        [
+          "fallback"
+        ]
+      ],
+      "original_completed": true,
+      "fallback_instructions": [
+        1006516,
+        1006520,
+        1006524,
+        1006528
+      ],
+      "fallback_stack_accesses": [
+        [
+          17,
+          -16,
+          4
+        ],
+        [
+          17,
+          -12,
+          4
+        ],
+        [
+          17,
+          -8,
+          4
+        ],
+        [
+          17,
+          -4,
+          4
+        ],
+        [
+          16,
+          -16,
+          4
+        ],
+        [
+          16,
+          -12,
+          4
+        ],
+        [
+          16,
+          -8,
+          4
+        ]
+      ],
+      "order": [
+        0,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        -1,
+        1
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          -1
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          1
+        ],
+        [
+          "removeChild",
+          null
+        ]
+      ],
+      "original_completed": false,
+      "fallback_instructions": [],
+      "fallback_stack_accesses": [],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "input": [
+        "ReorderChannels",
+        4,
+        0
+      ],
+      "trace": [
+        [
+          "getID",
+          "ReorderChannels"
+        ],
+        [
+          "strcmp",
+          "ReorderChannels",
+          "ReorderChannels"
+        ],
+        [
+          "getInt",
+          "ReorderOldIndex",
+          4
+        ],
+        [
+          "getInt",
+          "ReorderNewIndex",
+          0
+        ],
+        [
+          "removeChild",
+          null
+        ]
+      ],
+      "original_completed": false,
+      "fallback_instructions": [],
+      "fallback_stack_accesses": [],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

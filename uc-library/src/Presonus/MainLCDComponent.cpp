@@ -101,4 +101,13 @@ void MainLCDComponent::showStartPage() { showPage(getStartPageTag()); }
 int MainLCDComponent::getStartPageTag() const {
   return requireApplication().startPageTag();
 }
+
+void MainLCDComponent::pageAboutToShow(const PageComponent &,
+                                       const PageComponent *) {}
+
+void MainLCDComponent::onSelectedChannelChanged() {}
+
+void MainLCDComponent::selectedChannelUpdated() {}
+
+void MainLCDComponent::onFocusControlChanged(Core::Portable::Control *) {}
 } // namespace Presonus

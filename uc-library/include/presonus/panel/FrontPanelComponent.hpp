@@ -141,6 +141,8 @@ public:
   void faderPositionChanged(int, float);
   void attachMeterTypeLed(Control *, int);
   void attachMeterSwitch(Control *, int);
+  // Portable return declaration for the observed no-effect default.
+  virtual void presetStored(const PresetComponent &, int);
   void
   bindFaderViews(Presonus::Mixer::MixerComponentBase &,
                  const Core::Vector<Presonus::Mixer::ChannelComponent *> &,

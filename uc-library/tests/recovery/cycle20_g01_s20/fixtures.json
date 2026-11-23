@@ -1,0 +1,260 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "mangled": "_ZN11ColorButton4drawERKN4Core8Portable9DrawEventE",
+  "exact_range": {
+    "address": 636860,
+    "size": 476,
+    "file_offset": 604092,
+    "section": ".text",
+    "section_index": 12,
+    "sha256": "606b43920616637cea93ee4959642c6cf0c1cc8e7219dc939b99d72dd64c88f9"
+  },
+  "reference_sha256": "b97ae0bcca1ebe4e77c10dfc5fcc0acdb2f3399294a95a2c0acf1036d33dbe38",
+  "cases": [
+    {
+      "case": [
+        "style-alone",
+        false,
+        true,
+        true,
+        2,
+        true,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "style"
+      ],
+      "output": [
+        [
+          "fill",
+          0,
+          0,
+          22,
+          14,
+          4280431428
+        ]
+      ],
+      "virtual_sites": [
+        637264
+      ]
+    },
+    {
+      "case": [
+        "no-selection",
+        true,
+        false,
+        true,
+        2,
+        true,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection"
+      ],
+      "output": [],
+      "virtual_sites": [
+        636948
+      ]
+    },
+    {
+      "case": [
+        "cast-reject",
+        true,
+        true,
+        false,
+        2,
+        true,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast"
+      ],
+      "output": [],
+      "virtual_sites": [
+        636948
+      ]
+    },
+    {
+      "case": [
+        "solid",
+        true,
+        true,
+        true,
+        -2,
+        false,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast",
+        "index",
+        "color"
+      ],
+      "output": [
+        [
+          "fill",
+          0,
+          0,
+          22,
+          14,
+          4283003808
+        ]
+      ],
+      "virtual_sites": [
+        636948,
+        637208
+      ]
+    },
+    {
+      "case": [
+        "solid-focus",
+        true,
+        true,
+        true,
+        2,
+        true,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast",
+        "index",
+        "color"
+      ],
+      "output": [
+        [
+          "fill",
+          0,
+          0,
+          22,
+          14,
+          4283003808
+        ],
+        [
+          "focus"
+        ]
+      ],
+      "virtual_sites": [
+        636948,
+        637208
+      ]
+    },
+    {
+      "case": [
+        "bitmap-1",
+        true,
+        true,
+        true,
+        0,
+        false,
+        1
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast",
+        "index"
+      ],
+      "output": [
+        [
+          "bitmap",
+          0,
+          0,
+          0,
+          0,
+          9,
+          14
+        ]
+      ],
+      "virtual_sites": [
+        636948,
+        637104
+      ]
+    },
+    {
+      "case": [
+        "bitmap-3-focus",
+        true,
+        true,
+        true,
+        0,
+        true,
+        3
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast",
+        "index",
+        "divide"
+      ],
+      "output": [
+        [
+          "bitmap",
+          0,
+          0,
+          0,
+          0,
+          9,
+          4
+        ],
+        [
+          "focus"
+        ]
+      ],
+      "virtual_sites": [
+        636948,
+        637104
+      ]
+    },
+    {
+      "case": [
+        "style-focus",
+        true,
+        true,
+        true,
+        0,
+        true,
+        0
+      ],
+      "trace": [
+        "client",
+        "style",
+        "selection",
+        "cast",
+        "index",
+        "style"
+      ],
+      "output": [
+        [
+          "fill",
+          0,
+          0,
+          22,
+          14,
+          4280431428
+        ],
+        [
+          "focus"
+        ]
+      ],
+      "virtual_sites": [
+        636948,
+        637320
+      ]
+    }
+  ]
+}

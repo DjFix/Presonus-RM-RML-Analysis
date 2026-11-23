@@ -11,6 +11,9 @@ int parameterOffset(int tag, std::uint32_t base) {
 }
 } // namespace
 namespace Presonus {
+void MackieControlComponent::updateDisplayStyle(int, int, bool) {}
+void MackieControlComponent::updateLedColor(int, int) {}
+
 void MackieControlComponent::updateFader(int tag, float value) {
   auto *parameter =
       tag == 0x9000 ? masterFader

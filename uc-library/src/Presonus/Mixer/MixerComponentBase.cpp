@@ -333,6 +333,12 @@ void MixerComponentBase::getTDMRoutes(int selector, unsigned char &first,
   }
 }
 
+void MixerComponentBase::getProperty(Core::Property &) {}
+
+void MixerComponentBase::Delegate::notifyStoring(bool) {}
+
+void MixerComponentBase::Delegate::faderLocateDirty(ChannelComponent *) {}
+
 void MixerComponentBase::addDelegate(Delegate &delegate) {
   try {
     if (delegates.count() >= delegates.getCapacity() &&

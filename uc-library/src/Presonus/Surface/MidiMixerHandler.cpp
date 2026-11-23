@@ -11,6 +11,9 @@ void requireMackie(const presonus::surface::midi_port::State &state) {
 }
 } // namespace
 namespace Presonus::Surface {
+void MidiMixerHandler::onMappingParamChanged(Core::Portable::Parameter *) {}
+void MidiMixerHandler::updatePanEncoderConnection() {}
+
 void MidiMixerHandler::disconnect() {
   requireMackie(state_);
   auto *model = state_.normalMackie->getModel();

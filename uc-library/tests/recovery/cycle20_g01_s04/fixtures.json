@@ -1,0 +1,33 @@
+{
+  "task_id": "cycle20_g01_s04",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "frozen_path": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/control10x20-after-4fed70d11/packeting/first-lane01-batch/snapshot/rootfs/CS18_v13840/home/root/surface",
+  "firmware": "CS18AI surface 13840",
+  "role": "client",
+  "section": ".text",
+  "section_index": 12,
+  "file_offset": 486040,
+  "address": 518808,
+  "size": 44,
+  "mangled": "_ZN8Presonus17AssignmentHandlerD0Ev",
+  "range_sha256": "a62dac5d8ca4393b80c33362a3c94d9dc78019d3d60690a0a183f8aa259384b7",
+  "emulator": "Unicorn 2.1.4",
+  "boundaries": "External calls observed at their real targets; the delete boundary unmaps receiver storage. No Core body execution.",
+  "cases": [
+    {
+      "bound": false,
+      "trace": [
+        {
+          "name": "delete",
+          "call_address": 44380,
+          "receiver": 50331648
+        }
+      ],
+      "storage_unmapped_by_delete_boundary": true,
+      "vptr": 1614912,
+      "secondary_vptr": 0,
+      "timer_vptr": 0,
+      "handler_slot": 0
+    }
+  ]
+}

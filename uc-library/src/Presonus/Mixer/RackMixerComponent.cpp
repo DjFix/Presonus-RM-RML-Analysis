@@ -22,6 +22,8 @@ void RackMixerComponent::lineSenseChanged(
       parameter->setValue(senseValue > 0 ? 1.f : 0.f, false);
 }
 
+bool RackMixerComponent::supportSubgroupMode() const { return true; }
+
 void RackMixerComponent::onCascadeStateChange() {
   base_.onCascadeStateChange();
   if (!base_.isSlave())

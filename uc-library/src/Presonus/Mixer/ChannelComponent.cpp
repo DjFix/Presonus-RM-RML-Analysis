@@ -13,6 +13,8 @@ float panCurve(float value, float law) {
 } // namespace
 void ChannelComponent::postDoUpdates() { state().updates.fill(0); }
 
+void ChannelComponent::setGEQFaderScaler(float, float) {}
+
 bool ChannelComponent::isLCRPanMode() const {
   auto &e = *state().environment;
   if (!e.panModeCache && e.globalParameters)

@@ -14,6 +14,9 @@ public:
   MackieControlModel *getModel();
   // Parameter updates use the pinned Component provider. Original unencoded
   // return declarations remain unresolved; void is the source-port contract.
+  // Portable void callbacks; exact original return declaration is unresolved.
+  virtual void updateDisplayStyle(int tag, int style, bool enabled);
+  virtual void updateLedColor(int tag, int color);
   void updateLedState(int tag, int state);
   void updateTextDisplay(int tag, const char *text, int unused);
   void updateFader(int tag, float value);

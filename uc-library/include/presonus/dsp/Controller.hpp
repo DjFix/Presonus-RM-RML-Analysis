@@ -52,7 +52,8 @@ public:
   int usedInProcessContext() const;
   int getNumParameters() const override;
   unsigned flushParameterChanges() override;
-  virtual void doUpdates() = 0; // unmapped base default remains unresolved
+  // Portable no-op hook. The original return declaration remains unresolved.
+  virtual void doUpdates();
   presonus::dsp::ControllerSourceState &sourceState() { return state_; }
   const presonus::dsp::ControllerSourceState &sourceState() const {
     return state_;

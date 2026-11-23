@@ -47,19 +47,44 @@ def replay(exe):
 def native_check(exe):
  f=native.generate(exe.resolve());assert f==json.loads((T/'fixtures.json').read_text());return f
 
-def source_closure():
+def current_source_transition(a):
+ if not (a.current_source_transition or a.current_source_transition_sha256):return {}
+ assert a.current_source_transition and a.current_source_transition_sha256
+ assert sha(a.current_source_transition)==a.current_source_transition_sha256
+ transition=json.loads(a.current_source_transition.read_text())
+ assert transition['version']==1 and TASK in transition['tests']
+ changes=transition['current_sources']
+ assert {CONTROL_GROUP_HEADER} <= set(changes) <= {CONTROL_GROUP_HEADER, PANEL_COMPONENT_HEADER, RACK_PANEL_HEADER, RACK_PANEL_SOURCE}
+ return changes
+
+CONTROL_GROUP_HEADER='uc-library/include/presonus/surface_panel/ControlGroup.hpp'
+PANEL_COMPONENT_HEADER='uc-library/include/presonus/panel/PanelComponent.hpp'
+RACK_PANEL_HEADER='uc-library/include/presonus/panel/RackPanelComponent.hpp'
+RACK_PANEL_SOURCE='uc-library/src/Presonus/Panel/RackPanelComponent.cpp'
+def source_closure(changes):
  snapshot=json.loads((SNAP.parent/'SNAPSHOT.json').read_text());supp=json.loads(SUPPLEMENT.read_text());observed={}
+ def current_hash(path,expected):
+  if path not in changes:return expected
+  change=changes[path]
+  assert expected and expected==change['previous_sha256']
+  assert sha(change['previous_frozen_read_path'])==expected
+  result=change['current_sha256']
+  assert sha(change['current_frozen_read_path'])==result
+  return result
  for source in [SOURCE[1],OWN[2]]:
   text=run(['/usr/bin/c++','-std=c++17','-fno-sized-deallocation','-fno-rtti','-Wno-multichar','-Ulinux','-pthread','-Iuc-library/include','-Ithird_party/ccl-framework','-MM','-MT','closure',source]).replace('\\\n',' ')
   for path in text.split(': ',1)[1].split():
    if path in OWN:continue
    expected=snapshot['files'].get(path) or supp['read_inputs'].get(path,{}).get('sha256')
+   expected=current_hash(path,expected)
    assert expected and sha(R/path)==expected,('unsealed compiler input',path)
    observed[path]=expected
  for path in ['uc-library/src/Presonus/Panel/RackPanelComponent.cpp','uc-library/src/Presonus/Panel/PanelComponentLifecycle.cpp','uc-library/src/Presonus/Panel/control.cpp']:
   expected=snapshot['files'].get(path) or supp['read_inputs'].get(path,{}).get('sha256')
+  expected=current_hash(path,expected)
   assert expected and sha(R/path)==expected,path
   observed[path]=expected
+ assert set(changes)<=set(observed)
  return observed
 
 def proof(a):
@@ -68,7 +93,8 @@ def proof(a):
  deps={p:sha(R/p) for p in ['third_party/ccl-framework/core/portable/corecomponent.h','third_party/ccl-framework/core/portable/corecomponent.cpp','third_party/ccl-framework/core/portable/coreparams.h','third_party/ccl-framework/core/portable/coreparams.cpp','third_party/ccl-framework/core/public/corevector.h']}
  record=dict(original_elf_sha256=TARGET['original_elf_sha256'],mangled=TARGET['mangled'],demangled='Presonus::Panel::WolverinePanelComponent::~WolverinePanelComponent()',firmware=TARGET['firmware'],role=TARGET['role'],address=TARGET['address'],size=TARGET['size'],section=TARGET['section'],portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,validation_domain=DOMAIN,sources=sources,repository_sources=deps,declaration_uncertainties=LIMITS,original_function_verified=False,hardware_verified=False)
  result=dict(task_id=TASK,timestamp_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),native=f,sources=sources,repository_sources=deps,cpp_differential_passed=True,compiled_original_mangled_names_matched=True,compiled_symbols=sym,deleting_destructor_disassembly=dis,portable_case_count=count,formatting=dict(version=version,passed=True,sources=sources),validation_domain=DOMAIN,limitations=LIMITS,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(ready=[],pending=[record]),binary_bindings={str(a.exe):sha(a.exe),str(a.object):sha(a.object)},provider_libraries={str(p):sha(p) for p in providers()},fixture_sha256=sha(T/'fixtures.json'),producer_sha256=sha(__file__),test_sources={OWN[2]:sha(R/OWN[2])})
- result['compiler_provider_source_closure']=source_closure()
+ result['compiler_provider_source_closure']=source_closure(current_source_transition(a))
+ if a.current_source_transition:result['current_source_transition']={'path':str(a.current_source_transition),'sha256':a.current_source_transition_sha256}
  result['current_dependency_query']='Fresh compiler -MM over current owned production and replay source, no worker depfile/cache input'
  result['supplied_executable_deleting_destructor_disassembly']=exe_dis
  result['historical_worker_compile_provenance']='Preserved separately under evidence/recovery/2026-11-15/trial10x2-wolverine/repair01; not represented as current canonical compilation' 
@@ -76,7 +102,7 @@ def proof(a):
  if a.integration:result['integration']={'path':str(a.integration),'sha256':sha(a.integration)}
  out=a.out or R/'uc-library/candidates'/TASK/'worker-proof.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n');print(out)
 def main():
- p=argparse.ArgumentParser();p.add_argument('mode',choices=['format','compile','symbols','native','replay','proof']);p.add_argument('--exe',type=Path,default=WORK/'replay');p.add_argument('--object',type=Path,default=WORK/'production.o');p.add_argument('--integration',type=Path);p.add_argument('--out',type=Path);a=p.parse_args();WORK.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser();p.add_argument('mode',choices=['format','compile','symbols','native','replay','proof']);p.add_argument('--exe',type=Path,default=WORK/'replay');p.add_argument('--object',type=Path,default=WORK/'production.o');p.add_argument('--integration',type=Path);p.add_argument('--out',type=Path);p.add_argument('--current-source-transition',type=Path);p.add_argument('--current-source-transition-sha256');a=p.parse_args();WORK.mkdir(parents=True,exist_ok=True)
  if a.mode=='format':print(fmt())
  elif a.mode=='compile':compile()
  elif a.mode=='symbols':print(symbols(a.object))

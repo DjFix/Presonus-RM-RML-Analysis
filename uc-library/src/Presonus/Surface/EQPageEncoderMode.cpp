@@ -3,6 +3,14 @@
 #include <cstring>
 #include <stdexcept>
 namespace Presonus::Surface {
+void EQPageComponent::onShow(bool show) {
+  if (show)
+    return;
+  auto *parameter = encoderParameters_.byTag(1000);
+  if (!parameter)
+    throw std::logic_error("missing EQ encoder parameter");
+  parameter->setValue(0.f, true);
+}
 int EQPageComponent::getEqEncoderMode() const {
   auto *parameter = encoderParameters_.byTag(1000);
   if (!parameter)

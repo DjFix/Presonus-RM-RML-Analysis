@@ -1,0 +1,156 @@
+{
+  "task": "20",
+  "unicorn": "2.1.4",
+  "originals": [
+    {
+      "role": "server",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "range": {
+        "mangled": "_ZN8Presonus5Panel12ControlGroup20resetParameterValuesEv",
+        "address": 584736,
+        "size": 84,
+        "section": 12,
+        "file_offset": 551968,
+        "sha256": "e091422d9e262fd6c177b7c6738f0eb9698eca4fc320349068c56b9b60258757"
+      },
+      "provider_ranges": [
+        {
+          "mangled": "_ZNK8Presonus5Panel7Control12getParameterEv",
+          "address": 587136,
+          "size": 20,
+          "section": 12,
+          "file_offset": 554368,
+          "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+        }
+      ],
+      "cases": [
+        {
+          "inputs": [],
+          "output": [],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            1
+          ],
+          "output": [
+            0
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            1,
+            0,
+            1
+          ],
+          "output": [
+            0,
+            2
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "output": [
+            1,
+            3
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        }
+      ]
+    },
+    {
+      "role": "client",
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "range": {
+        "mangled": "_ZN8Presonus5Panel12ControlGroup20resetParameterValuesEv",
+        "address": 86304,
+        "size": 84,
+        "section": 12,
+        "file_offset": 53536,
+        "sha256": "c2abe466fbd067cb14d78d523ae61434d62f5bb4df0c1a551f4437286b6348d0"
+      },
+      "provider_ranges": [
+        {
+          "mangled": "_ZNK8Presonus5Panel7Control12getParameterEv",
+          "address": 89280,
+          "size": 20,
+          "section": 12,
+          "file_offset": 56512,
+          "sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+        }
+      ],
+      "cases": [
+        {
+          "inputs": [],
+          "output": [],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            1
+          ],
+          "output": [
+            0
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            1,
+            0,
+            1
+          ],
+          "output": [
+            0,
+            2
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        },
+        {
+          "inputs": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "output": [
+            1,
+            3
+          ],
+          "application_nonstack_writes": [],
+          "modeled_provider_boundaries": [
+            "reset_value"
+          ]
+        }
+      ]
+    }
+  ]
+}

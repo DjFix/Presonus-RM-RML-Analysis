@@ -1,0 +1,620 @@
+{
+  "task": "15",
+  "unicorn": "2.1.4",
+  "originals": [
+    {
+      "role": "server",
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "range": {
+        "mangled": "_ZNK8Presonus13SLChannelBase14getChannelTypeEv",
+        "address": 60836,
+        "size": 64,
+        "section": 12,
+        "sha256": "5676b8ac6e9d8042f065d435f213d012ad2444c18de0df276d0447279c748091",
+        "file_offset": 28068
+      },
+      "provider_range": {
+        "mangled": "_ZNK8Presonus24MixerClientComponentBase19getChannelGroupTypeERKN4Core8Portable9ComponentE",
+        "address": 60956,
+        "size": 308,
+        "section": 12,
+        "sha256": "6a3e611fb8f4290c664af3d082073096bc1254acb7edabb93d149ae62c606535",
+        "file_offset": 28188
+      },
+      "vtable_range": {
+        "mangled": "_ZTVN8Presonus24MixerClientComponentBaseE",
+        "address": 1413480,
+        "size": 404,
+        "section": 14,
+        "sha256": "d2d6d5cec73605c120944fe4b36d06176baec255a395bb688d8d35b91df57340",
+        "file_offset": 1380712
+      },
+      "strcmp_plt": 44912,
+      "cases": [
+        {
+          "inputs": [
+            0,
+            0,
+            "line"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            0,
+            1,
+            "line"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            0,
+            "aux"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "line"
+          ],
+          "output": 0,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "return"
+          ],
+          "output": 1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "fxreturn"
+          ],
+          "output": 2,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "talkback"
+          ],
+          "output": 3,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "aux"
+          ],
+          "output": 4,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "fxbus"
+          ],
+          "output": 5,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "sub"
+          ],
+          "output": 6,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "main"
+          ],
+          "output": 7,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "mono"
+          ],
+          "output": 8,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "signalgen"
+          ],
+          "output": 10,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "unknown"
+          ],
+          "output": -1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            ""
+          ],
+          "output": -1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        }
+      ]
+    },
+    {
+      "role": "client",
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "range": {
+        "mangled": "_ZNK8Presonus13SLChannelBase14getChannelTypeEv",
+        "address": 383892,
+        "size": 64,
+        "section": 12,
+        "sha256": "5676b8ac6e9d8042f065d435f213d012ad2444c18de0df276d0447279c748091",
+        "file_offset": 351124
+      },
+      "provider_range": {
+        "mangled": "_ZNK8Presonus24MixerClientComponentBase19getChannelGroupTypeERKN4Core8Portable9ComponentE",
+        "address": 384012,
+        "size": 308,
+        "section": 12,
+        "sha256": "6a1b4a79872e4c81ac3effa3793c5e5235d5afe75f0e75ebb163c3ccc5c765d1",
+        "file_offset": 351244
+      },
+      "vtable_range": {
+        "mangled": "_ZTVN8Presonus24MixerClientComponentBaseE",
+        "address": 1680136,
+        "size": 404,
+        "section": 14,
+        "sha256": "78971679c3441fb8383b519d5e20ad5a689e8f87f8b3804bfc34f4ccbf1ca7f7",
+        "file_offset": 1647368
+      },
+      "strcmp_plt": 45304,
+      "cases": [
+        {
+          "inputs": [
+            0,
+            0,
+            "line"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            0,
+            1,
+            "line"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            0,
+            "aux"
+          ],
+          "output": -1,
+          "application_calls": [],
+          "modeled_strcmp_arguments": [],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "line"
+          ],
+          "output": 0,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "return"
+          ],
+          "output": 1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "fxreturn"
+          ],
+          "output": 2,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "talkback"
+          ],
+          "output": 3,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "aux"
+          ],
+          "output": 4,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "fxbus"
+          ],
+          "output": 5,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "sub"
+          ],
+          "output": 6,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "main"
+          ],
+          "output": 7,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "mono"
+          ],
+          "output": 8,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "signalgen"
+          ],
+          "output": 10,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            "unknown"
+          ],
+          "output": -1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        },
+        {
+          "inputs": [
+            1,
+            1,
+            ""
+          ],
+          "output": -1,
+          "application_calls": [
+            "getChannelGroupType"
+          ],
+          "modeled_strcmp_arguments": [
+            "line",
+            "return",
+            "fxreturn",
+            "talkback",
+            "aux",
+            "fxbus",
+            "sub",
+            "main",
+            "mono",
+            "signalgen"
+          ],
+          "nonstack_writes": []
+        }
+      ]
+    }
+  ]
+}

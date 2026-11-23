@@ -5,4 +5,5 @@ namespace Presonus::Dsp {
 __attribute__((weak)) void OMAPTargetHandler::release() {
   ::operator delete(static_cast<void *>(this));
 }
+__attribute__((weak)) void OMAPTargetHandler::getProperty(Core::Property &) {}
 } // namespace Presonus::Dsp

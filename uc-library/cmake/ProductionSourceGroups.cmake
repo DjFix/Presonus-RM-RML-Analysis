@@ -1,4 +1,46 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/MixerClientPresetCleanup.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT6.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT7.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT8.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT9.cpp
+  src/Presonus/Mixer/EarlyRefFormatterT2.cpp
+  src/Presonus/Mixer/PreDelayFormatterT2.cpp
+  src/Presonus/Panel/LCDComponent.cpp
+  src/Presonus/MeterMaid.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT1.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT2.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT3.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT4.cpp
+  src/Presonus/Mixer/DecayTimeFormatterT5.cpp
+  src/Presonus/Mixer/DelayTimeFormatter.cpp
+  src/Presonus/Mixer/EarlyRefFormatterT3.cpp
+  src/Presonus/Mixer/EarlyRefFormatterT4.cpp
+  src/Presonus/Mixer/EarlyRefFormatterT5.cpp
+  src/Presonus/Mixer/EarlyRefFormatterT6.cpp
+  src/Presonus/Mixer/PreDelayFormatterT3.cpp
+  src/Presonus/Mixer/PreDelayFormatterT4.cpp
+  src/Presonus/Mixer/PreDelayFormatterT5.cpp
+  src/Presonus/Mixer/StereoSpreadFormatter.cpp
+  src/Presonus/Panel/ControlRegistrarDelegate.cpp
+  src/Presonus/MeterBallistics.cpp
+  src/Presonus/Mixer/ChDelayFormatter.cpp
+  src/Presonus/Mixer/ChGainFormatter.cpp
+  src/Presonus/Mixer/ChHPFFormatter.cpp
+  src/Presonus/Mixer/EarlyRefFormatter.cpp
+  src/Presonus/Mixer/FilterFreqFormatter.cpp
+  src/Presonus/Mixer/FilterGainFormatter.cpp
+  src/Presonus/Mixer/GeqFreqFormatter.cpp
+  src/Presonus/Mixer/NumberPrepender.cpp
+  src/Presonus/Mixer/PreDelayFormatter.cpp
+  src/Presonus/Mixer/SubDelayFormatter.cpp
+  src/Presonus/Panel/FillElement.cpp
+  src/Presonus/Panel/StaticElement.cpp
+  src/Presonus/Panel/FieldElement.cpp
+  src/Presonus/Panel/OffscreenElement.cpp
+  src/Presonus/Panel/LCDManager.cpp
+  src/Presonus/Panel/Page.cpp
+  src/Presonus/Panel/TextEntryElement.cpp
   src/Presonus/Panel/ControlRegistrarCommands.cpp
   src/Presonus/MuteGroupActivation.cpp
   src/Presonus/Mixer/FxPresetFilter.cpp
@@ -386,6 +428,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Panel/AlertPage.cpp
   src/DSPManager.cpp
   src/utilities/DfuDiagnostic.cpp
   src/utilities/TableElements.cpp
@@ -585,6 +628,53 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/mixer/DecayTimeFormatterT6.hpp
+  presonus/mixer/DecayTimeFormatterT7.hpp
+  presonus/mixer/DecayTimeFormatterT8.hpp
+  presonus/mixer/DecayTimeFormatterT9.hpp
+  presonus/mixer/EarlyRefFormatterT2.hpp
+  presonus/mixer/PreDelayFormatterT2.hpp
+  presonus/panel/LCDComponent.hpp
+  presonus/MeterMaid.hpp
+  presonus/mixer/DecayTimeFormatterT1.hpp
+  presonus/mixer/DecayTimeFormatterT2.hpp
+  presonus/mixer/DecayTimeFormatterT3.hpp
+  presonus/mixer/DecayTimeFormatterT4.hpp
+  presonus/mixer/DecayTimeFormatterT5.hpp
+  presonus/mixer/DelayTimeFormatter.hpp
+  presonus/mixer/EarlyRefFormatterT3.hpp
+  presonus/mixer/EarlyRefFormatterT4.hpp
+  presonus/mixer/EarlyRefFormatterT5.hpp
+  presonus/mixer/EarlyRefFormatterT6.hpp
+  presonus/mixer/PreDelayFormatterT3.hpp
+  presonus/mixer/PreDelayFormatterT4.hpp
+  presonus/mixer/PreDelayFormatterT5.hpp
+  presonus/mixer/StereoSpreadFormatter.hpp
+  presonus/panel/AlertPage.hpp
+  presonus/MeterBallistics.hpp
+  presonus/mixer/ChDelayFormatter.hpp
+  presonus/mixer/ChGainFormatter.hpp
+  presonus/mixer/ChHPFFormatter.hpp
+  presonus/mixer/EarlyRefFormatter.hpp
+  presonus/mixer/FilterFreqFormatter.hpp
+  presonus/mixer/FilterGainFormatter.hpp
+  presonus/mixer/GeqFreqFormatter.hpp
+  presonus/mixer/NumberPrepender.hpp
+  presonus/mixer/PreDelayFormatter.hpp
+  presonus/mixer/SubDelayFormatter.hpp
+  presonus/panel/FillElement.hpp
+  presonus/panel/StaticElement.hpp
+  presonus/surface/MidiMixerHandler.hpp
+  presonus/SLChannel.hpp
+  presonus/panel/FieldElement.hpp
+  presonus/panel/OffscreenElement.hpp
+  presonus/MeterManagerBase.hpp
+  presonus/panel/LCDManager.hpp
+  presonus/panel/Page.hpp
+  presonus/panel/TextEntryElement.hpp
+  presonus/panel/MixerLCD.hpp
+  presonus/ModalPageComponent.hpp
+  presonus/PageComponent.hpp
   presonus/dsp/DSPManager.hpp
   presonus/utilities/dfu_diagnostic.hpp
   presonus/utilities/table_elements.hpp
@@ -1072,3 +1162,57 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/LimiterCompo
 
 # Per-source compile requirements established by the exact native/provider replays.
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/ScenesPageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/MappingComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/SLMixerEncoder.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/DefaultMeterInterpolator.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/StormFrontPanelComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/Element.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/DAWMixerHandler.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MeterBallistics.cpp" APPEND PROPERTY COMPILE_OPTIONS -ffp-contract=off -fno-fast-math)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/ChHPFFormatter.cpp" APPEND PROPERTY COMPILE_OPTIONS -ffp-contract=off)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/FillElement.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/StaticElement.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-sized-deallocation)
+
+# Per-source compile requirements established by the exact native/provider replays.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MeterBallistics.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MeterMaid.cpp" APPEND PROPERTY COMPILE_OPTIONS -ffp-contract=off -fno-fast-math -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/EarlyRefFormatterT3.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/PreDelayFormatterT3.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/PreDelayFormatterT4.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/PageComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/surface_panel/DigitalPotControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+# Match the non-RTTI DecayTimeFormatter base in the canonical common role.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT1.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT3.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT4.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT5.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT6.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT7.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT8.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT9.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Match the exact original unsized D0 deallocation paths.
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT1.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT3.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT4.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT5.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT6.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT7.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT8.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFormatterT9.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/EarlyRefFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/PreDelayFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/surface_panel/ControlHelpers.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)

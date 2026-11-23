@@ -31,6 +31,12 @@ public:
   Control *at(int index) const;
   Control *byTag(int tag) const;
   void add(Control *control);
+  void resetParameters();
+  void resetParameterValues();
+  // Direct base hooks with portable void declarations. Original return
+  // declarations and virtual dispatch remain unresolved.
+  void sort();
+  void onIdle();
 
 private:
   int groupId_ = 0;

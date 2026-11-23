@@ -1,0 +1,101 @@
+#include "presonus/surface/SubAssignPageComponent.hpp"
+
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+
+using namespace Core::Portable;
+using Page = Presonus::Surface::SubAssignPageComponent;
+
+struct PageBindings final : presonus::page::Bindings {
+  const Presonus::PageComponent *current = nullptr;
+  const int *offset = nullptr;
+  mutable std::vector<int> trace;
+
+  void *castOwner(void *owner, int classId) const override {
+    if (owner != this || classId != 1296843588)
+      std::abort();
+    return owner;
+  }
+  const void *currentPage(void *) const override {
+    trace.push_back(offset ? 100 + *offset : 100);
+    return current;
+  }
+  void stopTextInput(void *, bool) const override { std::abort(); }
+  bool isEditingText(void *) const override { std::abort(); }
+};
+
+struct Observer final : Component {
+  explicit Observer(std::vector<int> &trace) : trace(trace) {}
+  void paramChanged(Parameter *p, int message) override {
+    if (message == Parameter::kChanged)
+      trace.push_back(p->getTag());
+  }
+  std::vector<int> &trace;
+};
+
+ParamInfo info(int tag, const char *name = "", bool alias = false) {
+  ParamInfo value;
+  value.clear();
+  value.tag = tag;
+  value.type = alias ? ParamInfo::kAlias : ParamInfo::kFloat;
+  value.maxValue = 1;
+  std::snprintf(value.name, sizeof value.name, "%s", name);
+  return value;
+}
+
+int main(int argc, char **argv) {
+  if (argc != 5)
+    return 2;
+  bool show = std::atoi(argv[1]);
+  bool visible = std::atoi(argv[2]);
+  int initial = std::atoi(argv[3]);
+  int mode = std::atoi(argv[4]);
+  PageBindings bindings;
+  Presonus::PageComponent page(&bindings, bindings);
+  bindings.current = visible ? &page : nullptr;
+  Presonus::MixerClientComponentBase mixer;
+  presonus::surface::MixerPageView view;
+  presonus::surface::BorrowedMixerPageAccess access;
+  Observer observer(bindings.trace);
+  Component inputs, returns, buses, old;
+  auto *input = new Component;
+  auto *bus = new Component;
+  inputs.addChild(input);
+  buses.addChild(bus);
+  view.identity = &mixer;
+  view.channels[0] = &inputs;
+  view.channels[2] = &returns;
+  view.channels[4] = &buses;
+  view.slave = nullptr;
+  access.registerView(view);
+  (void)mode;
+  static const ParamInfo inputParams[] = {info(1), info(256)};
+  static const ParamInfo oldInfo[] = {info(44), info(45)};
+  static const ParamInfo aliases[] = {info(10, "assign_slot_name_01", true),
+                                      info(11, "assign_slot_01", true)};
+  input->addParameters(inputParams, 2);
+  old.addParameters(oldInfo, 2);
+  view.selected = bus;
+  Page target(&access, &page);
+  target.setMixerComponent(&mixer);
+  target.listOffset = initial;
+  bindings.offset = &target.listOffset;
+  target.addParameters(aliases, 2);
+  for (int i = 0; i < 2; ++i) {
+    auto *alias = AliasParam::cast(target.getParameterAt(i));
+    alias->setOriginal(old.getParameterAt(i));
+    alias->addObserver(&observer);
+  }
+  target.onShow(show);
+  std::cout << target.listOffset << ' ' << target.items.count();
+  for (int i = 0; i < 2; ++i) {
+    auto *alias = AliasParam::cast(target.getParameterAt(i));
+    std::cout << ' ' << alias->getOriginal()->getTag();
+    alias->removeObserver(&observer);
+  }
+  for (int event : bindings.trace)
+    std::cout << ' ' << event;
+  std::cout << '\n';
+}

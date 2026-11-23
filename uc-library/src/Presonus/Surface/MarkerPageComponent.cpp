@@ -2,6 +2,12 @@
 #include <bit>
 namespace Presonus::Surface {
 MarkerPageComponent::~MarkerPageComponent() = default;
+void MarkerPageComponent::onChannelsChanged(DAWChannelGroup *) {}
+void MarkerPageComponent::onSlotCountChanged(DAWDeviceFolder *) {}
+void MarkerPageComponent::onChannelParamChanged(DAWChannel *,
+                                                Core::Portable::Parameter *) {}
+void MarkerPageComponent::onFocusChannelChanged() {}
+void MarkerPageComponent::setMappingController(IMappingController *) {}
 bool MarkerPageComponent::isLocateMode() const {
   auto *parameter = getParameterByTag(1007);
   return parameter && parameter->getValue() > 0.f;

@@ -1,5 +1,7 @@
 #include "presonus/panel/StormFrontPanelComponent.hpp"
 namespace Presonus::Panel {
+StormFrontPanelComponent::~StormFrontPanelComponent() = default;
+
 void StormFrontPanelComponent::cleanup() { dependencies.cleanup(); }
 void StormFrontPanelComponent::mixSceneRecalled(
     const Presonus::StormMixSceneComponent &) {

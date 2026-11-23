@@ -1,0 +1,196 @@
+{
+  "originals": [
+    {
+      "mangled": "_ZNK8Presonus5Panel10LCDManager14getDefaultBookEv",
+      "address": 121848,
+      "size": 48,
+      "section": 12,
+      "range_sha256": "ec54c48160861012e5642df032fc06c3238e58fdbf0bc5347c70bf7d932f35ea",
+      "file_offset": 89080,
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "role": "client",
+      "firmware": "CS18AI surface 13840",
+      "provider_ranges": [],
+      "cases": [
+        {
+          "case": "null-delegate",
+          "result": 0,
+          "provider": "modeled_abstract_caller_callback",
+          "exact_trace": []
+        },
+        {
+          "case": "matching-tag",
+          "result": 1090715648,
+          "provider": "modeled_abstract_caller_callback",
+          "exact_trace": [
+            {
+              "symbol": "abstract-ILCDDelegate-second-slot",
+              "receiver": 1090584576,
+              "arg_r1": 0
+            }
+          ]
+        },
+        {
+          "case": "missing-tag",
+          "result": 0,
+          "provider": "modeled_abstract_caller_callback",
+          "exact_trace": [
+            {
+              "symbol": "abstract-ILCDDelegate-second-slot",
+              "receiver": 1090584576,
+              "arg_r1": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel10LCDManager14getDefaultBookEv",
+      "address": 618600,
+      "size": 48,
+      "section": 12,
+      "range_sha256": "ec54c48160861012e5642df032fc06c3238e58fdbf0bc5347c70bf7d932f35ea",
+      "file_offset": 585832,
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "provider_ranges": [
+        {
+          "mangled": "_ZTVN8Presonus5Panel8MixerLCDE",
+          "address": 3273392,
+          "size": 180,
+          "section": 14,
+          "range_sha256": "f066b12bf73e882ebbb9292837ee6318ead36ac8bdfdb8cddca328f7d626179f",
+          "file_offset": 3240624
+        },
+        {
+          "mangled": "_ZThn212_NK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+          "address": 396724,
+          "size": 8,
+          "section": 12,
+          "range_sha256": "f0b165f16a542914134337dc960b2daedd251527a43ce9c847d7879967ef4e1d",
+          "file_offset": 363956
+        },
+        {
+          "mangled": "_ZNK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+          "address": 396732,
+          "size": 24,
+          "section": 12,
+          "range_sha256": "807e2d602dac80a7e81e3612b1c4351129597ab4568a5a565e95a3b45edbbfe2",
+          "file_offset": 363964
+        },
+        {
+          "mangled": "_ZNK8Presonus5Panel12LCDComponent7getBookEi",
+          "address": 615048,
+          "size": 96,
+          "section": 12,
+          "range_sha256": "3a84a6bf4ce9192832d71d273dce020ce8cf8524109595f67a046dbdeecf6a49",
+          "file_offset": 582280
+        },
+        {
+          "mangled": "_ZNK8Presonus5Panel4Book6getTagEv",
+          "address": 623428,
+          "size": 20,
+          "section": 12,
+          "range_sha256": "4014368c8d506bc68887e9836906d65b99b948f0edbfc4947d10ec3d5708ddba",
+          "file_offset": 590660
+        }
+      ],
+      "cases": [
+        {
+          "case": "null-delegate",
+          "result": 0,
+          "provider": "actual_rm_mixer_lcd_adjustor_get_book_get_tag",
+          "exact_trace": []
+        },
+        {
+          "case": "matching-tag",
+          "result": 1090715648,
+          "provider": "actual_rm_mixer_lcd_adjustor_get_book_get_tag",
+          "exact_trace": [
+            {
+              "symbol": "_ZThn212_NK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584788,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584576,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel12LCDComponent7getBookEi",
+              "receiver": 1090584576,
+              "arg_r1": 11
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel4Book6getTagEv",
+              "receiver": 1090650112,
+              "arg_r1": 11
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel4Book6getTagEv",
+              "receiver": 1090715648,
+              "arg_r1": 11
+            }
+          ]
+        },
+        {
+          "case": "missing-tag",
+          "result": 0,
+          "provider": "actual_rm_mixer_lcd_adjustor_get_book_get_tag",
+          "exact_trace": [
+            {
+              "symbol": "_ZThn212_NK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584788,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584576,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel12LCDComponent7getBookEi",
+              "receiver": 1090584576,
+              "arg_r1": 11
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel4Book6getTagEv",
+              "receiver": 1090650112,
+              "arg_r1": 11
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel4Book6getTagEv",
+              "receiver": 1090715648,
+              "arg_r1": 11
+            }
+          ]
+        },
+        {
+          "case": "empty-roster",
+          "result": 0,
+          "provider": "actual_rm_mixer_lcd_adjustor_get_book_get_tag",
+          "exact_trace": [
+            {
+              "symbol": "_ZThn212_NK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584788,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel8MixerLCD14getDefaultBookEv",
+              "receiver": 1090584576,
+              "arg_r1": 0
+            },
+            {
+              "symbol": "_ZNK8Presonus5Panel12LCDComponent7getBookEi",
+              "receiver": 1090584576,
+              "arg_r1": 11
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "review_sha256": "cfbbda960c86e5c457c542b9fa3c669028e6d4e4e9410f47844f5b3a5311a385"
+}

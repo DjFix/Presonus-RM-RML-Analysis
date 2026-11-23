@@ -10,6 +10,8 @@ public:
   void addListOffset(int);
   int getMaxListOffset() const;
   void setListOffset(int);
+  // Source-port callback; the original return declaration remains unresolved.
+  void onShow(bool);
   void paramChanged(Core::Portable::Parameter *, int) override;
   int listOffset = 0;
   Core::Vector<Core::Portable::Component *> items;

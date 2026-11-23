@@ -222,6 +222,8 @@ int PresetComponent::getSlotNum() const {
     throw std::logic_error("inconsistent preset slot binding");
   return slot;
 }
+void PresetComponent::cacheUpdated(PresetNameCache &) {}
+
 void PresetComponent::cacheUpdated(PresetNameCache &, int slot,
                                    const char *name, const char *category) {
   if (slot != getSlotNum())

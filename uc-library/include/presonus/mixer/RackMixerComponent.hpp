@@ -21,6 +21,9 @@ public:
   RackMixerComponent(MixerComponentBase &base, std::uint32_t &cascadeState)
       : base_(base), cascadeState_(cascadeState) {}
   void onCascadeStateChange();
+  // Portable bool models the observed native result. Original return type
+  // pending.
+  bool supportSubgroupMode() const;
   void lineSenseChanged(const Presonus::Panel::ControlRegistrar &,
                         int lineIndex, int senseValue);
   // Source-port bindings: reuse base_.sceneChannels, channelIdentity and each

@@ -7,6 +7,10 @@ namespace Presonus::Panel {
 class SceneBook {
 public:
   explicit SceneBook(int initialValue);
+  virtual ~SceneBook();
+  static void operator delete(void *storage) noexcept {
+    ::operator delete(storage);
+  }
   const Book &bookState() const { return book_; }
   std::uint32_t opaqueDispatchIdentity() const { return dispatchIdentity_; }
 

@@ -118,6 +118,8 @@ void InputComponent::auxLevelUpdate(Dsp::MultiParamProperty &opaque) {
   }
 }
 
+void InputComponent::fxLevelUpdate(Dsp::MultiParamProperty &) {}
+
 void InputComponent::assignSubsUpdate(Dsp::MultiParamProperty &opaque) {
   auto &p = providers.resolveProperty(&opaque);
   for (std::size_t i = 0; i < state.subgroups.size(); ++i) {

@@ -5,6 +5,7 @@
 
 namespace Core::Portable {
 class ContainerView;
+class Control;
 class RootView;
 class View;
 } // namespace Core::Portable
@@ -79,6 +80,12 @@ public:
   // Portable base contract retains the existing required application boundary;
   // concrete MainScreen overrides this with its verified original default.
   virtual int getStartPageTag() const;
+
+  // Portable default hooks. Derived screens can supply their own behavior.
+  virtual void pageAboutToShow(const PageComponent &, const PageComponent *);
+  virtual void onSelectedChannelChanged();
+  virtual void selectedChannelUpdated();
+  virtual void onFocusControlChanged(Core::Portable::Control *);
 
 private:
   presonus::mainlcd_port::Application &requireApplication() const;

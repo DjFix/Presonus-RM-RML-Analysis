@@ -37,7 +37,7 @@ protected:
 class AssignmentHandler : public Core::Portable::TypedObject {
 public:
   void *castTo(int) override;
-  virtual ~AssignmentHandler() = default; // Independent portable lifetime glue.
+  virtual ~AssignmentHandler();
   virtual const char *getName() const = 0;
   virtual void updateConnections() = 0;
   virtual void onModifiersChanged();
@@ -55,7 +55,7 @@ public:
   enum FootswitchMode : int {};
   struct FocusInfo; // Original nested identity only; fields not recovered.
   void *castTo(int) override;
-  ~MixerAssignmentHandler() override = default;
+  ~MixerAssignmentHandler() override;
   virtual void updatePanEncoderConnection();
   virtual void onMappingParamChanged(Core::Portable::Parameter *) = 0;
   virtual bool handleMappingRadioGroup(Core::Portable::Parameter *);
@@ -67,12 +67,12 @@ public:
 class IMixerComponentObserver {
 public:
   enum ObjectChangeMessage : int {};
-  struct ReplaceArgs;
-  // Original defaults remain unsupported in this partial source port. Pure
-  // markers are explicit portability gaps, not recovered original purity.
-  virtual void onSelectionChanged() = 0;
-  virtual void onObjectChanged(ObjectChangeMessage) = 0;
-  virtual void onComponentReplaced(const ReplaceArgs &) = 0;
+  // The portable default ignores the replacement record. Its original
+  // fields and layout are unresolved.
+  struct ReplaceArgs {};
+  virtual void onSelectionChanged();
+  virtual void onObjectChanged(ObjectChangeMessage);
+  virtual void onComponentReplaced(const ReplaceArgs &);
 
 protected:
   ~IMixerComponentObserver() = default;
@@ -93,6 +93,7 @@ public:
   void addObserver(IObserver *);
   void removeObserver(IObserver *);
   int getEqEncoderMode() const;
+  void onShow(bool);
   void paramChanged(Core::Portable::Parameter *, int);
 
 private:
@@ -104,6 +105,7 @@ class GeqPageComponent {
 public:
   int getMaxListOffset();
   void updateBands();
+  void onShow(bool);
   void addListOffset(int);
   void onWheelInput(const Core::Portable::WheelEvent &);
   void paramChanged(Core::Portable::Parameter *, int);
@@ -148,6 +150,7 @@ public:
   int getGeqScrollOffset() const;
   int getCurrentMix() const;
   int getEqEncoderMode() const;
+  void onShow(bool);
   int getSelectedBank() const;
   Core::Portable::Component *getSelectedGeq() const;
   struct StripAssignData {

@@ -1,4 +1,6 @@
 #include "presonus/panel/PanelComponent.hpp"
+#include "presonus/panel/control.hpp"
+#include "presonus/surface_panel/ControlHelpers.hpp"
 namespace Presonus::Panel {
 void PanelComponent::onIdle() {
   portable.component.Core::Portable::Component::onIdle();
@@ -30,6 +32,24 @@ void PanelComponent::detachSwitches() const {
 }
 void PanelComponent::start() { activateAll(); }
 void PanelComponent::activateAll() { services.componentSlot38(); }
+bool PanelComponent::isInGroup(
+    int groupId, const Core::Portable::Parameter &parameter) const {
+  if (!controlRegistrar)
+    throw std::logic_error("PanelComponent control registrar is not bound");
+  for (int groupIndex = 0; groupIndex < controlRegistrar->count();
+       ++groupIndex) {
+    const auto &group = *controlRegistrar->at(groupIndex);
+    if (presonus::panel_binding::ControlGroupAccess::groupId(group) != groupId)
+      continue;
+    for (int controlIndex = 0; controlIndex < group.count(); ++controlIndex)
+      if (group.at(controlIndex)->getParameter() == &parameter)
+        return true;
+    return false;
+  }
+  return false;
+}
+void PanelComponent::doActivate() {}
+void PanelComponent::cleanup() {}
 void PanelComponent::blinkLed(int group, int tag, bool blink) {
   void *control = services.byTag(services.findGroup(group), tag);
   if (!control)

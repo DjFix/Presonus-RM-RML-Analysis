@@ -157,6 +157,14 @@ void FXComponent::setInterpolator(int parameterIndex, int effectType) {
   }
 }
 
+bool FXComponent::isValidParamForType(Presonus::EffectType type,
+                                      int parameter) {
+  constexpr std::array upperBounds{11, 13, 13, 13, 13, 13, 12,
+                                   13, 12, 13, 16, 16, 15};
+  const auto index = static_cast<std::uint32_t>(type);
+  return index < upperBounds.size() && parameter <= upperBounds[index];
+}
+
 void FXComponent::setFxDirty() {
   state_.dirty = true;
   state_.app.setControllerDirty();
@@ -204,4 +212,8 @@ bool FXComponent::load(const Core::Portable::InputStorage &storage) {
                     double(b), double(c));
   return result;
 }
+
+void FXComponent::tap() {}
+
+int FXComponent::mapIDs(int) { return -1; }
 } // namespace Presonus::Mixer

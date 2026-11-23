@@ -1,5 +1,7 @@
 #include "presonus/MeterScaleControl.hpp"
+#include "core/portable/coreattributes.h"
 #include "core/portable/gui/corefont.h"
+#include "core/public/coreinterpolator.h"
 #include "core/public/corestringbuffer.h"
 #include "presonus/MeterControl.hpp"
 #include "presonus/PanControl.hpp"
@@ -8,7 +10,18 @@
 #include "presonus/uc/mutable_message_event.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstring>
+#include <iterator>
 #include <stdexcept>
+#include <type_traits>
+
+namespace {
+Presonus::MeterScaleControl::Ranges &meterScaleRanges() {
+  using Ranges = Presonus::MeterScaleControl::Ranges;
+  static Ranges ranges(Ranges::SourcePortTag{});
+  return ranges;
+}
+} // namespace
 
 namespace Presonus {
 MeterScaleControl::MeterScaleControl(const Core::Rect &rect)
@@ -18,8 +31,47 @@ MeterScaleControl::Ranges::~Ranges() {
   for (int i = 0; i < values_.count(); ++i)
     ::operator delete(values_.at(i));
 }
+void MeterScaleControl::Ranges::addRange(const char *name, int count,
+                                         const int *values) {
+  static_assert(std::is_trivially_destructible_v<Range>);
+  auto record = std::unique_ptr<Range>(new Range{values, count, {name}});
+  // The temporary owner cleans up if the provider cannot grow the vector.
+  if (values_.add(record.get()))
+    record.release();
+}
+
+MeterScaleControl::Ranges::Range *
+MeterScaleControl::Ranges::getRange(const char *name) {
+  const char *key = name ? name : "";
+  for (int i = 0; i < values_.count(); ++i) {
+    auto *record = values_.at(i);
+    if (std::strcmp(record->name.str(), key) == 0)
+      return record;
+  }
+  return nullptr;
+}
+
+void MeterScaleControl::setAttributes(
+    const Core::Portable::Attributes &attributes) {
+  Core::Portable::View::setAttributes(attributes);
+  const auto *rangeName = attributes.getString("range");
+  range_ = meterScaleRanges().getRange(rangeName ? rangeName : "");
+  scale_.reset(
+      Core::InterpolatorFactory::create(attributes.getString("interpolator")));
+  if (scale_ && range_)
+    scale_->setRange(static_cast<float>(range_->values[0]),
+                     static_cast<float>(range_->values[range_->count - 1]),
+                     1.f);
+}
+
 void MeterScaleControl::draw(const Core::Portable::DrawEvent &event) {
-  if (ticks_.empty())
+  const int *values = ticks_.data();
+  std::size_t count = ticks_.size();
+  if (count == 0 && range_) {
+    values = range_->values;
+    count = static_cast<std::size_t>(range_->count);
+  }
+  if (count == 0)
     return;
 
   Core::Rect client;
@@ -38,11 +90,12 @@ void MeterScaleControl::draw(const Core::Portable::DrawEvent &event) {
   const int margin = (height - trackHeight) / 2;
   const int halfFont = fontHeight / 2;
   const int width = client.getWidth();
-  const int first = ticks_.front();
+  const int first = values[0];
   const float span = static_cast<float>(
-      std::abs(static_cast<long long>(ticks_.back()) - first));
+      std::abs(static_cast<long long>(values[count - 1]) - first));
   const float inverseSpan = span == 0 ? 0.f : 1.f / span;
-  for (const int value : ticks_) {
+  for (std::size_t i = 0; i < count; ++i) {
+    const int value = values[i];
     const float position =
         scale_ ? scale_->rangeToNormalized(static_cast<float>(value))
                : std::clamp(
@@ -64,3 +117,22 @@ void MeterScaleControl::draw(const Core::Portable::DrawEvent &event) {
   }
 }
 } // namespace Presonus
+
+void __initMeterScaleControl() {
+  static constexpr int defaultValues[] = {-84, -72, -60, -48, -36,
+                                          -24, -12, 0,   10};
+  static constexpr int recordArmedValues[] = {-60, -48, -36, -24, -12,
+                                              -9,  -6,  -3,  0};
+  static constexpr int outputValues[] = {-60, -48, -36, -24, -12, -9,
+                                         -6,  -3,  0,   3,   6};
+  auto &ranges = meterScaleRanges();
+  ranges.addRange("default", std::size(defaultValues), defaultValues);
+  ranges.addRange("recordArmed", std::size(recordArmedValues),
+                  recordArmedValues);
+  ranges.addRange("output", std::size(outputValues), outputValues);
+}
+
+const Presonus::MeterScaleControl::Ranges &
+presonus::meter::sourcePortMeterScaleRanges() {
+  return meterScaleRanges();
+}

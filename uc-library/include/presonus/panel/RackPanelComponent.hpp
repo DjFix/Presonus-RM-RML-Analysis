@@ -87,6 +87,8 @@ public:
   bool checkMonitorRestore(Presonus::DelayTimer &) const;
   void monitorSource(int, bool);
   void updatePanelStatus();
+  // Default UI hook in the portable class.
+  virtual void dismissAlert();
   void clientsChanged();
   void checkPermissionsPWReset();
   void forceCascadeGlobalParamUpdate();

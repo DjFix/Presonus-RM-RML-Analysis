@@ -89,6 +89,8 @@ public:
     std::int32_t tag43 = 0, tag5 = 0, tag44 = 0;
   };
   MixerSetupProperty getSetupProperty() const;
+  // Portable direct entry point for the native default property observer.
+  void getProperty(Core::Property &property);
   // The original returns the matching channel pointer before RTTI adjustment.
   ChannelComponent *getTapeIn() const;
   // Actual CCL parent supplies the native +0x210 child-list role.

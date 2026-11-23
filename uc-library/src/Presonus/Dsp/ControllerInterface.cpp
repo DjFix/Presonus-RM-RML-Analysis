@@ -4,4 +4,5 @@ namespace Presonus::Dsp {
 // Do not query interfaces, inspect property payloads, or manufacture a return.
 void Controller::getProperty(Core::Property &) {}
 void Controller::processIdle() {}
+void Controller::doUpdates() {}
 } // namespace Presonus::Dsp

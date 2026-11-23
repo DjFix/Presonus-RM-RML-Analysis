@@ -1,0 +1,371 @@
+{
+  "elf": {
+    "path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+  },
+  "unicorn": "2.1.4",
+  "target": {
+    "mangled": "_ZN8Presonus5Panel14PanelComponent10doActivateEv",
+    "address": 338940,
+    "size": 16,
+    "section": 12,
+    "section_name": ".text",
+    "file_offset": 306172,
+    "sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+  },
+  "vtable": {
+    "mangled": "_ZTVN8Presonus5Panel14PanelComponentE",
+    "address": 3250376,
+    "size": 116,
+    "section": 14,
+    "section_name": ".rodata",
+    "file_offset": 3217608,
+    "sha256": "e620c890984a198c2542229f60ffa3fc04ee0a67b3acd2a790bbecb35d85b4b8"
+  },
+  "related": [
+    {
+      "mangled": "_ZN8Presonus5Panel14PanelComponent5startEv",
+      "address": 337148,
+      "size": 20,
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 304380,
+      "sha256": "916cbf8ab21f18283895d4913ef51613ecab7695dcd43245171ec2ab6c675bda"
+    },
+    {
+      "mangled": "_ZN8Presonus5Panel14PanelComponent11activateAllEv",
+      "address": 337120,
+      "size": 28,
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 304352,
+      "sha256": "2620db362d0ff0f5f2e0561bc25ca9ebfc78c4593bea0467637e70fbd9a0200c"
+    }
+  ],
+  "cases": [
+    {
+      "route": "direct",
+      "seed": 0,
+      "trace": [
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "direct",
+      "seed": 79,
+      "trace": [
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "direct",
+      "seed": 246,
+      "trace": [
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "vtable",
+      "seed": 0,
+      "trace": [
+        1895825408,
+        1895825412,
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "vtable",
+      "seed": 79,
+      "trace": [
+        1895825408,
+        1895825412,
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "vtable",
+      "seed": 246,
+      "trace": [
+        1895825408,
+        1895825412,
+        338940,
+        338944,
+        338948,
+        338952
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "start",
+      "seed": 0,
+      "trace": [
+        337148,
+        337152,
+        337156,
+        337160,
+        337164,
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "start",
+      "seed": 79,
+      "trace": [
+        337148,
+        337152,
+        337156,
+        337160,
+        337164,
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "start",
+      "seed": 246,
+      "trace": [
+        337148,
+        337152,
+        337156,
+        337160,
+        337164,
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "activateAll",
+      "seed": 0,
+      "trace": [
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "activateAll",
+      "seed": 79,
+      "trace": [
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    },
+    {
+      "route": "activateAll",
+      "seed": 246,
+      "trace": [
+        337120,
+        337124,
+        337128,
+        337132,
+        337136,
+        337140,
+        338940,
+        338944,
+        338948,
+        338952,
+        337144
+      ],
+      "external_calls": 0,
+      "outside_stack_reads": [
+        [
+          1073741824,
+          4
+        ],
+        [
+          3250440,
+          4
+        ]
+      ],
+      "outside_stack_writes": [],
+      "receiver_unchanged": true,
+      "return_register_unchanged": true
+    }
+  ]
+}

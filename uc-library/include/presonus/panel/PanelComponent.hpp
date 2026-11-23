@@ -10,6 +10,7 @@ class MixerComponentBase;
 }
 namespace Presonus::Panel {
 class PanelRegistrar;
+class ControlRegistrar;
 class ControlGroup;
 } // namespace Presonus::Panel
 namespace presonus::panel_port {
@@ -105,6 +106,11 @@ public:
   void bindServices(presonus::panel_port::Services &s) {
     checkedServices.target = &s;
   }
+  // The authoritative roster is borrowed and must outlive this component.
+  void bindControlRegistrar(const ControlRegistrar &registrar) {
+    controlRegistrar = &registrar;
+  }
+  bool isInGroup(int groupId, const Core::Portable::Parameter &parameter) const;
   presonus::panel_port::PanelState &portableState() { return portable; }
   const presonus::panel_port::PanelState &portableState() const {
     return portable;
@@ -113,6 +119,8 @@ public:
   void detachAll() const;
   void detachSwitches() const;
   void activateAll();
+  // Portable lifecycle hooks with unresolved original return declarations.
+  virtual void cleanup();
   // Native start tail-calls activateAll; original return remains unencoded.
   void start();
   void init();
@@ -125,6 +133,7 @@ public:
   void blinkLed(int, int, bool);
 
 protected:
+  virtual void doActivate();
   PanelComponent() : services(checkedServices) {}
   // Independent injection for derived classes whose earlier base owns Core.
   explicit PanelComponent(presonus::panel_port::PanelCore &owner)
@@ -140,5 +149,6 @@ private:
   presonus::panel_port::PanelState portable;
   presonus::panel_port::CheckedServices checkedServices;
   presonus::panel_port::Services &services;
+  const ControlRegistrar *controlRegistrar = nullptr;
 };
 } // namespace Presonus::Panel

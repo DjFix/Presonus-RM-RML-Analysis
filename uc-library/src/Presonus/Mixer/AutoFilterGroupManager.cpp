@@ -2,12 +2,36 @@
 #include "core/public/corestringbuffer.h"
 #include "core/system/coredebug.h"
 #include "presonus/mixer/ChannelComponent.hpp"
+#include "presonus/mixer/GroupChangeObserver.hpp"
+#include "presonus/mixer/MixerComponentBase.hpp"
 #include <algorithm>
 #include <cctype>
 #include <cstring>
+#include <memory>
 #include <new>
 #include <stdexcept>
 namespace Presonus::Mixer {
+AutoFilterGroupManager::AutoFilterGroupManager(const char *name,
+                                               MixerComponentBase &mixer)
+    : ServerComponent(name), updateChannels_(0, 5), ownedComponents_(0, 5) {
+  const auto *channels = mixer.sipSoloChannels;
+  if (!channels)
+    return;
+
+  // Retain ownership until all observers have registered and the complete
+  // roster is installed. A failed registration then detaches earlier observers.
+  std::vector<std::unique_ptr<GroupChangeObserver>> pending;
+  pending.reserve(channels->count());
+  for (int i = 0; i < channels->count(); ++i) {
+    auto &observer = pending.emplace_back(
+        std::make_unique<GroupChangeObserver>(channels->at(i), *this));
+    if (!ownedComponents_.add(observer.get()))
+      throw std::bad_alloc();
+  }
+  for (auto &observer : pending)
+    observer.release();
+}
+
 AutoFilterGroupManager::~AutoFilterGroupManager() {
   const int count = ownedComponents_.count();
   for (int i = 0; i < count; ++i)

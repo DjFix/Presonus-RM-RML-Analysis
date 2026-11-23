@@ -34,6 +34,11 @@ void SubAssignPageComponent::setListOffset(int offset) {
 void SubAssignPageComponent::addListOffset(int delta) {
   setListOffset(presonus::surface::addWrap(listOffset, delta));
 }
+void SubAssignPageComponent::onShow(bool) {
+  // The native Page hook has no observable effect in this source model.
+  listOffset = 0;
+  updateParams();
+}
 void SubAssignPageComponent::paramChanged(Core::Portable::Parameter *p,
                                           int msg) {
   if (msg != 2)

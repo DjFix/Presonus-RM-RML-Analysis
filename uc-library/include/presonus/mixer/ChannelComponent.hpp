@@ -81,6 +81,8 @@ public:
   void resetEQDyn();
   bool handleFaderLocate(float value) const;
   presonus::mixer::ChannelState &portableState() const { return state(); }
+  // The base channel provides this hook without changing channel state.
+  virtual void setGEQFaderScaler(float, float);
 
 private:
   // Partial typed construction does not fabricate app state or services.

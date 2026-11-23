@@ -1,7 +1,28 @@
 #include "presonus/surface/DAWMixerHandler.hpp"
+#include "presonus/surface/DawFxPageComponent.hpp"
 #include <cstring>
 
 namespace Presonus::Surface {
+DAWMixerHandler::DAWMixerHandler(
+    presonus::surface::DAWMixerDependencies &dependencies,
+    presonus::surface::DAWMixerState &state)
+    : dependencies(dependencies), state(state), ownedAutomation(std::in_place),
+      automation(*ownedAutomation) {}
+
+DAWMixerHandler::~DAWMixerHandler() = default;
+
+int DAWMixerHandler::getSelectedMix() const {
+  const int value = state.mappingController
+                        ? state.mappingController->getRadioValue(13, 33)
+                        : -1;
+  return value < 0 ? 33 : value;
+}
+int DAWMixerHandler::getSelectedMeterMode() const {
+  return state.mappingController
+             ? state.mappingController->getRadioValue(34, 37)
+             : -1;
+}
+
 void DAWMixerHandler::getMixTargets(MixTargets &targets, DAWChannel *channel,
                                     int mix) const {
   if (!channel)
@@ -42,6 +63,14 @@ void DAWMixerHandler::getMixTargets(MixTargets &targets, DAWChannel *channel,
   targets.pan = parameter(component, 14);
   targets.extraPan = parameter(component, 15);
 }
+void DAWMixerHandler::setController(Presonus::IMappingController *controller) {
+  state.mappingController = controller;
+  for (DawFxPageComponent &page : state.dawPages)
+    page.setMappingController(controller);
+  if (state.mappingController)
+    state.mappingController->setRadioGroup(34, 34, 37, false);
+}
+
 void DAWMixerHandler::updatePanEncoderConnection() {
   auto *channel = state.clientPresent ? dependencies.focusChannel() : nullptr;
   MixTargets targets;

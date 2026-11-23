@@ -35,6 +35,8 @@ public:
   const char *sourcePortCategory() const { return category.str(); }
   void onIdle() override;
   int getSlotNum() const;
+  // The default whole-cache observer has no application effects.
+  virtual void cacheUpdated(PresetNameCache &);
   void cacheUpdated(PresetNameCache &, int, const char *, const char *);
   bool isSlotEmpty(unsigned int) const;
   bool isChildParameter(const Core::Portable::Parameter &) const;

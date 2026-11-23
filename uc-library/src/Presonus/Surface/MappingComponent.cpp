@@ -25,6 +25,13 @@ MappingComponent::MappingComponent()
   }
 }
 
+MappingComponent::~MappingComponent() {
+  if (assignmentHandler_) {
+    assignmentHandler_->setController(nullptr);
+    assignmentHandler_ = nullptr;
+  }
+}
+
 // Original scopes and encoded parameter identities. Return spellings, storage
 // and provider boundaries are an intentional portable source contract.
 int MappingComponent::getBankScrollingOffset() const {

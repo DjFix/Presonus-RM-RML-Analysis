@@ -1,0 +1,98 @@
+{
+  "originals": [
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus5Panel16OffscreenElementD1Ev",
+      "address": 134620,
+      "size": 28,
+      "section": ".text",
+      "file_offset": 101852,
+      "body_sha256": "9c51aeffd917ddf42874be353f392d0107aca84f2dd199fdae00e2d9e94af2fc",
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": "retained",
+          "events": []
+        }
+      ]
+    },
+    {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "firmware": "CS18AI surface 13840",
+      "role": "client",
+      "mangled": "_ZN8Presonus5Panel16OffscreenElementD0Ev",
+      "address": 135160,
+      "size": 44,
+      "section": ".text",
+      "file_offset": 102392,
+      "body_sha256": "568e0835c9a4bb9732a722b86b386d94f7cf7a6fe34875f5aa0786022b503fb9",
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": "freed",
+          "events": [
+            [
+              "unsized_delete",
+              1342177280
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus5Panel16OffscreenElementD1Ev",
+      "address": 631276,
+      "size": 28,
+      "section": ".text",
+      "file_offset": 598508,
+      "body_sha256": "1f1b6dcf1d98459e9d073e75ba39fcf26e9a05ac303092af276cf472305e4434",
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": "retained",
+          "events": []
+        }
+      ]
+    },
+    {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "firmware": "RM/RML mixer 13731",
+      "role": "server",
+      "mangled": "_ZN8Presonus5Panel16OffscreenElementD0Ev",
+      "address": 631360,
+      "size": 44,
+      "section": ".text",
+      "file_offset": 598592,
+      "body_sha256": "0ba1401a35b5eb46c0f3ab6c43b875d2b9022bd3d6fa3a81e40bf4ef95521788",
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": "freed",
+          "events": [
+            [
+              "unsized_delete",
+              1342177280
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -24,11 +24,26 @@ class SettingFile;
 namespace presonus::panel_binding {
 struct RegistrarGroupRegistry;
 }
+namespace Presonus {
+struct TouchInputEvent;
+}
 namespace Presonus::Panel {
 class EncoderControl;
 class ControlGroup;
 class ControlRegistrar {
 public:
+  // Portable callback interface with the observed typed virtual defaults.
+  // Original return declarations and vtable layout remain unresolved.
+  class Delegate {
+  public:
+    virtual void faderChanged(const ControlRegistrar &, int, int,
+                              FaderControl *);
+    virtual void switchChanged(const ControlRegistrar &, int, int, bool,
+                               SwitchControl *);
+    virtual void potChanged(const ControlRegistrar &, int, int, PotControl *);
+    virtual void screenTouched(const ControlRegistrar &, TouchInputEvent);
+  };
+
   // Independent borrowed setup only; original lifecycle/layout unresolved.
   ControlRegistrar() = default;
   explicit ControlRegistrar(
@@ -65,8 +80,11 @@ private:
   bool portBound_ = false;
   presonus::panel_binding::RegistrarGroupRegistry *groupRegistry_ = nullptr;
 };
-class SevenSegControl {
+class SevenSegControl : public Control {
 public:
+  // Retains default construction for the existing independent bitmap caller.
+  explicit SevenSegControl(int tag = 0) : Control(tag) {}
+  ~SevenSegControl() override;
   // The ARM implementation returns a zero-extended 16-bit bitmap. Its exact
   // original C++ return declaration is not encoded in the symbol name.
   std::uint16_t convertCharToBmp(char character, bool decimalPoint) const;
@@ -231,7 +249,8 @@ private:
   presonus::surface::PanelRegistrarCommandState *commandState_ = nullptr;
   const Core::Portable::ParamList *parameters_ = nullptr;
 };
-class SurfaceRootComponent {
+class SurfaceRootComponent
+    : public Presonus::Panel::ControlRegistrar::Delegate {
 public:
   SurfaceRootComponent() = default;
   explicit SurfaceRootComponent(PanelRegistrar &registrar)
@@ -245,9 +264,9 @@ public:
   }
   void updateFocusParams(Presonus::Panel::Control *);
   void faderChanged(const Presonus::Panel::ControlRegistrar &, int, int,
-                    Presonus::Panel::FaderControl *);
+                    Presonus::Panel::FaderControl *) override;
   void switchChanged(const Presonus::Panel::ControlRegistrar &, int, int, bool,
-                     Presonus::Panel::SwitchControl *);
+                     Presonus::Panel::SwitchControl *) override;
   MainScreenComponent *getMainScreenComponent() const;
   MappingComponent *getMappingComponent() const;
   NetworkSetupComponent *getNetworkSetupComponent() const;

@@ -72,6 +72,11 @@ void AssignEditPageComponent::updateAliasTargets() {
   }
 }
 
+void AssignEditPageComponent::onShow(bool) {
+  // The native Page hook has no observable effect in this source model.
+  updateAliasTargets();
+  updateVisibility();
+}
 void AssignEditPageComponent::paramChanged(Parameter *parameter, int message) {
   if (message != Parameter::kChanged || !page_ || !page_->isVisible())
     return;

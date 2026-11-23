@@ -2,6 +2,9 @@
 #include <cstdint>
 #include <cstring>
 namespace Presonus {
+AssignmentHandler::~AssignmentHandler() = default;
+MixerAssignmentHandler::~MixerAssignmentHandler() = default;
+
 void *AssignmentHandler::castTo(int tag) {
   return tag == 0x41734861 ? this : nullptr;
 }

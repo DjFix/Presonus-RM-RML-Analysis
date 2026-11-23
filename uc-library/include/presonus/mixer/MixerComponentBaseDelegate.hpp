@@ -9,8 +9,8 @@ public:
   virtual void selectionChanged() {}
   virtual void linkChanged() {}
   virtual void clientsChanged() = 0;
-  virtual void notifyStoring(bool) = 0;
-  virtual void faderLocateDirty(ChannelComponent *) = 0;
+  virtual void notifyStoring(bool);
+  virtual void faderLocateDirty(ChannelComponent *);
 
 protected:
   ~Delegate() = default;

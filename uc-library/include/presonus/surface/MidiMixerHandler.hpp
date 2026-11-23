@@ -108,6 +108,9 @@ public:
   void setActiveMapping(int);
   void setControlsEnabled(bool);
   void resetColors();
+  // Portable void contracts for native default hooks.
+  virtual void onMappingParamChanged(Core::Portable::Parameter *);
+  virtual void updatePanEncoderConnection();
   const char *getMappingName(int);
   void resetAccumulation();
   void updateRecordReadyMappings();

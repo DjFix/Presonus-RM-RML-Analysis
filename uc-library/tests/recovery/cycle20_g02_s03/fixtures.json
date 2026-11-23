@@ -1,0 +1,176 @@
+{
+  "role": "client",
+  "elf": {
+    "path": "/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/control10x20-after-4fed70d11/packeting/actual03-separate-ui-audio-batch08/snapshot/rootfs/CS18_v13840/home/root/surface",
+    "sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0"
+  },
+  "mangled": "_Z23__initMeterScaleControlv",
+  "address": 431440,
+  "size": 456,
+  "original_sha256": "f9ceddbba54eb906485388211502840ae8078631b1eac112a6a3a829790d6938",
+  "file_offset": 398672,
+  "lifetime_destructor_aliases": [
+    "_ZN8Presonus17MeterScaleControl6RangesD1Ev"
+  ],
+  "cases": [
+    {
+      "state": "cold",
+      "observed": [
+        {
+          "kind": "guard acquire",
+          "previous": 0
+        },
+        {
+          "kind": "pinned Core Vector resize",
+          "count": 0,
+          "typed_native_initial_fields": [
+            1686568,
+            0,
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "kind": "guard release"
+        },
+        {
+          "kind": "lifetime register",
+          "receiver": 2527664,
+          "destructor": 412728,
+          "dso": 2369196
+        },
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431492,
+          "receiver": 2527664,
+          "name": "default",
+          "count": 9,
+          "values_addr": 1686268,
+          "values": [
+            -84,
+            -72,
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            0,
+            10
+          ],
+          "values_sha256": "d57ffef28f1d4cbbd30e1070d25412867f796f5c427c09e1a21d410477b698fc"
+        },
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431528,
+          "receiver": 2527664,
+          "name": "recordArmed",
+          "count": 9,
+          "values_addr": 1686232,
+          "values": [
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            -9,
+            -6,
+            -3,
+            0
+          ],
+          "values_sha256": "d20feee754fbe831267ed81b776f200e0467409246af431cc6644a161d290ea4"
+        },
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431564,
+          "receiver": 2527664,
+          "name": "output",
+          "count": 11,
+          "values_addr": 1686188,
+          "values": [
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            -9,
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "values_sha256": "c4f5017feafa24c3815152cb9de3fc23442813c35912b26794e4d64305a0950f"
+        }
+      ]
+    },
+    {
+      "state": "warm",
+      "observed": [
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431492,
+          "receiver": 2527664,
+          "name": "default",
+          "count": 9,
+          "values_addr": 1686268,
+          "values": [
+            -84,
+            -72,
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            0,
+            10
+          ],
+          "values_sha256": "d57ffef28f1d4cbbd30e1070d25412867f796f5c427c09e1a21d410477b698fc"
+        },
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431528,
+          "receiver": 2527664,
+          "name": "recordArmed",
+          "count": 9,
+          "values_addr": 1686232,
+          "values": [
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            -9,
+            -6,
+            -3,
+            0
+          ],
+          "values_sha256": "d20feee754fbe831267ed81b776f200e0467409246af431cc6644a161d290ea4"
+        },
+        {
+          "kind": "Ranges addRange",
+          "caller_site": 431564,
+          "receiver": 2527664,
+          "name": "output",
+          "count": 11,
+          "values_addr": 1686188,
+          "values": [
+            -60,
+            -48,
+            -36,
+            -24,
+            -12,
+            -9,
+            -6,
+            -3,
+            0,
+            3,
+            6
+          ],
+          "values_sha256": "c4f5017feafa24c3815152cb9de3fc23442813c35912b26794e4d64305a0950f"
+        }
+      ]
+    }
+  ],
+  "limits": "Exact native application path and real argument reads, with modeled external CCL/runtime boundaries. Host must independently use genuine admitted Ranges and validate the exact data/state."
+}

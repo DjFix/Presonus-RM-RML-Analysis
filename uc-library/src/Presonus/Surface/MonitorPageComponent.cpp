@@ -1,6 +1,7 @@
 #include "presonus/surface/MonitorPageComponent.hpp"
 #include <cstring>
 namespace Presonus::Surface {
+void MonitorPageComponent::disconnectMappables() {}
 void MonitorPageComponent::paramChanged(Core::Portable::Parameter *parameter,
                                         int message) {
   if (message != Core::Portable::Parameter::kEdit)

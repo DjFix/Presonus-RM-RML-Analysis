@@ -31,4 +31,18 @@ void ControlGroup::add(Control *control) {
   if (state_.controls.count() <= 255)
     state_.controls.add(control);
 }
+void ControlGroup::resetParameters() {
+  for (auto *control : state_.controls)
+    control->setParameter(nullptr, 0);
+}
+
+void ControlGroup::resetParameterValues() {
+  for (auto *control : state_.controls)
+    if (auto *parameter = control->getParameter())
+      parameter->resetValue(true);
+}
+
+void ControlGroup::sort() {}
+
+void ControlGroup::onIdle() {}
 } // namespace Presonus::Panel
