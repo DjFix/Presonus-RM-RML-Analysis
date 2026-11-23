@@ -37,6 +37,9 @@ def main():
         provider_files = {str(path.relative_to(sdk)): sha(path)
                           for path in sdk.rglob('*') if path.is_file()}
         for required_file in ('lib/libcorelib.a', 'lib/libpresonus_core_allocator.a',
+                              'lib/libpresonus_png.a', 'lib/libpresonus_zlib.a',
+                              'share/presonus-core-5/upstream/libpng/LICENSE',
+                              'share/presonus-core-5/upstream/zlib/README',
                               'share/presonus-core-5/provenance.json',
                               'share/presonus-core-5/upstream/license.md'):
             if required_file not in provider_files:

@@ -10,6 +10,9 @@ if(CMAKE_CONFIGURATION_TYPES OR NOT CMAKE_BUILD_TYPE STREQUAL "Release")
 endif()
 set(PRESONUS_CORE_SOURCE_DIR "" CACHE PATH "Pinned ccl-framework checkout")
 find_package(Git REQUIRED)
+get_filename_component(codec_source_default "${PRESONUS_CORE_SOURCE_DIR}/.." ABSOLUTE)
+set(PRESONUS_CODEC_SOURCE_ROOT "${codec_source_default}" CACHE PATH
+  "Directory containing the pinned libpng and zlib checkouts")
 execute_process(COMMAND "${GIT_EXECUTABLE}" -C "${PRESONUS_CORE_SOURCE_DIR}" rev-parse HEAD
   OUTPUT_VARIABLE core_commit OUTPUT_STRIP_TRAILING_WHITESPACE COMMAND_ERROR_IS_FATAL ANY)
 if(NOT core_commit STREQUAL "e8cbdea4a4a20e15111f5a690798a259c0374b31")
@@ -25,11 +28,11 @@ foreach(required core/cmake/CMakeLists.txt build/cmake ccl/cmake/repomacros.cmak
     message(FATAL_ERROR "Missing actual upstream ${required}; complete the Linux checkout explicitly")
   endif()
 endforeach()
-# Prefer CMake's system dependency finders over the vendor's bundled-source finders.
-list(PREPEND CMAKE_MODULE_PATH "${CMAKE_ROOT}/Modules" "${CMAKE_CURRENT_LIST_DIR}/../cmake"
+include("${CMAKE_CURRENT_LIST_DIR}/../cmake/PresonusPinnedCodecs.cmake")
+# Bind CCL's PNG finder to the pinned targets and retain other system finders.
+list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake/codec-modules"
+  "${CMAKE_ROOT}/Modules" "${CMAKE_CURRENT_LIST_DIR}/../cmake"
   "${PRESONUS_CORE_SOURCE_DIR}/build/cmake/modules/shared")
-find_package(PNG REQUIRED)
-find_package(ZLIB REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(Threads REQUIRED)
 find_package(CoreDNSSD REQUIRED)
@@ -40,6 +43,9 @@ set(VENDOR_ENABLE_PARALLEL_BUILDS ON CACHE BOOL "" FORCE)
 set(PROJECT_DEBUG_SUFFIX "" CACHE STRING "" FORCE)
 set(corelib_BUILD_TESTAPP OFF CACHE BOOL "" FORCE)
 set(CCL_SYSTEM_INSTALL OFF CACHE BOOL "" FORCE)
+# CCL uses the basic signature. Keep lookup in the pinned module even when
+# this standalone build was configured to prefer package configuration files.
+set(CMAKE_FIND_PACKAGE_PREFER_CONFIG FALSE)
 add_subdirectory("${PRESONUS_CORE_SOURCE_DIR}/core/cmake" upstream)
 # Provide genuine Component RTTI for ordinary public Component-derived consumers.
 # Source stays pinned; replace this existing upstream archive member exactly once.
@@ -51,12 +57,12 @@ set_property(SOURCE
 # upstream's build-only paths and TARGET_FILE link option are not relocatable.
 set_target_properties(corelib PROPERTIES EXPORT_NAME Archive
   INTERFACE_INCLUDE_DIRECTORIES "$<BUILD_INTERFACE:${PRESONUS_CORE_SOURCE_DIR}>;$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/presonus-core-5>"
-  INTERFACE_LINK_LIBRARIES "PNG::PNG;ZLIB::ZLIB;OpenSSL::SSL;OpenSSL::Crypto;Threads::Threads;CoreDNSSD::CoreDNSSD;m;${CMAKE_DL_LIBS}"
+  INTERFACE_LINK_LIBRARIES "presonus_png;presonus_zlib;OpenSSL::SSL;OpenSSL::Crypto;Threads::Threads;CoreDNSSD::CoreDNSSD;m;${CMAKE_DL_LIBS}"
   INTERFACE_LINK_OPTIONS ""
   INTERFACE_COMPILE_DEFINITIONS "CORE_USE_OPENSSL=1;NDEBUG=1"
   INTERFACE_COMPILE_OPTIONS "-pthread;$<$<COMPILE_LANGUAGE:CXX>:-Ulinux>"
   INTERFACE_COMPILE_FEATURES cxx_std_17)
-target_link_libraries(corelib PRIVATE PNG::PNG ZLIB::ZLIB CoreDNSSD::CoreDNSSD)
+target_link_libraries(corelib PRIVATE CoreDNSSD::CoreDNSSD)
 add_library(presonus_core_allocator STATIC "${PRESONUS_CORE_SOURCE_DIR}/core/malloc/coremalloc.cpp")
 set_target_properties(presonus_core_allocator PROPERTIES EXPORT_NAME Allocator POSITION_INDEPENDENT_CODE ON)
 target_include_directories(presonus_core_allocator PRIVATE "${PRESONUS_CORE_SOURCE_DIR}")

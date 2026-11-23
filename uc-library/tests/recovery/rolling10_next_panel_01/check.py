@@ -1,4 +1,4 @@
-import argparse,hashlib,json,pathlib,subprocess,datetime,os
+import argparse,hashlib,json,pathlib,subprocess,datetime,os,sys
 p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--object',required=True);p.add_argument('--integration',required=True);p.add_argument('--out',required=True);a=p.parse_args()
 TASK=pathlib.Path(__file__).parent.name
 BASE='uc-library/tests/recovery/'+TASK
@@ -37,8 +37,13 @@ proof=dict(version=1,task_id=TASK,phase='local' if a.integration=='local' else '
 if a.integration!='local':proof['integration']={'path':a.integration,'sha256':H(a.integration)}
 provider_root=pathlib.Path('/home/rs/projects/opencs/ai-line-analysis')
 provider_addendum=provider_root/'temp/recovery-work/rolling10x10-20261114/root-review/generation06/provider-link-proposal/PROVIDER_LINK_ADDENDUM.json'
-provider_metadata=json.loads(provider_addendum.read_text());proof['archives']={}
-for archive in provider_metadata['archives']:
- path=provider_root/archive['path'];assert H(path)==archive['sha256'];proof['archives'][archive['path']]=H(path)
+provider_metadata=json.loads(provider_addendum.read_text())
+sys.path.insert(0,str(provider_root/'uc-library/tools/recovery'))
+from pinned_codec_replay_binding import validate_archives
+historical_archives={archive['path']:archive['sha256'] for archive in provider_metadata['archives']}
+archive_binding=validate_archives(provider_root,a.exe,a.integration,historical_archives)
+proof['archives']=archive_binding['archives']
+proof['historical_provider_archives']=archive_binding['historical']
+proof['provider_archive_transition']=archive_binding['transition']
 proof['provider_link_provenance']={'path':str(provider_addendum),'sha256':H(provider_addendum),'upstream':provider_metadata['upstream'],'provider_proof':provider_metadata['provider_proof']}
 pathlib.Path(a.out).write_text(json.dumps(proof,indent=2)+'\n')

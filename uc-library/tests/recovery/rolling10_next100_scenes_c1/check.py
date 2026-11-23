@@ -34,7 +34,7 @@ def _attach_current_canonical(proof, current):
  proof['actual_canonical_compile_binding']=current['binding']
  proof['canonical_producer_helper_sha256']=current['helper_sha256']
  proof['canonical_source_binding_scope']='Current actual Release object/depfile/link/archive inputs; historical frozen dependency expectations retained in original archived producer/proof, not refreshed or relabeled'
- proof['historical_provider_archives']=proof.get('provider_archives')
+ proof.setdefault('historical_provider_archives',proof.get('provider_archives'))
  proof['provider_archives']={v['path']:v['sha256'] for v in current['binding']['link']['archives']}
  proof['local_compile_defaults']=proof.get('compile_flags')
  proof['actual_canonical_compile_entries']=[x['compile_entry'] for x in current['binding']['objects']]
@@ -63,8 +63,10 @@ def main():
  work=ROOT/'temp/recovery-work'/TASK;work.mkdir(parents=True,exist_ok=True);exe=pathlib.Path(a.exe).resolve() if a.exe else work/'replay';obj=pathlib.Path(a.object).resolve() if a.object else work/'production.o';checks=[];start=datetime.datetime.now(datetime.timezone.utc).isoformat()
  def run(argv,input=None):
   argv=list(map(str,argv));t=time.monotonic();r=subprocess.run(argv,cwd=ROOT,input=input,text=True,capture_output=True,env={**os.environ,'TMPDIR':str(work)});checks.append(dict(argv=argv,returncode=r.returncode,seconds=time.monotonic()-t,stdout=r.stdout,stderr=r.stderr));assert r.returncode==0,(argv,r.stdout,r.stderr);return r.stdout
- assert sha(ARCHIVES[0])=='3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c'
- assert sha(ARCHIVES[1])=='69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d'
+ import sys
+ sys.path.insert(0,str(ROOT/'uc-library/tools/recovery'))
+ from pinned_codec_replay_binding import validate_archives
+ provider_binding=validate_archives(ROOT,a.exe,a.integration,{str(ARCHIVES[0]):'3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c',str(ARCHIVES[1]):'69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d'})
  supplement=json.loads(supplement_path.read_text());assert sha(supplement_path)==supplement_sha256
  canonical_binding=_current_canonical_binding(ROOT,a.object,a.exe,a.integration,SOURCE,APP_SOURCES)
  if canonical_binding is None:
@@ -87,7 +89,7 @@ def main():
   repository={x:sha(ROOT/x) for x in CCL}
   repository.update({x:sha(ROOT/x) for x in supplement['read_inputs'] if x.startswith('third_party/')})
   target=req['targets'][0];pending=dict(original_elf_sha256=target['original_elf_sha256'],mangled=name,sources=sources,repository_sources=repository,domain=domain,portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,declaration_uncertainties=limits)
-  proof=dict(version=1,provider_supplement=dict(path=str(supplement_path),sha256=sha(supplement_path)),task_id=TASK,originals=req['targets'],source_hashes=sources,repository_sources=repository,provider_archives={str(x):sha(x) for x in ARCHIVES},native_ranges=[fixture['range']],literal_arguments=fixture['literal_arguments'],native_case_count=len(fixture['cases']),validation_domain=domain,limitations=limits,checks=checks,formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],unicorn=__import__('unicorn').__version__,object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[pending]),session=dict(provider_thread_id=os.getenv('CODEX_THREAD_ID'),application_session_id=os.getenv('CODEX_SESSION_ID'),phase_start_utc=start,phase_end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
+  proof=dict(version=1,provider_supplement=dict(path=str(supplement_path),sha256=sha(supplement_path)),task_id=TASK,originals=req['targets'],source_hashes=sources,repository_sources=repository,provider_archives=provider_binding["archives"],historical_provider_archives=provider_binding["historical"],pinned_codec_provider_binding=provider_binding,native_ranges=[fixture['range']],literal_arguments=fixture['literal_arguments'],native_case_count=len(fixture['cases']),validation_domain=domain,limitations=limits,checks=checks,formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],unicorn=__import__('unicorn').__version__,object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[pending]),session=dict(provider_thread_id=os.getenv('CODEX_THREAD_ID'),application_session_id=os.getenv('CODEX_SESSION_ID'),phase_start_utc=start,phase_end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
   _attach_current_canonical(proof,canonical_binding)
   out=pathlib.Path(a.out) if a.out else ROOT/'uc-library/candidates'/TASK/'worker-proof.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(proof,indent=2)+'\n');print(domain)
 if __name__=='__main__':main()

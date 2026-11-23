@@ -163,6 +163,62 @@ def check_production_compile_contracts(lib, build, groups):
     return counts
 
 
+def audit_relocated_codecs(lib, build, prefix, dependencies, work, run):
+    """Force codec objects into each consumer and bind their actual headers."""
+    codec_project = lib / 'tests/installed_codecs'
+    png_sample = lib.parent / 'third_party/libpng-reference-1.6.10/pngtest.png'
+    cmake = lib / '.venv/bin/cmake'
+    sdk = build / 'upstream-core/sdk'
+    includes = prefix / 'include/presonus-core-codecs'
+    archives = ('libpresonus_png.a', 'libpresonus_zlib.a')
+    headers = ('png.h', 'pngconf.h', 'pnglibconf.h', 'zlib.h', 'zconf.h')
+    providers = {}
+    for name in (*('lib/' + archive for archive in archives),
+                 *('include/presonus-core-codecs/' + header for header in headers)):
+        providers[name] = sha(prefix / name)
+        assert providers[name] == sha(sdk / name), name
+
+    codec_build = work / 'codec-build'
+    run('codec-configure', [
+        cmake, '-G', 'Unix Makefiles', '-S', codec_project, '-B', codec_build,
+        '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
+        '-Dpresonus_uc_DIR=' + str(prefix / 'lib/cmake/presonus_uc'),
+        '-DPresonusCore_DIR=' + str(prefix / 'lib/cmake/PresonusCore'),
+        '-DCMAKE_PREFIX_PATH=' + str(prefix) + ';' + str(dependencies),
+        '-DCoreDNSSD_LIBRARY=' + str(dependencies / 'lib/x86_64-linux-gnu/libdns_sd.so'),
+        '-DPNG_SAMPLE=' + str(png_sample),
+    ])
+    system_codec = r'(?<![\w-])lib(?:png[^/\s]*|z)\.(?:a|so(?:[.\d]+)?)(?![\w-])'
+    roles = {}
+    for role in ('core', 'cs18', 'rm'):
+        target = 'codec_' + role
+        link_trace = run(target + '-link', [cmake, '--build', codec_build, '--target', target])
+        for archive in archives:
+            assert str(prefix / 'lib' / archive) in link_trace.splitlines(), (target, archive)
+        assert not re.search(system_codec, link_trace), target
+        executable = codec_build / target
+        for tool in ('ldd', 'readelf'):
+            argv = ['/usr/bin/' + tool, executable] if tool == 'ldd' else [
+                '/usr/bin/readelf', '-d', executable]
+            assert not re.search(system_codec, run(target + '-' + tool, argv)), target
+        symbols = run(target + '-nm', ['nm', '-g', '--defined-only', executable])
+        defined = {line.split()[-1] for line in symbols.splitlines() if line.split()}
+        assert {'png_image_finish_read', 'png_access_version_number',
+                'zlibVersion', 'compress', 'uncompress'} <= defined, target
+
+        depfile = codec_build / 'CMakeFiles' / (target + '.dir') / 'CodecSmoke.cpp.o.d'
+        paths = [Path(entry) for entry in depfile.read_text().replace('\\\n', ' ').split()
+                 if Path(entry).name in headers]
+        assert set(paths) == {includes / header for header in headers}, (target, paths)
+        roles[role] = {'executable_sha256': sha(executable), 'depfile_sha256': sha(depfile)}
+    run('codec-tests', [
+        lib / '.venv/bin/ctest', '--test-dir', codec_build, '--output-on-failure', '-V'])
+    return {'passed': True, 'roles': roles, 'provider_sha256': providers,
+            'sample_sha256': sha(png_sample),
+            'probe_source_sha256': sha(codec_project / 'CodecSmoke.cpp'),
+            'probe_cmake_sha256': sha(codec_project / 'CMakeLists.txt')}
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('repository',type=Path)
@@ -205,13 +261,34 @@ def main():
     counts=check_production_compile_contracts(lib,build,groups)
     sdk=build/'upstream-core/sdk'
     sdk_hashes={str(path.relative_to(sdk)):sha(path) for path in sdk.rglob('*') if path.is_file()}
-    assert all(name in sdk_hashes for name in ('lib/libcorelib.a','lib/libpresonus_core_allocator.a'))
+    assert all(name in sdk_hashes for name in (
+        'lib/libcorelib.a', 'lib/libpresonus_core_allocator.a', 'lib/libpresonus_png.a',
+        'lib/libpresonus_zlib.a'))
     for name,digest in sdk_hashes.items():assert sha(prefix/name)==digest,name
     pin=run('core-pin',['git','-C',repo/'third_party/ccl-framework','rev-parse','HEAD']).strip()
     assert pin=='e8cbdea4a4a20e15111f5a690798a259c0374b31'
     assert not run('core-clean',['git','-C',repo/'third_party/ccl-framework','status','--porcelain','--untracked-files=all']).strip()
     provider_headers={name:digest for name,digest in sdk_hashes.items() if name.startswith('include/')}
-    for name,digest in provider_headers.items():assert sha(repo/'third_party/ccl-framework'/name.removeprefix('include/presonus-core-5/'))==digest,name
+    upstream = repo/'third_party'
+    png_source = upstream/'libpng-reference-1.6.10'
+    zlib_source = upstream/'zlib-reference-1.2.11'
+    codec_headers = {
+        'png.h': png_source/'png.h',
+        'pngconf.h': png_source/'pngconf.h',
+        'pnglibconf.h': png_source/'scripts/pnglibconf.h.prebuilt',
+        'zlib.h': zlib_source/'zlib.h',
+        'zconf.h': build/'upstream-core/build/codec-includes/zconf.h',
+    }
+    codec_prefix = 'include/presonus-core-codecs/'
+    assert {name.removeprefix(codec_prefix) for name in provider_headers
+            if name.startswith(codec_prefix)} == set(codec_headers)
+    for name, digest in provider_headers.items():
+        if name.startswith(codec_prefix):
+            origin = codec_headers[name.removeprefix(codec_prefix)]
+        else:
+            assert name.startswith('include/presonus-core-5/'), name
+            origin = upstream/'ccl-framework'/name.removeprefix('include/presonus-core-5/')
+        assert sha(origin) == digest, name
     app_headers={name:digest for name,digest in integration['files'].items() if name.startswith('include/presonus/')}
     installed={str(path.relative_to(prefix)):sha(path) for path in (prefix/'include').rglob('*') if path.is_file()}
     assert installed=={**app_headers,**provider_headers}
@@ -254,14 +331,22 @@ def main():
     dependencies=repo/'temp/core-upstream/external-dev/usr'
     cmake=lib/'.venv/bin/cmake'
     run('consumer-configure',[cmake,'-S',lib/'candidates/common-build/consumer-dice-hierarchy','-B',work/'consumer-build',
-        '-DCMAKE_BUILD_TYPE=Release','-Dpresonus_uc_DIR='+str(relocated/'lib/cmake/presonus_uc'),
+        '-DCMAKE_BUILD_TYPE=Release','-DCMAKE_EXE_LINKER_FLAGS=-Wl,--trace',
+        '-Dpresonus_uc_DIR='+str(relocated/'lib/cmake/presonus_uc'),
         '-DCMAKE_PREFIX_PATH='+str(relocated)+';'+str(dependencies),
-        '-DPNG_PNG_INCLUDE_DIR='+str(dependencies/'include/libpng16'),
-        '-DPNG_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libpng16.so.16',
-        '-DZLIB_LIBRARY_RELEASE=/usr/lib/x86_64-linux-gnu/libz.so.1',
         '-DCoreDNSSD_LIBRARY='+str(dependencies/'lib/x86_64-linux-gnu/libdns_sd.so')])
-    run('consumer-build',[cmake,'--build',work/'consumer-build','-j2'])
+    consumer_build = work/'consumer-build'
+    link_trace = run('consumer-build',[cmake,'--build',consumer_build,'-j2'])
+    for archive in ('libpresonus_png.a', 'libpresonus_zlib.a'):
+        assert str(relocated/'lib'/archive) in link_trace.splitlines(), archive
+    shared_codec = r'\blib(?:png[^\s/]*|z)\.so(?:[.\d]+)?\b'
+    assert not re.search(shared_codec, link_trace), 'Unexpected shared codec in linker input'
+    for role in ('client', 'server'):
+        executable = consumer_build/f'installed_{role}_smoke'
+        runtime = run('consumer-ldd-'+role, ['/usr/bin/ldd', executable])
+        assert not re.search(shared_codec, runtime), executable
     run('consumer-tests',[lib/'.venv/bin/ctest','--test-dir',work/'consumer-build','--output-on-failure'])
+    codec_audit = audit_relocated_codecs(lib, build, relocated, dependencies, work, run)
     assert snapshot=={name:sha(lib/name) for name in snapshot}
     report=dict(passed=True,production_cpp_compiled_once=True,production_units=len(all_sources),
         groups={key:len(value) for key,value in groups.items()},compile_counts=dict(counts),
@@ -272,6 +357,7 @@ def main():
         registry_source=registry_source,
         compile_commands_sha256=sha(build/'compile_commands.json'),
         relocated_role_consumers_passed=True,installed_link_interfaces=installed_link_interfaces,
+        relocated_codec_consumers=codec_audit,
         private_math_archive_sha256=private_math_archive_sha256,commands=commands,tool_sha256=sha(Path(__file__)),
         application_startup_complete=False,original_arm_abi_verified=False,hardware_verified=False)
     (work/'validation.json').write_text(json.dumps(report,indent=2)+'\n')

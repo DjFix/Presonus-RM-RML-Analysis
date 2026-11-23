@@ -7,7 +7,11 @@
   "reference_native_provider_sha256": "2c5607b77348d68c797b4747e372d99c9d21c2be2c315d0b224e5410db189bb4",
   "reference_archive_sha256": "0b958004e35637fcb3ec8225c3b073e5187d6a86335675af03dbf8fe8a9d2be7",
   "allocator_source_sha256": "a80b7302b2f748db8969f01ab510e103ff486a7b006291b2f8eb3b093babe3e1",
-  "configuration_changes": ["CORE_DISABLE_NEW_OPERATOR=1 on allocator only", "Release Linux; system PNG/Zlib/OpenSSL/Threads/DNS-SD; relocatable target interface"],
+  "configuration_changes": ["CORE_DISABLE_NEW_OPERATOR=1 on allocator only", "Release Linux; pinned libpng 1.6.10 and zlib 1.2.11 static source builds; system OpenSSL/Threads/DNS-SD; relocatable target interface"],
+  "codecs": {
+    "libpng": {"version": "1.6.10", "commit": "4df37bfa4f79dcd742fca6155e26b8d37b591c30"},
+    "zlib": {"version": "1.2.11", "commit": "cacf7f1d4e3d44d871b605da3b647f07d718623f"}
+  },
   "reference_archive_reused": false,
   "firmware_historical_version_match": false,
   "original_arm_abi_verified": false,

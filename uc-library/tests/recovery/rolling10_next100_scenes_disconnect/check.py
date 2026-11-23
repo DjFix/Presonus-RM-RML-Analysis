@@ -19,8 +19,10 @@ def main():
  if a.mode in ('all','format'):run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',SOURCE,HEADER,TEST+'/Replay.cpp'])
  if a.mode in ('all','compile') and not a.exe:
   run([*FLAGS,'-c',SOURCE,'-o',obj]);run([*FLAGS,TEST+'/Replay.cpp',obj,'-Wl,--gc-sections','-Wl,--start-group',*ARCHIVES,'-Wl,--end-group','-lpthread','-ldl','-o',exe])
- assert sha(ARCHIVES[0])=='3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c'
- assert sha(ARCHIVES[1])=='69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d'
+ import sys
+ sys.path.insert(0,str(ROOT/'uc-library/tools/recovery'))
+ from pinned_codec_replay_binding import validate_archives
+ provider_binding=validate_archives(ROOT,a.exe,a.integration,{str(ARCHIVES[0]):'3c4f0825acb529fda135587b7ff5cb92ca0100bb417a20c034d3fdef80a93e0c',str(ARCHIVES[1]):'69892fbcec9a50a140462982073c686a67ca4763dfb5dfa190534d022b78a40d'})
  req=json.loads((ROOT/PACKET/'request.json').read_text());name=req['targets'][0]['mangled']
  if a.mode in ('all','symbols','replay'):
   symbols={x.split()[-1] for x in run(['nm','--defined-only',obj]).splitlines() if x.split()};assert name in symbols
@@ -32,6 +34,6 @@ def main():
   sources={str(pathlib.Path(x).relative_to('uc-library')):sha(ROOT/x) for x in OWNED}
   repository={x:sha(ROOT/x) for x in CCL}
   target=req['targets'][0];pending=dict(original_elf_sha256=target['original_elf_sha256'],mangled=name,sources=sources,repository_sources=repository,domain=domain,portable_ready=False,cpp_compiled=True,mangling_namespace_checked=True,declaration_uncertainties=limits)
-  proof=dict(version=1,task_id=TASK,originals=req['targets'],source_hashes=sources,repository_sources=repository,provider_archives={str(x):sha(x) for x in ARCHIVES},native_ranges=[fixture['range']],original_type_identities=fixture['identities'],native_case_count=len(fixture['cases']),validation_domain=domain,limitations=limits,checks=checks,formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],unicorn=__import__('unicorn').__version__,object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[pending]),session=dict(provider_thread_id=os.getenv('CODEX_THREAD_ID'),application_session_id=os.getenv('CODEX_SESSION_ID'),phase_start_utc=start,phase_end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
+  proof=dict(version=1,task_id=TASK,originals=req['targets'],source_hashes=sources,repository_sources=repository,provider_archives=provider_binding["archives"],historical_provider_archives=provider_binding["historical"],pinned_codec_provider_binding=provider_binding,native_ranges=[fixture['range']],original_type_identities=fixture['identities'],native_case_count=len(fixture['cases']),validation_domain=domain,limitations=limits,checks=checks,formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['c++','--version']).splitlines()[0],unicorn=__import__('unicorn').__version__,object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,canonical_binding_pending=not bool(a.integration),proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[pending]),session=dict(provider_thread_id=os.getenv('CODEX_THREAD_ID'),application_session_id=os.getenv('CODEX_SESSION_ID'),phase_start_utc=start,phase_end_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
   out=pathlib.Path(a.out) if a.out else ROOT/'uc-library/candidates'/TASK/'worker-proof.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(proof,indent=2)+'\n');print(domain)
 if __name__=='__main__':main()

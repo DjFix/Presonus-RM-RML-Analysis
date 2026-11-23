@@ -243,7 +243,7 @@ if(BUILD_TESTING AND PRESONUS_ENABLE_UPSTREAM_CORE)
   set_tests_properties(recovery_cycle21_g04_s03_replay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")
 
   add_executable(cycle21_g05_s09_replay tests/recovery/cycle21_g05_s09/Replay.cpp)
-  target_link_libraries(cycle21_g05_s09_replay PRIVATE presonus_cs18_components presonus_uc PresonusCore::Provider PNG::PNG ZLIB::ZLIB)
+  target_link_libraries(cycle21_g05_s09_replay PRIVATE presonus_cs18_components presonus_uc PresonusCore::Provider PresonusCore::Png PresonusCore::Zlib)
   target_compile_options(cycle21_g05_s09_replay PRIVATE -fno-rtti -UNDEBUG)
   target_link_options(cycle21_g05_s09_replay PRIVATE -Wl,--wrap=_Znwm,--wrap=_ZdlPvm,--wrap=_Znam)
   add_test(NAME cycle21_g05_s09_replay COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/.venv/bin/python" "-B" "uc-library/tests/recovery/cycle21_g05_s09/check.py" "--exe" "$<TARGET_FILE:cycle21_g05_s09_replay>" "--object" "${CMAKE_BINARY_DIR}/CMakeFiles/presonus_cs18_objects.dir/src/IconManager.cpp.o" "--fixtures" "uc-library/tests/recovery/cycle21_g05_s09/fixtures.json" "--integration" "uc-library/validation/integration.json" "--out" "temp/test-work/cycle21_g05_s09/receipt.json")

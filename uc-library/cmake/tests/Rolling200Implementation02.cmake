@@ -27,7 +27,7 @@ if(BUILD_TESTING)
 
   rolling200_02_replay_target(avb_noaa_receive_replay
     candidates/rolling200_02_impl_w02_05/receive_tests.cpp presonus::uc)
-  target_link_libraries(avb_noaa_receive_replay PRIVATE ZLIB::ZLIB)
+  target_link_libraries(avb_noaa_receive_replay PRIVATE PresonusCore::Zlib)
   target_link_options(avb_noaa_receive_replay PRIVATE
     -Wl,--wrap=_ZN8Presonus3AVB14AvbManagerBase15unpackAvbSpiMsgEPhPKhi
     -Wl,--wrap=_ZN8Presonus3AVB11AvbListener6updateEhhh

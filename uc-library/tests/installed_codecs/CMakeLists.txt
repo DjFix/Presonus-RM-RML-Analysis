@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.30)
+project(PresonusInstalledCodecAudit LANGUAGES CXX)
+
+find_package(presonus_uc CONFIG REQUIRED)
+find_package(PresonusCore 5.0.0 EXACT CONFIG REQUIRED)
+enable_testing()
+if(NOT EXISTS "${PNG_SAMPLE}")
+  message(FATAL_ERROR "A pinned upstream PNG sample is required")
+endif()
+
+function(add_codec_probe role provider)
+  set(probe "codec_${role}")
+  add_executable("${probe}" CodecSmoke.cpp)
+  target_compile_features("${probe}" PRIVATE cxx_std_17)
+  target_link_options("${probe}" PRIVATE -Wl,--trace)
+  target_link_libraries("${probe}" PRIVATE "${provider}")
+  add_test(NAME "${probe}" COMMAND "${probe}" "${PNG_SAMPLE}")
+endfunction()
+
+add_codec_probe(core PresonusCore::Provider)
+add_codec_probe(cs18 presonus::cs18_components)
+add_codec_probe(rm presonus::rm_components)

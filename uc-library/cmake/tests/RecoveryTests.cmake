@@ -306,7 +306,6 @@ if(BUILD_TESTING)
     target_link_libraries(panel_control_group_tests PRIVATE presonus::uc)
     add_test(NAME panel_control_group_tests COMMAND panel_control_group_tests
       ${CMAKE_CURRENT_SOURCE_DIR}/candidates/panel-control-group/validation/arm-vectors.txt)
-    find_package(ZLIB REQUIRED)
     # The fixture supplies packetClockRawTicks; the archive gateway stays unselected.
     add_executable(dice_packet_tests tests/dice_packet_tests.cpp)
     target_compile_features(dice_packet_tests PRIVATE cxx_std_17)
@@ -321,7 +320,7 @@ if(BUILD_TESTING)
         ${CMAKE_CURRENT_SOURCE_DIR}/validation/dice-packet-candidate/runs/20261026T220418.737889Z/${packet_fixture}.txt)
     endforeach()
     add_executable(dice_response_tests tests/dice_response_tests.cpp)
-    target_link_libraries(dice_response_tests PRIVATE presonus::uc ZLIB::ZLIB)
+    target_link_libraries(dice_response_tests PRIVATE presonus::uc PresonusCore::Zlib)
     foreach(role IN ITEMS client server)
       add_test(NAME dice_response_${role} COMMAND dice_response_tests
         ${CMAKE_CURRENT_SOURCE_DIR}/validation/dice-response-candidate/runs/20261027T023858.579945Z/${role}-response-vectors.txt.gz ${role})
@@ -437,10 +436,9 @@ if(BUILD_TESTING)
   target_link_libraries(panel_meter_control_tests PRIVATE presonus::uc)
   add_test(NAME panel_meter_control_tests COMMAND panel_meter_control_tests
     ${CMAKE_CURRENT_SOURCE_DIR}/validation/panel-meter-control/arm-vectors.txt)
-  find_package(ZLIB REQUIRED)
   if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     add_executable(avb_receive_tests tests/avb_receive_tests.cpp)
-    target_link_libraries(avb_receive_tests PRIVATE presonus::uc ZLIB::ZLIB)
+    target_link_libraries(avb_receive_tests PRIVATE presonus::uc PresonusCore::Zlib)
     target_link_options(avb_receive_tests PRIVATE
       "-Wl,--wrap=_ZN8Presonus3AVB14AvbManagerBase15unpackAvbSpiMsgEPhPKhi"
       "-Wl,--wrap=_ZN8Presonus3AVB11AvbListener6updateEhhh"
@@ -449,12 +447,12 @@ if(BUILD_TESTING)
       ${CMAKE_CURRENT_SOURCE_DIR}/validation/avb-receive-candidate/runs/20261027T003044.766641Z/receive-vectors.txt.gz)
   endif()
   add_executable(avb_streams_tests tests/avb_streams_tests.cpp)
-  target_link_libraries(avb_streams_tests PRIVATE presonus::uc ZLIB::ZLIB)
+  target_link_libraries(avb_streams_tests PRIVATE presonus::uc PresonusCore::Zlib)
   add_test(NAME avb_streams_tests COMMAND avb_streams_tests
     ${CMAKE_CURRENT_SOURCE_DIR}/validation/avb-streams/runs/20261027T000739.509106Z/client-vectors.bin.gz
     ${CMAKE_CURRENT_SOURCE_DIR}/validation/avb-streams/runs/20261027T000739.509106Z/server-vectors.bin.gz)
   add_executable(avb_protocol_tests tests/avb_protocol_tests.cpp)
-  target_link_libraries(avb_protocol_tests PRIVATE presonus::uc ZLIB::ZLIB)
+  target_link_libraries(avb_protocol_tests PRIVATE presonus::uc PresonusCore::Zlib)
   add_test(NAME avb_protocol_tests COMMAND avb_protocol_tests
     ${CMAKE_CURRENT_SOURCE_DIR}/validation/avb-protocol/runs/20261026T235518.530958Z/accept-vectors.txt
     ${CMAKE_CURRENT_SOURCE_DIR}/validation/avb-protocol/runs/20261026T235518.530958Z/reverse-vectors.txt
@@ -1208,7 +1206,7 @@ if(BUILD_TESTING)
   add_test(NAME dsp_eq_source_providers_formatter_conflict COMMAND dsp_eq_source_providers_tests formatter-conflict)
   add_test(NAME dsp_eq_source_providers_factory_conflict COMMAND dsp_eq_source_providers_tests factory-conflict)
   add_executable(uc_message_attributes_event_tests tests/message_attributes_event_tests.cpp)
-  target_link_libraries(uc_message_attributes_event_tests PRIVATE presonus::uc ZLIB::ZLIB)
+  target_link_libraries(uc_message_attributes_event_tests PRIVATE presonus::uc PresonusCore::Zlib)
   target_compile_options(uc_message_attributes_event_tests PRIVATE -fno-rtti -UNDEBUG)
   target_link_options(uc_message_attributes_event_tests PRIVATE
     -Wl,--wrap=_Znwm -Wl,--wrap=_ZdlPv -Wl,--wrap=_ZdlPvm
@@ -1230,7 +1228,7 @@ if(BUILD_TESTING)
   target_link_options(noaa_tcard_status_tests PRIVATE -Wl,--wrap=_ZN8Presonus15ResourceLibrary3getEPKc -Wl,--wrap=_ZN8Presonus15ResourceLibrary18getRequiredVersionEPKc -Wl,--wrap=_ZN4Core11DebugPrintfEPKcz)
   add_test(NAME noaa_tcard_status COMMAND noaa_tcard_status_tests ${CMAKE_CURRENT_SOURCE_DIR}/validation/noaa-tcard-status/stdin.txt)
   add_executable(uc_mutable_message_event_tests tests/mutable_message_event_tests.cpp)
-  target_link_libraries(uc_mutable_message_event_tests PRIVATE presonus::uc ZLIB::ZLIB)
+  target_link_libraries(uc_mutable_message_event_tests PRIVATE presonus::uc PresonusCore::Zlib)
   target_compile_options(uc_mutable_message_event_tests PRIVATE -fno-rtti -UNDEBUG)
   target_link_options(uc_mutable_message_event_tests PRIVATE
     -Wl,--wrap=_ZN4Core2IO6BufferC1EPvjb
