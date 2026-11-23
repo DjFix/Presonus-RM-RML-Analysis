@@ -8,13 +8,13 @@
 
 | Партия | Заданий | ELF-строк | Полный манифест на VM101 |
 |---|---:|---:|---|
-| [C001](C001.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_001.json) |
-| [C002](C002.tsv) | 100 | 101 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_002.json) |
-| [C003](C003.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_003.json) |
-| [C004](C004.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_004.json) |
-| [C005](C005.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_005.json) |
-| [C006](C006.tsv) | 98 | 98 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_006.json) |
-| [C007](C007.tsv) | 3 | 3 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches03/BATCH_007.json) |
+| [C001](C001.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_001.json) |
+| [C002](C002.tsv) | 100 | 101 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_002.json) |
+| [C003](C003.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_003.json) |
+| [C004](C004.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_004.json) |
+| [C005](C005.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_005.json) |
+| [C006](C006.tsv) | 100 | 100 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_006.json) |
+| [C007](C007.tsv) | 1 | 1 | [JSON](../../temp/recovery-work/control10x20-after-4fed70d11/selection/rolling10x10-to-finish/candidate-batches05/BATCH_007.json) |
 
 ## Дополнительный отбор
 
