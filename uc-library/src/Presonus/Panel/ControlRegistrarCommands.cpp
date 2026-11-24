@@ -17,4 +17,12 @@ void ControlRegistrar::scanSurface() {
   Uart_Msg_Type message{{0x67, 0x05, 0, 0}};
   writeDualMsg(message);
 }
+void ControlRegistrar::scanFaders() {
+  Uart_Msg_Type message{{0x67, 0x05, 0x01, 0}};
+  writeDualMsg(message);
+}
+void ControlRegistrar::scanSwitches() {
+  Uart_Msg_Type message{{0x67, 0x05, 0x02, 0}};
+  writeDualMsg(message);
+}
 } // namespace Presonus::Panel

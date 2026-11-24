@@ -12,6 +12,10 @@ void ControlRegistrar::init() { initialized_ = true; }
 void ControlRegistrar::handleVersion(int, Uart_Msg_Type &message) {
   version_ = message.bytes[2] | (std::uint32_t(message.bytes[3]) << 8);
 }
+void ControlRegistrar::handleGlobalResponse(int type, Uart_Msg_Type &message) {
+  if (message.bytes[1] == 0)
+    handleVersion(type, message);
+}
 void *ControlRegistrar::castTo(int id) {
   constexpr int kControlRegistrarId = 0x63526567;
   constexpr int kUartId = 0x75617274;

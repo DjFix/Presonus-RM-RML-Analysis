@@ -86,6 +86,9 @@ public:
   virtual void setAllLeds(bool);
   virtual void setAllMeters(bool);
   virtual void scanSurface();
+  virtual void scanFaders();
+  virtual void scanSwitches();
+  void handleGlobalResponse(int, Uart_Msg_Type &);
   // Original return spellings are unencoded; these are portable declarations.
   int count() const;
   ControlGroup *at(int index) const;
