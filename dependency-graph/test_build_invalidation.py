@@ -55,9 +55,11 @@ def _test_argument_artifacts(root, build_roots, rows, tests, changed):
             object_outputs.add((pathlib.Path(row['directory']) / argv[argv.index('-o') + 1]).resolve())
 
     test_output = root / 'temp/test-work'
+    integration_proof = root / 'uc-library/validation/integration.json'
     artifacts = set()
     for test in tests:
-        for argument in test.get('command', [])[1:]:
+        command = test.get('command', [])
+        for option, argument in zip(command, command[1:]):
             candidate = pathlib.Path(argument)
             if not candidate.is_absolute():
                 continue
@@ -68,7 +70,17 @@ def _test_argument_artifacts(root, build_roots, rows, tests, changed):
             if path.is_relative_to(test_output) and path.suffix == '.json':
                 artifacts.add(path)
                 continue
+            if path == integration_proof and option == '--integration':
+                proof = json.loads(path.read_text())
+                if (isinstance(proof, dict) and proof.get('platform') == 'linux' and proof.get('ctest_passed') is True
+                        and isinstance(proof.get('files'), dict)
+                        and re.fullmatch(r'[0-9a-f]{64}', str(proof.get('test_log_sha256', '')))):
+                    artifacts.add(path)
+                continue
             if not any(path.is_relative_to(build) for build in build_roots):
+                continue
+            if option == '--out' and path.suffix == '.json':
+                artifacts.add(path)
                 continue
             with path.open('rb') as stream:
                 magic = stream.read(8)

@@ -222,6 +222,27 @@ class TestBuildInvalidation(unittest.TestCase):
             self.write('temp/core-upstream/root-integration-01/CMakeFiles/Makefile.cmake', content)
             self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
 
+
+    def test_ctest_proof_paths_require_exact_roles_and_membership(self):
+        prefix = 'temp/core-upstream/root-integration-01/'
+        build = self.root / prefix
+        self.write(prefix + 'CMakeFiles/Makefile.cmake',
+                   'set(CMAKE_MAKEFILE_DEPENDS\n  "CMakeCache.txt"\n)\n')
+        replay_proof = self.write(prefix + 'Replay-ctest-proof.json', '{}')
+        canonical_proof = self.write('uc-library/validation/integration.json',
+                                     json.dumps({'platform': 'linux', 'ctest_passed': True,
+                                                 'files': {}, 'test_log_sha256': '0' * 64}))
+        changed = [str(path.relative_to(self.root)) for path in (replay_proof, canonical_proof)]
+        tests = [{'command': ['/usr/bin/python3', '--out', str(replay_proof),
+                              '--integration', str(canonical_proof)]}]
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], set())
+        tests[0]['command'][1] = '--fixture'
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
+        tests[0]['command'][1] = '--out'
+        self.inputs[str(canonical_proof)] = 'sha'
+        self.save()
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
+
     def test_fixture_change_before_and_after_test_build(self):
         name = 'uc-library/tests/fixture.json'
         self.assertEqual(self.plan([name], configuration=False)[0][0], set())
