@@ -15,6 +15,8 @@ def sha(path):
 
 
 def main():
+    from production_write_stop import require_graph_updates
+    require_graph_updates()
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--run', required=True)
     p.add_argument('--host', required=True)

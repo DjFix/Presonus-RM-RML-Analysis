@@ -101,6 +101,9 @@ def migrate(source, destination, report, *, progress=None):
     changes. Per-owner destination commits/checkpoints bound temporary WAL size;
     the replacement is usable only after the successful receipt is reviewed.
     """
+    from production_write_stop import require_graph_storage_write
+    require_graph_storage_write(source)
+    require_graph_storage_write(destination)
     source, destination, report = (pathlib.Path(value).resolve() for value in (source, destination, report))
     if len({source, destination, report}) != 3:
         raise MigrationError('Source, destination and report must be different paths')

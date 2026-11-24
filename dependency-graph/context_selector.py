@@ -47,6 +47,8 @@ def graph_marker(session, active):
 
 
 def register(session, out, reports=None):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     if reports is None and ACTIVE.exists():
         previous = json.loads(ACTIVE.read_text())
         previous_state = inside(ROOT, previous['state'])

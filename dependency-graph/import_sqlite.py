@@ -12,6 +12,8 @@ parser.add_argument('--integer-keys', action='store_true')
 args = parser.parse_args()
 run = pathlib.Path(args.run)
 path = run / ('csv-import-int.sqlite' if args.integer_keys else 'csv-import.sqlite')
+from production_write_stop import require_graph_storage_write
+require_graph_storage_write(path)
 if path.exists():
     raise ValueError('Never overwrite a prior benchmark')
 c = sqlite3.connect(path)

@@ -35,6 +35,8 @@ def execution_targets(address, by_address, function_set):
 
 
 def build(out, manifests=None):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     from capstone import Cs, CS_ARCH_ARM, CS_MODE_ARM, CS_MODE_THUMB, CS_MODE_LITTLE_ENDIAN, CS_GRP_CALL, CS_GRP_JUMP
     from capstone.arm import ARM_OP_IMM, ARM_OP_REG, ARM_OP_MEM, ARM_REG_PC, ARM_REG_LR
     from elftools.elf.elffile import ELFFile

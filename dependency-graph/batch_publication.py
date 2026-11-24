@@ -305,6 +305,8 @@ def publish(session, database, path, log_path, batch_size=1000, stop_after=None,
     failure never implicitly enables full rebuild. A retry uses the same journal
     and server cursor; attempted rows and requests are charged within each run.
     """
+    from production_write_stop import require_graph_storage_write
+    require_graph_storage_write(path)
     log_path = pathlib.Path(log_path)
     budget_path = log_path.with_name(log_path.name + '.budget.json')
     planning = None

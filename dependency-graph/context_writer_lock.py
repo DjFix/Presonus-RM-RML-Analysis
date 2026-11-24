@@ -12,6 +12,8 @@ import pathlib
 @contextmanager
 def exclusive_writer(root=None):
     root = pathlib.Path(root) if root is not None else pathlib.Path(__file__).resolve().parents[1]
+    from production_write_stop import require_graph_updates
+    require_graph_updates(root)
     path = root / "dependency-graph/state/context.lock"
     path.parent.mkdir(parents=True, exist_ok=True)
     try:

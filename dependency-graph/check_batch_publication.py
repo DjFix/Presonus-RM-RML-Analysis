@@ -4,6 +4,8 @@ from neo4j import GraphDatabase
 from batch_publication import publish
 from context_runtime import ContextError
 
+from production_write_stop import require_graph_updates
+require_graph_updates()
 out=pathlib.Path(sys.argv[1]);uri=sys.argv[2]
 assert 'batch-test' in uri
 out.mkdir(parents=True,exist_ok=True)

@@ -118,6 +118,8 @@ def require_lifecycle(session, root, delta_path, seal, receipt):
 
 
 def reconcile(session, root, delta_path, seal, stop_after_commit=False):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(root)
     from native_candidate_gate import verify_guard_inputs
     root = pathlib.Path(root).resolve()
     packed = seal if isinstance(seal, dict) and seal.get('guard_codec') in BOUNDED_GUARD_CODECS else None

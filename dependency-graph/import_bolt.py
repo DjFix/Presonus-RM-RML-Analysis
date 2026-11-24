@@ -9,6 +9,8 @@ from neo4j import GraphDatabase
 
 
 def main():
+    from production_write_stop import require_graph_updates
+    require_graph_updates()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', required=True)
     parser.add_argument('--host', required=True)

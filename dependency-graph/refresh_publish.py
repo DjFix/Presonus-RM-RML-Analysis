@@ -603,6 +603,8 @@ def publication_runtime(out, plan, pending):
 
 
 def main(out):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     plan = json.loads((out / 'plan.json').read_text())
     if plan.get('identity_version') != VERSION:
         raise ContextError('Legacy sealed delta requires explicit identity migration; publication blocked')

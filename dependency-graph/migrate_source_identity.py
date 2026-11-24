@@ -59,6 +59,8 @@ def capture_edges(s,db,table,kinds):
 
 
 def stage(out, resume=False):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     out.mkdir(parents=True,exist_ok=resume)
     os.environ['SQLITE_TMPDIR']=str(out)
     legacy=BASE/'state/refresh-index.sqlite'
@@ -173,6 +175,8 @@ def seal_stage(out,c,d,inputs,previous_active,kinds,resume,reconciliation=None):
 
 
 def reconcile_stage(out):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     analysis=json.loads((out/'baseline-reconciliation-analysis.json').read_text())
     if analysis['extra_not_in_historical_graph'] or analysis['missing_present_in_historical_graph']:
         raise ContextError('Ownership reconciliation contains unexplained tuples')
@@ -221,6 +225,8 @@ def reconcile_stage(out):
 
 
 def activate(out):
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     receipt=json.loads((out/'STAGED.json').read_text());plan=json.loads((out/'plan.json').read_text())
     for file,key in [('delta.sqlite','delta_sha256'),('plan.json','plan_sha256'),('captured-report.json','report_sha256')]:
         if sha(out/file)!=receipt[key]:raise ContextError('Staged migration changed '+file)
@@ -286,6 +292,8 @@ def verify(session,out):
 
 
 if __name__=='__main__':
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['stage','resume-stage','reconcile-stage','activate']);parser.add_argument('--out',type=pathlib.Path,required=True);args=parser.parse_args()
     out=args.out.resolve()
     if not out.is_relative_to(ROOT/'temp/recovery-work'):raise ContextError('Output must be project recovery work')

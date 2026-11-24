@@ -40,6 +40,9 @@ def run(argv, out, label):
 
 
 def docker(script, out, label, analysis=False):
+    if not analysis:
+        from production_write_stop import require_graph_updates
+        require_graph_updates(ROOT)
     memory_args = []
     cpus = 2
     if analysis:
@@ -170,6 +173,8 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
                  reuse_capture=None, verify_build_plan=None, compiler_rescan=None,
                  row_budget_review=None, bounded_rekey_pairs=None):
     """Caller holds context.lock for refresh plus packet selection; no background watcher."""
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     index_path = BASE / 'state/refresh-index.sqlite'
     if bounded_rekey_pairs is not None and (
             compiler_rescan is None or reuse_capture is None or type(bounded_rekey_pairs) is not int
@@ -361,6 +366,8 @@ def ensure_fresh(force=False, *, full_rebuild=False, rebuild_authorization=None,
 
 
 if __name__ == '__main__':
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     lock = BASE / 'state/context.lock'; lock.parent.mkdir(parents=True, exist_ok=True)
     with lock.open('a') as stream:
         fcntl.flock(stream, fcntl.LOCK_EX)

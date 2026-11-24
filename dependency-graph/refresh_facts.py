@@ -14,6 +14,8 @@ from stage_normalization import normalize_ast
 
 
 def connect(path):
+    from production_write_stop import require_graph_storage_write
+    require_graph_storage_write(path)
     c = sqlite3.connect(path)
     try:
         if c.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='node_facts'").fetchone():

@@ -19,6 +19,8 @@ def batches(cursor,size=500):
 
 
 def main():
+    from production_write_stop import require_graph_updates
+    require_graph_updates(ROOT)
     c,pointer=open_index(ROOT)
     driver=GraphDatabase.driver(memgraph_uri(ROOT),auth=None)
     with driver.session() as s:
