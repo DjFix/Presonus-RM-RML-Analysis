@@ -25,6 +25,9 @@ public:
     return state_.descriptionNumber;
   }
   void resetBoard(int mode, int board);
+  void onProgress(const char *, float);
+  void bootComplete();
+  void enableAMP(bool);
   const char *getPanelPortName();
   Presonus::IPanelPort *getPort() const override;
   void writeDualMsg(Uart_Msg_Type &) override;

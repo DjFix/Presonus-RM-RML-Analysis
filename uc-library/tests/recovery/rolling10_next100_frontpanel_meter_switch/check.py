@@ -2,6 +2,8 @@
 import argparse,datetime,hashlib,json,os,subprocess,sys,time
 from pathlib import Path
 import native
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
 ROOT=Path(__file__).resolve().parents[4];TEST=Path(__file__).resolve().parent
 KEY='switch';TASK='rolling10_next100_'+native.TASKS[KEY]
 OUT=Path('temp/recovery-work')/TASK
@@ -19,11 +21,11 @@ def run(argv,stdin=''):
  result=subprocess.run(list(map(str,argv)),input=stdin,cwd=ROOT,text=True,capture_output=True,env={**os.environ,'TMPDIR':str(ROOT/OUT)})
  if result.returncode:print(result.stdout,result.stderr);raise RuntimeError((list(map(str,argv)),result.returncode))
  return result.stdout
-def supplement():
+def supplement(transition):
  assert sha(ADD)==ADD_SHA and sha(TRANS)==TRANS_SHA
  transitive=json.load(open(TRANS));requested=transitive['requested_inputs'];assert sha(requested['path'])==requested['sha256']
  for path,binding in transitive['read_inputs'].items():
-  assert sha(ROOT/path)==binding['sha256']
+  assert sha(ROOT/path)==current_source_digest(path,binding['sha256'],transition),path
  d=json.load(open(ADD));libs=[Path(v['frozen_read_path']) for v in d['archives'].values()]
  for v in d['archives'].values():assert sha(v['frozen_read_path'])==v['sha256']
  return libs
@@ -35,11 +37,11 @@ DOMAIN={
 'init':'18 exact original executions: signed description INT_MIN,INT_MIN+1,-1000,-1,0,1,42,INT_MAX-1,INT_MAX; sceneSettings tag0 absent/present actual StringParam with previous contents. Bound Registrar state differs from Mixer scalar/other registries. Actual CString64.appendFormat exact %d runs before actual scene tag0 lookup; present setter fromString(false), exact bytes/NUL and real observer messages compared. No Python formatting or app output used as oracle; explicit initialized Registrar input, stable live real providers.'}
 def main():
  global TRANS,TRANS_SHA
- a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',choices=['format','compile','symbols','replay'],default='replay');a.add_argument('--exe',type=Path);a.add_argument('--object',type=Path);a.add_argument('--integration',type=Path);a.add_argument('--out',type=Path);a.add_argument('--transitive-supplement',type=Path);a.add_argument('--transitive-supplement-sha256');args=a.parse_args();os.chdir(ROOT);OUT.mkdir(parents=True,exist_ok=True)
+ a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',choices=['format','compile','symbols','replay'],default='replay');a.add_argument('--exe',type=Path);a.add_argument('--object',type=Path);a.add_argument('--integration',type=Path);a.add_argument('--out',type=Path);a.add_argument('--transitive-supplement',type=Path);a.add_argument('--transitive-supplement-sha256');a.add_argument('--source-transition',type=Path);a.add_argument('--source-transition-sha256');args=a.parse_args();os.chdir(ROOT);OUT.mkdir(parents=True,exist_ok=True)
  assert bool(args.transitive_supplement)==bool(args.transitive_supplement_sha256),'Explicit transitive supplement path/hash pair required'
  if args.transitive_supplement:
   TRANS=args.transitive_supplement;TRANS_SHA=args.transitive_supplement_sha256
- libs=supplement();target='PanelComponent' if KEY=='init' else 'FrontPanelComponent';obj=args.object or OUT/(target+'.o');exe=(args.exe or OUT/'replay').resolve();replay=TEST/'Replay.cpp'
+ libs=supplement(load_transition(args.source_transition,args.source_transition_sha256));target='PanelComponent' if KEY=='init' else 'FrontPanelComponent';obj=args.object or OUT/(target+'.o');exe=(args.exe or OUT/'replay').resolve();replay=TEST/'Replay.cpp'
  fmt=['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*OWNED,replay]
  if args.mode=='format':run(fmt);print('format passed');return
  if args.mode=='compile':

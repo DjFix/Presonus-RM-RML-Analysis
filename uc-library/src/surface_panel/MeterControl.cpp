@@ -33,4 +33,10 @@ void MeterControl::setBusDirection(BusDirection direction) {
   if (static_cast<int>(direction) <= 1)
     direction_ = static_cast<int>(direction);
 }
+
+void *MeterControl::castTo(int classId) {
+  constexpr int meterControlId = 0x4d43746c;
+  constexpr int controlId = 0x4374726c;
+  return classId == meterControlId || classId == controlId ? this : nullptr;
+}
 } // namespace Presonus::Panel

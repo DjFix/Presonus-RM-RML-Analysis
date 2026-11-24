@@ -16,6 +16,8 @@ public:
                             const float *inputSteps, const float *outputSteps);
   int getNumMeterSteps(BusDirection direction, bool alternate) const;
   void setBusDirection(BusDirection direction);
+  // Portable declaration for the observed receiver-or-null result.
+  void *castTo(int classId);
 
 private:
   friend struct presonus::surface_panel_port::MeterControlAccess;

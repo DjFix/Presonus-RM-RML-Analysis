@@ -469,3 +469,9 @@ void SurfaceRootComponent::storeSettings() const {
   settings.setDirty();
 }
 } // namespace Presonus::Surface
+
+namespace Presonus::Surface {
+void SurfaceRootComponent::networkChanged(const Presonus::WIFIManager &) {}
+void SurfaceRootComponent::screenTouched(
+    const Presonus::Panel::ControlRegistrar &, int, int, int, int) {}
+} // namespace Presonus::Surface

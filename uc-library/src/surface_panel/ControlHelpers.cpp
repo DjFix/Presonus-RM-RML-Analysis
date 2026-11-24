@@ -8,6 +8,15 @@ void ControlRegistrar::Delegate::controlChanged(const ControlRegistrar &,
 void ControlRegistrar::handleMovingFaderMcuStatus(unsigned char, unsigned char,
                                                   unsigned char) {}
 void ControlRegistrar::handleKeyValue(unsigned char, unsigned short) {}
+void ControlRegistrar::init() { initialized_ = true; }
+void ControlRegistrar::handleVersion(int, Uart_Msg_Type &message) {
+  version_ = message.bytes[2] | (std::uint32_t(message.bytes[3]) << 8);
+}
+void *ControlRegistrar::castTo(int id) {
+  constexpr int kControlRegistrarId = 0x63526567;
+  constexpr int kUartId = 0x75617274;
+  return id == kControlRegistrarId || id == kUartId ? this : nullptr;
+}
 void ControlRegistrar::Delegate::encoderChanged(const ControlRegistrar &, int,
                                                 int, EncoderControl *) {}
 void ControlRegistrar::Delegate::lineSenseChanged(const ControlRegistrar &, int,

@@ -8,6 +8,9 @@ class ChannelGroupFilter {
 public:
   explicit ChannelGroupFilter(int count);
   void setVisible(int index, bool visible);
+  int count() const;
+  bool visible(int index) const;
+  int getChannelOffset(int visibleIndex) const;
   const Core::Vector<bool> &sourcePortVisibility() const { return visibility_; }
 
 private:

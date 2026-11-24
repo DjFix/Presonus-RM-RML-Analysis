@@ -35,12 +35,27 @@ public:
   AvbTalker *findTalker(unsigned char identifier);
   unsigned char lookupNextTalkerIndex();
 
+  // Portable count declarations. Original return spelling and virtuality
+  // remain unresolved.
+  int numActiveListeners();
+  int numFreeListeners();
+  int numFreeTalkers();
+
+  enum class Role { Cs18Client, RmServer };
+
+  // Independent portable setup; no original constructor claim. A receive-only
+  // binding clears role configuration. Free-count queries require a role.
+  void bindReceiveContext(presonus::avb::ReceiveContext &context, Role role);
+
   // Independent portable setup; no original constructor claim.
   void bindReceiveContext(presonus::avb::ReceiveContext &context) {
     receiveContext_ = &context;
+    streamCapacity_ = 0;
   }
 
 private:
+  int streamCapacity() const;
+  int streamCapacity_ = 0;
   presonus::avb::ReceiveContext *receiveContext_ = nullptr;
 };
 } // namespace Presonus::AVB

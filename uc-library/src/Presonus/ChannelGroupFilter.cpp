@@ -23,4 +23,26 @@ void ChannelGroupFilter::setVisible(int index, bool visible) {
   if (index < visibility_.count())
     visibility_.at(index) = visible;
 }
+int ChannelGroupFilter::count() const {
+  int visibleCount = 0;
+  for (bool item : visibility_)
+    visibleCount += item;
+  return visibleCount;
+}
+
+bool ChannelGroupFilter::visible(int index) const {
+  return index < visibility_.count() && visibility_.at(index);
+}
+
+int ChannelGroupFilter::getChannelOffset(int visibleIndex) const {
+  int visibleCount = 0;
+  int index = 0;
+  for (bool item : visibility_) {
+    visibleCount += item;
+    if (visibleCount > visibleIndex)
+      return index;
+    ++index;
+  }
+  return visibility_.getCapacity();
+}
 } // namespace Presonus

@@ -26,7 +26,8 @@ struct RegistrarGroupRegistry;
 }
 namespace Presonus {
 struct TouchInputEvent;
-}
+class WIFIManager;
+} // namespace Presonus
 namespace Presonus::Panel {
 class EncoderControl;
 class ControlGroup;
@@ -76,6 +77,11 @@ public:
   // Direct source-port defaults. Original return and dispatch remain pending.
   void handleMovingFaderMcuStatus(unsigned char, unsigned char, unsigned char);
   void handleKeyValue(unsigned char, unsigned short);
+  void init();
+  void handleVersion(int, Uart_Msg_Type &);
+  void *castTo(int id);
+  bool sourcePortInitialized() const { return initialized_; }
+  std::uint32_t sourcePortVersion() const { return version_; }
   virtual void writeDualMsg(Uart_Msg_Type &);
   virtual void setAllLeds(bool);
   virtual void setAllMeters(bool);
@@ -91,6 +97,8 @@ public:
 private:
   Presonus::IPanelPort *port_ = nullptr;
   bool portBound_ = false;
+  bool initialized_ = false;
+  std::uint32_t version_ = 0;
   presonus::panel_binding::RegistrarGroupRegistry *groupRegistry_ = nullptr;
 };
 class SevenSegControl : public Control {
@@ -276,6 +284,9 @@ public:
     services_ = &value;
   }
   void updateFocusParams(Presonus::Panel::Control *);
+  void networkChanged(const Presonus::WIFIManager &);
+  void screenTouched(const Presonus::Panel::ControlRegistrar &, int, int, int,
+                     int);
   // Direct source-port callback with provisional void return.
   void controlChanged(const Presonus::Panel::ControlRegistrar &, unsigned char,
                       unsigned char *);

@@ -3,6 +3,9 @@
 #include "presonus/surface_panel/ControlHelpers.hpp"
 #include <stdexcept>
 namespace Presonus::Panel {
+void PanelRegistrar::onProgress(const char *, float) {}
+void PanelRegistrar::bootComplete() {}
+void PanelRegistrar::enableAMP(bool) {}
 const char *PanelRegistrar::getPanelPortName() { return "/dev/ttyS0"; }
 Presonus::IPanelPort *PanelRegistrar::getPort() const { return state_.port; }
 int PanelRegistrar::mapGroupIdToControlType(

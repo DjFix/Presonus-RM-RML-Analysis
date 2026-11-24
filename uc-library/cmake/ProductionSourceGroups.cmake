@@ -504,6 +504,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Mixer/GlobalComponent.cpp
   src/Presonus/Mixer/FXBusComponent.cpp
   src/Presonus/Panel/FXBook.cpp
+  src/Presonus/Mixer/RackMixerApplication.cpp
   src/Presonus/Mixer/RackMixerComponent.cpp
   src/Presonus/Mixer/SendOutputComponent.cpp
   src/Presonus/Mixer/GEQLinkHandler.cpp

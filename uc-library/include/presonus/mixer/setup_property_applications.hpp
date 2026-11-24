@@ -18,6 +18,9 @@ struct SetupContext {
   presonus::noaa::OpaqueSetupReference native20;
 };
 } // namespace presonus::mixer
+namespace Presonus::Panel {
+class PanelRegistrar;
+}
 namespace Presonus::Mixer {
 // Partial original app interface/hierarchy. Functional callbacks remain pure,
 // not empty success stubs. Unrelated original virtual members are not restored;
@@ -46,8 +49,20 @@ private:
   const presonus::mixer::SetupContext &context_;
 };
 class RackMixerApplication : public MixerApplication {
+public:
+  // Borrowed panel registrar. It must outlive calls to onProgress.
+  void bindProgressRegistrar(Panel::PanelRegistrar &registrar) {
+    progressRegistrar_ = &registrar;
+  }
+  // Portable declaration of the existing listener override. Progress is in
+  // [0, 1] and requires a previously bound live registrar.
+  void onProgress(const char *, float progress) override;
+
 protected:
   using MixerApplication::MixerApplication;
+
+private:
+  Panel::PanelRegistrar *progressRegistrar_ = nullptr;
 };
 class StudioliveMixerApplication : public MixerApplication {
 protected:

@@ -1,14 +1,53 @@
 #include "presonus/avb/protocol.hpp"
+#include "presonus/avb/receive_services.hpp"
 #include "presonus/dice/sysex.hpp"
 
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
+#include <stdexcept>
 
 static_assert(sizeof(int) == 4);
 static_assert(sizeof(unsigned long long) == 8);
 
 namespace Presonus::AVB {
+void AvbManagerBase::bindReceiveContext(presonus::avb::ReceiveContext &context,
+                                        Role role) {
+  switch (role) {
+  case Role::Cs18Client:
+    streamCapacity_ = 16;
+    break;
+  case Role::RmServer:
+    streamCapacity_ = 4;
+    break;
+  default:
+    throw std::invalid_argument("unsupported AVB manager role");
+  }
+  receiveContext_ = &context;
+}
+
+int AvbManagerBase::streamCapacity() const {
+  if (streamCapacity_ == 0)
+    throw std::logic_error("AVB capacity query requires an explicit role");
+  return streamCapacity_;
+}
+
+int AvbManagerBase::numActiveListeners() {
+  if (!receiveContext_)
+    throw std::logic_error("AVB listener count requires a receive context");
+  return receiveContext_->listeners.count();
+}
+
+int AvbManagerBase::numFreeListeners() {
+  const int capacity = streamCapacity();
+  return capacity - numActiveListeners();
+}
+
+int AvbManagerBase::numFreeTalkers() {
+  const int capacity = streamCapacity();
+  return capacity - receiveContext_->talkers.count();
+}
+
 bool AvbManagerBase::accepts(const DICE::SysexPacket &packet) {
   if (packet.length <= 1)
     return false;
