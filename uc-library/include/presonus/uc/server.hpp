@@ -59,12 +59,18 @@ protected:
 };
 class LocalServer : public Server {
 public:
+  LocalServer(int identifier, IEventHandler *, const ServerInfo &);
   LocalServer(presonus::uc::ServerSourcePortTag tag,
               presonus::uc::ServerState &state)
       : Server(tag, state) {}
   int getType() const override;
   static LocalServer *cast(Server *);
   void getDescription(DiscoveryDescriptor &) const;
+  IEventHandler *sourcePortHandler() const { return handler_; }
+
+private:
+  // Borrowed handler identity in the portable object.
+  IEventHandler *handler_ = nullptr;
 };
 class RemoteServer : public Server {
 public:

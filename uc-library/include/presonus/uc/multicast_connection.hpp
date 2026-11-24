@@ -61,6 +61,7 @@ public:
   MulticastConnection(presonus::uc::MulticastSourcePortTag,
                       presonus::uc::MulticastConnectionState &state)
       : BasicConnection(state.outgoing), state_(state) {}
+  void cleanup();
   void makeMulticastSockets(bool);
   void makeUnicastSockets(bool);
   void startUnicastListening();

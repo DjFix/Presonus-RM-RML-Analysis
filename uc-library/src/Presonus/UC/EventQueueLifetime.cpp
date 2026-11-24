@@ -54,6 +54,11 @@ EventQueue::~EventQueue() {
     state_.owned->attached = false;
   }
 }
+void EventQueue::addEvent(EventItem *item) {
+  if (!state_.owned)
+    throw std::logic_error("owned queue lifecycle state required");
+  state_.owned->append(item);
+}
 EventItem *EventQueue::retrieveEvent() {
   if (!state_.owned)
     throw std::logic_error("owned queue lifecycle state required");

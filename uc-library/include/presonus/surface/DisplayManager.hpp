@@ -3,6 +3,8 @@
 #include "core/public/corevector.h"
 #include "presonus/surface/IDisplayPort.hpp"
 #include <vector>
+
+struct Touchscreen_Type;
 namespace presonus::surface_display_port {
 struct DisplayManagerAccess;
 }
@@ -16,6 +18,10 @@ struct TouchInputEvent {
   int screen;
   int x;
   int y;
+
+  // The UART caller supplies four readable bytes. The original return type
+  // remains unresolved.
+  void fromMsg(Touchscreen_Type &message);
 };
 // Partial app source model; original constructor/base/layout/returns not
 // claimed.

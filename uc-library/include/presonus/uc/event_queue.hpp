@@ -72,6 +72,7 @@ public:
     state.attach();
   }
   ~EventQueue();
+  void addEvent(EventItem *);
   // These ordinary return declarations remain unencoded/provisional.
   EventItem *retrieveEvent();
   bool isEmpty() const;

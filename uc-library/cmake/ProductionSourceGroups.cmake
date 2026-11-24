@@ -1,4 +1,9 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/IDAWDialogHandler.cpp
+  src/Presonus/Panel/GPIOControlGroup.cpp
+  src/Presonus/TouchInputEvent.cpp
+  src/Presonus/UC/ClientComponent.cpp
+  src/Presonus/UC/LocalServer.cpp
   src/Presonus/UC/ServerComponent.cpp
   src/Presonus/MixerClientPresetCleanup.cpp
   src/Presonus/Mixer/DecayTimeFormatterT6.cpp
@@ -629,6 +634,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/IDAWDialogHandler.hpp
+  presonus/panel/GPIOControlGroup.hpp
+  presonus/uc/ClientComponent.hpp
   presonus/mixer/DecayTimeFormatterT6.hpp
   presonus/mixer/DecayTimeFormatterT7.hpp
   presonus/mixer/DecayTimeFormatterT8.hpp

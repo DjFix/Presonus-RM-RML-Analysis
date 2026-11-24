@@ -204,6 +204,9 @@ find_package(Threads REQUIRED)
 target_link_libraries(uc_loopback PRIVATE presonus::uc Threads::Threads)
 install(TARGETS presonus_uc presonus_cs18_components presonus_rm_components EXPORT presonus_uc_targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 set(PRESONUS_UC_PUBLIC_HEADERS
+  presonus/IDAWDialogHandler.hpp
+  presonus/panel/GPIOControlGroup.hpp
+  presonus/uc/ClientComponent.hpp
   presonus/mixer/DecayTimeFormatterT6.hpp
   presonus/mixer/DecayTimeFormatterT7.hpp
   presonus/mixer/DecayTimeFormatterT8.hpp

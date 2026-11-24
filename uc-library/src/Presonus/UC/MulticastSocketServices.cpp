@@ -149,6 +149,10 @@ void MulticastConnection::makeUnicastSockets(bool enabled) {
   Core::DebugPrintf("Local UDP port bound to %d (%d sockets)", state_.boundPort,
                     state_.unicastStorage.count);
 }
+void MulticastConnection::cleanup() {
+  MulticastConnection::makeUnicastSockets(false);
+  MulticastConnection::makeMulticastSockets(false);
+}
 void MulticastConnection::startUnicastListening() {
   if (!state_.unicastEnabled)
     makeUnicastSockets(true);
