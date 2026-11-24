@@ -27,5 +27,7 @@ Core::Portable::Parameter *Page::getActiveParam() const {
   return parameterElement ? parameterElement->parameter() : nullptr;
 }
 
+void Page::deactivate() {}
+
 const char *Page::getName() const { return name_.c_str(); }
 } // namespace Presonus::Panel

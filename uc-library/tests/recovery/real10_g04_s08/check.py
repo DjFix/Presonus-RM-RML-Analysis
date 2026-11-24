@@ -5,6 +5,8 @@ R=Path(__file__).resolve().parents[4];T=Path(__file__).resolve().parent;TASK=T.n
 CLASSES={'01':('surface/PreampsPageComponent','Surface/PreampsPageComponent'),'02':('surface/CapturePageComponent','Surface/CapturePageComponent'),'06':('TargetedComponent','TargetedComponent'),'08':('surface/ScenesPageComponent','Surface/ScenesPageComponent')}
 a,b=CLASSES[TASK[-2:]];H='uc-library/include/presonus/'+a+'.hpp';S='uc-library/src/Presonus/'+b+'.cpp';C=str((T/'Replay.cpp').relative_to(R));OWNED=[H,S,C]
 ROOT=native.ROOT;B=ROOT/'temp/recovery-work/reconstruction10x10-20261116';OVERLAY=Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/production-20261112/agent-repos/worker11/temp/recovery-work/real10_g04-presets-provider');ADDENDUM=B/'provider-addenda/G04_PRESETS_PROVIDER_OVERLAY05.json';ARCHIVE_BINDINGS=B/'provider-addenda/READ_BINDINGS_CURRENT01.json';ARCHIVES=json.loads(ARCHIVE_BINDINGS.read_text())['groups']['g04']['archives'];LIBS=[Path(next(x for x in ARCHIVES if x['name']==n)['frozen_read_path']) for n in ['libpresonus_private_glibc29.a','libcorelib.a','libpresonus_core_allocator.a']]
+TRANSITION='evidence/recovery/2026-11-24/rolling-c001/reserve01-other-guards/presets/ACTIVE-PRESETS_SOURCE_TRANSITION.json'
+TRANSITION_SHA256='1fa8e6e718dbd20201dfa211ec88275a1c593f92ca2cdca4e6d693ef88f212ad'
 TIMES=[]
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def run(argv,input=None):
@@ -39,8 +41,21 @@ def main():
   assert sha(ADDENDUM)=='2b6dc08f9345316fef3df33f2e3c13d1aa38be7b64e9695b023f25d476d587e4', 'Approved provider supplement changed'
   approved=json.loads(ADDENDUM.read_text())['copies']
   assert len(approved)==2 and {x['canonical_relative_path'] for x in approved}=={'uc-library/include/presonus/surface/PresetsPageComponent.hpp','uc-library/src/Presonus/Surface/PresetsPageComponent.cpp'}
+  transition_path=R/TRANSITION
+  assert sha(transition_path)==TRANSITION_SHA256, 'Reviewed Presets provider transition changed'
+  transition=json.loads(transition_path.read_text())
+  previous_addendum=transition['previous_addendum']
+  assert sha(R/previous_addendum['path'])==previous_addendum['sha256']==sha(ADDENDUM)
+  previous_checker=transition['previous_checker']
+  assert sha(R/previous_checker['path'])==previous_checker['sha256']
+  current_sources=transition['source_transitions']
+  assert set(current_sources)=={copy['canonical_relative_path'] for copy in approved}
   for copy in approved:
-   assert sha(R/copy['canonical_relative_path'])==copy['overlay_sha256']==copy['source_sha256'], 'Actual canonical Presets provider differs from approved source/overlay'
+   path=copy['canonical_relative_path']
+   previous=current_sources[path]['previous']
+   current=current_sources[path]['current']
+   assert sha(R/previous['path'])==previous['sha256']==copy['overlay_sha256']==copy['source_sha256'], 'Archived approved Presets bytes differ'
+   assert sha(R/path)==current['sha256']==sha(R/current['path']), 'Actual canonical Presets provider differs from reviewed successor'
  if args.mode=='format':run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*OWNED]);return
  if args.mode=='compile':
   flags=['c++','-std=c++17','-O0','-fno-rtti','-ffunction-sections','-fdata-sections','-Wno-multichar','-I'+str(OVERLAY/'include'),'-Iuc-library/include','-Ithird_party/ccl-framework']
@@ -85,7 +100,8 @@ def main():
  sources={x.removeprefix('uc-library/'):sha(R/x) for x in [H,S]};providers={x:sha(R/x) for x in ['third_party/ccl-framework/core/portable/corecomponent.cpp','third_party/ccl-framework/core/portable/corecomponent.h','third_party/ccl-framework/core/portable/coreparams.cpp','third_party/ccl-framework/core/portable/coreparams.h','third_party/ccl-framework/core/public/corevector.h']}
  for copy in json.loads(ADDENDUM.read_text())['copies']:
   provider_path=R/copy['canonical_relative_path'] if canonical_mode else Path(copy['overlay_read_path'])
-  assert sha(provider_path)==copy['overlay_sha256']
+  expected=current_sources[copy['canonical_relative_path']]['current']['sha256'] if canonical_mode else copy['overlay_sha256']
+  assert sha(provider_path)==expected
   bind_presets_source(sources,providers,canonical_mode,copy['canonical_relative_path'],sha(provider_path))
  if canonical_mode:
   assert all(path.startswith('third_party/ccl-framework/') for path in providers), 'Canonical repository_sources must contain pinned Core sources only'
@@ -97,6 +113,7 @@ def main():
   proof['supplemental_provider_bindings']=dict(addendum=dict(path=str(ADDENDUM),sha256=sha(ADDENDUM)),overlay={str(x):sha(x) for x in [OVERLAY/'include/presonus/surface/PresetsPageComponent.hpp',OVERLAY/'src/Presonus/Surface/PresetsPageComponent.cpp']},archive_bindings=dict(path=str(ARCHIVE_BINDINGS),sha256=sha(ARCHIVE_BINDINGS)))
 
  if canonical_mode:
+  proof['current_presets_source_transition']=dict(path=str(transition_path.relative_to(R)),sha256=TRANSITION_SHA256)
   proof['canonical_compile_binding']=canonical_binding
   proof['canonical_compile_binding_helper']=canonical_binding_helper
   proof['canonical_binding_transition']=canonical_binding_transition

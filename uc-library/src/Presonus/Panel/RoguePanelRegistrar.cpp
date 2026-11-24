@@ -1,5 +1,6 @@
 #include "presonus/panel/RoguePanelRegistrar.hpp"
 namespace Presonus::Panel {
+void RoguePanelRegistrar::muteCS1TrafficForNOAAArmUpdate() {}
 const int *RoguePanelRegistrar::getTags(int group, int &count) const {
   if (group != 20)
     return nullptr;

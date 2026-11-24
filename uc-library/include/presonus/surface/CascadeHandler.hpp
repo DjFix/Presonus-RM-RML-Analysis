@@ -10,6 +10,9 @@ class SurfaceRootComponent;
 class CascadeHandler {
 public:
   explicit CascadeHandler(SurfaceRootComponent &);
+  // Portable callback declaration; original return and virtual interface are
+  // unresolved.
+  void onNetworkShutdown();
   SurfaceRootComponent &root() const { return root_; }
   const Core::Vector<UC::NetworkItem *> &items() const { return items_; }
 

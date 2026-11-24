@@ -42,6 +42,8 @@ RackPanelComponent::~RackPanelComponent() = default;
 
 void RackPanelComponent::dismissAlert() {}
 
+void RackPanelComponent::processLinkEvent(Presonus::Intercom::LinkEvent &) {}
+
 void RackPanelComponent::clientsChanged() { updatePanelStatus(); }
 void RackPanelComponent::checkPermissionsPWReset() {
   if (permissionFlags & 0x18u)

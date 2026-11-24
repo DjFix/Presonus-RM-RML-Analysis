@@ -30,6 +30,7 @@ void PresetsPageComponent::setMixerComponent(
   throw std::invalid_argument("missing source-port mixer observer binding");
 }
 void PresetsPageComponent::rowSelected() {}
+void PresetsPageComponent::getTargetUrl(Core::CStringBuffer<256> &) {}
 void PresetsPageComponent::paramChanged(Core::Portable::Parameter *parameter,
                                         int message) {
   Core::Portable::Component::paramChanged(parameter, message);

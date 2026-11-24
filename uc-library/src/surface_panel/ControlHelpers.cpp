@@ -2,6 +2,9 @@
 #include <cstring>
 
 namespace Presonus::Panel {
+void ControlRegistrar::Delegate::controlChanged(const ControlRegistrar &,
+                                                unsigned char,
+                                                unsigned char *) {}
 SevenSegControl::~SevenSegControl() = default;
 std::uint16_t SevenSegControl::convertCharToBmp(char character,
                                                 bool decimalPoint) const {

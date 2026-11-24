@@ -7,6 +7,9 @@
 #include <functional>
 #include <string>
 #include <vector>
+namespace Presonus::Intercom {
+class LinkEvent;
+}
 namespace Presonus::Dsp {
 class MultiParamProperty;
 }
@@ -58,6 +61,7 @@ public:
   explicit MasterSectionComponent(
       presonus::mixer_port::MasterBindings &bindings)
       : b(bindings) {}
+  void processLinkEvent(Presonus::Intercom::LinkEvent &);
   void populateRouteList(int);
   void localSoloChanged();
   void remoteSoloChanged(int, int, int);

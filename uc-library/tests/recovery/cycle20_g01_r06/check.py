@@ -8,6 +8,9 @@ from pathlib import Path
 import shlex
 import subprocess
 import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
 import time
 
 from native import VARIANTS, capture
@@ -142,6 +145,7 @@ def domain(task):
 
 
 def replay(args):
+    source_transition = load_transition(args.source_transition, args.source_transition_sha256)
     started = datetime.now(timezone.utc)
     group = TASK_GROUPS[args.task]
     selected = (*TARGET_PATHS[group], TEST)
@@ -179,6 +183,7 @@ def replay(args):
                 previous, current = current_dependencies[logical]
                 assert expected == previous and sha(item["path"]) == previous, logical
                 expected = current
+            expected = current_source_digest(logical, expected, source_transition)
             assert sha(logical) == expected, logical
     sources = {str(p.relative_to(LIB)): sha(p) for p in selected}
     core = {p: item["sha256"] for p, item in bindings["dependencies"].items()
@@ -198,6 +203,8 @@ def replay(args):
         "validation_domain": scope, "declaration_uncertainties": uncertainties,
     } for r in fixture["originals"]]
     write(args.out, {
+        "archive_source_transition": {"path": str(args.source_transition),
+            "sha256": args.source_transition_sha256} if args.source_transition else None,
         "success": True, "cpp_differential_passed": True, "compiled_mangled_names_matched": True,
         "portable_ready": False, "mangled_names": sorted(names), "domain": scope, "validation_domain": scope,
         "functions": rows, "proposed_readiness": {"ready": [], "pending": rows},
@@ -224,6 +231,8 @@ def main():
     for name in ("build", "provider", "bindings", "snapshot", "reference", "fixture", "exe",
                  "object", "integration", "out"):
         p.add_argument("--" + name, type=Path)
+    p.add_argument("--source-transition", type=Path)
+    p.add_argument("--source-transition-sha256")
     args = p.parse_args()
     if args.build:
         build(args)

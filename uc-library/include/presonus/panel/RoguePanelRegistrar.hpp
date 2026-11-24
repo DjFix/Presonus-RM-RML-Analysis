@@ -7,5 +7,8 @@ class RoguePanelRegistrar {
 public:
   const int *getTags(int group, int &count) const;
   int getParamInfoListSizeFromGroup(int group);
+  // Portable no-op; the original return and dispatch declarations remain
+  // unresolved.
+  void muteCS1TrafficForNOAAArmUpdate();
 };
 } // namespace Presonus::Panel

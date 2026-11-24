@@ -36,6 +36,10 @@ public:
   // Original return declarations and vtable layout remain unresolved.
   class Delegate {
   public:
+    // Portable default callback; the original return and dispatch declarations
+    // remain unresolved.
+    void controlChanged(const ControlRegistrar &, unsigned char,
+                        unsigned char *);
     virtual void faderChanged(const ControlRegistrar &, int, int,
                               FaderControl *);
     virtual void switchChanged(const ControlRegistrar &, int, int, bool,

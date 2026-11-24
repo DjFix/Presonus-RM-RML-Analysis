@@ -1,0 +1,112 @@
+"""Offline execution of the sealed ARM mixer range."""
+import argparse
+import hashlib
+import io
+import json
+from pathlib import Path
+
+from elftools.elf.elffile import ELFFile
+from unicorn import UC_ARCH_ARM, UC_HOOK_CODE, UC_HOOK_MEM_READ, UC_HOOK_MEM_WRITE, UC_MODE_ARM, Uc, __version__
+from unicorn import arm_const as arm
+
+ELF_HASH = "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07"
+MANGLED = "_ZN8Presonus5Panel4Page10deactivateEv"
+ADDRESS = 0x97BEC
+SIZE = 16
+RANGE_HASH = "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad"
+STACK = 0x200000
+MEMORY = 0x300000
+STOP = 0x410000
+REGS = [getattr(arm, f"UC_ARM_REG_R{i}") for i in range(13)] + [
+    arm.UC_ARM_REG_SP, arm.UC_ARM_REG_LR
+]
+
+
+def observe(body, seed, receiver):
+    uc = Uc(UC_ARCH_ARM, UC_MODE_ARM)
+    uc.mem_map(ADDRESS & ~0xfff, 0x1000)
+    uc.mem_write(ADDRESS, body)
+    uc.mem_map(STACK, 0x1000)
+    uc.mem_map(MEMORY, 0x2000)
+    uc.mem_map(STOP, 0x1000)
+    stack = STACK + 0x800
+    sentinel = bytes((i + seed) % 256 for i in range(0x2000))
+    uc.mem_write(MEMORY, sentinel)
+    uc.mem_write(STACK, sentinel[:0x1000])
+    uc.reg_write(arm.UC_ARM_REG_CPSR, 0xa0000010)
+    registers = [seed * 0x100001 + i for i in range(13)] + [stack, STOP]
+    registers[:4] = [receiver, MEMORY + 0x1000, seed, MEMORY + 0x1008]
+    for register, value in zip(REGS, registers):
+        uc.reg_write(register, value)
+    trace, reads, writes = [], [], []
+    uc.hook_add(UC_HOOK_CODE, lambda _, address, size, data: trace.append(address))
+    uc.hook_add(UC_HOOK_MEM_READ,
+                lambda _, access, address, size, value, data: reads.append([address, size]))
+    uc.hook_add(UC_HOOK_MEM_WRITE,
+                lambda _, access, address, size, value, data: writes.append([address, size, value]))
+    uc.emu_start(ADDRESS, STOP, count=8)
+    after = [uc.reg_read(register) for register in REGS]
+    assert trace == list(range(ADDRESS, ADDRESS + SIZE, 4))
+    assert uc.reg_read(arm.UC_ARM_REG_PC) == STOP
+    assert after[:12] == registers[:12] and after[12] == stack
+    assert after[13:] == registers[13:]
+    assert uc.reg_read(arm.UC_ARM_REG_CPSR) == 0xa0000010
+    assert reads and writes and all(stack - 16 <= address < address + size <= stack
+                                    for address, size, *_ in reads + writes)
+    assert bytes(uc.mem_read(MEMORY, 0x2000)) == sentinel
+    return {"seed": seed, "registers_before": registers, "registers_after": after,
+            "trace": trace, "returned_to": STOP, "reads": reads, "writes": writes,
+            "application_memory_unchanged": True, "callback_count": 0}
+
+
+def fixtures(path):
+    data = path.read_bytes()
+    assert hashlib.sha256(data).hexdigest() == ELF_HASH
+    elf = ELFFile(io.BytesIO(data))
+    assert elf["e_machine"] == "EM_ARM" and elf.little_endian
+    matches = elf.get_section_by_name(".symtab").get_symbol_by_name(MANGLED)
+    assert len(matches) == 1
+    symbol = matches[0]
+    assert (symbol["st_value"], symbol["st_size"], symbol["st_shndx"]) == (ADDRESS, SIZE, 12)
+    assert symbol["st_info"]["type"] == "STT_FUNC"
+    section = elf.get_section(12)
+    offset = section["sh_offset"] + ADDRESS - section["sh_addr"]
+    assert section.name == ".text" and offset == 0x8FBEC
+    assert 0 <= ADDRESS - section["sh_addr"] <= section["sh_size"] - SIZE
+    body = data[offset:offset + SIZE]
+    assert hashlib.sha256(body).hexdigest() == RANGE_HASH
+
+    table = elf.get_section_by_name(".symtab")
+    names = ("Page", "FXPage", "GEQPage", "PresetPage", "NetworkPage", "FXMainPage",
+             "FXStorePage", "FXPresetPage", "SceneStorePage", "ChannelInfoPage",
+             "JoinNetworkPage", "SceneRecallPage", "SystemAboutPage", "ChannelInfo2Page")
+    slots = {}
+    for name in names:
+        entry = table.get_symbol_by_name(f"_ZTVN8Presonus5Panel{len(name)}{name}E")[0]
+        section = elf.get_section(entry["st_shndx"])
+        slot_address = entry["st_value"] + 48
+        assert entry["st_size"] >= 52
+        slot_offset = section["sh_offset"] + slot_address - section["sh_addr"]
+        assert int.from_bytes(data[slot_offset:slot_offset + 4], "little") == ADDRESS
+        slots[name] = slot_address
+    return {"elf_sha256": ELF_HASH, "mangled": MANGLED, "address": ADDRESS, "size": SIZE,
+            "section": 12, "section_name": ".text", "file_offset": offset,
+            "range_sha256": RANGE_HASH, "original_bytes": body.hex(), "vtable_words": slots,
+            "unicorn_version": __version__,
+            "cases": [observe(body, 1, MEMORY), observe(body, 2, MEMORY + 0x100),
+                      observe(body, 3, 0), observe(body, 4, 0x500000)]}
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--elf", type=Path, required=True)
+    output = parser.add_mutually_exclusive_group(required=True)
+    output.add_argument("--out", type=Path)
+    output.add_argument("--verify", type=Path)
+    args = parser.parse_args()
+    result = fixtures(args.elf)
+    if args.out:
+        args.out.write_text(json.dumps(result, indent=2) + "\n")
+    elif json.loads(args.verify.read_text()) != result:
+        parser.exit(1, "Fresh original observations differ from sealed fixtures\n")
+    print(f"Verified {len(result['cases'])} original ARM executions and {len(result['vtable_words'])} table words")

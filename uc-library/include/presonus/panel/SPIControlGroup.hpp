@@ -33,6 +33,9 @@ public:
   // Source-port int return models observed r0=1; original return declaration
   // remains unresolved. Control is borrowed and never dereferenced.
   int broadcast(Control *control);
+  // Direct source-port member hook. The native body leaves r0 unchanged;
+  // the original return declaration and virtual interface remain unresolved.
+  void sort();
   void onIdle();
   void markDirty(bool value) { dirty = value; }
   bool isDirty() const { return dirty; }

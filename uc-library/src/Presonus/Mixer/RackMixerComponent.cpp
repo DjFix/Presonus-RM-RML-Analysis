@@ -7,6 +7,10 @@
 #include <new>
 #include <stdexcept>
 namespace Presonus::Mixer {
+void RackMixerComponent::controlChanged(
+    const Presonus::Panel::ControlRegistrar &, unsigned char, unsigned char *) {
+}
+
 void RackMixerComponent::lineSenseChanged(
     const Presonus::Panel::ControlRegistrar &, int lineIndex, int senseValue) {
   const auto hardware = base_.numHWMicLineIn();

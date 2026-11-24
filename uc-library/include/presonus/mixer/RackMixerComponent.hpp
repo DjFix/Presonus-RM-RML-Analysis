@@ -20,6 +20,11 @@ class RackMixerComponent {
 public:
   RackMixerComponent(MixerComponentBase &base, std::uint32_t &cascadeState)
       : base_(base), cascadeState_(cascadeState) {}
+  // The native entry only restores its frame. Use a nonvirtual void member
+  // for the portable interface; the original return and override declaration
+  // remain unresolved.
+  void controlChanged(const Presonus::Panel::ControlRegistrar &, unsigned char,
+                      unsigned char *);
   void onCascadeStateChange();
   // Portable bool models the observed native result. Original return type
   // pending.

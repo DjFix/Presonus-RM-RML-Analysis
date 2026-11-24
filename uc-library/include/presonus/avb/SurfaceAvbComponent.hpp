@@ -5,6 +5,7 @@ namespace presonus::avb {
 struct SurfaceAvbIdleMaintenanceAccess;
 }
 namespace Presonus::AVB {
+class AvbTalker;
 // Intentional source-port inheritance: the original body calls Component
 // cleanup. Original complete layout, secondary vtables and ARM ABI remain
 // unresolved.
@@ -13,6 +14,9 @@ public:
   ~SurfaceAvbComponent() override;
   // Source-port void declaration; original ordinary return remains pending.
   void onIdle() override;
+  // Direct source-port entry point. Original return and virtual declaration
+  // remain unresolved.
+  void handleTalkerStateChange(AvbTalker *);
 
 private:
   friend struct presonus::avb::SurfaceAvbIdleMaintenanceAccess;

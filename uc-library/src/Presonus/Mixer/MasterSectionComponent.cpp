@@ -15,6 +15,8 @@ std::string numbered(const std::string &prefix, int i) {
 }
 } // namespace
 namespace Presonus::Mixer {
+void MasterSectionComponent::processLinkEvent(Presonus::Intercom::LinkEvent &) {
+}
 void MasterSectionComponent::populateRouteList(int tag) {
   if (auto *list = ListParam::cast(b.parameters.getParameterByTag(tag)))
     b.populateRoutes(*list);

@@ -30,6 +30,11 @@ public:
     MixScene,
     MuteGroup
   };
+
+  // Portable default hook. The firmware's exact declaration and virtual
+  // layout remain unresolved.
+  void loadPreset(PresetType, int, Core::CStringBuffer<128> &, const char *,
+                  int);
 };
 
 struct PortableMixerState {

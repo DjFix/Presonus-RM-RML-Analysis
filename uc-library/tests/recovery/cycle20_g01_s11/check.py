@@ -10,6 +10,9 @@ from pathlib import Path
 import subprocess
 import sys
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
+
 from native import capture, FX, RADIO
 
 
@@ -191,6 +194,7 @@ def symbols(obj):
 
 
 def replay(args):
+    source_transition = load_transition(args.source_transition, args.source_transition_sha256)
     started = datetime.now(timezone.utc)
     run([*FORMAT, HEADER, SOURCE, TEST])
     fixture = json.loads(args.fixture.read_text())
@@ -220,7 +224,9 @@ def replay(args):
         if not local_build and logical == Path("uc-library/include/presonus/PageComponent.hpp"):
             assert sha(SNAPSHOT / logical) == previous
             expected = "4564d19e2cc2b8c13d38697c89943c41947aa1af5f399b0e8079f919ae83e608"
-        assert sha(source) == expected
+        if not local_build:
+            expected = current_source_digest(logical, expected, source_transition)
+        assert sha(source) == expected, logical
     sources = {str(path.relative_to("uc-library")): sha(path)
                for path in (*SOURCES, *HEADERS, TEST, *(() if local_build else SUPPLEMENTAL_HEADERS))
                if path not in frozen_inputs or not local_build}
@@ -233,6 +239,8 @@ def replay(args):
         "repository_sources": providers,
     }
     write(args.out, {
+        "archive_source_transition": {"path": str(args.source_transition),
+            "sha256": args.source_transition_sha256} if args.source_transition else None,
         "success": True, "cpp_differential_passed": True,
         "compiled_mangled_names_matched": True, "portable_ready": False,
         "mangled_names": [symbol], "original_elf_sha256": fixture["elf_sha256"],
@@ -270,6 +278,8 @@ def main():
     for option in ("exe", "object", "integration", "out", "elf", "contract",
                    "fixture", "build", "provider"):
         parser.add_argument("--" + option, type=Path)
+    parser.add_argument("--source-transition", type=Path)
+    parser.add_argument("--source-transition-sha256")
     args = parser.parse_args()
     if args.build:
         build(args.build, args.provider)

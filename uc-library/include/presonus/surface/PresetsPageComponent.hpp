@@ -70,6 +70,9 @@ public:
   // Native 16-byte body has stack setup/return only; intentional extension
   // hook.
   virtual void rowSelected();
+  // Portable void member choice. The native hook leaves the buffer untouched;
+  // its original return declaration and virtual dispatch remain unresolved.
+  void getTargetUrl(Core::CStringBuffer<256> &);
   int getMaxListOffset() const;
   void textInputFinished(bool);
   void addListOffset(int);

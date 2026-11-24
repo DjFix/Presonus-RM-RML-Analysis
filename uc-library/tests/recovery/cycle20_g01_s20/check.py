@@ -7,6 +7,9 @@ from pathlib import Path
 import shlex
 import subprocess
 import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
 import time
 
 from native import capture, sha
@@ -154,6 +157,7 @@ def verify_output(exe, fixture):
 
 
 def replay(args):
+    source_transition = load_transition(args.source_transition, args.source_transition_sha256)
     started = datetime.datetime.now(datetime.timezone.utc)
     run(FORMAT)
     fixture = read(args.fixtures)
@@ -167,10 +171,11 @@ def replay(args):
         assert compile_receipt["bindings_sha256"] == sha(args.bindings)
     else:
         for name,row in bindings["files"].items():
-            assert sha(Path(name)) == row["sha256"], name
+            expected = current_source_digest(name, row["sha256"], source_transition)
+            assert sha(Path(name)) == expected, name
     sources = {str(p.relative_to("uc-library")):sha(p) for p in (SRC,HDR,TEST)}
     if not compile_receipt:
-        sources.update({str(Path(p).relative_to("uc-library")):v["sha256"]
+        sources.update({str(Path(p).relative_to("uc-library")):current_source_digest(p,v["sha256"], source_transition)
                         for p,v in bindings["files"].items() if "SLChannel" in p or "MixerState" in p
                         or "MixerClientComponentBase" in p})
     providers = {p:v["sha256"] for p,v in bindings["files"].items() if Path(p).is_relative_to(CORE)}
@@ -179,6 +184,8 @@ def replay(args):
            "repository_sources":providers,"cpp_compiled":True,"mangling_namespace_checked":True,
            "portable_ready":False,"validation_domain":DOMAIN,"declaration_uncertainties":[LIMITS[-1]]}
     dump(args.out, {
+        "archive_source_transition": {"path": str(args.source_transition),
+            "sha256": args.source_transition_sha256} if args.source_transition else None,
         "success":True,"cpp_differential_passed":True,"compiled_mangled_names_matched":True,
         "portable_ready":False,"mangled_names":[SYMBOL],
         "original_elf_sha256":fixture["elf_sha256"],"domain":DOMAIN,"validation_domain":DOMAIN,
@@ -206,6 +213,8 @@ def main():
     for option in ("build","provider","bindings","object","exe","elf","reference",
                    "fixtures","integration","out"):
         p.add_argument("--"+option,type=Path)
+    p.add_argument("--source-transition", type=Path)
+    p.add_argument("--source-transition-sha256")
     args=p.parse_args()
     if args.build:
         build(args)

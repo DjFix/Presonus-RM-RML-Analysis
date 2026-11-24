@@ -9,6 +9,9 @@ SurfaceAvbComponent::~SurfaceAvbComponent() {}
 
 namespace Presonus::AVB {
 std::int64_t SurfaceAvbComponent::lastMaintenance_ = 0;
+
+void SurfaceAvbComponent::handleTalkerStateChange(AvbTalker *) {}
+
 void SurfaceAvbComponent::onIdle() {
   const std::int64_t now = presonus::dice::packetClockRawTicks() / 1000000;
   // Bounded source port: lastMaintenance_ + 500 must fit signed64, as

@@ -11,6 +11,10 @@
 #include <new>
 #include <vector>
 
+namespace Presonus::Intercom {
+class LinkEvent;
+}
+
 namespace Presonus::Mixer {
 class MixerComponentBase;
 }
@@ -89,6 +93,9 @@ public:
   void updatePanelStatus();
   // Default UI hook in the portable class.
   virtual void dismissAlert();
+  // The observed ARM body has no event or receiver effects.
+  // Portable declaration; the original return and dispatch traits remain open.
+  void processLinkEvent(Presonus::Intercom::LinkEvent &);
   void clientsChanged();
   void checkPermissionsPWReset();
   void forceCascadeGlobalParamUpdate();

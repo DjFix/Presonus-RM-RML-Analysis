@@ -8,6 +8,9 @@ from pathlib import Path
 import shlex
 import subprocess
 import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
 import time
 
 from native import capture, NAMES
@@ -136,6 +139,7 @@ def symbols(obj):
 
 
 def replay(args):
+    source_transition = load_transition(args.source_transition, args.source_transition_sha256)
     started = datetime.now(timezone.utc)
     format_paths = (SOURCE, HEADER, TEST)
     run([*FORMAT, *format_paths])
@@ -164,6 +168,7 @@ def replay(args):
                 assert expected == previous, logical
                 assert digest(entry["path"]) == previous, logical
                 expected = current
+            expected = current_source_digest(logical, expected, source_transition)
             assert digest(logical) == expected, logical
     sources = {str(p.relative_to("uc-library")): digest(p) for p in format_paths}
     if not local_receipt:
@@ -178,6 +183,8 @@ def replay(args):
         "mangling_namespace_checked": True, "portable_ready": True, "validation_domain": DOMAIN,
     } for name in NAMES]
     write(args.out, {
+        "archive_source_transition": {"path": str(args.source_transition),
+            "sha256": args.source_transition_sha256} if args.source_transition else None,
         "success": True, "cpp_differential_passed": True, "portable_ready": True,
         "compiled_mangled_names_matched": True, "mangled_names": NAMES,
         "original_elf_sha256": fixture["elf_sha256"], "domain": DOMAIN,
@@ -208,6 +215,8 @@ def main():
     for name in ("build", "provider", "bindings", "fixture", "exe", "object",
                  "elf", "reference", "integration", "out"):
         parser.add_argument("--" + name, type=Path)
+    parser.add_argument("--source-transition", type=Path)
+    parser.add_argument("--source-transition-sha256")
     args = parser.parse_args()
     if args.build:
         build(args)

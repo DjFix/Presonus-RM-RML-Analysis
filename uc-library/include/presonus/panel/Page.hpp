@@ -49,6 +49,9 @@ public:
   // Selection borrows an Element; the caller keeps it alive while selected.
   void activeElement(Element *element);
   Core::Portable::Parameter *getActiveParam() const;
+  // Portable hook. The original return declaration and vtable layout remain
+  // unresolved.
+  virtual void deactivate();
   Element *selectedElement() const noexcept { return activeElement_; }
   bool isEnabled() const noexcept { return enabled_; }
 

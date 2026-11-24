@@ -24,13 +24,12 @@ if a.source_transition or a.source_transition_sha256:
  changes=transition['source_transitions']
  allowed={'include/presonus/surface_panel/ControlHelpers.hpp','include/presonus/surface/sl_mixer_encoder.hpp','include/presonus/surface_panel/ControlGroup.hpp'}
  assert len(changes)==len({change['path'] for change in changes})
- assert {'include/presonus/surface_panel/ControlHelpers.hpp'} <= {change['path'] for change in changes} <= allowed
+ allowed.update({'include/presonus/surface/CascadeHandler.hpp','src/Presonus/Surface/CascadeHandler.cpp'})
+ assert {change['path'] for change in changes}==allowed
  for change in changes:
   assert entry['sources'][change['path']]==change['previous_sha256']
-  if change.get('previous_frozen_read_path'):
-   assert hashlib.sha256(Path(change['previous_frozen_read_path']).read_bytes()).hexdigest()==change['previous_sha256']
-  if change.get('current_frozen_read_path'):
-   assert hashlib.sha256(Path(change['current_frozen_read_path']).read_bytes()).hexdigest()==change['current_sha256']
+  assert hashlib.sha256(Path(change['previous_frozen_read_path']).read_bytes()).hexdigest()==change['previous_sha256']
+  assert hashlib.sha256(Path(change['current_frozen_read_path']).read_bytes()).hexdigest()==change['current_sha256']
   assert hashlib.sha256((Path('uc-library')/change['path']).read_bytes()).hexdigest()==change['current_sha256']
   entry['sources'][change['path']]=change['current_sha256']
  transition_receipt={'path':str(transition_path),'sha256':a.source_transition_sha256,'binding':binding,'changes':transition['source_transitions'],'scope':transition['scope']}
