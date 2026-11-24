@@ -35,6 +35,7 @@ struct AvbIdleMaintenanceAccess;
 }
 namespace Presonus::AVB {
 class AvbTalker;
+class AvbListener;
 
 // Original encoded method names/parameters; independent portable storage and
 // constructor. Original return declarations, inheritance and ARM layout
@@ -50,6 +51,7 @@ public:
   void onIdle() override;
   // Portable void declaration; original return type remains unresolved.
   void handleTalkerStateChange(AvbTalker *);
+  void handleListenerStateChange(AvbListener *);
   void configureStaticTalkerStreams();
   void routeLinkSlotsFromAvb();
   void setSpectrumDataTxSource(int, int);

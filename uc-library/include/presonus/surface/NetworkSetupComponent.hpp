@@ -140,6 +140,8 @@ public:
   int getWiredNetworkAssignMode() const;
 
   // Original callback slot. The portable void return is provisional.
+  void onNetworkItemAcquired(UC::NetworkItem *);
+  void onNetworkItemReleased(UC::NetworkItem *);
   virtual void onServerChanged(UC::NetworkItem *);
 
 private:

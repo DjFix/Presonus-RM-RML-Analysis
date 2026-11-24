@@ -16,6 +16,7 @@ public:
 
   virtual void activate(int mode);
   virtual bool needsToDraw() const;
+  virtual void setNeedsToDraw(bool dirty);
 
   struct State {
     int x = 0;

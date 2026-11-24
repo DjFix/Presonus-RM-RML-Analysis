@@ -5,12 +5,27 @@
 #include "presonus/PageComponent.hpp"
 
 namespace Presonus {
+class DAWChannel;
+class DAWChannelGroup;
 class DAWClientComponent;
+class DAWDeviceFolder;
+class DAWDeviceSlot;
 class IMappingController;
 // Encoded nested type scope only. Underlying type and enumerator declarations
 // are chosen for this source port; original declarations remain unresolved.
 struct IDAWComponentObserver {
   enum ObjectChangeMessage : unsigned int;
+
+  // The native callback table identifies these default hooks. The void
+  // declarations are portable; native return declarations remain unresolved.
+  virtual void onFocusChannelChanged();
+  virtual void onChannelsChanged(DAWChannelGroup *);
+  virtual void onChannelParamChanged(DAWChannel *, Core::Portable::Parameter *);
+  virtual void onSlotCountChanged(DAWDeviceFolder *);
+  virtual void onSlotEditChanged(DAWDeviceSlot *, bool);
+  virtual void onCommandsChanged();
+  virtual void destroyed(DAWClientComponent &);
+  virtual void onObjectChanged(ObjectChangeMessage);
 };
 } // namespace Presonus
 namespace presonus::capture {

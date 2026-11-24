@@ -20,6 +20,8 @@ int NetworkSetupComponent::sendEvent(UC::Event &event) {
   return state_.services.eventSender(*getConnectedClient()).sendEvent(event);
 }
 void NetworkSetupComponent::onServerChanged(UC::NetworkItem *) {}
+void NetworkSetupComponent::onNetworkItemReleased(UC::NetworkItem *) {}
+void NetworkSetupComponent::onNetworkItemAcquired(UC::NetworkItem *) {}
 void NetworkSetupComponent::onNetworkItemAdded(UC::NetworkItem *item) {
   if (state_.services.itemKind(*item) != 0 ||
       state_.services.itemFilter(*item) != 0)

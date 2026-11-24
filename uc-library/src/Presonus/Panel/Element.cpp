@@ -10,6 +10,8 @@ void Element::activate(int mode) {
   }
 }
 
+void Element::setNeedsToDraw(bool dirty) { setDirty(dirty); }
+
 bool Element::needsToDraw() const { return elementState_.dirty != 0; }
 
 Element::~Element() = default;

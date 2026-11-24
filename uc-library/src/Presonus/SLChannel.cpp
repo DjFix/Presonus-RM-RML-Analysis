@@ -61,4 +61,10 @@ void SLChannelBase::getSlowLinkParams(
 Core::Portable::Parameter *SLChannel::getSelectionParameter() const {
   return selection_;
 }
+Core::Portable::Parameter *SLChannel::getColorParameter() const {
+  return color_;
+}
+Core::Portable::Parameter *SLChannel::getLinkedSelectionParameter() const {
+  return linkedSelection_;
+}
 } // namespace Presonus

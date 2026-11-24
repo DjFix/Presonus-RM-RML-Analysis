@@ -197,4 +197,5 @@ bool FrontPanelComponent::CopyPasteFilter::shouldSave(int type, const char *,
   const auto offset = static_cast<std::uint32_t>(p->getTag()) - 218u;
   return offset <= 5 && ((1u << offset) & 0x3du) != 0;
 }
+void FrontPanelComponent::processLinkEvent(Presonus::Intercom::LinkEvent &) {}
 } // namespace Presonus::Panel

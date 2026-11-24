@@ -3,6 +3,7 @@
 namespace Presonus {
 class SLChannelBase;
 class IColorConverter;
+class IPresetHandler;
 
 // Partial portable source model of three observed default operations. Original
 // inheritance, virtual layout and ordinary return declarations remain
@@ -14,11 +15,16 @@ public:
   IColorConverter *getColorConverter() const;
   virtual void setColorConverter(IColorConverter *converter);
 
+  // Borrowed; the handler must outlive its use by this mixer.
+  virtual void setPresetHandler(IPresetHandler *handler);
+  IPresetHandler *getPresetHandler() const;
+
   SLChannelBase *getSelectedGeq() const;
   int countAllChannels() const;
   SLChannelBase *getChannelIndexed(int index) const;
 
 private:
   IColorConverter *colorConverter_ = nullptr;
+  IPresetHandler *presetHandler_ = nullptr;
 };
 } // namespace Presonus

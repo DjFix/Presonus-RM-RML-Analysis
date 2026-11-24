@@ -1,6 +1,9 @@
 #include "presonus/panel/SharedMemoryComm.hpp"
 
 namespace Presonus::Panel {
+int SharedMemoryComm::enableHISpeed(bool) { return 1; }
+int SharedMemoryComm::open(const char *) { return 1; }
+
 // The read/write client/server bodies set r0 to zero without accessing this or
 // argument memory. These are observed original no-operations, not transport
 // placeholders for a presumed implementation.

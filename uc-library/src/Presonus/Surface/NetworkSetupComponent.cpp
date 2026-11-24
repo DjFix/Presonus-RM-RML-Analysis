@@ -195,6 +195,8 @@ void NetworkSetupComponent::onIdle() {
     state_.dependencies.resumeAdaptors();
   }
 }
+void NetworkSetupComponent::onNetworkItemAcquired(UC::NetworkItem *) {}
+void NetworkSetupComponent::onNetworkItemReleased(UC::NetworkItem *) {}
 void NetworkSetupComponent::onServerChanged(UC::NetworkItem *) {}
 void NetworkSetupComponent::onNetworkShutdown() {
   selectMixer(nullptr, 1);

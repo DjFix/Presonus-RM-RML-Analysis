@@ -11,6 +11,8 @@ class SurfaceApplication {
 public:
   // Ordinary return spelling is unencoded; void remains declaration-pending.
   void readSerialFromDisk();
+  // Source-port return word; the original return type remains unresolved.
+  std::uint32_t isNetworkClientReady() const;
   // Numeric 64-bit returns are source-port choices; declarations remain
   // pending.
   std::uint64_t getAlternateMac();

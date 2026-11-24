@@ -36,6 +36,9 @@ public:
   // Direct source-port member hook. The native body leaves r0 unchanged;
   // the original return declaration and virtual interface remain unresolved.
   void sort();
+  // Portable direct hook matching the observed absence of effects. Original
+  // return and virtual declarations remain unresolved.
+  void close();
   void onIdle();
   void markDirty(bool value) { dirty = value; }
   bool isDirty() const { return dirty; }

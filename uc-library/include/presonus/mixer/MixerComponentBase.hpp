@@ -44,6 +44,12 @@ public:
   Core::Portable::Component *childLookupParameters = nullptr;
   Core::Portable::Component *selectedChildParameters = nullptr;
   Core::Portable::Component *findChild(const char *name) const;
+  // Portable base defaults. Exact original return and dispatch declarations
+  // remain unresolved.
+  void panicMuteAll(bool);
+  int getDanteTalkbackSlot();
+  void setDanteStaticRoutes();
+  void sendStageboxSceneMsg(const char *, const char *, int);
   bool isSubgroupMerge() const;
   // Native +0x2d8, distinct from sceneSettings and routeInputParameters.
   // Required valid provider containing actual NumericParam tags 1 through 11.

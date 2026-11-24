@@ -18,18 +18,23 @@ def run(argv,**kwargs):
  if p.returncode:print(p.stdout.decode(),p.stderr.decode());p.check_returncode()
  return p.stdout.decode()
 def main():
- p=argparse.ArgumentParser();p.add_argument('mode',nargs='?',default='proof',choices=['format','compile','symbols','native','replay','proof']);p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out');p.add_argument('--runtime-provider');a=p.parse_args()
+ sys.path.insert(0,str(T.parent))
+ from canonical_source_transition import current_source_digest, load_transition
+ p=argparse.ArgumentParser();p.add_argument('mode',nargs='?',default='proof',choices=['format','compile','symbols','native','replay','proof']);p.add_argument('--exe');p.add_argument('--object');p.add_argument('--integration');p.add_argument('--out');p.add_argument('--runtime-provider');p.add_argument('--source-transition',type=Path);p.add_argument('--source-transition-sha256');a=p.parse_args()
+ transition=load_transition(a.source_transition,a.source_transition_sha256)
  exe=Path(a.exe) if a.exe else O/'replay';obj=Path(a.object) if a.object else O/'production.o';runtime=Path(a.runtime_provider) if a.runtime_provider else O/'runtime.so'
  if a.mode=='format':run(['uc-library/.venv/bin/clang-format','--style=file','--fallback-style=LLVM','--dry-run','--Werror',*OWNED]);return
- import sys
  sys.path.insert(0,str(R/'uc-library/tools/recovery'))
  from pinned_codec_replay_binding import validate_archives
  provider_binding=validate_archives(R,a.exe,a.integration,ARCHIVES)
  supplement_path=Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling10x10-20261114/root-review/provider-supplements/spi-ROOT_ADDENDUM.json')
  assert sha(supplement_path)=='529b32a59d6801d1d225ad9aabcd5e2bdec599e433030e9fdeeaa2cba7cba65a'
  supplement=json.loads(supplement_path.read_text());plan_path=Path('/home/rs/projects/opencs/ai-line-analysis')/supplement['plan'];assert sha(plan_path)==supplement['plan_sha256']
+ assert set(transition)<=set(map(Path,supplement['read_inputs']))
  for path,binding in supplement['read_inputs'].items():
-  assert sha(binding['frozen_read_path'])==binding['sha256'] and sha(R/path)==binding['sha256'],'Supplement source changed: '+path
+  assert sha(binding['frozen_read_path'])==binding['sha256'],'Frozen supplement source changed: '+path
+  expected=current_source_digest(path,binding['sha256'],transition)
+  assert sha(R/path)==expected,'Supplement source changed: '+path
  for path,expected in PINNED_PROVIDER_SOURCES.items():
   assert sha(R/path)==expected and sha(Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling10x10-20261114/prepared-next-flow01/snapshot')/path)==expected,'Pinned provider implementation differs from frozen generation'
  if a.mode=='compile':
@@ -66,5 +71,6 @@ def main():
  assert all(k in entry for k in ['original_elf_sha256','domain','portable_ready','cpp_compiled','mangling_namespace_checked'])
  proof=dict(version=1,task_id=CONFIG['task'],session_id='/root/rolling10_spi',phase_timestamps=dict(start=phase_records['started'],validation_end=datetime.datetime.now(datetime.timezone.utc).isoformat()),compiled=True,cpp_compiled=True,compiled_mangled_names_matched=True,mangling_namespace_checked=True,cpp_differential_passed=True,formatting_verified=True,native_behavior_verified=True,original_declaration_verified=False,original_arm_abi_verified=False,hardware_verified=False,portable_ready=False,canonical_binding_pending=True,domain=domain,limitations=limitations,ranges=fresh['ranges'],original_process_static=fresh['original_process_static'],native_observations=fresh,native_observations_sha256=hashlib.sha256(json.dumps(fresh,sort_keys=True).encode()).hexdigest(),fresh_native_execution=True,sources=app,repository_sources=providers,source_sha256={f:sha(R/f) for f in sorted(files)},typed_frozen_evidence=phase_records['typed_frozen_evidence'],archives=provider_binding["archives"],historical_provider_archives=provider_binding["historical"],pinned_codec_provider_binding=provider_binding,runtime_provider=dict(path=str(runtime),sha256=sha(runtime),undefined_symbols=runtime_symbols,gcc_library=fresh['provider']),object=dict(path=str(obj),sha256=sha(obj)),executable=dict(path=str(exe),sha256=sha(exe)),compiled_symbols=symbols,clock_smoke=dict(raw_ticks=smoke,scope='Actual existing PacketClockGateway to pinned CCL SystemClock::getTime; real Linux CLOCK_MONOTONIC, no original clock equivalence'),formatter_version=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler_version=run(['/usr/bin/c++','--version']).splitlines()[0],unicorn_version=__import__('unicorn').__version__,integration=dict(path=a.integration,sha256=sha(a.integration)) if a.integration else None,proposed_readiness=dict(canonical_binding_pending=True,ready=[],pending=[entry]))
  proof['source_addendum']=dict(path=str(supplement_path),sha256=sha(supplement_path),plan=dict(path=str(plan_path),sha256=sha(plan_path)),scope=supplement['scope'],owned_sources_preserved=supplement['owned_source_preserved'])
+ if transition:proof['source_transition']=dict(path=str(a.source_transition),sha256=a.source_transition_sha256)
  Path(a.out).parent.mkdir(parents=True,exist_ok=True);Path(a.out).write_text(json.dumps(proof,indent=2)+'\n')
 if __name__=='__main__':main()

@@ -13,6 +13,9 @@ public:
   ~Messenger() override;
   // Recovered virtual no-op. Original ordinary return declaration unresolved.
   virtual void init();
+  // Portable default hook. Exact original return declaration remains
+  // unresolved.
+  virtual void start();
   // Portable void choice: original ordinary return declaration unresolved.
   void release();
   bool releaseRequested() const { return releaseRequested_; }

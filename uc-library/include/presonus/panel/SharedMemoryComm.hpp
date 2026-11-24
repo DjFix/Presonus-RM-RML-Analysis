@@ -10,6 +10,8 @@ namespace Presonus::Panel {
 // preserved.
 class SharedMemoryComm {
 public:
+  int enableHISpeed(bool);
+  int open(const char *);
   int read(char *, int);
   int write(const char *, int);
   int readMsg(Uart_Msg_Type &);

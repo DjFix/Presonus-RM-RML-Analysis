@@ -96,6 +96,8 @@ public:
   // The observed ARM body has no event or receiver effects.
   // Portable declaration; the original return and dispatch traits remain open.
   void processLinkEvent(Presonus::Intercom::LinkEvent &);
+  // Portable default hook. Exact original declaration remains unresolved.
+  void onCascadeStateChange();
   void clientsChanged();
   void checkPermissionsPWReset();
   void forceCascadeGlobalParamUpdate();

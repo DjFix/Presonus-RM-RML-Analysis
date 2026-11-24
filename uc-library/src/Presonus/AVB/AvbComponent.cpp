@@ -93,4 +93,5 @@ void AvbComponent::onIdle() {
   if (now > lastMaintenance_ + 500)
     lastMaintenance_ = now;
 }
+void AvbComponent::handleListenerStateChange(AvbListener *) {}
 } // namespace Presonus::AVB

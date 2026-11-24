@@ -67,8 +67,19 @@ public:
   SLChannel(const char *name, Core::Portable::Parameter *selection)
       : SLChannelBase(name), selection_(selection) {}
   Core::Portable::Parameter *getSelectionParameter() const override;
+  Core::Portable::Parameter *getColorParameter() const override;
+  Core::Portable::Parameter *getLinkedSelectionParameter() const override;
+  // Borrowed parameters must outlive use by this channel.
+  void bindColorParameter(Core::Portable::Parameter *parameter) {
+    color_ = parameter;
+  }
+  void bindLinkedSelectionParameter(Core::Portable::Parameter *parameter) {
+    linkedSelection_ = parameter;
+  }
 
 private:
   Core::Portable::Parameter *selection_;
+  Core::Portable::Parameter *color_ = nullptr;
+  Core::Portable::Parameter *linkedSelection_ = nullptr;
 };
 } // namespace Presonus

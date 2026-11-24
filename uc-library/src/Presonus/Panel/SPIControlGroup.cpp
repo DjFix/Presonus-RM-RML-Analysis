@@ -39,6 +39,7 @@ int SPIControlGroup::broadcast(Control *) {
   return 1;
 }
 void SPIControlGroup::sort() {}
+void SPIControlGroup::close() {}
 void SPIControlGroup::onIdle() {
   if (!dirty || descriptor < 0)
     return;

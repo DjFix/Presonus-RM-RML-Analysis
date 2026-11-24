@@ -59,6 +59,9 @@ void SurfaceRootComponent::updateFocusParams(
                                : original);
   state.label->fromString(info.sourcePort.label, false);
 }
+void SurfaceRootComponent::controlChanged(
+    const Presonus::Panel::ControlRegistrar &, unsigned char, unsigned char *) {
+}
 void SurfaceRootComponent::faderChanged(
     const Presonus::Panel::ControlRegistrar &, int, int,
     Presonus::Panel::FaderControl *control) {

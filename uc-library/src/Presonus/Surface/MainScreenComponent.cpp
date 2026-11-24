@@ -3,6 +3,8 @@
 #include "presonus/surface/MappingComponent.hpp"
 #include <cstdint>
 namespace Presonus::Surface {
+void MainScreenComponent::init(MappingComponent *value) { bindMapping(value); }
+
 MainScreenComponent::~MainScreenComponent() = default;
 bool MainScreenComponent::canGoBack(const PageComponent &from,
                                     const PageComponent &to) const {

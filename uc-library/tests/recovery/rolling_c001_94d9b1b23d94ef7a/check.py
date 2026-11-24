@@ -4,6 +4,10 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from canonical_source_transition import current_source_digest, load_transition
 
 HERE = Path(__file__).parent
 DOMAIN = (
@@ -43,7 +47,10 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument("--symbols-only", action="store_true")
     parser.add_argument("--element-source", default=f"uc-library/{ELEMENT_SOURCE}")
+    parser.add_argument("--source-transition", type=Path)
+    parser.add_argument("--source-transition-sha256")
     args = parser.parse_args()
+    transition = load_transition(args.source_transition, args.source_transition_sha256)
     fixture = json.loads(args.fixtures.read_text())
     symbol = fixture["mangled"]
     symbols = subprocess.check_output(["nm", "--defined-only", args.object], text=True)
@@ -64,9 +71,12 @@ def main():
                        "callback_count": observed[1]})
     assert len(traces) == 4
     sources = {path: sha(Path("uc-library") / path) for path in SOURCE_PATHS}
-    assert sha(args.element_source) == ELEMENT_HASH
-    if args.element_source == f"uc-library/{ELEMENT_SOURCE}":
-        sources[ELEMENT_SOURCE] = ELEMENT_HASH
+    logical_element = f"uc-library/{ELEMENT_SOURCE}"
+    assert not transition or args.element_source == logical_element
+    expected_element = current_source_digest(logical_element, ELEMENT_HASH, transition)
+    assert sha(args.element_source) == expected_element
+    if args.element_source == logical_element:
+        sources[ELEMENT_SOURCE] = expected_element
     row = {
         "original_elf_sha256": fixture["elf_sha256"], "mangled": symbol,
         "original_address": fixture["address"], "cpp_compiled": True,
@@ -84,7 +94,9 @@ def main():
         "native_producer_sha256": sha(HERE / "native.py"),
         "replay_source_sha256": sha(HERE / "Replay.cpp"),
         "object_sha256": sha(args.object), "executable_sha256": sha(args.exe),
-        "element_provider": {"path": args.element_source, "sha256": ELEMENT_HASH},
+        "element_provider": {"path": args.element_source, "sha256": expected_element},
+        "source_transition": {"path": str(args.source_transition),
+                              "sha256": args.source_transition_sha256} if transition else None,
         "integration_sha256": sha(args.integration) if args.integration != "none" else None,
         "format_version": version.strip(),
         "proposed_readiness": {"ready": [], "pending": [row]},

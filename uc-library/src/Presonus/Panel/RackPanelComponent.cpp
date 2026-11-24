@@ -237,4 +237,5 @@ void RackPanelComponent::idleTasks() {
   for (auto *task : completed)
     tasks.remove(task);
 }
+void RackPanelComponent::onCascadeStateChange() {}
 } // namespace Presonus::Panel

@@ -22,7 +22,11 @@ public:
   // +f8.
   void bindMapping(MappingComponent *mapping) { mapping_ = mapping; }
 
+  // Borrowed binding; void is a portable declaration.
+  void init(MappingComponent *);
+
 private:
+  friend struct MainScreenComponentReplayAccess;
   MappingComponent *mapping_ = nullptr;
 };
 } // namespace Presonus::Surface

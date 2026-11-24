@@ -17,6 +17,16 @@ std::uint32_t unsignedWord(std::int32_t number) {
 namespace Presonus {
 void IPresetHandler::loadPreset(PresetType, int, Core::CStringBuffer<128> &,
                                 const char *, int) {}
+void IPresetHandler::endAuditioningPresets(PresetType, bool) {}
+void IPresetHandler::savePreset(PresetType, int, Core::CStringBuffer<128> &,
+                                const char *, int) {}
+void IPresetHandler::auditionPreset(PresetType, int, Core::CStringBuffer<128> &,
+                                    const char *, int) {}
+void IPresetHandler::beginAuditioningPresets(PresetType, int) {}
+void IPresetHandler::renamePreset(PresetType, int, Core::CStringBuffer<128> &,
+                                  const char *) {}
+void IPresetHandler::deletePreset(PresetType, int, Core::CStringBuffer<128> &,
+                                  const char *) {}
 bool MixerClientComponentBase::isStereoChannelType(ChannelType type) const {
   const auto word = static_cast<std::uint32_t>(type);
   return word <= 7U && ((1U << word) & 0x86U) != 0;

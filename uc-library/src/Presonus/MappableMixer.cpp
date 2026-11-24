@@ -8,6 +8,13 @@ void MappableMixer::setColorConverter(IColorConverter *converter) {
   colorConverter_ = converter;
 }
 
+void MappableMixer::setPresetHandler(IPresetHandler *handler) {
+  presetHandler_ = handler;
+}
+IPresetHandler *MappableMixer::getPresetHandler() const {
+  return presetHandler_;
+}
+
 SLChannelBase *MappableMixer::getSelectedGeq() const { return nullptr; }
 int MappableMixer::countAllChannels() const { return 0; }
 SLChannelBase *MappableMixer::getChannelIndexed(int) const { return nullptr; }

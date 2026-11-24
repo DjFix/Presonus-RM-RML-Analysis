@@ -35,6 +35,14 @@ public:
   // layout remain unresolved.
   void loadPreset(PresetType, int, Core::CStringBuffer<128> &, const char *,
                   int);
+  void endAuditioningPresets(PresetType, bool);
+  void savePreset(PresetType, int, Core::CStringBuffer<128> &, const char *,
+                  int);
+  void auditionPreset(PresetType, int, Core::CStringBuffer<128> &, const char *,
+                      int);
+  void beginAuditioningPresets(PresetType, int);
+  void renamePreset(PresetType, int, Core::CStringBuffer<128> &, const char *);
+  void deletePreset(PresetType, int, Core::CStringBuffer<128> &, const char *);
 };
 
 struct PortableMixerState {

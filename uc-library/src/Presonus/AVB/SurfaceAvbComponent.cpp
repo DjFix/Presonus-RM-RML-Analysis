@@ -11,6 +11,7 @@ namespace Presonus::AVB {
 std::int64_t SurfaceAvbComponent::lastMaintenance_ = 0;
 
 void SurfaceAvbComponent::handleTalkerStateChange(AvbTalker *) {}
+void SurfaceAvbComponent::handleListenerStateChange(AvbListener *) {}
 
 void SurfaceAvbComponent::onIdle() {
   const std::int64_t now = presonus::dice::packetClockRawTicks() / 1000000;

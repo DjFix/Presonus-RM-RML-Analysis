@@ -61,6 +61,9 @@ public:
   int sendEvent(UC::Event &);
   void onServerChanged(UC::NetworkItem *);
   void onNetworkItemAdded(UC::NetworkItem *);
+  // Source-port callback declaration.
+  void onNetworkItemAcquired(UC::NetworkItem *);
+  void onNetworkItemReleased(UC::NetworkItem *);
   void selectMixer(UC::NetworkItem *, bool);
   void paramChanged(Core::Portable::Parameter *, int);
   UC::ClientRootComponent *getConnectedClient() const;

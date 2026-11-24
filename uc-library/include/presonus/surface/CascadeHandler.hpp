@@ -13,6 +13,9 @@ public:
   // Portable callback declaration; original return and virtual interface are
   // unresolved.
   void onNetworkShutdown();
+  // Portable direct callback. Original return and virtual declarations remain
+  // unresolved.
+  void onNetworkItemReleased(UC::NetworkItem *item);
   SurfaceRootComponent &root() const { return root_; }
   const Core::Vector<UC::NetworkItem *> &items() const { return items_; }
 

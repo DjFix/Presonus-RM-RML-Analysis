@@ -629,4 +629,13 @@ bool MixerComponentBase::saveScene(const Core::Portable::FileName &filename,
   handler.release();
   return true;
 }
+void MixerComponentBase::panicMuteAll(bool) {}
+
+int MixerComponentBase::getDanteTalkbackSlot() { return -1; }
+
+void MixerComponentBase::setDanteStaticRoutes() {}
+
+void MixerComponentBase::sendStageboxSceneMsg(const char *, const char *, int) {
+}
+
 } // namespace Presonus::Mixer

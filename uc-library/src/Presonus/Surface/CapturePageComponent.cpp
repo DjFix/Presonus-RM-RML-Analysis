@@ -1,4 +1,17 @@
 #include "presonus/surface/CapturePageComponent.hpp"
+namespace Presonus {
+void IDAWComponentObserver::onFocusChannelChanged() {}
+void IDAWComponentObserver::onChannelsChanged(DAWChannelGroup *) {}
+void IDAWComponentObserver::onChannelParamChanged(DAWChannel *,
+                                                  Core::Portable::Parameter *) {
+}
+void IDAWComponentObserver::onSlotCountChanged(DAWDeviceFolder *) {}
+void IDAWComponentObserver::onSlotEditChanged(DAWDeviceSlot *, bool) {}
+void IDAWComponentObserver::onCommandsChanged() {}
+void IDAWComponentObserver::destroyed(DAWClientComponent &) {}
+void IDAWComponentObserver::onObjectChanged(ObjectChangeMessage) {}
+} // namespace Presonus
+
 namespace Presonus::Surface {
 using Core::Portable::AliasParam;
 using Core::Portable::Component;

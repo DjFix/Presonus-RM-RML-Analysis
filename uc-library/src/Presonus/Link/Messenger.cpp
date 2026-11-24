@@ -14,4 +14,5 @@ void Messenger::init() {}
 void Messenger::release() { releaseRequested_ = true; }
 // Actual CCL owns allocation, exception cleanup, registration and storage.
 Messenger *getMessenger() { return &Messenger::instance(); }
+void Messenger::start() {}
 } // namespace Presonus::Link

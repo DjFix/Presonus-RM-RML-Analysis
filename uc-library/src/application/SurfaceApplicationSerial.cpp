@@ -7,6 +7,7 @@
 #include <cstring>
 
 namespace Presonus::Surface {
+std::uint32_t SurfaceApplication::isNetworkClientReady() const { return 1; }
 void SurfaceApplication::readSerialFromDisk() {
   Core::Portable::FileStream file;
   if (!file.open("/sfs/hwaddr.txt", Core::IO::kReadMode | Core::IO::kWriteMode))

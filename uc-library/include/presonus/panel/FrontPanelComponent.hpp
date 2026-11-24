@@ -8,6 +8,9 @@
 #include <cstdint>
 #include <memory>
 #include <stdexcept>
+namespace Presonus::Intercom {
+class LinkEvent;
+}
 namespace Presonus::Mixer {
 class ChannelComponent;
 }
@@ -133,6 +136,8 @@ public:
   bool fadersLocked() const;
   void lockStateChanged();
   void linkChanged();
+  // Portable default hook. Exact original declaration remains unresolved.
+  void processLinkEvent(Presonus::Intercom::LinkEvent &);
   void notifyStoring(bool);
   void doMix(int, float);
   Presonus::Mixer::ChannelComponent *getMixModeChannel();

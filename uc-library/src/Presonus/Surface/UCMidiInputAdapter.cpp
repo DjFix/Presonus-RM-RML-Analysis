@@ -1,6 +1,8 @@
 #include "presonus/surface/UCMidiInputAdapter.hpp"
 
 namespace Presonus::Surface {
+void UCMidiInputAdapter::setFaderUnit(IFaderUnit *value) { faderUnit_ = value; }
+
 void UCMidiInputAdapter::handleMidiEvent(const UC::MidiEvent &event) {
   if (event.sysexLength != 0) {
     sink_.sendMidiMessage(event.sysexData, event.sysexLength, 0);

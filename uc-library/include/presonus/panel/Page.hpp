@@ -52,6 +52,9 @@ public:
   // Portable hook. The original return declaration and vtable layout remain
   // unresolved.
   virtual void deactivate();
+  virtual void recall();
+  virtual void store();
+  virtual void prepare();
   Element *selectedElement() const noexcept { return activeElement_; }
   bool isEnabled() const noexcept { return enabled_; }
 

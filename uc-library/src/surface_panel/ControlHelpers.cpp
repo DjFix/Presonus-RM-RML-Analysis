@@ -5,6 +5,20 @@ namespace Presonus::Panel {
 void ControlRegistrar::Delegate::controlChanged(const ControlRegistrar &,
                                                 unsigned char,
                                                 unsigned char *) {}
+void ControlRegistrar::handleMovingFaderMcuStatus(unsigned char, unsigned char,
+                                                  unsigned char) {}
+void ControlRegistrar::handleKeyValue(unsigned char, unsigned short) {}
+void ControlRegistrar::Delegate::encoderChanged(const ControlRegistrar &, int,
+                                                int, EncoderControl *) {}
+void ControlRegistrar::Delegate::lineSenseChanged(const ControlRegistrar &, int,
+                                                  int) {}
+void ControlRegistrar::Delegate::faderSensitivityReported(
+    const ControlRegistrar &, int) {}
+void ControlRegistrar::Delegate::faderSpeedReported(const ControlRegistrar &,
+                                                    int) {}
+void ControlRegistrar::Delegate::faderStatusChanged(const ControlRegistrar &,
+                                                    int, unsigned char,
+                                                    FaderControl *) {}
 SevenSegControl::~SevenSegControl() = default;
 std::uint16_t SevenSegControl::convertCharToBmp(char character,
                                                 bool decimalPoint) const {

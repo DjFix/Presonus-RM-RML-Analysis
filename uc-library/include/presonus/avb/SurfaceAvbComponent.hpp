@@ -6,6 +6,7 @@ struct SurfaceAvbIdleMaintenanceAccess;
 }
 namespace Presonus::AVB {
 class AvbTalker;
+class AvbListener;
 // Intentional source-port inheritance: the original body calls Component
 // cleanup. Original complete layout, secondary vtables and ARM ABI remain
 // unresolved.
@@ -17,6 +18,8 @@ public:
   // Direct source-port entry point. Original return and virtual declaration
   // remain unresolved.
   void handleTalkerStateChange(AvbTalker *);
+  void
+  handleListenerStateChange(AvbListener *); // Original declaration pending.
 
 private:
   friend struct presonus::avb::SurfaceAvbIdleMaintenanceAccess;

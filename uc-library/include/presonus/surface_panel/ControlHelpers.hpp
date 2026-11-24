@@ -40,6 +40,12 @@ public:
     // remain unresolved.
     void controlChanged(const ControlRegistrar &, unsigned char,
                         unsigned char *);
+    void encoderChanged(const ControlRegistrar &, int, int, EncoderControl *);
+    void lineSenseChanged(const ControlRegistrar &, int, int);
+    void faderSensitivityReported(const ControlRegistrar &, int);
+    void faderSpeedReported(const ControlRegistrar &, int);
+    void faderStatusChanged(const ControlRegistrar &, int, unsigned char,
+                            FaderControl *);
     virtual void faderChanged(const ControlRegistrar &, int, int,
                               FaderControl *);
     virtual void switchChanged(const ControlRegistrar &, int, int, bool,
@@ -67,6 +73,9 @@ public:
       throw std::logic_error("ControlRegistrar port is not bound");
     return port_;
   }
+  // Direct source-port defaults. Original return and dispatch remain pending.
+  void handleMovingFaderMcuStatus(unsigned char, unsigned char, unsigned char);
+  void handleKeyValue(unsigned char, unsigned short);
   virtual void writeDualMsg(Uart_Msg_Type &);
   virtual void setAllLeds(bool);
   virtual void setAllMeters(bool);
@@ -267,6 +276,9 @@ public:
     services_ = &value;
   }
   void updateFocusParams(Presonus::Panel::Control *);
+  // Direct source-port callback with provisional void return.
+  void controlChanged(const Presonus::Panel::ControlRegistrar &, unsigned char,
+                      unsigned char *);
   void faderChanged(const Presonus::Panel::ControlRegistrar &, int, int,
                     Presonus::Panel::FaderControl *) override;
   void switchChanged(const Presonus::Panel::ControlRegistrar &, int, int, bool,

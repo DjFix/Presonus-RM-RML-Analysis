@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/UC/ServerComponent.cpp
   src/Presonus/MixerClientPresetCleanup.cpp
   src/Presonus/Mixer/DecayTimeFormatterT6.cpp
   src/Presonus/Mixer/DecayTimeFormatterT7.cpp
@@ -492,7 +493,6 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Panel/ChannelPresetComponent.cpp
   src/Presonus/Panel/GeqPresetComponent.cpp
   src/Presonus/Panel/ScenesComponent.cpp
-  src/Presonus/UC/ServerComponent.cpp
   src/Presonus/AVB/AvbComponentRouting.cpp
   src/Presonus/Mixer/AVBRemoteMixerHandler.cpp
   src/Presonus/Mixer/AVBCascadeConnections.cpp
