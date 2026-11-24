@@ -5,3 +5,14 @@ The 2026-11-25 instruction stops production graph updates for this and all subse
 Preparation, worker activation, acceptance and final admission run without Memgraph queries, graph snapshots, refresh, publication or graph-generation checks. Never fall back to the graph path on an error in this trial. Preserve the existing CT and historical index. Document a missing dependency on the affected target and select a replacement. Check actual source read/write sets and sealed source hashes at issue and integration. Continue all native, source, formatting, compile, Linux role, SQLite admission and tracker checks.
 
 Measure wall time from the first selection through SQLite readback. Record original and replacement targets, worker launches, new implementations, existing-source audits and declaration-pending entries separately. Identify any overlap with unfinished work that started before this trial. Prior graph-backed workers retain their original evidence and denominators.
+
+## Running a cycle
+
+Run the packet operator from the project root with the selected plan and a fresh output directory under `temp/recovery-work/`.
+
+```sh
+uc-library/.venv/bin/python uc-library/tools/recovery/sqlite_packet.py prepare --plan "$plan" --out "$packet_dir"
+uc-library/.venv/bin/python uc-library/tools/recovery/sqlite_packet.py dispatch --packet "$packet_dir"
+```
+
+Launch the workers listed in `DISPATCH.json`. Verify the compiler's actual dependency files against the accepted sources using `sqlite_dependency_gate.py`. Retain the scoped native, portable and installed-role observations with each handoff. After the guarded readiness merge, use `sqlite_admission.py` to finalize the assigned catalog rows against the exact merge receipt.
