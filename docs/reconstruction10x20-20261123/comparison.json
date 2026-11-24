@@ -1,0 +1,264 @@
+{
+  "status": "operational_end_recorded",
+  "as_of_utc": "2026-11-24T01:12:51+00:00",
+  "receipt_links": {
+    "10x20": {
+      "path": "temp/recovery-work/control10x20-after-4fed70d11/timing/CONTROL10X20_FINAL02-timing.json",
+      "sha256": "21c90fd66e11d160608cda640f43d87fe53f99c0c3dfec8d9d6b44077fa56128"
+    },
+    "10x10": {
+      "path": "temp/recovery-work/reconstruction10x10-20261121/FINAL_TIMING.json",
+      "sha256": "e20f6c01ea1adab57c02f9a20da57e3567cda143e0485df7daf8a187d86a8f3b"
+    },
+    "graph_aggregate": {
+      "path": "temp/recovery-work/control10x20-after-4fed70d11/graph/AGGREGATE-final.json",
+      "sha256": "d341246757307fd301946401f8784dc18d1d5e964f36c21448fad7e858be033b"
+    }
+  },
+  "10x20": {
+    "primary_slots_fully_admitted": 200,
+    "distinct_elf_admitted": 372,
+    "user_wall_seconds": 227589.160542,
+    "primary_slots_per_wall_hour": 3.1635953060564543,
+    "elf_per_wall_hour": 5.8842872692650054,
+    "verified_graph_commands": 9,
+    "graph_command_sum_seconds": 79896.31222993089,
+    "graph_mean_seconds_per_verified_command": 8877.368025547876,
+    "graph_command_seconds_per_admitted_primary_slot": 399.48156114965445,
+    "graph_command_seconds_per_admitted_elf": 214.7750328761583,
+    "canonical_linux_command_seconds_per_admitted_elf": 18.68373559408602,
+    "local_acceptance_command_seconds_per_admitted_elf": 2.529995938172043,
+    "phase_subprocess_window_totals": {
+      "live_graph": {
+        "count": 14,
+        "summed_seconds": 79896.272684,
+        "union_seconds": 79896.27268400001,
+        "envelope_seconds": 223687.622157
+      },
+      "canonical_linux": {
+        "count": 115,
+        "summed_seconds": 6950.349641,
+        "union_seconds": 6950.349640999996,
+        "envelope_seconds": 165269.199698
+      },
+      "local_acceptance": {
+        "count": 213,
+        "summed_seconds": 941.158489,
+        "union_seconds": 796.6891650000001,
+        "envelope_seconds": 164895.568123
+      }
+    },
+    "observed_quota_excluded_wall_seconds": 127606.031542,
+    "primary_slots_per_hour_without_observed_quota": 5.642366519038879,
+    "elf_per_hour_without_observed_quota": 10.494801725412316,
+    "approved_replacement_mappings": 25,
+    "fully_admitted_replacements": 23,
+    "ready_pending_counts": {
+      "ready": 112,
+      "pending": 260
+    },
+    "quota_observation": {
+      "receipt": {
+        "path": "temp/recovery-work/control10x20-after-4fed70d11/timing/QUOTA_OBSERVED01.json",
+        "sha256": "213330d9a7c8b12caebd2878c29aabecfd0a7bb668d55e3a7aa3e4f086c6aba1"
+      },
+      "observed_coordinator_interruption_seconds_within_cycle": 99983.129,
+      "included_in_cycle_wall_seconds": true,
+      "elapsed_seconds_less_observed_coordinator_interruption": 127606.031542,
+      "observed_overlap_seconds_by_phase": {
+        "packet_prepare": 0,
+        "grouped_packet_prepare": 0,
+        "local_acceptance": 0,
+        "packet_launcher_attempt": 0,
+        "live_graph": 0,
+        "canonical_linux": 0,
+        "worker_delivery_envelope": 0,
+        "graph_wrapper": 0,
+        "graph_postflight": 0,
+        "sqlite_admission": 0,
+        "dedup_review": 0,
+        "catalog_review": 0
+      },
+      "observed_union_overlap_of_measured_process_windows_seconds": 0,
+      "interpretation": "The worker delivery envelope can include idle time. These overlaps do not establish worker CPU usage or provider billing."
+    },
+    "graph_overlap_seconds_by_measured_phase": {
+      "canonical_linux": 4696.919321999999,
+      "local_acceptance": 54.788190000000014,
+      "grouped_packet_prepare": 0,
+      "packet_launcher_attempt": 0,
+      "dedup_review": 4830.691767,
+      "sqlite_admission": 489.1365739999999
+    },
+    "graph_overlap_with_union_of_measured_phases_seconds": 9623.56524,
+    "failed_attempts": [
+      {
+        "phase": "packet_launcher_attempt",
+        "count": 3,
+        "failed_window_union_seconds": 2079.995109,
+        "failed_attempts": [
+          {
+            "label": "Actual05 independent10 initial",
+            "receipt": {
+              "path": "temp/recovery-work/control10x20-after-4fed70d11/packeting/actual05-independent10.log",
+              "sha256": "ee777aef8fd07ca78387b85abdd85d3795a4ec6c1ff1641d5f0ad25be018b4d9"
+            }
+          },
+          {
+            "label": "Actual05 independent10 retry",
+            "receipt": {
+              "path": "temp/recovery-work/control10x20-after-4fed70d11/packeting/actual05-independent10-retry.log",
+              "sha256": "c029d869dddefa3de4507c1ceefdfcd74cf269902eae8f3a6268a76ec4407a5d"
+            }
+          },
+          {
+            "label": "Actual06 grouped preparation",
+            "receipt": {
+              "path": "temp/recovery-work/control10x20-after-4fed70d11/packeting/actual06-authorized42.log",
+              "sha256": "887fbfab7db90e14d2c801b77781f543567ccd74bbfe94ac60cc3481eb5b01e0"
+            }
+          }
+        ]
+      },
+      {
+        "phase": "canonical_linux",
+        "count": 6,
+        "failed_window_union_seconds": 2049.658014,
+        "failed_attempts": [
+          {
+            "label": "linux-actual04-scope01-01/build",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-actual04-scope01-01/commands.json",
+              "sha256": "cb5ddce16f1f00898ff52b025b51cb270e50ec089c97e86ddf144a44d8fc5d07"
+            }
+          },
+          {
+            "label": "linux-actual04-union20-02/tests",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-actual04-union20-02/commands.json",
+              "sha256": "f9fe27a0b79a9f4499c7584dc716d75ab00a913dd75458abe5d7272ca799c68c"
+            }
+          },
+          {
+            "label": "linux-actual05-next10-01/tests",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-actual05-next10-01/commands.json",
+              "sha256": "f990b2f8f0b44049c3b7777c1b7b441b7242e2eb2001e67b8b550b96c4c47bb6"
+            }
+          },
+          {
+            "label": "linux-actual06-next42-01/tests",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-actual06-next42-01/commands.json",
+              "sha256": "cf16205b75f2327b24ce10e6ab4bebff9b0499f868efd4d9d396039e03b823e1"
+            }
+          },
+          {
+            "label": "linux-actual07-union65-01/tests",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-actual07-union65-01/commands.json",
+              "sha256": "09e067fe06377412f99dc949b7ae8b1d1cd41be844b3cdc8b141b0dd6e9f7cf0"
+            }
+          },
+          {
+            "label": "linux-next34-03/tests",
+            "receipt": {
+              "path": "evidence/recovery/2026-11-21/control10x20-after-4fed70d11/linux-next34-03/commands.json",
+              "sha256": "5408de6933427c67a194024c9ce2a4d4cad156c7675bdd2e4a3ea0bb0f330c89"
+            }
+          }
+        ]
+      },
+      {
+        "phase": "graph_postflight",
+        "count": 2,
+        "failed_window_union_seconds": 9.202018,
+        "failed_attempts": [
+          {
+            "label": "actual05 initial check",
+            "receipt": {
+              "path": "temp/recovery-work/control10x20-after-4fed70d11/graph/actual05/FAILURE.json",
+              "sha256": "cc502f1d9269f8e2fba747aa5c0f47b88762d7a4988c82c79492191523bbdae9"
+            }
+          },
+          {
+            "label": "actual08 initial check",
+            "receipt": {
+              "path": "temp/recovery-work/control10x20-after-4fed70d11/graph/actual08/FAILURE.json",
+              "sha256": "83f26e61e555f74e440e708ac76bcf9caae3b976ebaa5ef7d8c3feafb94df5a3"
+            }
+          }
+        ]
+      },
+      {
+        "phase": "sqlite_admission",
+        "count": 0,
+        "failed_window_union_seconds": 0,
+        "failed_attempts": []
+      }
+    ],
+    "ctest_attempts_reaching_tests": {
+      "passed": 10,
+      "failed": 5
+    },
+    "packet_attempts_without_outer_duration_count": 0
+  },
+  "10x10": {
+    "primary_slots_fully_admitted": 100,
+    "distinct_elf_admitted": 100,
+    "user_wall_seconds": 30814.244526,
+    "primary_slots_per_wall_hour": 11.68290852291525,
+    "elf_per_wall_hour": 11.68290852291525,
+    "verified_graph_commands": 4,
+    "graph_command_sum_seconds": 13648.102307992987,
+    "graph_mean_seconds_per_verified_command": 3412.025576998247,
+    "graph_command_seconds_per_admitted_primary_slot": 136.48102307992988,
+    "graph_command_seconds_per_admitted_elf": 136.48102307992988,
+    "canonical_linux_command_seconds_per_admitted_elf": 30.8275513,
+    "local_acceptance_command_seconds_per_admitted_elf": 2.3663175,
+    "phase_subprocess_window_totals": {
+      "live_graph": {
+        "count": 4,
+        "summed_seconds": 13648.090139,
+        "union_seconds": 13648.090139,
+        "envelope_seconds": 25430.860239
+      },
+      "canonical_linux": {
+        "count": 51,
+        "summed_seconds": 3082.75513,
+        "union_seconds": 3082.75513,
+        "envelope_seconds": 22633.571462
+      },
+      "local_acceptance": {
+        "count": 101,
+        "summed_seconds": 236.63175,
+        "union_seconds": 236.63175,
+        "envelope_seconds": 23155.426193
+      }
+    },
+    "wall_through_report_commit_seconds": 30914.935230701,
+    "fully_admitted_replacements": 11,
+    "initial_docker_mount_failure_windows": {
+      "count": 2,
+      "summed_seconds": 988.8499999999999,
+      "union_seconds": 563.343088,
+      "envelope_seconds": 563.343088
+    },
+    "graph_overlap_seconds_by_measured_phase": {
+      "canonical_linux_commands": 1748.436884,
+      "outer_packet_commands_with_timing": 0,
+      "local_acceptance_commands": 19.284654
+    },
+    "ctest_attempts_reaching_tests": {
+      "passed": 4,
+      "failed": 3
+    }
+  },
+  "method": [
+    "User wall for current in-progress cycle runs request to as_of, including observed coordinator interruption. Prior cycle wall runs through verified operational end, with report/commit shown separately.",
+    "Primary slots and ELF identities are separate denominators. ELF includes admitted retained work and role/ABI variants. Use phase summations for subprocess burden and interval union for wall share. Overlaps are not additive.",
+    "Failure slices come from durable timings, and CTest attempt counts overlap the command failures. A missing duration is not zero cost.",
+    "Quota bounds describe coordinator observation. The quota-excluded sensitivity quotient is neither active CPU time nor billing. Current and prior scopes differ; no measured speedup claim."
+  ],
+  "operational_cutoff_utc": "2026-11-24T01:11:54.471542+00:00"
+}
