@@ -1,0 +1,7 @@
+# SQLite-only reconstruction trial
+
+The 2026-11-25 instruction stops production graph updates for this and all subsequent cycles. The first cycle measures the new operating mode. Use the operational SQLite registry for identity, status, history and proof links, and its assignments for exclusive ownership. Select and issue work only from SQLite. During reconstruction resolve dependencies from the current source, compiler inputs, pinned providers and hash-verified original ELF ranges. Record the exact inputs for each handoff. Select up to ten independent owners and ten implementation targets per owner; admit completed work incrementally.
+
+Preparation, worker activation, acceptance and final admission run without Memgraph queries, graph snapshots, refresh, publication or graph-generation checks. Never fall back to the graph path on an error in this trial. Preserve the existing CT and historical index. Document a missing dependency on the affected target and select a replacement. Check actual source read/write sets and sealed source hashes at issue and integration. Continue all native, source, formatting, compile, Linux role, SQLite admission and tracker checks.
+
+Measure wall time from the first selection through SQLite readback. Record original and replacement targets, worker launches, new implementations, existing-source audits and declaration-pending entries separately. Identify any overlap with unfinished work that started before this trial. Prior graph-backed workers retain their original evidence and denominators.

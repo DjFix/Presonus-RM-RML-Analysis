@@ -754,6 +754,14 @@ or context compaction, together with the publisher polling cadence above.
 
 ## Rolling implementation selection — user correction, 2026-11-14
 
+- Effective 2026-11-25, select and issue reconstruction work exclusively from
+  the operational SQLite registry. Workers resolve dependencies from current
+  code and pinned sources during reconstruction. Stop all production graph
+  updates, including deferred refresh and publication. This overrides earlier
+  Memgraph requirements throughout this file for current and future production.
+  Preserve all other quality gates and historical data. See
+  [SQLite-only reconstruction](docs/reconstruction-sqlite-only-trial.md).
+
 - Launch C001 and subsequent rolling batches with ten GPT-6.2-Sol workers
   (ten targets per worker when available). Set `model="gpt-6.2-sol"` and
   `fork_turns="none"` explicitly when submitting each sealed dispatch,
