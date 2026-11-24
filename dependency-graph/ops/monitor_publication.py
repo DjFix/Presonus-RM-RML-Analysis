@@ -17,16 +17,30 @@ def read_json(path):
     except (OSError,ValueError):return None
 
 
+def producer_script(args):
+    if not args or pathlib.Path(args[0]).name not in ('python', 'python3', 'python3.12', 'python3.13'):
+        return None
+    script_index = 2 if args[1:2] == ['-B'] else 1
+    if len(args) <= script_index:
+        return None
+    script = args[script_index]
+    if pathlib.Path(script).name in ('refresh_graph.py', 'refresh_publish.py',
+                                      'resume_refresh_observations.py', 'migrate_source_identity.py'):
+        return script
+    return None
+
+
 def processes():
     found=[]
     for folder in pathlib.Path('/proc').iterdir():
         if not folder.name.isdigit():continue
         try:
             args=(folder/'cmdline').read_bytes().decode(errors='replace').split('\0')
-            if pathlib.Path(args[0]).name not in ('python','python3','python3.12','python3.13'):continue
-            if len(args)<2 or pathlib.Path(args[1]).name not in ('refresh_graph.py','refresh_publish.py','resume_refresh_observations.py','migrate_source_identity.py'):continue
+            script = producer_script(args)
+            if script is None:
+                continue
             start=(folder/'stat').read_text().rsplit(')',1)[1].split()[19]
-            found.append({'pid':int(folder.name),'start_ticks':start,'script':args[1]})
+            found.append({'pid':int(folder.name),'start_ticks':start,'script':script})
         except (OSError,IndexError):continue
     return sorted(found,key=lambda x:x['pid'])
 
