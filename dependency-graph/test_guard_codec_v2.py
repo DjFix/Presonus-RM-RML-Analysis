@@ -3,6 +3,7 @@ import hashlib
 import json
 import unittest
 import zlib
+from unittest.mock import patch
 from native_candidate_ownership import pack_guard, unpack_guard, canonical, canonical_matches
 from context_runtime import ContextError
 
@@ -37,6 +38,31 @@ class CodecV2(unittest.TestCase):
     def test_expansion_still_prechecked(self):
         p=pack_guard(self.seal);p['logical_bytes']=1
         with self.assertRaises(ContextError):unpack_guard(p)
+
+    def test_logical_and_packed_limits_apply_independently_to_reader_and_writer(self):
+        envelope = pack_guard(self.seal)
+        for constant, field in (('V2_LOGICAL_LIMIT', 'logical_bytes'),
+                                ('V2_PACKED_LIMIT', 'payload_bytes')):
+            with self.subTest(field=field), patch(
+                    'native_candidate_ownership.' + constant, envelope[field] - 1):
+                with self.assertRaises(ContextError):
+                    pack_guard(self.seal)
+                with self.assertRaises(ContextError) as rejected:
+                    unpack_guard(envelope)
+                self.assertEqual(str(rejected.exception.__cause__), 'Invalid guard size')
+
+    def test_invalid_compressed_bytes_and_digests_still_fail(self):
+        envelope = pack_guard(self.seal)
+        trailing = base64.b64decode(envelope['data']) + b'trailing'
+        invalid = (
+            dict(envelope, data=base64.b64encode(b'not a zlib stream').decode()),
+            dict(envelope, data=base64.b64encode(trailing).decode()),
+            dict(envelope, payload_sha256='0' * 64),
+            dict(envelope, logical_sha256='0' * 64),
+        )
+        for candidate in invalid:
+            with self.assertRaises(ContextError):
+                unpack_guard(candidate)
 
 class CheckpointCodecCompatibility(unittest.TestCase):
     def test_actual_reader_validates_legacy_and_compact_checkpoints(self):

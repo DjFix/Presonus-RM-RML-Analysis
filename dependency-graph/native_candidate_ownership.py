@@ -9,6 +9,8 @@ import native_candidate_guard_v3 as guard_v3
 OWNER = 'source-native-lifecycle:v1'
 BASIS = 'encoded name only; not ABI proof'
 FIELDS = {'basis', 'candidate_owner', 'candidate_token', 'candidate_created_by'}
+V2_PACKED_LIMIT = 256 * 1024 * 1024
+V2_LOGICAL_LIMIT = guard_v3.MAX_LOGICAL
 
 
 def canonical(value):
@@ -135,6 +137,7 @@ def pack_guard(seal, *, bounded=False, maintenance=False):
 def pack_guard_v2(seal):
     if type(seal) is not dict or seal.get('version') != 1:
         raise ContextError('Invalid logical guard')
+    logical_bytes, logical_sha256 = guard_v3.sized_digest(seal, V2_LOGICAL_LIMIT)
     body = dict(seal)
     pool, indexes, sources = [], {}, []
     atoms, atom_indexes = [], {}
@@ -157,9 +160,10 @@ def pack_guard_v2(seal):
         sources.append({'properties': source['properties'], 'owners_ref': indexes[key]})
     body['sources'] = sources
     payload = _guard_bytes({'seal': body, 'owner_lists': pool, 'owner_atoms': atoms})
-    logical = _guard_bytes(seal)
-    return {'guard_codec': 'owner-atoms-zlib-base64-v2', 'logical_sha256': hashlib.sha256(logical).hexdigest(),
-            'logical_bytes': len(logical), 'payload_bytes': len(payload),
+    if len(payload) > V2_PACKED_LIMIT:
+        raise ContextError('Native candidate v2 packed guard exceeds its explicit bound')
+    return {'guard_codec': 'owner-atoms-zlib-base64-v2', 'logical_sha256': logical_sha256,
+            'logical_bytes': logical_bytes, 'payload_bytes': len(payload),
             'payload_sha256': hashlib.sha256(payload).hexdigest(),
             'data': base64.b64encode(zlib.compress(payload, 6)).decode('ascii')}
 
@@ -172,8 +176,11 @@ def _unpack_guard(value):
     fields = {'guard_codec', 'logical_sha256', 'logical_bytes', 'payload_bytes', 'payload_sha256', 'data'}
     if type(value) is not dict or set(value) != fields or value['guard_codec'] not in ('owner-lists-zlib-base64-v1', 'owner-atoms-zlib-base64-v2'):
         raise ContextError('Invalid guard codec envelope')
-    for name in ('logical_bytes', 'payload_bytes'):
-        if type(value[name]) is not int or not 0 <= value[name] <= 256 * 1024 * 1024:
+    atom_codec = value['guard_codec'] == 'owner-atoms-zlib-base64-v2'
+    limits = (('logical_bytes', V2_LOGICAL_LIMIT if atom_codec else 256 * 1024 * 1024),
+              ('payload_bytes', V2_PACKED_LIMIT if atom_codec else 256 * 1024 * 1024))
+    for name, limit in limits:
+        if type(value[name]) is not int or not 0 <= value[name] <= limit:
             raise ContextError('Invalid guard size')
     for name in ('logical_sha256', 'payload_sha256'):
         if type(value[name]) is not str or len(value[name]) != 64 or any(c not in '0123456789abcdef' for c in value[name]):
@@ -188,7 +195,6 @@ def _unpack_guard(value):
     if hashlib.sha256(payload).hexdigest() != value['payload_sha256']:
         raise ContextError('Guard payload digest mismatch')
     packed = json.loads(payload)
-    atom_codec = value['guard_codec'] == 'owner-atoms-zlib-base64-v2'
     expected_fields = {'seal', 'owner_lists', 'owner_atoms'} if atom_codec else {'seal', 'owner_lists'}
     if type(packed) is not dict or set(packed) != expected_fields:
         raise ContextError('Invalid guard payload')
