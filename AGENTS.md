@@ -754,6 +754,10 @@ or context compaction, together with the publisher polling cadence above.
 
 ## Rolling implementation selection — user correction, 2026-11-14
 
+- Launch C001 and subsequent rolling batches with ten GPT-6.2-Sol workers
+  (ten targets per worker when available). Set `model="gpt-6.2-sol"` and
+  `fork_turns="none"` explicitly when submitting each sealed dispatch,
+  including replacements. Record the actual launch and packet together.
 - The user authorizes a rolling 10-worker x 10-target reconstruction run. This
   supersedes the earlier publication pause for this run; freshness and compact
   publication limits still apply. Do not silently substitute 100 research tasks
