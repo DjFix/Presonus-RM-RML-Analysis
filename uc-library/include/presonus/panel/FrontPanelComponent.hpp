@@ -143,6 +143,8 @@ public:
   void attachMeterSwitch(Control *, int);
   // Portable return declaration for the observed no-effect default.
   virtual void presetStored(const PresetComponent &, int);
+  // Default meter hook. The original return declaration is unresolved.
+  virtual void doFatMeterUpdate(Presonus::Mixer::ChannelComponent &);
   void
   bindFaderViews(Presonus::Mixer::MixerComponentBase &,
                  const Core::Vector<Presonus::Mixer::ChannelComponent *> &,

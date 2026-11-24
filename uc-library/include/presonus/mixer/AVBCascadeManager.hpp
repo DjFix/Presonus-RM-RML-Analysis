@@ -83,6 +83,7 @@ public:
   void onNetworkShutdown();
   bool isConnected(UC::NetworkItem *) const;
   void onNetworkItemRemoved(UC::NetworkItem *);
+  void onServerChanged(UC::NetworkItem *); // Original return unresolved.
   void cardConnectionChanged(bool);
   bool sourcePortCardConnected() const { return cardConnected_; }
 

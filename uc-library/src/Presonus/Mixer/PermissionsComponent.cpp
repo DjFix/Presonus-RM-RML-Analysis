@@ -391,6 +391,8 @@ void PermissionsComponent::getOtherString(
   bindings_.other->toString(string.getBuffer(), 128);
 }
 
+void PermissionsComponent::onPermissionsChanged() {}
+
 void PermissionsComponent::auxLinkingChanged() {
   bindings_.loadSelectedDevice(bindings_.context, *this);
   bindings_.devicePermissionsChanged(bindings_.ownerContext, *this);

@@ -10,6 +10,7 @@ Messenger::Messenger() {
 // Real member lock destruction precedes pinned Singleton matching-instance
 // cleanup.
 Messenger::~Messenger() = default;
+void Messenger::init() {}
 void Messenger::release() { releaseRequested_ = true; }
 // Actual CCL owns allocation, exception cleanup, registration and storage.
 Messenger *getMessenger() { return &Messenger::instance(); }

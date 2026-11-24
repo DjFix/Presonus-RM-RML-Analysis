@@ -3,6 +3,8 @@
 #include "presonus/dice/packet_services.hpp"
 #include <cstdio>
 namespace Presonus::AVB {
+void AvbComponent::handleTalkerStateChange(AvbTalker *) {}
+
 void AvbComponent::addListener(ListenerType type, long long id, bool clock,
                                int mode, bool disable) {
   switch (type) {

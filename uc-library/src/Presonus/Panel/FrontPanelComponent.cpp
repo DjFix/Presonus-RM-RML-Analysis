@@ -7,6 +7,8 @@
 namespace Presonus::Panel {
 using presonus::frontpanel_port::Action;
 void FrontPanelComponent::presetStored(const PresetComponent &, int) {}
+void FrontPanelComponent::doFatMeterUpdate(
+    Presonus::Mixer::ChannelComponent &) {}
 void FrontPanelComponent::handlePaste() {
   if (!state.copyActive)
     return;

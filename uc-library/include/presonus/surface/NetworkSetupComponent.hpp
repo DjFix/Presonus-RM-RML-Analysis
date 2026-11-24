@@ -139,6 +139,9 @@ public:
       const; // requires tag30 and finite int-representable value
   int getWiredNetworkAssignMode() const;
 
+  // Original callback slot. The portable void return is provisional.
+  virtual void onServerChanged(UC::NetworkItem *);
+
 private:
   presonus::surface::SurfaceNetworkState &state_;
   std::unique_ptr<ListModel> ownedModel_; // only models allocated by this port

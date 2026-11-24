@@ -3,6 +3,7 @@
 
 namespace Presonus {
 void MeterManagerBase::processMeters(bool) {}
+void MeterManagerBase::sendUCNETMeters(bool) {}
 void MeterManagerBase::sourcePortStart() { Core::Threads::Thread::start(); }
 bool MeterManagerBase::sourcePortJoin(unsigned int milliseconds) {
   return Core::Threads::Thread::join(milliseconds);

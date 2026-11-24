@@ -52,6 +52,7 @@ public:
 protected:
   // Default meter-processing hook for the portable base.
   virtual void processMeters(bool);
+  virtual void sendUCNETMeters(bool);
 
   // Test overrides capture external provider boundaries. Production defaults
   // invoke the real pinned CCL implementation; no fake Core provider exists.

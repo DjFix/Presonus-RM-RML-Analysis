@@ -10,6 +10,7 @@ public:
   TemperatureControl(presonus::panel::TemperatureSourcePort, int tag)
       : Control(tag) {}
   // Original ordinary return declarations remain unencoded and provisional.
+  void broadcastValue(int) override;
   void receiveValue(int) override;
   void *castTo(int) override;
 };

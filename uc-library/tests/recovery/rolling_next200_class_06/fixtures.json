@@ -1,0 +1,115 @@
+{
+  "original": {
+    "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "firmware": "RM/RML mixer 13731",
+    "role": "server",
+    "mangled": "_ZN8Presonus5Panel19FrontPanelComponent16doFatMeterUpdateERNS_5Mixer16ChannelComponentE",
+    "address": 433420,
+    "size": 16,
+    "section": 12,
+    "file_offset": 400652,
+    "section_name": ".text",
+    "range_sha256": "60cf0e8b51daf6a0ce5a5eea619d9a3e219bccf7fa26c553983e5baf3012cfad",
+    "range_hex": "0dc0a0e100d82de904b04ce200a89de8"
+  },
+  "unicorn_version": "2.1.4",
+  "pyelftools_version": "0.33",
+  "cases": [
+    {
+      "name": "idle",
+      "receiver": 1048640,
+      "channel": 1114240,
+      "stack": 2101232,
+      "frame": 74560,
+      "seed": 0,
+      "receiver_sha256": "110009dcee21620b166f3abfecb5eff7a873be729d1c2d53822e7acc5f34eb9b",
+      "channel_sha256": "110009dcee21620b166f3abfecb5eff7a873be729d1c2d53822e7acc5f34eb9b",
+      "return_pc": 3145728,
+      "restored_registers": [
+        "r0",
+        "r1",
+        "fp",
+        "sp",
+        "lr"
+      ],
+      "instruction_trace": [
+        433420,
+        433424,
+        433428,
+        433432
+      ],
+      "writes": [
+        [
+          2101216,
+          4,
+          74560
+        ],
+        [
+          2101220,
+          4,
+          2101232
+        ],
+        [
+          2101224,
+          4,
+          3145728
+        ],
+        [
+          2101228,
+          4,
+          433432
+        ]
+      ],
+      "external_calls": [],
+      "objects_unchanged": true
+    },
+    {
+      "name": "active",
+      "receiver": 1179776,
+      "channel": 1245248,
+      "stack": 2166720,
+      "frame": 29488,
+      "seed": 165,
+      "receiver_sha256": "c5c049c0f163650053585a3cb542426103360c861e1fa026aaa4188d27c560bb",
+      "channel_sha256": "755929613d018a9cb308fd873b7b5b53078961f9be477d3650fa0710b350ad80",
+      "return_pc": 3145728,
+      "restored_registers": [
+        "r0",
+        "r1",
+        "fp",
+        "sp",
+        "lr"
+      ],
+      "instruction_trace": [
+        433420,
+        433424,
+        433428,
+        433432
+      ],
+      "writes": [
+        [
+          2166704,
+          4,
+          29488
+        ],
+        [
+          2166708,
+          4,
+          2166720
+        ],
+        [
+          2166712,
+          4,
+          3145728
+        ],
+        [
+          2166716,
+          4,
+          433432
+        ]
+      ],
+      "external_calls": [],
+      "objects_unchanged": true
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #include "presonus/panel/temperature_control.hpp"
 namespace Presonus::Panel {
+void TemperatureControl::broadcastValue(int) {}
 void TemperatureControl::receiveValue(int value) {
   if (auto *p = presonus::panel::ControlAccess::parameter(*this))
     p->setNormalized(static_cast<float>(value) * 0x1p-10f, true);

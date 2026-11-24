@@ -24,6 +24,7 @@ void AVBCascadeManager::onNetworkItemRemoved(UC::NetworkItem *item) {
   if (selected_ == item)
     boundary_.select(nullptr, false);
 }
+void AVBCascadeManager::onServerChanged(UC::NetworkItem *) {}
 void AVBCascadeManager::cardConnectionChanged(bool connected) {
   cardConnected_ = connected;
   const bool present = boundary_.connectedClientPresent();

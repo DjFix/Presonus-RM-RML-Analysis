@@ -13,7 +13,7 @@ PROOF=Path('uc-library/candidates')/TASK/'worker-proof.json'
 LIMITS=['Original ordinary return type and pointer qualification remain unresolved.','Original object layout, inheritance, ARM ABI and hardware behavior unverified.','Actual CCL Component is explicitly composed into existing State; not original inheritance/layout. Existing application Boundary remains borrowed and unused by these storage methods. One actual shared CCL lock replaces legacy CoreLock. Native uses actual CCL-provider RPC with explicit mapped ARM object/storage/attribute identities; no binary Core or exception/unwind paths executed.']
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
- a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',default='replay');a.add_argument('--exe');a.add_argument('--object');a.add_argument('--integration');a.add_argument('--out');args=a.parse_args()
+ a=argparse.ArgumentParser();a.add_argument('mode',nargs='?',default='replay');a.add_argument('--exe');a.add_argument('--object');a.add_argument('--integration');a.add_argument('--out');a.add_argument('--source-transition', type=Path);a.add_argument('--source-transition-sha256');args=a.parse_args()
  os.chdir(ROOT);OUT.mkdir(parents=True,exist_ok=True);logs=[]
  def run(argv,**kw):
   start=time.monotonic();r=subprocess.run(list(map(str,argv)),text=True,capture_output=True,**kw);logs.append(dict(argv=list(map(str,argv)),returncode=r.returncode,stdout=r.stdout,stderr=r.stderr,seconds=time.monotonic()-start));print(json.dumps(logs[-1]),flush=True);r.check_returncode();return r.stdout
@@ -45,10 +45,30 @@ def main():
  proof=dict(version=1,task_id=TASK,producer_session_id=os.environ.get('CODEX_THREAD_ID','rolling10_pages'),created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_bindings=bindings,functions=[entry],proposed_readiness=dict(canonical_binding_pending=args.integration is None,ready=[],pending=[entry]),commands=logs,compilation=json.loads((OUT/'compilation.json').read_text()) if (OUT/'compilation.json').exists() else [],original_range={k:fixture[k] for k in ('elf_sha256','address','size','section','file_offset','range_sha256')},native_fixture_sha256=sha(BASE/'fixtures.json'),case_count=len(lines),cpp_differential_passed=True,compiled_mangled_names_matched=True,cpp_compiled=True,portable_ready=False,original_arm_abi_verified=False,hardware_verified=False,limitations=LIMITS,executable=dict(path=str(exe),sha256=sha(exe)),object=dict(path=str(obj),sha256=sha(obj)),tools=dict(formatter=run(['uc-library/.venv/bin/clang-format','--version']).strip(),compiler=run(['g++','--version']).splitlines()[0]))
  proof['provider_archives']={p:sha(p) for p in ['/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libcorelib.a','/home/rs/projects/opencs/ai-line-analysis/temp/core-upstream/root-integration-01/upstream-core/sdk/lib/libpresonus_core_allocator.a']}
  addendum=Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling10x10-20261114/root-review/generation06/addenda/pages-filter.json');supplement=json.loads(addendum.read_text());assert sha(addendum)=='a52849ca893b37a103ec8698df23a4d58ed649ff9919e27b0b21b6201d8347a9'
+ assert bool(args.source_transition)==bool(args.source_transition_sha256)
+ approved_transitions={}
+ if args.source_transition:
+  assert sha(args.source_transition)==args.source_transition_sha256
+  transition=json.loads(args.source_transition.read_text())
+  predecessor=transition['previous_addendum']
+  assert predecessor['sha256']==sha(predecessor['path'])==sha(addendum)
+  for row in transition['source_transitions']:
+   path='uc-library/'+row['path']
+   original=supplement['files'][path]
+   assert path not in approved_transitions and row['previous_sha256']==original['sha256']
+   assert sha(row['previous_frozen_read_path'])==row['previous_sha256']
+   assert sha(row['current_frozen_read_path'])==row['current_sha256']
+   approved_transitions[path]=row['current_sha256']
+  proof['current_source_transition']=dict(path=str(args.source_transition),sha256=args.source_transition_sha256)
  for dep,rec in supplement['files'].items():
-  assert sha(rec['workspace_path'])==rec['sha256']
+  expected=approved_transitions.get(dep,rec['sha256'])
+  if args.source_transition:
+   assert sha(rec['frozen_read_path'])==rec['sha256']
+   assert sha(dep)==expected
+  else:
+   assert sha(rec['workspace_path'])==expected
   for item in proof['functions']:
-   item['sources' if dep.startswith('uc-library/') else 'repository_sources'][str(Path(dep).relative_to('uc-library')) if dep.startswith('uc-library/') else dep]=rec['sha256']
+   item['sources' if dep.startswith('uc-library/') else 'repository_sources'][str(Path(dep).relative_to('uc-library')) if dep.startswith('uc-library/') else dep]=expected
  proof['filter_addendum']=dict(path=str(addendum),sha256=sha(addendum));proof['typed_contract']=dict(path=str(cp),sha256=sha(cp));proof['typed_evidence']=evidence;proof['native_provider_domain']='Original non-Core target executes; original Core code excluded. RPC provider mode has actual CCL Component with empty params/children, real Attributes nested/int/string operations, CCL lock and pool suspension. Actual Component cancellation failure/success tested for save; concurrency/exceptions excluded.'
  if args.integration:proof['integration']=dict(path=args.integration,sha256=sha(args.integration))
  dest=Path(args.out) if args.out else PROOF;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(json.dumps(proof,indent=2)+'\n')

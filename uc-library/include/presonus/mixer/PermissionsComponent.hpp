@@ -114,6 +114,8 @@ public:
   void getSelectedFileName(Core::Portable::FileName &fileName) const;
   void getMixString(Core::CStringBuffer<128> &string) const;
   void getOtherString(Core::CStringBuffer<128> &string) const;
+  // Original return declaration remains unresolved.
+  void onPermissionsChanged();
   void auxLinkingChanged();
   void setFullPermissions(bool enabled);
   void resetPermissionsPW();

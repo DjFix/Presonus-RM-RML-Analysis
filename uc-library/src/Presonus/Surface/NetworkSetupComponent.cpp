@@ -195,6 +195,7 @@ void NetworkSetupComponent::onIdle() {
     state_.dependencies.resumeAdaptors();
   }
 }
+void NetworkSetupComponent::onServerChanged(UC::NetworkItem *) {}
 void NetworkSetupComponent::onNetworkShutdown() {
   selectMixer(nullptr, 1);
   selectDAW(nullptr, 1);

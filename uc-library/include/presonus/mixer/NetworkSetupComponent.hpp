@@ -59,6 +59,7 @@ public:
   void setMixerHandler(AVBRemoteMixerHandler *);
   void onIdle();
   int sendEvent(UC::Event &);
+  void onServerChanged(UC::NetworkItem *);
   void onNetworkItemAdded(UC::NetworkItem *);
   void selectMixer(UC::NetworkItem *, bool);
   void paramChanged(Core::Portable::Parameter *, int);

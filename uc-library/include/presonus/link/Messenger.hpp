@@ -11,6 +11,8 @@ class Messenger : public Core::Portable::Singleton<Messenger> {
 public:
   Messenger();
   ~Messenger() override;
+  // Recovered virtual no-op. Original ordinary return declaration unresolved.
+  virtual void init();
   // Portable void choice: original ordinary return declaration unresolved.
   void release();
   bool releaseRequested() const { return releaseRequested_; }
