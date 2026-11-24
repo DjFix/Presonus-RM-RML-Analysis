@@ -7,7 +7,7 @@ import unittest
 import uuid
 import shlex
 
-from context_runtime import sha
+from context_runtime import ContextError, sha
 
 from refresh_facts import stale_units
 from test_build_invalidation import compiler_invalidation
@@ -115,9 +115,10 @@ class TestBuildInvalidation(unittest.TestCase):
         # Load the pure fact function without importing the network publisher
         # runtime (neo4j is intentionally absent from this host test venv).
         tree = ast.parse((ROOT / 'dependency-graph/refresh_publish.py').read_text())
-        function = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'build_facts')
-        scope = dict(ROOT=self.root, json=json, pathlib=pathlib, shlex=shlex, sha=sha)
-        exec(compile(ast.Module(body=[function], type_ignores=[]), 'refresh_publish.py', 'exec'), scope)
+        definitions = [n for n in tree.body if isinstance(n, (ast.ClassDef, ast.FunctionDef))
+                       and n.name in ('BuildPaths', 'build_facts')]
+        scope = dict(ROOT=self.root, ContextError=ContextError, json=json, pathlib=pathlib, shlex=shlex, sha=sha)
+        exec(compile(ast.Module(body=definitions, type_ignores=[]), 'refresh_publish.py', 'exec'), scope)
         build_facts = scope['build_facts']
         out = self.root / 'out'; out.mkdir()
         fixture = self.write('uc-library/tests/fixture.json', 'first')
@@ -126,6 +127,7 @@ class TestBuildInvalidation(unittest.TestCase):
         inventory.write_text(json.dumps({'tests': [{'name': 'check', 'command': command}]}))
         empty = sqlite3.connect(':memory:')
         empty.execute('CREATE TABLE units(owner TEXT, payload TEXT)')
+        empty.execute('CREATE TABLE node_facts(id TEXT, kind TEXT)')
         first = build_facts(empty, out)
         fixture.write_text('second')
         command[0] = str(self.root / 'new-runner')
@@ -134,6 +136,8 @@ class TestBuildInvalidation(unittest.TestCase):
         empty.close()
         self.assertNotEqual(first[2][str(fixture)], second[2][str(fixture)])
         self.assertIn(('test:check', 'file:new-runner', 'RUNS', 'current CTest inventory'), second[1])
+        self.assertIn(('test:check', 'file:uc-library/tests/fixture.json', 'USES_FIXTURE',
+                       'explicit existing file argument in CTest command'), second[1])
         # Inventory is now collected before compiler selection so artifact
         # classification uses the current configured CTest commands.
         source = (ROOT / 'dependency-graph/refresh_graph.py').read_text()
@@ -160,6 +164,63 @@ class TestBuildInvalidation(unittest.TestCase):
         generated = self.write(prefix + 'compile_commands.json', '{}')
         self.inputs[str(generated)] = 'sha'; self.save()
         self.assertEqual(self.plan([prefix + 'compile_commands.json'], builds=[build])[0][0], {'production'})
+
+
+    def test_exact_ctest_argv_objects_archives_and_replay_outputs(self):
+        build = self.root / 'temp/core-upstream/root-integration-01'
+        exe = self.write('temp/core-upstream/root-integration-01/Replay', '')
+        exe.write_bytes(b'\x7fELFfake')
+        exe.chmod(0o755)
+        obj = self.write('temp/core-upstream/root-integration-01/p.o', '')
+        obj.write_bytes(b'\x7fELFfake')
+        archive = self.write('temp/core-upstream/root-integration-01/libp.a', '')
+        archive.write_bytes(b'!<arch>\n')
+        self.write('temp/core-upstream/root-integration-01/CMakeFiles/Makefile.cmake',
+                   'set(CMAKE_MAKEFILE_DEPENDS\n  "CMakeCache.txt"\n)\n')
+        self.write('temp/core-upstream/root-integration-01/CMakeFiles/p.dir/link.txt',
+                   f'/usr/bin/ar qc {archive.name} {obj.name}\n')
+        proof = self.write('temp/test-work/replay/receipt.json', '{}')
+        self.row['directory'] = str(build)
+        self.save()
+        artifacts = [exe, obj, archive, proof]
+        changed = [str(p.relative_to(self.root)) for p in artifacts]
+        tests = [{'command': ['/usr/bin/python3'] + [str(p) for p in artifacts]}]
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0], (set(), set()))
+        self.assertEqual(self.plan(changed, builds=[build])[0][0], {'production'})
+        # A witnessed object used by a current test remains a compiler input when
+        # the recorded production dependency includes it.
+        self.inputs[str(obj)] = 'sha'
+        self.save()
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
+
+    def test_ctest_argv_cannot_hide_a_build_configuration_or_producer(self):
+        build = self.root / 'temp/core-upstream/root-integration-01'
+        proof = self.write('temp/test-work/replay/receipt.json', '{}')
+        self.write('temp/core-upstream/root-integration-01/CMakeFiles/Makefile.cmake',
+                   f'set(CMAKE_MAKEFILE_DEPENDS\n  "{proof}"\n)\n')
+        tests = [{'command': ['/usr/bin/python3', str(proof)]}]
+        self.assertEqual(self.plan([str(proof.relative_to(self.root))], builds=[build], tests=tests)[0][0],
+                         {'production'})
+        generated = self.write('temp/core-upstream/root-integration-01/generated.hpp', '// input')
+        producer = self.write('dependency-graph/refresh_extract.py', 'pass')
+        tests[0]['command'].extend((str(generated), str(producer)))
+        for path in (generated, producer):
+            self.assertEqual(self.plan([str(path.relative_to(self.root))], builds=[build], tests=tests)[0][0],
+                             {'production'})
+
+
+    def test_unknown_recipe_inputs_do_not_expand_artifact_classification(self):
+        build = self.root / 'temp/core-upstream/root-integration-01'
+        proof = self.write('temp/test-work/replay/receipt.json', '{}')
+        changed = [str(proof.relative_to(self.root))]
+        tests = [{'command': ['/usr/bin/python3', str(proof)]}]
+        self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
+        for content in ('set(UNRELATED "data")\n',
+                        'set(CMAKE_MAKEFILE_DEPENDS\n)\n',
+                        'set(CMAKE_MAKEFILE_DEPENDS\n  "${UNRESOLVED}"\n)\n',
+                        'set(CMAKE_MAKEFILE_DEPENDS\nCMakeCache.txt\n)\n'):
+            self.write('temp/core-upstream/root-integration-01/CMakeFiles/Makefile.cmake', content)
+            self.assertEqual(self.plan(changed, builds=[build], tests=tests)[0][0], {'production'})
 
     def test_fixture_change_before_and_after_test_build(self):
         name = 'uc-library/tests/fixture.json'

@@ -8,12 +8,75 @@ is eligible, with no production input or optional-include dependency on it.
 import json
 import pathlib
 import re
+import shlex
 
 TESTS = pathlib.Path('uc-library/tests')
 TEST_CMAKE = pathlib.Path('uc-library/cmake/tests')
 SOURCES = {'.cpp', '.c', '.cc', '.cxx'}
 PRODUCTION = ('uc-library/src', 'uc-library/include', 'third_party/ccl-framework/core')
 OPTIONAL_INCLUDE = re.compile(rb'__has_include|__has_embed')
+
+
+
+def _test_argument_artifacts(root, build_roots, rows, tests, changed):
+    """Identify only changed, exact generated paths named by current CTest argv."""
+    if not build_roots:
+        return set()
+    recipe_inputs = set()
+    archive_outputs = set()
+    for build in build_roots:
+        makefile = build / 'CMakeFiles/Makefile.cmake'
+        if not makefile.is_file():
+            return set()
+        blocks = re.findall(r'^set\(CMAKE_MAKEFILE_DEPENDS[ \t]*\n(.*?)^[ \t]*\)[ \t]*$',
+                            makefile.read_text(), re.S | re.M)
+        if len(blocks) != 1:
+            return set()
+        lines = [line.strip() for line in blocks[0].splitlines() if line.strip()]
+        if not lines or any(not re.fullmatch(r'"(?:[^"\\]|\\.)+"', line) for line in lines):
+            return set()
+        inputs = [shlex.split(line)[0] for line in lines]
+        if any(re.search(r'[$;()]', name) for name in inputs):
+            return set()
+        recipe_inputs.update((build / name).resolve() for name in inputs)
+        for recipe in build.glob('CMakeFiles/*/link.txt'):
+            for line in recipe.read_text().splitlines():
+                argv = shlex.split(line)
+                if (argv and pathlib.Path(argv[0]).name in ('ar', 'gcc-ar', 'llvm-ar')
+                        and len(argv) >= 3 and pathlib.Path(argv[2]).suffix == '.a'):
+                    archive_outputs.add((build / argv[2]).resolve())
+
+    compiled_sources = set()
+    object_outputs = set()
+    for _, row in rows:
+        compiled_sources.add(pathlib.Path(row['file']).resolve())
+        argv = row.get('arguments') or shlex.split(row['command'])
+        if '-o' in argv:
+            object_outputs.add((pathlib.Path(row['directory']) / argv[argv.index('-o') + 1]).resolve())
+
+    test_output = root / 'temp/test-work'
+    artifacts = set()
+    for test in tests:
+        for argument in test.get('command', [])[1:]:
+            candidate = pathlib.Path(argument)
+            if not candidate.is_absolute():
+                continue
+            path = candidate.resolve()
+            if (path not in changed or path in recipe_inputs or path in compiled_sources
+                    or path in artifacts or not path.is_file()):
+                continue
+            if path.is_relative_to(test_output) and path.suffix == '.json':
+                artifacts.add(path)
+                continue
+            if not any(path.is_relative_to(build) for build in build_roots):
+                continue
+            with path.open('rb') as stream:
+                magic = stream.read(8)
+            if ((magic.startswith(b'\x7fELF') and
+                 (path in object_outputs or (not path.suffix and path.stat().st_mode & 0o111)))
+                    or (magic == b'!<arch>\n' and path in archive_outputs)):
+                artifacts.add(path)
+    return artifacts
 
 
 def compiler_invalidation(root, connection, rows, changed, inventory_delta,
@@ -28,8 +91,8 @@ def compiler_invalidation(root, connection, rows, changed, inventory_delta,
     root = root.resolve()
     try:
         paths = {pathlib.Path(p).resolve().relative_to(root) for p in changed}
-        # Only exact generated configuration outputs and current CTest executable
-        # paths are derived artifacts. Never exempt a whole build directory,
+        # Exact generated configuration outputs and bounded test command artifacts
+        # may be considered independently of compiler inputs. Never exempt a whole build directory,
         # CMakeCache, generated headers, or arbitrary executable/fixture paths.
         build_roots = {pathlib.Path(p).resolve() for p in builds}
         derived = {p / name for p in build_roots for name in
@@ -40,6 +103,7 @@ def compiler_invalidation(root, connection, rows, changed, inventory_delta,
                 executable = pathlib.Path(command[0]).resolve()
                 if any(executable.is_relative_to(p) for p in build_roots):
                     derived.add(executable)
+        derived.update(_test_argument_artifacts(root, build_roots, rows, tests, {root / p for p in paths}))
         artifact_paths = {p for p in paths if root / p in derived}
         paths -= artifact_paths
         delta = {pathlib.Path(p) for p in inventory_delta}
