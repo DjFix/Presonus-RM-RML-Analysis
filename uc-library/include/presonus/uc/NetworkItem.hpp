@@ -9,6 +9,7 @@ class NetworkItem {
 public:
   explicit NetworkItem(void *borrowedComponent)
       : component_(borrowedComponent) {}
+  ~NetworkItem();
   void *getComponent() const;
   // Independent source-port identity, not the native field at byte offset
   // 0x18e or an original accessor declaration. Inputs are copied and bounded
