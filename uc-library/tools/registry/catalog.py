@@ -153,7 +153,7 @@ def query(db, role=None, name=None, kind=None, policy=None, source=None, limit=1
     finally:
         c.close()
 
-def operate(db, payload, dry_run=True):
+def operate(db, payload, dry_run=True, *, preflight=None):
     """Atomic metadata-only batch. done has NO effect on proofs/readiness."""
     require(isinstance(payload, dict), 'Object request required')
     for key in ('request_id', 'actor'):
@@ -163,6 +163,8 @@ def operate(db, payload, dry_run=True):
     unit = writable(db)
     c = unit.raw
     try:
+        if preflight is not None:
+            preflight(c)
         old = c.execute('SELECT digest,result FROM catalog_requests WHERE request_id=?', (payload['request_id'],)).fetchone()
         if old:
             require(old['digest'] == checksum, 'Request id reused with different payload')
