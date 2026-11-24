@@ -12,7 +12,9 @@ public:
   PresetNameManager(PresetNameCache *const *items, int count);
   // Borrowed entries; this is the only authoritative cache collection.
   bool sourcePortAddCache(PresetNameCache *cache) { return caches.add(cache); }
-  int sourcePortCacheCount() const { return caches.count(); }
+  // The original ordinary return type is unresolved.
+  int countCaches() const;
+  int sourcePortCacheCount() const { return countCaches(); }
   int sourcePortCacheCapacity() const { return caches.getCapacity(); }
   PresetNameCache *getCache(int index) const;
   void rebuildAllCaches() const;

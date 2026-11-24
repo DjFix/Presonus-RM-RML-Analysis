@@ -51,7 +51,7 @@ int main() {
     Messenger a;
     assert(initCount == initialInit + 1);
     assert(!a.releaseRequested());
-    assert(a.nativeWord8_ == 0 && a.nativeWord12_ == 0);
+    assert(a.boundMsgHandler() == nullptr && a.nativeWord12_ == 0);
     a.lock_.lock();
     assert(a.lock_.tryLock());
     a.lock_.unlock();

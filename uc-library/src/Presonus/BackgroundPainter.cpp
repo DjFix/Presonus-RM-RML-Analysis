@@ -1,5 +1,7 @@
 #include "presonus/BackgroundPainter.hpp"
 namespace Presonus {
+BackgroundPainter::BackgroundPainter() = default;
+
 void BackgroundPainter::paint(const Core::TRect<int> &,
                               const Core::Portable::DrawEvent &event,
                               const Core::Portable::Style &style) {

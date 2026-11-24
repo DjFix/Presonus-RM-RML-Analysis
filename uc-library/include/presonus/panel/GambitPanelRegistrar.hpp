@@ -6,6 +6,7 @@ namespace Presonus::Panel {
 class GambitPanelRegistrar {
 public:
   const char *getPanelPortName();
+  const int *getTags(int group, int &count) const;
   int getParamInfoListSizeFromGroup(int group);
 };
 } // namespace Presonus::Panel

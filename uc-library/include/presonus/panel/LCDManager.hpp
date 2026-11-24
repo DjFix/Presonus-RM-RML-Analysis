@@ -22,6 +22,8 @@ protected:
 // preserved. Original return declarations and ARM layout remain unresolved.
 class LCDManager {
 public:
+  LCDManager();
+
   struct SourcePortConstruction {};
   explicit LCDManager(SourcePortConstruction) {}
   // The delegate must outlive its binding to this manager.

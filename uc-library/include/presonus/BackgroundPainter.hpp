@@ -5,6 +5,7 @@ namespace Presonus {
 // object/ARM ABI layout are unresolved. Painters are borrowed by EQControl.
 class BackgroundPainter {
 public:
+  BackgroundPainter();
   virtual void paint(const Core::TRect<int> &rectangle,
                      const Core::Portable::DrawEvent &event,
                      const Core::Portable::Style &style);

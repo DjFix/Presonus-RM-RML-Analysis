@@ -79,6 +79,8 @@ def symbols(value, required):
     if CLASS == "LCDManager":
         expected = {
             "_ZN8Presonus5Panel10LCDManager11setDelegateEPNS0_12ILCDDelegateE",
+            "_ZN8Presonus5Panel10LCDManagerC1Ev",
+            "_ZN8Presonus5Panel10LCDManagerC2Ev",
             "_ZNK8Presonus5Panel10LCDManager22lookupElementParameterEPKc",
         }
         default_book = "_ZNK8Presonus5Panel10LCDManager14getDefaultBookEv"

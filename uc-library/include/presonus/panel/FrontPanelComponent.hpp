@@ -150,6 +150,8 @@ public:
   virtual void presetStored(const PresetComponent &, int);
   // Default meter hook. The original return declaration is unresolved.
   virtual void doFatMeterUpdate(Presonus::Mixer::ChannelComponent &);
+  // Portable predicate type for the observed default GEQ range hook.
+  virtual bool checkGeqViewRange();
   void
   bindFaderViews(Presonus::Mixer::MixerComponentBase &,
                  const Core::Vector<Presonus::Mixer::ChannelComponent *> &,

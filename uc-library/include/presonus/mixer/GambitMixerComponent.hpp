@@ -9,5 +9,6 @@ public:
   struct SourcePortConstruction {};
   explicit GambitMixerComponent(SourcePortConstruction) {}
   virtual std::int32_t numHWMicLineIn() const;
+  std::int32_t getDanteTalkbackSlot();
 };
 } // namespace Presonus::Mixer

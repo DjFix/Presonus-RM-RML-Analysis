@@ -4,9 +4,10 @@ namespace presonus::panel {
 struct TemperatureSourcePort {};
 } // namespace presonus::panel
 namespace Presonus::Panel {
-// Real original Control base. Independent construction, no original lifecycle.
+// Real original Control base with portable inherited storage.
 class TemperatureControl : public Control {
 public:
+  explicit TemperatureControl(int tag);
   TemperatureControl(presonus::panel::TemperatureSourcePort, int tag)
       : Control(tag) {}
   // Original ordinary return declarations remain unencoded and provisional.

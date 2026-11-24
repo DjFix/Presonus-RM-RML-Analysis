@@ -1,0 +1,201 @@
+{
+  "original": {
+    "address": 433436,
+    "anchor": "d87ed897f323d676a1a620f06b0f61cf4348e3c6eeb76316d0db5bb29216d46f",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 400668,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus5Panel19FrontPanelComponent17checkGeqViewRangeEv",
+    "range_hex": "0dc0a0e100d82de90000a0e304b04ce200a89de8",
+    "range_sha256": "52014dc35dcb0a43c02dfc6dec01fdeeafcc563ba02addaa7295df3a7a57226c",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 20
+  },
+  "vtables": {
+    "19FrontPanelComponent": {
+      "vtable": 3303280,
+      "slot": 152,
+      "target": 433436
+    },
+    "24BeastFrontPanelComponent": {
+      "vtable": 3425248,
+      "slot": 152,
+      "target": 499048
+    },
+    "24RogueFrontPanelComponent": {
+      "vtable": 3385680,
+      "slot": 152,
+      "target": 490784
+    }
+  },
+  "callers": {
+    "_ZN8Presonus5Panel19FrontPanelComponent19updateGeqBandSelectEv": [
+      [
+        412528,
+        4,
+        "ldr",
+        "r3, [r0]"
+      ],
+      [
+        412532,
+        4,
+        "mov",
+        "r8, r0"
+      ],
+      [
+        412536,
+        4,
+        "mov",
+        "lr, pc"
+      ],
+      [
+        412540,
+        4,
+        "ldr",
+        "pc, [r3, #0x98]"
+      ],
+      [
+        412544,
+        4,
+        "cmp",
+        "r0, #0"
+      ],
+      [
+        412548,
+        4,
+        "beq",
+        "#0x64c64"
+      ]
+    ],
+    "_ZN8Presonus5Panel19FrontPanelComponent11doGeqUpdateEv": [
+      [
+        415300,
+        4,
+        "ldr",
+        "r3, [r7]"
+      ],
+      [
+        415304,
+        4,
+        "mov",
+        "r0, r7"
+      ],
+      [
+        415308,
+        4,
+        "mov",
+        "lr, pc"
+      ],
+      [
+        415312,
+        4,
+        "ldr",
+        "pc, [r3, #0x98]"
+      ],
+      [
+        415316,
+        4,
+        "ldr",
+        "r2, [r7, #0x8c]"
+      ],
+      [
+        415320,
+        4,
+        "mov",
+        "r0, sb"
+      ]
+    ]
+  },
+  "cases": [
+    {
+      "offset": 0,
+      "selected": 0,
+      "result": 0,
+      "receiver_preserved": true,
+      "stack_accesses": [
+        [
+          17,
+          2099184,
+          4
+        ],
+        [
+          17,
+          2099188,
+          4
+        ],
+        [
+          17,
+          2099192,
+          4
+        ],
+        [
+          17,
+          2099196,
+          4
+        ],
+        [
+          16,
+          2099184,
+          4
+        ],
+        [
+          16,
+          2099188,
+          4
+        ],
+        [
+          16,
+          2099192,
+          4
+        ]
+      ]
+    },
+    {
+      "offset": 15,
+      "selected": 30,
+      "result": 0,
+      "receiver_preserved": true,
+      "stack_accesses": [
+        [
+          17,
+          2099184,
+          4
+        ],
+        [
+          17,
+          2099188,
+          4
+        ],
+        [
+          17,
+          2099192,
+          4
+        ],
+        [
+          17,
+          2099196,
+          4
+        ],
+        [
+          16,
+          2099184,
+          4
+        ],
+        [
+          16,
+          2099188,
+          4
+        ],
+        [
+          16,
+          2099192,
+          4
+        ]
+      ]
+    }
+  ]
+}

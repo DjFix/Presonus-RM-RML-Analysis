@@ -39,6 +39,7 @@ public:
   const DSP::BiquadCalc<double, false> *reverbBiquad() const {
     return biquad_.get();
   }
+  int getNumParameters() const override;
   void setDirty();
   void updateFilters();
   void calcParams(int);

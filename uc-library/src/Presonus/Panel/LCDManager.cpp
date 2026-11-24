@@ -1,6 +1,8 @@
 #include "presonus/panel/LCDManager.hpp"
 
 namespace Presonus::Panel {
+LCDManager::LCDManager() = default;
+
 void LCDManager::setDelegate(ILCDDelegate *delegate) { delegate_ = delegate; }
 
 Book *LCDManager::getDefaultBook() const {

@@ -9,6 +9,7 @@ using presonus::frontpanel_port::Action;
 void FrontPanelComponent::presetStored(const PresetComponent &, int) {}
 void FrontPanelComponent::doFatMeterUpdate(
     Presonus::Mixer::ChannelComponent &) {}
+bool FrontPanelComponent::checkGeqViewRange() { return false; }
 void FrontPanelComponent::handlePaste() {
   if (!state.copyActive)
     return;

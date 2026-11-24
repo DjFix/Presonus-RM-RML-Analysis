@@ -2,11 +2,14 @@
 #include "core/portable/coresingleton.h"
 #include "core/system/corethread.h"
 #include <cstdint>
+
+namespace Core {
+struct IPropertyHandler;
+}
 namespace Presonus::Link {
 // Portable state model of RM 13731 Messenger. Singleton inheritance and Lock
 // are intentional CCL source adaptations, not recovered ARM object layout.
-// Native +8/+12 zero words have unresolved declared types; no ownership
-// inferred.
+// The native +12 word still has an unresolved declared type.
 class Messenger : public Core::Portable::Singleton<Messenger> {
 public:
   Messenger();
@@ -18,10 +21,13 @@ public:
   virtual void start();
   // Portable void choice: original ordinary return declaration unresolved.
   void release();
+  // Portable void choice. Handler lifetime stays with its caller.
+  void setMsgHandler(Core::IPropertyHandler *handler);
+  const Core::IPropertyHandler *boundMsgHandler() const { return msgHandler_; }
   bool releaseRequested() const { return releaseRequested_; }
 
 private:
-  std::uint32_t nativeWord8_ = 0;
+  Core::IPropertyHandler *msgHandler_ = nullptr;
   std::uint32_t nativeWord12_ = 0;
   bool releaseRequested_ = false;
   Core::Threads::Lock lock_; // replaces legacy CoreLock via actual pinned CCL

@@ -4,6 +4,8 @@
 #include <cstring>
 #include <stdexcept>
 namespace {
+constexpr int reverbParameterCount = 57;
+
 float f(std::uint32_t x) { return std::bit_cast<float>(x); }
 std::uint32_t w(float x) { return std::bit_cast<std::uint32_t>(x); }
 float mul(float a, float b) {
@@ -55,7 +57,7 @@ SLReverbController::SLReverbController(int id)
   std::memcpy(state_.memory.data() + 0x380, b.temporary, 104);
   for (std::size_t o = 0x30; o < 0x60; o += 4)
     store(o, 0);
-  for (unsigned i = 0; i < 57; ++i) {
+  for (unsigned i = 0; i < reverbParameterCount; ++i) {
     store(0x60 + 4 * i, 0);
     store(0x144 + 4 * i, 0xbf800000U);
   }
@@ -97,6 +99,9 @@ void SLReverbController::dependency(std::uint32_t address,
   if (!state_.dependency)
     throw std::logic_error("unbound app DSP dependency");
   state_.dependency(address, a);
+}
+int SLReverbController::getNumParameters() const {
+  return reverbParameterCount;
 }
 void SLReverbController::setDirty() {
   const int count = state_.valueCount();

@@ -7,6 +7,9 @@ public:
   // Program-lifetime port name in the portable source interface.
   const char *getPanelPortName();
 
+  // Provisional portable return type. The original leaves count unchanged.
+  const int *getTags(int group, int &count) const;
+
   // Provisional typed source-port return; original return/constness unresolved.
   const Core::Portable::ParamInfo *getParamInfoListFromGroup(int group);
   // Provisional int models original r0; ordinary return declaration unresolved.

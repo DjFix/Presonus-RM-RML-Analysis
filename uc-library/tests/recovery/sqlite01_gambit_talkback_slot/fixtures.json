@@ -1,0 +1,98 @@
+{
+  "original": {
+    "address": 507792,
+    "anchor": "1d906e5bb7dde447327fbb90f230c848c85604c5607ca247d41ed74583f120ae",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 475024,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus5Mixer20GambitMixerComponent20getDanteTalkbackSlotEv",
+    "range_hex": "0dc0a0e100d82de93900a0e304b04ce200a89de8",
+    "range_sha256": "4c8a1b0970af641c2078e1d2d379bcade6ba048e5128f7b1e6bc8c3743fc7c2b",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 20
+  },
+  "packet_sha256": "3ecf2136f741272157d982028b13b30cfb9e72ea5426f9ae341952363b5d4898",
+  "engines": {
+    "unicorn": "2.1.4",
+    "pyelftools": "0.33"
+  },
+  "instruction_limit": 16,
+  "cases": [
+    {
+      "seed": 19,
+      "result": 57,
+      "receiver_unchanged": true,
+      "stack_canaries_unchanged": true,
+      "instruction_trace": [
+        507792,
+        507796,
+        507800,
+        507804,
+        507808
+      ],
+      "memory_writes": [
+        [
+          2099184,
+          4,
+          0
+        ],
+        [
+          2099188,
+          4,
+          2099200
+        ],
+        [
+          2099192,
+          4,
+          3145728
+        ],
+        [
+          2099196,
+          4,
+          507804
+        ]
+      ],
+      "external_calls": 0
+    },
+    {
+      "seed": 202,
+      "result": 57,
+      "receiver_unchanged": true,
+      "stack_canaries_unchanged": true,
+      "instruction_trace": [
+        507792,
+        507796,
+        507800,
+        507804,
+        507808
+      ],
+      "memory_writes": [
+        [
+          2099184,
+          4,
+          0
+        ],
+        [
+          2099188,
+          4,
+          2099200
+        ],
+        [
+          2099192,
+          4,
+          3145728
+        ],
+        [
+          2099196,
+          4,
+          507804
+        ]
+      ],
+      "external_calls": 0
+    }
+  ]
+}

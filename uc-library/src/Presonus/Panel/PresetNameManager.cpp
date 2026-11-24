@@ -16,6 +16,8 @@ PresetNameCache *PresetNameManager::lookupCache(const char *name) const {
       return caches[i];
   return nullptr;
 }
+int PresetNameManager::countCaches() const { return caches.count(); }
+
 PresetNameCache *PresetNameManager::getCache(int index) const {
   return caches.at(index);
 }

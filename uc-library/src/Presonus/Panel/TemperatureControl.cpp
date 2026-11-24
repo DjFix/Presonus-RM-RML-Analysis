@@ -1,5 +1,7 @@
 #include "presonus/panel/temperature_control.hpp"
 namespace Presonus::Panel {
+TemperatureControl::TemperatureControl(int tag) : Control(tag) {}
+
 void TemperatureControl::broadcastValue(int) {}
 void TemperatureControl::receiveValue(int value) {
   if (auto *p = presonus::panel::ControlAccess::parameter(*this))
