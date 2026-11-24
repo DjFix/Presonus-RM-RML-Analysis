@@ -1,5 +1,15 @@
 #include "presonus/panel/RoguePanelRegistrar.hpp"
 namespace Presonus::Panel {
+const char *RoguePanelRegistrar::getPanelPortName() {
+  static constexpr char name[] = "/dev/ttyS1";
+  return name;
+}
+
+const char *RoguePanelRegistrar::getLcdPortName() {
+  static constexpr char name[] = "";
+  return name;
+}
+
 void RoguePanelRegistrar::muteCS1TrafficForNOAAArmUpdate() {}
 const int *RoguePanelRegistrar::getTags(int group, int &count) const {
   if (group != 20)

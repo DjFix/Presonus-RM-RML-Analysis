@@ -29,6 +29,7 @@ public:
   void bootComplete();
   void enableAMP(bool);
   const char *getPanelPortName();
+  const char *getLcdPortName();
   Presonus::IPanelPort *getPort() const override;
   void writeDualMsg(Uart_Msg_Type &) override;
   int mapGroupIdToControlType(ControlRegistrar::ControlType) const;

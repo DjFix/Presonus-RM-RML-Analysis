@@ -7,6 +7,7 @@ void PanelRegistrar::onProgress(const char *, float) {}
 void PanelRegistrar::bootComplete() {}
 void PanelRegistrar::enableAMP(bool) {}
 const char *PanelRegistrar::getPanelPortName() { return "/dev/ttyS0"; }
+const char *PanelRegistrar::getLcdPortName() { return "/dev/ttyS1"; }
 Presonus::IPanelPort *PanelRegistrar::getPort() const { return state_.port; }
 int PanelRegistrar::mapGroupIdToControlType(
     ControlRegistrar::ControlType id) const {

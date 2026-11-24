@@ -31,6 +31,9 @@ public:
     MuteGroup
   };
 
+  // Portable borrowed string with static storage duration.
+  const char *getEmptyPresetString() const;
+
   // Portable default hook. The firmware's exact declaration and virtual
   // layout remain unresolved.
   void loadPreset(PresetType, int, Core::CStringBuffer<128> &, const char *,

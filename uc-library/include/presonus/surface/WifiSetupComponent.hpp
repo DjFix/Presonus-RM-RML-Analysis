@@ -3,6 +3,9 @@
 #include "presonus/PageComponent.hpp"
 #include "presonus/delay_timer.hpp"
 #include <cstdint>
+namespace Core::Portable {
+struct WheelEvent;
+}
 namespace Presonus {
 class WIFIManager;
 }
@@ -50,6 +53,7 @@ public:
         timer(timer) {}
   void connect();
   void addListOffset(int);
+  void onWheelInput(const Core::Portable::WheelEvent &event);
   void paramChanged(Core::Portable::Parameter *, int) override;
   int getMaxListOffset() const;
   void networkChanged(const Presonus::WIFIManager &);

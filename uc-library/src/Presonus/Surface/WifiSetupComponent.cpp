@@ -1,4 +1,5 @@
 #include "presonus/surface/WifiSetupComponent.hpp"
+#include "core/portable/gui/coreview.h"
 #include <cstdio>
 namespace Presonus::Surface {
 void WifiSetupComponent::onIdle() {
@@ -19,6 +20,9 @@ int WifiSetupComponent::getMaxListOffset() const {
     return 0;
   int maximum = static_cast<int>(list->getMax());
   return maximum > 0 ? maximum / 5 * 5 : 0;
+}
+void WifiSetupComponent::onWheelInput(const Core::Portable::WheelEvent &event) {
+  addListOffset(event.delta);
 }
 void WifiSetupComponent::addListOffset(int delta) {
   auto sum =

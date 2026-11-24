@@ -5,8 +5,8 @@ R=Path(__file__).resolve().parents[4];T=Path(__file__).resolve().parent;TASK=T.n
 CLASSES={'01':('surface/PreampsPageComponent','Surface/PreampsPageComponent'),'02':('surface/CapturePageComponent','Surface/CapturePageComponent'),'06':('TargetedComponent','TargetedComponent'),'08':('surface/ScenesPageComponent','Surface/ScenesPageComponent')}
 a,b=CLASSES[TASK[-2:]];H='uc-library/include/presonus/'+a+'.hpp';S='uc-library/src/Presonus/'+b+'.cpp';C=str((T/'Replay.cpp').relative_to(R));OWNED=[H,S,C]
 ROOT=native.ROOT;B=ROOT/'temp/recovery-work/reconstruction10x10-20261116';OVERLAY=Path('/home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/production-20261112/agent-repos/worker11/temp/recovery-work/real10_g04-presets-provider');ADDENDUM=B/'provider-addenda/G04_PRESETS_PROVIDER_OVERLAY05.json';ARCHIVE_BINDINGS=B/'provider-addenda/READ_BINDINGS_CURRENT01.json';ARCHIVES=json.loads(ARCHIVE_BINDINGS.read_text())['groups']['g04']['archives'];LIBS=[Path(next(x for x in ARCHIVES if x['name']==n)['frozen_read_path']) for n in ['libpresonus_private_glibc29.a','libcorelib.a','libpresonus_core_allocator.a']]
-TRANSITION='evidence/recovery/2026-11-24/rolling-c001/reserve01-other-guards/presets/ACTIVE-PRESETS_SOURCE_TRANSITION.json'
-TRANSITION_SHA256='1fa8e6e718dbd20201dfa211ec88275a1c593f92ca2cdca4e6d693ef88f212ad'
+TRANSITION='evidence/recovery/2026-11-24/rolling-c001/next100-presets-guard-successor/PRESETS_WHEEL_SOURCE_TRANSITION.json'
+TRANSITION_SHA256='a092d5551fdca1de5f7e42b6ae507f5434ac23635bc9d3762817f6e8bcc48f1d'
 TIMES=[]
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def run(argv,input=None):

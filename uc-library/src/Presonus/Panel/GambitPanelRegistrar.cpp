@@ -1,5 +1,7 @@
 #include "presonus/panel/GambitPanelRegistrar.hpp"
 namespace Presonus::Panel {
+const char *GambitPanelRegistrar::getPanelPortName() { return "/dev/ttyS1"; }
+
 int GambitPanelRegistrar::getParamInfoListSizeFromGroup(int group) {
   switch (group) {
   case 0:

@@ -15,6 +15,8 @@ std::uint32_t unsignedWord(std::int32_t number) {
 } // namespace
 
 namespace Presonus {
+const char *IPresetHandler::getEmptyPresetString() const { return ""; }
+
 void IPresetHandler::loadPreset(PresetType, int, Core::CStringBuffer<128> &,
                                 const char *, int) {}
 void IPresetHandler::endAuditioningPresets(PresetType, bool) {}

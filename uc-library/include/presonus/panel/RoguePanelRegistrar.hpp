@@ -5,6 +5,8 @@ namespace Presonus::Panel {
 // borrowed immutable program-lifetime storage; no ownership transfers.
 class RoguePanelRegistrar {
 public:
+  const char *getPanelPortName();
+  const char *getLcdPortName();
   const int *getTags(int group, int &count) const;
   int getParamInfoListSizeFromGroup(int group);
   // Portable no-op; the original return and dispatch declarations remain

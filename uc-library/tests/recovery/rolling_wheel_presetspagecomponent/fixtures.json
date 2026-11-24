@@ -1,0 +1,313 @@
+{
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "range_sha256": "c543770e8ad2ce3722e585441de30813eeb0c563236d775c584cdd0a5f580795",
+  "section": ".text",
+  "file_offset": 706004,
+  "cases": [
+    {
+      "argv": [
+        7,
+        3,
+        2,
+        3,
+        1,
+        1,
+        0
+      ],
+      "expected": {
+        "offset": 3,
+        "selected": 3,
+        "events": [
+          "handler",
+          "handler",
+          "count:0",
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:3",
+          "text:0:Alpha",
+          "value:1:1",
+          "handler",
+          "handler",
+          "preset:0:4",
+          "text:3:Alpha",
+          "value:4:0",
+          "handler",
+          "handler",
+          "preset:0:5",
+          "text:6:Alpha",
+          "value:7:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        3,
+        1,
+        1,
+        -2,
+        1
+      ],
+      "expected": {
+        "offset": 1,
+        "selected": 1,
+        "events": [
+          "handler",
+          "handler",
+          "count:0",
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:1",
+          "text:0:Alpha",
+          "value:1:1",
+          "handler",
+          "handler",
+          "preset:0:2",
+          "text:3:Alpha",
+          "value:4:0",
+          "handler",
+          "handler",
+          "preset:0:3",
+          "text:6:Alpha",
+          "value:7:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        3,
+        3,
+        1,
+        0,
+        0
+      ],
+      "expected": {
+        "offset": 3,
+        "selected": 3,
+        "events": [
+          "handler",
+          "handler",
+          "count:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        3,
+        1,
+        1,
+        -20,
+        0
+      ],
+      "expected": {
+        "offset": 0,
+        "selected": 1,
+        "events": [
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:0",
+          "text:0:Alpha",
+          "value:1:0",
+          "handler",
+          "handler",
+          "preset:0:1",
+          "text:3:Alpha",
+          "value:4:1",
+          "handler",
+          "handler",
+          "preset:0:2",
+          "text:6:Alpha",
+          "value:7:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        3,
+        6,
+        1,
+        20,
+        1
+      ],
+      "expected": {
+        "offset": 6,
+        "selected": 6,
+        "events": [
+          "handler",
+          "handler",
+          "count:0",
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:6",
+          "text:0:Alpha",
+          "value:1:1",
+          "handler",
+          "handler",
+          "preset:0:7",
+          "text:3:",
+          "value:4:0",
+          "handler",
+          "handler",
+          "preset:0:8",
+          "text:6:",
+          "value:7:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        6,
+        6,
+        1,
+        5,
+        0
+      ],
+      "expected": {
+        "offset": 6,
+        "selected": 6,
+        "events": [
+          "handler",
+          "handler",
+          "count:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        2,
+        4,
+        0,
+        2,
+        1
+      ],
+      "expected": {
+        "offset": 4,
+        "selected": 4,
+        "events": [
+          "handler",
+          "handler",
+          "count:0",
+          "visible:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "expected": {
+        "offset": 0,
+        "selected": 0,
+        "events": []
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        9,
+        6,
+        1,
+        0,
+        1
+      ],
+      "expected": {
+        "offset": 6,
+        "selected": 6,
+        "events": [
+          "handler",
+          "handler",
+          "count:0",
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:6",
+          "text:0:Alpha",
+          "value:1:1",
+          "handler",
+          "handler",
+          "preset:0:7",
+          "text:3:",
+          "value:4:0",
+          "handler",
+          "handler",
+          "preset:0:8",
+          "text:6:",
+          "value:7:0"
+        ]
+      }
+    },
+    {
+      "argv": [
+        7,
+        3,
+        1,
+        0,
+        1,
+        2147483647,
+        1
+      ],
+      "expected": {
+        "offset": 0,
+        "selected": 0,
+        "events": [
+          "visible:1",
+          "handler",
+          "handler",
+          "count:0",
+          "handler",
+          "handler",
+          "preset:0:0",
+          "text:0:Alpha",
+          "value:1:1",
+          "handler",
+          "handler",
+          "preset:0:1",
+          "text:3:Alpha",
+          "value:4:0",
+          "handler",
+          "handler",
+          "preset:0:2",
+          "text:6:Alpha",
+          "value:7:0"
+        ]
+      }
+    }
+  ]
+}

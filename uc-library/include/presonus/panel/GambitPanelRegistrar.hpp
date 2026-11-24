@@ -5,6 +5,7 @@ namespace Presonus::Panel {
 // borrowed immutable program-lifetime storage; no ownership transfers.
 class GambitPanelRegistrar {
 public:
+  const char *getPanelPortName();
   int getParamInfoListSizeFromGroup(int group);
 };
 } // namespace Presonus::Panel

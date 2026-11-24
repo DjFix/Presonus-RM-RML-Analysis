@@ -1,4 +1,5 @@
 #include "presonus/surface/PresetsPageComponent.hpp"
+#include "core/portable/gui/coreview.h"
 #include <algorithm>
 #include <cstring>
 #include <stdexcept>
@@ -117,6 +118,10 @@ int PresetsPageComponent::getMaxListOffset() const {
 void PresetsPageComponent::textInputFinished(bool canceled) {
   if (!canceled)
     dependencies.store();
+}
+void PresetsPageComponent::onWheelInput(
+    const Core::Portable::WheelEvent &event) {
+  addListOffset(event.delta);
 }
 void PresetsPageComponent::addListOffset(int delta) {
   int next = wrappingAdd(state.offset, delta);

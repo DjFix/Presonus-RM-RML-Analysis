@@ -2,6 +2,9 @@
 #include "core/portable/corecomponent.h"
 #include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstdint>
+namespace Core::Portable {
+struct WheelEvent;
+}
 namespace Presonus {
 class MixerClientComponentBase;
 }
@@ -76,6 +79,8 @@ public:
   int getMaxListOffset() const;
   void textInputFinished(bool);
   void addListOffset(int);
+  // Portable return choice. Original return declaration is unresolved.
+  void onWheelInput(const Core::Portable::WheelEvent &);
   virtual void recall();
   void promptToStore();
   void updatePresets();

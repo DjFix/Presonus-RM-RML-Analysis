@@ -1,6 +1,8 @@
 #include "presonus/panel/WolverinePanelRegistrar.hpp"
 #include "presonus/panel/PanelParameterTables.hpp"
 namespace Presonus::Panel {
+const char *WolverinePanelRegistrar::getPanelPortName() { return "/dev/ttyS1"; }
+
 int WolverinePanelRegistrar::getParamInfoListSizeFromGroup(int group) {
   static constexpr int counts[16] = {102, 32, 0, 32, 0, 0, 0, 0,
                                      0,   0,  0, 0,  0, 0, 0, 1};
