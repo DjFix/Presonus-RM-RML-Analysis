@@ -375,16 +375,22 @@ def prepare(root, plan_path, out, db_path):
     return index
 
 
-def verify_workspace(root, workspace, packet):
+def verify_workspace(root, out, workspace, packet, hashes, *, hydrate_evidence):
     require(workspace.is_dir() and (workspace / '.git').exists(), 'Physical checkout unavailable')
-    for path, expected in packet['task']['sources'].items():
-        if not path.startswith(('uc-library/', 'third_party/')):
-            continue
+    for path in packet['read_files']:
+        expected = hashes[path]
         candidate = inside(workspace, path)
+        if not candidate.exists() and hydrate_evidence and path.startswith(
+                ('temp/recovery-work/', 'evidence/recovery/', 'uc-library/tests/')):
+            frozen = out / 'inputs' / path
+            require(frozen.is_file() and digest(frozen) == expected, 'Invalid frozen evidence: ' + path)
+            candidate.parent.mkdir(parents=True, exist_ok=True)
+            with frozen.open('rb') as source, candidate.open('xb') as target:
+                shutil.copyfileobj(source, target)
         require(candidate.is_file() and digest(candidate) == expected,
                 'Physical checkout input differs: ' + str(candidate))
     for path in packet['write_files']:
-        if path not in packet['task']['sources']:
+        if path not in hashes:
             candidate = inside(workspace, path)
             baseline = inside(root, path)
             require(not candidate.exists() and not baseline.exists(),
@@ -440,7 +446,8 @@ def dispatch_locked(root, out, db_path):
     check_files()
     for group in index['groups']:
         for task in group['tasks']:
-            verify_workspace(root, inside(root, group['workspace']), contexts[task])
+            verify_workspace(root, out, inside(root, group['workspace']), contexts[task],
+                             index['sources'], hydrate_evidence=True)
     with closing(connection(db_path)) as db:
         previous = db.execute('SELECT 1 FROM catalog_requests WHERE request_id=?',
                               (request['request_id'],)).fetchone()
@@ -482,6 +489,10 @@ def dispatch_locked(root, out, db_path):
     workers = []
     for group in index['groups']:
         owner = group['owner']
+        workspace = inside(root, group['workspace'])
+        for task in group['tasks']:
+            verify_workspace(root, out, workspace, contexts[task],
+                             index['sources'], hydrate_evidence=False)
         paths = [bind_worker_packet(root, out, group, name, index['tasks'][name]) for name in group['tasks']]
         message = (
             'Work only in the assigned physical checkout ' + str(inside(root, group['workspace'])) + '. '

@@ -80,9 +80,10 @@ def fixture(root):
     catalog.import_catalog(db, lib, False)
     scope_by_name = dict(zip(NAMES, ('Probe','Other')))
     code_hash = packet.hashlib.sha256(body).hexdigest()
-    audit = root/'historical-receipts.json'
+    audit = root/'temp/recovery-work/history/historical-receipts.json'
+    audit.parent.mkdir(parents=True)
     packet.write(audit, {'crew':'fixture operator', 'exact_unassigned':[r['mangled'] for r in rows]})
-    ref = {'path':audit.name, 'sha256':packet.digest(audit)}
+    ref = {'path':str(audit.relative_to(root)), 'sha256':packet.digest(audit)}
     tasks, groups, custody_rows = [], [], []
     provider='third_party/ccl-framework/core/portable/fixture-provider.h'
     provider_path=root/provider
@@ -190,6 +191,30 @@ class PacketTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Physical checkout input differs'):
             packet.dispatch(self.root,self.out,self.db)
         self.assertEqual(self.state(),[('todo',0)]*2)
+
+    def test_physical_review_evidence_is_hydrated_and_hash_verified(self):
+        packet.prepare(self.root,self.plan,self.out,self.db)
+        plan=packet.load(self.plan)
+        group=plan['groups'][0]
+        task=next(t for t in plan['tasks'] if t['id']==group['tasks'][0])
+        evidence=task['review']['evidence'][0]
+        physical=self.root/group['workspace']/evidence['path']
+        self.assertFalse(physical.exists())
+        packet.dispatch(self.root,self.out,self.db)
+        self.assertEqual(packet.digest(physical),evidence['sha256'])
+
+    def test_stale_physical_evidence_stops_assignment(self):
+        packet.prepare(self.root,self.plan,self.out,self.db)
+        plan=packet.load(self.plan)
+        group=plan['groups'][0]
+        task=next(t for t in plan['tasks'] if t['id']==group['tasks'][0])
+        physical=self.root/group['workspace']/task['review']['evidence'][0]['path']
+        physical.parent.mkdir(parents=True)
+        physical.write_text('different earlier evidence')
+        with self.assertRaisesRegex(ValueError,'Physical checkout input differs'):
+            packet.dispatch(self.root,self.out,self.db)
+        self.assertEqual(self.state(),[('todo',0)]*2)
+        self.assertEqual(physical.read_text(),'different earlier evidence')
 
 
 if __name__=='__main__':
