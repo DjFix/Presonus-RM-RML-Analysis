@@ -18,7 +18,7 @@ struct Reverb final : SLReverbController {
   }
 };
 
-static_assert(std::is_abstract_v<SLReverbController>);
+static_assert(!std::is_abstract_v<SLReverbController>);
 
 struct Target final : Core::IPropertyHandler {
   void setProperty(const Core::Property &) override {}

@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/DAWFocusChannel.cpp
   src/Presonus/DAWChannel.cpp
   src/Presonus/DAWChannelGroup.cpp
   src/Presonus/DAWDeviceFolder.cpp
@@ -453,6 +454,9 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/EQ4Controller.cpp
+  src/Presonus/Dsp/EQ5Controller.cpp
+  src/Presonus/Mixer/MixerApplication.cpp
   src/Presonus/Dsp/LimiterController.cpp
   src/Presonus/Mixer/DCALevelHandler.cpp
   src/Presonus/Panel/AlertPage.cpp
@@ -655,6 +659,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/DAWFocusChannel.hpp
+  presonus/mixer_dsp/EQ4Controller.hpp
+  presonus/mixer_dsp/EQ5Controller.hpp
   presonus/DAWChannel.hpp
   presonus/DAWChannelGroup.hpp
   presonus/DAWDeviceFolder.hpp
@@ -1280,3 +1287,7 @@ set_property(SOURCE src/Presonus/UC/Format/ChannelNameFormatter.cpp APPEND PROPE
 set_property(SOURCE src/Presonus/DAWDeviceFolder.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -fno-sized-deallocation)
 
 set_property(SOURCE src/Presonus/DAWDeviceSlot.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/Dsp/EQ4Controller.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-fast-math -ffp-contract=off)
+set_property(SOURCE src/Presonus/Dsp/EQ5Controller.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -ffp-contract=off -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/DAWFocusChannel.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)

@@ -1,4 +1,5 @@
 #include "presonus/dsp/SLReverbController.hpp"
+#include "presonus/dsp/ControllerInfo.hpp"
 #include <bit>
 #include <cmath>
 #include <cstring>
@@ -112,7 +113,7 @@ void SLReverbController::setDirty() {
   state_.memory[0x1c] = std::byte{1};
 }
 void SLReverbController::setReverbValue(int i, float value) {
-  if (state_.valueCount() <= i)
+  if ((state_.valueCount ? state_.valueCount() : getNumParameters()) <= i)
     return;
   const auto offset =
       static_cast<std::size_t>((static_cast<std::uint32_t>(i) + 24U) * 4U);
@@ -263,6 +264,100 @@ void SLReverbController::calcParams(int id) {
                          ? f(864517951U)
                          : std::pow(10.f, mul(gain, f(1028443341U))));
 }
+void SLReverbController::getParameterInfo(ParamInfo &info, int index) const {
+  struct Label {
+    int tag;
+    const char *shortName;
+    const char *displayName;
+  };
+  constexpr Label labels[] = {
+      {1, "Preset", "Preset No"},
+      {8, "Decay", "Decay (s)"},
+      {9, "PreDelay", "Predelay (ms)"},
+      {10, "EarlyRef", "EarlyRef (dB)"},
+  };
+  if (index < 0 || index >= 4) {
+    info.text1 = "notimplemented";
+    return;
+  }
+  const auto &label = labels[index];
+  info.tag = label.tag;
+  info.text0 = label.shortName;
+  info.text1 = label.displayName;
+  info.flags = 2;
+  if (index == 0)
+    info.word10 = 9;
+}
+
+float SLReverbController::setValue(int index, float value) {
+  // The established Controller source API returns the input value.
+  if (index < 0 || index >= getNumParameters())
+    return value;
+
+  const auto bits = w(value);
+  const auto mode = static_cast<std::int32_t>(word(0x2c));
+  switch (index) {
+  case 1: {
+    if (!std::isfinite(value) || value <= -1.f || value >= 13.f)
+      throw std::out_of_range("reverb preset selector");
+    const int selection = static_cast<int>(value);
+    store(0x2c, static_cast<std::uint32_t>(selection));
+    if (selection < 9) {
+      store(0x30, presetWord(8));
+      store(0x34, presetWord(12));
+      store(0x38, presetWord(16));
+    } else {
+      // Nine words of each RM delay preset, in receiver-store order.
+      constexpr float delayPresets[4][9] = {
+          {645, 1, 0, .25f, 0, 0, 800, 0, .7f},
+          {645, 1, 0, .25f, 0, 0, 800, 12, .7f},
+          {645, 1, 1, .25f, .25f, .5f, 800, 0, .7f},
+          {645, 1, 1, .25f, 0, .5f, 800, 0, .7f},
+      };
+      for (std::size_t i = 0; i < 9; ++i)
+        store(0x3c + 4 * i, w(delayPresets[selection - 9][i]));
+    }
+    break;
+  }
+  case 2:
+    store(mode <= 8 ? 0x30 : 0x3c, bits);
+    break;
+  case 3:
+    store(mode <= 8 ? 0x34 : 0x40, bits);
+    break;
+  case 4:
+    store(mode <= 8 ? 0x38 : (mode <= 10 ? 0x48 : 0x44), bits);
+    break;
+  case 5:
+    if (mode == 10)
+      store(0x54, bits);
+    else if (mode == 11 || mode == 12)
+      store(0x48, bits);
+    break;
+  case 6:
+    if (mode == 10)
+      store(0x58, bits);
+    else if (mode == 11)
+      store(0x4c, bits);
+    else if (mode == 12)
+      store(0x50, bits);
+    break;
+  case 7:
+    if (mode == 10)
+      store(0x5c, bits);
+    else if (mode == 11)
+      store(0x50, bits);
+    break;
+  }
+  const auto offset = 0x60 + 4 * static_cast<std::size_t>(index);
+  if (value != scalar(offset)) {
+    store(offset, bits);
+    state_.memory[0x1c] = std::byte{1};
+  }
+  calcParams(index);
+  return value;
+}
+
 void SLReverbController::setupProcess(const SetupProperty &property) {
   // Observed input accesses only. This does not define SetupProperty's layout.
   std::uint32_t rate, block;

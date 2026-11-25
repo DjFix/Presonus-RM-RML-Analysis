@@ -4,6 +4,9 @@
 #include "presonus/uc/firmware_update_listener.hpp"
 #include "presonus/uc/network_client_factory.hpp"
 #include "presonus/uc/server_registrar.hpp"
+#include <array>
+#include <cstdint>
+#include <memory>
 namespace presonus::mixer {
 struct SetupContextTag {};
 inline constexpr SetupContextTag setupContextTag{};
@@ -18,6 +21,12 @@ struct SetupContext {
   presonus::noaa::OpaqueSetupReference native20;
 };
 } // namespace presonus::mixer
+namespace Presonus::Dsp {
+class OMAPTargetHandler;
+}
+namespace Presonus::NOAA {
+class TCardUCNetHandler;
+}
 namespace Presonus::Panel {
 class PanelRegistrar;
 }
@@ -28,25 +37,40 @@ namespace Presonus::Mixer {
 class MixerApplication : public UC::IFirmwareUpdateListener,
                          public UC::INetworkClientFactory {
 public:
-  // Independent C++cleanup of borrowed source-port context, NOT recovered
-  // D1/D0.
-  virtual ~MixerApplication() = default;
-  bool isNetworkClientReady() const override = 0;
+  virtual ~MixerApplication() noexcept(false);
+  MixerApplication(const MixerApplication &) = delete;
+  MixerApplication &operator=(const MixerApplication &) = delete;
+  // The source-port bool declaration remains provisional.
+  bool isNetworkClientReady() const override;
   UC::ClientRootComponent *
   createClientComponent(const UC::NetworkItem &) override = 0;
   void releaseClientComponent(UC::ClientRootComponent *) override = 0;
   virtual NOAA::NOAASetupProperty getNOAASetupProperty() const = 0;
 
 protected:
+  MixerApplication();
   MixerApplication(presonus::mixer::SetupContextTag,
-                   const presonus::mixer::SetupContext &context)
-      : context_(context) {}
-  const presonus::mixer::SetupContext &portableSetupContext() const {
-    return context_;
-  }
+                   const presonus::mixer::SetupContext &context);
+  const presonus::mixer::SetupContext &portableSetupContext() const;
+
+  // Independent source-port state. The original declarations of the
+  // remaining initialized fields and their host layout are unresolved.
+  struct PortableLifecycleDefaults {
+    std::array<std::uint8_t, 2> initialBytes{};
+    std::array<std::uint32_t, 2> initialWords{};
+    std::array<std::uint32_t, 2> setupWords{};
+    std::array<std::uint32_t, 6> targetWords{0, 0, UINT32_MAX, 0, 0, 0};
+  };
+  const PortableLifecycleDefaults &portableLifecycleDefaults() const;
+  Dsp::OMAPTargetHandler &portableOMAPTarget();
+  void adoptPortableCard(std::unique_ptr<NOAA::TCardUCNetHandler> card);
+  static MixerApplication *portableCurrentApplication() noexcept;
+  bool consumePortableQuitRequest() noexcept;
 
 private:
-  const presonus::mixer::SetupContext &context_;
+  struct LocalState;
+  const presonus::mixer::SetupContext *context_ = nullptr;
+  std::unique_ptr<LocalState> local_;
 };
 class RackMixerApplication : public MixerApplication {
 public:

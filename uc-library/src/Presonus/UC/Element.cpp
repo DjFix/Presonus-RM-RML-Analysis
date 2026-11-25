@@ -1,9 +1,14 @@
 #include "presonus/uc/element.hpp"
 
+#include "presonus/uc/meta_element.hpp"
+
 #include <new>
 #include <stdexcept>
 
 namespace Presonus::UC {
+namespace {
+constexpr char elementIdKey[] = "id";
+} // namespace
 
 Element::Element(const MetaElement &metadata) : metadata_(metadata) {}
 
@@ -45,6 +50,24 @@ Element *Element::findChild(const char *name) const {
     if (child->name_ == name)
       return child;
   return nullptr;
+}
+
+Element *Element::getRoot() const {
+  return parent_ ? parent_->getRoot() : nullptr;
+}
+
+bool Element::isElementClass(const char *className) const {
+  return metadata_.isClass(className);
+}
+
+bool Element::load(const ElementAttributes &attributes) {
+  name_ = attributes.lookupName(elementIdKey);
+  return true;
+}
+
+bool Element::save(ElementAttributes &attributes) const {
+  attributes.storeName(elementIdKey, name_.str());
+  return true;
 }
 
 } // namespace Presonus::UC

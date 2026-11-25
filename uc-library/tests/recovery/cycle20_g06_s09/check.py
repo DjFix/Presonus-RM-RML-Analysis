@@ -89,13 +89,39 @@ def symbols(value, required):
             disassembly = run(["objdump", "-dr", f"--disassemble={default_book}", value])
             assert default_book in disassembly
             assert not re.search(r"\bR_[A-Z0-9_]+\b", disassembly)
-        assert set(public) == expected
+        expected.update({
+            "_ZN8Presonus5Panel10LCDManager6doIdleEv",
+            "_ZN8Presonus5Panel10LCDManagerD0Ev",
+            "_ZN8Presonus5Panel10LCDManagerD1Ev",
+            "_ZN8Presonus5Panel10LCDManagerD2Ev",
+        })
+        # The restored virtual lifetime uses the actual pinned Core singleton
+        # and Deletable metadata. These exact host exports do not assert ARM ABI.
+        data = {
+            "_ZN4Core8Portable9SingletonIN8Presonus5Panel10LCDManagerEE11theInstanceE": "B",
+            "_ZTIN4Core8Portable9DeletableE": "V",
+            "_ZTIN4Core8Portable9SingletonIN8Presonus5Panel10LCDManagerEEE": "V",
+            "_ZTIN8Presonus5Panel10LCDManagerE": "V",
+            "_ZTSN4Core8Portable9DeletableE": "V",
+            "_ZTSN4Core8Portable9SingletonIN8Presonus5Panel10LCDManagerEEE": "V",
+            "_ZTSN8Presonus5Panel10LCDManagerE": "V",
+            "_ZTVN8Presonus5Panel10LCDManagerE": "V",
+        }
+        assert {name: fields[0] for name, fields in public.items()} == {
+            **dict.fromkeys(expected, "T"), **data
+        }
+        undefined = run(["nm", "--undefined-only", value]).splitlines()
+        assert {line.split()[-1] for line in undefined} == {
+            "_ZTVN10__cxxabiv117__class_type_infoE",
+            "_ZTVN10__cxxabiv120__si_class_type_infoE",
+            "_ZdlPvm",
+        }
     else:
         assert len(public) == 3
-    assert all(symbol.startswith(("_ZN8Presonus5Panel", "_ZNK8Presonus5Panel"))
-               and CLASS in symbol and fields[0] == "T"
-               for symbol, fields in public.items())
-    assert not run(["nm", "--undefined-only", value]).strip()
+        assert all(symbol.startswith(("_ZN8Presonus5Panel", "_ZNK8Presonus5Panel"))
+                   and CLASS in symbol and fields[0] == "T"
+                   for symbol, fields in public.items())
+        assert not run(["nm", "--undefined-only", value]).strip()
     return public
 
 

@@ -36,6 +36,8 @@ struct State {
   LoadState *load = nullptr; // required borrowed binding for load only
   Core::Portable::Parameter *displayedTypeParameter = nullptr;
   InterpolatorState *interpolation = nullptr;
+  // Borrowed DSP for synchronization when no load binding is available.
+  Presonus::DspComponent *syncDsp = nullptr;
 };
 } // namespace presonus::mixer_fx
 
@@ -59,7 +61,8 @@ public:
   void setFxDirty();
   void updateFxTypeName();
   void setInterpolator(int parameterIndex, int effectType);
-  Core::Portable::ParamValue mapValues(Core::Portable::Parameter *parameter);
+  // The source port has no result; the original declaration is unresolved.
+  void syncFxValues();
   bool recallFxType();
   bool isChildParameter(const Core::Portable::Parameter &parameter) const;
   bool refreshFx(bool edit);
@@ -70,6 +73,8 @@ public:
   virtual void tap();
   // Original result bits are all ones; signed return remains provisional.
   virtual int mapIDs(int selector);
+  virtual Core::Portable::ParamValue
+  mapValues(Core::Portable::Parameter *parameter);
 
 private:
   presonus::mixer_fx::State &state_;

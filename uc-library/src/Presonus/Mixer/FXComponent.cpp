@@ -1,9 +1,23 @@
 #include "presonus/mixer/FXComponent.hpp"
 #include "core/system/coredebug.h"
+#include "presonus/dsp/IController.hpp"
+#include <cmath>
+#include <limits>
 #include <memory>
 #include <stdexcept>
 
 namespace {
+// ARM __aeabi_f2iz truncates finite inputs and saturates overflow.
+std::int32_t fxTypeFromValue(Core::Portable::ParamValue value) {
+  if (std::isnan(value))
+    return 0;
+  if (value >= 0x1p31f)
+    return std::numeric_limits<std::int32_t>::max();
+  if (value <= -0x1p31f)
+    return std::numeric_limits<std::int32_t>::min();
+  return static_cast<std::int32_t>(value);
+}
+
 struct FxRange {
   float minimum, midpoint, maximum;
 };
@@ -172,6 +186,29 @@ void FXComponent::setFxDirty() {
 Core::Portable::ParamValue
 FXComponent::mapValues(Core::Portable::Parameter *parameter) {
   return parameter ? parameter->getValue() : 0.f;
+}
+void FXComponent::syncFxValues() {
+  auto &owner = state_.parameterOwner;
+  const int count = owner.countParameters();
+  const auto selectedType = static_cast<EffectType>(
+      fxTypeFromValue(state_.recalledTypeParameter.getValue()));
+  const auto effect =
+      static_cast<EffectType>(getEffectTypeInternal(selectedType));
+  for (int i = 0; i < count; ++i) {
+    auto *parameter = owner.getParameterAt(i);
+    const int tag = parameter->getTag();
+    const int mappedID = mapIDs(tag);
+    const auto value = mapValues(parameter);
+    if (mappedID <= 0 || !isValidParamForType(effect, tag))
+      continue;
+
+    auto *dsp = state_.load ? &state_.load->dsp : state_.syncDsp;
+    auto *controller = dsp ? dsp->getController() : nullptr;
+    if (!controller)
+      throw std::logic_error(
+          "Mapped FX synchronization requires a DSP controller");
+    controller->setValue(mappedID, value);
+  }
 }
 bool FXComponent::recallFxType() {
   state_.recalledTypeParameter.setValue(

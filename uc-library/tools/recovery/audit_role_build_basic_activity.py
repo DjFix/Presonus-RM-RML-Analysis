@@ -24,6 +24,8 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
+    'src/Presonus/Dsp/EQ5Controller.cpp',
+    'src/Presonus/DAWFocusChannel.cpp',
     'src/Presonus/DAWDeviceFolder.cpp',
     'src/Presonus/DAWDeviceSlot.cpp',
     'src/Presonus/UC/Format/Celsius.cpp',
@@ -65,6 +67,7 @@ PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
     'src/Presonus/ThroughputTest.cpp',
 })
 NO_SIZED_DEALLOCATION_SOURCES = frozenset({
+    'src/Presonus/Dsp/EQ5Controller.cpp',
     'src/Presonus/DAWDeviceFolder.cpp',
     'src/Presonus/DAWDeviceSlot.cpp',
     'src/Presonus/UC/Format/ChannelNameFormatter.cpp',
@@ -142,6 +145,12 @@ def check_production_compile_contracts(lib, build, groups):
         if source in {'src/Presonus/Panel/AlertBook.cpp','src/Presonus/Surface/MixSettingsPageComponent.cpp','src/Presonus/Surface/ChannelInfoPageComponent.cpp'}:
             assert all(option in flags for option in ('-fno-lto','-fno-rtti','-fno-fast-math','-ffp-contract=off')), source
         assert ('-fno-sized-deallocation' in flags) == (source in NO_SIZED_DEALLOCATION_SOURCES), source
+        if source=='src/Presonus/Dsp/EQ4Controller.cpp':
+            assert all(option in flags for option in ('-std=c++20', '-fno-fast-math', '-ffp-contract=off')), source
+        if source=='src/Presonus/Dsp/EQ5Controller.cpp':
+            assert all(option in flags for option in ('-std=c++20', '-fno-rtti', '-ffp-contract=off', '-fno-sized-deallocation')), source
+        if source=='src/Presonus/DAWFocusChannel.cpp':
+            assert all(option in flags for option in ('-std=c++20', '-fno-rtti')), source
         if source in {'src/Presonus/DAWDeviceFolder.cpp', 'src/Presonus/DAWDeviceSlot.cpp'}:
             assert '-std=c++20' in flags, source
         if source == 'src/Presonus/Dsp/LimiterController.cpp':

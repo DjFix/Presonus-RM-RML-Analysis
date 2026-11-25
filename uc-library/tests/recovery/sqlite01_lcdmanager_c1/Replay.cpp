@@ -69,7 +69,7 @@ template <class Manager> bool observe() {
 } // namespace
 
 int main(int argc, char **argv) {
-  static_assert(!std::is_polymorphic_v<LCDManager>);
+  static_assert(std::has_virtual_destructor_v<LCDManager>);
   if (argc != 2)
     return 2;
   const std::string_view variant = argv[1];

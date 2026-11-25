@@ -1,0 +1,984 @@
+{
+  "oracle": "original ARM instructions with separate source-provider executable",
+  "unicorn": "2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 344048,
+        "anchor": "d5fb20a3c7002d4cfd31d8b4a3679852ee408b722722b22609e204d888ce3428",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 311280,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus15DAWFocusChannel4initEv",
+        "range_hex": "0dc0a0e110d82de904b04ce204d04de20040a0e1280080e20010a0e38e2c03eb000050e3840084e510a89d090110a0e310689de96e2803ea",
+        "range_sha256": "6fb8c004ae72586697561d77068ef50dfeffd5a675e0eeadc93695504a7f4036",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 56
+      },
+      "mode": "init",
+      "boundaries": [
+        {
+          "mangled": "_ZNK4Core8Portable9ParamList5byTagEi",
+          "address": 1176140,
+          "size": 172,
+          "section": 12,
+          "file_offset": 1143372,
+          "section_name": ".text",
+          "range_hex": "0dc0a0e170d82de904b04ce214d04de22460d0e501c0a0e1000056e31500001a105090e50c4090e5000055e30e0000da000094e50c3090e5042093e5020051e10610a0110500001a080000ea010194e70c3090e5042093e502005ce10300000a011081e2010055e1f7ffffca0000a0e318d04be270a89de8102090e50c1090e51c004be204c020e518c09fe50430a0e300c08de567aefbeb000050e300009015f2ffff1af0ffffeac02f1200",
+          "range_sha256": "ddc32e17c2c452458b69a0278f3a9b800d2ddf9ce99f87e49e91f61051224412"
+        },
+        {
+          "mangled": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+          "address": 1171940,
+          "size": 44,
+          "section": 12,
+          "file_offset": 1139172,
+          "section_name": ".text",
+          "range_hex": "000051e304309015043090050dc0a0e1083083130830c30300d82de90430801504b04ce20430800500a89de8",
+          "range_sha256": "b4ab388e28ef16d0fe7f36b541c031fd3c5fca55df9652a517671d9cd471e9cc"
+        }
+      ],
+      "vtable": null,
+      "sibling_constructor": null,
+      "name_literal_address": null,
+      "cases": [
+        {
+          "input": [
+            [
+              0,
+              0
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              0,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1171940,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1171940,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 1 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 1 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 0 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            },
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1171940,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1171940,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1176140,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ],
+            [
+              "configure 1 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 1 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "original": {
+        "address": 81492,
+        "anchor": "c020111328496e9047f87ec31e1f6211b063aac08c49c9851b3c79437f660939",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "file_offset": 48724,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus15DAWFocusChannel4initEv",
+        "range_hex": "0dc0a0e110d82de904b04ce204d04de20040a0e1280080e20010a0e3f62404eb000050e3840084e510a89d090110a0e310689de9d62004ea",
+        "range_sha256": "5bb749c6a65844eea740550333b1126da60998370ae2358cae6ccf31906a7827",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 56
+      },
+      "mode": "init",
+      "boundaries": [
+        {
+          "mangled": "_ZNK4Core8Portable9ParamList5byTagEi",
+          "address": 1167952,
+          "size": 172,
+          "section": 12,
+          "file_offset": 1135184,
+          "section_name": ".text",
+          "range_hex": "0dc0a0e170d82de904b04ce214d04de22460d0e501c0a0e1000056e31500001a105090e50c4090e5000055e30e0000da000094e50c3090e5042093e5020051e10610a0110500001a080000ea010194e70c3090e5042093e502005ce10300000a011081e2010055e1f7ffffca0000a0e318d04be270a89de8102090e50c1090e51c004be204c020e518c09fe50430a0e300c08de513b6fbeb000050e300009015f2ffff1af0ffffeac40f1200",
+          "range_sha256": "54005b63cb0101420488664011ebcaab2628636687ab7afbce2acf7912504fec"
+        },
+        {
+          "mangled": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+          "address": 1163752,
+          "size": 44,
+          "section": 12,
+          "file_offset": 1130984,
+          "section_name": ".text",
+          "range_hex": "000051e304309015043090050dc0a0e1083083130830c30300d82de90430801504b04ce20430800500a89de8",
+          "range_sha256": "b4ab388e28ef16d0fe7f36b541c031fd3c5fca55df9652a517671d9cd471e9cc"
+        }
+      ],
+      "vtable": null,
+      "sibling_constructor": null,
+      "name_literal_address": null,
+      "cases": [
+        {
+          "input": [
+            [
+              0,
+              0
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              0,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1163752,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1163752,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 1 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 1 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 0 0",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              132,
+              4,
+              0
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              16785408
+            ],
+            [
+              132,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            },
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1163752,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 1
+            },
+            {
+              "address": 1163752,
+              "symbol": "_ZN4Core8Portable9Parameter17setFeedbackNeededEb",
+              "enabled": 1
+            },
+            {
+              "address": 1167952,
+              "symbol": "_ZNK4Core8Portable9ParamList5byTagEi",
+              "tag": 0,
+              "found": 0
+            }
+          ],
+          "init_steps": [
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 16785408,
+              "feedback": [
+                1,
+                0
+              ]
+            },
+            {
+              "cache_address": 0,
+              "feedback": [
+                0,
+                0
+              ]
+            }
+          ],
+          "provider_trace": [
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ],
+            [
+              "configure 1 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 1 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "1"
+            ],
+            [
+              "feedback 1",
+              "1"
+            ],
+            [
+              "report",
+              "1 0"
+            ],
+            [
+              "configure 0 1",
+              "1"
+            ],
+            [
+              "lookup 0",
+              "0"
+            ],
+            [
+              "report",
+              "0 0"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

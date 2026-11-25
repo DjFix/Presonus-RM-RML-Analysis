@@ -31,8 +31,6 @@ public:
   explicit SLReverbController(int);
   explicit SLReverbController(presonus::dsp::ReverbPortState &state);
   ~SLReverbController() override;
-  // Controller::setValue remains pure: its distinct native behavior is outside
-  // this constructor recovery. A boundary implementation belongs to the caller.
   presonus::dsp::ReverbPortState &reverbSourceState() { return state_; }
   const presonus::dsp::ReverbPortState &reverbSourceState() const {
     return state_;
@@ -41,6 +39,8 @@ public:
     return biquad_.get();
   }
   int getNumParameters() const override;
+  float setValue(int, float) override;
+  void getParameterInfo(ParamInfo &, int) const override;
   void setDirty();
   void updateFilters();
   void calcParams(int);

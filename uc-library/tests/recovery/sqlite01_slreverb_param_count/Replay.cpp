@@ -12,7 +12,7 @@ using Presonus::Dsp::Controller;
 using Presonus::Dsp::SLReverbController;
 
 static_assert(std::is_abstract_v<Controller>);
-static_assert(std::is_abstract_v<SLReverbController>);
+static_assert(!std::is_abstract_v<SLReverbController>);
 
 // The existing constructor probe boundary, reproduced here because it is
 // defined inside the previous replay executable.

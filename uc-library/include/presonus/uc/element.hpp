@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/portable/coreattributes.h"
 #include "core/public/corestringbuffer.h"
 #include "core/public/corevector.h"
 
@@ -10,6 +11,31 @@ struct ElementAccess;
 namespace Presonus::UC {
 
 class MetaElement;
+
+// Portable attribute boundary. The caller retains ownership of the storage.
+class ElementAttributes {
+public:
+  virtual Core::CStringPtr lookupName(Core::CStringPtr key) const = 0;
+  virtual void storeName(Core::CStringPtr key, Core::CStringPtr name) = 0;
+  virtual ~ElementAttributes() = default;
+};
+
+class LocalElementAttributes final : public ElementAttributes {
+public:
+  explicit LocalElementAttributes(Core::Portable::Attributes &attributes)
+      : attributes_(attributes) {}
+
+  Core::CStringPtr lookupName(Core::CStringPtr key) const override {
+    return attributes_.getString(key);
+  }
+
+  void storeName(Core::CStringPtr key, Core::CStringPtr name) override {
+    attributes_.set(key, name);
+  }
+
+private:
+  Core::Portable::Attributes &attributes_;
+};
 
 class Element {
 public:
@@ -25,6 +51,10 @@ public:
   // allocation if insertion throws.
   void addChild(Element *child);
   Element *findChild(const char *name) const;
+  virtual Element *getRoot() const;
+  bool isElementClass(const char *className) const;
+  virtual bool load(const ElementAttributes &attributes);
+  virtual bool save(ElementAttributes &attributes) const;
 
 private:
   friend struct presonus::uc::ElementAccess;

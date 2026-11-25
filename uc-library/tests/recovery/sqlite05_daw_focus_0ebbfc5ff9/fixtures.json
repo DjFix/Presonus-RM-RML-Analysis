@@ -1,0 +1,352 @@
+{
+  "oracle": "original ARM instructions with separate source-provider executable",
+  "unicorn": "2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 361248,
+        "anchor": "0ebbfc5ff9ae59369f915dfb69886132c8298c9d41eb89cc9616aadd739c24f4",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 328480,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus15DAWFocusChannelD1Ev",
+        "range_hex": "0dc0a0e110d82de91c209fe504b04ce204d04de23c3082e20040a0e10c0080e8a60c03eb0400a0e110a89de958581900",
+        "range_sha256": "485c3149e9b075c8ec414fba8d985ac5001a7cf88c24b4981d5fe2c2b041ea20",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 48
+      },
+      "mode": "D1",
+      "boundaries": [
+        {
+          "mangled": "_ZN4Core8Portable9ComponentD2Ev",
+          "address": 1160672,
+          "size": 372,
+          "section": 12,
+          "file_offset": 1127904,
+          "section_name": ".text",
+          "range_hex": "0dc0a0e170d82de904b04ce204d04de244219fe55c6090e5343082e2000056e30050a0e10c0080e8130000da0630a0e10040a0e3000000ea5c3095e5040053e1582095c50431a0c110019fd5030082c0002090e5683092e5040013e30300001a0200a0e1003092e50fe0a0e108f093e5014084e2060054e1eeffffba786095e5000056e31300000a120000da0630a0e10040a0e3000000ea783095e5040053e1742095c5b8009fd50431a0c1030082c0002090e5000052e30300000a0200a0e1003092e50fe0a0e104f093e5014084e2060054e1efffffba88309fe50500a0e17030a0e50010a0e3750600eb78309fe50500a0e15430a0e50010a0e300c2fdeb280085e2241000eb60309fe50500a0e1003085e570a89de90040a0e1700085e2a70600eb540085e243c2fdeb280085e2191000eb34309fe50400a0e1003085e5c3bdfbeb0040a0e1f9ffffea0040a0e1f5ffffea0040a0e1f1ffffead04d20000c68250098002700504e200090fe190040a41800",
+          "range_sha256": "7f8eead6380705e1afce15e6a0259c34531097fe2de4fca5f9a364d2f40912f2"
+        }
+      ],
+      "vtable": {
+        "mangled": "_ZTVN8Presonus2UC15ClientComponentE",
+        "address": 1661008,
+        "size": 76,
+        "section": 14,
+        "file_offset": 1628240,
+        "section_name": ".rodata",
+        "range_sha256": "5562f63ce1b07e574517f0f66f84e8e49705639588e509988e94ffb02e8c5a2e"
+      },
+      "sibling_constructor": null,
+      "name_literal_address": null,
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              1661016
+            ],
+            [
+              4,
+              4,
+              1661076
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1160672,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "0 0 0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            1
+          ],
+          "expected": [
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              1661016
+            ],
+            [
+              4,
+              4,
+              1661076
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1160672,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "1 1 0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            2,
+            2
+          ],
+          "expected": [
+            [
+              2,
+              2,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              1661016
+            ],
+            [
+              4,
+              4,
+              1661076
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1160672,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "2 2 0 0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "original": {
+        "address": 98804,
+        "anchor": "f52798197aeda635086b6eb8ce7dedff1291d6ceac2d5d87881cef193db2d79e",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "file_offset": 66036,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus15DAWFocusChannelD1Ev",
+        "range_hex": "0dc0a0e110d82de91c209fe504b04ce204d04de23c3082e20040a0e10c0080e8c80804eb0400a0e110a89de988823600",
+        "range_sha256": "0c0eba26b44c2cf611b997f0d401cd75a72943ee934ba96111fde475d39fd978",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 48
+      },
+      "mode": "D1",
+      "boundaries": [
+        {
+          "mangled": "_ZN4Core8Portable9ComponentD2Ev",
+          "address": 1156412,
+          "size": 372,
+          "section": 12,
+          "file_offset": 1123644,
+          "section_name": ".text",
+          "range_hex": "0dc0a0e170d82de904b04ce204d04de244219fe55c6090e5343082e2000056e30050a0e10c0080e8130000da0630a0e10040a0e3000000ea5c3095e5040053e1582095c50431a0c110019fd5030082c0002090e5683092e5040013e30300001a0200a0e1003092e50fe0a0e108f093e5014084e2060054e1eeffffba786095e5000056e31300000a120000da0630a0e10040a0e3000000ea783095e5040053e1742095c5b8009fd50431a0c1030082c0002090e5000052e30300000a0200a0e1003092e50fe0a0e104f093e5014084e2060054e1efffffba88309fe50500a0e17030a0e50010a0e3750600eb78309fe50500a0e15430a0e50010a0e34378fceb280085e24e0c00eb60309fe50500a0e1003085e570a89de90040a0e1700085e2a70600eb540085e27878fceb280085e2430c00eb34309fe50400a0e1003085e593c1fbeb0040a0e1f9ffffea0040a0e1f5ffffea0040a0e1f1ffffeae0ac4100c4304900a8dc490060ad4100a8f5160080823500",
+          "range_sha256": "14b6b35f59c866440115dba3105d1df8398484cffa656b796f900fe9dcbaab94"
+        }
+      ],
+      "vtable": {
+        "mangled": "_ZTVN8Presonus2UC15ClientComponentE",
+        "address": 3572352,
+        "size": 76,
+        "section": 14,
+        "file_offset": 3539584,
+        "section_name": ".rodata",
+        "range_sha256": "03147af6ffe3a6d34936fad317fff55778b81b0f946d3696ede1b3b836512b56"
+      },
+      "sibling_constructor": null,
+      "name_literal_address": null,
+      "cases": [
+        {
+          "input": [
+            0,
+            0
+          ],
+          "expected": [
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3572360
+            ],
+            [
+              4,
+              4,
+              3572420
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1156412,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "0 0 0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            1,
+            1
+          ],
+          "expected": [
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3572360
+            ],
+            [
+              4,
+              4,
+              3572420
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1156412,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "1 1 0 0"
+            ]
+          ]
+        },
+        {
+          "input": [
+            2,
+            2
+          ],
+          "expected": [
+            [
+              2,
+              2,
+              0,
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3572360
+            ],
+            [
+              4,
+              4,
+              3572420
+            ]
+          ],
+          "calls": [
+            {
+              "address": 1156412,
+              "symbol": "_ZN4Core8Portable9ComponentD2Ev"
+            }
+          ],
+          "init_steps": [],
+          "provider_trace": [
+            [
+              "base",
+              "1"
+            ],
+            [
+              "report",
+              "2 2 0 0"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
