@@ -767,8 +767,7 @@ or context compaction, together with the publisher polling cadence above.
   `fork_turns="none"` explicitly when submitting each sealed dispatch,
   including replacements. Record the actual launch and packet together.
 - The user authorizes a rolling 10-worker x 10-target reconstruction run. This
-  supersedes the earlier publication pause for this run; freshness and compact
-  publication limits still apply. Do not silently substitute 100 research tasks
+  requires fresh SQLite and source evidence for each assignment. Do not silently substitute 100 research tasks
   or a reduced closed batch for the requested implementation flow.
 - The previous run failed to apply the existing production-delivery rule:
   availability and coarse ownership checks were mistaken for implementation
@@ -785,8 +784,16 @@ or context compaction, together with the publisher polling cadence above.
   unchanged blocker or wait for the whole cohort to finish before replacing it.
 - Admit independently completed handoffs as they meet existing gates. Never make
   completion of all 100 targets a prerequisite. Coordinate actual shared-source
-  dependencies and fresh graph generations; do not dispatch stale packets to
+  dependencies and current SQLite assignment revisions; do not dispatch stale packets to
   manufacture parallelism. Root retains shared build/registry ownership.
+- Closing a trial or admitting a batch triggers continued production. Before
+  releasing the coordinator, issue available replacements from the SQLite
+  reserve and launch workers from their dispatch receipts. Record the active
+  worker IDs alongside the assigned task IDs. While validation is running,
+  prepare the next independent groups. Stop only on user request or after a
+  live SQLite selection documents the concrete blocker for every remaining
+  eligible group. A completed benchmark or a temporarily empty prepared queue
+  does not establish exhaustion.
 - Before each dispatch record actual implementation slots, eligible reserve,
   parked targets and read/write-conflict evidence. Verify ALL captured read inputs
   in reused worker repositories against sealed packets, not only owned files.
