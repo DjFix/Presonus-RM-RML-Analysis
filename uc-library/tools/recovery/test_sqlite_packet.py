@@ -146,6 +146,35 @@ class PacketTests(unittest.TestCase):
         with sqlite3.connect(self.db) as db:
             return db.execute('SELECT state,revision FROM catalog_tasks ORDER BY anchor').fetchall()
 
+    def test_template_namespace_uses_callable_name_without_encoded_return(self):
+        mangled = '_ZN8Presonus5Probe6createIiEEPT_v'
+        foreign = '_ZN8Presonus5Other6createINS_5ProbeEEEPT_RKS2_'
+        self.assertIsNone(packet.validate_callable_namespace(
+            {'demangled':'Presonus::Probe* Presonus::Other::create<Presonus::Probe>(Presonus::Probe const&)',
+             'mangled':foreign}, 'Presonus::Other'))
+        with self.assertRaisesRegex(ValueError, 'namespace differs'):
+            packet.validate_callable_namespace(
+                {'demangled':'Presonus::Probe* Presonus::Other::create<Presonus::Probe>(Presonus::Probe const&)',
+                 'mangled':foreign}, 'Presonus::Probe')
+        with tempfile.TemporaryDirectory(dir=self.root) as folder:
+            root, db, plan = fixture(Path(folder), [(mangled, 'Probe', 'create')])
+            full_name = 'int* Presonus::Probe::create<int>()'
+            with sqlite3.connect(db) as draft:
+                draft.execute('UPDATE catalog_symbols SET demangled=? WHERE mangled=?',
+                              (full_name, mangled))
+            wrong = packet.load(plan)
+            wrong['tasks'][0]['namespace'] = 'Presonus::Other'
+            wrong_plan = root / 'wrong-namespace.json'
+            packet.write(wrong_plan, wrong)
+            with self.assertRaisesRegex(ValueError, 'namespace differs'):
+                packet.prepare(root, wrong_plan, root / 'wrong-out', db)
+            out = root / 'temp/recovery-work/template-prepare'
+            packet.prepare(root, plan, out, db)
+            self.assertEqual(packet.dispatch(root, out, db)['assigned_originals'], 1)
+            with sqlite3.connect(db) as check:
+                self.assertEqual(check.execute('SELECT demangled FROM catalog_symbols WHERE mangled=?',
+                                               (mangled,)).fetchone()[0], full_name)
+
     def test_prepare_dispatch_idempotence(self):
         index=packet.prepare(self.root,self.plan,self.out,self.db)
         self.assertEqual(self.state(),[('todo',0)]*2)

@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import shutil
 import sqlite3
+import subprocess
 import sys
 
 from elftools.elf.elffile import ELFFile
@@ -27,6 +28,20 @@ SOURCE = OWNED[:2]
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def validate_callable_namespace(row, namespace):
+    prefix = namespace + '::'
+    if row['demangled'].startswith(prefix):
+        return
+    symbol = row['mangled']
+    result = subprocess.run(
+        ['c++filt', '--format=gnu-v3', '--no-params', '--', symbol],
+        check=True, capture_output=True, text=True,
+    )
+    name = result.stdout.strip()
+    require(name != symbol and name.startswith(prefix),
+            'Original namespace differs from owned scope')
 
 
 def digest(path):
@@ -332,8 +347,7 @@ def prepare(root, plan_path, out, db_path):
                 require(previous == name, 'One source producer per mangled interface')
                 targets.add(key)
                 row, history = catalog_target(db, target, by_anchor)
-                require(row['demangled'].startswith(task['namespace'] + '::'),
-                        'Original namespace differs from owned scope')
+                validate_callable_namespace(row, task['namespace'])
                 if row['notes'] or history:
                     require(task['review'].get('historical_notes_reviewed'), 'Prior notes require explicit review')
                 native = native_range(root, target, plan['elfs'][target['elf']], raw_elfs)
