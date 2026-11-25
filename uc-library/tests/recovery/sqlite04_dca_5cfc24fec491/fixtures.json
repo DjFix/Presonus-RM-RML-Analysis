@@ -1,0 +1,1480 @@
+{
+  "original": {
+    "address": 380492,
+    "anchor": "5cfc24fec491cef08b3f9dddc6af5a10a8f5d3147be3f28ba13fe317735c6ffe",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 347724,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus5Mixer15DCALevelHandler12addDCAMasterEPNS0_20FilterGroupComponentE",
+    "range_sha256": "17f80ef9a583626cdef2a0a8847e5021ffce77b0c5aa8a5fc39a8f0d83422edc",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 156
+  },
+  "cases": [
+    {
+      "args": [
+        "add",
+        0,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        0,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "resize",
+          1,
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        2,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        3,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        2,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        4,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          4
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        5,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          5
+        ],
+        [
+          "resize",
+          6,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        3,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        5,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        6,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        8,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          8
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        16,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          16
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        17,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          17
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        0,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        0,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "resize",
+          1,
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        1,
+        59
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        2,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        3,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        2,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        4,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          4
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        5,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          5
+        ],
+        [
+          "resize",
+          6,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        3,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        5,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        6,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        8,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          8
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        16,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          16
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        17,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          17
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        0,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        0,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "resize",
+          1,
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        1,
+        1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        2,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        3,
+        3,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        2,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          2
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        4,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          4
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        5,
+        5,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          5
+        ],
+        [
+          "resize",
+          6,
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        3,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        5,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        6,
+        6,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        8,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          8
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        16,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          16
+        ]
+      ]
+    },
+    {
+      "args": [
+        "add",
+        17,
+        17,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          17
+        ]
+      ]
+    }
+  ]
+}

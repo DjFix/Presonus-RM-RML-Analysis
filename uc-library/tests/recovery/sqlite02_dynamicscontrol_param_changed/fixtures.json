@@ -1,0 +1,609 @@
+{
+  "task": "sqlite02_dynamicscontrol_param_changed",
+  "original": {
+    "address": 468792,
+    "anchor": "79a2db4047f0befd956df78aaa46aaf78a0c6af791aeb404856e0d630488fcbd",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 436024,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus15DynamicsControl12paramChangedEPN4Core8Portable9ParameterEi",
+    "range_hex": "0dc0a0e1f0d82de9050052e304b04ce218d04de20260a0e10170a0e10050a0e10700000a030052e31a00000a0500a0e10710a0e10620a0e1fc1702eb1cd04be2f0a89de8483090e5010053e1f6ffff0a0100a0e1441085e2d2ae02eb6c3095e5070053e10030a0036c308505eeffff0a743095e5070053e10030a00374308505e9ffff0a703095e5070053e10030a00370308505e4ffffea0040a0e324204be228304be22cc04be220104be22c400be500c08de520400be524400be528400be53affffeba82095e520301be5030052e10200000a0130a0e3b830c5e5d2ffffeaac2095e524301be5030052e1f8ffff1ab42095e52c301be5030052e1f4ffff1ab02095e528301be5030052e1f0ffff1ac5ffffea",
+    "range_sha256": "93098d4346cfe14e4b606432b4243d8295d11db367dd8ea72abf6e736b954cb5",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 276
+  },
+  "cases": [
+    {
+      "inputs": {
+        "changed": "primary",
+        "message": 5,
+        "cached": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "control_param",
+          "primary",
+          5
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "threshold",
+        "message": 5,
+        "cached": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "remove_observer",
+          "threshold"
+        ],
+        [
+          "control_param",
+          "threshold",
+          5
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "expander",
+        "message": 5,
+        "cached": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "trace": [
+        [
+          "remove_observer",
+          "expander"
+        ],
+        [
+          "control_param",
+          "expander",
+          5
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124,
+        128
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "ratio",
+        "message": 5,
+        "cached": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "remove_observer",
+          "ratio"
+        ],
+        [
+          "control_param",
+          "ratio",
+          5
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124,
+        128,
+        132,
+        136,
+        140,
+        144,
+        148
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "threshold",
+        "message": 4,
+        "cached": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "control_param",
+          "threshold",
+          4
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "threshold",
+        "message": 3,
+        "cached": [
+          10,
+          15,
+          10,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "client_rect",
+          [
+            0,
+            0,
+            40,
+            20
+          ]
+        ],
+        [
+          "get_normalized",
+          "threshold",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "horizontal",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "vertical",
+          0.25
+        ],
+        [
+          "get_value",
+          "expander",
+          0
+        ],
+        [
+          "control_param",
+          "threshold",
+          3
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        152,
+        156,
+        160,
+        164,
+        168,
+        172,
+        176,
+        180,
+        184,
+        188,
+        192,
+        196,
+        200,
+        204,
+        208,
+        224,
+        228,
+        232,
+        236,
+        240,
+        244,
+        248,
+        252,
+        256,
+        260,
+        264,
+        268,
+        272
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "threshold",
+        "message": 3,
+        "cached": [
+          10,
+          15,
+          9,
+          0
+        ],
+        "pending": 0
+      },
+      "result": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trace": [
+        [
+          "client_rect",
+          [
+            0,
+            0,
+            40,
+            20
+          ]
+        ],
+        [
+          "get_normalized",
+          "threshold",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "horizontal",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "vertical",
+          0.25
+        ],
+        [
+          "get_value",
+          "expander",
+          0
+        ],
+        [
+          "control_param",
+          "threshold",
+          3
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        152,
+        156,
+        160,
+        164,
+        168,
+        172,
+        176,
+        180,
+        184,
+        188,
+        192,
+        196,
+        200,
+        204,
+        208,
+        212,
+        216,
+        220,
+        224,
+        228,
+        232,
+        236,
+        240,
+        244,
+        248,
+        252,
+        256,
+        260,
+        264,
+        268
+      ]
+    },
+    {
+      "inputs": {
+        "changed": "threshold",
+        "message": 3,
+        "cached": [
+          10,
+          15,
+          10,
+          0
+        ],
+        "pending": 1
+      },
+      "result": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trace": [
+        [
+          "client_rect",
+          [
+            0,
+            0,
+            40,
+            20
+          ]
+        ],
+        [
+          "get_normalized",
+          "threshold",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "horizontal",
+          0.25
+        ],
+        [
+          "linear_normalize",
+          "vertical",
+          0.25
+        ],
+        [
+          "get_value",
+          "expander",
+          0
+        ],
+        [
+          "control_param",
+          "threshold",
+          3
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        152,
+        156,
+        160,
+        164,
+        168,
+        172,
+        176,
+        180,
+        184,
+        188,
+        192,
+        196,
+        200,
+        204,
+        208,
+        224,
+        228,
+        232,
+        236,
+        240,
+        244,
+        248,
+        252,
+        256,
+        260,
+        264,
+        268,
+        272
+      ]
+    }
+  ]
+}

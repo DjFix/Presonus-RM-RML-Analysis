@@ -1,0 +1,277 @@
+{
+  "task": "sqlite02_dynamicscontrol_on_touch_input",
+  "original": {
+    "address": 469068,
+    "anchor": "35e0fa791f0346fadf5b25d1cf6de57a01385c2417cae348ff2b2a709c8c38b5",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 436300,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus15DynamicsControl12onTouchInputERKN4Core8Portable10TouchEventE",
+    "range_hex": "0dc0a0e130d82de9483090e504b04ce2000053e30050a0e10140a0e11700000a7b7002eb000050e31400000a003094e5000053e30f00001a484095e5003094e50400a0e10fe0a0e144f093e5002094e50010a0e3585092e5b55304ebfe35a0e3000050e30010a0e30310a0110400a0e10120a0e335ff2fe10100a0e330a89de80000a0e330a89de8",
+    "range_sha256": "09ffee5d0da77b112cdccb34b3d63487c24a66c219eb38087ff1ee1745cc3665",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 136
+  },
+  "cases": [
+    {
+      "inputs": {
+        "primary": 0,
+        "enabled": 1,
+        "event": 0,
+        "value": 0
+      },
+      "result": [
+        0,
+        0
+      ],
+      "trace": [],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        128,
+        132
+      ]
+    },
+    {
+      "inputs": {
+        "primary": 1,
+        "enabled": 0,
+        "event": 0,
+        "value": 0
+      },
+      "result": [
+        0,
+        0
+      ],
+      "trace": [
+        [
+          "enabled",
+          0
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        128,
+        132
+      ]
+    },
+    {
+      "inputs": {
+        "primary": 1,
+        "enabled": 1,
+        "event": 0,
+        "value": 0
+      },
+      "result": [
+        1,
+        1.0
+      ],
+      "trace": [
+        [
+          "enabled",
+          1
+        ],
+        [
+          "get_value",
+          "primary",
+          0
+        ],
+        [
+          "set_value",
+          "primary",
+          1.0,
+          1
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124
+      ]
+    },
+    {
+      "inputs": {
+        "primary": 1,
+        "enabled": 1,
+        "event": 0,
+        "value": -2
+      },
+      "result": [
+        1,
+        0.0
+      ],
+      "trace": [
+        [
+          "enabled",
+          1
+        ],
+        [
+          "get_value",
+          "primary",
+          -2
+        ],
+        [
+          "set_value",
+          "primary",
+          0.0,
+          1
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124
+      ]
+    },
+    {
+      "inputs": {
+        "primary": 1,
+        "enabled": 1,
+        "event": 1,
+        "value": 0
+      },
+      "result": [
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "enabled",
+          1
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        120,
+        124
+      ]
+    },
+    {
+      "inputs": {
+        "primary": 1,
+        "enabled": 1,
+        "event": 2,
+        "value": 1
+      },
+      "result": [
+        1,
+        1
+      ],
+      "trace": [
+        [
+          "enabled",
+          1
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        120,
+        124
+      ]
+    }
+  ]
+}

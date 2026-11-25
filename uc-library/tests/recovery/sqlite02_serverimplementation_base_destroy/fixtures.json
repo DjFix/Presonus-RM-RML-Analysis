@@ -1,0 +1,145 @@
+{
+  "mode": "base_destroy",
+  "engine": "Unicorn 2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 318304,
+        "anchor": "132da81bc91f6b2ac9b6c6f540850a13c7edb873f23197117e75d32a155418af",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 285536,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus2UC20ServerImplementationD2Ev",
+        "range_hex": "0dc0a0e170d82de904b04ce204d04de2246090e558309fe5000056e30050a0e1003080e50e00000a0d0000da0630a0e10040a0e3000000ea243095e5040053e1202095c50431a0c128009fd5030082c0000090e5014084e267f4feeb060054e1f4ffffba1c0085e2350200eb0500a0e170a89de968531900f0672500",
+        "range_sha256": "6c7286b57e513f54d45b5b5b4fae67f49ab0dac676d2ea06f1e84046bce28390",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 124
+      },
+      "boundaries": {
+        "relocated_sibling_branches": {
+          "offsets": [
+            88,
+            104
+          ],
+          "targets": [
+            44380,
+            320676
+          ]
+        },
+        "ordinary_complete_sibling": {
+          "mangled": "_ZN8Presonus2UC20ServerImplementationD1Ev",
+          "section": 12,
+          "address": 318180,
+          "size": 124,
+          "file_offset": 285412,
+          "range_sha256": "6fb24aa8cc9cbfc16a70b1c3bed64d62459bc3c5c25477b2170ab38db32b3fba",
+          "range_hex": "0dc0a0e170d82de904b04ce204d04de2246090e558309fe5000056e30050a0e1003080e50e00000a0d0000da0630a0e10040a0e3000000ea243095e5040053e1202095c50431a0c128009fd5030082c0000090e5014084e286f4feeb060054e1f4ffffba1c0085e2540200eb0500a0e170a89de968531900f0672500"
+        },
+        "vtable": {
+          "mangled": "_ZTVN8Presonus2UC20ServerImplementationE",
+          "section": 14,
+          "address": 1659744,
+          "size": 64,
+          "file_offset": 1626976,
+          "range_sha256": "e9cc903667f1b16bf61a2d02eed59a001b9011857da4c6d4d8057de58c5f9514",
+          "range_hex": "00000000c8531900b0d60400e4da040060da040048b2000048b2000048b2000048b2000048b2000048b2000048b2000048b2000048b2000048b2000048b20000"
+        },
+        "vtable_address_point": 1659752,
+        "call_addresses": {
+          "vector_destructor": 320676,
+          "delete": 44380
+        }
+      },
+      "cases": [
+        {
+          "identifiers": [],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              1659752
+            ]
+          ],
+          "releases": [],
+          "unrelated_provider_preserved": true
+        },
+        {
+          "identifiers": [
+            7
+          ],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              1659752
+            ]
+          ],
+          "releases": [
+            [
+              "child",
+              1
+            ],
+            [
+              "vector",
+              0
+            ]
+          ],
+          "unrelated_provider_preserved": true
+        },
+        {
+          "identifiers": [
+            -2147483648,
+            7,
+            7,
+            -9,
+            2147483647
+          ],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              1659752
+            ]
+          ],
+          "releases": [
+            [
+              "child",
+              1
+            ],
+            [
+              "child",
+              2
+            ],
+            [
+              "child",
+              3
+            ],
+            [
+              "child",
+              4
+            ],
+            [
+              "child",
+              5
+            ],
+            [
+              "vector",
+              0
+            ]
+          ],
+          "unrelated_provider_preserved": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "mode": "deleting_destroy",
+  "engine": "Unicorn 2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 1040712,
+        "anchor": "bbb271469d38c1e8340a9aab4222371552e169c13897841d949cd44a2b1d8dfb",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "file_offset": 1007944,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus2UC20ServerImplementationD0Ev",
+        "range_hex": "0dc0a0e170d82de904b04ce204d04de2246090e560309fe5000056e30050a0e1003080e50e00000a0d0000da0630a0e10040a0e3000000ea243095e5040053e1202095c50431a0c130009fd5030082c0000090e5014084e29a32fceb060054e1f4ffffba1c0085e2750200eb0500a0e19432fceb0500a0e170a89de9987d3600543c4900",
+        "range_sha256": "9ae26bb47cdd60c9c20c7c58f20afc3b9cf729f0de1ced017180d117a5d6b514",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 132
+      },
+      "boundaries": {
+        "vtable": {
+          "mangled": "_ZTVN8Presonus2UC20ServerImplementationE",
+          "section": 14,
+          "address": 3571088,
+          "size": 64,
+          "file_offset": 3538320,
+          "range_sha256": "48b833e74004c7dcf69adc9756f739d7e7ad033b99357033bb515b5f5f485965",
+          "range_hex": "00000000f87d360098dd0f00cce10f0048e10f00ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000ccb00000"
+        },
+        "vtable_address_point": 3571096,
+        "call_addresses": {
+          "vector_destructor": 1043340,
+          "delete": 44048
+        }
+      },
+      "cases": [
+        {
+          "identifiers": [],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              3571096
+            ]
+          ],
+          "releases": [
+            [
+              "receiver",
+              0
+            ]
+          ],
+          "unrelated_provider_preserved": true
+        },
+        {
+          "identifiers": [
+            7
+          ],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              3571096
+            ]
+          ],
+          "releases": [
+            [
+              "child",
+              1
+            ],
+            [
+              "vector",
+              0
+            ],
+            [
+              "receiver",
+              0
+            ]
+          ],
+          "unrelated_provider_preserved": true
+        },
+        {
+          "identifiers": [
+            -2147483648,
+            7,
+            7,
+            -9,
+            2147483647
+          ],
+          "query": 0,
+          "result": 0,
+          "writes": [
+            [
+              0,
+              4,
+              3571096
+            ]
+          ],
+          "releases": [
+            [
+              "child",
+              1
+            ],
+            [
+              "child",
+              2
+            ],
+            [
+              "child",
+              3
+            ],
+            [
+              "child",
+              4
+            ],
+            [
+              "child",
+              5
+            ],
+            [
+              "vector",
+              0
+            ],
+            [
+              "receiver",
+              0
+            ]
+          ],
+          "unrelated_provider_preserved": true
+        }
+      ]
+    }
+  ]
+}

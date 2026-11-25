@@ -110,6 +110,7 @@ public:
   SevenSegControl();
   explicit SevenSegControl(int tag);
   ~SevenSegControl() override;
+  void setValue(char *characters, bool *decimalPoints);
   // The ARM implementation returns a zero-extended 16-bit bitmap. Its exact
   // original C++ return declaration is not encoded in the symbol name.
   std::uint16_t convertCharToBmp(char character, bool decimalPoint) const;

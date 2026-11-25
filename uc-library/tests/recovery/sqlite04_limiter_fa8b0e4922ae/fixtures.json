@@ -1,0 +1,171 @@
+{
+  "mode": "d1",
+  "original": {
+    "address": 843568,
+    "anchor": "fa8b0e4922ae0822cb3c0bf6f1b8841224a46a8dc4646f6a8ca02d0f73e18dee",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 810800,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus3Dsp17LimiterControllerD1Ev",
+    "range_hex": "0dc0a0e110d82de918309fe504b04ce204d04de20040a0e1003080e52592ffeb0400a0e110a89de998e83500",
+    "range_sha256": "ac74897d2109370a92bd8f4882bf4cee2fe84f22db1050c619dfb655eb022922",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 44
+  },
+  "dependencies": [
+    {
+      "mangled": "_ZN3DSPL10SinglePoleEff",
+      "address": 840156,
+      "size": 64,
+      "section": 12,
+      "file_offset": 807388,
+      "sha256": "d118a601b30c790ebe331dd18d4836fa0a009d17efb149b2b6bc098a634151ec"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10ControllerC2EiPKNS0_19ParamDescriptorListE",
+      "address": 730396,
+      "size": 80,
+      "section": 12,
+      "file_offset": 697628,
+      "sha256": "d5f9264563594fe57ab0e1a269ac19b0481500550891848b8584f82d4deeb30a"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10Controller16setDefaultValuesEv",
+      "address": 734088,
+      "size": 284,
+      "section": 12,
+      "file_offset": 701320,
+      "sha256": "427b1dfb972c78ae10db6026047e57f432dc4da7c014c933664f9f55c1cc9cd9"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp16LimiterParamListC1Ev",
+      "address": 841896,
+      "size": 1192,
+      "section": 12,
+      "file_offset": 809128,
+      "sha256": "01f965c938bb737d5ec25eb932a037994862636050bd081c69286e1791b1c633"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10ControllerD2Ev",
+      "address": 731112,
+      "size": 48,
+      "section": 12,
+      "file_offset": 698344,
+      "sha256": "b22353a296a3a93deef0a79d82d6bf33f78bb671cdd0c43f87fb13a25dc01021"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10Controller9setTargetEPN4Core16IPropertyHandlerE",
+      "address": 730980,
+      "size": 84,
+      "section": 12,
+      "file_offset": 698212,
+      "sha256": "3ecb5a20eda01d56f34e0cda0eabfc70ac2e528e4f8ee7eea3c901ada52de81d"
+    },
+    {
+      "mangled": "_ZN8Presonus3Dsp10Controller12sendPropertyERNS0_15ChannelPropertyEb",
+      "address": 731608,
+      "size": 56,
+      "section": 12,
+      "file_offset": 698840,
+      "sha256": "617d30d4bf01e15446b5e8b25f3a5026ee115dd0c858a3fb1df5db6485f6f8b8"
+    }
+  ],
+  "native_cases": [
+    {
+      "inputs": [
+        0,
+        0
+      ],
+      "expected": [],
+      "writes": [
+        [
+          0,
+          4,
+          3532952
+        ],
+        [
+          0,
+          4,
+          3527424
+        ]
+      ],
+      "runtime_free": false
+    },
+    {
+      "inputs": [
+        0,
+        1
+      ],
+      "expected": [],
+      "writes": [
+        [
+          0,
+          4,
+          3532952
+        ],
+        [
+          0,
+          4,
+          3527424
+        ]
+      ],
+      "runtime_free": false
+    },
+    {
+      "inputs": [
+        1,
+        0
+      ],
+      "expected": [],
+      "writes": [
+        [
+          0,
+          4,
+          3532952
+        ],
+        [
+          0,
+          4,
+          3527424
+        ],
+        [
+          20,
+          4,
+          0
+        ]
+      ],
+      "runtime_free": false
+    },
+    {
+      "inputs": [
+        1,
+        1
+      ],
+      "expected": [
+        1
+      ],
+      "writes": [
+        [
+          0,
+          4,
+          3532952
+        ],
+        [
+          0,
+          4,
+          3527424
+        ],
+        [
+          20,
+          4,
+          0
+        ]
+      ],
+      "runtime_free": false
+    }
+  ]
+}

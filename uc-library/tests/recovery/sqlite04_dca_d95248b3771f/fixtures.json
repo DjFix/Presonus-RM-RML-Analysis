@@ -1,0 +1,1717 @@
+{
+  "original": {
+    "address": 380268,
+    "anchor": "d95248b3771f26950b1f9e5f3635731407a9842c938578bbcc9f2340f9a8cf65",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 347500,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus5Mixer15DCALevelHandler15removeDCAMasterEPNS0_20FilterGroupComponentE",
+    "range_sha256": "1a1161c649e30e0eced063c89a4804433d531c3e40ab53eb015c2101d54749d0",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 224
+  },
+  "cases": [
+    {
+      "args": [
+        "remove",
+        0,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        0,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 1 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          1
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        2,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        3,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 1 2 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        2,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        4,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          4
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        5,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 1 2 3 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        3,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          3
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        5,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          5
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        6,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        -1,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        0,
+        -2147483648
+      ],
+      "expected": [
+        "roster 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        8,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          8
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        16,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          16
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        17,
+        -2147483648
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          -2147483648,
+          17
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        0,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        0,
+        0,
+        59
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        0,
+        59
+      ],
+      "expected": [
+        "roster",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        1,
+        59
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 1 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        1,
+        59
+      ],
+      "expected": [
+        "roster 0 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          1
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        2,
+        59
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        3,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 1 2 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        2,
+        59
+      ],
+      "expected": [
+        "roster 0 1 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        4,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          4
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        5,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 1 2 3 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        3,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          3
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        5,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          5
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        6,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        -1,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        0,
+        59
+      ],
+      "expected": [
+        "roster 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        8,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          8
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        16,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          16
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        17,
+        59
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          59,
+          17
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        0,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        0,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster",
+        "capacity 0"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        1,
+        1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 1 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 2",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          1
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        2,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        3,
+        3,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          3
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 1 2 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        2,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 3 4",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          2
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        4,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3",
+        "capacity 5",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          4
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        5,
+        5,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 5"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          5
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 1 2 3 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        3,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 4 5",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          3
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        5,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4",
+        "capacity 10",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          5
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        6,
+        6,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5",
+        "capacity 10"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          6
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        -1,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          -1
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        0,
+        2147483647
+      ],
+      "expected": [
+        "roster 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          0
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        8,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 9 10 11 12 13 14 15 16",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          8
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        16,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+        "capacity 20",
+        "tail-cleared 1"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          16
+        ],
+        [
+          "sentinel",
+          4799388,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "args": [
+        "remove",
+        17,
+        17,
+        2147483647
+      ],
+      "expected": [
+        "roster 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
+        "capacity 20"
+      ],
+      "native_boundaries": [
+        [
+          "lookup",
+          2147483647,
+          17
+        ]
+      ]
+    }
+  ]
+}

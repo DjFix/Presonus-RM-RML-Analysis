@@ -1,4 +1,9 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/UC/DiscoveryAttributes.cpp
+  src/Presonus/UC/Format/Celsius.cpp
+  src/Presonus/UC/Format/ChannelNameFormatter.cpp
+  src/Presonus/UC/ParamRange.cpp
+  src/Presonus/UC/ServerImplementation.cpp
   src/Presonus/Panel/MeterLevelControl.cpp
   src/Presonus/Panel/MeterPeakControl.cpp
   src/Presonus/UC/Element.cpp
@@ -255,6 +260,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/DynamicsControl.cpp
   src/ColorButton.cpp
   src/IconManager.cpp
   src/Presonus/Surface/SoloPageComponent.cpp
@@ -442,6 +448,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/LimiterController.cpp
+  src/Presonus/Mixer/DCALevelHandler.cpp
   src/Presonus/Panel/AlertPage.cpp
   src/DSPManager.cpp
   src/utilities/DfuDiagnostic.cpp
@@ -642,6 +650,14 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/DynamicsControl.hpp
+  presonus/dsp/LimiterController.hpp
+  presonus/mixer/DCALevelHandler.hpp
+  presonus/uc/Celsius.hpp
+  presonus/uc/ChannelNameFormatter.hpp
+  presonus/uc/discovery_attributes.hpp
+  presonus/uc/param_range.hpp
+  presonus/uc/server_implementation.hpp
   presonus/panel/meter_level_control.hpp
   presonus/panel/meter_peak_control.hpp
   presonus/uc/element.hpp
@@ -1241,3 +1257,12 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/DecayTimeFor
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/EarlyRefFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/PreDelayFormatterT2.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/surface_panel/ControlHelpers.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/DynamicsControl.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+set_property(SOURCE src/Presonus/Mixer/DCALevelHandler.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/Dsp/LimiterController.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -fno-fast-math -ffp-contract=off -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/UC/Format/Celsius.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/UC/Format/ChannelNameFormatter.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)

@@ -35,6 +35,22 @@ void ControlRegistrar::Delegate::faderStatusChanged(const ControlRegistrar &,
 SevenSegControl::SevenSegControl() : SevenSegControl(0) {}
 SevenSegControl::SevenSegControl(int tag) : Control(tag) {}
 SevenSegControl::~SevenSegControl() = default;
+
+void SevenSegControl::setValue(char *characters, bool *decimalPoints) {
+  const std::array bitmaps{
+      convertCharToBmp(characters[0], decimalPoints[0]),
+      convertCharToBmp(characters[1], decimalPoints[1]),
+  };
+  Uart_Msg_Type message{{'x', 0, 0, 0}};
+  for (std::size_t digit = 0; digit < bitmaps.size(); ++digit) {
+    if (digitBitmaps_[digit] == bitmaps[digit])
+      continue;
+    message.bytes[1] = static_cast<std::uint8_t>(digit);
+    message.bytes[2] = static_cast<std::uint8_t>(bitmaps[digit]);
+    digitBitmaps_[digit] = bitmaps[digit];
+    presonus::panel::ControlAccess::io(*this)->writeMsg(message);
+  }
+}
 std::uint16_t SevenSegControl::convertCharToBmp(char character,
                                                 bool decimalPoint) const {
   constexpr std::uint16_t digits[] = {126, 12,  182, 158, 204,

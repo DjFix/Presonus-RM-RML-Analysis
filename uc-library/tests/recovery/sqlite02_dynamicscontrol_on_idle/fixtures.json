@@ -1,0 +1,276 @@
+{
+  "task": "sqlite02_dynamicscontrol_on_idle",
+  "original": {
+    "address": 468648,
+    "anchor": "3a37f96686f86c7cfd0f0487485a3cce1ef379e67181030455253b974f983dc4",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 435880,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus15DynamicsControl6onIdleEv",
+    "range_hex": "0dc0a0e1f0d82de904b04ce20070a0e1b21702eb789402eb64209fe50030a0e3765404eba03087e2180093e80160a0e10620a0e10010a0e1031051e00420c2e0000052e30050a0e1090000dab830d7e5000053e3f0a89d080700a0e1bc7002eb0030a0e3a05087e5a46087e5b830c7e5f0a89de8f0a89d18630051e3f0a89d98f1ffffea40420f00",
+    "range_sha256": "e85795b50ec8c4657cbf28c3d98decb43cc5a681393a900f353a6e2ffd2c02f4",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 136
+  },
+  "cases": [
+    {
+      "inputs": {
+        "last": 2000,
+        "now": 1999,
+        "pending": 1
+      },
+      "result": [
+        2000,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "control_idle"
+        ],
+        [
+          "clock_ns",
+          1999000000
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        116
+      ]
+    },
+    {
+      "inputs": {
+        "last": 2000,
+        "now": 2099,
+        "pending": 1
+      },
+      "result": [
+        2000,
+        1,
+        0
+      ],
+      "trace": [
+        [
+          "control_idle"
+        ],
+        [
+          "clock_ns",
+          2099000000
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        116,
+        120,
+        124
+      ]
+    },
+    {
+      "inputs": {
+        "last": 2000,
+        "now": 2100,
+        "pending": 1
+      },
+      "result": [
+        2100,
+        0,
+        1
+      ],
+      "trace": [
+        [
+          "control_idle"
+        ],
+        [
+          "clock_ns",
+          2100000000
+        ],
+        [
+          "invalidate"
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124,
+        128
+      ]
+    },
+    {
+      "inputs": {
+        "last": 2000,
+        "now": 2101,
+        "pending": 1
+      },
+      "result": [
+        2101,
+        0,
+        1
+      ],
+      "trace": [
+        [
+          "control_idle"
+        ],
+        [
+          "clock_ns",
+          2101000000
+        ],
+        [
+          "invalidate"
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        88,
+        92,
+        96,
+        100,
+        104,
+        108,
+        112,
+        116,
+        120,
+        124,
+        128
+      ]
+    },
+    {
+      "inputs": {
+        "last": 2000,
+        "now": 2101,
+        "pending": 0
+      },
+      "result": [
+        2000,
+        0,
+        0
+      ],
+      "trace": [
+        [
+          "control_idle"
+        ],
+        [
+          "clock_ns",
+          2101000000
+        ]
+      ],
+      "target_offsets": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80,
+        84,
+        116,
+        120,
+        124,
+        128
+      ]
+    }
+  ]
+}
