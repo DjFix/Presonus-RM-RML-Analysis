@@ -8,6 +8,7 @@
 #include <cstdint>
 
 namespace Presonus::UC {
+class AdapterHandler;
 class Connection;
 class ConnectionHandler;
 class IConnection;
@@ -146,6 +147,10 @@ struct NetworkManagerState {
   NetworkDiscoveryControl *discovery = nullptr;
   Presonus::UC::ConnectionHandler *connectionHandler = nullptr;
   Core::LinkedList<Presonus::UC::INetworkErrorReporter *> errorReporters;
+  // Live source-port provider for suspendNetworkAdapters.
+  Presonus::UC::AdapterHandler *adapterHandler = nullptr;
+  bool multicastReceiverEnabled = false;
+  std::uint8_t waitingForOutgoingEvents = 0;
 };
 } // namespace presonus::uc
 namespace Presonus::UC {
@@ -181,6 +186,9 @@ public:
   int handleEvent(void *, const Event &) override;
   int sendChunks(const MessageEvent &);
   bool hasOutgoingEvents();
+  void enableMulticastReceiver(bool);
+  int suspendNetworkAdapters(unsigned char) override;
+  int waitForOutgoingEvents(int) override;
   // Ordinary return declarations remain unresolved in the original.
   Core::Threads::Lock *getLock();
   bool isStarted() const;

@@ -51,6 +51,7 @@ struct MulticastConnectionState {
   std::uint16_t configuredPort = 0, boundPort = 0;
   std::uint8_t unicastEnabled = 0, multicastEnabled = 0, groupPending = 0;
   std::int64_t pendingSinceMilliseconds = 0;
+  std::uint8_t resetMarker = 0;
 };
 } // namespace presonus::uc
 namespace Presonus::UC {
@@ -62,6 +63,7 @@ public:
                       presonus::uc::MulticastConnectionState &state)
       : BasicConnection(state.outgoing), state_(state) {}
   void cleanup();
+  void reset();
   void makeMulticastSockets(bool);
   void makeUnicastSockets(bool);
   void startUnicastListening();

@@ -1,4 +1,12 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/Panel/MeterLevelControl.cpp
+  src/Presonus/Panel/MeterPeakControl.cpp
+  src/Presonus/UC/Element.cpp
+  src/Presonus/UC/MetaElement.cpp
+  src/Presonus/UC/MidiEndpoint.cpp
+  src/Presonus/UC/MidiEndpointRegistry.cpp
+  src/Presonus/UC/RemoteEventSender.cpp
+  src/Presonus/UC/ServerDescription.cpp
   src/Presonus/IDAWDialogHandler.cpp
   src/Presonus/Panel/GPIOControlGroup.cpp
   src/Presonus/TouchInputEvent.cpp
@@ -634,6 +642,14 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/panel/meter_level_control.hpp
+  presonus/panel/meter_peak_control.hpp
+  presonus/uc/element.hpp
+  presonus/uc/meta_element.hpp
+  presonus/uc/midi_endpoint.hpp
+  presonus/uc/midi_endpoint_registry.hpp
+  presonus/uc/remote_event_sender.hpp
+  presonus/uc/server_description.hpp
   presonus/IDAWDialogHandler.hpp
   presonus/panel/GPIOControlGroup.hpp
   presonus/uc/ClientComponent.hpp

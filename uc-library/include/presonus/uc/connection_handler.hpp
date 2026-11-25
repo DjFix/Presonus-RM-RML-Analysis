@@ -7,6 +7,7 @@
 namespace Presonus::UC {
 class IDataChannel;
 class MulticastConnection;
+class SocketBundle;
 } // namespace Presonus::UC
 namespace presonus::uc {
 // Independent sidecar view joining existing source-port components. No original
@@ -26,6 +27,8 @@ struct ConnectionHandlerState {
   Presonus::UC::MulticastConnection *multicastIdentity = nullptr;
   Presonus::UC::BasicConnection *multicastOutgoing = nullptr;
   unsigned char listeningEnabled = 0;
+  Core::Vector<Presonus::UC::Connection *> listeningConnections;
+  Presonus::UC::SocketBundle *listeningSockets = nullptr;
 };
 } // namespace presonus::uc
 namespace Presonus::UC {
@@ -41,6 +44,14 @@ public:
   bool isSendingFromExternalConnection(int) const;
   bool hasEvents(const Core::Vector<Connection *> &) const;
   bool hasOutgoingEvents() const;
+  // Lifecycle operations require exclusively owned, distinct heap connections;
+  // any views are borrowed metadata and are detached before deletion. An armed
+  // listener and cleanup require live socket and multicast providers
+  // respectively.
+  void deleteAll(Core::Vector<Connection *> &);
+  void cleanupAll();
+  void stopListening();
+  bool removeExternal(IDataChannel *);
 
 private:
   presonus::uc::ConnectionHandlerState &state_;

@@ -3,6 +3,13 @@
 #include <stdexcept>
 
 namespace Presonus::Surface {
+UCMidiOutputAdapter::UCMidiOutputAdapter() = default;
+
+UCMidiOutputAdapter::~UCMidiOutputAdapter() {
+  if (fader_)
+    fader_->setMidiSink(nullptr);
+}
+
 void UCMidiOutputAdapter::setFaderUnit(IFaderUnit *unit, int) {
   auto *next = dynamic_cast<MackieFaderUnitBinding *>(unit);
   if (unit && !next)
@@ -17,6 +24,7 @@ void UCMidiOutputAdapter::setFaderUnit(IFaderUnit *unit, int) {
 
 void UCMidiOutputAdapter::sendMidiMessage(const unsigned char *data,
                                           unsigned length, unsigned port) {
-  endpoint_.sendMidiMessage(data, length, port);
+  if (endpoint_)
+    endpoint_->sendMidiMessage(data, length, port);
 }
 } // namespace Presonus::Surface

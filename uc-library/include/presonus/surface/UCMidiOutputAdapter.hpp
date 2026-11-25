@@ -19,16 +19,23 @@ private:
 
 // This subset preserves local sink binding; sending through a UC connection
 // belongs to a separate method. The caller supplies the portable send endpoint.
-class UCMidiOutputAdapter final : public IMidiSink {
+class UCMidiOutputAdapter : public IMidiSink {
 public:
-  explicit UCMidiOutputAdapter(IMidiSink &endpoint) : endpoint_(endpoint) {}
+  UCMidiOutputAdapter();
+  explicit UCMidiOutputAdapter(IMidiSink &endpoint) : endpoint_(&endpoint) {}
+  virtual ~UCMidiOutputAdapter();
+
+  UCMidiOutputAdapter(const UCMidiOutputAdapter &) = delete;
+  UCMidiOutputAdapter &operator=(const UCMidiOutputAdapter &) = delete;
+
   void setFaderUnit(IFaderUnit *, int);
   void sendMidiMessage(const unsigned char *, unsigned int,
                        unsigned int) override;
+  IMidiSink *portableEndpoint() const { return endpoint_; }
   IFaderUnit *portableFaderUnit() const { return fader_; }
 
 private:
-  IMidiSink &endpoint_;
+  IMidiSink *endpoint_{};
   MackieFaderUnitBinding *fader_{};
 };
 } // namespace Presonus::Surface

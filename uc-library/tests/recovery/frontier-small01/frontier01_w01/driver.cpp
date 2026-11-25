@@ -3,7 +3,9 @@
 #include "presonus/panel/PresetNameCache.hpp"
 #include "presonus/panel/PresetNameManager.hpp"
 #include "presonus/panel/SPIControl.hpp"
+#include "presonus/panel/protocol_comm.hpp"
 #include <cassert>
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <sstream>
@@ -160,6 +162,22 @@ struct Number : NumericParam {
   Number() : NumericParam(numericInfo) {}
   int observers() const { return observerList.count(); }
 };
+struct SPISetupIO final : IPanelIO {
+  explicit SPISetupIO(Control &target) : control(target) {}
+  int readMsg(Uart_Msg_Type &) override { std::abort(); }
+  int writeMsg(Uart_Msg_Type &) override { std::abort(); }
+  int open(const char *) override { std::abort(); }
+  void close() override { std::abort(); }
+  int enableHISpeed(bool) override { std::abort(); }
+  int broadcast(Control *source) override {
+    assert(source == &control);
+    ++broadcasts;
+    return 0;
+  }
+
+  Control &control;
+  int broadcasts = 0;
+};
 int main(int argc, char **argv) {
   if (argc != 4)
     return 2;
@@ -196,9 +214,15 @@ int main(int argc, char **argv) {
     Control survivor(9);
     auto *p = new SPIControl(4);
     if (arg) {
+      // LEDControl dispatches the setup notification through the SPI port.
+      // The observed destructor still runs with no attached port.
+      SPISetupIO io(*p);
+      p->setIO(&io);
       p->setParameter(&a, 0);
       p->setAltParameter(&b);
       p->setTertiaryParameter(&c);
+      assert(io.broadcasts == 1);
+      p->setIO(nullptr);
       assert(a.observers() == 1 && b.observers() == 1 && c.observers() == 1);
       auto &v = presonus::panel::ControlAccess::timers();
       v.add(new Control::Timer(p, 1, 0));

@@ -46,6 +46,15 @@ void DiscoveryEntryOwnership::destroy(Presonus::UC::UDPDiscoveryEntry *view) {
 }
 } // namespace presonus::uc
 namespace Presonus::UC {
+UDPDiscoveryHandler::UDPDiscoveryHandler()
+    : ownedState_(std::in_place), state_(*ownedState_) {}
+
+UDPDiscoveryHandler::UDPDiscoveryHandler(const UDPDiscoveryHandler &other)
+    : ownedState_(other.ownedState_),
+      state_(ownedState_ ? *ownedState_ : other.state_) {}
+
+UDPDiscoveryHandler::~UDPDiscoveryHandler() = default;
+
 bool UDPDiscoveryEntry::updateHostName(const char *name) {
   if (!name)
     name = "";

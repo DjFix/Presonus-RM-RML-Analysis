@@ -1,14 +1,14 @@
 #pragma once
-#include "core/portable/corecomponent.h"
+#include "presonus/uc/ServerComponent.hpp"
 #include <cstdint>
 namespace Presonus {
 // Portable source model: pinned CCL owns component children and parameters.
 // Tagged construction is independent; original layout and ARM ABI are unknown.
-class TargetedComponent : public Core::Portable::Component {
+class TargetedComponent : public UC::ServerComponent {
 public:
   struct SourcePortConstruction {};
-  explicit TargetedComponent(SourcePortConstruction)
-      : Core::Portable::Component() {}
+  explicit TargetedComponent(const char *name);
+  explicit TargetedComponent(SourcePortConstruction) : TargetedComponent("") {}
   ~TargetedComponent() override;
   void onIdle() override;
   // Exact original default extension hooks have only prologue/return bodies.

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/portable/corecomponent.h"
+#include "core/portable/corestorage.h"
 #include "core/public/corevector.h"
 #include "presonus/LinkableComponent.hpp"
 #include "presonus/delay_timer.hpp"
@@ -156,13 +157,15 @@ public:
   bindFaderViews(Presonus::Mixer::MixerComponentBase &,
                  const Core::Vector<Presonus::Mixer::ChannelComponent *> &,
                  const Core::Vector<Presonus::Mixer::ChannelComponent *> &);
-  // Partial stateless source-port predicate; no original IStorageFilter base,
-  // constructor, shouldLoad, lifetime or ABI credit.
-  class CopyPasteFilter {
+  class CopyPasteFilter : public Core::Portable::IStorageFilter {
   public:
     struct SourcePortConstruction {};
-    explicit CopyPasteFilter(SourcePortConstruction) {}
-    bool shouldSave(int, const char *, void *) const;
+    CopyPasteFilter();
+    explicit CopyPasteFilter(SourcePortConstruction) : CopyPasteFilter() {}
+    ~CopyPasteFilter();
+    void *castTo(TypeID typeId) override;
+    bool shouldLoad(int, const char *, void *) const override;
+    bool shouldSave(int, const char *, void *) const override;
   };
 
 private:

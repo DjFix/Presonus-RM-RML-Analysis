@@ -5,6 +5,7 @@
 #include "presonus/uc/discovery_handler.hpp"
 #include "presonus/uc/network_manager_services.hpp"
 #include <cstdint>
+#include <optional>
 namespace Presonus::UC {
 class MulticastConnection;
 class IDiscoveryReplyHandler;
@@ -26,8 +27,8 @@ struct DiscoveryEntryState {
   Core::CStringBuffer<64> displayName;
 };
 struct DiscoveryHandlerState {
-  // Borrowed initialized entries: this partial interface never deletes entries.
-  // Original shutdown/removeServer ownership is intentionally unreconstructed.
+  // The vector owns storage for pointers. Application entry lifetimes belong
+  // to the separately bound ownership provider.
   Core::Vector<Presonus::UC::UDPDiscoveryEntry *> entries;
   // Required only by new owning lifecycle methods; old borrowed methods do not
   // use it.
@@ -57,6 +58,9 @@ class UDPDiscoveryHandler
       public IMulticastReceiver,
       public Core::Portable::StaticSingleton<UDPDiscoveryHandler> {
 public:
+  UDPDiscoveryHandler();
+  UDPDiscoveryHandler(const UDPDiscoveryHandler &other);
+  ~UDPDiscoveryHandler();
   UDPDiscoveryHandler(presonus::uc::DiscoverySourcePortTag,
                       presonus::uc::DiscoveryHandlerState &state)
       : state_(state) {}
@@ -78,7 +82,13 @@ public:
   UDPDiscoveryEntry *findLocal(int) const;
   virtual void updateServer(void *, const char *);
 
+protected:
+  presonus::uc::DiscoveryHandlerState &discoveryState() { return state_; }
+
 private:
+  // In-place storage for default construction. Tagged callers bind external
+  // state and retain its lifetime. This is a portable source representation.
+  std::optional<presonus::uc::DiscoveryHandlerState> ownedState_;
   presonus::uc::DiscoveryHandlerState &state_;
 };
 } // namespace Presonus::UC

@@ -1,5 +1,7 @@
 #pragma once
 #include "core/public/corevector.h"
+#include <bitset>
+#include <memory>
 
 namespace Presonus::Panel {
 class Control;
@@ -22,6 +24,7 @@ public:
   // Source-port storage; original layout and virtual dispatch remain
   // unresolved.
   ControlGroup(int groupId, int unused);
+  virtual ~ControlGroup();
   ControlGroup(const ControlGroup &) = delete;
   ControlGroup &operator=(const ControlGroup &) = delete;
   // Independent borrowed-state injection constructor.
@@ -43,12 +46,17 @@ private:
   presonus::panel_binding::ControlGroupState ownedState_;
   friend struct presonus::panel_binding::ControlGroupAccess;
   presonus::panel_binding::ControlGroupState &state_;
+  std::bitset<256> ownedSlots_;
 };
 } // namespace Presonus::Panel
 
 namespace presonus::panel_binding {
 // Independent source-port inspection; no original symbol or layout claim.
 struct ControlGroupAccess {
+  // Transfer a slot into a group with internal storage. On failure the
+  // caller retains ownership. A null pointer adds an empty owned slot.
+  static bool addOwned(Presonus::Panel::ControlGroup &group,
+                       std::unique_ptr<Presonus::Panel::Control> &&control);
   static int groupId(const Presonus::Panel::ControlGroup &group) {
     return group.groupId_;
   }

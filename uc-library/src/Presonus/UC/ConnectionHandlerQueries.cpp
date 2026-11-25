@@ -1,5 +1,7 @@
 #include "presonus/uc/connection_handler.hpp"
+#include "presonus/uc/multicast_connection.hpp"
 #include "presonus/uc/network_manager_services.hpp"
+#include "presonus/uc/report.hpp"
 #include <cstdlib>
 
 namespace presonus::uc {
@@ -12,6 +14,15 @@ viewFor(const ConnectionHandlerState &state,
     if (state.views.at(index)->identity == identity)
       return *state.views.at(index);
   std::abort();
+}
+static void detachView(ConnectionHandlerState &state,
+                       Presonus::UC::Connection *identity) {
+  for (int index = 0; index < state.views.count(); ++index) {
+    if (state.views.at(index)->identity == identity) {
+      state.views.removeAt(index);
+      return;
+    }
+  }
 }
 } // namespace presonus::uc
 namespace Presonus::UC {
@@ -61,6 +72,43 @@ bool ConnectionHandler::hasOutgoingEvents() const {
       hasEvents(state_.externalConnections))
     return true;
   return state_.multicastOutgoing->hasQueuedEvents();
+}
+
+void ConnectionHandler::deleteAll(Core::Vector<Connection *> &items) {
+  const int count = items.count();
+  for (int index = 0; index < count; ++index) {
+    if (auto *connection = items.at(index)) {
+      presonus::uc::detachView(state_, connection);
+      delete connection;
+    }
+  }
+  items.removeAll();
+}
+
+void ConnectionHandler::cleanupAll() {
+  deleteAll(state_.listeningConnections);
+  deleteAll(state_.localConnections);
+  deleteAll(state_.externalConnections);
+  state_.multicastIdentity->cleanup();
+}
+
+void ConnectionHandler::stopListening() {
+  if (!state_.listeningEnabled)
+    return;
+  state_.listeningEnabled = 0;
+  state_.listeningSockets->deleteAll();
+  deleteAll(state_.listeningConnections);
+  UCReportMessage(0, "Stopped listening");
+}
+
+bool ConnectionHandler::removeExternal(IDataChannel *channel) {
+  auto *connection = findExternal(channel);
+  if (!connection)
+    return false;
+  state_.externalConnections.remove(connection);
+  presonus::uc::detachView(state_, connection);
+  delete connection;
+  return true;
 }
 
 bool NetworkManager::hasOutgoingEvents() {

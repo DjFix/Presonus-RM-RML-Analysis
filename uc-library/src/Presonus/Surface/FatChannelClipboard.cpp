@@ -2,6 +2,8 @@
 #include "core/portable/coreparams.h"
 #include "presonus/SLChannel.hpp"
 namespace Presonus::Surface {
+FatChannelClipboard::FatChannelClipboard() : roster_(0, 5) {}
+
 bool FatChannelClipboard::CopyPasteFilter::shouldSave(int type, const char *,
                                                       void *object) const {
   if (type != 1348563553 || !object)

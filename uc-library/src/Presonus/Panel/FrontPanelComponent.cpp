@@ -187,6 +187,21 @@ void FrontPanelComponent::attachMeterSwitch(Control *control, int tag) {
   auto *p = portableState().component.getParameterByTag(tag);
   (sw->*setter)(p, 0);
 }
+FrontPanelComponent::CopyPasteFilter::CopyPasteFilter() = default;
+
+FrontPanelComponent::CopyPasteFilter::~CopyPasteFilter() = default;
+
+void *FrontPanelComponent::CopyPasteFilter::castTo(TypeID typeId) {
+  return typeId == IStorageFilter::kTypeID ? static_cast<IStorageFilter *>(this)
+                                           : nullptr;
+}
+
+bool FrontPanelComponent::CopyPasteFilter::shouldLoad(int type,
+                                                      const char *name,
+                                                      void *object) const {
+  return shouldSave(type, name, object);
+}
+
 bool FrontPanelComponent::CopyPasteFilter::shouldSave(int type, const char *,
                                                       void *object) const {
   if (type != Core::Portable::Parameter::kTypeID || !object)

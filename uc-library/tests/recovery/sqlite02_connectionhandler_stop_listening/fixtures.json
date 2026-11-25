@@ -1,0 +1,574 @@
+{
+  "observations": [
+    {
+      "address": 250388,
+      "anchor": "06b6be2a98645857232257912248f17ada701b3dd3eac88d6148dc7f2d7f1396",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 217620,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN8Presonus2UC17ConnectionHandler13stopListeningEv",
+      "range_hex": "0dc0a0e130d82de93430d0e504b04ce2000053e30050a0e130a89d080040a0e33440c0e5040080e2f198ffeb0500a0e1381085e28cfeffeb0c109fe50400a0e10420a0e130689de8ae1000ea30331900",
+      "range_sha256": "f5f54fca09b3002ccf785aec22f4b4dce8dcca50929d1ee36eec9604c7d3b8c4",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 80,
+      "boundaries": {
+        "deleteAll": {
+          "mangled": "_ZN8Presonus2UC17ConnectionHandler9deleteAllERN4Core6VectorIPNS0_10ConnectionEEE",
+          "address": 248960,
+          "size": 136
+        },
+        "connectionD0": {
+          "mangled": "_ZN8Presonus2UC18ExternalConnectionD0Ev",
+          "address": 260952,
+          "size": 52
+        },
+        "connectionD2": {
+          "mangled": "_ZN8Presonus2UC10ConnectionD2Ev",
+          "address": 253548,
+          "size": 228
+        },
+        "stopSocketBundle": {
+          "mangled": "_ZN8Presonus2UC12SocketBundle9deleteAllEv",
+          "address": 144904,
+          "size": 88
+        },
+        "multicastCleanup": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection7cleanupEv",
+          "address": 264476,
+          "size": 44
+        },
+        "connectionDelete": {
+          "mangled": "_ZdlPv@@GLIBCXX_3.4",
+          "address": 44380,
+          "size": 28
+        },
+        "resize": {
+          "mangled": "_ZN4Core6VectorIPN8Presonus2UC10ConnectionEE6resizeEi",
+          "address": 259696,
+          "size": 256
+        },
+        "remove": {
+          "mangled": "_ZN4Core13MutableVectorIPN8Presonus2UC10ConnectionENS_6VectorIS4_EEE6removeERKS4_",
+          "address": 259436,
+          "size": 216
+        },
+        "senderVectorD1": {
+          "mangled": "_ZN4Core6VectorIPN8Presonus2UC17RemoteEventSenderEED1Ev",
+          "address": 260468,
+          "size": 48
+        },
+        "eventQueueD1": {
+          "mangled": "_ZN8Presonus2UC10EventQueueD1Ev",
+          "address": 174784,
+          "size": 148
+        },
+        "socketD1": {
+          "mangled": "_ZN4Core7Sockets10CoreSocketD1Ev",
+          "address": 912412,
+          "size": 160
+        },
+        "report": {
+          "mangled": "UCReportMessage",
+          "address": 267548,
+          "size": 108
+        },
+        "unicast": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection18makeUnicastSocketsEb",
+          "address": 263488,
+          "size": 688
+        },
+        "multicast": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection20makeMulticastSocketsEb",
+          "address": 261256,
+          "size": 824
+        }
+      },
+      "external_vtable_address_point": 1651896,
+      "cases": [
+        {
+          "input": "disabled",
+          "setup": [
+            0,
+            [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            1
+          ],
+          "calls": [],
+          "rosters": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 1,
+          "return": null
+        },
+        {
+          "input": "empty",
+          "setup": [
+            1,
+            [
+              [],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            0
+          ],
+          "calls": [
+            [
+              "stopSocketBundle",
+              0,
+              0
+            ],
+            [
+              "deleteAll",
+              0,
+              []
+            ],
+            [
+              "resize",
+              0,
+              []
+            ],
+            [
+              "report",
+              0,
+              "Stopped listening",
+              0
+            ]
+          ],
+          "rosters": [
+            [],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 0,
+          "return": null
+        },
+        {
+          "input": "armed",
+          "setup": [
+            7,
+            [
+              [
+                1,
+                0
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            1
+          ],
+          "calls": [
+            [
+              "stopSocketBundle",
+              0,
+              1
+            ],
+            [
+              "socketD1",
+              0
+            ],
+            [
+              "socketDeallocate",
+              0
+            ],
+            [
+              "deleteAll",
+              0,
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              "destroy",
+              1,
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2
+                ],
+                [
+                  3
+                ]
+              ]
+            ],
+            [
+              "connectionD2",
+              1
+            ],
+            [
+              "senderVectorD1",
+              360
+            ],
+            [
+              "eventQueueD1",
+              324
+            ],
+            [
+              "eventQueueD1",
+              12
+            ],
+            [
+              "deallocate",
+              1
+            ],
+            [
+              "resize",
+              0,
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              "report",
+              0,
+              "Stopped listening",
+              0
+            ]
+          ],
+          "rosters": [
+            [],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 0,
+          "return": null
+        }
+      ]
+    },
+    {
+      "address": 973668,
+      "anchor": "913feb5d0b366af119237dfbfd01c177c10b5b2b5dfd9ea53fe3061a004357e6",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 940900,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus2UC17ConnectionHandler13stopListeningEv",
+      "range_hex": "0dc0a0e130d82de93430d0e504b04ce2000053e30050a0e130a89d080040a0e33440c0e5040080e2599affeb0500a0e1381085e28cfeffeb0c109fe50400a0e10420a0e130689de8ae1000ea305e3600",
+      "range_sha256": "d5ce385d417e8ee5ad82cd496f67f619f526c611ed58eebc5135ef142577c7f0",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 80,
+      "boundaries": {
+        "deleteAll": {
+          "mangled": "_ZN8Presonus2UC17ConnectionHandler9deleteAllERN4Core6VectorIPNS0_10ConnectionEEE",
+          "address": 972240,
+          "size": 136
+        },
+        "connectionD0": {
+          "mangled": "_ZN8Presonus2UC18ExternalConnectionD0Ev",
+          "address": 984232,
+          "size": 52
+        },
+        "connectionD2": {
+          "mangled": "_ZN8Presonus2UC10ConnectionD2Ev",
+          "address": 976828,
+          "size": 228
+        },
+        "stopSocketBundle": {
+          "mangled": "_ZN8Presonus2UC12SocketBundle9deleteAllEv",
+          "address": 869624,
+          "size": 88
+        },
+        "multicastCleanup": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection7cleanupEv",
+          "address": 987756,
+          "size": 44
+        },
+        "connectionDelete": {
+          "mangled": "_ZdlPv@@GLIBCXX_3.4",
+          "address": 44048,
+          "size": 28
+        },
+        "resize": {
+          "mangled": "_ZN4Core6VectorIPN8Presonus2UC10ConnectionEE6resizeEi",
+          "address": 982976,
+          "size": 256
+        },
+        "remove": {
+          "mangled": "_ZN4Core13MutableVectorIPN8Presonus2UC10ConnectionENS_6VectorIS4_EEE6removeERKS4_",
+          "address": 982716,
+          "size": 216
+        },
+        "senderVectorD1": {
+          "mangled": "_ZN4Core6VectorIPN8Presonus2UC17RemoteEventSenderEED1Ev",
+          "address": 983748,
+          "size": 48
+        },
+        "eventQueueD1": {
+          "mangled": "_ZN8Presonus2UC10EventQueueD1Ev",
+          "address": 898932,
+          "size": 148
+        },
+        "socketD1": {
+          "mangled": "_ZN4Core7Sockets10CoreSocketD1Ev",
+          "address": 1082736,
+          "size": 160
+        },
+        "report": {
+          "mangled": "UCReportMessage",
+          "address": 990828,
+          "size": 108
+        },
+        "unicast": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection18makeUnicastSocketsEb",
+          "address": 986768,
+          "size": 688
+        },
+        "multicast": {
+          "mangled": "_ZN8Presonus2UC19MulticastConnection20makeMulticastSocketsEb",
+          "address": 984536,
+          "size": 824
+        }
+      },
+      "external_vtable_address_point": 3563448,
+      "cases": [
+        {
+          "input": "disabled",
+          "setup": [
+            0,
+            [
+              [
+                1
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            1
+          ],
+          "calls": [],
+          "rosters": [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 1,
+          "return": null
+        },
+        {
+          "input": "empty",
+          "setup": [
+            1,
+            [
+              [],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            0
+          ],
+          "calls": [
+            [
+              "stopSocketBundle",
+              0,
+              0
+            ],
+            [
+              "deleteAll",
+              0,
+              []
+            ],
+            [
+              "resize",
+              0,
+              []
+            ],
+            [
+              "report",
+              0,
+              "Stopped listening",
+              0
+            ]
+          ],
+          "rosters": [
+            [],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 0,
+          "return": null
+        },
+        {
+          "input": "armed",
+          "setup": [
+            7,
+            [
+              [
+                1,
+                0
+              ],
+              [
+                2
+              ],
+              [
+                3
+              ]
+            ],
+            {},
+            0,
+            1
+          ],
+          "calls": [
+            [
+              "stopSocketBundle",
+              0,
+              1
+            ],
+            [
+              "socketD1",
+              0
+            ],
+            [
+              "socketDeallocate",
+              0
+            ],
+            [
+              "deleteAll",
+              0,
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              "destroy",
+              1,
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2
+                ],
+                [
+                  3
+                ]
+              ]
+            ],
+            [
+              "connectionD2",
+              1
+            ],
+            [
+              "senderVectorD1",
+              360
+            ],
+            [
+              "eventQueueD1",
+              324
+            ],
+            [
+              "eventQueueD1",
+              12
+            ],
+            [
+              "deallocate",
+              1
+            ],
+            [
+              "resize",
+              0,
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              "report",
+              0,
+              "Stopped listening",
+              0
+            ]
+          ],
+          "rosters": [
+            [],
+            [
+              2
+            ],
+            [
+              3
+            ]
+          ],
+          "flag": 0,
+          "socket_count": 0,
+          "return": null
+        }
+      ]
+    }
+  ]
+}

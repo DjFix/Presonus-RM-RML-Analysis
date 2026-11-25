@@ -33,6 +33,10 @@ public:
   std::uint32_t write(const void *, int);
   std::uint32_t isReadable(int);
   std::uint32_t isWritable(int);
+  // Original virtual slots and parameter identities are verified. The return
+  // types are portable choices and the host vtable has independent layout.
+  virtual std::int32_t getBytesAvailable();
+  virtual bool hasErrors(int);
   // Native argument placement establishes no implicit this for this method.
   static std::uint32_t detectEventStart(const void *, int, int *);
 

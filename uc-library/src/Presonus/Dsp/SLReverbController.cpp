@@ -70,6 +70,8 @@ SLReverbController::SLReverbController(int id)
 }
 SLReverbController::SLReverbController(presonus::dsp::ReverbPortState &s)
     : Controller(presonus::dsp::ControllerSourceTag{}), state_(s) {}
+SLReverbController::~SLReverbController() = default;
+
 std::uint32_t SLReverbController::word(std::size_t offset) const {
   if (offset + 4 > state_.memory.size())
     throw std::out_of_range("reverb state");

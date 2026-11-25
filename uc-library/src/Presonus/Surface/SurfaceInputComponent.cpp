@@ -91,6 +91,7 @@ constexpr double gainMap[] = {
     0x1.95c28f5c28f5cp+1};
 } // namespace
 namespace Presonus::Surface {
+SurfaceInputComponent::SurfaceInputComponent() : SurfaceChannelComponent(1) {}
 SurfaceInputComponent::~SurfaceInputComponent() = default;
 Core::Portable::Parameter *SurfaceInputComponent::getLevel() const {
   return getParameterByTag(300);

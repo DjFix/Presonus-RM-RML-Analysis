@@ -1,0 +1,363 @@
+{
+  "unicorn_version": "2.1.4",
+  "targets": [
+    {
+      "original": {
+        "firmware": "CS18AI surface 13840",
+        "role": "client",
+        "mangled": "_ZN8Presonus5Panel16MeterPeakControlD0Ev",
+        "address": 109040,
+        "size": 52,
+        "section": 12,
+        "range_sha256": "e617bd3d4387ed90febd8aad31c0e36d89cb1e9c825bb27216f55959be9d2306",
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "file_offset": 76272
+      },
+      "elf_path": "/home/rs/projects/opencs/ai-line-analysis/rootfs/CS18_v13840/home/root/surface",
+      "section_name": ".text",
+      "cases": [
+        {
+          "argument": 0,
+          "output": [
+            1,
+            0,
+            0
+          ],
+          "writes": [
+            [
+              536870912,
+              4,
+              1615648
+            ],
+            [
+              536870912,
+              4,
+              1616288
+            ],
+            [
+              536870920,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            [
+              "_ZN8Presonus5Panel7ControlD2Ev",
+              536870912
+            ],
+            [
+              "delete_receiver",
+              536870912
+            ]
+          ],
+          "instructions": [
+            109040,
+            109044,
+            109048,
+            109052,
+            109056,
+            109060,
+            109064,
+            109068,
+            109072,
+            109076,
+            109080,
+            109084
+          ]
+        },
+        {
+          "argument": 1,
+          "output": [
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            [
+              536870912,
+              4,
+              1615648
+            ],
+            [
+              536870912,
+              4,
+              1616288
+            ],
+            [
+              536883456,
+              4,
+              536883200
+            ],
+            [
+              536883460,
+              4,
+              0
+            ],
+            [
+              2428660,
+              4,
+              1
+            ],
+            [
+              536875264,
+              4,
+              536883200
+            ],
+            [
+              536875268,
+              4,
+              0
+            ],
+            [
+              536875040,
+              4,
+              1
+            ],
+            [
+              536870920,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            [
+              "_ZN8Presonus5Panel7ControlD2Ev",
+              536870912
+            ],
+            [
+              "_ZN4Core13MutableVectorIPN8Presonus5Panel7Control5TimerENS_6VectorIS5_EEE6removeERKS5_",
+              2428656
+            ],
+            [
+              "delete_timer",
+              536879104
+            ],
+            [
+              "_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE",
+              536875008
+            ],
+            [
+              "delete_receiver",
+              536870912
+            ]
+          ],
+          "instructions": [
+            109040,
+            109044,
+            109048,
+            109052,
+            109056,
+            109060,
+            109064,
+            109068,
+            109072,
+            109076,
+            109080,
+            109084
+          ]
+        }
+      ],
+      "compared_constructor_variant": null,
+      "dependency_ranges": {
+        "_ZN8Presonus5Panel7ControlD2Ev": {
+          "address": 101968,
+          "size": 228,
+          "file_offset": 69200,
+          "range_sha256": "caa73c96203be26583527fce60a1abad64ff7e0c85f4f6bc9f0775fe6f26cd65"
+        },
+        "_ZN4Core13MutableVectorIPN8Presonus5Panel7Control5TimerENS_6VectorIS5_EEE6removeERKS5_": {
+          "address": 106292,
+          "size": 216,
+          "file_offset": 73524,
+          "range_sha256": "b328a29c9853e1ae58bafc03d3a11db864749994615f10553ddb51ac1ce8260e"
+        },
+        "_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE": {
+          "address": 1172192,
+          "size": 204,
+          "file_offset": 1139424,
+          "range_sha256": "e20e2fcec5a18a0fb438f376d420c74cc570863562d37bd6f74bbaed75d8856d"
+        }
+      },
+      "vtable_address_point": 1615520
+    },
+    {
+      "original": {
+        "firmware": "RM/RML mixer 13731",
+        "role": "server",
+        "mangled": "_ZN8Presonus5Panel16MeterPeakControlD0Ev",
+        "address": 606268,
+        "size": 52,
+        "section": 12,
+        "range_sha256": "3820a7b63e537f1c852081667051318268320aab16b549c101b2c44f25f6bed4",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "file_offset": 573500
+      },
+      "elf_path": "/home/rs/projects/opencs/ai-line-analysis/rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "section_name": ".text",
+      "cases": [
+        {
+          "argument": 0,
+          "output": [
+            1,
+            0,
+            0
+          ],
+          "writes": [
+            [
+              536870912,
+              4,
+              3507544
+            ],
+            [
+              536870912,
+              4,
+              3508184
+            ],
+            [
+              536870920,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            [
+              "_ZN8Presonus5Panel7ControlD2Ev",
+              536870912
+            ],
+            [
+              "delete_receiver",
+              536870912
+            ]
+          ],
+          "instructions": [
+            606268,
+            606272,
+            606276,
+            606280,
+            606284,
+            606288,
+            606292,
+            606296,
+            606300,
+            606304,
+            606308,
+            606312
+          ]
+        },
+        {
+          "argument": 1,
+          "output": [
+            1,
+            1,
+            1
+          ],
+          "writes": [
+            [
+              536870912,
+              4,
+              3507544
+            ],
+            [
+              536870912,
+              4,
+              3508184
+            ],
+            [
+              536883456,
+              4,
+              536883200
+            ],
+            [
+              536883460,
+              4,
+              0
+            ],
+            [
+              4804944,
+              4,
+              1
+            ],
+            [
+              536875264,
+              4,
+              536883200
+            ],
+            [
+              536875268,
+              4,
+              0
+            ],
+            [
+              536875040,
+              4,
+              1
+            ],
+            [
+              536870920,
+              4,
+              0
+            ]
+          ],
+          "calls": [
+            [
+              "_ZN8Presonus5Panel7ControlD2Ev",
+              536870912
+            ],
+            [
+              "_ZN4Core13MutableVectorIPN8Presonus5Panel7Control5TimerENS_6VectorIS5_EEE6removeERKS5_",
+              4804940
+            ],
+            [
+              "delete_timer",
+              536879104
+            ],
+            [
+              "_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE",
+              536875008
+            ],
+            [
+              "delete_receiver",
+              536870912
+            ]
+          ],
+          "instructions": [
+            606268,
+            606272,
+            606276,
+            606280,
+            606284,
+            606288,
+            606292,
+            606296,
+            606300,
+            606304,
+            606308,
+            606312
+          ]
+        }
+      ],
+      "compared_constructor_variant": null,
+      "dependency_ranges": {
+        "_ZN8Presonus5Panel7ControlD2Ev": {
+          "address": 599824,
+          "size": 228,
+          "file_offset": 567056,
+          "range_sha256": "dbacde0d0523bbddad48b5e486dfe0302c4758f5f1977fc76d6e04a259c93c23"
+        },
+        "_ZN4Core13MutableVectorIPN8Presonus5Panel7Control5TimerENS_6VectorIS5_EEE6removeERKS5_": {
+          "address": 604008,
+          "size": 216,
+          "file_offset": 571240,
+          "range_sha256": "f70a517b81c1270870dab4bc802126091cf9f7c4e30de56a6e7528c6e86ed833"
+        },
+        "_ZN4Core8Portable9Parameter14removeObserverEPNS0_14IParamObserverE": {
+          "address": 1164004,
+          "size": 204,
+          "file_offset": 1131236,
+          "range_sha256": "d8f2ad4ff38044c034723725df119a8cf42261ca0c6534d08b41844f98c857d2"
+        }
+      },
+      "vtable_address_point": 3507416
+    }
+  ]
+}

@@ -4,6 +4,7 @@
 namespace Presonus::Surface {
 class SurfaceInputComponent : public SurfaceChannelComponent {
 public:
+  SurfaceInputComponent();
   ~SurfaceInputComponent() override;
   // Provisional source-port returns; original return declaration remains
   // unresolved.

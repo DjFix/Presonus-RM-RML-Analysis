@@ -5,6 +5,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import subprocess
+import sys
 
 import elftools
 import unicorn
@@ -48,6 +49,8 @@ def main():
     parser.add_argument('--exe', type=Path)
     parser.add_argument('--object', type=Path)
     parser.add_argument('--integration', type=Path)
+    parser.add_argument('--source-transition', type=Path)
+    parser.add_argument('--source-transition-sha256')
     parser.add_argument('--out', type=Path)
     args = parser.parse_args()
     if Path.cwd().resolve() != ROOT:
@@ -71,8 +74,16 @@ def main():
         invoke(FORMAT)
         return
     group = GROUP if args.integration else FROZEN_GROUP
+    group_hash = GROUP_HASH
+    transition = {}
     if args.mode in ('compile', 'replay'):
-        assert digest(group) == GROUP_HASH, f'ControlGroup provider mismatch: {group}'
+        assert digest(FROZEN_GROUP) == GROUP_HASH
+        if args.integration:
+            sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+            from canonical_source_transition import current_source_digest, load_transition
+            transition = load_transition(args.source_transition, args.source_transition_sha256)
+            group_hash = current_source_digest(GROUP, GROUP_HASH, transition)
+        assert digest(group) == group_hash, f'ControlGroup provider mismatch: {group}'
     if args.mode == 'compile':
         invoke([*FLAGS, '-c', SOURCE, '-o', args.object])
         # The exact provider also contains unrelated reset methods. Their
@@ -107,7 +118,10 @@ def main():
             if unit == group and name.startswith(('uc-library/', 'third_party/ccl-framework/')):
                 frozen_header = FROZEN / name
                 if frozen_header.is_file():
-                    assert digest(name) == digest(frozen_header), f'Frozen dependency mismatch: {name}'
+                    historical = digest(frozen_header)
+                    current = (current_source_digest(name, historical, transition)
+                               if args.integration else historical)
+                    assert digest(name) == current, f'Frozen dependency mismatch: {name}'
                 elif name.startswith('uc-library/'):
                     raise RuntimeError(f'Missing frozen application header: {name}')
             if name.startswith('uc-library/'):
@@ -123,7 +137,7 @@ def main():
         'portable_ready': False, 'declaration_uncertainties': LIMITS,
     }
     if args.integration:
-        entry['sources'][str(GROUP.relative_to('uc-library'))] = GROUP_HASH
+        entry['sources'][str(GROUP.relative_to('uc-library'))] = group_hash
     proof = {
         'version': 1, 'task_id': TEST.name, 'created_utc': datetime.now(timezone.utc).isoformat(),
         'proposed_readiness': {'ready': [], 'pending': [entry]},
@@ -143,7 +157,7 @@ def main():
                   'unicorn': unicorn.__version__, 'pyelftools': elftools.__version__},
         'commands': commands, 'limitations': LIMITS,
         'control_group_provider': {'source': str(group), 'canonical_path': str(GROUP),
-                                   'sha256': GROUP_HASH,
+                                   'sha256': group_hash,
                                    'local_link_mode': 'unrelated sections discarded'},
     }
     if args.integration:

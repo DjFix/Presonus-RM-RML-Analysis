@@ -9,6 +9,13 @@ ControlGroup::ControlGroup(int groupId, int)
   };
 }
 
+ControlGroup::~ControlGroup() {
+  for (int index = 0; index < ownedState_.controls.count(); ++index) {
+    if (ownedSlots_.test(index))
+      delete ownedState_.controls.at(index);
+  }
+}
+
 int ControlGroup::count() const { return state_.controls.count(); }
 
 Control *ControlGroup::at(int index) const { return state_.controls.at(index); }
@@ -46,3 +53,18 @@ void ControlGroup::sort() {}
 
 void ControlGroup::onIdle() {}
 } // namespace Presonus::Panel
+
+namespace presonus::panel_binding {
+bool ControlGroupAccess::addOwned(
+    Presonus::Panel::ControlGroup &group,
+    std::unique_ptr<Presonus::Panel::Control> &&control) {
+  if (!ownsState(group) || group.ownedState_.controls.isFull())
+    return false;
+  const int index = group.ownedState_.controls.count();
+  if (!group.ownedState_.controls.add(control.get()))
+    return false;
+  group.ownedSlots_.set(index);
+  control.release();
+  return true;
+}
+} // namespace presonus::panel_binding

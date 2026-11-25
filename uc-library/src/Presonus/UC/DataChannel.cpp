@@ -43,6 +43,11 @@ std::uint32_t DataChannel::isReadable(int) {
 std::uint32_t DataChannel::isWritable(int) {
   return outgoing_.getTotalBytes(outgoing_.context) <= 4096 ? 1U : 0U;
 }
+std::int32_t DataChannel::getBytesAvailable() {
+  return incoming_.getTotalBytes(incoming_.context);
+}
+bool DataChannel::hasErrors(int) { return false; }
+
 std::uint32_t DataChannel::detectEventStart(const void *buffer, int size,
                                             int *eventSize) {
   if (size <= 5)

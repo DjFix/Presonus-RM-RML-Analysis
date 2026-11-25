@@ -1,0 +1,614 @@
+{
+  "observations": [
+    {
+      "address": 247664,
+      "anchor": "45cb17f732e059ea500c3c89ca36411f11ac0daa8e51c309764532c2e6527644",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 214896,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN8Presonus2UC17RemoteEventSender11handleEventEPvRKNS0_5EventE",
+      "range_hex": "0dc0a0e100d82de9043090e504b04ce20c3082e50c2090e50200a0e1003092e50fe0a0e100f093e50100a0e300a89de8",
+      "range_sha256": "a41550fc5353ea9b2c4cfdbf260f2436539973ac8929690c3a9a2ffb8ac4e154",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 48,
+      "method": "handle_event",
+      "table": {
+        "mangled": "_ZTVN8Presonus2UC17RemoteEventSenderE",
+        "address": 1652168,
+        "size": 20,
+        "section": ".rodata",
+        "file_offset": 1619400,
+        "range_sha256": "247261d8c3ce69d4333ad35a56001489c149c001419554530e946a65dd93a788"
+      },
+      "rtti": {
+        "mangled": "_ZTIN8Presonus2UC17RemoteEventSenderE",
+        "address": 1652456,
+        "size": 12,
+        "section": ".rodata",
+        "file_offset": 1619688,
+        "range_sha256": "ba64455adabcb30f4c42f8dc5f6ef623c888e0426cd702c155674de94131e6e2"
+      },
+      "verified_related": [
+        {
+          "mangled": "_ZTIN8Presonus2UC13IEventHandlerE",
+          "address": 1624520,
+          "size": 8,
+          "section": ".rodata",
+          "file_offset": 1591752,
+          "range_sha256": "e60402a327075f322e710def2b45c55643614abd9a9be46d1ddc34ef44ff6947"
+        },
+        {
+          "mangled": "_ZTVN8Presonus2UC15BasicConnectionE",
+          "address": 1627896,
+          "size": 24,
+          "section": ".rodata",
+          "file_offset": 1595128,
+          "range_sha256": "05ebfdfcde9c9aeb62ec04b476fa098306ab265d05d43ef4a5e72ff2a29458ed"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC15BasicConnection10queueEventEPv",
+          "address": 175380,
+          "size": 108,
+          "section": ".text",
+          "file_offset": 142612,
+          "range_sha256": "3a0118e59dcd3ccec15424c3aa360fa9cd6fb89c1a1df80a3ffa85d46bccbd52"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderC1ERNS0_11IConnectionE",
+          "address": 247620,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 214852,
+          "range_sha256": "0a548067fa720de2f8ebd726d919a3d4350a04308f5f17ba772b763ab7602052"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderC2ERNS0_11IConnectionE",
+          "address": 247576,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 214808,
+          "range_sha256": "0a548067fa720de2f8ebd726d919a3d4350a04308f5f17ba772b763ab7602052"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderD1Ev",
+          "address": 259236,
+          "size": 28,
+          "section": ".text",
+          "file_offset": 226468,
+          "range_sha256": "55be921404e9c87abe1eb6c4a7de81644ede856bcde590e5c9b7d61175eee870"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderD0Ev",
+          "address": 259652,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 226884,
+          "range_sha256": "eb54a614fcc66552e4b9038308e745a7a1410e2c56e865cf5b3c300b0b863aa5"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC10Connection9addSenderEi",
+          "address": 251876,
+          "size": 176,
+          "section": ".text",
+          "file_offset": 219108,
+          "range_sha256": "813cfb5136e9392851634211e13b5dad69a246c3f517c445c51dddaa5756d4f6"
+        }
+      ],
+      "cases": [
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                0
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              0
+            ]
+          ],
+          "owner_before": [
+            74565,
+            1652176,
+            0,
+            35326,
+            8396800,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            1652176,
+            0,
+            35326,
+            8396800,
+            554580
+          ],
+          "portable": {
+            "case": "append",
+            "route_input": 0,
+            "header": [
+              20566,
+              1059128,
+              19,
+              0
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                270544960
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              270544960
+            ]
+          ],
+          "owner_before": [
+            74565,
+            1652176,
+            270544960,
+            35326,
+            8400896,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            1652176,
+            270544960,
+            35326,
+            8400896,
+            554580
+          ],
+          "portable": {
+            "case": "append",
+            "route_input": 270544960,
+            "header": [
+              20566,
+              1059128,
+              19,
+              270544960
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                4259228976
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              4259228976
+            ]
+          ],
+          "owner_before": [
+            74565,
+            1652176,
+            4259228976,
+            35326,
+            8400896,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            1652176,
+            4259228976,
+            35326,
+            8400896,
+            554580
+          ],
+          "portable": {
+            "case": "coalesce",
+            "route_input": 4259228976,
+            "header": [
+              20566,
+              1059128,
+              19,
+              4259228976
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "null",
+              [
+                20566,
+                1059128,
+                19,
+                2596069119
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              2596069119
+            ]
+          ],
+          "owner_before": [
+            74565,
+            1652176,
+            2596069119,
+            35326,
+            8396800,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            1652176,
+            2596069119,
+            35326,
+            8396800,
+            554580
+          ],
+          "portable": {
+            "case": "reject",
+            "route_input": 2596069119,
+            "header": [
+              20566,
+              1059128,
+              19,
+              2596069119
+            ],
+            "return": 1,
+            "modeled_queue_result": 0
+          }
+        }
+      ]
+    },
+    {
+      "address": 970944,
+      "anchor": "be4733821e77fa7b060b0776780bae2ab71ad8b081bf00bcf5e57a783f8d854c",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 938176,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus2UC17RemoteEventSender11handleEventEPvRKNS0_5EventE",
+      "range_hex": "0dc0a0e100d82de9043090e504b04ce20c3082e50c2090e50200a0e1003092e50fe0a0e100f093e50100a0e300a89de8",
+      "range_sha256": "a41550fc5353ea9b2c4cfdbf260f2436539973ac8929690c3a9a2ffb8ac4e154",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 48,
+      "method": "handle_event",
+      "table": {
+        "mangled": "_ZTVN8Presonus2UC17RemoteEventSenderE",
+        "address": 3563720,
+        "size": 20,
+        "section": ".rodata",
+        "file_offset": 3530952,
+        "range_sha256": "ef190e3204317e12ff83b8ed251d37ce676fbd3263c6d5da1d6d80c744fe373b"
+      },
+      "rtti": {
+        "mangled": "_ZTIN8Presonus2UC17RemoteEventSenderE",
+        "address": 3564008,
+        "size": 12,
+        "section": ".rodata",
+        "file_offset": 3531240,
+        "range_sha256": "49fd514ba1982147e947322657acaa4a0d46a148bc01c97866a3fac6f74310cc"
+      },
+      "verified_related": [
+        {
+          "mangled": "_ZTIN8Presonus2UC13IEventHandlerE",
+          "address": 3536408,
+          "size": 8,
+          "section": ".rodata",
+          "file_offset": 3503640,
+          "range_sha256": "55ade1eaca16f7fc62358ef6733368a013b6e868bc26d32f8492abdd971ab3c8"
+        },
+        {
+          "mangled": "_ZTVN8Presonus2UC15BasicConnectionE",
+          "address": 3539784,
+          "size": 24,
+          "section": ".rodata",
+          "file_offset": 3507016,
+          "range_sha256": "36cd68c708319b4d0987a75a5ee414210ad91ace233f95ddb57f80c98702ddc7"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC15BasicConnection10queueEventEPv",
+          "address": 899528,
+          "size": 108,
+          "section": ".text",
+          "file_offset": 866760,
+          "range_sha256": "3a0118e59dcd3ccec15424c3aa360fa9cd6fb89c1a1df80a3ffa85d46bccbd52"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderC1ERNS0_11IConnectionE",
+          "address": 970900,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 938132,
+          "range_sha256": "cf5951dd21413cbcc3e2a25afb8b813c916993497ff2667e70dce61181f13d43"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderC2ERNS0_11IConnectionE",
+          "address": 970856,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 938088,
+          "range_sha256": "cf5951dd21413cbcc3e2a25afb8b813c916993497ff2667e70dce61181f13d43"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderD1Ev",
+          "address": 982516,
+          "size": 28,
+          "section": ".text",
+          "file_offset": 949748,
+          "range_sha256": "9f2f3bac1778c609908fcda28d5fdc8dd95c4a7340e454d0fb7ab12aca3408aa"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC17RemoteEventSenderD0Ev",
+          "address": 982932,
+          "size": 44,
+          "section": ".text",
+          "file_offset": 950164,
+          "range_sha256": "152eb02cb1a7bdd9dc28a3495872c576c1fed311cdab4280df5453bce5e5e036"
+        },
+        {
+          "mangled": "_ZN8Presonus2UC10Connection9addSenderEi",
+          "address": 975156,
+          "size": 176,
+          "section": ".text",
+          "file_offset": 942388,
+          "range_sha256": "c5afb28d38615c7f67bb7735afed22c71bedfe878c66dc9211e975829bebb3b6"
+        }
+      ],
+      "cases": [
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                0
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              0
+            ]
+          ],
+          "owner_before": [
+            74565,
+            3563728,
+            0,
+            35326,
+            8396800,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            3563728,
+            0,
+            35326,
+            8396800,
+            554580
+          ],
+          "portable": {
+            "case": "append",
+            "route_input": 0,
+            "header": [
+              20566,
+              1059128,
+              19,
+              0
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                270544960
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              270544960
+            ]
+          ],
+          "owner_before": [
+            74565,
+            3563728,
+            270544960,
+            35326,
+            8400896,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            3563728,
+            270544960,
+            35326,
+            8400896,
+            554580
+          ],
+          "portable": {
+            "case": "append",
+            "route_input": 270544960,
+            "header": [
+              20566,
+              1059128,
+              19,
+              270544960
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "item",
+              [
+                20566,
+                1059128,
+                19,
+                4259228976
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              4259228976
+            ]
+          ],
+          "owner_before": [
+            74565,
+            3563728,
+            4259228976,
+            35326,
+            8400896,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            3563728,
+            4259228976,
+            35326,
+            8400896,
+            554580
+          ],
+          "portable": {
+            "case": "coalesce",
+            "route_input": 4259228976,
+            "header": [
+              20566,
+              1059128,
+              19,
+              4259228976
+            ],
+            "return": 1,
+            "modeled_queue_result": 1
+          }
+        },
+        {
+          "calls": [
+            [
+              "queueEvent",
+              "borrowed",
+              "null",
+              [
+                20566,
+                1059128,
+                19,
+                2596069119
+              ]
+            ]
+          ],
+          "writes": [
+            [
+              "event",
+              12,
+              4,
+              2596069119
+            ]
+          ],
+          "owner_before": [
+            74565,
+            3563728,
+            2596069119,
+            35326,
+            8396800,
+            554580
+          ],
+          "owner_after_or_at_deallocation": [
+            74565,
+            3563728,
+            2596069119,
+            35326,
+            8396800,
+            554580
+          ],
+          "portable": {
+            "case": "reject",
+            "route_input": 2596069119,
+            "header": [
+              20566,
+              1059128,
+              19,
+              2596069119
+            ],
+            "return": 1,
+            "modeled_queue_result": 0
+          }
+        }
+      ]
+    }
+  ]
+}

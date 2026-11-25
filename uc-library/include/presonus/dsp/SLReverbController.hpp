@@ -30,6 +30,7 @@ class SLReverbController : public Controller {
 public:
   explicit SLReverbController(int);
   explicit SLReverbController(presonus::dsp::ReverbPortState &state);
+  ~SLReverbController() override;
   // Controller::setValue remains pure: its distinct native behavior is outside
   // this constructor recovery. A boundary implementation belongs to the caller.
   presonus::dsp::ReverbPortState &reverbSourceState() { return state_; }

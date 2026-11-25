@@ -1,5 +1,7 @@
 #include "presonus/TargetedComponent.hpp"
 namespace Presonus {
+TargetedComponent::TargetedComponent(const char *name)
+    : UC::ServerComponent(name) {}
 TargetedComponent::~TargetedComponent() = default;
 void TargetedComponent::onIdle() {
   Core::Portable::Component::onIdle();
