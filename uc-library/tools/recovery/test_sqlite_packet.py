@@ -17,16 +17,16 @@ ROOT = Path(__file__).resolve().parents[3]
 NAMES = ('_ZN8Presonus5Probe3oneEv', '_ZN8Presonus5Other3twoEv')
 
 
-def tiny_elf(path):
-    """Write a regular ELF32 symbol table and two file-backed code ranges."""
+def tiny_elf(path, names):
+    """Write a regular ELF32 symbol table and file-backed code ranges."""
     code = bytes.fromhex('0dc0a0e100d82de904b04ce200a89de8')
-    strings = b'\0' + b'\0'.join(n.encode() for n in NAMES) + b'\0'
+    strings = b'\0' + b'\0'.join(n.encode() for n in names) + b'\0'
     section_names = b'\0.text\0.symtab\0.strtab\0.shstrtab\0'
     syms = b'\0' * 16
-    for index, name in enumerate(NAMES):
+    for index, name in enumerate(names):
         syms += struct.pack('<IIIBBH', strings.index(name.encode()), 0x1000 + index * 16, 16, 0x12, 0, 1)
     start = struct.calcsize('<16sHHIIIIIHHHHHH')
-    contents = (code * 2, syms, strings, section_names)
+    contents = (code * len(names), syms, strings, section_names)
     offsets = []
     for item in contents:
         offsets.append(start)
@@ -46,16 +46,18 @@ def tiny_elf(path):
     return code
 
 
-def fixture(root):
+def fixture(root, interfaces=None):
     """Build canonical registry data and authority input under project scratch."""
     lib = root / 'uc-library'
     lib.mkdir(parents=True)
     native = root / 'probe.elf'
-    body = tiny_elf(native)
+    if interfaces is None:
+        interfaces = list(zip(NAMES, ('Probe', 'Other'), ('one', 'two')))
+    body = tiny_elf(native, [name for name, _, _ in interfaces])
     elf = packet.digest(native)
     rows = [dict(mangled=name, demangled=f'Presonus::{scope}::{method}()',
                  address=0x1000+i*16, size=16, section=1, kind='STT_FUNC', binding='STB_GLOBAL')
-            for i, (name, scope, method) in enumerate(zip(NAMES, ('Probe','Other'), ('one','two')))]
+            for i, (name, scope, method) in enumerate(interfaces)]
     roles = {'client': {'summary': {'sha256': elf, 'label': 'test ARM client'}, 'symbols': rows}}
     roles['server']={'summary': {'sha256': 'b'*64, 'label': 'test ARM server'}, 'symbols': []}
     tracking = lib / 'tracking'
@@ -78,22 +80,23 @@ def fixture(root):
     workflow.working_copy(baseline, db)
     schema.upgrade(db, root/'schema-before.sqlite', apply=True)
     catalog.import_catalog(db, lib, False)
-    scope_by_name = dict(zip(NAMES, ('Probe','Other')))
+    scope_by_name = {name: (scope, method) for name, scope, method in interfaces}
     code_hash = packet.hashlib.sha256(body).hexdigest()
     audit = root/'temp/recovery-work/history/historical-receipts.json'
     audit.parent.mkdir(parents=True)
     packet.write(audit, {'crew':'fixture operator', 'exact_unassigned':[r['mangled'] for r in rows]})
     ref = {'path':str(audit.relative_to(root)), 'sha256':packet.digest(audit)}
-    tasks, groups, custody_rows = [], [], []
+    tasks, owner_groups, custody_rows = [], {}, []
     provider='third_party/ccl-framework/core/portable/fixture-provider.h'
     provider_path=root/provider
     provider_path.parent.mkdir(parents=True)
     provider_path.write_text('// fixture Core provider\n')
     provider_ref={'path':provider,'sha256':packet.digest(provider_path)}
     for row in sorted(catalog.query(db, role='client'), key=lambda r:r['mangled']):
-        owner=scope_by_name[row['mangled']]; ident='task_'+owner.lower()
+        owner, method = scope_by_name[row['mangled']]
+        ident = 'task_' + owner.lower() + '_' + method
         workspace=root/f'temp/recovery-work/worktrees/{owner.lower()}'
-        (workspace/'.git').mkdir(parents=True)
+        (workspace/'.git').mkdir(parents=True, exist_ok=True)
         source=f'uc-library/src/{owner}.cpp'
         (root/source).parent.mkdir(parents=True, exist_ok=True)
         (root/source).write_text(f'// canonical {owner}\n')
@@ -113,13 +116,15 @@ def fixture(root):
                         'providers':[provider_ref],'required_provider_paths':[provider]},
               'originals':[{**original,'range_sha256':code_hash}]}
         tasks.append(task)
-        groups.append({'owner':owner.lower(),'workspace':str(workspace.relative_to(root)),'tasks':[ident]})
+        group = owner_groups.setdefault(owner, {'owner': owner.lower(),
+            'workspace': str(workspace.relative_to(root)), 'tasks': []})
+        group['tasks'].append(ident)
     custody_file=root/'custody.json'
     packet.write(custody_file,{'version':1,'authority':'fixture operator','records':custody_rows})
     plan=root/'plan.json'
     packet.write(plan,{'version':1,'batch':'fixture_batch','elfs':{elf:native.name},
                        'custody':{'path':custody_file.name,'sha256':packet.digest(custody_file)},
-                       'tasks':tasks,'groups':groups})
+                       'tasks':tasks,'groups':list(owner_groups.values())})
     return root, db, plan
 
 
@@ -151,6 +156,21 @@ class PacketTests(unittest.TestCase):
         self.assertEqual(self.state(),[('assigned',1)]*2)
         with sqlite3.connect(self.db) as db:
             self.assertEqual(db.execute('SELECT count(*) FROM catalog_journal').fetchone()[0],2)
+
+    def test_complete_class_may_exceed_ten_tasks(self):
+        methods = [f'entry_{index}' for index in range(12)]
+        interfaces = [(f'_ZN8Presonus5Probe{len(method)}{method}Ev', 'Probe', method)
+                      for method in methods]
+        root, db, plan = fixture(self.root / 'same-owner', interfaces)
+        out = root / 'temp/recovery-work/prepared'
+        prepared = packet.prepare(root, plan, out, db)
+        self.assertEqual(len(prepared['groups']), 1)
+        self.assertEqual(len(prepared['groups'][0]['tasks']), 12)
+        published = packet.dispatch(root, out, db)
+        self.assertEqual(published['assigned_originals'], 12)
+        self.assertEqual(len(published['workers']), 1)
+        self.assertEqual(len(published['workers'][0]['packets']), 12)
+        self.assertEqual(published, packet.dispatch(root, out, db))
 
     def test_reject_missing_provider_binding(self):
         plan=packet.load(self.plan)

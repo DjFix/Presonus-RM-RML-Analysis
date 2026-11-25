@@ -295,8 +295,8 @@ def prepare(root, plan_path, out, db_path):
                 'Existing distinct physical checkout required')
         workspace_paths.add(workspace)
         owners = group['tasks']
-        require(0 < len(owners) <= 10 and not (set(owners) & set(task_groups)),
-                'One ordered owner, one to ten tasks')
+        require(owners and not (set(owners) & set(task_groups)),
+                'Each task requires one ordered owner')
         for ident in owners:
             task_groups[ident] = group
         scopes[name] = set(), set()
