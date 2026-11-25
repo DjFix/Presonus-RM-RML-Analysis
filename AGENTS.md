@@ -766,6 +766,10 @@ or context compaction, together with the publisher polling cadence above.
   (ten targets per worker when available). Set `model="gpt-6.2-sol"` and
   `fork_turns="none"` explicitly when submitting each sealed dispatch,
   including replacements. Record the actual launch and packet together.
+  Keep a class with one owner and assign more than ten methods to that worker
+  when needed to finish the class. Fill short lanes with compatible classes.
+  Count distinct implementation methods separately from ABI variants and
+  per-firmware ELF records when reporting throughput.
 - The user authorizes a rolling 10-worker x 10-target reconstruction run. This
   requires fresh SQLite and source evidence for each assignment. Do not silently substitute 100 research tasks
   or a reduced closed batch for the requested implementation flow.
