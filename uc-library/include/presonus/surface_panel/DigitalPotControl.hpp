@@ -24,14 +24,20 @@ namespace Presonus::Panel {
 // unencoded ordinary return declarations remain unresolved.
 class DigitalPotControl : public Control {
 public:
+  explicit DigitalPotControl(int tag);
   explicit DigitalPotControl(presonus::panel_binding::DigitalPotState &state)
-      : Control(state.tag), state_(state) {}
+      : Control(state.tag), borrowedState_(&state) {}
   ~DigitalPotControl() override;
   void paramChanged(Core::Portable::Parameter *parameter, int mode) override;
   void broadcastValue(int value) override;
   void transmit() override;
 
 private:
-  presonus::panel_binding::DigitalPotState &state_;
+  presonus::panel_binding::DigitalPotState &state() {
+    return borrowedState_ ? *borrowedState_ : ownedState_;
+  }
+
+  presonus::panel_binding::DigitalPotState ownedState_;
+  presonus::panel_binding::DigitalPotState *const borrowedState_ = nullptr;
 };
 } // namespace Presonus::Panel

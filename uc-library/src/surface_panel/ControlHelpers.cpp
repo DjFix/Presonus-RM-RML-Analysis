@@ -32,6 +32,8 @@ void ControlRegistrar::Delegate::faderSpeedReported(const ControlRegistrar &,
 void ControlRegistrar::Delegate::faderStatusChanged(const ControlRegistrar &,
                                                     int, unsigned char,
                                                     FaderControl *) {}
+SevenSegControl::SevenSegControl() : SevenSegControl(0) {}
+SevenSegControl::SevenSegControl(int tag) : Control(tag) {}
 SevenSegControl::~SevenSegControl() = default;
 std::uint16_t SevenSegControl::convertCharToBmp(char character,
                                                 bool decimalPoint) const {

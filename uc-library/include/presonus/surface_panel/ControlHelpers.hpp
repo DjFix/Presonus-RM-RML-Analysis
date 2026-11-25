@@ -23,7 +23,8 @@ class SettingFile;
 // not reproduce original inheritance, object storage, vtables or ARM32 layouts.
 namespace presonus::panel_binding {
 struct RegistrarGroupRegistry;
-}
+struct SevenSegControlAccess;
+} // namespace presonus::panel_binding
 namespace Presonus {
 struct TouchInputEvent;
 class WIFIManager;
@@ -106,12 +107,17 @@ private:
 };
 class SevenSegControl : public Control {
 public:
-  // Retains default construction for the existing independent bitmap caller.
-  explicit SevenSegControl(int tag = 0) : Control(tag) {}
+  SevenSegControl();
+  explicit SevenSegControl(int tag);
   ~SevenSegControl() override;
   // The ARM implementation returns a zero-extended 16-bit bitmap. Its exact
   // original C++ return declaration is not encoded in the symbol name.
   std::uint16_t convertCharToBmp(char character, bool decimalPoint) const;
+
+private:
+  // Portable storage for the per-digit bitmaps initialized by the constructor.
+  std::array<std::uint16_t, 2> digitBitmaps_{};
+  friend struct presonus::panel_binding::SevenSegControlAccess;
 };
 } // namespace Presonus::Panel
 namespace Presonus {

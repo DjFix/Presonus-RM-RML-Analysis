@@ -33,11 +33,15 @@ int legacyParameterInteger(float value) {
 } // namespace
 
 namespace Presonus::Panel {
+DigitalPotControl::DigitalPotControl(int tag)
+    : Control(tag), ownedState_{-1, tag} {}
+
 DigitalPotControl::~DigitalPotControl() = default;
 void DigitalPotControl::paramChanged(Core::Portable::Parameter *parameter,
                                      int mode) {
-  if (state_.baseParamChanged)
-    state_.baseParamChanged(state_.context, parameter, mode);
+  auto &state = this->state();
+  if (state.baseParamChanged)
+    state.baseParamChanged(state.context, parameter, mode);
   else
     Control::paramChanged(parameter, mode);
   if (mode == 3)
@@ -45,17 +49,19 @@ void DigitalPotControl::paramChanged(Core::Portable::Parameter *parameter,
 }
 
 void DigitalPotControl::broadcastValue(int value) {
-  if (state_.value != value) {
-    state_.value = value;
+  auto &state = this->state();
+  if (state.value != value) {
+    state.value = value;
     transmit();
   }
 }
 
 void DigitalPotControl::transmit() {
+  const auto &state = this->state();
   const std::array<std::uint8_t, 3> prefix{
-      0x64, static_cast<std::uint8_t>(state_.tag),
-      static_cast<std::uint8_t>(state_.value)};
-  if (auto *endpoint = state_.endpoint)
+      0x64, static_cast<std::uint8_t>(state.tag),
+      static_cast<std::uint8_t>(state.value)};
+  if (auto *endpoint = state.endpoint)
     endpoint->writePrefix(endpoint->context, prefix);
 }
 } // namespace Presonus::Panel
