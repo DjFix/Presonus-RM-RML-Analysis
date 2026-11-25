@@ -9,6 +9,7 @@ public:
   explicit VUMeterControl(const Core::TRect<int> &size);
   ~VUMeterControl() override;
   void setFrame(int frame) override;
+  void draw(const Core::Portable::DrawEvent &event) override;
   void setAttributes(const Core::Portable::Attributes &attributes) override;
   void onIdle() override;
   int portableThresholdCount() const { return thresholds_.count(); }

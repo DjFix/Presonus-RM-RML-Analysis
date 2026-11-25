@@ -81,6 +81,11 @@ void VUMeterControl::setAttributes(
   }
 }
 
+void VUMeterControl::draw(const Core::Portable::DrawEvent &event) {
+  PotControl::draw(event);
+  dirty_ = false;
+}
+
 void VUMeterControl::onIdle() {
   Core::Portable::Control::onIdle();
   if (!timer_.isLongEnoughYet())

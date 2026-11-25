@@ -10,8 +10,9 @@ namespace Presonus::Panel {
 // provisional.
 class PhantomPowerControl : public Control {
 public:
+  explicit PhantomPowerControl(int tag);
   PhantomPowerControl(presonus::panel::PhantomSourcePort, int tag)
-      : Control(tag), disabled_(false) {}
+      : PhantomPowerControl(tag) {}
   void broadcastValue(int) override;
   void transmit() override;
   void disableControl(bool, bool) override;

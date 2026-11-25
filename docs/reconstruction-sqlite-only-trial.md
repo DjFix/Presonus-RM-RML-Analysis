@@ -40,6 +40,16 @@ The exact W07 archive and staged-prefix checks are recorded in
 Its SHA-256 is
 `e6a0586f1a29895eb8b2d727b04fbc8b01034b4756f1e43181fe522b49c5686c`.
 
+Wave 08 installed the four measured headers and passed the official
+clean-prefix compile and all 458 application header checks. The separate
+DAWClient follow-up verifies the common object in both installed archives.
+Its minimal role probes use each archive independently. The full RM replay
+uses the CS18 archive for the separately recorded test fixture providers.
+The official proof boundary is
+`evidence/recovery/2026-11-24/rolling-c001/sqlite-cycle02-wave08-daw-proofs01/OFFICIAL-PURE-ROLE-AND-FIXTURE-BOUNDARY.json`.
+Its SHA-256 is
+`fd0ce1c127c9982977df25f94d7a70c66e0ad2ce9a27dd050734c962e9e799f2`.
+
 ## Existing-source review log
 
 - 2026-11-25. Verified ten deleting-destructor (D0) ELF identities for

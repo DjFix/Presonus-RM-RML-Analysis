@@ -7,9 +7,10 @@ namespace Presonus::Panel {
 // Actual original Control base; independent construction and logical storage.
 class LCDDisplayControl : public Control {
 public:
+  LCDDisplayControl(int tag, unsigned display);
   LCDDisplayControl(presonus::panel::LCDDisplaySourcePort, int tag,
                     unsigned display)
-      : Control(tag), display_(display) {}
+      : LCDDisplayControl(tag, display) {}
   // Ordinary original return spellings remain provisional/unencoded.
   void setValue(int);
   void transmit() override;

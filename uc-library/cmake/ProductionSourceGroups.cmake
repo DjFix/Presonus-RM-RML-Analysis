@@ -268,6 +268,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/LcdView.cpp
   src/Presonus/Surface/FatChannelClipboardSelection.cpp
   src/application/SurfaceApplicationSkinDirectory.cpp
   src/Presonus/DynamicsControl.cpp
@@ -458,6 +459,8 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/CompController.cpp
+  src/Presonus/Dsp/GateController.cpp
   src/Presonus/Dsp/EQ4Controller.cpp
   src/Presonus/Dsp/EQ5Controller.cpp
   src/Presonus/Mixer/MixerApplication.cpp
@@ -663,6 +666,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/LcdView.hpp
+  presonus/dsp/CompController.hpp
+  presonus/dsp/GateController.hpp
   presonus/DAWClientComponent.hpp
   presonus/uc/ServerRootComponent.hpp
   presonus/DAWFocusChannel.hpp
@@ -1305,3 +1311,9 @@ set_property(SOURCE src/Presonus/UC/ServerRootComponent.cpp APPEND PROPERTY COMP
 
 set_property(SOURCE src/application/SurfaceApplicationSkinDirectory.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_property(SOURCE src/Presonus/Surface/FatChannelClipboardSelection.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+set_property(SOURCE src/Presonus/Dsp/CompController.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/Dsp/GateController.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-sized-deallocation -fno-fast-math -ffp-contract=off)
+
+set_property(SOURCE src/Presonus/LcdView.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)

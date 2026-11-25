@@ -660,6 +660,15 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/surface/FatChannelClipboard.hpp
   presonus/uc/ServerRootComponent.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/IBackgroundGridProvider.hpp
+  presonus/LcdView.hpp
+  presonus/dsp/CompController.hpp
+  presonus/dsp/GateController.hpp
+  presonus/mixer/StereoLineComponent.hpp
+  presonus/uc/ClientRootComponent.hpp
+  presonus/uc/server_description.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")

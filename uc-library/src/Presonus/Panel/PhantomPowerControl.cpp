@@ -5,6 +5,8 @@
 #include <limits>
 #include <stdexcept>
 namespace Presonus::Panel {
+PhantomPowerControl::PhantomPowerControl(int tag)
+    : Control(tag), disabled_(false) {}
 void PhantomPowerControl::broadcastValue(int value) {
   auto &last = presonus::panel::ControlAccess::lastLevel(*this);
   if (last != value) {

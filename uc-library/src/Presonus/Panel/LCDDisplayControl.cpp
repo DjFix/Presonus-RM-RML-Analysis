@@ -5,6 +5,8 @@
 #include <cmath>
 #include <stdexcept>
 namespace Presonus::Panel {
+LCDDisplayControl::LCDDisplayControl(int tag, unsigned display)
+    : Control(tag), display_(display) {}
 void LCDDisplayControl::setValue(int value) {
   auto &last = presonus::panel::ControlAccess::lastLevel(*this);
   if (last != value) {
