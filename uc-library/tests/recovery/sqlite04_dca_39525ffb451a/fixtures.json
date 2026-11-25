@@ -1,0 +1,1027 @@
+{
+  "original": {
+    "address": 380856,
+    "anchor": "39525ffb451aa418dd19de57d8a1d7d761fac135d0787918c33d3996ad866427",
+    "architecture": "arm",
+    "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+    "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+    "file_offset": 348088,
+    "firmware": "RM/RML mixer 13731",
+    "mangled": "_ZN8Presonus5Mixer15DCALevelHandlerD0Ev",
+    "range_sha256": "f6cc89ad1eb5a19eb31c8c197350f675c28e30ddfe1a025f874581724662cfae",
+    "role": "server",
+    "section": 12,
+    "section_name": ".text",
+    "size": 112
+  },
+  "cases": [
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        0,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          0
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        0,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          0
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        1,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          1
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        1,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          1
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        3,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          3
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        3,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          3
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        17,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          17
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        -2147483648,
+        17,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          17
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        0,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          0
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        0,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          0
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        1,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          1
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        1,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          1
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        3,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          3
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        3,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          3
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        17,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          17
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        19,
+        17,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          17
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        0,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          0
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        0,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          0
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        1,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          1
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        1,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          1
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        3,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          3
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        3,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          3
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        17,
+        -7,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach -7",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8388612
+        ],
+        [
+          "vector-destroy",
+          8388748,
+          17
+        ],
+        [
+          "component-destroy",
+          8388608
+        ],
+        [
+          "operator-delete",
+          8388608
+        ]
+      ],
+      "receiver": 8388608,
+      "prefill": 165,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    },
+    {
+      "args": [
+        "d0",
+        2147483647,
+        17,
+        8,
+        0
+      ],
+      "expected": [
+        "owned-child-destroyed",
+        "owned-param 5",
+        "receiver-freed",
+        "trim-after-detach 8",
+        "borrowed-still-live 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+      ],
+      "native_boundaries": [
+        [
+          "observer-remove",
+          8404992,
+          8392708
+        ],
+        [
+          "vector-destroy",
+          8392844,
+          17
+        ],
+        [
+          "component-destroy",
+          8392704
+        ],
+        [
+          "operator-delete",
+          8392704
+        ]
+      ],
+      "receiver": 8392704,
+      "prefill": 25,
+      "native_vptrs": [
+        3269304,
+        3269356
+      ]
+    }
+  ]
+}

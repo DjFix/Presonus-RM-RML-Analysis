@@ -16,6 +16,7 @@ public:
       std::function<bool(Core::Portable::IParamObserver *)>;
   PanControl() = default;
   PanControl(const Core::Rect &rect, Parameter *parameter);
+  ~PanControl() override;
   void setAttributes(const Core::Portable::Attributes &) override;
   void bindPanController(Core::Portable::ViewController *p) {
     panController_ = p;
@@ -42,6 +43,9 @@ public:
   void setChannelSideResolver(ChannelSideResolver resolver);
 
 private:
+  void setObservedParameter(std::size_t index, Parameter *parameter);
+  void removeParameterObserver(std::size_t index);
+  std::array<bool, 5> observesParameter_{};
   std::array<Parameter *, 5>
       parameters_{}; // stereo, link, label, side, auxiliary
   ChannelSideResolver channelSideResolver_;

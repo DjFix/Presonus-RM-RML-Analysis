@@ -9,60 +9,44 @@
 namespace Presonus {
 PanControl::PanControl(const Core::Rect &rect, Parameter *parameter)
     : Core::Portable::ValueBar(rect, parameter) {}
-void PanControl::setStereoParam(Parameter *parameter) {
-  auto *previous = parameters_[0];
-  if (previous == parameter)
+PanControl::~PanControl() {
+  // Native cleanup detaches link before stereo, regardless of lookup order.
+  for (std::size_t index : {1, 0, 2, 3, 4})
+    removeParameterObserver(index);
+}
+void PanControl::removeParameterObserver(std::size_t index) {
+  if (observesParameter_[index]) {
+    parameters_[index]->removeObserver(this);
+    observesParameter_[index] = false;
+  }
+}
+void PanControl::setObservedParameter(std::size_t index, Parameter *parameter) {
+  const bool changed = parameters_[index] != parameter;
+  if (!changed && observesParameter_[index] == (parameter != nullptr))
     return;
-  if (previous)
-    previous->removeObserver(this);
-  parameters_[0] = parameter;
-  if (parameter)
+  removeParameterObserver(index);
+  parameters_[index] = parameter;
+  if (parameter) {
     parameter->addObserver(this);
-  invalidate();
+    observesParameter_[index] = true;
+  }
+  if (changed)
+    invalidate();
+}
+void PanControl::setStereoParam(Parameter *parameter) {
+  setObservedParameter(0, parameter);
 }
 void PanControl::setLinkParam(Parameter *parameter) {
-  auto *previous = parameters_[1];
-  if (previous == parameter)
-    return;
-  if (previous)
-    previous->removeObserver(this);
-  parameters_[1] = parameter;
-  if (parameter)
-    parameter->addObserver(this);
-  invalidate();
+  setObservedParameter(1, parameter);
 }
 void PanControl::setChannelNumberParam(Parameter *parameter) {
-  auto *previous = parameters_[2];
-  if (previous == parameter)
-    return;
-  if (previous)
-    previous->removeObserver(this);
-  parameters_[2] = parameter;
-  if (parameter)
-    parameter->addObserver(this);
-  invalidate();
+  setObservedParameter(2, parameter);
 }
 void PanControl::setRightSideParam(Parameter *parameter) {
-  auto *previous = parameters_[3];
-  if (previous == parameter)
-    return;
-  if (previous)
-    previous->removeObserver(this);
-  parameters_[3] = parameter;
-  if (parameter)
-    parameter->addObserver(this);
-  invalidate();
+  setObservedParameter(3, parameter);
 }
 void PanControl::setStereoPanParam(Parameter *parameter) {
-  auto *previous = parameters_[4];
-  if (previous == parameter)
-    return;
-  if (previous)
-    previous->removeObserver(this);
-  parameters_[4] = parameter;
-  if (parameter)
-    parameter->addObserver(this);
-  invalidate();
+  setObservedParameter(4, parameter);
 }
 void PanControl::setAttributes(const Core::Portable::Attributes &attributes) {
   Core::Portable::ValueBar::setAttributes(attributes);

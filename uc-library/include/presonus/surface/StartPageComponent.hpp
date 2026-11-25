@@ -1,17 +1,18 @@
 #pragma once
-#include "core/portable/corecomponent.h"
 #include "presonus/MackieControlModel.hpp"
-// Intentional partial source-port classes. The application destructor ranges
-// only reset dispatch pointers and call Component destruction. Using the real
-// pinned provider as a base models that cleanup; original inheritance, complete
-// fields, vtable addresses and ARM32 layout are not established.
+#include "presonus/PageComponent.hpp"
+// Partial source port. The typed constructor uses the observed PageComponent
+// base and the pinned CCL parameter collection. Original ARM32 layout is
+// unresolved.
 namespace Presonus::Surface {
-class StartPageComponent : public Core::Portable::Component {
+class StartPageComponent : public Presonus::PageComponent {
 public:
+  // Existing source-port callers supply their own mode parameters.
+  StartPageComponent() : PageComponent("", "", 0) {}
+  StartPageComponent(const char *name, const char *formName, int tag);
   ~StartPageComponent();
-  // Provisional bool declarations; caller must provide actual NumericParam
-  // tags 1000/1001 in the inherited CCL collection. Original layout/ABI
-  // pending.
+
+  // Provisional bool declarations. Both mode parameters must be present.
   bool isDawMode() const;
   bool isMidiMode() const;
 };

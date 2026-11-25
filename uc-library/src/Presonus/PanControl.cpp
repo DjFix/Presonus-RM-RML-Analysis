@@ -46,16 +46,35 @@ void PanControl::paramChanged(Parameter *p, int msg) {
         break;
       }
   } else if (msg == Parameter::kDestroyed) {
-    for (auto &parameter : parameters_)
-      if (parameter == p) {
-        parameter = nullptr;
-        break;
+    bool registered = p && p == getParameter();
+    for (std::size_t index = 0; index < parameters_.size(); ++index)
+      if (parameters_[index] == p && observesParameter_[index]) {
+        removeParameterObserver(index);
+        parameters_[index] = nullptr;
+        registered = true;
       }
+    if (registered) {
+      for (auto &parameter : parameters_)
+        if (parameter == p)
+          parameter = nullptr;
+    } else {
+      // Keep the borrow-only replay's first-match notification behavior.
+      for (auto &parameter : parameters_)
+        if (parameter == p) {
+          parameter = nullptr;
+          break;
+        }
+    }
+    if (p && p == getParameter())
+      setParameter(nullptr);
+    return;
   }
   Core::Portable::Control::paramChanged(p, msg);
 }
 void PanControl::bindPanParameters(
     const std::array<Parameter *, 5> &parameters) {
+  for (std::size_t index = 0; index < parameters_.size(); ++index)
+    removeParameterObserver(index);
   parameters_ = parameters;
 }
 const std::array<PanControl::Parameter *, 5> &

@@ -1,0 +1,1457 @@
+{
+  "mode": "get_system_time",
+  "observations": [
+    {
+      "original": {
+        "address": 330560,
+        "anchor": "dc8d1ed018b0b0ed6d72627c2c64c4167408833270dc8722d33c001e9094029d",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 297792,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZNK8Presonus2UC19ClientRootComponent13getSystemTimeEv",
+        "range_hex": "0dc0a0e110d82de904b04ce204d04de2531b03eb0c209fe50030a0e351db04eb0140a0e110a89de940420f00",
+        "range_sha256": "7caff79296a283c8e71a885c0ee98422d4d00b8250c0a1c5c60e6b0e5f598c12",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 44
+      },
+      "providers": {
+        "_ZN4Core15GetAbsoluteTimeEv": {
+          "mangled": "_ZN4Core15GetAbsoluteTimeEv",
+          "address": 1144996,
+          "size": 68,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 1112228,
+          "range_hex": "0dc0a0e110d82de904b04ce20cd04de21c104be20100a0e358cefbeb18301be51c101be514209fe5c34fa0e19132e4e00410a0e10300a0e110d04be210a89de800ca9a3b",
+          "range_sha256": "7f8e517ea43b8f1b8b4891d7ecdf6fe64bc921672b6b26becd003ea784a13a9c"
+        },
+        "__aeabi_ldivmod": {
+          "mangled": "__aeabi_ldivmod",
+          "address": 1603752,
+          "size": 0,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 1570984,
+          "range_hex": "",
+          "range_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "cases": [
+        {
+          "receiver": 8585216,
+          "argument": -1000001,
+          "result": -1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "2832c87b9f1188275da87c8662c41649bd8f58a46a95d6952d5ffc3aab93d24b"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "2832c87b9f1188275da87c8662c41649bd8f58a46a95d6952d5ffc3aab93d24b"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 0,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              0
+            ],
+            [
+              "__aeabi_ldivmod",
+              0,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1
+            ],
+            [
+              "__aeabi_ldivmod",
+              1,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000000,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000001,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000000000,
+          "result": 1000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fc371d350501f132eed2dfe8c3553b397c716dcf2ce2cfdd5334c3706faa4807"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 4294967296000249,
+          "result": 4294967296,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              4294967296000249
+            ],
+            [
+              "__aeabi_ldivmod",
+              4294967296000249,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "2a7ba1ab9ccfd5f46ea505b8718d8017f4dac03c27fbe55ca4ecd956b1211175"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 86401234000567,
+          "result": 86401234,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              86401234000567
+            ],
+            [
+              "__aeabi_ldivmod",
+              86401234000567,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "86b9f78bc30d03c8932ca48b92ca072d857436a8596e54e765921c00a53d1cbb"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 98765432112345678,
+          "result": 98765432112,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              98765432112345678
+            ],
+            [
+              "__aeabi_ldivmod",
+              98765432112345678,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "678ec74d88ec3a536e26476d271f887de021a9be2835694b64c4cc1a24daa22d"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 8999999999999999998,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999998
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999998,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "cb32a63d7e0e09e77782a4efa4d5bde0c1b57110a12ab076e5b1e821e34ec899"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 8999999999999999999,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "cb32a63d7e0e09e77782a4efa4d5bde0c1b57110a12ab076e5b1e821e34ec899"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9000000000000000000,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "8680abc2add09f3a855418e7e379292f837561df5eccef5d44b29068f881a96a"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9000000000000000001,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "8680abc2add09f3a855418e7e379292f837561df5eccef5d44b29068f881a96a"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -8999999999999999999,
+          "result": -8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "2f877c9e3c040db44205a201bb715a93995ed8e32b8591d4633129fcac0d6d2c"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -9000000000000000000,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "9ab71225ca76dc1b27491245fed494afc7e4fa59cb1b03984c5e5a495f54e254"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -9000000000000000001,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "9ab71225ca76dc1b27491245fed494afc7e4fa59cb1b03984c5e5a495f54e254"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9223372036854775807,
+          "result": 9223372036854,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9223372036854775807
+            ],
+            [
+              "__aeabi_ldivmod",
+              9223372036854775807,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "a0edfba3dc862f0a959724b56cd28cfe0da5a37c1d261e6a1e58b19866f08acf"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -1000001,
+          "result": -1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "2832c87b9f1188275da87c8662c41649bd8f58a46a95d6952d5ffc3aab93d24b"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "2832c87b9f1188275da87c8662c41649bd8f58a46a95d6952d5ffc3aab93d24b"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 0,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              0
+            ],
+            [
+              "__aeabi_ldivmod",
+              0,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1
+            ],
+            [
+              "__aeabi_ldivmod",
+              1,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000000,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000001,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "46ce6b26d56f874a4ec843dafb5222cc9eee3ed10eee1202d29e2c04ec937735"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000000000,
+          "result": 1000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fc371d350501f132eed2dfe8c3553b397c716dcf2ce2cfdd5334c3706faa4807"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 4294967296000249,
+          "result": 4294967296,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              4294967296000249
+            ],
+            [
+              "__aeabi_ldivmod",
+              4294967296000249,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "2a7ba1ab9ccfd5f46ea505b8718d8017f4dac03c27fbe55ca4ecd956b1211175"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 86401234000567,
+          "result": 86401234,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              86401234000567
+            ],
+            [
+              "__aeabi_ldivmod",
+              86401234000567,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "86b9f78bc30d03c8932ca48b92ca072d857436a8596e54e765921c00a53d1cbb"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 98765432112345678,
+          "result": 98765432112,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              98765432112345678
+            ],
+            [
+              "__aeabi_ldivmod",
+              98765432112345678,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "678ec74d88ec3a536e26476d271f887de021a9be2835694b64c4cc1a24daa22d"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 8999999999999999998,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999998
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999998,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "cb32a63d7e0e09e77782a4efa4d5bde0c1b57110a12ab076e5b1e821e34ec899"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 8999999999999999999,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "cb32a63d7e0e09e77782a4efa4d5bde0c1b57110a12ab076e5b1e821e34ec899"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9000000000000000000,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "8680abc2add09f3a855418e7e379292f837561df5eccef5d44b29068f881a96a"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9000000000000000001,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "8680abc2add09f3a855418e7e379292f837561df5eccef5d44b29068f881a96a"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -8999999999999999999,
+          "result": -8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "2f877c9e3c040db44205a201bb715a93995ed8e32b8591d4633129fcac0d6d2c"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -9000000000000000000,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "9ab71225ca76dc1b27491245fed494afc7e4fa59cb1b03984c5e5a495f54e254"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -9000000000000000001,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "9ab71225ca76dc1b27491245fed494afc7e4fa59cb1b03984c5e5a495f54e254"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9223372036854775807,
+          "result": 9223372036854,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9223372036854775807
+            ],
+            [
+              "__aeabi_ldivmod",
+              9223372036854775807,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "a0edfba3dc862f0a959724b56cd28cfe0da5a37c1d261e6a1e58b19866f08acf"
+        }
+      ]
+    },
+    {
+      "original": {
+        "address": 1053208,
+        "anchor": "1ae54556ee1381278dcb6f170e12a3e8b5a4546637a8d104ac5ff063fcaf4033",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "file_offset": 1020440,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZNK8Presonus2UC19ClientRootComponent13getSystemTimeEv",
+        "range_hex": "0dc0a0e110d82de904b04ce204d04de2b65500eb0c209fe50030a0e3f35901eb0140a0e110a89de940420f00",
+        "range_sha256": "01accd5151763fbf94970c51e9d8b7f27c88940d11b210b1337b1ee9bd5870e8",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 44
+      },
+      "providers": {
+        "_ZN4Core15GetAbsoluteTimeEv": {
+          "mangled": "_ZN4Core15GetAbsoluteTimeEv",
+          "address": 1141000,
+          "size": 68,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 1108232,
+          "range_hex": "0dc0a0e110d82de904b04ce20cd04de21c104be20100a0e3ddd1fbeb18301be51c101be514209fe5c34fa0e19132e4e00410a0e10300a0e110d04be210a89de800ca9a3b",
+          "range_sha256": "6d763435aae5222f6073abe52eef41e6bc964bf3c4c4161c7cbb53559991c2ba"
+        },
+        "__aeabi_ldivmod": {
+          "mangled": "__aeabi_ldivmod",
+          "address": 1407496,
+          "size": 0,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 1374728,
+          "range_hex": "",
+          "range_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "cases": [
+        {
+          "receiver": 8585216,
+          "argument": -1000001,
+          "result": -1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fa44e45ff4c92be6d42b193c9cc44bcd9dd950b63d27f41a56b7a03216700137"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fa44e45ff4c92be6d42b193c9cc44bcd9dd950b63d27f41a56b7a03216700137"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 0,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              0
+            ],
+            [
+              "__aeabi_ldivmod",
+              0,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1
+            ],
+            [
+              "__aeabi_ldivmod",
+              1,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000000,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000001,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 1000000000,
+          "result": 1000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "4d5f3f476aff4cb69f725523c081e99749a877bf1677bb23ec2e8cd22729a16b"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 4294967296000249,
+          "result": 4294967296,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              4294967296000249
+            ],
+            [
+              "__aeabi_ldivmod",
+              4294967296000249,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "65dd90d75a6db19ff118646fbbd993213fb0325b00f59f7eea990d705937b1a2"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 86401234000567,
+          "result": 86401234,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              86401234000567
+            ],
+            [
+              "__aeabi_ldivmod",
+              86401234000567,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "45b5560c0289522ab9bdcb03bfb76a541a574ee2afc11d14f3cc417fd5805aa4"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 98765432112345678,
+          "result": 98765432112,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              98765432112345678
+            ],
+            [
+              "__aeabi_ldivmod",
+              98765432112345678,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "71e4a163c28903437dbf8b650b006451d7657a962b5cee3defa6bccc08aa9214"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 8999999999999999998,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999998
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999998,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "f29e9e7b8961b6750000077d9146c2ec23df62bd5deafa4370cf250940fceb93"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 8999999999999999999,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "f29e9e7b8961b6750000077d9146c2ec23df62bd5deafa4370cf250940fceb93"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9000000000000000000,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "ce4807e447fa4c2859e469e88b8a629edfcf2f0ce0c84fbde0e3c922b87b1a23"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9000000000000000001,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "ce4807e447fa4c2859e469e88b8a629edfcf2f0ce0c84fbde0e3c922b87b1a23"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -8999999999999999999,
+          "result": -8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "14c41cad7feb074d10f74eb0d86667415cb785d9cc73dfb1a8075a965bf715bc"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -9000000000000000000,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "b3a0dd4b8cad05b0efb29962ffd51b59fa0e6c1ba2a49e3d63ff42311a5f6c64"
+        },
+        {
+          "receiver": 8585216,
+          "argument": -9000000000000000001,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "b3a0dd4b8cad05b0efb29962ffd51b59fa0e6c1ba2a49e3d63ff42311a5f6c64"
+        },
+        {
+          "receiver": 8585216,
+          "argument": 9223372036854775807,
+          "result": 9223372036854,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9223372036854775807
+            ],
+            [
+              "__aeabi_ldivmod",
+              9223372036854775807,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "07e18dc92fa054f9e7c8be68d189031bed7aa476b3e888867c3abb120c69ba80"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -1000001,
+          "result": -1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fa44e45ff4c92be6d42b193c9cc44bcd9dd950b63d27f41a56b7a03216700137"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "fa44e45ff4c92be6d42b193c9cc44bcd9dd950b63d27f41a56b7a03216700137"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 0,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              0
+            ],
+            [
+              "__aeabi_ldivmod",
+              0,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1
+            ],
+            [
+              "__aeabi_ldivmod",
+              1,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 999999,
+          "result": 0,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000000,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000001,
+          "result": 1,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "a3ef9b73e83e919d58652782efe413087c854f980051cb89cef7bd218e4fb345"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 1000000000,
+          "result": 1000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              1000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              1000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "4d5f3f476aff4cb69f725523c081e99749a877bf1677bb23ec2e8cd22729a16b"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 4294967296000249,
+          "result": 4294967296,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              4294967296000249
+            ],
+            [
+              "__aeabi_ldivmod",
+              4294967296000249,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "65dd90d75a6db19ff118646fbbd993213fb0325b00f59f7eea990d705937b1a2"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 86401234000567,
+          "result": 86401234,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              86401234000567
+            ],
+            [
+              "__aeabi_ldivmod",
+              86401234000567,
+              1000000
+            ]
+          ],
+          "stack_writes": 34,
+          "instruction_trace_sha256": "45b5560c0289522ab9bdcb03bfb76a541a574ee2afc11d14f3cc417fd5805aa4"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 98765432112345678,
+          "result": 98765432112,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              98765432112345678
+            ],
+            [
+              "__aeabi_ldivmod",
+              98765432112345678,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "71e4a163c28903437dbf8b650b006451d7657a962b5cee3defa6bccc08aa9214"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 8999999999999999998,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999998
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999998,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "f29e9e7b8961b6750000077d9146c2ec23df62bd5deafa4370cf250940fceb93"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 8999999999999999999,
+          "result": 8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "f29e9e7b8961b6750000077d9146c2ec23df62bd5deafa4370cf250940fceb93"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9000000000000000000,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "ce4807e447fa4c2859e469e88b8a629edfcf2f0ce0c84fbde0e3c922b87b1a23"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9000000000000000001,
+          "result": 9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "ce4807e447fa4c2859e469e88b8a629edfcf2f0ce0c84fbde0e3c922b87b1a23"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -8999999999999999999,
+          "result": -8999999999999,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -8999999999999999999
+            ],
+            [
+              "__aeabi_ldivmod",
+              -8999999999999999999,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "14c41cad7feb074d10f74eb0d86667415cb785d9cc73dfb1a8075a965bf715bc"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -9000000000000000000,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000000
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000000,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "b3a0dd4b8cad05b0efb29962ffd51b59fa0e6c1ba2a49e3d63ff42311a5f6c64"
+        },
+        {
+          "receiver": 8585344,
+          "argument": -9000000000000000001,
+          "result": -9000000000000,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              -9000000000000000001
+            ],
+            [
+              "__aeabi_ldivmod",
+              -9000000000000000001,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "b3a0dd4b8cad05b0efb29962ffd51b59fa0e6c1ba2a49e3d63ff42311a5f6c64"
+        },
+        {
+          "receiver": 8585344,
+          "argument": 9223372036854775807,
+          "result": 9223372036854,
+          "call_trace": [
+            [
+              "_ZN4Core15GetAbsoluteTimeEv",
+              9223372036854775807
+            ],
+            [
+              "__aeabi_ldivmod",
+              9223372036854775807,
+              1000000
+            ]
+          ],
+          "stack_writes": 40,
+          "instruction_trace_sha256": "07e18dc92fa054f9e7c8be68d189031bed7aa476b3e888867c3abb120c69ba80"
+        }
+      ]
+    }
+  ]
+}

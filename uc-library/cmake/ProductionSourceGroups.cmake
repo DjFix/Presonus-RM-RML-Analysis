@@ -1,4 +1,9 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/DAWChannel.cpp
+  src/Presonus/DAWChannelGroup.cpp
+  src/Presonus/DAWDeviceFolder.cpp
+  src/Presonus/DAWDeviceSlot.cpp
+  src/Presonus/UC/ClientRootComponent.cpp
   src/Presonus/UC/DiscoveryAttributes.cpp
   src/Presonus/UC/Format/Celsius.cpp
   src/Presonus/UC/Format/ChannelNameFormatter.cpp
@@ -650,6 +655,11 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/DAWChannel.hpp
+  presonus/DAWChannelGroup.hpp
+  presonus/DAWDeviceFolder.hpp
+  presonus/DAWDeviceSlot.hpp
+  presonus/uc/ClientRootComponent.hpp
   presonus/DynamicsControl.hpp
   presonus/dsp/LimiterController.hpp
   presonus/mixer/DCALevelHandler.hpp
@@ -1266,3 +1276,7 @@ set_property(SOURCE src/Presonus/Dsp/LimiterController.cpp APPEND PROPERTY COMPI
 
 set_property(SOURCE src/Presonus/UC/Format/Celsius.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
 set_property(SOURCE src/Presonus/UC/Format/ChannelNameFormatter.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/DAWDeviceFolder.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -fno-sized-deallocation)
+
+set_property(SOURCE src/Presonus/DAWDeviceSlot.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -fno-sized-deallocation)
