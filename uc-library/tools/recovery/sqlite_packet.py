@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Prepare and issue recovery task packets from the canonical SQLite catalog."""
 import argparse
-from contextlib import closing, contextmanager
+from contextlib import ExitStack, closing, contextmanager
 import fcntl
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -141,21 +142,42 @@ def catalog_target(db, expected, custody_rows, assigned=None):
     return row, history
 
 
-def native_range(root, target, source, verified_elfs):
-    path = inside(root, source)
-    if source not in verified_elfs:
-        verified_elfs[source] = digest(path)
-    require(verified_elfs[source] == target['elf'], 'Original ELF SHA-256 mismatch')
-    with path.open('rb') as stream:
-        elf = ELFFile(stream)
-        section = elf.get_section(target['section'])
-        require(elf.little_endian and elf['e_machine'] == 'EM_ARM' and elf.elfclass == 32,
-                'Expected original little-endian ARM32 ELF')
+class NativeELF:
+    """Keep one exact original file, section table and symbol-name index per prepare."""
+
+    def __init__(self, root, source, expected_sha256, stack):
+        self.root, self.source = root, source
+        self.path = inside(root, source)
+        self.stream = stack.enter_context(self.path.open('rb'))
+        self.identity = self.file_identity(os.fstat(self.stream.fileno()))
+        self.sha256 = hashlib.file_digest(self.stream, 'sha256').hexdigest()
+        require(self.sha256 == expected_sha256, 'Original ELF SHA-256 mismatch')
+        self.stream.seek(0)
+        self.elf = ELFFile(self.stream)
+        require(self.elf.little_endian and self.elf['e_machine'] == 'EM_ARM'
+                and self.elf.elfclass == 32, 'Expected original little-endian ARM32 ELF')
+        self.symtab = self.elf.get_section_by_name('.symtab')
+        require(self.symtab is not None, 'Original exact ELF symbol table absent')
+        self.verify_unchanged()
+
+    @staticmethod
+    def file_identity(info):
+        return info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns
+
+    def verify_unchanged(self):
+        current = inside(self.root, self.source)
+        require(current == self.path
+                and self.file_identity(current.stat()) == self.identity
+                and self.file_identity(os.fstat(self.stream.fileno())) == self.identity,
+                'Original ELF changed during scoped prepare: ' + self.source)
+
+    def range_for(self, target):
+        self.verify_unchanged()
+        require(self.sha256 == target['elf'], 'Original ELF SHA-256 mismatch')
+        section = self.elf.get_section(target['section'])
         require(section['sh_type'] == 'SHT_PROGBITS' and section['sh_flags'] & 4,
                 'Original section must be executable and file-backed')
-        symtab = elf.get_section_by_name('.symtab')
-        require(symtab is not None, 'Original exact ELF symbol table absent')
-        matches = [sym for sym in symtab.get_symbol_by_name(target['mangled']) or ()
+        matches = [sym for sym in self.symtab.get_symbol_by_name(target['mangled']) or ()
                    if (sym['st_value'], sym['st_size'], sym['st_shndx'])
                    == (target['address'], target['size'], target['section'])
                    and sym['st_info']['type'] == 'STT_FUNC']
@@ -164,13 +186,24 @@ def native_range(root, target, source, verified_elfs):
         require(0 <= relative <= relative + target['size'] <= section['sh_size'],
                 'Original range exceeds section')
         offset = section['sh_offset'] + relative
-        stream.seek(offset)
-        body = stream.read(target['size'])
-    require(len(body) == target['size']
-            and hashlib.sha256(body).hexdigest() == target['range_sha256'],
-            'Original native range hash mismatch')
-    return {**target, 'elf_path': source, 'section_name': section.name, 'file_offset': offset,
-            'architecture': 'thumb' if target['address'] & 1 else 'arm', 'range_hex': body.hex()}
+        self.stream.seek(offset)
+        body = self.stream.read(target['size'])
+        self.verify_unchanged()
+        require(len(body) == target['size']
+                and hashlib.sha256(body).hexdigest() == target['range_sha256'],
+                'Original native range hash mismatch')
+        return {**target, 'elf_path': self.source, 'section_name': section.name, 'file_offset': offset,
+                'architecture': 'thumb' if target['address'] & 1 else 'arm', 'range_hex': body.hex()}
+
+
+def native_range(root, target, source, verified_elfs):
+    """Validate one standalone original for existing selector and review callers."""
+    with ExitStack() as stack:
+        reader = NativeELF(root, source, target['elf'], stack)
+        require(verified_elfs.setdefault(source, reader.sha256) == reader.sha256,
+                'Original ELF SHA-256 mismatch')
+        return reader.range_for(target)
+
 
 
 def owner_scope(root, task, verified):
@@ -319,7 +352,8 @@ def prepare(root, plan_path, out, db_path):
             'Task and owner coverage differ')
     copies, raw_elfs, targets, prepared = {}, {}, set(), {}
     original_producers = {}
-    with closing(connection(db_path)) as db:
+    readers = {}
+    with ExitStack() as elf_inputs, closing(connection(db_path)) as db:
         active_reads, active_writes = catalog_scopes(root, db)
         retained_reads.update(active_reads)
         retained_writes.update(active_writes)
@@ -350,11 +384,17 @@ def prepare(root, plan_path, out, db_path):
                 validate_callable_namespace(row, task['namespace'])
                 if row['notes'] or history:
                     require(task['review'].get('historical_notes_reviewed'), 'Prior notes require explicit review')
-                native = native_range(root, target, plan['elfs'][target['elf']], raw_elfs)
+                source = plan['elfs'][target['elf']]
+                if source not in readers:
+                    readers[source] = NativeELF(root, source, target['elf'], elf_inputs)
+                    raw_elfs[source] = readers[source].sha256
+                native = readers[source].range_for(target)
                 boundaries.append({'original': native, 'catalog_revision': row['revision'],
                                    'history': history, 'notes': row['notes']})
             prepared[name] = {'task': task, 'owner': owner, 'originals': boundaries,
                               'read_files': sorted(read_paths), 'write_files': sorted(write_paths)}
+        for reader in readers.values():
+            reader.verify_unchanged()
     verify_collisions(scopes, retained_reads, retained_writes)
     bytes_to_copy = 0
     for path in copies:

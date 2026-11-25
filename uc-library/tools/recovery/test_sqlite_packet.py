@@ -1,4 +1,5 @@
 """Standalone canonical SQLite packet tests with an isolated tiny ARM ELF."""
+from contextlib import ExitStack
 import json
 from pathlib import Path
 import shutil
@@ -145,6 +146,49 @@ class PacketTests(unittest.TestCase):
     def state(self):
         with sqlite3.connect(self.db) as db:
             return db.execute('SELECT state,revision FROM catalog_tasks ORDER BY anchor').fetchall()
+
+    def test_native_elf_cache_rejects_replacement_and_in_place_edits(self):
+        plan = packet.load(self.plan)
+        targets = [task['originals'][0] for task in plan['tasks']]
+        source, = plan['elfs'].values()
+        path = self.root / source
+        before = path.read_bytes()
+        with ExitStack() as stack:
+            reader = packet.NativeELF(self.root, source, plan['tasks'][0]['originals'][0]['elf'], stack)
+            self.assertEqual(reader.range_for(targets[0]),
+                             packet.native_range(self.root, targets[0], source, {}))
+            self.assertEqual(reader.range_for(targets[1]),
+                             packet.native_range(self.root, targets[1], source, {}))
+            wrong = dict(targets[1], range_sha256='0'*64)
+            with self.assertRaisesRegex(ValueError, 'range hash mismatch'):
+                reader.range_for(wrong)
+            replacement = path.with_name('replacement.elf')
+            replacement.write_bytes(before)
+            replacement.replace(path)
+            with self.assertRaisesRegex(ValueError, 'changed during scoped prepare'):
+                reader.verify_unchanged()
+        with ExitStack() as stack:
+            reader = packet.NativeELF(self.root, source, plan['tasks'][0]['originals'][0]['elf'], stack)
+            with path.open('ab') as file:
+                file.write(b'changed after hash')
+            with self.assertRaisesRegex(ValueError, 'changed during scoped prepare'):
+                reader.range_for(targets[0])
+
+    def test_original_sha_and_symbol_membership_unchanged_with_cache(self):
+        plan = packet.load(self.plan)
+        source, = plan['elfs'].values()
+        target = plan['tasks'][0]['originals'][0]
+        with ExitStack() as stack:
+            reader = packet.NativeELF(self.root, source, plan['tasks'][0]['originals'][0]['elf'], stack)
+            wrong = dict(target, elf='1'*64)
+            with self.assertRaisesRegex(ValueError, 'ELF SHA-256 mismatch'):
+                reader.range_for(wrong)
+            wrong = dict(target, address=target['address']+16)
+            with self.assertRaisesRegex(ValueError, 'does not identify one row'):
+                reader.range_for(wrong)
+            wrong = dict(target, section=3)
+            with self.assertRaisesRegex(ValueError, 'executable and file-backed'):
+                reader.range_for(wrong)
 
     def test_template_namespace_uses_callable_name_without_encoded_return(self):
         mangled = '_ZN8Presonus5Probe6createIiEEPT_v'
