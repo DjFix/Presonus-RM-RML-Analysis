@@ -655,6 +655,11 @@ if(PRESONUS_ENABLE_UPSTREAM_CORE)
     presonus/noaa/sysex_receiver.hpp
     presonus/uc/ccl_bindings.hpp presonus/uc/connection_receive.hpp)
 endif()
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/DAWClientComponent.hpp
+  presonus/surface/FatChannelClipboard.hpp
+  presonus/uc/ServerRootComponent.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")

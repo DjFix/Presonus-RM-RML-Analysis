@@ -1,0 +1,1051 @@
+{
+  "original": {
+    "address": 649928,
+    "anchor": "50a975246caf803ea2e4623c03d4ada35f2179f54d6dbb92372d69514efb9eb0",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 617160,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE",
+    "range_hex": "0dc0a0e1f0d92de904b04ce204d04de2108090e50070a0e1000058e3041080e5f0a99dd90830a0e10060a0e3060053e10c2097c56c209fd50631a0c1032082c0005092e55cc095e500005ce3100000da0040a0e3583095e54c109fe5042193e7000052e20700000a6ef001eb003050e20010a0e30200000a003093e50fe0a0e15cf093e55cc095e5014084e20c0054e1efffffba016086e2080056e1f0a99da9103097e5e0ffffea0c682500993a0000",
+    "range_sha256": "8581892ed38dba7eb0bf3b073c2972ed2372a6647f274ab16dd54d47e2d474fb",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 176
+  },
+  "oracle": "Unicorn ARM and typed pinned CCL provider RPC",
+  "unicorn_version": "2.1.4",
+  "executed_ranges": [
+    {
+      "mangled": "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE",
+      "address": 649928,
+      "size": 176,
+      "section": 12,
+      "file_offset": 617160,
+      "range_sha256": "8581892ed38dba7eb0bf3b073c2972ed2372a6647f274ab16dd54d47e2d474fb"
+    }
+  ],
+  "providers": {
+    "_ZNK4Core8Portable9Component17getParameterByTagEi": {
+      "mangled": "_ZNK4Core8Portable9Component17getParameterByTagEi",
+      "address": 1158384,
+      "size": 24,
+      "section": 12,
+      "file_offset": 1125616,
+      "range_sha256": "fdfb6412c9c2a36b3866d4413375531e4514d59eeae9343f3abae6638bf136dc"
+    },
+    "_ZN4Core6VectorIPNS_8Portable9ComponentEE6resizeEi": {
+      "mangled": "_ZN4Core6VectorIPNS_8Portable9ComponentEE6resizeEi",
+      "address": 573156,
+      "size": 256,
+      "section": 12,
+      "file_offset": 540388,
+      "range_sha256": "22717c8f86aeca9a866b5c5949c2979864e319aa1b8701210545bb17fb5cbc11"
+    },
+    "_ZN4Core8Portable12NumericParam10resetValueEb": {
+      "mangled": "_ZN4Core8Portable12NumericParam10resetValueEb",
+      "address": 1172948,
+      "size": 60,
+      "section": 12,
+      "file_offset": 1140180,
+      "range_sha256": "e045ab4c9801d1ee4fefeab009c0c2cd29b4ae82eb8779288146f1c0b5edcc01"
+    },
+    "_ZNK4Core8Portable12NumericParam8getValueEv": {
+      "mangled": "_ZNK4Core8Portable12NumericParam8getValueEv",
+      "address": 1172620,
+      "size": 20,
+      "section": 12,
+      "file_offset": 1139852,
+      "range_sha256": "8265a4b87f7cf37003e289cb90b5ce665bfe713a3cbe1a3c08197e01fa3f1567"
+    }
+  },
+  "cases": [
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 0,
+        "source": 1,
+        "groups": [],
+        "capacity": 0,
+        "existing": []
+      },
+      "expected": [
+        "1",
+        "1:1084227584",
+        "2:1061158912",
+        "3:3225419776",
+        "4:0",
+        "5:2143294004",
+        "6:1091567616",
+        "8:2147483648"
+      ],
+      "calls": [],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          16843008
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 9
+      }
+    },
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 1,
+        "source": 0,
+        "groups": [],
+        "capacity": 5,
+        "existing": [
+          1,
+          1
+        ]
+      },
+      "expected": [
+        "0",
+        "1:1084227584",
+        "2:1061158912",
+        "3:3225419776",
+        "4:0",
+        "5:2143294004",
+        "6:1091567616",
+        "8:2147483648"
+      ],
+      "calls": [],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          0
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 9
+      }
+    },
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 1,
+        "source": 7,
+        "groups": [
+          [],
+          [
+            0,
+            6,
+            7
+          ]
+        ],
+        "capacity": 5,
+        "existing": [
+          7
+        ]
+      },
+      "expected": [
+        "7",
+        "1:1084227584",
+        "2:1061158912",
+        "3:3225419776",
+        "4:0",
+        "5:2143294004",
+        "6:1091567616",
+        "8:2147483648"
+      ],
+      "calls": [
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844288,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844544,
+          15001,
+          0
+        ]
+      ],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          16844544
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 72
+      }
+    },
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 1,
+        "source": 0,
+        "groups": [
+          [
+            7,
+            1,
+            0,
+            6,
+            3,
+            2
+          ],
+          [],
+          [
+            4,
+            5,
+            8,
+            1,
+            2,
+            1,
+            2
+          ]
+        ],
+        "capacity": 5,
+        "existing": [
+          1,
+          2,
+          1,
+          0,
+          6
+        ]
+      },
+      "expected": [
+        "0",
+        "1:1048576000",
+        "2:1061158912",
+        "3:3204448256",
+        "4:1073741824",
+        "5:1069547520",
+        "6:1091567616",
+        "8:3221225472",
+        "reset:1:0",
+        "changed:1:3",
+        "reset:3:0",
+        "changed:3:3",
+        "reset:2:0",
+        "reset:4:0",
+        "changed:4:3",
+        "reset:5:0",
+        "changed:5:3",
+        "reset:8:0",
+        "changed:8:3",
+        "reset:1:0",
+        "reset:2:0",
+        "reset:1:0",
+        "reset:2:0"
+      ],
+      "calls": [
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844544,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844288,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843520,
+          15001,
+          16974592
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974592,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843776,
+          15001,
+          16974848
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974848,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844032,
+          15001,
+          16975104
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16975104,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844800,
+          15001,
+          16975872
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16975872,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ]
+      ],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          0
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 247
+      }
+    },
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 0,
+        "source": 1,
+        "groups": [
+          [
+            4,
+            5,
+            8,
+            1,
+            2,
+            1,
+            2
+          ],
+          [],
+          [
+            7,
+            1,
+            0,
+            6,
+            3,
+            2
+          ]
+        ],
+        "capacity": 0,
+        "existing": []
+      },
+      "expected": [
+        "1",
+        "1:1048576000",
+        "2:1061158912",
+        "3:3204448256",
+        "4:1073741824",
+        "5:1069547520",
+        "6:1091567616",
+        "8:3221225472",
+        "reset:4:0",
+        "changed:4:3",
+        "reset:5:0",
+        "changed:5:3",
+        "reset:8:0",
+        "changed:8:3",
+        "reset:1:0",
+        "changed:1:3",
+        "reset:2:0",
+        "reset:1:0",
+        "reset:2:0",
+        "reset:1:0",
+        "reset:3:0",
+        "changed:3:3",
+        "reset:2:0"
+      ],
+      "calls": [
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843776,
+          15001,
+          16974848
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974848,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844032,
+          15001,
+          16975104
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16975104,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844800,
+          15001,
+          16975872
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16975872,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844544,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844288,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843520,
+          15001,
+          16974592
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974592,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ]
+      ],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          16843008
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 247
+      }
+    },
+    {
+      "inputs": {
+        "params": [
+          [
+            15001,
+            1048576000,
+            1084227584
+          ],
+          [
+            15001,
+            1061158912,
+            1061158912
+          ],
+          [
+            15001,
+            3204448256,
+            3225419776
+          ],
+          [
+            15001,
+            1073741824,
+            0
+          ],
+          [
+            15001,
+            1069547520,
+            2143294004
+          ],
+          [
+            15002,
+            1056964608,
+            1091567616
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            15001,
+            3221225472,
+            2147483648
+          ]
+        ],
+        "prior": 1,
+        "source": 3,
+        "groups": [
+          [
+            7,
+            1,
+            0,
+            6,
+            3,
+            2
+          ],
+          [
+            7,
+            1,
+            0,
+            6,
+            3,
+            2
+          ]
+        ],
+        "capacity": 20,
+        "existing": [
+          3,
+          3,
+          0
+        ]
+      },
+      "expected": [
+        "3",
+        "1:1048576000",
+        "2:1061158912",
+        "3:3204448256",
+        "4:0",
+        "5:2143294004",
+        "6:1091567616",
+        "8:2147483648",
+        "reset:1:0",
+        "changed:1:3",
+        "reset:3:0",
+        "changed:3:3",
+        "reset:2:0",
+        "reset:1:0",
+        "reset:3:0",
+        "reset:2:0"
+      ],
+      "calls": [
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844544,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844288,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843520,
+          15001,
+          16974592
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974592,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844544,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843008,
+          15001,
+          16974080
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974080,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16844288,
+          15001,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843520,
+          15001,
+          16974592
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974592,
+          0,
+          0
+        ],
+        [
+          "_ZNK4Core8Portable9Component17getParameterByTagEi",
+          650032,
+          16843264,
+          15001,
+          16974336
+        ],
+        [
+          "_ZN4Core8Portable12NumericParam10resetValueEb",
+          650056,
+          16974336,
+          0,
+          0
+        ]
+      ],
+      "memory_writes": [
+        [
+          16777220,
+          4,
+          16843520
+        ]
+      ],
+      "executed_instructions": {
+        "_ZN8Presonus7Surface19FatChannelClipboard4copyEPN4Core8Portable9ComponentE": 203
+      }
+    }
+  ]
+}

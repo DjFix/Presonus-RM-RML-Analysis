@@ -1,0 +1,189 @@
+{
+  "original": {
+    "address": 682620,
+    "anchor": "4162c781d82988aafb9a301cf0ba51b15b09c74556381f1de970f864d035c502",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 649852,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus7Surface18SurfaceApplication16getSkinDirectoryEv",
+    "range_hex": "0dc0a0e130d82de904b04ce201dc4de2454f4be20010a0e30050a0e11d1402eb0400a0e11c109fe51a1402eb0500a0e10410a0e1012ca0e35091fdeb0500a0e114d04be230a89de8d8af1a00",
+    "range_sha256": "83679e79d9178b21967497ce54c90f5c4d6a69c70e845af3bd1ff27151603363",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 76
+  },
+  "constructor_boundary": {
+    "mangled": "_ZN4Core8Portable8FileNameC1EPKc",
+    "address": 1227540,
+    "size": 88,
+    "section": 12,
+    "section_name": ".text",
+    "file_offset": 1194772,
+    "range_sha256": "d352786faccc54fbd497a69539c32f4969ab533c4b544b71c90a01bd237d390e",
+    "range_hex": "0dc0a0e1f0d82de90070a0e3006051e204b04ce20050a0e10070c0e50b00000a0600a0e13b7dfbeb000050e3070000daff0050e30040a0b1ff40a0a30610a0e10500a0e10420a0e1837dfbeb0470c5e70500a0e1f0a89de8"
+  },
+  "copy_boundary": {
+    "name": "memcpy",
+    "plt_address": 45052
+  },
+  "mapped_literal": {
+    "address": 1748952,
+    "file_offset": 1716184,
+    "size": 12,
+    "hex": "2f6d656469612f736b696e00"
+  },
+  "direct_callers": [
+    {
+      "mangled": "_ZN8Presonus7Surface18SurfaceApplication8loadSkinEv",
+      "range_sha256": "6752fab3750cc1f3f4c2be4a4019bc360df783eee267272acfdd3f8a873cd86e",
+      "address": 686068,
+      "instructions": [
+        [
+          686056,
+          4,
+          "sub",
+          "r4, fp, #0x11c"
+        ],
+        [
+          686060,
+          4,
+          "mov",
+          "r6, r0"
+        ],
+        [
+          686064,
+          4,
+          "mov",
+          "r0, r4"
+        ],
+        [
+          686068,
+          4,
+          "bl",
+          "#0xa6a7c"
+        ]
+      ]
+    },
+    {
+      "mangled": "_ZNK8Presonus7Surface24ChannelInfoPageComponent16getMaxListOffsetENS1_8ListTypeE",
+      "range_sha256": "9a6824cddd76aa1c3bfc9dbda54a317689020e68e1424d2adcc5c779444b24e9",
+      "address": 630312,
+      "instructions": [
+        [
+          630300,
+          4,
+          "bl",
+          "#0x12bb14"
+        ],
+        [
+          630304,
+          4,
+          "sub",
+          "r5, fp, #0x21c"
+        ],
+        [
+          630308,
+          4,
+          "mov",
+          "r0, r5"
+        ],
+        [
+          630312,
+          4,
+          "bl",
+          "#0xa6a7c"
+        ]
+      ]
+    },
+    {
+      "mangled": "_ZNK8Presonus7Surface24ChannelInfoPageComponent16getMaxListOffsetENS1_8ListTypeE",
+      "range_sha256": "9a6824cddd76aa1c3bfc9dbda54a317689020e68e1424d2adcc5c779444b24e9",
+      "address": 630468,
+      "instructions": [
+        [
+          630456,
+          4,
+          "bl",
+          "#0x12bb14"
+        ],
+        [
+          630460,
+          4,
+          "sub",
+          "r5, fp, #0x21c"
+        ],
+        [
+          630464,
+          4,
+          "mov",
+          "r0, r5"
+        ],
+        [
+          630468,
+          4,
+          "bl",
+          "#0xa6a7c"
+        ]
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "return_storage": 268435712,
+      "returned_storage": 268435712,
+      "calls": [
+        [
+          "filename_ctor",
+          1227540,
+          268435712,
+          0
+        ],
+        [
+          "filename_ctor",
+          1227540,
+          536872680,
+          1748952
+        ],
+        [
+          "memcpy",
+          45052,
+          268435712,
+          536872680,
+          256
+        ]
+      ],
+      "value": "/media/skin",
+      "copied_bytes_sha256": "85e3d09f16eab2ed4929d9b70d5076907a5ef0491bcbe98851ee279e0ce95622"
+    },
+    {
+      "return_storage": 268435968,
+      "returned_storage": 268435968,
+      "calls": [
+        [
+          "filename_ctor",
+          1227540,
+          268435968,
+          0
+        ],
+        [
+          "filename_ctor",
+          1227540,
+          536872680,
+          1748952
+        ],
+        [
+          "memcpy",
+          45052,
+          268435968,
+          536872680,
+          256
+        ]
+      ],
+      "value": "/media/skin",
+      "copied_bytes_sha256": "758fff67127bed848131a343a222546f1981d0bf36863c3e6116f79e6bf87f7e"
+    }
+  ]
+}

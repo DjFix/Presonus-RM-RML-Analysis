@@ -30,6 +30,10 @@ void rect(Presonus::DisplayCommandList::Command &c, const Core::TRect<int> &r) {
 }
 } // namespace
 namespace Presonus {
+DisplayCommandList::DisplayCommandList()
+    : ownedState_(std::make_shared<State>()), state_(*ownedState_) {
+  state_.nextBitmapId = 100;
+}
 DisplayCommandList::Command *DisplayCommandList::append(std::uint8_t opcode) {
   if (state_.count > 49)
     return nullptr;

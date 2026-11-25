@@ -93,6 +93,8 @@ public:
   // Original return spellings are unencoded; these are portable declarations.
   int count() const;
   ControlGroup *at(int index) const;
+  // Borrowed source-port return; the original return declaration is unresolved.
+  ControlGroup *findGroup(int groupId) const;
   // Original nested enum identity is encoded in the method's mangled name.
   // Original enumerator names/range/underlying declaration are unresolved;
   // the portable int32 domain preserves the observed ARM register behavior.

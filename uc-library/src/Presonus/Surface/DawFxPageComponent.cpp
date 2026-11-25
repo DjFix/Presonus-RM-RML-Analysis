@@ -1,5 +1,8 @@
 #include "presonus/surface/DawFxPageComponent.hpp"
+#include "presonus/DAWDeviceFolder.hpp"
+#include "presonus/DAWDeviceSlot.hpp"
 #include <bit>
+#include <cstring>
 #include <limits>
 namespace Presonus::Surface {
 DawFxPageComponent::DawFxPageComponent(
@@ -19,6 +22,29 @@ bool DawFxPageComponent::isSendMode() const {
 }
 int &DawFxPageComponent::getListOffset() const {
   return isSendMode() ? sendOffset_ : insertOffset_;
+}
+int DawFxPageComponent::getEditSlotIndex(DAWDeviceFolder *folder) const {
+  if (!folder || std::strcmp(folder->getName(), "inserts") != 0)
+    return -1;
+
+  const int used = folder->getUsedCount();
+  for (int index = 0; index < used; ++index) {
+    const auto *edit = folder->getChild(index)->getParameterByTag(1);
+    if (edit && edit->getValue() > 0.f)
+      return index;
+  }
+  return -1;
+}
+int DawFxPageComponent::calcAutoScroll(DAWDeviceFolder *folder,
+                                       DAWDeviceSlot *slot) const {
+  const int offset = getListOffset();
+  const int index =
+      folder && slot ? folder->getChildIndex(slot) : getEditSlotIndex(folder);
+  const auto last =
+      std::bit_cast<std::int32_t>(static_cast<std::uint32_t>(offset) + 4u);
+  if (index < 0 || (index >= offset && index <= last))
+    return -1;
+  return (index / 5) * 5;
 }
 int DawFxPageComponent::getMaxListOffset() const {
   if (!bindings_.hasFolder(bindings_.context))

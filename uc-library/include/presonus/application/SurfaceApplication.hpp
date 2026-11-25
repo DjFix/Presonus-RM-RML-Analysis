@@ -1,4 +1,5 @@
 #pragma once
+#include "core/portable/corefilename.h"
 #include <cstdint>
 
 namespace presonus::application {
@@ -17,6 +18,7 @@ public:
   // pending.
   std::uint64_t getAlternateMac();
   std::uint64_t getNetworkSerial();
+  static Core::Portable::FileName getSkinDirectory();
 
 private:
   friend struct presonus::application::SurfaceSerialStateAccess;

@@ -1,5 +1,5 @@
 #pragma once
-#include "core/public/corestringbuffer.h"
+#include "presonus/uc/server_description.hpp"
 #include <cstdint>
 
 namespace Presonus::UC {
@@ -8,11 +8,22 @@ namespace Presonus::UC {
 // choice.
 class NetworkItem {
 public:
+  // Native values are observed as words. Original enumerator labels and
+  // underlying signedness are unresolved.
+  enum Type : std::uint32_t {};
+
+  explicit NetworkItem(Type type);
   explicit NetworkItem(void *borrowedComponent)
       : component_(borrowedComponent) {}
   ~NetworkItem();
   void *getComponent() const;
   bool isAccessAcquired() const;
+  // The portable signature exposes the proven output effect.
+  void getTitle(Core::CStringBuffer<128> &title) const;
+
+  Type portableType() const { return type_; }
+  ServerDescription &portableDescription() { return description_; }
+  const ServerDescription &portableDescription() const { return description_; }
 
   // Independent source-port input for an access observation.
   void setPortableAccessObservation(std::uint32_t observation) {
@@ -27,7 +38,9 @@ public:
   }
 
 private:
-  void *component_;
+  Type type_{};
+  ServerDescription description_;
+  void *component_ = nullptr;
   std::uint32_t accessObservation_ = 0;
   Core::CStringBuffer<64> portableIdentity_;
 };

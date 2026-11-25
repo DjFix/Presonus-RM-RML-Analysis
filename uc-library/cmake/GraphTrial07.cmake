@@ -2,7 +2,7 @@
 set_property(SOURCE src/Presonus/Surface/RadioToggleButton.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
 set_source_files_properties(src/Presonus/Surface/NetworkSetupComponent.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-fno-rtti")
 set_source_files_properties(src/Presonus/Panel/RackPanelComponent.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-fno-rtti")
-set_source_files_properties(src/Presonus/MeterControl.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-fno-rtti")
+set_source_files_properties(src/Presonus/MeterControl.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-fno-rtti;-std=c++20;-DNDEBUG=1;-fno-lto")
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Surface/DAWMixerHandler.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off)
 set_source_files_properties(src/Presonus/Panel/PresetNameCache.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off")
 set_source_files_properties(src/Presonus/Dsp/SLReverbController.cpp PROPERTIES COMPILE_OPTIONS "-fno-fast-math;-ffp-contract=off;-std=c++20")

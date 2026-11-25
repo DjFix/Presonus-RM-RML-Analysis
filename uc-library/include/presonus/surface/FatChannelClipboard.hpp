@@ -6,14 +6,20 @@ class Component;
 }
 namespace Presonus::Surface {
 // Portable construction and borrowed component state. Original layout and
-// copy/paste operations remain outside this source port.
+// application roster initialization and paste serialization remain unresolved.
 class FatChannelClipboard {
 public:
   FatChannelClipboard();
 
+  // Portable void declarations. The original return types remain unresolved.
+  void copy(Core::Portable::Component *source);
+  void
+  collectPasteChannels(Core::Vector<Core::Portable::Component *> &channels);
+
   // Independent source-port inspection and roster binding.
   bool portableHasOwner() const { return owner_ != nullptr; }
   bool portableHasSource() const { return source_ != nullptr; }
+  Core::Portable::Component *portableSource() const { return source_; }
   Core::Vector<Core::Portable::Component *> &portableRoster() {
     return roster_;
   }

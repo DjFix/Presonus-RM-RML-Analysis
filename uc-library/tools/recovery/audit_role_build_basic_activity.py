@@ -24,6 +24,10 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
+    'src/Presonus/DAWClientComponent.cpp',
+    'src/Presonus/UC/ServerRootComponent.cpp',
+    'src/application/SurfaceApplicationSkinDirectory.cpp',
+    'src/Presonus/Surface/FatChannelClipboardSelection.cpp',
     'src/Presonus/Dsp/EQ5Controller.cpp',
     'src/Presonus/DAWFocusChannel.cpp',
     'src/Presonus/DAWDeviceFolder.cpp',
@@ -149,6 +153,14 @@ def check_production_compile_contracts(lib, build, groups):
             assert all(option in flags for option in ('-std=c++20', '-fno-fast-math', '-ffp-contract=off')), source
         if source=='src/Presonus/Dsp/EQ5Controller.cpp':
             assert all(option in flags for option in ('-std=c++20', '-fno-rtti', '-ffp-contract=off', '-fno-sized-deallocation')), source
+        if source=='src/Presonus/UC/ServerRootComponent.cpp':
+            assert all(option in flags for option in ('-std=c++20', '-fno-lto', '-fno-fast-math', '-ffp-contract=off')), source
+        if source=='src/application/SurfaceApplicationSkinDirectory.cpp':
+            assert '-fno-lto' in flags, source
+        if source=='src/Presonus/DAWClientComponent.cpp':
+            assert all(option in flags for option in ('-fno-lto', '-ffunction-sections', '-fdata-sections')), source
+        if source=='src/Presonus/MeterControl.cpp':
+            assert all(option in flags for option in ('-std=c++20', '-DNDEBUG=1', '-fno-lto', '-fno-fast-math', '-ffp-contract=off')), source
         if source=='src/Presonus/DAWFocusChannel.cpp':
             assert all(option in flags for option in ('-std=c++20', '-fno-rtti')), source
         if source in {'src/Presonus/DAWDeviceFolder.cpp', 'src/Presonus/DAWDeviceSlot.cpp'}:

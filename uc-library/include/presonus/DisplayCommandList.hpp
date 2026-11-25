@@ -3,6 +3,7 @@
 #include "core/public/gui/corerect.h"
 #include <array>
 #include <cstdint>
+#include <memory>
 
 namespace Core::Portable {
 class Bitmap;
@@ -27,7 +28,9 @@ public:
     std::size_t bitmapCount = 0;
     std::uint16_t nextBitmapId = 0;
   };
+  DisplayCommandList();
   explicit DisplayCommandList(State &state) : state_(state) {}
+  DisplayCommandList(const DisplayCommandList &) = default;
   void drawLine(int, int, int, int, const Core::Color &);
   void fillRect(const Core::TRect<int> &, const Core::Color &);
   void setClip(const Core::TRect<int> &);
@@ -38,6 +41,8 @@ public:
   void flush();
 
 private:
+  // Copies retain the same state binding as external-state lists.
+  std::shared_ptr<State> ownedState_;
   State &state_;
   Command *append(std::uint8_t);
 };

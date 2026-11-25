@@ -1,6 +1,8 @@
 #pragma once
 
 #include "core/portable/gui/corecontrols.h"
+#include "core/public/coreinterpolator.h"
+#include <memory>
 
 namespace Presonus {
 // Portable source port on CCL 5.0.0. These fields are deliberate host state,
@@ -11,9 +13,12 @@ class MeterControl : public Core::Portable::Control {
 public:
   using Control::Control;
   explicit MeterControl(const Core::Rect &);
+  ~MeterControl() override;
   void connect(void *) override;
+  void setAttributes(const Core::Portable::Attributes &attributes) override;
   // Portable bool contract; original unencoded return declaration unresolved.
   bool isHorizontal() const;
+  bool isVertical() const;
   Core::Rect getLitRect(float value) const;
   Core::Rect getPeakRect(float value) const;
   Core::Rect subtractRect(const Core::Rect &a, const Core::Rect &b) const;
@@ -26,8 +31,8 @@ public:
   void draw(const Core::Portable::DrawEvent &e) override;
 
 protected:
-  // Configuration/lifecycle are supplied by the hosting application. No native
-  // constructor/destructor or interpolator ownership is asserted by this port.
+  // Subclasses may supply a borrowed interpolator. Attribute-created
+  // interpolators have a separate owner.
   Core::Interpolator *interpolator = nullptr;
   Core::Portable::Parameter *peakParameter = nullptr;
   bool reverse = false;
@@ -38,8 +43,9 @@ protected:
   float peak = 0;
   float drawnPeak = 0;
   Core::Rect valueDirty, peakDirty;
-  // Independent portable helper interpreting supplied neighbor instructions as
-  // height > width. This does not reconstruct or export original isVertical.
   bool portableIsVertical() const;
+
+private:
+  std::unique_ptr<Core::Interpolator> ownedInterpolator;
 };
 } // namespace Presonus

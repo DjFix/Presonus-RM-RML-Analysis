@@ -17,6 +17,29 @@ uc-library/.venv/bin/python uc-library/tools/recovery/sqlite_packet.py dispatch 
 
 Launch the workers listed in `DISPATCH.json`. Verify the compiler's actual dependency files against the accepted sources using `sqlite_dependency_gate.py`. Retain the scoped native, portable and installed-role observations with each handoff. After the guarded readiness merge, use `sqlite_admission.py` to finalize the assigned catalog rows against the exact merge receipt.
 
+### Installed public headers
+
+When an integration adds a public header or changes its application include
+dependencies, compile a small translation unit that includes the installed
+header from a fresh canonical install. Supply the pinned external SDK include
+paths and omit the checkout application include path. If the check finds an
+omission, measure the transitive set against the whole installed header
+inventory and repeat from a fresh install after updating the install list.
+Keep the affected readiness rows and consumer ownership open until the
+official install passes. A temporary supplemented prefix may diagnose the
+fix and must be identified in the evidence.
+
+### Wave 07 public install follow-up
+
+The canonical Linux run passed all 1,519 suites and the two installed role
+archive audits. The public include audit found four missing transitive
+headers. The 44 DAWClient identities retain their assigned custody and
+remain outside readiness until the official installer runs with the fix.
+The exact W07 archive and staged-prefix checks are recorded in
+`evidence/recovery/2026-11-24/rolling-c001/rolling-compatible-queue/W07-DAWCLIENT-44-OFFICIAL-INSTALL-HOLD.json`.
+Its SHA-256 is
+`e6a0586f1a29895eb8b2d727b04fbc8b01034b4756f1e43181fe522b49c5686c`.
+
 ## Existing-source review log
 
 - 2026-11-25. Verified ten deleting-destructor (D0) ELF identities for

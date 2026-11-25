@@ -1,4 +1,7 @@
 #include "presonus/MeterControl.hpp"
+#include "core/portable/gui/coreviewbuilder.h"
+#include "core/portable/gui/coreviewcontroller.h"
+#include "presonus/DefaultMeterInterpolator.hpp"
 #include <algorithm>
 
 namespace {
@@ -22,8 +25,48 @@ void clipNative(Core::Rect &r, const Core::Rect &clip) {
 } // namespace
 
 namespace Presonus {
-bool MeterControl::portableIsVertical() const {
+MeterControl::~MeterControl() {
+  ownedInterpolator.reset();
+  setPeakParameter(nullptr);
+}
+
+bool MeterControl::isVertical() const {
   return getSize().getHeight() > getSize().getWidth();
+}
+
+bool MeterControl::portableIsVertical() const { return isVertical(); }
+
+void MeterControl::setAttributes(const Core::Portable::Attributes &attributes) {
+  using Core::InterpolatorFactory;
+  using Core::Portable::ViewBuilder;
+  View::setAttributes(attributes);
+
+  if (const auto *name = attributes.getString("peak"); name && *name) {
+    if (auto *controller = ViewBuilder::instance().getCurrentController())
+      setPeakParameter(static_cast<Core::Portable::Parameter *>(
+          controller->getObjectForView(name, Core::Portable::kParamType)));
+  }
+
+  reverse = attributes.getInt("reversed") != 0;
+  immediate = attributes.getInt("unoptimized") != 0;
+  hidePeak = attributes.getInt("hidepeaks") != 0;
+
+  const auto *name = attributes.getString("interpolator");
+  const bool hasName = name && *name;
+  if (!hasName && interpolator)
+    return;
+
+  static const bool registered = [] {
+    __initMeterControl();
+    return true;
+  }();
+  (void)registered;
+
+  if (hasName)
+    ownedInterpolator.reset(InterpolatorFactory::create(name));
+  if (!ownedInterpolator)
+    ownedInterpolator.reset(InterpolatorFactory::create("audiometer"));
+  interpolator = ownedInterpolator.get();
 }
 
 int MeterControl::normalizedToPixel(float v) const {

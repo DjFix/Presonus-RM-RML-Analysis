@@ -1,4 +1,6 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/DAWClientComponent.cpp
+  src/Presonus/UC/ServerRootComponent.cpp
   src/Presonus/DAWFocusChannel.cpp
   src/Presonus/DAWChannel.cpp
   src/Presonus/DAWChannelGroup.cpp
@@ -266,6 +268,8 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/Surface/FatChannelClipboardSelection.cpp
+  src/application/SurfaceApplicationSkinDirectory.cpp
   src/Presonus/DynamicsControl.cpp
   src/ColorButton.cpp
   src/IconManager.cpp
@@ -659,6 +663,8 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/DAWClientComponent.hpp
+  presonus/uc/ServerRootComponent.hpp
   presonus/DAWFocusChannel.hpp
   presonus/mixer_dsp/EQ4Controller.hpp
   presonus/mixer_dsp/EQ5Controller.hpp
@@ -1291,3 +1297,11 @@ set_property(SOURCE src/Presonus/DAWDeviceSlot.cpp APPEND PROPERTY COMPILE_OPTIO
 set_property(SOURCE src/Presonus/Dsp/EQ4Controller.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-fast-math -ffp-contract=off)
 set_property(SOURCE src/Presonus/Dsp/EQ5Controller.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -ffp-contract=off -fno-sized-deallocation)
 set_property(SOURCE src/Presonus/DAWFocusChannel.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)
+
+set_property(SOURCE src/Presonus/DAWClientComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -Ulinux -fno-rtti -fno-lto -ffunction-sections -fdata-sections)
+
+
+set_property(SOURCE src/Presonus/UC/ServerRootComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -std=c++20 -fno-lto -fno-fast-math -ffp-contract=off)
+
+set_property(SOURCE src/application/SurfaceApplicationSkinDirectory.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto)
+set_property(SOURCE src/Presonus/Surface/FatChannelClipboardSelection.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)

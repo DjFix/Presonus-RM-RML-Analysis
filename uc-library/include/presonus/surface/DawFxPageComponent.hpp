@@ -2,8 +2,10 @@
 #include "core/portable/corecomponent.h"
 #include "core/portable/gui/coreview.h"
 namespace Presonus {
+class DAWDeviceFolder;
+class DAWDeviceSlot;
 class IMappingController;
-}
+} // namespace Presonus
 #include <cstdint>
 namespace presonus::surface {
 // Independent application boundary. Does not claim the original object layout.
@@ -30,6 +32,8 @@ public:
   void onWheelInput(const Core::Portable::WheelEvent &event);
   int getMaxListOffset() const;
   int &getListOffset() const;
+  int getEditSlotIndex(DAWDeviceFolder *folder) const;
+  int calcAutoScroll(DAWDeviceFolder *folder, DAWDeviceSlot *slot) const;
   bool isSendMode() const;
 
 private:

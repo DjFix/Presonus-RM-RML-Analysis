@@ -1,0 +1,561 @@
+{
+  "versions": {
+    "capstone": "5.0.9",
+    "pyelftools": "0.33",
+    "unicorn": "2.1.4"
+  },
+  "entries": [
+    {
+      "original": {
+        "address": 84396,
+        "anchor": "d018412fb3474fe10ff2191424f17f458671273f14b407ae4f5d21d42c9994a9",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 51628,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZNK8Presonus5Panel16ControlRegistrar9findGroupEi",
+        "range_hex": "0dc0a0e170d82de904b04ce204d04de21c2090e518c090e5000052e30a00000a00009ce5043090e5030051e10400001a70a89de90400bce5043090e5030051e170a89d09012052e2f9ffff1a5c509fe5003095e5016013e20100000a50009fe570a89de90500a0e1ead9ffeb000050e3f9ffff0a38409fe538309fe5102084e20500a0e1003084e5082084e50c6084e5046084e54dd8ffeb0400a0e118109fe518209fe533d9ffeb0400a0e170a89de9300a2500340a2500e8a21800483e0100ac262400",
+        "range_sha256": "4ae8af4da32bccf47953cbd74dc2455a3424d1e4776f92256e3bfa4db1b0cd6d",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 196
+      },
+      "accessors": {
+        "5countEv": {
+          "address": 81928,
+          "size": 20,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 49160,
+          "range_sha256": "3ce6a3b8cab7ecb3bbd97fb0da292576383c9089a9db152059a8ff86ac7c4942",
+          "range_hex": "0dc0a0e100d82de904b04ce20c0090e500a89de8"
+        },
+        "2atEi": {
+          "address": 81576,
+          "size": 68,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 48808,
+          "range_sha256": "e39a43f82033ce4c0fee18294d3c975476141cf4fbd2cd1377528614296d3bda",
+          "range_hex": "0dc0a0e1000051e300d82de904b04ce2070000ba0c3090e5030051e1082090b50131a0b1030082b0010000aa000090e500a89de804009fe5000090e500a89de8cc0e2500"
+        },
+        "5byTagEi": {
+          "address": 81644,
+          "size": 148,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 48876,
+          "range_sha256": "69af87335f7544b8f140204966ab22ad7a8912e08213ea2e1a874aa2cbb4688e",
+          "range_hex": "0dc0a0e110d82de904b04ce20cc090e50040a0e10c0051e10a0000aa000051e3082094a564009fb50131a0a1030082a0000090e5000050e30200000a183090e5030051e110a89d0800005ce3080094e50c00000a002090e5183092e5030051e10200a0010020a0110400001a10a89de80400b2e5183090e5030051e110a89d0801c05ce2f9ffff1a0000a0e310a89de8cc0e2500"
+        }
+      },
+      "destructor": {
+        "address": 81480,
+        "size": 96,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 48712,
+        "range_sha256": "f50030378b015e6231d0c15b6de5495e8c734b0c8ad88a5f10d9de9850accb27",
+        "range_hex": "0dc0a0e1f0d82de90c5090e548309fe5000055e304b04ce20070a0e1003080e5086090e50a00000a0040a0e3043096e7044084e2000053e30300a0e10200000a003093e50fe0a0e10cf093e5015055e2f5ffff1a0700a0e1f0a89de8e8a21800"
+      },
+      "abi_imports": [
+        45508,
+        43900,
+        44836
+      ],
+      "first_miss_calls": [
+        [
+          0,
+          2427440,
+          99,
+          0
+        ],
+        [
+          1,
+          2427440,
+          99,
+          2427460
+        ],
+        [
+          2,
+          2427444,
+          81480,
+          2369196
+        ]
+      ],
+      "guard_address": 2427440,
+      "sentinel_address": 2427444,
+      "final_guard": 1,
+      "sentinel_words": [
+        1614568,
+        0,
+        2427460,
+        0
+      ],
+      "roster_unchanged": true,
+      "cases": [
+        {
+          "registrar": 0,
+          "tag": 99,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 1,
+          "tag": 12,
+          "outputs": [
+            0,
+            12,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879056384
+        },
+        {
+          "registrar": 1,
+          "tag": 3,
+          "outputs": [
+            1,
+            3,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879057664
+        },
+        {
+          "registrar": 1,
+          "tag": -2,
+          "outputs": [
+            3,
+            -2,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879060224
+        },
+        {
+          "registrar": 1,
+          "tag": 0,
+          "outputs": [
+            4,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879061504
+        },
+        {
+          "registrar": 1,
+          "tag": 99,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 1,
+          "tag": 4,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 0,
+          "tag": 12,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 0,
+          "tag": 0,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 1,
+          "tag": -2147483648,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 2427444
+        },
+        {
+          "registrar": 1,
+          "tag": 2147483647,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 2427444
+        }
+      ]
+    },
+    {
+      "original": {
+        "address": 582828,
+        "anchor": "4ff24239fdbfe7278e1372a767994a16be0feba0ec54715b96e5d099f91dc0ff",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML32AI_Rack_13731/home/root/mixer",
+        "file_offset": 550060,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZNK8Presonus5Panel16ControlRegistrar9findGroupEi",
+        "range_hex": "0dc0a0e170d82de904b04ce204d04de21c2090e518c090e5000052e30a00000a00009ce5043090e5030051e10400001a70a89de90400bce5043090e5030051e170a89d09012052e2f9ffff1a5c509fe5003095e5016013e20100000a50009fe570a89de90500a0e1c5f2fdeb000050e3f9ffff0a38409fe538309fe5102084e20500a0e1003084e5082084e50c6084e5046084e53df1fdeb0400a0e118109fe518209fe517f2fdeb0400a0e170a89de9904c4900944c49005081350048d90800f4394500",
+        "range_sha256": "313870e121e1db720cb7e259032305d88f0e24cdecc48872d26dd4772d07d8a1",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 196
+      },
+      "accessors": {
+        "5countEv": {
+          "address": 580360,
+          "size": 20,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 547592,
+          "range_sha256": "3ce6a3b8cab7ecb3bbd97fb0da292576383c9089a9db152059a8ff86ac7c4942",
+          "range_hex": "0dc0a0e100d82de904b04ce20c0090e500a89de8"
+        },
+        "2atEi": {
+          "address": 580008,
+          "size": 68,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 547240,
+          "range_sha256": "60f6ac6b7be4a7e3807085132dfe82f7bbdf8f9efbfc39abdfe8a27e28e2e8d0",
+          "range_hex": "0dc0a0e1000051e300d82de904b04ce2070000ba0c3090e5030051e1082090b50131a0b1030082b0010000aa000090e500a89de804009fe5000090e500a89de8ec4b4900"
+        },
+        "5byTagEi": {
+          "address": 580076,
+          "size": 148,
+          "section": 12,
+          "section_name": ".text",
+          "file_offset": 547308,
+          "range_sha256": "d69c344654f8472a0ef543f4534e801dd63c4c27a361364276f5d9e73a3de2dd",
+          "range_hex": "0dc0a0e110d82de904b04ce20cc090e50040a0e10c0051e10a0000aa000051e3082094a564009fb50131a0a1030082a0000090e5000050e30200000a183090e5030051e110a89d0800005ce3080094e50c00000a002090e5183092e5030051e10200a0010020a0110400001a10a89de80400b2e5183090e5030051e110a89d0801c05ce2f9ffff1a0000a0e310a89de8ec4b4900"
+        }
+      },
+      "destructor": {
+        "address": 579912,
+        "size": 96,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 547144,
+        "range_sha256": "f8ee2b44fc4e0198b36f2a5bf470073f9a4ea1fabaf0385c2995b8d9c9dbf497",
+        "range_hex": "0dc0a0e1f0d82de90c5090e548309fe5000055e304b04ce20070a0e1003080e5086090e50a00000a0040a0e3043096e7044084e2000053e30300a0e10200000a003093e50fe0a0e10cf093e5015055e2f5ffff1a0700a0e1f0a89de850813500"
+      },
+      "abi_imports": [
+        45104,
+        43580,
+        44468
+      ],
+      "first_miss_calls": [
+        [
+          0,
+          4803728,
+          99,
+          0
+        ],
+        [
+          1,
+          4803728,
+          99,
+          4803748
+        ],
+        [
+          2,
+          4803732,
+          579912,
+          4536820
+        ]
+      ],
+      "guard_address": 4803728,
+      "sentinel_address": 4803732,
+      "final_guard": 1,
+      "sentinel_words": [
+        3506512,
+        0,
+        4803748,
+        0
+      ],
+      "roster_unchanged": true,
+      "cases": [
+        {
+          "registrar": 0,
+          "tag": 99,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 1,
+          "tag": 12,
+          "outputs": [
+            0,
+            12,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879056384
+        },
+        {
+          "registrar": 1,
+          "tag": 3,
+          "outputs": [
+            1,
+            3,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879057664
+        },
+        {
+          "registrar": 1,
+          "tag": -2,
+          "outputs": [
+            3,
+            -2,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879060224
+        },
+        {
+          "registrar": 1,
+          "tag": 0,
+          "outputs": [
+            4,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 1879061504
+        },
+        {
+          "registrar": 1,
+          "tag": 99,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 1,
+          "tag": 4,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 0,
+          "tag": 12,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 0,
+          "tag": 0,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 1,
+          "tag": -2147483648,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 4803732
+        },
+        {
+          "registrar": 1,
+          "tag": 2147483647,
+          "outputs": [
+            -1,
+            0,
+            0,
+            1,
+            1,
+            5,
+            12,
+            3,
+            12,
+            -2,
+            0
+          ],
+          "returned_address": 4803732
+        }
+      ]
+    }
+  ]
+}
