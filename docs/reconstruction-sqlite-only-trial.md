@@ -17,6 +17,28 @@ uc-library/.venv/bin/python uc-library/tools/recovery/sqlite_packet.py dispatch 
 
 Launch the workers listed in `DISPATCH.json`. Verify the compiler's actual dependency files against the accepted sources using `sqlite_dependency_gate.py`. Retain the scoped native, portable and installed-role observations with each handoff. After the guarded readiness merge, use `sqlite_admission.py` to finalize the assigned catalog rows against the exact merge receipt.
 
+### Same-owner reproof revisions
+
+When a guarded reproof advances an assigned task revision, keep the original
+packet and assignment journal and bind the later journal and live readback
+during finalization. Verify that the later revision retains the same owner,
+batch and exact original write scope. Append the admission evidence to the
+latest notes and finalize against the verified current revision. If that
+chain is incomplete, preserve the task assignment and resolve the missing
+evidence before closing it.
+
+### Historical replay inputs
+
+Before starting a full canonical Linux run, inspect the configured CTest
+inventory for immutable dependency manifests passed through `--bindings`.
+Compare every application source or header changed in the integration plan
+against those manifests and the exact current source-transition rows. Check
+the original archived dependency bytes even when an existing transition
+covers several other files. When the changed path is absent from the
+transition or its hash differs, archive the prior manifest, issue an exact
+successor for the affected tests and run those tests before the full suite.
+Preserve the original runtime fixture and its producer.
+
 ### Installed public headers
 
 When an integration adds a public header or changes its application include

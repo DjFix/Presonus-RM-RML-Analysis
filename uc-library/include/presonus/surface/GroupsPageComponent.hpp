@@ -8,7 +8,8 @@
 
 namespace Core::Portable {
 class Component;
-}
+struct WheelEvent;
+} // namespace Core::Portable
 
 namespace presonus::surface {
 // Explicit source-port state. These fields do not describe the ARM object
@@ -55,6 +56,7 @@ public:
   void setMixerComponent(Presonus::MixerClientComponentBase *) override;
   void refreshList();
   void addListOffset(int delta);
+  void onWheelInput(const Core::Portable::WheelEvent &event);
   int getMaxListOffset() const;
   void setListOffset(int offset);
   void deSelect();

@@ -23,4 +23,11 @@ Core::abs_time ServerRootComponent::getSystemTime() const {
   return Core::SystemClock::getTime() / 1000000;
 }
 
+// These primary callback bodies return without reading the receiver or input.
+void ServerRootComponent::receiveEvent(const BinaryEvent &) {}
+void ServerRootComponent::receiveEvent(const MusicInputEvent &) {}
+void ServerRootComponent::receiveEvent(const TimeCodeEvent &) {}
+void ServerRootComponent::clientsChanged() {}
+void ServerRootComponent::networkActivity() {}
+
 } // namespace Presonus::UC

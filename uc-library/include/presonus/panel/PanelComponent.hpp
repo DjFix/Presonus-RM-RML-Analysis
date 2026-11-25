@@ -133,6 +133,12 @@ public:
   void blinkLed(int, int, bool);
 
 protected:
+  // Existing borrowed registrar for derived ports that use its real roster.
+  const ControlRegistrar &boundControlRegistrar() const {
+    if (!controlRegistrar)
+      throw std::logic_error("PanelComponent control registrar is not bound");
+    return *controlRegistrar;
+  }
   virtual void doActivate();
   PanelComponent() : services(checkedServices) {}
   // Independent injection for derived classes whose earlier base owns Core.

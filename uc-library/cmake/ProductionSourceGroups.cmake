@@ -1317,3 +1317,9 @@ set_property(SOURCE src/Presonus/Dsp/CompController.cpp APPEND PROPERTY COMPILE_
 set_property(SOURCE src/Presonus/Dsp/GateController.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-sized-deallocation -fno-fast-math -ffp-contract=off)
 
 set_property(SOURCE src/Presonus/LcdView.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)
+
+set_property(SOURCE src/Presonus/Surface/GroupsEditPageComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
+
+set_property(SOURCE src/Presonus/Surface/GroupsPageComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
+
+set_property(SOURCE src/Presonus/Panel/FXPresetRecallComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)

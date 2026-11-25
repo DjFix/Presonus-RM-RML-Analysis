@@ -1,11 +1,24 @@
 #include "presonus/panel/FrontPanelComponent.hpp"
 #include "core/public/corestringbuffer.h"
 #include "core/system/coredebug.h"
+#include "presonus/surface_panel/ControlGroup.hpp"
+#include "presonus/surface_panel/ControlHelpers.hpp"
 #include <cstdint>
 #include <cstring>
 
 namespace Presonus::Panel {
 using presonus::frontpanel_port::Action;
+int FrontPanelComponent::getFaderStyle() const {
+  const auto *control = boundControlRegistrar().findGroup(12)->at(0);
+  const auto *parameter = control ? control->getParameter() : nullptr;
+  return parameter && parameter->getTag() == 15 ? 1 : 0;
+}
+
+SevenSegControl *FrontPanelComponent::getSevenSegControl() const {
+  return dynamic_cast<SevenSegControl *>(
+      boundControlRegistrar().findGroup(16)->byTag(0));
+}
+
 void FrontPanelComponent::presetStored(const PresetComponent &, int) {}
 void FrontPanelComponent::doFatMeterUpdate(
     Presonus::Mixer::ChannelComponent &) {}

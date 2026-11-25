@@ -1,4 +1,5 @@
 #include "presonus/MappingTable.hpp"
+#include "presonus/panel/switch_control.hpp"
 #include "presonus/surface_panel/LEDState.hpp"
 
 namespace Presonus {
@@ -34,5 +35,24 @@ void MappingTable::Item::setInverseMode(bool inverse) {
     return;
   if (auto *led = static_cast<Panel::LEDControl *>(control->castTo(1281713219)))
     led->setInverseMode(inverse);
+}
+void MappingTable::Item::setEnabled(bool enabled) {
+  if (control)
+    control->disableControl(!enabled, false);
+}
+
+void MappingTable::Item::setFullOff() {
+  if (!control)
+    return;
+  if (auto *led = static_cast<Panel::LEDControl *>(control->castTo(0x4c656443)))
+    led->setFullOff();
+}
+
+void MappingTable::Item::setImmediate(bool immediate) {
+  if (!control)
+    return;
+  if (auto *sw =
+          static_cast<Panel::SwitchControl *>(control->castTo(0x53776943)))
+    sw->setImmediate(immediate);
 }
 } // namespace Presonus

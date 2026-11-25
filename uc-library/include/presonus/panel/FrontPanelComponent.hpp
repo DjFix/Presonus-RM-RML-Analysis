@@ -107,6 +107,8 @@ class Control;
 // Intentional portable representation. Original inheritance, fields, return
 // declarations and ARM ABI are unresolved; only encoded scopes/types are
 // retained.
+class SevenSegControl;
+
 class FrontPanelComponent : public PanelComponent {
 public:
   // Independent construction for partial derived source ports; no original ABI.
@@ -143,6 +145,11 @@ public:
   void doMix(int, float);
   Presonus::Mixer::ChannelComponent *getMixModeChannel();
   int getMeterMode();
+  // Portable names and return types for the observed local lookup results.
+  // The original style declaration and seven-segment pointer qualifiers are
+  // unresolved.
+  int getFaderStyle() const;
+  SevenSegControl *getSevenSegControl() const;
   void uartTest();
   void faderPositionChanged(int, float);
   void attachMeterTypeLed(Control *, int);

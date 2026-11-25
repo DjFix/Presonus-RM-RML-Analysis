@@ -2,6 +2,9 @@
 #include "core/portable/corecomponent.h"
 #include "core/portable/corefilename.h"
 
+namespace Presonus::Mixer {
+class FXComponent;
+}
 namespace Presonus::Panel {
 class PresetNameCache;
 }
@@ -44,6 +47,13 @@ public:
   bool getFileName(unsigned int, Core::Portable::FileName &) const;
   void getFxName(Core::Portable::Parameter &, unsigned int) const;
   void init();
+  // The caller retains the live roster and its effects for this component.
+  void
+  sourcePortBindEffects(const Core::Vector<Mixer::FXComponent *> &effects) {
+    effectRoster = &effects;
+  }
+  // The portable bool represents native result words 0 and 1.
+  bool recallFxPreset();
   // Native preconditions: finite int-convertible values; loaded type index in
   // the selected nine-entry reverb or four-entry delay table.
   void updateFxName();
@@ -53,5 +63,6 @@ private:
   Core::Portable::Parameter &slot, &loaded, &typeName, &presetName, &type;
   Core::CString64 category;
   int effectSlot;
+  const Core::Vector<Mixer::FXComponent *> *effectRoster = nullptr;
 };
 } // namespace Presonus::Panel

@@ -86,7 +86,7 @@ void PanControl::setChannelSideResolver(ChannelSideResolver resolver) {
 }
 void PanControl::draw(const Core::Portable::DrawEvent &event) {
   auto *parameter = getParameter();
-  if (!parameter || !parameter->isEnabled() || !isEnabled())
+  if (!parameter || !parameter->isEnabled() || isVertical())
     return;
   if (getImage().getBitmap()) {
     drawImagePanner(event);

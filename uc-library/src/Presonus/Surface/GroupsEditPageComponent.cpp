@@ -1,4 +1,5 @@
 #include "presonus/surface/GroupsEditPageComponent.hpp"
+#include "core/portable/gui/coreview.h"
 #include "core/public/corestringbuffer.h"
 #include <cstdint>
 
@@ -137,6 +138,11 @@ void GroupsEditPageComponent::deleteGroup() {
   if (state.navigation)
     if (auto *parameter = state.navigation->getParameterByTag(24))
       parameter->setValue(1.f, true);
+}
+
+void GroupsEditPageComponent::onWheelInput(
+    const Core::Portable::WheelEvent &event) {
+  addListOffset(event.delta);
 }
 
 void GroupsEditPageComponent::addListOffset(int delta) {

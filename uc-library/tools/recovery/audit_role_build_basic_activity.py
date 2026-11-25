@@ -24,6 +24,7 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
+    'src/Presonus/Panel/FXPresetRecallComponent.cpp',
     'src/Presonus/LcdView.cpp',
     'src/Presonus/DAWClientComponent.cpp',
     'src/Presonus/UC/ServerRootComponent.cpp',

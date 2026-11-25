@@ -5,6 +5,10 @@
 
 namespace Presonus::UC {
 
+struct BinaryEvent;
+struct MusicInputEvent;
+struct TimeCodeEvent;
+
 // Portable primary-component subset. Native secondary bases and lifecycle are
 // outside this interface.
 class ServerRootComponent : public ServerComponent {
@@ -14,6 +18,11 @@ public:
   void *castTo(int typeId) override;
   ServerRootComponent *getRoot();
   Core::abs_time getSystemTime() const;
+  void receiveEvent(const BinaryEvent &);
+  void receiveEvent(const MusicInputEvent &);
+  void receiveEvent(const TimeCodeEvent &);
+  void clientsChanged();
+  void networkActivity();
 };
 
 } // namespace Presonus::UC

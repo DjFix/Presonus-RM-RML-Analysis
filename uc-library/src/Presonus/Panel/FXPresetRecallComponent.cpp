@@ -1,5 +1,9 @@
 #include "presonus/panel/FXPresetRecallComponent.hpp"
 #include "core/portable/corefile.h"
+#include "core/portable/corepersistence.h"
+#include "core/portable/corestorage.h"
+#include "presonus/mixer/FXComponent.hpp"
+#include "presonus/mixer/FxPresetFilter.hpp"
 namespace Presonus::Panel {
 namespace {
 // RM 13731 table 0x31a914 / 0x31a938; labels independently observed
@@ -80,6 +84,32 @@ void FXPresetRecallComponent::init() {
       cache->delegates.add(this);
   updateFxName();
 }
+bool FXPresetRecallComponent::recallFxPreset() {
+  auto *effect =
+      effectRoster && effectSlot >= 0 && effectSlot < effectRoster->count()
+          ? effectRoster->at(effectSlot)
+          : nullptr;
+  const auto index = static_cast<unsigned int>(getSlotNum());
+  if (isSlotEmpty(index))
+    return false;
+
+  Core::Portable::Attributes attributes(
+      Core::Portable::AttributeAllocator::getDefault());
+  Core::Portable::FileName filename;
+  getFileName(index, filename);
+  if (!Core::Portable::ArchiveUtils::loadFromFile(attributes, filename))
+    return false;
+
+  static const Mixer::FxPresetFilter filter;
+  const Core::Portable::InputStorage storage(attributes, &filter);
+  if (!effect || !effect->load(storage))
+    return false;
+
+  loaded.setValue(slot.getValue(), false);
+  updateFxName();
+  return true;
+}
+
 void FXPresetRecallComponent::updateFxName() {
   getFxName(presetName, static_cast<unsigned int>(getSlotNum()));
   const unsigned int index = static_cast<unsigned int>(getSlotNum());

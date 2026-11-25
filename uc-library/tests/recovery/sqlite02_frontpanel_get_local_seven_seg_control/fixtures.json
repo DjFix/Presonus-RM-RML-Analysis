@@ -1,0 +1,510 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "unicorn": "2.1.4",
+  "ranges": [
+    {
+      "mangled": "_ZNK8Presonus5Panel19FrontPanelComponent18getSevenSegControlEv",
+      "address": 410424,
+      "size": 68,
+      "section": 12,
+      "file_offset": 377656,
+      "range_sha256": "5d5c0424364a9c842b0b882048558135d8fb6786964d868eecd62fc7a410f5e8"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel16ControlRegistrar9findGroupEi",
+      "address": 582828,
+      "size": 196,
+      "section": 12,
+      "file_offset": 550060,
+      "range_sha256": "313870e121e1db720cb7e259032305d88f0e24cdecc48872d26dd4772d07d8a1"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup2atEi",
+      "address": 580008,
+      "size": 68,
+      "section": 12,
+      "file_offset": 547240,
+      "range_sha256": "60f6ac6b7be4a7e3807085132dfe82f7bbdf8f9efbfc39abdfe8a27e28e2e8d0"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup5byTagEi",
+      "address": 580076,
+      "size": 148,
+      "section": 12,
+      "file_offset": 547308,
+      "range_sha256": "d69c344654f8472a0ef543f4534e801dd63c4c27a361364276f5d9e73a3de2dd"
+    }
+  ],
+  "initialized_roster_memory_unchanged": true,
+  "cases": [
+    {
+      "name": "missing-group",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          0,
+          0
+        ],
+        [
+          "byTag",
+          4803732,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "empty-group",
+      "roster": [
+        [
+          16,
+          []
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          0,
+          1
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "name": "tag-missing",
+      "roster": [
+        [
+          16,
+          [
+            [
+              5,
+              2,
+              null
+            ],
+            [
+              1,
+              1,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          1,
+          16
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ]
+      ]
+    },
+    {
+      "name": "wrong-base-type",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              1,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          1879052308,
+          1
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "wrong-sibling-type",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              3,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          0,
+          3508968
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "exact-pointer",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 1,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          0,
+          3508968
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "scan-tags",
+      "roster": [
+        [
+          16,
+          [
+            [
+              1,
+              1,
+              null
+            ],
+            [
+              3,
+              2,
+              null
+            ],
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 3,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          1879060480,
+          6
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060992,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060992,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "first-wrong-type",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              1,
+              null
+            ],
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          1879060992,
+          6
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "first-exact-pointer",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ],
+        [
+          16,
+          [
+            [
+              2,
+              1,
+              null
+            ],
+            [
+              0,
+              2,
+              null
+            ],
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 12,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          0,
+          3508968
+        ],
+        [
+          "byTag",
+          1879052544,
+          0,
+          1,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879064832,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879064832,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "first-group",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              3,
+              null
+            ]
+          ]
+        ],
+        [
+          16,
+          [
+            [
+              0,
+              2,
+              null
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          16,
+          1879064832,
+          6
+        ],
+        [
+          "byTag",
+          1879052288,
+          0,
+          2,
+          16
+        ],
+        [
+          "__dynamic_cast@plt",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ],
+        [
+          "libstdc++::__dynamic_cast",
+          1879060480,
+          3508996,
+          3315228,
+          0
+        ]
+      ]
+    }
+  ],
+  "rtti": {
+    "path": "rootfs/RML32AI_Rack_13731/usr/lib/libstdc++.so.6.0.10",
+    "sha256": "c523a78aa347276b59ae9b373a15a79fa623b84574a67739475aa2ea44a66cf3",
+    "entry": 559892,
+    "source_typeinfo": 3508996,
+    "destination_typeinfo": 3315228
+  }
+}

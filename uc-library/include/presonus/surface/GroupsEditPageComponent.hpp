@@ -9,6 +9,10 @@
 #include <cstdint>
 #include <memory>
 
+namespace Core::Portable {
+struct WheelEvent;
+}
+
 namespace presonus::surface {
 struct GroupsEditState;
 struct GroupsEditDependencies;
@@ -47,6 +51,7 @@ public:
   void setListOffset(int offset);
   void deleteGroup();
   void addListOffset(int delta);
+  void onWheelInput(const Core::Portable::WheelEvent &event);
   void rename();
   void onShow(bool visible);
 

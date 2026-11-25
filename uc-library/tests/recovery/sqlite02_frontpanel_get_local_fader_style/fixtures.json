@@ -1,0 +1,402 @@
+{
+  "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+  "unicorn": "2.1.4",
+  "ranges": [
+    {
+      "mangled": "_ZNK8Presonus5Panel19FrontPanelComponent13getFaderStyleEv",
+      "address": 408428,
+      "size": 92,
+      "section": 12,
+      "file_offset": 375660,
+      "range_sha256": "0c876f75fab905894d26feb86f4a26166d021f05409e71c41f3af9266fda32d1"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel16ControlRegistrar9findGroupEi",
+      "address": 582828,
+      "size": 196,
+      "section": 12,
+      "file_offset": 550060,
+      "range_sha256": "313870e121e1db720cb7e259032305d88f0e24cdecc48872d26dd4772d07d8a1"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup2atEi",
+      "address": 580008,
+      "size": 68,
+      "section": 12,
+      "file_offset": 547240,
+      "range_sha256": "60f6ac6b7be4a7e3807085132dfe82f7bbdf8f9efbfc39abdfe8a27e28e2e8d0"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel12ControlGroup5byTagEi",
+      "address": 580076,
+      "size": 148,
+      "section": 12,
+      "file_offset": 547308,
+      "range_sha256": "d69c344654f8472a0ef543f4534e801dd63c4c27a361364276f5d9e73a3de2dd"
+    },
+    {
+      "mangled": "_ZNK8Presonus5Panel7Control12getParameterEv",
+      "address": 587136,
+      "size": 20,
+      "section": 12,
+      "file_offset": 554368,
+      "range_sha256": "f64a717d7a94c239da30df5131cb23024ea94188e42d1202a91b530dd42bab3c"
+    }
+  ],
+  "initialized_roster_memory_unchanged": true,
+  "cases": [
+    {
+      "name": "missing-group",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              1,
+              15
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          0,
+          0
+        ],
+        [
+          "at",
+          4803732,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "empty-group",
+      "roster": [
+        [
+          12,
+          []
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          0,
+          0
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ]
+      ]
+    },
+    {
+      "name": "null-first",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              0,
+              null
+            ],
+            [
+              1,
+              1,
+              15
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          1,
+          0
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ]
+      ]
+    },
+    {
+      "name": "unbound-first",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              1,
+              null
+            ],
+            [
+              1,
+              1,
+              15
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          1879052304,
+          0
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "style-one",
+      "roster": [
+        [
+          12,
+          [
+            [
+              20,
+              1,
+              15
+            ],
+            [
+              0,
+              1,
+              14
+            ]
+          ]
+        ]
+      ],
+      "result": 1,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          1879052304,
+          0
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tag-14",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              1,
+              14
+            ],
+            [
+              1,
+              1,
+              15
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          15,
+          1879060592
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "tag-16",
+      "roster": [
+        [
+          12,
+          [
+            [
+              0,
+              1,
+              16
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          14,
+          1879060592
+        ],
+        [
+          "at",
+          1879052288,
+          0,
+          1,
+          12
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ],
+        [
+          "getParameter",
+          1879060480,
+          0,
+          1879052304,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "first-group",
+      "roster": [
+        [
+          16,
+          [
+            [
+              0,
+              1,
+              15
+            ]
+          ]
+        ],
+        [
+          12,
+          [
+            [
+              0,
+              1,
+              14
+            ]
+          ]
+        ],
+        [
+          12,
+          [
+            [
+              0,
+              1,
+              15
+            ]
+          ]
+        ]
+      ],
+      "result": 0,
+      "calls": [
+        [
+          "findGroup",
+          1879048448,
+          12,
+          16,
+          1879060592
+        ],
+        [
+          "at",
+          1879052544,
+          0,
+          2,
+          12
+        ],
+        [
+          "getParameter",
+          1879064576,
+          0,
+          1879052560,
+          0
+        ],
+        [
+          "getParameter",
+          1879064576,
+          0,
+          1879052560,
+          0
+        ]
+      ]
+    }
+  ]
+}

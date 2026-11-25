@@ -1,4 +1,5 @@
 #include "presonus/surface/GroupsPageComponent.hpp"
+#include "core/portable/gui/coreview.h"
 #include <algorithm>
 #include <cstring>
 #include <stdexcept>
@@ -11,6 +12,11 @@ std::int32_t signedBits(std::uint32_t bits) {
 }
 } // namespace
 namespace Presonus::Surface {
+void GroupsPageComponent::onWheelInput(
+    const Core::Portable::WheelEvent &event) {
+  addListOffset(event.delta);
+}
+
 void GroupsPageComponent::addListOffset(int delta) {
   setListOffset(signedBits(static_cast<std::uint32_t>(delta) +
                            static_cast<std::uint32_t>(state.listOffset)));

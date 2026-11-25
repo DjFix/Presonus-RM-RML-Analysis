@@ -34,6 +34,9 @@ public:
     Item(const char *name, Core::Portable::AliasParam *alias);
     void setBlinkMode(const char *);
     void setInverseMode(bool);
+    void setEnabled(bool);
+    void setFullOff();
+    void setImmediate(bool);
     static int translateMode(const char *);
     Core::Portable::AliasParam *alias;
     Panel::Control *control;
