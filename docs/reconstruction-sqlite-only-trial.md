@@ -16,3 +16,16 @@ uc-library/.venv/bin/python uc-library/tools/recovery/sqlite_packet.py dispatch 
 ```
 
 Launch the workers listed in `DISPATCH.json`. Verify the compiler's actual dependency files against the accepted sources using `sqlite_dependency_gate.py`. Retain the scoped native, portable and installed-role observations with each handoff. After the guarded readiness merge, use `sqlite_admission.py` to finalize the assigned catalog rows against the exact merge receipt.
+
+## Existing-source review log
+
+- 2026-11-25. Verified ten deleting-destructor (D0) ELF identities for
+  `ChDelayFormatter`, `ChGainFormatter`, `ChHPFFormatter`,
+  `EarlyRefFormatter` and `GeqFreqFormatter`, one identity per class in
+  each of the CS18AI and RM/RML roles. The bounded review covers the exact
+  original ranges, role-specific allocator and deallocation observations,
+  and five delivered portable replays. This review carries zero
+  reconstruction credit and leaves readiness unchanged. The complete VM101
+  archive is `evidence/recovery/2026-11-24/rolling-c001/formatter-d0-existing-review/`.
+  Its `MANIFEST.json` SHA-256 is
+  `266fd850373d1ba5902ce70ab6a777a8cbbcff1200e88e824ac1d1312791515a`.
