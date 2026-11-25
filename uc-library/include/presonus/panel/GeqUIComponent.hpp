@@ -66,6 +66,7 @@ public:
   void addRemoveWatchers(int, bool);
   void selectBand(int);
   void updateBandSelect();
+  void updateGeqNameList();
   Mixer::GEQComponent *getGeqForChannel(Mixer::ChannelComponent *);
   void observedParamChanged(Core::Portable::Parameter *, int);
   void updateStereoField();

@@ -11,6 +11,9 @@ public:
   DAWChannelGroup();
   ~DAWChannelGroup() override;
   void *castTo(int typeId) override;
+  // These operations require an initialized, borrowed parameter cache.
+  int getUsedCount() const;
+  void resetUsedCount();
 
   // The original deleting destructor calls unsized global delete.
   static void operator delete(void *receiver) noexcept;

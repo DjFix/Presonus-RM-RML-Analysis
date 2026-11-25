@@ -1,5 +1,7 @@
 #include "presonus/DAWChannelGroup.hpp"
 
+#include <algorithm>
+
 namespace Presonus {
 
 DAWChannelGroup::DAWChannelGroup()
@@ -12,6 +14,15 @@ void *DAWChannelGroup::castTo(int typeId) {
   if (typeId == groupType)
     return this;
   return UC::ClientComponent::castTo(typeId);
+}
+
+int DAWChannelGroup::getUsedCount() const {
+  return std::min(static_cast<int>(cachedParameter_->getValue()),
+                  countChildren());
+}
+
+void DAWChannelGroup::resetUsedCount() {
+  cachedParameter_->setValue(0.0f, false);
 }
 
 void DAWChannelGroup::operator delete(void *receiver) noexcept {

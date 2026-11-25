@@ -4,7 +4,9 @@
 
 namespace Presonus {
 
-// Shared portable implementation of the recovered channel lifecycle and cast.
+class DAWDeviceFolder;
+
+// Shared portable implementation of the recovered channel behavior.
 // The original ARM object layout and remaining DAW channel behavior are outside
 // this interface.
 class DAWChannel : public UC::ClientComponent {
@@ -15,7 +17,20 @@ public:
   void *castTo(int typeId) override;
   static void operator delete(void *allocation) noexcept;
 
+  DAWDeviceFolder *getInserts() const;
+  DAWDeviceFolder *getCueMixes() const;
+  DAWDeviceFolder *getPosts() const;
+  DAWDeviceFolder *getSends() const;
+  bool isSelected() const;
+
+  // The portable return points into a buffer shared by channel instances.
+  // A later formatting call can replace its contents.
+  const char *getID() const;
+
 protected:
+  static constexpr int selectedCache = 0;
+  static constexpr int idCache = 2;
+
   Core::Portable::Parameter *cachedParameters_[3]{};
 };
 

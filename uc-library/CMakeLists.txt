@@ -152,6 +152,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 set_source_files_properties(src/mixer_dsp/Dsp.cpp src/mixer_dsp/FilterControllers.cpp PROPERTIES
   COMPILE_OPTIONS "${PRESONUS_DSP_FLOAT_OPTIONS}")
+set_property(SOURCE src/mixer_dsp/FilterControllers.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/mixer_dsp/Dsp.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-lto -fno-fast-math -ffp-contract=off -frounding-math -fno-builtin)
 set_source_files_properties(src/surface_panel/DbTable.cpp src/surface_panel/MeterControl.cpp PROPERTIES
   COMPILE_OPTIONS "${PRESONUS_DSP_FLOAT_OPTIONS};-fno-builtin-powf")
@@ -668,6 +669,10 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/mixer/StereoLineComponent.hpp
   presonus/uc/ClientRootComponent.hpp
   presonus/uc/server_description.hpp
+)
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/DAWChannel.hpp
+  presonus/DAWChannelGroup.hpp
 )
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)

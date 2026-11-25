@@ -268,6 +268,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/application/SurfaceApplicationTestMode.cpp
   src/Presonus/LcdView.cpp
   src/Presonus/Surface/FatChannelClipboardSelection.cpp
   src/application/SurfaceApplicationSkinDirectory.cpp
@@ -1323,3 +1324,10 @@ set_property(SOURCE src/Presonus/Surface/GroupsEditPageComponent.cpp APPEND PROP
 set_property(SOURCE src/Presonus/Surface/GroupsPageComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
 
 set_property(SOURCE src/Presonus/Panel/FXPresetRecallComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+set_property(SOURCE src/Presonus/Mixer/HPFilterComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-fast-math -ffp-contract=off)
+
+set_property(SOURCE src/Presonus/Mixer/LPFilterComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-fast-math -ffp-contract=off)
+
+set_property(SOURCE src/application/SurfaceApplicationTestMode.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20)
+

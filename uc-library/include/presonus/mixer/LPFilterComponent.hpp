@@ -1,12 +1,9 @@
 #pragma once
 #include "core/portable/corecomponent.h"
 #include "presonus/mixer/AudioComponent.hpp"
-#include <optional>
+#include <memory>
 namespace Presonus::Mixer {
-// Partial source port. Real CCL Component and typed queries intentionally
-// replace the original intermediate application bases. The explicit audio
-// lifecycle tag owns a portable AudioComponent subobject, with independent
-// C++ layout and pointer identity.
+// Portable filter component using a composed AudioComponent and CCL.
 class LPFilterComponent : public Core::Portable::Component {
 public:
   DECLARE_CORE_CLASS(0x173358, LPFilterComponent, Core::Portable::Component)
@@ -19,9 +16,14 @@ public:
   LPFilterComponent(SourcePortAudioLifecycle, const char *name,
                     Dsp::Controller *controller,
                     Core::IPropertyHandler *handler, int id);
+  // Transfers the non-null handler release obligation to AudioComponent.
+  LPFilterComponent(const char *name, Core::IPropertyHandler *handler,
+                    int controllerId, int channelId);
   ~LPFilterComponent() override;
 
+  AudioComponent *portableAudioComponent() noexcept { return audio_.get(); }
+
 private:
-  std::optional<AudioComponent> audio_;
+  std::unique_ptr<AudioComponent> audio_;
 };
 } // namespace Presonus::Mixer

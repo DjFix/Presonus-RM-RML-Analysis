@@ -2,9 +2,23 @@
 #include <cstdint>
 #include <memory>
 
+namespace Core {
+struct IPropertyHandler;
+}
+namespace Presonus::Mixer {
+class AudioComponent;
+}
+
 namespace presonus::dsp {
 class FilterControllerProvider;
-}
+
+// These providers are allocated independently of the shared filter facades.
+// The returned AudioComponent owns the controller and the handler release.
+std::unique_ptr<Presonus::Mixer::AudioComponent>
+makeHiPassAudioComponent(const char *, Core::IPropertyHandler *, int, int);
+std::unique_ptr<Presonus::Mixer::AudioComponent>
+makeLoPassAudioComponent(const char *, Core::IPropertyHandler *, int, int);
+} // namespace presonus::dsp
 
 namespace Presonus::Dsp {
 class EQController;

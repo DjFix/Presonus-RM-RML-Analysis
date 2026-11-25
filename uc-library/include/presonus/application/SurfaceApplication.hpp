@@ -4,14 +4,19 @@
 
 namespace presonus::application {
 struct SurfaceSerialStateAccess;
-}
+struct SurfaceTestModeReplayAccess;
+} // namespace presonus::application
 namespace Presonus::Surface {
+// Source-port spelling for the observed 32-bit mode word.
+enum class SurfaceTestMode : std::uint32_t;
 // Partial source-port declaration only. The original constructor, lifetime,
 // interfaces, inheritance and ARM32 object layout have not been recovered here.
 class SurfaceApplication {
 public:
   // Ordinary return spelling is unencoded; void remains declaration-pending.
   void readSerialFromDisk();
+  // The original return declaration remains unresolved.
+  void setupAndRunTestMode(SurfaceTestMode mode);
   // Source-port return word; the original return type remains unresolved.
   std::uint32_t isNetworkClientReady() const;
   // Numeric 64-bit returns are source-port choices; declarations remain
@@ -22,7 +27,10 @@ public:
 
 private:
   friend struct presonus::application::SurfaceSerialStateAccess;
+  friend struct presonus::application::SurfaceTestModeReplayAccess;
   std::uint32_t serial_;
+  SurfaceTestMode testMode_{};
+  bool testModeRequested_{};
 };
 } // namespace Presonus::Surface
 namespace presonus::application {

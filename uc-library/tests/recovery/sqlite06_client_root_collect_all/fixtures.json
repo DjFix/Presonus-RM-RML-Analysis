@@ -1,0 +1,1114 @@
+[
+  {
+    "original": {
+      "address": 331580,
+      "anchor": "676675fe8874aff34896d2cd71355d8d9eaacca62cf06570cac98afa58651ea5",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 298812,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZNK8Presonus2UC19ClientRootComponent10collectAllERN4Core8Portable10AttributesERNS0_15ClientComponentE",
+      "range_hex": "0dc0a0e1f0df2de904b04ce243df4de234110be50280a0e130010be50020a0e35c129fe534011be5684a03eb34311be5081093e55d5403eb0090a0e10800a0e1d12503eb00a050e2340000da0060a0e3130000ea040053e37300000a003090e50fe0a0e160f093e5081084e20720a0e10050a0e10900a0e1544a03eb0040a0e10500a0e167d604eb0020a0e10130a0e10400a0e14c5203eb016086e206005ae11e0000da0610a0e10800a0e1bb2503eb0c4090e50050a0e13c3094e5047013e2f4ffff1a003094e5060053e3e0ffff1a003090e5ac119fe50fe0a0e100f093e5000050e3ebffff0a0c4095e51f3603eb084084e20050a0e10410a0e10720a0e10900a0e1314a03eb016086e20520a0e10730a0e15c5203eb06005ae1e0ffffca143099e5000053e35100000a5c3098e5000053e3350000da0020a0e348119fe534011be5214a03eb34311be5081093e5165403eb5c2098e50070a0e1000052e3270000da00a0a0e30a40a0e1020000ea014084e2020054e11f0000aa583098e508119fe5043193e7000053e2f7ffff0a003093e50fe0a0e100f093e5005050e2086085e20020a0e30610a0e10700a0e10d00000a054a03eb081097e5fb5303eb0520a0e10010a0e130011be58bffffeb000050e301a0a0135c209815e3ffff1a0610a0e10700a0e1b24b03eb5c2098e5014084e2020054e1dfffffba00005ae30300001a34011be57c109fe5a94b03eb00a0a0e3140099e5000050e30a00a0010100a01328d04be2f0af9de80710a0e14b0f4be2264cffeb0500a0e14b1f4be2003095e5012ca0e30fe0a0e170f093e50c1095e50720a0e10900a0e1081081e2da4903eb4b1f4be20720a0e1875403eb88ffffea34011be504109fe58d4b03eba9ffffea389e200072615043304219006f436c43",
+      "range_sha256": "26ade73baa73fd638fcc4422520ad4fd05c92bc94f142d281a9095ceb9f42d82",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 660
+    },
+    "cases": {
+      "empty": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ]
+        ]
+      },
+      "private": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            1
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ]
+        ]
+      },
+      "values": {
+        "result": 1,
+        "attributes": [
+          "tree /values",
+          "float /values/gain 2.5",
+          "string /values/title hello",
+          "int /values/color 4045620583"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            4
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ],
+          [
+            "parameter",
+            "root",
+            1
+          ],
+          [
+            "string",
+            "title"
+          ],
+          [
+            "add",
+            "title"
+          ],
+          [
+            "set",
+            "title"
+          ],
+          [
+            "parameter",
+            "root",
+            2
+          ],
+          [
+            "cast",
+            1129341298
+          ],
+          [
+            "color",
+            "color",
+            4045620583
+          ],
+          [
+            "add",
+            "color"
+          ],
+          [
+            "set",
+            "color"
+          ],
+          [
+            "parameter",
+            "root",
+            3
+          ]
+        ]
+      },
+      "children": {
+        "result": 1,
+        "attributes": [
+          "tree /children",
+          "tree /children/branch",
+          "tree /children/branch/children",
+          "tree /children/branch/children/leaf",
+          "tree /children/branch/children/leaf/values",
+          "float /children/branch/children/leaf/values/gain 2.5"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "branch"
+          ],
+          [
+            "tree",
+            "branch"
+          ],
+          [
+            "collect",
+            "branch"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "branch",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "leaf"
+          ],
+          [
+            "tree",
+            "leaf"
+          ],
+          [
+            "collect",
+            "leaf"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "leaf",
+            1
+          ],
+          [
+            "parameter",
+            "leaf",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ]
+        ]
+      },
+      "mixed": {
+        "result": 1,
+        "attributes": [
+          "tree /values",
+          "string /values/title hello",
+          "tree /children",
+          "tree /children/leaf",
+          "tree /children/leaf/values",
+          "float /children/leaf/values/gain 2.5"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            1
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "string",
+            "title"
+          ],
+          [
+            "add",
+            "title"
+          ],
+          [
+            "set",
+            "title"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "leaf"
+          ],
+          [
+            "tree",
+            "leaf"
+          ],
+          [
+            "collect",
+            "leaf"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "leaf",
+            1
+          ],
+          [
+            "parameter",
+            "leaf",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ]
+        ]
+      },
+      "pruned": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "remove",
+            "children"
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "original": {
+      "address": 1054228,
+      "anchor": "fec8ff14be96e44c6ab8a73f66445950db9b147c20ea05053187ac0595358eef",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 1021460,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZNK8Presonus2UC19ClientRootComponent10collectAllERN4Core8Portable10AttributesERNS0_15ClientComponentE",
+      "range_hex": "0dc0a0e1f0df2de904b04ce243df4de234110be50280a0e130010be50020a0e35c129fe534011be5d68000eb34311be5081093e5cb8a00eb0090a0e10800a0e1f25f00eb00a050e2340000da0060a0e3130000ea040053e37300000a003090e50fe0a0e160f093e5081084e20720a0e10050a0e10900a0e1c28000eb0040a0e10500a0e1095501eb0020a0e10130a0e10400a0e1ba8800eb016086e206005ae11e0000da0610a0e10800a0e1dc5f00eb0c4090e50050a0e13c3094e5047013e2f4ffff1a003094e5060053e3e0ffff1a003090e5ac119fe50fe0a0e100f093e5000050e3ebffff0a0c4095e56a6c00eb084084e20050a0e10410a0e10720a0e10900a0e19f8000eb016086e20520a0e10730a0e1ca8800eb06005ae1e0ffffca143099e5000053e35100000a5c3098e5000053e3350000da0020a0e348119fe534011be58f8000eb34311be5081093e5848a00eb5c2098e50070a0e1000052e3270000da00a0a0e30a40a0e1020000ea014084e2020054e11f0000aa583098e508119fe5043193e7000053e2f7ffff0a003093e50fe0a0e100f093e5005050e2086085e20020a0e30610a0e10700a0e10d00000a738000eb081097e5698a00eb0520a0e10010a0e130011be58bffffeb000050e301a0a0135c209815e3ffff1a0610a0e10700a0e1208200eb5c2098e5014084e2020054e1dfffffba00005ae30300001a34011be57c109fe5178200eb00a0a0e3140099e5000050e30a00a0010100a01328d04be2f0af9de80710a0e14b0f4be20c29fceb0500a0e14b1f4be2003095e5012ca0e30fe0a0e170f093e50c1095e50720a0e10900a0e1081081e2488000eb4b1f4be20720a0e1f58a00eb88ffffea34011be504109fe5fb8100eba9ffffea306d360072615043386d36006f436c43",
+      "range_sha256": "b2b5d0bc199810ff09ac6593aa8955b8ec1a0b5fa7975f119cd34014f60c96d4",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 660
+    },
+    "cases": {
+      "empty": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ]
+        ]
+      },
+      "private": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            1
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ]
+        ]
+      },
+      "values": {
+        "result": 1,
+        "attributes": [
+          "tree /values",
+          "float /values/gain 2.5",
+          "string /values/title hello",
+          "int /values/color 4045620583"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            4
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ],
+          [
+            "parameter",
+            "root",
+            1
+          ],
+          [
+            "string",
+            "title"
+          ],
+          [
+            "add",
+            "title"
+          ],
+          [
+            "set",
+            "title"
+          ],
+          [
+            "parameter",
+            "root",
+            2
+          ],
+          [
+            "cast",
+            1129341298
+          ],
+          [
+            "color",
+            "color",
+            4045620583
+          ],
+          [
+            "add",
+            "color"
+          ],
+          [
+            "set",
+            "color"
+          ],
+          [
+            "parameter",
+            "root",
+            3
+          ]
+        ]
+      },
+      "children": {
+        "result": 1,
+        "attributes": [
+          "tree /children",
+          "tree /children/branch",
+          "tree /children/branch/children",
+          "tree /children/branch/children/leaf",
+          "tree /children/branch/children/leaf/values",
+          "float /children/branch/children/leaf/values/gain 2.5"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "branch"
+          ],
+          [
+            "tree",
+            "branch"
+          ],
+          [
+            "collect",
+            "branch"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "branch",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "leaf"
+          ],
+          [
+            "tree",
+            "leaf"
+          ],
+          [
+            "collect",
+            "leaf"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "leaf",
+            1
+          ],
+          [
+            "parameter",
+            "leaf",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ]
+        ]
+      },
+      "mixed": {
+        "result": 1,
+        "attributes": [
+          "tree /values",
+          "string /values/title hello",
+          "tree /children",
+          "tree /children/leaf",
+          "tree /children/leaf/values",
+          "float /children/leaf/values/gain 2.5"
+        ],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            1
+          ],
+          [
+            "parameter",
+            "root",
+            0
+          ],
+          [
+            "string",
+            "title"
+          ],
+          [
+            "add",
+            "title"
+          ],
+          [
+            "set",
+            "title"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "leaf"
+          ],
+          [
+            "tree",
+            "leaf"
+          ],
+          [
+            "collect",
+            "leaf"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "leaf",
+            1
+          ],
+          [
+            "parameter",
+            "leaf",
+            0
+          ],
+          [
+            "numeric",
+            "gain"
+          ],
+          [
+            "add",
+            "gain"
+          ],
+          [
+            "set",
+            "gain"
+          ]
+        ]
+      },
+      "pruned": {
+        "result": 0,
+        "attributes": [],
+        "call_trace": [
+          [
+            "collect",
+            "root"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "root",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "add",
+            "children"
+          ],
+          [
+            "tree",
+            "children"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "add",
+            "empty"
+          ],
+          [
+            "tree",
+            "empty"
+          ],
+          [
+            "collect",
+            "empty"
+          ],
+          [
+            "add",
+            "values"
+          ],
+          [
+            "tree",
+            "values"
+          ],
+          [
+            "count",
+            "empty",
+            0
+          ],
+          [
+            "remove",
+            "values"
+          ],
+          [
+            "remove",
+            "empty"
+          ],
+          [
+            "cast",
+            1131168623
+          ],
+          [
+            "remove",
+            "children"
+          ]
+        ]
+      }
+    }
+  }
+]

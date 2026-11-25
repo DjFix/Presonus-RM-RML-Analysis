@@ -1,0 +1,224 @@
+[
+  {
+    "original": {
+      "address": 341192,
+      "anchor": "9ba3c4c9ad3a5eda2e743ffc5a57e761f02eab109df88ae8f6d468b35cc1e115",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 308424,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZNK8Presonus10DAWChannel10getInsertsEv",
+      "range_hex": "0dc0a0e100d82de92c109fe5003090e504b04ce20fe0a0e114f093e5003050e20300a00100a89d08003093e50c109fe50fe0a0e100f093e500a89de8885a190046447764",
+      "range_sha256": "b1c76dca8bf8540cabd8c7594ac5d2285d6b9a2747cb395fb7e987a9e900463f",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 68
+    },
+    "method": "getInserts",
+    "cases": [
+      {
+        "input": [
+          "getInserts",
+          "missing"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661576,
+            "inserts"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "foreign"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661576,
+            "inserts"
+          ],
+          [
+            "_ZN4Core8Portable9Component6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "wrong-name"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661576,
+            "inserts"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "match"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 1358966784,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661576,
+            "inserts"
+          ],
+          [
+            "_ZN8Presonus15DAWDeviceFolder6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "identity"
+      }
+    ]
+  },
+  {
+    "original": {
+      "address": 78636,
+      "anchor": "48b1c4061c61c5b5c13528441cf4c7cedc6d8220ee465d61ab1171eb0b9581cb",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 45868,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZNK8Presonus10DAWChannel10getInsertsEv",
+      "range_hex": "0dc0a0e100d82de92c109fe5003090e504b04ce20fe0a0e114f093e5003050e20300a00100a89d08003093e50c109fe50fe0a0e100f093e500a89de8989a150046447764",
+      "range_sha256": "b63085b64b80aabd3c2c18a3d74186399d3b84b3e551657368aade596f879880",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 68
+    },
+    "method": "getInserts",
+    "cases": [
+      {
+        "input": [
+          "getInserts",
+          "missing"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1415832,
+            "inserts"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "foreign"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1415832,
+            "inserts"
+          ],
+          [
+            "_ZN4Core8Portable9Component6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "wrong-name"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1415832,
+            "inserts"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getInserts",
+          "match"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 1358966784,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1415832,
+            "inserts"
+          ],
+          [
+            "_ZN8Presonus15DAWDeviceFolder6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "identity"
+      }
+    ]
+  }
+]

@@ -41,6 +41,13 @@ Preserve the original runtime fixture and its producer.
 
 ### Installed public headers
 
+Before starting the full canonical Linux suite, compare the configured CMake
+install destinations and source paths with the expected application header
+inventory. Compile each changed public header against a temporary tree
+containing exactly the configured headers and the pinned external SDK.
+A missing name, wrong origin, or unresolved include requires an exact
+install-list correction and a clean preflight before running the suite.
+
 When an integration adds a public header or changes its application include
 dependencies, compile a small translation unit that includes the installed
 header from a fresh canonical install. Supply the pinned external SDK include

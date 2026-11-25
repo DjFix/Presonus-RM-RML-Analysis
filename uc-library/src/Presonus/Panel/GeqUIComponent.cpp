@@ -1,4 +1,5 @@
 #include "presonus/panel/GeqUIComponent.hpp"
+#include "core/public/corestringbuffer.h"
 #include <cstdint>
 namespace Presonus::Panel {
 void GeqUIComponent::setDelegate(Delegate *value) { delegate_ = value; }
@@ -68,6 +69,33 @@ void GeqUIComponent::updateBandSelect() {
   float selected = static_cast<float>(currentBand);
   if (p->getValue() != selected)
     p->setValue(selected, true);
+}
+void GeqUIComponent::updateGeqNameList() {
+  auto *selector = Core::Portable::ListParam::cast(getParameterByTag(0));
+  if (!selector)
+    return;
+
+  const int count = dependencies.geqCount();
+  const auto selected = selector->getValue();
+  selector->removeAll();
+  for (int index = 0; index < count; ++index) {
+    const bool linked = isChannelLinked(static_cast<unsigned int>(index));
+    if (index < 2) {
+      selector->appendString(linked ? "Main L/R"
+                                    : (index == 0 ? "Main L" : "Main R"));
+    } else {
+      Core::CString128 label;
+      if (linked) {
+        // Preserve the original eight-bit pair mask.
+        const int pair = index & 0xfe;
+        label.appendFormat("Aux %d-%d", pair - 1, pair);
+      } else {
+        label.appendFormat("Aux %d", index - 1);
+      }
+      selector->appendString(label);
+    }
+  }
+  selector->setValue(selected, false);
 }
 void GeqUIComponent::updateStereoField() {
   auto *channel = channelSelection ? getChannelAssignedToCurrentGeq()

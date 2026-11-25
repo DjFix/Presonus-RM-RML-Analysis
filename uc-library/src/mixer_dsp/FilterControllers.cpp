@@ -1,6 +1,10 @@
 #include "presonus/mixer_dsp/FilterControllers.hpp"
+#include "presonus/dsp/ControllerInfo.hpp"
+#include "presonus/mixer/AudioComponent.hpp"
 #include "presonus/mixer_dsp/Dsp.hpp"
+#include "presonus/mixer_dsp/EqSourceProviders.hpp"
 #include "presonus/mixer_dsp/FilterParameterLists.hpp"
+#include <bit>
 #include <cstring>
 #include <limits>
 
@@ -35,7 +39,9 @@ bool isActive(PassFilter filter, float value) {
 } // namespace
 
 namespace presonus::dsp {
-class FilterControllerProvider final : public Presonus::Dsp::EQController {
+class FilterControllerProvider final
+    : public Presonus::Dsp::EQController,
+      public Presonus::dspcomponent_port::Boundary {
 public:
   FilterControllerProvider(int controllerId, PassFilter filter,
                            const Presonus::Dsp::ParamDescriptorList &list)
@@ -61,11 +67,120 @@ public:
     return value;
   }
 
+  void bind(Presonus::Mixer::AudioComponent &audio) {
+    component_ = &audio.coreComponent();
+    audio.bind(*this);
+  }
+
+  int count(Presonus::Dsp::IController &controller) override {
+    return controller.getNumParameters();
+  }
+  float value(Presonus::Dsp::IController &controller, int tag) override {
+    return controller.getValue(tag);
+  }
+  void set(Presonus::Dsp::IController &controller, int tag,
+           float value) override {
+    controller.setValue(tag, value);
+  }
+  unsigned flags(Presonus::Dsp::IController &) override {
+    return sourceState().word20;
+  }
+  void acknowledge(Presonus::Dsp::IController &controller) override {
+    controller.flushParameterChanges();
+  }
+  bool readout(Presonus::Dsp::IController &controller, int ordinal) override {
+    Presonus::Dsp::ParamInfo info{};
+    controller.getParameterInfo(info, ordinal);
+    return (info.flags & 1u) != 0;
+  }
+  int load(const Core::Portable::InputStorage &storage) override {
+    return component_->load(storage);
+  }
+  void idle() override { component_->onIdle(); }
+  void changed(Core::Portable::Parameter *parameter, int reason) override {
+    component_->paramChanged(parameter, reason);
+  }
+
   Presonus::Dsp::FilterControllerState state;
 
 private:
   PassFilter filter_;
+  Core::Portable::Component *component_ = nullptr;
 };
+
+namespace {
+using Core::Portable::ParamInfo;
+using Presonus::Dsp::ParamDescriptorList;
+using Presonus::Mixer::AudioComponent;
+
+// The app's two XMen tables are individually bound to the native constructor
+// literal references. CCL borrows these process-lifetime records.
+constexpr ParamInfo hiPassParameter{ParamInfo::kFloat,
+                                    0,
+                                    "hpf",
+                                    24.f,
+                                    1000.f,
+                                    0.f,
+                                    24.f,
+                                    std::bit_cast<float>(0x3b03126fu),
+                                    0x4a,
+                                    "freq.0/off",
+                                    "log",
+                                    nullptr,
+                                    "Hi Pass Filter",
+                                    "HI PASS Filter"};
+constexpr ParamInfo loPassParameter{ParamInfo::kFloat,
+                                    0,
+                                    "lpf",
+                                    100.f,
+                                    20000.f,
+                                    0.f,
+                                    20000.f,
+                                    std::bit_cast<float>(0x3b03126fu),
+                                    0x4a,
+                                    "freq.0/~/off",
+                                    "log",
+                                    nullptr,
+                                    "Lo Pass Filter",
+                                    nullptr};
+
+std::unique_ptr<AudioComponent>
+makeAudioComponent(const char *name, Core::IPropertyHandler *handler,
+                   int controllerId, int channelId, PassFilter filter,
+                   const ParamDescriptorList &descriptors,
+                   const ParamInfo &parameter) {
+  auto controller = std::make_unique<FilterControllerProvider>(
+      controllerId, filter, descriptors);
+  auto audio = std::make_unique<AudioComponent>(name, controller.get(), handler,
+                                                channelId);
+  auto *provider = controller.release();
+  provider->bind(*audio);
+
+  auto &component = audio->coreComponent();
+  component.addParameters(&parameter, 1, false);
+  audio->parameters().push_back(component.getParameterAt(0));
+  audio->syncValues(true);
+  return audio;
+}
+} // namespace
+
+std::unique_ptr<Presonus::Mixer::AudioComponent>
+makeHiPassAudioComponent(const char *name, Core::IPropertyHandler *handler,
+                         int controllerId, int channelId) {
+  registerEqSourcePortProviders();
+  return makeAudioComponent(
+      name, handler, controllerId, channelId, PassFilter::high,
+      sourceList(*Presonus::Dsp::HiPassParamList::instance()), hiPassParameter);
+}
+
+std::unique_ptr<Presonus::Mixer::AudioComponent>
+makeLoPassAudioComponent(const char *name, Core::IPropertyHandler *handler,
+                         int controllerId, int channelId) {
+  registerEqSourcePortProviders();
+  return makeAudioComponent(
+      name, handler, controllerId, channelId, PassFilter::low,
+      sourceList(*Presonus::Dsp::LoPassParamList::instance()), loPassParameter);
+}
 } // namespace presonus::dsp
 
 namespace Presonus::Dsp {

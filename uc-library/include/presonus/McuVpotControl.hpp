@@ -12,6 +12,7 @@ public:
                  Core::Portable::Parameter *parameter);
   // Source-port lifecycle extension; no original destructor identity claimed.
   ~McuVpotControl();
+  void draw(const Core::Portable::DrawEvent &) override;
   void setAttributes(const Core::Portable::Attributes &) override;
   // Independent borrowed controller binding. If absent, use the real CCL
   // ViewBuilder scoped current controller while attributes are being built.

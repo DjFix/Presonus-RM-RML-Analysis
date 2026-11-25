@@ -1,0 +1,224 @@
+[
+  {
+    "original": {
+      "address": 351016,
+      "anchor": "de1f4e029400e2a890163f25537d1105e9f48ec45d000e98350ec83be0259b67",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 318248,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZNK8Presonus10DAWChannel11getCueMixesEv",
+      "range_hex": "0dc0a0e100d82de92c109fe5003090e504b04ce20fe0a0e114f093e5003050e20300a00100a89d08003093e50c109fe50fe0a0e100f093e500a89de8045c190046447764",
+      "range_sha256": "96a50deef87cde0e7e0ff6e6977b7ec4cd4b9df8217957c0c1a9bfa77d4614d6",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 68
+    },
+    "method": "getCueMixes",
+    "cases": [
+      {
+        "input": [
+          "getCueMixes",
+          "missing"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661956,
+            "cuemix"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "foreign"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661956,
+            "cuemix"
+          ],
+          [
+            "_ZN4Core8Portable9Component6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "wrong-name"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661956,
+            "cuemix"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "match"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 1358966784,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1661956,
+            "cuemix"
+          ],
+          [
+            "_ZN8Presonus15DAWDeviceFolder6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "identity"
+      }
+    ]
+  },
+  {
+    "original": {
+      "address": 88460,
+      "anchor": "8c4cfc0f66194003ad6e5458ca9544bb8cdc35287399b86e48ea4f1d32b47515",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 55692,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZNK8Presonus10DAWChannel11getCueMixesEv",
+      "range_hex": "0dc0a0e100d82de92c109fe5003090e504b04ce20fe0a0e114f093e5003050e20300a00100a89d08003093e50c109fe50fe0a0e100f093e500a89de82c9c150046447764",
+      "range_sha256": "05305f060f80685600c252a5902fc346783ddc7fdadd5900e1f1b9b199f06e9f",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 68
+    },
+    "method": "getCueMixes",
+    "cases": [
+      {
+        "input": [
+          "getCueMixes",
+          "missing"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1416236,
+            "cuemix"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "foreign"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1416236,
+            "cuemix"
+          ],
+          [
+            "_ZN4Core8Portable9Component6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "wrong-name"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 0,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1416236,
+            "cuemix"
+          ]
+        ],
+        "portable": "null"
+      },
+      {
+        "input": [
+          "getCueMixes",
+          "match"
+        ],
+        "addresses": {
+          "receiver": 1358958592,
+          "child": 1358966784
+        },
+        "result": 1358966784,
+        "trace": [
+          [
+            "_ZNK4Core8Portable9Component9findChildEPKc",
+            1358958592,
+            1416236,
+            "cuemix"
+          ],
+          [
+            "_ZN8Presonus15DAWDeviceFolder6castToEi",
+            1358966784,
+            1685537862
+          ]
+        ],
+        "portable": "identity"
+      }
+    ]
+  }
+]
