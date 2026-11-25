@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/MixerClassManager.cpp
   src/Presonus/DAWClientComponent.cpp
   src/Presonus/UC/ServerRootComponent.cpp
   src/Presonus/DAWFocusChannel.cpp
@@ -268,6 +269,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/Presonus/MappingTableAddItem.cpp
   src/application/SurfaceApplicationTestMode.cpp
   src/Presonus/LcdView.cpp
   src/Presonus/Surface/FatChannelClipboardSelection.cpp
@@ -460,6 +462,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/SimpleController.cpp
   src/Presonus/Dsp/CompController.cpp
   src/Presonus/Dsp/GateController.cpp
   src/Presonus/Dsp/EQ4Controller.cpp
@@ -667,6 +670,8 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/MixerClassManager.hpp
+  presonus/dsp/SimpleController.hpp
   presonus/LcdView.hpp
   presonus/dsp/CompController.hpp
   presonus/dsp/GateController.hpp
@@ -1331,3 +1336,13 @@ set_property(SOURCE src/Presonus/Mixer/LPFilterComponent.cpp APPEND PROPERTY COM
 
 set_property(SOURCE src/application/SurfaceApplicationTestMode.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20)
 
+
+set_property(SOURCE src/Presonus/Dsp/SimpleController.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -DCORE_VECTOR_EXPONENTIAL_GROWTH=0)
+
+set_property(SOURCE src/Presonus/MappingTable.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto -Ulinux -ffunction-sections -fdata-sections)
+
+set_property(SOURCE src/Presonus/MappingTableAddItem.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto -Ulinux -ffunction-sections -fdata-sections)
+
+set_property(SOURCE src/Presonus/MappingTableItem.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto -Ulinux -ffunction-sections -fdata-sections)
+
+set_property(SOURCE src/Presonus/MixerClassManager.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -UNDEBUG -ffunction-sections -fdata-sections)

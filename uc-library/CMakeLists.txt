@@ -674,6 +674,10 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/DAWChannel.hpp
   presonus/DAWChannelGroup.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/MixerClassManager.hpp
+  presonus/dsp/SimpleController.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")

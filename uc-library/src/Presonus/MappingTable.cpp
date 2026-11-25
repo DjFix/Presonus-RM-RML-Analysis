@@ -4,7 +4,10 @@ MappingTable::MappingTable(const presonus::mapping::Entry *entries, int count,
                            presonus::mapping::ItemOperations &operations)
     : entries_(entries), count_(count), operations_(operations) {}
 MappingTable::Item *MappingTable::findItem(const char *name) const {
-  const Core::ConstVector<presonus::mapping::Entry> entries(entries_, count_);
+  const auto entries =
+      ownedRoster_
+          ? ownedEntries()
+          : Core::ConstVector<presonus::mapping::Entry>(entries_, count_);
   const presonus::mapping::Entry key{name, nullptr};
   const auto *entry = entries.search(key);
   return entry ? entry->item : nullptr;

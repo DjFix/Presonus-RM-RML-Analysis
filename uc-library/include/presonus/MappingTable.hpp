@@ -4,6 +4,7 @@
 #include "core/public/corevector.h"
 #include "core/public/gui/corecolor.h"
 #include <cstring>
+#include <memory>
 
 namespace presonus::mapping {
 class ItemOperations;
@@ -46,6 +47,14 @@ public:
   };
   MappingTable(const presonus::mapping::Entry *sortedEntries, int count,
                presonus::mapping::ItemOperations &operations);
+  // Copies of the owned source-port table share its stable roster and aliases.
+  // Existing borrowed tables keep caller-owned records and alias lifetimes.
+  struct OwnedItems {};
+  MappingTable(OwnedItems, presonus::mapping::ItemOperations &operations);
+  void addItem(const char *name);
+  // Inspect sorted owned items. Keep the names of indexed items unchanged.
+  // Borrowed tables and invalid indices return nullptr.
+  const Item *sourcePortItemAt(int index) const;
   // Source-port return/static declaration; original layout and ABI unresolved.
   static bool extractPageName(const char *, Core::CStringBuffer<32> &,
                               Core::CStringBuffer<32> &);
@@ -76,6 +85,8 @@ public:
   void setControlDefaultColor(const char *, const char *, bool);
 
 private:
+  struct OwnedRoster;
+  Core::ConstVector<presonus::mapping::Entry> ownedEntries() const;
   presonus::mapping::ExtendedOperations &extended() const;
   bool typedPageControllers_ = false;
   presonus::mapping::ExtendedOperations *extended_ = nullptr;
@@ -84,6 +95,7 @@ private:
   const presonus::mapping::Entry *entries_;
   int count_;
   presonus::mapping::ItemOperations &operations_;
+  std::shared_ptr<OwnedRoster> ownedRoster_;
 };
 } // namespace Presonus
 

@@ -27,6 +27,22 @@ latest notes and finalize against the verified current revision. If that
 chain is incomplete, preserve the task assignment and resolve the missing
 evidence before closing it.
 
+A same-owner companion write requires its own approved exact scope and
+guarded catalog revision. Bind the approval, original packet, revision
+journal, current readback and exact companion source hashes. An ordinary
+reproof receipt cannot confer write ownership. Finalize against the
+verified current revision after the same admission gates.
+
+### Configured compile modes
+
+Compare the configured compile and link commands with the accepted
+production and replay commands before a full Linux run. A flag can be
+equivalent when the pinned provider defines the same value. Demonstrate
+equivalence for each affected translation unit with byte-identical
+preprocessor outputs from the actual configured command with and without
+the worker definitions. Bind both commands, outputs and the raw
+comparison. Resolve every other mode difference before running the suite.
+
 ### Historical replay inputs
 
 Before starting a full canonical Linux run, inspect the configured CTest
