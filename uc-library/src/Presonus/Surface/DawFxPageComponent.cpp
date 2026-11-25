@@ -28,6 +28,9 @@ int DawFxPageComponent::getMaxListOffset() const {
   auto result = (n / 5) * 5;
   return result < 0 ? 0 : result;
 }
+void DawFxPageComponent::onFocusChannelChanged() {
+  bindings_.updateList(bindings_.context, true);
+}
 void DawFxPageComponent::setListOffset(int offset) {
   int &current = getListOffset();
   if (offset < 0)

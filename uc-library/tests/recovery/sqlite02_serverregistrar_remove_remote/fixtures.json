@@ -1,0 +1,88 @@
+{
+  "mode": "remove_remote",
+  "engine": "Unicorn 2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 236160,
+        "anchor": "97c5e192156154e60e35a7f0031703df7e387e62a6b86e22788d7535e4d1bfe0",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 203392,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus2UC15ServerRegistrar6removeEPNS0_12RemoteServerE",
+        "range_hex": "0dc0a0e1f0d82de91c5090e504b04ce2000055e30060a0e10170a0e10c0000da18c090e500309ce5010053e10020a0030b00000a0020a0e3020000ea02319ce7070053e10600000a012082e2050052e1f9ffffba0600a0e10710a0e1f0689de8cbffffea013045e2030052e1014082b20201a0b10411a0b1010000ba0c0000ea18c096e501309ce7041081e200308ce71c5096e5040080e2012045e2020054e1014084e2f5ffffba000055e3070000da18c096e51c209fe50531a0e1001092e5043043e203108ce71c2096e5012042e21c2086e5deffffea18572500",
+        "range_sha256": "34e71d8be867dd2b67a2a6a771f98b5700da08d4bc60fc7c087feb73a4198bb8",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 220
+      },
+      "remote_remove": null,
+      "cases": [
+        {
+          "initial": [
+            1,
+            2,
+            3
+          ],
+          "argument": 2,
+          "listeners": 2,
+          "final": [
+            1,
+            3
+          ],
+          "events": [
+            [
+              "removed",
+              2,
+              [
+                1,
+                3
+              ]
+            ]
+          ],
+          "calls": []
+        },
+        {
+          "initial": [
+            1,
+            2
+          ],
+          "argument": 3,
+          "listeners": 2,
+          "final": [
+            1,
+            2
+          ],
+          "events": [
+            [
+              "removed",
+              3,
+              [
+                1,
+                2
+              ]
+            ]
+          ],
+          "calls": []
+        },
+        {
+          "initial": [],
+          "argument": 2,
+          "listeners": 0,
+          "final": [],
+          "events": [
+            [
+              "removed",
+              2,
+              []
+            ]
+          ],
+          "calls": []
+        }
+      ]
+    }
+  ]
+}

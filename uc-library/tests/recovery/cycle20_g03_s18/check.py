@@ -236,7 +236,12 @@ def main():
     parser.add_argument('--integration', type=Path)
     parser.add_argument('--fixture', type=Path)
     parser.add_argument('--out', type=Path)
+    parser.add_argument("--source-transition", type=Path)
+    parser.add_argument("--source-transition-sha256")
     args = parser.parse_args()
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from canonical_source_transition import current_source_digest, load_transition
+    source_transition = load_transition(args.source_transition, args.source_transition_sha256)
     if args.compile:
         compile_local()
         return
@@ -261,6 +266,7 @@ def main():
                 previous, current = CANONICAL_DEPENDENCY_TRANSITION[path]
                 require(expected == previous, f'Frozen dependency drift at {path}')
                 expected = current
+            expected = current_source_digest(path, expected, source_transition)
             require(digest(Path(path)) == expected, f'Canonical dependency drift at {path}')
     for path, expected in core.items():
         require(digest(Path(path)) == expected, f'Pinned Core source drift at {path}')

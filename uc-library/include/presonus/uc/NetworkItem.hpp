@@ -1,5 +1,6 @@
 #pragma once
 #include "core/public/corestringbuffer.h"
+#include <cstdint>
 
 namespace Presonus::UC {
 // Partial portable source model. No original layout or return declaration is
@@ -11,6 +12,12 @@ public:
       : component_(borrowedComponent) {}
   ~NetworkItem();
   void *getComponent() const;
+  bool isAccessAcquired() const;
+
+  // Independent source-port input for an access observation.
+  void setPortableAccessObservation(std::uint32_t observation) {
+    accessObservation_ = observation;
+  }
   // Independent source-port identity, not the native field at byte offset
   // 0x18e or an original accessor declaration. Inputs are copied and bounded
   // to 63 characters plus a terminator. The borrowed component is unchanged.
@@ -21,6 +28,7 @@ public:
 
 private:
   void *component_;
+  std::uint32_t accessObservation_ = 0;
   Core::CStringBuffer<64> portableIdentity_;
 };
 } // namespace Presonus::UC

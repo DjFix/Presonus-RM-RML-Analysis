@@ -215,7 +215,10 @@ def replay(args):
     frozen_inputs = frozen_providers()
     actual_inputs = frozen_inputs if local_build else {p: p for p in frozen_inputs}
     for logical, actual in actual_inputs.items():
-        assert sha(actual) == sha(frozen_inputs[logical])
+        expected = sha(frozen_inputs[logical])
+        if not local_build:
+            expected = current_source_digest(logical, expected, source_transition)
+        assert sha(actual) == expected, logical
     frozen_headers = {p: SNAPSHOT / p if local_build else p
                       for p in SUPPLEMENTAL_HEADERS}
     for logical, source in frozen_headers.items():

@@ -1,5 +1,6 @@
 #pragma once
 #include "core/public/corevector.h"
+#include "presonus/surface/sl_mixer_encoder.hpp"
 namespace Core::Portable {
 class Component;
 }
@@ -16,6 +17,10 @@ public:
   void initializeHandlers(Core::Portable::Component *);
   void addHandler(AssignmentHandler *);
   AssignmentHandler *getHandler(int) const;
+  // Observed count and success values; original return declarations unresolved.
+  int countHandlers() const;
+  bool getParamFocusInfo(MixerAssignmentHandler::FocusInfo &,
+                         Core::Portable::Parameter *);
   void removeHandler(AssignmentHandler *);
   // Provisional borrowed pointer return; original static declaration
   // unresolved.

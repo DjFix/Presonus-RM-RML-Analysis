@@ -1,5 +1,9 @@
 #include "presonus/mixer/SendOutputComponent.hpp"
 namespace Presonus::Mixer {
+std::uint32_t SendOutputComponent::getAuxPreMode() {
+  return state_.auxPreModeWord;
+}
+
 void SendOutputComponent::paramChanged(Core::Portable::Parameter *parameter,
                                        int message) {
   const int tag = parameter->getTag(); // original reads before Output callback

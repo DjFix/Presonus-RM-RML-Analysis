@@ -19,6 +19,12 @@ namespace Presonus::Mixer {
 void NetworkSelectComponent::configureFixtureToggle(unsigned char value) {
   scanToggle = value;
 }
+void NetworkSelectComponent::initialize() {
+  if (!scanningTimer || !configurationTimer)
+    throw std::logic_error("NetworkSelectComponent timers are not configured");
+  scanningTimer->beginAction(-1.f);
+  configurationTimer->beginAction(-1.f);
+}
 void NetworkSelectComponent::idleScanning() {
   // The native comparison suppresses scanning exactly for zero (including -0).
   if (scanning && scanning->getValue() == 0.f)

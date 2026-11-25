@@ -1,5 +1,4 @@
 #include "presonus/surface/AssignmentHandlerTable.hpp"
-#include "presonus/surface/sl_mixer_encoder.hpp"
 #include <cstring>
 namespace Presonus {
 AssignmentHandlerTable::AssignmentHandlerTable() : handlers_(ownedHandlers_) {}
@@ -34,6 +33,25 @@ AssignmentHandler *AssignmentHandlerTable::findHandler(const char *name) const {
 AssignmentHandler *AssignmentHandlerTable::getHandler(int index) const {
   return handlers_.at(index);
 }
+int AssignmentHandlerTable::countHandlers() const { return handlers_.count(); }
+
+bool AssignmentHandlerTable::getParamFocusInfo(
+    MixerAssignmentHandler::FocusInfo &info,
+    Core::Portable::Parameter *parameter) {
+  const int count = handlers_.count();
+  AssignmentHandler *const *items = handlers_.getItems();
+  for (int index = 0; index < count; ++index) {
+    auto *handler = items[index];
+    if (!handler)
+      continue;
+    auto *mixer =
+        static_cast<MixerAssignmentHandler *>(handler->castTo(0x4d784173));
+    if (mixer && mixer->getParamFocusInfo(info, parameter))
+      return true;
+  }
+  return false;
+}
+
 void AssignmentHandlerTable::removeHandler(AssignmentHandler *handler) {
   handlers_.remove(handler);
 }

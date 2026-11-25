@@ -47,6 +47,7 @@ public:
                      Core::Portable::Component)
   explicit NetworkSelectComponent(presonus::network_select::NetworkServices &s)
       : services(s) {}
+  void initialize();
   void idleScanning();
   void notify(const Presonus::UC::MessageAttributes &);
   int getWiredNetworkAssignMode() const;

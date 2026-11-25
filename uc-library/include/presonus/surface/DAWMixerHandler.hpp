@@ -95,6 +95,7 @@ public:
   void assignMainChannel();
   void onChannelParamChanged(DAWChannel *, Core::Portable::Parameter *);
   void onModifiersChanged();
+  bool handleMappingRadioGroup(Core::Portable::Parameter *);
   void onMappingParamChanged(Core::Portable::Parameter *);
   void onFocusChannelChanged();
   void onSlotCountChanged(DAWDeviceFolder *);

@@ -1,19 +1,18 @@
-#include "presonus/uc/server_registrar.hpp"
+#include "presonus/uc/server.hpp"
 #include <cstdlib>
 #include <cstring>
 
 namespace presonus::uc {
 // Independent initialized-view precondition guards, not original error paths.
-static const AvailableServerView &serverView(const ServerRegistrarState &state,
-                                             Presonus::UC::Server *identity) {
+static AvailableServerView &serverView(const ServerRegistrarState &state,
+                                       Presonus::UC::Server *identity) {
   for (int index = 0; index < state.allServerViews.count(); ++index)
     if (state.allServerViews.at(index)->identity == identity)
       return *state.allServerViews.at(index);
   std::abort();
 }
-static const AvailableServerView &
-localView(const ServerRegistrarState &state,
-          Presonus::UC::LocalServer *identity) {
+static AvailableServerView &localView(const ServerRegistrarState &state,
+                                      Presonus::UC::LocalServer *identity) {
   for (int index = 0; index < state.allServerViews.count(); ++index)
     if (state.allServerViews.at(index)->localIdentity == identity)
       return *state.allServerViews.at(index);
@@ -21,6 +20,67 @@ localView(const ServerRegistrarState &state,
 }
 } // namespace presonus::uc
 namespace Presonus::UC {
+void ServerRegistrar::add(LocalServer *server) {
+  auto &servers = state_.localServers;
+  auto &view = presonus::uc::localView(state_, server);
+  if (servers.count() < servers.getCapacity() ||
+      servers.resize(servers.count() + 1))
+    servers.add(&view);
+}
+
+void ServerRegistrar::add(RemoteServer *server) {
+  auto &servers = state_.remoteServers;
+  auto &view = presonus::uc::serverView(state_, server);
+  // The owning source-port roster must never delete an identity twice.
+  if ((!ownedState_ || !servers.contains(&view)) &&
+      (servers.count() < servers.getCapacity() ||
+       servers.resize(servers.count() + 1)))
+    servers.add(&view);
+  notifyServerAdded(server);
+}
+
+void ServerRegistrar::remove(LocalServer *server) {
+  auto &servers = state_.localServers;
+  for (int index = 0; index < servers.count(); ++index) {
+    if (servers.at(index)->localIdentity == server) {
+      servers.removeAt(index);
+      break;
+    }
+  }
+  notifyServerRemoved(server);
+}
+
+void ServerRegistrar::remove(RemoteServer *server) {
+  auto &servers = state_.remoteServers;
+  for (int index = 0; index < servers.count(); ++index) {
+    if (servers.at(index)->identity == server) {
+      servers.removeAt(index);
+      break;
+    }
+  }
+  notifyServerRemoved(server);
+}
+
+void ServerRegistrar::removeManuallyAdded(const char *address,
+                                          unsigned short port) {
+  if (!ownedState_)
+    return;
+  const char *needle = address ? address : "";
+  auto &servers = state_.remoteServers;
+  for (int index = servers.count() - 1; index >= 0; --index) {
+    auto *view = servers.at(index);
+    if (!view->manuallyAdded || std::strcmp(view->remoteAddress, needle) != 0 ||
+        view->remotePort != port)
+      continue;
+    auto *server = RemoteServer::cast(view->identity);
+    if (!server)
+      std::abort();
+    remove(server);
+    state_.allServerViews.remove(view);
+    delete server;
+  }
+}
+
 bool ServerRegistrar::hasLocalServers() const {
   return state_.localServers.count() != 0;
 }

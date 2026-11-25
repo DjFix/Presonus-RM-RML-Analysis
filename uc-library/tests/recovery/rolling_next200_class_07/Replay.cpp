@@ -11,8 +11,8 @@ int main() {
 
   for (unsigned fill : {0x35, 0xC2}) {
     alignas(SharedMemoryComm) unsigned char storage[sizeof(SharedMemoryComm)];
+    std::memset(storage, fill, sizeof(storage));
     auto *receiver = new (storage) SharedMemoryComm;
-    std::memset(receiver, fill, sizeof(*receiver));
 
     std::array<unsigned char, sizeof(SharedMemoryComm)> before{};
     std::memcpy(before.data(), receiver, before.size());

@@ -1,4 +1,5 @@
 #pragma once
+#include "presonus/panel/control.hpp"
 #include "presonus/surface_panel/DbTable.hpp"
 
 namespace presonus::surface_panel_port {
@@ -6,10 +7,14 @@ struct MeterControlAccess;
 }
 
 namespace Presonus::Panel {
-// Partial portable state port, without the historical base, vtable or ARM ABI.
+// Portable source model with Control lifecycle and independent meter storage.
 // The enum's original enumerator names/underlying declaration remain unknown.
-class MeterControl {
+class MeterControl : public Control {
 public:
+  MeterControl();
+  explicit MeterControl(int tag);
+  ~MeterControl() override;
+
   enum BusDirection : int {};
   static void setDbRange(float minimum, float maximum);
   static void setMeterSteps(int inputCount, int outputCount,
@@ -17,7 +22,7 @@ public:
   int getNumMeterSteps(BusDirection direction, bool alternate) const;
   void setBusDirection(BusDirection direction);
   // Portable declaration for the observed receiver-or-null result.
-  void *castTo(int classId);
+  void *castTo(int classId) override;
 
 private:
   friend struct presonus::surface_panel_port::MeterControlAccess;
@@ -41,6 +46,10 @@ struct MeterControlAccess {
   }
   static int direction(const Presonus::Panel::MeterControl &control) {
     return control.direction_;
+  }
+  static const int *
+  overrideCount(const Presonus::Panel::MeterControl &control) {
+    return control.overrideCount_;
   }
   static int *counts() { return Presonus::Panel::MeterControl::numMeterSteps; }
   static Presonus::Panel::DbTable &input() {

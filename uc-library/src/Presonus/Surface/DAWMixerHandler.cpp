@@ -128,6 +128,9 @@ void DAWMixerHandler::onModifiersChanged() {
   state.shift = static_cast<std::uint8_t>(shift);
   dependencies.assignChannels();
 }
+bool DAWMixerHandler::handleMappingRadioGroup(Core::Portable::Parameter *) {
+  return false;
+}
 void DAWMixerHandler::onMappingParamChanged(
     Core::Portable::Parameter *parameter) {
   const auto tag = static_cast<std::uint32_t>(parameter->getTag());

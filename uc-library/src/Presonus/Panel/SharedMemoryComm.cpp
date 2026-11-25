@@ -1,6 +1,15 @@
 #include "presonus/panel/SharedMemoryComm.hpp"
 
 namespace Presonus::Panel {
+SharedMemoryComm::SharedMemoryComm() = default;
+SharedMemoryComm::SharedMemoryComm(const SharedMemoryComm &other)
+    : stateByte_(other.stateByte_) {}
+SharedMemoryComm &SharedMemoryComm::operator=(const SharedMemoryComm &other) {
+  stateByte_ = other.stateByte_;
+  return *this;
+}
+SharedMemoryComm::~SharedMemoryComm() = default;
+
 int SharedMemoryComm::enableHISpeed(bool) { return 1; }
 int SharedMemoryComm::open(const char *) { return 1; }
 

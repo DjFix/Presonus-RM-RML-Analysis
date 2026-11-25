@@ -6,6 +6,10 @@ int MeterControl::numMeterSteps[2] = {16, 16};
 DbTable MeterControl::inputTable(nullptr, 0);
 DbTable MeterControl::outputTable(nullptr, 0);
 
+MeterControl::MeterControl() : MeterControl(0) {}
+MeterControl::MeterControl(int tag) : Control(tag) {}
+MeterControl::~MeterControl() = default;
+
 void MeterControl::setDbRange(float minimum, float maximum) {
   inputTable.setDbRange(minimum, maximum);
   outputTable.setDbRange(minimum, maximum);

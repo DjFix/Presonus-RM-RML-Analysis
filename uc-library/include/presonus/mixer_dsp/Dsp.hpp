@@ -49,16 +49,32 @@ private:
   BilinearRecoveredState state_;
 };
 
-class ShelbyGEQController {
+class ShelbyGEQController : public Controller {
 public:
+  ShelbyGEQController();
+  ShelbyGEQController(int channel, int controllerId);
+  ~ShelbyGEQController() override;
+  // Ordinary return declarations use the portable Controller contract.
+  float setValue(int index, float value) override;
+  void printValue(Presonus::StringResult &, int, float) const override;
+  void getParameterInfo(ParamInfo &, int) const override;
+  void setupProcess(const SetupProperty &) override;
+  int portableChannel() const { return channel_; }
+  std::array<std::uint8_t, 31> &portableMarkers() { return markers_; }
+  const std::array<std::uint32_t, 2> &portableTimeWords() const {
+    return timeWords_;
+  }
   float denormalizeValue(float value);
   // Provisional source returns; native observes 32-bit words.
-  float getValue(int index) const;
-  int getNumParameters() const;
+  float getValue(int index) const override;
+  int getNumParameters() const override;
   std::array<float, 33> &portableValues() { return values_; }
 
 private:
+  int channel_;
   std::array<float, 33> values_{};
+  std::array<std::uint8_t, 31> markers_{};
+  std::array<std::uint32_t, 2> timeWords_{};
 };
 
 // Independent portable storage for native type/three floats, calculator,

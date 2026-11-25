@@ -8,9 +8,10 @@ namespace presonus::send_output_port {
 // Independent portable state, named by observed native stores, not ARM fields.
 struct SendState {
   presonus::output_port::Bindings &output;
-  std::uint32_t sendChanged{};  // observed native +0x178
-  std::uint32_t childChanged{}; // observed native +0x18c
-  std::uint32_t fxChanged{};    // independent state for native +0x194
+  std::uint32_t sendChanged{};    // observed native +0x178
+  std::uint32_t childChanged{};   // observed native +0x18c
+  std::uint32_t fxChanged{};      // independent state for native +0x194
+  std::uint32_t auxPreModeWord{}; // observed native read at +0x1d4
 };
 } // namespace presonus::send_output_port
 
@@ -24,6 +25,8 @@ public:
       std::vector<presonus::send_output_port::SendState *> &children)
       : base_(base), state_(state), children_(children) {}
   void paramChanged(Core::Portable::Parameter *, int);
+  // Portable raw-word return. The original return declaration is unresolved.
+  std::uint32_t getAuxPreMode();
 
 private:
   OutputComponent &base_;

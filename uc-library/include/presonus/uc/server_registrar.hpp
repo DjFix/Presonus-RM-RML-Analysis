@@ -17,6 +17,7 @@ struct ServerInfo {
 // remain portable choices, not original static declaration evidence.
 class Server;
 class LocalServer;
+class RemoteServer;
 class IEventHandler;
 class INetworkListener {
 public:
@@ -44,12 +45,14 @@ struct AvailableServerView {
   const char *remoteAddress = nullptr;
   std::uint16_t remotePort = 0;
   int remoteTransport = 0;
+  bool manuallyAdded = false;
 };
 struct ServerRegistrarState {
   Core::Vector<AvailableServerView *> localServers;
   Core::Vector<AvailableServerView *> remoteServers;
   Core::Vector<Presonus::UC::INetworkListener *> listeners;
-  // Every notified identity has exactly one live registered metadata view.
+  // Borrowed metadata bindings for live identities, including identities
+  // notified on a failed removal.
   Core::Vector<AvailableServerView *> allServerViews;
 };
 } // namespace presonus::uc
@@ -77,6 +80,14 @@ public:
   void notifyServerRemoved(Server *);
   void notifyServerChanged(Server *);
   void serverRegistered(LocalServer *);
+  // Roster operations use the caller-bound live views. Removed identities stay
+  // live and their views remain available for subsequent notifications.
+  void add(LocalServer *);
+  void add(RemoteServer *);
+  void remove(LocalServer *);
+  void remove(RemoteServer *);
+  // Matched objects must belong to the owning registrar.
+  void removeManuallyAdded(const char *address, unsigned short port);
   void addListener(INetworkListener *);
   void removeListener(INetworkListener *);
   void notifyAvailable(INetworkListener *);

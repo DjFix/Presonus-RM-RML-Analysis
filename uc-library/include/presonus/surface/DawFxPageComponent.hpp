@@ -23,6 +23,7 @@ public:
   DawFxPageComponent(Core::Portable::Parameter *mode,
                      presonus::surface::DawFxBindings bindings,
                      int insertOffset = 0, int sendOffset = 0);
+  void onFocusChannelChanged();
   void setListOffset(int offset);
   void addListOffset(int delta);
   // Source-port return contract; original return declaration is unresolved.

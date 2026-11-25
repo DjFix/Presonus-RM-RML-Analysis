@@ -1,0 +1,376 @@
+{
+  "mode": "remove_manual",
+  "engine": "Unicorn 2.1.4",
+  "entries": [
+    {
+      "original": {
+        "address": 237212,
+        "anchor": "4f5df54fe0d5a44073b59fdad4a483260c1ff6b1159e4bda0917231da4576437",
+        "architecture": "arm",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 204444,
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus2UC15ServerRegistrar19removeManuallyAddedEPKct",
+        "range_hex": "0dc0a0e1f0df2de904b04ce204d04de21c3090e50070a0e1015053e20180a0e102a0a0e1f0af9d4988909fe50561a0e1020000ea015055e2f0af9d491c3097e5050053e1183097c56c009fd5060083c0004090e5046046e22c33d4e5490f84e2000053e3f2ffff0a000058e30810a0110910a0017844ffeb000050e3ecffff1ac92fa0e3b23094e10a0053e1e8ffff1a0700a0e10410a0e1d1feffeb0400a0e1003094e50fe0a0e104f093e5015055e2e1ffff5af0af9de970261f0018572500",
+        "range_sha256": "0a547ecc676cf647a382ab32b305685d37fc409ba87c83ac6cf26cfe3cb9c7ec",
+        "role": "client",
+        "section": 12,
+        "section_name": ".text",
+        "size": 192
+      },
+      "remote_remove": {
+        "mangled": "_ZN8Presonus2UC15ServerRegistrar6removeEPNS0_12RemoteServerE",
+        "address": 236160,
+        "size": 220,
+        "section": 12,
+        "file_offset": 203392,
+        "range_sha256": "34e71d8be867dd2b67a2a6a771f98b5700da08d4bc60fc7c087feb73a4198bb8",
+        "range_hex": "0dc0a0e1f0d82de91c5090e504b04ce2000055e30060a0e10170a0e10c0000da18c090e500309ce5010053e10020a0030b00000a0020a0e3020000ea02319ce7070053e10600000a012082e2050052e1f9ffffba0600a0e10710a0e1f0689de8cbffffea013045e2030052e1014082b20201a0b10411a0b1010000ba0c0000ea18c096e501309ce7041081e200308ce71c5096e5040080e2012045e2020054e1014084e2f5ffffba000055e3070000da18c096e51c209fe50531a0e1001092e5043043e203108ce71c2096e5012042e21c2086e5deffffea18572500"
+      },
+      "cases": [
+        {
+          "initial": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "argument": "desk",
+          "port": 123,
+          "listeners": 2,
+          "final": [
+            2,
+            4,
+            5
+          ],
+          "events": [
+            [
+              "removed",
+              3,
+              [
+                1,
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "delete",
+              3,
+              [
+                1,
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "removed",
+              1,
+              [
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "delete",
+              1,
+              [
+                2,
+                4,
+                5
+              ]
+            ]
+          ],
+          "calls": [
+            [
+              "strcmp",
+              "other",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ]
+          ]
+        },
+        {
+          "initial": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "argument": "desk",
+          "port": 44,
+          "listeners": 2,
+          "final": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "events": [],
+          "calls": [
+            [
+              "strcmp",
+              "other",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ]
+          ]
+        },
+        {
+          "initial": [
+            2,
+            6
+          ],
+          "argument": null,
+          "port": 65535,
+          "listeners": 0,
+          "final": [
+            2
+          ],
+          "events": [
+            [
+              "removed",
+              6,
+              [
+                2
+              ]
+            ],
+            [
+              "delete",
+              6,
+              [
+                2
+              ]
+            ]
+          ],
+          "calls": [
+            [
+              "strcmp",
+              "",
+              ""
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "original": {
+        "address": 960580,
+        "anchor": "c2138dd240715ef4c974123d9633d833c3ba10760f5e71206eaea36a8b6e1f85",
+        "architecture": "arm",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "file_offset": 927812,
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus2UC15ServerRegistrar19removeManuallyAddedEPKct",
+        "range_hex": "0dc0a0e1f0df2de904b04ce204d04de21c3090e50070a0e1015053e20180a0e102a0a0e1f0af9d4988909fe50561a0e1020000ea015055e2f0af9d491c3097e5050053e1183097c56c009fd5060083c0004090e5046046e22c33d4e5490f84e2000053e3f2ffff0a000058e30810a0110910a001ac81fceb000050e3ecffff1ac92fa0e3b23094e10a0053e1e8ffff1a0700a0e10410a0e1d1feffeb0400a0e1003094e50fe0a0e104f093e5015055e2e1ffff5af0af9de95cb1350038ca4900",
+        "range_sha256": "0a3a2bf857a4cdcd1fac9acba8297c5001315823be5f3179a51b2364e083a5ab",
+        "role": "server",
+        "section": 12,
+        "section_name": ".text",
+        "size": 192
+      },
+      "remote_remove": {
+        "mangled": "_ZN8Presonus2UC15ServerRegistrar6removeEPNS0_12RemoteServerE",
+        "address": 959528,
+        "size": 220,
+        "section": 12,
+        "file_offset": 926760,
+        "range_sha256": "3a63f51a4ee9f72b4af389815bbabc8c0dfe45dbcf492881a36ba8deb1c9c862",
+        "range_hex": "0dc0a0e1f0d82de91c5090e504b04ce2000055e30060a0e10170a0e10c0000da18c090e500309ce5010053e10020a0030b00000a0020a0e3020000ea02319ce7070053e10600000a012082e2050052e1f9ffffba0600a0e10710a0e1f0689de8cbffffea013045e2030052e1014082b20201a0b10411a0b1010000ba0c0000ea18c096e501309ce7041081e200308ce71c5096e5040080e2012045e2020054e1014084e2f5ffffba000055e3070000da18c096e51c209fe50531a0e1001092e5043043e203108ce71c2096e5012042e21c2086e5deffffea38ca4900"
+      },
+      "cases": [
+        {
+          "initial": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "argument": "desk",
+          "port": 123,
+          "listeners": 2,
+          "final": [
+            2,
+            4,
+            5
+          ],
+          "events": [
+            [
+              "removed",
+              3,
+              [
+                1,
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "delete",
+              3,
+              [
+                1,
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "removed",
+              1,
+              [
+                2,
+                4,
+                5
+              ]
+            ],
+            [
+              "delete",
+              1,
+              [
+                2,
+                4,
+                5
+              ]
+            ]
+          ],
+          "calls": [
+            [
+              "strcmp",
+              "other",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ]
+          ]
+        },
+        {
+          "initial": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "argument": "desk",
+          "port": 44,
+          "listeners": 2,
+          "final": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "events": [],
+          "calls": [
+            [
+              "strcmp",
+              "other",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ],
+            [
+              "strcmp",
+              "desk",
+              "desk"
+            ]
+          ]
+        },
+        {
+          "initial": [
+            2,
+            6
+          ],
+          "argument": null,
+          "port": 65535,
+          "listeners": 0,
+          "final": [
+            2
+          ],
+          "events": [
+            [
+              "removed",
+              6,
+              [
+                2
+              ]
+            ],
+            [
+              "delete",
+              6,
+              [
+                2
+              ]
+            ]
+          ],
+          "calls": [
+            [
+              "strcmp",
+              "",
+              ""
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}
