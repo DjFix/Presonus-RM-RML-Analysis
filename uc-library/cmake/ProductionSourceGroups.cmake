@@ -278,6 +278,14 @@ set(PRESONUS_common_SOURCES
   src/surface_panel/MeterControl.cpp
   src/surface_panel/OutputPin.cpp
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
+  src/Presonus/AVB/AvbManagerMac.cpp
+  src/Presonus/AVB/AvbManagerStreams.cpp
+  src/Presonus/AVB/AvbManagerTransmit.cpp
+  src/Presonus/Mixer/PreDelayFormatterT6.cpp
+  src/Presonus/Mixer/PreDelayFormatterT7.cpp
+  src/Presonus/Mixer/PreDelayFormatterT8.cpp
+  src/Presonus/Network/WIFIManager.cpp
+  src/Presonus/Network/WIFITasks.cpp
 )
 set(PRESONUS_cs18_SOURCES
   src/application/SurfaceApplicationClientRelease.cpp
@@ -472,6 +480,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/Surface/PreampsPageComponent.cpp
   src/Presonus/Surface/StChannelSettingsPageComponent.cpp
   src/Presonus/ThroughputTest.cpp
+  src/Presonus/AVB/DiceManagerTransport.cpp
 )
 set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/ControlSuspender.cpp
@@ -682,6 +691,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Mixer/ChannelDCAComponent.cpp
   src/Presonus/Mixer/ParamLink.cpp
   src/Presonus/TargetedComponent.cpp
+  src/Presonus/AVB/NoaaManagerTransport.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/ParamHelper.hpp
@@ -1397,3 +1407,15 @@ set_property(SOURCE src/Presonus/UC/DataElement.cpp APPEND PROPERTY COMPILE_OPTI
 
 # Preserve accepted meter arithmetic without contraction.
 set_property(SOURCE src/Presonus/Panel/MeterLevelControl.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off)
+
+
+
+
+set_property(SOURCE src/Presonus/Network/WIFIManager.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/Network/WIFITasks.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT6.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT7.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT8.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT6.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT7.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT8.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)

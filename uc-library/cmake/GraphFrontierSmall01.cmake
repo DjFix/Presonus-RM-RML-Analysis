@@ -3,7 +3,7 @@ set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/MixerSceneLoader.c
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/SPIControl.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/FxPresetComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/PresetComponentSlotPaths.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
-set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/PresetNameManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto -fno-rtti)
+set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Panel/PresetNameManager.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/RackMixerComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/SendOutputComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)
 set_property(SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/Presonus/Mixer/GlobalComponent.cpp" APPEND PROPERTY COMPILE_OPTIONS -fno-lto)

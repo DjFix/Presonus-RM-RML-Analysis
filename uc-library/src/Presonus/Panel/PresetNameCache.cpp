@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
+#include <stdexcept>
 namespace Presonus::Panel {
 namespace {
 constexpr const char *emptyMarker = "* Empty Location *";
@@ -9,12 +10,24 @@ constexpr const char *emptyMarker = "* Empty Location *";
 PresetNameCache::CacheInfo::CacheInfo()
     : name(emptyMarker), category(nullptr) {}
 
+bool PresetNameCache::CacheInfo::isEmpty() const { return name == emptyMarker; }
+
+PresetNameCache::PresetNameCache(const char *kind, int slots)
+    : type(kind), protectedSlots(0), capacity(0), entries(slots, 5) {
+  // Native indexes allocated slots rather than Vector::count(). Express this
+  // with initialized logical entries using the actual pinned provider capacity.
+  capacity = entries.getCapacity();
+  for (int i = 0; i < capacity; ++i)
+    entries.add(Entry());
+}
+PresetNameCache::~PresetNameCache() = default;
+
 PresetNameCache::PresetNameCache(const char *kind,
                                  const Core::Portable::FileName &path,
                                  int slots, int protectedCount,
                                  ObserverSink &callback)
     : type(kind), folder(path), protectedSlots(protectedCount), capacity(slots),
-      sink(callback) {
+      sink(&callback) {
   for (int i = 0; i < slots; ++i) {
     Entry e;
     e.name = emptyMarker;
@@ -116,8 +129,10 @@ void PresetNameCache::cachePreset(const char *name, const char *category,
   for (int i = 0, count = observers.count(); i < count; ++i)
     if (auto *receiver = receiverFor(observers[i]))
       receiver->cacheChanged(*this, slot, name, category);
+    else if (sink)
+      sink->changed(observers[i], *this, slot, name, category);
     else
-      sink.changed(observers[i], *this, slot, name, category);
+      throw std::logic_error("opaque observer requires a source-port sink");
 }
 void PresetNameCache::rebuild() {
   if (!dirty)
@@ -136,8 +151,10 @@ void PresetNameCache::rebuild() {
   for (int i = 0, count = observers.count(); i < count; ++i)
     if (auto *receiver = receiverFor(observers[i]))
       receiver->cacheRebuilt(*this);
+    else if (sink)
+      sink->rebuilt(observers[i], *this);
     else
-      sink.rebuilt(observers[i], *this);
+      throw std::logic_error("opaque observer requires a source-port sink");
 }
 void PresetNameCache::addCategory(const char *category) {
   categories.add(Core::CString32(category));

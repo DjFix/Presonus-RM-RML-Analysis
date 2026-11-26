@@ -1,0 +1,6 @@
+add_executable(mackie_host_queries_replay tests/recovery/mackie_host_queries/Replay.cpp)
+target_compile_options(mackie_host_queries_replay PRIVATE -UNDEBUG -Ulinux)
+target_link_libraries(mackie_host_queries_replay PRIVATE presonus::uc PresonusCore::Provider)
+target_link_options(mackie_host_queries_replay PRIVATE -Wl,--wrap=rand)
+add_test(NAME MackieHostQueriesReplay COMMAND "${PRESONUS_REPOSITORY_ROOT}/uc-library/.venv/bin/python" "uc-library/tests/recovery/mackie_host_queries/check.py" replay "$<TARGET_FILE:mackie_host_queries_replay>")
+set_tests_properties(MackieHostQueriesReplay PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}")

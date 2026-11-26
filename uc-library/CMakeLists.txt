@@ -701,6 +701,15 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/element.hpp
   presonus/uc/meta_element.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/avb/dice_manager_transport.hpp
+  presonus/avb/manager_transport.hpp
+  presonus/avb/noaa_manager_transport.hpp
+  presonus/mixer/PreDelayFormatterT6.hpp
+  presonus/mixer/PreDelayFormatterT7.hpp
+  presonus/mixer/PreDelayFormatterT8.hpp
+  presonus/network/WIFIManager.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")
@@ -854,3 +863,18 @@ include(cmake/tests/Next39Replays.cmake)
 include(cmake/tests/Control10x20Replays.cmake)
 
 include(cmake/tests/AcceptedSubsystemReplays.cmake)
+
+include(cmake/tests/WifiManagerReplays.cmake)
+
+include(cmake/tests/PresetCacheManagerReplays.cmake)
+
+include(cmake/tests/PredelayChildrenReplays.cmake)
+
+include(cmake/tests/MackieQueries.cmake)
+
+include(cmake/tests/AvbRoleReplays.cmake)
+
+include(cmake/tests/WifiUiReplays.cmake)
+
+target_compile_options(wifi_manager_replay PRIVATE -UNDEBUG -Ulinux)
+target_compile_options(PresetCacheManagerReplay PRIVATE -UNDEBUG -Ulinux)

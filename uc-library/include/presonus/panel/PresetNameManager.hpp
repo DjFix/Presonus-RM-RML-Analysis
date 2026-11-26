@@ -9,8 +9,16 @@ class PresetNameCache;
 class PresetNameManager : public Core::Portable::Singleton<PresetNameManager> {
 public:
   PresetNameManager();
+  ~PresetNameManager() override;
+  // Source-port ownership forbids copying registrations; no original copy ABI
+  // claim.
+  PresetNameManager(const PresetNameManager &) = delete;
+  PresetNameManager &operator=(const PresetNameManager &) = delete;
+  void registerPresetType(const char *, char, const char *, int, int,
+                          const char **, int);
+  char getPresetTypeName(const char *) const;
   PresetNameManager(PresetNameCache *const *items, int count);
-  // Borrowed entries; this is the only authoritative cache collection.
+  // Explicit convenience additions are borrowed; original registrations owned.
   bool sourcePortAddCache(PresetNameCache *cache) { return caches.add(cache); }
   // The original ordinary return type is unresolved.
   int countCaches() const;
@@ -29,5 +37,6 @@ public:
 
 private:
   Core::Vector<PresetNameCache *> caches;
+  Core::Vector<PresetNameCache *> ownedCaches;
 };
 } // namespace Presonus::Panel

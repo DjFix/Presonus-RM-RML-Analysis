@@ -74,6 +74,10 @@ public:
   void updateDisplayData();
   // Independent source-port bytes corresponding to observed native reads.
   std::array<unsigned char, 8> hostConnectionIdentity{};
+  // Independent source-port challenge state; no original layout claim.
+  std::array<unsigned char, 4> hostConnectionChallenge{};
+  void sendHostConnectionQuery();
+  void sendHostConnectionQueryAlternative();
   void sendHostConnectionConfirmation(bool);
   void initConnection();
   void updateAssignmentData();

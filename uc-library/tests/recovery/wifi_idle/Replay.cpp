@@ -5,10 +5,8 @@
 #include <memory>
 #include <string>
 #include <vector>
-// Fixture-only complete opaque token; production never defines WIFIManager.
-namespace Presonus {
-class WIFIManager {};
-} // namespace Presonus
+// Use the accepted production WIFIManager; fixture dependencies own
+// observations.
 namespace {
 using namespace Core::Portable;
 std::uint32_t bits(float v) {

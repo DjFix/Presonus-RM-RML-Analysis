@@ -1,9 +1,42 @@
 #include "presonus/panel/PresetNameManager.hpp"
 #include "presonus/panel/PresetNameCache.hpp"
 #include <cstring>
+#include <memory>
+#include <new>
 DEFINE_SINGLETON(Presonus::Panel::PresetNameManager)
 namespace Presonus::Panel {
 PresetNameManager::PresetNameManager() : caches(10, 5) {}
+PresetNameManager::~PresetNameManager() {
+  for (int i = 0; i < ownedCaches.count(); ++i)
+    delete ownedCaches[i];
+}
+void PresetNameManager::registerPresetType(const char *type, char discriminator,
+                                           const char *folder, int slots,
+                                           int protectedSlots,
+                                           const char **categories, int count) {
+  if (lookupCache(type))
+    return;
+  auto cache = std::make_unique<PresetNameCache>(type, slots);
+  cache->typeName = discriminator;
+  cache->folder = Core::Portable::FileName(folder);
+  cache->protectedSlots = protectedSlots;
+  for (int i = 0; i < count; ++i)
+    cache->addCategory(categories[i]);
+  // Unlike native allocation-failure leakage, source-port ownership is guarded.
+  if (!ownedCaches.add(cache.get()))
+    throw std::bad_alloc();
+  if ((caches.count() == caches.getCapacity() &&
+       !caches.resize(caches.count() + 1)) ||
+      !caches.add(cache.get())) {
+    ownedCaches.removeLast();
+    throw std::bad_alloc();
+  }
+  cache.release();
+}
+char PresetNameManager::getPresetTypeName(const char *type) const {
+  auto *cache = lookupCache(type);
+  return cache ? cache->typeName : '?';
+}
 PresetNameManager::PresetNameManager(PresetNameCache *const *items, int count)
     : caches(10, 5) {
   for (int i = 0; i < count; ++i)
@@ -12,7 +45,7 @@ PresetNameManager::PresetNameManager(PresetNameCache *const *items, int count)
 
 PresetNameCache *PresetNameManager::lookupCache(const char *name) const {
   for (int i = 0; i < caches.count(); ++i)
-    if (std::strcmp(caches[i]->type.str(), name ? name : "") == 0)
+    if (caches[i] && std::strcmp(caches[i]->type.str(), name ? name : "") == 0)
       return caches[i];
   return nullptr;
 }

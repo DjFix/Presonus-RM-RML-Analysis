@@ -14,6 +14,7 @@ public:
   // Source-port state: named original scope; no original layout claim.
   struct CacheInfo {
     CacheInfo();
+    bool isEmpty() const;
     Core::CString64 name;
     Core::CString32 category;
   };
@@ -35,6 +36,8 @@ public:
   };
   void sourcePortBindReceiver(Delegate *, Receiver *);
   void sourcePortUnbindReceiver(Delegate *);
+  PresetNameCache(const char *type, int slots);
+  virtual ~PresetNameCache();
   PresetNameCache(const char *type, const Core::Portable::FileName &folder,
                   int slots, int protectedSlots, ObserverSink &sink);
   bool parseFileName(const Core::Portable::FileName &,
@@ -62,6 +65,7 @@ private:
   friend struct presonus::panel::PresetCacheAccess;
   using Entry = CacheInfo;
   Core::CString64 type;
+  char typeName = '?';
   Core::Portable::FileName folder;
   bool dirty = true;
   int protectedSlots;
@@ -75,6 +79,7 @@ private:
   };
   Core::Vector<Binding> receivers;
   Receiver *receiverFor(Delegate *) const;
-  ObserverSink &sink;
+  // Original construction has no injected opaque observer provider.
+  ObserverSink *sink = nullptr;
 };
 } // namespace Presonus::Panel

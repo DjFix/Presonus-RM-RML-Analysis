@@ -1,4 +1,5 @@
 #pragma once
+#include "core/public/corestringbuffer.h"
 
 namespace Presonus::DICE {
 class SysexPacket;
@@ -8,7 +9,8 @@ class SysexPacket;
 }
 namespace presonus::avb {
 struct ReceiveContext;
-}
+class ManagerTransport;
+} // namespace presonus::avb
 
 namespace Presonus::AVB {
 class AvbListener;
@@ -37,6 +39,32 @@ public:
 
   // Portable count declarations. Original return spelling and virtuality
   // remain unresolved.
+  // Source-port return choices; exact original ordinary declarations pending.
+  void removeListener(AvbListener *listener);
+  int resizeListener(unsigned char identifier, unsigned char channels);
+  int setAudioClockToListener(AvbListener *listener);
+  AvbListener *addListener(unsigned long long identifier, unsigned short suffix,
+                           unsigned char channels);
+  int resizeTalker(unsigned char identifier, unsigned char channels);
+  void removeTalker(AvbTalker *talker);
+  AvbTalker *addTalker(unsigned char channels);
+  int publish(unsigned char identifier, bool enabled);
+  int sendAvbSysex(unsigned char command, unsigned char *payload, int length);
+  // ARM arguments prove these helpers have no this argument. Return spelling
+  // and upper16 parser return bits remain unresolved; the port initializes
+  // them.
+  static unsigned long long macAddressStringToLong(Core::CString256 &text);
+  static void macAddressToString(Core::CString256 &text,
+                                 unsigned long long value);
+  int subscribe(unsigned char identifier, unsigned long long streamKey);
+  void removeAllListeners();
+  int startAvb(unsigned char first, unsigned char second, bool enabled);
+  int configureMasterFirewireRecording(bool enabled);
+  void stopAvb();
+  virtual bool accepts(const NOAA::SysexPacket &packet);
+
+  // Borrowed initialized real receiver/transport composition; setup only.
+  void bindTransport(presonus::avb::ManagerTransport &transport);
   int numActiveListeners();
   int numFreeListeners();
   int numFreeTalkers();
@@ -54,7 +82,9 @@ public:
   }
 
 private:
+  friend class presonus::avb::ManagerTransport;
   int streamCapacity() const;
+  presonus::avb::ManagerTransport *transport_ = nullptr;
   int streamCapacity_ = 0;
   presonus::avb::ReceiveContext *receiveContext_ = nullptr;
 };
