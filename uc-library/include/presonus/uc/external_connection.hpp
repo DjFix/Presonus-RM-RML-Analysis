@@ -12,20 +12,24 @@ struct ExternalConnectionState {
 };
 } // namespace presonus::uc
 namespace Presonus::UC {
-// Original RTTI-proven Connection base. Source-port constructor with actual
-// borrowed Basic state; no original constructor, layout or ARM ABI claim.
+// Original RTTI-proven Connection base. Both original-named owning and
+// independent borrowed source constructors retain explicit layout/ABI limits.
 class ExternalConnection : public Connection {
 public:
   ExternalConnection(presonus::uc::ExternalConnectionState &state,
                      presonus::uc::ConnectionState &common,
                      presonus::uc::BasicConnectionState &outgoing)
       : Connection(common, outgoing), state_(state) {}
+  ExternalConnection(ConnectionHandler &, IDataChannel *);
+  ~ExternalConnection() override;
+  bool process(bool) override;
   void adjustRouting(Event &, bool) override;
   bool handleInternal(const Event &) override;
   int getType() const override;
   void getAddress(const char *&, unsigned short &) const override;
 
 private:
+  presonus::uc::ExternalConnectionState ownedState_;
   presonus::uc::ExternalConnectionState &state_;
 };
 } // namespace Presonus::UC

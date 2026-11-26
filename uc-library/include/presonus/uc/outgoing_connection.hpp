@@ -8,10 +8,18 @@ public:
                      presonus::uc::BasicConnectionState &outgoing,
                      presonus::uc::SocketConnectionState &socket)
       : SocketConnection(tag, state, outgoing, socket) {}
+  OutgoingConnection(ConnectionHandler &, const char *, unsigned short,
+                     unsigned short);
+  ~OutgoingConnection() override;
+  bool activate();
+  void deactivate();
   static OutgoingConnection *cast(Connection *);
   int getType() const override;
-  // Explicit unsupported original overrides, not production stub bodies.
-  bool process(bool) override = 0;
-  bool reset() override = 0;
+  // Original-named lifecycle with actual CCL transport; no ARM ABI claim.
+  bool process(bool) override;
+  bool reset() override;
+
+private:
+  std::uint32_t retries_ = 0;
 };
 } // namespace Presonus::UC

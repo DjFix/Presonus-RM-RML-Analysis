@@ -40,3 +40,42 @@ Results: 6 stop regressions, 8 fake-session publication tests, 21 isolated compa
 facts tests and 10 budget tests passed. Driver sentinel fails any attempted graph
 connection in stop tests. Production stop is checked even if policy is missing or
 an environment variable requests writes. Fixture roots without policy are allowed.
+
+
+## Reviewed maintenance window after an accepted, committed package
+
+The default policy remains stopped. The reviewed v2 state `maintenance_update`
+allows graph maintenance only after Root records the user's chosen package scope
+and its actual accepted, committed boundary. This does not select that package,
+launch a refresh, restart production cycles or make graph updates a reconstruction
+issuance prerequisite. SQLite-only issuance is unchanged.
+
+Root must first verify actual package acceptance and the resulting full 40-character
+Git commit. Preserve the acceptance/commit evidence and create a reviewed local
+boundary receipt with exactly these fields:
+
+```json
+{"version":1,"package_scope":"ACTUAL_REVIEWED_PACKAGE_SCOPE","commit":"ACTUAL_40_HEX_COMMIT","accepted":true,"committed":true}
+```
+
+This receipt is a reviewed operator attestation, not an independent Git/acceptance
+verifier. Never fill it from a planned commit or from candidate classification
+counts. Keep it inside the project and bind its exact bytes in the policy:
+
+```json
+{"version":2,"production_graph_updates":"maintenance_update","authority":"EXACT_NEW_USER_INSTRUCTION_REFERENCE","boundary":{"receipt":{"path":"PROJECT_RELATIVE_RECEIPT_PATH","sha256":"ACTUAL_64_HEX_RECEIPT_DIGEST"},"package_scope":"ACTUAL_REVIEWED_PACKAGE_SCOPE","commit":"ACTUAL_40_HEX_COMMIT"}}
+```
+
+Both graph-update and production storage-write guards require the same valid
+policy/receipt. Missing, malformed, duplicate-key, oversized, unknown-version or
+unknown-permission inputs cannot authorize writes. Wrong scope/commit, changed
+receipt bytes, unaccepted/uncommitted receipts, external paths and receipt symlinks
+escaping the project are rejected. Policy-less isolated fixture roots and SQLite
+files outside production graph storage retain their prior behavior.
+
+Only after that reviewed boundary, launch the specifically authorized maintenance
+refresh with the user's hourly monitoring mechanism and persist its actual task ID
+and schedule. No launch is performed by this interlock. On terminal graph work,
+restore the stopped policy before any subsequent reconstruction cycle. Do not
+resume an old journal or another worker batch automatically. Preserve journals,
+logs and the exact maintenance authorization/receipt as evidence.

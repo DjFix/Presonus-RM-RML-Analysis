@@ -2,14 +2,17 @@
 #include "core/portable/coresingleton.h"
 #include "core/public/corestringbuffer.h"
 #include "core/public/corevector.h"
+#include "presonus/uc/discovery_attributes.hpp"
 #include "presonus/uc/discovery_handler.hpp"
 #include "presonus/uc/network_manager_services.hpp"
 #include <cstdint>
+#include <memory>
 #include <optional>
 namespace Presonus::UC {
 class MulticastConnection;
 class IDiscoveryReplyHandler;
 class UDPDiscoveryEntry;
+struct DiscoveryAliveEvent;
 } // namespace Presonus::UC
 namespace presonus::uc {
 struct DiscoverySourcePortTag {};
@@ -18,10 +21,15 @@ class DiscoveryEntryOwnership;
 struct DiscoveryEntryState {
   std::uint8_t flag0 = 0;
   std::uint8_t dirty = 0;
+  std::uint8_t changed = 0;
+  std::int64_t lastSeenMilliseconds = 0;
+  std::uint32_t missedReplies = 0;
   std::uint8_t flag3 = 0;
   std::uint8_t flag4 = 0;
   Core::CStringBuffer<128> host;
   std::uint16_t port = 0;
+  std::uint16_t replyPort = 0;
+  Presonus::UC::DiscoveryAttributes attributes;
   std::int32_t identifier = 0;
   std::uint32_t versionWord = 0;
   Core::CStringBuffer<64> displayName;
@@ -33,6 +41,7 @@ struct DiscoveryHandlerState {
   // Required only by new owning lifecycle methods; old borrowed methods do not
   // use it.
   DiscoveryEntryOwnership *ownership = nullptr;
+  std::shared_ptr<DiscoveryEntryOwnership> ownedEntries;
   Presonus::UC::MulticastConnection *connection = nullptr;
   Presonus::UC::IDiscoveryReplyHandler *reply = nullptr;
   std::uint8_t browsing = 0;
@@ -70,14 +79,15 @@ public:
   void restartBrowsing() override;
   void removeServer(UDPDiscoveryEntry *);
   void unregisterServer(void *) override;
-  // Unrecovered original slots remain pure: no production callback stubs.
-  bool registerServer(void *&, const DiscoveryDescriptor &, int) override = 0;
-  void processDiscovery() override = 0;
+  bool registerServer(void *&, const DiscoveryDescriptor &, int) override;
+  void processDiscovery() override;
   void onMulticastEvent(const char *, unsigned short, unsigned short, int,
-                        EventItem *) override = 0;
+                        EventItem *) override;
   virtual void setReplyHandler(IDiscoveryReplyHandler *);
   virtual bool startBrowsing();
   virtual void stopBrowsing();
+  UDPDiscoveryEntry *addServer(const char *, unsigned short, unsigned short,
+                               const DiscoveryAliveEvent &);
   UDPDiscoveryEntry *find(const char *, unsigned short, int) const;
   UDPDiscoveryEntry *findLocal(int) const;
   virtual void updateServer(void *, const char *);

@@ -9,8 +9,8 @@
 #include <type_traits>
 static_assert(std::is_abstract_v<Presonus::UC::Connection>);
 static_assert(std::is_abstract_v<Presonus::UC::SocketConnection>);
-static_assert(std::is_abstract_v<Presonus::UC::OutgoingConnection>);
-static_assert(std::is_abstract_v<Presonus::UC::ExternalConnection>);
+static_assert(!std::is_abstract_v<Presonus::UC::OutgoingConnection>);
+static_assert(!std::is_abstract_v<Presonus::UC::ExternalConnection>);
 static_assert(
     std::is_base_of_v<Presonus::UC::BasicConnection, Presonus::UC::Connection>);
 static_assert(std::is_base_of_v<Presonus::UC::Connection,

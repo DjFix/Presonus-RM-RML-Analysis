@@ -32,6 +32,13 @@ public:
   virtual ~MeterBallistics();
   virtual float setLevel(float);
   float idleSetLevel(float);
+  // Source-port return follows idleSetLevel; original return declaration is
+  // unresolved.
+  float idle();
+  // Independent source-port configuration; no original method/ABI credit.
+  void configureSourcePortDecayRate(float rate) noexcept {
+    state_.decayRate = rate;
+  }
   // The original base has pure virtual effect slots. Concrete storage here is
   // an independent portable compatibility policy for existing direct users.
   struct Effects {

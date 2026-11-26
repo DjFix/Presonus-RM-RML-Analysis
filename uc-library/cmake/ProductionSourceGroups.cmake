@@ -293,6 +293,35 @@ set(PRESONUS_common_SOURCES
   src/Presonus/LPCProgrammer.cpp
   src/Presonus/UUX/FirmwareUpdater.cpp
   src/Presonus/GRMeterMaid.cpp
+  src/Presonus/SLChannelLifecycle.cpp
+  src/Presonus/SLChannelInitialization.cpp
+  src/Presonus/SLChannelLinking.cpp
+  src/Presonus/SLChannelMetering.cpp
+  src/Presonus/SLStereoChannel.cpp
+  src/Presonus/SLCascadeMeteringChannel.cpp
+  src/Presonus/SLRackFXBusComponent.cpp
+  src/Presonus/SLRackFXReturnComponent.cpp
+  src/Presonus/SLRackMonoBusComponent.cpp
+  src/Presonus/SLRackMonoMainComponent.cpp
+  src/Presonus/SLRackStereoLineComponent.cpp
+  src/Presonus/SLRackStereoMainComponent.cpp
+  src/Presonus/SLRackTalkbackComponent.cpp
+  src/Presonus/MixerClientSelection.cpp
+  src/Presonus/MeterBallisticsIdle.cpp
+  src/Presonus/UC/ClientParameterChanges.cpp
+  src/Presonus/UC/ClientRootParameterChanges.cpp
+  src/Presonus/UC/ConnectionLifetime.cpp
+  src/Presonus/UC/ConnectionTransport.cpp
+  src/Presonus/UC/ConnectionTransportProvider.cpp
+  src/Presonus/UC/SocketConnectionLifecycle.cpp
+  src/Presonus/UC/SocketConnectionProtocol.cpp
+  src/Presonus/UC/OutgoingConnection.cpp
+  src/Presonus/UC/ExternalConnectionLifecycle.cpp
+  src/Presonus/IMixerComponentObserver.cpp
+  src/Presonus/UC/MulticastConnectionLifecycle.cpp
+  src/Presonus/UC/MulticastConnectionProcess.cpp
+  src/Presonus/UC/MulticastDatagramProvider.cpp
+  src/Presonus/UC/UDPDiscoveryProtocol.cpp
 )
 set(PRESONUS_cs18_SOURCES
   src/application/SurfaceApplicationClientRelease.cpp
@@ -1462,3 +1491,37 @@ set_property(SOURCE src/Presonus/Panel/StaticElement.cpp APPEND PROPERTY COMPILE
 
 # ExactnewGRsourceflagcorrection; retainexistingMeterBallistics/MeterMaid RTTImodes.
 set_property(SOURCE src/Presonus/GRMeterMaid.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+# Exact accepted current-package source modes.
+# Scoped proposed source flags: preserve incumbent source modes/RTTI/FP flags.
+set_property(SOURCE src/Presonus/SLChannelLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLChannelInitialization.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLChannelLinking.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLChannelMetering.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLStereoChannel.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLCascadeMeteringChannel.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackFXBusComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackFXReturnComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackMonoBusComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackMonoMainComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackStereoLineComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackStereoMainComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/SLRackTalkbackComponent.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/MixerClientSelection.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/MeterBallisticsIdle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ClientParameterChanges.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ClientRootParameterChanges.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++20;-O0;-fno-sized-deallocation;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ConnectionLifetime.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ConnectionTransport.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ConnectionTransportProvider.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/SocketConnectionLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/SocketConnectionProtocol.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/OutgoingConnection.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/ExternalConnectionLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+
+# Exact accepted Connection prerequisite generation; zero Discovery admission credit.
+set_property(SOURCE src/Presonus/UC/MulticastConnectionLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/MulticastConnectionProcess.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/MulticastDatagramProvider.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/UDPDiscoveryLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")
+set_property(SOURCE src/Presonus/UC/UDPDiscoveryProtocol.cpp APPEND PROPERTY COMPILE_OPTIONS "-std=c++17;-O2;-Ulinux")

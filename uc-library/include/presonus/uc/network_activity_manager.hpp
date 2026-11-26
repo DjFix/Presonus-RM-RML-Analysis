@@ -2,6 +2,7 @@
 #include "core/portable/coresingleton.h"
 #include "core/public/corevector.h"
 #include "core/system/corethread.h"
+#include "presonus/uc/events.hpp"
 #include <array>
 namespace presonus::uc {
 // Independent opaque projection. Original getActivityInfo returns app+8;
@@ -13,7 +14,17 @@ struct NetworkActivityPortTag {};
 struct NetworkActivityPortAccess;
 } // namespace presonus::uc
 namespace Presonus::UC {
-class ILowLevelNetworkListener;
+// Explicit portable listener contract for the observed slot0 send callback.
+// Native method names, return declaration and full vtable remain unresolved;
+// this spelling supplies no original listener method/mangling or ARM ABI
+// credit.
+class ILowLevelNetworkListener {
+public:
+  virtual void sourcePortEventSent(int, const Event &, int, const char *) = 0;
+
+protected:
+  ~ILowLevelNetworkListener() = default;
+};
 // Original RTTI identifies this base and exactly four pure slots. Return types
 // below are explicit source-port choices, not original declaration recovery.
 class INetworkActivityManager {
@@ -60,6 +71,8 @@ private:
 } // namespace Presonus::UC
 namespace presonus::uc {
 struct NetworkActivityPortAccess {
+  static void recordSent(Presonus::UC::NetworkActivityManager &, int,
+                         const Presonus::UC::Event &, int, const char *);
   static auto &listeners(Presonus::UC::NetworkActivityManager &manager) {
     return manager.listeners_;
   }

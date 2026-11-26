@@ -12,6 +12,9 @@ namespace Presonus::UC {
 // getData reference return remains a portable declaration choice.
 class EventItem : public Core::IntrusiveLink<EventItem> {
 public:
+  // Application source-port state for the native caller-supplied transport
+  // flags. Zero is the actual factory default; this is not an ARM layout claim.
+  int sourcePortTransportFlags = 0;
   virtual ~EventItem();
   virtual Event &getData() = 0;
 };

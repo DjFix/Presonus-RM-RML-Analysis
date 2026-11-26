@@ -64,6 +64,7 @@ struct PortableMixerState {
 };
 
 class SLChannelBase;
+class MappableMixer;
 
 class MixerClientComponentBase {
 public:
@@ -76,6 +77,12 @@ public:
   virtual Core::Portable::Component *getChannelGroup(ChannelType) const;
   ChannelType getChannelGroupType(const Core::Portable::Component &) const;
   SLChannelBase *getSelectedChannel() const;
+  void channelSelected(SLChannelBase *);
+  // Independent borrowed composition, not original multiple inheritance.
+  // Bind the actual observer owner on every mixer used as a master-chain root.
+  void bindSourcePortSelectionObservers(MappableMixer &observer) {
+    selectionObservers_ = &observer;
+  }
   virtual bool isStereoChannelType(ChannelType type) const;
   // Portable int32 return choice. Original spelling/signedness is unresolved.
   virtual std::int32_t getNumGeqs() const;
@@ -111,6 +118,7 @@ private:
   Core::Portable::Component ownedChannelGroups_;
   Core::Portable::Component *channelGroups_ = &ownedChannelGroups_;
   mutable SLChannelBase *selectedChannel_ = nullptr;
+  MappableMixer *selectionObservers_ = nullptr;
 };
 
 // Original inheritance is not asserted by this portable declaration.

@@ -1,0 +1,9 @@
+[Unit]
+Description=Read-only hourly observation of opencs-graph-resume01.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/rs/projects/opencs/ai-line-analysis
+ExecStart=/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python -B /home/rs/projects/opencs/ai-line-analysis/dependency-graph/maintenance/monitor.py --config /home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling-c001-20261124/graph-resume01/monitor/CONFIG.json --out /home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling-c001-20261124/graph-resume01/monitor/records
+TimeoutStartSec=45
+Restart=no

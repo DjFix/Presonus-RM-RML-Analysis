@@ -717,6 +717,24 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/mixer/PreDelayFormatterT8.hpp
   presonus/network/WIFIManager.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/SLCascadeMeteringChannel.hpp
+  presonus/SLRackFXBusComponent.hpp
+  presonus/SLRackFXReturnComponent.hpp
+  presonus/SLRackMonoBusComponent.hpp
+  presonus/SLRackMonoMainComponent.hpp
+  presonus/SLRackStereoLineComponent.hpp
+  presonus/SLRackStereoMainComponent.hpp
+  presonus/SLRackTalkbackComponent.hpp
+  presonus/SLStereoChannel.hpp
+  presonus/uc/ConnectionTransportProvider.hpp
+)
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/uc/MulticastDatagramProvider.hpp
+)
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/uc/discovery_attributes.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")
@@ -928,3 +946,7 @@ install(FILES
 install(FILES "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/share/doc/libcurl4-openssl-dev/copyright"
   "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/PROVIDER.json"
   DESTINATION share/presonus_uc/providers/curl-8.5.0)
+
+if(BUILD_TESTING)
+  include(cmake/tests/CurrentPackage67.cmake)
+endif()

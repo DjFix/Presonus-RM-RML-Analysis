@@ -1,0 +1,530 @@
+{
+  "kind": "original same-ELF native caller AND actual assigned base-body execution; external effects intercepted",
+  "producer_sha256": "c164b85691c40e30a6e7562b0f181a392c112806d25894b6417b00c6d96e7b00",
+  "observations": [
+    {
+      "original": {
+        "anchor": "1f2550dbd9703718f3e86f511b1582d5050bf1b9b0a5d33463c2994b698ab39c",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnection7processEb",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "address": 258640,
+        "size": 144,
+        "section": 12,
+        "range_sha256": "092fc580fc4c6216b8f4a083821bef2b9a8814a966dd9ad34235edbde8727fb7",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "section_name": ".text",
+        "file_offset": 225872,
+        "architecture": "arm",
+        "range_hex": "0dc0a0e130d82de9b03190e504b04ce2000053e30040a0e10150a0e11300000a0510a0e10400a0e1a3ffffebb03194e5000053e330a89d080300a0e10110a0e3003093e50fe0a0e118f093e5000050e330a89d080000a0e32c109fe50020a0e1990800eb0130a0e33030c4e530a89de80c0080e214adffeb000050e3e7ffff1a0400a0e179f8ffebe4ffffea50341900"
+      },
+      "nested_original": {
+        "anchor": "8c7fdeca1469c1079f9bff6ff33c43b27d327ed5f6a2a12d56a5448736eee3c2",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "mangled": "_ZN8Presonus2UC10Connection7processEb",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "address": 258316,
+        "size": 140,
+        "section": 12,
+        "range_sha256": "319dc83be4deb3ec1bb3614e0d112bb9fa876720eb555944f43ddf9af7feed13",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "section_name": ".text",
+        "file_offset": 225548,
+        "architecture": "arm",
+        "range_hex": "0dc0a0e130d82de93c3190e504b04ce2000053e30040a0e10150a0e11700000a1dfaffeb000050e30f00000a0510a0e10400a0e189ffffeb000050e30100001a0130a0e33030c4e5515f84e2000000eae4f9ffeb0500a0e12baeffeb001050e20400a0e1f9ffff1a30a89de8000055e3edffff1a0130a0e33030c4e5efffffea0c0080e239aeffebeeffffea"
+      },
+      "cases": [
+        {
+          "input": {
+            "mode": "empty",
+            "queued": 0,
+            "resolve": 0,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 173852,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 258316
+            },
+            {
+              "boundary": "flush",
+              "address": 174716,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 174616,
+              "r0": 8388932,
+              "r1": 0
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "mode": "failure",
+            "queued": 1,
+            "resolve": 0,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 173852,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 251072,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 258316
+            },
+            {
+              "boundary": "flush",
+              "address": 174716,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 174616,
+              "r0": 8388932,
+              "r1": 0
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "mode": "success",
+            "queued": 1,
+            "resolve": 1,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 173852,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 251072,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 258316
+            },
+            {
+              "boundary": "read",
+              "address": 252328,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "write",
+              "address": 257900,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 174616,
+              "r0": 8388932,
+              "r1": 0
+            },
+            {
+              "boundary": "error",
+              "address": 260572,
+              "r0": 8519680,
+              "r1": 1
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "input": {
+            "mode": "posterror",
+            "queued": 1,
+            "resolve": 1,
+            "post_error": 1
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 173852,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 251072,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 258316
+            },
+            {
+              "boundary": "read",
+              "address": 252328,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "write",
+              "address": 257900,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 174616,
+              "r0": 8388932,
+              "r1": 0
+            },
+            {
+              "boundary": "error",
+              "address": 260572,
+              "r0": 8519680,
+              "r1": 1
+            },
+            {
+              "boundary": "report",
+              "address": 267548,
+              "r0": 0,
+              "r1": 1651792,
+              "format": "Outgoing socket is in error state!!!"
+            }
+          ],
+          "writes": [
+            [
+              48,
+              1,
+              1
+            ]
+          ],
+          "projection": [
+            1,
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "channel_vtable": {
+        "address": 1652696,
+        "section": 14,
+        "file_offset": 1619928,
+        "sha256": "b4767b76560ad1fb6875e32ea8c1c7efdb1c5df70e78cce6229e418baf5a9d00",
+        "hasErrors_slot6": 260572
+      }
+    },
+    {
+      "original": {
+        "anchor": "18163700854fcbcb01603de5f34eee5162f0c09107e002ace5b075a14fc17675",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnection7processEb",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "address": 981920,
+        "size": 144,
+        "section": 12,
+        "range_sha256": "98486504572f1f189f1540cee63e2655fbc00277e9b8a879c2b2e5e5497140eb",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "section_name": ".text",
+        "file_offset": 949152,
+        "architecture": "arm",
+        "range_hex": "0dc0a0e130d82de9b03190e504b04ce2000053e30040a0e10150a0e11300000a0510a0e10400a0e1a3ffffebb03194e5000053e330a89d080300a0e10110a0e3003093e50fe0a0e118f093e5000050e330a89d080000a0e32c109fe50020a0e1990800eb0130a0e33030c4e530a89de80c0080e2edadffeb000050e3e7ffff1a0400a0e179f8ffebe4ffffea505f3600"
+      },
+      "nested_original": {
+        "anchor": "f39db91024c8fad4a27a08a6acb336b0710ef46708dbcb740e19cb29088ff722",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus2UC10Connection7processEb",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "address": 981596,
+        "size": 140,
+        "section": 12,
+        "range_sha256": "2cc019af75894591433456e51aab476556fe90eb1095ba381e5551c1005cf485",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "section_name": ".text",
+        "file_offset": 948828,
+        "architecture": "arm",
+        "range_hex": "0dc0a0e130d82de93c3190e504b04ce2000053e30040a0e10150a0e11700000a1dfaffeb000050e30f00000a0510a0e10400a0e189ffffeb000050e30100001a0130a0e33030c4e5515f84e2000000eae4f9ffeb0500a0e104afffeb001050e20400a0e1f9ffff1a30a89de8000055e3edffff1a0130a0e33030c4e5efffffea0c0080e212afffebeeffffea"
+      },
+      "cases": [
+        {
+          "input": {
+            "mode": "empty",
+            "queued": 0,
+            "resolve": 0,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 898000,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 981596
+            },
+            {
+              "boundary": "flush",
+              "address": 898864,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 898764,
+              "r0": 8388932,
+              "r1": 0
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "mode": "failure",
+            "queued": 1,
+            "resolve": 0,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 898000,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 974352,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 981596
+            },
+            {
+              "boundary": "flush",
+              "address": 898864,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 898764,
+              "r0": 8388932,
+              "r1": 0
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "input": {
+            "mode": "success",
+            "queued": 1,
+            "resolve": 1,
+            "post_error": 0
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 898000,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 974352,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 981596
+            },
+            {
+              "boundary": "read",
+              "address": 975608,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "write",
+              "address": 981180,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 898764,
+              "r0": 8388932,
+              "r1": 0
+            },
+            {
+              "boundary": "error",
+              "address": 983852,
+              "r0": 8519680,
+              "r1": 1
+            }
+          ],
+          "writes": [],
+          "projection": [
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "input": {
+            "mode": "posterror",
+            "queued": 1,
+            "resolve": 1,
+            "post_error": 1
+          },
+          "calls": [
+            {
+              "boundary": "empty",
+              "address": 898000,
+              "r0": 8388620,
+              "r1": 0
+            },
+            {
+              "boundary": "activate",
+              "address": 974352,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "actual-native-Connection::process",
+              "address": 981596
+            },
+            {
+              "boundary": "read",
+              "address": 975608,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "write",
+              "address": 981180,
+              "r0": 8388608,
+              "r1": 0
+            },
+            {
+              "boundary": "retrieve",
+              "address": 898764,
+              "r0": 8388932,
+              "r1": 0
+            },
+            {
+              "boundary": "error",
+              "address": 983852,
+              "r0": 8519680,
+              "r1": 1
+            },
+            {
+              "boundary": "report",
+              "address": 990828,
+              "r0": 0,
+              "r1": 3563344,
+              "format": "Outgoing socket is in error state!!!"
+            }
+          ],
+          "writes": [
+            [
+              48,
+              1,
+              1
+            ]
+          ],
+          "projection": [
+            1,
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "channel_vtable": {
+        "address": 3564248,
+        "section": 14,
+        "file_offset": 3531480,
+        "sha256": "a956f0b64f6ca38bdd1f57700a026ec9ccd8e872bc473e3a736d5c16e0924ccd",
+        "hasErrors_slot6": 983852
+      }
+    }
+  ]
+}

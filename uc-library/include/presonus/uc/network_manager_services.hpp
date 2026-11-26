@@ -128,6 +128,8 @@ struct NetworkManagerState {
   const Presonus::UC::MessageChunkEvent &(*chunkView)(
       void *, const Presonus::UC::Event &) = nullptr;
   Core::IO::Buffer &(*storage)(void *, Presonus::UC::EventItem &) = nullptr;
+  // Optional existing observer/provider hook. sendEvent always populates the
+  // genuine EventItem source-port transport state before calling this hook.
   void (*storeFlags)(void *, Presonus::UC::EventItem &, int) = nullptr;
   void (*reportOversized)(void *) = nullptr;
   // Independent initialized source-port state, not recovered ARM fields.

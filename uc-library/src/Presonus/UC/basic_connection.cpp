@@ -29,6 +29,7 @@ bool BasicConnection::queueEvent(void *opaque) {
   return true;
 }
 bool BasicConnection::hasQueuedEvents() const {
-  return owned_ ? !state_.queue->isEmpty() : state_.storage->head != nullptr;
+  return (owned_ || state_.storage->owned) ? !state_.queue->isEmpty()
+                                           : state_.storage->head != nullptr;
 }
 } // namespace Presonus::UC

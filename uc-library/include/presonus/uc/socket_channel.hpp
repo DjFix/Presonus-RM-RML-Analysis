@@ -1,4 +1,5 @@
 #pragma once
+#include "core/network/coresocket.h"
 #include "core/public/corestringbuffer.h"
 #include "presonus/uc/connection.hpp"
 namespace presonus::uc {
@@ -9,6 +10,8 @@ namespace presonus::uc {
 struct SocketConnectionState {
   Core::CStringBuffer<256> remoteAddress;
   unsigned short remotePort = 0;
+  unsigned short periodicPort = 0;
+  Core::Sockets::IPAddress resolvedAddress;
 };
 struct SocketConnectionSourcePortTag {};
 struct SocketChannelIO {
@@ -31,13 +34,13 @@ public:
                    presonus::uc::BasicConnectionState &outgoing,
                    presonus::uc::SocketConnectionState &socket)
       : Connection(state, outgoing), socket_(socket) {}
+  SocketConnection(ConnectionHandler &, int);
+  ~SocketConnection() override;
   void getAddress(const char *&, unsigned short &) const override;
-  // Original Socket overrides exist, but bodies remain unrecovered here.
-  // Pure source-port markers avoid inherited base behavior masquerading as
-  // recovered Socket behavior. Test adapters must never execute these paths.
-  bool handleInternal(const Event &) override = 0;
-  bool sendPeriodicEvent(const Event &) override = 0;
-  class Channel {
+  // Original-named overrides use explicit typed app/CCL source providers.
+  bool handleInternal(const Event &) override;
+  bool sendPeriodicEvent(const Event &) override;
+  class Channel : public IDataChannel {
   public:
     explicit Channel(presonus::uc::SocketChannelIO &io) : io_(io) {}
     // Virtualness and method order are proved by both original ELF vtables.
@@ -48,15 +51,22 @@ public:
     virtual int getGranularity();
     virtual int write(const void *, int);
     virtual bool hasErrors(int);
-    // Independent PORTABLE lifetime helper only. Original D1/D0 destructor
-    // semantics, socket ownership, inheritance and ARM ABI are NOT recovered.
-    virtual ~Channel() = default;
+    // Owning construction deletes the genuine CCL socket; borrowed I/O does
+    // not acquire ownership. Original private layout/ARM ABI remain unknown.
+    virtual ~Channel();
+    // Independent owning provider constructor; legacy CoreSocket ABI absent.
+    explicit Channel(std::unique_ptr<Core::Sockets::Socket>);
+    Core::Sockets::Socket *sourceSocket() { return socket_.get(); }
 
   private:
+    std::unique_ptr<Core::Sockets::Socket> socket_;
+    presonus::uc::SocketChannelIO ownedIO_;
     presonus::uc::SocketChannelIO &io_;
   };
 
-private:
+protected:
+  presonus::uc::SocketConnectionState ownedSocketState_;
   presonus::uc::SocketConnectionState &socket_;
+  std::unique_ptr<Channel> ownedChannel_;
 };
 } // namespace Presonus::UC

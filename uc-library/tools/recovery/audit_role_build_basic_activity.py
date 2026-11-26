@@ -167,6 +167,23 @@ NO_SIZED_DEALLOCATION_SOURCES = frozenset({
     'src/Presonus/UC/StringListElement.cpp',
     'src/surface_panel/ControlHelpers.cpp',
     'src/surface_panel/DigitalPotControl.cpp',
+    'src/Presonus/SLChannelLifecycle.cpp',
+    'src/Presonus/SLChannelInitialization.cpp',
+    'src/Presonus/SLChannelLinking.cpp',
+    'src/Presonus/SLChannelMetering.cpp',
+    'src/Presonus/SLStereoChannel.cpp',
+    'src/Presonus/SLCascadeMeteringChannel.cpp',
+    'src/Presonus/SLRackFXBusComponent.cpp',
+    'src/Presonus/SLRackFXReturnComponent.cpp',
+    'src/Presonus/SLRackMonoBusComponent.cpp',
+    'src/Presonus/SLRackMonoMainComponent.cpp',
+    'src/Presonus/SLRackStereoLineComponent.cpp',
+    'src/Presonus/SLRackStereoMainComponent.cpp',
+    'src/Presonus/SLRackTalkbackComponent.cpp',
+    'src/Presonus/MixerClientSelection.cpp',
+    'src/Presonus/MeterBallisticsIdle.cpp',
+    'src/Presonus/UC/ClientParameterChanges.cpp',
+    'src/Presonus/UC/ClientRootParameterChanges.cpp',
 })
 
 

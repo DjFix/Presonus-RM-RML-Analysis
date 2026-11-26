@@ -1,6 +1,8 @@
+#include "presonus/uc/MulticastDatagramProvider.hpp"
 #include "presonus/uc/discovery_ownership.hpp"
 #include "presonus/uc/multicast_connection.hpp"
 #include "presonus/uc/no_member_events.hpp"
+#include "presonus/uc/source_default_factory.hpp"
 #include <algorithm>
 #include <cstring>
 #include <new>
@@ -47,7 +49,11 @@ void DiscoveryEntryOwnership::destroy(Presonus::UC::UDPDiscoveryEntry *view) {
 } // namespace presonus::uc
 namespace Presonus::UC {
 UDPDiscoveryHandler::UDPDiscoveryHandler()
-    : ownedState_(std::in_place), state_(*ownedState_) {}
+    : ownedState_(std::in_place), state_(*ownedState_) {
+  state_.ownedEntries =
+      std::make_shared<presonus::uc::DiscoveryEntryOwnership>();
+  state_.ownership = state_.ownedEntries.get();
+}
 
 UDPDiscoveryHandler::UDPDiscoveryHandler(const UDPDiscoveryHandler &other)
     : ownedState_(other.ownedState_),
@@ -102,6 +108,22 @@ void UDPDiscoveryHandler::unregisterServer(void *identity) {
     leave.header.reserved04 = 16;
     leave.header.routeA = static_cast<std::uint32_t>(entry->state_.identifier);
     leave.header.routeB = 0;
+    presonus::uc::MulticastDatagramProvider datagram(*state_.connection);
+    auto *factory = datagram.sourceState().outgoing.factory;
+    presonus::uc::DiscoveryLeaveFactoryCodec *codec = nullptr;
+    if (factory && presonus::uc::DefaultFactorySourceAccess::owner(*factory))
+      codec = &presonus::uc::DefaultFactoryProvider<
+          PrimitiveEventClassNoMembers<DiscoveryLeaveEvent, 17484>>::get();
+    if (codec)
+      codec->bind(leave);
+    struct Unbind {
+      presonus::uc::DiscoveryLeaveFactoryCodec *codec;
+      DiscoveryLeaveEvent &value;
+      ~Unbind() {
+        if (codec)
+          codec->unbind(value);
+      }
+    } unbind{codec, leave};
     state_.connection->sendEvent(leave.header);
   }
   state_.entries.remove(entry);

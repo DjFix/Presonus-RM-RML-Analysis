@@ -5,12 +5,16 @@ void Connection::adjustRouting(Event &, bool) {}
 bool Connection::sendPeriodicEvent(const Event &) { return false; }
 bool Connection::reset() { return false; }
 void *Connection::findSender(int id) const {
+  if (owned_)
+    return findOwnedSender(id, false);
   for (std::size_t i = 0; i < state_.senderCount; ++i)
     if (state_.senders[i].remoteBits == static_cast<std::uint32_t>(id))
       return state_.senders[i].identity;
   return nullptr;
 }
 void *Connection::findSenderWithLocalID(int id) const {
+  if (owned_)
+    return findOwnedSender(id, true);
   for (std::size_t i = 0; i < state_.senderCount; ++i)
     if (state_.senders[i].localBits == static_cast<std::uint32_t>(id))
       return state_.senders[i].identity;
@@ -26,6 +30,8 @@ void Connection::initChannel() {
           : static_cast<std::uint32_t>((4096 / granularity) * granularity);
 }
 bool Connection::handleInternal(const Event &event) {
+  if (owned_)
+    return handleOwnedInternal(event);
   if (event.type != 19537u)
     return false;
   presonus::uc::ConnectionReplyView reply;

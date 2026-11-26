@@ -1,0 +1,2571 @@
+{
+  "kind": "exact ARM range execution with intercepted external boundaries",
+  "observations": [
+    {
+      "original": {
+        "anchor": "c29f5f70602fc0574e41d25ea510c2d06a26331aaf5fcedec3973cbd6116be8c",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD0Ev",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "address": 254084,
+        "size": 76,
+        "section": 12,
+        "range_sha256": "b21e0050750fa89c2fd6864ccc6af838bca6ff80be897d7c97c02162cfc52a61",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "section_name": ".text",
+        "file_offset": 221316,
+        "architecture": "arm",
+        "range_hex": "40309fe50dc0a0e130d82de904b04ce2003080e50050a0e1e2fcffeb0500a0e1ddffffeb0500a0e12a33ffeb0500a0e130a89de80040a0e10500a0e1d6ffffeb0400a0e15933ffeb28351900"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZdlPv@@GLIBCXX_3.4",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZdlPv@@GLIBCXX_3.4",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "375c03e5be800a69411c1fbd8d15befbceb84d868899c19b22ade255759fc95f",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 1652696,
+          "section": 14,
+          "file_offset": 1619928,
+          "sha256": "b4767b76560ad1fb6875e32ea8c1c7efdb1c5df70e78cce6229e418baf5a9d00",
+          "slots": [
+            {
+              "address": 260928,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 260880,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 260784,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 260760,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 259360,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 260732,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 260572,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 260668,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 260596,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 1652056,
+          "section": 14,
+          "file_offset": 1619288,
+          "sha256": "930ee344da400b460fab84aa43db49e618ceded8c352609e5da39645ccb980dc",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 253884,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 253776,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45640,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258316,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 1652000,
+          "section": 14,
+          "file_offset": 1619232,
+          "sha256": "602e3eb7e8c7841db9cbfe72d8a290bc4b461ce5c0ba9cbff3247be6500a9454",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 254160,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 254084,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259300,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258640,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 251008,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 1651888,
+          "section": 14,
+          "file_offset": 1619120,
+          "sha256": "ae7e0943a588ed1c296df415747b3d8d639102283dedbb51de8f5f9e96ebde17",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 261004,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 260952,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259340,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248196,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258456,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 248232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 248300,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 259280,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "original": {
+        "anchor": "4a697590e8347eeb829bf4535ae13a3a5c6b2797b99c322c10f3904025f51b38",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD1Ev",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "address": 254160,
+        "size": 68,
+        "section": 12,
+        "range_sha256": "bf2177d3932a3023998545b214929bb8edda762704c228bd6336aed44add9780",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "section_name": ".text",
+        "file_offset": 221392,
+        "architecture": "arm",
+        "range_hex": "38309fe50dc0a0e130d82de904b04ce2003080e50050a0e1cffcffeb0500a0e1caffffeb0500a0e130a89de80040a0e10500a0e1c5ffffeb0400a0e14833ffeb28351900"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "375c03e5be800a69411c1fbd8d15befbceb84d868899c19b22ade255759fc95f",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 1652696,
+          "section": 14,
+          "file_offset": 1619928,
+          "sha256": "b4767b76560ad1fb6875e32ea8c1c7efdb1c5df70e78cce6229e418baf5a9d00",
+          "slots": [
+            {
+              "address": 260928,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 260880,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 260784,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 260760,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 259360,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 260732,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 260572,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 260668,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 260596,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 1652056,
+          "section": 14,
+          "file_offset": 1619288,
+          "sha256": "930ee344da400b460fab84aa43db49e618ceded8c352609e5da39645ccb980dc",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 253884,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 253776,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45640,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258316,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 1652000,
+          "section": 14,
+          "file_offset": 1619232,
+          "sha256": "602e3eb7e8c7841db9cbfe72d8a290bc4b461ce5c0ba9cbff3247be6500a9454",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 254160,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 254084,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259300,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258640,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 251008,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 1651888,
+          "section": 14,
+          "file_offset": 1619120,
+          "sha256": "ae7e0943a588ed1c296df415747b3d8d639102283dedbb51de8f5f9e96ebde17",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 261004,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 260952,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259340,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248196,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258456,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 248232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 248300,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 259280,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "original": {
+        "anchor": "946375b154ffa207ab37406f96ee68f1b64c1f652c287c73a497c7401d0ee344",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD2Ev",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "address": 254228,
+        "size": 68,
+        "section": 12,
+        "range_sha256": "089fe4e3abd01e6511fcf2809a830f59eda4f5026366b079f07216e6adc51070",
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "section_name": ".text",
+        "file_offset": 221460,
+        "architecture": "arm",
+        "range_hex": "38309fe50dc0a0e130d82de904b04ce2003080e50050a0e1befcffeb0500a0e1b9ffffeb0500a0e130a89de80040a0e10500a0e1b4ffffeb0400a0e13733ffeb28351900"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              1652008
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "375c03e5be800a69411c1fbd8d15befbceb84d868899c19b22ade255759fc95f",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 1652696,
+          "section": 14,
+          "file_offset": 1619928,
+          "sha256": "b4767b76560ad1fb6875e32ea8c1c7efdb1c5df70e78cce6229e418baf5a9d00",
+          "slots": [
+            {
+              "address": 260928,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 260880,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 260784,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 260760,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 259360,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 260732,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 260572,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 260668,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 260596,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 1652056,
+          "section": 14,
+          "file_offset": 1619288,
+          "sha256": "930ee344da400b460fab84aa43db49e618ceded8c352609e5da39645ccb980dc",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 253884,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 253776,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45640,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258316,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 1652000,
+          "section": 14,
+          "file_offset": 1619232,
+          "sha256": "602e3eb7e8c7841db9cbfe72d8a290bc4b461ce5c0ba9cbff3247be6500a9454",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 254160,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 254084,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259300,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248100,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258640,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 251008,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 259264,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 249428,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 251320,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 1651888,
+          "section": 14,
+          "file_offset": 1619120,
+          "sha256": "ae7e0943a588ed1c296df415747b3d8d639102283dedbb51de8f5f9e96ebde17",
+          "slots": [
+            {
+              "address": 175380,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 178096,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 261004,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 260952,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 259340,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 248196,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 258456,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 247712,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 248232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 248300,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 259280,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "original": {
+        "anchor": "b011fc042b00fa517cbaa56aef55a75b873c1cf21f8277861b9f9cf66631b1be",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD0Ev",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "address": 977364,
+        "size": 76,
+        "section": 12,
+        "range_sha256": "3adb5a3ce20be8f732eabf61ec48e2c8b152c16d2163a07f9457a26fe727d947",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "section_name": ".text",
+        "file_offset": 944596,
+        "architecture": "arm",
+        "range_hex": "40309fe50dc0a0e130d82de904b04ce2003080e50050a0e1e2fcffeb0500a0e1ddffffeb0500a0e18370fceb0500a0e130a89de80040a0e10500a0e1d6ffffeb0400a0e1ac70fceb28603600"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZdlPv@@GLIBCXX_3.4",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZdlPv@@GLIBCXX_3.4",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "560f9851d590ca77583772cc7a418fea4f8348d9e6d9625c6cabb22c4ea11d8d",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 3564248,
+          "section": 14,
+          "file_offset": 3531480,
+          "sha256": "a956f0b64f6ca38bdd1f57700a026ec9ccd8e872bc473e3a736d5c16e0924ccd",
+          "slots": [
+            {
+              "address": 984208,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 984160,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 984064,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 984040,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 982640,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 984012,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 983852,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 983948,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 983876,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 3563608,
+          "section": 14,
+          "file_offset": 3530840,
+          "sha256": "ad037f121a4c54b38e9fa6dfbf5aea10cfebea844e9d10843c8e156ae544e6eb",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977164,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977056,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45260,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981596,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 3563552,
+          "section": 14,
+          "file_offset": 3530784,
+          "sha256": "6ef60e27976a63883e7b77bd5c14e9441b19e2def9112a58691a8f18aa235d19",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977440,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977364,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982580,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981920,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 974288,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 3563440,
+          "section": 14,
+          "file_offset": 3530672,
+          "sha256": "f44668e46768738eb3dd86b017f1dd67833e2d796a8308aae705ff434f705a97",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 984284,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 984232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982620,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971476,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981736,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 971512,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 971580,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 982560,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "original": {
+        "anchor": "faf28889abf275dea75836385a6565756e1353a22f4886da88a86f78d3ea2bdd",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD1Ev",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "address": 977440,
+        "size": 68,
+        "section": 12,
+        "range_sha256": "33c1291ed8994082d86da0f64f0e1d500b953f73df0a22d62ec679d6ec1e6dd9",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "section_name": ".text",
+        "file_offset": 944672,
+        "architecture": "arm",
+        "range_hex": "38309fe50dc0a0e130d82de904b04ce2003080e50050a0e1cffcffeb0500a0e1caffffeb0500a0e130a89de80040a0e10500a0e1c5ffffeb0400a0e19b70fceb28603600"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "560f9851d590ca77583772cc7a418fea4f8348d9e6d9625c6cabb22c4ea11d8d",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 3564248,
+          "section": 14,
+          "file_offset": 3531480,
+          "sha256": "a956f0b64f6ca38bdd1f57700a026ec9ccd8e872bc473e3a736d5c16e0924ccd",
+          "slots": [
+            {
+              "address": 984208,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 984160,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 984064,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 984040,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 982640,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 984012,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 983852,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 983948,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 983876,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 3563608,
+          "section": 14,
+          "file_offset": 3530840,
+          "sha256": "ad037f121a4c54b38e9fa6dfbf5aea10cfebea844e9d10843c8e156ae544e6eb",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977164,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977056,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45260,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981596,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 3563552,
+          "section": 14,
+          "file_offset": 3530784,
+          "sha256": "6ef60e27976a63883e7b77bd5c14e9441b19e2def9112a58691a8f18aa235d19",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977440,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977364,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982580,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981920,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 974288,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 3563440,
+          "section": 14,
+          "file_offset": 3530672,
+          "sha256": "f44668e46768738eb3dd86b017f1dd67833e2d796a8308aae705ff434f705a97",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 984284,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 984232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982620,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971476,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981736,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 971512,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 971580,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 982560,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "original": {
+        "anchor": "d1af40bbb568a7f67572490493e03a24956d4ab1e04205d16a1d07335e915184",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "mangled": "_ZN8Presonus2UC18OutgoingConnectionD2Ev",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "address": 977508,
+        "size": 68,
+        "section": 12,
+        "range_sha256": "fc7e2c83f6eeb11cb2be82d93d4d452a2712a41d480a64d23a46beb5d257ebf4",
+        "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+        "section_name": ".text",
+        "file_offset": 944740,
+        "architecture": "arm",
+        "range_hex": "38309fe50dc0a0e130d82de904b04ce2003080e50050a0e1befcffeb0500a0e1b9ffffeb0500a0e130a89de80040a0e10500a0e1b4ffffeb0400a0e18a70fceb28603600"
+      },
+      "cases": [
+        {
+          "input": {
+            "active": 0,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 0,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        },
+        {
+          "input": {
+            "active": 1,
+            "drain": 0,
+            "retry": 0,
+            "write_result": 1,
+            "read_result": 1,
+            "queue_count": 0,
+            "route": 0,
+            "internal": 0,
+            "update": 0,
+            "payload": 6,
+            "capacity": 64,
+            "position": 0,
+            "port": 0,
+            "resolve": 0,
+            "flags": 0,
+            "periodic_result": 1,
+            "observers": 0,
+            "type": 2,
+            "initial_bytes": 0,
+            "initial_packets": 0,
+            "host_length": 9,
+            "null_host": 0
+          },
+          "calls": [
+            {
+              "boundary": "_ZN8Presonus2UC18OutgoingConnection10deactivateEv",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            },
+            {
+              "boundary": "_ZN8Presonus2UC16SocketConnectionD2Ev",
+              "r0": 8388608,
+              "r1": 0,
+              "r2": 0,
+              "detail": []
+            }
+          ],
+          "writes": [
+            [
+              8388608,
+              4,
+              3563560
+            ]
+          ],
+          "result_bits": 8388608,
+          "error_byte": 1,
+          "retry_bits": 0,
+          "channel_bits": 8519680,
+          "periodic_port": 0,
+          "writer_position": 0,
+          "constructor_name": "127.0.0.1",
+          "counter_bytes": 0,
+          "counter_packets": 0
+        }
+      ],
+      "static_context_sha256": "560f9851d590ca77583772cc7a418fea4f8348d9e6d9625c6cabb22c4ea11d8d",
+      "vtable_targets": {
+        "16SocketConnection7Channel": {
+          "address": 3564248,
+          "section": 14,
+          "file_offset": 3531480,
+          "sha256": "a956f0b64f6ca38bdd1f57700a026ec9ccd8e872bc473e3a736d5c16e0924ccd",
+          "slots": [
+            {
+              "address": 984208,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isReadableEi"
+              ]
+            },
+            {
+              "address": 984160,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel17getBytesAvailableEv"
+              ]
+            },
+            {
+              "address": 984064,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel4readEPvi"
+              ]
+            },
+            {
+              "address": 984040,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel10isWritableEi"
+              ]
+            },
+            {
+              "address": 982640,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel14getGranularityEv"
+              ]
+            },
+            {
+              "address": 984012,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel5writeEPKvi"
+              ]
+            },
+            {
+              "address": 983852,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7Channel9hasErrorsEi"
+              ]
+            },
+            {
+              "address": 983948,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD1Ev"
+              ]
+            },
+            {
+              "address": 983876,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection7ChannelD0Ev"
+              ]
+            }
+          ]
+        },
+        "16SocketConnection": {
+          "address": 3563608,
+          "section": 14,
+          "file_offset": 3530840,
+          "sha256": "ad037f121a4c54b38e9fa6dfbf5aea10cfebea844e9d10843c8e156ae544e6eb",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977164,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977056,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 45260,
+              "names": [
+                "__cxa_pure_virtual@@CXXABI_1.3"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981596,
+              "names": [
+                "_ZN8Presonus2UC10Connection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18OutgoingConnection": {
+          "address": 3563552,
+          "section": 14,
+          "file_offset": 3530784,
+          "sha256": "6ef60e27976a63883e7b77bd5c14e9441b19e2def9112a58691a8f18aa235d19",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 977440,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 977364,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982580,
+              "names": [
+                "_ZNK8Presonus2UC18OutgoingConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971380,
+              "names": [
+                "_ZNK8Presonus2UC16SocketConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981920,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection7processEb"
+              ]
+            },
+            {
+              "address": 974288,
+              "names": [
+                "_ZN8Presonus2UC18OutgoingConnection5resetEv"
+              ]
+            },
+            {
+              "address": 982544,
+              "names": [
+                "_ZN8Presonus2UC10Connection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 972708,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 974600,
+              "names": [
+                "_ZN8Presonus2UC16SocketConnection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        },
+        "18ExternalConnection": {
+          "address": 3563440,
+          "section": 14,
+          "file_offset": 3530672,
+          "sha256": "f44668e46768738eb3dd86b017f1dd67833e2d796a8308aae705ff434f705a97",
+          "slots": [
+            {
+              "address": 899528,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection10queueEventEPv"
+              ]
+            },
+            {
+              "address": 902244,
+              "names": [
+                "_ZN8Presonus2UC15BasicConnection9sendEventERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 984284,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD1Ev"
+              ]
+            },
+            {
+              "address": 984232,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnectionD0Ev"
+              ]
+            },
+            {
+              "address": 982620,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection7getTypeEv"
+              ]
+            },
+            {
+              "address": 971476,
+              "names": [
+                "_ZNK8Presonus2UC18ExternalConnection10getAddressERPKcRt"
+              ]
+            },
+            {
+              "address": 981736,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection7processEb"
+              ]
+            },
+            {
+              "address": 970992,
+              "names": [
+                "_ZN8Presonus2UC10Connection5resetEv"
+              ]
+            },
+            {
+              "address": 971512,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection13adjustRoutingERNS0_5EventEb"
+              ]
+            },
+            {
+              "address": 971580,
+              "names": [
+                "_ZN8Presonus2UC18ExternalConnection14handleInternalERKNS0_5EventE"
+              ]
+            },
+            {
+              "address": 982560,
+              "names": [
+                "_ZN8Presonus2UC10Connection17sendPeriodicEventERKNS0_5EventE"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

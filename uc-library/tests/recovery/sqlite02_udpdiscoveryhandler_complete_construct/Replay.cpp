@@ -1,3 +1,4 @@
+#include "presonus/uc/discovery_ownership.hpp"
 #include "presonus/uc/udp_discovery.hpp"
 
 #include <cassert>
@@ -53,13 +54,17 @@ int main(int argc, char **argv) {
   for (int i = 0; i < 4; ++i) {
     const bool allocated = !constructor && i % 2 == 1;
     arrayFreed = false;
+    std::weak_ptr<DiscoveryEntryOwnership> ownedRegistry;
     {
       Fixture object;
       auto &state = object.discoveryState();
       assert(state.entries.getDelta() == 5);
       assert(state.entries.getCapacity() == 0 && state.entries.isEmpty());
       assert(!state.entries.getItems());
-      assert(!state.connection && !state.reply && !state.ownership);
+      assert(!state.connection && !state.reply);
+      assert(state.ownedEntries && state.ownership == state.ownedEntries.get());
+      assert(state.ownership->count() == 0);
+      ownedRegistry = state.ownedEntries;
       assert(!state.browsing && !state.counter28 && !state.counter2c);
       if (allocated) {
         const bool added = state.entries.add(&entry);
@@ -68,6 +73,7 @@ int main(int argc, char **argv) {
         assert(vectorArray && !arrayFreed);
       }
     }
+    assert(ownedRegistry.expired());
     assert(arrayFreed == allocated && entryState.identifier == 280);
     vectorArray = nullptr;
     std::cout << (constructor ? "resize 0\n"
@@ -75,6 +81,7 @@ int main(int argc, char **argv) {
                               : "destroy\n");
   }
   DiscoveryHandlerState borrowed;
+  assert(!borrowed.ownership && !borrowed.ownedEntries);
   const bool added = borrowed.entries.add(&entry);
   assert(added);
   borrowed.counter28 = 44;
@@ -88,6 +95,7 @@ int main(int argc, char **argv) {
     object.stopBrowsing();
     assert(borrowed.browsing == 0);
   }
+  assert(!borrowed.ownership && !borrowed.ownedEntries);
   assert(borrowed.counter28 == 44 && borrowed.entries.count() == 1);
   assert(borrowed.entries.getItems() == entries &&
          borrowed.entries.at(0) == &entry);

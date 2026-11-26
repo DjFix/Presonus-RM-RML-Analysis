@@ -41,7 +41,9 @@ int NetworkManager::sendEvent(const Event &event, int flags) {
   auto *item = state_.factory.create(event);
   if (!item)
     return 101;
-  state_.storeFlags(state_.context, *item, flags);
+  item->sourcePortTransportFlags = flags;
+  if (state_.storeFlags)
+    state_.storeFlags(state_.context, *item, flags);
   state_.dispatcher.queueEvent(item);
   return 0;
 }

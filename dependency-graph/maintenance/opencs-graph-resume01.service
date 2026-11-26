@@ -1,0 +1,14 @@
+[Unit]
+Description=Single reviewed graph maintenance refresh after accepted committed package
+
+[Service]
+Type=exec
+WorkingDirectory=/home/rs/projects/opencs/ai-line-analysis
+ExecStart=/home/rs/projects/opencs/ai-line-analysis/uc-library/.venv/bin/python -B /home/rs/projects/opencs/ai-line-analysis/dependency-graph/maintenance/runner.py --config /home/rs/projects/opencs/ai-line-analysis/temp/recovery-work/rolling-c001-20261124/graph-resume01/job/CONFIG.json
+RemainAfterExit=yes
+Restart=no
+KillMode=process
+SendSIGKILL=no
+TimeoutStopSec=infinity
+StandardOutput=journal
+StandardError=journal

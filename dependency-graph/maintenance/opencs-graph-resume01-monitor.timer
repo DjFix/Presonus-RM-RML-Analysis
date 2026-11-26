@@ -1,0 +1,11 @@
+[Unit]
+Description=Real hourly schedule for graph-resume01 local status
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+AccuracySec=1s
+Unit=opencs-graph-resume01-monitor.service
+
+[Install]
+WantedBy=timers.target
