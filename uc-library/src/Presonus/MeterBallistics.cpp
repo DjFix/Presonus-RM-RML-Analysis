@@ -24,7 +24,71 @@ MeterBallistics::MeterBallistics() {
   decayTable_ = &table;
 }
 
+MeterBallistics::MeterBallistics(DecayTablePolicy policy) : MeterBallistics() {
+  if (policy == DecayTablePolicy::None)
+    decayTable_ = nullptr;
+}
+
 MeterBallistics::~MeterBallistics() = default;
+
+bool MeterBallistics::isClipped() const { return effects_.clipped; }
+void MeterBallistics::setClipped(bool value) { effects_.clipped = value; }
+void MeterBallistics::setSignal(bool value) { effects_.signal = value; }
+void MeterBallistics::setMeter(float value) { effects_.meter = value; }
+void MeterBallistics::setPeak(float value) { effects_.peak = value; }
+
+float MeterBallistics::setLevel(float value) {
+  if (state_.amplitude < value)
+    state_.auxiliary[3] = 0;
+  return idleSetLevel(value);
+}
+
+float MeterBallistics::idleSetLevel(float value) {
+  if (value > 1.f)
+    value = 1.f;
+  // ARM compares this counter as a signed word and increments modulo 2^32.
+  auto &delay = state_.auxiliary[3];
+  if (delay > 4 && delay < 0x80000000u)
+    state_.amplitude -= getDecayDelta();
+  ++delay;
+  if (state_.amplitude < 0.f)
+    state_.amplitude = 0.f;
+
+  auto &hold = state_.auxiliary[0];
+  if (hold < 0x80000000u)
+    --hold;
+  else {
+    state_.peakHold -= getPeakDecayDelta();
+    if (state_.peakHold < 0.f)
+      state_.peakHold = 0.f;
+  }
+  if (value > state_.amplitude)
+    state_.amplitude = value;
+  if (state_.peakHold < state_.amplitude) {
+    state_.peakHold = state_.amplitude;
+    hold = 80;
+  }
+  setMeter(state_.amplitude);
+  setPeak(state_.active ? state_.peakHold : 0.f);
+
+  auto &signal = state_.auxiliary[2];
+  if (value > 0.0125f && !isClipped()) {
+    signal = 10;
+    setSignal(true);
+  }
+  if (signal != 0 && --signal == 0)
+    setSignal(false);
+
+  auto &clip = state_.auxiliary[1];
+  if (value > 0.99f) {
+    clip = 200;
+    setClipped(true);
+    setSignal(false);
+  }
+  if (clip != 0 && --clip == 0)
+    setClipped(false);
+  return state_.amplitude;
+}
 
 float MeterBallistics::getPeakHold() const { return state_.peakHold; }
 

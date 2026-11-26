@@ -4,6 +4,7 @@
 
 namespace Presonus {
 MeterMaid::MeterMaid() = default;
+MeterMaid::MeterMaid(DecayTablePolicy policy) : MeterBallistics(policy) {}
 MeterMaid::~MeterMaid() = default;
 
 void MeterMaid::bindParameters(Core::Portable::NumericParam *meter,

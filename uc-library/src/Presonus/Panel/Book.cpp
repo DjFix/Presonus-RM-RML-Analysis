@@ -1,5 +1,6 @@
 #include "presonus/panel/Book.hpp"
 
+#include "presonus/panel/key_input_provider.hpp"
 #include <algorithm>
 #include <cstring>
 #include <stdexcept>
@@ -116,6 +117,84 @@ std::uint32_t Book::isValidPos(int position) {
 std::uint32_t Book::getTag() const {
   return static_cast<std::uint32_t>(initialValue_);
 }
+
+bool Book::canShowPage(int position) const {
+  if (!slots_.isValidIndex(position))
+    return false;
+  auto *page = slots_.at(position);
+  // Null native receivers are excluded; the portable roster permits nulls.
+  return page && page->isEnabled() &&
+         (!page->requiresAltKey() ||
+          KeyInputProvider::instance().altKeyPressed());
+}
+void Book::switchToPage(int position) {
+  if (position == activePosition_ || !canShowPage(position))
+    return;
+  Page *previous = getActivePage();
+  const int previousPosition = activePosition_;
+  activePosition_ = std::clamp(position, 0, slots_.count() - 1);
+  zeroState94_ = static_cast<std::uint32_t>(previousPosition);
+  Page *next = getActivePage();
+  if (previous != next && previous)
+    previous->deactivate();
+  if (previous && next)
+    next->activate(previous->getName());
+}
+void Book::switchToPage(const char *name) {
+  const char *query = name ? name : "";
+  for (int i = 0; i < slots_.count(); ++i) {
+    auto *page = slots_.at(i);
+    if (page && std::strcmp(page->getName(), query) == 0) {
+      switchToPage(i);
+      return;
+    }
+  }
+}
+void Book::makeValidPos() {
+  if (isValidPos(activePosition_))
+    return;
+  const int count =
+      borrowedState_ ? borrowedState_->slots.count() : slots_.count();
+  int i = activePosition_ <= 0 ? activePosition_ + 1 : activePosition_ - 1;
+  for (; i < count; ++i)
+    if (isValidPos(i)) {
+      activePosition_ = i;
+      return;
+    }
+  activePosition_ = 0;
+}
+void Book::prepare() { makeValidPos(); }
+void Book::update(IDisplay &display) {
+  if (auto *page = getActivePage())
+    page->update(display);
+}
+void Book::recall() {
+  if (auto *page = getActivePage())
+    page->recall();
+}
+void Book::store() {
+  if (auto *page = getActivePage())
+    page->store();
+}
+void Book::next() {
+  if (auto *page = getActivePage())
+    page->nextField();
+}
+void Book::previous() {
+  if (auto *page = getActivePage())
+    page->previousField();
+}
+void Book::tap() {
+  if (auto *page = getActivePage())
+    page->tap();
+}
+void Book::deltaEncoder(int delta) {
+  if (auto *page = getActivePage())
+    page->deltaEncoder(delta);
+}
+void Book::pageup() { switchToPage(previousPage()); }
+void Book::pagedown() { switchToPage(nextPage()); }
+void Book::loadPreviousPage() { switchToPage(static_cast<int>(zeroState94_)); }
 
 void Book::togglePage() {}
 

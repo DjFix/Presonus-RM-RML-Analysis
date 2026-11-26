@@ -608,6 +608,13 @@ set(PRESONUS_UC_PUBLIC_HEADERS
   presonus/surface/PreampsPageComponent.hpp
   presonus/surface/ScenesPageComponent.hpp
   presonus/surface/StChannelSettingsPageComponent.hpp
+  presonus/panel/ElementInfo.hpp
+  presonus/uc/ParamRangeElement.hpp
+  presonus/uc/param_range.hpp
+  presonus/uc/StringElement.hpp
+  presonus/uc/StringListElement.hpp
+  presonus/MeterManager.hpp
+  presonus/GRMeterMaid.hpp
 )
 if(PRESONUS_ENABLE_UPSTREAM_CORE)
   list(APPEND PRESONUS_UC_PUBLIC_HEADERS
@@ -878,3 +885,46 @@ include(cmake/tests/WifiUiReplays.cmake)
 
 target_compile_options(wifi_manager_replay PRIVATE -UNDEBUG -Ulinux)
 target_compile_options(PresetCacheManagerReplay PRIVATE -UNDEBUG -Ulinux)
+
+# Accepted source-provider dependency: real local official curl headers/runtime.
+# IncludeaftercommonOBJECTandfacadesexist; importedCurlproviderdeclaredinProduction72.
+target_link_libraries(presonus_common_objects PRIVATE PresonusCurlSourceProvider)
+foreach(_facade presonus_uc presonus_cs18_components presonus_rm_components)
+  target_link_libraries(${_facade} PUBLIC PresonusCurlSourceProvider)
+endforeach()
+# Installedconfigmustdefine/findtheactualCurlproviderbeforeexportedfacadesload; nofakefindsuccess.
+
+if(BUILD_TESTING)
+  include(cmake/tests/Next72Text.cmake)
+  include(cmake/tests/Next72Uc.cmake)
+  include(cmake/tests/Next72Meter.cmake)
+  include(cmake/tests/Next72Mappable.cmake)
+  include(cmake/tests/Next72Lpc.cmake)
+  include(cmake/tests/Next72Daw.cmake)
+  include(cmake/tests/Next72Gr.cmake)
+  include(cmake/tests/Next72Updater.cmake)
+endif()
+
+if(BUILD_TESTING)
+  include(cmake/tests/Page32Replays.cmake)
+endif()
+
+# Exact official curl 8.5.0 header closure and license for same-host SDK relocation.
+# Runtime remains the explicitly bound system provider; no cross-host ABI claim.
+install(FILES
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/curl.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/curlver.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/easy.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/header.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/mprintf.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/multi.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/options.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/stdcheaders.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/system.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/typecheck-gcc.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/urlapi.h"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu/curl/websockets.h"
+  DESTINATION include/presonus-curl-8.5.0/curl)
+install(FILES "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/root/usr/share/doc/libcurl4-openssl-dev/copyright"
+  "${PRESONUS_REPOSITORY_ROOT}/temp/tool-env/curl-dev/PROVIDER.json"
+  DESTINATION share/presonus_uc/providers/curl-8.5.0)

@@ -10,8 +10,9 @@
 
 namespace Presonus::Panel {
 
-// Portable ownership and storage model. The original constructor and layout
-// depend on firmware-specific ElementInfo handling.
+// Portable ownership and storage with the observed 96-byte ElementInfo factory.
+// Original ARM object layout and unencoded return declarations remain
+// unresolved.
 class Page {
 public:
   // Portable parameter-capable Element interface. It leaves the legacy
@@ -25,19 +26,51 @@ public:
   // inheritance. The borrowed TextEntry must outlive this adapter.
   class TextEntrySelection final : public ParameterElement {
   public:
-    explicit TextEntrySelection(TextEntryElement &entry) : entry_(entry) {}
+    explicit TextEntrySelection(TextEntryElement &entry) : entry_(&entry) {}
+    TextEntrySelection(const ElementInfo &info,
+                       std::unique_ptr<TextEntryElement> entry)
+        : ownedEntry_(std::move(entry)), entry_(ownedEntry_.get()) {
+      static_cast<Element &>(*this) = Element(info);
+    }
+    bool editable() override;
+    bool needsToDraw() const override;
+    void activate(int mode) override;
+    void draw(IDisplay &display) override;
+    unsigned int next() override;
+    unsigned int previous() override;
+    unsigned int tap() override;
+    unsigned int deltaEncoder(int delta) override;
+    void resetCursor();
+    TextEntryElement &entry() { return *entry_; }
     Core::Portable::Parameter *parameter() const override {
-      return entry_.getParam();
+      return entry_->getParam();
     }
 
   private:
-    TextEntryElement &entry_;
+    std::unique_ptr<TextEntryElement> ownedEntry_;
+    TextEntryElement *entry_;
   };
 
   using Elements = std::vector<std::unique_ptr<Element>>;
 
   explicit Page(Elements elements = {}, std::string name = {});
+  Page(const char *name, const ElementInfo *infos, int count);
   virtual ~Page();
+  void add(Element *element);
+  virtual void nextField();
+  virtual void previousField();
+  virtual void tap();
+  void deltaEncoder(int delta);
+  bool setActiveParam(Core::Portable::Parameter *parameter);
+  bool setActiveParam(unsigned int tag);
+  virtual void activate(const char *previousPage);
+  virtual void update(IDisplay &display);
+  void updateParams();
+  void setEnabled(bool enabled) { enabled_ = enabled; }
+  void setRequiresAltKey(bool required) { requiresAltKey_ = required; }
+  bool requiresAltKey() const { return requiresAltKey_; }
+  const std::string &previousPageName() const { return previousPage_; }
+  const Elements &elements() const { return elements_; }
 
   // Model the observed unsized receiver deallocation on Linux builds.
   static void operator delete(void *storage) noexcept {
@@ -63,5 +96,9 @@ private:
   const std::string name_;
   bool enabled_ = true;
   Element *activeElement_ = nullptr;
+  bool requiresAltKey_ = false;
+  bool redraw_ = true;
+  std::string previousPage_;
+  static Core::Portable::Parameter *parameterOf(Element *element);
 };
 } // namespace Presonus::Panel

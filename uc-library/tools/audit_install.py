@@ -54,9 +54,29 @@ def main():
                         if name.startswith('include/')}
     if set(expected) & set(provider_headers):
         raise SystemExit('Application and provider header sets overlap')
+    # Separately pinned official curl SDK headers retain their own provenance.
+    # Missing/extra/unpinned headers still fail the exact installed union below.
+    curl_headers = {}
+    curl_manifest = prefix / 'share/presonus_uc/providers/curl-8.5.0/PROVIDER.json'
+    if curl_manifest.exists():
+        assert sha(curl_manifest) == 'b19c64d7605dbf2bbea3cebb422a7bf137b84b01a07ea28ee15d93bf95352703'
+        curl = json.loads(curl_manifest.read_text())
+        assert curl['header_version'] == '8.5.0' and curl['runtime_version'] == '8.5.0'
+        assert sha(Path(curl['runtime']['path'])) == curl['runtime']['sha256']
+        for row in curl['headers']:
+            origin = library.parent / row['path']
+            relative = origin.relative_to(Path(curl['include_directory']))
+            assert relative.parts[0] == 'curl' and len(relative.parts) == 2
+            assert sha(origin) == row['sha256']
+            name = 'include/presonus-curl-8.5.0/' + relative.as_posix()
+            assert name not in curl_headers
+            curl_headers[name] = row['sha256']
+        assert len(curl_headers) == 12
+        assert sha(curl_manifest.parent / 'copyright') == curl['license']['sha256']
+        assert not set(curl_headers) & (set(expected) | set(provider_headers))
     installed = {str(path.relative_to(prefix)): sha(path)
                  for path in (prefix / 'include').rglob('*') if path.is_file()}
-    if installed != {**expected, **provider_headers}:
+    if installed != {**expected, **provider_headers, **curl_headers}:
         raise SystemExit('Installed public headers differ from integrated header set')
     archive = prefix / 'lib/libpresonus_uc.a'
     output = subprocess.run([str(args.nm), '-g', str(archive)], check=True,
@@ -81,6 +101,8 @@ def main():
                   application_header_count=len(expected),
                   provider_header_count=len(provider_headers),
                   provider_header_hashes=provider_headers,
+                  curl_provider_header_hashes=curl_headers,
+                  curl_same_host_runtime_binding_only=bool(curl_headers),
                   provider_sdk_hashes=provider_files,
                   provider_sdk_matches=True,
                   ready_original_mangles=sorted(required),

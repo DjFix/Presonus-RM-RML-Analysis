@@ -1,5 +1,8 @@
 #pragma once
 
+#include "core/portable/coreparams.h"
+#include "presonus/panel/ElementInfo.hpp"
+#include "presonus/surface_panel/IDisplay.hpp"
 #include <array>
 #include <memory>
 
@@ -13,6 +16,7 @@ struct TextEntryState {
   unsigned cursor = 0;
   bool dirty = false;
   std::array<char, 32> text{};
+  int encoderRemainder = 0;
 };
 } // namespace presonus::panel::portable
 
@@ -20,10 +24,22 @@ namespace Presonus::Panel {
 class FieldElement;
 // The portable constructor owns its Field and text state by composition.
 // Original layout and unencoded return declarations remain unresolved.
-class TextEntryElement {
+class TextEntryElement : private Core::Portable::ParamObserverBase {
 public:
   TextEntryElement(int x, int y, const char *parameterName);
-  TextEntryElement(const TextEntryElement &) = default;
+  explicit TextEntryElement(const ElementInfo &info);
+  TextEntryElement(const TextEntryElement &other);
+  virtual ~TextEntryElement();
+  char getChar(int index);
+  char getCurrentChar();
+  void setCurrentChar(char character);
+  bool deltaEncoder(int delta);
+  bool tap();
+  bool next();
+  virtual void getDrawString(Core::CString128 &buffer, unsigned int flags);
+  virtual void render(IDisplay &display, bool force);
+  virtual void draw(IDisplay &display);
+  void paramChanged(Core::Portable::Parameter *parameter, int message) override;
   TextEntryElement &operator=(const TextEntryElement &) = delete;
 
   explicit TextEntryElement(presonus::panel::portable::TextEntryState &state)
@@ -47,6 +63,8 @@ public:
   bool previous();
 
 private:
+  void markDirty();
+  Core::Portable::Parameter *observed_ = nullptr;
   struct OwnedState;
   std::shared_ptr<OwnedState> owned_;
   presonus::panel::portable::TextEntryState *state_;

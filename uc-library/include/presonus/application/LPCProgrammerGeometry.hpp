@@ -1,4 +1,5 @@
 #pragma once
+#include "presonus/uc/firmware_update_listener.hpp"
 #include <array>
 #include <cstdint>
 
@@ -28,10 +29,23 @@ struct DeviceIdentityAccess;
 } // namespace presonus::lpc
 
 namespace Presonus {
-// Partial candidate declaration, never an original object-layout/lifetime
-// claim. Original constructor/destructor, fields and bases remain unrecovered.
+// Portable source state; original field declarations, bases and ARM layout
+// remain unresolved. Ordinary return declarations below are provisional.
 class LPCProgrammer {
 public:
+  LPCProgrammer(const unsigned char *image, unsigned size);
+  virtual ~LPCProgrammer();
+  int open(const char *path);
+  void printInfo();
+  void printProgress(const char *message);
+  int unlockFlash();
+  int prepareSector(unsigned first, unsigned last);
+  int eraseSector(unsigned first, unsigned last);
+  int eraseAll();
+  int copyRAM2Flash(unsigned destination, unsigned source, unsigned size);
+  // Input storage must cover the original encoder's padded reads (see replay).
+  int writeRAM(unsigned address, unsigned size, unsigned char *data);
+  int update(UC::IFirmwareUpdateListener *listener);
   explicit LPCProgrammer(presonus::lpc::GeometryOnly) noexcept {}
   // Original mangling establishes member scope/argument, but not return type.
   // unsigned is a provisional portable declaration; declaration remains
@@ -71,6 +85,15 @@ private:
   friend struct presonus::lpc::ImageGeometryAccess;
   friend struct presonus::lpc::InputAccess;
   friend struct presonus::lpc::DeviceIdentityAccess;
+  // Fixture-only partial constructors retain their prior non-owning lifetime.
+  bool originalLifecycle{};
+  const unsigned char *borrowedImage{};
+  UC::IFirmwareUpdateListener *listener{};
+  std::uint32_t baudRate{115200}, ramAddress{0x10000400},
+      commandTimeout{100000};
+  // Extra storage explicitly maps the response bytes read by the native
+  // encoder.
+  std::array<unsigned char, 520> block{};
   presonus::lpc::ImageGeometryState imageState{};
   presonus::lpc::InputState inputState{};
   presonus::lpc::DeviceIdentityState deviceIdentity{};

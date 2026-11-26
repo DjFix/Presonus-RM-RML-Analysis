@@ -44,6 +44,7 @@ public:
   Element(const Element &) = delete;
   Element &operator=(const Element &) = delete;
 
+  bool parseValue(double &value, const char *source) const;
   bool isEmpty() const;
   const MetaElement &getMetaElement() const;
   int getIndex(const Element *child) const;
@@ -79,6 +80,13 @@ struct ElementAccess {
   static const Presonus::UC::Element *
   parent(const Presonus::UC::Element &element) {
     return element.parent_;
+  }
+  static int childCount(const Presonus::UC::Element &element) {
+    return element.children_.count();
+  }
+  static Presonus::UC::Element *childAt(const Presonus::UC::Element &element,
+                                        int index) {
+    return element.children_.at(index);
   }
   static int childCapacity(const Presonus::UC::Element &element) {
     return element.children_.getCapacity();

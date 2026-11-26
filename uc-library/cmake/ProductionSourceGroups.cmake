@@ -286,6 +286,13 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Mixer/PreDelayFormatterT8.cpp
   src/Presonus/Network/WIFIManager.cpp
   src/Presonus/Network/WIFITasks.cpp
+  src/Presonus/UC/ElementValueParsing.cpp
+  src/Presonus/UC/ParamRangeElement.cpp
+  src/Presonus/UC/StringElement.cpp
+  src/Presonus/UC/StringListElement.cpp
+  src/Presonus/LPCProgrammer.cpp
+  src/Presonus/UUX/FirmwareUpdater.cpp
+  src/Presonus/GRMeterMaid.cpp
 )
 set(PRESONUS_cs18_SOURCES
   src/application/SurfaceApplicationClientRelease.cpp
@@ -481,6 +488,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/Surface/StChannelSettingsPageComponent.cpp
   src/Presonus/ThroughputTest.cpp
   src/Presonus/AVB/DiceManagerTransport.cpp
+  src/Presonus/Surface/FirmwareUpdateLifecycle.cpp
 )
 set(PRESONUS_rm_SOURCES
   src/Presonus/Dsp/ControlSuspender.cpp
@@ -692,6 +700,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/Mixer/ParamLink.cpp
   src/Presonus/TargetedComponent.cpp
   src/Presonus/AVB/NoaaManagerTransport.cpp
+  src/Presonus/MeterManager.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
   presonus/uc/ParamHelper.hpp
@@ -1419,3 +1428,37 @@ set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT8.cpp APPEND PROPERTY C
 set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT6.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
 set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT7.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
 set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT8.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Current accepted source contracts; each production CPP remains in one explicit partition.
+set_property(SOURCE src/Presonus/Panel/Element.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/FieldElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/OffscreenElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/TextEntryElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UC/ElementValueParsing.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UC/ParamRangeElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UC/StringElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UC/StringListElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/MeterBallistics.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/MeterMaid.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/GRMeterMaid.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UUX/FirmwareUpdater.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/Presonus/UUX/FirmwareUpdaterPaths.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/Presonus/UUX/FirmwareUpdaterDispatch.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/Presonus/UUX/FirmwareUpdaterHostProcess.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/Presonus/Surface/FirmwareUpdateLifecycle.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/Presonus/Surface/FirmwareUpdateCallbacks.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/application/SimpleReader.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+set_property(SOURCE src/common/FirmwareCallbackText.cpp APPEND PROPERTY COMPILE_OPTIONS -fPIC)
+add_library(PresonusCurlSourceProvider SHARED IMPORTED GLOBAL)
+set_target_properties(PresonusCurlSourceProvider PROPERTIES IMPORTED_LOCATION "/usr/lib/x86_64-linux-gnu/libcurl.so.4.8.0" INTERFACE_INCLUDE_DIRECTORIES "/home/rs/projects/opencs/ai-line-analysis/temp/tool-env/curl-dev/root/usr/include/x86_64-linux-gnu")
+# Rootmustpropagatecurldependencytoactualrolefacades/exportpackagebeforeinstalledconsumerproof.
+
+set_property(SOURCE src/Presonus/Panel/Page.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/Book.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/FillElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/Element.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/OffscreenElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Panel/StaticElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# ExactnewGRsourceflagcorrection; retainexistingMeterBallistics/MeterMaid RTTImodes.
+set_property(SOURCE src/Presonus/GRMeterMaid.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)

@@ -48,6 +48,21 @@ public:
   int previousPage();
   int nextPage();
   Core::Portable::Parameter *getActiveParam() const;
+  virtual void switchToPage(int position);
+  void switchToPage(const char *name);
+  virtual bool canShowPage(int position) const;
+  void makeValidPos();
+  virtual void prepare();
+  virtual void update(IDisplay &display);
+  virtual void recall();
+  virtual void store();
+  virtual void next();
+  virtual void previous();
+  virtual void tap();
+  void deltaEncoder(int delta);
+  void pageup();
+  void pagedown();
+  void loadPreviousPage();
 
   // Portable ownership transfer. A full or inspection-only Book leaves the
   // supplied pointer with the caller.
@@ -104,6 +119,10 @@ struct BookInspector {
   }
   static void setActivePosition(Presonus::Panel::Book &book, int position) {
     book.activePosition_ = position;
+  }
+  static void setPreviousPosition(Presonus::Panel::Book &book,
+                                  unsigned int position) {
+    book.zeroState94_ = position;
   }
   static std::uint32_t zero94(const Presonus::Panel::Book &book) {
     return book.zeroState94_;

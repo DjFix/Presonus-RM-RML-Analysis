@@ -30,12 +30,35 @@ public:
 
   MeterBallistics();
   virtual ~MeterBallistics();
+  virtual float setLevel(float);
+  float idleSetLevel(float);
+  // The original base has pure virtual effect slots. Concrete storage here is
+  // an independent portable compatibility policy for existing direct users.
+  struct Effects {
+    float meter = 0.f;
+    float peak = 0.f;
+    bool clipped = false;
+    bool signal = false;
+  };
+  const Effects &effects() const noexcept { return effects_; }
+  virtual bool isClipped() const;
+  virtual void setClipped(bool);
+  virtual void setSignal(bool);
+  virtual void setMeter(float);
+  virtual void setPeak(float);
   float getPeakHold() const;
   void reset();
   float getDecayDelta() const;
   float getPeakDecayDelta() const;
 
+protected:
+  // Zero-credit typed source-port construction policy; no original layout
+  // claim.
+  enum class DecayTablePolicy { Default, None };
+  explicit MeterBallistics(DecayTablePolicy);
+
 private:
+  friend class MeterManager;
   friend struct presonus::meter::MeterStateAccess;
   struct State {
     bool mode = false;
@@ -47,6 +70,7 @@ private:
     std::array<std::uint32_t, 4> auxiliary{};
   };
   State state_;
+  Effects effects_;
   const MeterDecayTable *decayTable_ = nullptr;
 };
 } // namespace Presonus

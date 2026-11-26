@@ -14,16 +14,19 @@ public:
   MeterMaid();
   ~MeterMaid() override;
 
-  void setMeter(float);
-  void setPeak(float);
-  void setSignal(bool);
-  void setClipped(bool);
-  bool isClipped() const;
+  void setMeter(float) override;
+  void setPeak(float) override;
+  void setSignal(bool) override;
+  void setClipped(bool) override;
+  bool isClipped() const override;
 
   void bindParameters(Core::Portable::NumericParam *meter,
                       Core::Portable::NumericParam *peak) noexcept;
   void bindIndicatorParameters(Core::Portable::NumericParam *signal,
                                Core::Portable::NumericParam *clip) noexcept;
+
+protected:
+  explicit MeterMaid(DecayTablePolicy);
 
 private:
   friend struct presonus::meter::MeterStateAccess;

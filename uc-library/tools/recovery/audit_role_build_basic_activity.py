@@ -24,32 +24,24 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
-    'src/Presonus/Network/WIFIManager.cpp',
-    'src/Presonus/Network/WIFITasks.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT6.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT7.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT8.cpp',
-
-    'src/Presonus/Panel/MeterPeakControl.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
-    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
+    'src/ColorButton.cpp',
+    'src/DefaultMeterInterpolator.cpp',
+    'src/IconManager.cpp',
+    'src/LPFControl.cpp',
     'src/ParamHelper.cpp',
-    'src/Presonus/IDAWDialogHandler.cpp',
-    'src/Presonus/SpectrumPainter.cpp',
-    'src/Presonus/Panel/FXPresetRecallComponent.cpp',
-    'src/Presonus/LcdView.cpp',
     'src/Presonus/DAWClientComponent.cpp',
-    'src/Presonus/UC/ServerRootComponent.cpp',
-    'src/application/SurfaceApplicationSkinDirectory.cpp',
-    'src/application/SurfaceApplicationClientRelease.cpp',
-    'src/Presonus/MackieControlModel.cpp',
-    'src/Presonus/Surface/FatChannelClipboardSelection.cpp',
-    'src/Presonus/Dsp/EQ5Controller.cpp',
-    'src/Presonus/DAWFocusChannel.cpp',
     'src/Presonus/DAWDeviceFolder.cpp',
     'src/Presonus/DAWDeviceSlot.cpp',
-    'src/Presonus/UC/Format/Celsius.cpp',
-    'src/Presonus/UC/Format/ChannelNameFormatter.cpp',
+    'src/Presonus/DAWFocusChannel.cpp',
+    'src/Presonus/DisplayManagerInstance.cpp',
+    'src/Presonus/Dsp/EQ5Controller.cpp',
+    'src/Presonus/GRMeterMaid.cpp',
+    'src/Presonus/IDAWDialogHandler.cpp',
+    'src/Presonus/LcdView.cpp',
+    'src/Presonus/MackieControlModel.cpp',
+    'src/Presonus/MainLCDComponent.cpp',
+    'src/Presonus/Mixer/AutoFilterGroupManager.cpp',
+    'src/Presonus/Mixer/ChannelDCAComponent.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT1.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT2.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT3.cpp',
@@ -59,49 +51,61 @@ PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
     'src/Presonus/Mixer/DecayTimeFormatterT7.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT8.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT9.cpp',
-    'src/Presonus/PageComponent.cpp',
-    'src/surface_panel/DigitalPotControl.cpp',
-    'src/Presonus/Panel/StormFrontPanelComponent.cpp',
     'src/Presonus/Mixer/FXComponent.cpp',
-    'src/Presonus/Surface/SoloPageComponent.cpp',
-    'src/IconManager.cpp',
-    'src/ColorButton.cpp',
-    'src/DefaultMeterInterpolator.cpp',
-    'src/LPFControl.cpp',
-    'src/Presonus/Mixer/AutoFilterGroupManager.cpp',
-    'src/Presonus/Mixer/ChannelDCAComponent.cpp',
+    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT6.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT7.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT8.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
+    'src/Presonus/Network/WIFIManager.cpp',
+    'src/Presonus/Network/WIFITasks.cpp',
+    'src/Presonus/PageComponent.cpp',
+    'src/Presonus/Panel/FXPresetRecallComponent.cpp',
     'src/Presonus/Panel/Fat24FrontPanelComponent.cpp',
+    'src/Presonus/Panel/MeterPeakControl.cpp',
     'src/Presonus/Panel/RogueFrontPanelComponent.cpp',
-    'src/Presonus/DisplayManagerInstance.cpp',
-    'src/Presonus/MainLCDComponent.cpp',
+    'src/Presonus/Panel/StormFrontPanelComponent.cpp',
+    'src/Presonus/SpectrumPainter.cpp',
     'src/Presonus/Surface/CalibrateTouchComponent.cpp',
     'src/Presonus/Surface/ChannelPresetsPageComponent.cpp',
+    'src/Presonus/Surface/FatChannelClipboardSelection.cpp',
     'src/Presonus/Surface/GeqPresetsPageComponent.cpp',
     'src/Presonus/Surface/LockoutPageComponent.cpp',
     'src/Presonus/Surface/MainScreenComponent.cpp',
     'src/Presonus/Surface/PreampsPageComponent.cpp',
     'src/Presonus/Surface/PresetsPageComponent.cpp',
     'src/Presonus/Surface/ScenesPageComponent.cpp',
+    'src/Presonus/Surface/SoloPageComponent.cpp',
     'src/Presonus/Surface/StChannelSettingsPageComponent.cpp',
     'src/Presonus/TargetedComponent.cpp',
     'src/Presonus/ThroughputTest.cpp',
+    'src/Presonus/UC/Format/Celsius.cpp',
+    'src/Presonus/UC/Format/ChannelNameFormatter.cpp',
+    'src/Presonus/UC/ServerRootComponent.cpp',
+    'src/application/SurfaceApplicationClientRelease.cpp',
+    'src/application/SurfaceApplicationSkinDirectory.cpp',
+    'src/surface_panel/DigitalPotControl.cpp',
 })
 NO_SIZED_DEALLOCATION_SOURCES = frozenset({
-    'src/Presonus/Mixer/PreDelayFormatterT6.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT7.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT8.cpp',
-
-    'src/Presonus/Panel/MeterPeakControl.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
-    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
-    'src/Presonus/UC/DataElement.cpp',
-    'src/Presonus/Dsp/CompController.cpp',
-    'src/Presonus/Dsp/GateController.cpp',
-    'src/Presonus/Dsp/EQ5Controller.cpp',
+    'src/DefaultMeterInterpolator.cpp',
+    'src/LPFControl.cpp',
     'src/Presonus/DAWDeviceFolder.cpp',
     'src/Presonus/DAWDeviceSlot.cpp',
-    'src/Presonus/UC/Format/ChannelNameFormatter.cpp',
+    'src/Presonus/DisplayManagerInstance.cpp',
+    'src/Presonus/Dsp/CompController.cpp',
+    'src/Presonus/Dsp/EQ5Controller.cpp',
+    'src/Presonus/Dsp/GateController.cpp',
     'src/Presonus/Dsp/LimiterController.cpp',
+    'src/Presonus/DspComponent.cpp',
+    'src/Presonus/GRMeterMaid.cpp',
+    'src/Presonus/IFaderUnit.cpp',
+    'src/Presonus/LinkableComponent.cpp',
+    'src/Presonus/MainLCDComponent.cpp',
+    'src/Presonus/MeterBallistics.cpp',
+    'src/Presonus/MeterMaid.cpp',
+    'src/Presonus/Mixer/AutoFilterGroupManager.cpp',
+    'src/Presonus/Mixer/BeastMixerComponent.cpp',
+    'src/Presonus/Mixer/ChannelDCAComponent.cpp',
     'src/Presonus/Mixer/DCALevelHandler.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT1.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT2.cpp',
@@ -112,52 +116,57 @@ NO_SIZED_DEALLOCATION_SOURCES = frozenset({
     'src/Presonus/Mixer/DecayTimeFormatterT7.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT8.cpp',
     'src/Presonus/Mixer/DecayTimeFormatterT9.cpp',
-    'src/Presonus/Mixer/EarlyRefFormatterT2.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT2.cpp',
-    'src/surface_panel/ControlHelpers.cpp',
-    'src/Presonus/MeterBallistics.cpp',
-    'src/Presonus/MeterMaid.cpp',
-    'src/Presonus/Mixer/EarlyRefFormatterT3.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT3.cpp',
-    'src/Presonus/Mixer/PreDelayFormatterT4.cpp',
-    'src/surface_panel/DigitalPotControl.cpp',
-    'src/Presonus/Panel/FillElement.cpp',
-    'src/Presonus/Panel/StaticElement.cpp',
-    'src/Presonus/Surface/DAWMixerHandler.cpp',
-    'src/Presonus/Panel/Element.cpp',
-    'src/Presonus/Panel/StormFrontPanelComponent.cpp',
-    'src/Presonus/Surface/MappingComponent.cpp',
-    'src/Presonus/Surface/SLMixerEncoder.cpp',
-    'src/Presonus/Surface/ScenesPageComponent.cpp',
     'src/Presonus/Mixer/EQComponent.cpp',
+    'src/Presonus/Mixer/EarlyRefFormatterT2.cpp',
+    'src/Presonus/Mixer/EarlyRefFormatterT3.cpp',
+    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
     'src/Presonus/Mixer/GEQComponent.cpp',
     'src/Presonus/Mixer/GateComponent.cpp',
     'src/Presonus/Mixer/HPFilterComponent.cpp',
     'src/Presonus/Mixer/LPFilterComponent.cpp',
     'src/Presonus/Mixer/LimiterComponent.cpp',
-    'src/Presonus/Surface/SoloPageComponent.cpp',
-    'src/DefaultMeterInterpolator.cpp',
-    'src/LPFControl.cpp',
-    'src/Presonus/DspComponent.cpp',
-    'src/Presonus/LinkableComponent.cpp',
-    'src/Presonus/DisplayManagerInstance.cpp',
-    'src/Presonus/IFaderUnit.cpp',
-    'src/Presonus/MainLCDComponent.cpp',
-    'src/Presonus/Mixer/AutoFilterGroupManager.cpp',
-    'src/Presonus/Mixer/BeastMixerComponent.cpp',
-    'src/Presonus/Mixer/ChannelDCAComponent.cpp',
     'src/Presonus/Mixer/MonoMainComponent.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT2.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT3.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT4.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT6.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT7.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT8.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
     'src/Presonus/Mixer/StormMixerComponent.cpp',
     'src/Presonus/Mixer/TapeInputComponent.cpp',
+    'src/Presonus/Panel/Book.cpp',
+    'src/Presonus/Panel/Element.cpp',
+    'src/Presonus/Panel/FieldElement.cpp',
+    'src/Presonus/Panel/FillElement.cpp',
     'src/Presonus/Panel/GambitPanelComponent.cpp',
+    'src/Presonus/Panel/MeterPeakControl.cpp',
+    'src/Presonus/Panel/OffscreenElement.cpp',
+    'src/Presonus/Panel/Page.cpp',
+    'src/Presonus/Panel/StaticElement.cpp',
+    'src/Presonus/Panel/StormFrontPanelComponent.cpp',
+    'src/Presonus/Panel/TextEntryElement.cpp',
     'src/Presonus/Panel/WolverinePanelComponent.cpp',
     'src/Presonus/Surface/AssignEditPageComponent.cpp',
     'src/Presonus/Surface/CalibrateTouchComponent.cpp',
     'src/Presonus/Surface/ChannelInfoPageComponent.cpp',
+    'src/Presonus/Surface/DAWMixerHandler.cpp',
     'src/Presonus/Surface/FirmwarePageComponent.cpp',
     'src/Presonus/Surface/GroupsEditPageComponent.cpp',
     'src/Presonus/Surface/MainScreenComponent.cpp',
+    'src/Presonus/Surface/MappingComponent.cpp',
+    'src/Presonus/Surface/SLMixerEncoder.cpp',
+    'src/Presonus/Surface/ScenesPageComponent.cpp',
+    'src/Presonus/Surface/SoloPageComponent.cpp',
     'src/Presonus/ThroughputTest.cpp',
+    'src/Presonus/UC/DataElement.cpp',
+    'src/Presonus/UC/ElementValueParsing.cpp',
+    'src/Presonus/UC/Format/ChannelNameFormatter.cpp',
+    'src/Presonus/UC/ParamRangeElement.cpp',
+    'src/Presonus/UC/StringElement.cpp',
+    'src/Presonus/UC/StringListElement.cpp',
+    'src/surface_panel/ControlHelpers.cpp',
+    'src/surface_panel/DigitalPotControl.cpp',
 })
 
 
@@ -171,7 +180,7 @@ def check_production_compile_contracts(lib, build, groups):
         if not match:continue
         source=str(Path(item['file']).resolve().relative_to(lib))
         counts[source]+=1;actual_groups[match[1]].add(source);flags_by_source[source]=flags
-        assert ('-fno-rtti' in flags) == (source in {'src/Presonus/Dsp/LimiterController.cpp','src/Presonus/DynamicsControl.cpp','src/Presonus/Mixer/DCALevelHandler.cpp','src/Presonus/Panel/GambitPanelComponent.cpp','src/Presonus/Panel/WolverinePanelComponent.cpp','src/Presonus/Panel/AlertBook.cpp','src/Presonus/Surface/MixSettingsPageComponent.cpp','src/Presonus/Surface/ChannelInfoPageComponent.cpp','src/Presonus/Mixer/TalkbackInputComponent.cpp','src/Presonus/Surface/TransportHandler.cpp','src/Presonus/Surface/FXEditPageComponent.cpp','src/Presonus/Surface/FXHomePageComponent.cpp','src/Presonus/Surface/FxPresetsPageComponent.cpp','src/Presonus/Surface/TBRoutingPageComponent.cpp','src/Presonus/Mixer/PermissionsComponent.cpp','src/Presonus/SLChannel.cpp','src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/Presonus/NOAA/TCardRouterInitialization.cpp','src/Presonus/NOAA/TCardRouterScript.cpp','src/Presonus/DICE/Dice3ManagerServices.cpp','src/portable/dice/CclManagerServices.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Dsp.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/AdditionalFormatters.cpp','src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp','src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/GateMeterInterpolators.cpp','src/Presonus/UC/MessageAttributes.cpp','src/Presonus/Dsp/ParamDescriptorList.cpp','src/Presonus/Dsp/EqSourceProviders.cpp','src/Presonus/UC/MessageAttributesEvent.cpp','src/Presonus/UC/MutableMessageEvent.cpp','src/Presonus/UC/MessageQueue.cpp','src/Presonus/Dsp/FaderInterpolator.cpp','src/Presonus/NOAA/TCardHandlerProperties.cpp','src/Presonus/NOAA/TCardUCNetHandlerIO.cpp','src/Presonus/Dsp/CompressorSourceProviders.cpp','src/Presonus/Dsp/GateSourceProviders.cpp','src/Presonus/Dsp/GEQSourceProviders.cpp','src/Presonus/NOAA/TCardRouterBusRoutes.cpp','src/Presonus/NOAA/TCardRouterGeqInputRoutes.cpp','src/Presonus/NOAA/TCardRouterMixerInputRoutes.cpp','src/Presonus/Dsp/MillisecondsFormatterSingleton.cpp','src/Presonus/UC/Format/OnOff.cpp','src/Presonus/MeterManagerBase.cpp','src/Presonus/StormMixSceneComponent.cpp','src/Presonus/PanControl.cpp','src/Presonus/LinkControl.cpp','src/Presonus/Surface/WifiSetupComponent.cpp','src/Presonus/Surface/CapturePageComponent.cpp','src/Presonus/Panel/GeqUIComponent.cpp','src/Presonus/Panel/PresetComponent.cpp','src/Presonus/Mixer/NetworkSelectComponent.cpp','src/Presonus/Surface/NetworkSetupComponent.cpp','src/Presonus/Surface/RadioToggleButton.cpp','src/Presonus/Panel/RackPanelComponent.cpp','src/Presonus/MeterControl.cpp','src/Presonus/StormMuteGroupComponent.cpp','src/Presonus/Surface/MappingComponent.cpp','src/Presonus/Surface/NetworkListSelection.cpp','src/Presonus/MeterControl.cpp','src/Presonus/MackieControlUnit.cpp','src/Presonus/MixerSceneLoader.cpp','src/Presonus/Panel/SPIControl.cpp','src/Presonus/Panel/FxPresetComponent.cpp','src/Presonus/Panel/PresetComponentSlotPaths.cpp','src/Presonus/PotControl.cpp','src/Presonus/FocusHelperButton.cpp','src/Presonus/AllMutesGroup.cpp','src/Presonus/FileMuteGroup.cpp','src/Presonus/McuVpotControl.cpp','src/Presonus/MackieControlModelHostConnection.cpp','src/Presonus/Surface/MidiMixerControls.cpp','src/Presonus/FaderUnitComponent.cpp','src/Presonus/MackieControlExtender.cpp','src/Presonus/MackieControlComponent.cpp','src/Presonus/Surface/AudioUtilitiesPage.cpp','src/Presonus/Surface/StartPageComponent.cpp','src/Presonus/Surface/FaderUtilitiesPage.cpp','src/Presonus/AVB/AvbComponentChannels.cpp','src/Presonus/AVB/SurfaceAvbComponent.cpp','src/Presonus/Mixer/NetworkSetupMixerBinding.cpp','src/Presonus/Surface/NetworkSetupSlaveLookup.cpp','src/Presonus/AssignmentHandlerRegistration.cpp','src/Presonus/Surface/DAWMixerActivation.cpp','src/Presonus/Surface/SLMixerGeqState.cpp','src/Presonus/Surface/GeqPageComponent.cpp','src/Presonus/Surface/EQPageObservers.cpp','src/Presonus/Surface/PresetsPageMappingController.cpp','src/Presonus/Surface/MappingMainMixLock.cpp','src/Presonus/Surface/SurfaceChannelComponent.cpp','src/Presonus/Surface/ScribbleStripController.cpp','src/Presonus/Surface/SurfaceOutputComponent.cpp','src/Presonus/Surface/SurfaceInputComponent.cpp','src/Presonus/Surface/MarkerPageComponent.cpp','src/Presonus/Surface/DAWDialogHandler.cpp','src/Presonus/Surface/DawFxPageMapping.cpp','src/Presonus/Surface/MidiMixerState.cpp','src/Presonus/Panel/PanelComponentLifecycle.cpp','src/Presonus/Panel/FrontPanelLifecycle.cpp','src/Presonus/Mixer/AVBRemoteMixerHandler.cpp','src/Presonus/Mixer/AVBCascadeConnections.cpp','src/Presonus/UC/ServerComponent.cpp','src/Presonus/AVB/AvbComponentRouting.cpp','src/Presonus/Panel/ChannelPresetComponent.cpp','src/Presonus/Panel/GeqPresetComponent.cpp','src/Presonus/Panel/ScenesComponent.cpp','src/Presonus/PanControlBindings.cpp','src/Presonus/MeterControlConnection.cpp','src/Presonus/MeterScaleControl.cpp','src/Presonus/Surface/MuteGroupsComponent.cpp','src/Presonus/VUMeterControl.cpp'} | PORTABLE_COMPONENT_NO_RTTI_SOURCES), source
+        assert ('-fno-rtti' in flags) == (source in {'src/Presonus/Dsp/LimiterController.cpp','src/Presonus/DynamicsControl.cpp','src/Presonus/Mixer/DCALevelHandler.cpp','src/Presonus/Panel/GambitPanelComponent.cpp','src/Presonus/Panel/WolverinePanelComponent.cpp','src/Presonus/Panel/AlertBook.cpp','src/Presonus/Surface/MixSettingsPageComponent.cpp','src/Presonus/Surface/ChannelInfoPageComponent.cpp','src/Presonus/Mixer/TalkbackInputComponent.cpp','src/Presonus/Surface/TransportHandler.cpp','src/Presonus/Surface/FXEditPageComponent.cpp','src/Presonus/Surface/FXHomePageComponent.cpp','src/Presonus/Surface/FxPresetsPageComponent.cpp','src/Presonus/Surface/TBRoutingPageComponent.cpp','src/Presonus/Mixer/PermissionsComponent.cpp','src/Presonus/SLChannel.cpp','src/Presonus/Mixer/ScaledTimeFormatter.cpp','src/Presonus/Mixer/FilterQFormatter.cpp','src/Presonus/Mixer/GeqGainFormatter.cpp','src/Presonus/Mixer/DecayTimeFormatter.cpp','src/Presonus/Mixer/FeedbackFormatter.cpp','src/Presonus/NOAA/TCardRouterInitialization.cpp','src/Presonus/NOAA/TCardRouterScript.cpp','src/Presonus/DICE/Dice3ManagerServices.cpp','src/portable/dice/CclManagerServices.cpp','src/mixer_dsp/Interpolators.cpp','src/mixer_dsp/Dsp.cpp','src/mixer_dsp/Formatters.cpp','src/mixer_dsp/AdditionalFormatters.cpp','src/Presonus/DICE/Dice3ManagerLifecycle.cpp','src/portable/dice/CclManagerOwnedRuntime.cpp','src/portable/dice/ManagerWorkerGuard.cpp','src/Presonus/Dsp/FaderCurveInterpolator.cpp','src/Presonus/Dsp/GateMeterInterpolators.cpp','src/Presonus/UC/MessageAttributes.cpp','src/Presonus/Dsp/ParamDescriptorList.cpp','src/Presonus/Dsp/EqSourceProviders.cpp','src/Presonus/UC/MessageAttributesEvent.cpp','src/Presonus/UC/MutableMessageEvent.cpp','src/Presonus/UC/MessageQueue.cpp','src/Presonus/Dsp/FaderInterpolator.cpp','src/Presonus/NOAA/TCardHandlerProperties.cpp','src/Presonus/NOAA/TCardUCNetHandlerIO.cpp','src/Presonus/Dsp/CompressorSourceProviders.cpp','src/Presonus/Dsp/GateSourceProviders.cpp','src/Presonus/Dsp/GEQSourceProviders.cpp','src/Presonus/NOAA/TCardRouterBusRoutes.cpp','src/Presonus/NOAA/TCardRouterGeqInputRoutes.cpp','src/Presonus/NOAA/TCardRouterMixerInputRoutes.cpp','src/Presonus/Dsp/MillisecondsFormatterSingleton.cpp','src/Presonus/UC/Format/OnOff.cpp','src/Presonus/StormMixSceneComponent.cpp','src/Presonus/PanControl.cpp','src/Presonus/LinkControl.cpp','src/Presonus/Surface/WifiSetupComponent.cpp','src/Presonus/Surface/CapturePageComponent.cpp','src/Presonus/Panel/GeqUIComponent.cpp','src/Presonus/Panel/PresetComponent.cpp','src/Presonus/Mixer/NetworkSelectComponent.cpp','src/Presonus/Surface/NetworkSetupComponent.cpp','src/Presonus/Surface/RadioToggleButton.cpp','src/Presonus/Panel/RackPanelComponent.cpp','src/Presonus/MeterControl.cpp','src/Presonus/StormMuteGroupComponent.cpp','src/Presonus/Surface/MappingComponent.cpp','src/Presonus/Surface/NetworkListSelection.cpp','src/Presonus/MeterControl.cpp','src/Presonus/MackieControlUnit.cpp','src/Presonus/MixerSceneLoader.cpp','src/Presonus/Panel/SPIControl.cpp','src/Presonus/Panel/FxPresetComponent.cpp','src/Presonus/Panel/PresetComponentSlotPaths.cpp','src/Presonus/PotControl.cpp','src/Presonus/FocusHelperButton.cpp','src/Presonus/AllMutesGroup.cpp','src/Presonus/FileMuteGroup.cpp','src/Presonus/McuVpotControl.cpp','src/Presonus/MackieControlModelHostConnection.cpp','src/Presonus/Surface/MidiMixerControls.cpp','src/Presonus/FaderUnitComponent.cpp','src/Presonus/MackieControlExtender.cpp','src/Presonus/MackieControlComponent.cpp','src/Presonus/Surface/AudioUtilitiesPage.cpp','src/Presonus/Surface/StartPageComponent.cpp','src/Presonus/Surface/FaderUtilitiesPage.cpp','src/Presonus/AVB/AvbComponentChannels.cpp','src/Presonus/AVB/SurfaceAvbComponent.cpp','src/Presonus/Mixer/NetworkSetupMixerBinding.cpp','src/Presonus/Surface/NetworkSetupSlaveLookup.cpp','src/Presonus/AssignmentHandlerRegistration.cpp','src/Presonus/Surface/DAWMixerActivation.cpp','src/Presonus/Surface/SLMixerGeqState.cpp','src/Presonus/Surface/GeqPageComponent.cpp','src/Presonus/Surface/EQPageObservers.cpp','src/Presonus/Surface/PresetsPageMappingController.cpp','src/Presonus/Surface/MappingMainMixLock.cpp','src/Presonus/Surface/SurfaceChannelComponent.cpp','src/Presonus/Surface/ScribbleStripController.cpp','src/Presonus/Surface/SurfaceOutputComponent.cpp','src/Presonus/Surface/SurfaceInputComponent.cpp','src/Presonus/Surface/MarkerPageComponent.cpp','src/Presonus/Surface/DAWDialogHandler.cpp','src/Presonus/Surface/DawFxPageMapping.cpp','src/Presonus/Surface/MidiMixerState.cpp','src/Presonus/Panel/PanelComponentLifecycle.cpp','src/Presonus/Panel/FrontPanelLifecycle.cpp','src/Presonus/Mixer/AVBRemoteMixerHandler.cpp','src/Presonus/Mixer/AVBCascadeConnections.cpp','src/Presonus/UC/ServerComponent.cpp','src/Presonus/AVB/AvbComponentRouting.cpp','src/Presonus/Panel/ChannelPresetComponent.cpp','src/Presonus/Panel/GeqPresetComponent.cpp','src/Presonus/Panel/ScenesComponent.cpp','src/Presonus/PanControlBindings.cpp','src/Presonus/MeterControlConnection.cpp','src/Presonus/MeterScaleControl.cpp','src/Presonus/Surface/MuteGroupsComponent.cpp','src/Presonus/VUMeterControl.cpp'} | PORTABLE_COMPONENT_NO_RTTI_SOURCES), source
         if source in {'src/Presonus/Panel/AlertBook.cpp','src/Presonus/Surface/MixSettingsPageComponent.cpp','src/Presonus/Surface/ChannelInfoPageComponent.cpp'}:
             assert all(option in flags for option in ('-fno-lto','-fno-rtti','-fno-fast-math','-ffp-contract=off')), source
         assert ('-fno-sized-deallocation' in flags) == (source in NO_SIZED_DEALLOCATION_SOURCES), source
@@ -355,9 +364,31 @@ def main():
             assert name.startswith('include/presonus-core-5/'), name
             origin = upstream/'ccl-framework'/name.removeprefix('include/presonus-core-5/')
         assert sha(origin) == digest, name
+    # Separately pinned official curl headers are a provider closure, not Core
+    # source or recovered application headers. Keep the installed union exact.
+    curl_manifest=repo/'temp/tool-env/curl-dev/PROVIDER.json'
+    assert sha(curl_manifest)=='b19c64d7605dbf2bbea3cebb422a7bf137b84b01a07ea28ee15d93bf95352703'
+    curl=json.loads(curl_manifest.read_text())
+    assert curl['header_version']=='8.5.0' and curl['runtime_version']=='8.5.0'
+    assert sha(Path(curl['runtime']['path']))==curl['runtime']['sha256']
+    curl_headers={}
+    for row in curl['headers']:
+        origin=repo/row['path']
+        relative=origin.relative_to(Path(curl['include_directory']))
+        assert relative.parts[0]=='curl' and len(relative.parts)==2
+        assert sha(origin)==row['sha256']
+        name='include/presonus-curl-8.5.0/'+relative.as_posix()
+        assert name not in curl_headers
+        curl_headers[name]=row['sha256']
+    assert len(curl_headers)==12
+    curl_license=repo/curl['license']['path']
+    assert sha(curl_license)==curl['license']['sha256']
+    curl_data=prefix/'share/presonus_uc/providers/curl-8.5.0'
+    assert sha(curl_data/'copyright')==curl['license']['sha256']
+    assert sha(curl_data/'PROVIDER.json')==sha(curl_manifest)
     app_headers={name:digest for name,digest in integration['files'].items() if name.startswith('include/presonus/')}
     installed={str(path.relative_to(prefix)):sha(path) for path in (prefix/'include').rglob('*') if path.is_file()}
-    assert installed=={**app_headers,**provider_headers}
+    assert installed=={**app_headers,**provider_headers,**curl_headers}
     with registry_snapshot(lib,args.registry_db) as registry:
         ready=registry.ready['functions']
         registry_source=registry.provenance()
@@ -387,6 +418,7 @@ def main():
         interfaces=re.findall(r'^\s*INTERFACE_LINK_LIBRARIES "([^"]*)"\s*$',blocks[0],re.M)
         expected=['PresonusCore::Provider']
         if private_math:expected.append('presonus::private_glibc29')
+        expected.append('PresonusCurlSourceProvider')
         assert len(interfaces)==1 and interfaces[0].split(';')==expected,(target,interfaces,expected)
         installed_link_interfaces[target]=expected
     private_math_archive_sha256=None
@@ -419,6 +451,7 @@ def main():
         required_mangles={key:len(value) for key,value in required.items()},archives=archives,
         application_headers=len(app_headers),provider_headers=len(provider_headers),
         provider_commit=pin,source_hashes=snapshot,sdk_hashes=sdk_hashes,
+        curl_source_provider=dict(manifest_sha256=sha(curl_manifest),headers=curl_headers,license=curl['license'],runtime=curl['runtime'],same_host_binding_only=True),
         integration_sha256=sha(lib/'validation/integration.json'),root_suites=integration['test_suites'],
         registry_source=registry_source,
         compile_commands_sha256=sha(build/'compile_commands.json'),

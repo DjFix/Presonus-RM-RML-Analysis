@@ -1,4 +1,6 @@
 #pragma once
+#include "presonus/panel/ElementInfo.hpp"
+#include "presonus/surface_panel/IDisplay.hpp"
 
 namespace Presonus::Panel {
 class IDisplay;
@@ -12,6 +14,10 @@ class Element {
 public:
   Element() = default;
   Element(int x, int y);
+  explicit Element(const ElementInfo &info);
+  const ElementInfo &sourceInfo() const { return info_; }
+  Rectangle &drawingBounds() { return bounds_; }
+  const Rectangle &drawingBounds() const { return bounds_; }
   virtual ~Element();
 
   virtual void activate(int mode);
@@ -29,15 +35,19 @@ public:
 
   // Portable base call. The firmware had a virtual slot for render, but the
   // original table and unencoded return declaration are still unresolved.
-  void render(IDisplay &display, bool force);
+  virtual void render(IDisplay &display, bool force);
+  virtual void draw(IDisplay &display);
+  virtual bool editable();
 
-  unsigned int deltaEncoder(int delta);
-  unsigned int tap();
-  unsigned int next();
+  virtual unsigned int deltaEncoder(int delta);
+  virtual unsigned int tap();
+  virtual unsigned int next();
   unsigned int getParam();
-  unsigned int previous();
+  virtual unsigned int previous();
 
 private:
+  ElementInfo info_;
+  Rectangle bounds_{0, 0, 0, 0};
   State elementState_;
 };
 } // namespace Presonus::Panel

@@ -1,5 +1,12 @@
 #include "presonus/surface/DAWMixerHandler.hpp"
+#include "presonus/ColorMapping.hpp"
+#include "presonus/DAWChannel.hpp"
+#include "presonus/DAWChannelGroup.hpp"
+#include "presonus/DAWClientComponent.hpp"
+#include "presonus/DAWDeviceFolder.hpp"
+#include "presonus/MappingTable.hpp"
 #include "presonus/surface/DawFxPageComponent.hpp"
+#include "presonus/surface/PageParam.hpp"
 #include <cstring>
 
 namespace Presonus::Surface {
@@ -31,10 +38,13 @@ void DAWMixerHandler::getMixTargets(MixTargets &targets, DAWChannel *channel,
     return component ? component->getParameterByTag(tag) : nullptr;
   };
   if (mix >= 21 && mix <= 28) {
-    auto *folder = dependencies.folder(channel, true);
-    if (!folder || mix - 21 >= dependencies.usedCount(folder))
+    auto *folder = state.client ? channel->getCueMixes()
+                                : dependencies.folder(channel, true);
+    if (!folder || mix - 21 >= (state.client ? folder->getUsedCount()
+                                             : dependencies.usedCount(folder)))
       return;
-    auto *slot = dependencies.slot(folder, mix - 21);
+    auto *slot = (state.client ? folder->getChild(mix - 21)
+                               : dependencies.slot(folder, mix - 21));
     if (!slot)
       return;
     targets.level = parameter(slot, 1);
@@ -42,16 +52,20 @@ void DAWMixerHandler::getMixTargets(MixTargets &targets, DAWChannel *channel,
     targets.pan = parameter(slot, 3);
     return;
   }
-  auto *component = dependencies.component(channel);
+  auto *component = state.client ? channel : dependencies.component(channel);
   if (mix >= 13 && mix <= 20) {
-    auto *folder = dependencies.folder(channel, false);
-    if (folder && mix - 13 < dependencies.usedCount(folder)) {
-      if (auto *slot = dependencies.slot(folder, mix - 13))
+    auto *folder = state.client ? channel->getSends()
+                                : dependencies.folder(channel, false);
+    if (folder && mix - 13 < (state.client ? folder->getUsedCount()
+                                           : dependencies.usedCount(folder))) {
+      if (auto *slot = (state.client ? folder->getChild(mix - 13)
+                                     : dependencies.slot(folder, mix - 13)))
         targets.level = parameter(slot, 1);
     }
   } else if (mix == 33) {
     targets.level = parameter(component, 8);
-    const char *type = dependencies.channelType(channel);
+    const char *type =
+        state.client ? channel->getType() : dependencies.channelType(channel);
     if (!type || std::strcmp(type, "AudioOutput") != 0)
       targets.mute = parameter(component, 9);
     targets.pan = parameter(component, 14);
@@ -72,12 +86,20 @@ void DAWMixerHandler::setController(Presonus::IMappingController *controller) {
 }
 
 void DAWMixerHandler::updatePanEncoderConnection() {
-  auto *channel = state.clientPresent ? dependencies.focusChannel() : nullptr;
+  auto *channel =
+      state.client
+          ? state.client->getFocusChannel()
+          : (state.clientPresent ? dependencies.focusChannel() : nullptr);
   MixTargets targets;
-  getMixTargets(targets, channel, dependencies.selectedMix());
+  getMixTargets(targets, channel,
+                state.client ? getSelectedMix() : dependencies.selectedMix());
   if (targets.mute && !targets.mute->isEnabled())
     targets.mute = nullptr;
-  dependencies.connect("display_pan_encoder", targets.mute, nullptr, false);
+  if (state.client && state.mappingTable)
+    state.mappingTable->connect("display_pan_encoder", targets.mute, nullptr,
+                                false);
+  else
+    dependencies.connect("display_pan_encoder", targets.mute, nullptr, false);
 }
 void DAWMixerHandler::assignMainChannel() {
   auto *channel = dependencies.mainChannel();
@@ -166,7 +188,7 @@ void DAWMixerHandler::onSlotCountChanged(DAWDeviceFolder *) {
 void DAWMixerHandler::syncAutomationParams(DAWChannel *channel) {
   int selected = -1;
   if (channel) {
-    auto *component = dependencies.component(channel);
+    auto *component = state.client ? channel : dependencies.component(channel);
     auto *parameter = component ? component->getParameterByTag(18) : nullptr;
     if (parameter)
       selected =
@@ -187,5 +209,192 @@ bool DAWMixerHandler::shouldShowStripEncodersAsMeters() const {
                        ? state.mappingController->getRadioValue(34, 37)
                        : -1;
   return (static_cast<std::uint32_t>(mode) >> 31) != 0;
+}
+} // namespace Presonus::Surface
+
+namespace Presonus::Surface {
+namespace {
+Core::Portable::Parameter *byTag(Core::Portable::Component *component,
+                                 int tag) {
+  return component ? component->getParameterByTag(tag) : nullptr;
+}
+DAWChannel *channelAt(DAWChannelGroup *group, int index) {
+  auto *child = group && index >= 0 && index < group->countChildren()
+                    ? group->getChild(index)
+                    : nullptr;
+  return child ? static_cast<DAWChannel *>(child->castTo(0x44617743)) : nullptr;
+}
+Core::CStringBuffer<32> stripName(const char *prefix, int index) {
+  Core::CStringBuffer<32> name;
+  name.appendFormat("%s_%02d", prefix, index);
+  return name;
+}
+constexpr const char *controlNames[] = {
+    "fatch_in_48V",     "fatch_in_phase", "fatch_gate_on",
+    "fatch_gate_edit",  "fatch_comp_on",  "fatch_comp_edit",
+    "fatch_limiter_on", "fatch_eq_on",    "fatch_eq_edit"};
+} // namespace
+DAWChannel *DAWMixerHandler::getMainChannel() {
+  if (!state.client || !state.mainGroup || state.mainGroup->getUsedCount() <= 0)
+    return nullptr;
+  return channelAt(state.mainGroup, 0);
+}
+void DAWMixerHandler::assignControlLinkTargets() {
+  if (!state.mappingTable)
+    return; // Explicit unassembled source-port state, not a native null-table
+            // claim.
+  auto &table = *state.mappingTable;
+  auto *controls = state.client ? state.client->getControlLink() : nullptr;
+  if (!controls || !state.stripMeters) {
+    for (const char *name : controlNames)
+      table.connect(name, nullptr, nullptr, false);
+    for (int i = 1; i <= 16; ++i)
+      table.connect(stripName("scribble_encoderInfo", i), nullptr, nullptr,
+                    false);
+    return;
+  }
+  for (int i = 0; i < 25; ++i) {
+    Core::CStringBuffer<32> childName;
+    childName.appendFormat("p%d", i);
+    auto *child = controls->findChild(childName);
+    if (i < 16) {
+      auto *value = byTag(child, 0);
+      table.connect(stripName("strip_encoder", i + 1), value, nullptr, false);
+      table.connect(stripName("scribble_encoderInfo", i + 1), byTag(child, 2),
+                    nullptr, false);
+      table.connect(stripName("strip_meter", i + 1), value, "meter-single-seg",
+                    false);
+      table.connect(stripName("strip_clip", i + 1), nullptr, nullptr, false);
+    } else
+      table.connect(controlNames[i - 16], byTag(child, 0), nullptr, false);
+  }
+}
+void DAWMixerHandler::assignSelectedChannelTargets() {
+  if (!state.mappingController || !state.client || !state.mappingTable)
+    return;
+  auto *channel = state.client->getFocusChannel();
+  auto &table = *state.mappingTable;
+  table.connect("selch_meter", byTag(channel, 1000), "meter-audio-no-taper",
+                false);
+  table.connect("selch_comp_meter", byTag(channel, 21), "meter-bar-reverse",
+                false);
+  table.connect("chan_stereo_link", byTag(channel, 10), nullptr, false);
+  for (const auto &entry : {std::pair<const char *, int>{"channel_name", 3},
+                            {"channel_info", 3},
+                            {"channel_number", 4}}) {
+    PageParam route("header", entry.first);
+    table.connect(route.c_str(), byTag(channel, entry.second), nullptr, false);
+  }
+  if (!state.mappingController->isDisplayEncoderLocked())
+    updatePanEncoderConnection();
+  syncAutomationParams(channel);
+}
+void DAWMixerHandler::assignStripTargets(DAWChannelGroup *group, int offset,
+                                         const char *filter) {
+  if (!state.mappingTable)
+    return;
+  auto &table = *state.mappingTable;
+  Core::CStringBuffer<64> groupFilter(filter ? filter : "");
+  const bool negate = std::strstr(groupFilter, "not") == groupFilter.str();
+  int index = groupFilter.isEmpty() ? offset : 0;
+  auto next = [&]() -> DAWChannel * {
+    while (group && index < group->getUsedCount()) {
+      auto *child = index >= 0 && index < group->countChildren()
+                        ? group->getChild(index)
+                        : nullptr;
+      ++index;
+      if (!child)
+        return nullptr;
+      auto *channel = static_cast<DAWChannel *>(child->castTo(0x44617743));
+      if (!channel || groupFilter.isEmpty())
+        return channel;
+      const char *type = channel->getType();
+      const bool contains =
+          std::strstr(groupFilter, type ? type : "") != nullptr;
+      if (negate != contains)
+        return channel;
+    }
+    return nullptr;
+  };
+  if (!groupFilter.isEmpty())
+    for (int skipped = 0; skipped < offset; ++skipped)
+      next();
+  const int mix = getSelectedMix();
+  const int meterMode = getSelectedMeterMode();
+  for (int strip = 1; strip <= 16; ++strip) {
+    auto *channel = next();
+    MixTargets targets;
+    getMixTargets(targets, channel, mix);
+    const char *names[] = {"strip_fader",    "scribble_pan",  "strip_mute",
+                           "strip_solo",     "strip_select",  "scribble_number",
+                           "scribble_label", "scribble_info", "scribble_arm"};
+    Core::Portable::Parameter *parameters[] = {
+        targets.level,
+        targets.mute,
+        targets.pan,
+        targets.extraPan,
+        byTag(channel, state.shift ? 17 : 6),
+        byTag(channel, 4),
+        byTag(channel, 3),
+        byTag(channel, 18),
+        byTag(channel, 17)};
+    for (int i = 0; i < 9; ++i)
+      table.connect(stripName(names[i], strip), parameters[i], nullptr, false);
+    if (!state.stripMeters) {
+      table.connect(stripName("strip_meter", strip),
+                    byTag(channel, meterMode == 36 ? 21 : 1000),
+                    channel && meterMode == 36 ? "meter-bar-reverse"
+                                               : "meter-audio-no-taper",
+                    false);
+      table.connect(stripName("strip_clip", strip),
+                    meterMode == 36 ? nullptr : byTag(channel, 13), nullptr,
+                    false);
+      table.connect(stripName("strip_encoder", strip), targets.mute, nullptr,
+                    false);
+    }
+    const char *colorName = "green";
+    auto *color = Core::Portable::ColorParam::cast(byTag(channel, 5));
+    if (color) {
+      // Real typed provider, as in MixerColorConverter. Legacy MappingTable's
+      // int callback result cannot encode the native name pointer on Linux.
+      colorName = Presonus::ColorMapping::mapColor(
+          Core::Color::fromInt(color->getColor()));
+    }
+    table.setControlColor(stripName("strip_select", strip), colorName);
+  }
+}
+void DAWMixerHandler::assignChannels() {
+  if (!state.mappingController || !state.client)
+    return;
+  auto &controller = *state.mappingController;
+  int offset = controller.getBankScrollingOffset();
+  int radio = controller.getRadioValue(0, 6);
+  if (radio >= 0) {
+    int width = radio <= 3 ? 64 : 16;
+    int modifiers = controller.getModifiers();
+    if (modifiers & 2)
+      offset += width;
+    if (modifiers & 1)
+      offset += 2 * width;
+  }
+  auto enabled = [&](int tag) {
+    auto *parameter = controller.getParamByTag(tag);
+    return parameter && parameter->getValue() > 0;
+  };
+  auto *group = state.inputGroup;
+  Core::CStringBuffer<64> filter;
+  if (enabled(4))
+    filter = "AudioEffect";
+  else if (enabled(5))
+    filter = "AudioGroup";
+  else if (enabled(6))
+    group = state.outputGroup;
+  else {
+    filter = "not ";
+    filter.append("AudioEffect");
+    filter.append("AudioGroup");
+  }
+  assignStripTargets(group, offset, filter);
+  assignSelectedChannelTargets();
 }
 } // namespace Presonus::Surface

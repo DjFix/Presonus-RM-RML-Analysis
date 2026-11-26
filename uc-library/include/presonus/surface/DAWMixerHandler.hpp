@@ -10,6 +10,8 @@ namespace Presonus {
 class DAWChannel;
 class DAWChannelGroup;
 class DAWDeviceFolder;
+class DAWClientComponent;
+class MappingTable;
 } // namespace Presonus
 namespace Presonus::Surface {
 class DawFxPageComponent;
@@ -40,6 +42,9 @@ struct DAWMixerDependencies {
 };
 struct DAWMixerState {
   bool clientPresent = false;
+  // Borrowed typed source-port assembly, not original client storage/layout.
+  Presonus::DAWClientComponent *client = nullptr;
+  Presonus::MappingTable *mappingTable = nullptr;
   Presonus::IMappingController *mappingController = nullptr;
   std::uint8_t shift = 0;
   std::uint8_t stripMeters = 0;
@@ -100,6 +105,11 @@ public:
   void onFocusChannelChanged();
   void onSlotCountChanged(DAWDeviceFolder *);
   void syncAutomationParams(DAWChannel *);
+  DAWChannel *getMainChannel();
+  void assignControlLinkTargets();
+  void assignSelectedChannelTargets();
+  void assignStripTargets(DAWChannelGroup *, int, const char *);
+  void assignChannels();
 
 private:
   presonus::surface::DAWMixerDependencies &dependencies;
