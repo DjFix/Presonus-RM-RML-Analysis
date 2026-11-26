@@ -12,6 +12,8 @@ public:
   ~DAWChannelGroup() override;
   void *castTo(int typeId) override;
   // These operations require an initialized, borrowed parameter cache.
+  void init(bool removeControls);
+  void onIdle() override;
   int getUsedCount() const;
   void resetUsedCount();
 

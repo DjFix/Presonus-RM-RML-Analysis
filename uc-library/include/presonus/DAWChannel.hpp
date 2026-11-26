@@ -29,6 +29,7 @@ public:
   // The portable return points into a buffer shared by channel instances.
   // A later formatting call can replace its contents.
   const char *getID() const;
+  const char *getType() const;
 
 protected:
   static constexpr int selectedCache = 0;

@@ -24,6 +24,9 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 # Native deleting destructors use unsized delete; retain explicit per-TU contracts.
 # These expected sources are reviewed literals, never learned from compile_commands.
 PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
+    'src/Presonus/Panel/MeterPeakControl.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
+    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
     'src/ParamHelper.cpp',
     'src/Presonus/IDAWDialogHandler.cpp',
     'src/Presonus/SpectrumPainter.cpp',
@@ -78,6 +81,10 @@ PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
     'src/Presonus/ThroughputTest.cpp',
 })
 NO_SIZED_DEALLOCATION_SOURCES = frozenset({
+    'src/Presonus/Panel/MeterPeakControl.cpp',
+    'src/Presonus/Mixer/PreDelayFormatterT9.cpp',
+    'src/Presonus/Mixer/FxReverbNumFormatter.cpp',
+    'src/Presonus/UC/DataElement.cpp',
     'src/Presonus/Dsp/CompController.cpp',
     'src/Presonus/Dsp/GateController.cpp',
     'src/Presonus/Dsp/EQ5Controller.cpp',

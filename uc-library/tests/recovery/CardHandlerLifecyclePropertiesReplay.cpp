@@ -100,7 +100,7 @@ struct Hal final : Presonus::Dsp::IAudioHAL {
   void resetBoard(int, int) override {}
   void enableDACs(bool, bool, int) override { std::abort(); }
   void enableAMP(bool) override { std::abort(); }
-  void suspendControlSurfaces(bool) override { std::abort(); }
+  std::uint8_t suspendControlSurfaces(bool) override { std::abort(); }
 };
 struct Listener final : Presonus::UC::IFirmwareUpdateListener {
   std::vector<std::string> observed;

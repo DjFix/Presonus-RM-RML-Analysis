@@ -63,9 +63,13 @@ void lifecycle(std::string_view operation, bool withTimer) {
                                                   : new (storage)
                                                         MeterLevelControl(23);
   receiver = value;
+  // Seed body-only lifecycle replay without invoking newly recovered IO
+  // callbacks.
+  presonus::panel::ControlAccess::tag(*value) = -1;
   value->Control::setParameter(&first, 0);
   value->Control::setAltParameter(&second);
   value->Control::setTertiaryParameter(&third);
+  presonus::panel::ControlAccess::tag(*value) = 23;
   if (withTimer) {
     value->startTimer(10.f, 23);
     if (!value->isTimerRunning(23))

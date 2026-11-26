@@ -63,4 +63,13 @@ const char *DAWChannel::getID() const {
   return buffer;
 }
 
+const char *DAWChannel::getType() const {
+  const auto *parameter = cachedParameters_[channelStateCache];
+  if (!parameter)
+    return nullptr;
+  static char buffer[32]{};
+  parameter->toString(buffer, sizeof(buffer));
+  return buffer;
+}
+
 } // namespace Presonus

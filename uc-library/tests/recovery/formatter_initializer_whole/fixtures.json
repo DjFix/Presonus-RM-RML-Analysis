@@ -1,0 +1,871 @@
+{
+  "unicorn_version": "2.1.4",
+  "targets": [
+    {
+      "task_id": "sqlite15_formatter_init_6c3820bbef",
+      "original": {
+        "anchor": "61b8608df1004baf535ce2efc1873a4a17ae0c6dd1e04a66eb5b6e08c888f443",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvv",
+        "demangled": "void Presonus::Mixer::XmenFormatterInitializer::addClass<Presonus::Mixer::FxReverbNumFormatter>()",
+        "address": 67640,
+        "size": 136,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_WEAK",
+        "policy": "application-or-other",
+        "state": "todo",
+        "owner": null,
+        "batch": null,
+        "revision": 0,
+        "notes": "",
+        "status": null,
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 34872,
+        "range_sha256": "c354cae92c0d4abb1eff4482c822763eae88ee78fc2cadd8b62c128a8b4544ad",
+        "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de8405903ea0500a0e156eaffeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe55220a0e30820c4e5003084e5b9e8ffeb0400a0e118109fe518209fe59fe9ffebeaffffea74072500280825001c86180018961800d8fa0000ac262400",
+        "code": [
+          "10838 mov ip, sp",
+          "1083c push {r4, r5, fp, ip, lr, pc}",
+          "10840 ldr r5, [pc, #0x60]",
+          "10844 sub fp, ip, #4",
+          "10848 ldr r3, [r5]",
+          "1084c tst r3, #1",
+          "10850 beq #0x10860",
+          "10854 ldr r0, [pc, #0x50]",
+          "10858 ldm sp, {r4, r5, fp, sp, lr}",
+          "1085c b #0xe6d64",
+          "10860 mov r0, r5",
+          "10864 bl #0xb1c4",
+          "10868 cmp r0, #0",
+          "1086c beq #0x10854",
+          "10870 ldr r4, [pc, #0x34]",
+          "10874 ldr r3, [pc, #0x34]",
+          "10878 mov r0, r5",
+          "1087c str r3, [r4, #4]",
+          "10880 ldr r3, [pc, #0x2c]",
+          "10884 mov r2, #0x52",
+          "10888 strb r2, [r4, #8]",
+          "1088c str r3, [r4]",
+          "10890 bl #0xab7c",
+          "10894 mov r0, r4",
+          "10898 ldr r1, [pc, #0x18]",
+          "1089c ldr r2, [pc, #0x18]",
+          "108a0 bl #0xaf24",
+          "108a4 b #0x10854",
+          "108a8 eoreq r0, r5, r4, ror r7",
+          "108ac eoreq r0, r5, r8, lsr #16",
+          "108b0 andseq r8, r8, ip, lsl r6",
+          "108b4 andseq sb, r8, r8, lsl r6"
+        ],
+        "calls": [
+          {
+            "address": 945508,
+            "symbol": "_ZN4Core17FormatterRegistry3addEPNS_9FormatterE"
+          },
+          {
+            "address": 45508,
+            "symbol": "__cxa_guard_acquire@@CXXABI_1.3"
+          },
+          {
+            "address": 43900,
+            "symbol": "__cxa_guard_release@@CXXABI_1.3"
+          },
+          {
+            "address": 44836,
+            "symbol": "__aeabi_atexit@@GLIBC_2.4"
+          }
+        ],
+        "literal_pool": [
+          {
+            "address": 67752,
+            "value": 2426740,
+            "symbols": [
+              "_ZGVZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 67756,
+            "value": 2426920,
+            "symbols": [
+              "_ZZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 67760,
+            "value": 1607196,
+            "symbols": [],
+            "string": "reverbnum"
+          },
+          {
+            "address": 67764,
+            "value": 1611288,
+            "symbols": [],
+            "string": null
+          },
+          {
+            "address": 67768,
+            "value": 64216,
+            "symbols": [
+              "$a",
+              "_ZN8Presonus5Mixer20FxReverbNumFormatterD1Ev"
+            ],
+            "string": null
+          },
+          {
+            "address": 67772,
+            "value": 2369196,
+            "symbols": [
+              "__dso_handle"
+            ],
+            "string": null
+          }
+        ],
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": 12
+      },
+      "receiver": 2426920,
+      "guard": 2426740,
+      "vptr": 1611288,
+      "name": "reverbnum",
+      "state_byte": 82,
+      "cases": [
+        {
+          "label": "cold",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 2426740,
+              "result": 1
+            },
+            {
+              "kind": "release",
+              "guard": 2426740
+            },
+            {
+              "kind": "atexit",
+              "receiver": 2426920,
+              "destructor": 64216,
+              "dso": 2369196
+            },
+            {
+              "kind": "add",
+              "receiver": 2426920
+            }
+          ],
+          "writes": [
+            [
+              2426924,
+              4,
+              1607196
+            ],
+            [
+              2426928,
+              1,
+              82
+            ],
+            [
+              2426920,
+              4,
+              1611288
+            ]
+          ],
+          "output": "cold acquire,release,atexit,add"
+        },
+        {
+          "label": "warm1",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 2426920
+            }
+          ],
+          "writes": [],
+          "output": "warm1 add"
+        },
+        {
+          "label": "warm2",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 2426920
+            }
+          ],
+          "writes": [],
+          "output": "warm2 add"
+        },
+        {
+          "label": "acquire0",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 2426740,
+              "result": 0
+            },
+            {
+              "kind": "add",
+              "receiver": 2426920
+            }
+          ],
+          "writes": [],
+          "output": "acquire0 acquire,add"
+        }
+      ]
+    },
+    {
+      "task_id": "sqlite15_formatter_init_6c3820bbef",
+      "original": {
+        "anchor": "952b2380640af4611c11dce96102126e8144a7952801cd4b7011e9a040bdc2a1",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvv",
+        "demangled": "void Presonus::Mixer::XmenFormatterInitializer::addClass<Presonus::Mixer::FxReverbNumFormatter>()",
+        "address": 144288,
+        "size": 136,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_WEAK",
+        "policy": "application-or-other",
+        "state": "todo",
+        "owner": null,
+        "batch": null,
+        "revision": 0,
+        "notes": "",
+        "status": null,
+        "elf_path": "rootfs/RML32AI_Rack_13731/home/root/mixer",
+        "file_offset": 111520,
+        "range_sha256": "eef045c7f144e7414b72452194cff614cce8b681721d3db125de9ad151d958ae",
+        "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de8bbb403ea0500a0e1179fffeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe55220a0e30820c4e5003084e58f9dffeb0400a0e118109fe518209fe5699effebeaffffeaf0334900a434490020e11500d8f015006c260200f4394500",
+        "code": [
+          "233a0 mov ip, sp",
+          "233a4 push {r4, r5, fp, ip, lr, pc}",
+          "233a8 ldr r5, [pc, #0x60]",
+          "233ac sub fp, ip, #4",
+          "233b0 ldr r3, [r5]",
+          "233b4 tst r3, #1",
+          "233b8 beq #0x233c8",
+          "233bc ldr r0, [pc, #0x50]",
+          "233c0 ldm sp, {r4, r5, fp, sp, lr}",
+          "233c4 b #0x1106b8",
+          "233c8 mov r0, r5",
+          "233cc bl #0xb030",
+          "233d0 cmp r0, #0",
+          "233d4 beq #0x233bc",
+          "233d8 ldr r4, [pc, #0x34]",
+          "233dc ldr r3, [pc, #0x34]",
+          "233e0 mov r0, r5",
+          "233e4 str r3, [r4, #4]",
+          "233e8 ldr r3, [pc, #0x2c]",
+          "233ec mov r2, #0x52",
+          "233f0 strb r2, [r4, #8]",
+          "233f4 str r3, [r4]",
+          "233f8 bl #0xaa3c",
+          "233fc mov r0, r4",
+          "23400 ldr r1, [pc, #0x18]",
+          "23404 ldr r2, [pc, #0x18]",
+          "23408 bl #0xadb4",
+          "2340c b #0x233bc",
+          "23410 strdeq r3, r4, [sb], #-0x30",
+          "23414 subeq r3, sb, r4, lsr #9",
+          "23418 andseq lr, r5, r0, lsr #2",
+          "2341c ldrsbeq pc, [r5], -r8",
+          "23420 andeq r2, r2, ip, ror #12",
+          "23424 strdeq r3, r4, [r5], #-0x94"
+        ],
+        "calls": [
+          {
+            "address": 1115832,
+            "symbol": "_ZN4Core17FormatterRegistry3addEPNS_9FormatterE"
+          },
+          {
+            "address": 45104,
+            "symbol": "__cxa_guard_acquire@@CXXABI_1.3"
+          },
+          {
+            "address": 43580,
+            "symbol": "__cxa_guard_release@@CXXABI_1.3"
+          },
+          {
+            "address": 44468,
+            "symbol": "__aeabi_atexit@@GLIBC_2.4"
+          }
+        ],
+        "literal_pool": [
+          {
+            "address": 144400,
+            "value": 4797424,
+            "symbols": [
+              "_ZGVZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 144404,
+            "value": 4797604,
+            "symbols": [
+              "_ZZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_20FxReverbNumFormatterEEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 144408,
+            "value": 1433888,
+            "symbols": [],
+            "string": "reverbnum"
+          },
+          {
+            "address": 144412,
+            "value": 1437912,
+            "symbols": [],
+            "string": null
+          },
+          {
+            "address": 144416,
+            "value": 140908,
+            "symbols": [
+              "$a",
+              "_ZN8Presonus5Mixer20FxReverbNumFormatterD1Ev"
+            ],
+            "string": null
+          },
+          {
+            "address": 144420,
+            "value": 4536820,
+            "symbols": [
+              "__dso_handle"
+            ],
+            "string": null
+          }
+        ],
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": 12
+      },
+      "receiver": 4797604,
+      "guard": 4797424,
+      "vptr": 1437912,
+      "name": "reverbnum",
+      "state_byte": 82,
+      "cases": [
+        {
+          "label": "cold",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 4797424,
+              "result": 1
+            },
+            {
+              "kind": "release",
+              "guard": 4797424
+            },
+            {
+              "kind": "atexit",
+              "receiver": 4797604,
+              "destructor": 140908,
+              "dso": 4536820
+            },
+            {
+              "kind": "add",
+              "receiver": 4797604
+            }
+          ],
+          "writes": [
+            [
+              4797608,
+              4,
+              1433888
+            ],
+            [
+              4797612,
+              1,
+              82
+            ],
+            [
+              4797604,
+              4,
+              1437912
+            ]
+          ],
+          "output": "cold acquire,release,atexit,add"
+        },
+        {
+          "label": "warm1",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 4797604
+            }
+          ],
+          "writes": [],
+          "output": "warm1 add"
+        },
+        {
+          "label": "warm2",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 4797604
+            }
+          ],
+          "writes": [],
+          "output": "warm2 add"
+        },
+        {
+          "label": "acquire0",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 4797424,
+              "result": 0
+            },
+            {
+              "kind": "add",
+              "receiver": 4797604
+            }
+          ],
+          "writes": [],
+          "output": "acquire0 acquire,add"
+        }
+      ]
+    },
+    {
+      "task_id": "sqlite15_formatter_init_276e76d19d",
+      "original": {
+        "anchor": "6b6cf658f58827aba37debd1743fa8e776830ebb5188545180fd6cb7de287008",
+        "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "role": "client",
+        "firmware": "CS18AI surface 13840",
+        "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvv",
+        "demangled": "void Presonus::Mixer::XmenFormatterInitializer::addClass<Presonus::Mixer::PreDelayFormatterT9>()",
+        "address": 71376,
+        "size": 136,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_WEAK",
+        "policy": "application-or-other",
+        "state": "todo",
+        "owner": null,
+        "batch": null,
+        "revision": 0,
+        "notes": "",
+        "status": null,
+        "elf_path": "rootfs/CS18_v13840/home/root/surface",
+        "file_offset": 38608,
+        "range_sha256": "8c55d95c78d25f7df49913403553e76279fc23372f79622d6e87823258425698",
+        "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de89a5503ea0500a0e1b0e6ffeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe50820a0e30820c4e5003084e513e5ffeb0400a0e118109fe518209fe5f9e5ffebeaffffeae4072500600925005c871800e89c1800e8fd0000ac262400",
+        "code": [
+          "116d0 mov ip, sp",
+          "116d4 push {r4, r5, fp, ip, lr, pc}",
+          "116d8 ldr r5, [pc, #0x60]",
+          "116dc sub fp, ip, #4",
+          "116e0 ldr r3, [r5]",
+          "116e4 tst r3, #1",
+          "116e8 beq #0x116f8",
+          "116ec ldr r0, [pc, #0x50]",
+          "116f0 ldm sp, {r4, r5, fp, sp, lr}",
+          "116f4 b #0xe6d64",
+          "116f8 mov r0, r5",
+          "116fc bl #0xb1c4",
+          "11700 cmp r0, #0",
+          "11704 beq #0x116ec",
+          "11708 ldr r4, [pc, #0x34]",
+          "1170c ldr r3, [pc, #0x34]",
+          "11710 mov r0, r5",
+          "11714 str r3, [r4, #4]",
+          "11718 ldr r3, [pc, #0x2c]",
+          "1171c mov r2, #8",
+          "11720 strb r2, [r4, #8]",
+          "11724 str r3, [r4]",
+          "11728 bl #0xab7c",
+          "1172c mov r0, r4",
+          "11730 ldr r1, [pc, #0x18]",
+          "11734 ldr r2, [pc, #0x18]",
+          "11738 bl #0xaf24",
+          "1173c b #0x116ec",
+          "11740 eoreq r0, r5, r4, ror #15",
+          "11744 eoreq r0, r5, r0, ror #18",
+          "11748 andseq r8, r8, ip, asr r7",
+          "1174c andseq sb, r8, r8, ror #25",
+          "11750 andeq pc, r0, r8, ror #27",
+          "11754 eoreq r2, r4, ip, lsr #13"
+        ],
+        "calls": [
+          {
+            "address": 945508,
+            "symbol": "_ZN4Core17FormatterRegistry3addEPNS_9FormatterE"
+          },
+          {
+            "address": 45508,
+            "symbol": "__cxa_guard_acquire@@CXXABI_1.3"
+          },
+          {
+            "address": 43900,
+            "symbol": "__cxa_guard_release@@CXXABI_1.3"
+          },
+          {
+            "address": 44836,
+            "symbol": "__aeabi_atexit@@GLIBC_2.4"
+          }
+        ],
+        "literal_pool": [
+          {
+            "address": 71488,
+            "value": 2426852,
+            "symbols": [
+              "_ZGVZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 71492,
+            "value": 2427232,
+            "symbols": [
+              "_ZZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 71496,
+            "value": 1607516,
+            "symbols": [],
+            "string": "predelayT9"
+          },
+          {
+            "address": 71500,
+            "value": 1613032,
+            "symbols": [],
+            "string": null
+          },
+          {
+            "address": 71504,
+            "value": 65000,
+            "symbols": [
+              "$a",
+              "_ZN8Presonus5Mixer19PreDelayFormatterT9D1Ev"
+            ],
+            "string": null
+          },
+          {
+            "address": 71508,
+            "value": 2369196,
+            "symbols": [
+              "__dso_handle"
+            ],
+            "string": null
+          }
+        ],
+        "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+        "section": 12
+      },
+      "receiver": 2427232,
+      "guard": 2426852,
+      "vptr": 1613032,
+      "name": "predelayT9",
+      "state_byte": 8,
+      "cases": [
+        {
+          "label": "cold",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 2426852,
+              "result": 1
+            },
+            {
+              "kind": "release",
+              "guard": 2426852
+            },
+            {
+              "kind": "atexit",
+              "receiver": 2427232,
+              "destructor": 65000,
+              "dso": 2369196
+            },
+            {
+              "kind": "add",
+              "receiver": 2427232
+            }
+          ],
+          "writes": [
+            [
+              2427236,
+              4,
+              1607516
+            ],
+            [
+              2427240,
+              1,
+              8
+            ],
+            [
+              2427232,
+              4,
+              1613032
+            ]
+          ],
+          "output": "cold acquire,release,atexit,add"
+        },
+        {
+          "label": "warm1",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 2427232
+            }
+          ],
+          "writes": [],
+          "output": "warm1 add"
+        },
+        {
+          "label": "warm2",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 2427232
+            }
+          ],
+          "writes": [],
+          "output": "warm2 add"
+        },
+        {
+          "label": "acquire0",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 2426852,
+              "result": 0
+            },
+            {
+              "kind": "add",
+              "receiver": 2427232
+            }
+          ],
+          "writes": [],
+          "output": "acquire0 acquire,add"
+        }
+      ]
+    },
+    {
+      "task_id": "sqlite15_formatter_init_276e76d19d",
+      "original": {
+        "anchor": "0355d46e8b8181bd77b04d44ab736ff7395e72067a9798b2f37384dd8d9b7729",
+        "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "role": "server",
+        "firmware": "RM/RML mixer 13731",
+        "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvv",
+        "demangled": "void Presonus::Mixer::XmenFormatterInitializer::addClass<Presonus::Mixer::PreDelayFormatterT9>()",
+        "address": 148024,
+        "size": 136,
+        "section_json": "12",
+        "kind": "STT_FUNC",
+        "binding": "STB_WEAK",
+        "policy": "application-or-other",
+        "state": "todo",
+        "owner": null,
+        "batch": null,
+        "revision": 0,
+        "notes": "",
+        "status": null,
+        "elf_path": "rootfs/RML32AI_Rack_13731/home/root/mixer",
+        "file_offset": 115256,
+        "range_sha256": "cb424d7f400cc2d280302e7ac285c77ea8b51660598bad9566525b8e82e89e40",
+        "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de815b103ea0500a0e1719bffeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe50820a0e30820c4e5003084e5e999ffeb0400a0e118109fe518209fe5c39affebeaffffea60344900dc35490060e21500a8f715007c290200f4394500",
+        "code": [
+          "24238 mov ip, sp",
+          "2423c push {r4, r5, fp, ip, lr, pc}",
+          "24240 ldr r5, [pc, #0x60]",
+          "24244 sub fp, ip, #4",
+          "24248 ldr r3, [r5]",
+          "2424c tst r3, #1",
+          "24250 beq #0x24260",
+          "24254 ldr r0, [pc, #0x50]",
+          "24258 ldm sp, {r4, r5, fp, sp, lr}",
+          "2425c b #0x1106b8",
+          "24260 mov r0, r5",
+          "24264 bl #0xb030",
+          "24268 cmp r0, #0",
+          "2426c beq #0x24254",
+          "24270 ldr r4, [pc, #0x34]",
+          "24274 ldr r3, [pc, #0x34]",
+          "24278 mov r0, r5",
+          "2427c str r3, [r4, #4]",
+          "24280 ldr r3, [pc, #0x2c]",
+          "24284 mov r2, #8",
+          "24288 strb r2, [r4, #8]",
+          "2428c str r3, [r4]",
+          "24290 bl #0xaa3c",
+          "24294 mov r0, r4",
+          "24298 ldr r1, [pc, #0x18]",
+          "2429c ldr r2, [pc, #0x18]",
+          "242a0 bl #0xadb4",
+          "242a4 b #0x24254",
+          "242a8 subeq r3, sb, r0, ror #8",
+          "242ac ldrdeq r3, r4, [sb], #-0x5c",
+          "242b0 andseq lr, r5, r0, ror #4",
+          "242b4 andseq pc, r5, r8, lsr #15",
+          "242b8 andeq r2, r2, ip, ror sb",
+          "242bc strdeq r3, r4, [r5], #-0x94"
+        ],
+        "calls": [
+          {
+            "address": 1115832,
+            "symbol": "_ZN4Core17FormatterRegistry3addEPNS_9FormatterE"
+          },
+          {
+            "address": 45104,
+            "symbol": "__cxa_guard_acquire@@CXXABI_1.3"
+          },
+          {
+            "address": 43580,
+            "symbol": "__cxa_guard_release@@CXXABI_1.3"
+          },
+          {
+            "address": 44468,
+            "symbol": "__aeabi_atexit@@GLIBC_2.4"
+          }
+        ],
+        "literal_pool": [
+          {
+            "address": 148136,
+            "value": 4797536,
+            "symbols": [
+              "_ZGVZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 148140,
+            "value": 4797916,
+            "symbols": [
+              "_ZZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_19PreDelayFormatterT9EEEvvE12theFormatter"
+            ],
+            "string": null
+          },
+          {
+            "address": 148144,
+            "value": 1434208,
+            "symbols": [],
+            "string": "predelayT9"
+          },
+          {
+            "address": 148148,
+            "value": 1439656,
+            "symbols": [],
+            "string": null
+          },
+          {
+            "address": 148152,
+            "value": 141692,
+            "symbols": [
+              "$a",
+              "_ZN8Presonus5Mixer19PreDelayFormatterT9D1Ev"
+            ],
+            "string": null
+          },
+          {
+            "address": 148156,
+            "value": 4536820,
+            "symbols": [
+              "__dso_handle"
+            ],
+            "string": null
+          }
+        ],
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "section": 12
+      },
+      "receiver": 4797916,
+      "guard": 4797536,
+      "vptr": 1439656,
+      "name": "predelayT9",
+      "state_byte": 8,
+      "cases": [
+        {
+          "label": "cold",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 4797536,
+              "result": 1
+            },
+            {
+              "kind": "release",
+              "guard": 4797536
+            },
+            {
+              "kind": "atexit",
+              "receiver": 4797916,
+              "destructor": 141692,
+              "dso": 4536820
+            },
+            {
+              "kind": "add",
+              "receiver": 4797916
+            }
+          ],
+          "writes": [
+            [
+              4797920,
+              4,
+              1434208
+            ],
+            [
+              4797924,
+              1,
+              8
+            ],
+            [
+              4797916,
+              4,
+              1439656
+            ]
+          ],
+          "output": "cold acquire,release,atexit,add"
+        },
+        {
+          "label": "warm1",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 4797916
+            }
+          ],
+          "writes": [],
+          "output": "warm1 add"
+        },
+        {
+          "label": "warm2",
+          "calls": [
+            {
+              "kind": "add",
+              "receiver": 4797916
+            }
+          ],
+          "writes": [],
+          "output": "warm2 add"
+        },
+        {
+          "label": "acquire0",
+          "calls": [
+            {
+              "kind": "acquire",
+              "guard": 4797536,
+              "result": 0
+            },
+            {
+              "kind": "add",
+              "receiver": 4797916
+            }
+          ],
+          "writes": [],
+          "output": "acquire0 acquire,add"
+        }
+      ]
+    }
+  ]
+}

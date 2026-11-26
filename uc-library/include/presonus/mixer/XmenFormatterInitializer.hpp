@@ -3,6 +3,8 @@
 namespace Presonus::Mixer {
 
 class FxTypeFormatter;
+class PreDelayFormatterT9;
+class FxReverbNumFormatter;
 
 class XmenFormatterInitializer {
 public:
@@ -10,5 +12,7 @@ public:
 };
 
 template <> void XmenFormatterInitializer::addClass<FxTypeFormatter>();
+template <> void XmenFormatterInitializer::addClass<PreDelayFormatterT9>();
+template <> void XmenFormatterInitializer::addClass<FxReverbNumFormatter>();
 
 } // namespace Presonus::Mixer

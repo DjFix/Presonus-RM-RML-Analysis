@@ -92,12 +92,19 @@ int exercise(int tag, unsigned mask, bool trackedTimer, bool provider,
   if (timers.count() != 1)
     return 1;
   const auto *otherTimer = timers.at(0);
-  if (mask & 1)
-    control->setParameter(&primary, 0);
-  if (mask & 2)
-    control->setAltParameter(&alternate);
-  if (mask & 4)
-    control->setTertiaryParameter(&tertiary);
+  // Native destructor oracle directly seeds parameter slots; no IO callback.
+  if (mask & 1) {
+    ControlAccess::parameter(*control) = &primary;
+    primary.addObserver(control);
+  }
+  if (mask & 2) {
+    ControlAccess::altParameter(*control) = &alternate;
+    alternate.addObserver(control);
+  }
+  if (mask & 4) {
+    ControlAccess::tertiaryParameter(*control) = &tertiary;
+    tertiary.addObserver(control);
+  }
   if (trackedTimer)
     control->startTimer(1.f, 8);
   if (timers.count() != 1 + static_cast<int>(trackedTimer))

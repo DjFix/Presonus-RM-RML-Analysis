@@ -687,6 +687,20 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
 list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/uc/ParamHelper.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/panel/meter_peak_control.hpp
+  presonus/dsp/ControlSuspender.hpp
+  presonus/mixer/PreDelayFormatterT9.hpp
+  presonus/mixer/FxReverbNumFormatter.hpp
+  presonus/mixer/DynamicsParameterInfo.hpp
+  presonus/uc/DataElement.hpp
+  presonus/uc/ComponentElement.hpp
+  presonus/uc/TemplateElement.hpp
+)
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/uc/element.hpp
+  presonus/uc/meta_element.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")
@@ -838,3 +852,5 @@ include(cmake/tests/Trial10x2Replays.cmake)
 include(cmake/tests/Next39Replays.cmake)
 
 include(cmake/tests/Control10x20Replays.cmake)
+
+include(cmake/tests/AcceptedSubsystemReplays.cmake)

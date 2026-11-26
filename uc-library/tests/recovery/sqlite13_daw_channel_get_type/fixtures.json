@@ -1,0 +1,350 @@
+[
+  {
+    "original": {
+      "address": 343888,
+      "anchor": "b3b272f7e95d55977842769a6bed010dcccb75112716198a67877bdde04f20e4",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 311120,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZNK8Presonus10DAWChannel7getTypeEv",
+      "range_hex": "0dc0a0e170d82de904b04ce204d04de2882090e50040a0e1000052e30200a00170a89d0950509fe5003095e5016013e20700000a0200a0e1003092e53c109fe52020a0e30fe0a0e170f093e52c009fe570a89de90500a0e185dcfeeb000050e30300000a14309fe50500a0e10060c3e5eddafeeb882094e5edffffea5c68250060682500",
+      "range_sha256": "4e92344c395e6e98da0a3c492d19c138954ab056fb30b45bac5d92da318a3cbd",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 132
+    },
+    "comparison_get_id": {
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "anchor": "6a8e4ce9a702dcfbce65d7f5980764ac679694b3829caf082f1c9d8070acfd54",
+      "role": "client",
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZNK8Presonus10DAWChannel5getIDEv",
+      "address": 343756,
+      "size": 132,
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 310988,
+      "range_sha256": "6ffe4d6e78206274ef46a4aa6c7f06a8d050821a7ab771064963b4520bb8b6b3",
+      "range_hex": "0dc0a0e170d82de904b04ce204d04de28c2090e50040a0e1000052e30200a00170a89d0950509fe5003095e5016013e20700000a0200a0e1003092e53c109fe54020a0e30fe0a0e170f093e52c009fe570a89de90500a0e1a6dcfeeb000050e30300000a14309fe50500a0e10060c3e50edbfeeb8c2094e5edffffea186825001c682500"
+    },
+    "buffer": 2451552,
+    "guard": 2451548,
+    "id_buffer": 2451484,
+    "static_symbols": [
+      {
+        "mangled": "_ZZNK8Presonus10DAWChannel7getTypeEvE4type",
+        "address": 2451552,
+        "size": 32,
+        "section": 24,
+        "section_name": ".bss",
+        "zero_initialized": true
+      },
+      {
+        "mangled": "_ZGVZNK8Presonus10DAWChannel7getTypeEvE4type",
+        "address": 2451548,
+        "size": 4,
+        "section": 24,
+        "section_name": ".bss",
+        "zero_initialized": true
+      }
+    ],
+    "original_formatter": {
+      "mangled": "_ZNK4Core8Portable11StringParam8toStringEPci",
+      "address": 1175872
+    },
+    "cases": [
+      {
+        "input": null,
+        "receiver": 1358958592,
+        "parameter": 0,
+        "result": 0,
+        "calls": [],
+        "first32_hex": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 2451552,
+        "calls": [
+          [
+            "acquire",
+            2451548
+          ],
+          [
+            "release",
+            2451548
+          ],
+          [
+            "StringParam::toString",
+            1358970880,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "input",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 2451552,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358970880,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "696e707574000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 2451552,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "4141414141414141414141414141414141414141414141414141414141414100"
+      },
+      {
+        "input": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 2451552,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "4242424242424242424242424242424242424242424242424242424242424200"
+      },
+      {
+        "input": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 2451552,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358970880,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "4343434343434343434343434343434343434343434343434343434343434300"
+      },
+      {
+        "input": "x",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 2451552,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            2451552,
+            32
+          ]
+        ],
+        "first32_hex": "7800434343434343434343434343434343434343434343434343434343434300"
+      },
+      {
+        "input": null,
+        "receiver": 1358962688,
+        "parameter": 0,
+        "result": 0,
+        "calls": [],
+        "first32_hex": "7800434343434343434343434343434343434343434343434343434343434300"
+      }
+    ]
+  },
+  {
+    "original": {
+      "address": 81332,
+      "anchor": "ba3d0035d59113f47202492238be988a6fc13cce3b5ffd8ef594c69d05378787",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML32AI_Rack_13731/home/root/mixer",
+      "file_offset": 48564,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZNK8Presonus10DAWChannel7getTypeEv",
+      "range_hex": "0dc0a0e170d82de904b04ce204d04de2882090e50040a0e1000052e30200a00170a89d0950509fe5003095e5016013e20700000a0200a0e1003092e53c109fe52020a0e30fe0a0e170f093e52c009fe570a89de90500a0e187dcffeb000050e30300000a14309fe50500a0e10060c3e504dbffeb882094e5edffffea183149001c314900",
+      "range_sha256": "d0f13bc6da880ef2e00db7825dddfb9e6f2765d0c750ff0451da75c8c7343b1e",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 132
+    },
+    "comparison_get_id": {
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "anchor": "315eebaf53de370cef35c684962c8626ade50459b85c248658b96717617e031f",
+      "role": "server",
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZNK8Presonus10DAWChannel5getIDEv",
+      "address": 81200,
+      "size": 132,
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 48432,
+      "range_sha256": "3ae6bdc502e5914864aa649f46939763d01216c1fefaeeaff07857bee2921edd",
+      "range_hex": "0dc0a0e170d82de904b04ce204d04de28c2090e50040a0e1000052e30200a00170a89d0950509fe5003095e5016013e20700000a0200a0e1003092e53c109fe54020a0e30fe0a0e170f093e52c009fe570a89de90500a0e1a8dcffeb000050e30300000a14309fe50500a0e10060c3e525dbffeb8c2094e5edffffead4304900d8304900"
+    },
+    "buffer": 4796700,
+    "guard": 4796696,
+    "id_buffer": 4796632,
+    "static_symbols": [
+      {
+        "mangled": "_ZZNK8Presonus10DAWChannel7getTypeEvE4type",
+        "address": 4796700,
+        "size": 32,
+        "section": 24,
+        "section_name": ".bss",
+        "zero_initialized": true
+      },
+      {
+        "mangled": "_ZGVZNK8Presonus10DAWChannel7getTypeEvE4type",
+        "address": 4796696,
+        "size": 4,
+        "section": 24,
+        "section_name": ".bss",
+        "zero_initialized": true
+      }
+    ],
+    "original_formatter": {
+      "mangled": "_ZNK4Core8Portable11StringParam8toStringEPci",
+      "address": 1167684
+    },
+    "cases": [
+      {
+        "input": null,
+        "receiver": 1358958592,
+        "parameter": 0,
+        "result": 0,
+        "calls": [],
+        "first32_hex": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 4796700,
+        "calls": [
+          [
+            "acquire",
+            4796696
+          ],
+          [
+            "release",
+            4796696
+          ],
+          [
+            "StringParam::toString",
+            1358970880,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "input",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 4796700,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358970880,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "696e707574000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "input": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 4796700,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "4141414141414141414141414141414141414141414141414141414141414100"
+      },
+      {
+        "input": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 4796700,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "4242424242424242424242424242424242424242424242424242424242424200"
+      },
+      {
+        "input": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "receiver": 1358958592,
+        "parameter": 1358970880,
+        "result": 4796700,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358970880,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "4343434343434343434343434343434343434343434343434343434343434300"
+      },
+      {
+        "input": "x",
+        "receiver": 1358962688,
+        "parameter": 1358971904,
+        "result": 4796700,
+        "calls": [
+          [
+            "StringParam::toString",
+            1358971904,
+            4796700,
+            32
+          ]
+        ],
+        "first32_hex": "7800434343434343434343434343434343434343434343434343434343434300"
+      },
+      {
+        "input": null,
+        "receiver": 1358962688,
+        "parameter": 0,
+        "result": 0,
+        "calls": [],
+        "first32_hex": "7800434343434343434343434343434343434343434343434343434343434300"
+      }
+    ]
+  }
+]

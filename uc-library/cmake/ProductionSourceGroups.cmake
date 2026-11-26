@@ -1,4 +1,11 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/DAWChannelGroupInit.cpp
+  src/Presonus/Mixer/PreDelayFormatterT9.cpp
+  src/Presonus/Mixer/FxReverbNumFormatter.cpp
+  src/Presonus/Mixer/DynamicsParameterInfo.cpp
+  src/Presonus/UC/DataElement.cpp
+  src/Presonus/UC/ComponentElement.cpp
+  src/Presonus/UC/TemplateElement.cpp
   src/ParamHelper.cpp
   src/Presonus/DAWChannelInit.cpp
   src/Presonus/Mixer/FxTypeFormatter.cpp
@@ -467,6 +474,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/ControlSuspender.cpp
   src/Presonus/Dsp/EQ8Controller.cpp
   src/Presonus/Dsp/SimpleController.cpp
   src/Presonus/Dsp/CompController.cpp
@@ -1380,3 +1388,12 @@ set_property(SOURCE src/Presonus/IDAWDialogHandler.cpp APPEND PROPERTY COMPILE_O
 set_property(SOURCE src/Presonus/Surface/PageHeaderComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -ffunction-sections -fdata-sections)
 
 set_property(SOURCE src/Presonus/SpectrumPainter.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)
+
+# Accepted local destructor/initializer replay mode, scoped to these providers.
+set_property(SOURCE src/Presonus/Panel/MeterPeakControl.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Mixer/PreDelayFormatterT9.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/Mixer/FxReverbNumFormatter.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti -fno-sized-deallocation)
+set_property(SOURCE src/Presonus/UC/DataElement.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-sized-deallocation)
+
+# Preserve accepted meter arithmetic without contraction.
+set_property(SOURCE src/Presonus/Panel/MeterLevelControl.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-fast-math -ffp-contract=off)

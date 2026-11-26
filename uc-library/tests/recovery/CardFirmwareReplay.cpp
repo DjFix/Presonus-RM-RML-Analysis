@@ -107,7 +107,7 @@ struct Hal : Presonus::Dsp::IAudioHAL {
   }
   void enableDACs(bool, bool, int) override { std::abort(); }
   void enableAMP(bool) override { std::abort(); }
-  void suspendControlSurfaces(bool) override { std::abort(); }
+  std::uint8_t suspendControlSurfaces(bool) override { std::abort(); }
 };
 struct Response : presonus::dice::ResponseServices {
   presonus::noaa::CardState &state;

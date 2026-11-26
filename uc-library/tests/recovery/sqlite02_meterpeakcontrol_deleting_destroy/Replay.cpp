@@ -152,7 +152,9 @@ int main() {
     observedOwner = owner;
     receiverFreed = timerFreed = observerRemoved = false;
     if (populated) {
-      owner->setParameter(&parameter, 0);
+      // Match the native destructor oracle: seed observer state directly.
+      ControlAccess::parameter(*owner) = &parameter;
+      parameter.addObserver(owner);
       parameter.addObserver(&survivorObserver);
       owner->startTimer(1.f, 1);
       survivor.startTimer(1.f, 2);

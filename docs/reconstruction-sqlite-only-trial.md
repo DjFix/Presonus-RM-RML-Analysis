@@ -64,17 +64,39 @@ is needed, bind the rebuilt production and replay dependency files, and
 target the real registered test before running the full suite. A hash used
 only to identify archived inputs stays historical.
 
-When a recovered constructor changes defaults used by an existing body-only
-replay, inspect the actual dependent driver and its original native oracle
-state. Explicitly seed the oracle's timer and callback-feedback preconditions in
-that driver; preserve the original fixture and expected observations. Do not
+When a recovered constructor or newly implemented virtual callback changes
+behavior used by an existing body-only replay, inspect the actual dependent driver and its original native oracle
+state. Explicitly seed the oracle's timer, observer/parameter state and
+callback-feedback preconditions in that driver. If the native oracle directly
+installs observer state, use that direct setup rather than a setter that now
+executes a newly recovered callback; retain the native tag and IO assumptions;
+ preserve the original fixture and expected observations. Do not
 change production defaults or weaken the constructor test to preserve an
 implicit historical test setup. Retain the old driver, bind the exact
 transition, and run both the affected body replay and the new constructor
 variants before the full suite. Hash-only preflight does not detect this state
-coupling.
+coupling. Enumerate the actual compiler `.d` dependency closure, including
+derived-class replay drivers, before choosing focused tests. Class-name or
+test-name filters alone are prohibited as the dependency inventory. Inspect
+all dependent setter setup calls when a base virtual callback changes and run
+the corresponding registered tests before the full suite.
+
+Before registering an accepted replay in the canonical Release build, inspect
+its assertion usage and actual worker compiler flags. If assertions execute
+operations or validate the promised domain, compile that replay target with
+`-UNDEBUG` after inherited Release definitions. Verify the generated command
+and replay output. A successful binary with disabled assertions cannot prove
+those operations; preserve the failed output and rerun the affected replay.
 
 ### Installed public headers
+
+A name-only install-list comparison is not the required header preflight.
+Materialize the actual configured install tree and compile every changed public
+header from that tree before the full suite. Include unchanged application base
+headers reached transitively; a source checkout include path must not hide an
+absent installed dependency. Preserve the failing standalone translation unit,
+correct the explicit public list, and demonstrate the actual compile succeeds
+before continuing.
 
 Before starting the full canonical Linux suite, compare the configured CMake
 install destinations and source paths with the expected application header
@@ -126,3 +148,30 @@ Its SHA-256 is
   archive is `evidence/recovery/2026-11-24/rolling-c001/formatter-d0-existing-review/`.
   Its `MANIFEST.json` SHA-256 is
   `266fd850373d1ba5902ce70ab6a777a8cbbcff1200e88e824ac1d1312791515a`.
+
+When restoring a previously staged source or header overlay, preserve its exact
+accepted/baseline bytes but invalidate dependent build outputs explicitly. A
+`copy2` restoration can retain an old timestamp while newer objects still embody
+the reverted interface. Touch the restored paths and run the authentic canonical
+dependency build; verify the affected compile commands and rebuilt objects before
+sealing. Matching source hashes alone cannot establish object freshness. Preserve
+any failed stale-object link and the restored hashes; do not mask unresolved
+symbols or repeat unrelated successful checks.
+
+After the scoped formatter and dry-run succeed, use the maintained
+`uc-library/tools/format_cpp.py` check-only path to refresh the canonical
+formatting manifest for the exact paths. Physical formatting alone does not
+refresh proof hashes. Verify every changed C++ source/header has its current
+hash in `validation/formatting.json` before starting proof refresh/sealing.
+Preserve prior formatting metadata and never rewrite source after a final build
+merely to repair proof metadata.
+
+Before an installed-role proof, distinguish a handoff's compiled artifact list
+from the reviewed runtime provider requirements for that exact target. A shared
+worker build may compile sibling formatters or other class methods that the
+replay never calls. Keep every artifact/source hash and archive member binding,
+but require runtime link-map presence for the explicitly reviewed caller/base
+provider closure. Derive that closure from declarations, actual calls and
+native/source-provider evidence before execution; never learn an exclusion
+policy automatically from the resulting map. Missing real providers remain a
+failure. Preserve prior proofs when issuing a narrowly scoped policy successor.
