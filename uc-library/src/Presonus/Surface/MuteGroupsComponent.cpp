@@ -1,12 +1,23 @@
 #include "presonus/surface/MuteGroupsComponent.hpp"
-#include "presonus/MeterControl.hpp"
-#include "presonus/MeterScaleControl.hpp"
-#include "presonus/PanControl.hpp"
 #include "presonus/uc/message_attributes.hpp"
 #include "presonus/uc/mutable_message_event.hpp"
 #include <stdexcept>
 
 namespace Presonus::Surface {
+MuteGroupsComponent::MuteGroupsComponent() : Core::Portable::Component("") {
+  timers_.reserve(ownedTimers_.size());
+  for (auto &timer : ownedTimers_) {
+    timer = std::make_unique<DelayTimer>(2.f);
+    timers_.push_back(timer.get());
+  }
+  paramList.setFeedbackNeeded(true);
+}
+
+MuteGroupsComponent::~MuteGroupsComponent() {
+  for (auto &timer : ownedTimers_)
+    timer.reset();
+}
+
 void MuteGroupsComponent::paramChanged(Parameter *p, int msg) {
   Core::Portable::Component::paramChanged(p, msg);
   const int tag = p->getTag();

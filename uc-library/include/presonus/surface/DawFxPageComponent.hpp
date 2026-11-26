@@ -1,7 +1,8 @@
 #pragma once
-#include "core/portable/corecomponent.h"
 #include "core/portable/gui/coreview.h"
+#include "presonus/PageComponent.hpp"
 namespace Presonus {
+class DAWClientComponent;
 class DAWDeviceFolder;
 class DAWDeviceSlot;
 class IMappingController;
@@ -18,9 +19,10 @@ struct DawFxBindings {
 } // namespace presonus::surface
 namespace Presonus::Surface {
 // Portable source port; original return declarations and ARM layout unresolved.
-class DawFxPageComponent : public Core::Portable::Component {
+class DawFxPageComponent : public PageComponent {
 public:
-  ~DawFxPageComponent();
+  DawFxPageComponent(const char *formName, int tag);
+  ~DawFxPageComponent() override;
   void setMappingController(Presonus::IMappingController *);
   DawFxPageComponent(Core::Portable::Parameter *mode,
                      presonus::surface::DawFxBindings bindings,
@@ -29,7 +31,7 @@ public:
   void setListOffset(int offset);
   void addListOffset(int delta);
   // Source-port return contract; original return declaration is unresolved.
-  void onWheelInput(const Core::Portable::WheelEvent &event);
+  void onWheelInput(const Core::Portable::WheelEvent &event) override;
   int getMaxListOffset() const;
   int &getListOffset() const;
   int getEditSlotIndex(DAWDeviceFolder *folder) const;
@@ -38,9 +40,11 @@ public:
 
 private:
   friend struct DawFxTestAccess;
+  DAWClientComponent *dawClient_ = nullptr;
   Presonus::IMappingController *mappingController_{};
-  Core::Portable::Parameter *mode_;
-  presonus::surface::DawFxBindings bindings_;
-  mutable int insertOffset_, sendOffset_;
+  Core::Portable::Parameter *mode_ = nullptr;
+  presonus::surface::DawFxBindings bindings_{};
+  mutable int insertOffset_ = 0;
+  mutable int sendOffset_ = 0;
 };
 } // namespace Presonus::Surface

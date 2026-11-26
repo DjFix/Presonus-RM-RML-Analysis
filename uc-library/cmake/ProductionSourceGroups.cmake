@@ -1,4 +1,5 @@
 set(PRESONUS_common_SOURCES
+  src/ParamHelper.cpp
   src/Presonus/DAWChannelInit.cpp
   src/Presonus/Mixer/FxTypeFormatter.cpp
   src/Presonus/Panel/PanMeterControl.cpp
@@ -675,6 +676,7 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/uc/ParamHelper.hpp
   presonus/mixer/FxTypeFormatter.hpp
   presonus/mixer/XmenFormatterInitializer.hpp
   presonus/panel/pan_meter_control.hpp
@@ -1364,3 +1366,17 @@ set_property(SOURCE src/Presonus/Mixer/FxTypeFormatter.cpp APPEND PROPERTY COMPI
 set_property(SOURCE src/Presonus/Panel/PanMeterControl.cpp APPEND PROPERTY COMPILE_OPTIONS -Ulinux -fno-fast-math -ffp-contract=off -fno-builtin-powf)
 
 set_property(SOURCE src/application/SurfaceApplicationClientRelease.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -UNDEBUG -ffunction-sections -fdata-sections -fno-rtti)
+
+set_property(SOURCE src/ParamHelper.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++17 -DNDEBUG=1 -Ulinux -fno-rtti)
+
+set_property(SOURCE src/Presonus/LinkControl.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+set_property(SOURCE src/Presonus/MeterManagerBase.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++17 -DNDEBUG=1 -Ulinux)
+
+set_property(SOURCE src/Presonus/Panel/GeqPresetComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++17 -DNDEBUG=1 -Ulinux -fno-rtti -fno-lto)
+
+set_property(SOURCE src/Presonus/IDAWDialogHandler.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-rtti)
+
+set_property(SOURCE src/Presonus/Surface/PageHeaderComponent.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -ffunction-sections -fdata-sections)
+
+set_property(SOURCE src/Presonus/SpectrumPainter.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti)

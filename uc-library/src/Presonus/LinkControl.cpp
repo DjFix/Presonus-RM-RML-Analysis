@@ -1,5 +1,14 @@
 #include "presonus/LinkControl.hpp"
 namespace Presonus {
+LinkControl::LinkControl(const Core::TRect<int> &size,
+                         Core::Portable::Parameter *p)
+    : Control(size, p) {}
+
+LinkControl::~LinkControl() {
+  if (rightSideParam)
+    rightSideParam->removeObserver(this);
+}
+
 // Source-port void override and modern null BitmapMode; original return and ABI
 // remain unresolved. Event origin is intentionally not added to updateRect.
 void LinkControl::draw(const Core::Portable::DrawEvent &e) {
@@ -31,8 +40,15 @@ void LinkControl::setRightSideParam(Core::Portable::Parameter *p) {
 void LinkControl::paramChanged(Core::Portable::Parameter *p, int msg) {
   if (msg == Core::Portable::Parameter::kChanged && p == rightSideParam)
     invalidate();
-  if (msg == Core::Portable::Parameter::kDestroyed && p == rightSideParam)
-    rightSideParam = nullptr;
+  if (msg == Core::Portable::Parameter::kDestroyed) {
+    if (rightSideParam && p == rightSideParam) {
+      p->removeObserver(this);
+      rightSideParam = nullptr;
+    }
+    if (p == getParameter())
+      setParameter(nullptr);
+    return;
+  }
   Control::paramChanged(p, msg);
 }
 void LinkControl::setAttributes(const Core::Portable::Attributes &a) {

@@ -684,6 +684,9 @@ list(APPEND PRESONUS_UC_PUBLIC_HEADERS
   presonus/panel/meter_level_control.hpp
   presonus/panel/pan_meter_control.hpp
 )
+list(APPEND PRESONUS_UC_PUBLIC_HEADERS
+  presonus/uc/ParamHelper.hpp
+)
 foreach(header IN LISTS PRESONUS_UC_PUBLIC_HEADERS)
   get_filename_component(header_directory "${header}" DIRECTORY)
   install(FILES "include/${header}" DESTINATION "include/${header_directory}")

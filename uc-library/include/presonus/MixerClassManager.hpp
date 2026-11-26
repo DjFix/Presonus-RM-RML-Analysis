@@ -9,19 +9,23 @@ class ComponentDescriptor;
 namespace Presonus {
 
 class MixerClassManager {
-public:
-  MixerClassManager();
-  ~MixerClassManager();
-
-  MixerClassManager(const MixerClassManager &) = delete;
-  MixerClassManager &operator=(const MixerClassManager &) = delete;
-
-private:
   struct MixerClass {
     const char *name;
     const Core::Portable::ComponentDescriptor *descriptor;
   };
 
+public:
+  MixerClassManager();
+  ~MixerClassManager();
+
+  // Portable declarations. The original ordinary return types are unresolved.
+  const MixerClass *getMixerClass(const char *name) const;
+  bool isMixerClass(const char *name) const;
+
+  MixerClassManager(const MixerClassManager &) = delete;
+  MixerClassManager &operator=(const MixerClassManager &) = delete;
+
+private:
   Core::Vector<MixerClass *> classes_;
 
   friend struct MixerClassManagerLifetimeProbe;

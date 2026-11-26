@@ -1,15 +1,58 @@
 #include "presonus/surface/DawFxPageComponent.hpp"
 #include "presonus/DAWDeviceFolder.hpp"
 #include "presonus/DAWDeviceSlot.hpp"
+#include <array>
 #include <bit>
+#include <cstdio>
 #include <cstring>
 #include <limits>
 namespace Presonus::Surface {
+namespace {
+using Core::Portable::ParamInfo;
+
+constexpr int modeTag = 1000;
+constexpr std::array<ParamInfo, 7> rowParameters{{
+    PARAM_STRING(0, "num", 0),
+    PARAM_TOGGLE(1, "used", 0, nullptr, 0),
+    PARAM_TOGGLE(2, "has-slider", 0, nullptr, 0),
+    PARAM_ALIAS(3, "bypass", 0),
+    PARAM_ALIAS(4, "name", 0),
+    PARAM_ALIAS(5, "edit", 0),
+    PARAM_ALIAS(6, "slider", 0),
+}};
+
+constexpr ParamInfo controls[] = {
+    PARAM_TOGGLE(1001, "page-up", 0, nullptr, 0),
+    PARAM_TOGGLE(1003, "page-down", 0, nullptr, 0),
+    PARAM_TOGGLE(1002, "one-up", 0, nullptr, 0),
+    PARAM_TOGGLE(1004, "one-down", 0, nullptr, 0),
+    PARAM_INT(modeTag, "fx-type", 0, 1, 0, nullptr, nullptr, 0, 0),
+    PARAM_ALIAS(1005, "bypass-inserts", 0),
+};
+} // namespace
+
+DawFxPageComponent::DawFxPageComponent(const char *formName, int tag)
+    : PageComponent("dawFx", formName, tag) {
+  constexpr int rowWidth = static_cast<int>(rowParameters.size());
+  for (int row = 0; row < 5; ++row) {
+    auto parameters = rowParameters;
+    for (int column = 0; column < rowWidth; ++column) {
+      auto &parameter = parameters[column];
+      parameter.tag += row * rowWidth;
+      std::snprintf(parameter.name, sizeof(parameter.name), "%s_%d",
+                    rowParameters[column].name, row + 1);
+    }
+    addParameters(parameters.data(), rowWidth, true);
+  }
+  addParameters(controls, static_cast<int>(std::size(controls)));
+  mode_ = getParameterByTag(modeTag);
+}
+
 DawFxPageComponent::DawFxPageComponent(
     Core::Portable::Parameter *mode, presonus::surface::DawFxBindings bindings,
     int insertOffset, int sendOffset)
-    : mode_(mode), bindings_(bindings), insertOffset_(insertOffset),
-      sendOffset_(sendOffset) {}
+    : PageComponent("", nullptr, 0), mode_(mode), bindings_(bindings),
+      insertOffset_(insertOffset), sendOffset_(sendOffset) {}
 void DawFxPageComponent::onWheelInput(const Core::Portable::WheelEvent &event) {
   addListOffset(event.delta);
 }
@@ -47,7 +90,7 @@ int DawFxPageComponent::calcAutoScroll(DAWDeviceFolder *folder,
   return (index / 5) * 5;
 }
 int DawFxPageComponent::getMaxListOffset() const {
-  if (!bindings_.hasFolder(bindings_.context))
+  if (!bindings_.hasFolder || !bindings_.hasFolder(bindings_.context))
     return 0;
   auto n = std::bit_cast<std::int32_t>(
       static_cast<std::uint32_t>(bindings_.usedCount(bindings_.context)) - 1u);
@@ -55,7 +98,8 @@ int DawFxPageComponent::getMaxListOffset() const {
   return result < 0 ? 0 : result;
 }
 void DawFxPageComponent::onFocusChannelChanged() {
-  bindings_.updateList(bindings_.context, true);
+  if (bindings_.updateList)
+    bindings_.updateList(bindings_.context, true);
 }
 void DawFxPageComponent::setListOffset(int offset) {
   int &current = getListOffset();
@@ -69,7 +113,8 @@ void DawFxPageComponent::setListOffset(int offset) {
   if (current == offset)
     return;
   current = offset;
-  bindings_.updateList(bindings_.context, false);
+  if (bindings_.updateList)
+    bindings_.updateList(bindings_.context, false);
 }
 void DawFxPageComponent::addListOffset(int delta) {
   auto result = static_cast<std::uint32_t>(getListOffset()) +

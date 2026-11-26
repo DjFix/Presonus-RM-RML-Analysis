@@ -21,6 +21,11 @@ if a.source_transition:
         'sha256': hashlib.sha256(template_path.read_bytes()).hexdigest(),
     }
     approved = {'include/presonus/MappablePageComponent.hpp', 'src/Presonus/MappablePageComponent.cpp'}
+    if 'w13_predecessor' in transition:
+        prior = transition['w13_predecessor']
+        for predecessor in (prior['manifest'], prior['checker']):
+            assert hashlib.sha256(Path(predecessor['path']).read_bytes()).hexdigest() == predecessor['sha256']
+        approved.update(('include/presonus/surface/PageHeaderComponent.hpp', 'src/Presonus/Surface/PageHeaderComponent.cpp'))
     changes = transition['source_transitions']
     assert len(changes) == len(approved) and {row['path'] for row in changes} == approved
     for row in changes:

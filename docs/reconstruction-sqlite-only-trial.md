@@ -64,6 +64,16 @@ is needed, bind the rebuilt production and replay dependency files, and
 target the real registered test before running the full suite. A hash used
 only to identify archived inputs stays historical.
 
+When a recovered constructor changes defaults used by an existing body-only
+replay, inspect the actual dependent driver and its original native oracle
+state. Explicitly seed the oracle's timer and callback-feedback preconditions in
+that driver; preserve the original fixture and expected observations. Do not
+change production defaults or weaken the constructor test to preserve an
+implicit historical test setup. Retain the old driver, bind the exact
+transition, and run both the affected body replay and the new constructor
+variants before the full suite. Hash-only preflight does not detect this state
+coupling.
+
 ### Installed public headers
 
 Before starting the full canonical Linux suite, compare the configured CMake

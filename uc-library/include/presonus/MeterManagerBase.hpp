@@ -27,6 +27,7 @@ struct Environment {
 } // namespace presonus::meter
 
 namespace Presonus {
+class MeterMaid;
 // Portable source adaptation. Thread inheritance, storage and constructor are
 // intentional CCL integration choices, not recovered original layout or ABI.
 // Unencoded original return declarations remain pending; startup/shutdown and
@@ -50,6 +51,10 @@ public:
   std::array<Core::FixedSizeVector<int, 100>, 6> sourcePortClients;
 
 protected:
+  // The roster owns its non-null entries. The original return declaration
+  // remains unresolved.
+  void deleteAll(Core::Vector<MeterMaid *> &roster);
+
   // Default meter-processing hook for the portable base.
   virtual void processMeters(bool);
   virtual void sendUCNETMeters(bool);

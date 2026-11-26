@@ -17,6 +17,24 @@ constexpr auto aliasInfo = [] {
     info.name[i] = name[i];
   return info;
 }();
+class TypedItemOperations final : public presonus::mapping::ItemOperations {
+public:
+  void fullOff(MappingTable::Item &item) override { item.setFullOff(); }
+  void inverseMode(MappingTable::Item &item, bool inverse) override {
+    item.setInverseMode(inverse);
+  }
+  void enabled(MappingTable::Item &item, bool enabled) override {
+    item.setEnabled(enabled);
+  }
+  void immediate(MappingTable::Item &item, bool immediate) override {
+    item.setImmediate(immediate);
+  }
+};
+
+TypedItemOperations &defaultItemOperations() {
+  static TypedItemOperations operations;
+  return operations;
+}
 } // namespace
 
 struct MappingTable::OwnedRoster {
@@ -32,6 +50,9 @@ struct MappingTable::OwnedRoster {
     }
   }
 };
+
+MappingTable::MappingTable()
+    : MappingTable(OwnedItems{}, defaultItemOperations()) {}
 
 MappingTable::MappingTable(OwnedItems, presonus::mapping::ItemOperations &ops)
     : MappingTable(nullptr, 0, ops) {

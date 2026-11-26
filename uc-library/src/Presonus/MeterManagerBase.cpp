@@ -1,7 +1,15 @@
 #include "presonus/MeterManagerBase.hpp"
+#include "presonus/MeterMaid.hpp"
 #include <cstring>
 
 namespace Presonus {
+void MeterManagerBase::deleteAll(Core::Vector<MeterMaid *> &roster) {
+  const int count = roster.count();
+  for (int i = 0; i < count; ++i)
+    delete roster.at(i);
+  roster.removeAll();
+}
+
 void MeterManagerBase::processMeters(bool) {}
 void MeterManagerBase::sendUCNETMeters(bool) {}
 void MeterManagerBase::sourcePortStart() { Core::Threads::Thread::start(); }

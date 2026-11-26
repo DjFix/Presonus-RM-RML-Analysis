@@ -45,6 +45,7 @@ public:
     Core::CStringBuffer<32> name;
     Core::CStringBuffer<32> defaultColor;
   };
+  MappingTable();
   MappingTable(const presonus::mapping::Entry *sortedEntries, int count,
                presonus::mapping::ItemOperations &operations);
   // Copies of the owned source-port table share its stable roster and aliases.

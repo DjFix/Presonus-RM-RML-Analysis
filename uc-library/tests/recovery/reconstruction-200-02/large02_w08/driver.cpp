@@ -45,7 +45,11 @@ struct Meter : MeterControl {
   }
 };
 struct Mute : Surface::MuteGroupsComponent {
-  void add(Parameter *p) { paramList.add(p); }
+  void add(Parameter *p) {
+    // Native body-only parameter hooks do not dispatch component feedback.
+    paramList.setFeedbackNeeded(false);
+    paramList.add(p);
+  }
 };
 struct Controller : ViewController {
   std::array<P *, 3> p;
@@ -245,6 +249,10 @@ int main(int argc, char **argv) {
     UCFixture::Network network(origins);
     UCFixture::Client client(network);
     Mute m;
+    // This body-only oracle zero-initializes refresh state and models expiry.
+    // Keep that explicit boundary separate from the recovered 100 ms ctor.
+    presonus::timing::DelayTimerAccess::set(m.muteRefreshTimer(),
+                                            {0, 0, 0, 0.f, false});
     if (arg(6))
       m.bindMuteClient(&client, &origins);
     ParamInfo pi = info;

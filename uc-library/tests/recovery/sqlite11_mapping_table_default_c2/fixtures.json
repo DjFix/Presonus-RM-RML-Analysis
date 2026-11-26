@@ -1,0 +1,78 @@
+{
+  "original": {
+    "address": 483892,
+    "anchor": "44ef688762de9f53dbeae0df36bb69f9615bc6edccb8c02c28d2bc725ee7110e",
+    "architecture": "arm",
+    "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+    "elf_path": "rootfs/CS18_v13840/home/root/surface",
+    "file_offset": 451124,
+    "firmware": "CS18AI surface 13840",
+    "mangled": "_ZN8Presonus12MappingTableC2Ev",
+    "range_hex": "0dc0a0e170d82de90030a0e30050a0e104b04ce204d04de20c3085e40060a0e1045080e5083080e50340a0e10010a0e3040085e00120a0e1484084e2b4ffffeb120a54e3f8ffff1a123a86e218209fe5143083e2023086e710309fe50010a0e3031086e70600a0e170a89de90c20010010200100",
+    "range_sha256": "bb4765047618a08389278fd6652e139fa0054c948b884dc217a7228f5de0b66e",
+    "role": "client",
+    "section": 12,
+    "section_name": ".text",
+    "size": 116
+  },
+  "support": {
+    "mangled": "_ZN8Presonus12MappingTable4ItemC1EPKcPN4Core8Portable10AliasParamE",
+    "address": 483656,
+    "size": 60,
+    "section": 12,
+    "section_name": ".text",
+    "file_offset": 450888,
+    "range_sha256": "6b7f47497395f194ecd90656124fbec68f0d9d84e97ad9b8f0a2fec568cfbe8e"
+  },
+  "cases": [
+    {
+      "initial_poison": 165,
+      "item_initialization_count": 1024,
+      "first_slot_offset": 12,
+      "stride": 72,
+      "last_slot_offset": 73668,
+      "distinct_null_string_calls": 2048,
+      "observed_arm_writes": 2053,
+      "arm_write_trace_sha256": "8baeb46122b3e5e8b5384e62062500366b903df944bd8d974d1d82c922e52a51",
+      "item_constructor_offsets_sha256": "49760b693448139f32e9a1fb67233efc506e4f2691c62c71f13a48b3433d5a88",
+      "output_with_modeled_first_nuls_sha256": "d6ce01ae1d50a4065f43e985baeb27161eefa35d8551420f1d4b14177529f4b5",
+      "table_header_words": [
+        0,
+        5243148,
+        0
+      ],
+      "auxiliary_words": [
+        5316884,
+        0
+      ],
+      "returned_receiver_register": true
+    },
+    {
+      "initial_poison": 90,
+      "item_initialization_count": 1024,
+      "first_slot_offset": 12,
+      "stride": 72,
+      "last_slot_offset": 73668,
+      "distinct_null_string_calls": 2048,
+      "observed_arm_writes": 2053,
+      "arm_write_trace_sha256": "8baeb46122b3e5e8b5384e62062500366b903df944bd8d974d1d82c922e52a51",
+      "item_constructor_offsets_sha256": "49760b693448139f32e9a1fb67233efc506e4f2691c62c71f13a48b3433d5a88",
+      "output_with_modeled_first_nuls_sha256": "a6b9f5a825ca054c78858d5934509ccea5b3ab2f4ad7adc406c631b29b1c475c",
+      "table_header_words": [
+        0,
+        5243148,
+        0
+      ],
+      "auxiliary_words": [
+        5316884,
+        0
+      ],
+      "returned_receiver_register": true
+    }
+  ],
+  "versions": {
+    "unicorn": "2.1.4",
+    "pyelftools": "0.33"
+  },
+  "scope": "Exact application bodies executed. Two null fixed-string construction calls per slot use a provider hook which writes the first NUL only. ARM application stores are logged separately. No firm layout or source result is inferred for other bytes of native string buffers."
+}

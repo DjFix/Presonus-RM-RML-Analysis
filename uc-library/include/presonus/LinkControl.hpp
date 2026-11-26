@@ -5,7 +5,9 @@ namespace Presonus {
 // Portable CCL-backed contract. Original layout and unencoded returns pending.
 class LinkControl : public Core::Portable::Control {
 public:
-  using Control::Control;
+  LinkControl(const Core::TRect<int> &size = Core::Rect(),
+              Core::Portable::Parameter *p = nullptr);
+  ~LinkControl() override;
   void draw(const Core::Portable::DrawEvent &e) override;
   bool isLinked() const;
   bool isRightSideOfLink() const;

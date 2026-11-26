@@ -17,6 +17,8 @@ public:
                      presonus::panel::GeqPresetState state)
       : PresetComponent(services), state(state) {}
   ~GeqPresetComponent() override;
+  // Portable return declaration; the original spelling is unresolved.
+  bool store();
   bool recall(Core::Portable::Attributes &, bool);
 
 private:

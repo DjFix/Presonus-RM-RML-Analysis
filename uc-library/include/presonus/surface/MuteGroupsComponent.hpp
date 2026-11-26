@@ -4,16 +4,17 @@
 #include "presonus/delay_timer.hpp"
 #include "presonus/uc/client_implementation.hpp"
 #include "presonus/uc/client_typed_origins.hpp"
+#include <array>
 #include <memory>
 #include <vector>
 namespace Presonus::Surface {
-// Original-named partial source port. Host binds actual providers; pointers
-// outlive this component. Timer count and tag ranges follow native
-// instructions.
+// Original-named partial source port. Explicitly bound providers and timers
+// are borrowed and must outlive this component.
 class MuteGroupsComponent : public Core::Portable::Component {
 public:
   using Parameter = Core::Portable::Parameter;
-  MuteGroupsComponent() = default;
+  MuteGroupsComponent();
+  ~MuteGroupsComponent() override;
   void paramChanged(Parameter *, int) override;
   void storeMuteGroup(int);
   void onIdle() override;
@@ -28,8 +29,9 @@ public:
   DelayTimer &muteRefreshTimer() { return refresh_; }
 
 private:
+  std::array<std::unique_ptr<DelayTimer>, 8> ownedTimers_;
   std::vector<DelayTimer *> timers_;
-  DelayTimer refresh_{0.f};
+  DelayTimer refresh_{0.1f};
   UC::ClientImplementation *client_ = nullptr;
   presonus::uc::ClientTypedOrigins *origins_ = nullptr;
   DelayTimer *timer(int i) const {
