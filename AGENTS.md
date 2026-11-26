@@ -522,7 +522,7 @@ that allow stopping after research, completion of only the initially dispatched
 workers, or preparation of an integration draft.
 
 - Keep agents doing actual C++ reconstruction until the entire current selection
-  of 200 original targets has been processed. Use up to ten GPT-6.2-Sol (`gpt-6.2-sol`) workers
+  of 200 original targets has been processed. Use up to ten GPT-6.1-Sol (`gpt-6.1-sol`) workers
   in separate physical Git repositories; fill available implementation capacity
   whenever independent eligible work exists. Root integrates their owned diffs.
 - Research, a contract, a prepared packet, a compiling stub, or an idle worker
@@ -578,7 +578,7 @@ workers, or preparation of an integration draft.
 
 - Explicit recurrence correction, 2026-11-13: before starting canonical
   publication or integration, prepare and dispatch a reserve of independent
-  implementation packets to GPT-6.2-Sol (`gpt-6.2-sol`) workers in separate physical Git
+  implementation packets to GPT-6.1-Sol (`gpt-6.1-sol`) workers in separate physical Git
   repositories. Keep those workers running while Root publishes or validates.
   Check actual live worker IDs, owned classes/files and sealed packet paths;
   a planned queue or Root's solo implementation does not satisfy this rule.
@@ -762,8 +762,8 @@ or context compaction, together with the publisher polling cadence above.
   Preserve all other quality gates and historical data. See
   [SQLite-only reconstruction](docs/reconstruction-sqlite-only-trial.md).
 
-- Launch C001 and subsequent rolling batches with ten GPT-6.2-Sol workers
-  (ten targets per worker when available). Set `model="gpt-6.2-sol"` and
+- Launch C001 and subsequent rolling batches with ten GPT-6.1-Sol workers
+  (ten targets per worker when available). Set `model="gpt-6.1-sol"` and
   `fork_turns="none"` explicitly when submitting each sealed dispatch,
   including replacements. Record the actual launch and packet together.
   Keep a class with one owner and assign more than ten methods to that worker

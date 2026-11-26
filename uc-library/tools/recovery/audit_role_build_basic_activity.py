@@ -29,6 +29,8 @@ PORTABLE_COMPONENT_NO_RTTI_SOURCES = frozenset({
     'src/Presonus/DAWClientComponent.cpp',
     'src/Presonus/UC/ServerRootComponent.cpp',
     'src/application/SurfaceApplicationSkinDirectory.cpp',
+    'src/application/SurfaceApplicationClientRelease.cpp',
+    'src/Presonus/MackieControlModel.cpp',
     'src/Presonus/Surface/FatChannelClipboardSelection.cpp',
     'src/Presonus/Dsp/EQ5Controller.cpp',
     'src/Presonus/DAWFocusChannel.cpp',

@@ -6,6 +6,9 @@ namespace presonus::application {
 struct SurfaceSerialStateAccess;
 struct SurfaceTestModeReplayAccess;
 } // namespace presonus::application
+namespace Presonus::UC {
+class ClientRootComponent;
+} // namespace Presonus::UC
 namespace Presonus::Surface {
 // Source-port spelling for the observed 32-bit mode word.
 enum class SurfaceTestMode : std::uint32_t;
@@ -17,6 +20,9 @@ public:
   void readSerialFromDisk();
   // The original return declaration remains unresolved.
   void setupAndRunTestMode(SurfaceTestMode mode);
+  // Consumes a heap-owned client. The original return declaration is
+  // unresolved.
+  void releaseClientComponent(UC::ClientRootComponent *client);
   // Source-port return word; the original return type remains unresolved.
   std::uint32_t isNetworkClientReady() const;
   // Numeric 64-bit returns are source-port choices; declarations remain

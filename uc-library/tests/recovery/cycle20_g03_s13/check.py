@@ -220,7 +220,10 @@ def main():
     parser.add_argument('--symbols-only', action='store_true')
     for option in ('exe', 'object', 'fixture', 'integration', 'out'):
         parser.add_argument('--' + option, type=Path)
+    parser.add_argument('--source-transition', type=Path)
+    parser.add_argument('--source-transition-sha256')
     args = parser.parse_args()
+    assert bool(args.source_transition) == bool(args.source_transition_sha256)
     if args.compile:
         checked_compile()
         return
@@ -236,6 +239,18 @@ def main():
     frozen = {p: sha for bindings in FROZEN.values() for p, sha in bindings.items()}
     core = {p: sha for p, sha in frozen.items() if p.startswith('third_party/ccl-framework/core/')}
     assert all(digest(p) == sha for p, sha in core.items())
+    if args.source_transition:
+        assert args.integration is not None
+        assert digest(args.source_transition) == args.source_transition_sha256
+        transition = json.loads(args.source_transition.read_text())
+        assert digest(transition['historical_checker']) == transition['historical_checker_sha256']
+        row, = transition['source_transitions']
+        assert row['path'] == 'uc-library/include/presonus/MackieControlModel.hpp'
+        assert {key for key, deps in FROZEN.items() if row['path'] in deps} == {'app', 'test'}
+        assert all(FROZEN[key][row['path']] == row['previous_sha256'] for key in ('app', 'test'))
+        assert digest(row['previous_frozen_read_path']) == row['previous_sha256']
+        assert digest(row['current_frozen_read_path']) == row['current_sha256']
+        frozen[row['path']] = row['current_sha256']
     if args.integration is not None:
         assert all(digest(p) == sha for p, sha in frozen.items())
     formatted = [*SOURCES, REPLAY]
@@ -260,6 +275,8 @@ def main():
                  producer_sha256=digest(__file__), native_producer_sha256=digest(TEST / 'native.py'),
                  utc=datetime.now(timezone.utc).isoformat(), limitations=LIMITATIONS,
                  proposed_readiness={'ready': [], 'pending': pending})
+    if args.source_transition:
+        proof['source_transition'] = {'path': str(args.source_transition), 'sha256': args.source_transition_sha256}
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(proof, indent=2) + '\n')
     print(f'{TASK}: {sum(len(r["native_cases"]) for r in native)} native observations and {len(actual)} portable outputs')

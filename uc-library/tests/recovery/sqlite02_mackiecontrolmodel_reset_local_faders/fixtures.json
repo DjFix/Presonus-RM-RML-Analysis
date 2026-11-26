@@ -1,0 +1,540 @@
+{
+  "scope": "Native concrete reset and touch release, touched state/cache and fader callbacks with unbound MIDI sink.",
+  "cases": [
+    {
+      "input": "reset 0 0",
+      "expected": [
+        "F 8192 0",
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "F 36864 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ],
+        [
+          36864,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 0 1",
+      "expected": [
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "F 36864 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ],
+        [
+          36864,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 0 257",
+      "expected": [
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ],
+        [
+          36864,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 0 510",
+      "expected": [
+        "F 8192 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ],
+        [
+          36864,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 0 511",
+      "expected": [
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ],
+        [
+          36864,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 1 0",
+      "expected": [
+        "F 8192 0",
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 8"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 1 1",
+      "expected": [
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "C 000000000000000000 -1 -1 -1 -1 -1 -1 -1 -1 8"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 1 257",
+      "expected": [
+        "F 8193 0",
+        "F 8194 0",
+        "F 8195 0",
+        "F 8196 0",
+        "F 8197 0",
+        "F 8198 0",
+        "F 8199 0",
+        "C 000000000000000001 -1 -1 -1 -1 -1 -1 -1 -1 8"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 1 510",
+      "expected": [
+        "F 8192 0",
+        "C 000000000000000001 -1 -1 -1 -1 -1 -1 -1 -1 8"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    },
+    {
+      "input": "reset 1 511",
+      "expected": [
+        "C 000000000000000001 -1 -1 -1 -1 -1 -1 -1 -1 8"
+      ],
+      "native_touch_calls": [
+        [
+          8192,
+          0
+        ],
+        [
+          8193,
+          0
+        ],
+        [
+          8194,
+          0
+        ],
+        [
+          8195,
+          0
+        ],
+        [
+          8196,
+          0
+        ],
+        [
+          8197,
+          0
+        ],
+        [
+          8198,
+          0
+        ],
+        [
+          8199,
+          0
+        ]
+      ],
+      "native_sort_calls": []
+    }
+  ],
+  "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "target": {
+    "mangled": "_ZN8Presonus18MackieControlModel11resetFadersEv",
+    "address": 787432,
+    "section": 12,
+    "section_name": ".text",
+    "file_offset": 754664,
+    "size": 152,
+    "range_sha256": "fc7eba6f61770e6d9b9d5d2ef75c2c011f1515ce93ae0875558fdef609f66376"
+  },
+  "supporting_ranges": [
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel19onMessageFaderValueEif",
+      "address": 787352,
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 754584,
+      "size": 80,
+      "range_sha256": "7cdb9a1b62d6cf5d3f625d25fe4c74c2d39174cb24c94e67a8ae176da3d6ad04"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel15sendMidiMessageEPKhj",
+      "address": 787584,
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 754816,
+      "size": 48,
+      "range_sha256": "361e51fa34a6f4240ca149c46e526b2bff76f862d5e77b5176121323e6a5c77f"
+    },
+    {
+      "mangled": "_ZN8Presonus18MackieControlModel10touchFaderEib",
+      "address": 788004,
+      "section": 12,
+      "section_name": ".text",
+      "file_offset": 755236,
+      "size": 200,
+      "range_sha256": "c912d6daee00c9ae3bad203c8fb8ff6507dce5e4b99b268d1de1609e87b5e7b4"
+    },
+    {
+      "mangled": "_ZTVN8Presonus22MackieControlComponentE",
+      "address": 2009736,
+      "section": 14,
+      "section_name": ".rodata",
+      "file_offset": 1976968,
+      "size": 144,
+      "range_sha256": "1c7382a399d73086aac8dc1dd87031e21b1a4c378cd8ebbca6ffad6203f1c538"
+    },
+    {
+      "mangled": "_ZTVN8Presonus18MackieControlModelE",
+      "address": 2033376,
+      "section": 14,
+      "section_name": ".rodata",
+      "file_offset": 2000608,
+      "size": 68,
+      "range_sha256": "e9771c824c54c9b73f30938be64fe16883ea728251487e5e6fbbb5a776c6ac84"
+    }
+  ]
+}

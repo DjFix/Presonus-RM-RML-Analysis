@@ -1,12 +1,13 @@
 #pragma once
 #include "core/portable/corecomponent.h"
-#include "presonus/MackieControlModel.hpp"
+#include "presonus/IFaderPanel.hpp"
 // Intentional partial source-port classes. The application destructor ranges
 // only reset dispatch pointers and call Component destruction. Using the real
 // pinned provider as a base models that cleanup; original inheritance, complete
 // fields, vtable addresses and ARM32 layout are not established.
 namespace Presonus {
-class MackieControlComponent : public Core::Portable::Component {
+class MackieControlComponent : public Core::Portable::Component,
+                               public IFaderPanel::LocalUpdates {
 public:
   ~MackieControlComponent();
   // Source-port contract: a borrowed pointer to this component's actual model.
@@ -17,11 +18,11 @@ public:
   // Portable void callbacks; exact original return declaration is unresolved.
   virtual void updateDisplayStyle(int tag, int style, bool enabled);
   virtual void updateLedColor(int tag, int color);
-  void updateLedState(int tag, int state);
-  void updateTextDisplay(int tag, const char *text, int unused);
-  void updateFader(int tag, float value);
-  void updateMeter(int tag, float value);
-  void updateValueBar(int tag, int mode, float value, bool enabled);
+  void updateLedState(int tag, int state) override;
+  void updateTextDisplay(int tag, const char *text, int unused) override;
+  void updateFader(int tag, float value) override;
+  void updateMeter(int tag, float value) override;
+  void updateValueBar(int tag, int mode, float value, bool enabled) override;
   void paramChanged(Core::Portable::Parameter *parameter, int message) override;
   // Borrowed actual NumericParam, independent source-port counterpart of native
   // master pointer. Initialization below is source setup, not recovered ctor.

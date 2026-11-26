@@ -55,6 +55,15 @@ transition or its hash differs, archive the prior manifest, issue an exact
 successor for the affected tests and run those tests before the full suite.
 Preserve the original runtime fixture and its producer.
 
+Also inspect the active Python checkers named by configured CTest commands
+for inline current-source hash tables and hash fields resolved indirectly
+from proof templates. An empty argv-manifest scan is insufficient. Compare
+the exact projected source hashes with the checker's current assertions.
+Archive the previous checker and provider bytes when a versioned transition
+is needed, bind the rebuilt production and replay dependency files, and
+target the real registered test before running the full suite. A hash used
+only to identify archived inputs stays historical.
+
 ### Installed public headers
 
 Before starting the full canonical Linux suite, compare the configured CMake

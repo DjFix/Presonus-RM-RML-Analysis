@@ -559,7 +559,7 @@ def dispatch_locked(root, out, db_path):
             + '\n'.join(f"{path} {index['tasks'][name]}" for name, path in zip(group['tasks'], paths, strict=True))
         )
         workers.append({'owner': owner, 'packets': paths, 'arguments': {'task_name': owner,
-                        'model': 'gpt-6.2-sol', 'fork_turns': 'none', 'message': message}})
+                        'model': 'gpt-6.1-sol', 'fork_turns': 'none', 'message': message}})
     receipt = {'version': 1, 'mode': index['mode'], 'publication_state': 'complete',
                'packet_sha256': packet_hash, 'assigned_originals': len(request['operations']), 'workers': workers}
     dispatch_path = out / 'DISPATCH.json'

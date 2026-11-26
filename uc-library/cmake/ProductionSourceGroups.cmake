@@ -1,4 +1,7 @@
 set(PRESONUS_common_SOURCES
+  src/Presonus/DAWChannelInit.cpp
+  src/Presonus/Mixer/FxTypeFormatter.cpp
+  src/Presonus/Panel/PanMeterControl.cpp
   src/Presonus/MixerClassManager.cpp
   src/Presonus/DAWClientComponent.cpp
   src/Presonus/UC/ServerRootComponent.cpp
@@ -269,6 +272,7 @@ set(PRESONUS_common_SOURCES
   src/Presonus/Panel/Fat24FrontPanelComponent.cpp
 )
 set(PRESONUS_cs18_SOURCES
+  src/application/SurfaceApplicationClientRelease.cpp
   src/Presonus/MappingTableAddItem.cpp
   src/application/SurfaceApplicationTestMode.cpp
   src/Presonus/LcdView.cpp
@@ -462,6 +466,7 @@ set(PRESONUS_cs18_SOURCES
   src/Presonus/ThroughputTest.cpp
 )
 set(PRESONUS_rm_SOURCES
+  src/Presonus/Dsp/EQ8Controller.cpp
   src/Presonus/Dsp/SimpleController.cpp
   src/Presonus/Dsp/CompController.cpp
   src/Presonus/Dsp/GateController.cpp
@@ -670,6 +675,9 @@ set(PRESONUS_rm_SOURCES
   src/Presonus/TargetedComponent.cpp
 )
 set(PRESONUS_PUBLIC_HEADERS
+  presonus/mixer/FxTypeFormatter.hpp
+  presonus/mixer/XmenFormatterInitializer.hpp
+  presonus/panel/pan_meter_control.hpp
   presonus/MixerClassManager.hpp
   presonus/dsp/SimpleController.hpp
   presonus/LcdView.hpp
@@ -1346,3 +1354,13 @@ set_property(SOURCE src/Presonus/MappingTableAddItem.cpp APPEND PROPERTY COMPILE
 set_property(SOURCE src/Presonus/MappingTableItem.cpp APPEND PROPERTY COMPILE_OPTIONS -fno-lto -Ulinux -ffunction-sections -fdata-sections)
 
 set_property(SOURCE src/Presonus/MixerClassManager.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -UNDEBUG -ffunction-sections -fdata-sections)
+
+set_property(SOURCE src/Presonus/Dsp/EQ8Controller.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-lto -ffp-contract=off -fno-devirtualize -fno-devirtualize-speculatively)
+
+set_property(SOURCE src/Presonus/MackieControlModel.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -fno-rtti -UNDEBUG)
+
+set_property(SOURCE src/Presonus/Mixer/FxTypeFormatter.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20)
+
+set_property(SOURCE src/Presonus/Panel/PanMeterControl.cpp APPEND PROPERTY COMPILE_OPTIONS -Ulinux -fno-fast-math -ffp-contract=off -fno-builtin-powf)
+
+set_property(SOURCE src/application/SurfaceApplicationClientRelease.cpp APPEND PROPERTY COMPILE_OPTIONS -std=c++20 -UNDEBUG -ffunction-sections -fdata-sections -fno-rtti)

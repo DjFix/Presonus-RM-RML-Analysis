@@ -1,0 +1,396 @@
+[
+  {
+    "original": {
+      "address": 67912,
+      "anchor": "bde5edffdfe09e993e5c6c4992160276ed1557e5cc9d305fc5171aed735163cd",
+      "architecture": "arm",
+      "elf": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "elf_path": "rootfs/CS18_v13840/home/root/surface",
+      "file_offset": 35144,
+      "firmware": "CS18AI surface 13840",
+      "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_15FxTypeFormatterEEEvv",
+      "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de8fc5803ea0500a0e112eaffeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe55420a0e30820c4e5003084e575e8ffeb0400a0e118109fe518209fe55be9ffebeaffffea7c0725004008250034861800b896180010fb0000ac262400",
+      "range_sha256": "0a7cfa2ee821e127f960245f3ad21ad756e582e8c83909166d41cc5d3850946f",
+      "role": "client",
+      "section": 12,
+      "section_name": ".text",
+      "size": 136
+    },
+    "name": "fxtype",
+    "style": 84,
+    "static_receiver": 2426944,
+    "effects": [
+      {
+        "routine": "acquire",
+        "pc": 45508,
+        "receiver_argument": 2426748
+      },
+      {
+        "routine": "release",
+        "pc": 43900,
+        "receiver_argument": 2426748
+      },
+      {
+        "routine": "atexit",
+        "pc": 44836,
+        "receiver_argument": 2426944
+      },
+      {
+        "routine": "add",
+        "pc": 945508,
+        "receiver_argument": 2426944
+      },
+      {
+        "routine": "add",
+        "pc": 945508,
+        "receiver_argument": 2426944
+      },
+      {
+        "routine": "add",
+        "pc": 945508,
+        "receiver_argument": 2426944
+      }
+    ],
+    "initializer_writes": [
+      [
+        4,
+        4,
+        1607220
+      ],
+      [
+        8,
+        1,
+        84
+      ],
+      [
+        0,
+        4,
+        1611448
+      ]
+    ],
+    "scan": 0,
+    "scan_slot": 63736,
+    "scan_file_offset": 30968,
+    "scan_size": 20,
+    "scan_range_sha256": "52014dc35dcb0a43c02dfc6dec01fdeeafcc563ba02addaa7295df3a7a57226c",
+    "unicorn_version": "2.1.4",
+    "printing": {
+      "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+      "original_mangled": "_ZNK8Presonus5Mixer15NumberPrepender5printERN4Core9Formatter4DataE",
+      "address": 62864,
+      "size": 152,
+      "file_offset": 30096,
+      "range_sha256": "4c5db7ed1d62356f17c58c013eb43300ab9a64cded6ac70d50ade55358b0cd42",
+      "iterations": 6,
+      "cases": [
+        {
+          "input_value": 0,
+          "style": 84,
+          "capacity": 32,
+          "output_hex": "543100d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9",
+          "value_after": 0,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                1
+              ],
+              "result": "T1"
+            }
+          ]
+        },
+        {
+          "input_value": 1065353216,
+          "style": 84,
+          "capacity": 8,
+          "output_hex": "543200d9d9d9d9d9",
+          "value_after": 1065353216,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                2
+              ],
+              "result": "T2"
+            }
+          ]
+        },
+        {
+          "input_value": 1082130432,
+          "style": 84,
+          "capacity": 2,
+          "output_hex": "5400",
+          "value_after": 1082130432,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                5
+              ],
+              "result": "T5"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 1,
+          "output_hex": "00",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 0,
+          "output_hex": "",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 32,
+          "output_hex": "543800d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        }
+      ],
+      "modeled_boundaries": {
+        "45100": "strlen",
+        "45424": "strncpy",
+        "73196": "append_format",
+        "73336": "buffer_init",
+        "1601872": "__aeabi_fadd",
+        "1603576": "__aeabi_f2iz"
+      }
+    }
+  },
+  {
+    "original": {
+      "address": 144560,
+      "anchor": "6c9e7d1b6c6faf6840b8792f3e8e48281dedb624c1ae210cf7ec5a5688063d92",
+      "architecture": "arm",
+      "elf": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "elf_path": "rootfs/RML16AI_Rack_13731/home/root/mixer",
+      "file_offset": 111792,
+      "firmware": "RM/RML mixer 13731",
+      "mangled": "_ZN8Presonus5Mixer24XmenFormatterInitializer8addClassINS0_15FxTypeFormatterEEEvv",
+      "range_hex": "0dc0a0e130d82de960509fe504b04ce2003095e5010013e30200000a50009fe530689de877b403ea0500a0e1d39effeb000050e3f8ffff0a34409fe534309fe50500a0e1043084e52c309fe55420a0e30820c4e5003084e54b9dffeb0400a0e118109fe518209fe5259effebeaffffeaf8334900bc34490038e1150078f11500a4260200f4394500",
+      "range_sha256": "cf59e8534ce2bc33260ffa25b382cdc5f834378540db3d9b3e52e68ff67f2e23",
+      "role": "server",
+      "section": 12,
+      "section_name": ".text",
+      "size": 136
+    },
+    "name": "fxtype",
+    "style": 84,
+    "static_receiver": 4797628,
+    "effects": [
+      {
+        "routine": "acquire",
+        "pc": 45104,
+        "receiver_argument": 4797432
+      },
+      {
+        "routine": "release",
+        "pc": 43580,
+        "receiver_argument": 4797432
+      },
+      {
+        "routine": "atexit",
+        "pc": 44468,
+        "receiver_argument": 4797628
+      },
+      {
+        "routine": "add",
+        "pc": 1115832,
+        "receiver_argument": 4797628
+      },
+      {
+        "routine": "add",
+        "pc": 1115832,
+        "receiver_argument": 4797628
+      },
+      {
+        "routine": "add",
+        "pc": 1115832,
+        "receiver_argument": 4797628
+      }
+    ],
+    "initializer_writes": [
+      [
+        4,
+        4,
+        1433912
+      ],
+      [
+        8,
+        1,
+        84
+      ],
+      [
+        0,
+        4,
+        1438072
+      ]
+    ],
+    "scan": 0,
+    "scan_slot": 140428,
+    "scan_file_offset": 107660,
+    "scan_size": 20,
+    "scan_range_sha256": "52014dc35dcb0a43c02dfc6dec01fdeeafcc563ba02addaa7295df3a7a57226c",
+    "unicorn_version": "2.1.4",
+    "printing": {
+      "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+      "original_mangled": "_ZNK8Presonus5Mixer15NumberPrepender5printERN4Core9Formatter4DataE",
+      "address": 139604,
+      "size": 152,
+      "file_offset": 106836,
+      "range_sha256": "f0f86d206b440a98c10a96b26cbead324d74b17d30227491ce9c03c443fc5fce",
+      "iterations": 6,
+      "cases": [
+        {
+          "input_value": 0,
+          "style": 84,
+          "capacity": 32,
+          "output_hex": "543100d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9",
+          "value_after": 0,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                1
+              ],
+              "result": "T1"
+            }
+          ]
+        },
+        {
+          "input_value": 1065353216,
+          "style": 84,
+          "capacity": 8,
+          "output_hex": "543200d9d9d9d9d9",
+          "value_after": 1065353216,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                2
+              ],
+              "result": "T2"
+            }
+          ]
+        },
+        {
+          "input_value": 1082130432,
+          "style": 84,
+          "capacity": 2,
+          "output_hex": "5400",
+          "value_after": 1082130432,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                5
+              ],
+              "result": "T5"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 1,
+          "output_hex": "00",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 0,
+          "output_hex": "",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        },
+        {
+          "input_value": 1088421888,
+          "style": 84,
+          "capacity": 32,
+          "output_hex": "543800d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9d9",
+          "value_after": 1088421888,
+          "format_calls": [
+            {
+              "format": "%c%d",
+              "args": [
+                84,
+                8
+              ],
+              "result": "T8"
+            }
+          ]
+        }
+      ],
+      "modeled_boundaries": {
+        "44696": "strlen",
+        "45032": "strncpy",
+        "76532": "append_format",
+        "106804": "buffer_init",
+        "1405616": "__aeabi_fadd",
+        "1407320": "__aeabi_f2iz"
+      }
+    }
+  }
+]

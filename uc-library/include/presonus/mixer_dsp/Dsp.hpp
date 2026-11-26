@@ -136,13 +136,15 @@ private:
 };
 
 // Original single-inheritance RTTI establishes this base relationship.
-// This remains a partial portable class, not an original object ABI.
+// Portable source representation of the recovered EQ8 controller.
 class EQ8Controller : public EQController {
 public:
   explicit EQ8Controller(presonus::dsp::EQTypePortTag tag)
       : EQController(tag) {}
+  explicit EQ8Controller(int id);
   int getEQType(DSP::BiquadType type) const override;
   // Indices above7 return6; negative indices remain outside supported domain.
   int getBiquadType(int index) const override;
+  ~EQ8Controller() override;
 };
 } // namespace Presonus::Dsp

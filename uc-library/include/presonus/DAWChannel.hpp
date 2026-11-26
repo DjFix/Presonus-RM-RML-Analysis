@@ -17,6 +17,9 @@ public:
   void *castTo(int typeId) override;
   static void operator delete(void *allocation) noexcept;
 
+  // Initializes a newly assembled channel and its device folders.
+  void init(bool removeControls);
+
   DAWDeviceFolder *getInserts() const;
   DAWDeviceFolder *getCueMixes() const;
   DAWDeviceFolder *getPosts() const;
@@ -29,6 +32,7 @@ public:
 
 protected:
   static constexpr int selectedCache = 0;
+  static constexpr int channelStateCache = 1;
   static constexpr int idCache = 2;
 
   Core::Portable::Parameter *cachedParameters_[3]{};

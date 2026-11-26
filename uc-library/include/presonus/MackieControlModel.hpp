@@ -21,11 +21,12 @@ class IFaderPanel;
 // adapters.
 class MackieControlModel {
 public:
-  struct Entry {
+  struct MappingEntry {
     int tag;
     int note;
     int stateIndex;
   };
+  using Entry = MappingEntry;
   std::vector<Entry> entries;
   // Independent portable counterpart of the native MIDI-sorted lookup table.
   std::vector<Entry> midiEntries;
@@ -64,6 +65,13 @@ public:
   void turnEncoder(int, int);
   void moveFader(int, float);
   void addMapping(int, int);
+  void addMapping(const MappingEntry &);
+  std::array<float, 8> meterPeaks{};
+  std::array<char, 112> displayData{};
+  void onMessageMeter(int, int);
+  void onMessageVPotRing(int, int);
+  void resetFaders();
+  void updateDisplayData();
   // Independent source-port bytes corresponding to observed native reads.
   std::array<unsigned char, 8> hostConnectionIdentity{};
   void sendHostConnectionConfirmation(bool);

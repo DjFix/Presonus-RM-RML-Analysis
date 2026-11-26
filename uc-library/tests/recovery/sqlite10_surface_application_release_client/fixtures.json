@@ -1,0 +1,110 @@
+{
+  "cases": [
+    {
+      "allocation_unmapped": false,
+      "events": [],
+      "nonnull": false,
+      "surface_unchanged": true
+    },
+    {
+      "allocation_unmapped": true,
+      "events": [
+        [
+          "_ZN8Presonus2UC19ClientRootComponentC1EPKc",
+          4198400
+        ],
+        [
+          "ClientComponent C2",
+          4198400
+        ],
+        [
+          "ClientImplementation C2",
+          4198536
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199618
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199682
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199746
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199810
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199874
+        ],
+        [
+          "CStringBuffer<64> C1",
+          4199938
+        ],
+        [
+          "_ZN8Presonus2UC19ClientRootComponentD0Ev",
+          4198400
+        ],
+        [
+          "ClientImplementation D2",
+          4198536
+        ],
+        [
+          "CCL Component D2",
+          4198400
+        ],
+        [
+          "operator delete PLT",
+          4198400
+        ]
+      ],
+      "nonnull": true,
+      "surface_unchanged": true
+    }
+  ],
+  "elf": "rootfs/CS18_v13840/home/root/surface",
+  "elf_sha256": "304c6cd1f7b4319c4f82ceaa241ab59736a0a6a8495dc2a980d855ec5aa449a0",
+  "inputs": {
+    "0x1957a0": {
+      "file_offset": 1628064,
+      "name": "_ZTVN8Presonus2UC19ClientRootComponentE",
+      "section": 14,
+      "section_name": ".rodata",
+      "sha256": "9cca3401d93297f0b14e45be358f423e45934f4053e1d0432655ad267be6d7d6",
+      "size": 176
+    },
+    "0x50cf4": {
+      "file_offset": 298228,
+      "name": "_ZN8Presonus2UC19ClientRootComponentD0Ev",
+      "section": 12,
+      "section_name": ".text",
+      "sha256": "e701eb604d65a1e8c51114dee42922d13b72816ee7028a7ac7097f442b3caca0",
+      "size": 104
+    },
+    "0x51434": {
+      "file_offset": 300084,
+      "name": "_ZN8Presonus2UC19ClientRootComponentC1EPKc",
+      "section": 12,
+      "section_name": ".text",
+      "sha256": "a558f6c4b105715a1f8a79f35c7f00f1ee9f934d1fcb2f554240b7da5951e315",
+      "size": 192
+    },
+    "0xa6a38": {
+      "file_offset": 649784,
+      "name": "_ZN8Presonus7Surface18SurfaceApplication22releaseClientComponentEPNS_2UC19ClientRootComponentE",
+      "section": 12,
+      "section_name": ".text",
+      "sha256": "4feb78bccc7b2acb50ae8c9c7385f4d9eb7c60cc7d450396eee39689903935ba",
+      "size": 40
+    }
+  },
+  "scope": "Actual original release, ClientRootComponent C1, vtable bytes and D0. Named subordinate constructors and destructors are explicit hooks. The called delete PLT boundary unmaps the matching guest allocation; actual firmware allocator implementation is outside the fixture.",
+  "versions": {
+    "pyelftools": "0.33",
+    "unicorn": "2.1.4"
+  }
+}
