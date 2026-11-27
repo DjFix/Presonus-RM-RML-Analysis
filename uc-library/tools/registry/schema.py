@@ -6,13 +6,13 @@ import hashlib
 import json
 import pathlib
 import sqlite3
-from sqlalchemy import Column,Integer,Text
+from sqlalchemy import Column,Integer,Text,ForeignKey
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 import orm
 import registry as reg
 
-REVISIONS=('0001_adopt','0002_workflow_indexes')
+REVISIONS=('0001_adopt','0002_workflow_indexes','0003_provider_definitions')
 CURRENT=REVISIONS[-1]
 REQUIRED={'schema_info','provenance','registries','source_sets','source_versions','source_members','records','record_sets','workflow_info','work_state','stages','requests','journal','evidence_checks'}
 
@@ -75,19 +75,25 @@ def plan(db):
         return {'database':str(pathlib.Path(db).resolve()),'current_revision':old,'target_revision':CURRENT,'steps':list(REVISIONS[REVISIONS.index(old)+1:] if old else REVISIONS),'read_only':True,'backup_required':old!=CURRENT}
 
 
-def upgrade(db,backup=None,apply=False,fail_after=None):
+def upgrade(db,backup=None,apply=False,fail_after=None,reuse_backup=False):
     db=pathlib.Path(db);result=plan(db)
     if not apply or not result['steps']:return result
     require(backup is not None,'Explicit new backup path required')
     backup=pathlib.Path(backup)
-    require(not backup.exists() and backup.resolve()!=db.resolve(),'Backup must be a new independent file')
+    require(backup.resolve()!=db.resolve(),'Backup must be independent')
+    require(backup.is_file() if reuse_backup else not backup.exists(),
+            'Expected existing backup for explicit reuse, otherwise a new path')
+    if reuse_backup:
+        require((backup.stat().st_dev,backup.stat().st_ino)!=(db.stat().st_dev,db.stat().st_ino),
+                'Backup must not be a database hardlink')
     # Hold the same observation connection across backup and lock acquisition;
     # data_version detects concurrent commits in the gap. Backup is a consistent
     # SQLite snapshot, not a file copy that could omit WAL content.
     source=sqlite3.connect(db,isolation_level=None);source.row_factory=sqlite3.Row
     version=source.execute('PRAGMA data_version').fetchone()[0]
-    dest=sqlite3.connect(backup)
-    source.backup(dest);dest.close()
+    if not reuse_backup:
+        dest=sqlite3.connect(backup)
+        source.backup(dest);dest.close()
     with reg.connect(backup) as check:
         require(check.execute('PRAGMA integrity_check').fetchone()[0]=='ok' and not check.execute('PRAGMA foreign_key_check').fetchall(),'Backup integrity failed')
         baseline_fingerprint=fingerprint(check)
@@ -115,6 +121,19 @@ def upgrade(db,backup=None,apply=False,fail_after=None):
                 op.create_index('workflow_blocker_lookup','work_state',['blocker'])
                 op.create_index('workflow_stage_lookup','stages',['stage','record_id'])
                 connection.exec_driver_sql('UPDATE alembic_version SET version_num=?',(step,))
+            elif step=='0003_provider_definitions':
+                op.create_table('provider_imports',Column('sha256',Text,primary_key=True),
+                    Column('path',Text,nullable=False),Column('imported_at',Text,nullable=False),
+                    Column('document',Text,nullable=False))
+                op.create_table('provider_definitions',Column('elf',Text,primary_key=True),
+                    Column('mangled',Text,primary_key=True),Column('address',Integer,primary_key=True),
+                    Column('library',Text,nullable=False),
+                    Column('size',Integer,nullable=False),Column('section',Integer,nullable=False),
+                    Column('import_sha256',Text,ForeignKey('provider_imports.sha256'),nullable=False))
+                for table in ('provider_imports','provider_definitions'):
+                    for action in ('UPDATE','DELETE'):
+                        op.execute(f"CREATE TRIGGER {table}_no_{action.lower()} BEFORE {action} ON {table} BEGIN SELECT RAISE(ABORT,'append-only provider provenance'); END")
+                connection.exec_driver_sql('UPDATE alembic_version SET version_num=?',(step,))
             connection.exec_driver_sql('INSERT INTO migration_journal(revision,applied_at,backup_sha256,previous_fingerprint) VALUES (?,?,?,?)',(step,datetime.datetime.now(datetime.timezone.utc).isoformat(),reg.digest(backup),reg.encode(baseline_fingerprint)))
             if fail_after==step:raise RuntimeError('Injected migration failure for rollback test')
         after=fingerprint(source,before_names)
@@ -133,5 +152,5 @@ def upgrade(db,backup=None,apply=False,fail_after=None):
         unit.close();observation.close()
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--db',type=pathlib.Path,required=True);p.add_argument('--backup',type=pathlib.Path);p.add_argument('--apply',action='store_true');a=p.parse_args()
-    print(json.dumps(upgrade(a.db,a.backup,a.apply),indent=2))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--db',type=pathlib.Path,required=True);p.add_argument('--backup',type=pathlib.Path);p.add_argument('--apply',action='store_true');p.add_argument('--reuse-backup',action='store_true');a=p.parse_args()
+    print(json.dumps(upgrade(a.db,a.backup,a.apply,reuse_backup=a.reuse_backup),indent=2))

@@ -20,7 +20,7 @@ class SchemaTests(unittest.TestCase):
     def test_explicit_adoption_preserves_rows_triggers_indexes_and_backup(self):
         db=self.legacy()
         with r.connect(db) as c:before=schema.fingerprint(c)
-        old=r.digest(db);plan=schema.upgrade(db);self.assertEqual(old,r.digest(db));self.assertEqual(len(plan['steps']),2)
+        old=r.digest(db);plan=schema.upgrade(db);self.assertEqual(old,r.digest(db));self.assertEqual(len(plan['steps']),len(schema.REVISIONS))
         report=schema.upgrade(db,self.root/'backup',True)
         with r.connect(db) as c:
             schema.require_current(c);after=schema.fingerprint(c,set(before)-{'_objects'})
@@ -40,18 +40,20 @@ class SchemaTests(unittest.TestCase):
         db=self.legacy()
         schema.upgrade(db,self.root/'initial-backup',True)
         c=sqlite3.connect(db)
+        c.execute('DROP TABLE provider_definitions')
+        c.execute('DROP TABLE provider_imports')
         for name in ('workflow_assignment_lookup','workflow_blocker_lookup','workflow_stage_lookup'):
             c.execute('DROP INDEX '+name)
         # Construct the earlier supported revision as a test fixture only.
         c.execute('DROP TRIGGER migration_no_delete')
-        c.execute("DELETE FROM migration_journal WHERE revision='0002_workflow_indexes'")
+        c.execute("DELETE FROM migration_journal WHERE revision!='0001_adopt'")
         c.execute("CREATE TRIGGER migration_no_delete BEFORE DELETE ON migration_journal BEGIN SELECT RAISE(ABORT,'append-only migration journal'); END")
         c.execute("UPDATE alembic_version SET version_num='0001_adopt'");c.commit();c.close()
         schema.upgrade(db,self.root/'revision1-backup',True)
         with r.connect(db) as c:
             self.assertEqual(schema.revision(c),schema.CURRENT)
             self.assertEqual(c.execute('SELECT revision FROM migration_journal ORDER BY sequence').fetchall()[0][0],'0001_adopt')
-            self.assertEqual(c.execute('SELECT count(*) FROM migration_journal').fetchone()[0],2)
+            self.assertEqual(c.execute('SELECT count(*) FROM migration_journal').fetchone()[0],len(schema.REVISIONS))
 
     def test_baseline_and_newer_or_ambiguous_marker_rejected(self):
         with self.assertRaises(ValueError):schema.upgrade(self.root/'baseline',self.root/'no-backup',True)
@@ -59,5 +61,23 @@ class SchemaTests(unittest.TestCase):
         with self.assertRaises(ValueError):r.connect(self.db)
         db=self.legacy();c=sqlite3.connect(db);c.execute('INSERT INTO schema_info VALUES (99,0)');c.commit();c.close()
         with self.assertRaises(ValueError):r.connect(db)
+
+    def test_reuse_backup_and_reject_stale_backup(self):
+        db=self.legacy();backup=self.root/'reusable'
+        with sqlite3.connect(db) as source,sqlite3.connect(backup) as dest:
+            source.backup(dest)
+        backup_hash=r.digest(backup)
+        schema.upgrade(db,backup,True,reuse_backup=True)
+        self.assertEqual(r.digest(backup),backup_hash)
+        other=self.root/'stale-work';w.working_copy(self.root/'baseline',other)
+        with self.assertRaisesRegex(ValueError,'differs from locked'):
+            schema.upgrade(other,backup,True,reuse_backup=True)
+
+    def test_provider_revision_failure_rolls_back(self):
+        db=self.legacy()
+        with r.connect(db) as c:before=schema.fingerprint(c)
+        with self.assertRaises(RuntimeError):
+            schema.upgrade(db,self.root/'provider-backup',True,fail_after='0003_provider_definitions')
+        with r.connect(db) as c:self.assertEqual(schema.fingerprint(c),before)
 
 if __name__=='__main__':unittest.main()

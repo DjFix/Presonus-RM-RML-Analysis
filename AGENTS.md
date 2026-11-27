@@ -138,6 +138,28 @@ their UC, DICE, audio, panel, hardware and supporting functions.
 - Maintain a Markdown symbol tracker covering the entire requested workload,
   with per-binary function/data tables and links to recovery evidence. The
   canonical tracker is `uc-library/SYMBOLS.md` on VM101.
+- Current catalog identities, reconstruction statuses and imported library
+  ownership are authoritative only in the operational SQLite selected by
+  `uc-library/validation/registry-sqlite/ACTIVE.json`. Markdown, coverage JSON,
+  previous reports and chat totals are derived snapshots, never live state.
+- Generate reconstruction statistics exclusively with
+  `uc-library/.venv/bin/python uc-library/tools/recovery/symbol_statistics.py report`.
+  Update the statistics section in `uc-library/SYMBOLS.md` with the same command
+  plus `--update-symbols` after status/catalog/provider changes, before committing
+  a checkpoint or reporting persisted current totals. Do not hand-edit totals or
+  use the old extraction-range counting loop as the reconstruction summary.
+  `generate_symbol_tracking.py` must delegate that section to the same SQL reporter.
+- Count ELF functions by distinct `(ELF SHA-256, original mangled name)` over
+  `STT_FUNC`, including zero-size entries. The unique-name table uses disjoint
+  rows: CS18AI-only, RM/RML-only, and common exact mangled names. Common names
+  are reconstructed only if every corresponding ELF identity is admitted;
+  partial coverage stays in the remaining count. All-ready is ready; otherwise
+  fully admitted mixed ready/pending groups are declaration-pending. Separate
+  Core, libpng and zlib source routes; subtract their exact SQLite ownership,
+  never guessed name prefixes. Different ABI/alias names are not merged without
+  separate equivalence evidence. Each column must sum to the unique-name union,
+  and total must equal reconstructed + libraries + remaining. SQL counts do not
+  replace proof freshness, behavior, ABI or hardware validation.
 - Update the tracker after each extraction/reconstruction phase. Use separate
   statuses for catalogued symbols, extracted bytes, verified bytes, exported
   pseudocode, compiled C++, mangling/namespace checks, behavioral validation and
@@ -226,6 +248,11 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   `temp/test-work/`. The complete former temporary tree is preserved at
   `evidence/recovery/2026-10-28/vm-migration/legacy-uc-recovery/`.
   Exact moves are recorded in the adjacent `relocation.json`.
+- When a scratch script becomes a reusable operator or another working script
+  imports it, promote it and its live module dependencies into
+  `uc-library/tools/recovery/` before the next operational use. Do not keep the
+  maintained implementation in `temp/`. Preserve prior producer bytes and hashes
+  in a relocation manifest; historical proof snapshots are not working scripts.
 - Use `uc-library/.venv/bin/python` and its CMake, CTest and clang-format
   for validation. Agent utilities are in `/home/rs/.local/bin`.
   The active Linux build is `temp/core-upstream/root-integration-01`.

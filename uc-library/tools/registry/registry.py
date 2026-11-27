@@ -34,8 +34,9 @@ def connect(path):
         c.close()
         raise ValueError('Missing completion marker; failed/legacy import is not readable') from exc
     if c.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='alembic_version'").fetchone():
+        from schema import REVISIONS
         revisions=c.execute('SELECT version_num FROM alembic_version').fetchall()
-        if len(revisions)!=1 or revisions[0][0] not in ('0001_adopt','0002_workflow_indexes'):
+        if len(revisions)!=1 or revisions[0][0] not in REVISIONS:
             c.close()
             raise ValueError('Unsupported/newer or ambiguous Alembic revision')
     return c

@@ -12,6 +12,7 @@ from pathlib import Path
 from extraction_verify_bounded import owning_namespace
 from merge_readiness import proof_covers, repository_sources_match, ValidationCache
 from source_provider_tracking import load_source_providers
+from recovery.symbol_statistics import build_report, update_symbols_document, resolve_db
 
 
 BEHAVIOR = {
@@ -149,7 +150,6 @@ def main(argv=None, registry_data=None):
                                    'hardware_testing':'Deferred by user; hardware unavailable.'},
             'portable_ctest_evidence_available':tests_passed,'work_scope':work_scope,
             'upstream_source_provenance':source_provenance,'roles':{}}
-    main_rows=[]
     subsystem_rows=[]
     for role,label,filename in [('client','CS18AI surface 13840','surface-13840.elf'),('server','RM/RML mixer 13731','mixer-13731.elf')]:
         root=library/'recovered'/role
@@ -261,7 +261,6 @@ def main(argv=None, registry_data=None):
         summary['upstream_source_bodies_available']=sum(e['upstream_body_available'] for e in defined)
         summary['upstream_declaration_only_matches']=summary['upstream_source_api_matches']-summary['upstream_source_bodies_available']
         result['roles'][role]=dict(summary=summary,scopes=scopes,symbols=entries)
-        main_rows.append(f'| {label} | {len(defined):,} | {summary["byte_verified_functions"]:,} | {summary["pseudocode_exports"]:,} | {summary["upstream_source_api_matches"]:,} ({summary["upstream_source_bodies_available"]:,} bodies) | {summary["portable_reconstructions_ready"]} | {summary["compiled_declaration_pending_entries"]} | 0 | [functions](tracking/{role}-functions.md), [data](tracking/{role}-data.md) |\n')
         for subsystem in sorted({e['subsystem'] for e in defined}):
             subset=[e for e in defined if e['subsystem']==subsystem]
             subsystem_rows.append(f'| {role} | {subsystem} | {len(subset):,} | {sum(e["bytes_verified"] for e in subset):,} | {sum(e["pseudocode_exported"] for e in subset):,} |\n')
@@ -318,7 +317,7 @@ Unprocessed entries remain marked pending; exported pseudocode is not ready C++.
 - **Original function fully verified:** requires an explicit semantic/differential validation record. There are currently **zero** such functions.
 - **Hardware verified:** deferred by the user because CS18AI/RM hardware is unavailable. Nothing is hardware-verified.
 
-Function tables include defined functions and imported function symbols; the counts below refer only to defined, nonempty function entries. Addresses identify the original ARM ELF, not portable-library entry points.
+Function tables include defined functions and imported function symbols. The current SQL statistics include every catalogued STT_FUNC identity, including zero-size symbols; extraction evidence uses defined nonempty ranges separately. Addresses identify the original ARM ELF, not portable-library entry points.
 Pseudocode coverage counts defined nonempty symbol entries, including aliases sharing an exported entry point. Unique entry counts and zero-size alias exports are recorded separately in coverage JSON; every symbol's byte range remains independently checked.
 Data tables cover `STT_OBJECT` symbols, including embedded firmware and vtables. Structural mapping/file/section symbols remain in `recovered/*/all-symbols.json` and are excluded from the extraction workload.
 
@@ -391,7 +390,9 @@ The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies
                     '[production audit](candidates/common-build/validation/production-audit-01/validation.json). '
                     'These component archives do not establish completed application startup.\n')
     cache.unchanged()
-    (output_root/'SYMBOLS.md').write_text(header+''.join(main_rows)+footer+''.join(subsystem_rows)+trailer)
+    statistics = build_report(resolve_db(library, args.registry_db))
+    (output_root/'SYMBOLS.md').write_text(update_symbols_document(
+        header+footer+''.join(subsystem_rows)+trailer, statistics))
     summary={role:value['summary'] for role,value in result['roles'].items()}
     if args.timing:
         args.timing.parent.mkdir(parents=True,exist_ok=True)

@@ -8,6 +8,23 @@ from sqlalchemy.pool import NullPool
 class Base(DeclarativeBase):
     pass
 
+class ProviderImport(Base):
+    __tablename__='provider_imports'
+    sha256=Column(Text,primary_key=True)
+    path=Column(Text,nullable=False)
+    imported_at=Column(Text,nullable=False)
+    document=Column(Text,nullable=False)
+
+class ProviderDefinition(Base):
+    __tablename__='provider_definitions'
+    elf=Column(Text,primary_key=True)
+    mangled=Column(Text,primary_key=True)
+    address=Column(Integer,primary_key=True)
+    library=Column(Text,nullable=False)
+    size=Column(Integer,nullable=False)
+    section=Column(Integer,nullable=False)
+    import_sha256=Column(Text,ForeignKey('provider_imports.sha256'),nullable=False)
+
 # These legacy singleton-like tables have no physical key. Keep them Core-only;
 # assigning an invented mapper identity could hide duplicate source rows.
 provenance = Table('provenance',Base.metadata,Column('json',Text,nullable=False))

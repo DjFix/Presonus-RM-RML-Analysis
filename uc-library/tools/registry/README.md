@@ -217,6 +217,14 @@ Read-only operations can inspect supported older revisions. Mutations require
 the current revision and tell the operator to run an explicit upgrade otherwise.
 Unknown/newer versions and ambiguous completion/version rows are rejected.
 
+`0003_provider_definitions` adds append-only `ProviderImport` and
+`ProviderDefinition` ORM models for exact external-library ownership. The
+importer and read-only SQL statistics command are documented in
+[`symbol_statistics.md`](../recovery/symbol_statistics.md). Existing status and
+catalog tables remain unchanged. Explicit `--reuse-backup` permits a previously
+saved backup only after an exact locked-state fingerprint comparison; it does
+not overwrite or trust a stale backup.
+
 `schema.py --db WORK.sqlite` is a read-only plan. Applying requires both
 `--apply` and a new `--backup PATH`. The target must have a valid working-copy
 identity referring to a distinct, non-hardlinked, hash-matching immutable import

@@ -11,6 +11,8 @@ sys.path.insert(0,str(Path(__file__).resolve().parent/'registry'))
 import registry
 import workflow
 import schema
+import orm
+import catalog_models
 import generate_symbol_tracking as tracker
 from merge_readiness import ValidationCache
 
@@ -45,6 +47,21 @@ class TrackerTests(unittest.TestCase):
             p=self.root/(status+'.json');p.write_text(json.dumps(doc));paths[status]=p
         registry.capture(paths,self.root/'snapshots');self.baseline=self.root/'baseline.sqlite';registry.import_snapshots(self.root/'snapshots',self.baseline)
         self.db=self.root/'working.sqlite';workflow.working_copy(self.baseline,self.db);schema.upgrade(self.db,self.root/'pre-upgrade.sqlite',True)
+        unit=orm.Unit(self.db,write=True)
+        try:
+            catalog_models.CatalogSymbol.__table__.create(unit.connection)
+            for role in ('client','server'):
+                manifest=json.loads((self.lib/f'recovered/{role}/manifest.json').read_text())
+                for sym in json.loads((self.lib/f'recovered/{role}/all-symbols.json').read_text()):
+                    unit.session.add(catalog_models.CatalogSymbol(
+                        anchor=role+sym['mangled'],elf=manifest['sha256'],role=role,
+                        firmware=role,mangled=sym['mangled'],demangled=sym['demangled'],
+                        address=sym['address'],size=sym['size'],section_json=str(sym['section']),
+                        kind=sym['kind'],binding=sym['binding'],policy='application-or-other'))
+            unit.session.add(orm.ProviderImport(sha256='fixture',path='fixture',
+                                               imported_at='fixture',document='{}'))
+            unit.commit()
+        finally:unit.close()
     @staticmethod
     def sha(raw):return hashlib.sha256(raw).hexdigest()
     def put(self,name,raw):
@@ -63,6 +80,10 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual({str(p.relative_to(a)):p.read_bytes() for p in a.rglob('*') if p.is_file()}, {str(p.relative_to(b)):p.read_bytes() for p in b.rglob('*') if p.is_file()})
         self.assertEqual(actual['roles']['client']['summary']['portable_reconstructions_ready'],1)
         self.assertEqual(actual['roles']['client']['summary']['compiled_declaration_pending_entries'],1)
+        text=(b/'SYMBOLS.md').read_text()
+        self.assertIn('symbol_statistics.py; SQLite is authoritative',text)
+        self.assertIn('Общие символы | 2 | 1 | 1 | 2',text)
+        self.assertNotIn('| Binary | Defined functions |',text)
     def test_dirty_source_rejects_readiness_and_pending(self):
         self.put('s.cpp',b'changed')
         result=self.generate(self.root/'dirty')
