@@ -64,7 +64,7 @@ def import_providers(manifest, expected_sha256, database):
         unit.close()
 
 
-def load_facts(registry):
+def load_facts(registry, include_scopes=False):
     """One short ORM read transaction; no proof hashing or implicit migration."""
     unit = orm.Unit(registry)
     try:
@@ -76,6 +76,9 @@ def load_facts(registry):
         vendor_rows = [tuple(r) for r in unit.session.query(orm.ProviderDefinition.elf,
             orm.ProviderDefinition.mangled, orm.ProviderDefinition.address,
             orm.ProviderDefinition.library).all()]
+        scope_rows = unit.raw.execute(
+            "SELECT mangled,demangled FROM catalog_symbols WHERE kind='STT_FUNC'"
+        ).fetchall() if include_scopes else None
         rows = unit.raw.execute("""
             SELECT c.elf,c.role,c.firmware,c.mangled,c.address,c.size,c.policy,r.status
             FROM catalog_symbols c LEFT JOIN records r
@@ -89,10 +92,10 @@ def load_facts(registry):
         unit.close()
     if orphan_records:
         raise ValueError(f'{orphan_records} admitted records have no catalog function')
-    return rows, vendor_rows, provenance
+    return (rows, vendor_rows, provenance, scope_rows) if include_scopes else (rows, vendor_rows, provenance)
 
 
-def aggregate(rows, vendor_rows):
+def aggregate(rows, vendor_rows, scopes=None):
     c = sqlite3.connect(':memory:')
     c.row_factory = sqlite3.Row
     try:
@@ -169,13 +172,44 @@ def aggregate(rows, vendor_rows):
         union = dict(firmware='Итого уникальных имён', **count(unique=True))
         for field in ('total','ready','pending','reconstructed','core','libpng','zlib','remaining','partial'):
             assert sum(r[field] for r in exclusive + [common]) == union[field]
-        return {
+        result = {
             'elf_symbols': [{**b, **count('WHERE elf=?', (b['elf'],))} for b in binaries]
                            + [{'firmware': 'Итого (сумма бинарей)', **count()}],
             'unique_names': exclusive + [common, union],
             'catalog_function_rows': len(rows),
             'zero_size_identities': c.execute('SELECT count(*) FROM identities WHERE size=0').fetchone()[0],
         }
+        if scopes is not None:
+            c.execute('CREATE TABLE scope_members(scope TEXT, mangled TEXT, PRIMARY KEY(scope,mangled))')
+            c.executemany('INSERT INTO scope_members VALUES(?,?)',
+                          ((scope,name) for name,paths in scopes.items() for scope in paths))
+            c.execute('CREATE INDEX identity_name ON identities(mangled)')
+            trees = []
+            selections = [(b['firmware'], 'elf=? AND ', (b['elf'],), False) for b in binaries]
+            selections += [(b['firmware']+' (только в этом бинаре)',
+                            'elf=? AND mangled IN (SELECT mangled FROM membership WHERE binaries=1) AND ',
+                            (b['elf'],), True) for b in binaries]
+            selections += [('Общие символы',
+                            'mangled IN (SELECT mangled FROM membership WHERE binaries>1) AND ', (), True),
+                           ('Итого уникальных имён', '', (), True)]
+            roots = {paths[0] for paths in scopes.values()}
+            if set(scopes) != {r[0] for r in c.execute('SELECT DISTINCT mangled FROM identities')}:
+                raise ValueError('Scope coverage differs from catalog identities')
+            for title, prefix, params, unique in selections:
+                entries = []
+                for (scope,) in c.execute('SELECT DISTINCT scope FROM scope_members ORDER BY scope').fetchall():
+                    values = count('WHERE '+prefix+'mangled IN '
+                                   '(SELECT mangled FROM scope_members WHERE scope=?)',
+                                   (*params,scope), unique)
+                    if values['total']:
+                        entries.append(dict(scope=scope, **values))
+                expected = count('WHERE '+prefix.removesuffix(' AND ') if prefix else '', params, unique)
+                for field in ('total','ready','pending','core','libpng','zlib','remaining','partial'):
+                    if sum(r[field] for r in entries if r['scope'] in roots) != expected[field]:
+                        raise ValueError('Scope roots do not partition the canonical statistics')
+                trees.append(dict(title=title, rows=entries))
+            result['scope_trees'] = trees
+        return result
     finally:
         c.close()
 

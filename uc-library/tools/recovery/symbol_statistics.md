@@ -123,3 +123,21 @@ never input registries. HAL extraction/export flags not read from validated
 evidence are null / “not evaluated”, not a fabricated negative result.
 Historical observations in ACTIVE.json are labelled as such; it selects the
 database and does not provide current counts.
+
+## Recursive namespace/class scope report
+
+Run from the repository root:
+
+    uc-library/.venv/bin/python uc-library/tools/recovery/symbol_scope_statistics.py --output-dir temp/recovery-work/symbol-statistics/scopes-NEW
+
+The output directory receives scopes.md and scopes.json (existing files are
+never overwritten). Trees cover each binary, the disjoint binary-only and shared
+name groups, and the exact-name union. Every node includes its descendants.
+Do not add parent and child totals together.
+
+Catalog demangled names provide lexical scope nesting, but do not prove which
+components are namespaces or classes. Template argument types and function
+parameters are not hierarchy edges. Unresolved or inconsistent names remain in
+an explicit bucket; C/global functions have a separate bucket. No symbol is
+dropped. Every root partition is checked against the same canonical SQL totals
+for every status/library column. No DB migration or graph refresh is required.
