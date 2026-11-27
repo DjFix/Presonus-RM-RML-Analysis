@@ -1,5 +1,6 @@
 #pragma once
 #include "core/public/corevector.h"
+#include "presonus/panel/protocol_comm.hpp"
 #include "presonus/surface_panel/ControlGroup.hpp"
 #include <array>
 #include <cstdint>
@@ -23,22 +24,36 @@ namespace Presonus::Panel {
 // Portable source model using the actual ControlGroup implementation. Original
 // ARM layout, complete virtual interfaces and binary interoperability
 // unresolved.
-class SPIControlGroup : public ControlGroup {
+class SPIControlGroup : public ControlGroup, public IPanelIO {
 public:
   SPIControlGroup(int groupId, int groupArgument, int byteCount);
-  // Independent borrowed-word/transport API retained for source-port callers.
+  ~SPIControlGroup() override;
+  // Original ordinary return spellings remain unresolved; these match the
+  // independent portable IPanelIO contract. RTTI establishes both public bases.
+  int open(const char *path) override;
+  int readMsg(Uart_Msg_Type &message) override;
+  int writeMsg(Uart_Msg_Type &message) override;
+  // Production constructor: transfers ownership on insertion; a full group
+  // leaves ownership with the caller and still assigns this IO provider.
+  // The independent borrowed-word constructor keeps added controls borrowed.
+  void add(Control *control);
+  int bitBang(long long value);
+  // Independent borrowed-word/transport API; added controls stay caller-owned.
   SPIControlGroup(const Core::ConstVector<std::uint32_t> &controls,
                   int byteCount, int descriptor,
                   presonus::spi_port::Transfer &transfer);
   // Source-port int return models observed r0=1; original return declaration
   // remains unresolved. Control is borrowed and never dereferenced.
-  int broadcast(Control *control);
+  int broadcast(Control *control) override;
   // Direct source-port member hook. The native body leaves r0 unchanged;
   // the original return declaration and virtual interface remain unresolved.
   void sort();
   // Portable direct hook matching the observed absence of effects. Original
   // return and virtual declarations remain unresolved.
-  void close();
+  void close() override;
+  // The portable int represents the observed zero in r0. The original
+  // return declaration remains unresolved.
+  int enableHISpeed(bool enabled) override;
   void onIdle();
   void markDirty(bool value) { dirty = value; }
   bool isDirty() const { return dirty; }

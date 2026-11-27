@@ -17,7 +17,9 @@ int main() {
   for (const bool dirty : {false, true}) {
     Presonus::Panel::SPIControlGroup group(17, 3, 4);
     group.attachTransport(11, capture);
-    group.add(nullptr);
+    // Seed the observed null-slot precondition through the base storage API.
+    // This replay validates only sort/close, never SPIControlGroup::add(null).
+    group.ControlGroup::add(nullptr);
     group.markDirty(dirty);
     const auto tx = group.transmitted();
     const auto rx = group.received();

@@ -214,6 +214,11 @@ their UC, DICE, audio, panel, hardware and supporting functions.
   original range separately. Validate D1/D0 target identities and actual
   deallocation/cleanup behavior; a manually appended delete event is not evidence
   that the native deleting destructor deallocated an object.
+  When native insertion retains pointers and the native group destructor deletes
+  every stored nonnull pointer, validate the production add-to-destruction path
+  using heap objects and real destructor/deallocator observations. Test-only
+  ownership insertion cannot establish production equivalence. Preserve failed
+  insertion ownership and call order; label independent borrowing APIs explicitly.
 - Before handing off active-source fragments, run `tools/merge_readiness.py
   --dry-run` with their ready/pending arguments on the analysis checkout.
   Preserve its output and expected totals. Include canonical proof flags,
@@ -758,6 +763,16 @@ or context compaction, together with the publisher polling cadence above.
   `temp/storage-migration-20261113/`; the existing temp bind mount remains
   on the same pvdata disk.
 
+## Archive-bound replay preflight
+
+- After a production archive changes, inspect registered replay arguments for
+  hash-bound archive manifests before starting the full Linux suite. Refresh
+  affected manifests only from actual current role links and object/dependency
+  evidence, preserve previous manifests, and run their affected replay gates.
+  A stale whole-archive hash in an unrelated test is not a reason to disable the
+  guard or alter expected native results. The full suite follows this preflight;
+  do not rediscover the same known manifest mismatch at its end.
+
 ## Isolate test CMake registration — user correction, 2026-11-13
 
 - Put new test targets, fixtures, replay commands and test registration under
@@ -817,6 +832,12 @@ or context compaction, together with the publisher polling cadence above.
   completion of all 100 targets a prerequisite. Coordinate actual shared-source
   dependencies and current SQLite assignment revisions; do not dispatch stale packets to
   manufacture parallelism. Root retains shared build/registry ownership.
+- Finishing an intake, ownership audit or saving RESUME.json does not complete an
+  authorized reconstruction request. Continue to the next executable preparation,
+  implementation, proof or admission action in the same run. A retained assignment
+  requires inspecting its owner and artifacts, not ending the turn. Stop only for
+  a user stop or an evidenced blocker with no independent authorized work left;
+  record the exact blocker and remaining scope rather than claiming completion.
 - Closing a trial or admitting a batch triggers continued production. Before
   releasing the coordinator, issue available replacements from the SQLite
   reserve and launch workers from their dispatch receipts. Record the active

@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <linux/spi/spidev.h>
+#include <memory>
 #include <vector>
 
 static int calls = 0;
@@ -42,14 +43,18 @@ int main() {
       std::abort();
   }
   // Source integration: actual ControlGroup controls feed the same idle path.
-  Presonus::Panel::Control a(3), b(4), c(5);
-  presonus::panel::ControlAccess::lastLevel(a) = 1;
-  presonus::panel::ControlAccess::lastLevel(b) = 0;
-  presonus::panel::ControlAccess::lastLevel(c) = -1;
+  // Ordinary SPIControlGroup::add transfers ownership of retained controls.
+  // Heap lifetimes preserve the original input levels without stack deletion.
+  auto a = std::make_unique<Presonus::Panel::Control>(3);
+  auto b = std::make_unique<Presonus::Panel::Control>(4);
+  auto c = std::make_unique<Presonus::Panel::Control>(5);
+  presonus::panel::ControlAccess::lastLevel(*a) = 1;
+  presonus::panel::ControlAccess::lastLevel(*b) = 0;
+  presonus::panel::ControlAccess::lastLevel(*c) = -1;
   Presonus::Panel::SPIControlGroup group(1, 0, 2);
-  group.add(&a);
-  group.add(&b);
-  group.add(&c);
+  group.add(a.release());
+  group.add(b.release());
+  group.add(c.release());
   presonus::spi_port::LinuxTransfer transfer;
   group.attachTransport(7, transfer);
   calls = 0;

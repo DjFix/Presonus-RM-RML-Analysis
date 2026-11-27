@@ -1,6 +1,8 @@
 #include "presonus/panel/SPIControlGroup.hpp"
+#include "core/system/coredebug.h"
 #include "presonus/panel/control.hpp"
 #include <algorithm>
+#include <fcntl.h>
 #include <linux/spi/spidev.h>
 #include <stdexcept>
 #include <sys/ioctl.h>
@@ -34,12 +36,49 @@ SPIControlGroup::SPIControlGroup(
     throw std::invalid_argument(
         "SPI idle payload exceeds bounded 64-bit domain");
 }
+SPIControlGroup::~SPIControlGroup() = default;
+int SPIControlGroup::open(const char *path) {
+  descriptor = ::open(path, O_RDWR);
+  if (descriptor < 0) {
+    Core::DebugPrintf("error opening SPI device %s\n", path);
+    return 0;
+  }
+  bitBang(0);
+  return 1;
+}
+int SPIControlGroup::readMsg(Uart_Msg_Type &) { return 0; }
+int SPIControlGroup::writeMsg(Uart_Msg_Type &) { return 0; }
+void SPIControlGroup::add(Control *control) {
+  if (borrowedWords) {
+    // Independent borrowed-word constructor retains its explicit borrowing API.
+    ControlGroup::add(control);
+  } else {
+    std::unique_ptr<Control> retained(control);
+    if (!presonus::panel_binding::ControlGroupAccess::addOwned(
+            *this, std::move(retained)))
+      retained.release(); // A full group leaves ownership with the caller.
+  }
+  control->setIO(static_cast<IPanelIO *>(this));
+}
+int SPIControlGroup::bitBang(long long value) {
+  if (byteCount < 2 || byteCount > 5)
+    return -1;
+  const auto payload = static_cast<unsigned long long>(value);
+  for (int i = 0; i < byteCount; ++i) {
+    transmit[i] = static_cast<std::uint8_t>(payload >> (i * 8));
+    receive[i] = 0;
+  }
+  transfer->submit(descriptor, 0x40206b00u, transmit.data(), receive.data(),
+                   byteCount);
+  return 0;
+}
 int SPIControlGroup::broadcast(Control *) {
   dirty = true;
   return 1;
 }
 void SPIControlGroup::sort() {}
 void SPIControlGroup::close() {}
+int SPIControlGroup::enableHISpeed(bool) { return 0; }
 void SPIControlGroup::onIdle() {
   if (!dirty || descriptor < 0)
     return;

@@ -1,0 +1,253 @@
+{
+  "unicorn_version": "2.1.4",
+  "clarification": "Sealed review says D1 at 0x92710; actual ELF and executed branch identify ControlD2Ev. No D1 credit.",
+  "external_boundary": "actual operator delete PLT 0xac10 intercepted; allocator body not executed",
+  "delete_binding": {
+    "mangled": "_ZdlPv",
+    "plt_address": 44048,
+    "relocation_index": 91,
+    "got_address": 4536376,
+    "plt_bytes_sha256": "a07345cb45a0a1810dc3eaa4b96fe370e87d039a8f1306431ed34072673d0605"
+  },
+  "targets": [
+    {
+      "original": {
+        "mangled": "_ZN8Presonus5Panel10SPIControlD0Ev",
+        "address": 709640,
+        "size": 52,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 676872,
+        "range_sha256": "5172a17a8d699abb7084f2449f71cba0d5f82a189e11de1c7db1441c36be185a",
+        "elf_sha256": "9320c53b9bccf379a823ce4b24822b29eae4f5558f9221925c935adfc7a16f07",
+        "firmware": "RM/RML mixer 13731",
+        "role": "server"
+      },
+      "native_base": {
+        "mangled": "_ZN8Presonus5Panel7ControlD2Ev",
+        "address": 599824,
+        "size": 228,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 567056,
+        "range_sha256": "dbacde0d0523bbddad48b5e486dfe0302c4758f5f1977fc76d6e04a259c93c23"
+      },
+      "initialization": {
+        "mangled": "_ZN8Presonus5Panel10LEDControlC2Eiii",
+        "address": 588524,
+        "size": 100,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 555756,
+        "range_sha256": "ef728952a4e566ef637f2992deacef090cfc531ee839e130369eeae2de34d6c1"
+      },
+      "comparison_only_D1": {
+        "mangled": "_ZN8Presonus5Panel10SPIControlD1Ev",
+        "address": 709692,
+        "size": 44,
+        "section": 12,
+        "section_name": ".text",
+        "file_offset": 676924,
+        "range_sha256": "2dec5a2cfde98b860bbd4291d6a629e7cd1e4eb3f7784b99ae61ded3915cb8d6"
+      },
+      "timer_global": 4804936,
+      "cases": [
+        {
+          "args": [
+            4,
+            0,
+            0
+          ],
+          "trace": [
+            [
+              "ControlD2",
+              0
+            ],
+            [
+              "delete",
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3507736
+            ],
+            [
+              0,
+              4,
+              3508184
+            ],
+            [
+              8,
+              4,
+              0
+            ]
+          ],
+          "output": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "args": [
+            -5,
+            7,
+            -1
+          ],
+          "trace": [
+            [
+              "ControlD2",
+              0
+            ],
+            [
+              "delete",
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3507736
+            ],
+            [
+              0,
+              4,
+              3508184
+            ],
+            [
+              8,
+              4,
+              0
+            ]
+          ],
+          "output": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "args": [
+            0,
+            -1,
+            17
+          ],
+          "trace": [
+            [
+              "ControlD2",
+              0
+            ],
+            [
+              "delete",
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3507736
+            ],
+            [
+              0,
+              4,
+              3508184
+            ],
+            [
+              8,
+              4,
+              0
+            ]
+          ],
+          "output": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "args": [
+            -2147483648,
+            2147483647,
+            -100
+          ],
+          "trace": [
+            [
+              "ControlD2",
+              0
+            ],
+            [
+              "delete",
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3507736
+            ],
+            [
+              0,
+              4,
+              3508184
+            ],
+            [
+              8,
+              4,
+              0
+            ]
+          ],
+          "output": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "args": [
+            2147483647,
+            -2147483648,
+            1
+          ],
+          "trace": [
+            [
+              "ControlD2",
+              0
+            ],
+            [
+              "delete",
+              0
+            ]
+          ],
+          "writes": [
+            [
+              0,
+              4,
+              3507736
+            ],
+            [
+              0,
+              4,
+              3508184
+            ],
+            [
+              8,
+              4,
+              0
+            ]
+          ],
+          "output": [
+            1,
+            1,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

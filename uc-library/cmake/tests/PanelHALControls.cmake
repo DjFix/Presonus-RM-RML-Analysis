@@ -40,4 +40,23 @@ if(BUILD_TESTING)
   target_link_libraries(panel_input_gpio_tests PRIVATE presonus::uc)
   add_test(NAME panel_input_gpio_tests COMMAND panel_input_gpio_tests "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/panel-input_gpio/fixtures.txt")
   set_tests_properties(panel_input_gpio_tests PROPERTIES WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}/temp/test-work/panel-input_gpio")
+  # Existing implementation audit; actual production archive, no replacement bodies.
+  add_executable(scoped_spi_d0_audit tests/recovery/scoped_spi_d0_audit/Replay.cpp)
+  target_compile_features(scoped_spi_d0_audit PRIVATE cxx_std_17)
+  target_compile_options(scoped_spi_d0_audit PRIVATE -UNDEBUG -Ulinux -fno-rtti -fno-lto)
+  target_link_options(scoped_spi_d0_audit PRIVATE -fno-lto
+    -Wl,--wrap=_Znwm -Wl,--wrap=_ZdlPv -Wl,--wrap=_ZdlPvm
+    -Wl,--wrap=_ZN8Presonus5Panel7ControlD2Ev)
+  target_link_libraries(scoped_spi_d0_audit PRIVATE presonus_rm_components)
+  file(SHA256 "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/scoped_spi_d0_audit/fixtures.json" _spi_d0_fixture_sha)
+  if(NOT _spi_d0_fixture_sha STREQUAL "2c94b28e1835dee3ac3f1b030ce3ff36a15d25d527d75ca8c4fdfc2e625db90b")
+    message(FATAL_ERROR "SPI D0 native fixture changed")
+  endif()
+  add_test(NAME scoped_spi_d0_audit
+    COMMAND "${PRESONUS_REPOSITORY_ROOT}/uc-library/.venv/bin/python" -B
+      "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/scoped_spi_d0_audit/check.py"
+      --exe "$<TARGET_FILE:scoped_spi_d0_audit>"
+      --fixtures "${PRESONUS_REPOSITORY_ROOT}/uc-library/tests/recovery/scoped_spi_d0_audit/fixtures.json")
+  set_tests_properties(scoped_spi_d0_audit PROPERTIES
+    WORKING_DIRECTORY "${PRESONUS_REPOSITORY_ROOT}" TIMEOUT 120)
 endif()

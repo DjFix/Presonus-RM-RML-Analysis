@@ -190,6 +190,20 @@ class PacketTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'executable and file-backed'):
                 reader.range_for(wrong)
 
+    def test_original_thunk_keeps_identity_and_rejects_other_scope(self):
+        symbol = '_ZThn1040_N8Presonus5Panel15SPIControlGroup4openEPKc'
+        row = {'mangled': symbol, 'demangled':
+               'non-virtual thunk to Presonus::Panel::SPIControlGroup::open(char const*)'}
+        before = dict(row)
+        packet.validate_callable_namespace(row, 'Presonus::Panel::SPIControlGroup')
+        self.assertEqual(row, before)
+        with self.assertRaisesRegex(ValueError, 'namespace differs'):
+            packet.validate_callable_namespace(row, 'Presonus::Panel::SPIControl')
+        with self.assertRaisesRegex(ValueError, 'namespace differs'):
+            packet.validate_callable_namespace(
+                {'mangled':'_ZThnot_valid', 'demangled':row['demangled']},
+                'Presonus::Panel::SPIControlGroup')
+
     def test_template_namespace_uses_callable_name_without_encoded_return(self):
         mangled = '_ZN8Presonus5Probe6createIiEEPT_v'
         foreign = '_ZN8Presonus5Other6createINS_5ProbeEEEPT_RKS2_'

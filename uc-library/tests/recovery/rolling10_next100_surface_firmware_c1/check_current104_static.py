@@ -28,7 +28,7 @@ provider_metadata=json.loads(provider_addendum.read_text())
 sys.path.insert(0,str(provider_root/'uc-library/tools/recovery'))
 from pinned_codec_replay_binding_curl_scope import validate_archives
 historical_archives={archive['path']:archive['sha256'] for archive in provider_metadata['archives']}
-archive_binding=validate_archives(provider_root,a.exe,a.integration,historical_archives,transitive_provider={'path': 'temp/recovery-work/rolling-c001-20261124/integration/sqlite-cycle02/wave16-preflight01/TRANSITIVE-CURL-CODEC-BINDING02.json', 'sha256': '23ee78039a41071cd40a73a3e885862e5a99ff8dbca543f1aa85402b0bb3407c'})
+archive_binding=validate_archives(provider_root,a.exe,a.integration,historical_archives,transitive_provider={'path': 'evidence/recovery/2026-11-27/scoped-ready/firmware-curl-closure-successor03/TRANSITIVE-CURL-CODEC-BINDING03.json', 'sha256': 'f0d074259b00816889dce3cc3220a4045fba8ef1cb76b533448e757fde97c646'})
 proof['archives']=archive_binding['archives']
 proof['dynamic_codec_provider']=archive_binding.get('dynamic_codec_provider')
 proof['codec_behavior_exercised']=False

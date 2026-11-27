@@ -41,6 +41,17 @@ def validate_callable_namespace(row, namespace):
         check=True, capture_output=True, text=True,
     )
     name = result.stdout.strip()
+    # GNU demangling prefixes ABI adjustment entries with their thunk kind.
+    # Strip only a kind authenticated by the original Itanium symbol prefix;
+    # keep the exact mangled identity/range and all remaining scope checks.
+    for mangled_prefix, description in (
+        ('_ZTh', 'non-virtual thunk to '),
+        ('_ZTv', 'virtual thunk to '),
+        ('_ZTc', 'covariant return thunk to '),
+    ):
+        if symbol.startswith(mangled_prefix) and name.startswith(description):
+            name = name[len(description):]
+            break
     require(name != symbol and name.startswith(prefix),
             'Original namespace differs from owned scope')
 
