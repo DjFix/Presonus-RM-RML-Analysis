@@ -234,12 +234,21 @@ def markdown(report):
               'Core — все записи библиотечной политики, включая ещё не связанные с '
               'upstream интерфейсы. Другие не классифицированные библиотеки остаются '
               'в остатке. Нулевые размеры включены. Это учёт статусов, не новая проверка доказательств.']
+    if 'declaration_statuses' in report:
+        lines += ['', '## Причины незавершённых объявлений (SQLite)', '',
+                  '| Статус | ELF-идентичностей | Уникальных имён с этой отметкой |',
+                  '|---|---:|---:|']
+        for row in report['declaration_statuses']:
+            lines.append(f"| {row['declaration_status']} | {row['identities']} | {row['names']} |")
+        lines += ['', 'Это детализация pending, не дополнительный объём. Одно имя может иметь разные отметки в разных ELF. return_type_unresolved означает недостаток доступных доказательств исходного возвращаемого типа; прочие ограничения сохраняются.']
     return '\n'.join(lines) + '\n'
 
 
 def build_report(database):
     rows, vendors, provenance = load_facts(database)
     result = aggregate(rows, vendors)
+    from declaration_status import summary
+    result['declaration_statuses'] = summary(database)
     result.update(observed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                   registry=str(database), provider_provenance=provenance,
                   freshness_checked=False,

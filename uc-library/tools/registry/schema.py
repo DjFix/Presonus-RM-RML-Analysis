@@ -12,7 +12,7 @@ from alembic.operations import Operations
 import orm
 import registry as reg
 
-REVISIONS=('0001_adopt','0002_workflow_indexes','0003_provider_definitions')
+REVISIONS=('0001_adopt','0002_workflow_indexes','0003_provider_definitions','0004_declaration_status')
 CURRENT=REVISIONS[-1]
 REQUIRED={'schema_info','provenance','registries','source_sets','source_versions','source_members','records','record_sets','workflow_info','work_state','stages','requests','journal','evidence_checks'}
 
@@ -133,6 +133,29 @@ def upgrade(db,backup=None,apply=False,fail_after=None,reuse_backup=False):
                 for table in ('provider_imports','provider_definitions'):
                     for action in ('UPDATE','DELETE'):
                         op.execute(f"CREATE TRIGGER {table}_no_{action.lower()} BEFORE {action} ON {table} BEGIN SELECT RAISE(ABORT,'append-only provider provenance'); END")
+                connection.exec_driver_sql('UPDATE alembic_version SET version_num=?',(step,))
+            elif step=='0004_declaration_status':
+                op.create_table('declaration_assessments',
+                    Column('record_id',Integer,ForeignKey('records.id'),primary_key=True),
+                    Column('proof_sha256',Text,primary_key=True),
+                    Column('declaration_status',Text,nullable=False),
+                    Column('reason',Text,nullable=False),
+                    Column('portable_return',Text,nullable=False),
+                    Column('evidence_json',Text,nullable=False),
+                    Column('assessed_at',Text,nullable=False))
+                op.create_index('declaration_status_lookup','declaration_assessments',['declaration_status','record_id'])
+                for action in ('UPDATE','DELETE'):
+                    op.execute(f"CREATE TRIGGER declaration_assessments_no_{action.lower()} BEFORE {action} ON declaration_assessments BEGIN SELECT RAISE(ABORT,'append-only declaration assessments'); END")
+                op.execute("""CREATE VIEW symbol_declaration_status AS
+                    SELECT r.id,r.elf,r.mangled,r.status AS readiness_status,
+                    CASE WHEN r.status!='pending' THEN 'not_pending'
+                         WHEN a.record_id IS NOT NULL THEN a.declaration_status
+                         WHEN EXISTS(SELECT 1 FROM declaration_assessments old WHERE old.record_id=r.id) THEN 'needs_review'
+                         ELSE 'declaration_pending' END AS declaration_status,
+                    CASE WHEN r.status='pending' AND a.record_id IS NOT NULL THEN a.declaration_status ELSE r.status END AS effective_status,
+                    a.reason,a.portable_return,a.evidence_json,a.assessed_at
+                    FROM records r LEFT JOIN declaration_assessments a
+                    ON a.record_id=r.id AND a.proof_sha256=json_extract(r.metadata,'$.validation_sha256')""")
                 connection.exec_driver_sql('UPDATE alembic_version SET version_num=?',(step,))
             connection.exec_driver_sql('INSERT INTO migration_journal(revision,applied_at,backup_sha256,previous_fingerprint) VALUES (?,?,?,?)',(step,datetime.datetime.now(datetime.timezone.utc).isoformat(),reg.digest(backup),reg.encode(baseline_fingerprint)))
             if fail_after==step:raise RuntimeError('Injected migration failure for rollback test')

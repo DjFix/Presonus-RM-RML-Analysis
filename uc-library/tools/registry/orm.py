@@ -131,3 +131,14 @@ class Unit:
         self.session.close()
         self.connection.close()
         self.engine.dispose()
+
+
+class DeclarationAssessment(Base):
+    __tablename__ = 'declaration_assessments'
+    record_id = Column(Integer, ForeignKey('records.id'), primary_key=True)
+    proof_sha256 = Column(Text, primary_key=True)
+    declaration_status = Column(Text, nullable=False)
+    reason = Column(Text, nullable=False)
+    portable_return = Column(Text, nullable=False)
+    evidence_json = Column(Text, nullable=False)
+    assessed_at = Column(Text, nullable=False)

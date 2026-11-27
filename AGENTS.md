@@ -893,3 +893,20 @@ or context compaction, together with the publisher polling cadence above.
   operational entrypoints. Historical fixed-batch counters/admission scripts are
   evidence producers, not live operators. Before reusing one, migrate its inputs
   to SQLite and test it; never restore legacy JSON as an operational fallback.
+
+## Original return declarations: explicit SQLite status
+
+- Use `symbol_declaration_status` for the explicit current declaration status.
+  `return_type_unresolved` is an evidence-backed assessment of unavailable exact
+  original return-type information, separate from ready/pending admission.
+  Store it through the ORM-backed `tools/registry/declaration_status.py` and
+  Alembic revision 0004; chat, Markdown and guessed uncertainty text are not state.
+- Require an exact-identity original-type route audit and current proof binding.
+  Never mark all pending methods automatically, infer original returns from a
+  register value/current upstream API, or promote readiness through this label.
+  Preserve other declaration/layout limitations. A changed proof invalidates
+  the current assessment (`needs_review`); previous assessments remain history.
+- Revisit this blocker when original typed evidence or the reviewed assumptions
+  change. Do not repeat reconstruction of its accepted implementation merely
+  because the exact historical return type is unavailable. Generate counts with
+  the canonical SQL statistics reporter, including its declaration breakdown.

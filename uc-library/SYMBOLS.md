@@ -51,6 +51,15 @@ Current counts come exclusively from the operational SQLite registry. Markdown a
 
 Core — все записи библиотечной политики, включая ещё не связанные с upstream интерфейсы. Другие не классифицированные библиотеки остаются в остатке. Нулевые размеры включены. Это учёт статусов, не новая проверка доказательств.
 
+### Причины незавершённых объявлений (SQLite)
+
+| Статус | ELF-идентичностей | Уникальных имён с этой отметкой |
+|---|---:|---:|
+| declaration_pending | 3803 | 2840 |
+| return_type_unresolved | 90 | 55 |
+
+Это детализация pending, не дополнительный объём. Одно имя может иметь разные отметки в разных ELF. return_type_unresolved означает недостаток доступных доказательств исходного возвращаемого типа; прочие ограничения сохраняются.
+
 Detailed original-range evidence: [CS18AI functions](tracking/client-functions.md), [RM/RML functions](tracking/server-functions.md), [CS18AI data](tracking/client-data.md), [RM/RML data](tracking/server-data.md).
 
 ## Partial portable C++ evidence

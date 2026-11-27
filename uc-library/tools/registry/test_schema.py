@@ -40,6 +40,8 @@ class SchemaTests(unittest.TestCase):
         db=self.legacy()
         schema.upgrade(db,self.root/'initial-backup',True)
         c=sqlite3.connect(db)
+        c.execute('DROP VIEW symbol_declaration_status')
+        c.execute('DROP TABLE declaration_assessments')
         c.execute('DROP TABLE provider_definitions')
         c.execute('DROP TABLE provider_imports')
         for name in ('workflow_assignment_lookup','workflow_blocker_lookup','workflow_stage_lookup'):

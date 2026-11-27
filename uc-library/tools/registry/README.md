@@ -345,3 +345,36 @@ Restoration returns the whole VM to the earlier snapshot, including pvdata; it
 is not a per-admission undo. CT126 Memgraph is outside that snapshot and requires
 reconciliation after a restore. This option neither restores a VM nor changes
 readiness evidence or historical provenance.
+
+## Explicit original-return status (revision 0004)
+
+`declaration_assessments.declaration_status` stores evidence-bound, append-only
+assessments through the ORM. `return_type_unresolved` means the reviewed available
+original evidence does not identify the exact return declaration. It does not
+mean an original header or another firmware build could never resolve it, and it
+does not dismiss other layout, ownership or declaration limitations.
+
+Use the SQL view directly:
+
+```sql
+SELECT elf, mangled, readiness_status, declaration_status, effective_status,
+       portable_return, reason
+FROM symbol_declaration_status
+WHERE declaration_status = 'return_type_unresolved';
+```
+
+The view joins the assessment to the current record's exact proof SHA-256.
+Changed proofs yield `needs_review`; a ready record is never demoted by an old
+assessment. Historical rows remain intact. `portable_return` describes our
+source-port choice, not an independently verified original declaration.
+
+`declaration_status.py --audit AUDIT.json` preflights a reviewed original-type
+route audit; `--apply` inserts assessments in one ORM transaction. It verifies
+hash-bound audit inputs and current pending proofs, excludes constructors,
+destructors and ready entries, and refuses conflicting existing assessments.
+Do not assign this status by searching uncertainty prose or by assuming all
+pending methods share one cause. The input schema is the reviewed
+`FINAL-DECLARATION-BLOCKERS.v3.json` (`per_unique_name`, `evidence`).
+Without `--audit`, the operator reports the current SQL status counts.
+`symbol_statistics.py report --update-symbols` includes these counts as a
+breakdown within pending, never as additional reconstructed symbols.
