@@ -23,6 +23,33 @@ def resolve_db(library, explicit_db=None):
     return path.resolve() if path.is_absolute() else (library.parent/path).resolve()
 
 
+def catalog_roles(connection):
+    """Original catalog and imported ELF identity, without JSON readiness overlays."""
+    roles={}
+    for row in connection.execute('SELECT elf,role,firmware,mangled,demangled,address,size,section_json,kind,binding,policy FROM catalog_symbols ORDER BY role,anchor'):
+        elf,role,firmware,name,demangled,address,size,section,kind,binding,policy=tuple(row)
+        group=roles.setdefault(role,{'summary':{'sha256':elf,'label':firmware},'symbols':[]})
+        if group['summary']['sha256']!=elf:
+            raise ValueError('Multiple ELF generations in one role require explicit selection')
+        section=json.loads(section)
+        group['symbols'].append(dict(elf=elf,mangled=name,demangled=demangled,address=address,
+            size=size,section=section,kind=kind,binding=binding,policy=policy,
+            defined=section not in (0,'0','SHN_UNDEF'),
+            work_deferred=policy.startswith('core-'),
+            upstream_body_available=policy=='core-source-provided',
+            upstream_api_match=policy=='core-source-provided'))
+    for role,group in roles.items():
+        row=connection.execute('SELECT metadata FROM catalog_inputs WHERE path=?',
+                               (f'recovered-all/{role}/manifest.json',)).fetchone()
+        if row is None:
+            raise ValueError('Missing imported ELF manifest for role: '+role)
+        manifest=json.loads(row[0])
+        if manifest['sha256']!=group['summary']['sha256']:
+            raise ValueError('Catalog manifest ELF identity mismatch')
+        group['manifest']=manifest
+    return roles
+
+
 def generation_guard(c):
     # Exclude catalog task traffic; include readiness work revisions and history.
     names=('registries','records','record_sets','source_sets','source_versions','source_members','work_state','stages','requests','journal')

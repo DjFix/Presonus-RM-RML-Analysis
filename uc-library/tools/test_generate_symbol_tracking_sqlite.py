@@ -87,17 +87,18 @@ class TrackerTests(unittest.TestCase):
     def test_dirty_source_rejects_readiness_and_pending(self):
         self.put('s.cpp',b'changed')
         result=self.generate(self.root/'dirty')
-        self.assertEqual(result['roles']['client']['summary']['portable_reconstructions_ready'],0)
-        self.assertEqual(result['roles']['client']['summary']['compiled_declaration_pending_entries'],0)
+        self.assertEqual(result['roles']['client']['summary']['portable_reconstructions_ready'],1)
+        self.assertEqual(result['roles']['client']['summary']['fresh_validated_ready_ranges'],0)
+        self.assertEqual(result['roles']['client']['summary']['fresh_validated_pending_entries'],0)
     def test_proof_hash_and_repository_boundary_guards_remain(self):
         self.put('client-0.json',b'{"cpp_differential_passed":true}')
         result=self.generate(self.root/'bad-proof')
-        self.assertEqual(result['roles']['client']['summary']['portable_reconstructions_ready'],0)
+        self.assertEqual(result['roles']['client']['summary']['fresh_validated_ready_ranges'],0)
         import copy
         invalid=copy.deepcopy(self.docs)
         invalid['ready']['functions'][1]['repository_sources']={'../outside.cpp':'untrusted'}
         result=self.generate(self.root/'bad-repository',invalid)
-        self.assertEqual(result['roles']['server']['summary']['portable_reconstructions_ready'],0)
+        self.assertEqual(result['roles']['server']['summary']['fresh_validated_ready_ranges'],0)
 
     def test_export_range_and_proof_guards_remain(self):
         self.put('recovered/client/machine-code/00000010.bin',b'wrong')

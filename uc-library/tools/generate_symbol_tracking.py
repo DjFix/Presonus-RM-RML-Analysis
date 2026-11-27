@@ -62,6 +62,8 @@ def main(argv=None, registry_data=None):
     cache=ValidationCache()
     tool_sha256=cache.sha(Path(__file__))
     library=args.library.resolve()
+    statistics = build_report(resolve_db(library, args.registry_db))
+    canonical_counts={row['elf']:row for row in statistics['elf_symbols'] if 'elf' in row}
     output_root=args.output_root.resolve() if args.output_root else library
     target=output_root/'tracking'
     target.mkdir(parents=True,exist_ok=True)
@@ -252,9 +254,12 @@ def main(argv=None, registry_data=None):
                      pseudocode_zero_size_alias_exports=sum(e['defined'] and not e['size'] and e['pseudocode_exported'] for e in functions),
                      fully_verified_original_functions=0,
                      portable_partial_behavior_references=sum(e['portable_behavior']!='not verified' for e in functions))
-        summary['portable_reconstructions_ready']=sum(e['portable_ready'] for e in functions)
+        summary['fresh_validated_ready_ranges']=sum(e['portable_ready'] for e in functions)
         summary['compiled_declaration_pending_ranges']=sum(e['cpp_compiled'] and not e['portable_ready'] for e in functions)
-        summary['compiled_declaration_pending_entries']=len({e['mangled'] for e in functions if e['cpp_compiled'] and not e['portable_ready']})
+        summary['fresh_validated_pending_entries']=len({e['mangled'] for e in functions if e['cpp_compiled'] and not e['portable_ready']})
+        summary['portable_reconstructions_ready']=canonical_counts[manifest['sha256']]['ready']
+        summary['compiled_declaration_pending_entries']=canonical_counts[manifest['sha256']]['pending']
+        summary['canonical_statistics_source']='SQLite via symbol_statistics.py; fresh evidence range counts are separate'
         summary['deferred_function_entries']=sum(e['work_deferred'] for e in defined)
         summary['eligible_function_entries']=len(defined)-summary['deferred_function_entries']
         summary['upstream_source_api_matches']=sum(e['upstream_api_match'] for e in defined)
@@ -390,7 +395,6 @@ The generator merges `recovered`, `recovered-dice` and `recovered-all`, verifies
                     '[production audit](candidates/common-build/validation/production-audit-01/validation.json). '
                     'These component archives do not establish completed application startup.\n')
     cache.unchanged()
-    statistics = build_report(resolve_db(library, args.registry_db))
     (output_root/'SYMBOLS.md').write_text(update_symbols_document(
         header+footer+''.join(subsystem_rows)+trailer, statistics))
     summary={role:value['summary'] for role,value in result['roles'].items()}

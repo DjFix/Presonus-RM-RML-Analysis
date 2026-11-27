@@ -40,6 +40,9 @@ class CheckpointTests(unittest.TestCase):
         self.resolve = patch.object(checkpoint, 'resolve_db', return_value=self.root / 'fixture.sqlite')
         self.resolve.start()
         self.addCleanup(self.resolve.stop)
+        self.stats=patch.object(checkpoint,'build_report',return_value={
+            'elf_symbols':[{'ready':1,'pending':1}], 'unique_names':[{'ready':1}]})
+        self.stats.start();self.addCleanup(self.stats.stop)
 
     def write_integration(self):
         (self.library / 'validation' / 'integration.json').write_text(json.dumps(self.integration))

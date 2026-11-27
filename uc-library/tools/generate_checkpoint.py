@@ -9,6 +9,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / 'registry'))
 from adapter import RegistrySnapshot, resolve_db
+from recovery.symbol_statistics import build_report
 
 
 def sha256(path):
@@ -35,10 +36,15 @@ def snapshot(library, repository, phase, db=None):
     test_log = (repository / integration['test_log']).resolve()
     if not test_log.is_relative_to(repository) or sha256(test_log) != integration['test_log_sha256']:
         raise ValueError('Integration test log hash/path mismatch')
+    statistics=build_report(resolve_db(library,db))
+    totals=statistics['elf_symbols'][-1]
+    if (totals['ready'],totals['pending']) != (len(ready),len(pending)):
+        raise ValueError('Registry changed between checkpoint and statistics snapshots; retry')
     return dict(
         registry=registry_provenance, phase=phase, generated_at=datetime.now(timezone.utc).isoformat(), inputs=inputs,
-        ready_entries=len(ready), ready_distinct_mangles=len({r['mangled'] for r in ready}),
-        declaration_pending_entries=len(pending),
+        ready_entries=totals['ready'], ready_distinct_mangles=statistics['unique_names'][-1]['ready'],
+        declaration_pending_entries=totals['pending'], statistics=statistics,
+        ready_name_semantics='All required ELF identities ready; shared SQL statistics',
         roles=dict(Counter(r.get('role', 'unspecified') for r in ready)),
         test_suites=integration['test_suites'], platform='linux',
         ready_identities=sorted([list(k) for k in ready_keys]),

@@ -10,6 +10,9 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parent/'registry'))
+from adapter import snapshot as registry_snapshot, catalog_roles
 
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -20,6 +23,7 @@ def main():
     parser.add_argument('repository',type=Path)
     parser.add_argument('--build',type=Path,required=True)
     parser.add_argument('--prefix',type=Path,required=True)
+    parser.add_argument('--registry-db',type=Path)
     args=parser.parse_args()
     repo=args.repository.resolve();lib=repo/'uc-library'
     build=(repo/args.build).resolve();prefix=(repo/args.prefix).resolve()
@@ -81,10 +85,13 @@ def main():
     app_headers={name:digest for name,digest in integration['files'].items() if name.startswith('include/presonus/')}
     installed={str(path.relative_to(prefix)):sha(path) for path in (prefix/'include').rglob('*') if path.is_file()}
     assert installed=={**app_headers,**provider_headers}
-    ready=json.loads((lib/'validation/ready-functions.json').read_text())['functions']
+    with registry_snapshot(lib,args.registry_db) as registry:
+        ready=registry.ready['functions']
+        registry_provenance=registry.provenance()
+        roles=catalog_roles(registry.c)
     required={'presonus_uc':{row['mangled'] for row in ready}}
     for role,target in (('client','presonus_cs18_components'),('server','presonus_rm_components')):
-        identity=json.loads((lib/'recovered-all'/role/'manifest.json').read_text())['sha256']
+        identity=roles[role]['summary']['sha256']
         required[target]={row['mangled'] for row in ready if row['original_elf_sha256']==identity}
     archives={}
     for target,names in required.items():
@@ -132,7 +139,7 @@ def main():
         application_headers=len(app_headers),provider_headers=len(provider_headers),
         provider_commit=pin,source_hashes=snapshot,sdk_hashes=sdk_hashes,
         integration_sha256=sha(lib/'validation/integration.json'),root_suites=integration['test_suites'],
-        ready_ledger_sha256=sha(lib/'validation/ready-functions.json'),
+        readiness_registry=registry_provenance,
         compile_commands_sha256=sha(build/'compile_commands.json'),
         relocated_role_consumers_passed=True,installed_link_interfaces=installed_link_interfaces,
         private_math_archive_sha256=private_math_archive_sha256,commands=commands,tool_sha256=sha(Path(__file__)),

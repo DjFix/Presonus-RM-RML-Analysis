@@ -858,3 +858,17 @@ or context compaction, together with the publisher polling cadence above.
   replace them with database copies. Regression tests must exercise all three
   entry points. Finish live frozen work before changing its bound instructions
   or tools, and mark its packets historical after those bindings change.
+
+## Operational symbol consumers — SQLite cutover, 2026-11-27
+
+- Current statistics, UC registration maps, HAL selection, checkpoints and role
+  audits must read catalog/admission from the operational SQLite adapter.
+  Whole-project counts must use tools/recovery/symbol_statistics.py.
+  Never overlay ready fragments or generated tracking JSON onto current status.
+- Keep admitted counts distinct from fresh proof/range-check results. A changed
+  source must still fail fresh validation; generating statistics cannot promote,
+  demote or silently remove a database record.
+- Consult uc-library/tools/recovery/symbol_statistics.md for supported
+  operational entrypoints. Historical fixed-batch counters/admission scripts are
+  evidence producers, not live operators. Before reusing one, migrate its inputs
+  to SQLite and test it; never restore legacy JSON as an operational fallback.

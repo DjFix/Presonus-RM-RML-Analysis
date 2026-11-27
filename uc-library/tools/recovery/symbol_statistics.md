@@ -88,3 +88,38 @@ Migration/import/move receipts and the initial report are under
 `temp/recovery-work/symbol-statistics/`. Original producer bytes are preserved in
 project trash with exact paths/hashes in `SCRIPT-MOVES.json`, not relabelled as
 having executed the new maintained code.
+
+## Operational consumers
+
+Current entrypoints read the operational database selected by ACTIVE.json
+(or an explicit test database); they never overlay historical admission JSON:
+
+| Entrypoint | SQLite input / output |
+| --- | --- |
+| symbol_statistics.py report | canonical totals and disjoint unique-name groups |
+| count_current_unique.py | same report schema; old fixed-workload schema is retired |
+| generate_checkpoint.py | admitted identities plus shared canonical statistics |
+| generate_symbol_tracking.py | shared totals; fresh source/range validation separately |
+| generate_hal_symbol_tracking.py | SQL catalog and admitted statuses; scoped HAL selection |
+| uc_registration_map.py | SQL catalog and admitted registrations, without candidate fragments |
+| audit_role_build.py | admitted SQL identities and role ownership |
+
+The existing SQLite admission, packet-planning, provider and current role-audit
+adapters remain authoritative. Transaction row counts, task-state monitoring and
+bounded HAL/registration counts describe their explicit scope; they are not
+alternative whole-project reconstruction statistics.
+
+Historical fixed-batch count_*, apply_*, admit_*, preflight_* scripts and old
+role-audit variants are retained as evidence producers, not supported current
+operational entrypoints. Do not run them against the live checkout, restore
+their legacy JSON inputs, or use their hardcoded totals. A new current consumer
+must use the registry adapter and this report generator; historical scripts
+require explicit migration and review before reuse.
+
+Immutable ELF inventories, native observations, test fixtures and unadmitted
+handoff fragments remain evidence. Their existence does not establish current
+admission. Generated coverage/checkpoint JSON and Markdown are disposable views,
+never input registries. HAL extraction/export flags not read from validated
+evidence are null / “not evaluated”, not a fabricated negative result.
+Historical observations in ACTIVE.json are labelled as such; it selects the
+database and does not provide current counts.
